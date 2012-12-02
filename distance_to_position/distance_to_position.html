@@ -1,0 +1,266 @@
+<html>
+
+  <head>
+    <title>
+      DISTANCE_TO_POSITION - Estimate city positions from distance tables.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      DISTANCE_TO_POSITION <br> Estimate city positions from distance tables.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DISTANCE_TO_POSITION</b> 
+      is a FORTRAN90 program which
+      estimates the positions of cities given a city-to-city distance table.
+    </p>
+
+    <p>
+      In 2D, the problem is singular.  In particular, the position of one
+      city is completely arbitrary, and one component of a second city is
+      completely arbitrary (and a third city's position can be "flipped"
+      about the line connecting cities one and two).  To remove some of this
+      singularity, the program assigns city #1 the position (0,0) and city #2
+      is given a 0 Y coordinate.  
+    </p>
+
+    <p>
+      In N-dimensional space, a similar set of constraints must be placed
+      on the first N cities, or the least squares solver is likely to fail.
+      (That is, we specify all N components of the first city to be 0, 
+      N-1 components of the second one, and so on, up to the N-th city
+      which has a single 0 component).
+    </p>
+
+    <p>
+      The computations carried out by this program assume that the cities
+      lie on a plane.  If the distance data is for international cities,
+      the effect of spherical geometry may make the planar approximation
+      very bad.
+    </p>
+
+    <p>
+      Once the nonlinear least squares problem is set up, the routine
+      UNCMIN from the NMS software package is called to compute a solution.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>distance_to_position</b> <i>distance.txt</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>distance.txt</i> is the distance information
+        </li>
+      </ul>
+      estimates the positions of the cities, and writes out a position table in 
+      <i>distance.coord.txt</i>.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+    
+    <p>
+      <b>DISTANCE_TO_POSITION</b> is available in
+      <a href = "../../f_src/distance_to_position/distance_to_position.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/distance_to_position/distance_to_position.html">a MATLAB version</a>.
+    </p>
+    
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../datasets/cities/cities.html">
+      CITIES</a>,
+      a dataset directory which
+      contains sets of information about cities and the distances
+      between them; 
+    </p>
+
+    <p>
+      <a href = "../../f_src/cities/cities.html">
+      CITIES</a>,
+      a FORTRAN90 library which
+      handles various problems associated with a set of "cities" on a map.
+    </p>
+
+    <p>
+      <a href = "../../m_src/distance_to_position_sphere/distance_to_position_sphere.html">
+      DISTANCE_TO_POSITION_SPHERE</a>, 
+      a MATLAB program which
+      estimates the positions of cities on a sphere (such as the earth) 
+      based on a city-to-city distance table.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lau_np/lau_np.html">
+      LAU_NP</a>,
+      a FORTRAN90 library which
+      implements heuristic algorithms for various NP-hard combinatorial problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>, 
+      a FORTRAN90 library which
+      includes a wide variety of numerical software.
+    </p>
+
+    <p>
+      <a href = "../../f_src/partial_digest/partial_digest.html">
+      PARTIAL_DIGEST</a>, 
+      a FORTRAN90 library which
+      solves the partial digest problem.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "distance_to_position.f90">distance_to_position.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "distance_to_position.sh">distance_to_position.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "grid04_xy.txt">grid04_xy.txt</a>,
+          positions of 4 points on a grid.
+        </li>
+        <li>
+          <a href = "grid04_dist.txt">grid04_dist.txt</a>,
+          the distance table for the points.
+        </li>
+        <li>
+          <a href = "grid04_dist.coord.txt">grid04_dist.coord.txt</a>,
+          the estimated positions of the points, based on the distance table.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DISTANCE_MODULE</b> is a module for the distance matrix.
+        </li>
+        <li>
+          <b>MAIN</b> is the main program for DISTANCE_TO_POSITION.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.  
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>COMPUTE_POSITION_FROM_DISTANCE</b> computes positions from a distance matrix.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>MAP</b> is the function to be minimized for city positions.
+        </li>
+        <li>
+          <b>POSITION_TO_DISTANCE</b> creates a distance matrix from positions.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_INDEX_LAST_C</b> finds the LAST occurrence of a given character.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 value from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 29 January 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

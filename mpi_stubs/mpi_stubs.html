@@ -1,0 +1,366 @@
+<html>
+
+  <head>
+    <title>
+      MPI_STUBS - Dummy MPI Library
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MPI_STUBS <br> Dummy MPI Library
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MPI_STUBS</b>
+      is a FORTRAN90 library which
+      provides "stub" versions of some MPI routines.
+    </p>
+
+    <p>
+      <b>MPI_STUBS</b> is intended to include stubs for the most commonly
+      called MPI routines.  Most of the stub routines don't do anything.
+      In a few cases, where it makes sense, they do some simple action
+      or return a value that is appropriate for the serial processing
+      case.
+    </p>
+
+    <p>
+      <b>MPI_STUBS</b> can be used as a convenience, when a real MPI
+      implementation is not available, and the user simply wants to
+      test-compile a code.  It may also be useful in those occasions
+      when a code has been so carefully written that it will still
+      execute correctly on a single processor.
+    </p>
+
+    <p>
+      <b>MPI_STUBS</b> is based on a similar package supplied as
+      part of the <b>LAMMPS</b> program, which allow that program to
+      be compiled, linked and run on a single processor machine,
+      although it is normally intended for parallel execution.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MPI_STUBS</b> is available in
+      <a href = "../../c_src/mpi_stubs/mpi_stubs.html">a C version</a> and
+      <a href = "../../cpp_src/mpi_stubs/mpi_stubs.html">a C++ version</a> and
+      <a href = "../../f77_src/mpi_stubs/mpi_stubs.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/mpi_stubs/mpi_stubs.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/heat_mpi/heat_mpi.html">
+      HEAT_MPI</a>,
+      a FORTRAN90 program which
+      solves the 1D Time Dependent Heat Equation using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hello_mpi/hello_mpi.html">
+      HELLO_MPI</a>,
+      a FORTRAN90 program which
+      prints out "Hello, world!" using the MPI parallel programming environment.
+    </p>
+
+    <p>
+      <a href = "../../examples/moab/moab.html">
+      MOAB</a>,
+      examples which
+      illustrate the use of the MOAB job scheduler for a computer cluster.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi/mpi.html">
+      MPI</a>,
+      FORTRAN90 programs which
+      illustrate the use of MPI for parallel processing.
+    </p>
+
+    <p>
+      <a href = "../../f_src/multitask_mpi/multitask_mpi.html">
+      MULTITASK_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates how to "multitask", that is, to execute several unrelated
+      and distinct tasks simultaneously, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_mpi/quad_mpi.html">
+      QUAD_MPI</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule, and carries out the
+      computation in parallel using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/random_mpi/random_mpi.html">
+      RANDOM_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates one way to generate the same sequence of random numbers
+      for both sequential execution and parallel execution under MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/satisfy_mpi/satisfy_mpi.html">
+      SATISFY_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates, for a particular circuit, an exhaustive search
+      for solutions of the circuit satisfiability problem, using MPI to
+      carry out the calculation in parallel.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Gropp, Steven Huss-Lederman, Andrew Lumsdaine, Ewing Lusk,
+          Bill Nitzberg, William Saphir, Marc Snir,<br>
+          MPI: The Complete Reference,<br>
+          Volume II: The MPI-2 Extensions,<br>
+          Second Edition,<br>
+          MIT Press, 1998,<br>
+          ISBN13: 978-0-262-57123-4,<br>
+          LC: QA76.642.M65.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "mpi_stubs.f90">mpi_stubs.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "mpi_stubs_f90.h">mpi_stubs_f90.h</a>, the "include" file.
+        </li>
+        <li>
+          <a href = "mpi_stubs.sh">mpi_stubs.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>BUFFON_LAPLACE</b> is an "embarrassingly parallel" Monte Carlo
+      simulation of the Buffon-Laplace needle dropping process.
+      <ul>
+        <li>
+          <a href = "buffon_laplace.f90">buffon_laplace.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "buffon_laplace.sh">buffon_laplace.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "buffon_laplace_output.txt">buffon_laplace_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HELLO</b> is a simple program that says "Hello, world!".
+      <ul>
+        <li>
+          <a href = "hello.f90">hello.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "hello.sh">hello.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "hello_output.txt">hello_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>QUADRATURE</b> is a program that estimates an integral
+      using the random sampling.
+      <ul>
+        <li>
+          <a href = "quadrature.f90">quadrature.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "quadrature.sh">quadrature.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "quadrature_output.txt">quadrature_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MPI_ABORT</b> shuts down the processes in a given communicator.
+        </li>
+        <li>
+          <b>MPI_ALLGATHER</b> gathers data from all the processes in a communicator.
+        </li>
+        <li>
+          <b>MPI_ALLGATHERV</b> gathers data from all the processes in a communicator.
+        </li>
+        <li>
+          <b>MPI_ALLREDUCE</b> carries out a reduction operation.
+        </li>
+        <li>
+          <b>MPI_BARRIER</b> forces processes within a communicator to wait together.
+        </li>
+        <li>
+          <b>MPI_BCAST</b> broadcasts data from one process to all others.
+        </li>
+        <li>
+          <b>MPI_BSEND</b> sends data from one process to another, using buffering.
+        </li>
+        <li>
+          <b>MPI_CART_CREATE</b> creates a communicator for a Cartesian topology.
+        </li>
+        <li>
+          <b>MPI_CART_GET</b> returns the "Cartesian coordinates" of the calling process.
+        </li>
+        <li>
+          <b>MPI_CART_SHIFT</b> finds the destination and source for Cartesian shifts.
+        </li>
+        <li>
+          <b>MPI_COMM_DUP</b> duplicates a communicator.
+        </li>
+        <li>
+          <b>MPI_COMM_FREE</b> "frees" a communicator.
+        </li>
+        <li>
+          <b>MPI_COMM_RANK</b> reports the rank of the calling process.
+        </li>
+        <li>
+          <b>MPI_COMM_SIZE</b> reports the number of processes in a communicator.
+        </li>
+        <li>
+          <b>MPI_COMM_SPLIT</b> splits up a communicator based on a key.
+        </li>
+        <li>
+          <b>MPI_COPY_DOUBLE</b> copies a double precision vector.
+        </li>
+        <li>
+          <b>MPI_COPY_INTEGER</b> copies an integer vector.
+        </li>
+        <li>
+          <b>MPI_COPY_REAL</b> copies a real vector.
+        </li>
+        <li>
+          <b>MPI_FINALIZE</b> shuts down the MPI library.
+        </li>
+        <li>
+          <b>MPI_GET_COUNT</b> reports the actual number of items transmitted.
+        </li>
+        <li>
+          <b>MPI_INIT</b> initializes the MPI library.
+        </li>
+        <li>
+          <b>MPI_IRECV</b> receives data from another process.
+        </li>
+        <li>
+          <b>MPI_ISEND</b> sends data from one process to another using nonblocking transmission.
+        </li>
+        <li>
+          <b>MPI_RECV</b> receives data from another process within a communicator.
+        </li>
+        <li>
+          <b>MPI_REDUCE</b> carries out a reduction operation.
+        </li>
+        <li>
+          <b>MPI_REDUCE_DOUBLE_PRECISION</b> carries out a reduction operation on double precision values.
+        </li>
+        <li>
+          <b>MPI_REDUCE_INTEGER</b> carries out a reduction operation on integers.
+        </li>
+        <li>
+          <b>MPI_REDUCE_REAL</b> carries out a reduction operation on reals.
+        </li>
+        <li>
+          <b>MPI_REDUCE_SCATTER</b> collects a message of the same length from each process.
+        </li>
+        <li>
+          <b>MPI_RSEND</b> "ready sends" data from one process to another.
+        </li>
+        <li>
+          <b>MPI_SEND</b> sends data from one process to another.
+        </li>
+        <li>
+          <b>MPI_WAIT</b> waits for an I/O request to complete.
+        </li>
+        <li>
+          <b>MPI_WAITALL</b> waits until all I/O requests have completed.
+        </li>
+        <li>
+          <b>MPI_WAITANY</b> waits until one I/O requests has completed.
+        </li>
+        <li>
+          <b>MPI_WTICK</b> returns the number of seconds per clock tick.
+        </li>
+        <li>
+          <b>MPI_WTIME</b> returns the elapsed wall clock time.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 21 May 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

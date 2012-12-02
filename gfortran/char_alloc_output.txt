@@ -1,0 +1,35 @@
+February  5 2008   2:49:33.297 PM
+ 
+CHAR_ALLOC:
+  FORTRAN90 version.
+ 
+  Investigate some options for declaration of
+  CHARACTER variables.
+ 
+  Note that FORTRAN2003 allows the declaration of
+  character variables with an allocatable LEN
+  but for earlier FORTRAN's, this is NOT allowed!
+ 
+TEST01
+  Test the use of explicit LEN but unknown dimension:
+ 
+  CHARACTER ( LEN = 1 ), ALLOCATABLE, DIMENSION ( : ) ::CH_VEC
+ 
+  We allocate 52 entries in the string.
+ 
+  Here is the string after use:
+ 
+  "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+ 
+TEST02
+  Test the use of explicit LEN but unknown dimension:
+ 
+  CHARACTER ( LEN = 2 ), ALLOCATABLE, DIMENSION ( : ) ::CH_VEC
+ 
+  We allocate 26 entries in the string.
+ 
+  Here is the string after use:
+ 
+  "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+ 
+February  5 2008   2:49:33.299 PM

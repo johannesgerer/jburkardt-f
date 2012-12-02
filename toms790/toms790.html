@@ -1,0 +1,249 @@
+<html>
+
+  <head>
+    <title>
+      TOMS790 - Bivariate Interpolation of Scattered Data
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOMS790 <br> Bivariate Interpolation of Scattered Data
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS790</b>
+      is a FORTRAN77 library which
+      constructs an interpolant to scattered 2D data,
+      by Robert Renka.
+    </p>
+
+    <p>
+      <b>TOMS790</b> is similar to the algorithm employed in ACM TOMS algorithm 660,
+      but achieves cubic precision (where the previous algorithm was only quadratic)
+      and has C2 continuity.
+    </p>
+
+    <p>
+      <b>TOMS790</b> is ACM TOMS Algorithm 790.
+    </p>
+
+    <p>
+      The original, true, correct version of this ACM TOMS algorithm is available
+      in the TOMS subdirectory of
+      <a href = "http://www.netlib.org/">the NETLIB web site</a>.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TOMS790</b> is available in
+      <a href = "../../f77_src/toms790/toms790.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms790/toms790.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/rbf_interp/rbf_interp.html">
+      RBF_INTERP</a>,
+      a FORTRAN90 library which
+      defines and evaluates radial basis interpolants to multidimensional data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms526/toms526.html">
+      TOMS526</a>,
+      a FORTRAN90 library which
+      interpolates scattered bivariate data,
+      This is ACM TOMS algorithm 526,
+      by Hiroshi Akima;
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms660/toms660.html">
+      TOMS660</a>,
+      a FORTRAN90 library which
+      takes scattered 2D data and produces an interpolating function F(X,Y),
+      this is ACM TOMS algorithm 660,
+      called <b>qshep2d</b>,
+      by Robert Renka.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms661/toms661.html">
+      TOMS661</a>,
+      a FORTRAN90 library which
+      takes scattered 3D data and produces an interpolating function F(X,Y,Z),
+      this is ACM TOMS algorithm 661,
+      called <b>qshep3d</b>,
+      by Robert Renka.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms792/toms792.html">
+      TOMS792</a>
+      a FORTRAN90 library which
+      tests functions that interpolate scattered data in the plane;
+      by Robert Renka;
+      this is ACM TOMS algorithm 792.
+    </p>
+
+    <h3 align="center">
+      Author:
+    </h3>
+
+    <p>
+      Robert Renka
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Richard Franke,<br>
+          Scattered Data Interpolation: Tests of Some Methods,<br>
+          Mathematics of Computation,<br>
+          Volume 38, Number 157, January 1982, pages 181-200.
+        </li>
+        <li>
+          Robert Renka,<br>
+          Algorithm 790:
+          CSHEP2D: Cubic Shepard Method for Bivariate Interpolation of Scattered Data,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 25, Number 1, March 1999, pages 70-73.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms790.f">toms790.f</a>, the source code.
+        </li>
+        <li>
+          <a href = "toms790.sh">toms790.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>TOMS790_PRB1</b> is a program which can be run interactively, and allows
+      the user to specify the test data to be used, and other parameters.
+      <ul>
+        <li>
+          <a href = "toms790_prb1.f">toms790_prb1.f</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "toms790_prb1.sh">toms790_prb1.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "toms790_prb1_input.txt">toms790_prb1_input.txt</a>,
+          the input file.
+        </li>
+        <li>
+          <a href = "toms790_prb1_output.txt">toms790_prb1_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TOMS790_PRB2</b> tests the package using data on a 20 by 20 uniform grid.
+      <ul>
+        <li>
+          <a href = "toms790_prb2.f">toms790_prb2.f</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "toms790_prb2.sh">toms790_prb2.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "toms790_prb2_output.txt">toms790_prb2_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CSHEP2</b> defines a C2 function F(X,Y) interpolating scattered data.
+        </li>
+        <li>
+          <b>CS2VAL</b> evaluates an interpolant defined by CSHEP2.
+        </li>
+        <li>
+          <b>CS2GRD</b> returns the value and gradients of a function defined by CSHEP2.
+        </li>
+        <li>
+          <b>CS2HES</b> returns value, gradients and Hessian of a function defined by CSHEP2.
+        </li>
+        <li>
+          <b>GETNP2</b> gets the closest unmarked node to a specified point.
+        </li>
+        <li>
+          <b>GIVENS</b> constructs a Givens plane rotation.
+        </li>
+        <li>
+          <b>ROTATE</b> applies a Givens rotation.
+        </li>
+        <li>
+          <b>SETUP2</b> sets a row of a regression matrix to fit a cubic function to data.
+        </li>
+        <li>
+          <b>STORE2</b> creates a closest-point data structure given points in the plane.
+        </li>
+        <li>
+          <b>TESTDT</b> returns one of five sets of test nodes.
+        </li>
+        <li>
+          <b>TSTFN1</b> computes one of ten bivariate test functions.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f77_src.html">
+      the FORTRAN77 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 August 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

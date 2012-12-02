@@ -1,0 +1,419 @@
+<html>
+
+  <head>
+    <title>
+      TEC_TO_OBJ2 - Convert TECPLOT Finite Element Files to OBJ Format
+    </title>
+  </head>
+
+  <body alink="#ff3300" bgcolor="#eeeeee" link="#cc0000" vlink="#000055">
+
+    <h1 align="center">
+      TEC_TO_OBJ2 <br> Convert TECPLOT Finite Element Files to OBJ Format
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEC_TO_OBJ2</b>
+      is a FORTRAN90 program which
+      can read a TECPLOT ASCII file defining a 3D surface of triangles
+      or quadrilaterals,
+      and write a corresponding Alias OBJ file.
+    </p>
+
+    <p>
+      <b>TEC_TO_OBJ2</b> is a minor revision of <b>TEC_TO_OBJ</b>.
+      The original program could only read one zone (and only the first
+      one, at that) from a TECPLOT file.  The new program tries to read
+      all the zones from a TECPLOT file, and to output all that information
+      into the OBJ file.  This feature has not been heavily tested.
+    </p>
+
+    <p>
+      <b>TEC_TO_OBJ2</b> can only read a very specific type of TECPLOT ASCII file,
+      namely, one in which the spatial dimension is 3, and in which
+      the objects are triangular finite elements.
+    </p><p>
+
+    </p><p>
+      This means that the first three lines of the TECPLOT file
+      should look something like this:
+      </p><pre>        TITLE = "human.dat created by IVREAD."
+        VARIABLES = "X", "Y", "Z", "R", "G", "B"
+        ZONE N = 64, E = 96, DATAPACKING = POINT, ZONETYPE = FETRIANGLE
+      </pre>
+      or
+      <pre>        TITLE = "human.dat created by IVREAD."
+        VARIABLES = "X", "Y", "Z", "R", "G", "B"
+        ZONE N = 64, E = 48, DATAPACKING = POINT, ZONETYPE = FEQUADRILATERAL
+      </pre>
+      where the important things are:
+      <ul>
+        <li>
+          The list of variables on line 2 begins with "X", "Y" and "Z",
+          which indicates this is a 3D spatial problem;
+        </li>
+        <li>
+          The formatting information on line 3 specifies POINT datapacking
+          with FETRIANGLE or FEQUADRILATERAL zonetype.
+        </li>
+      </ul>
+    <p></p>
+
+    <p>
+      The TECPLOT home page is<br>
+      <a href="http://www.tecplot.com/">
+                 http://www.tecplot.com/</a>
+    </p>
+
+    <h3 align="center">
+      Usage:
+    </h3>
+
+    <p>
+      </p><dl>
+        <dt>
+          <b>tec_to_obj2</b> <i>file.dat</i>
+        </dt>
+        <dd>
+          reads the TECPLOT ASCII file <i>file.dat</i> and creates the Alias OBJ file
+          <i>file.obj</i>.
+        </dd>
+      </dl>
+    <p></p>
+
+    <h3 align="center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align="center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/ivcon/ivcon.html">
+      IVCON</a>,
+      a C++ program which
+      reads an Alias OBJ file and
+      writes out an equivalent file in a variety of formats.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ivread/ivread.html">
+      IVREAD</a>,
+      a FORTRAN90 program which
+      reads an Alias OBJ file and
+      write out an equivalent file in a variety of formats.
+    </p>
+
+    <p>
+      <a href = "../../data/obj/obj.html">
+      OBJ</a>,
+      a data directory which
+      contains a description of the Alias OBJ data
+      file format.
+    </p>
+
+    <p>
+      <a href = "../../c_src/obj_to_ply/obj_to_ply.html">
+      OBJ_TO_PLY</a>,
+      a C program which
+      reads an Alias OBJ file and writes a PLY file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/obj_io/obj_io.html">
+      OBJ_IO</a>,
+      a FORTRAN90 library which
+      reads or writes an Alias OBJ file.
+    </p>
+
+    <p>
+      <a href = "../../pl_src/obj2opengl/obj2opengl.html">
+      OBJ2OPENGL</a>,
+      a PERL script which
+      converts an Alias OBJ
+      file to a C/C++ include file appropriate for use with Open GL;
+    </p>
+
+    <p>
+      <a href = "../../c_src/ply_to_obj/ply_to_obj.html">
+      PLY_TO_OBJ</a>,
+      a C program which
+      reads a PLY 3D graphics file and writes an equivalent OBJ graphics file.
+    </p>
+
+    <p>
+      <a href = "../../data/tec/tec.html">
+      TEC</a>,
+      a data directory which
+      contains a description of TECPLOT files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_io/tec_io.html">
+      TEC_IO</a>,
+      a FORTRAN90 library which
+      reads or writes a TECPLOT file definite a finite element dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_to_fem/tec_to_fem.html">
+      TEC_TO_FEM</a>,
+      a FORTRAN90 program which
+      convert a TECPLOT graphics
+      file defining a finite element dataset into a set of FEM files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_to_obj/tec_to_obj.html">
+      TEC_TO_OBJ</a>,
+      a FORTRAN90 program which
+      is an earlier version of <b>TEC_TO_OBJ2</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_write/tec_write.html">
+      TEC_WRITE</a>,
+      a FORTRAN90 library which
+      can write TEC files.
+    </p>
+
+    <h3 align="center">
+      Reference:
+    </h3>
+
+    <p>
+      </p><ol>
+        <li>
+          <a href="http://www.alias.com/eng/index.shtml">
+                     http://www.alias.com/eng/index.shtml</a>,
+          The Alias web site.
+        </li>
+        <li>
+          <a href = "../../data/obj/obj_format.txt">obj_format.txt</a>,
+          some information about the Alias OBJ format.
+        </li>
+        <li>
+          Tecplot, Inc,<br>
+          TECPLOT Reference Manual,<br>
+          Version 10, Release 4,<br>
+          Tecplot, Inc, 2005.
+        </li>
+        <li>
+          Tecplot, Inc,<br>
+          TECPLOT User's Manual,<br>
+          Version 10,<br>
+          Tecplot, Inc, 2005.
+        </li>
+      </ol>
+    <p></p>
+
+    <h3 align="center">
+      Source Code:
+    </h3>
+
+    <p>
+      </p><ul>
+        <li>
+          <a href="tec_to_obj2.f90">
+          tec_to_obj2.f90</a>, the source code.
+        </li>
+        <li>
+          <a href="tec_to_obj2.sh">
+          tec_to_obj2.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    <p></p>
+
+    <h3 align="center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>HUMANOID_TRI</b> is a TECPLOT file describing a humanoid shape
+      using finite element triangles.
+      </p><ul>
+        <li>
+          <a href="humanoid_tri.dat">humanoid_tri.dat</a>,
+          a TECPLOT ASCII file defining the dataset.
+        </li>
+        <li>
+          <a href="humanoid_tri.obj">humanoid_tri.obj</a>,
+          the OBJ file created by <b>TEC_TO_OBJ</b>.
+        </li>
+        <li>
+          <a href="humanoid_tri.png">humanoid_tri.png</a>,
+          a PNG
+          "snapshot" of the humanoid figure.
+        </li>
+      </ul>
+    <p></p>
+
+    <p>
+      <b>HUMANOIDS_TRI</b> is a TECPLOT file describing two humanoid shapes,
+      in two zones, using finite element triangles.
+      </p><ul>
+        <li>
+          <a href="humanoids_tri.dat">humanoids_tri.dat</a>,
+          a TECPLOT ASCII file defining the dataset.
+        </li>
+        <li>
+          <a href="humanoids_tri.obj">humanoids_tri.obj</a>,
+          the OBJ file created by <b>TEC_TO_OBJ</b>.
+        </li>
+        <li>
+          <a href="humanoids_tri.png">humanoids_tri.png</a>,
+          a PNG
+          "snapshot" of the humanoid figures.
+        </li>
+      </ul>
+    <p></p>
+
+    <p>
+      <b>HUMANOID_QUAD</b> is a TECPLOT file describing a humanoid shape
+      using finite element quadrilaterals.
+      </p><ul>
+        <li>
+          <a href="humanoid_quad.dat">humanoid_quad.dat</a>,
+          a TECPLOT ASCII file defining the dataset.
+        </li>
+        <li>
+          <a href="humanoid_quad.obj">humanoid_quad.obj</a>,
+          the OBJ file created by <b>TEC_TO_OBJ</b>.
+        </li>
+        <li>
+          <a href="humanoid_quad.png">humanoid_quad.png</a>,
+          a PNG
+          "snapshot" of the humanoid figure.
+        </li>
+      </ul>
+    <p></p>
+
+    <h3 align="center">
+      List of Routines:
+    </h3>
+
+    <p>
+      </p><ul>
+        <li>
+          <b>MAIN</b> is the main program for TEC_TO_OBJ3.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_TO_S_ZERO</b> converts an I4 to a string, with zero padding.
+        </li>
+        <li>
+          <b>OBJ_HEADER_WRITE</b> writes the header for an OBJ file.
+        </li>
+        <li>
+          <b>OBJ_DATA_WRITE</b> writes graphics information to an Alias OBJ file.
+        </li>
+        <li>
+          <b>S_BEGIN</b> is TRUE if one string matches the beginning of the other.
+        </li>
+        <li>
+          <b>S_BEHEAD_SUBSTRING</b> "beheads" a string, removing a given substring.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_REPLACE_CH</b> replaces all occurrences of one character by another.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>S_WORD_EXTRACT</b> extracts the next word from a string.
+        </li>
+        <li>
+          <b>TEC_DATA_READ</b> reads the data from a TEC file.
+        </li>
+        <li>
+          <b>TEC_HEADER_READ</b> reads all the header information from a TEC file.
+        </li>
+        <li>
+          <b>TEC_HEADER_SKIP</b> skips the TITLE and VARIABLES records in a TEC file.
+        </li>
+        <li>
+          <b>TEC_TO_OBJ_HANDLE</b> reads data from a TECPLOT file and writes an OBJ file.
+        </li>
+        <li>
+          <b>TEC_ZONE_HEADER_READ</b> reads the header information for one zone.
+        </li>
+        <li>
+          <b>TEC_ZONE_LINE_PARSE</b> parses the "ZONE" line of a TEC file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 February 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+
+  </body>
+
+</html>

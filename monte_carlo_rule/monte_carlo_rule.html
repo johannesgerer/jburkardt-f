@@ -1,0 +1,225 @@
+<html>
+
+  <head>
+    <title>
+      MONTE_CARLO_RULE - Monte Carlo Sampling Regarded as Quadrature Rule
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MONTE_CARLO_RULE <br> Monte Carlo Sampling Regarded as Quadrature Rule
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MONTE_CARLO_RULE</b>
+      is a FORTRAN90 program which
+      generates a dataset of N random M-dimensional points, 
+      regards it as a quadrature rule for the unit hypercube,
+      and writes out three files of information.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>monte_carlo_rule</b> <i>m</i> <i>n</i> <i>s</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>m</i> is the spatial dimension;
+        </li>
+        <li>
+          <i>n</i> is the number of points to generate;
+        </li>
+        <li>
+          <i>s</i> is the initial seed value.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The data is written to three files:
+      <ul>
+        <li>
+          an "R" or "region" file, which lists two points that bound the region,
+          which will be the unit hypercube.
+        </li>
+        <li>
+          a "W" or "weight" file, which lists the weight for each abscissa.
+          each weight will equal 1/N.
+        </li>
+        <li>
+          an "X" or "abscissa" file, which lists the abscissas of the rule.
+          These will simply be the N random points in the M-dimensional
+          hypercube.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_uniform/quadrature_rules_uniform.html">
+      QUADRATURE_RULES_UNIFORM</a>,
+      a dataset directory which
+      contains quadrature rules for M-dimensional unit cubes,
+      based on a uniform pseudorandom sequence.
+      stored as a file of abscissas, a file of weights,
+      and a file of region limits.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_cc_dataset/sparse_grid_cc_dataset.html">
+      SPARSE_GRID_CC_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Clenshaw-Curtis sparse grid and write the data to three files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_gl_dataset/sparse_grid_gl_dataset.html">
+      SPARSE_GRID_GL_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Gauss-Legendre sparse grid and write the data to three files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_hermite_dataset/sparse_grid_hermite_dataset.html">
+      SPARSE_GRID_HERMITE_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Gauss-Hermite sparse grid and write the data to three files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_laguerre_dataset/sparse_grid_laguerre_dataset.html">
+      SPARSE_GRID_LAGUERRE_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Gauss-Laguerre sparse grid and write the data to three files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_mixed_dataset/sparse_grid_mixed_dataset.html">
+      SPARSE_GRID_MIXED_DATASET</a>,
+      a FORTRAN90 program which
+      creates a sparse grid dataset based on a mixture of 1D rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_open_dataset/sparse_grid_open_dataset.html">
+      SPARSE_GRID_OPEN_DATASET</a>,
+      a FORTRAN90 program which
+      creates a sparse grid dataset based on
+      open rules (Fejer 2, Gauss-Patterson, Newton-Cotes-Open).
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Paul Bratley, Bennett Fox, Linus Schrage,<br>
+          A Guide to Simulation,<br>
+          Springer Verlag, pages 201-202, 1983.
+        </li>
+        <li>
+          Bennett Fox,<br>
+          Algorithm 647:
+          Implementation and Relative Efficiency of Quasirandom
+          Sequence Generators,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 12, Number 4, pages 362-376, 1986.
+        </li>
+        <li>
+          Donald Knuth, <br>
+          The Art of Computer Programming,<br>
+          Volume 2: Seminumerical Algorithms,<br>
+          Addison Wesley, 1969.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "monte_carlo_rule.f90">monte_carlo_rule.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "monte_carlo_rule.sh">monte_carlo_rule.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for MONTE_CARLO_RULE.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM_01</b> returns a unit pseudorandom R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 23 December 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,465 @@
+<html>
+
+  <head>
+    <title>
+      SOBOL - The Sobol Quasirandom Sequence
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SOBOL <br> The Sobol Quasirandom Sequence
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SOBOL</b>
+      is a FORTRAN90 library which
+      computes elements of the Sobol
+      quasirandom sequence,
+      by Bennett Fox.
+    </p>
+
+    <p>
+      A quasirandom or low discrepancy sequence, such as the Faure,
+      Halton, Hammersley, Niederreiter or Sobol sequences, is
+      "less random" than a pseudorandom number sequence, but
+      more useful for such tasks as approximation of integrals in
+      higher dimensions, and in global optimization.
+      This is because low discrepancy sequences tend to sample
+      space "more uniformly" than random numbers.  Algorithms
+      that use such sequences may have superior convergence.
+    </p>
+
+    <p>
+      <b>SOBOL</b> is an adaptation of the INSOBL and GOSOBL routines
+      in ACM TOMS Algorithm 647 and ACM TOMS Algorithm 659.  The original
+      code can only compute the "next" element of the sequence.  The
+      revised code allows the user to specify the index of any desired element.
+    </p>
+
+    <p>
+      At the request of a user, the library now contains two versions
+      of the algorithm, one using the default integer and real precision,
+      and one using the higher precision obtainable by requesting
+      "(KIND=8)".  The two sets of code are distinguished by names
+      that begin with <b>I4_</b> and <b>I8_</b>.  I am aware that using
+      the <b>KIND</b> attribute with an explicit value is not the correct
+      way of asking for higher precision, but it's natural, and the
+      correct way looks a little too awkward and obscure to me today.
+      I am aware that many variables in the higher precision code
+      need not themselves be calculated in higher precision.  I'd just
+      like to see if and how the higher precision code runs at all.
+    </p>
+
+    <p>
+      A remark by Joe and Kuo shows how to extend the algorithm from
+      the original maximum spatial dimension of 40 up to a maximum
+      spatial dimension of 1111.  These changes have been implemented
+      in the C++ and FORTRAN90 versions of the program.
+    </p>
+
+    <p>
+      The original, true, correct versions of ACM TOMS Algorithm 647
+      and ACM TOMS Algorithm 659
+      are available in the TOMS subdirectory of
+      <a href = "http://www.netlib.org/">the NETLIB web site</a>.
+      The version displayed here has been converted to FORTRAN90,
+      and other internal changes have been made to suit me.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SOBOL</b> is available in
+      <a href = "../../cpp_src/sobol/sobol.html">a C++ version</a> and
+      <a href = "../../f_src/sobol/sobol.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sobol/sobol.html">a MATLAB version</a> and
+      <a href = "../../py_src/sobol/sobol.html">a Python version</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt/cvt.html">
+      CVT</a>,
+      a FORTRAN90 library which
+      computes elements of a Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/faure/faure.html">
+      FAURE</a>,
+      a FORTRAN90 library which
+      computes elements of a Faure quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grid/grid.html">
+      GRID</a>,
+      a FORTRAN90 library which
+      computes elements of a grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+       a C++ library which
+      includes routines to compute
+      elements of the Sobol sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/halton/halton.html">
+      HALTON</a>,
+      a FORTRAN90 library which
+      computes elements of a Halton quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hammersley/hammersley.html">
+      HAMMERSLEY</a>,
+      a FORTRAN90 library which 
+      computes elements of a Hammersley
+      quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid/hex_grid.html">
+      HEX_GRID</a>,
+      a FORTRAN90 library which 
+      computes elements of a hexagonal
+      grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid_angle/hex_grid_angle.html">
+      HEX_GRID_ANGLE</a>,
+      a FORTRAN90 library which
+      computes elements of an angled hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ihs/ihs.html">
+      IHS</a>,
+      a FORTRAN90 library which 
+      computes elements of an
+      improved distributed Latin hypercube dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_center/latin_center.html">
+      LATIN_CENTER</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube
+      dataset, choosing center points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_edge/latin_edge.html">
+      LATIN_EDGE</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube
+      dataset, choosing edge points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_random/latin_random.html">
+      LATIN_RANDOM</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube
+      dataset, choosing points at random.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lattice_rule/lattice_rule.html">
+      LATTICE_RULE</a>,
+      a FORTRAN90 library which
+      approximates multidimensional integrals using lattice rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lcvt/lcvt.html">
+      LCVT</a>,
+      a FORTRAN90 library which
+      computes a latinized Centroidal Voronoi
+      Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/niederreiter2/niederreiter2.html">
+      NIEDERREITER2</a>,
+      a FORTRAN90 library which
+      computes elements of a Niederreiter
+      quasirandom sequence with base 2.
+    </p>
+
+    <p>
+      <a href = "../../f_src/normal/normal.html">
+      NORMAL</a>,
+      a FORTRAN90 library which
+      computes elements of a
+      sequence of pseudorandom normally distributed values.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sobol_dataset/sobol_dataset.html">
+      SOBOL_DATASET</a>,
+      a FORTRAN90 program which
+      computes a Sobol quasirandom sequence and writes it to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms647/toms647.html">
+      TOMS647</a>,
+      a FORTRAN90 library which
+      is a version of ACM TOMS algorithm 647,
+      for evaluating Faure, Halton and Sobol sequences.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms659/toms659.html">
+      TOMS659</a>,
+      a FORTRAN77 library which
+      evaluates Sobol sequences.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      computes elements of a uniform pseudorandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/van_der_corput/van_der_corput.html">
+      VAN_DER_CORPUT</a>,
+      a FORTRAN90 library which
+      computes elements of a van der Corput
+      quasirandom sequence.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Original FORTRAN77 version by Bennett Fox;
+      FORTRAN90 version by John Burkardt.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          IA Antonov, VM Saleev,<br>
+          An Economic Method of Computing LP Tau-Sequences,<br>
+          USSR Computational Mathematics and Mathematical Physics,<br>
+          Volume 19, 1980, pages 252-256.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox,<br>
+          Algorithm 659:
+          Implementing Sobol's Quasirandom Sequence Generator,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 14, Number 1, March 1988, pages 88-100.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox, Harald Niederreiter,<br>
+          Implementation and Tests of Low Discrepancy Sequences,<br>
+          ACM Transactions on Modeling and Computer Simulation,<br>
+          Volume 2, Number 3, July 1992, pages 195-213.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox, Linus Schrage,<br>
+          A Guide to Simulation,<br>
+          Second Edition,<br>
+          Springer, 1987,<br>
+          ISBN: 0387964673,<br>
+          LC: QA76.9.C65.B73.
+        </li>
+        <li>
+          Bennett Fox,<br>
+          Algorithm 647:
+          Implementation and Relative Efficiency of Quasirandom
+          Sequence Generators,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 12, Number 4, December 1986, pages 362-376.
+        </li>
+        <li>
+          Stephen Joe, Frances Kuo,<br>
+          Remark on Algorithm 659:
+          Implementing Sobol's Quasirandom Sequence Generator,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 29, Number 1, March 2003, pages 49-57.
+        </li>
+        <li>
+          Harald Niederreiter,<br>
+          Random Number Generation and quasi-Monte Carlo Methods,<br>
+          SIAM, 1992,<br>
+          ISBN13: 978-0-898712-95-7,<br>
+          LC: QA298.N54.
+        </li>
+        <li>
+          William Press, Brian Flannery, Saul Teukolsky, William Vetterling,<br>
+          Numerical Recipes in FORTRAN: The Art of Scientific Computing,<br>
+          Second Edition,<br>
+          Cambridge University Press, 1992,<br>
+          ISBN: 0-521-43064-X,<br>
+          LC: QA297.N866.
+        </li>
+        <li>
+          Ilya Sobol,<br>
+          Uniformly Distributed Sequences with an Additional Uniform
+          Property,<br>
+          USSR Computational Mathematics and Mathematical Physics,<br>
+          Volume 16, 1977, pages 236-242.
+        </li>
+        <li>
+          Ilya Sobol, YL Levitan,<br>
+          The Production of Points Uniformly Distributed in a Multidimensional
+          Cube (in Russian),<br>
+          Preprint IPM Akademii Nauk SSSR,<br>
+          Number 40, Moscow 1976.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <b>SOBOL</b> is the current version of the program, which
+      is restricted to a maximum spatial dimension of 1111.
+      <ul>
+        <li>
+          <a href = "sobol.f90">sobol.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "sobol.sh">sobol.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>SOBOL_PRB</b> tests the code.
+      <ul>
+        <li>
+          <a href = "sobol_prb.f90">sobol_prb.f90</a>,
+          the sample test code;
+        </li>
+        <li>
+          <a href = "sobol_prb.sh">sobol_prb.sh</a>,
+          commands to compile the test code;
+        </li>
+        <li>
+          <a href = "sobol_prb_output.txt">sobol_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_BIT_HI1</b> returns the position of the high 1 bit base 2 in an integer.
+        </li>
+        <li>
+          <b>I4_BIT_LO0</b> returns the position of the low 0 bit base 2 in an integer.
+        </li>
+        <li>
+          <b>I4_SOBOL</b> generates a new quasirandom Sobol vector with each call.
+        </li>
+        <li>
+          <b>I4_SOBOL_GENERATE</b> generates a Sobol dataset.
+        </li>
+        <li>
+          <b>I4_SOBOL_WRITE</b> writes a Sobol dataset to a file.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4_XOR</b> calculates the exclusive OR of two integers.
+        </li>
+        <li>
+          <b>I8_BIT_HI1</b> returns the position of the high 1 bit base 2 in an integer.
+        </li>
+        <li>
+          <b>I8_BIT_LO0</b> returns the position of the low 0 bit base 2 in an integer.
+        </li>
+        <li>
+          <b>I8_SOBOL</b> generates a new quasirandom Sobol vector with each call.
+        </li>
+        <li>
+          <b>I8_SOBOL_GENERATE</b> generates a Sobol dataset.
+        </li>
+        <li>
+          <b>I8_SOBOL_WRITE</b> writes a Sobol dataset to a file.
+        </li>
+        <li>
+          <b>I8_UNIFORM</b> returns a scaled pseudorandom I8.
+        </li>
+        <li>
+          <b>I8_XOR</b> calculates the exclusive OR of two integers.
+        </li>
+        <li>
+          <b>TAU_SOBOL</b> defines favorable starting seeds for Sobol sequences.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 July 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

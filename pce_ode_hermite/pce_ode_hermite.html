@@ -1,0 +1,216 @@
+<html>
+
+  <head>
+    <title>
+      PCE_ODE_HERMITE - Hermite Polynomial Chaos Expansion for a Scalar ODE
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      PCE_ODE_HERMITE <br> Hermite Polynomial Chaos Expansion for a Scalar ODE
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PCE_ODE_HERMITE</b>
+      is a FORTRAN90 library which
+      defines and solves a time-dependent scalar exponential decay ODE
+      with uncertain decay coefficient, using a polynomial chaos expansion, 
+      in terms of Hermite polynomials.
+    </p>
+
+    <p>
+      The deterministic equation is
+      <pre>
+        du/dt = - alpha * u,
+        u(0) = u0
+      </pre>
+      In the stochastic version, it is assumed that the decay coefficient
+      ALPHA is a Gaussian random variable with mean value ALPHA_MU and variance
+      ALPHA_SIGMA^2.
+    </p>
+
+    <p>
+      The exact expected value of the stochastic equation is known to be
+      <pre>
+        u(t) = u0 * exp ( t^2/2)
+      </pre>
+      This should be matched by the first component of the polynomial chaos
+      expansion.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>PCE_ODE_HERMITE</b> is available in
+      <a href = "../../c_src/pce_ode_hermite/pce_ode_hermite.html">a C version</a> and
+      <a href = "../../cpp_src/pce_ode_hermite/pce_ode_hermite.html">a C++ version</a> and
+      <a href = "../../f77_src/pce_ode_hermite/pce_ode_hermite.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/pce_ode_hermite/pce_ode_hermite.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/pce_ode_hermite/pce_ode_hermite.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/black_scholes/black_scholes.html">
+      BLACK_SCHOLES</a>,
+      a FORTRAN90 library which
+      implements some simple approaches to
+      the Black-Scholes option valuation theory,
+      by Desmond Higham.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite_polynomial/hermite_polynomial.html">
+      HERMITE_POLYNOMIAL</a>,
+      a FORTRAN90 library which
+      evaluates the physicist's Hermite polynomial, the probabilist's Hermite polynomial,
+      the Hermite function, and related functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pce_burgers/pce_burgers.html">
+      PCE_BURGERS</a>,
+      a FORTRAN90 program which
+      defines and solves a version of the time-dependent viscous Burgers equation,
+      with uncertain viscosity, using a polynomial chaos expansion in terms
+      of Hermite polynomials,
+      by Gianluca Iaccarino.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sde/sde.html">
+      SDE</a>,
+      a FORTRAN90 library which
+      illustrates the properties of stochastic differential equations, and
+      common algorithms for their analysis,
+      by Desmond Higham;
+    </p>
+
+    <p>
+      <a href = "../../f_src/stochastic_rk/stochastic_rk.html">
+      STOCHASTIC_RK</a>,
+      a FORTRAN90 library which
+      applies a Runge Kutta (RK) scheme to a stochastic differential equation.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Roger Ghanem, Pol Spanos,<br>
+          Stochastic Finite Elements: A Spectral Approach,<br>
+          Revised Edition,<br>
+          Dover, 2003,<br>
+          ISBN: 0486428184,<br>
+          LC: TA347.F5.G56.
+        </li>
+        <li>
+          Dongbin Xiu,<br>
+          Numerical Methods for Stochastic Computations: A Spectral Method Approach,<br>
+          Princeton, 2010,<br>
+          ISBN13: 978-0-691-14212-8,<br>
+          LC: QA274.23.X58.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "pce_ode_hermite.f90">pce_ode_hermite.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "pce_ode_hermite.sh">pce_ode_hermite.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "pce_ode_hermite_prb.f90">pce_ode_hermite_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "pce_ode_hermite_prb.sh">pce_ode_hermite_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "pce_ode_hermite_prb_output.txt">pce_ode_hermite_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>HE_DOUBLE_PRODUCT_INTEGRAL:</b> integral of He(i,x)*He(j,x)*e^(-x^2/2).
+        </li>
+        <li>
+          <b>HE_TRIPLE_PRODUCT_INTEGRAL:</b> integral of He(i,x)*He(j,x)*He(k,x)*e^(-x^2/2).
+        </li>
+        <li>
+          <b>PCE_ODE_HERMITE</b> applies the polynomial chaos expansion to a scalar ODE.
+        </li>
+        <li>
+          <b>R8_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last modified on 17 March 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

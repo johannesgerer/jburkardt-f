@@ -1,0 +1,228 @@
+<html>
+
+  <head>
+    <title>
+      ARPACK - Eigenvalues and Eigenvectors of Large Matrices
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ARPACK <br> Eigenvalues and Eigenvectors of Large Matrices
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ARPACK</b>
+      is a FORTRAN90 program which
+      computes eigenvalues and eigenvectors of large matrices,
+      by Richard Lehoucq, Danny Sorensen, Chao Yang.
+    </p>
+
+    <p>
+      <b>ARPACK</b> supports single and double precision, real or complex
+      arithmetic.  The matrices involved can be symmetric or nonsymmetric.
+      The user can request just a few eigenvalues, or all of them.  There
+      are special routines for banded matrices.
+    </p>
+
+    <p>
+      Because the package uses reverse communication, the user is
+      free to store the matrix in any way suitable.  <b>ARPACK</b>
+      will never require direct access to the matrix, only to
+      the value of certain matrix-vector products such as <b>A*x</b>
+      or <b>A'*x</b>.
+    </p>
+
+    <p>
+      <b>ARPACK</b> includes calls to the <b>LAPACK</b> and <b>BLAS</b>
+      libraries.
+    </p>
+
+    <p>
+      There is an ARPACK home page at:
+      <a href = "http://www.caam.rice.edu/software/ARPACK/index.html">
+                 http://www.caam.rice.edu/software/ARPACK/index.html</a>.
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>ARPACK</b> is available in
+      <a href = "../../f_src/arpack/arpack.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/arpack/arpack.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/eispack/eispack.html">
+      EISPACK</a>,
+      a FORTRAN90 library which
+      contains eigenvalue routines, since replaced
+      by LAPACK.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lapack_examples/lapack_examples.html">
+      LAPACK_EXAMPLES</a>,
+      a FORTRAN90 program which
+      demonstrates the use of the LAPACK linear algebra library.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_eigen/test_eigen.html">
+      TEST_EIGEN</a>,
+      a FORTRAN90 library which
+      defines various eigenvalue
+      test cases.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_mat/test_mat.html">
+      TEST_MAT</a>,
+      a FORTRAN90 library which
+      defines test matrices, some of
+      which have known eigenvalues and eigenvectors.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Richard Lehoucq, Danny Sorensen, Chao Yang.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Richard Lehoucq, Danny Sorensen, Chao Yang,<br>
+          ARPACK User's Guide:<br>
+          Solution of Large Scale Eigenvalue Problems with
+          Implicitly Restarted Arnoldi Methods,<br>
+          available as
+          <a href = "../../pdf/arpack.pdf">a PDF file</a>
+        </li>
+        <li>
+          Danny Sorensen,<br>
+          Implicitly Restarted Arnoldi/Lanczos Methods for
+          Large Scale Eigenvalue Calculations,<br>
+          Department of Computational and Applied Mathematics,<br>
+          Rice University,<br>
+          TR-96-40,<br>
+          available as
+          <a href = "../../pdf/arpack_ref.pdf">a PDF file</a>
+        </li>
+        <li>
+          Information about the use of the ARPACK execution
+          trace facilities available through "debug.h" is given in
+          <a href = "arpack_debug.txt">arpack_debug.txt</a>
+        </li>
+        <li>
+          Information about the use of the ARPACK operation count
+          and timing statistics available through "stat.h" is given in
+          <a href = "arpack_stat.txt">arpack_stat.txt</a>
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "arpack.f90">arpack.f90</a>, the source code
+          for the single precision real version.
+        </li>
+        <li>
+          <a href = "debug.h">debug.h</a>, an INCLUDE file needed for debugging.
+        </li>
+        <li>
+          <a href = "stat.h">stat.h</a>, an INCLUDE file needed for program
+          performance statistics.
+        </li>
+        <li>
+          <a href = "blas.f90">blas.f90</a>, the source code for
+          all the single precision BLAS routines needed by ARPACK.
+        </li>
+        <li>
+          <a href = "lapack.f90">lapack.f90</a>, the source code
+          for all the single precision LAPACK routines needed by ARPACK.
+        </li>
+        <li>
+          <a href = "arpack.sh">arpack.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>SSSIMP</b> is a simple symmetric test problem:
+      <ul>
+        <li>
+          <a href = "sssimp.f90">sssimp.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "sssimp.sh">sssimp.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "sssimp_output.txt">sssimp_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SNSIMP</b> is a simple nonsymmetric test problem:
+      <ul>
+        <li>
+          <a href = "snsimp.f90">snsimp.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "snsimp.sh">snsimp.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "snsimp_output.txt">snsimp_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 March 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

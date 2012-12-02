@@ -1,0 +1,1164 @@
+<html>
+
+  <head>
+    <title>
+      TEST_CON - Continuation Tests
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_CON <br> Continuation Tests
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_CON</b>
+      is a FORTRAN90 library which
+      defines test functions for continuation codes.
+    </p>
+
+    <p>
+      A simple continuation code is an algorithm
+      for producing a sequence of solutions of the system of equations
+      F(X) = 0, where there are fewer equations F than variables X.
+      Commonly, there is one more variable than equation, resulting in
+      one degree of freedom.  The set of solutions will then generally
+      describe a curve.
+    </p>
+
+    <p>
+      A continuation code might carry out the following steps:
+      <ol>
+        <li>
+          choose a problem by picking an index number.
+        </li>
+        <li>
+          for problems with several options, pick an option index.
+        </li>
+        <li>
+          find out the number of variables.
+        </li>
+        <li>
+          get a starting point <b>X0</b>.
+        </li>
+        <li>
+          get a suggested stepsize H.
+        </li>
+        <li>
+          get the tangent vector T at <b>X0</b>.
+        </li>
+        <li>
+          use the estimate <b>X1=X0+H*T</b> as a starting point for
+          a new point on the curve; use Newton method to refine the estimate.
+        </li>
+        <li>
+          If the Newton iteration failed, reduce H and try again.
+        </li>
+        <li>
+          If the new point was computed "easily", increase H.
+        </li>
+        <li>
+          Go back to step 6 if another point is desired.
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <b>TEST_CON</b> includes routines to
+      <ul>
+        <li>
+          return the number of problems available (<b>p00_problem_num</b>);
+        </li>
+        <li>
+          return the number of different "options" for each problem (<b>p00_option_num</b>);
+        </li>
+        <li>
+          return the problem size NVAR (<b>p00_nvar</b>);
+        </li>
+        <li>
+          provide a starting point X0 (<b>p00_start</b>);
+        </li>
+        <li>
+          provide a suggested stepsize H (<b>p00_stepsize</b>);
+        </li>
+        <li>
+          determine the tangent vector T(X) (<b>p00_tan</b>);
+        </li>
+        <li>
+          apply Newton's method to an approximate solution (<b>p00_newton</b>);
+        </li>
+        <li>
+          take a single continuation step (compute the "next" point) (<b>p00_step</b>);
+        </li>
+        <li>
+          compute a target point, for which one component has a selected value
+         (<b>p00_target</b>);
+        </li>
+        <li>
+          choose the continuation parameter index (<b>p00_par_index</b>);
+        </li>
+        <li>
+          evaluate the function F(X) (<b>p00_fun</b>);
+        </li>
+        <li>
+          evaluate the jacobian J(X) (<b>p00_problem_jac</b>);
+        </li>
+        <li>
+          return the problem title (<b>p00_title</b>);
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The list of problems includes:
+      <ol>
+        <li>
+          The Freudenstein-Roth function
+        </li>
+        <li>
+          The Boggs function
+        </li>
+        <li>
+          The Powell function
+        </li>
+        <li>
+          The Broyden function
+        </li>
+        <li>
+          The Wacker function
+        </li>
+        <li>
+          The Aircraft stability function
+        </li>
+        <li>
+          The Cell kinetic function
+        </li>
+        <li>
+          The Riks mechanical problem
+        </li>
+        <li>
+          The Oden mechanical problem
+        </li>
+        <li>
+          Torsion of a square rod, finite difference solution
+        </li>
+        <li>
+          Torsion of a square rod, finite element solution
+        </li>
+        <li>
+          The materially nonlinear problem
+        </li>
+        <li>
+          Simpson's mildly nonlinear boundary value problem
+        </li>
+        <li>
+          Keller's boundary value problem
+        </li>
+        <li>
+          The Trigger Circuit
+        </li>
+        <li>
+          The Moore-Spence Chemical Reaction Integral Equation
+        </li>
+        <li>
+          The Bremermann Propane Combustion System
+        </li>
+        <li>
+          The semiconductor problem
+        </li>
+        <li>
+          The Nitric acid absorption flash
+        </li>
+        <li>
+          The Buckling Spring
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_CON</b> is available in
+      <a href = "../../f77_src/test_con/test_con.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_con/test_con.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_con/test_con.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f77_src/pitcon66/pitcon66.html">
+      PITCON66</a>,
+      a FORTRAN77 library which
+      seeks to produce a sequence of points that satisfy a set of nonlinear
+      equations with one degree of freedom;
+      this is version 6.6 of ACM TOMS algorithm 596.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pitcon7/pitcon7.html">
+      PITCON7</a>,
+      a FORTRAN90 library which
+      seeks to produce a sequence of points that satisfy a set of nonlinear
+      equations with one degree of freedom;
+      this is version 7.0 of ACM TOMS algorithm 596.
+    </p>
+
+    <p>
+      <a href = "../../datasets/test_con/test_con.html">
+      TEST_CON</a>,
+      a dataset directory which
+      contains sequences of points that lie on multidimensional curves defined by
+      sets of nonlinear equations;
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms502/toms502.html">
+      TOMS502</a>,
+      a FORTRAN77 library which
+      seeks to produce a sequence of points that satisfy a set of nonlinear
+      equations with one degree of freedom;
+      this library is commonly called <b>DERPAR</b>;<br>
+      this is ACM TOMS algorithm 502.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms596/toms596.html">
+      TOMS596</a>,
+      a FORTRAN77 library which
+      seeks to produce a sequence of points that satisfy a set of nonlinear
+      equations with one degree of freedom;
+      this library is commonly called <b>PITCON</b>;<br>
+      this is ACM TOMS algorithm 596.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Ivo Babuska, Werner Rheinboldt,<br>
+          Reliable Error Estimations and Mesh Adaptation for the Finite
+          Element Method,<br>
+          in International Conference on Computational Methods
+          in Nonlinear Mechanics,<br>
+          edited by John Oden,<br>
+          Elsevier, 1980,<br>
+          ISBN: 0444853820,<br>
+          LC: QA808.I57.
+        </li>
+        <li>
+          Paul Boggs,<br>
+          The Solution of Nonlinear Systems by A-stable
+          Integration Techniques,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 8, Number 4, December 1971, pages 767-785.
+        </li>
+        <li>
+          Hans Bremermann,<br>
+          Calculation of Equilibrium Points for Models of Ecological and
+          Chemical Systems,<br>
+          in Proceedings of a Conference on the Applications of Undergraduate
+          Mathematics in the Engineering, Life, Managerial
+          and Social Sciences,<br>
+          Georgia Institute of Technology, June 1973, pages 198-217.
+        </li>
+        <li>
+          Charles Broyden,<br>
+          A New Method of Solving Nonlinear Simultaneous Equations,<br>
+          The Computer Journal,<br>
+          Volume 12, 1969, pages 94-99.
+        </li>
+        <li>
+          Tama Copeman,<br>
+          Air Products and Chemicals, Inc.<br>
+          Box 538,<br>
+          Allentown, Pennsylvania, 18105.
+        </li>
+        <li>
+          Cor denHeijer, Werner Rheinboldt,<br>
+          On Steplength Algorithms for a Class of Continuation Methods,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 18, Number 5, October 1981, pages 925-947.
+        </li>
+        <li>
+          Ferdinand Freudenstein, Bernhard Roth,<br>
+          Numerical Solutions of Nonlinear Equations,<br>
+          Journal of the ACM,<br>
+          Volume 10, Number 4, October 1963, pages 550-556.
+        </li>
+        <li>
+          Kathie Hiebert,<br>
+          A Comparison of Software Which Solves Systems of Nonlinear
+          Equations,<br>
+          Technical Report SAND-80-0181,<br>
+          Sandia National Laboratory, 1980.
+        </li>
+        <li>
+          Herbert Keller,<br>
+          Numerical Methods for Two-point Boundary Value Problems,<br>
+          Dover, 1992,<br>
+          ISBN: 0486669254,<br>
+          LC: QA372.K42.
+        </li>
+        <li>
+          Raman Mehra, William Kessel, James Carroll,<br>
+          Global stability and contral analysis of aircraft at high angles of attack,<br>
+          Technical Report CR-215-248-1, -2, -3,<br>
+          Office of Naval Research, June 1977.
+        </li>
+        <li>
+          Rami Melhem, Werner Rheinboldt,<br>
+          A Comparison of Methods for Determining Turning Points of Nonlinear Equations,<br>
+          Computing,<br>
+          Volume 29, Number 3, September 1982, pages 201-226.
+        </li>
+        <li>
+          Gerald Moore, Alastair Spence,<br>
+          The Calculation of Turning Points of Nonlinear Equations,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 17, Number 4, August 1980, pages 567-576.
+        </li>
+        <li>
+          John Oden,<br>
+          Finite Elements of Nonlinear Continua,<br>
+          Dover, 2006,<br>
+          ISBN: 0486449734,<br>
+          LC: QA808.2.O33.
+        </li>
+        <li>
+          Gerd Poenisch, Hubert Schwetlick,<br>
+          Computing Turning Points of Curves Implicitly Defined by Nonlinear
+          Equations Depending on a Parameter,<br>
+          Computing,<br>
+          Volume 26, Number 2, June 1981, pages 107-121.
+        </li>
+        <li>
+          SJ Polak, A Wachten, H Vaes, A deBeer, Cor denHeijer,<br>
+          A Continuation Method for the Calculation of Electrostatic
+          Potentials in Semiconductors,<br>
+          Technical Report ISA-TIS/CARD,<br>
+          NV Philips Gloeilampen-Fabrieken, 1979.
+        </li>
+        <li>
+          Tim Poston, Ian Stewart,<br>
+          Catastrophe Theory and its Applications,<br>
+          Dover, 1996,<br>
+          ISBN13: 978-0486692715,<br>
+          LC: QA614.58.P66.
+        </li>
+        <li>
+          Michael Powell,<br>
+          A Fortran Subroutine for Solving Systems of Nonlinear
+          Algebraic Equations,<br>
+          in Numerical Methods for Nonlinear Algebraic Equations,<br>
+          edited by Philip Rabinowitz,<br>
+          Gordon and Breach, 1970,<br>
+          ISBN13: 978-0677142302,<br>
+          LC: QA218.N85.
+        </li>
+        <li>
+          Werner Rheinboldt,<br>
+          Computation of Critical Boundaries on Equilibrium Manifolds,<br>
+          SIAM Journal on Numerical analysis,<br>
+          Volume 19, Number 3, June 1982, pages 653-669.
+        </li>
+        <li>
+          Werner Rheinboldt, John Burkardt,<br>
+          A Locally Parameterized Continuation Process,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 9, Number 2, June 1983, pages 215-235.
+        </li>
+        <li>
+          Werner Rheinboldt, John Burkardt, <br>
+          Algorithm 596:
+          A Program for a Locally Parameterized
+          Continuation Process,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 9, Number 2, June 1983, pages 236-241.
+        </li>
+        <li>
+          Werner Rheinboldt,<br>
+          Numerical Analysis of Parameterized Nonlinear Equations,<br>
+          Wiley, 1986,<br>
+          ISBN: 0-471-88814-1,<br>
+          LC: QA372.R54.
+        </li>
+        <li>
+          Werner Rheinboldt,<br>
+          Sample Problems for Continuation Processes,<br>
+          Technical Report ICMA-80-?,<br>
+          Institute for Computational Mathematics and Applications,<br>
+          Department of Mathematics,<br>
+          University of Pittsburgh, November 1980.
+        </li>
+        <li>
+          Werner Rheinboldt,<br>
+          Solution Fields of Nonlinear Equations and Continuation Methods,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 17, Number 2, April 1980, pages 221-237.
+        </li>
+        <li>
+          Werner Rheinboldt,<br>
+          On the Solution of Some Nonlinear Equations Arising in the
+          Application of Finite Element Methods,<br>
+          in The Mathematics of Finite Elements and Applications II,<br>
+          edited by John Whiteman,<br>
+          Academic Press, 1976,<br>
+          LC: TA347.F5.M37.
+        </li>
+        <li>
+          E Riks,<br>
+          The Application of Newton's Method to the Problem of Elastic
+          Stability,<br>
+          Transactions of the ASME, Journal of Applied Mechanics,<br>
+          December 1972, pages 1060-1065.
+        </li>
+        <li>
+          Albert Schy, Margery Hannah,<br>
+          Prediction of Jump Phenomena in Roll-coupled Maneuvers
+          of Airplanes,<br>
+          Journal of Aircraft,<br>
+          Volume 14, Number 4, 1977,  pages 375-382.
+        </li>
+        <li>
+          Bruce Simpson,<br>
+          A Method for the Numerical Determination of Bifurcation
+          States of Nonlinear Systems of Equations,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 12, Number 3, June 1975, pages 439-451.
+        </li>
+        <li>
+          Hans-Joerg Wacker, Erich Zarzer, Werner Zulehner,<br>
+          Optimal Stepsize Control for the Globalized Newton Method,<br>
+          in Continuation Methods,<br>
+          edited by Hans-Joerg Wacker,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0127292500,<br>
+          LC: QA1.S899.
+        </li>
+        <li>
+          John Young, Albert Schy, Katherine Johnson,<br>
+          Prediction of Jump Phenomena in Aircraft Maneuvers, Including
+          Nonlinear Aerodynamic Effects,<br>
+          Journal of Guidance and Control,<br>
+          Volume 1, Number 1, 1978, pages 26-31.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_con.f90">test_con.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "test_con.sh">test_con.sh</a>, commands to compile
+          the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_con_prb.f90">test_con_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "test_con_prb.sh">test_con_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "test_con_prb_output.txt">test_con_prb_output.txt</a>, the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> increments a partially numeric filename.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>P00_FUN</b> evaluates the function for any problem.
+        </li>
+        <li>
+          <b>P00_JAC</b> evaluates the jacobian for any problem.
+        </li>
+        <li>
+          <b>P00_JAC_CHECK</b> compares the jacobian with a finite difference estimate.
+        </li>
+        <li>
+          <b>P00_JAC_DIF</b> estimates the jacobian via finite differences.
+        </li>
+        <li>
+          <b>P00_NEWTON</b> applies Newton's method to an approximate root.
+        </li>
+        <li>
+          <b>P00_NVAR</b> sets the number of variables for any problem.
+        </li>
+        <li>
+          <b>P00_OPTION_NUM</b> returns the number of options available for a problem.
+        </li>
+        <li>
+          <b>P00_PAR_INDEX</b> chooses the index of the continuation parameter.
+        </li>
+        <li>
+          <b>P00_PROBLEM_NUM</b> returns the number of problems available.
+        </li>
+        <li>
+          <b>P00_START</b> returns a starting point for any problem.
+        </li>
+        <li>
+          <b>P00_STEP</b> takes one continuation step.
+        </li>
+        <li>
+          <b>P00_STEPSIZE</b> returns step sizes for any problem.
+        </li>
+        <li>
+          <b>P00_TAN</b> determines a tangent vector at X.
+        </li>
+        <li>
+          <b>P00_TARGET</b> computes a solution with a given component value.
+        </li>
+        <li>
+          <b>P00_TITLE</b> sets the title for any problem.
+        </li>
+        <li>
+          <b>P01_FUN</b> evaluates the function for problem 1.
+        </li>
+        <li>
+          <b>P01_GX</b> evaluates the underlying function for problem 1.
+        </li>
+        <li>
+          <b>P01_JAC</b> evaluates the jacobian for problem 1.
+        </li>
+        <li>
+          <b>P01_NVAR</b> sets the number of variables for problem 1.
+        </li>
+        <li>
+          <b>P01_OPTION_NUM</b> returns the number of options for problem 1.
+        </li>
+        <li>
+          <b>P01_START</b> returns a starting point for problem 1.
+        </li>
+        <li>
+          <b>P01_STEPSIZE</b> returns step sizes for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> sets the title for problem 1.
+        </li>
+        <li>
+          <b>P02_FUN</b> evaluates the function for problem 2.
+        </li>
+        <li>
+          <b>P02_GX</b> evaluates the underlying function for problem 2.
+        </li>
+        <li>
+          <b>P02_JAC</b> evaluates the jacobian for problem 2.
+        </li>
+        <li>
+          <b>P02_NVAR</b> sets the number of variables for problem 2.
+        </li>
+        <li>
+          <b>P02_OPTION_NUM</b> returns the number of options for problem 2.
+        </li>
+        <li>
+          <b>P02_START</b> returns a starting point for problem 2.
+        </li>
+        <li>
+          <b>P02_STEPSIZE</b> returns step sizes for problem 2.
+        </li>
+        <li>
+          <b>P02_TITLE</b> sets the title for problem 2.
+        </li>
+        <li>
+          <b>P03_FUN</b> evaluates the function for problem 3.
+        </li>
+        <li>
+          <b>P03_GX</b> evaluates the underlying function for problem 3.
+        </li>
+        <li>
+          <b>P03_JAC</b> evaluates the jacobian for problem 3.
+        </li>
+        <li>
+          <b>P03_NVAR</b> sets the number of variables for problem 3.
+        </li>
+        <li>
+          <b>P03_OPTION_NUM</b> returns the number of options for problem 3.
+        </li>
+        <li>
+          <b>P03_START</b> returns a starting point for problem 3.
+        </li>
+        <li>
+          <b>P03_STEPSIZE</b> returns step sizes for problem 3.
+        </li>
+        <li>
+          <b>P03_TITLE</b> sets the title for problem 3.
+        </li>
+        <li>
+          <b>P04_FUN</b> evaluates the function for problem 4.
+        </li>
+        <li>
+          <b>P04_GX</b> evaluates the underlying function for problem 4.
+        </li>
+        <li>
+          <b>P04_JAC</b> evaluates the jacobian for problem 4.
+        </li>
+        <li>
+          <b>P04_NVAR</b> sets the number of variables for problem 4.
+        </li>
+        <li>
+          <b>P04_OPTION_NUM</b> returns the number of options for problem 4.
+        </li>
+        <li>
+          <b>P04_START</b> returns a starting point for problem 4.
+        </li>
+        <li>
+          <b>P04_STEPSIZE</b> returns step sizes for problem 4.
+        </li>
+        <li>
+          <b>P04_TITLE</b> sets the title for problem 4.
+        </li>
+        <li>
+          <b>P05_FUN</b> evaluates the function for problem 5.
+        </li>
+        <li>
+          <b>P05_JAC</b> evaluates the jacobian for problem 5.
+        </li>
+        <li>
+          <b>P05_NVAR</b> sets the number of variables for problem 5.
+        </li>
+        <li>
+          <b>P05_OPTION_NUM</b> returns the number of options for problem 5.
+        </li>
+        <li>
+          <b>P05_START</b> returns a starting point for problem 5.
+        </li>
+        <li>
+          <b>P05_STEPSIZE</b> returns step sizes for problem 5.
+        </li>
+        <li>
+          <b>P05_TITLE</b> sets the title for problem 5.
+        </li>
+        <li>
+          <b>P06_BARRAY</b> sets the B array.
+        </li>
+        <li>
+          <b>P06_CARRAY</b> sets the C array.
+        </li>
+        <li>
+          <b>P06_FUN</b> evaluates the function for problem 6.
+        </li>
+        <li>
+          <b>P06_JAC</b> evaluates the jacobian for problem 6.
+        </li>
+        <li>
+          <b>P06_NVAR</b> sets the number of variables for problem 6.
+        </li>
+        <li>
+          <b>P06_OPTION_NUM</b> returns the number of options for problem 6.
+        </li>
+        <li>
+          <b>P06_START</b> returns a starting point for problem 6.
+        </li>
+        <li>
+          <b>P06_STEPSIZE</b> returns step sizes for problem 6.
+        </li>
+        <li>
+          <b>P06_TITLE</b> sets the title for problem 6.
+        </li>
+        <li>
+          <b>P07_FUN</b> evaluates the function for problem 7.
+        </li>
+        <li>
+          <b>P07_JAC</b> evaluates the jacobian for problem 7.
+        </li>
+        <li>
+          <b>P07_NVAR</b> sets the number of variables for problem 7.
+        </li>
+        <li>
+          <b>P07_OPTION_NUM</b> returns the number of options for problem 7.
+        </li>
+        <li>
+          <b>P07_START</b> returns a starting point for problem 7.
+        </li>
+        <li>
+          <b>P07_STEPSIZE</b> returns step sizes for problem 7.
+        </li>
+        <li>
+          <b>P07_TITLE</b> sets the title for problem 7.
+        </li>
+        <li>
+          <b>P08_FUN</b> evaluates the function for problem 8.
+        </li>
+        <li>
+          <b>P08_GX</b> sets data used for Rik's mechanical problem.
+        </li>
+        <li>
+          <b>P08_HX</b> reports the constraint equation data.
+        </li>
+        <li>
+          <b>P08_JAC</b> evaluates the jacobian for problem 8.
+        </li>
+        <li>
+          <b>P08_NVAR</b> sets the number of variables for problem 8.
+        </li>
+        <li>
+          <b>P08_OPTION_NUM</b> returns the number of options for problem 8.
+        </li>
+        <li>
+          <b>P08_START</b> returns a starting point for problem 8.
+        </li>
+        <li>
+          <b>P08_STEPSIZE</b> returns step sizes for problem 8.
+        </li>
+        <li>
+          <b>P08_TITLE</b> sets the title for problem 8.
+        </li>
+        <li>
+          <b>P09_FUN</b> evaluates the function for problem 9.
+        </li>
+        <li>
+          <b>P09_GX</b> is used by problem 9.
+        </li>
+        <li>
+          <b>P09_JAC</b> evaluates the jacobian for problem 9.
+        </li>
+        <li>
+          <b>P09_NVAR</b> sets the number of variables for problem 9.
+        </li>
+        <li>
+          <b>P09_OPTION_NUM</b> returns the number of options for problem 9.
+        </li>
+        <li>
+          <b>P09_START</b> returns a starting point for problem 9.
+        </li>
+        <li>
+          <b>P09_STEPSIZE</b> returns step sizes for problem 9.
+        </li>
+        <li>
+          <b>P09_TITLE</b> sets the title for problem 9.
+        </li>
+        <li>
+          <b>P10_FUN</b> evaluates the function for problem 10.
+        </li>
+        <li>
+          <b>P10_GX</b> is used by problem 10.
+        </li>
+        <li>
+          <b>P10_JAC</b> evaluates the jacobian for problem 10.
+        </li>
+        <li>
+          <b>P10_NVAR</b> sets the number of variables for problem 10.
+        </li>
+        <li>
+          <b>P10_OPTION_NUM</b> returns the number of options for problem 10.
+        </li>
+        <li>
+          <b>P10_START</b> returns a starting point for problem 10.
+        </li>
+        <li>
+          <b>P10_STEPSIZE</b> returns step sizes for problem 10.
+        </li>
+        <li>
+          <b>P10_TITLE</b> sets the title for problem 10.
+        </li>
+        <li>
+          <b>P11_FUN</b> evaluates the function for problem 11.
+        </li>
+        <li>
+          <b>P11_GAUSS</b> returns the Gauss quadrature abscissas and weights.
+        </li>
+        <li>
+          <b>P11_GUL</b> computes G(U,LAMBDA) and dG/dU and dG/dLAMBDA.
+        </li>
+        <li>
+          <b>P11_JAC</b> evaluates the jacobian for problem 11.
+        </li>
+        <li>
+          <b>P11_NVAR</b> sets the number of variables for problem 11.
+        </li>
+        <li>
+          <b>P11_OPTION_NUM</b> returns the number of options for problem 11.
+        </li>
+        <li>
+          <b>P11_PHI</b> is used by problem 11.
+        </li>
+        <li>
+          <b>P11_SHAPE</b> evaluates the shape functions for problem 11.
+        </li>
+        <li>
+          <b>P11_START</b> returns a starting point for problem 11.
+        </li>
+        <li>
+          <b>P11_STEPSIZE</b> returns step sizes for problem 11.
+        </li>
+        <li>
+          <b>P11_TITLE</b> sets the title for problem 11.
+        </li>
+        <li>
+          <b>P12_FUN</b> evaluates the function for problem 12.
+        </li>
+        <li>
+          <b>P12_GAUSS8</b> returns an 8 point Gauss quadrature rule.
+        </li>
+        <li>
+          <b>P12_JAC</b> evaluates the jacobian for problem 12.
+        </li>
+        <li>
+          <b>P12_LEGENDRE_VAL</b> evaluates the Legendre polynomials and derivatives.
+        </li>
+        <li>
+          <b>P12_NVAR</b> sets the number of variables for problem 12.
+        </li>
+        <li>
+          <b>P12_OPTION_NUM</b> returns the number of options for problem 12.
+        </li>
+        <li>
+          <b>P12_START</b> returns a starting point for problem 12.
+        </li>
+        <li>
+          <b>P12_STEPSIZE</b> returns step sizes for problem 12.
+        </li>
+        <li>
+          <b>P12_THETA</b> is a utility routine used in problem 12.
+        </li>
+        <li>
+          <b>P12_TITLE</b> sets the title for problem 12.
+        </li>
+        <li>
+          <b>P13_FUN</b> evaluates the function for problem 13.
+        </li>
+        <li>
+          <b>P13_FX2</b> computes the function by recasting it on a square grid.
+        </li>
+        <li>
+          <b>P13_GP</b> evaluates the derivative of the right hand side function.
+        </li>
+        <li>
+          <b>P13_GX</b> evaluates the right hand side function.
+        </li>
+        <li>
+          <b>P13_JAC</b> evaluates the jacobian for problem 13.
+        </li>
+        <li>
+          <b>P13_JAC2</b> computes the jacobian by recasting it on a square grid.
+        </li>
+        <li>
+          <b>P13_NVAR</b> sets the number of variables for problem 13.
+        </li>
+        <li>
+          <b>P13_OPTION_NUM</b> returns the number of options for problem 13.
+        </li>
+        <li>
+          <b>P13_START</b> returns a starting point for problem 13.
+        </li>
+        <li>
+          <b>P13_STEPSIZE</b> returns step sizes for problem 13.
+        </li>
+        <li>
+          <b>P13_TITLE</b> sets the title for problem 13.
+        </li>
+        <li>
+          <b>P14_FU</b> computes the auxilliary function F(LAMBDA,U).
+        </li>
+        <li>
+          <b>P14_FUDL</b> computes d F(LAMBDA,U) / d LAMBDA.
+        </li>
+        <li>
+          <b>P14_FUDU</b> computes d F(LAMBDA,U) / d U
+        </li>
+        <li>
+          <b>P14_FUN</b> computes the function for problem 14.
+        </li>
+        <li>
+          <b>P14_GU</b> computes the auxilliary function G(U).
+        </li>
+        <li>
+          <b>P14_GUDU</b> computes d G(U) / d U.
+        </li>
+        <li>
+          <b>P14_JAC</b> computes the jacobian of problem 14.
+        </li>
+        <li>
+          <b>P14_NVAR</b> sets the number of variables for problem 14.
+        </li>
+        <li>
+          <b>P14_OPTION_NUM</b> returns the number of options for problem 14.
+        </li>
+        <li>
+          <b>P14_START</b> returns a starting point for problem 14.
+        </li>
+        <li>
+          <b>P14_STEPSIZE</b> returns step sizes for problem 14.
+        </li>
+        <li>
+          <b>P14_TITLE</b> sets the title for problem 14.
+        </li>
+        <li>
+          <b>P15_FUN</b> evaluates the function for problem 15.
+        </li>
+        <li>
+          <b>P15_GX</b> returns the coefficients of the linear portion of the function.
+        </li>
+        <li>
+          <b>P15_JAC</b> computes the jacobian for problem 15.
+        </li>
+        <li>
+          <b>P15_NVAR</b> sets the number of variables for problem 15.
+        </li>
+        <li>
+          <b>P15_OPTION_NUM</b> returns the number of options for problem 15.
+        </li>
+        <li>
+          <b>P15_START</b> returns a starting point for problem 15.
+        </li>
+        <li>
+          <b>P15_STEPSIZE</b> returns step sizes for problem 15.
+        </li>
+        <li>
+          <b>P15_TITLE</b> sets the title for problem 15.
+        </li>
+        <li>
+          <b>P16_FUN</b> evaluates the function for problem 16.
+        </li>
+        <li>
+          <b>P16_JAC</b> computes the jacobian for problem 16.
+        </li>
+        <li>
+          <b>P16_NVAR</b> sets the number of variables for problem 16.
+        </li>
+        <li>
+          <b>P16_OPTION_NUM</b> returns the number of options for problem 16.
+        </li>
+        <li>
+          <b>P16_START</b> returns a starting point for problem 16.
+        </li>
+        <li>
+          <b>P16_STEPSIZE</b> returns step sizes for problem 16.
+        </li>
+        <li>
+          <b>P16_TITLE</b> sets the title for problem 16.
+        </li>
+        <li>
+          <b>P17_FUN</b> evaluates the function for problem 17.
+        </li>
+        <li>
+          <b>P17_JAC</b> evaluates the jacobian for problem 17.
+        </li>
+        <li>
+          <b>P17_NVAR</b> sets the number of variables for problem 17.
+        </li>
+        <li>
+          <b>P17_OPTION_NUM</b> returns the number of options for problem 17.
+        </li>
+        <li>
+          <b>P17_START</b> returns a starting point for problem 17.
+        </li>
+        <li>
+          <b>P17_STEPSIZE</b> returns step sizes for problem 17.
+        </li>
+        <li>
+          <b>P17_TITLE</b> sets the title for problem 17.
+        </li>
+        <li>
+          <b>P18_FUN</b> evaluates the function for problem 18.
+        </li>
+        <li>
+          <b>P18_GPL</b> evaluates d G ( T, U, LAMBDA ) / d LAMBDA.
+        </li>
+        <li>
+          <b>P18_GPU</b> evaluates d G ( T, U, LAMBDA ) / dU.
+        </li>
+        <li>
+          <b>P18_GX</b> evaluates the auxilliary function G ( T, U, LAMBDA ).
+        </li>
+        <li>
+          <b>P18_JAC</b> evaluates the jacobian for problem 18.
+        </li>
+        <li>
+          <b>P18_NVAR</b> sets the number of variables for problem 18.
+        </li>
+        <li>
+          <b>P18_OPTION_NUM</b> returns the number of options for problem 18.
+        </li>
+        <li>
+          <b>P18_START</b> returns a starting point for problem 18.
+        </li>
+        <li>
+          <b>P18_STEPSIZE</b> returns step sizes for problem 18.
+        </li>
+        <li>
+          <b>P18_TITLE</b> sets the title for problem 18.
+        </li>
+        <li>
+          <b>P19_CON</b> returns physical constants.
+        </li>
+        <li>
+          <b>P19_CONP</b> returns physical constant derivatives.
+        </li>
+        <li>
+          <b>P19_FUN</b> evaluates the function for problem 19.
+        </li>
+        <li>
+          <b>P19_JAC</b> evaluates the jacobian for problem 19.
+        </li>
+        <li>
+          <b>P19_NVAR</b> sets the number of variables for problem 19.
+        </li>
+        <li>
+          <b>P19_OPTION_NUM</b> returns the number of options for problem 19.
+        </li>
+        <li>
+          <b>P19_START</b> returns a starting point for problem 19.
+        </li>
+        <li>
+          <b>P19_STEPSIZE</b> returns step sizes for problem 19.
+        </li>
+        <li>
+          <b>P19_TITLE</b> sets the title for problem 19.
+        </li>
+        <li>
+          <b>P20_FUN</b> evaluates the function for problem 20.
+        </li>
+        <li>
+          <b>P20_I4_GET</b> returns the value of an integer parameter for problem 20.
+        </li>
+        <li>
+          <b>P20_I4_SET</b> sets the value of an integer parameter for problem 20.
+        </li>
+        <li>
+          <b>P20_I4_STORE</b> sets or gets the value of an integer parameter for problem 20.
+        </li>
+        <li>
+          <b>P20_JAC</b> evaluates the jacobian for problem 20.
+        </li>
+        <li>
+          <b>P20_NVAR</b> sets the number of variables for problem 20.
+        </li>
+        <li>
+          <b>P20_OPTION_NUM</b> returns the number of options for problem 20.
+        </li>
+        <li>
+          <b>P20_R8_GET</b> returns the value of a real parameter for problem 20.
+        </li>
+        <li>
+          <b>P20_R8_SET</b> sets the value of a real parameter for problem 20.
+        </li>
+        <li>
+          <b>P20_R8_STORE</b> sets or gets the value of a real parameter for problem 20.
+        </li>
+        <li>
+          <b>P20_SETUP</b> finds a solution (L,THETA,LAMBDA,MU) given L and THETA.
+        </li>
+        <li>
+          <b>P20_START</b> returns a starting point for problem 20.
+        </li>
+        <li>
+          <b>P20_STEPSIZE</b> returns step sizes for problem 20.
+        </li>
+        <li>
+          <b>P20_TITLE</b> sets the title for problem 20.
+        </li>
+        <li>
+          <b>R8_MOP</b> returns the I-th power of -1 as an R8 value.
+        </li>
+        <li>
+          <b>R8_SIGN</b> returns the sign of an R8.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8MAT_DET</b> computes the determinant of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_NULLSPACE</b> computes the nullspace of a matrix.
+        </li>
+        <li>
+          <b>R8MAT_NULLSPACE_SIZE</b> computes the size of the nullspace of a matrix.
+        </li>
+        <li>
+          <b>R8MAT_RREF</b> computes the reduced row echelon form of a matrix.
+        </li>
+        <li>
+          <b>R8VEC_AMAX_INDEX</b> returns the index of the maximum absolute value in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM_L2</b> returns the L2 norm of an R8VEC.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>SGE_CHECK</b> checks the dimensions of a general matrix.
+        </li>
+        <li>
+          <b>SGE_FA</b> factors a general matrix.
+        </li>
+        <li>
+          <b>SGE_SL</b> solves a system factored by SGE_FA.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 14 October 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

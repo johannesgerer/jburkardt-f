@@ -1,0 +1,535 @@
+<html>
+
+  <head>
+    <title>
+      DELAUNAY_LMAP_2D - Delaunay Triangulations Under Linear Maps
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      DELAUNAY_LMAP_2D <br> Delaunay Triangulations Under Linear Maps
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DELAUNAY_LMAP_2D</b>
+      is a FORTRAN90 program which
+      computes the Delaunay triangulation of a set of
+      points in the plane that have been transformed by a linear map <b>A</b>.
+    </p>
+
+    <p>
+      Specifically, <b>DELAUNAY_LMAP_2D</b> reads two input files:
+      <ul>
+        <li>
+          a <i>node file</i> containing (many) point coordinates <b>(X,Y)</b>;
+        </li>
+        <li>
+          a <i>map file</i> containing the entries of the 2x2 matrix
+          <b>A</b> that describes the linear distortion of the geometry;
+        </li>
+      </ul>
+      The program then implicitly multiplies each point <b>(X,Y)</b>
+      by <b>A</b> and computes the Delaunay triangulation of the
+      transformed points <b>(AX,AY)</b>.
+      It then writes out
+      <ul>
+        <li>
+          an order 3 <i>triangulation file</i>, listing the indices of
+          the 3 nodes that form each Delaunay triangle,
+        </li>
+        <li>
+          an <a href = "../../data/eps/eps.html">
+          Encapsulated PostScript file</a> containing an image of
+          the triangulation.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      In a sense, there's no reason to do all this fancy stuff.
+      You can simply multiply your data by <b>A</b> yourself, get the Delaunay
+      triangulation of the transformed data, and then recover your
+      original data.
+    </p>
+
+    <p>
+      The main reason for setting up this code is
+      to prepare for cases that are a generalization of this one,
+      in which the matrix <b>A</b> actually varies spatially.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>delaunay_lmap_2d</b> <i>node_file</i> <i>matrix_file</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>node_file</i> contains the coordinates of the nodes;
+        </li>
+        <li>
+          <i>matrix_file</i> contains the 2x2 matrix;
+        </li>
+      </ul>
+      creating the files
+      <ul>
+        <li>
+          <i>node_file</i><b>.delaunay.txt</b>, with the triangulation information;
+        </li>
+        <li>
+          <i>node_file</i><b>.delaunay.eps</b>, with an image.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/geompack/geompack.html">
+      GEOMPACK</a>,
+      a FORTRAN90 library which
+      computes Delaunay triangulations, written by Barry Joe.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stripack/stripack.html">
+      STRIPACK</a>,
+      a FORTRAN90 library which
+      computes the Delaunay triangulation or Voronoi diagram
+      of points on a sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      reads a file of point coordinates in the TABLE format and writes out
+      the Delaunay triangulation.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/triangulation_display_opengl/triangulation_display_opengl.html">
+      TRIANGULATION_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads files defining a triangulation and displays an image
+      using Open GL.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order3/triangulation_order3.html">
+      TRIANGULATION_ORDER3</a>,
+      an data directory which
+      contains a description and examples of the
+      information needed to describe an order 3 triangulation of a set of nodes..
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_plot/triangulation_plot.html">
+      TRIANGULATION_PLOT</a>,
+      a FORTRAN90 program which
+      may be used to make a PostScript image of
+      the triangulation of the points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tripack/tripack.html">
+      TRIPACK</a>,
+      a FORTRAN90 library which
+      computes the Delaunay triangulation of points in the plane.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, Number 3, September 1991, pages 345-405.
+        </li>
+        <li>
+          Marc deBerg, Marc Krevald, Mark Overmars,
+          Otfried Schwarzkopf,<br>
+          Computational Geometry,<br>
+          Springer, 2000,<br>
+          ISBN: 3-540-65620-0.
+        </li>
+        <li>
+          Barry Joe,<br>
+          GEOMPACK - a software package for the generation of meshes
+          using geometric algorithms,<br>
+          Advances in Engineering Software,<br>
+          Volume 13, Number 5, 1991, pages 325-331.
+        </li>
+        <li>
+          Joseph ORourke,<br>
+          Computational Geometry,<br>
+          Second Edition,<br>
+          Cambridge, 1998,<br>
+          ISBN: 0521649765,<br>
+          LC: QA448.D38.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "delaunay_lmap_2d.f90">delaunay_lmap_2d.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "delaunay_lmap_2d.sh">delaunay_lmap_2d.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      Test matrices you can copy include:
+      <ul>
+        <li>
+          <a href = "matrix_identity.txt">matrix_identity.txt</a>,
+          the identity matrix.
+        </li>
+        <li>
+          <a href = "matrix_d21.txt">matrix_d21.txt</a>,
+          the (2,1) dilation.
+        </li>
+        <li>
+          <a href = "matrix_d41.txt">matrix_d41.txt</a>,
+          the (4,1) dilation.
+        </li>
+        <li>
+          <a href = "matrix_d81.txt">matrix_d81.txt</a>,
+          the (8,1) dilation.
+        </li>
+        <li>
+          <a href = "matrix_d15.txt">matrix_d15.txt</a>,
+          the (1,5) dilation.
+        </li>
+        <li>
+          <a href = "matrix_r30.txt">matrix_r30.txt</a>,
+          the 30 degree rotation (should have no effect on Delaunay).
+        </li>
+        <li>
+          <a href = "matrix_r30d21.txt">matrix_r30d21.txt</a>,
+          the (2,1) dilation and 30 degree rotation.
+        </li>
+        <li>
+          <a href = "matrix_r30d41.txt">matrix_r30d41.txt</a>,
+          the (4,1) dilation and 30 degree rotation.
+        </li>
+        <li>
+          <a href = "matrix_r30d81.txt">matrix_r30d81.txt</a>,
+          the (8,1) dilation and 30 degree rotation.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>POINTS</b> is a set of 10 "random" points in the unit square.  Test
+      files you may copy include:
+      <ul>
+        <li>
+          <a href = "points.txt">points.txt</a>,
+          a (real) TABLE file describing the coordinates of the points.
+        </li>
+        <li>
+          <a href = "points.identity.delaunay.txt">
+          points.identity.delaunay.txt</a>,
+          the (integer) TABLE file, describing
+          the Delaunay triangulation of the points under the identity map.
+        </li>
+        <li>
+          <a href = "points.identity.delaunay.png">
+          points.identity.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the triangulated data.
+        </li>
+        <li>
+          <a href = "points.d21.delaunay.png">
+          points.d21.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the triangulated data under the D21 matrix.
+        </li>
+        <li>
+          <a href = "points.d41.delaunay.png">
+          points.d41.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the triangulated data under the D41 matrix.
+        </li>
+        <li>
+          <a href = "points.d81.delaunay.png">
+          points.d81.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the triangulated data under the D81 matrix.
+        </li>
+        <li>
+          <a href = "points.r30.delaunay.png">
+          points.rot30.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the triangulated data under the R30 matrix.
+        </li>
+        <li>
+          <a href = "points.r30d21.delaunay.png">
+          points.r30d21.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the triangulated data under the R30D21 matrix.
+        </li>
+        <li>
+          <a href = "points.r30d41.delaunay.png">
+          points.r30d41.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the triangulated data under the R30D41 matrix.
+        </li>
+        <li>
+          <a href = "points.r30d81.delaunay.png">
+          points.r30d81.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the triangulated data under the R30D81 matrix.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>DOUBLE_HEX2_CVT</b> is a set of 139 points in the unit square
+      with two hexagonal holes.  Test files you may copy include:
+      <ul>
+        <li>
+          <a href = "double_hex2_cvt.txt">double_hex2_cvt.txt</a>,
+          a (real) TABLE file containing the point coordinates.
+        </li>
+        <li>
+          <a href = "double_hex2_cvt.identity.delaunay.txt">
+          double_hex2_cvt.identity.delaunay.txt</a>,
+          the Delaunay triangulation under the identity matrix.
+        </li>
+        <li>
+          <a href = "double_hex2_cvt.identity.delaunay.png">
+          double_hex2_cvt.identity.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Delaunay triangulation under the identity matrix.
+        </li>
+        <li>
+          <a href = "double_hex2_cvt.d21.delaunay.png">
+          double_hex2_cvt.d21.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Delaunay triangulation under the D21 matrix.
+        </li>
+        <li>
+          <a href = "double_hex2_cvt.d41.delaunay.png">
+          double_hex2_cvt.d41.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Delaunay triangulation under the D41 matrix.
+        </li>
+        <li>
+          <a href = "double_hex2_cvt.d81.delaunay.png">
+          double_hex2_cvt.d81.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Delaunay triangulation under the D81 matrix.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRID105</b> is a set of 105 points in the unit square, arranged
+      into 5 columns of 21 points each.  The points were originally
+      evenly spaced in the X direction, and evenly spaced in the Y
+      direction, but a uniform random perturbation of scale 0.03
+      was applied to both coordinates of every point.  Because the
+      data has been compressed by a factor of 5 in the Y direction,
+      we get some "ugly" triangles if we do a Delaunay triangulation
+      directly on the data.  However, if we use a (1,5) dilation
+      matrix to uncompress the Y direction, the triangles look much
+      nicer (except along the boundary, where we are powerless to help).
+      Test files you may copy include:
+      <ul>
+        <li>
+          <a href = "grid105.txt">grid105.txt</a>,
+          a (real) TABLE file containing the point coordinates.
+        </li>
+        <li>
+          <a href = "grid105.png">grid105.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the points.
+        </li>
+        <li>
+          <a href = "grid105.identity.delaunay.png">
+          grid105.identity.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Delaunay triangulation under the identity matrix.
+        </li>
+        <li>
+          <a href = "grid105.d15.delaunay.png">
+          grid105.d15.delaunay.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Delaunay triangulation under the D15 matrix.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for DELAUNAY_LMAP_2D.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DIAEDG_LMAP</b> chooses a diagonal edge under a linear map.
+        </li>
+        <li>
+          <b>DTRIS2_LMAP</b> constructs a Delaunay triangulation of 2D linear mapped vertices.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of I4 division.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_WRITE</b> writes an I4MAT file.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an I4VEC.
+        </li>
+        <li>
+          <b>LRLINE</b> determines if a point is left of, right or, or on a directed line.
+        </li>
+        <li>
+          <b>PERM_INV</b> inverts a permutation "in place".
+        </li>
+        <li>
+          <b>R82VEC_PERMUTE</b> permutes an R82VEC in place.
+        </li>
+        <li>
+          <b>R82VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R82VEC.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT transposed.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SWAPEC_LMAP</b> swaps diagonal edges until all triangles are Delaunay.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRANSFORM_LMAP</b> applies a transformation matrix to a vector.
+        </li>
+        <li>
+          <b>TRIANGULATION_PLOT_EPS</b> creates an EPS file image of a triangulation.
+        </li>
+        <li>
+          <b>VBEDG</b> determines which boundary edges are visible to a point.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 08 June 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

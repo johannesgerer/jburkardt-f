@@ -1,0 +1,18 @@
+# stab_meansquare_commands.txt
+# created by sde::stab_meansquare.
+#
+# Usage:
+#  gnuplot < stab_meansquare_commands.txt
+#
+set term png
+set output "stab_meansquare.png"
+set xlabel "t"
+set ylabel "E|X^2(t)|"
+set title "Mean Square of EM Solution"
+set grid
+set logscale y 10
+set style data lines
+plot "stab_meansquare1_data.txt" using 1:2, \
+     "stab_meansquare2_data.txt" using 1:2, \
+     "stab_meansquare3_data.txt" using 1:2
+quit

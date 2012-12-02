@@ -1,0 +1,17 @@
+# milstrong_commands.txt
+# created by sde::milstrong_gnuplot.
+#
+# Usage:
+#  gnuplot < milstrong_commands.txt
+#
+set term png
+set output "milstrong.png"
+set xlabel "Log(dt)"
+set ylabel "Log(Averaged Error at final T)"
+set logscale xy 10
+set title "Milstein Error as function of DT"
+set grid
+set style data linespoints
+plot "milstrong_data.txt" using 1:2 title "Error", \
+     "milstrong_data.txt" using 1:1 title "Slope = 1"
+quit

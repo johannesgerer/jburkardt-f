@@ -1,0 +1,172 @@
+<html>
+
+  <head>
+    <title>
+      F77_CLEANUP - Minor Cleanups to a FORTRAN77 File
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      F77_CLEANUP <br> Minor Cleanups to a FORTRAN77 File
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>F77_CLEANUP</b>
+      is a FORTRAN90 program which
+      makes some minor cleanups to the text of a FORTRAN77 file.
+    </p>
+
+    <p>
+      In particular, in the revised program:
+      <ul>
+        <li>
+          TAB characters are replaced by six spaces;
+        </li>
+        <li>
+          all comments begin with a lowercase "c";
+        </li>
+        <li>
+          all continuation characters are "&";
+        </li>
+        <li>
+          all (noncomment) lines are no longer than 72 characters.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>f77_cleanup</b> <i>input.f77</i> <i>output.f77</i>
+        </dt>
+        <dd>
+          reads the file <i>file.f77</i> and creates a copy <i>output.f77</i>
+          with cleanups.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/catalog/catalog.html">
+      CATALOG</a>,
+      a C++ program which
+      reads a C, C++, FORTRAN77 or FORTRAN90 program and prints every line 
+      that begins with a special index tag.  If the program has been marked
+      up expecting this convention, it is a handy way of making a table
+      of contents of a program file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/extract/extract.html">
+      EXTRACT</a>,
+      a FORTRAN90 program which
+      extracts a subroutine, function or module by name from a
+      FORTRAN77 or FORTRAN90 file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90split/f90split.html">
+      F90SPLIT</a>,
+      a FORTRAN90 program which
+      reads a FORTRAN90 file and creates individual files for every
+      subroutine or function in the file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fixcon/fixcon.html">
+      FIXCON</a>,
+      a FORTRAN90 program which
+      reads a FORTRAN77 file and changes continuation lines to use
+      the FORTRAN90 convention.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/htmlindex/htmlindex.html">
+      HTMLINDEX</a>,
+      a C++ program which
+      reads a C, C++, FORTRAN77 or FORTRAN90 file and writes a skeleton
+      HTML page describing it, assuming that each routine includes
+      a specially marked description line.
+    </p>
+
+    <p>
+      <a href = "../../f_src/include_files/include_files.html">
+      INCLUDE_FILES</a>,
+      a FORTRAN90 program which
+      reads a FORTRAN90 program with INCLUDE statements, and makes a copy
+      with the indicated files included.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "f77_cleanup.f90">f77_cleanup.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "f77_cleanup.sh">f77_cleanup.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for F77_CLEANUP.
+        </li>
+        <li>
+          <b>CLEANUP_F77</b> copies an F77 file, using "&" for continuation.
+        </li>
+        <li>
+          <b>S_TAB_BLANKS</b> replaces TAB characters by 6 spaces.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 05 January 2007.
+    </i>
+
+  </body>
+
+</html>

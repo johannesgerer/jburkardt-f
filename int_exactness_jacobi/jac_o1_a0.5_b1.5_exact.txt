@@ -1,0 +1,60 @@
+ 6 February 2008  10:07:43.275 AM                                               
+ 
+INT_EXACTNESS_JACOBI
+  FORTRAN90 version
+ 
+  Investigate the polynomial exactness of a Gauss-Jacobi
+  quadrature rule by integrating weighted 
+  monomials up to a given degree over the [-1,+1] interval.
+ 
+INT_EXACTNESS_JACOBI: User input:
+  Quadrature rule X file = "jac_o1_a0.5_b1.5_x.txt".
+  Quadrature rule W file = "jac_o1_a0.5_b1.5_w.txt".
+  Quadrature rule R file = "jac_o1_a0.5_b1.5_r.txt".
+  Maximum degree to check =        5
+  Exponent of (1-x), ALPHA =   0.500000    
+  Exponent of (1+x), BETA  =    1.50000    
+ 
+  Spatial dimension =        1
+  Number of points  =        1
+ 
+  The quadrature rule to be tested is
+  a Gauss-Jacobi rule
+  ORDER =        1
+  ALPHA =   0.500000    
+  BETA  =    1.50000    
+ 
+  Standard rule:
+    Integral ( -1 <= x <= +1 ) (1-x)^alpha (1+x)^beta f(x) dx
+    is to be approximated by
+    sum ( 1 <= I <= ORDER ) w(i) * f(x(i)).
+ 
+  Weights W:
+ 
+  w( 1) =    1.570796326794539    
+ 
+  Abscissas X:
+ 
+  x( 1) =   0.2500000000000000    
+ 
+  Region R:
+ 
+  r( 1) =  -1.0000000000000000    
+  r( 2) =   1.0000000000000000    
+ 
+  A Gauss-Jacobi rule would be able to exactly
+  integrate monomials up to and including degree =        1
+ 
+          Error          Degree  Exponents
+ 
+        0.0000000000002273    0     0
+        0.0000000000002274    1     1
+        0.7500000000000567    2     2
+        0.8750000000000283    3     3
+        0.9687500000000071    4     4
+        0.9875000000000028    5     5
+ 
+INT_EXACTNESS_JACOBI:
+  Normal end of execution.
+ 
+ 6 February 2008  10:07:43.279 AM                                               

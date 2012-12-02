@@ -1,0 +1,317 @@
+<html>
+
+  <head>
+    <title>
+      TRIANGULATION_QUALITY - Triangulation Quality Measures
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TRIANGULATION_QUALITY <br>
+      Triangulation Quality Measures
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TRIANGULATION_QUALITY</b>
+      is a FORTRAN90 program which
+      computes and prints quality measures for a given triangulation of a set of points in 2D.
+    </p>
+
+    <p>
+      The triangulation is defined by a <i>node file</i> containing
+      the coordinates of nodes, and a <i>triangle file</i> containing
+      sets of 3 or 6 node indices.
+    </p>
+
+    <p>
+      The quality measures computed include:
+      <ul>
+        <li>
+          <b>Alpha</b>, the minimum angle divided by the maximum possible
+          minimum angle.
+        </li>
+        <li>
+          <b>Area</b>, the ratio of the minimum area to the maximum area;
+        </li>
+        <li>
+          <b>Q</b>, the triangle shape uniformity measure, twice the
+          radius of the inscribed circle divided by the radius of the
+          circumscribed circle;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Each quality measure is defined as the minimum of its value
+      over all the triangles; the maximum and best possible value is
+      1, and the minimum and worst possible value is 0.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>triangulation_quality</b> <i>prefix</i>
+      </blockquote>
+      where <i>prefix</i> is the common prefix for the node and element files
+      <ul>
+        <li>
+          <i>prefix</i><b>_nodes.txt</b>,    the node coordinates;
+        </li>
+        <li>
+          <i>prefix</i><b>_elements.txt</b>,    the element definitions.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TRIANGULATION_QUALITY</b> is available in
+      <a href = "../../cpp_src/triangulation_quality/triangulation_quality.html">a C++ version</a> and
+      <a href = "../../f_src/triangulation_quality/triangulation_quality.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/triangulation_quality/triangulation_quality.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/distmesh/distmesh.html">
+      DISTMESH</a>,
+      a MATLAB library which
+      carries out triangular or tetrahedral mesh generation,
+      by Per-Olof Persson and Gilbert Strang.
+    </p>
+
+    <p>
+      <a href = "../../m_src/mesh2d/mesh2d.html">
+      MESH2D</a>,
+      a MATLAB library which
+      can automatically create a triangular mesh for a given polygonal region,
+      by Darren Engwirda.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_quality/tet_mesh_quality.html">
+      TET_MESH_QUALITY</a>,
+      a FORTRAN90 program which
+      computes quality measures of a tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../c_src/triangle/triangle.html">
+      TRIANGLE</a>,
+      a C program which
+      computes a triangulation of a geometric region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation/triangulation.html">
+      TRIANGULATION</a>,
+      a FORTRAN90 library which
+      carries out various operations on order 3 ("linear") or order 6
+      ("quadratic") triangulations.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order3/triangulation_order3.html">
+      TRIANGULATION_ORDER3</a>,
+      a directory which
+      contains a description and
+      examples of order 3 triangulations.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order6/triangulation_order6.html">
+      TRIANGULATION_ORDER6</a>,
+      a data directory which
+      contains a description and
+      examples of order 6 triangulations.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "triangulation_quality.f90">triangulation_quality.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "triangulation_quality.sh">triangulation_quality.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>ELL3</b> is a set of nodes in an L-shaped region, which have
+      been arranged into an order 3 triangulation.
+      <ul>
+        <li>
+          <a href = "../../data/triangulation_order3/ell3_nodes.txt">ell3_nodes.txt</a>,
+          the node file.
+        </li>
+        <li>
+          <a href = "../../data/triangulation_order3/ell3_elements.txt">ell3_elements.txt</a>,
+          the element file.
+        </li>
+        <li>
+          <a href = "ell3_quality.txt">ell3_quality.txt</a>,
+          the report from the program.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HEX_HOLES6</b> is a set of nodes in an square region, with
+      two hexagonal holes, which have
+      been arranged into an order 6 triangulation.
+      <ul>
+        <li>
+          <a href = "../../data/triangulation_order6/hex_holes6_nodes.txt">hex_holes6_nodes.txt</a>,
+          the node file.
+        </li>
+        <li>
+          <a href = "../../data/triangulation_order6/hex_holes6_elements.txt">
+          hex_holes6_elements.txt</a>,
+          the element file.
+        </li>
+        <li>
+          <a href = "hex_holes6_quality.txt">hex_holes6_quality.txt</a>,
+          the report from the program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TRIANGULATION_QUALITY.
+        </li>
+        <li>
+          <b>ALPHA_MEASURE</b> determines the triangulated pointset quality measure ALPHA.
+        </li>
+        <li>
+          <b>ARC_COSINE</b> computes the arc cosine function, with argument truncation.
+        </li>
+        <li>
+          <b>AREA_MEASURE</b> determines the area ratio quality measure.
+        </li>
+        <li>
+          <b>BANDWIDTH</b> determines the bandwidth associated with the finite element mesh.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DTABLE_DATA_READ</b> reads data from a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_READ</b> reads the header from a double precision table file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>ITABLE_DATA_READ</b> reads data from an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_HEADER_READ</b> reads the header from an integer table file.
+        </li>
+        <li>
+          <b>Q_MEASURE</b> determines the triangulated pointset quality measure Q.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 21 June 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,348 @@
+<html>
+
+  <head>
+    <title>
+      LAUPACK - Graph routines by Hang Tong Lau
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      LAUPACK <br> Graph routines by Hang Tong Lau
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>LAUPACK</b>
+      is a FORTRAN90 library which
+      carries out a variety of operations on mathematical graphs.
+    </p>
+
+    <p>
+      Routines are included to:
+      <ul>
+        <li>
+          find an Euler circuit (use every edge once);
+        </li>
+        <li>
+          find a Hamilton circuit (visit every node once);
+        </li>
+        <li>
+          find cliques (nodes that are all connected to each other);
+        </li>
+        <li>
+          find the strongly connected components of a directed graph;
+        </li>
+        <li>
+          find a minimum spanning tree (the shortest collection of edges
+          that leave the graph connected);
+        </li>
+        <li>
+          find the chromatic number (the number of colors necessary to
+          paint each node, with no adjacent nodes the same color);
+        </li>
+        <li>
+          find the K shortest paths in a graph whose edge lengths are given;
+        </li>
+        <li>
+          find the maximal flow in a graph with source and sink nodes,
+          and edge capacities;
+        </li>
+        <li>
+          determine if a graph is planar;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs
+    </h3>
+
+    <p>
+      <a href = "../../f_src/codepack/codepack.html">
+      CODEPACK</a>,
+      a FORTRAN90 library which
+      computes "codes" that can determine if two graphs are isomorphic.
+    <p>
+
+    <p>
+      <a href = "../../f_src/dijkstra/dijkstra.html">
+      DIJKSTRA</a>,
+      a FORTRAN90 program which
+      runs a simple example of Dijkstra's minimum distance algorithm for graphs.
+    </p>
+
+    <p>
+      <a href = "../../f_src/floyd/floyd.html">
+      FLOYD</a>,
+      a FORTRAN90 library which
+      implements Floyd's algorithm for finding the shortest distance between pairs of
+      nodes on a directed graph.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grafpack/grafpack.html">
+      GRAFPACK</a>,
+      a FORTRAN90 library which
+      carries out operations on abstract graphs.
+    </p>
+
+    <p>
+      <a href = "../../data/graph_representation/graph_representation.html">
+      GRAPH_REPRESENTATION</a>,
+      a data directory which
+      contains examples of ways of representing abstract
+      mathematical graphs
+    </p>
+
+    <p>
+      <a href = "../../data/grf/grf.html">
+      GRF</a>,
+      a data directory which
+      contains a description and examples of the GRF file format for storing graphs.
+    <p>
+
+    <p>
+      <a href = "../../f_src/subset/subset.html">
+      SUBSET</a>,
+      a FORTRAN90 library which
+      enumerates combinations, partitions, subsets, index sets,
+      and other combinatorial objects.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Hang Tong Lau
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hang Tong Lau,<br>
+          Algorithms on Graphs,<br>
+          Tab Books, 1989,<br>
+          LC: QA166 L38.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "laupack.f90">laupack.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "laupack.sh">laupack.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "laupack_prb.f90">laupack_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "laupack_prb.sh">laupack_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "laupack_prb_output.txt">laupack_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>COLOR2</b> carries out a two-coloring for a planarity test.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>DECOMP</b> does path decomposition for a planarity test.
+        </li>
+        <li>
+          <b>DFS1</b> carries out the first depth first search for a planarity test.
+        </li>
+        <li>
+          <b>DFS2</b> carries out the second depth-first search for a planarity test.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_EULER</b> returns an Euler circuit in a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_FIND_PATH</b> determines if a path exists from 11 to J1.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_GET_PATH</b> retrieves the edges of the K-th shortest path.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_HAMCYC</b> finds a Hamiltonian circuit in a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_KSHORT1</b> finds the K shortest paths in a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_KSHORT2</b> finds the KPATHS shortest distinct path lengths without repeat nodes.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_MINEQV</b> finds a minimal equivalent of a strongly connected digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_NFLOW</b> implements Karzanov's network flow algorithm.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_PRINT</b> prints out a digraph from an edge list.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_PRT_PATH</b> outputs at most MAXPTH number of K shortest paths between two nodes.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_SHTREE</b> finds the shortest paths from IROOT to all other nodes.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_STCOMP</b> finds the strongly connected components of a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_TO_STAR</b> sets up the forward star representation of a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_WEIGHT_PRINT</b> prints out a weighted digraph from an edge list.
+        </li>
+        <li>
+          <b>DIGRAPH_DIST_ALLPATH</b> finds the shortest paths for all pairs of nodes in a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_DIST_FMIN</b> stores values of K such that DISTAB(K) = LITTLE and DISTAB(J) = KEY.
+        </li>
+        <li>
+          <b>DIGRAPH_DIST_PRINT</b> prints a distance matrix.
+        </li>
+        <li>
+          <b>DIGRAPH_DIST_SHORT_LN</b> finds the shortest paths from one node to all others.
+        </li>
+        <li>
+          <b>DIGRAPH_DIST_SHORTP</b> finds the shortest path from ISORCE to ISINK in a digraph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_CLIQUE</b> finds all the cliques of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_COLOR_NUMBER</b> finds the chromatic number of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_COLOR_POLY</b> computes the chromatic polynomial of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_CONECT</b> finds the bridges, blocks and cut nodes of an undirected graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_DEGREE</b> finds the degree of the nodes of an undirected graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_EDGE_CON</b> finds the edge-connectivity of a connected graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_EULER</b> returns an Euler circuit in an undirected graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_FCYCLE</b> finds a fundamental set of cycles in an undirected graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_HAMCYC</b> finds a Hamiltonian circuit in a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_MAKEG</b> constructs a graph with NNODE nodes and K-connectivity.
+        </li>
+        <li>
+          <b>GRAPH_ARC_MATCH</b> finds a maximum cardinality matching in a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_MINTR2</b> finds the minimum spanning tree of a graph, using an edge array.
+        </li>
+        <li>
+          <b>GRAPH_ARC_NCOLOR_PRINT</b> prints out a node-colored graph from an edge list.
+        </li>
+        <li>
+          <b>GRAPH_ARC_PLANAR</b> determines if a graph is planar.
+        </li>
+        <li>
+          <b>GRAPH_ARC_PRINT</b> prints out a graph from an edge list.
+        </li>
+        <li>
+          <b>GRAPH_ARC_TO_STAR</b> sets up the forward star representation of an undirected graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_WEIGHT_PRINT</b> prints out a weighted graph from an edge list.
+        </li>
+        <li>
+          <b>GRAPH_DIST_MINTR1</b> finds a minimum spanning tree for a graph using a distance matrix.
+        </li>
+        <li>
+          <b>GRAPH_DIST_PRINT</b> prints a distance matrix.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an I4VEC.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints out a portion of an R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,604 @@
+<html>
+
+  <head>
+    <title>
+      DCDFLIB - Cumulative Density Functions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      DCDFLIB <br> Cumulative Density Functions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DCDFLIB</b>
+      is a FORTRAN90 library which
+      evaluates the cumulative density function (CDF) associated with
+      common probability distributions,
+      by Barry Brown, James Lovato, Kathy Russell.
+    </p>
+
+    <p>
+      <b>DCDFLIB</b> includes routines for
+      evaluating the cumulative density functions of a variety of standard
+      probability distributions.  An unusual feature of this library is
+      its ability to easily compute any one parameter of the CDF given
+      the others.  This means that a single routine can evaluate the
+      CDF given the usual parameters, or determine the value of a parameter
+      that produced a given CDF value.
+    </p>
+
+    <p>
+      The probability distributions covered include:
+      <ul>
+        <li>
+          the Beta distribution;
+        </li>
+        <li>
+          the binomial distribution;
+        </li>
+        <li>
+          the chi-square distribution;
+        </li>
+        <li>
+          the noncentral chi-square distribution;
+        </li>
+        <li>
+          the F distribution;
+        </li>
+        <li>
+          the noncentral F distribution;
+        </li>
+        <li>
+          the Gamma distribution;
+        </li>
+        <li>
+          the negative binomial distribution;
+        </li>
+        <li>
+          the normal distribution;
+        </li>
+        <li>
+          the Poisson distribution;
+        </li>
+        <li>
+          the T distribution;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Note that the F and noncentral F distributions are not necessarily
+      monotone in either degree of freedom argument.  Consequently, there
+      may be two degree of freedom arguments that satisfy the specified
+      condition.  An arbitrary one of these will be found by the routines.
+    </p>
+
+    <p>
+      The amount of computation required for the noncentral chisquare and
+      noncentral F distribution is proportional to the value of the
+      noncentrality parameter.  Very large values of this parameter can
+      require immense numbers of computation.  Consequently, when the
+      noncentrality parameter is to be calculated, the upper limit searched
+      is 10,000.
+    </p>
+
+    <p>
+      <a href = "http://www.netlib.org/random">
+                 http://www.netlib.org/random</a> <br>
+      the NETLIB random number web site, distributes
+      a TAR file of the source code for the original DCDFLIB library
+      in C and FORTRAN;
+    </p>
+
+    <p>
+      <a href = "http://biostatistics.mdanderson.org/SoftwareDownload/SingleSoftware.aspx?Software_Id=21">
+                 http://biostatistics.mdanderson.org/SoftwareDownload/SingleSoftware.aspx?Software_Id=21</a>
+      is a site at the University of Texas Department of Biostatistics
+      and Applied Mathematics which makes available a more up-to-date FORTRAN90
+      version of the software, known as <b>CDFLIB90</b>.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>DCDFLIB</b> is available in
+      <a href = "../../cpp_src/dcdflib/dcdflib.html">a C++ version</a> and
+      <a href = "../../f_src/dcdflib/dcdflib.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa310/asa310.html">
+      ASA310</a>,
+      a FORTRAN90 library which
+      computes the CDF of the noncentral Beta distribution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/beta_nc/beta_nc.html">
+      BETA_NC</a>,
+      a FORTRAN90 library which
+      evaluates the CDF of the noncentral Beta distribution.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+      a C++ library which
+      contains routines for evaluating, sampling and inverting various
+      probability distributions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/normal/normal.html">
+      NORMAL</a>,
+      a FORTRAN90 library which
+      contains routines for sampling the normal distribution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prob/prob.html">
+      PROB</a>,
+      a FORTRAN90 library which
+      contains routines for evaluating and inverting the normal CDF, and many other
+      distributions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_values/test_values.html">
+      TEST_VALUES</a>,
+      a FORTRAN90 library which
+      contains routines that store selected values of the normal PDF, and
+      many other statistical distributions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      contains routines for sampling the uniform distribution.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Barry Brown, James Lovato, Kathy Russell,<br>
+      Department of Biomathematics,<br>
+      University of Texas,<br>
+      Houston, Texas.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Jacobus Bus, Jacob Dekker,<br>
+          Two Efficient Algorithms with Guaranteed Convergence for
+          Finding a Zero of a Function,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 1, Number 4, December 1975, pages 330-345.
+        </li>
+        <li>
+          William Cody,<br>
+          Algorithm 715:
+          SPECFUN - A Portable FORTRAN Package of
+          Special Function Routines and Test Drivers,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 19, Number 1, March 1993, pages 22-32.
+        </li>
+        <li>
+          William Cody,<br>
+          Rational Chebyshev Approximations for the Error Function,<br>
+          Mathematics of Computation,<br>
+          Volume 23, Number 107, July 1969, pages 631-638.
+        </li>
+        <li>
+          William Cody, Anthony Strecok, Henry Thacher,<br>
+          Chebyshev Approximations for the Psi Function,<br>
+          Mathematics of Computation,<br>
+          Volume 27, Number 121, January 1973, pages 123-127.
+        </li>
+        <li>
+          Armido DiDinato, Alfred Morris,<br>
+          Algorithm 708:
+          Significant Digit Computation of the
+          Incomplete Beta Function Ratios,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 18, Number 3, September 1993, pages 360-373.
+        </li>
+        <li>
+          Armido DiDinato, Alfred Morris,<br>
+          Algorithm 654:
+          Computation of the Incomplete Gamma Function Ratios and
+          their Inverse,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 12, Number 4, December 1986, pages 377-393.
+        </li>
+        <li>
+          Phyllis Fox, Andrew Hall, Norman Schryer,<br>
+          Algorithm 528:
+          Framework for a Portable Library,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 4, Number 2, June 1978, page 176-188.
+        </li>
+        <li>
+          William Kennedy, James Gentle,<br>
+          Statistical Computing,<br>
+          Marcel Dekker, 1980,<br>
+          ISBN: 0824768981,<br>
+          LC: QA276.4 K46.
+        </li>
+        <li>
+          Karl Pearson,<br>
+          Tables of the Incomplete Beta Function,<br>
+          Cambridge University Press, 1968,<br>
+          ISBN: 0521059224,<br>
+          LC: QA351.P38.
+        </li>
+        <li>
+          Frank Powell,<br>
+          Statistical Tables for Sociology, Biology and Physical Sciences,<br>
+          Cambridge University Press, 1982,<br>
+          ISBN: 0521284732,<br>
+          LC: QA276.25.S73.
+        </li>
+        <li>
+          Stephen Wolfram,<br>
+          The Mathematica Book,<br>
+          Fourth Edition,<br>
+          Cambridge University Press, 1999,<br>
+          ISBN: 0-521-64314-7,<br>
+          LC: QA76.95.W65.
+        </li>
+        <li>
+          Daniel Zwillinger, editor,<br>
+          CRC Standard Mathematical Tables and Formulae,<br>
+          30th Edition,<br>
+          CRC Press, 1996,<br>
+          ISBN: 0-8493-2479-3,<br>
+          LC: QA47.M315.
+        </li>
+        <li>
+          <a href = "http://www.netlib.org/random">
+                     http://www.netlib.org/random</a>,
+          the web site.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "dcdflib.f90">dcdflib.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "dcdflib.sh">dcdflib.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "dcdflib_prb.f90">dcdflib_prb.f90</a>,
+          a sample calling program;
+        </li>
+        <li>
+          <a href = "dcdflib_prb.sh">dcdflib_prb.sh</a>,
+          commands to compile, link and run the sample program;
+        </li>
+        <li>
+          <a href = "dcdflib_prb_output.txt">dcdflib_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ALGDIV</b> computes ln ( Gamma ( B ) / Gamma ( A + B ) ) when 8 <= B.
+        </li>
+        <li>
+          <b>ALNREL</b> evaluates the function ln ( 1 + A ).
+        </li>
+        <li>
+          <b>APSER</b> computes the incomplete beta ratio I(SUB(1-X))(B,A).
+        </li>
+        <li>
+          <b>BCORR</b> evaluates DEL(A0) + DEL(B0) - DEL(A0 + B0).
+        </li>
+        <li>
+          <b>BETA</b> evaluates the beta function.
+        </li>
+        <li>
+          <b>BETA_ASYM</b> computes an asymptotic expansion for IX(A,B), for large A and B.
+        </li>
+        <li>
+          <b>BETA_FRAC</b> evaluates a continued fraction expansion for IX(A,B).
+        </li>
+        <li>
+          <b>BETA_GRAT</b> evaluates an asymptotic expansion for IX(A,B).
+        </li>
+        <li>
+          <b>BETA_INC</b> evaluates the incomplete beta function IX(A,B).
+        </li>
+        <li>
+          <b>BETA_INC_VALUES</b> returns some values of the incomplete Beta function.
+        </li>
+        <li>
+          <b>BETA_LOG</b> evaluates the logarithm of the beta function.
+        </li>
+        <li>
+          <b>BETA_PSER</b> uses a power series expansion to evaluate IX(A,B)(X).
+        </li>
+        <li>
+          <b>BETA_RCOMP</b> evaluates X**A * Y**B / Beta(A,B).
+        </li>
+        <li>
+          <b>BETA_RCOMP1</b> evaluates exp(MU) * X**A * Y**B / Beta(A,B).
+        </li>
+        <li>
+          <b>BETA_UP</b> evaluates IX(A,B) - IX(A+N,B) where N is a positive integer.
+        </li>
+        <li>
+          <b>BINOMIAL_CDF_VALUES</b> returns some values of the binomial CDF.
+        </li>
+        <li>
+          <b>CDFBET</b> evaluates the CDF of the Beta Distribution.
+        </li>
+        <li>
+          <b>CDFBIN</b> evaluates the CDF of the Binomial distribution.
+        </li>
+        <li>
+          <b>CDFCHI</b> evaluates the CDF of the chi square distribution.
+        </li>
+        <li>
+          <b>CDFCHN</b> evaluates the CDF of the Noncentral Chi-Square.
+        </li>
+        <li>
+          <b>CDFF</b> evaluates the CDF of the F distribution.
+        </li>
+        <li>
+          <b>CDFFNC</b> evaluates the CDF of the Noncentral F distribution.
+        </li>
+        <li>
+          <b>CDFGAM</b> evaluates the CDF of the Gamma Distribution.
+        </li>
+        <li>
+          <b>CDFNBN</b> evaluates the CDF of the Negative Binomial distribution
+        </li>
+        <li>
+          <b>CDFNOR</b> evaluates the CDF of the Normal distribution.
+        </li>
+        <li>
+          <b>CDFPOI</b> evaluates the CDF of the Poisson distribution.
+        </li>
+        <li>
+          <b>CDFT</b> evaluates the CDF of the T distribution.
+        </li>
+        <li>
+          <b>CHI_NONCENTRAL_CDF_VALUES</b> returns values of the noncentral chi CDF.
+        </li>
+        <li>
+          <b>CHI_SQUARE_CDF_VALUES</b> returns some values of the Chi-Square CDF.
+        </li>
+        <li>
+          <b>CUMBET</b> evaluates the cumulative incomplete beta distribution.
+        </li>
+        <li>
+          <b>CUMBIN</b> evaluates the cumulative binomial distribution.
+        </li>
+        <li>
+          <b>CUMCHI</b> evaluates the cumulative chi-square distribution.
+        </li>
+        <li>
+          <b>CUMCHN</b> evaluates the cumulative noncentral chi-square distribution.
+        </li>
+        <li>
+          <b>CUMF</b> evaluates the cumulative F distribution.
+        </li>
+        <li>
+          <b>CUMFNC</b> evaluates the cumulative noncentral F distribution.
+        </li>
+        <li>
+          <b>CUMGAM</b> evaluates the cumulative incomplete gamma distribution.
+        </li>
+        <li>
+          <b>CUMNBN</b> evaluates the cumulative negative binomial distribution.
+        </li>
+        <li>
+          <b>CUMNOR</b> computes the cumulative normal distribution.
+        </li>
+        <li>
+          <b>CUMPOI</b> evaluates the cumulative Poisson distribution.
+        </li>
+        <li>
+          <b>CUMT</b> evaluates the cumulative T distribution.
+        </li>
+        <li>
+          <b>DBETRM</b> computes the Sterling remainder for the complete beta function.
+        </li>
+        <li>
+          <b>DEXPM1</b> evaluates the function EXP(X) - 1.
+        </li>
+        <li>
+          <b>DINVNR</b> computes the inverse of the normal distribution.
+        </li>
+        <li>
+          <b>DINVR</b> bounds the zero of the function and invokes DZROR.
+        </li>
+        <li>
+          <b>DSTINV</b> SeT INverse finder - Reverse Communication
+        </li>
+        <li>
+          <b>DLANOR</b> evaluates the logarithm of the asymptotic Normal CDF.
+        </li>
+        <li>
+          <b>DSTREM</b> computes the Sterling remainder ln ( Gamma ( Z ) ) - Sterling ( Z ).
+        </li>
+        <li>
+          <b>DT1</b> computes an approximate inverse of the cumulative T distribution.
+        </li>
+        <li>
+          <b>DZROR</b> seeks a zero of a function, using reverse communication.
+        </li>
+        <li>
+          <b>DSTZR</b> - SeT ZeRo finder - Reverse communication version
+        </li>
+        <li>
+          <b>ERF_VALUES</b> returns some values of the ERF or "error" function.
+        </li>
+        <li>
+          <b>ERROR_F</b> evaluates the error function ERF.
+        </li>
+        <li>
+          <b>ERROR_FC</b> evaluates the complementary error function ERFC.
+        </li>
+        <li>
+          <b>ESUM</b> evaluates exp ( MU + X ).
+        </li>
+        <li>
+          <b>EVAL_POL</b> evaluates a polynomial at X.
+        </li>
+        <li>
+          <b>EXPARG</b> returns the largest or smallest legal argument for EXP.
+        </li>
+        <li>
+          <b>F_CDF_VALUES</b> returns some values of the F CDF test function.
+        </li>
+        <li>
+          <b>F_NONCENTRAL_CDF_VALUES</b> returns some values of the F CDF test function.
+        </li>
+        <li>
+          <b>FPSER</b> evaluates IX(A,B)(X) for very small B.
+        </li>
+        <li>
+          <b>GAM1</b> computes 1 / GAMMA(A+1) - 1 for -0.5 <= A <= 1.5
+        </li>
+        <li>
+          <b>GAMMA</b> evaluates the gamma function.
+        </li>
+        <li>
+          <b>GAMMA_INC</b> evaluates the incomplete gamma ratio functions P(A,X) and Q(A,X).
+        </li>
+        <li>
+          <b>GAMMA_INC_INV</b> computes the inverse incomplete gamma ratio function.
+        </li>
+        <li>
+          <b>GAMMA_INC_VALUES</b> returns some values of the incomplete Gamma function.
+        </li>
+        <li>
+          <b>GAMMA_LN1</b> evaluates ln ( Gamma ( 1 + A ) ), for -0.2 <= A <= 1.25.
+        </li>
+        <li>
+          <b>GAMMA_LOG</b> evaluates ln ( Gamma ( A ) ) for positive A.
+        </li>
+        <li>
+          <b>GAMMA_RAT1</b> evaluates the incomplete gamma ratio functions P(A,X) and Q(A,X).
+        </li>
+        <li>
+          <b>GAMMA_VALUES</b> returns some values of the Gamma function.
+        </li>
+        <li>
+          <b>GSUMLN</b> evaluates the function ln(Gamma(A + B)).
+        </li>
+        <li>
+          <b>IPMPAR</b> returns integer machine constants.
+        </li>
+        <li>
+          <b>NEGATIVE_BINOMIAL_CDF_VALUES</b> returns values of the negative binomial CDF.
+        </li>
+        <li>
+          <b>NORMAL_01_CDF_VALUES</b> returns some values of the Normal 01 CDF.
+        </li>
+        <li>
+          <b>NORMAL_CDF_VALUES</b> returns some values of the Normal CDF.
+        </li>
+        <li>
+          <b>POISSON_CDF_VALUES</b> returns some values of the Poisson CDF.
+        </li>
+        <li>
+          <b>PSI</b> evaluates the psi or digamma function, d/dx ln(gamma(x)).
+        </li>
+        <li>
+          <b>PSI_VALUES</b> returns some values of the Psi or Digamma function.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8 values.
+        </li>
+        <li>
+          <b>RCOMP</b> evaluates exp(-X) * X**A / Gamma(A).
+        </li>
+        <li>
+          <b>REXP</b> evaluates the function EXP(X) - 1.
+        </li>
+        <li>
+          <b>RLOG</b> computes X - 1 - LN(X).
+        </li>
+        <li>
+          <b>RLOG1</b> evaluates the function X - ln ( 1 + X ).
+        </li>
+        <li>
+          <b>STUDENT_CDF_VALUES</b> returns some values of the Student CDF.
+        </li>
+        <li>
+          <b>STVALN</b> provides starting values for the inverse of the normal distribution.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 December 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

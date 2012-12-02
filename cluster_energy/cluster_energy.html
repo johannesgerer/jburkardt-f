@@ -1,0 +1,283 @@
+<html>
+
+  <head>
+    <title>
+      CLUSTER_ENERGY - Clusterings with Minimal Energy
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CLUSTER_ENERGY <br> Clusterings with Minimal Energy
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CLUSTER_ENERGY</B>
+      is a FORTRAN90 program which
+      seeks to organize data into a given number of clusters,
+      in a way which minimizes the cluster energy.
+    </p>
+
+    <p>
+      Specifically, suppose we are given a set of
+      data points in NUM_DIM dimensional space.  Suppose we are told to use
+      C_NUM clusters.  Each cluster is to be represented by a CENTER
+      point.  Each data point is to be assigned to a cluster.  The
+      total energy is the sum of the cluster energies, and the energy
+      of a cluster is the sum of the squares of the distance of each
+      data point to its center point.
+    </p>
+
+    <p>
+      This code allows the user to specify a dimension, the number of
+      data points, the range of the data, a range of cluster values to
+      try, and the number of cluster iterations to carry out.  It then
+      tries to compute the minimal cluster energy for the given data,
+      and the various numbers of clusters.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa058/asa058.html">
+      ASA058</a>,
+      a FORTRAN90 library which
+      implements the K-means algorithm of Sparks.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/asa136/asa136.html">
+      ASA136</a>,
+      a FORTRAN77 file which
+      contains the original text of the Hartigan
+      and Wong clustering algorithm ASA136.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cvt_basis/cvt_basis.html">
+      CVT_BASIS</a>,
+      a FORTRAN90 program which
+      uses the CVT algorithm to cluster data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cvt_basis_flow/cvt_basis_flow.html">
+      CVT_BASIS_FLOW</a>,
+      a FORTRAN90 program which
+      uses the CVT algorithm to cluster data related to fluid flow.
+    </p>
+
+    <p>
+      <a href = "../../f_src/kmeans/kmeans.html">
+      KMEANS</a>,
+      a FORTRAN90 library which
+      uses the K-Means algorithm to cluster data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lau_np/lau_np.html">
+      LAU_NP</a>,
+      a FORTRAN90 library which
+      contains heuristic algorithms for the K-center and K-median problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pod_basis_flow/pod_basis_flow.html">
+      POD_BASIS_FLOW</a>,
+      a FORTRAN90 program which
+      uses the POD algorithm to cluster data related to fluid flow.
+    </p>
+
+    <p>
+      <a href = "../../f_src/point_merge/point_merge.html">
+      POINT_MERGE</a>,
+      a FORTRAN90 library which
+      considers N points in M dimensional space, and counts or indexes
+      the unique or "tolerably unique" items.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spaeth/spaeth.html">
+      SPAETH</a>,
+      a FORTRAN90 library which
+      can cluster data according to various principles.
+    </p>
+
+    <p>
+      <a href = "../../datasets/spaeth/spaeth.html">
+      SPAETH</a>,
+      a dataset directory which
+      contains a set of test data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spaeth2/spaeth2.html">
+      SPAETH2</a>,
+      a FORTRAN90 library which
+      can cluster data according to various principles.
+    </p>
+
+    <p>
+      <a href = "../../datasets/spaeth2/spaeth2.html">
+      SPAETH2</a>,
+      a dataset directory which
+      contains a set of test data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/svd_basis/svd_basis.html">
+      SVD_BASIS</a>,
+      a FORTRAN90 program which
+      uses the Singular Value Decomposition to cluster data.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          John Hartigan, Manchek Wong,<br>
+          Algorithm AS 136:
+          A K-Means Clustering Algorithm,<br>
+          Applied Statistics,<br>
+          Volume 28, Number 1, 1979, pages 100-108.
+        </li>
+        <li>
+          Wendy Martinez, Angel Martinez,<br>
+          Computational Statistics Handbook with MATLAB,<br>
+          Chapman and Hall / CRC, 2002.
+        </li>
+        <li>
+          David Sparks,<br>
+          Algorithm AS 58:
+          Euclidean Cluster Analysis,<br>
+          Applied Statistics,<br>
+          Volume 22, Number 1, 1973, pages 126-130.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cluster_energy.f90">cluster_energy.f90</a>, the
+          source code.
+        </li>
+        <li>
+          <a href = "cluster_energy.sh">cluster_energy.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cluster_energy_input.txt">cluster_energy_input.txt</a>,
+          a sample input file.
+        </li>
+         <li>
+          <a href = "cluster_energy_output.txt">cluster_energy_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for CLUSTER_ENERGY.
+        </li>
+        <li>
+          <b>CLUSTER_ITERATION</b> seeks the minimal energy of a cluster of a given size.
+        </li>
+        <li>
+          <b>ENERGY</b> computes the energy of a given clustering.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_INPUT</b> prints a prompt string and reads an integer from the user.
+        </li>
+        <li>
+          <b>I4_RANGE_INPUT</b> reads a pair of integers from the user, representing a range.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>INPUT_CHECK</b> performs some simple checks on the problem data.
+        </li>
+        <li>
+          <b>INPUT_GET</b> gets the value of certain input quantities from the user.
+        </li>
+        <li>
+          <b>INPUT_PRINT</b> prints the value of the input quantities.
+        </li>
+        <li>
+          <b>NEAREST_POINT</b> finds the center point nearest a data point.
+        </li>
+        <li>
+          <b>POINT_GENERATE</b> generates data points for the problem.
+        </li>
+        <li>
+          <b>POINT_PRINT</b> prints out the values of the data points.
+        </li>
+        <li>
+          <b>R8VEC_RANGE_INPUT</b> reads two real vectors from the user, representing a range.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 05 January 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

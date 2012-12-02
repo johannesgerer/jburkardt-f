@@ -1,0 +1,224 @@
+<html>
+
+  <head>
+    <title>
+      ISING_3D_SIMULATION - Monte Carlo 3D Ising Model.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ISING_3D_SIMULATION <br> Monte Carlo 3D Ising Model
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ISING_3D_SIMULATION</b>
+      is a FORTRAN90 program which
+      carries out a Monte Carlo simulation of a 3D Ising model.
+    </p>
+
+    <p>
+      The text of this Ising model appeared as an example in the ANSI
+      FORTRAN90 standard in 1992.  It is a nice presentation of how to use
+      certain features of FORTRAN90, and also demonstrates why one would like
+      to use these features - they make the Ising calculation very simple
+      to describe.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>ising_3d_simulation</b> <i>n</i> <i>iterations</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>n</i> is the number of cells in each dimension.  The total number of cells
+          will be <i>n</i><sup>3</sup>.
+        </li>
+        <li>
+          <i>iterations</i> is the number of iterations to take.
+        </li>
+      </ul>
+      Note that the user might also want to vary the transition probabilities.
+      This cannot currently be done on the command line, and requires editing
+      the program and recompiling it.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/brownian_motion_simulation/brownian_motion_simulation.html">
+      BROWNIAN_MOTION_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates Brownian motion in an M-dimensional region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/duel_simulation/duel_simulation.html">
+      DUEL_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates N repetitions of a duel between two players, each of
+      whom has a known firing accuracy.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_intrinsics/f90_intrinsics.html">
+      F90_INTRINSICS</a>,
+      FORTRAN90 programs which
+      illustrate the use of FORTRAN90 intrinsic functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fair_dice_simulation/fair_dice_simulation.html">
+      FAIR_DICE_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates N tosses of 2 dice, making a histogram of the results.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mandelbrot/mandelbrot.html">
+      MANDELBROT</a>,
+      a FORTRAN90 program which
+      generates an ASCII PPM image of the Mandelbrot set;
+    </p>
+
+    <p>
+      <a href = "../../f_src/poisson_simulation/poisson_simulation.html">
+      POISSON_SIMULATION</a>,
+      a FORTRAN90 library which
+      simulates a Poisson process in which events randomly occur with an
+      average waiting time of Lambda.
+    </p>
+
+    <p>
+      <a href = "../../f_src/reactor_simulation/reactor_simulation.html">
+      REACTOR_SIMULATION</a>,
+      a FORTRAN90 program which
+      is a simple Monte Carlo simulation of the shielding effect of a slab
+      of a certain thickness in front of a neutron source.  This program was
+      provided as an example with the book "Numerical Methods and Software."
+    </p>
+
+    <p>
+      <a href = "../../f_src/three_body_simulation/three_body_simulation.html">
+      THREE_BODY_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates the behavior of three planets, constrained to lie in a plane,
+      and moving under the influence of gravity,
+      by Walter Gander and Jiri Hrebicek.
+    </p>
+
+    <p>
+      <a href = "../../c_src/xising/xising.html">
+      XISING</a>,
+      a C program which
+      simulates the variation in ferromagnetism in a material,
+      displaying the results using X Windows.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          American National Standard for Programming Language: Fortran - Extended,<br>
+          American National Standards Institute, 1992,<br>
+          pages 296-299.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ising_3d_simulation.f90">ising_3d_simulation.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "ising_3d_simulation.sh">ising_3d_simulation.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>SMALL</b> is a run of a small (N=10) model for a short (ITERATIONS = 25)
+      number of iterations.
+      <ul>
+        <li>
+          <a href = "small_output.txt">small_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for ISING_3D_SIMULATION.
+        </li>
+        <li>
+          <b>ISING_3D_INITIALIZE</b> initializes the Ising array.
+        </li>
+        <li>
+          <b>TRANSITION</b> carries out a Monte Carlo simulation of a 3D Ising model.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 November 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

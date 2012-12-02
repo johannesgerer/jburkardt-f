@@ -1,0 +1,166 @@
+December 16 2002  12:17:33.173 PM
+ 
+MATMUL
+  An interactive demonstration of the speed
+  of matrix multiplication.
+ 
+  This is version 1.20
+  Last modified on 16 December 2002.
+ 
+  This is the version for SGI/IRIS
+ 
+Command?  (Type H for help)
+ 
+  This is the list of legal commands.
+ 
+  H                 Help. List the legal commands.
+  LDA=value         Set leading dimension of arrays.
+  M                 Multiply two matrices.
+  N=value           Assigns the size of the arrays.
+  N=nlo,nhi,ninc    Sets N=nlo, N=nlo+ninc, ....
+  N=nlo,nhi,*nmult  Sets N=nlo, N=nlo*nmult, ....
+  NREP=nrep         Sets the repetition factor.
+  ORDER=name        Chooses the algorithm.
+  P                 Prints out current results.
+  Q                 Quit.
+  SHOW=name         Include "name" in output.
+  		  "name" = CPU, LANGUAGE, LDA,
+                    MACHINE, MFLOPS, N, NREP, 
+                    OPS, ORDER, or TIME.
+                    "SHOW=ALL" means all items are shown.
+  NOSHOW=name       removes an item from output list.
+ 
+Command?  (Type H for help)
+ 
+  N has been set to    100
+  NLO has been set to    100
+  NHI has been set to    100
+  NINC has been set to      0
+  NMULT has been set to      1
+ 
+  Because N was changed, LDA is automatically
+  increased to LDA =    100
+ 
+Command?  (Type H for help)
+ 
+  The order has been set to ALL
+ 
+Command?  (Type H for help)
+ 
+     Order LDA   N      CPU Secs       Ops    MFLOPS  Machine  Language
+ 
+C_IJK      100 100      0.297468   2000000    6.7234 SGI/IRIS   F90    
+C_MATMUL   100 100      0.036471   2000000   54.8381 SGI/IRIS   F90    
+D_IJK      100 100      0.255224   2000000    7.8363 SGI/IRIS   F90    
+D_MATMUL   100 100      0.008131   2000000  245.9714 SGI/IRIS   F90    
+I_IJK      100 100      0.285338   2000000    7.0092 SGI/IRIS   F90    
+I_MATMUL   100 100      0.038848   2000000   51.4827 SGI/IRIS   F90    
+L_IJK      100 100      0.262971   2000000    7.6054 SGI/IRIS   F90    
+R_DOT_PROD 100 100      0.262971   2000000    7.6054 SGI/IRIS   F90    
+R_IJ       100 100      0.247622   2000000    8.0768 SGI/IRIS   F90    
+R_IJK      100 100      0.256414   2000000    7.7999 SGI/IRIS   F90    
+R_IJK_IMPL 100 100      0.256414   2000000    7.7999 SGI/IRIS   F90    
+R_IJK_I2   100 100      0.241291   2000000    8.2887 SGI/IRIS   F90    
+R_IJK_I4   100 100      0.235693   2000000    8.4856 SGI/IRIS   F90    
+R_IJK_I8   100 100      0.237269   2000000    8.4293 SGI/IRIS   F90    
+R_IJK_J4   100 100      0.134717   2000000   14.8459 SGI/IRIS   F90    
+R_IJK_K4   100 100      0.244640   2000000    8.1753 SGI/IRIS   F90    
+R_IKJ      100 100      0.243166   2000000    8.2248 SGI/IRIS   F90    
+R_IKJ_DOT  100 100      0.163626   2000000   12.2230 SGI/IRIS   F90    
+R_JIK      100 100      0.256877   2000000    7.7858 SGI/IRIS   F90    
+R_JIK_IMPL 100 100      0.256877   2000000    7.7858 SGI/IRIS   F90    
+R_JKI      100 100      0.244570   2000000    8.1776 SGI/IRIS   F90    
+R_JKI_IMPL 100 100      0.244570   2000000    8.1776 SGI/IRIS   F90    
+R_KIJ      100 100      0.242464   2000000    8.2487 SGI/IRIS   F90    
+R_KIJ_DOT  100 100      0.166392   2000000   12.0198 SGI/IRIS   F90    
+R_KJI      100 100      0.244443   2000000    8.1819 SGI/IRIS   F90    
+R_KJI_IMPL 100 100      0.244443   2000000    8.1819 SGI/IRIS   F90    
+R_KJI_M    100 100      0.244141   2000000    8.1920 SGI/IRIS   F90    
+R_MATMUL   100 100      0.007927   2000000  252.3041 SGI/IRIS   F90    
+R_SAXPYC   100 100      0.021662   2000000   92.3266 SGI/IRIS   F90    
+R_SAXPYR   100 100      0.027342   2000000   73.1480 SGI/IRIS   F90    
+R_SDOT     100 100      0.018695   2000000  106.9785 SGI/IRIS   F90    
+R_SGEMM    100 100      0.006199   2000000  322.6388 SGI/IRIS   F90    
+R_TAXPYC   100 100      0.090567   2000000   22.0831 SGI/IRIS   F90    
+R_TAXPYR   100 100      0.163492   2000000   12.2330 SGI/IRIS   F90    
+R_TDOT     100 100      0.132637   2000000   15.0787 SGI/IRIS   F90    
+R_TGEMM    100 100      0.144951   2000000   13.7978 SGI/IRIS   F90    
+ 
+  The matrix multiplication has been carried out.
+ 
+Command?  (Type H for help)
+ 
+  The order has been set to R_SDOT
+ 
+Command?  (Type H for help)
+ 
+  N has been set to    100
+  NLO has been set to    100
+  NHI has been set to    400
+  NINC has been set to      0
+  NMULT has been set to      2
+ 
+Command?  (Type H for help)
+ 
+     Order LDA   N      CPU Secs       Ops    MFLOPS  Machine  Language
+ 
+R_SDOT     100 100      0.018666   2000000  107.1451 SGI/IRIS   F90    
+R_SDOT     200 200      0.132146  16000000  121.0783 SGI/IRIS   F90    
+R_SDOT     400 400      1.076765 128000000  118.8746 SGI/IRIS   F90    
+ 
+  The matrix multiplication has been carried out.
+ 
+Command?  (Type H for help)
+ 
+  The order has been set to I_IJK
+ 
+Command?  (Type H for help)
+ 
+  N has been set to      1
+  NLO has been set to      1
+  NHI has been set to      8
+  NINC has been set to      0
+  NMULT has been set to      2
+ 
+Command?  (Type H for help)
+ 
+     Order LDA   N      CPU Secs       Ops    MFLOPS  Machine  Language
+ 
+I_IJK      400   1      0.000004         2    0.5243 SGI/IRIS   F90    
+I_IJK      400   2      0.000005        16    3.3554 SGI/IRIS   F90    
+I_IJK      400   4      0.000023       128    5.5924 SGI/IRIS   F90    
+I_IJK      400   8      0.000155      1024    6.6076 SGI/IRIS   F90    
+ 
+  The matrix multiplication has been carried out.
+ 
+Command?  (Type H for help)
+ 
+  The order has been set to R_KJI
+ 
+Command?  (Type H for help)
+  The repetition factor is now NREP =      5
+ 
+Command?  (Type H for help)
+ 
+  N has been set to    100
+  NLO has been set to    100
+  NHI has been set to    100
+  NINC has been set to      0
+  NMULT has been set to      1
+ 
+Command?  (Type H for help)
+ 
+     Order LDA   N      CPU Secs       Ops NREP    MFLOPS  Machine  Language
+ 
+R_KJI      400 100      1.219630   2000000    5    8.1992 SGI/IRIS   F90    
+ 
+  The matrix multiplication has been carried out.
+ 
+Command?  (Type H for help)
+ 
+  Type "Y" to confirm that you want to quit.
+ 
+MATMUL:
+  Normal end of execution.
+ 
+December 16 2002  12:17:41.384 PM

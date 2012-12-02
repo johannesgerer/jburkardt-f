@@ -1,0 +1,462 @@
+<html>
+
+  <head>
+    <title>
+      MIXED - Mixed Language Programming
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MIXED <br> Mixed Language Programming
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MIXED</b>
+      is a directory of FORTRAN90 programs which
+      contains some simple examples of mixed language programming.
+      In particular, this directory considers situations in which the
+      main program is written in FORTRAN90.
+    </p>
+
+    <h3 align = "center">
+      The world of bilingual programming
+    </h3>
+
+    <p>
+      Because higher level languages end up as machine code, there is
+      some reason to assume that you can write parts of a program in
+      two different languages; what is <b>not</b> standard is the
+      protocol for dealing with the differences in languages.
+    </p>
+
+    <p>
+      For instance, C does not explicitly support complex data types, and
+      the C mathematical library does not include the corresponding
+      arithmetic support.  It's easy enough to make something that
+      <i>looks</i> like a complex number in C:
+      <pre>
+        typedef struct ( float r, i } complex;
+
+        complex alpha;
+
+        alpha.r = 1.0;
+        alpha.i = 2.0;
+      </pre>
+      but you still can't compute directly with complex numbers in C.
+    </p>
+
+    <p>
+      Another commonly noticed difference between C and FORTRAN90 is that C
+      passes scalar parameters by value, whereas FORTRAN90 passes all variables
+      by address.  Thus, if a C routine wants to call a FORTRAN90 subroutine,
+      it must put the reference symbol <b>&</b> in front of each scalar
+      variable to ensure that FORTRAN90 receives what it's expecting.
+    </p>
+
+    <p>
+      On the other hand, if a FORTRAN90 routine needs to pass a scalar
+      parameter to a C routine, there is no standard way to ensure that a
+      value is passed rather than an address.  The only possibility is that
+      some vendors have included the ability to compute the address of a
+      variable in FORTRAN90, sometimes by using the same <b>&</b> operator
+      available in C, but this is by no means a universal option.  If the C
+      routine can be rewritten, then another option is to preface such scalar
+      variables with the <b>*</b> operator in the routine declaration,
+      indicating that these variables are being passed into the function by
+      address rather than value.  If the C routine cannot be rewritten,
+      then the only other option is to try to use some of the fancier features
+      added to FORTRAN90.
+    </p>
+
+    <p>
+      Yet another issue occurs because of things the compiler does to symbolic
+      names.  In order to avoid confusion between names the user defines and
+      names the compiler wants to reserve, it is common in some cases to append
+      an underscore to user-defined names.  In particular, a FORTRAN90 compiler
+      is likely to take the name of a common block, function, or subroutine,
+      and first CAPITALIZE it, and then append an underscore.  This is fine,
+      as long as the compiler also does the same thing when it encounters a
+      line of code that tries to access the same symbolic quantity.
+    </p>
+
+    <p>
+      The C compiler is likely to do no such thing.  Thus, if the user has
+      written a FORTRAN90 routine called "fred", it may not be possible for
+      a C routine to reference "fred", but it may be possible for it to make
+      the connection by asking for "FRED_"!  Thus, if the C code can be
+      adjusted, then the two languages may be able to work together by having
+      the C code be careful about how it refers to FORTRAN90 symbolic
+      names.  On the other hand, the FORTRAN90 compiler often has a switch
+      that allows the user to turn off the automatic capitalization and
+      underscore-postfixation, which may accomplish the same goal.
+    </p>
+
+    <p>
+      For historical reasons, a C function that returns a float actually
+      returns a value that is promoted to a double.  This means that it is
+      not possible to write a C routine that "looks like" a FORTRAN90 function
+      of real type.  If you do your best to write such a routine, it will
+      actually behave as though it is a FORTRAN90 function of double precision
+      type.  This is <i>not</i> a problem if the data is being passed back out
+      through the argument list, rather than through the name of the routine.
+    </p>
+
+    <p>
+      In some cases, a FORTRAN90 function with COMPLEX value is equivalent
+      to a C function with an extra first argument pointing to the address
+      of the return value:
+      <pre>
+        complex function f ( x, y )
+      </pre>
+      could be mimicked in C by
+      <pre>
+        F_ ( temp, x, y )
+        struct ( float r, i ) *temp;
+      </pre>
+    </p>
+
+    <p>
+      Similarly, a FORTRAN90 function which returns a CHARACTER value may be
+      equivalent to a C function with two extra initial arguments giving the
+      address and length of the return value:
+      <pre>
+        character*14 function g ( x, y )
+          or
+        character ( len = 14 ) function g ( x, y )
+      </pre>
+      could be mimicked in C by
+      <pre>
+        G_ ( char result[], long *length, x, y )
+      </pre>
+    </p>
+
+    <p>
+      Analogously, passing a character variable anywhere in a FORTRAN90
+      argument list may be equivalent to passing the pair of values
+      consisting of the character string and its length.
+    </p>
+
+    <p>
+      Even if you get the two parts of your program to be compatible, you still
+      have to worry about what happens when you load them, because both
+      FORTRAN90 and C provide certain auxiliary I/O and math libraries.  If
+      things are going your way, you may be able to get away with using the
+      FORTRAN90 command to load, but appending a switch to add the C
+      mathematical library as well:
+      <pre>
+        f90 my_main.o my_sub.o -lm
+      </pre>
+      or, perhaps there is also a "C" library:
+      <pre>
+        f90 my_main.o my_sub.o -lc -lm
+      </pre>
+    </p>
+
+    <p>
+      If you are using C to load, you may need to include the appropriate
+      FORTRAN90 libraries.  (Warning: the names of these libraries are nowhere
+      near as standard as the C math library.  And the FORTRAN90 IO and math
+      libraries may be distinct):
+      <pre>
+        cc my_main.o my_sub.o -lfor -lm
+      </pre>
+    </p>
+
+    <p>
+      C++ supports (on purpose!) a scheme in which the names chosen
+      by a user for various functions are automatically <i>mangled</i>,
+      because it is assumed likely that the same name could be used
+      in different namespaces, so C++ avoids ambiguity by constructing
+      unique internal names when compiling.  Unfortunately, this makes
+      it very difficult for programs written in other languages to
+      interact with a C++ program.  One feature that can help
+      is the use of the statement
+      <pre>
+        external "C" { (list of function declarations) }
+      </pre>
+      in a C++ program in which name mangling is to be deactivated.
+      The list of function declarations can be either the names of
+      C routines to be called from this C++ routine, OR the names
+      of internal C++ routines that are to be called by an external
+      C routine.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MIXED</b> language programming examples are available in
+      <a href = "../../c_src/mixed/mixed.html">a C version</a> and
+      <a href = "../../cpp_src/mixed/mixed.html">a C++ version</a> and
+      <a href = "../../f77_src/mixed/mixed.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/mixed/mixed.html">a FORTRAN90 version</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../c_src/c_calls_f77/c_calls_f77.html">
+      C_CALLS_F77</a>,
+      C programs which
+      illustrate a C program calling a FORTRAN77 subroutine.
+    </p>
+
+    <p>
+      <a href = "../../c_src/c_calls_f90/c_calls_f90.html">
+      C_CALLS_F90</a>,
+      C programs which
+      illustrate a C program calling a FORTRAN90 subroutine.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/c++_calls_f77/c++_calls_f77.html">
+      C++_CALLS_F77</a>,
+      C++ programs which
+      illustrate how a C++ main program can call a FORTRAN77 subroutine.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/c++_calls_f90/c++_calls_f90.html">
+      C++_CALLS_F90</a>,
+      C++ programs which
+      illustrate how a C++ main program can call a FORTRAN90 subroutine.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/f77_calls_c/f77_calls_c.html">
+      F77_CALLS_C</a>,
+      FORTRAN77 programs which
+      illustrates how a FORTRAN77 program can call a C function.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/f77_calls_c++/f77_calls_c++.html">
+      F77_CALLS_C++</a>,
+      FORTRAN77 programs which
+      illustrates how a FORTRAN77 program can call a C++ function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_calls_c/f90_calls_c.html">
+      F90_CALLS_C</a>,
+      FORTRAN90 programs which
+      illustrates how a FORTRAN90 program can call a C function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_calls_c_and_mpi/f90_calls_c_and_mpi.html">
+      F90_CALLS_C_AND_MPI</a>,
+      FORTRAN90 programs which
+      illustrate how a FORTRAN90 program can call a C function while
+      executing under the MPI parallel programming environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_calls_c++/f90_calls_c++.html">
+      F90_CALLS_C++</a>,
+      FORTRAN90 programs which
+      illustrates how a FORTRAN90 program can call a C++ function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_calls_c++_and_mpi/f90_calls_c++_and_mpi.html">
+      F90_CALLS_C++_AND_MPI</a>,
+      FORTRAN90 programs which
+      illustrate how a FORTRAN90 program can call a C++ function while
+      executing under the MPI parallel programming environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_calls_matlab/f90_calls_matlab.html">
+      F90_CALLS_MATLAB</a>,
+      FORTRAN90 programs which
+      issue a call
+      to MATLAB to carry out an auxillary calculation.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "../../pdf/keinert.pdf">
+          Calling FORTRAN Subroutines from Fortran, C and C++</a>,<br>
+          Fritz Keinert,<br>
+          Mathematics Department,<br>
+          Iowa State University.
+        </li>
+        <li>
+          Yang Wang, Raghurama Reddy, Roberto Gomez, Junwoo Lim, Sergiu Sanielevici,
+          Jaideep Ray, James Sutherland, Jackie Chen,<br>
+          A General Approach to Creating Fortran Interface for C++ Application Libraries,<br>
+          Current Trends in High Performance Computing and its Applications, pages 145-154,<br>
+          edited by Wu Zhang, Zhangxin Chen, Roland Glowinski, Weiqin Tong,<br>
+          Springer, 2005,<br>
+          ISBN13: 978-3540257851,<br>
+          LC: QA76.88.I5663.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <b>EX1</b> shows how a FORTRAN90 main program can call a C routine.
+      In this case, the main program wants to add two integers, reals,
+      and double precision values.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "ex1_main.f90">ex1_main.f90</a>, the FORTRAN90
+          main program;
+        </li>
+        <li>
+          <a href = "ex1_sub.c">ex1_sub.c</a>, C function;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX2</b> shows how a FORTRAN90 program can call a C++
+      routine.  In order to get this to work, the internal C++ routines
+      have to be declared with the <b>extern "C"{...}</b> property.
+      Then, because I couldn't determine the name of the C++ library
+      files, I decided to use the C++ compiler for the loading, and
+      explicitly include the FORTRAN90 libraries.  Then I realized that
+      in that case, the FORTRAN90 main program MUST be called "main".
+      Finally, it worked!  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "ex2_main.f90">ex2_main.f90</a>, the FORTRAN90
+          main program;
+        </li>
+        <li>
+          <a href = "ex2_sub.cpp">ex2_sub.cpp</a>, a C++ function;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>EX1_FORT_CC</b> uses the FORT and CC compilers.  Files you may
+      copy include:
+      <ul>
+        <li>
+          <a href = "ex1_fort_cc.sh">ex1_fort_cc.sh</a>,
+          commands to compile, link, load and run;
+        </li>
+        <li>
+          <a href = "ex1_fort_cc_output.txt">ex1_fort_cc_output.txt</a>, output;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX1_FORT_GCC</b> uses the FORT and GCC compilers.  Files you may
+      copy include:
+      <ul>
+        <li>
+          <a href = "ex1_fort_gcc.sh">ex1_fort_gcc.sh</a>,
+          commands to compile, link, load and run;
+        </li>
+        <li>
+          <a href = "ex1_fort_gcc_output.txt">ex1_fort_gcc_output.txt</a>, output;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX1_GFORTRAN_GCC</b> uses the GFORTRAN and GCC compilers.  Files you may
+      copy include:
+      <ul>
+        <li>
+          <a href = "ex1_gfortran_gcc.sh">ex1_gfortran_gcc.sh</a>,
+          commands to compile, link, load and run;
+        </li>
+        <li>
+          <a href = "ex1_gfortran_gcc_output.txt">ex1_gfortran_gcc_output.txt</a>, output;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX2_FORT_CXX</b> uses the FORT and CXX compilers.  Files you may
+      copy include:
+      <ul>
+        <li>
+          <a href = "ex2_fort_cxx.sh">ex2_fort_cxx.sh</a>,
+          commands to compile, link, load and run;
+        </li>
+        <li>
+          <a href = "ex2_fort_cxx_output.txt">ex2_fort_cxx_output.txt</a>, output;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX2_FORT_G++</b> uses the FORT and G++ compilers.  Files you may
+      copy include:
+      <ul>
+        <li>
+          <a href = "ex2_fort_g++.sh">ex2_fort_g++.sh</a>,
+          commands to compile, link, load and run;
+        </li>
+        <li>
+          <a href = "ex2_fort_g++_output.txt">ex2_fort_g++_output.txt</a>, output;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX2_GFORTRAN_G++</b> uses the GFORTRAN and G++ compilers.  Files you may
+      copy include:
+      <ul>
+        <li>
+          <a href = "ex2_gfortran_g++.sh">ex2_gfortran_g++.sh</a>,
+          commands to compile, link, load and run;
+        </li>
+        <li>
+          <a href = "ex2_gfortran_g++_output.txt">ex2_gfortran_g++_output.txt</a>, output;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 25 June 2008
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,347 @@
+<html>
+
+  <head>
+    <title>
+      QR_SOLVE - Least Squares Solution of a Linear System A*x=b
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      QR_SOLVE <br> Least Squares Solution of a Linear System A*x=b
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>QR_SOLVE</b>
+      is a FORTRAN90 library which
+      computes a least squares solution of a linear system of the form A*x=b.
+    </p>
+
+    <p>
+      There are many possible cases that can arise with the matrix A.
+      Formally, we distinguish the cases M < N, M = N, and M > N, and
+      we expect trouble whenever M is not equal to N.  Trouble may also
+      arise when M = N but the matrix is singular.  Even if the matrix is,
+      mathematically speaking, non-singular, it may be so close to singularity
+      that an accurate solution is difficult to achieve.
+    </p>
+
+    <p>
+      When M > N, we are placing more conditions than we have degrees of freedom,
+      so we suppose that such a linear system cannot be solved.  However, it is
+      possible that the extra conditions are illusory, being constructed from
+      linear combinations of a fundamental set of N conditions.  Thus, a system
+      that we typically call "overdetermined" can have a solution in the ordinary
+      sense, that satisfies all the conditions, as long as the right hand side is
+      "consistent".  Another way of saying this is that the system is solvable
+      if the right hand side lies in the column space of A...although that simply
+      says that it is a linear combination of the columns of A, which just says
+      A*x=b.
+    </p>
+
+    <p>
+      If A does not have full column rank, however, then even if the right hand
+      side lies in the column space of A, there will be more than one linear 
+      combination of columns that produce b.  Thus, the equations are consistent,
+      the system is solvable, but not uniquely so.
+    </p>
+
+    <p>
+      If M < N, then we are placing fewer conditions than we have degrees of
+      freedom.  As long as the right hand side lies in the column space of A,
+      we can guarantee that there will be multiple solutions.
+    </p>
+
+    <p>
+      Thus, the question of a "solution" to the problem A*x=b is complicated
+      enough that it seems to defy a common algorithmic approach.  Nonetheless,
+      there are some sensible, robust procedures for producing an answer that
+      corresponds to the classical solution, or solves the overdetermined problem
+      when the right hand side is consistent.  This is the linear least squares
+      solution, which finds a vector x which minimizes the Euclidean norm of
+      the residual: ||r|| = ||A*x-b||.  This solution is produced by computing
+      the QR factorization of the matrix A
+    </p>
+
+    <p>
+      When there are multiple solutions to the problem, the QR approach used here
+      produces a solution.  A more satisfactory approach, using the pseudoinverse,
+      will produce a solution x which satisfies the additional constraint that
+      it has the minimum norm of the entire family of solutions.  That pseudoinverse
+      approach is not implemented in this library.  The singular value decomposition (SVD)
+      can also produce this minimal solution.
+    </p>
+
+    <p>
+      For comparison, a solver that applies the normal equations is included.
+      This approach requires M >= N, and that A have full column rank.  It constructs
+      and solves the NxN system A'*A*x=A'*b.  This system has a condition number that
+      is the square of the original system, so it also suffers from a significant
+      loss in accuracy.
+    </p>
+
+    <p>
+      We also include an SVD solver, which uses the pseudoinverse approach.
+      First compute A = U * S * V', where U and V are orthogonal, and S is
+      MxN diagonal, then to solve A*x=b write x = V * S^ * U' * b, where
+      S^ is the matrix formed by transposing S and then replacing each nonzero
+      diagonal element s by 1/s.  (However, very small elements should probably
+      be zeroed instead of inverted.)  This procedure will also produce a vector
+      x which minimizes the Euclidean norm.  However, it has one feature that the
+      QR solver does not: in cases where the solution x is not unique (because
+      A does not have full column rank) the SVD solver returns the unique vector
+      x of minimum Euclidean norm.
+    </p>
+
+    <p>
+      <b>QR_SOLVE</b> needs the R8LIB library.  The test program also needs
+      the TEST_LS library.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>QR_SOLVE</b> is available in
+      <a href = "../../c_src/qr_solve/qr_solve.html">a C version</a> and
+      <a href = "../../cpp_src/qr_solve/qr_solve.html">a C++ version</a> and
+      <a href = "../../f77_src/qr_solve/qr_solve.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/qr_solve/qr_solve.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bvls/bvls.html">
+      BVLS</a>,
+      a FORTRAN90 library which
+      applies least squares methods to solve a linear system for which
+      lower and upper constraints may have been placed on every variable,
+      by Charles Lawson and Richard Hanson.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      solves constrained least squares problems,
+      by Richard Hanson and Fred Krogh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lapack_examples/lapack_examples.html">
+      LAPACK_EXAMPLES</a>,
+      a FORTRAN90 program which
+      demonstrates the use of the LAPACK linear algebra library.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lawson/lawson.html">
+      LAWSON</a>,
+      a FORTRAN90 library which
+      contains routines for solving least squares problems and singular value
+      decompositions (SVD),
+      by Charles Lawson, Richard Hanson.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack_d/linpack_d.html">
+      LINPACK_D</a>,
+      a FORTRAN90 library which
+      solves linear systems using double precision real arithmetic;
+    </p>
+
+    <p>
+      <a href = "../../f_src/llsq/llsq.html">
+      LLSQ</a>,
+      a FORTRAN90 library which
+      solves the simple linear least squares problem of finding the formula
+      of a straight line y=a*x+b which minimizes the root-mean-square error
+      to a set of N data points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/minpack/minpack.html">
+      MINPACK</a>,
+      a FORTRAN90 library which
+      solves systems of nonlinear equations, or the least squares minimization of the
+      residual of a set of linear or nonlinear equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes a wide variety of numerical software, including
+      solvers for linear systems of equations, interpolation of data,
+      numerical quadrature, linear least squares data fitting,
+      the solution of nonlinear equations, ordinary differential equations,
+      optimization and nonlinear least squares, simulation and random numbers,
+      trigonometric approximation and Fast Fourier Transforms (FFT).
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>,
+      a FORTRAN90 library which
+      contains many utility routines using double precision real (R8) arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_ls/test_ls.html">
+      TEST_LS</a>,
+      a FORTRAN90 library which
+      implements linear least squares test problems of the form A*x=b.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1,<br>
+          LC: QA214.L56.
+        </li>
+        <li>
+          David Kahaner, Cleve Moler, Steven Nash,<br>
+          Numerical Methods and Software,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0-13-627258-4,<br>
+          LC: TA345.K34.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "qr_solve.f90">qr_solve.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "qr_solve.sh">qr_solve.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "qr_solve_prb.f90">qr_solve_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "qr_solve_prb.sh">qr_solve_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "qr_solve_prb_output.txt">qr_solve_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DAXPY</b> computes constant times a vector plus a vector.
+        </li>
+        <li>
+          <b>DDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>DNRM2</b> returns the euclidean norm of a vector.
+        </li>
+        <li>
+          <b>DQRANK</b> computes the QR factorization of a rectangular matrix.
+        </li>
+        <li>
+          <b>DQRDC</b> computes the QR factorization of a real rectangular matrix.
+        </li>
+        <li>
+          <b>DQRLS</b> factors and solves a linear system in the least squares sense.
+        </li>
+        <li>
+          <b>DQRLSS</b> solves a linear system in a least squares sense.
+        </li>
+        <li>
+          <b>DQRSL</b> computes transformations, projections, and least squares solutions.
+        </li>
+        <li>
+          <b>DROT</b> applies a plane rotation.
+        </li>
+        <li>
+          <b>DROTG</b> constructs a Givens plane rotation.
+        </li>
+        <li>
+          <b>DSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>DSVDC</b> computes the singular value decomposition of a real rectangular matrix.
+        </li>
+        <li>
+          <b>DSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>NORMAL_SOLVE</b> solves a linear system using the normal equations.
+        </li>
+        <li>
+          <b>QR_SOLVE</b> solves a linear system in the least squares sense.
+        </li>
+        <li>
+          <b>SVD_SOLVE</b> solves a linear system in the least squares sense.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 04 October 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

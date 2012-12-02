@@ -1,0 +1,67 @@
+30 May 2010   8:50:19.111 AM
+ 
+CONSTANT_TYPE
+  FORTRAN90 version.
+ 
+  Demonstrate that constants have a type.
+ 
+  EXAMPLE 1:
+ 
+  Print the value of
+    1.0203040506070809 - 1.020304050607
+ 
+     1.0203040506070809 - 1.020304050607 =    0.0000000    
+ 
+  If single precision is the default, this will be 0.
+ 
+  EXAMPLE 2:
+  A constant has a type.
+  If you do not specify one, one will be provided.
+  If we assign a 32 decimal constant to a single,
+  double, and quadruple precision variable,
+  IN EVERY CASE, only the first 8 decimals will be used,
+  because we did not set the type of the constant:
+ 
+    a = 1.020304050607080910111213141516
+    b = 1.020304050607080910111213141516
+    c = 1.020304050607080910111213141516
+ 
+   A =    1.0203041    
+   B =    1.0203040838241577     
+   C =    1.0203040838241577148437500000000000      
+ 
+  EXAMPLE 3:
+  Use an exponent marker of "E", "D" or "Q" to indicate
+  that your constant is single, double or quadruple
+  precision.
+ 
+  If the compiler does not like our specification,
+  the constant is treated as single precision, and
+  some of the information in the constant is discarded,
+  with NO WARNING.
+ 
+    a = 1.020304050607080910111213141516E+00
+    b = 1.020304050607080910111213141516D+00
+    c = 1.020304050607080910111213141516Q+00
+ 
+   A =    1.0203041    
+   B =    1.0203040506070808     
+   C =    1.0203040838241577148437500000000000      
+ 
+  EXAMPLE 4:
+  Use an kind marker of "_4", "_8" or "_16" to indicate
+  that your constant is single, double or quadruple
+  precision.  Might work, might not.
+ 
+    a = 1.020304050607080910111213141516_4
+    b = 1.020304050607080910111213141516_8
+    c = 1.020304050607080910111213141516_16
+ 
+   A =    1.0203041    
+   B =    1.0203040506070808     
+   C =    1.0203040506070809101112131415159898      
+ 
+CONSTANT_TYPE
+  Normal end of execution.
+ 
+30 May 2010   8:50:19.113 AM

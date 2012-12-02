@@ -1,0 +1,37 @@
+22 lines written to beta.f90
+subroutine beta ( y, delta, gamma )
+
+!*******************************************************************************
+!
+!! BETA is a subroutine
+!
+!  real function zeta ( x ) is commented out.
+!
+  real delta
+  real gamma
+  character ( len = 50 ) s
+  real y
+
+  gamma = 7.0
+  y = 3.14159265
+!
+!  This line might confuse the extractor!
+!
+  s = 'function gamma ( 17 )'
+
+  return
+end
+12 lines written to theta.f90
+block data theta
+
+!*******************************************************************************
+!
+!! THETA is a block data routine.
+!
+  real x
+  common / samantha / x
+  save / samantha /
+  data x / 1.0 /
+
+end
+Normal end of execution of EXTRACT tests.

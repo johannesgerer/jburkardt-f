@@ -1,0 +1,341 @@
+<html>
+
+  <head>
+    <title>
+      STRIPPER - Interactive File Modification
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      STRIPPER <br> Interactive File Modification
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>STRIPPER</b>
+      is a FORTRAN90 program which
+      carries out some simple modifications to a file.
+    </p>
+
+    <p>
+      It even knows a little bit about
+      special kinds of files, such as "FORTRAN", "C" or "C++" source codes.
+      <b>STRIPPER</b> can delete control characters, capitalize all characters,
+      extract the fifth word from every line, write out only columns 10
+      through 50, copy only the lines with or without a particular string,
+      and a few other tricks.
+    </p>
+
+    <p>
+      If you want to use the program, run it and try the "H" (help) command
+      first.
+    </p>
+
+    <p>
+      Historical note and rant: this program was first developed in order to
+      deal with a flood of FORTRAN77 program files which had both
+      TAB characters (stupid, stupid) and sequence numbers (too distasteful
+      to mention any further).
+    </p>
+
+    <p>
+      Feeding such data to the compiler was
+      asking for trouble, particularly if, beforehand, you had made
+      any editing changes that caused the continuation character
+      (oh my, did I forget to mention <i>those</i> things?) to shift out
+      of its position, or the sequence numbers to poke their noses into
+      the text fields.
+    </p>
+
+    <p>
+      Some of these problems would be invisible to
+      the programmer, because many editors conspired to hide or
+      "process" TAB characters in an indefensibly deceptive way.
+      (This <b>ALL</b> goes back to "C" and "int's" and other abbreviations
+      and shortcuts that seem to serve the incompetent or lazy typist
+      while scattering deadly traps for the innocent).
+      ...Anyway, I got tired of replacing TAB's and stripping out
+      sequence numbers, so I wrote a program called <b>strip</b>
+      to do it for me.  It got renamed <b>stripper</b> because there
+      was some UNIX utility that got to the <b>strip</b> name first.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/cr2crlf/cr2crlf.html">
+      CR2CRLF</a>,
+      a C++ program which
+      replaces carriage returns by carriage returns + line feeds.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/cr2lf/cr2lf.html">
+      CR2LF</a>,
+      a C++ program which
+      reads a text file and replaces carriage returns by line feeds.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/crrm/crrm.html">
+      CRRM</a>,
+      a C++ program which
+      removes all carriage returns from a file.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/deblank/deblank.html">
+      DEBLANK</a>,
+      a C++ program which
+      makes a copy of a text file which contains no blank lines.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/decomment/decomment.html">
+      DECOMMENT</a>,
+      a C++ program which
+      makes a copy of a text file which contains no "comment" lines
+      (that begin with "#").
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/detroff/detroff.html">
+      DETROFF</a>,
+      a C++ program which
+      removes from a file every occurrence of the TROFF overprint
+      pair character+backspace, which can make a MAN page printable;
+    </p>
+
+    <p>
+      <a href = "../../f_src/filum/filum.html">
+      FILUM</a>,
+      a FORTRAN90 library which
+      performs various operations
+      on files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/reformat/reformat.html">
+      REFORMAT</a>,
+      a FORTRAN90 program which
+      reads a text file that contains only real values, and writes a copy
+      which has a fixed number of real values on each line.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/reword/reword.html">
+      REWORD</a>,
+      a C++ program which
+      reads a text file and writes a copy which has a fixed number
+      of "words" per line.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/uncontrol/uncontrol.html">
+      UNCONTROL</a>,
+      a C++ program which
+      makes a copy of a text file which contains no control characters.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/wrap/wrap.html">
+      WRAP</a>,
+      a C++ program which
+      makes a copy of a text file in which no line is longer
+      than a user-specified wrap length.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "stripper.f90">stripper.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "stripper.sh">stripper.sh</a>, commands to
+          compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for STRIPPER.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_IS_ALPHA</b> returns TRUE if C is an alphabetic character.
+        </li>
+        <li>
+          <b>CH_IS_CONTROL</b> reports whether a character is a control character or not.
+        </li>
+        <li>
+          <b>CH_LOW</b> lowercases a single character.
+        </li>
+        <li>
+          <b>CH_TO_ROT13</b> converts a character to its ROT13 equivalent.
+        </li>
+        <li>
+          <b>CH_TO_SYM</b> returns a printable symbol for any ASCII character.
+        </li>
+        <li>
+          <b>CHRA_TO_S</b> replaces control characters by printable symbols.
+        </li>
+        <li>
+          <b>CHRDT6</b> replaces TAB characters by 6 spaces.
+        </li>
+        <li>
+          <b>CHRS_TO_A</b> replaces all control symbols by control characters.
+        </li>
+        <li>
+          <b>DOML</b> handles the left margin of the line of text.
+        </li>
+        <li>
+          <b>GETINP</b> reads the next chunk of input from the input file.
+        </li>
+        <li>
+          <b>GETLIN</b> reads (or "unreads") lines from a file.
+        </li>
+        <li>
+          <b>HELLO</b> prints out the program's name and last date of revision.
+        </li>
+        <li>
+          <b>HELP</b> prints out the command options.
+        </li>
+        <li>
+          <b>INIT</b> sets or restores the default values of the user options.
+        </li>
+        <li>
+          <b>LALPHA</b> returns .TRUE. if STRING contains only alphabetic characters.
+        </li>
+        <li>
+          <b>LDIGIT</b> returns .TRUE. if STRING contains only digits or blanks.
+        </li>
+        <li>
+          <b>LINE_GET</b> gets the next input line.
+        </li>
+        <li>
+          <b>LINE_PUT</b> writes the line to the output file.
+        </li>
+        <li>
+          <b>NUMCON</b> counts the number of control characters in a line of text.
+        </li>
+        <li>
+          <b>RUBOUT</b> deletes the pair "character" + BACKSPACE from a string.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_C_LAST</b> returns the last nonblank character in a string.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>S_CHOP</b> "chops out" a portion of a string, and closes up the hole.
+        </li>
+        <li>
+          <b>S_CONTAINS_ANY_ALPHA</b> is TRUE if the string contains any alphabetic character.
+        </li>
+        <li>
+          <b>S_CONTROL_BLANK</b> replaces control characters with blanks.
+        </li>
+        <li>
+          <b>S_CONTROL_DELETE</b> removes all control characters from a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEXI</b> is a case-insensitive INDEX function.
+        </li>
+        <li>
+          <b>S_LOW</b> replaces all uppercase letters by lowercase ones.
+        </li>
+        <li>
+          <b>S_ONLY_ALPHAB</b> checks if a string is only alphabetic and blanks.
+        </li>
+        <li>
+          <b>S_ONLY_DIGITB</b> returns .TRUE. if the string contains only digits or blanks.
+        </li>
+        <li>
+          <b>S_TO_ROT13</b> "rotates" the alphabetical characters in a string by 13 positions.
+        </li>
+        <li>
+          <b>SHOW</b> displays the values of the user variables.
+        </li>
+        <li>
+          <b>STRIPIT</b> processes the file.
+        </li>
+        <li>
+          <b>SYM_TO_CH</b> returns the character represented by a symbol.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TOKEN_NDX</b> finds the N-th FORTRAN variable name in a string.
+        </li>
+        <li>
+          <b>TOKEN_NEXT</b> finds the next FORTRAN variable name in a string.
+        </li>
+        <li>
+          <b>WORD_CAP</b> capitalizes the first character of each word in a string.
+        </li>
+        <li>
+          <b>WORD_INDEX</b> finds the word of a given index in a string.
+        </li>
+        <li>
+          <b>WORD_NEXT</b> finds the next (blank separated) word in a string.
+        </li>
+        <li>
+          <b>WORD_NEXT2</b> returns the first word in a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 August 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,225 @@
+<html>
+
+  <head>
+    <title>
+      BLAS2 - Level 2 Basic Linear Algebra Subprograms
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BLAS2 <br> Level 2 Basic Linear Algebra Subprograms
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BLAS2</b>
+      is a FORTRAN90 library which
+      implements the Level 2
+      <b>BLAS</b>, or Basic Linear Algebra Subprograms.
+    </p>
+
+    <p>
+      The <b>BLAS</b> are a small core library of linear algebra utilities,
+      which can be highly optimized for various architectures.  Software
+      that relies on the <b>BLAS</b> is thus highly portable, and will typically
+      run very efficiently.
+    </p>
+
+    <p>
+      The Level 2 BLAS are designed to handle a variety of matrix-vector
+      operations.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>BLAS2</b> is available in
+      <a href = "../../f_src/blas2/blas2.html">a FORTRAN90 version</a> and
+      <a href = "../../f77_src/blas2/blas2.html">a FORTRAN77 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blas1/blas1.html">
+      BLAS1</a>,
+      a FORTRAN90 library which
+      handles vector-vector operations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/blas3/blas3.html">
+      BLAS3</a>,
+      a FORTRAN90 library which
+      handles matrix-matrix operations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lapack_examples/lapack_examples.html">
+      LAPACK_EXAMPLES</a>,
+      a FORTRAN90 program which
+      demonstrates the use of the LAPACK linear algebra library.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Edward Anderson, Zhaojun Bai, Christian Bischof, Susan Blackford,
+          James Demmel, Jack Dongarra, Jeremy Du Croz, Anne Greenbaum,
+          Sven Hammarling, Alan McKenney, Danny Sorensen,<br>
+          LAPACK User's Guide,<br>
+          Third Edition,<br>
+          SIAM, 1999,<br>
+          ISBN: 0898714478,<br>
+          LC: QA76.73.F25L36.
+        </li>
+        <li>
+          Thomas Coleman, Charles vanLoan,<br>
+          Handbook for Matrix Computations,<br>
+          SIAM, 1988,<br>
+          ISBN13: 978-0-898712-27-8,<br>
+          LC: QA188.C65.
+        </li>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1,<br>
+          LC: QA214.L56.
+        </li>
+        <li>
+          Charles Lawson, Richard Hanson, David Kincaid, Fred Krogh,<br>
+          Algorithm 539:
+          Basic Linear Algebra Subprograms for Fortran Usage,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 5, Number 3, September 1979, pages 308-323.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "blas2.f90">blas2.f90</a>, the vector code;
+        </li>
+        <li>
+          <a href = "blas2.sh">blas2.sh</a>, commands to compile
+          the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "blas2_prb.f90">blas2_prb.f90</a>, a calling program;
+        </li>
+        <li>
+          <a href = "blas2_prb.sh">blas2_prb.sh</a>, commands to
+          compile, link, load and run the calling program;
+        </li>
+        <li>
+          <a href = "blas2_prb_output.txt">blas2_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DGBMV</b> SY:=alpha*A*SX+beta*SY, A a band matrix.
+        </li>
+        <li>
+          <b>DGEMV</b> SY:=alpha*A*SX+beta*SY, A a rectangular matrix.
+        </li>
+        <li>
+          <b>DGER</b> A:=A+alpha*SX*TRANSPOSE(SY), rank 1 update, A a rectangular matrix.
+        </li>
+        <li>
+          <b>DMXPY</b> SY:=SY+A*SX
+        </li>
+        <li>
+          <b>DSBMV</b> SY:=alpha*A*SX+beta*SY, A a symmetric band matrix.
+        </li>
+        <li>
+          <b>DSPMV</b> SY:=alpha*A*SX+beta*SY, A a packed symmetric matrix.
+        </li>
+        <li>
+          <b>DSPR</b> A:=A+alpha*SX*TRANSPOSE(SX), A a packed symmetric matrix.
+        </li>
+        <li>
+          <b>DSPR2</b> A:=A+alpha*SX*TRANSPOSE(SY)+alpha*SY*TRANSPOSE(SX), A packed symmetric.
+        </li>
+        <li>
+          <b>DSYMV</b> SY:=alpha*A*SX+beta*SY, A a symmetric matrix.
+        </li>
+        <li>
+          <b>DSYR</b> A:=A+alpha*SX*TRANSPOSE(SX), A a symmetric matrix.
+        </li>
+        <li>
+          <b>DSYR2</b> A:=A+alpha*SX*TRANSPOSE(SY)+alpha*SY*TRANSPOSE(SX), A a symmetric matrix.
+        </li>
+        <li>
+          <b>DTBMV</b> SX:=A*SX, A a triangular band matrix.
+        </li>
+        <li>
+          <b>DTBSV</b> SX:=INVERSE(A)*SX, A a triangular band matrix.
+        </li>
+        <li>
+          <b>DTPMV</b> SX:=A*SX, A a packed symmetric matrix.
+        </li>
+        <li>
+          <b>DTPSV</b> SX:=INVERSE(A)*SX, A a packed symmetric matrix.
+        </li>
+        <li>
+          <b>DTRMV</b> SX:=A*SX, A a triangular matrix.
+        </li>
+        <li>
+          <b>DTRSV</b> SX:=INVERSE(A)*SX, A a triangular matrix.
+        </li>
+        <li>
+          <b>DXMPY</b> SY:=SY+SX*A
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 August 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

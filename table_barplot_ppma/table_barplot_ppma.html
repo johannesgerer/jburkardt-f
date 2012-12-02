@@ -1,0 +1,398 @@
+<html>
+
+  <head>
+    <title>
+      TABLE_BARPLOT_PPMA - PPMA Bar Graphs
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TABLE_BARPLOT_PPMA <br> PPMA Bar Graphs
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TABLE_BARPLOT_PPMA</b>
+      is a FORTRAN90 program  which
+      reads in a data file in the TABLE format
+      and creates an ASCII Portable Pixel Map (PPM) graphics file
+      containing a bar graph version of the data.
+    </p>
+
+    <p>
+      The program has been tailored for my specific needs, so it
+      has some quirks.
+      First, we assume that the data file contains N rows of data,
+      each with M items.
+     </p>
+
+    <p>
+      We are going to plot N tall skinny bars (one pixel wide!),
+      and the bar is divided into M colors, whose relative widths
+      reflect the relative sizes of the items.
+      </p>
+
+    <p>
+      The same scale is used for each bar, so some bars may not reach
+      as high as others.  A light gray background will show up, in that case.
+    </p>
+
+    <p>
+      Only the magnitude of the items is important.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>table_barplot_ppma</b> <i>file.txt</i>
+        </dt>
+        <dd>
+          reals <i>file.txt</i>, a TABLE file containing N rows of data,
+          with each row containing M values, and writes ASCII PPM graphics
+          to <i>file.ppma</i>.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/ppma/ppma.html">
+      PPMA</a>,
+      a graphics format which
+      is used by this program.
+    </p>
+
+    <p>
+      <a href = "../../data/table/table.html">
+      TABLE</a>,
+      a file format which
+      is used by this program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_border/table_border.html">
+      TABLE_BORDER</a>,
+      a FORTRAN90 program which
+      can be used to add a border
+      (of zero values) to a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns/table_columns.html">
+      TABLE_COLUMNS</a>,
+      a FORTRAN90 program which
+      can extract specific columns of data from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns_permute/table_columns_permute.html">
+      TABLE_COLUMNS_PERMUTE</a>,
+      a FORTRAN90 program which
+      permutes the columns of a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      computes the Delaunay triangulation of a set
+      of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_histogram/table_histogram.html">
+      TABLE_HISTOGRAM</a>,
+      a FORTRAN90 program which
+      can make a histogram of a set of points
+      stored in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_io/table_io.html">
+      TABLE_IO</a>,
+      a FORTRAN90 library which
+      supplies the routines
+      used to read the TABLE file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_latinize/table_latinize.html">
+      TABLE_LATINIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and creates a "latinized" version by adjusting the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_merge/table_merge.html">
+      TABLE_MERGE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points, and removes duplicates, and points that are close to each other.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_orthonormalize/table_orthonormalize.html">
+      TABLE_ORTHONORMALIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and orthonormalizes the columns.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_quality/table_quality.html">
+      TABLE_QUALITY</a>,
+      a FORTRAN90 program which reads a file of
+      points and computes the quality of dispersion.
+    </p>
+
+    <p>
+      <a href = "../../m_src/table_read/table_read.html">
+      TABLE_READ</a>,
+      a MATLAB program which
+      can read in a TABLE file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_record_match/table_record_match.html">
+      TABLE_RECORD_MATCH</a>,
+      a FORTRAN90 program which
+      finds close records in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_scale/table_scale.html">
+      TABLE_SCALE</a>,
+      a FORTRAN90 program that
+      multiplies the entries of a table file
+      by a scale vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_shift/table_shift.html">
+      TABLE_SHIFT</a>,
+      a FORTRAN90 program which
+      can be used to shift the entries of a table file
+      by a shift vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_stats/table_stats.html">
+      TABLE_STATS</a>,
+      a FORTRAN90 program which
+      reads a table file and compute certain statistics.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_tet_mesh/table_tet_mesh.html">
+      TABLE_TET_MESH</a>,
+      a FORTRAN90 program which
+      reads a table file of 3D data, and compute a
+      tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_top/table_top.html">
+      TABLE_TOP</a>,
+      a FORTRAN90 program which
+      reads a table file of M-dimensional data and
+      make a table of plots of all pairs of coordinates.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_unborder/table_unborder.html">
+      TABLE_UNBORDER</a>,
+      a FORTRAN90 program which
+      removes the border from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_uniform_noise/table_uniform_noise.html">
+      TABLE_UNIFORM_NOISE</a>,
+      a FORTRAN90 program which
+      adds a uniform noise term to the data
+      in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_voronoi/table_voronoi.html">
+      TABLE_VORONOI</a>,
+      a FORTRAN90 program which
+      computes information about
+      the Voronoi diagram of the points.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          <a href = "http://netpbm.sourceforge.net/">the NETPBM homepage</a>.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "table_barplot_ppma.f90">table_barplot_ppma.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "table_barplot_ppma.sh">table_barplot_ppma.sh</a>,
+          compiles and loads the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "data.txt">data.txt</a>,
+          a sample input TABLE file;
+        </li>
+        <li>
+          <a href = "data.ppma">data.ppma</a>,
+          the resulting PPMA file;
+        </li>
+        <li>
+          <a href = "data.png">data.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TABLE_BARPLOT_PPMA.
+        </li>
+        <li>
+          <b>ANGLE_TO_RGB</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>BAR_DATA_EXAMPLE</b> returns some sample bar data.
+        </li>
+        <li>
+          <b>BAR_DATA_TO_RGB</b> makes RGB arrays from bar graph data.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DATA_READ</b> reads generator coordinate data from a file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_EXT</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_LINE_COUNT</b> counts the number of lines in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_LOG_2</b> returns the integer part of the logarithm base 2 of |I|.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the positive remainder when I is divided by J.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integers.
+        </li>
+        <li>
+          <b>I4_TO_ANGLE</b> maps integers to points on a circle.
+        </li>
+        <li>
+          <b>I4_TO_RGB</b> maps integers to RGB colors.
+        </li>
+        <li>
+          <b>PPM_CHECK_DATA</b> checks pixel data.
+        </li>
+        <li>
+          <b>PPMA_WRITE</b> writes an ASCII portable pixel map file.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

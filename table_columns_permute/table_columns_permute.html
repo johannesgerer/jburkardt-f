@@ -1,0 +1,342 @@
+<html>
+
+  <head>
+    <title>
+      TABLE_COLUMNS_PERMUTE - Scale a Table Dataset
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TABLE_COLUMNS_PERMUTE <br> Scale a Table Dataset
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TABLE_COLUMNS_PERMUTE</b>
+      is a FORTRAN90 program which
+      reads a text file, each of whose lines contains <b>COL_NUM</b>
+      "words" or items.  It accepts a permutation from the user, and
+      writes out a copy of the file after permuting the columns.
+    </p>
+
+    <p>
+      For instance, suppose the file looks like this:
+      <pre>
+        # Comments look like this and are ignored.
+        #
+         cat  dog  horse
+           1    2      3
+         xxx   yy      z
+      </pre>
+      If we ran the program, and specified the permutation "2 3 1",
+      then the new file would be
+      <pre>
+        # Comments look like this and are ignored.
+        #
+           horse cat  dog
+               3   1    2
+               z xxx   yy
+      </pre>
+      Notice that the permutation information specified that column
+      1 should move to column 2.
+    </p>
+
+    <p>
+      The input data is treated abstractly.  It is assumed to be
+      separated by blanks, and each item, when permuted, will also
+      include the initial blanks.  For this reason, it's best if
+      the first entry of each data line is a blank, so that the
+      first column of data will be properly delimited after being
+      moved.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>table_columns_permute</b> <i>file.txt</i>
+        </dt>
+        <dd>
+          reads the user's data file <i>file.txt</i>,
+          prompts for a permutation vector from the user, and then writes
+          the scaled data to a file which will be called <i>file.permuted.txt</i>.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/file_transpose/file_transpose.html">
+      FILE_TRANSPOSE</a>,
+      a FORTRAN90 program which
+      makes a "transposed" copy of a file, in which the I-th "word" of the J-th line
+      becomes the J-th word of the I-th line.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_barplot_ppma/table_barplot_ppma.html">
+      TABLE_BARPLOT_PPMA</a>,
+      a FORTRAN90 program which
+      reads a table file and creates an ASCII PPM bargraph of the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_border/table_border.html">
+      TABLE_BORDER</a>,
+      a FORTRAN90 program which
+      can be used to add a border (of zero values) to a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns/table_columns.html">
+      TABLE_COLUMNS</a>,
+      a FORTRAN90 program which
+      can extract specific columns of data
+      from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      computes the Delaunay triangulation of a set
+      of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_histogram/table_histogram.html">
+      TABLE_HISTOGRAM</a>,
+      a FORTRAN90 program which
+      can make a histogram of a set of points
+      stored in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_io/table_io.html">
+      TABLE_IO</a>,
+      a FORTRAN90 library which
+      supplies the routines
+      used to read the TABLE file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_latinize/table_latinize.html">
+      TABLE_LATINIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and creates a "latinized" version by adjusting the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_merge/table_merge.html">
+      TABLE_MERGE</a>,
+      a FORTRAN90 program
+      which reads a file of
+      points, and removes duplicates, and points that are close to each other.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_orthonormalize/table_orthonormalize.html">
+      TABLE_ORTHONORMALIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and orthonormalizes the columns.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_quality/table_quality.html">
+      TABLE_QUALITY</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and computes the quality of dispersion.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_record_match/table_record_match.html">
+      TABLE_RECORD_MATCH</a>,
+      a FORTRAN90 program which
+      finds close records in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_scale/table_scale.html">
+      TABLE_SCALE</a>,
+      a FORTRAN90 program that
+      multiplies the entries of a table file
+      by a scale vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_shift/table_shift.html">
+      TABLE_SHIFT</a>,
+      a FORTRAN90 program which
+      can be used to shift the entries of a table file
+      by a shift vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_stats/table_stats.html">
+      TABLE_STATS</a>,
+      a FORTRAN90 program which
+      reads a table file and compute certain statistics.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_tet_mesh/table_tet_mesh.html">
+      TABLE_TET_MESH</a>,
+      a FORTRAN90 program which
+      reads a table file of 3D data, and compute a
+      tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_top/table_top.html">
+      TABLE_TOP</a>,
+      a FORTRAN90 program which
+      reads a table file of M-dimensional data and
+      make a table of plots of all pairs of coordinates.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_unborder/table_unborder.html">
+      TABLE_UNBORDER</a>,
+      a FORTRAN90 program which
+      removes the border from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_uniform_noise/table_uniform_noise.html">
+      TABLE_UNIFORM_NOISE</a>,
+      a FORTRAN90 program which
+      adds a uniform noise term to the data
+      in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_voronoi/table_voronoi.html">
+      TABLE_VORONOI</a>,
+      a FORTRAN90 program which
+      computes information about
+      the Voronoi diagram of the points.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "table_columns_permute.f90">table_columns_permute.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "table_columns_permute.sh">table_columns_permute.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>TABLE7X10</b> is a file of 7 lines of text, each containing
+      10 columns of data.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "table7x10.txt">table7x10.txt</a>, the original data.
+        </li>
+        <li>
+          <a href = "table7x10.permuted.txt">table7x10.permuted.txt</a>,
+          the table of data, after being permuted by the permutation
+          (10,9,8,7,6,5,4,3,2,1).
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TABLE_COLUMNS_PERMUTE.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>PERM_INVERSE3</b> produces the inverse of a given permutation.
+        </li>
+        <li>
+          <b>S_COPY</b> copies one string into another.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>S_WORD_PERMUTE</b> permutes the words in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 18 January 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

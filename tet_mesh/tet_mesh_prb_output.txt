@@ -1,0 +1,291 @@
+21 December 2010   3:21:03.894 PM
+ 
+TET_MESH_PRB:
+  FORTRAN90 version
+ 
+  Tests for the TET_MESH library.
+ 
+TEST001
+  R8MAT_SOLVE solves linear systems.
+ 
+  The linear system:
+ 
+  Col         1             2             3             4             5       
+  Row
+ 
+    1       1.            2.            3.           14.            7.      
+    2       4.            5.            6.           32.           16.      
+    3       7.            8.            0.           23.            7.      
+ 
+  The computed solutions
+ 
+  Col         1             2       
+  Row
+ 
+    1    1.00000          1.      
+    2    2.00000          0.      
+    3       3.            2.      
+ 
+TEST002
+  For an order 4 tetrahedron,
+  TETRAHEDRON_ORDER4_PHYSICAL_TO_REFERENCE 
+    maps a physical point to a reference point.
+  TETRAHEDRON_ORDER4_REFERENCE_TO_PHYSICAL 
+    maps a reference point to a physical point.
+ 
+     ( R, S, T )          ==>  ( X, Y, Z )           ==> ( R2, S2, T2 )
+ 
+    0.0110  0.1004  0.4885    5.5216  0.6893  0.9770    0.0110  0.1004  0.4885
+    0.0194  0.4966  0.0352    5.0933  1.0283  0.0703    0.0194  0.4966  0.0352
+    0.0186  0.2017  0.0092    5.0652  0.4127  0.0185    0.0186  0.2017  0.0092
+    0.2902  0.1175  0.0959    5.9666  0.3309  0.1919    0.2902  0.1175  0.0959
+    0.0772  0.1299  0.5109    5.7425  0.7707  1.0218    0.0772  0.1299  0.5109
+    0.0023  0.0753  0.0407    5.0475  0.1914  0.0814    0.0023  0.0753  0.0407
+    0.3457  0.0075  0.0457    6.0828  0.0607  0.0913    0.3457  0.0075  0.0457
+    0.0046  0.3287  0.0025    5.0163  0.6598  0.0050    0.0046  0.3287  0.0025
+    0.0032  0.5406  0.0693    5.0791  1.1505  0.1387    0.0032  0.5406  0.0693
+    0.0175  0.4692  0.1710    5.2236  1.1095  0.3421    0.0175  0.4692  0.1710
+ 
+TEST003
+  For an order 10 tet mesh,
+  TETRAHEDRON_ORDER10_TO_ORDER4 
+    makes a linear (order 4) tet mesh by using
+    the existing nodes, and replacing each
+    quadratic tetrahedron by 8 linear tetrahedrons.
+ 
+  First 5 quadratic tetrahedrons:
+ 
+  Row        1       2       3       4       5       6       7       8       9      10
+  Col
+ 
+    1        4       3       5       1      16      19      17      11      10      12
+    2        4       2       5       1      13      19      14      11       9      12
+    3        4       7       3       5      21      16      18      19      24      17
+    4        4       7       8       5      21      22      27      19      24      25
+    5        4       6       2       5      20      13      15      19      23      14
+ 
+  Quadratic mesh size is              6
+  Linearized mesh size will be       48
+ 
+  First 5 linear tetrahedrons:
+ 
+  Row        1       2       3       4
+  Col
+ 
+    1        4      16      19      17
+    2        3      16      11      10
+    3        5      19      11      10
+    4        1      17      10      12
+    5       16      19      17      10
+ 
+TEST004
+  TET_MESH_NODE_ORDER determines the order of 
+  each node in a tet mesh.
+ 
+  The order of a node is the number of tetrahedrons
+  that use the node as part of their definition.
+ 
+  This mesh has tetrahedron order       10
+  The number of tetrahedrons is          6
+ 
+  The tet mesh:
+ 
+  Row        1       2       3       4       5       6       7       8       9      10
+  Col
+ 
+    1        4       3       5       1      16      19      17      11      10      12
+    2        4       2       5       1      13      19      14      11       9      12
+    3        4       7       3       5      21      16      18      19      24      17
+    4        4       7       8       5      21      22      27      19      24      25
+    5        4       6       2       5      20      13      15      19      23      14
+    6        4       6       8       5      20      22      26      19      23      25
+ 
+  Node orders:
+ 
+         1             2
+         2             2
+         3             2
+         4             6
+         5             6
+         6             2
+         7             2
+         8             2
+         9             1
+        10             1
+        11             2
+        12             2
+        13             2
+        14             2
+        15             1
+        16             2
+        17             2
+        18             1
+        19             6
+        20             2
+        21             2
+        22             2
+        23             2
+        24             2
+        25             2
+        26             1
+        27             1
+ 
+  Check that the following are equal:
+ 
+  Number of tetrahedrons * order =       60
+  Sum of node orders             =       60
+ 
+TEST005
+  TETRAHEDRON_BARYCENTRIC computes the barycentric
+  coordinates of a point.
+ 
+  Random tetrahedron:
+ 
+  Row          1             2             3      
+  Col
+ 
+    1   0.218418      0.956318      0.829509    
+    2   0.561695      0.415307      0.661187E-01
+    3   0.257578      0.109957      0.438290E-01
+    4   0.633966      0.617272E-01  0.449539    
+ 
+  C1 =     0.205261        0.386001        0.407797        0.940293E-03
+  C2 =     0.205261        0.386001        0.407797        0.940293E-03
+ 
+  C1 =     0.661672        0.258587        0.697018E-01    0.100389E-01
+  C2 =     0.661672        0.258587        0.697018E-01    0.100389E-01
+ 
+  C1 =     0.469308        0.459339        0.672493E-01    0.410386E-02
+  C2 =     0.469308        0.459339        0.672493E-01    0.410386E-02
+ 
+  C1 =     0.158907        0.557045        0.693886E-01    0.214659    
+  C2 =     0.158907        0.557045        0.693886E-01    0.214659    
+ 
+  C1 =     0.351099        0.113977        0.295282        0.239643    
+  C2 =     0.351099        0.113977        0.295282        0.239643    
+ 
+  Random tetrahedron:
+ 
+  Row          1             2             3      
+  Col
+ 
+    1   0.861216      0.453794      0.911977    
+    2   0.597917      0.188955      0.761492    
+    3   0.396988      0.185314      0.574366    
+    4   0.367027      0.617205      0.361529    
+ 
+  C1 =     0.158379        0.531428        0.875510E-01    0.222643    
+  C2 =     0.158379        0.531428        0.875510E-01    0.222643    
+ 
+  C1 =     0.340586        0.340444        0.255384E-01    0.293431    
+  C2 =     0.340586        0.340444        0.255384E-01    0.293431    
+ 
+  C1 =     0.459748E-01    0.405151        0.388127        0.160747    
+  C2 =     0.459748E-01    0.405151        0.388127        0.160747    
+ 
+  C1 =     0.317619        0.269648        0.269010        0.143724    
+  C2 =     0.317619        0.269648        0.269010        0.143724    
+ 
+  C1 =     0.464782        0.278294        0.882284E-02    0.248100    
+  C2 =     0.464782        0.278294        0.882284E-02    0.248100    
+ 
+  Random tetrahedron:
+ 
+  Row          1             2             3      
+  Col
+ 
+    1   0.419093E-01  0.368851      0.271724    
+    2   0.858573      0.290366E-01  0.174423E-01
+    3   0.152384      0.114319      0.353907    
+    4   0.119308      0.206653      0.212924    
+ 
+  C1 =     0.275476        0.363821        0.263855        0.968481E-01
+  C2 =     0.275476        0.363821        0.263855        0.968481E-01
+ 
+  C1 =     0.274841        0.258824        0.160319        0.306016    
+  C2 =     0.274841        0.258824        0.160319        0.306016    
+ 
+  C1 =     0.393103        0.378144        0.216193        0.125602E-01
+  C2 =     0.393103        0.378144        0.216193        0.125602E-01
+ 
+  C1 =     0.205245        0.124714        0.385108        0.284932    
+  C2 =     0.205245        0.124714        0.385108        0.284932    
+ 
+  C1 =     0.174184        0.663094E-01    0.352054        0.407452    
+  C2 =     0.174184        0.663094E-01    0.352054        0.407452    
+ 
+TEST006
+  TET_MESH_TET_NEIGHBORS computes the 4 neighboring
+  tetrahedrons of each tetrahedron in a tet mesh.
+  containing a point.
+ 
+  This mesh has tetrahedron order        4
+  The number of tetrahedrons is        144
+ 
+  First 10 Tets:
+ 
+  Row        1       2       3       4
+  Col
+ 
+    1        1       2       4      10
+    2        2       4       5      10
+    3        2       5      10      11
+    4        2       3       5      11
+    5        4       5      10      13
+    6        3       5       6      11
+    7        5      10      11      13
+    8        4       5       7      13
+    9        5       6       8      14
+   10        5       7       8      13
+ 
+  First 10 Tet Neighbors:
+ 
+  Row        1       2       3       4
+  Col
+ 
+    1        2      -1      -1      -1
+    2        5       3       1      -1
+    3        7      -1       4       2
+    4        6       3      -1      -1
+    5        7      -1       8       2
+    6       15      14       4      -1
+    7       21      24       5       3
+    8       10      -1       5      -1
+    9       11      20      15      -1
+   10       19      20       8      -1
+ 
+TEST007
+  TET_MESH_SEARCH_NAIVE uses a naive algorithm
+  to search a tetrahedral mesh for the tetrahedron
+  containing a point.
+  TET_MESH_SEARCH_DELAUNAY uses the Delaunay search algorithm
+  to search a Delaunay tetrahedral mesh for the tetrahedron
+  containing a point.
+ 
+  This mesh has tetrahedron order        4
+  The number of tetrahedrons is        144
+ 
+  Point was chosen from tetrahedron          32
+  Naive search ended in tetrahedron          32, number of steps =       32
+  Delaunay search ended in tetrahedron       32, number of steps =        5
+ 
+  Point was chosen from tetrahedron          60
+  Naive search ended in tetrahedron          60, number of steps =       60
+  Delaunay search ended in tetrahedron       60, number of steps =        4
+ 
+  Point was chosen from tetrahedron           7
+  Naive search ended in tetrahedron           7, number of steps =        7
+  Delaunay search ended in tetrahedron        7, number of steps =       10
+ 
+  Point was chosen from tetrahedron          58
+  Naive search ended in tetrahedron          58, number of steps =       58
+  Delaunay search ended in tetrahedron       58, number of steps =        7
+ 
+  Point was chosen from tetrahedron         130
+  Naive search ended in tetrahedron         130, number of steps =      130
+  Delaunay search ended in tetrahedron      130, number of steps =       12
+ 
+TET_MESH_PRB:
+  Normal end of execution.
+ 
+21 December 2010   3:21:03.911 PM

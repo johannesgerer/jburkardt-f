@@ -1,0 +1,469 @@
+<html>
+
+  <head>
+    <title>
+      REGRESSION - Linear Regression
+    </title>
+  <head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      REGRESSION <br> Linear Regression
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>REGRESSION</b>
+      is a FORTRAN90 library which
+      handles problems in linear regression.
+    </p>
+
+    <p>
+      These routines were collected and described by Helmut Spaeth.  The
+      most common task for such routines is to solve an overdetermined
+      system of linear equations.
+    </p>
+
+    <p>
+      In particular, many routines will produce a least-squares solution.
+      That is, given an M by N matrix A, and an M vector B, the routines
+      will seek an N vector X so which minimizes the L2 norm (square root
+      of the sum of the squares of the components) of the residual
+      <pre><b>
+        R = A * X - B
+      </b></pre>
+    </p>
+
+    <p>
+      The code is in a very provisional state.  Many routines have not been
+      carefully proofread or debugged or tested yet.
+    </p>
+
+    <h3 align = "center">
+      References:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          I Barrodale, C Phillips,<br>
+          Algorithm 495: Solution of an Overdetermined System of Linear
+          Equations in the Chebyshev Norm,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 1, pages 264-270, 1975.
+        </li>
+        <li>
+          I Barrodale, F Roberts,<br>
+          Algorithm 552:
+          Solution of the Constrained L1 Linear Approximation Problem,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 6, pages 231-235, 1980.
+        </li>
+        <li>
+          Golub, Van Loan,<br>
+          Matrix Computations,<br>
+          The Johns Hopkins University Press, 1983.
+        </li>
+        <li>
+          Richard Gunst, Robert Mason,<br>
+          Regression Analysis and Its Applications: a data-oriented approach,<br>
+          Dekker, 1980, <br>
+          ISBN: 0824769937,<br>
+          LC: QA278.2.G85.
+        </li>
+        <li>
+          Charles Lawson and Richard Hanson,<br>
+          Solving Least Squares Problems,<br>
+          Prentice-Hall, 1974,<br>
+          Revised edition, SIAM, 1995.
+        </li>
+        <li>
+          Reinsch, Golub,<br>
+          Singular Value Decomposition and Least Squares Solutions,<br>
+          Numerische Mathematik,<br>
+          Volume 14, 1970.
+        </li>
+        <li>
+          Helmuth Spaeth,<br>
+          Mathematical Algorithms for Linear Regression,<br>
+          Academic Press, 1991,<br>
+          ISBN 0-12-656460-4.
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      A set of data files are also available in the
+      <a href = "../../datasets/regression/regression.html">
+      REGRESSION data directory</a>.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "regression.f90">regression.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "regression.sh">regression.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "regression_prb.f90">regression_prb.f90</a>, sample
+          calling program;
+        </li>
+        <li>
+          <a href = "regression_prb.sh">regression_prb.sh</a>,
+          commands to compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "regression_prb_output.txt">regression_prb_output.txt</a>, the results
+          file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>A328_LI</b> minimizes the L-infinity norm of A*x-b.
+        </li>
+        <li>
+          <b>A478_L1</b> minimizes the L1 norm of A*x-b using the modified simplex method.
+        </li>
+        <li>
+          <b>A478_L1_COL</b> is used by A478_L1.
+        </li>
+        <li>
+          <b>A495_LI</b> minimizes the L-Infinity norm of A*x-b using a simplex method.
+        </li>
+        <li>
+          <b>ABD_LI</b> minimizes the L-infinity norm of A*x-b using a simplex method.
+        </li>
+        <li>
+          <b>AFK_L1</b> minimizes the L1 norm of A*x-b.
+        </li>
+        <li>
+          <b>AFK_L1_CALBET</b> is used by AFK_L1 to compute the solution.
+        </li>
+        <li>
+          <b>AFK_L1_UPDATE</b> updates the LU decomposition of a matrix.
+        </li>
+        <li>
+          <b>AVLLSQ</b> carries out average linear regression.
+        </li>
+        <li>
+          <b>BLOD_L1</b> minimizes the L1 norm of A*x-b.
+        </li>
+        <li>
+          <b>BLOD_L1_CRIT</b> returns three sums of entries of U.
+        </li>
+        <li>
+          <b>BLOD_L1_GET1</b> is used by BLOD_L1.
+        </li>
+        <li>
+          <b>BLOD_L1_GET2</b> is used by BLOD_L1.
+        </li>
+        <li>
+          <b>BLOD_L1_MED3</b> is used by BLOD_L1.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>C01M</b> generates a new combination from an old one efficiently.
+        </li>
+        <li>
+          <b>CON_L1</b> minimizes the L1 norm of A * X - B subject to linear constraints.
+        </li>
+        <li>
+          <b>CON_L2</b> minimizes the L2 norm of A * X - B subject to linear constraints.
+        </li>
+        <li>
+          <b>CON_LI</b> minimizes the L-infinity norm of A * X - B subject to linear constraints.
+        </li>
+        <li>
+          <b>CWLR_L1</b> minimizes the L1 norm of A*x-b using clustering techniques.
+        </li>
+        <li>
+          <b>CWLR_L2</b> minimizes the L2 norm of A*x-b using clustering techniques.
+        </li>
+        <li>
+          <b>CWLR_LI</b> minimizes the L-infinity norm of A*X-B.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>EXAMPLE_MULTI_SIZE</b> returns values for a multiple system file.
+        </li>
+        <li>
+          <b>EXAMPLE_PRINT</b> prints data from an example file.
+        </li>
+        <li>
+          <b>EXAMPLE_READ</b> reads data from an example file.
+        </li>
+        <li>
+          <b>EXAMPLE_SIZE</b> returns the values of M and N in an example file.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>G1</b> computes an orthogonal rotation matrix.
+        </li>
+        <li>
+          <b>GEN</b> generates a random matrix A and right hand side B.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GIVR_L2</b> minimizes the L2 norm of A*x-b using fast Givens rotations.
+        </li>
+        <li>
+          <b>HFTI</b> minimizes the L2 norm of A*x-b using Householder transformations.
+        </li>
+        <li>
+          <b>HFTI_L2</b> minimizes the L2 norm of A*x-b using Householder transformations.
+        </li>
+        <li>
+          <b>H12</b> constructs or applies a Householder transformation.
+        </li>
+        <li>
+          <b>I_LOG_10</b> returns the integer part of the logarithm base 10 of ABS(X).
+        </li>
+        <li>
+          <b>I_RANDOM</b> returns a random integer in a given range.
+        </li>
+        <li>
+          <b>I_SWAP</b> switches two integer values.
+        </li>
+        <li>
+          <b>I_TO_S_ZERO</b> converts an integer to a string, with zero padding.
+        </li>
+        <li>
+          <b>ICMGS_L2</b> uses modifed Gram Schmidt on a problem with nonzero intercept.
+        </li>
+        <li>
+          <b>INEXCL</b> computes auxilliary arrays F, T and R used to control exchanges.
+        </li>
+        <li>
+          <b>IVEC_IDENTITY</b> sets an integer vector to the identity vector A(I)=I.
+        </li>
+        <li>
+          <b>IVEC_PRINT</b> prints an integer vector.
+        </li>
+        <li>
+          <b>LDP_L2</b> implements least distance programming algorithm.
+        </li>
+        <li>
+          <b>MGS_L2</b> minimizes the L2 norm of A*x-b using the modified Gram-Schmidt method.
+        </li>
+        <li>
+          <b>NN_L1</b> minimizes the L1 norm of A * X - B with linear constraints and X >=0.
+        </li>
+        <li>
+          <b>NN_L2</b> minimizes the L2 norm of A * X - B with X >=0.
+        </li>
+        <li>
+          <b>NN_LI</b> minimizes the L-infinity norm of A * X - B with linear constraints and X >=0.
+        </li>
+        <li>
+          <b>NORMAL_L2</b> minimizes the L2 norm of A*x-b using the normal equations.
+        </li>
+        <li>
+          <b>NPART_ENUM</b> enumerates the number of partitions of N with NPART parts.
+        </li>
+        <li>
+          <b>NPART_RSF_LEX_RANDOM</b> returns a random RSF NPART partition.
+        </li>
+        <li>
+          <b>NPART_RSF_LEX_UNRANK</b> unranks an RSF NPART partition in the lex ordering.
+        </li>
+        <li>
+          <b>NPART_TABLE</b> tabulates the number of partitions of N having NPART parts.
+        </li>
+        <li>
+          <b>ORTH_L1</b> carries out orthogonal regression in the L1 norm.
+        </li>
+        <li>
+          <b>ORTH_L2</b> carries out orthogonal regression in the L2 norm.
+        </li>
+        <li>
+          <b>ORTH_LI</b> carries out orthogonal regression in the L-infinity norm.
+        </li>
+        <li>
+          <b>ORTH_LM</b> is a least squares solver for linear manifolds.
+        </li>
+        <li>
+          <b>ORTH_LP</b> carries out orthogonal regression in the LP norm.
+        </li>
+        <li>
+          <b>PERM_RANDOM2</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>PYTHAG</b> computes SQRT ( A**2 + B**2 ) carefully.
+        </li>
+        <li>
+          <b>QRBD</b> uses the QR algorithm for the singular values of a bidiagonal matrix.
+        </li>
+        <li>
+          <b>R_DIFF</b> computes the difference ( X - Y ) of two real numbers.
+        </li>
+        <li>
+          <b>R_NEXT</b> "reads" real numbers from a string, one at a time.
+        </li>
+        <li>
+          <b>R_RANDOM</b> returns a random real in a given range.
+        </li>
+        <li>
+          <b>R_SWAP</b> switches two real values.
+        </li>
+        <li>
+          <b>RANDOM_PARTITION</b> generates a random partition.
+        </li>
+        <li>
+          <b>RANDOM_PARTITION2</b> generates a random partition with occupancy constraints.
+        </li>
+        <li>
+          <b>REGR_LP</b> minimizes the LP norm of A*x-b for P > 1.
+        </li>
+        <li>
+          <b>RESIDUAL</b> calculates the residual vector A*X-B and related information.
+        </li>
+        <li>
+          <b>RMAT_CHOLESKY_FACTOR</b> computes the Cholesky factor of a symmetric matrix.
+        </li>
+        <li>
+          <b>RMAT_CHOLESKY_SOLVE</b> solves a Cholesky factored linear system A * x = b.
+        </li>
+        <li>
+          <b>RMAT_DIAG_ADD_SCALAR</b> adds a scalar to the diagonal of a matrix.
+        </li>
+        <li>
+          <b>RMAT_INDICATOR</b> sets the indicator matrix.
+        </li>
+        <li>
+          <b>RMAT_L_SOLVE</b> solves a lower triangular linear system.
+        </li>
+        <li>
+          <b>RMAT_LT_SOLVE</b> solves a transposed lower triangular linear system.
+        </li>
+        <li>
+          <b>RMAT_PRINT</b> prints a real matrix.
+        </li>
+        <li>
+          <b>ROBUST</b> carries out robust regression, with eight choices for the method.
+        </li>
+        <li>
+          <b>RR_L1</b> carries out ridge regression in the L1 norm.
+        </li>
+        <li>
+          <b>RR_L2</b> carries out ridge regression in the L2 norm.
+        </li>
+        <li>
+          <b>RR_LI</b> carries out ridge regression in the L-infinity norm.
+        </li>
+        <li>
+          <b>RVEC_NORM_LI</b> returns the L-infinity norm of a vector.
+        </li>
+        <li>
+          <b>RVEC_NORM_L1</b> returns the L1 norm of a vector.
+        </li>
+        <li>
+          <b>RVEC_NORM_LP</b> returns the LP norm of a vector.
+        </li>
+        <li>
+          <b>RVEC_NORM_L2</b> returns the L2 norm of a vector.
+        </li>
+        <li>
+          <b>RVEC_BIN</b> bins a real vector, returning the population of each bin.
+        </li>
+        <li>
+          <b>RVEC_INDICATOR</b> sets a real vector to the indicator vector.
+        </li>
+        <li>
+          <b>RVEC_PRINT</b> prints a real vector.
+        </li>
+        <li>
+          <b>S_TO_I</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_TO_R</b> reads a real number from a string.
+        </li>
+        <li>
+          <b>SCR</b> selects M by NA submatrices from an M by N matrix.
+        </li>
+        <li>
+          <b>SCRF_L1</b> minimizes the L1 norm of A*X-B using NA variables out of N.
+        </li>
+        <li>
+          <b>SVD</b> computes the singular value decomposition for a real matrix.
+        </li>
+        <li>
+          <b>SVDR_L2</b> minimizes the L2 norm of A*x-b using the SVD.
+        </li>
+        <li>
+          <b>SVDRS:</b> singular value decomposition with a right side vector.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UNIFORM_01_SAMPLE</b> is a portable random number generator.
+        </li>
+        <li>
+          <b>URAND</b> returns a uniformly distributed pseudo random number.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 08 November 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

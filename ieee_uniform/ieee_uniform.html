@@ -1,0 +1,308 @@
+<html>
+
+  <head>
+    <title>
+      IEEE_UNIFORM - Uniform Sampling of IEEE Values
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      IEEE_UNIFORM <br> Uniform Sampling of IEEE Values
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>IEEE_UNIFORM</b>
+      is a FORTRAN90 program which
+      samples uniformly from the IEEE numbers.
+    </p>
+
+    <p>
+      Unlike usual random number generators, which attempt to sample
+      uniformly over a range of real numbers, this library treats the
+      set of IEEE numbers as a discrete set, and randomly samples them.
+      The results are very different from a uniform random number sample.
+    </p>
+
+    <p>
+      There are as many IEEE values in the interval (A,B) and the interval
+      (1/B,1/A).  This seems fine, and we need this to be so in order to
+      have multiplicative inverses.  But it also means that there are as many
+      numbers between 1/1,000,000 and 1 as there are between 1 and 1,000,000.
+      Since the IEEE values are naturally weighted by 2, a better way to think
+      of this is that if there are N values between 1 and 2, then there are
+      also N values between 2 and 4, 4 and 8, 1024 and 2048, one million and
+      2 million, 2 millionths and 1 millionth, and so on.  The density function
+      for the IEEE values looks like a power function 2^(-x).
+    </p>
+
+    <p>
+      Let's ignore the "bizarre" IEEE numbers, which include <b>Inf</b>,
+      <b>NaN</b> and the denormalized numbers (very very small values).
+      For 32 bit real numbers, this
+      leaves us with numbers that can be described by a 1 bit sign,
+      an 8 bit exponent biased by 127, and a 23 bit mantissa with an
+      implicit leading 1 and an implicit divisor of 2^23.
+    </p>
+
+    <p>
+      Except when a "bizarre" creature would be created, every random
+      sequence of 32 0's and 1's creates a legal IEEE value.  So to sample
+      from the IEEE set of values, we can simply create random strings of
+      0's and 1's.
+    </p>
+
+    <p>
+      The current routines are very preliminary, and even so aren't working
+      all that well.  However, the idea makes sense, and once some details
+      are worked out, it should be easy to extend this approach to double precision
+      values, or to allow the user to specify a "model" IEEE implementation in
+      which the exponent and mantissa range have been modified.
+    </p>
+
+    <p>
+      I am not aware of any serious purpose to which this library could be put,
+      but it does, I think, help in trying to understand that strange structure
+      of the discrete set of numbers that underly almost all of our computations,
+      and that do a reasonably good job of mimicking a continuous range of
+      real values.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa183/asa183.html">
+      ASA183</a>,
+      a FORTRAN90 library which
+      implements the Wichman-Hill pseudorandom number generator.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cvt/cvt.html">
+      CVT</a>,
+      a FORTRAN90 library which
+      computes elements of a Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/faure/faure.html">
+      FAURE</a>,
+      a FORTRAN90 library which
+      computes elements of a Faure quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grid/grid.html">
+      GRID</a>,
+      a FORTRAN90 library which
+      computes elements of a grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/halton/halton.html">
+      HALTON</a>,
+      a FORTRAN90 library which
+      computes elements of a Halton quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hammersley/hammersley.html">
+      HAMMERSLEY</a>,
+      a FORTRAN90 library which
+      computes elements of a Hammersley quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid/hex_grid.html">
+      HEX_GRID</a>,
+      a FORTRAN90 library which
+      computes elements of a hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid_angle/hex_grid_angle.html">
+      HEX_GRID_ANGLE</a>,
+      a FORTRAN90 library which
+      computes elements of an angled hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ihs/ihs.html">
+      IHS</a>,
+      a FORTRAN90 library which
+      computes elements of an improved distributed Latin hypercube dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_center/latin_center.html">
+      LATIN_CENTER</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube dataset, choosing center points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_edge/latin_edge.html">
+      LATIN_EDGE</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube dataset, choosing edge points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_random/latin_random.html">
+      LATIN_RANDOM</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube dataset, choosing points at random.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lcvt/lcvt.html">
+      LCVT</a>,
+      a FORTRAN90 library which
+      computes a latinized Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/niederreiter2/niederreiter2.html">
+      NIEDERREITER2</a>,
+      a FORTRAN90 library which
+      computes elements of a Niederreiter quasirandom sequence with base 2.
+    </p>
+
+    <p>
+      <a href = "../../f_src/normal/normal.html">
+      NORMAL</a>,
+      a FORTRAN90 library which
+      computes elements of a sequence of pseudorandom normally distributed values.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sobol/sobol.html">
+      SOBOL</a>,
+      a FORTRAN90 library which
+      computes elements of a Sobol quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      computes elements of a uniform pseudorandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/van_der_corput/van_der_corput.html">
+      VAN_DER_CORPUT</a>,
+      a FORTRAN90 library which
+      computes elements of a van der Corput quasirandom sequence.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          IEEE Standards Committee 754,<br>
+          IEEE Standard for Binary Floating Point Arithmetic,<br>
+          ANSI/IEEE Standard 754-1985,<br>
+          SIGPLAN Notices,<br>
+          Volume 22, Number 2, 1987, pages 9-25.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ieee_uniform.f90">ieee_uniform.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "ieee_uniform.sh">ieee_uniform.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ieee_uniform_prb.f90">ieee_uniform_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "ieee_uniform_prb.sh">ieee_uniform_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "ieee_uniform_prb_output.txt">ieee_uniform_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>I4_LOG_2</b> returns the integer part of the logarithm base 2 of an I4.
+        </li>
+        <li>
+          <b>I4_SEED_ADVANCE</b> "advances" the seed.
+        </li>
+        <li>
+          <b>R4_IEEE_UNIFORM</b> computes an "IEEE uniform" pseudorandom real number.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 December 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

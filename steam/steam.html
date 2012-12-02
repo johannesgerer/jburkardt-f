@@ -1,0 +1,226 @@
+<html>
+
+  <head>
+    <title>
+      STEAM - NBS Steam Tables
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      STEAM <br> NBS Steam Tables
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>STEAM</b>
+      is a FORTRAN90 library which
+      computes various physical properties of water, related
+      to temperature, pressure and density.
+    </p>
+
+    <p>
+      Most of these routines use a standard set of SI units.
+      The original routines are available as <i>steam_nbs</i>.  There is
+      also a modified set of routines, available as <i>steam</i>, which
+      have been extensively rewritten, with some additional routines
+      for computing quantities such as the viscosity, thermal
+      conductivity, and the Prandtl number.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/steam_interact/steam_interact.html">
+      STEAM_INTERACT</a>,
+      a FORTRAN90 program which
+      queries the NBS steam table package;
+    </p>
+
+    <p>
+      <a href = "../../f77_src/steam_nbs/steam_nbs.html">
+      STEAM_NBS</a>,
+      a FORTRAN77 library which
+      is based on the NBS steam table package;
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_values/test_values.html">
+      TEST_VALUES</a>,
+      a FORTRAN90 library which
+      stores selected test values of
+      various functions, including certain functions approximated by the
+      <b>STEAM</b> library.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Lester Haar, John Gallagher and George Kell,<br>
+          NBS/NRC Steam Tables:
+          Thermodynamic and Transport Properties and Computer Programs
+          for Vapor and Liquid States of Water in SI Units,<br>
+          Hemisphere Publishing Corporation, Washington, 1984,
+          TJ270.H3
+        </li>
+        <li>
+          C A Meyer, R B McClintock, G J Silvestri, R C Spencer,<br>
+          ASME Steam Tables: Thermodynamic and Transport Properties
+          of Steam,<br>
+          American Society of Mechanical Engineers, 1967.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "steam.f90">steam.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "steam.sh">steam.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "steam_prb.f90">steam_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "steam_prb.sh">steam_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "steam_prb_output.txt">steam_prb_output.txt</a>, the sample output.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BASE</b> calculates quantities associated with the base Helmholtz function.
+        </li>
+        <li>
+          <b>BB</b> calculates the B's of equations 3 and 4.
+        </li>
+        <li>
+          <b>CORR</b> evaluates an adjustment to the Gibbs function.
+        </li>
+        <li>
+          <b>CP_VALUES</b> returns some values of the specific heat at constant pressure.
+        </li>
+        <li>
+          <b>DENSE</b> computes the density for a given pressure and temperature.
+        </li>
+        <li>
+          <b>DIELECTRIC</b> returns the static dielectric constant.
+        </li>
+        <li>
+          <b>DIELECTRIC_VALUES</b> returns some values of the static dielectric constant.
+        </li>
+        <li>
+          <b>DPOLY_VAL_HORNER</b> evaluates a polynomial using Horner's method.
+        </li>
+        <li>
+          <b>GASCON</b> returns the value of the specific gas constant.
+        </li>
+        <li>
+          <b>IDEAL</b> computes ideal gas thermodynamic properties of water.
+        </li>
+        <li>
+          <b>PRANDTL</b> computes the Prandtl number.
+        </li>
+        <li>
+          <b>PRANDTL_VALUES</b> returns some values of the Prandtl number for testing.
+        </li>
+        <li>
+          <b>PSAT</b> calculates the vapor pressure, and the liquid and vapor densities.
+        </li>
+        <li>
+          <b>PSAT_EST</b> makes a rough estimate of the vapor pressure.
+        </li>
+        <li>
+          <b>RESID</b> calculates residual contributions to thermodynamic quantities.
+        </li>
+        <li>
+          <b>SECVIR</b> calculates the second virial coefficient at a given temperature.
+        </li>
+        <li>
+          <b>SECVIR_VALUES</b> returns some values of the second virial coefficient.
+        </li>
+        <li>
+          <b>SOUND</b> computes the speed of sound given temperature and pressure.
+        </li>
+        <li>
+          <b>SURTEN</b> returns the surface tension as a function of temperature.
+        </li>
+        <li>
+          <b>TDPSDT</b> computes the quantity T * dP(Sat)/dT.
+        </li>
+        <li>
+          <b>THERCON</b> calculates the thermal conductivity for given temperature and density.
+        </li>
+        <li>
+          <b>THERM</b> calculates thermodynamic functions given temperature and density.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TSAT</b> calculates the saturation temperature for a given pressure.
+        </li>
+        <li>
+          <b>TSAT_EST</b> makes a rough estimate of the saturation temperature.
+        </li>
+        <li>
+          <b>VISCOSITY</b> calculates the viscosity for given temperature and density.
+        </li>
+        <li>
+          <b>VISCOSITY_VALUES</b> returns some values of the viscosity function for testing.
+        </li>
+        <li>
+          <b>VOLUME</b> computes specific volume derivatives given temperature and density.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 August 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

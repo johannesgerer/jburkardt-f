@@ -1,0 +1,221 @@
+<html>
+
+  <head>
+    <title>
+      CRYSTAL - Silicon Crystallization Simulation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CRYSTAL <br> Silicon Crystallization Simulation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CRYSTAL</b>
+      is a FORTRAN90 program which
+      simulates the process of creating a crystal of silicon.
+    </p>
+
+    <p>
+      <b>CRYSTAL</b> carries out a minimization, for which it calls
+      <a href = "../../f_src/toms611/toms611.html">TOMS611</a>, a minimization
+      algorithm from the ACM TOMS algorithm collection.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/crystal_plot/crystal_plot.html">
+      CRYSTAL_PLOT</a>,
+      a FORTRAN90 program which
+      creates graphic images of data from <b>CRYSTAL</b> or <b>CRYSTAL_QED</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/crystal_qed/crystal_qed.html">
+      CRYSTAL_QED</a>,
+      a FORTRAN90 program which
+      seeks to minimize a certain objective function during the growth of a
+      silicon crystal under the Czochralski process.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms611/toms611.html">
+      TOMS611</a>,
+      a FORTRAN90 library which
+      minimizes a function of several variables.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <ol>
+      <li>
+        Suhas Patankar,<br>
+        Numerical Heat Transfer and Fluid Flow,<br>
+        Taylor and Francis, 1980,<br>
+        ISBN: 0891165223,<br>
+        LC: QC320.P37
+      </li>
+      <li>
+        Fumio Shimura,<br>
+        Semiconductor Silicon Crystal Technology,<br>
+        Academic Press, 1989,<br>
+        LC: TK7871.85 S523.
+      </li>
+    </ol>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "crystal.f90">crystal.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "crystal.sh">crystal.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+        <li>
+          <a href = "crystal.txt">crystal.txt</a>, some development notes.
+        </li>
+        <li>
+          <a href = "crystal_dic.txt">crystal_dic.txt</a>, a data
+          dictionary.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "crystal_output.txt">crystal_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "crystal_rs.txt">crystal_rs.txt</a>, a restart file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for CRYSTAL.
+        </li>
+        <li>
+          <b>DUMMY</b> is a dummy subroutine needed as formal input to CRYFUN.
+        </li>
+        <li>
+          <b>CRYFUN</b> evaluates the cost function for the minimizing software.
+        </li>
+        <li>
+          <b>ADAPT</b> executes MAGG, the multizone adaptive grid generation.
+        </li>
+        <li>
+          <b>CUBIC</b> constructs a cubic spline through data.
+        </li>
+        <li>
+          <b>DIFLOW</b> computes the convection-diffusion coefficient.
+        </li>
+        <li>
+          <b>DOAREA</b> computes the area of the control volumes.
+        </li>
+        <li>
+          <b>FINDP</b> finds the boundary nodes for a Neumann BC.
+        </li>
+        <li>
+          <b>FLUX</b> computes the value of the flux of various quantities.
+        </li>
+        <li>
+          <b>GAMSOR</b> sets the coefficients for the transport problems.
+        </li>
+        <li>
+          <b>GRADNT</b> calculates gradients at the primary nodes.
+        </li>
+        <li>
+          <b>INIDAT</b> sets the initial values of certain data.
+        </li>
+        <li>
+          <b>INIGRD</b> makes an initial assignment of the grid points XC, YC.
+        </li>
+        <li>
+          <b>INITL</b> estimates quantities at control volume interfaces.
+        </li>
+        <li>
+          <b>MOVGRD</b> calculates the new position of the interface and free surface.
+        </li>
+        <li>
+          <b>OUTPUT</b> prints information about the current solution.
+        </li>
+        <li>
+          <b>PMOD</b> extends pressure values from primary nodes to corner nodes.
+        </li>
+        <li>
+          <b>PRDAT</b> prints out the initial values of certain data.
+        </li>
+        <li>
+          <b>RESID</b> computes the linear equation residual at interior primary nodes.
+        </li>
+        <li>
+          <b>RSWRIT</b> writes out restart information.
+        </li>
+        <li>
+          <b>SETCST</b> computes a portion of the cost functional.
+        </li>
+        <li>
+          <b>SETGEO</b> calculates various geometric quantities.
+        </li>
+        <li>
+          <b>SETUP</b> calculates the coefficients of the equations, and solves them.
+        </li>
+        <li>
+          <b>SETX</b> locates the primary nodes from the corner nodes.
+        </li>
+        <li>
+          <b>SOLVE1</b> sets or modifies the linear system to be handled by SOLVE2.
+        </li>
+        <li>
+          <b>SOLVE2</b> is the tridiagonal matrix solver.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

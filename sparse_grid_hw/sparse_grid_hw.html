@@ -1,0 +1,363 @@
+<html>
+
+  <head>
+    <title>
+      SPARSE_GRID_HW - Sparse Grids for Uniform and Normal Weights - Heiss and Winschel
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPARSE_GRID_HW <br> Sparse Grids for Uniform and Normal Weights <br> Heiss and Winschel
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPARSE_GRID_HW</b> 
+      is a FORTRAN90 library which 
+      can compute sparse grids for multidimensional integration,
+      based on 1D rules for the unit interval with unit weight function,
+      or for the real line with the Gauss-Hermite weight function.
+      The original MATLAB code is by Florian Heiss and Viktor Winschel.
+    </p>
+
+    <p>
+      This FORTRAN90 version is only a partial implementation of the
+      original library.
+    </p>
+
+    <p>
+      The original version of this software, and other information,
+      is available at <a href = "http://sparse-grids.de/">
+                                 http://sparse-grids.de </a>.
+
+    <p>
+      Four built-in 1D families of quadrature rules are supplied, and the
+      user can extend the package by supplying any family of 1D quadrature
+      rules.
+    </p>
+
+    <p>
+      The built-in families are identified by a 3-letter key which is also
+      the name of the FORTRAN90 routine that returns members of the family:
+      <ul>
+        <li>
+          <b>gqu</b>, standard Gauss-Legendre quadrature rules, for
+          the unit interval [0,1], with weight function w(x) = 1.
+        </li>
+        <li>
+          <b>gqn</b>, standard Gauss-Hermite quadrature rules, for
+          the infinite interval (-oo,+oo), with weight function 
+          w(x) = exp(-x*x/2)/sqrt(2*pi).
+        </li>
+        <li>
+          <b>kpu</b>, Kronrod-Patterson quadrature rules, for
+          the unit interval [0,1], with weight function w(x) = 1.
+          These sacrifice some of the precision of <b>gqu</b> in
+          order to provide a family of nested rules.
+        </li>
+        <li>
+          <b>kpn</b>, Kronrod-Patterson quadrature rules, for
+          the infinite interval (-oo,+oo), with weight function 
+          w(x) = exp(-x*x/2)/sqrt(2*pi).
+          These sacrifice some of the precision of <b>gqn</b> in
+          order to provide a family of nested rules.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The user can build new sparse grids by supplying a 1D quadrature family.
+      An example called "ccu" has been added, which returns Clenshaw Curtis
+      rules for [-1,+1].  The K-th call returns the rule of order 1
+      if K is 1, and 2*(K-1)+1 otherwise.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SPARSE_GRID_HW</b> is available in
+      <a href = "../../f_src/sparse_grid_hw/sparse_grid_hw.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sparse_grid_hw/sparse_grid_hw.html">a MATLAB version</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/grid_display/grid_display.html">
+      GRID_DISPLAY</a>,
+      a MATLAB library which
+      can display a 2D or 3D grid or sparse grid.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nint_exactness_mixed/nint_exactness_mixed.html">
+      NINT_EXACTNESS_MIXED</a>,
+      a FORTRAN90 program which
+      measures the polynomial exactness of a multidimensional quadrature rule
+      based on a mixture of 1D quadrature rule factors.
+    </p>
+
+    <p>
+      <a href = "../../f_src/product_rule/product_rule.html">
+      PRODUCT_RULE</a>,
+      a FORTRAN90 program which
+      constructs a product quadrature rule from <i>identical</i> 1D factor rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrule/quadrule.html">
+      QUADRULE</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for various intervals and weight functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sandia_rules/sandia_rules.html">
+      SANDIA_RULES</a>,
+      a FORTRAN90 library which
+      generates Gauss quadrature rules of various orders and types.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sandia_sparse/sandia_sparse.html">
+      SANDIA_SPARSE</a>, 
+      a FORTRAN90 library which
+      computes the points and weights of a Smolyak sparse
+      grid, based on a variety of 1-dimensional quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../c_src/smolpack/smolpack.html">
+      SMOLPACK</a>, 
+      a C library which
+      implements Novak and Ritter's method for estimating the integral
+      of a function over a multidimensional hypercube using sparse grids,
+      by Knut Petras.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_hermite/sparse_grid_hermite.html">
+      SPARSE_GRID_HERMITE</a>, 
+      a FORTRAN90 library which
+      creates sparse grids based on Gauss-Hermite rules.
+    </p>
+
+    <p>
+      <a href = "../../m_src/spinterp/spinterp.html">
+      SPINTERP</a>,
+      a MATLAB library which
+      carries out piecewise multilinear hierarchical sparse grid interpolation;
+      an earlier version of this software is ACM TOMS Algorithm 847,
+      by Andreas Klimke;
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Original MATLAB code by Florian Heiss and Viktor Winschel.
+      FORTRAN90 version by John Burkardt.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          Alan Genz, Bradley Keister,<br>
+          Fully symmetric interpolatory rules for multiple integrals
+          over infinite regions with Gaussian weight,<br>
+          Journal of Computational and Applied Mathematics,<br>
+          Volume 71, 1996, pages 299-309.
+        </li>
+        <li>
+          Florian Heiss, Viktor Winschel,<br>
+          Likelihood approximation by numerical integration on sparse grids,<br>
+          Journal of Econometrics,<br>
+          Volume 144, 2008, pages 62-80.
+        </li>
+        <li>
+          Thomas Patterson,<br>
+          The optimal addition of points to quadrature formulae,<br>
+          Mathematics of Computation,<br>
+          Volume 22, Number 104, October 1968, pages 847-856.
+        </li>
+        <li>
+          Knut Petras,<br>
+          Smolyak Cubature of Given Polynomial Degree with Few Nodes
+          for Increasing Dimension,<br>
+          Numerische Mathematik,<br>
+          Volume 93, Number 4, February 2003, pages 729-753.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sparse_grid_hw.f90">sparse_grid_hw.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "sparse_grid_hw.sh">sparse_grid_hw.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sparse_grid_hw_prb.f90">sparse_grid_hw_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "sparse_grid_hw_prb.sh">sparse_grid_hw_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "sparse_grid_hw_prb_output.txt">sparse_grid_hw_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CCU</b> computes a Clenshaw Curtis quadrature rule.
+        </li>
+        <li>
+          <b>FN_INTEGRAL</b> is the integral of the Hermite test function.
+        </li>
+        <li>
+          <b>FN_VALUE</b> is a Hermite test function.
+        </li>
+        <li>
+          <b>FU_INTEGRAL</b> is the integral of the test function for the [0,1]^D interval.
+        </li>
+        <li>
+          <b>FU_VALUE</b> is a sample function for the [0,1]^D interval.
+        </li>
+        <li>
+          <b>GET_SEQ</b> generates all positive integer D-vectors that sum to NORM.
+        </li>
+        <li>
+          <b>QGN</b> provides data for Gauss quadrature with a normal weight.
+        </li>
+        <li>
+          <b>QGU</b> provides data for Gauss quadrature with a uniform weight.
+        </li>
+        <li>
+          <b>I4_CHOOSE</b> computes the binomial coefficient C(N,K) as an I4.
+        </li>
+        <li>
+          <b>I4_FACTORIAL2</b> computes the double factorial function.
+        </li>
+        <li>
+          <b>I4_MOP</b> returns the I-th power of -1 as an I4 value.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT_SOME</b> prints some of an I4MAT.
+        </li>
+        <li>
+          <b>I4VEC_CUM0</b> computes the cumulutive sum of the entries of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_PRODUCT</b> returns the product of the entries of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SUM</b> returns the sum of the entries of an I4VEC.
+        </li>
+        <li>
+          <b>KPN</b> provides data for Kronrod-Patterson quadrature with a normal weight.
+        </li>
+        <li>
+          <b>KPN_ORDER</b> computes the order of a KPN rule from the level.
+        </li>
+        <li>
+          <b>KPU</b> provides data for Kronrod-Patterson quadrature with a uniform weight.
+        </li>
+        <li>
+          <b>KPU_ORDER</b> computes the order of a KPU rule from the level.
+        </li>
+        <li>
+          <b>NUM_SEQ</b> returns the number of compositions of the integer N into K parts.
+        </li>
+        <li>
+          <b>QUAD_RULE_PRINT</b> prints a multidimensional quadrature rule.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM_01</b> fills an R8MAT with unit pseudorandom numbers.
+        </li>
+        <li>
+          <b>R8VEC_COPY</b> copies an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_DIRECT_PRODUCT</b> creates a direct product of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DIRECT_PRODUCT2</b> creates a direct product of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>TENSOR_PRODUCT</b> generates a tensor product quadrature rule.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 07 May 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

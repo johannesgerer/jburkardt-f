@@ -1,0 +1,438 @@
+<html>
+
+  <head>
+    <title>
+      QUADPACK - Numerical Integration
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      QUADPACK <br> Numerical Integration
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>QUADPACK</b> 
+      is a FORTRAN90 library which 
+      estimates integrals using quadrature.
+    </p>
+
+    <p>
+      The <b>QUADPACK</b> estimate the integral
+      of a function <b>F(X)</b>.  There are routines for nonadaptive
+      or adaptive integration, finite, semi-infinite or fully infinite
+      integration regions, integrands with singularities, and integrands
+      that include a factor of <b>SIN(X)</b> or <b>COS(X)</b>.
+    </p>
+
+    </p>
+      Many subroutines come in two versions, a "simple" interface and
+      an "extended" interface.  Compare, for example, the routines
+      QAWF and QAWFE.  The first one simply makes sensible choices for
+      many parameter values.  The second one gives the user full control
+      over all the parameters. 
+    </p>
+
+    <h3>
+      Routines for a finite region:
+    </h3>
+
+    <p>
+      How to decide what routine to use, if your integration region
+      is finite:
+      <ul>
+        <li>
+          If you can factor the integrand as F(X)=W(X)*G(X), where G
+          is smooth on [A,B] and W(X)=COS(OMEGA*X) or SIN(OMEGA*X) then 
+          use QAWO.
+        </li>
+        <li>
+          Otherwise, if you can factor F(X)=W(X)*G(X) where G is smooth
+          and W(X)=(X-A)**ALFA * (B-X)**BETA * (LOG(X-A))**L * (LOG(B-X))**K
+          with K, L = 0 or 1, and ALFA, BETA greater than -1, then use QAWS.
+        </li>
+        <li>
+          Otherwise, if you can factor F(X)=W(X)*G(X) where G is smooth
+          and W(X)=1/(X-C) for some constant C, use QAWC.
+        </li>
+        <li>
+          Otherwise, if you do not care too much about possible
+          inefficient use of computer time, and do not want to further
+          analyze the problem, use QAGS.
+        </li>
+        <li>
+          Otherwise, if the integrand is smooth, use QNG or QAG.
+        </li>
+        <li>
+          Otherwise, if there are discontinuities or singularities
+          of the integrand or of its derivative, and you know where they
+          are, split the integration range at these points and analyze
+          each subinterval.  You can also use QAGP, which is to be provided
+          with the x-locations of the singularities or discontinuities.
+        </li>
+        <li>
+          Otherwise, if the integrand has end point singularities, use QAGS.
+        </li>
+        <li>
+          Otherwise, if the integrand has an oscillatory behavior of
+          nonspecific type, and no singularities, use QAG with KEY=6.
+        </li>
+        <li>
+          Otherwise, use QAGS.
+        </li>
+      </ul>
+    </p>
+
+    <h3>
+      Routines for an infinite region:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          If the integrand decays rapidly to zero, truncate the
+          interval and use the finite interval decision tree.
+        </li>
+        <li>
+          Otherwise, if the integrand oscillates over the entire infinite range,
+          and the integral is a Fourier transform, use QAWF.
+        </li>
+        <li>
+          Or, if the integrand oscillates over the entire infinite range,
+          but is not a Fourier transform, then sum the successive positive 
+          and negative contributions by integrating between the zeroes of the
+          integrand.  Apply convergence acceleration with QELG.
+        </li>
+        <li>
+          Otherwise, if you are not constrained by computer time, and
+          do not wish to analyze the problem further, use QAGI.
+        </li>
+        <li>
+          Otherwise, if the integrand has a non-smooth behavior in
+          the range, and you know where it occurs, split off these regions
+          and use the appropriate finite range routines to integrate over
+          them.  Then begin this tree again to handle the remainder of the region.
+        </li>
+        <li>
+          Otherwise, truncation of the interval, or application of
+          a suitable transformation for reducing the problem to a finite
+          range may be possible.  And you may also call QAGI.
+        </li>
+      </ul>
+    </p>
+ 
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>QUADPACK</b> is available in
+      <a href = "../../f77_src/quadpack/quadpack.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/quadpack/quadpack.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/intlib/intlib.html">
+      INTLIB</a>,
+      a FORTRAN90 library which
+      numerically estimates integrals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/kronrod/kronrod.html">
+      KRONROD</a>,
+      a FORTRAN90 library which
+      can compute a Gauss and Gauss-Kronrod pair of quadrature rules
+      of arbitrary order, 
+      by Robert Piessens, Maria Branders.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes QUADPACK.
+    </p>
+
+    <p>
+      <a href = "../../f_src/product_rule/product_rule.html">
+      PRODUCT_RULE</a>, 
+      a FORTRAN90 program which
+      can create a multidimensional quadrature rule as a product of
+      one dimensional rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrule/quadrule.html">
+      QUADRULE</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for
+      various intervals and weight functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/slatec/slatec.html">
+      SLATEC</a>,
+      a FORTRAN90 library which 
+      includes <b>QUADPACK</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for
+      various geometric shapes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tanh_quad/tanh_quad.html">
+      TANH_QUAD</a>, 
+      a FORTRAN90 library which
+      sets up the tanh quadrature rule;
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int/test_int.html">
+      TEST_INT</a>,
+      a FORTRAN90 library which
+      defines some test integration problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_hermite/test_int_hermite.html">
+      TEST_INT_HERMITE</a>,
+      a FORTRAN90 library which
+      defines some test integration problems over infinite intervals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_laguerre/test_int_laguerre.html">
+      TEST_INT_LAGUERRE</a>, 
+      a FORTRAN90 library which 
+      defines test integrands for integration over [-ALPHA,+Infinity).
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms351/toms351.html">
+      TOMS351</a>, 
+      a FORTRAN77 library which 
+      estimates an integral using Romberg
+      integration.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms379/toms379.html">
+      TOMS379</a>,
+      a FORTRAN77 library which 
+      estimates an integral.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms418/toms418.html">
+      TOMS418</a>, 
+      a FORTRAN77 library which 
+      estimates the integral of a function
+      with a sine or cosine factor.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms424/toms424.html">
+      TOMS424</a>, 
+      a FORTRAN77 library which 
+      estimates the integral of a function
+      using Clenshaw-Curtis quadrature.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms468/toms468.html">
+      TOMS468</a>, 
+      a FORTRAN77 library which
+      carries out the "automatic" integration of a function.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Robert Piessens, Elise deDoncker-Kapenga, 
+          Christian Ueberhuber, David Kahaner,<br>
+          QUADPACK: A Subroutine Package for Automatic Integration,<br>
+          Springer, 1983,<br>
+          ISBN: 3540125531,<br>
+          LC: QA299.3.Q36.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "quadpack.f90">quadpack.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "quadpack.sh">quadpack.sh</a>, 
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "quadpack_prb.f90">quadpack_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "quadpack_prb.sh">quadpack_prb.sh</a>, 
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "quadpack_prb_output.txt">quadpack_prb_output.txt</a>, 
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>AAAA</b> is a dummy subroutine with QUADPACK documentation in its comments.
+        </li>
+        <li>
+          <b>QAG</b> approximates an integral over a finite interval.
+        </li>
+        <li>
+          <b>QAGE</b> estimates a definite integral.
+        </li>
+        <li>
+          <b>QAGI</b> estimates an integral over a semi-infinite or infinite interval.
+        </li>
+        <li>
+          <b>QAGP</b> computes a definite integral.
+        </li>
+        <li>
+          <b>QAGS</b> estimates the integral of a function.
+        </li>
+        <li>
+          <b>QAWC</b> computes a Cauchy principal value.
+        </li>
+        <li>
+          <b>QAWCE</b> computes a Cauchy principal value.
+        </li>
+        <li>
+          <b>QAWF</b> computes Fourier integrals over the interval [ A, +Infinity ).
+        </li>
+        <li>
+          <b>QAWFE</b> computes Fourier integrals.
+        </li>
+        <li>
+          <b>QAWO</b> computes the integrals of oscillatory integrands.
+        </li>
+        <li>
+          <b>QAWS</b> estimates integrals with algebraico-logarithmic endpoint singularities.
+        </li>
+        <li>
+          <b>QAWSE</b> estimates integrals with algebraico-logarithmic endpoint singularities.
+        </li>
+        <li>
+          <b>QC25C</b> returns integration rules for Cauchy Principal Value integrals.
+        </li>
+        <li>
+          <b>QC25O</b> returns integration rules for integrands with a COS or SIN factor.
+        </li>
+        <li>
+          <b>QC25S</b> returns rules for algebraico-logarithmic end point singularities.
+        </li>
+        <li>
+          <b>QCHEB</b> computes the Chebyshev series expansion.
+        </li>
+        <li>
+          <b>QEXTR</b> carries out the Epsilon extrapolation algorithm.
+        </li>
+        <li>
+          <b>QFOUR</b> estimates the integrals of oscillatory functions.
+        </li>
+        <li>
+          <b>QK15</b> carries out a 15 point Gauss-Kronrod quadrature rule.
+        </li>
+        <li>
+          <b>QK15I</b> applies a 15 point Gauss-Kronrod quadrature on an infinite interval.
+        </li>
+        <li>
+          <b>QK15W</b> applies a 15 point Gauss-Kronrod rule for a weighted integrand.
+        </li>
+        <li>
+          <b>QK21</b> carries out a 21 point Gauss-Kronrod quadrature rule.
+        </li>
+        <li>
+          <b>QK31</b> carries out a 31 point Gauss-Kronrod quadrature rule.
+        </li>
+        <li>
+          <b>QK41</b> carries out a 41 point Gauss-Kronrod quadrature rule.
+        </li>
+        <li>
+          <b>QK51</b> carries out a 51 point Gauss-Kronrod quadrature rule.
+        </li>
+        <li>
+          <b>QK61</b> carries out a 61 point Gauss-Kronrod quadrature rule.
+        </li>
+        <li>
+          <b>QMOMO</b> computes modified Chebyshev moments.
+        </li>
+        <li>
+          <b>QNG</b> estimates an integral, using non-adaptive integration.
+        </li>
+        <li>
+          <b>QSORT</b> maintains the order of a list of local error estimates.
+        </li>
+        <li>
+          <b>QWGTC</b> defines the weight function used by QC25C.
+        </li>
+        <li>
+          <b>QWGTO</b> defines the weight functions used by QC25O.
+        </li>
+        <li>
+          <b>QWGTS</b> defines the weight functions used by QC25S.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 29 October 2010.
+    </i>
+
+  </body>
+
+</html>

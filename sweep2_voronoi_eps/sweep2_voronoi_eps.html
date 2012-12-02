@@ -1,0 +1,306 @@
+<html>
+
+  <head>
+    <title>
+      SWEEP2_VORONOI_EPS - Plot the SWEEP2 Voronoi Diagram
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SWEEP2_VORONOI_EPS <br> Plot the SWEEP2 Voronoi Diagram
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SWEEP2_VORONOI_EPS</b>
+      is a FORTRAN90 program which
+      plots the
+      Voronoi diagram output from sweep2.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>sweep2_voronoi_eps</b> <i>voronoi_data</i> <i>graph</i>
+        </dt>
+          <i>voronoi_data</i>: is a text file containing a description of the
+          Voronoi diagram, output by <b>sweep2</b>.   Each line describes either
+          a site, a vertex, an abstract line, or a Voronoi edge.
+          Indices are counted starting at 0. <br>
+          <i>graph</i>: is an Encapsulated PostScript file containing an image of
+          the Voronoi diagram.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../c_src/sweep2/sweep2.html">
+      SWEEP2</a>,
+      a C program which
+      performs the Delaunay
+      triangulation of a set of points, by Steve Fortune.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sweep2_delaunay_eps/sweep2_delaunay_eps.html">
+      SWEEP2_DELAUNAY_EPS</a>,
+      a FORTRAN90 program which
+      produces an Encapsulated
+      PostScript image of the Delaunay triangulation of a set of points, as
+      processed by the SWEEP2 program.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, pages 345-405, September 1991.
+        </li>
+        <li>
+          Steve Fortune,<br>
+          A Sweepline Algorithm for Voronoi Diagrams,<br>
+          Algorithmica, Volume 2, pages 153-174, 1987.
+        </li>
+        <dd>
+          A copy of the original release of the SWEEP2 code is available through
+          NETLIB at
+          <a href = "http://www.netlib.org/voronoi/sweep2">
+          http://www.netlib.org/voronoi/sweep2</a>
+        </dd>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sweep2_voronoi_eps.f90">sweep2_voronoi_eps.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "sweep2_voronoi_eps.sh">sweep2_voronoi_eps.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>DIAMOND</b> is a simple pointset of 9 points:
+      <ul>
+        <li>
+          <a href = "diamond.txt">diamond.txt</a>,
+          the file containing the point coordinates.
+        </li>
+        <li>
+          <a href = "diamond_vor.txt">diamond_vor.txt</a>,
+          the file containing the Voronoi diagram information.
+        </li>
+        <li>
+          <a href = "diamond_vor.png">diamond_vor.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Voronoi diagram.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TEST</b> is a pointset of 100 points:
+      <ul>
+        <li>
+          <a href = "test.txt">test.txt</a>,
+          the file containing the point coordinates.
+        </li>
+        <li>
+          <a href = "test_vor.txt">test_vor.txt</a>,
+          the file containing the Voronoi diagram information.
+        </li>
+        <li>
+          <a href = "test_vor.png">test_vor.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Voronoi diagram.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for SWEEP2_VORONOI_EPS.
+        </li>
+        <li>
+          <b>BOX_CLIP_LINE_2D</b> uses a box to clip a line segment in 2D.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>EPS_FILE_HEAD</b> writes header information to an encapsulated PostScript file.
+        </li>
+        <li>
+          <b>EPS_FILE_TAIL</b> writes trailer information to an encapsulated PostScript file.
+        </li>
+        <li>
+          <b>GET_FILENAMES</b> gets the filenames from the command line or the user.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>POINT_INSIDE_BOX_2D</b> determines if a point is inside a box in 2D.
+        </li>
+        <li>
+          <b>PS_CLIP</b> defines a clipping polygon.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE</b> handles the line color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE_SET</b> sets the line color.
+        </li>
+        <li>
+          <b>PS_COMMENT</b> inserts a comment into the PostScript file.
+        </li>
+        <li>
+          <b>PS_DEFAULT</b> sets the internal settings to their default values
+        </li>
+        <li>
+          <b>PS_FILE_CLOSE</b> closes a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_OPEN</b> opens a new version of a PostScript file with a given name.
+        </li>
+        <li>
+          <b>PS_FONT_SIZE</b> sets the font size.
+        </li>
+        <li>
+          <b>PS_LABEL</b> prints a label at the current position.
+        </li>
+        <li>
+          <b>PS_LINE</b> draws a line segment from (X1,Y1) to (X2,Y2).
+        </li>
+        <li>
+          <b>PS_LINE_CLOSED</b> adds the graph of a closed line to a PostScript file.
+        </li>
+        <li>
+          <b>PS_LINE_WIDTH</b> sets the line width.
+        </li>
+        <li>
+          <b>PS_MARK_DISK</b> marks a point with a small filled disk.
+        </li>
+        <li>
+          <b>PS_MARK_POINT</b> marks a point with a tiny point.
+        </li>
+        <li>
+          <b>PS_MOVETO</b> "moves to" a new point, which becomes the current point.
+        </li>
+        <li>
+          <b>PS_PAGE_HEAD</b> writes header information on a new page.
+        </li>
+        <li>
+          <b>PS_PAGE_TAIL</b> writes tail information at the end of a page.
+        </li>
+        <li>
+          <b>PS_SETTING_INT</b> sets, gets, or prints integer internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>PS_SETTING_REAL</b> sets, gets, or prints real internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>VORONOI_EPS</b> plots a Voronoi diagram.
+        </li>
+        <li>
+          <b>VORONOI_DATA_READ</b> reads the data from a Voronoi file.
+        </li>
+        <li>
+          <b>VORONOI_HEADER_READ</b> reads the header information from a Voronoi file.
+        </li>
+        <li>
+          <b>WORD_EXTRACT</b> extracts the next word from a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

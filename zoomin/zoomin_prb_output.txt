@@ -1,0 +1,238 @@
+25 December 2010   3:10:01.658 PM
+ 
+ZOOMIN_PRB
+  FORTRAN90 version
+ 
+  ZOOMIN seeks a root of a nonlinear equation,
+  using a variety of methods.
+ 
+ 
+TEST01:
+  (Polynomial function F(X))
+  Find a root of F(X)=(X+3)*(X+3)*(X-2)=0
+ 
+ 
+ZOOMIN
+  A compilation of scalar zero finders,
+  based on the work of Joseph Traub.
+ 
+  1 point formulas use:
+    x1 =    1.50000    
+    fx1=  -10.1250    
+  2 point formulas add:
+    x2 =    4.00000    
+    fx2=   98.0000    
+  3 point formulas add:
+    x3 =    1.00000    
+    fx3=  -16.0000    
+ 
+  User estimated multiplicity =    1
+  Polynomial degree =    3
+  Highest derivative supplied =    3
+  Error tolerance =   0.100000E-04
+  Maximum number of steps =   30
+  Newton method substep parameter  =    3
+ 
+ 
+  Technique                           Root        Steps   Error     Multiplicity
+ 
+  1.  One point iteration functions with memory:
+ 
+  Secant                            2.00000           6
+  Extended secant                   2.00000           5
+  Capital Phi(2,1)                  2.00000           4
+  R8_Muller                         2.00000           4
+  Perp E(2,1)                       2.00000           5
+  Star E(2,1)                       2.00000           4
+  Finite difference Halley          2.00000           3
+  Phi(1,2)                          2.00000           3
+  Perp E(1,2)                       2.00000           3
+  Star E(1,2)                       2.00000           3
+  Dagger E(1,2)                     2.00000           3
+ 
+  2. One point iteration functions.
+ 
+  Newton                            2.00000           4
+  Steffenson                       -3.00086          24
+  Stirling                          2.00000          24
+  midpoint                          2.00000           3
+  Traub-Ostrowski                   2.00000           2
+  Chebyshev                         2.00000           3
+  Halley Super                      2.00000           2
+  Whittaker                         2.00000           5
+  Whittaker2                        2.00000           3
+  E3                                2.00000           3
+  E4                                2.00000           3
+  Halley                            2.00000           3
+  Psi(2,1)                          2.00000           2
+  Psi(1,2)                          2.00000           3
+  Capital Phi(0,3)                  2.00000           2
+  Reduced Capital Phi(0,4)          2.00000           2
+  Ostrowski square root             2.00000           2
+  Euler                             2.00000           2
+  Laguerre                          2.00000           1
+ 
+  3.  Multipoint iteration functions.
+ 
+  Traub first                       2.00000           4
+  Traub second                      2.00000           2
+  Traub twelfth                     2.00000           3
+  Traub thirteenth                  2.00000           2
+  Modified Newton, NSUB=  3         2.00000           7
+  Traub fourth, NSUB=  3            2.00000           6
+  Newton - secant                   2.00000           3
+  Traub sixth                       2.00000           3
+  Traub seventh                     2.00000           3
+  Traub eighth                      2.00000           3
+  Traub ninth                       2.00000           2
+  Traub type 1, form 10             2.00000           3
+  Traub type 1, form 11             2.00000           3
+  Traub fourteenth                  2.00000           2
+  Traub fifteenth                   2.00000           2
+  Traub sixteenth                   2.00000           2
+  King, BETA=0                      2.00000           2
+  King, BETA=1                      2.00000           2
+  King, BETA=2                      2.00000           3
+  Jarratt                           2.00000           2
+  Jarratt inverse-free              2.00000           3
+ 
+  4.  Multiple root methods, multiplicity given.
+ 
+  Script E2                         2.00000           4
+  Script E3                         2.00000           3
+  Script E4                         2.00000           3
+  Star E 1,1(f)                     2.00000           6
+ 
+  5.  Multiple root methods,
+      multiplicity not given.
+ 
+  E2(U)                             2.00000           4         1.00002    
+  Phi 1,1(U)                        2.00000           3         1.00000    
+  Traub third                       2.00000           4         1.00000    
+  Van de Vel                        2.00000           2         1.00301    
+  Improved Van de Vel               2.00000           4         1.00000    
+ 
+  6. Bisection methods
+ 
+  Bisection                         2.00000          22
+  Regula falsi                      4.00000          31    2
+  Brent                             2.00000           7
+  Bisection + secant                2.00000          15
+  Bisection + secant + inv quad     2.00000           5
+ 
+TEST02:
+  (Nonpolynomial function F(X))
+  Find a root of F(X) = COS(X) - X
+ 
+ 
+ZOOMIN
+  A compilation of scalar zero finders,
+  based on the work of Joseph Traub.
+ 
+  1 point formulas use:
+    x1 =   0.900000    
+    fx1= -0.278390    
+  2 point formulas add:
+    x2 =   0.400000    
+    fx2=  0.521061    
+  3 point formulas add:
+    x3 =   0.500000    
+    fx3=  0.377583    
+ 
+  User estimated multiplicity =    1
+  The function is not known to be polynomial.
+  Highest derivative supplied =    3
+  Error tolerance =   0.100000E-04
+  Maximum number of steps =   60
+  Newton method substep parameter  =    3
+ 
+ 
+  Technique                           Root        Steps   Error     Multiplicity
+ 
+  1.  One point iteration functions with memory:
+ 
+  Secant                           0.739086           3
+  Extended secant                  0.739085           3
+  Capital Phi(2,1) is misbehaving.
+  R8_Muller                        0.739082           2
+  Perp E(2,1)                      0.739085           3
+  Star E(2,1)                      0.739085           3
+  Finite difference Halley         0.739084           2
+  Phi(1,2)                         0.739085           2
+  Perp E(1,2)                      0.739085           2
+  Star E(1,2)                      0.739085           2
+  Dagger E(1,2)                    0.739085           2
+ 
+  2. One point iteration functions.
+ 
+  Newton                           0.739090           2
+  Steffenson                       0.739083           2
+  Stirling                         0.739085           3
+  midpoint                         0.739085           2
+  Traub-Ostrowski                  0.739085           2
+  Chebyshev                        0.739085           2
+  Halley Super                     0.739085           2
+  Whittaker                        0.739085           3
+  Whittaker2                       0.739085           2
+  E3                               0.739085           2
+  E4                               0.739085           2
+  Halley                           0.739085           2
+  Psi(2,1)                         0.739085           2
+  Psi(1,2)                         0.739085           2
+  Capital Phi(0,3)                 0.739085           2
+  Reduced Capital Phi(0,4)         0.739084           1
+  Ostrowski square root            -2698.21          61    2
+  Euler is misbehaving.
+ 
+  3.  Multipoint iteration functions.
+ 
+  Traub first                      0.739079           2
+  Traub second                     0.739085           2
+  Traub twelfth                    0.739085           2
+  Traub thirteenth                 0.739085           2
+  Modified Newton, NSUB=  3        0.739085           4
+  Traub fourth, NSUB=  3           0.739085           4
+  Newton - secant                  0.739085           2
+  Traub sixth                      0.739085           2
+  Traub seventh                    0.739085           2
+  Traub eighth                     0.739085           2
+  Traub ninth                      0.739085           2
+  Traub type 1, form 10            0.739085           2
+  Traub type 1, form 11            0.739085           2
+  Traub fourteenth                 0.739087           1
+  Traub fifteenth                  0.739084           1
+  Traub sixteenth                  0.739085           2
+  King, BETA=0                     0.739085           2
+  King, BETA=1                     0.739085           2
+  King, BETA=2                     0.739085           2
+  Jarratt                          0.739085           2
+  Jarratt inverse-free             0.739085           2
+ 
+  4.  Multiple root methods, multiplicity given.
+ 
+  Script E2                        0.739090           2
+  Script E3                        0.739085           2
+  Script E4                        0.739085           2
+  Star E 1,1(f)                    0.739086           3
+ 
+  5.  Multiple root methods,
+      multiplicity not given.
+ 
+  E2(U)                            0.739089           2         1.00000    
+  Phi 1,1(U)                       0.739090           1         1.00000    
+  Traub third                      0.739090           2         1.00000    
+  Van de Vel                       0.739085           2         1.00000    
+  Improved Van de Vel              0.739085           2         1.00102    
+ 
+  6. Bisection methods
+ 
+  Bisection                        0.739081          14
+  Regula falsi                     0.739085           4
+  Brent                            0.739082           5
+  Bisection + secant               0.739086           3
+  Bisection + secant + inv quad    0.739085           3
+ 
+ZOOMIN_PRB
+  Normal end of execution.
+ 
+25 December 2010   3:10:01.660 PM

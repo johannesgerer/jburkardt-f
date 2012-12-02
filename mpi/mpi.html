@@ -1,0 +1,746 @@
+<html>
+
+  <head>
+    <title>
+      MPI - FORTRAN90 Examples
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MPI <br> FORTRAN90 Examples
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MPI</b>
+      is a directory of FORTRAN90 programs which
+      illustrate the use of the MPI
+      Message Passing Interface.
+    </p>
+
+    <p>
+      <b>MPI</b> is a library of message passing routines.  The library
+      allows a user to write a program in a familiar language, such as
+      C, C++, FORTRAN77 or FORTRAN90, and carry out a computation in
+      parallel on an arbitrary number of cooperating computers.
+    </p>
+
+    <h3 align = "center">
+      Overview of MPI
+    </h3>
+
+    <p>
+      A remarkable feature of <b>MPI</b> is that <i>the user writes
+      a single program which runs on all the computers</i>.  However,
+      because each computer is assigned a unique identifying number,
+      it is possible for different actions to occur on different
+      machines, even though they run the same program:
+      <pre><code>
+        if ( I am processor A ) then
+          add a bunch of numbers
+        else if ( I am processor B ) then
+          multipy a matrix times a vector
+        end
+      </code></pre>
+    </p>
+
+    <p>
+      Another feature of <b>MPI</b> is that the data stored on each
+      computer is entirely separate from that stored on other computers.
+      If one computer needs data from another, or wants to send
+      a particular value to all the other computers, it must
+      explicitly call the appropriate library routine requesting
+      a data transfer.  Depending on the library routine called,
+      it may be necessary for both sender and receiver to be
+      "on the line" at the same time (which means that one will
+      probably have to wait for the other to show up), or it is
+      possible for the sender to send the message to a buffer, for
+      later delivery, allowing the sender to proceed immediately
+      to further computation.
+    </p>
+
+    <p>
+      Here is a simple example of what a piece of the program would
+      look like, in which the number <b>X</b> is presumed to have been
+      computed by processor <b>A</b> and needed by processor <b>B</b>:
+      <pre><code>
+        if ( I am processor A ) then
+          call MPI_Send ( X )
+        else if ( I am processor B ) then
+          call MPI_Recv ( X )
+        end
+      </code></pre>
+    </p>
+
+    <p>
+      Often, an <b>MPI</b> program is written so that one computer
+      supervises the work, creating data, issuing it to the
+      worker computers, and gathering and printing the results at the
+      end.  Other models are also possible.
+    </p>
+
+    <p>
+      It should be clear that a program using MPI to execute in parallel
+      will look much different from a corresponding sequential version.
+      The user must divide the problem data among the different processes,
+      rewrite the algorithm to divide up work among the processes,
+      and add explicit calls to transfer values as needed from the
+      process where a data item "lives" to a process that needs that
+      value.
+    </p>
+
+    <p>
+      A FORTRAN90 program, subroutine or function must include
+      the line
+      <pre><code>
+        use mpi
+      </code></pre>
+      so that the various MPI functions and constants are properly defined.
+      (If this <b>use</b> statement doesn't work, you may have to fall back
+      on using the FORTRAN77 include file instead:
+      <pre><code>
+        include "mpif.h"
+      </code></pre>
+    </p>
+
+    <p>
+      You probably compile and link your program with a single command,
+      as in
+      <pre><code>
+        f90 myprog.f90
+      </code></pre>
+      Depending on the computer that you are using, you may be able
+      to compile an MPI program with a similar command, which automatically
+      locates the include file and the compiled libraries that you will
+      need.  This command is likely to be:
+      <pre><code>
+        mpif90 myprog.f90
+      </code></pre>
+    </p>
+
+    <h3 align = "center">
+      Interactive MPI Runs
+    </h3>
+
+    <p>
+      Some systems allow users to run an MPI program interactively.
+      You do this with the <b>mpirun</b> command:
+      <pre><code>
+        mpirun -np 4 a_output.txt
+      </code></pre>
+      This command requests that the executable program <i>a_output.txt</i>
+      be run, <i>right now</i>, using 4 processors.
+    </p>
+
+    <p>
+      The <b>mpirun</b> command may be a convenience for beginners,
+      with very small jobs, but this is not the way to go once you
+      have a large lengthy program to run!  Also, what actually happens
+      can vary from machine to machine.  When you ask for 4 processors,
+      for instance,
+      <ul>
+        <li>
+          in the best case, <b>mpirun</b> automatically finds three other
+          machines just like the one you are one, copies your program
+          to them, and starts your program on all four.
+        </li>
+        <li>
+          in a less good case, there are four processors on your current
+          machine, so the memory is divided up among them and your program
+          runs;
+        </li>
+        <li>
+          in a worse case, there are less than four processors available,
+          so, as necessary, one processor will "time share", and run two
+          or more of your processes alternately.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MPI</b> examples are available in
+      <a href = "../../c_src/mpi/mpi.html">a C version</a> and
+      <a href = "../../cpp_src/mpi/mpi.html">a C++ version</a> and
+      <a href = "../../f77_src/mpi/mpi.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/mpi/mpi.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/communicator_mpi/communicator_mpi.html">
+      COMMUNICATOR_MPI</a>,
+      a FORTRAN90 program which
+      creates new communicators involving a subset of initial
+      set of MPI processes in the default communicator MPI_COMM_WORLD.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_calls_c_and_mpi/f90_calls_c_and_mpi.html">
+      F90_CALLS_C_AND_MPI</a>,
+      FORTRAN90 programs which
+      illustrate how a FORTRAN90 program can call a C function while
+      executing under the MPI parallel programming environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_calls_c++_and_mpi/f90_calls_c++_and_mpi.html">
+      F90_CALLS_C++_AND_MPI</a>,
+      FORTRAN90 programs which
+      illustrate how a FORTRAN90 program can call a C++ function while
+      executing under the MPI parallel programming environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/heat_mpi/heat_mpi.html">
+      HEAT_MPI</a>,
+      a FORTRAN90 program which
+      solves the 1D Time Dependent Heat Equation using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hello_mpi/hello_mpi.html">
+      HELLO_MPI</a>,
+      a FORTRAN90 program which
+      prints out "Hello, world!" using the MPI parallel programming environment.
+    </p>
+
+    <p>
+      <a href = "../../examples/moab/moab.html">
+      MOAB</a>,
+      examples which
+      illustrate the use of the MOAB job scheduler for a computer cluster.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi_stubs/mpi_stubs.html">
+      MPI_STUBS</a>,
+      a FORTRAN90 library which
+      allows a user to compile, load, and possibly run an MPI program on a
+      serial machine.
+    </p>
+
+    <p>
+      <a href = "../../f_src/multitask_mpi/multitask_mpi.html">
+      MULTITASK_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates how to "multitask", that is, to execute several unrelated
+      and distinct tasks simultaneously, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/poisson_serial/poisson_serial.html">
+      POISSON_SERIAL</a>,
+      a FORTRAN90 program which
+      computes an approximate solution to the Poisson equation in a rectangle,
+      and is intended as the starting point for the creation of a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_mpi/prime_mpi.html">
+      PRIME_MPI</a>,
+      a FORTRAN90 program which
+      counts the number of primes between 1 and N, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../c_src/pthreads/pthreads.html">
+      PTHREADS</a>,
+      C programs which
+      illustrate the use of the POSIX thread library to carry out
+      parallel program execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_mpi/quad_mpi.html">
+      QUAD_MPI</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule, and carries out the
+      computation in parallel using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/random_mpi/random_mpi.html">
+      RANDOM_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates one way to generate the same sequence of random numbers
+      for both sequential execution and parallel execution under MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ring_mpi/ring_mpi.html">
+      RING_MPI</a>,
+      a FORTRAN90 program which
+      uses the MPI parallel programming environment, and measures the time
+      necessary to copy a set of data around a ring of processes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/satisfy_mpi/satisfy_mpi.html">
+      SATISFY_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates, for a particular circuit, an exhaustive search
+      for solutions of the circuit satisfiability problem, using MPI to
+      carry out the calculation in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/search_mpi/search_mpi.html">
+      SEARCH_MPI</a>,
+      a FORTRAN90 program which
+      searches integers between A and B for a value J such that F(J) = C,
+      using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/task_division/task_division.html">
+      TASK_DIVISION</a>,
+      a FORTRAN90 library which
+      implements a simple procedure for smoothly dividing T tasks among
+      P processors; such a method can be useful in MPI and other parallel
+      environments, particularly when T is not an exact multiple of P,
+      and when the processors can be indexed starting from 0 or from 1.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Gropp, Steven Huss-Lederman, Andrew Lumsdaine, Ewing Lusk,
+          Bill Nitzberg, William Saphir, Marc Snir,<br>
+          MPI: The Complete Reference,<br>
+          Volume II: The MPI-2 Extensions,<br>
+          Second Edition,<br>
+          MIT Press, 1998,<br>
+          ISBN13: 978-0-262-57123-4,<br>
+          LC: QA76.642.M65.
+        </li>
+        <li>
+          William Gropp, Ewing Lusk, Anthony Skjellum,<br>
+          Using MPI: Portable Parallel Programming with the
+          Message-Passing Interface,<br>
+          Second Edition,<br>
+          MIT Press, 1999,<br>
+          ISBN: 0262571323,<br>
+          LC: QA76.642.G76.
+        </li>
+        <li>
+          William Gropp, Ewing Lusk, Rajiv Thakur,<br>
+          Using MPI-2: Advanced Features of the Message-Passing
+          Interface,<br>
+          Second Edition,<br>
+          MIT Press, 1999,<br>
+          ISBN: 0262571331,<br>
+          LC: QA76.642.G762.
+        </li>
+        <li>
+          Stan Openshaw, Ian Turton,<br>
+          High Performance Computing and the Art of Parallel Programming:
+          an Introduction for Geographers, Social Scientists, and
+          Engineers,<br>
+          Routledge, 2000,<br>
+          ISBN: 0415156920,<br>
+          LC: QA76.88.O64.
+        </li>
+        <li>
+          Peter Pacheco,<br>
+          Parallel Programming with MPI,<br>
+          Morgan Kaufman, 1996,<br>
+          ISBN: 1558603395,<br>
+          LC: QA76.642.P3.
+        </li>
+        <li>
+          Sudarshan Raghunathan,<br>
+          Making a Supercomputer Do What You Want: High Level Tools for
+          Parallel Programming,<br>
+          Computing in Science and Engineering,<br>
+          Volume 8, Number 5, September/October 2006, pages 70-80.
+        </li>
+        <li>
+          Marc Snir, Steve Otto, Steven Huss-Lederman, David Walker,
+          Jack Dongarra,<br>
+          MPI: The Complete Reference,<br>
+          Volume I: The MPI Core,<br>
+          Second Edition,<br>
+          MIT Press, 1998,<br>
+          ISBN: 0-262-69216-3,<br>
+          LC: QA76.642.M65.
+        </li>
+        <li>
+          Scott Vetter, Yukiya Aoyama, Jun Nakano,<br>
+          RS/600 SP: Practical MPI Programming,<br>
+          IBM Redbooks, 1999,<br>
+          ISBN: 0738413658.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>BONES</b> passes a vector of real data from one process to
+      another.  It was used as an introductory example in an MPI workshop.
+      <ul>
+        <li>
+          <a href = "bones_mpi.f90">bones_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "bones.sh">bones.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "bones_output.txt">bones_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "bones_fsu.sh">bones_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "bones_fsu_output.txt">bones_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>BUFFON</b> demonstrates how parallel Monte Carlo
+      processes can set up distinct random number streams.
+      <ul>
+        <li>
+          <a href = "buffon_mpi.f90">buffon_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "buffon.sh">buffon.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "buffon_output.txt">
+          buffon_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "buffon_fsu.sh">buffon_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "buffon_fsu_output.txt">buffon_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>DAY1</b> works out exercise #3 assigned after day 1 of a
+      workshop on MPI.  The instructions were to have process 1 generate some
+      integers, send them to process 3 which used some of those values to
+      generate some real numbers which were then sent back to process 1.
+      <ul>
+        <li>
+          <a href = "day1_mpi.f90">day1_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "day1.sh">day1.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "day1_output.txt">day1_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "day1_fsu.sh">day1_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "day1_fsu_output.txt">day1_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>INTERVALS</b> estimates an integral by dividing an interval
+      into subintervals, and having the servant processes estimate
+      the integral over each subinterval.
+      <ul>
+        <li>
+          <a href = "intervals_mpi.f90">intervals_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "intervals.sh">intervals.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "intervals_output.txt">intervals_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "intervals_fsu.sh">intervals_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "intervals_fsu_output.txt">intervals_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MATMAT</b> multiplies two matrices.
+      <ul>
+        <li>
+          <a href = "matmat_mpi.f90">matmat_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "matmat.sh">matmat.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "matmat_output.txt">matmat_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "matmat_fsu.sh">matmat_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "matmat_fsu_output.txt">matmat_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MATVEC</b> multiplies a matrix times a vector.
+      <ul>
+        <li>
+          <a href = "matvec_mpi.f90">matvec_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "matvec.sh">matvec.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "matvec_output.txt">matvec_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "matvec_fsu.sh">matvec_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "matvec_fsu_output.txt">matvec_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MONTE_CARLO</b> computes PI by the Monte Carlo method, testing
+      whether random points in the unit square are in the unit circle.
+      <ul>
+        <li>
+          <a href = "monte_carlo_mpi.f90">monte_carlo_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "monte_carlo.sh">monte_carlo.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "monte_carlo_output.txt">monte_carlo_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "monte_carlo_fsu.sh">monte_carlo_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "monte_carlo_fsu_output.txt">monte_carlo_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>POISSON</b> solves Poisson's equation on a 2D grid,
+      dividing the physical region into horizontal strips, assigning
+      a process to each strip, and using MPI_SEND and MPI_RECV to
+      pass interface data between processes.
+      <ul>
+        <li>
+          <a href = "poisson_mpi.f90">poisson_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "poisson.sh">poisson.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "poisson_output.txt">poisson_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "poisson_fsu.sh">poisson_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "poisson_fsu_output.txt">poisson_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>POISSON_NONBLOCK</b> is a revision to POISSON
+      which uses the nonblocking communication routines MPI_ISEND
+      and MPI_IRECV to pass interface data between processes.
+      <ul>
+        <li>
+          <a href = "poisson_nonblock_mpi.f90">poisson_nonblock_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "poisson_nonblock.sh">poisson_nonblock.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "poisson_nonblock_output.txt">poisson_nonblock_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "poisson_nonblock_fsu.sh">poisson_nonblock_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "poisson_nonblock_fsu_output.txt">poisson_nonblock_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>QUADRATURE</b> estimates an integral.
+      <ul>
+        <li>
+          <a href = "quadrature_mpi.f90">quadrature_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "quadrature.sh">quadrature.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "quadrature_output.txt">quadrature_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "quadrature_fsu.sh">quadrature_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "quadrature_fsu_output.txt">quadrature_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SEARCH</b> searches a vector for occurrences of a particular
+      value.
+      <ul>
+        <li>
+          <a href = "search_mpi.f90">search_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "search.sh">search.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "search_output.txt">search_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "search_fsu.sh">search_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "search_fsu_output.txt">search_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TYPE</b> demonstrates the use of a user-defined datatype.
+      <ul>
+        <li>
+          <a href = "type_mpi.f90">type_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "type.sh">type.sh</a>,
+          a script to compile and run the program using MPIRUN.
+        </li>
+        <li>
+          <a href = "type_output.txt">type_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "type_fsu.sh">type_fsu.sh</a>,
+          a script to compile and run the program on the FSU HPC cluster.
+        </li>
+        <li>
+          <a href = "type_fsu_output.txt">type_fsu_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 23 October 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,351 @@
+January  4 2011   4:35:52.647 PM
+ 
+CNF_IO_PRB
+  FORTRAN90 version
+  Test the CNF_IO library.
+ 
+TEST01
+  CNF_WRITE can write CNF data to a CNF file.
+ 
+  Here is the data:
+ 
+CNF data printout:
+ 
+  The number of variables       V_NUM  =        3
+  The number of clauses         C_NUM  =        2
+  The number of signed literals L_NUM  =        5
+ 
+  Clause        1 includes        2 signed literals
+   1
+  -3
+ 
+  Clause        2 includes        3 signed literals
+   2
+   3
+  -1
+ 
+  Now we call CNF_WRITE to store this information
+  in the file "cnf_io_v3_c2.cnf".
+ 
+TEST02
+  CNF_HEADER_READ reads the header of a CNF file.
+ 
+  Read the header of "cnf_io_v3_c2.cnf".
+ 
+  The number of variables       V_NUM  =        3
+  The number of clauses         C_NUM  =        2
+  The number of signed literals L_NUM  =        5
+ 
+TEST03
+  CNF_DATA_READ reads the data of a CNF file.
+ 
+  Read the header of "cnf_io_v3_c2.cnf".
+ 
+  The number of variables       V_NUM  =        3
+  The number of clauses         C_NUM  =        2
+  The number of signed literals L_NUM  =        5
+ 
+  Here is the data as read from the file:
+ 
+CNF data printout:
+ 
+  The number of variables       V_NUM  =        3
+  The number of clauses         C_NUM  =        2
+  The number of signed literals L_NUM  =        5
+ 
+  Clause        1 includes        2 signed literals
+   1
+  -3
+ 
+  Clause        2 includes        3 signed literals
+   2
+   3
+  -1
+ 
+TEST04
+  CNF_WRITE can write CNF data to a CNF file.
+ 
+  Here is the data to be written to the file:
+ 
+CNF data printout:
+ 
+  The number of variables       V_NUM  =       16
+  The number of clauses         C_NUM  =       18
+  The number of signed literals L_NUM  =       36
+ 
+  Clause        1 includes        2 signed literals
+   1
+   2
+ 
+  Clause        2 includes        2 signed literals
+  -2
+  -4
+ 
+  Clause        3 includes        2 signed literals
+   3
+   4
+ 
+  Clause        4 includes        2 signed literals
+  -4
+  -5
+ 
+  Clause        5 includes        2 signed literals
+   5
+  -6
+ 
+  Clause        6 includes        2 signed literals
+   6
+  -7
+ 
+  Clause        7 includes        2 signed literals
+   6
+   7
+ 
+  Clause        8 includes        2 signed literals
+   7
+ -16
+ 
+  Clause        9 includes        2 signed literals
+   8
+  -9
+ 
+  Clause       10 includes        2 signed literals
+  -8
+ -14
+ 
+  Clause       11 includes        2 signed literals
+   9
+  10
+ 
+  Clause       12 includes        2 signed literals
+   9
+ -10
+ 
+  Clause       13 includes        2 signed literals
+ -10
+ -11
+ 
+  Clause       14 includes        2 signed literals
+  10
+  12
+ 
+  Clause       15 includes        2 signed literals
+  11
+  12
+ 
+  Clause       16 includes        2 signed literals
+  13
+  14
+ 
+  Clause       17 includes        2 signed literals
+  14
+ -15
+ 
+  Clause       18 includes        2 signed literals
+  15
+  16
+ 
+  Now we call CNF_WRITE to store this information
+  in the file "cnf_io_v16_c18.cnf".
+ 
+TEST05
+  CNF_HEADER_READ reads the header of a CNF file.
+ 
+  Read the header of "cnf_io_v16_c18.cnf".
+ 
+  The number of variables       V_NUM  =       16
+  The number of clauses         C_NUM  =       18
+  The number of signed literals L_NUM  =       36
+ 
+TEST06
+  CNF_DATA_READ reads the data of a CNF file.
+ 
+  Read the header of "cnf_io_v16_c18.cnf".
+ 
+  The number of variables       V_NUM  =       16
+  The number of clauses         C_NUM  =       18
+  The number of signed literals L_NUM  =       36
+ 
+  Here is the data as read from the file:
+ 
+CNF data printout:
+ 
+  The number of variables       V_NUM  =       16
+  The number of clauses         C_NUM  =       18
+  The number of signed literals L_NUM  =       36
+ 
+  Clause        1 includes        2 signed literals
+   1
+   2
+ 
+  Clause        2 includes        2 signed literals
+  -2
+  -4
+ 
+  Clause        3 includes        2 signed literals
+   3
+   4
+ 
+  Clause        4 includes        2 signed literals
+  -4
+  -5
+ 
+  Clause        5 includes        2 signed literals
+   5
+  -6
+ 
+  Clause        6 includes        2 signed literals
+   6
+  -7
+ 
+  Clause        7 includes        2 signed literals
+   6
+   7
+ 
+  Clause        8 includes        2 signed literals
+   7
+ -16
+ 
+  Clause        9 includes        2 signed literals
+   8
+  -9
+ 
+  Clause       10 includes        2 signed literals
+  -8
+ -14
+ 
+  Clause       11 includes        2 signed literals
+   9
+  10
+ 
+  Clause       12 includes        2 signed literals
+   9
+ -10
+ 
+  Clause       13 includes        2 signed literals
+ -10
+ -11
+ 
+  Clause       14 includes        2 signed literals
+  10
+  12
+ 
+  Clause       15 includes        2 signed literals
+  11
+  12
+ 
+  Clause       16 includes        2 signed literals
+  13
+  14
+ 
+  Clause       17 includes        2 signed literals
+  14
+ -15
+ 
+  Clause       18 includes        2 signed literals
+  15
+  16
+ 
+TEST07
+  Seek inputs to a circuit that produce a 1 (TRUE) output.
+ 
+  Here is the CNF data defining the formula:
+ 
+CNF data printout:
+ 
+  The number of variables       V_NUM  =       16
+  The number of clauses         C_NUM  =       18
+  The number of signed literals L_NUM  =       36
+ 
+  Clause        1 includes        2 signed literals
+   1
+   2
+ 
+  Clause        2 includes        2 signed literals
+  -2
+  -4
+ 
+  Clause        3 includes        2 signed literals
+   3
+   4
+ 
+  Clause        4 includes        2 signed literals
+  -4
+  -5
+ 
+  Clause        5 includes        2 signed literals
+   5
+  -6
+ 
+  Clause        6 includes        2 signed literals
+   6
+  -7
+ 
+  Clause        7 includes        2 signed literals
+   6
+   7
+ 
+  Clause        8 includes        2 signed literals
+   7
+ -16
+ 
+  Clause        9 includes        2 signed literals
+   8
+  -9
+ 
+  Clause       10 includes        2 signed literals
+  -8
+ -14
+ 
+  Clause       11 includes        2 signed literals
+   9
+  10
+ 
+  Clause       12 includes        2 signed literals
+   9
+ -10
+ 
+  Clause       13 includes        2 signed literals
+ -10
+ -11
+ 
+  Clause       14 includes        2 signed literals
+  10
+  12
+ 
+  Clause       15 includes        2 signed literals
+  11
+  12
+ 
+  Clause       16 includes        2 signed literals
+  13
+  14
+ 
+  Clause       17 includes        2 signed literals
+  14
+ -15
+ 
+  Clause       18 includes        2 signed literals
+  15
+  16
+ 
+  Number of input vectors to check is     65536
+ 
+   #       Index    ---------Input Values----------
+ 
+   1       28569   FTTFTTTTTFFTTFFT
+   2       28601   FTTFTTTTTFTTTFFT
+   3       28633   FTTFTTTTTTFTTFFT
+   4       44953   TFTFTTTTTFFTTFFT
+   5       44985   TFTFTTTTTFTTTFFT
+   6       45017   TFTFTTTTTTFTTFFT
+   7       61337   TTTFTTTTTFFTTFFT
+   8       61369   TTTFTTTTTFTTTFFT
+   9       61401   TTTFTTTTTTFTTFFT
+ 
+  Number of solutions found was        9
+ 
+CNF_IO_PRB
+  Normal end of execution.
+ 
+January  4 2011   4:35:52.662 PM

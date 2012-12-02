@@ -1,0 +1,391 @@
+<html>
+
+  <head>
+    <title>
+      HEATED_PLATE_WORKSHARE - 2D Steady State Heat Equation Using OpenMP WORKSHARE
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      HEATED_PLATE_WORKSHARE <br> 2D Steady State Heat Equation Using OpenMP WORKSHARE
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>HEATED_PLATE_WORKSHARE</b>
+      is a FORTRAN90 program which
+      illustrates the use of OpenMP's WORKSHARE directive for
+      parallelizing FORTRAN array commands.
+    </p>
+
+    <p>
+      <b>
+        While the WORKSHARE directive has been part of the OpenMP standard
+        for a considerable time, it does not seem to be well supported by
+        vendors, perhaps in part because it is peculiar to FORTRAN, and
+        not allowed in C.  In any case, the example discussed here seems
+        to show no improvement at all over the sequential code, when
+        compiled using the Gnu gfortran compiler or the Intel ifort compiler!
+      </b>
+    </p>
+
+    <p>
+      The physical region, and the boundary conditions, are suggested
+      by this diagram;
+      <pre>
+                     W = 0
+               +------------------+
+               |                  |
+      W = 100  |                  | W = 100
+               |                  |
+               +------------------+
+                     W = 100
+      </pre>
+    </p>
+
+    <p>
+      The region is covered with a grid of M by N nodes, and an N by N
+      array W is used to record the temperature.  The correspondence between
+      array indices and locations in the region is suggested by giving the
+      indices of the four corners:
+      <pre>
+                    I = 0
+            [0][0]-------------[0][N-1]
+               |                  |
+        J = 0  |                  |  J = N-1
+               |                  |
+          [M-1][0]-----------[M-1][N-1]
+                    I = M-1
+      </pre>
+    </p>
+
+    <p>
+      The steady state solution to the discrete heat equation satisfies the
+      following condition at an interior grid point:
+      <pre>
+        W[Central] = (1/4) * ( W[North] + W[South] + W[East] + W[West] )
+      </pre>
+      where "Central" is the index of the grid point, "North" is the index
+      of its immediate neighbor to the "north", and so on.
+    </p>
+
+    <p>
+      Given an approximate solution of the steady state heat equation, a
+      "better" solution is given by replacing each interior point by the
+      average of its 4 neighbors - in other words, by using the condition
+      as an ASSIGNMENT statement:
+      <pre>
+        W[Central]  <=  (1/4) * ( W[North] + W[South] + W[East] + W[West] )
+      </pre>
+      If this process is repeated often enough, the difference between successive
+      estimates of the solution will go to zero.
+    </p>
+
+    <p>
+      This program carries out such an iteration, using a tolerance specified by
+      the user, and writes the final estimate of the solution to a file that can
+      be used for graphic processing.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dijkstra_openmp/dijkstra_openmp.html">
+      DIJKSTRA_OPENMP</a>,
+      a FORTRAN90 program which
+      uses OpenMP to parallelize a simple example of Dijkstra's
+      minimum distance algorithm for graphs.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fft_openmp/fft_openmp.html">
+      FFT_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates the computation of a Fast Fourier Transform
+      in parallel, using OpenMP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/heated_plate/heated_plate.html">
+      HEATED_PLATE</a>,
+      a FORTRAN90 program which
+      solves the steady (time independent) heat equation in a 2D
+      rectangular region, and is intended as
+      a starting point for implementing an OpenMP parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/heated_plate_openmp/heated_plate_openmp.html">
+      HEATED_PLATE_OPENMP</a>,
+      a FORTRAN90 program which
+      solves the steady (time independent) heat equation in a 2D
+      rectangular region, using OpenMP to run in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hello_openmp/hello_openmp.html">
+      HELLO_OPENMP</a>,
+      a FORTRAN90 program which
+      prints out "Hello, world!" using the OpenMP parallel programming environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md_openmp/md_openmp.html">
+      MD_OPENMP</a>,
+      a FORTRAN90 program which
+      carries out a molecular dynamics simulation using OpenMP.
+    <p>
+
+    <p>
+      <a href = "../../f_src/mpi/mpi.html">
+      MPI</a>,
+      FORTRAN90 programs which
+      implement parallel programming in a distributed memory
+      environment, using message passing.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxv_openmp/mxv_openmp.html">
+      MXV_OPENMP</a>,
+      a FORTRAN90 program which
+      compares the performance of plain vanilla Fortran and the FORTRAN90
+      intrinsic routine MATMUL, for the matrix multiplication problem
+      y=A*x, with and without parallelization by OpenMP.
+    <p>
+
+    <p>
+      <a href = "../../f_src/openmp/openmp.html">
+      OPENMP</a>,
+      FORTRAN90 programs which
+      illustrate the use of the OpenMP application program interface
+      for carrying out parallel computations in a shared memory environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/openmp_stubs/openmp_stubs.html">
+      OPENMP_STUBS</a>,
+      a FORTRAN90 library which
+      implements a "stub" version of OpenMP, so that an OpenMP program
+      can be compiled, linked and executed on a system that does not
+      have OpenMP installed.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_openmp/prime_openmp.html">
+      PRIME_OPENMP</a>,
+      a FORTRAN90 program which
+      counts the number of primes between 1 and N, using OpenMP for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../c_src/pthreads/pthreads.html">
+      PTHREADS</a>,
+      C programs which
+      illustrate the use of the POSIX thread library to carry out
+      parallel program execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_openmp/quad_openmp.html">
+      QUAD_OPENMP</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule, and carries out the
+      computation in parallel using OpenMP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/satisfy_openmp/satisfy_openmp.html">
+      SATISFY_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates, for a particular circuit, an exhaustive search
+      for solutions of the circuit satisfiability problem,
+      using OpenMP for parallel execution.
+    <p>
+
+    <p>
+      <a href = "../../f_src/schedule_openmp/schedule_openmp.html">
+      SCHEDULE_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates the default, static, and dynamic methods of "scheduling"
+      loop iterations in OpenMP to avoid work imbalance.
+    <p>
+
+    <p>
+      <a href = "../../f_src/sgefa_openmp/sgefa_openmp.html">
+      SGEFA_OPENMP</a>,
+      a FORTRAN90 program which
+      reimplements the SGEFA/SGESL linear algebra routines from
+      LINPACK for use with OpenMP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ziggurat_openmp/ziggurat_openmp.html">
+      ZIGGURAT_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates how the ZIGGURAT library can be used to generate random numbers
+      in an OpenMP parallel program.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Peter Arbenz, Wesley Petersen,<br>
+          Introduction to Parallel Computing - A practical guide with examples in C,<br>
+          Oxford University Press,<br>
+          ISBN: 0-19-851576-6,<br>
+          LC: QA76.58.P47.
+        </li>
+        <li>
+          Rohit Chandra, Leonardo Dagum, Dave Kohr, Dror Maydan,
+          Jeff McDonald, Ramesh Menon,<br>
+          Parallel Programming in OpenMP,<br>
+          Morgan Kaufmann, 2001,<br>
+          ISBN: 1-55860-671-8,<br>
+          LC: QA76.642.P32.
+        </li>
+        <li>
+          Barbara Chapman, Gabriele Jost, Ruud vanderPas, David Kuck,<br>
+          Using OpenMP: Portable Shared Memory Parallel Processing,<br>
+          MIT Press, 2007,<br>
+          ISBN13: 978-0262533027,<br>
+          LC: QA76.642.C49.
+        </li>
+        <li>
+          Tim Mattson, Rudolf Eigenmann,<br>
+          OpenMP: An API for Writing Portable SMP Application Software,<br>
+          a slide presentation,<br>
+          <a href = "../../pdf/openmp_slides.pdf">openmp_slides.pdf</a>.
+        </li>
+        <li>
+          <a href = "../../pdf/libgomp.pdf">libgomp.pdf</a>,<br>
+          The GNU OpenMP Implementation.
+        </li>
+        <li>
+          <a href = "http://www.openmp.org/">The OpenMP web site</a>
+        </li>
+        <li>
+          OpenMP Architecture Review Board,<br>
+          OpenMP Application Program Interface,<br>
+          Version 3.0,<br>
+          May 2008.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "heated_plate_workshare.f90">heated_plate_workshare.f90</a>,
+          the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>HEATED_PLATE_LOCAL_GFORTRAN</b> compiles, links, loads and runs the program
+      using 1, 2 and 4 threads, the local interactive environment,
+      and the GNU gfortran compiler.
+      <ul>
+        <li>
+          <a href = "heated_plate_local_gfortran.sh">heated_plate_local_gfortran.sh</a>,
+          BASH commands.
+        </li>
+        <li>
+          <a href = "heated_plate_local_gfortran_output.txt">heated_plate_local_gfortran_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HEATED_PLATE_LOCAL_IFORT</b> compiles, links, loads and runs the program
+      using 1, 2 and 4 threads, the local interactive environment,
+      and the Intel ifort compiler.
+      <ul>
+        <li>
+          <a href = "heated_plate_local_ifort.sh">heated_plate_local_ifort.sh</a>,
+          BASH commands.
+        </li>
+        <li>
+          <a href = "heated_plate_local_ifort_output.txt">heated_plate_local_ifort_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HEATED_PLATE_ITHACA_GFORTRAN</b> compiles, links, loads and runs the program
+      using 1, 2 and 4 threads, using the PBS queueing system on Virginia
+      Tech's Ithaca cluster, and the GNU gfortran compiler.
+      <ul>
+        <li>
+          <a href = "heated_plate_ithaca_gfortran.sh">heated_plate_ithaca_gfortran.sh</a>,
+          BASH commands.
+        </li>
+        <li>
+          <a href = "heated_plate_ithaca_gfortran_output.txt">heated_plate_ithaca_gfortran_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HEATED_PLATE_ITHACA_IFORT</b> compiles, links, loads and runs the program
+      using 1, 2 and 4 threads, using the PBS queueing system on Virginia
+      Tech's Ithaca cluster,
+      and the Intel ifort compiler.
+      <ul>
+        <li>
+          <a href = "heated_plate_ithaca_ifort.sh">heated_plate_ithaca_ifort.sh</a>,
+          BASH commands.
+        </li>
+        <li>
+          <a href = "heated_plate_ithaca_ifort_output.txt">heated_plate_ithaca_ifort_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 July 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

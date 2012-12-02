@@ -1,0 +1,520 @@
+<html>
+
+  <head>
+    <title>
+      GEOMPACK2 - Voronoi diagrams, Delaunay triangulations
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GEOMPACK2 <br> Voronoi diagrams, Delaunay triangulations
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GEOMPACK2</b>
+      is a FORTRAN90 library which
+      carries out certain geometric
+      computations, including the Voronoi diagram, and the Delaunay
+      triangulation of a set of points in the plane.
+    </p>
+
+    <p>
+      Note that DTRIS2 or RTRIS2, the fundamental routine for constructing
+      the Delaunay triangulation, alters the input coordinate data by
+      sorting it.  This has caused me so many problems that I finally
+      wrote a modified version of DTRIS2/RTRIS2 that undoes the sorting
+      before return.  In all other programs that use DTRIS2/RTRIS2, I
+      use the modified version, but I have left the original here in this
+      package.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dutch/dutch.html">
+      DUTCH</a>,
+      a FORTRAN90 library which
+      carries out tasks in computational geometry.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geometry/geometry.html">
+      GEOMETRY</a>,
+      a FORTRAN90 library which
+      performs geometric calculations in 2, 3 and N dimensional space.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geompack/geompack.html">
+      GEOMPACK</a>,
+      a FORTRAN90 library which
+      is a subset of GEOMPACK2, and which is available in several
+      other computer languages.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geompack3/geompack3.html">
+      GEOMPACK3</a>,
+      a FORTRAN90 library which
+      handles 3D geometric problems.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/triangulation_display_opengl/triangulation_display_opengl.html">
+      TRIANGULATION_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads files defining a triangulation and displays an image using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_triangle_neighbors/triangulation_triangle_neighbors.html">
+      TRIANGULATION_TRIANGLE_NEIGHBORS</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, determines the neighboring
+      triangles of each triangle, and writes that information to a file.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Original FORTRAN77 version by Barry Joe, <br>
+      FORTRAN90 version by John Burkardt.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, pages 345-405, September 1991.
+        </li>
+        <li>
+          Barry Joe, <br>
+          GEOMPACK - a software package for the generation of meshes
+          using geometric algorithms, <br>
+          Advances in Engineering Software,<br>
+          Volume 13, pages 325-331, 1991.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "geompack2.f90">geompack2.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "geompack2.sh">geompack2.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "geompack2_prb.f90">geompack2_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "geompack2_prb.sh">geompack2_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "geompack2_prb_output.txt">geompack2_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "test06_triangulation_plot.png">
+          test06_triangulation_plot.png</a>,
+          a PNG image of a Delaunay triangulation.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "annulus.in">annulus.in</a>, an annulus.
+        </li>
+        <li>
+          <a href = "cmos.in">cmos.in</a>, 30 nodes
+        </li>
+        <li>
+          <a href = "convex.in">convex.in</a>, a convex polygon with 6 nodes.
+        </li>
+        <li>
+          <a href = "holeatt.in">holeatt.in</a>. attached hole in square,
+          12 nodes.
+        </li>
+        <li>
+          <a href = "intfac.in">intfac.in</a>, interfaces in region, 90 nodes.
+        </li>
+        <li>
+          <a href = "lsup.in">lsup.in</a>, the outline of Lake Superior;
+        </li>
+        <li>
+          <a href = "notch.in">notch.in</a>, notch in a rectangle.
+        </li>
+        <li>
+          <a href = "ptpg.in">ptpg.in</a>.
+        </li>
+        <li>
+          <a href = "refcor.in">refcor.in</a>, refined corner of a square.
+        </li>
+        <li>
+          <a href = "refint.in">refint.in</a>, refinement in interior of square.
+        </li>
+        <li>
+          <a href = "refsid.in">refsid.in</a>, refinement in the side of
+          a square.
+        </li>
+        <li>
+          <a href = "shr1.in">shr1.in</a>.
+        </li>
+        <li>
+          <a href = "shr2.in">shr2.in</a>.
+        </li>
+        <li>
+          <a href = "shr3.in">shr3.in</a>.
+        </li>
+        <li>
+          <a href = "shr4.in">shr4.in</a>.
+        </li>
+        <li>
+          <a href = "simple.in">simple.in</a>, a simple polygon.
+        </li>
+        <li>
+          <a href = "vpol1.in">vpol1.in</a>.
+        </li>
+        <li>
+          <a href = "vpol2.in">vpol2.in</a>.
+        </li>
+        <li>
+          <a href = "vpol3.in">vpol3.in</a>.
+        </li>
+        <li>
+          <a href = "vpol4.in">vpol4.in</a>.
+        </li>
+        <li>
+          <a href = "vpol5.in">vpol5.in</a>.
+        </li>
+        <li>
+          <a href = "vpol6.in">vpol6.in</a>.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE</b> computes the interior angle at a vertex defined by 3 points.
+        </li>
+        <li>
+          <b>AREAPG</b> computes twice the signed area of a simple polygon.
+        </li>
+        <li>
+          <b>AREATR</b> computes twice the signed area of a triangle.
+        </li>
+        <li>
+          <b>BEDGMV</b> generates boundary edge mesh vertices.
+        </li>
+        <li>
+          <b>BNSRT2</b> bin sorts N points in 2D into increasing bin order.
+        </li>
+        <li>
+          <b>CMCIRC</b> determines whether a point lies within a circle through 3 points.
+        </li>
+        <li>
+          <b>CVDEC2</b> decomposes a polygonal region into convex polygons.
+        </li>
+        <li>
+          <b>CVDTRI</b> converts boundary triangles to Delaunay triangles.
+        </li>
+        <li>
+          <b>DEGREES_TO_RADIANS</b> converts an angle from degrees to radians.
+        </li>
+        <li>
+          <b>DELAUNAY_PRINT</b> prints out information defining a Delaunay triangulation.
+        </li>
+        <li>
+          <b>DHPSRT</b> sorts points into lexicographic order using heap sort
+        </li>
+        <li>
+          <b>DIAEDG</b> triangulates 4 points using the circumcircle criterion.
+        </li>
+        <li>
+          <b>DIAM2</b> finds the diameter of a convex polygon.
+        </li>
+        <li>
+          <b>DLESS</b> determine whether P is lexicographically less than Q.
+        </li>
+        <li>
+          <b>DSFTDW</b> sifts A(*,MAP(L)) down a heap of size U.
+        </li>
+        <li>
+          <b>DSMCPR</b> initializes the polygonal decomposition data structure.
+        </li>
+        <li>
+          <b>DSMDF2</b> sets up a data structure for a heuristic mesh distribution.
+        </li>
+        <li>
+          <b>DSPGDC</b> initializes the polygonal decomposition data structure.
+        </li>
+        <li>
+          <b>DTRIS2</b> constructs a Delaunay triangulation of 2D vertices.
+        </li>
+        <li>
+          <b>DTRIW2</b> constructs an incremental Delaunay triangulation in 2D.
+        </li>
+        <li>
+          <b>EDGHT</b> searches a hash table for a record in EDGE containing key (A,B).
+        </li>
+        <li>
+          <b>EQDIS2</b> further subdivides convex polygons for mesh equidistribution.
+        </li>
+        <li>
+          <b>FNDSEP</b> finds separators to resolve a reflex vertex.
+        </li>
+        <li>
+          <b>FNDTRI</b> finds two triangles containing a given edge.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GTIME</b> gets the current CPU time in seconds.
+        </li>
+        <li>
+          <b>HOLVRT</b> determines top and bottom vertices of holes in polygonal regions.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>IHPSRT</b> uses heapsort on integer points in K-dimension.
+        </li>
+        <li>
+          <b>ILESS</b> determines whether a K-dimensional point P is lexically less than Q.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an I4MAT.
+        </li>
+        <li>
+          <b>INSED2</b> inserts an edge into the head and polygon vertex lists.
+        </li>
+        <li>
+          <b>INSVR2</b> inserts a point into the vertex coordinate and polygon vertex lists.
+        </li>
+        <li>
+          <b>INTPG</b> integrates the mesh distribution function in a convex polygon.
+        </li>
+        <li>
+          <b>INTTRI</b> generates triangles inside a convex polygon.
+        </li>
+        <li>
+          <b>ISFTDW</b> sifts A(*,MAP(L)) down a heap of size U.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an integer vector to the indicator vector.
+        </li>
+        <li>
+          <b>JNHOLE</b> joins a hole boundary to the boundary of a polygon.
+        </li>
+        <li>
+          <b>LOP</b> applies the local optimization procedure to two triangles.
+        </li>
+        <li>
+          <b>LRLINE</b> determines if a point is left of, right or, or on a directed line.
+        </li>
+        <li>
+          <b>LUFAC</b> computes the LU factorization of a matrix.
+        </li>
+        <li>
+          <b>LUSOL</b> solves a linear system with an LU factored matrix.
+        </li>
+        <li>
+          <b>MDF2</b> evaluates the heuristic mesh distribution function at (X,Y).
+        </li>
+        <li>
+          <b>MFDEC2</b> subdivides polygons to decrease mesh distribution variation.
+        </li>
+        <li>
+          <b>MINANG</b> determines the minimum of the boundary angles for a separator.
+        </li>
+        <li>
+          <b>MMASEP</b> chooses the best of four separators by the max-min angle criterion.
+        </li>
+        <li>
+          <b>MTREDG</b> sets fields for a triangle as needed by routine TMERGE.
+        </li>
+        <li>
+          <b>PRIME</b> returns a prime greater than a given integer K.
+        </li>
+        <li>
+          <b>PRMDF2</b> preprocesses a mesh distribution function evaluation.
+        </li>
+        <li>
+          <b>PTPOLG</b> determines if a point is in, on or outside a polygon.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>RADIANS_TO_DEGREES</b> converts an angle from radians to degrees.
+        </li>
+        <li>
+          <b>RANDPT</b> generates N random K-dimensional points from the uniform distribution.
+        </li>
+        <li>
+          <b>RESVRT</b> resolves a reflex vertex of a simply connected polygon.
+        </li>
+        <li>
+          <b>ROTIAR</b> rotates the elements of an integer array.
+        </li>
+        <li>
+          <b>ROTIPG</b> rotates the vertex indices of a simple polygon.
+        </li>
+        <li>
+          <b>ROTPG</b> rotates a convex polygon.
+        </li>
+        <li>
+          <b>SEPMDF</b> splits a polygon according to the mesh distribution function.
+        </li>
+        <li>
+          <b>SEPSHP</b> splits a convex polygon according to shape.
+        </li>
+        <li>
+          <b>SFDWMF</b> sifts PSI(INDP(L)) down a heap.
+        </li>
+        <li>
+          <b>SFUPMF</b> sifts PSI(INDP(R)) up a heap.
+        </li>
+        <li>
+          <b>SHRNK2</b> shrinks a convex polygon.
+        </li>
+        <li>
+          <b>SPDEC2</b> decomposes a polygonal region with holes into simple polygons.
+        </li>
+        <li>
+          <b>SWAPEC</b> swaps diagonal edges until all triangles are Delaunay.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TMERGE</b> forms triangles near the boundary by merging vertex chains.
+        </li>
+        <li>
+          <b>TRIANGULATION_PLOT_EPS</b> plots a triangulation of a pointset.
+        </li>
+        <li>
+          <b>TRINBR</b> determines the neighboring triangles of every triangle.
+        </li>
+        <li>
+          <b>TRIPR2</b> generates triangles inside each convex polygon of a decomposition.
+        </li>
+        <li>
+          <b>TRISIZ</b> smooths the mean mesh distribution function.
+        </li>
+        <li>
+          <b>TRPOLG</b> generates a Delaunay triangular mesh inside a convex polygon.
+        </li>
+        <li>
+          <b>UMDF2</b> is a dummy mesh distribution function.
+        </li>
+        <li>
+          <b>URAND</b> is a uniform random number generator.
+        </li>
+        <li>
+          <b>VBEDG</b> determines visible boundary edges of a 2D triangulation.
+        </li>
+        <li>
+          <b>VISPOL</b> computes the visibility polygon.
+        </li>
+        <li>
+          <b>VISVRT</b> determines a list of visible vertices.
+        </li>
+        <li>
+          <b>VORNBR</b> determines the Voronoi neighbors of an eyepoint.
+        </li>
+        <li>
+          <b>VPLEFT</b> is called by routine VISPOL for the LEFT operation (OPER = 1).
+        </li>
+        <li>
+          <b>VPRGHT</b> is called by routine VISPOL for the RIGHT operation (OPER = 2).
+        </li>
+        <li>
+          <b>VPSCNA</b> is called by routine VISPOL for the SCANA operation (OPER = 3).
+        </li>
+        <li>
+          <b>VPSCNB</b> is called by routine VISPOL for the SCANB operation (OPER = 4).
+        </li>
+        <li>
+          <b>VPSCNC</b> is called by routine VISPOL for the SCANC operation (OPER = 5).
+        </li>
+        <li>
+          <b>VPSCND</b> is called by routine VISPOL for the SCAND operation (OPER = 6).
+        </li>
+        <li>
+          <b>WALKT2</b> searches for a triangle containing a point.
+        </li>
+        <li>
+          <b>WIDTH2</b> finds the minimum breadth of a convex polygon.
+        </li>
+        <li>
+          <b>XEDGE</b> determines if an edge intersects another edge or ray.
+        </li>
+        <li>
+          <b>XLINE</b> finds the intersection of lines parallel to two other lines.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

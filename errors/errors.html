@@ -1,0 +1,217 @@
+<html>
+
+  <head>
+    <title>
+      ERRORS - Failures of Numerical Algorithms
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ERRORS <br> Failures of Numerical Algorithms
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ERRORS</b>
+      is a FORTRAN90 program which
+      demonstrates how reasonable computations
+      can produce numerical nonsense.  This illustrates that the programmer
+      must not assume that a numerical algorithm that seems reasonable will
+      always produce correct and reliable results.
+    </p>
+
+    <p>
+      The computations
+      include polynomial evaluation and root finding, linear system solution,
+      minimization, and Taylor series approximation.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          U Kulisch, C Ullrich, Editors,<br>
+          Wissenschaftliches Rechnen und Programmiersprachen,<br>
+          (Scientific Computing and Programming Languages),<br>
+          Berichte des German Chapter of the ACM,<br>
+          (Reports of the German Chapter of the ACM),<br>
+          Volume 10, Teubner Verlag, 1982.
+        </li>
+        <li>
+          Cleve Moler, Charles Van Loan,<br>
+          19 Dubious Ways to Compute the Exponential of a Matrix,
+          25 Years Later,
+          SIAM Review, <br>
+          Volume 45, Number 1, pages 3-49, March 2003.
+        </li>
+        <li>
+          Yves Nievergelt,<br>
+          Numerical Linear Algebra on the HP-28, or How to Lie with
+          Supercalculators,<br>
+          The American Mathematical Monthly,<br>
+          Volume 98, Number 6, June-July 1991, pages 539-544.
+        </li>
+        <li>
+          Siegfried Rump,<br>
+          Wie Zuverlaessig Sind die Ergebnisse Unserer Rechenanlagen?<br>
+          (How Reliable are the Results of our Computations?)<br>
+          Jahrbuch Ueberblicke Mathematik 1983, pages 163-168.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "errors.f90">errors.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "errors.sh">errors.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "errors_prb.f90">errors_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "errors_prb.sh">errors_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "errors_prb_output.txt">errors_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DPOLY_VAL</b> evaluates a double precision polynomial.
+        </li>
+        <li>
+          <b>DPOLY_VAL_HORNER</b> evaluates a double precision polynomial using Horner's method.
+        </li>
+        <li>
+          <b>DPOLY2_ROOTS</b> finds the roots of a quadratic polynomial.
+        </li>
+        <li>
+          <b>DPOLY2_ROOTS2</b> finds the roots of a quadratic polynomial.
+        </li>
+        <li>
+          <b>FMIN</b> seeks a minimizer of a scalar function of a scalar variable.
+        </li>
+        <li>
+          <b>ISAMAX</b> finds the index of the vector element of maximum absolute value.
+        </li>
+        <li>
+          <b>LCM_12N</b> computes the least common multiple of the integers 1 through N.
+        </li>
+        <li>
+          <b>MAXTRIX_EXPONENTIAL_TAYLOR</b> uses a Taylor series for the matrix exponential.
+        </li>
+        <li>
+          <b>RPOLY_VAL</b> evaluates a real polynomial.
+        </li>
+        <li>
+          <b>RPOLY_VAL_HORNER</b> evaluates a real polynomial using Horner's method.
+        </li>
+        <li>
+          <b>RPOLY2_ROOTS</b> finds the roots of a quadratic polynomial.
+        </li>
+        <li>
+          <b>RPOLY2_ROOTS2</b> finds the roots of a quadratic polynomial.
+        </li>
+        <li>
+          <b>SAMAX</b> returns the maximum absolute value of the entries in a vector.
+        </li>
+        <li>
+          <b>SAXPY</b> adds a constant times one vector to another.
+        </li>
+        <li>
+          <b>SCOPY</b> copies one real vector into another.
+        </li>
+        <li>
+          <b>SDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>SDSDOT</b> forms the dot product of two vectors using higher precision.
+        </li>
+        <li>
+          <b>SGEDI</b> computes the determinant and inverse of a matrix factored by SGECO or SGEFA.
+        </li>
+        <li>
+          <b>SGEFA</b> factors a real matrix.
+        </li>
+        <li>
+          <b>SGESL</b> solves a real general linear system A * X = B.
+        </li>
+        <li>
+          <b>RVEC_NORM2</b> computes the Euclidean norm of a vector.
+        </li>
+        <li>
+          <b>SQRDC</b> computes the QR factorization of a real rectangular matrix.
+        </li>
+        <li>
+          <b>SQRSL</b> computes transformations, projections, and least squares solutions.
+        </li>
+        <li>
+          <b>SSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>SSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

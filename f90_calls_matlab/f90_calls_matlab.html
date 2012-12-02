@@ -1,0 +1,233 @@
+<html>
+
+  <head>
+    <title>
+      F90_CALLS_MATLAB - FORTRAN90 Programs Interacting with MATLAB
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      F90_CALLS_MATLAB <br> FORTRAN90 Programs Interacting with MATLAB
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>F90_CALLS_MATLAB</b>
+      is a directory of FORTRAN90 programs which
+      demonstrate how a FORTRAN90 program
+      can interact with MATLAB.
+    </p>
+
+    <p>
+      In these examples, the interaction is done through the SYSTEM
+      command, which allows a FORTRAN90 program to issue a command to
+      the operating system, and to receive a result flag indicating the
+      successful completion or failure of that command.
+    </p>
+
+    <p>
+      The SYSTEM command is not a standard or intrinsic routine
+      defined by the FORTRAN standard.  However, it is often available
+      to FORTRAN programmers on UNIX systems.  In particular, the GNU G95
+      and IBM XLF compilers include this routine.
+    </p>
+
+    <p>
+      Data can be passed between MATLAB and FORTRAN using text files.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../c_src/c_calls_f77/c_calls_f77.html">
+      C_CALLS_F77</a>,
+      C programs which
+      illustrate a C program calling a FORTRAN77 subroutine.
+    </p>
+
+    <p>
+      <a href = "../../c_src/c_calls_f90/c_calls_f90.html">
+      C_CALLS_F90</a>,
+      C programs which
+      illustrate a C program calling a FORTRAN90 subroutine.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/c++_calls_f77/c++_calls_f77.html">
+      C++_CALLS_F77</a>,
+      C++ programs which
+      illustrate how a C++ main program can call a FORTRAN77 subroutine.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/c++_calls_f90/c++_calls_f90.html">
+      C++_CALLS_F90</a>,
+      C++ programs which
+      illustrate how a C++ main program can call a FORTRAN90 subroutine.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/f77_calls_c/f77_calls_c.html">
+      F77_CALLS_C</a>,
+      FORTRAN77 programs which
+      illustrates how a FORTRAN77 program can call a C function.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/f77_calls_c++/f77_calls_c++.html">
+      F77_CALLS_C++</a>,
+      FORTRAN77 programs which
+      illustrates how a FORTRAN77 program can call a C++ function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_calls_c/f90_calls_c.html">
+      F90_CALLS_C</a>,
+      FORTRAN90 programs which
+      illustrates how a FORTRAN90 program can call a C function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_calls_c++/f90_calls_c++.html">
+      F90_CALLS_C++</a>,
+      FORTRAN90 programs which
+      illustrates how a FORTRAN90 program can call a C++ function.
+    </p>
+
+    <p>
+      <a href = "../../m_src/matlab_calls_c/matlab_calls_c.html">
+      MATLAB_CALLS_C</a>,
+      MATLAB programs which
+      illustrate how C functions can be written, compiled, and
+      called from MATLAB using the MEX facility;
+    </p>
+
+    <p>
+      <a href = "../../m_src/matlab_calls_f77/matlab_calls_f77.html">
+      MATLAB_CALLS_F77</a>,
+      MATLAB programs which
+      illustrate how FORTRAN77 functions can be written, compiled, and
+      called from MATLAB using MATLAB's <b>mex</b> facility;
+    </p>
+
+    <p>
+      <a href = "../../f_src/mixed/mixed.html">
+      MIXED</a>,
+      FORTRAN90 programs which
+      call a function written in another programming language.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Duane Hanselman, Bruce Littlefield,<br>
+          Mastering MATLAB 7,<br>
+          Pearson Prentice Hall, 2005,<br>
+          ISBN: 0-13-143018-1.
+        </li>
+        <li>
+          The Mathworks,<br>
+          Using MATLAB, Version 6,<br>
+          The Mathworks, 2002.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>MATRIX_MULTIPLY</b> shows how a FORTRAN90 program can cooperate
+      with MATLAB.  The FORTRAN90 program generates two matrices A and B,
+      writes them to files, and invokes MATLAB with a particular M-file.
+      The M-file reads the matrices from the files, computes the product C
+      and writes it to a file.  The FORTRAN90 program resumes execution,
+      reading the C file and reporting the result.
+      <ul>
+        <li>
+          <a href = "matrix_multiply.f90">matrix_multiply.f90</a>,
+          a program that generates matrices A and B, writes them to
+          a file, runs MATLAB with the MATRIX_MULTIPLY.M file,
+          and retrieves the product matrix C.
+        </li>
+        <li>
+          <a href = "matrix_multiply.sh">matrix_multiply.sh</a>,
+          BASH commands to compile and load the FORTRAN90 program.
+        </li>
+        <li>
+          <a href = "matrix_multiply.m">matrix_multiply.m</a>,
+          a MATLAB script that reads matrices A and B from a file,
+          computes the product C, and writes it to a file.
+        </li>
+        <li>
+          <a href = "r8mat_read.m">r8mat_read.m</a>,
+          a MATLAB M-file that reads a matrix from a file.
+        </li>
+        <li>
+          <a href = "r8mat_write.m">r8mat_write.m</a>,
+          a MATLAB M-file that writes a matrix to a file.
+        </li>
+        <li>
+          <a href = "matrix_multiply_f90_output.txt">
+          matrix_multiply_f90_output.txt</a>,
+          the output file from the FORTRAN90 program;
+        </li>
+        <li>
+          <a href = "matrix_multiply_matlab_output.txt">
+          matrix_multiply_matlab_output.txt</a>,
+          the output file from the MATLAB program;
+        </li>
+        <li>
+          <a href = "a.txt">
+          a.txt</a>,
+          the A matrix written by the FORTRAN program;
+        </li>
+        <li>
+          <a href = "b.txt">
+          b.txt</a>,
+          the B matrix written by the FORTRAN program;
+        </li>
+        <li>
+          <a href = "c.txt">
+          c.txt</a>,
+          the C matrix written by the MATLAB script;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 02 November 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,365 @@
+<html>
+
+  <head>
+    <title>
+      HERMITE_POLYNOMIAL - Hermite Polynomials
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      HERMITE_POLYNOMIAL <br> Hermite Polynomials
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>HERMITE_POLYNOMIAL</b>
+      is a FORTRAN90 library which
+      evaluates the physicist's Hermite polynomial, the probabilist's Hermite polynomial,
+      the Hermite function, and related functions.
+    </p>
+
+    <p>
+      The physicist's Hermite polynomial H(n,x) can be defined by:
+      <pre>
+        H(n,x) = (-1)^n exp(x^2/2) * d^n/dx^n ( exp(-x^2/2) )
+      </pre>
+    </p>
+
+    <p>
+      The normalized physicist's Hermite polynomial Hn(n,x) is scaled so that
+      <pre>
+        Integral ( -oo < X < +oo ) exp ( - X^2 ) * Hn(M,X) Hn(N,X) dX = delta ( N, M )
+      </pre>
+    </p>
+
+    <p>
+      The probabilist's Hermite polynomial He(n,x) is related to H(n,x) by:
+      <pre>
+        He(n,x) = H(n,x/sqrt(2)) / sqrt ( 2^n )
+      </pre>
+    </p>
+
+    <p>
+      The normalized probabilist's Hermite polynomial Hen(n,x) is scaled so that
+      <pre>
+        Integral ( -oo < X < +oo ) exp ( - 0.5*X^2 ) * Hen(M,X) Hen(N,X) dX = delta ( N, M )
+      </pre>
+    </p>
+
+    <p>
+      The Hermite function Hf(n,x) is related to H(n,x) by:
+      <pre>
+        Hf(n,x) = H(n,x) * exp(-x^2/2) / sqrt ( 2^n * n! * sqrt ( pi ) )
+      </pre>
+    </p>
+
+    <p>
+      The Hermite function Hf(n,x) is scaled so that:
+      <pre>
+        Integral ( -oo < X < +oo ) Hf(M,X) Hf(N,X) dX = delta ( N, M )
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>HERMITE_POLYNOMIAL</b> is available in
+      <a href = "../../cpp_src/hermite_polynomial/hermite_polynomial.html">a C++ version</a> and
+      <a href = "../../f_src/hermite_polynomial/hermite_polynomial.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/hermite_polynomial/hermite_polynomial.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/chebyshev_polynomial/chebyshev_polynomial.html">
+      CHEBYSHEV_POLYNOMIAL</a>,
+      a FORTRAN90 library which
+      evaluates the Chebyshev polynomial and associated functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gen_hermite_rule/gen_hermite_rule.html">
+      GEN_HERMITE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a generalized Gauss-Hermite quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite_rule/hermite_rule.html">
+      HERMITE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Hermite quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/jacobi_polynomial/jacobi_polynomial.html">
+      JACOBI_POLYNOMIAL</a>,
+      a FORTRAN90 library which
+      evaluates the Jacobi polynomial and associated functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/laguerre_polynomial/laguerre_polynomial.html">
+      LAGUERRE_POLYNOMIAL</a>,
+      a FORTRAN90 library which
+      evaluates the Laguerre polynomial, the generalized Laguerre polynomials,
+      and the Laguerre function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/legendre_polynomial/legendre_polynomial.html">
+      LEGENDRE_POLYNOMIAL</a>,
+      a FORTRAN90 library which
+      evaluates the Legendre polynomial and associated functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pce_burgers/pce_burgers.html">
+      PCE_BURGERS</a>,
+      a FORTRAN90 program which
+      defines and solves a version of the time-dependent viscous Burgers equation,
+      with uncertain viscosity, using a polynomial chaos expansion in terms
+      of Hermite polynomials,
+      by Gianluca Iaccarino.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pce_ode_hermite/pce_ode_hermite.html">
+      PCE_ODE_HERMITE</a>,
+      a FORTRAN90 program which
+      sets up a simple scalar ODE for exponential decay with an uncertain
+      decay rate, using a polynomial chaos expansion in terms of Hermite polynomials.
+    </p>
+
+    <p>
+      <a href = "../../f_src/polpak/polpak.html">
+      POLPAK</a>,
+      a FORTRAN90 library which
+      evaluates a variety of mathematical functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_values/test_values.html">
+      TEST_VALUES</a>,
+      a FORTRAN90 library which
+      supplies test values of various mathematical functions.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Theodore Chihara,<br>
+          An Introduction to Orthogonal Polynomials,<br>
+          Gordon and Breach, 1978,<br>
+          ISBN: 0677041500,<br>
+          LC: QA404.5 C44.
+        </li>
+        <li>
+          Walter Gautschi,<br>
+          Orthogonal Polynomials: Computation and Approximation,<br>
+          Oxford, 2004,<br>
+          ISBN: 0-19-850672-4,<br>
+          LC: QA404.5 G3555.
+        </li>
+        <li>
+          Frank Olver, Daniel Lozier, Ronald Boisvert, Charles Clark,<br>
+          NIST Handbook of Mathematical Functions,<br>
+          Cambridge University Press, 2010,<br>
+          ISBN: 978-0521192255,<br>
+          LC: QA331.N57.
+        </li>
+        <li>
+          Gabor Szego,<br>
+          Orthogonal Polynomials,<br>
+          American Mathematical Society, 1992,<br>
+          ISBN: 0821810235,<br>
+          LC: QA3.A5.v23.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "hermite_polynomial.f90">hermite_polynomial.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "hermite_polynomial.sh">hermite_polynomial.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "hermite_polynomial_prb.f90">hermite_polynomial_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "hermite_polynomial_prb.sh">hermite_polynomial_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "hermite_polynomial_prb_output.txt">hermite_polynomial_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>H_INTEGRAL</b> evaluates a monomial physicist's Hermite integral for H(n,x).
+        </li>
+        <li>
+          <b>H_POLYNOMIAL</b> evaluates the physicist's Hermite polynomial H(n,x).
+        </li>
+        <li>
+          <b>H_POLYNOMIAL_COEFFICIENTS:</b> coeffs of physicist's Hermite polynomial H(n,x).
+        </li>
+        <li>
+          <b>H_POLYNOMIAL_VALUES:</b> values of the physicist's Hermite polynomial H(n,x).
+        </li>
+        <li>
+          <b>H_POLYNOMIAL_ZEROS:</b> zeros of the physicist's Hermite polynomial H(n,x).
+        </li>
+        <li>
+          <b>H_QUADRATURE_RULE:</b> quadrature for physicist's Hermite polynomial H(n,x).
+        </li>
+        <li>
+          <b>H_TRIPLE_PRODUCT_INTEGRAL:</b> integral of H(i,x)*H(j,x)*H(k,x)*e^(-x^2/2).
+        </li>
+        <li>
+          <b>HE_INTEGRAL</b> evaluates a monomial probabilist's Hermite integral for He(n,x).
+        </li>
+        <li>
+          <b>HE_POLYNOMIAL</b> evaluates the probabilist's Hermite polynomial He(n,x).
+        </li>
+        <li>
+          <b>HE_POLYNOMIAL_COEFFICIENTS:</b> coeffs probabilist's Hermite polynomial He(n,x).
+        </li>
+        <li>
+          <b>HE_POLYNOMIAL_VALUES:</b> values of the probabilist's Hermite polynomial He(n,x).
+        </li>
+        <li>
+          <b>HE_POLYNOMIAL_ZEROS:</b> zeros of the probabilist's Hermite polynomial He(n,x).
+        </li>
+        <li>
+          <b>HE_QUADRATURE_RULE:</b> quadrature for probabilist's Hermite polynomial He(n,x).
+        </li>
+        <li>
+          <b>HEN_EXPONENTIAL_PRODUCT:</b> probabilist Hermite exponential product, Hen(n,x).
+        </li>
+        <li>
+          <b>HEN_POLYNOMIAL:</b> evaluate normalized probabilist's Hermite poly Hen(n,x).
+        </li>
+        <li>
+          <b>HEN_POWER_PRODUCT:</b> power products, normalized probabilist's Hermite Hen(n,x).
+        </li>
+        <li>
+          <b>HF_EXPONENTIAL_PRODUCT:</b> exponential products, Hermite function Hf(n,x).
+        </li>
+        <li>
+          <b>HF_FUNCTION</b> evaluates the Hermite function Hf(n,x).
+        </li>
+        <li>
+          <b>HF_FUNCTION_VALUES:</b> values of the Hermite function Hf(n,x).
+        </li>
+        <li>
+          <b>HF_POWER_PRODUCT:</b> power products for Hermite function Hf(n,x).
+        </li>
+        <li>
+          <b>HF_QUADRATURE_RULE:</b> quadrature for Hermite function Hf(n,x).
+        </li>
+        <li>
+          <b>HN_EXPONENTIAL_PRODUCT:</b> exponential products for Hn(n,x).
+        </li>
+        <li>
+          <b>HN_POLYNOMIAL</b> evaluates normalized physicist's Hermite polynomials Hn(n,x).
+        </li>
+        <li>
+          <b>HN_POWER_PRODUCT:</b> power products for normalized physicist's Hermite Hn(n,x).
+        </li>
+        <li>
+          <b>IMTQLX</b> diagonalizes a symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>R8_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>R8_FACTORIAL2</b> computes the double factorial function.
+        </li>
+        <li>
+          <b>R8_SIGN</b> returns the sign of an R8.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC2_PRINT</b> prints an R8VEC2.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 16 March 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,324 @@
+<html>
+
+  <head>
+    <title>
+      TEC_TO_FEM - Convert TECPLOT Finite Element Files to FEM Format
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEC_TO_FEM <br> Convert TECPLOT Finite Element Files to FEM Format
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEC_TO_FEM</b>
+      is a FORTRAN90 program which
+      reads a TECPLOT file defining a finite element dataset,
+      and writes a corresponding set of FEM files.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>tec_to_fem</b> <i>file.dat</i>
+        </dt>
+        <dd>
+          reads the TECPLOT ASCII file <i>file.dat</i> and creates the FEM files
+          <i>file.node_coord.txt</i>, <i>file.element.txt</i> and
+          <i>file.node_data.txt</i>.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEC_TO_FEM</b> is available in
+      <a href = "../../f_src/tec_to_fem/tec_to_fem.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/tec_to_fem/tec_to_fem.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/fem2d/fem2d.html">
+      FEM2D</a>,
+      a data directory which
+      contains a description of the data files
+      that can be used to describe a 2D finite element model.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem_io/fem_io.html">
+      FEM_IO</a>,
+      a FORTRAN90 library which
+      may be used to read or write a set of FEM files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem_to_tec/fem_to_tec.html">
+      FEM_TO_TEC</a>,
+      a FORTRAN90 program which
+      can convert an FEM model into a TEC graphics file.
+    </p>
+
+    <p>
+      <a href = "../../data/tec/tec.html">
+      TEC</a>,
+      a data directory which
+      contains a description of TECPLOT files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_io/tec_io.html">
+      TEC_IO</a>,
+      a FORTRAN90 library which
+      may be used to
+      read or write a TECPLOT file definite a finite element dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_to_obj/tec_to_obj.html">
+      TEC_TO_OBJ</a>,
+      a FORTRAN90 program which
+      can read a TECPLOT file describing a
+      surface in 3D composed of triangles or quadrilaterals, and write
+      an OBJ file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_write/tec_write.html">
+      TEC_WRITE</a>,
+      a FORTRAN90 library which
+      can write TEC files.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/triangle_to_fem/triangle_to_fem.html">
+      TRIANGLE_TO_FEM</a>,
+      a C++ program which
+      reads the NODE and ELE files created by TRIANGLE to
+      describe a triangular mesh, and writes a corresponding pair of
+      node and element files in the 2D FEM format.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Methode der Finiten Elemente,<br>
+          Teubner Studienbuecher, 1980.
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Prentice Hall, 1973.
+        </li>
+        <li>
+          Tecplot, Inc,<br>
+          TECPLOT Reference Manual,<br>
+          Version 10, Release 4,<br>
+          Tecplot, Inc, 2005.
+        </li>
+        <li>
+          Tecplot, Inc,<br>
+          TECPLOT User's Manual,<br>
+          Version 10,<br>
+          Tecplot, Inc, 2005.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          McGraw Hill, Third Edition, 1977.
+        </li>
+        <li>
+          Daniel Zwillinger, editor,<br>
+          Standard Mathematical Tables and Formulae,<br>
+          30th Edition,<br>
+          CRC Press, 1996.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "tec_to_fem.f90">tec_to_fem.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "tec_to_fem.sh">tec_to_fem.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>TINY</b> is a "tiny" dataset.
+      <ul>
+        <li>
+          <a href = "tiny.dat">tiny.dat</a>,
+          a TECPLOT ASCII file defining the dataset.
+        </li>
+        <li>
+          <a href = "tiny.nodes.txt">tiny.nodes.txt</a>,
+          the FEM file containing the node coordinates.
+        </li>
+        <li>
+          <a href = "tiny.elements.txt">tiny.elements.txt</a>,
+          the FEM file containing the elements.
+        </li>
+        <li>
+          <a href = "tiny.values.txt">tiny.values.txt</a>,
+          the FEM file containing the node data.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TEC_TO_FEM.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DTABLE_DATA_WRITE</b> writes data to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_WRITE</b> writes the header to a double precision table file.
+        </li>
+        <li>
+          <b>FEM_WRITE</b> writes data files associated with a finite element solution.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>ITABLE_DATA_WRITE</b> writes data to an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_HEADER_WRITE</b> writes the header to an integer table file.
+        </li>
+        <li>
+          <b>S_BEGIN</b> is TRUE if one string matches the beginning of the other.
+        </li>
+        <li>
+          <b>S_BEHEAD_SUBSTRING</b> "beheads" a string, removing a given substring.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_REPLACE_CH</b> replaces all occurrences of one character by another.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>S_WORD_EXTRACT</b> extracts the next word from a string.
+        </li>
+        <li>
+          <b>TEC_DATA_READ</b> reads the data from a TEC file.
+        </li>
+        <li>
+          <b>TEC_HEADER_PRINT</b> prints the header to a TEC file.
+        </li>
+        <li>
+          <b>TEC_HEADER_READ</b> reads the header from a TEC file.
+        </li>
+        <li>
+          <b>TEC_TO_FEM_HANDLE</b> reads data from a TECPLOT file and writes FEM files.
+        </li>
+        <li>
+          <b>TEC_ZONE_LINE_PARSE</b> parses the "ZONE" line of a TEC file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

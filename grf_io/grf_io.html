@@ -1,0 +1,266 @@
+<html>
+
+  <head>
+    <title>
+      GRF_IO - Read and Write GRF Files
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GRF_IO <br> GRF files <br> Read and Write Utilities
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GRF_IO</b>
+      is a FORTRAN90 library which
+      reads or writes a GRF file containing information about
+      an abstract graph.
+    </p>
+
+    <p>
+      The file includes information about
+      <ul>
+        <li>
+          <i>adjacency</i>, that is, which nodes are connected to a given node;
+        </li>
+        <li>
+          <i>embedding</i>, that is, how to place each node in the unit square so that
+          a drawing of the graph is visually pleasing and "readable".
+        </li>
+       </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>GRF_IO</b> is available in
+      <a href = "../../cpp_src/grf_io/grf_io.html">a C++ version</a> and
+      <a href = "../../f_src/grf_io/grf_io.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/grf_io/grf_io.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/floyd/floyd.html">
+      FLOYD</a>,
+      a FORTRAN90 library which
+      implements Floyd's algorithm for finding the shortest distance between pairs of
+      nodes on a directed graph.
+    </p>
+
+    <p>
+      <a href = "../../datasets/graffiti/graffiti.html">
+      GRAFFITI</a>,
+      a dataset directory which
+      contains 195 abstract graphs, with adjacency and embedding information,
+      stored in the GRF format.
+    </p>
+
+    <p>
+      <a href = "../../data/graph_representation/graph_representation.html">
+      GRAPH_REPRESENTATION</a>,
+      a data directory which
+      contains examples of ways of representing abstract
+      mathematical graphs
+    </p>
+
+    <p>
+      <a href = "../../data/grf/grf.html">
+      GRF</a>,
+      a data directory which
+      contains a description of the GRF format and some examples.
+    </p>
+
+    <p>
+      <a href = "../../m_src/grf_display/grf_display.html">
+      GRF_DISPLAY</a>,
+      a MATLAB program which
+      reads a GRF file defining a mathematical graph and
+      displays it in the MATLAB graphics window.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/grf_display_opengl/grf_display_opengl.html">
+      GRF_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads a GRF file defining a mathematical graph and
+      displays it in an OpenGL graphics window.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grf_to_eps/grf_to_eps.html">
+      GRF_TO_EPS</a>,
+      a FORTRAN90 program which
+      can make an encapsulated PostScript image of a GRF file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grf_to_xyl/grf_to_xyl.html">
+      GRF_TO_XYL</a>,
+      a FORTRAN90 program which
+      converts information describing the adjacency and embedding of an
+      abstract graph from GRF to XYL format.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Peter Eades, Ian Fogg, David Kelly,<br>
+          SPREMB: A System for Developing Graph Algorithms,<br>
+          Congressus Numerantium,<br>
+          Volume 66, December 1988.
+        </li>
+        <li>
+          Stephen Skiena,<br>
+          Implementing Discrete Mathematics:
+          Combinatorics and Graph Theory in Mathematica,<br>
+          Addison Wesley, 1990.
+        </li>
+        <li>
+          <a href = "http://www.combinatorica.com/">
+                     http://www.combinatorica.com/<a> <br>
+          the COMBINATORICA web page.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "grf_io.f90">grf_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "grf_io.sh">grf_io.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "grf_io_prb.f90">grf_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "grf_io_prb.sh">grf_io_prb.sh</a>,
+          commands to compile, link and run the sample calling program.
+        </li>
+        <li>
+          <a href = "grf_io_prb_output.txt">grf_io_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "coxeter.grf">coxeter.grf</a>,
+          a GRF file created by one test and read by another.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer ( kind = 4 ) value of a base 10 digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GRF_DATA_PRINT</b> prints the data of a GRF file.
+        </li>
+        <li>
+          <b>GRF_DATA_READ</b> reads the data of a GRF file.
+        </li>
+        <li>
+          <b>GRF_DATA_WRITE</b> prints the data to a GRF file.
+        </li>
+        <li>
+          <b>GRF_EXAMPLE</b> sets up a GRF example.
+        </li>
+        <li>
+          <b>GRF_EXAMPLE_SIZE</b> sizes a GRF example.
+        </li>
+        <li>
+          <b>GRF_HEADER_PRINT</b> prints the header of a GRF file.
+        </li>
+        <li>
+          <b>GRF_HEADER_READ</b> reads the header of a GRF file.
+        </li>
+        <li>
+          <b>GRF_HEADER_WRITE</b> writes the header of a GRF file.
+        </li>
+        <li>
+          <b>GRF_WRITE</b> writes a GRF file.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 value from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 January 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

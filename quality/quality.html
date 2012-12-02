@@ -1,0 +1,464 @@
+<html>
+
+  <head>
+    <title>
+      QUALITY - Quality Measures for Pointsets in M dimensions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      QUALITY <br> Quality Measures for Pointsets in M dimensions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>QUALITY</b>
+      is a FORTRAN90 library which
+      computes measures of the quality
+      of dispersion of a set of N points in an M dimensional region.
+    </p>
+
+    <p>
+      The region to be analyzed is defined by a single routine which
+      the user may specify.  We will refer to that routine as
+      <b>sample_routine</b>.  This routine is simply required to return
+      sample points from the region.
+    </p>
+
+    <p>
+      The library includes routines for two simple regions, namely
+      the unit hypercube and the unit hypersphere.  If either of these
+      regions is of interest, then the user simply has to pass the
+      appropriate name, either <b>sample_hypercube_uniform</b> or
+      <b>sample_sphere_uniform</b>.  For other regions, the user should
+      write the appropriate version of a sampling routine.
+    </p>
+
+    <p>
+      The unit hypercube in M dimensional space is simply the set of
+      all vectors whose entries are between 0 and 1.  It is
+      a natural abstraction of the unit line segment, the unit square,
+      and the unit cube, and represents a very simple chunk of <b>M</b>
+      dimensional space.
+    </p>
+
+    <p>
+      The unit hypersphere in M dimensional space is simply the set of
+      all points whose distance from the origin is 1 or less.
+    </p>
+
+    <p>
+      The quality measures computed include:
+      <ul>
+        <li>
+          <b>Alpha</b>, the minimum angle divided by the maximum possible
+          minimum angle (for triangulated 2D datasets only);
+        </li>
+        <li>
+          <b>Area</b>, the ratio of the minimum and maximum triangle
+          areas (for triangulated 2D datasets only);
+        </li>
+        <li>
+          <b>Beta</b>, the standard deviation of the minimum spacing
+          between nodes, normalized by the average spacing between nodes;
+        </li>
+        <li>
+          <b>Chi</b>, the regularity measure;
+        </li>
+        <li>
+          <b>D</b>, the second moment determinant measure;
+        </li>
+        <li>
+          <b>E</b>, the Voronoi energy measure;
+        </li>
+        <li>
+          <b>Gamma</b>, the mesh ratio;
+        </li>
+        <li>
+          <b>H</b>, the point distribution norm;
+        </li>
+        <li>
+          <b>Lambda</b>, the COV measure;
+        </li>
+        <li>
+          <b>Mu</b>, the point distribution ratio;
+        </li>
+        <li>
+          <b>Nu</b>, the cell volume deviation;
+        </li>
+        <li>
+          <b>Q</b>, two times the radius of the inscribed circle
+          divided by the radius of the circumscribed circle
+          (for triangulated 2D datasets only);
+        </li>
+        <li>
+          <b>R0</b>, the Riesz S=0 energy;
+        </li>
+        <li>
+          <b>S</b>, the sphere volume measure
+          (unit hypercube datasets only).
+        </li>
+        <li>
+          <b>Tau</b>, the second moment trace measure;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>QUALITY</b> is available in
+      <a href = "../../cpp_src/quality/quality.html">a C++ version</a> and
+      <a href = "../../f_src/quality/quality.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/quality/quality.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/diaphony/diaphony.html">
+      DIAPHONY</a>,
+      a FORTRAN90 program which
+      reads a file of N points in M dimensions and computes its diaphony, a measure
+      of point dispersion.
+    </p>
+
+    <p>
+      <a href = "../../f_src/point_merge/point_merge.html">
+      POINT_MERGE</a>,
+      a FORTRAN90 library which
+      considers N points in M dimensional space, and counts or indexes
+      the unique or "tolerably unique" items.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/star_discrepancy/star_discrepancy.html">
+      STAR_DISCREPANCY</a>,
+      a C++ program which
+      reads a TABLE file of M points in N dimensions (presumed to lie in the
+      unit hypercube) and computes bounds on the star discrepancy,
+      a measure of dispersion, by Eric Thiemard.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_quality/table_quality.html">
+      TABLE_QUALITY</a>,
+      a FORTRAN90 program which
+      computes the quality measures of a dataset read from a file.
+      which can analyze a dataset that is stored in a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh/tet_mesh.html">
+      TET_MESH</a>,
+      a FORTRAN90 library which
+      carries out various operations on tetrahedral meshes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_quality/tet_mesh_quality.html">
+      TET_MESH_QUALITY</a>,
+      a FORTRAN90 program which
+      computes quality measures of a tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_quality/triangulation_quality.html">
+      TRIANGULATION_QUALITY</a>,
+      a FORTRAN90 program which
+      computes quality measures of a triangulation.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          David Field,<br>
+          Qualitative Measures for Initial Meshes,<br>
+          International Journal of Numerical Methods in Engineering,<br>
+          Volume 47, 2000, pages 887-906.
+        </li>
+        <li>
+          Douglas Hardin, Edward Saff,<br>
+          Discretizing Manifolds via Minimum Energy Points,<br>
+          Notices of the AMS,<br>
+          Volume 51, Number 10, November 2004, pages 1186-1194.
+        </li>
+        <li>
+          Per-Olof Persson, Gilbert Strang,<br>
+          A Simple Mesh Generator in MATLAB,<br>
+          SIAM Review,<br>
+          Volume 46, Number 2, pages 329-345, June 2004.
+        </li>
+        <li>
+          Yuki Saka, Max Gunzburger, John Burkardt,<br>
+          Latinized, Improved LHS, and CVT Point Sets in Hypercubes, <br>
+          International Journal of Numerical Analysis and Modeling,<br>
+          Volume 4, Number 3-4, 2007, pages 729-743,
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "quality.f90">quality.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "quality.sh">quality.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "quality_prb.f90">quality_prb.f90</a>, the test code.
+        </li>
+        <li>
+          <a href = "quality_prb.sh">quality_prb.sh</a>,
+          commands to compile, link, load and run the test code.
+        </li>
+        <li>
+          <a href = "quality_prb_output.txt">quality_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "cvt_02_00100.txt">cvt_02_00100.txt</a>,
+          a set of 100 CVT points in the 2D unit hypercube.
+        </li>
+        <li>
+          <a href = "halton_02_00100.txt">halton_02_00100.txt</a>,
+          a set of 100 Halton points in the 2D unit hypercube.
+        </li>
+        <li>
+          <a href = "sphere_02_00100.txt">sphere_02_00100.txt</a>,
+          a set of 100 random points in the 2D unit sphere.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ALPHA_MEASURE</b> determines the triangulated pointset quality measure ALPHA.
+        </li>
+        <li>
+          <b>ARC_COSINE</b> computes the arc cosine function, with argument truncation.
+        </li>
+        <li>
+          <b>AREA_MEASURE</b> determines the area ratio quality measure.
+        </li>
+        <li>
+          <b>BANDWIDTH_MESH:</b> bandwidth of finite element mesh.
+        </li>
+        <li>
+          <b>BETA_MEASURE</b> determines the pointset quality measure BETA.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer ( kind = 4 ) value of a base 10 digit.
+        </li>
+        <li>
+          <b>CHI_MEASURE</b> determines the pointset quality measure CHI.
+        </li>
+        <li>
+          <b>D_MEASURE</b> determines the pointset quality measure D.
+        </li>
+        <li>
+          <b>DGE_DET</b> computes the determinant of a square matrix in DGE storage.
+        </li>
+        <li>
+          <b>DIAEDG</b> chooses a diagonal edge.
+        </li>
+        <li>
+          <b>DTRIS2</b> constructs a Delaunay triangulation of 2D vertices.
+        </li>
+        <li>
+          <b>E_MEASURE</b> determines the pointset quality measure E.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>FIND_CLOSEST</b> finds the nearest R point to each S point.
+        </li>
+        <li>
+          <b>GAMMA_MEASURE</b> determines the pointset quality measure GAMMA.
+        </li>
+        <li>
+          <b>GET_INPUT_FILE_NAME</b> gets the input file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>H_MEASURE</b> determines the pointset quality measure H.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer ( kind = 4 ) division.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>LAMBDA_MEASURE</b> determines the pointset quality measure LAMBDA.
+        </li>
+        <li>
+          <b>LRLINE</b> determines if a point is left of, right or, or on a directed line.
+        </li>
+        <li>
+          <b>MU_MEASURE</b> determines the pointset quality measure MU.
+        </li>
+        <li>
+          <b>NU_MEASURE</b> determines the pointset quality measure NU.
+        </li>
+        <li>
+          <b>PERM_INV</b> inverts a permutation "in place".
+        </li>
+        <li>
+          <b>POINTSET_SPACING</b> determines the minimum spacing between points in the set.
+        </li>
+        <li>
+          <b>Q_MEASURE</b> determines the triangulated pointset quality measure Q.
+        </li>
+        <li>
+          <b>R0_MEASURE</b> determines the pointset quality measure R0.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R82VEC_PERMUTE</b> permutes an R82 vector in place.
+        </li>
+        <li>
+          <b>R82VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R82VEC.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_IN_01</b> is TRUE if the entries of an R8MAT are in the range [0,1].
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM_01</b> returns a unit pseudorandom R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_NORMAL_01</b> returns a unit pseudonormal R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>RADIUS_MAXIMUS</b> finds the biggest possible nonintersecting sphere.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SAMPLE_HYPERCUBE_UNIFORM</b> returns sample points in the unit hypercube.
+        </li>
+        <li>
+          <b>SAMPLE_SPHERE_UNIFORM</b> samples points inside the unit sphere.
+        </li>
+        <li>
+          <b>SPHERE_MEASURE</b> determines the pointset quality measure S.
+        </li>
+        <li>
+          <b>SPHERE_VOLUME_ND</b> computes the volume of a sphere in ND.
+        </li>
+        <li>
+          <b>SWAPEC</b> swaps diagonal edges until all triangles are Delaunay.
+        </li>
+        <li>
+          <b>TAU_MEASURE</b> determines the pointset quality measure TAU.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>VBEDG</b> determines which boundary edges are visible to a point.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 February 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

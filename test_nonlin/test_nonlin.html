@@ -1,0 +1,770 @@
+<html>
+
+  <head>
+    <title>
+      TEST_NONLIN - Nonlinear Equation Tests
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_NONLIN <br> Nonlinear Equation Tests
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_NONLIN</b>
+      is a FORTRAN90 library which
+      defines a set of test problems for nonlinear
+      equation system solvers.
+    </p>
+
+    <p>
+      A few of the problems are small (2, 3, or 4 equations in 4
+      unknowns), but most of the problems may be set to any size whatsoever.
+      The software includes routines defining the initial approximation to the
+      solution of the system, the N function values at any point, and the N by
+      N jacobian matrix at any point.
+    </p>
+
+    <p>
+      The list of problems includes:
+      <OL>
+        <li>
+          Generalized Rosenbrock function, 1 &lt; N.
+        </li>
+        <li>
+          Powell singular function, N = 4.
+        </li>
+        <li>
+          Powell badly scaled function, N = 2.
+        </li>
+        <li>
+          Wood function, N = 4.
+        </li>
+        <li>
+          Helical valley function, N = 3.
+        </li>
+        <li>
+          Watson function, 1 &lt; N.
+        </li>
+        <li>
+          Chebyquad function, N arbitrary.
+        </li>
+        <li>
+          Brown almost linear function, N arbitrary.
+        </li>
+        <li>
+          Discrete boundary value function, N arbitrary.
+        </li>
+        <li>
+          Discrete integral equation function, N arbitrary.
+        </li>
+        <li>
+          Trigonometric function, N arbitrary.
+        </li>
+        <li>
+          Variably dimensioned function, N arbitrary.
+        </li>
+        <li>
+          Broyden tridiagonal function, N arbitrary.
+        </li>
+        <li>
+          Broyden banded function, N arbitrary.
+        </li>
+        <li>
+          Hammarling 2 by 2 matrix square root problem, N = 4.
+        </li>
+        <li>
+          Hammarling 3 by 3 matrix square root problem, N = 9.
+        </li>
+        <li>
+          Dennis and Schnabel example, N = 2.
+        </li>
+        <li>
+          Sample problem 18, N = 2.
+        </li>
+        <li>
+          Sample problem 19, N = 2.
+        </li>
+        <li>
+          Scalar problem, N = 1.
+        </li>
+        <li>
+          Freudenstein-Roth function, N = 2.
+        </li>
+        <li>
+          Boggs function, N = 2.
+        </li>
+        <li>
+          Chandrasekhar function, N arbitrary.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_NONLIN</b> is available in
+      <a href = "../../f77_src/test_nonlin/test_nonlin.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_nonlin/test_nonlin.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+      a C++ library which
+      can perform multidimensional root-finding.
+    </p>
+
+    <p>
+      <a href = "../../m_src/kelley/kelley.html">
+      KELLEY</a>,
+      a MATLAB library which
+      can seek solutions of systems of nonlinear equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/minpack/minpack.html">
+      MINPACK</a>,
+      a FORTRAN90 library which
+      is a minimization
+      package for which most of these problems were used as tests,
+      as part of ACM TOMS algorithm 566.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Subramanyan Chandrasekhar,<br>
+          Radiative Transfer,<br>
+          Dover, 1960,<br>
+          ISBN13: 978-0486605906,<br>
+          LC: QB461.C46.
+        </li>
+        <li>
+          John Dennis, David Gay, Phuong Vu,<br>
+          A new nonlinear equations test problem,<br>
+          Technical Report 83-16,<br>
+          Mathematical Sciences Department,<br>
+          Rice University, 1983.
+        </li>
+        <li>
+          John Dennis, Robert Schnabel,<br>
+          Numerical Methods for Unconstrained Optimization
+          and Nonlinear Equations,<br>
+          SIAM, 1996,<br>
+          ISBN13: 978-0-898713-64-0,<br>
+          LC: QA402.5.D44.
+        </li>
+        <li>
+          Noel deVilliers, David Glasser,<br>
+          A continuation method for nonlinear regression,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 18, Number 6, December 1981, pages 1139-1154.
+        </li>
+        <li>
+          Chris Fraley, <br>
+          Solution of nonlinear least-squares problems,<br>
+          Technical Report STAN-CS-1165, <br>
+          Computer Science Department,<br>
+          Stanford University, 1987.
+        </li>
+        <li>
+          Chris Fraley,
+          Software performance on nonlinear least-squares problems,<br>
+          Technical Report SOL 88-17, <br>
+          Systems Optimization Laboratory,<br>
+          Department of Operations Research, <br>
+          Stanford University, 1988.
+        </li>
+        <li>
+          JJ McKeown,<br>
+          Specialized versus general-purpose algorithms for functions
+          that are sums of squared terms,<br>
+          Mathematical Programming,<br>
+          Volume 9, 1975, pages 57-68.
+        </li>
+        <li>
+          JJ McKeown,<br>
+          On algorithms for sums of squares problems,<br>
+          in Towards Global Optimisation,<br>
+          edited by Laurence Dixon, Gabor Szego,<br>
+          North-Holland, 1975, pages 229-257,<br>
+          ISBN: 0444109552,<br>
+          LC: QA402.5.T7.
+        </li>
+        <li>
+          Jorge More, Burton Garbow, Kenneth Hillstrom,<br>
+          Testing unconstrained optimization software,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 7, Number 1, March 1981, pages 17-41.
+        </li>
+        <li>
+          Jorge More, Burton Garbow, Kenneth Hillstrom,<br>
+          Algorithm 566:
+          FORTRAN Subroutines for Testing unconstrained optimization software,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 7, Number 1, March 1981, pages 136-140.
+        </li>
+        <li>
+          James Ortega, Werner Rheinboldt<br>
+          Iterative Solution of Nonlinear Equations in Several Variables,<br>
+          SIAM, 1987,<br>
+          ISBN13: 978-0898714616,<br>
+          LC: QA297.8.O77.
+        </li>
+        <li>
+          Werner Rheinboldt,<br>
+          Methods for Solving Systems of Nonlinear Equations,<br>
+          SIAM, 1998,<br>
+          ISBN: 089871415X,<br>
+          LC: QA214.R44.
+        </li>
+        <li>
+          Douglas Salane,<br>
+          A continuation approach for solving large residual nonlinear
+          least squares problems,<br>
+          SIAM Journal on Scientific and Statistical Computing,<br>
+          Volume 8, Number 4, July 1987, pages 655-671.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_nonlin.f90">test_nonlin.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "test_nonlin.sh">test_nonlin.sh</a>,
+          commands to compile the calling program;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_nonlin_prb.f90">test_nonlin_prb.f90</a>, the calling
+          program;
+        </li>
+        <li>
+          <a href = "test_nonlin_prb.sh">test_nonlin_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "test_nonlin_prb_output.txt">test_nonlin_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>P00_DIF</b> approximates the jacobian via finite differences.
+        </li>
+        <li>
+          <b>P00_FX</b> evaluates the function for any problem.
+        </li>
+        <li>
+          <b>P00_JAC</b> evaluates the jacobian for any problem.
+        </li>
+        <li>
+          <b>P00_N</b> returns the number of equations for a problem.
+        </li>
+        <li>
+          <b>P00_PROBLEM_NUM</b> returns the number of problems available.
+        </li>
+        <li>
+          <b>P00_SOL</b> returns the solution of any problem.
+        </li>
+        <li>
+          <b>P00_START</b> specifies a standard approximate solution.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns the title of the problem.
+        </li>
+        <li>
+          <b>P01_FX</b> evaluates the function for problem 1.
+        </li>
+        <li>
+          <b>P01_N</b> returns the number of equations for problem 1.
+        </li>
+        <li>
+          <b>P01_JAC</b> sets the jacobian for problem 1.
+        </li>
+        <li>
+          <b>P01_SOL</b> returns the solution of problem 1.
+        </li>
+        <li>
+          <b>P01_START</b> specifies a standard approximate solution for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns the title of problem 1.
+        </li>
+        <li>
+          <b>P02_FX</b> evaluates the function for problem 2.
+        </li>
+        <li>
+          <b>P02_JAC</b> sets the jacobian for problem 2.
+        </li>
+        <li>
+          <b>P02_N</b> returns the number of equations for problem 2.
+        </li>
+        <li>
+          <b>P02_SOL</b> returns the solution of problem 2.
+        </li>
+        <li>
+          <b>P02_START</b> specifies a standard approximate solution for problem 2.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns the title of problem 2.
+        </li>
+        <li>
+          <b>P03_FX</b> evaluates the function for problem 3.
+        </li>
+        <li>
+          <b>P03_JAC</b> sets the jacobian for problem 3.
+        </li>
+        <li>
+          <b>P03_N</b> returns the number of equations for problem 3.
+        </li>
+        <li>
+          <b>P03_SOL</b> returns the solution of problem 3.
+        </li>
+        <li>
+          <b>P03_START</b> specifies a standard approximate solution for problem 3.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns the title of problem 3.
+        </li>
+        <li>
+          <b>P04_FX</b> evaluates the function for problem 4.
+        </li>
+        <li>
+          <b>P04_JAC</b> sets the jacobian for problem 4.
+        </li>
+        <li>
+          <b>P04_N</b> returns the number of equations for problem 4.
+        </li>
+        <li>
+          <b>P04_SOL</b> returns the solution of problem 4.
+        </li>
+        <li>
+          <b>P04_START</b> specifies a standard approximate solution for problem 4.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns the title of problem 4.
+        </li>
+        <li>
+          <b>P05_FX</b> evaluates the function for problem 4.
+        </li>
+        <li>
+          <b>P05_JAC</b> sets the jacobian for problem 5.
+        </li>
+        <li>
+          <b>P05_N</b> returns the number of equations for problem 5.
+        </li>
+        <li>
+          <b>P05_SOL</b> returns the solution of problem 5.
+        </li>
+        <li>
+          <b>P05_START</b> specifies a standard approximate solution for problem 5.
+        </li>
+        <li>
+          <b>P05_TITLE</b> returns the title of problem 5.
+        </li>
+        <li>
+          <b>P06_FX</b> evaluates the function for problem 6.
+        </li>
+        <li>
+          <b>P06_JAC</b> sets the jacobian for problem 6.
+        </li>
+        <li>
+          <b>P06_N</b> returns the number of equations for problem 6.
+        </li>
+        <li>
+          <b>P06_SOL</b> returns the solution of problem 6.
+        </li>
+        <li>
+          <b>P06_START</b> specifies a standard approximate solution for problem 6.
+        </li>
+        <li>
+          <b>P06_TITLE</b> returns the title of problem 6.
+        </li>
+        <li>
+          <b>P07_FX</b> evaluates the function for problem 7.
+        </li>
+        <li>
+          <b>P07_JAC</b> sets the jacobian for problem 7.
+        </li>
+        <li>
+          <b>P07_N</b> returns the number of equations for problem 7.
+        </li>
+        <li>
+          <b>P07_SOL</b> returns the solution of problem 7.
+        </li>
+        <li>
+          <b>P07_START</b> specifies a standard approximate solution for problem 7.
+        </li>
+        <li>
+          <b>P07_TITLE</b> returns the title of problem 7.
+        </li>
+        <li>
+          <b>P08_FX</b> evaluates the function for problem 8.
+        </li>
+        <li>
+          <b>P08_JAC</b> sets the jacobian for problem 8.
+        </li>
+        <li>
+          <b>P08_N</b> returns the number of equations for problem 8.
+        </li>
+        <li>
+          <b>P08_SOL</b> returns the solution of problem 8.
+        </li>
+        <li>
+          <b>P08_START</b> specifies a standard approximate solution for problem 8.
+        </li>
+        <li>
+          <b>P08_TITLE</b> returns the title of problem 8.
+        </li>
+        <li>
+          <b>P09_FX</b> evaluates the function for problem 9.
+        </li>
+        <li>
+          <b>P09_JAC</b> sets the jacobian for problem 9.
+        </li>
+        <li>
+          <b>P09_N</b> returns the number of equations for problem 9.
+        </li>
+        <li>
+          <b>P09_SOL</b> returns the solution of problem 9.
+        </li>
+        <li>
+          <b>P09_START</b> specifies a standard approximate solution for problem 9.
+        </li>
+        <li>
+          <b>P09_TITLE</b> returns the title of problem 9.
+        </li>
+        <li>
+          <b>P10_FX</b> evaluates the function for problem 10.
+        </li>
+        <li>
+          <b>P10_JAC</b> sets the jacobian for problem 10.
+        </li>
+        <li>
+          <b>P10_N</b> returns the number of equations for problem 10.
+        </li>
+        <li>
+          <b>P10_SOL</b> returns the solution of problem 10.
+        </li>
+        <li>
+          <b>P10_START</b> specifies a standard approximate solution for problem 10.
+        </li>
+        <li>
+          <b>P10_TITLE</b> returns the title of problem 10.
+        </li>
+        <li>
+          <b>P11_FX</b> evaluates the function for problem 11.
+        </li>
+        <li>
+          <b>P11_JAC</b> sets the jacobian for problem 11.
+        </li>
+        <li>
+          <b>P11_N</b> returns the number of equations for problem 11.
+        </li>
+        <li>
+          <b>P11_SOL</b> returns the solution of problem 11.
+        </li>
+        <li>
+          <b>P11_START</b> specifies a standard approximate solution for problem 11.
+        </li>
+        <li>
+          <b>P11_TITLE</b> returns the title of problem 11.
+        </li>
+        <li>
+          <b>P12_FX</b> evaluates the function for problem 12.
+        </li>
+        <li>
+          <b>P12_JAC</b> sets the jacobian for problem 12.
+        </li>
+        <li>
+          <b>P12_N</b> returns the number of equations for problem 12.
+        </li>
+        <li>
+          <b>P12_SOL</b> returns the solution of problem 12.
+        </li>
+        <li>
+          <b>P12_START</b> specifies a standard approximate solution for problem 12.
+        </li>
+        <li>
+          <b>P12_TITLE</b> returns the title of problem 12.
+        </li>
+        <li>
+          <b>P13_FX</b> evaluates the function for problem 13.
+        </li>
+        <li>
+          <b>P13_JAC</b> sets the jacobian for problem 13.
+        </li>
+        <li>
+          <b>P13_N</b> returns the number of equations for problem 13.
+        </li>
+        <li>
+          <b>P13_SOL</b> returns the solution of problem 13.
+        </li>
+        <li>
+          <b>P13_START</b> specifies a standard approximate solution for problem 13.
+        </li>
+        <li>
+          <b>P13_TITLE</b> returns the title of problem 13.
+        </li>
+        <li>
+          <b>P14_FX</b> evaluates the function for problem 14.
+        </li>
+        <li>
+          <b>P14_JAC</b> sets the jacobian for problem 14.
+        </li>
+        <li>
+          <b>P14_N</b> returns the number of equations for problem 14.
+        </li>
+        <li>
+          <b>P14_SOL</b> returns the solution of problem 14.
+        </li>
+        <li>
+          <b>P14_START</b> specifies a standard approximate solution for problem 14.
+        </li>
+        <li>
+          <b>P14_TITLE</b> returns the title of problem 14.
+        </li>
+        <li>
+          <b>P15_FX</b> evaluates the function for problem 15.
+        </li>
+        <li>
+          <b>P15_JAC</b> sets the jacobian for problem 15.
+        </li>
+        <li>
+          <b>P15_N</b> returns the number of equations for problem 15.
+        </li>
+        <li>
+          <b>P15_SOL</b> returns the solution of problem 15.
+        </li>
+        <li>
+          <b>P15_START</b> specifies a standard approximate solution for problem 15.
+        </li>
+        <li>
+          <b>P15_TITLE</b> returns the title of problem 15.
+        </li>
+        <li>
+          <b>P16_FX</b> evaluates the function for problem 16.
+        </li>
+        <li>
+          <b>P16_JAC</b> sets the jacobian for problem 16.
+        </li>
+        <li>
+          <b>P16_N</b> returns the number of equations for problem 16.
+        </li>
+        <li>
+          <b>P16_SOL</b> returns the solution of problem 16.
+        </li>
+        <li>
+          <b>P16_START</b> specifies a standard approximate solution for problem 16.
+        </li>
+        <li>
+          <b>P16_TITLE</b> returns the title of problem 16.
+        </li>
+        <li>
+          <b>P17_FX</b> evaluates the function for problem 17.
+        </li>
+        <li>
+          <b>P17_JAC</b> sets the jacobian for problem 17.
+        </li>
+        <li>
+          <b>P17_N</b> returns the number of equations for problem 17.
+        </li>
+        <li>
+          <b>P17_SOL</b> returns the solution of problem 17.
+        </li>
+        <li>
+          <b>P17_START</b> specifies a standard approximate solution for problem 17.
+        </li>
+        <li>
+          <b>P17_TITLE</b> returns the title of problem 17.
+        </li>
+        <li>
+          <b>P18_FX</b> evaluates the function for problem 18.
+        </li>
+        <li>
+          <b>P18_JAC</b> sets the jacobian for problem 18.
+        </li>
+        <li>
+          <b>P18_N</b> returns the number of equations for problem 18.
+        </li>
+        <li>
+          <b>P18_SOL</b> returns the solution of problem 18.
+        </li>
+        <li>
+          <b>P18_START</b> specifies a standard approximate solution for problem 18.
+        </li>
+        <li>
+          <b>P18_TITLE</b> returns the title of problem 18.
+        </li>
+        <li>
+          <b>P19_FX</b> evaluates the function for problem 19.
+        </li>
+        <li>
+          <b>P19_JAC</b> sets the jacobian for problem 19.
+        </li>
+        <li>
+          <b>P19_N</b> returns the number of equations for problem 19.
+        </li>
+        <li>
+          <b>P19_SOL</b> returns the solution of problem 19.
+        </li>
+        <li>
+          <b>P19_START</b> specifies a standard approximate solution for problem 19.
+        </li>
+        <li>
+          <b>P19_TITLE</b> returns the title of problem 19.
+        </li>
+        <li>
+          <b>P20_FX</b> evaluates the function for problem 20.
+        </li>
+        <li>
+          <b>P20_JAC</b> sets the jacobian for problem 20.
+        </li>
+        <li>
+          <b>P20_N</b> returns the number of equations for problem 20.
+        </li>
+        <li>
+          <b>P20_SOL</b> returns the solution of problem 20.
+        </li>
+        <li>
+          <b>P20_START</b> specifies a standard approximate solution for problem 20.
+        </li>
+        <li>
+          <b>P20_TITLE</b> returns the title of problem 20.
+        </li>
+        <li>
+          <b>P21_FX</b> evaluates the function for problem 21.
+        </li>
+        <li>
+          <b>P21_JAC</b> sets the jacobian for problem 21
+        </li>
+        <li>
+          <b>P21_N</b> returns the number of equations for problem 21.
+        </li>
+        <li>
+          <b>P21_SOL</b> returns the solution of problem 21.
+        </li>
+        <li>
+          <b>P21_START</b> specifies a standard approximate solution for problem 21.
+        </li>
+        <li>
+          <b>P21_TITLE</b> returns the title of problem 21.
+        </li>
+        <li>
+          <b>P22_FX</b> evaluates the function for problem 22.
+        </li>
+        <li>
+          <b>P22_JAC</b> sets the jacobian for problem 22.
+        </li>
+        <li>
+          <b>P22_N</b> returns the number of equations for problem 22.
+        </li>
+        <li>
+          <b>P22_SOL</b> returns the solution of problem 22.
+        </li>
+        <li>
+          <b>P22_START</b> specifies a standard approximate solution for problem 22.
+        </li>
+        <li>
+          <b>P22_TITLE</b> returns the title of problem 22.
+        </li>
+        <li>
+          <b>P23_FX</b> evaluates the function for problem 23.
+        </li>
+        <li>
+          <b>P23_N</b> returns the number of equations for problem 23.
+        </li>
+        <li>
+          <b>P23_JAC</b> sets the jacobian for problem 23.
+        </li>
+        <li>
+          <b>P23_SOL</b> returns the solution of problem 23.
+        </li>
+        <li>
+          <b>P23_START</b> specifies a standard approximate solution for problem 23.
+        </li>
+        <li>
+          <b>P23_TITLE</b> returns the title of problem 23.
+        </li>
+        <li>
+          <b>R8_SWAP</b> switches two R8's.
+        </li>
+        <li>
+          <b>R8VEC_NORM2</b> returns the 2-norm of a vector.
+        </li>
+        <li>
+          <b>R8GE_FA</b> factors a general matrix.
+        </li>
+        <li>
+          <b>R8GE_SL</b> solves a system factored by SGE_FA.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 25 June 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

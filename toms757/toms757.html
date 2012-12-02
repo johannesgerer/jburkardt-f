@@ -1,0 +1,413 @@
+<html>
+
+  <head>
+    <title>
+      TOMS757 - Uncommon Special Functions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOMS757 <br> Uncommon Special Functions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS757</b>
+      is a FORTRAN90 library which
+      evaluates a number of
+      uncommon special functions, by Allan McLeod.
+    </p>
+
+    <p>
+      <b>TOMS757</b> is a FORTRAN90 version of ACM TOMS algorithm 757.
+    </p>
+
+    <p>
+      The special functions include:
+      <ul>
+        <li>
+          the Abramowitz function of several orders;
+        </li>
+        <li>
+          integrals of the Airy functions Ai(x) and Bi(x);
+        </li>
+        <li>
+          Clausen's integral;
+        </li>
+        <li>
+          Debye integrals of several orders;
+        </li>
+        <li>
+          integrals of the Bessel functions I0, J0, K0 and Y0;
+        </li>
+        <li>
+          Struve functions;
+        </li>
+        <li>
+          the synchrotron radiation integral;
+        </li>
+        <li>
+          the transport integral of several orders;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The original, true, correct version of ACM TOMS Algorithm 757
+      is available through ACM:
+              <a href = "http://www.acm.org/pubs/calgo/">
+                         http://www.acm.org/pubs/calgo</a>
+      or NETLIB:
+      <a href = "http://www.netlib.org/toms/index.html">
+      http://www.netlib.org/toms/index.html</a>
+    </p>
+
+    <p>
+      The version displayed here has been converted to FORTRAN90,
+      and other internal changes have been made to suit me.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TOMS757</b> is available in
+      <a href = "../../f77_src/toms757/toms757.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms757/toms757.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/test_values/test_values.html">
+      TEST_VALUES</a>,
+      a FORTRAN90 library which
+      contains routines which store selected values of various
+      special functions.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Allan McLeod,<br>
+      Department of Mathematics and Statistics,<br>
+      Paisley University, Scotland.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Allan Mcleod,<br>
+          Algorithm 757, MISCFUN: A software package to compute uncommon
+          special functions,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 22, Number 3, September 1996, pages 288-301.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms757.f90">toms757.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "toms757.sh">toms757.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms757_prb.f90">toms757_prb.f90</a>,
+          the sample test code;
+        </li>
+        <li>
+          <a href = "toms757_prb.sh">toms757_prb.sh</a>,
+          commands to compile the test code;
+        </li>
+        <li>
+          <a href = "toms757_prb_output.txt">toms757_prb_output.txt</a>,
+          output from a run of the test code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ABRAM0</b> evaluates the Abramowitz function of order 0.
+        </li>
+        <li>
+          <b>ABRAM0_VALUES</b> returns some values of the Abramowitz0 function.
+        </li>
+        <li>
+          <b>ABRAM1</b> evaluates the Abramowitz function of order 1.
+        </li>
+        <li>
+          <b>ABRAM1_VALUES</b> returns some values of the Abramowitz1 function.
+        </li>
+        <li>
+          <b>ABRAM2</b> evaluates the Abramowitz function of order 2.
+        </li>
+        <li>
+          <b>ABRAM2_VALUES</b> returns some values of the Abramowitz2 function.
+        </li>
+        <li>
+          <b>AIRY_AI_INT</b> calculates the integral of the Airy function Ai.
+        </li>
+        <li>
+          <b>AIRY_AI_INT_VALUES</b> returns some values of the integral of the Airy function.
+        </li>
+        <li>
+          <b>AIRY_BI_INT</b> calculates the integral of the Airy function Bi.
+        </li>
+        <li>
+          <b>AIRY_BI_INT_VALUES</b> returns some values of the integral of the Airy function.
+        </li>
+        <li>
+          <b>AIRY_GI</b> computes the modified Airy function Gi(x).
+        </li>
+        <li>
+          <b>AIRY_GI_VALUES</b> returns some values of the Airy Gi function.
+        </li>
+        <li>
+          <b>AIRY_HI</b> computes the modified Airy function Hi(x).
+        </li>
+        <li>
+          <b>AIRY_HI_VALUES</b> returns some values of the Airy Hi function.
+        </li>
+        <li>
+          <b>ARCTAN_INT</b> calculates the inverse tangent integral.
+        </li>
+        <li>
+          <b>ARCTAN_INT_VALUES</b> returns some values of the inverse tangent integral.
+        </li>
+        <li>
+          <b>BESSEL_I0_INT</b> computes the integral of the modified Bessel function I0(X).
+        </li>
+        <li>
+          <b>BESSEL_I0_INT_VALUES</b> returns some values of the Bessel I0 integral.
+        </li>
+        <li>
+          <b>BESSEL_J0_INT</b> calculates the integral of the Bessel function J0.
+        </li>
+        <li>
+          <b>BESSEL_J0_INT_VALUES</b> returns some values of the Bessel J0 integral.
+        </li>
+        <li>
+          <b>BESSEL_K0_INT</b> calculates the integral of the modified Bessel function K0(X).
+        </li>
+        <li>
+          <b>BESSEL_K0_INT_VALUES</b> returns some values of the Bessel K0 integral.
+        </li>
+        <li>
+          <b>BESSEL_Y0_INT</b> calculates the integral of the Bessel function Y0.
+        </li>
+        <li>
+          <b>BESSEL_Y0_INT_VALUES</b> returns some values of the Bessel Y0 integral.
+        </li>
+        <li>
+          <b>CHEVAL</b> evaluates a Chebyshev series.
+        </li>
+        <li>
+          <b>CLAUSEN</b> calculates Clausen's integral.
+        </li>
+        <li>
+          <b>CLAUSEN_VALUES</b> returns some values of the Clausen's integral.
+        </li>
+        <li>
+          <b>DEBYE1</b> calculates the Debye function of order 1.
+        </li>
+        <li>
+          <b>DEBYE1_VALUES</b> returns some values of Debye's function of order 1.
+        </li>
+        <li>
+          <b>DEBYE2</b> calculates the Debye function of order 2.
+        </li>
+        <li>
+          <b>DEBYE2_VALUES</b> returns some values of Debye's function of order 2.
+        </li>
+        <li>
+          <b>DEBYE3</b> calculates the Debye function of order 3.
+        </li>
+        <li>
+          <b>DEBYE3_VALUES</b> returns some values of Debye's function of order 3.
+        </li>
+        <li>
+          <b>DEBYE4</b> calculates the Debye function of order 4.
+        </li>
+        <li>
+          <b>DEBYE4_VALUES</b> returns some values of Debye's function of order 4.
+        </li>
+        <li>
+          <b>EXP3_INT</b> calculates the integral of exp(-t^3).
+        </li>
+        <li>
+          <b>EXP3_INT_VALUES</b> returns some values of the EXP3 integral function.
+        </li>
+        <li>
+          <b>GOODWIN</b> calculates the integral of exp(-t^2/(t+x)).
+        </li>
+        <li>
+          <b>GOODWIN_VALUES</b> returns some values of the Goodwin and Staton function.
+        </li>
+        <li>
+          <b>I0ML0</b> calculates the difference between the Bessel I0 and Struve L0 functions.
+        </li>
+        <li>
+          <b>I0ML0_VALUES</b> returns some values of the I0ML0 function.
+        </li>
+        <li>
+          <b>I1ML1</b> calculates the difference between the Bessel I1 and Struve L1 functions.
+        </li>
+        <li>
+          <b>I1ML1_VALUES</b> returns some values of the I1ML1 function.
+        </li>
+        <li>
+          <b>LOBACHEVSKY</b> calculates the Lobachevsky function.
+        </li>
+        <li>
+          <b>LOBACHEVSKY_VALUES</b> returns some values of the Lobachevsky function.
+        </li>
+        <li>
+          <b>STROMGEN</b> calculates Stromgen's integral.
+        </li>
+        <li>
+          <b>STROMGEN_VALUES</b> returns some values of the Stromgen function.
+        </li>
+        <li>
+          <b>STRUVE_H0</b> calculates the Struve function of order 0.
+        </li>
+        <li>
+          <b>STRUVE_H0_VALUES</b> returns some values of the Struve H0 function.
+        </li>
+        <li>
+          <b>STRUVE_H1</b> calculates the Struve function of order 1.
+        </li>
+        <li>
+          <b>STRUVE_H1_VALUES</b> returns some values of the Struve H1 function.
+        </li>
+        <li>
+          <b>STRUVE_L0</b> calculates the modified Struve function of order 0.
+        </li>
+        <li>
+          <b>STRUVE_L0_VALUES</b> returns some values of the Struve L0 function.
+        </li>
+        <li>
+          <b>STRUVE_L1</b> calculates the modified Struve function of order 1.
+        </li>
+        <li>
+          <b>STRUVE_L1_VALUES</b> returns some values of the Struve L1 function.
+        </li>
+        <li>
+          <b>SYNCH1</b> calculates the synchrotron radiation function.
+        </li>
+        <li>
+          <b>SYNCH1_VALUES</b> returns some values of the synchrotron radiation function.
+        </li>
+        <li>
+          <b>SYNCH2</b> calculates the synchrotron radiation function.
+        </li>
+        <li>
+          <b>SYNCH2_VALUES</b> returns some values of the synchrotron radiation function.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TRAN02</b> calculates the transport integral of order 2.
+        </li>
+        <li>
+          <b>TRAN02_VALUES</b> returns some values of the order 2 transportation function.
+        </li>
+        <li>
+          <b>TRAN03</b> calculates the transport integral of order 3.
+        </li>
+        <li>
+          <b>TRAN03_VALUES</b> returns some values of the order 3 transportation function.
+        </li>
+        <li>
+          <b>TRAN04</b> calculates the transport integral of order 4.
+        </li>
+        <li>
+          <b>TRAN04_VALUES</b> returns some values of the order 4 transportation function.
+        </li>
+        <li>
+          <b>TRAN05</b> calculates the transport integral of order 5.
+        </li>
+        <li>
+          <b>TRAN05_VALUES</b> returns some values of the order 5 transportation function.
+        </li>
+        <li>
+          <b>TRAN06</b> calculates the transport integral of order 6.
+        </li>
+        <li>
+          <b>TRAN06_VALUES</b> returns some values of the order 6 transportation function.
+        </li>
+        <li>
+          <b>TRAN07</b> calculates the transport integral of order 7.
+        </li>
+        <li>
+          <b>TRAN07_VALUES</b> returns some values of the order 7 transportation function.
+        </li>
+        <li>
+          <b>TRAN08</b> calculates the transport integral of order 8.
+        </li>
+        <li>
+          <b>TRAN08_VALUES</b> returns some values of the order 8 transportation function.
+        </li>
+        <li>
+          <b>TRAN09</b> calculates the transport integral of order 9.
+        </li>
+        <li>
+          <b>TRAN09_VALUES</b> returns some values of the order 9 transportation function.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 January 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

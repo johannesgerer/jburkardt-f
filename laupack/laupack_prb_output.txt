@@ -1,0 +1,1031 @@
+January  7 2011   1:46:58.878 PM
+ 
+LAUPACK_PRB
+  FORTRAN90 version
+  Test the LAUPACK library.
+ 
+TEST01
+  DIGRAPH_ARC_EULER finds an Euler circuit of a digraph.
+ 
+  The arc list of the digraph:
+ 
+         1           2       5
+         2           1       4
+         3           2       3
+         4           1       2
+         5           3       1
+         6           5       1
+         7           4       2
+ 
+  The edge list of the Euler circuit:
+ 
+       1         6
+       2         4
+       3         3
+       4         5
+       5         2
+       6         7
+       7         1
+ 
+  The node list of the Euler circuit:
+ 
+    I  Edge  Node
+ 
+       1       6       1
+       2       4       2
+       3       3       3
+       4       5       1
+       5       2       4
+       6       7       2
+       7       1       5
+ 
+TEST22
+  GRAPH_ARC_MINTR2 finds the minimum spanning tree:
+ 
+  The weighted arc list of the graph:
+ 
+       1           2       5   7.00000    
+       2           4       1   3.00000    
+       3           6       3   5.00000    
+       4           2       4   1.00000    
+       5           3       5   2.00000    
+       6           4       6   2.00000    
+       7           1       3   3.00000    
+       8           2       6   4.00000    
+       9           5       1   4.00000    
+ 
+  The weighted arc list of the tree:
+ 
+       1           2       4   1.00000    
+       2           3       5   2.00000    
+       3           4       6   2.00000    
+       4           4       1   3.00000    
+       5           1       3   3.00000    
+ 
+TEST02
+  DIGRAPH_ARC_KSHORT2 finds the K shortest paths without
+    repetition;
+  DIGRAPH_ARC_GET_PATH retrieves the computed paths.
+ 
+  The arc list of the digraph:
+ 
+         1           4       2
+         2           3       1
+         3           6       5
+         4           4       3
+         5           2       1
+         6           5       4
+         7           6       1
+         8           5       2
+         9           1       3
+        10           2       6
+        11           4       1
+ 
+  IFLAG =        0
+  The first        4 shortest paths 
+  from        5 to        3
+  These path lengths are:
+ 
+       6
+       7
+       9
+      10
+ 
+  Path        1 has        4 edges,
+  and a length of        6
+ 
+  The edges in the path:
+ 
+       8      10       7       9
+ 
+  Path        2 has        3 edges,
+  and a length of        7
+ 
+  The edges in the path:
+ 
+       8       5       9
+ 
+  Path        3 has        2 edges,
+  and a length of        9
+ 
+  The edges in the path:
+ 
+       6       4
+ 
+  Path        4 has        3 edges,
+  and a length of       10
+ 
+  The edges in the path:
+ 
+       6      11       9
+ 
+TEST03
+  DIGRAPH_ARC_HAMCYC finds a hamiltonian circuit.
+ 
+  The arc list of the digraph:
+ 
+         1           6       2
+         2           5       3
+         3           8      10
+         4           5       2
+         5           4       9
+         6           1       8
+         7          10       5
+         8           7       4
+         9           9       5
+        10           2       4
+        11           7       1
+        12           3       8
+        13           9       7
+        14           3       7
+        15          10       6
+        16           6       1
+ 
+  The Hamiltonian circuit:
+ 
+       1         1
+       2         8
+       3        10
+       4         6
+       5         2
+       6         4
+       7         9
+       8         5
+       9         3
+      10         7
+ 
+TEST04
+  DIGRAPH_ARC_KSHORT1 computes the K shortest path
+    lengths from a given node to all others,
+  DIGRAPH_ARC_PRT_PATH prints them out.
+ 
+  Input K =        4
+  Starting node        2
+ 
+  The arc list of the weighted digraph:
+ 
+       1           6       1   2.00000    
+       2           3       1  -2.00000    
+       3           4       2   3.00000    
+       4           5       3  -3.00000    
+       5           6       3   4.00000    
+       6           2       3   6.00000    
+       7           2       3   4.00000    
+       8           2       4   4.00000    
+       9           1       4  -3.00000    
+      10           4       5   9.00000    
+      11           1       5   6.00000    
+      12           3       5   4.00000    
+      13           2       6   4.00000    
+      14           4       6   2.00000    
+ 
+  Total number of iterations =        6
+ 
+  Distance array.
+ 
+           1   2.00000       3.00000       4.00000       5.00000    
+           2   0.00000       2.00000       3.00000       4.00000    
+           3   4.00000       5.00000       6.00000       7.00000    
+           4  -1.00000       0.00000       1.00000       2.00000    
+           5   8.00000       9.00000       10.0000       11.0000    
+           6   1.00000       2.00000       3.00000       4.00000    
+ 
+DIGRAPH_ARC_PRT_PATH:
+  Paths from        2 to        5
+  Index Length   ------Nodes-----
+ 
+   1   8.00000    
+       2   3   1   4   5
+   2   8.00000    
+       2   3   1   5
+   3   8.00000    
+       2   3   5
+   4   9.00000    
+       2   3   1   4   6   1   4   5
+   5   9.00000    
+       2   3   1   4   5   3   1   4   5
+   6   9.00000    
+       2   3   1   5   3   1   4   5
+   7   9.00000    
+       2   3   5   3   1   4   5
+   8   9.00000    
+       2   3   1   4   6   3   1   4   5
+   9   9.00000    
+       2   3   1   4   6   1   5
+  10   9.00000    
+       2   3   1   4   5   3   1   5
+ 
+TEST05
+  DIGRAPH_ARC_MINEQV finds the minimal equivalent
+  digraph.
+ 
+  The arc list of the digraph:
+ 
+         1           5       2
+         2           2       3
+         3           2       4
+         4           4       5
+         5           1       5
+         6           3       4
+         7           1       2
+         8           5       3
+         9           1       4
+        10           3       1
+ 
+  The arc list of the minimal equivalent digraph:
+ 
+         1           5       2
+         2           2       3
+         3           4       5
+         4           1       5
+         5           3       4
+         6           3       1
+ 
+  The arc list of the correct answer:
+ 
+         1           5       2
+         2           2       3
+         3           4       5
+         4           1       5
+         5           3       4
+         6           3       1
+ 
+TEST06
+  DIGRAPH_ARC_NFLOW finds the maximum flow 
+    on a network
+ 
+  The source is node        1
+  The sink is node          6
+ 
+  The edge list of the digraph:
+ 
+         1           1       2
+         2           1       3
+         3           2       3
+         4           2       4
+         5           2       5
+         6           3       4
+         7           3       5
+         8           4       5
+         9           4       6
+        10           5       6
+        11           2       1
+        12           3       1
+        13           3       2
+        14           4       2
+        15           5       2
+        16           4       3
+        17           5       3
+        18           5       4
+        19           6       4
+        20           6       5
+ 
+  The edge capacities:
+ 
+       1         3
+       2         7
+       3         2
+       4         5
+       5         4
+       6         1
+       7         4
+       8         2
+       9         8
+      10         3
+      11         0
+      12         0
+      13         0
+      14         0
+      15         0
+      16         0
+      17         0
+      18         0
+      19         0
+      20         0
+ 
+  0/1 node cutset array:
+ 
+       1         1
+       2         0
+       3         1
+       4         0
+       5         1
+       6         0
+ 
+  Edge flows:
+ 
+       1         3
+       2         4
+       3        -3
+       4         0
+       5         3
+       6         0
+       7        -4
+       8         0
+       9         1
+      10         3
+      11        -3
+      12        -1
+      13         0
+      14         4
+      15         0
+      16        -3
+      17         0
+      18         3
+      19        -4
+      20        -3
+ 
+  Node flows:
+ 
+       1         7
+       2         3
+       3         4
+       4         4
+       5         3
+       6         7
+ 
+TEST07
+  DIGRAPH_ARC_SHTREE constructs a tree of the shortest
+  paths from one node to all others.
+ 
+  The base node will be        3
+ 
+  The weighted arc list of the digraph:
+ 
+       1           3       6   3.00000    
+       2           2       5   4.00000    
+       3           5       4   2.00000    
+       4           4       2   4.00000    
+       5           1       4  -2.00000    
+       6           1       5  -1.00000    
+       7           6       4   5.00000    
+       8           6       1   2.00000    
+       9           1       3   7.00000    
+      10           3       5   6.00000    
+      11           6       2   9.00000    
+ 
+  Distance from base node to other nodes:
+ 
+       1   5.00000    
+       2   7.00000    
+       3   0.00000    
+       4   3.00000    
+       5   4.00000    
+       6   3.00000    
+ 
+  The weighted arc list of the shortest path tree:
+ 
+       1           6       1   2.00000    
+       2           4       2   4.00000    
+       3           1       4  -2.00000    
+       4           1       5  -1.00000    
+       5           3       6   3.00000    
+ 
+TEST08
+  DIGRAPH_ARC_STCOMP finds the strongly connected
+    components of a directed graph.
+ 
+  The arc list of the digraph:
+ 
+         1           8       2
+         2          11       3
+         3           9       1
+         4           5      12
+         5           3       6
+         6           8      10
+         7           9       4
+         8           6      11
+         9          12       7
+        10          10       3
+        11           7       2
+        12           1       9
+        13           2      12
+        14          10       8
+        15           7       5
+ 
+  Number of strong components =        5
+ 
+  The component of each node:
+ 
+       1         2
+       2         3
+       3         4
+       4         1
+       5         3
+       6         4
+       7         3
+       8         5
+       9         2
+      10         5
+      11         4
+      12         3
+ 
+TEST09
+  DIGRAPH_DIST_ALLPATH computes the shortest distance 
+  between all pairs of nodes.
+ 
+  The distance matrix:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          3.00000       99.0000       99.0000       99.0000    
+    2    3.00000        0.0          8.00000       99.0000       2.00000    
+    3    2.00000       8.00000        0.0          2.00000       99.0000    
+    4    99.0000       99.0000       2.00000        0.0          8.00000    
+    5    99.0000       2.00000       99.0000       8.00000        0.0       
+    6    1.00000       2.00000       99.0000       1.00000       9.00000    
+ 
+Columns       6       
+  Row
+ 
+    1    1.00000    
+    2    99.0000    
+    3    99.0000    
+    4    1.00000    
+    5    9.00000    
+    6     0.0       
+ 
+ 
+  The shortest path from 
+       3 to        5
+ 
+      3  4  6  1  2  5
+ 
+TEST10
+  DIGRAPH_DIST_SHORTP finds the shortest path between 
+    two nodes.
+  Start node is         3
+  Finish node is        2
+ 
+  The distance matrix:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          99.0000       7.00000       2.00000       1.00000    
+    2    99.0000        0.0          99.0000       99.0000       4.00000    
+    3    99.0000       99.0000        0.0          99.0000       6.00000    
+    4    99.0000       4.00000       99.0000        0.0          99.0000    
+    5    99.0000       99.0000       99.0000       2.00000        0.0       
+    6    2.00000       9.00000       99.0000       5.00000       99.0000    
+ 
+Columns       6       
+  Row
+ 
+    1    99.0000    
+    2    99.0000    
+    3    3.00000    
+    4    99.0000    
+    5    99.0000    
+    6     0.0       
+ 
+ 
+  The path length is    11.0000    
+ 
+  The shortest path:
+ 
+       1         3
+       2         6
+       3         1
+       4         4
+       5         2
+ 
+TEST11
+  DIGRAPH_DIST_SHORT_LN finds shortest paths from one
+    node to all others.
+  The root node will be        5
+ 
+  The distance matrix:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          3.00000       99.0000       99.0000       99.0000    
+    2    3.00000        0.0          8.00000       99.0000       2.00000    
+    3    2.00000       8.00000        0.0          2.00000       99.0000    
+    4    99.0000       99.0000       2.00000        0.0          8.00000    
+    5    99.0000       2.00000       99.0000       8.00000        0.0       
+    6    1.00000       2.00000       99.0000       1.00000       9.00000    
+ 
+Columns       6       
+  Row
+ 
+    1    1.00000    
+    2    99.0000    
+    3    99.0000    
+    4    1.00000    
+    5    9.00000    
+    6     0.0       
+ 
+ 
+  Root-to-Node distances:
+ 
+       1   5.00000    
+       2   2.00000    
+       3   9.00000    
+       4   7.00000    
+       5   0.00000    
+       6   6.00000    
+ 
+TEST12
+  GRAPH_ARC_CLIQUE finds cliques in a graph.
+ 
+  The arc list of the graph:
+ 
+       1           5       8
+       2           1       9
+       3           3       9
+       4           6       9
+       5           2       7
+       6           5       2
+       7           5       7
+       8           1       3
+       9           2       8
+      10           7       8
+      11           8       4
+ 
+      8  2  5  7
+ 
+      8  4
+ 
+      3  1  9
+ 
+      6  9
+ 
+  The correct answer is :
+    (8,2,5,7), (8,4), (3,1,9), (6,9).
+ 
+TEST13
+  GRAPH_ARC_COLOR_NUMBER finds the chromatic number of a
+  graph and exhibits a corresponding node coloring.
+ 
+  The arc list of the graph:
+ 
+       1           3       9
+       2           6       8
+       3           7      11
+       4           1       2
+       5           4       1
+       6          10       7
+       7           2       8
+       8           6       4
+       9           8       3
+      10           5      11
+      11           8       1
+      12          10       5
+      13           1       6
+      14           3       2
+      15           2       9
+      16           9       4
+ 
+  Computed answers:
+ 
+  The chromatic number of the graph, that is,
+  the number of colors required for the nodes =        4
+ 
+  The arc list and node colors of the graph:
+ 
+  Edge  Node 1  Node 2     Color 1 Color 2
+ 
+       1         3         9         1         3
+       2         6         8         3         4
+       3         7        11         1         2
+       4         1         2         1         2
+       5         4         1         2         1
+       6        10         7         2         1
+       7         2         8         2         4
+       8         6         4         3         2
+       9         8         3         4         1
+      10         5        11         1         2
+      11         8         1         4         1
+      12        10         5         2         1
+      13         1         6         1         3
+      14         3         2         1         2
+      15         2         9         2         3
+      16         9         4         3         2
+ 
+  Correct answers:
+ 
+  The chromatic number of the graph, that is,
+  the number of colors required for the nodes =        4
+ 
+  The arc list and node colors of the graph:
+ 
+  Edge  Node 1  Node 2     Color 1 Color 2
+ 
+       1         3         9         1         3
+       2         6         8         3         4
+       3         7        11         1         2
+       4         1         2         1         2
+       5         4         1         2         1
+       6        10         7         2         1
+       7         2         8         2         4
+       8         6         4         3         2
+       9         8         3         4         1
+      10         5        11         1         2
+      11         8         1         4         1
+      12        10         5         2         1
+      13         1         6         1         3
+      14         3         2         1         2
+      15         2         9         2         3
+      16         9         4         3         2
+ 
+TEST14
+  GRAPH_ARC_COLOR_POLY computes the chromatic polynomial.
+ 
+  Computed values:
+ 
+    CPOLY1:    8  20  18   7   1
+    CPOLY2:    0   1   3   3   1
+    CPOLY3:    0   0   1   3   1
+ 
+  Correct values:
+ 
+    CPOLY1:    8  20  18   7   1
+    CPOLY2:    0   1   3   3   1
+    CPOLY3:    0   0   1   3   1
+ 
+TEST15
+  GRAPH_ARC_CONECT finds bridges, blocks, and cut nodes.
+ 
+  The arc list of the graph:
+ 
+       1           3       6
+       2           4      10
+       3           5       9
+       4          13      11
+       5           7      12
+       6           9       8
+       7          14       7
+       8           1      11
+       9           3       8
+      10           9       1
+      11           7      10
+      12           9       3
+      13           5       2
+      14           9       6
+      15           1      13
+      16           6       8
+      17           4       7
+ 
+  Using component with root node:       1
+  The number of cut nodes is        3
+  The number of bridges is        3
+ 
+  The cut nodes are:
+ 
+       1       5       9
+ 
+  The bridges are:
+ 
+      3  5  9
+     10  9  1
+     13  5  2
+ 
+  Using component with root node:       4
+  The number of cut nodes is        1
+  The number of bridges is        2
+ 
+  The cut nodes are:
+ 
+       7
+ 
+  The bridges are:
+ 
+      5  7 12
+      7 14  7
+ 
+  The number of components is        2
+ 
+TEST16
+  GRAPH_ARC_EDGE_CON finds graph edge connectivity.
+ 
+  The arc list of the graph:
+ 
+       1           6       8
+       2           2       5
+       3           3       1
+       4           6       3
+       5           7       2
+       6           1       8
+       7           4       3
+       8           7       5
+       9           3       8
+      10           4       1
+      11           9       2
+      12           6       1
+      13           5       9
+      14           4       8
+      15           2       6
+      16           9       7
+      17           4       2
+ 
+  The computed result:
+ 
+  The computed edge connectivity is        2
+ 
+  The correct result:
+ 
+  The computed edge connectivity is        2
+ 
+TEST17
+  GRAPH_ARC_EULER finds an Euler circuit of a graph.
+ 
+  The arc list of the graph:
+ 
+       1           2       5
+       2           1       4
+       3           2       3
+       4           1       2
+       5           3       1
+       6           5       1
+       7           4       2
+ 
+  The edge list of the Euler circuit:
+ 
+       1         1
+       2         7
+       3         2
+       4         5
+       5         3
+       6         4
+       7         6
+ 
+  The node list of the Euler circuit:
+ 
+    I  Edge  Node
+ 
+       1       1       2
+       2       7       4
+       3       2       1
+       4       5       3
+       5       3       2
+       6       4       1
+       7       6       5
+ 
+TEST18:
+  GRAPH_ARC_FCYCLE finds fundamental cycles of a graph.
+ 
+  The arc list of the graph:
+ 
+       1           5       9
+       2           4       7
+       3          11      13
+       4           6       8
+       5           5       2
+       6           7      12
+       7           1      11
+       8           8       3
+       9           9       1
+      10          10       7
+      11           3       9
+      12           1      13
+      13           4      10
+      14           6       9
+ Nodes in cycle number  1:    1  11  13
+ Nodes in cycle number  2:    1   5   9
+ Nodes in cycle number  3:    1   8   6   9
+ 
+  Computed results:
+ 
+  Number of cycles =            3
+  Number of components =        2
+ 
+  Correct results:
+ 
+  Number of cycles =            3
+  Number of components =        2
+ 
+TEST19
+  GRAPH_ARC_HAMCYC finds a hamiltonian circuit.
+ 
+  The arc list of the graph:
+ 
+       1           2       6
+       2           3       5
+       3           8      10
+       4           5       2
+       5           4       9
+       6           8       1
+       7          10       5
+       8           7       4
+       9           5       9
+      10           2       4
+      11           1       7
+      12           3       8
+      13           9       7
+      14           3       7
+      15           6      10
+      16           6       1
+ 
+  The Hamiltonian circuit:
+ 
+       1         1
+       2         8
+       3        10
+       4         6
+       5         2
+       6         4
+       7         9
+       8         5
+       9         3
+      10         7
+ 
+TEST20:
+  GRAPH_ARC_MAKEG makes a graph of given connectivity.
+ 
+  Requested:
+    Number of nodes =             8
+    Number of edges =            20
+    Edge connectivity =           5
+ 
+  The arc list of the graph:
+ 
+       1           1       2
+       2           2       3
+       3           3       4
+       4           4       5
+       5           5       6
+       6           6       7
+       7           7       8
+       8           8       1
+       9           1       3
+      10           1       7
+      11           2       4
+      12           2       8
+      13           3       5
+      14           4       6
+      15           5       7
+      16           6       8
+      17           1       5
+      18           2       6
+      19           3       7
+      20           4       8
+ 
+  Call GRAPH_ARC_EDGE_CON to verify the connectivity.
+ 
+  The computed edge connectivity is        5
+ 
+  The correct answer:
+ 
+ 
+  The arc list of the graph:
+ 
+       1           1       2
+       2           2       3
+       3           3       4
+       4           4       5
+       5           5       6
+       6           6       7
+       7           7       8
+       8           8       1
+       9           1       3
+      10           1       7
+      11           2       4
+      12           2       8
+      13           3       5
+      14           4       6
+      15           5       7
+      16           6       8
+      17           1       5
+      18           2       6
+      19           3       7
+      20           4       8
+ 
+TEST21
+  GRAPH_ARC_MATCH finds a maximal matching in a graph.
+ 
+  The edge list of the graph:
+ 
+       1           6       2
+       2           9       7
+       3           3       7
+       4           4      10
+       5          11       5
+       6           6       8
+       7           4       6
+       8           5       7
+       9           6      12
+      10          10       2
+      11           3       1
+      12           4       2
+      13           1       5
+      14           3       5
+ 
+  Node, matching node
+ 
+           1       3
+           2       6
+           3       1
+           4      10
+           5      11
+           6       2
+           7       9
+           8       0
+           9       7
+          10       4
+          11       5
+          12       0
+ 
+  The number of unmatched nodes is        2
+ 
+TEST22
+  GRAPH_ARC_MINTR2 finds the minimum spanning tree:
+ 
+  The weighted arc list of the graph:
+ 
+       1           2       5   7.00000    
+       2           4       1   3.00000    
+       3           6       3   5.00000    
+       4           2       4   1.00000    
+       5           3       5   2.00000    
+       6           4       6   2.00000    
+       7           1       3   3.00000    
+       8           2       6   4.00000    
+       9           5       1   4.00000    
+ 
+  The weighted arc list of the tree:
+ 
+       1           2       4   1.00000    
+       2           3       5   2.00000    
+       3           4       6   2.00000    
+       4           4       1   3.00000    
+       5           1       3   3.00000    
+ 
+TEST23
+  GRAPH_ARC_PLANAR determines if a graph is planar.
+ 
+  The edge list of the graph.
+ 
+       1           9       8
+       2           3       2
+       3          10       5
+       4           2       4
+       5           6       5
+       6           7       9
+       7           7      10
+       8           1       3
+       9           8       6
+      10           1       2
+      11          10       2
+      12           5       8
+      13           1       9
+      14           4       7
+      15           1       4
+      16           3       5
+      17           9       4
+      18           3       6
+      19           2       7
+      20           2       5
+      21           5       9
+      22           3       8
+ 
+  The input graph is planar.
+ 
+TEST24
+  GRAPH_DIST_MINTR1 finds the minimum spanning tree:
+ 
+  The distance matrix:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          99.0000       3.00000       3.00000       4.00000    
+    2    99.0000        0.0          99.0000       1.00000       7.00000    
+    3    3.00000       99.0000        0.0          99.0000       2.00000    
+    4    3.00000       1.00000       99.0000        0.0          99.0000    
+    5    4.00000       7.00000       2.00000       99.0000        0.0       
+    6    99.0000       4.00000       5.00000       2.00000       99.0000    
+ 
+Columns       6       
+  Row
+ 
+    1    99.0000    
+    2    4.00000    
+    3    5.00000    
+    4    2.00000    
+    5    99.0000    
+    6     0.0       
+ 
+ 
+  The weighted spanning tree:
+ 
+       1           1       4   3.00000    
+       2           2       4   1.00000    
+       3           3       1   3.00000    
+       4           4       6   2.00000    
+       5           5       3   2.00000    
+ 
+LAUPACK_PRB
+  Normal end of execution.
+ 
+January  7 2011   1:46:58.881 PM

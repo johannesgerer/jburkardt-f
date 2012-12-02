@@ -1,0 +1,64 @@
+GNU gdb Red Hat Linux (5.1-4)
+Copyright 2001 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type "show copying" to see the conditions.
+There is absolutely no warranty for GDB.  Type "show warranty" for details.
+This GDB was configured as "alpha-redhat-linux"...
+(gdb) Starting program: /a/fs/u8/users/burkardt/gdb/bounder 
+January 27 2004  10:20:02.003 AM
+ 
+BOUNDER
+  Generate an out-of-bounds array access.
+ 
+TEST01
+  The CORRECT code.
+ 
+     I  A(I)
+ 
+     1     2
+     2     3
+     3     4
+     4     5
+     5     6
+     6     7
+     7     8
+     8     9
+     9    10
+    10     1
+ 
+     I  B(I)
+ 
+     1     2
+     2     3
+     3     4
+     4     5
+     5     6
+     6     7
+     7     8
+     8     9
+     9    10
+    10    11
+ 
+TEST02
+  The INCORRECT code.
+ 
+     I  A(I)
+ 
+     1     2
+     2     3
+     3     4
+     4     5
+     5     6
+     6     7
+     7     8
+     8     9
+     9    10
+    10100000
+
+Program received signal SIGSEGV, Segmentation fault.
+0x12000162c in test02 () at bounder.f90:119
+119	    b(j) = j + 1
+Current language:  auto; currently fortran
+(gdb) $1 = 100000
+(gdb) 

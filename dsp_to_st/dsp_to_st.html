@@ -1,0 +1,185 @@
+<html>
+
+  <head>
+    <title>
+      DSP_TO_ST - Convert Sparse Matrix File from DSP to ST Format
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      DSP_TO_ST <br> Convert Sparse Matrix File from DSP to ST Format
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DSP_TO_ST</b>
+      is a FORTRAN90 program which
+      converts a sparse matrix file from
+      the DSP (one-based-index) format to Sparse Triplet (ST) (zero-based index) format.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>dsp_to_st</b> <i>file.dsp</i>
+        </dt>
+        <dd>
+          reads the user's data file <i>file.dsp</i>, reads the data,
+          and writes the converted data to <i>file.st</i>.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/dsp/dsp.html">
+      DSP</a>,
+      a data directory which
+      contains files using the DSP sparse matrix format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linplus/linplus.html">
+      LINPLUS</a>,
+      a FORTRAN90 library which
+      carries out simple manipulations of matrices in a variety of formats.
+    </p>
+
+    <p>
+      <a href = "../../m_src/mm_to_msm/mm_to_msm.html">
+      MM_TO_MSM</a>,
+      a MATLAB program which
+      reads a Matrix Market file defining a sparse matrix, and creates
+      a corresponding MATLAB sparse matrix data structure.
+    </p>
+
+    <p>
+      <a href = "../../m_src/msm_to_st/msm_to_st.html">
+      MSM_TO_ST</a>,
+      a MATLAB program which
+      writes a MATLAB sparse matrix to a <a href = "../../data/st/st.html">
+      ST Sparse Triplet</a> file;
+    </p>
+
+    <p>
+      <a href = "../../data/st/st.html">
+      ST</a>,
+      a data directory which
+      contains files using the St sparse matrix format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/st_io/st_io.html">
+      ST_IO</a>,
+      a FORTRAN90 library which
+      reads and writes sparse linear systems stored in the Sparse Triplet (ST)
+      Sparse Matrix format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/st_to_dsp/st_to_dsp.html">
+      ST_TO_DSP</a>,
+      a FORTRAN90 program which
+      converts an Sparse Triplet (ST) sparse matrix file to DSP format.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "dsp_to_st.f90">dsp_to_st.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "dsp_to_st.sh">dsp_to_st.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      The <b>KERSHAW</b> matrix is a 4 by 4 matrix.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "../../data/dsp/kershaw.dsp">kershaw.dsp</a>,
+          the Kershaw matrix, stored in a DSP format file.
+        </li>
+        <li>
+          <a href = "../../data/st/kershaw.st">kershaw.st</a>,
+          the Kershaw matrix, stored in an ST format file created by the
+          command <blockquote><b>dsp_to_st kershaw.dsp</b>.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for DSP_TO_ST.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_INDEX_LAST_C</b> finds the LAST occurrence of a given character.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

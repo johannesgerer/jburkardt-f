@@ -1,0 +1,18 @@
+# stab_asymptotic_commands.txt
+# created by sde::stab_asymptotic.
+#
+# Usage:
+#  gnuplot < stab_asymptotic_commands.txt
+#
+set term png
+set output "stab_asymptotic.png"
+set xlabel "t"
+set ylabel "|X(t)|"
+set title "Absolute value of EM Solution"
+set grid
+set logscale y 10
+set style data lines
+plot "stab_asymptotic1_data.txt" using 1:2, \
+     "stab_asymptotic2_data.txt" using 1:2, \
+     "stab_asymptotic3_data.txt" using 1:2
+quit

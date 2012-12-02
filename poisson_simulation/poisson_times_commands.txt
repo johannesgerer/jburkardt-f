@@ -1,0 +1,14 @@
+# poisson_times_commands.txt
+#
+# Usage:
+#  gnuplot < poisson_times_commands.txt
+#
+set term png
+set output "poisson_times.png"
+set xlabel "Waiting Time"
+set ylabel "Frequency"
+set title "Waiting Times Observed Over Fixed Time
+set grid
+set style fill solid
+plot "poisson_times_data.txt" using 1:2:(    0.36) with boxes
+quit

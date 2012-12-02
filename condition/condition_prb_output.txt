@@ -1,0 +1,97 @@
+ 5 October 2012   8:27:36.387 AM
+ 
+CONDITION_PRB:
+  FORTRAN90 version
+  Test the CONDITION library.
+  The R8LIB library must also be available.
+ 
+TEST01
+  For a matrix in general storage,
+  CONDITION_LINPACK estimates the L1 condition number.
+ 
+  Matrix               Order   Condition         Linpack
+ 
+  Combinatorial            4     10.0000         7.00000    
+  CONEX1                   4     80601.0         565.586    
+  CONEX2                   3     601.970         7.50657    
+  CONEX3                   5     80.0000         5.00000    
+  CONEX4                   4     4488.00         3238.09    
+  KAHAN                    4     646.712         574.664    
+  RANDOM                   4     14.5340         12.4043    
+  RANDOM                   4     33.9060         26.8497    
+  RANDOM                   4     115.558         92.5550    
+  RANDOM                   4     159.911         123.868    
+  RANDOM                   4     24.2573         15.2399    
+ 
+TEST02
+  For a matrix in general storage,
+  CONDITION_SAMPLE1 estimates the L1 condition number using sampling.
+ 
+  Matrix                 Samples Order   Condition        Estimate
+ 
+  Combinatorial               10     4     10.0000         7.20871    
+  Combinatorial             1000     4     10.0000         8.69041    
+  Combinatorial           100000     4     10.0000         9.56976    
+ 
+  CONEX1                      10     4     80601.0         4.04391    
+  CONEX1                    1000     4     80601.0         29.3131    
+  CONEX1                  100000     4     80601.0         414.037    
+ 
+  CONEX2                      10     3     601.970         6.67688    
+  CONEX2                    1000     3     601.970         42.7952    
+  CONEX2                  100000     3     601.970         396.680    
+ 
+  CONEX3                      10     5     80.0000         2.26032    
+  CONEX3                    1000     5     80.0000         10.6356    
+  CONEX3                  100000     5     80.0000         23.9820    
+ 
+  CONEX4                      10     4     4488.00         16.7150    
+  CONEX4                    1000     4     4488.00         53.4881    
+  CONEX4                  100000     4     4488.00         438.725    
+ 
+  KAHAN                       10     4     646.712         5.18858    
+  KAHAN                     1000     4     646.712         23.2171    
+  KAHAN                   100000     4     646.712         294.887    
+ 
+  RANDOM                      10     4     14.5340         2.87648    
+  RANDOM                    1000     4     14.5340         11.7411    
+  RANDOM                  100000     4     14.5340         14.0185    
+ 
+  RANDOM                      10     4     33.9060         3.28069    
+  RANDOM                    1000     4     33.9060         19.6417    
+  RANDOM                  100000     4     33.9060         29.8397    
+ 
+  RANDOM                      10     4     115.558         7.33299    
+  RANDOM                    1000     4     115.558         39.5644    
+  RANDOM                  100000     4     115.558         74.8706    
+ 
+  RANDOM                      10     4     159.911         3.02755    
+  RANDOM                    1000     4     159.911         30.9078    
+  RANDOM                  100000     4     159.911         101.429    
+ 
+  RANDOM                      10     4     24.2573         7.80771    
+  RANDOM                    1000     4     24.2573         11.7133    
+  RANDOM                  100000     4     24.2573         20.9703    
+ 
+TEST03
+  For a matrix in general storage,
+  CONDITION_HAGER estimates the L1 condition number.
+ 
+  Matrix               Order   Condition         Hager
+ 
+  Combinatorial            4     10.0000         10.0000    
+  CONEX1                   4     80601.0         810.020    
+  CONEX2                   3     601.970         601.970    
+  CONEX3                   5     80.0000         80.0000    
+  CONEX4                   4     4488.00         4488.00    
+  KAHAN                    4     646.712         646.712    
+  RANDOM                   4     14.5340         14.2289    
+  RANDOM                   4     33.9060         33.9060    
+  RANDOM                   4     115.558         106.835    
+  RANDOM                   4     159.911         159.911    
+  RANDOM                   4     24.2573         24.2573    
+ 
+CONDITION_PRB:
+  Normal end of execution.
+ 
+ 5 October 2012   8:27:36.895 AM

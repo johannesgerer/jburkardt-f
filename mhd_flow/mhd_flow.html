@@ -1,0 +1,658 @@
+<html>
+
+  <head>
+    <title>
+      MHD_FLOW - Magnetic-Hydrodynamic Flow
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MHD_FLOW <br> Magnetic-Hydrodynamic Flow
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MHD_FLOW</b>
+      is a FORTRAN90 program which
+      computes the time-dependent, two dimensional behavior of a
+      viscous magnetic fluid.  The fluid is governed by the
+      incompressible Navier-Stokes equations, the magnetic field by
+      Maxwell's equations.  A coupling parameter controls the interaction
+      between the particle motions and magnetic fields.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/channel/channel.html">
+      CHANNEL</a>,
+      a FORTRAN90 program which
+      solves a simple channel flow problem with no bump.
+    </p>
+
+    <p>
+      <a href = "../../m_src/contour_sequence4/contour_sequence4.html">
+      CONTOUR_SEQUENCE4</a>,
+      a MATLAB program which
+      can be used to create
+      images of the contour plots of the pressure.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows/direction_arrows.html">
+      DIRECTION_ARROWS</a>,
+      a MATLAB program which
+      can plot one velocity
+      direction field.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows_grid/direction_arrows_grid.html">
+      DIRECTION_ARROWS_GRID</a>,
+      a MATLAB program which
+      reads files of
+      node and velocity data, and, using interpolation, creates a
+      velocity direction plot with arrows
+      place on a uniform grid of the user's specification.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows_sequence/direction_arrows_sequence.html">
+      DIRECTION_ARROWS_SEQUENCE</a>,
+      a MATLAB program which
+      can plot a
+      sequence of velocity direction fields stored in consecutively
+      numbered files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_control/mhd_control.html">
+      MHD_CONTROL</a>,
+      a FORTRAN90 program which
+      tries to control the evolution of an MHD system so that a particular
+      state is achieved.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nast2d_f90/nast2d_f90.html">
+      NAST2D_F90</a>,
+      a FORTRAN90 program which
+      uses the finite volume method to set up and solve
+      the 2D incompressible Navier Stokes equations with heat.
+    </p>
+
+    <p>
+      <a href = "../../m_src/toms866/toms866.html">
+      TOMS866</a>,
+      a MATLAB library which
+      is the Incompressible Flow Iterative Solution Software;<br>
+      this library is commonly called <b>IFISS</b>;<br>
+      this is ACM TOMS algorithm 866.
+    </p>
+
+    <p>
+      <a href = "../../f_src/vector_plot/vector_plot.html">
+      VECTOR_PLOT</a>,
+      a FORTRAN90 program which
+      can be used to create
+      a velocity field vector plot from the output data files of
+      the <b>BUMP</b> program.
+    </p>
+
+    <p>
+      <a href = "../../m_src/vector_stream_grid/vector_stream_grid.html">
+      VECTOR_STREAM_GRID</a>,
+      a MATLAB program which
+      reads node and vector data from a file, computes an interpolatory function,
+      evaluates on a uniform grid of points specified by the user,
+      and displays a streamline plot of the vector field.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows/velocity_arrows.html">
+      VELOCITY_ARROWS</a>,
+      a MATLAB program which
+      can plot one velocity
+      field.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows_grid/velocity_arrows_grid.html">
+      VELOCITY_ARROWS_GRID</a>,
+      a MATLAB program which
+      reads files of
+      node and velocity data, and, using interpolation, creates a
+      vector plot with arrows
+      place on a uniform grid of the user's specification.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows_grid2/velocity_arrows_grid2.html">
+      VELOCITY_ARROWS_GRID2</a>,
+      a MATLAB program which
+      reads a single file of
+      node and velocity data, and using interpolation is
+      able to display a velocity vector field along any uniform grid
+      of points specified by the user.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows_sequence/velocity_arrows_sequence.html">
+      VELOCITY_ARROWS_SEQUENCE</a>,
+      a MATLAB program which can plot a
+      sequence of velocity fields stored in consecutively
+      numbered files.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Max Gunzburger,<br>
+          Finite Element Methods for Viscous Incompressible Flows,<br>
+          A Guide to Theory, Practice, and Algorithms,<br>
+          Academic Press, 1989,<br>
+          ISBN: 0-12-307350-2,<br>
+          LC: TA357.G86.
+        </li>
+        <li>
+          Max Gunzburger, Catalin Trenchea,<br>
+          Analysis and Discretization of an Optimal Control Problem
+          for the Time-Periodic MHD Equations,<br>
+          Journal of Mathematical Analysis and Applications,<br>
+          Volume 308, Number 2, 2005, pages 440-466.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "mhd_flow.f90">mhd_flow.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "mhd_flow.sh">mhd_flow.sh</a>,
+          commands to compile the source code.
+        </li>
+        <li>
+          <a href = "mhd_flow_output.txt">mhd_flow_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The program writes the nodal coordinates and element node lists to files:
+      <ul>
+        <li>
+          <a href = "xy.txt">xy.txt</a>,
+          the node coordinates.
+        </li>
+        <li>
+          <a href = "xy.png">xy.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the nodes.
+        </li>
+        <li>
+          <a href = "elements.txt">elements.txt</a>,
+          the list of nodes making up each element.
+        </li>
+        <li>
+          <a href = "elements.png">elements.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the elements..
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The program writes the UV coordinates of velocity at the nodes
+      to a file every so many time steps:
+      <ul>
+        <li>
+          <a href = "uv001.txt">uv001.txt</a>,
+          velocity at plot step 1.
+        </li>
+        <li>
+          <a href = "uv002.txt">uv002.txt</a>,
+          velocity at plot step 2.
+        </li>
+        <li>
+          <a href = "uv003.txt">uv003.txt</a>,
+          velocity at plot step 3.
+        </li>
+        <li>
+          <a href = "uv004.txt">uv004.txt</a>,
+          velocity at plot step 4.
+        </li>
+        <li>
+          <a href = "uv005.txt">uv005.txt</a>,
+          velocity at plot step 5.
+        </li>
+        <li>
+          <a href = "uv006.txt">uv006.txt</a>,
+          velocity at plot step 6.
+        </li>
+        <li>
+          <a href = "uv007.txt">uv007.txt</a>,
+          velocity at plot step 7.
+        </li>
+        <li>
+          <a href = "uv008.txt">uv008.txt</a>,
+          velocity at plot step 8.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The MATLAB program
+      <a href = "../../m_src/direction_arrows/direction_arrows.html">
+      DIRECTION_ARROWS</a> can plot one velocity direction field, and
+      <a href = "../../m_src/direction_arrows_sequence/direction_arrows_sequence.html">
+      DIRECTION_ARROWS_SEQUENCE</a> can plot a sequence of velocity
+      direction fields stored in consecutively numbered files:
+      <ul>
+        <li>
+          <a href = "uv001_dir.png">uv001_dir.png</a>,
+          velocity direction field.
+        </li>
+        <li>
+          <a href = "uv002_dir.png">uv002_dir.png</a>,
+          velocity direction field.
+        </li>
+        <li>
+          <a href = "uv003_dir.png">uv003_dir.png</a>,
+          velocity direction field.
+        </li>
+        <li>
+          <a href = "uv004_dir.png">uv004_dir.png</a>,
+          velocity direction field.
+        </li>
+        <li>
+          <a href = "uv005_dir.png">uv005_dir.png</a>,
+          velocity direction field.
+        </li>
+        <li>
+          <a href = "uv006_dir.png">uv006_dir.png</a>,
+          velocity direction field.
+        </li>
+        <li>
+          <a href = "uv007_dir.png">uv007_dir.png</a>,
+          velocity direction field.
+        </li>
+        <li>
+          <a href = "uv008_dir.png">uv008_dir.png</a>,
+          velocity direction field.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The MATLAB program
+      <a href = "../../m_src/velocity_arrows/velocity_arrows.html">
+      VELOCITY_ARROWS</a> can plot the velocity field, and
+      <a href = "../../m_src/velocity_arrows_sequence/velocity_arrows_sequence.html">
+      VELOCITY_ARROWS_SEQUENCE</a> can plot a sequence of velocity
+      fields stored in consecutively numbered files:
+      <ul>
+        <li>
+          <a href = "uv001_vec.png">uv001_vec.png</a>,
+          velocity field.
+        </li>
+        <li>
+          <a href = "uv002_vec.png">uv002_vec.png</a>,
+          velocity field.
+        </li>
+        <li>
+          <a href = "uv003_vec.png">uv003_vec.png</a>,
+          velocity field.
+        </li>
+        <li>
+          <a href = "uv004_vec.png">uv004_vec.png</a>,
+          velocity field.
+        </li>
+        <li>
+          <a href = "uv005_vec.png">uv005_vec.png</a>,
+          velocity field.
+        </li>
+        <li>
+          <a href = "uv006_vec.png">uv006_vec.png</a>,
+          velocity field.
+        </li>
+        <li>
+          <a href = "uv007_vec.png">uv007_vec.png</a>,
+          velocity field.
+        </li>
+        <li>
+          <a href = "uv008_vec.png">uv008_vec.png</a>,
+          velocity field.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The program writes the components of the magnetic field at the nodes
+      to a file every so many time steps:
+      <ul>
+        <li>
+          <a href = "mag001.txt">mag001.txt</a>,
+          magnetic field at plot step 1.
+        </li>
+        <li>
+          <a href = "mag002.txt">mag002.txt</a>,
+          magnetic field at plot step 2.
+        </li>
+        <li>
+          <a href = "mag003.txt">mag003.txt</a>,
+          magnetic field at plot step 3.
+        </li>
+        <li>
+          <a href = "mag004.txt">mag004.txt</a>,
+          magnetic field at plot step 4.
+        </li>
+        <li>
+          <a href = "mag005.txt">mag005.txt</a>,
+          magnetic field at plot step 5.
+        </li>
+        <li>
+          <a href = "mag006.txt">mag006.txt</a>,
+          magnetic field at plot step 6.
+        </li>
+        <li>
+          <a href = "mag007.txt">mag007.txt</a>,
+          magnetic field at plot step 7.
+        </li>
+        <li>
+          <a href = "mag008.txt">mag008.txt</a>,
+          magnetic field at plot step 8.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The MATLAB program
+      <a href = "../../m_src/direction_arrows/direction_arrows.html">
+      DIRECTION_ARROWS</a> can plot the magnetic direction field:
+      <ul>
+        <li>
+          <a href = "mag001_dir.png">mag001_dir.png</a>,
+          magnetic direction field.
+        </li>
+        <li>
+          <a href = "mag002_dir.png">mag002_dir.png</a>,
+          magnetic direction field.
+        </li>
+        <li>
+          <a href = "mag003_dir.png">mag003_dir.png</a>,
+          magnetic direction field.
+        </li>
+        <li>
+          <a href = "mag004_dir.png">mag004_dir.png</a>,
+          magnetic direction field.
+        </li>
+        <li>
+          <a href = "mag005_dir.png">mag005_dir.png</a>,
+          magnetic direction field.
+        </li>
+        <li>
+          <a href = "mag006_dir.png">mag006_dir.png</a>,
+          magnetic direction field.
+        </li>
+        <li>
+          <a href = "mag007_dir.png">mag007_dir.png</a>,
+          magnetic direction field.
+        </li>
+        <li>
+          <a href = "mag008_dir.png">mag008_dir.png</a>,
+          magnetic direction field.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The MATLAB program
+      <a href = "../../m_src/velocity_arrows/velocity_arrows.html">
+      VELOCITY_ARROWS</a> can plot the magnetic field:
+      <ul>
+        <li>
+          <a href = "mag001_vec.png">mag001_vec.png</a>,
+          magnetic field.
+        </li>
+        <li>
+          <a href = "mag002_vec.png">mag002_vec.png</a>,
+          magnetic field.
+        </li>
+        <li>
+          <a href = "mag003_vec.png">mag003_vec.png</a>,
+          magnetic field.
+        </li>
+        <li>
+          <a href = "mag004_vec.png">mag004_vec.png</a>,
+          magnetic field.
+        </li>
+        <li>
+          <a href = "mag005_vec.png">mag005_vec.png</a>,
+          magnetic field.
+        </li>
+        <li>
+          <a href = "mag006_vec.png">mag006_vec.png</a>,
+          magnetic field.
+        </li>
+        <li>
+          <a href = "mag007_vec.png">mag007_vec.png</a>,
+          magnetic field.
+        </li>
+        <li>
+          <a href = "mag008_vec.png">mag008_vec.png</a>,
+          magnetic field.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The program writes the pressure at the nodes
+      to a file every so many time steps:
+      <ul>
+        <li>
+          <a href = "p001.txt">p001.txt</a>,
+          the pressures at plot step 1.
+        </li>
+        <li>
+          <a href = "p002.txt">p002.txt</a>,
+          the pressures at plot step 2.
+        </li>
+        <li>
+          <a href = "p003.txt">p003.txt</a>,
+          the pressures at plot step 3.
+        </li>
+        <li>
+          <a href = "p004.txt">p004.txt</a>,
+          the pressures at plot step 4.
+        </li>
+        <li>
+          <a href = "p005.txt">p005.txt</a>,
+          the pressures at plot step 5.
+        </li>
+        <li>
+          <a href = "p006.txt">p006.txt</a>,
+          the pressures at plot step 6.
+        </li>
+        <li>
+          <a href = "p007.txt">p007.txt</a>,
+          the pressures at plot step 7.
+        </li>
+        <li>
+          <a href = "p008.txt">p008.txt</a>,
+          the pressures at plot step 8.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The MATLAB program <a href =
+      "../../m_src/contour_sequence4/contour_sequence4.html">
+      CONTOUR_SEQUENCE4</a> can be used to create JPG images of
+      contour plots of the pressure:
+      <ul>
+        <li>
+          <a href = "p001.png">p001.png</a>,
+          the pressures at plot step 1.
+        </li>
+        <li>
+          <a href = "p002.png">p002.png</a>,
+          the pressures at plot step 2.
+        </li>
+        <li>
+          <a href = "p003.png">p003.png</a>,
+          the pressures at plot step 3.
+        </li>
+        <li>
+          <a href = "p004.png">p004.png</a>,
+          the pressures at plot step 4.
+        </li>
+        <li>
+          <a href = "p005.png">p005.png</a>,
+          the pressures at plot step 5.
+        </li>
+        <li>
+          <a href = "p006.png">p006.png</a>,
+          the pressures at plot step 6.
+        </li>
+        <li>
+          <a href = "p007.png">p007.png</a>,
+          the pressures at plot step 7.
+        </li>
+        <li>
+          <a href = "p008.png">p008.png</a>,
+          the pressures at plot step 8.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for MHD_FLOW.
+        </li>
+        <li>
+          <b>BANDED</b> solves a banded linear system.
+        </li>
+        <li>
+          <b>BANDWIDTH</b> computes the half band width of the system matrix.
+        </li>
+        <li>
+          <b>BASIS_T3</b> evaluates a linear basis function.
+        </li>
+        <li>
+          <b>BASIS_T6</b> evaluates a quadratic basis function.
+        </li>
+        <li>
+          <b>ELEMENT_AREA</b> sets the area of each element.
+        </li>
+        <li>
+          <b>ELEMENT_SET</b> sets up the elements.
+        </li>
+        <li>
+          <b>ELEMENT_WRITE</b> writes the element data to a file.
+        </li>
+        <li>
+          <b>EVAL</b> evaluates the velocity and magnetic fields at a point.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> increments a partially numeric filename.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>INDX_SET</b> sets the index array.
+        </li>
+        <li>
+          <b>JACOBIAN</b> computes the Jacobian and right hand side of the Newton system.
+        </li>
+        <li>
+          <b>MAG_WRITE</b> writes magnetic data to files.
+        </li>
+        <li>
+          <b>NEWTON</b> updates the magneto-hydrodynamic state using Newton's method.
+        </li>
+        <li>
+          <b>P_NORMALIZE</b> normalizes the pressure.
+        </li>
+        <li>
+          <b>P_WRITE</b> writes pressure data to files.
+        </li>
+        <li>
+          <b>QUAD_RULE</b> sets the weights and abscissas for quadrature.
+        </li>
+        <li>
+          <b>RHS</b> sets the right hand side of each equation.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UBDRY</b> sets the parabolic inflow for velocity.
+        </li>
+        <li>
+          <b>UV_WRITE</b> writes velocity data to files.
+        </li>
+        <li>
+          <b>XY_SET</b> sets the node coordinates.
+        </li>
+        <li>
+          <b>XY_WRITE</b> writes the coordinate data to a file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

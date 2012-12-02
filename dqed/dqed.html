@@ -1,0 +1,548 @@
+<html>
+
+  <head>
+    <title>
+      DQED - Bounded Constrained Least Squares/Nonlinear Equations
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      DQED <br> Bounded Constrained Least Squares/Nonlinear Equations<br>
+      Double precision version
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DQED</b>
+      is a FORTRAN90 library which
+      solves (square) systems of nonlinear equations, or minimizes the
+      residual in a set of nonlinear equations, using least squares,
+      by Richard Hanson and Fred Krogh.
+    </p>
+
+    <p>
+      The user may include simple bounds or linear constraints on variables.
+    </p>
+
+    <p>
+      <b>DQED</b> can solve, in the least squares sense, systems of linear
+      or nonlinear equations, with inequality bounds or equality constraints.
+    </p>
+
+    <p>
+      <b>DQED</b> was written by Richard Hanson and Fred Krogh of Sandia
+      National Laboratory.
+    </p>
+
+    <p>
+      The original FORTRAN77 source code is available through NETLIB at<br>
+      <a href = "http://www.netlib.org/opt/dqed.f">
+                 http://www.netlib.org/opt/dqed.f</a>.
+    </p>
+
+    <h3 align = "center">
+      Overview
+    </h3>
+
+    <p>
+      DQED solves the constrained nonlinear least squares problem:
+    </p>
+
+    <p>
+      Minimize the sum of squares of MEQUA generally nonlinear equations,
+      <blockquote>
+        f(1:MEQUA)(x) = 0,  Equation (1)
+      </blockquote>
+      where x is a set of NVARS unknowns.  The vector function with these MEQUA
+      components is called f(x) in the discussion that follows.
+    </p>
+
+    <p>
+      The components of x may have upper and lower bounds given by the user.  In
+      fact, all of the possible cases can be specified:
+      <ul>
+        <li>
+          no bounds on X;
+        </li>
+        <li>
+          bounds at one end only;
+        </li>
+        <li>
+          upper and lower bounds.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Linear constraints on the unknowns, more general than simple bounds, can also
+      be given.  These linear constraints can be of the equality or inequality type:
+      <blockquote>
+        a(L,1) x(1)+ ... + a(L,NVARS) x(NVARS) = y(L), L = 1,...,MCON,  Equation (2)
+      </blockquote>
+      with bounds specified on the right hand side values y(L), again given by the
+      user.  The constraints can actually be slightly nonlinear.  In this case
+      the constraints can be described as:
+      <blockquote>
+        g(L)(x) =  y(L), L = 1,...,MCON,  Equation (2')
+      </blockquote>
+      where bounds are specified on each y(L).  The functions g(L)(x) must be defined
+      for all x in the set described by the simple bounds.
+    </p>
+
+    <p>
+      Experienced users may wish to turn directly to the examples before reading the
+      subprogram documentation.
+    </p>
+
+    <p>
+      There is no size relation required for the problem dimensions MEQUA, NVARS, and
+      MCON except that MEQUA and NVARS are both positive, and MCON is nonnegative.
+    </p>
+
+    <p>
+      DQED will do a decent job of solving most nonlinear
+      least squares problems that can be expressed as Equations (1) and (2)
+      above, provided that continuous derivatives of the functions
+      with respect to the parameters can be computed.  This can also
+      include problems where the derivatives must be computed using
+      some form of numerical differentiation.  Numerical
+      differentiation is not provided with this software for solving
+      nonlinear least squares problems.
+    </p>
+
+    <p>
+      The authors also plan to develop methods that will do a much
+      better job of coping with constraints more general than the
+      essentially linear ones indicated above in Equations (2)-(2').  There
+      are nonlinear least squares problems with innocent-looking but
+      highly nonlinear constraints where this package will fail to
+      work.  The authors also hope to reduce the overhead required by
+      the software.  This high overhead is due primarily to the method
+      used to solve the inner-loop quadratic model problem.  The
+      authors recommend that users consider using the option number
+      14, to suppress use of the quadratic model.  The
+      user may find that the software works quite well without the
+      quadratic model.  This may be important when the function and
+      derivatives evaluations are not expensive but many individual
+      problems are being solved.
+    </p>
+
+    <p>
+      There are two fundamental ways to use the subprogram DQED.
+    </p>
+
+    <p>
+      The most straightforward way is to make one call to DQED and obtain values
+      for the unknowns, x.  The user provides a subprogram DQEDEV that gives
+      DQED the values of the functions f(x) and g(x), and the derivative or Jacobian
+      matrices for f(x) and g(x) at each desired point x.  This usage is called
+      'forward communication.'
+    </p>
+
+    <p>
+      An alternate way to use DQED is to provide an option that allows the user to
+      communicate these values by 'reverse communication.'  DQED returns to the
+      user calling program and requests values for f(x) and g(x), and the Jacobian
+      matrices for f(x) and g(x) for a given value of x.  This framework is often
+      required in applications that have complicated algorithmic requirements for
+      evaluation of the functions.
+    </p>
+
+    <p>
+      Examples using both 'forward' and 'reverse' communication are provided.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>DQED</b> is available in
+      <a href = "../../f77_src/dqed/dqed.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/dqed/dqed.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bvls/bvls.html">
+      BVLS</a>,
+      a FORTRAN90 library which
+      applies least squares methods to solve a linear system for which
+      lower and upper constraints may have been placed on every variable.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/lawson/lawson.html">
+      LAWSON</a>,
+      a FORTRAN77 library which
+      contains routines for solving least squares problems and singular value
+      decompositions, by Lawson and Hanson.
+    </p>
+
+    <p>
+      <a href = "../../f_src/minpack/minpack.html">
+      MINPACK</a>,
+      a FORTRAN90 library which
+      solves systems
+      of nonlinear equations, or the least squares minimization of the
+      residual of a set of linear or nonlinear equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nl2sol/nl2sol.html">
+      NL2SOL</a>,
+      a FORTRAN90 library which
+      implements an adaptive nonlinear least-squares algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/praxis/praxis.html">
+      PRAXIS</a>,
+      a FORTRAN90 routine which
+      minimizes a scalar
+      function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/qr_solve/qr_solve.html">
+      QR_SOLVE</a>,
+      a FORTRAN90 library which
+      computes the least squares solution of a linear system A*x=b.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt/test_opt.html">
+      TEST_OPT</a>,
+      a FORTRAN90 library which
+      defines test problems
+      requiring the minimization of a scalar function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt_con/test_opt_con.html">
+      TEST_OPT_CON</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables, with the search constrained to lie within a specified hyper-rectangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_optimization/test_optimization.html">
+      TEST_OPTIMIZATION</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables, as described by Molga and Smutnicki.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms611/toms611.html">
+      TOMS611</a>,
+      a FORTRAN90 library which
+      can be used to seek the minimizer of a scalar functional
+      of multiple variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xerror/xerror.html">
+      XERROR</a>,
+      a FORTRAN90 library which
+      handles error messages.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Richard Hanson and Fred Krogh.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1,<br>
+          LC: QA214.L56.
+        </li>
+        <li>
+          Richard Hanson,<br>
+          Least Squares with Bounds and Linear Constraints,<br>
+          SIAM Journal of Scientific and Statistical Computing,<br>
+          Volume 7, number 3, July 1986, pages 826-834.
+        </li>
+        <li>
+          Ron Jones, David Kahaner,<br>
+          XERROR, The SLATEC Error Handling Package,<br>
+          Technical Report SAND82-0800,<br>
+          Sandia National Laboratories, 1982.
+        </li>
+        <li>
+          Ron Jones, David Kahaner,<br>
+          XERROR, The SLATEC Error Handling Package,<br>
+          Software: Practice and Experience,<br>
+          Volume 13, Number 3, 1983, pages 251-257.
+        </li>
+        <li>
+          Charles Lawson, Richard Hanson, David Kincaid, Fred Krogh,<br>
+          Algorithm 539:
+          Basic Linear Algebra Subprograms for Fortran Usage,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 5, Number 3, September 1979, pages 308-323.
+        </li>
+        <li>
+          Robert Schnabel, Paul Frank, <br>
+          Tensor Methods for Nonlinear Equations,<br>
+          SIAM Journal on Numerical Analysis, <br>
+          Volume 21, Number 5, October 1984, pages 815-843.
+        </li>
+        <li>
+          <a href = "dqed.txt">dqed.txt</a>, some online documentation.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "dqed.f90">dqed.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "dqed.sh">dqed.sh</a>, commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>Problem 1</b> tries to fit data for a model of the heart.  Several
+      datasets are examined, exact and approximate jacobians are
+      compared, and two equations are tried as constraints instead
+      of equations.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "dqed_prb1.f90">dqed_prb1.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "dqed_prb1.sh">dqed_prb1.sh</a>, commands to compile the source code.
+        </li>
+        <li>
+          <a href = "dqed_prb1_input.txt">dqed_prb1_input.txt</a>, input for the
+          sample problem.
+        </li>
+        <li>
+          <a href = "dqed_prb1_output.txt">dqed_prb1_output.txt</a>, sample problem output.
+        </li>
+        <li>
+          <a href = "dqed_prb1_good_output.txt">dqed_prb1_good_output.txt</a>,
+          "good" output for this problem, from the original publication.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Problem 2</b> tries to fit data.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "dqed_prb2.f90">dqed_prb2.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "dqed_prb2.sh">dqed_prb2.sh</a>, commands to compile the source code.
+        </li>
+        <li>
+          <a href = "dqed_prb2_output.txt">dqed_prb2_output.txt</a>, sample problem output.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Problem 3</b> tries to fit data.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "dqed_prb3.f90">dqed_prb3.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "dqed_prb3.sh">dqed_prb3.sh</a>, commands to compile the source code.
+        </li>
+        <li>
+          <a href = "dqed_prb3_output.txt">dqed_prb3_output.txt</a>, sample problem output.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Problem 4</b> is like problem 3, but is set up to solve a problem
+      involving the absorption of carbon and nitrogen isotopes by
+      an alligator from its prey.
+      <ul>
+        <li>
+          <a href = "dqed_prb4.f90">dqed_prb4.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "dqed_prb4.sh">dqed_prb4.sh</a>, commands to compile the source code.
+        </li>
+        <li>
+          <a href = "dqed_prb4.csh">dqed_prb4.csh</a>, commands to run
+         the sample problem.
+        </li>
+        <li>
+          <a href = "dqed_prb4_output.txt">dqed_prb4_output.txt</a>, sample problem
+          output.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Problem 5</b> shows how, if the nonlinear constrained system to be solved
+      is actually a LINEAR constrained system, the user may call the DBOLS routine
+      directly.
+      <ul>
+        <li>
+          <a href = "dqed_prb5.f90">dqed_prb5.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "dqed_prb5.sh">dqed_prb5.sh</a>, commands to run
+         the sample problem.
+        </li>
+        <li>
+          <a href = "dqed_prb5_output.txt">dqed_prb5_output.txt</a>, sample problem
+          output.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DIFCEN</b> estimates a jacobian using central differences.
+        </li>
+        <li>
+          <b>DIFFOR</b> estimates a jacobian using forward differences.
+        </li>
+        <li>
+          <b>IDAMAX</b> finds the index of the vector element of maximum absolute value.
+        </li>
+        <li>
+          <b>IVOUT</b> prints integer vectors.
+        </li>
+        <li>
+          <b>DAMAX</b> returns the maximum absolute value of the entries in a vector.
+        </li>
+        <li>
+          <b>DASUM</b> sums the absolute values of the entries of a vector.
+        </li>
+        <li>
+          <b>DAXPY</b> adds a constant times one vector to another.
+        </li>
+        <li>
+          <b>DBOCLS</b> solves a bounded and constrained least squares problem.
+        </li>
+        <li>
+          <b>DBOLS</b> solves the linear system E*X = F in the least squares sense.
+        </li>
+        <li>
+          <b>DBOLSM</b> solves E*X = F in the least squares sense with bounds on some X values.
+        </li>
+        <li>
+          <b>DCOPY</b> copies one vector into another.
+        </li>
+        <li>
+          <b>DDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>DGECO</b> factors a double precision matrix and estimates its condition.
+        </li>
+        <li>
+          <b>DGEFA</b> factors a double precision matrix.
+        </li>
+        <li>
+          <b>DGESL</b> solves a system factored by DGECO or DGEFA.
+        </li>
+        <li>
+          <b>DMOUT</b> prints double precision matrices.
+        </li>
+        <li>
+          <b>DNRM2</b> computes the Euclidean norm of a vector.
+        </li>
+        <li>
+          <b>DPCHEK</b> checks the user's jacobian routine.
+        </li>
+        <li>
+          <b>DQED</b> solves bounded and constrained least squares
+          and nonlinear equations.
+        </li>
+        <li>
+          <b>DQEDEV</b> evaluates functions being treated by DQED.
+        </li>
+        <li>
+          <b>DQEDGN</b> is a simplified version of the QED algorithm
+          for the model problem.
+        </li>
+        <li>
+          <b>DQEDIP</b> carries out the work of DQEDGN.
+        </li>
+        <li>
+          <b>DQEDMN</b> is the main solution routine.
+        </li>
+        <li>
+          <b>DROT</b> applies a plane rotation.
+        </li>
+        <li>
+          <b>DROTG</b> constructs a Givens plane rotation.
+        </li>
+        <li>
+          <b>DSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>DSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>DVOUT</b> prints double precision vectors.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>XERRWV</b> is an error output message routine.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 02 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

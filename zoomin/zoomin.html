@@ -1,0 +1,381 @@
+<html>
+
+  <head>
+    <title>
+      ZOOMIN - Scalar Zero Finders
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ZOOMIN <br> Scalar Zero Finders
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ZOOMIN</b>
+      is a FORTRAN90 library which
+      seeks a root of a scalar function.
+    </p>
+
+    <p>
+      The library is based primarily on a book by Joseph Traub.
+    </p>
+
+    <p>
+      These routines are each intended to find one of more solutions
+      of an equation in one unknown, written as
+      <blockquote><b>
+        f(x) = 0
+      </b></blockquote>
+      The wide variety of methods include
+      special rules for polynomials, multiple roots, bisection methods,
+      and methods that use no derivative information.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/bisection_integer/bisection_integer.html">
+      BISECTION_INTEGER</a>,
+      a FORTRAN90 library which
+      seeks an integer solution to the equation F(X)=0,
+      using bisection within a user-supplied change of sign interval [A,B].
+    </p>
+
+    <p>
+      <a href = "../../f_src/brent/brent.html">
+      BRENT</a>,
+      a FORTRAN90 library which
+      contains Richard Brent's routines for finding the zero, local minimizer,
+      or global minimizer of a scalar function of a scalar argument, without
+      the use of derivative information.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_zero/test_zero.html">
+      TEST_ZERO</a>,
+      a FORTRAN90 library which
+      defines functions which can be used to test zero finders.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Richard Brent,<br>
+          Algorithms for Minimization without Derivatives,<br>
+          Dover, 2002,<br>
+          ISBN: 0-486-41998-3,<br>
+          LC: QA402.5.B74.
+        </li>
+        <li>
+          Eldon Hansen, Merrell Patrick,<br>
+          A Family of Root Finding Methods,<br>
+          Numerische Mathematik,<br>
+          Volume 27, Number 3, September 1977, pages 257-269.
+        </li>
+        <li>
+          P Jarratt,<br>
+          Some fourth-order multipoint iterative methods for
+          solving equations,<br>
+          Mathematics of Computation,<br>
+          Volume 20, Number 95, July 1966, pages 434-437.
+        </li>
+        <li>
+          Richard King,<br>
+          A family of fourth order methods,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 10, 1973, pages 876-879.
+        </li>
+        <li>
+          Richard King,<br>
+          Improving the van de Vel root-finding method,<br>
+          Computing,<br>
+          Volume 30, 1983, pages 373-378.
+        </li>
+        <li>
+          Werner Rheinboldt,<br>
+          Algorithms for finding zeros of a function,<br>
+          UMAP Journal,<br>
+          Volume 2, Number 1, 1981, pages 43-72.
+        </li>
+        <li>
+          Joseph Traub,<br>
+          Iterative Methods for the Solution of Equations,<br>
+          Prentice Hall, 1964.
+        </li>
+        <li>
+          Hugo vandeVel,<br>
+          A method for computing a root of a single nonlinear equation,
+          including its multiplicity,<br>
+          Computing,<br>
+          Volume 14, 1975, pages 167-171.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "zoomin.f90">zoomin.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "zoomin.sh">zoomin.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "zoomin_prb.f90">zoomin_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "zoomin_prb.sh">zoomin_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "zoomin_prb_output.txt">zoomin_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BISECT</b> carries out the bisection method.
+        </li>
+        <li>
+          <b>BRENT</b> implements the Brent bisection-based zero finder.
+        </li>
+        <li>
+          <b>CAP_PHI_03</b> implements the Traub capital Phi(0,3) method.
+        </li>
+        <li>
+          <b>CAP_PHI_21</b> implements the Traub capital PHI(2,1) function.
+        </li>
+        <li>
+          <b>CHEBYSHEV</b> implements Chebyshev's method.
+        </li>
+        <li>
+          <b>DAGGER_E12</b> implements the dagger E 1,2 algorithm.
+        </li>
+        <li>
+          <b>E3</b> implements the Traub E3 method.
+        </li>
+        <li>
+          <b>E4</b> implements the Traub E4 method.
+        </li>
+        <li>
+          <b>EULER</b> implements the Euler method.
+        </li>
+        <li>
+          <b>HALLEY1</b> implements Halley's method.
+        </li>
+        <li>
+          <b>HALLEY2</b> implements Halley's method, with finite differences.
+        </li>
+        <li>
+          <b>HALLEY_SUPER</b> implements the super Halley method.
+        </li>
+        <li>
+          <b>HANSEN</b> implements the Hansen and Patrick method.
+        </li>
+        <li>
+          <b>JARRATT</b> implements the Jarratt fourth order method.
+        </li>
+        <li>
+          <b>JARRATT2</b> implements the inverse-free Jarratt fourth order method.
+        </li>
+        <li>
+          <b>KING</b> implements a family of fourth order methods.
+        </li>
+        <li>
+          <b>LAGUERRE</b> implements the Laguerre rootfinding method for polynomials.
+        </li>
+        <li>
+          <b>MIDPOINT</b> implements the midpoint method.
+        </li>
+        <li>
+          <b>MULLER</b> implements Muller's method.
+        </li>
+        <li>
+          <b>NEWTON</b> implements Newton's method.
+        </li>
+        <li>
+          <b>NEWTON_MOD</b> implements the modified Newton method.
+        </li>
+        <li>
+          <b>NEWTON_SEC</b> implements the Newton - secant method.
+        </li>
+        <li>
+          <b>OSTROWSKI_SQRT</b> implements the Ostrowski square root method.
+        </li>
+        <li>
+          <b>PERP_E_12</b> implements the Traub E 1,2 algorithm.
+        </li>
+        <li>
+          <b>PERP_E_21</b> implements the Traub perp E 21 method.
+        </li>
+        <li>
+          <b>PHI_12</b> implements the Traub capital PHI(1,2) method.
+        </li>
+        <li>
+          <b>PSI_21</b> implements the Traub PSI 2,1 method.
+        </li>
+        <li>
+          <b>PSI_12</b> implements the Traub PSI 1,2 method.
+        </li>
+        <li>
+          <b>R8_SWAP</b> switches two real values.
+        </li>
+        <li>
+          <b>RED_CAP_PHI_04</b> implements the Traub reduced capital PHI(0,4) method.
+        </li>
+        <li>
+          <b>REGULA</b> implements the Regula Falsi method.
+        </li>
+        <li>
+          <b>RHEIN1</b> implements the Rheinboldt bisection - secant method.
+        </li>
+        <li>
+          <b>RHEIN2</b> implements the Rheinboldt bisection - secant - inverse quadratic method.
+        </li>
+        <li>
+          <b>SCRIPT_E2</b> implements the Traub script E - 2 function.
+        </li>
+        <li>
+          <b>SCRIPT_E3</b> implements the Traub script E - 3 function.
+        </li>
+        <li>
+          <b>SCRIPT_E4</b> implements the Traub script E - 4 function.
+        </li>
+        <li>
+          <b>SECANT</b> implements the secant method.
+        </li>
+        <li>
+          <b>SECANTX</b> carries out the extended secant algorithm.
+        </li>
+        <li>
+          <b>STAR_E12</b> implements the Traub *E12 method.
+        </li>
+        <li>
+          <b>STAR_E21</b> implements the Traub *E21 method.
+        </li>
+        <li>
+          <b>STEFFENSON</b> implements Steffenson's method.
+        </li>
+        <li>
+          <b>STIRLING</b> implements Stirling's method.
+        </li>
+        <li>
+          <b>T14</b> implements the Traub fourteenth function.
+        </li>
+        <li>
+          <b>T15</b> implements the Traub fifteenth function.
+        </li>
+        <li>
+          <b>T16</b> implements the Traub sixteenth function.
+        </li>
+        <li>
+          <b>T_FAMILY1</b> implements the Traub first family of iterations.
+        </li>
+        <li>
+          <b>T_FAMILY2</b> implements the Traub second family of iterations.
+        </li>
+        <li>
+          <b>TE11F</b> implements the Traub *E - 1,1(f) function.
+        </li>
+        <li>
+          <b>TE2U</b> implements the Traub E - 2(u) function.
+        </li>
+        <li>
+          <b>TPHI1U</b> implements the Traub phi - 1,1(u) function.
+        </li>
+        <li>
+          <b>TRAUB1</b> implements the Traub first method.
+        </li>
+        <li>
+          <b>TRAUB4</b> implements the Traub fourth method.
+        </li>
+        <li>
+          <b>TRAUB8</b> implements the Traub eighth function.
+        </li>
+        <li>
+          <b>TRAUB9</b> implements the Traub ninth method.
+        </li>
+        <li>
+          <b>TRAUB_OSTROWSKI</b> implements the Traub-Ostrowksi method.
+        </li>
+        <li>
+          <b>TT1F</b> implements the Traub type 1 functions 10 and 11.
+        </li>
+        <li>
+          <b>TTHIP</b> implements the Traub third function.
+        </li>
+        <li>
+          <b>VANDEV</b> implements the Van de Vel iteration.
+        </li>
+        <li>
+          <b>VANDEV2</b> implements the improved Van de Vel iteration.
+        </li>
+        <li>
+          <b>WHITTAKER</b> implements the convex acceleeration of Whittaker's method.
+        </li>
+        <li>
+          <b>WHITTAKER2</b> implements the double convex acceleeration of Whittaker's method.
+        </li>
+        <li>
+          <b>ZOOMIN</b> calls all the zero finders for a given problem.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

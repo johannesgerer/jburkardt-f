@@ -1,0 +1,201 @@
+July 21 2005   8:59:03.524 AM
+ 
+CVT_BASIS
+  Arrange a set abstract data vectors into clusters.
+ 
+  This NEW version of the code handles up to
+    10 families of data.
+ 
+  Null cluster policy:
+  0, do nothing, accept null clusters;
+  1, reset center to a random data point;
+  2, reset center to random point in hull;
+ 
+  NULL_CLUSTER_POLICY =      1
+ 
+RANDOM_INITIALIZE
+  Initialize RANDOM_NUMBER with user SEED =    123456789
+ 
+  It is time to read sets of solution files.
+ 
+  We assume that a series of solution files exists,
+  with "consecutive" names, like
+    fred001.txt, fred002,txt, ...
+  Just specify the FIRST name in the series, and
+  the program will read them all.
+ 
+  The program can read another series of data if
+  you specify yet another first name, or you can
+  type "none" when there are no more file series.
+ 
+ 
+What is the first solution file (in the first series)?
+ 
+What is the first solution file (in the NEXT series) or "NONE"?
+ 
+  The number of initial solution files is      1
+  The total number of solution files is     40
+ 
+  The data is stored in an M by N matrix.
+ 
+  The "spatial" dimension M is       41
+  The number of data points N is     40
+ 
+ 
+  Processing files starting with "/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/burgers/burgers_01.txt".
+ 
+  All the data has been read into POINT.
+ 
+Enter lower and upper number of clusters
+ DEBUG: CLUSTER_LO =            8  cluster_hi =            8
+ 
+  The program will try to determine the minimum energy
+  of a clustering, for cluster sizes in the range:
+       8     8
+ 
+Enter the number of different random cluster configurations to check
+ 
+  For each number of clusters, the number of
+  distinct initial random configurations to be checked
+  will be      15
+ 
+Enter the number of energy iterations
+ 
+  For each initial random configuration, the number of
+  times the program will recompute the cluster centers,
+  cluster components, and energy is     30
+ 
+Number of clusters allowed:      8
+ 
+     1
+Initial_RAW     102.609         0
+HMEANS_RAW      5.89941         5
+KMEANS_RAW      5.62349         3
+ 
+     2
+Initial_RAW     105.592         0
+HMEANS_RAW      5.33315         3
+KMEANS_RAW      5.22789         2
+ 
+     3
+Initial_RAW     102.463         0
+HMEANS_RAW      6.27649         5
+KMEANS_RAW      5.26625         5
+ 
+     4
+Initial_RAW     116.806         0
+HMEANS_RAW      5.55067         3
+KMEANS_RAW      5.26625         3
+ 
+     5
+Initial_RAW     106.718         0
+HMEANS_RAW      6.80703         8
+KMEANS_RAW      5.38959         5
+ 
+     6
+Initial_RAW     112.051         0
+HMEANS_RAW      6.03632         7
+KMEANS_RAW      5.42123         3
+ 
+     7
+Initial_RAW     101.603         0
+HMEANS_RAW      5.53606         3
+KMEANS_RAW      5.28829         2
+ 
+     8
+Initial_RAW     103.523         0
+HMEANS_RAW      6.72940         8
+KMEANS_RAW      5.38959         5
+ 
+     9
+Initial_RAW     108.333         0
+HMEANS_RAW      5.90467         4
+KMEANS_RAW      5.42256         2
+ 
+    10
+Initial_RAW     107.592         0
+HMEANS_RAW      6.51753         8
+KMEANS_RAW      5.42123         3
+ 
+    11
+Initial_RAW     110.174         0
+HMEANS_RAW      7.62938         8
+KMEANS_RAW      6.10549         6
+ 
+    12
+Initial_RAW     108.226         0
+HMEANS_RAW      6.31128         6
+KMEANS_RAW      5.38959         4
+ 
+    13
+Initial_RAW     102.983         0
+HMEANS_RAW      7.46491         6
+KMEANS_RAW      5.38959         6
+ 
+    14
+Initial_RAW     107.708         0
+HMEANS_RAW      5.97231         4
+KMEANS_RAW      5.42123         3
+ 
+    15
+Initial_RAW     101.158         0
+HMEANS_RAW      7.39493         9
+KMEANS_RAW      5.38959         6
+ 
+ANALYSIS_RAW:
+  Computed energy range for given cluster size:
+ 
+  (The minimum and maximum should be close if
+  we're taking enough iterations.)
+ 
+  Number
+  of       Minimum      Maximum
+  Clusters Energy       Energy
+ 
+      8        5.2279        6.1055
+ 
+  Energy table:
+ 
+Number
+of                   Energy
+Clusters  Energy     /point      Sqrt(E/Pt)
+ 
+      8        5.2279        0.1307        0.3615
+ 
+CLUSTER_CENSUS
+  Individual cluster population and energy
+ 
+  Index    Population   Percentage   Energy  Percentage  Min  Max
+ 
+      1             3            7  0.706543         13    1    3
+      2             5           12  0.529768          9   23   27
+      3             7           17  0.701467         13   34   40
+      4             4           10  0.519050          9    4    7
+      5             5           12  0.606189         11   18   22
+      6             5           12  0.666920         12   13   17
+      7             6           15  0.736725         13   28   33
+      8             5           12  0.761230         14    8   12
+ 
+               ------          ---  ------------    ---
+ 
+  Total            40          100   5.22789        100    1   40
+ 
+CVT_BASIS_FLOW:
+  Ready to write the cluster generators to files.
+ 
+  Do you want comments in the header of the file?
+  (These begin with the "#" character.) (Y/N)
+ 
+  Enter Y or N:
+ The output files will NOT include a commented header.
+ 
+  Writing first file gen_001.txt
+  Writing last file  gen_008.txt
+ 
+CPU_TIME (seconds):
+  CVT:           0.156250E-01
+ 
+CVT_BASIS
+  Normal end of execution.
+ 
+July 21 2005   8:59:03.645 AM

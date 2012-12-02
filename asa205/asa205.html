@@ -1,0 +1,193 @@
+<html>
+
+  <head>
+    <title>
+      ASA205 - Enumerate Contingency Tables
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ASA205 <br> Enumerate Contingency Tables
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ASA205</b>
+      is a FORTRAN90 library which
+      enumerates contingency tables.
+    </p>
+
+    <p>
+      <b>ASA205</b> is Applied Statistics Algorithm 205.  Source code for many
+      Applied Statistics Algorithms is available through
+      <a href = "http://lib.stat.cmu.edu/apstat">STATLIB</a>.
+    </p>
+
+    <p>
+      This algorithm
+      generates contingency tables, which are <b>M</b> by <b>N</b> tables
+      of nonnegative integers with specified row and column sums.
+    </p>
+
+    <p>
+      For example, for the row sum vector <b>(1,3)</b> and column sum
+      vector <b>(1,1,2)</b>, there are "essentially" only the two
+      solutions:
+      <pre>
+        0  0  1
+        1  1  1
+      </pre>
+      and
+      <pre>
+        0  1  0
+        1  0  2
+      </pre>
+      We could generate another solution by permuting the first two columns
+      of the second solution, but <b>ASA205</b> doesn't consider that a
+      distinct solution.
+    </p>
+
+    <p>
+      Note that it is possible to specify a problem for which there are
+      <i>no</i> corresponding contingency tables at all.  The simplest
+      way is if the row and column sum vectors don't themselves sum up
+      to the same value.  But there is also a "technical" condition
+      that the two vectors have to satisfy in order for a solution to exist.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>ASA205</b> is available in
+      <a href = "../../f77_src/asa205/asa205.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/asa205/asa205.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa144/asa144.html">
+      ASA144</a>,
+      a FORTRAN90 library which
+      randomly generates an RxC contingency table.
+    </p>
+
+    <p>
+      <a href = "../../f_src/asa159/asa159.html">
+      ASA159</a>,
+      a FORTRAN90 library which
+      randomly selects one of the contingency tables corresponding to a given
+      set of row and column sums.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset/subset.html">
+      SUBSET</a>,
+      a FORTRAN90 library which
+      includes a routine called
+      <b>I4MAT_01_ROWCOLSUM</b> which
+      generates a (0,1) matrix with given row and column sums.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Ian Saunders, <br>
+          Algorithm AS 205:
+          Enumeration of R x C Tables with Repeated Row Totals,<br>
+          Applied Statistics, <br>
+          Volume 33, Number 3, 1984, pages 340-352.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "asa205.f90">asa205.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "asa205.sh">asa205.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "asa205_prb.f90">asa205_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "asa205_prb.sh">asa205_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "asa205_prb_output.txt">asa205_prb_output.txt</a>
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ENUM</b> generates contingency tables with given shape and row and column sums.
+        </li>
+        <li>
+          <b>EVAL</b> is called by ENUM every time a new contingency table is determined.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an I4MAT.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 January 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

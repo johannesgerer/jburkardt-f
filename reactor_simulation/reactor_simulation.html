@@ -1,0 +1,297 @@
+<html>
+
+  <head>
+    <title>
+      REACTOR_SIMULATION - Simulated Test of Reactor Shielding
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      REACTOR_SIMULATION <br> Simulated Test of Reactor Shielding
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>REACTOR_SIMULATION</b>
+      is a FORTRAN90 program which
+      simulates the shielding effect of a slab intended to absorb
+      or reflect most of the radiation from a neutron source.
+      This program is intended as a simple demonstration of Monte Carlo
+      simulation as applied to the analysis of complicated probabilistic
+      systems.
+    </p>
+
+    <p>
+      <b>REACTOR_SIMULATION</b> is an example program that was developed
+      in the book "Numerical Methods and Software".
+    </p>
+
+    <p>
+      <b>REACTOR_SIMULATION</b> is a Monte Carlo simulation, using
+      uniform random numbers, which investigates the
+      effectiveness of a shield intended to absorb the
+      neutrons emitted from a nuclear reactor.
+    </p>
+
+    <p>
+      The reactor is modeled as a point source,
+      located at (0,0,0).
+    </p>
+
+    <p>
+      A particle emitted from the reactor has a random
+      initial direction, and an energy selected from
+      [Emin,Emax] with a 1/Sqrt(E) distribution.
+    </p>
+
+    <p>
+      The shield is modeled as a wall of thickness THICK,
+      extending from 0 to THICK in the X direction, and
+      extending forever in the Y and Z directions.
+    </p>
+
+    <p>
+      Based on the particle energy, a distance D is computed
+      which measures how far the particle could travel through
+      the shield before colliding.
+    </p>
+
+    <p>
+      Based on the particle direction, the position is updated
+      by D units.
+    </p>
+
+    <p>
+      If the particle is now to the left of the shield, it is
+       counted as being REFLECTED.
+    </p>
+
+    <p>
+      If the particle is to the right of the shield, it is
+      counted as being ABSORBED.
+    </p>
+
+    <p>
+      If the particle is inside the shield, it has COLLIDED.
+      A particle that collides is either absorbed (end of story)
+      or SCATTERED with a new random direction and a new (lower)
+      energy.
+    </p>
+
+    <p>
+      Every particle is followed from origin to its final fate,
+      which is reflection, transmission, or absorption.
+      At the end, a summary is printed, giving the number of
+      particles with each fate, and the average energy of each
+      group of particles.
+    </p>
+
+    <p>
+      Increasing NTOT, the number of particles used, will improve the
+      expected reliability of the results.
+    </p>
+
+    <p>
+      Increasing THICK, the thickness of the shield, should 
+      result in more absorptions and reflections.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>REACTOR_SIMULATION</b> is available in
+      <a href = "../../c_src/reactor_simulation/reactor_simulation.html">a C version</a> and
+      <a href = "../../cpp_src/reactor_simulation/reactor_simulation.html">a C++ version</a> and
+      <a href = "../../f77_src/reactor_simulation/reactor_simulation.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/reactor_simulation/reactor_simulation.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/reactor_simulation/reactor_simulation.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/brownian_motion_simulation/brownian_motion_simulation.html">
+      BROWNIAN_MOTION_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates Brownian motion in an M-dimensional region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/duel_simulation/duel_simulation.html">
+      DUEL_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates N repetitions of a duel between two players, each of
+      whom has a known firing accuracy.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fair_dice_simulation/fair_dice_simulation.html">
+      FAIR_DICE_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates N tosses of 2 dice, making a histogram of the results.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ising_2d_simulation/ising_2d_simulation.html">
+      ISING_2D_SIMULATION</a>,
+      a FORTRAN90 program which
+      carries out a Monte Carlo simulation of an Ising model,
+      a 2D array of positive and negative charges,
+      each of which is likely to "flip" to be in agreement with neighbors.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ising_3d_simulation/ising_3d_simulation.html">
+      ISING_3D_SIMULATION</a>,
+      a FORTRAN90 library which
+      carries out a Monte Carlo simulation of a 3D Ising model.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md1/md1.html">
+      MD1</a>,
+      a FORTRAN90 program which
+      carries out a simple molecular dynamics simulation;
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      accompanies the book "Numerical Methods and Software", from which
+      the REACTOR_SIMULATION program was extracted.
+    </p>
+
+    <p>
+      <a href = "../../f_src/poisson_simulation/poisson_simulation.html">
+      POISSON_SIMULATION</a>,
+      a FORTRAN90 library which
+      simulates a Poisson process in which events randomly occur with an
+      average waiting time of Lambda.
+    </p>
+
+    <p>
+      <a href = "../../f_src/three_body_simulation/three_body_simulation.html">
+      THREE_BODY_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates the behavior of three planets, constrained to lie in a plane,
+      and moving under the influence of gravity,
+      by Walter Gander and Jiri Hrebicek.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      generates pseudorandom uniform numbers.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          David Kahaner, Cleve Moler, Steven Nash,<br>
+          Numerical Methods and Software,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0-13-627258-4,<br>
+          LC: TA345.K34.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "reactor_simulation.f90">reactor_simulation.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "reactor_simulation.sh">reactor_simulation.sh</a>,
+          commands to compile, link and load the source code;
+        </li>
+        <li>
+          <a href = "reactor_simulation_output.txt">reactor_simulation_output.txt</a>,
+          the output file from a sample run.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for the reactor shielding simulation.
+        </li>
+        <li>
+          <b>ABSORB</b> returns TRUE if the particle is absorbed upon colliding.
+        </li>
+        <li>
+          <b>CROSS</b> returns the "cross section" of a particle based on its energy.
+        </li>
+        <li>
+          <b>DIST2C</b> returns the distance to collision.
+        </li>
+        <li>
+          <b>ENERGY</b> assigns an energy to an emitted particle.
+        </li>
+        <li>
+          <b>OUTPUT</b> prints the results of the reactor shielding simulation.
+        </li>
+        <li>
+          <b>SCATTER</b> returns the new direction and energy of a particle that is scattered.
+        </li>
+        <li>
+          <b>SOURCE</b> generates a new particle from the neutron source.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UPDATE</b> determines the position of the particle after it has traveled D units.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 02 September 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body
+
+</html>

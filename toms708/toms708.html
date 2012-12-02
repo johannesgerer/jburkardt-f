@@ -1,0 +1,296 @@
+<html>
+
+  <head>
+    <title>
+      TOMS708 - Incomplete Beta Function Ratios
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOMS708 <br> Incomplete Beta Function Ratios
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS708</b>
+      is a FORTRAN90 library which
+      computes the Incomplete Beta Function ratio
+      <pre><b>
+        I<sub>x</sub>(a,b)
+      </b></pre>
+    </p>
+
+    <p>
+      <i>
+        11 January 2006: Thanks to Ian Smith for pointing out that my
+        earlier difficulties with this program were caused simply by
+        using the wrong set of machine constants!
+      </i>
+    </p>
+
+    <p>
+      The original, true, correct version of ACM TOMS Algorithm 708
+      is available
+
+      through ACM:
+              <a href = "http://www.acm.org/pubs/calgo/">
+                         http://www.acm.org/pubs/calgo</a>
+      or NETLIB:
+      <a href = "http://www.netlib.org/toms/index.html">
+      http://www.netlib.org/toms/index.html</a>.
+    </p>
+
+    <p>
+      The version displayed here has been converted to FORTRAN90,
+      and other internal changes have been made to suit me.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TOMS708</b> is available in
+      <a href = "../../java_src/toms708/toms708.html">a JAVA version</a> and
+      <a href = "../../f77_src/toms708/toms708.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms708/toms708.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa063/asa063.html">
+      ASA063</a>
+      is a FORTRAN90 library which
+      evaluates the incomplete Beta function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/asa109/asa109.html">
+      ASA109</a>
+      is a FORTRAN90 library which
+      inverts the incomplete Beta function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/asa226/asa226.html">
+      ASA226</a>
+      is a FORTRAN90 library which
+      computes the CDF of the noncentral Beta distribution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/asa310/asa310.html">
+      ASA310</a>
+      is a FORTRAN90 library which
+      computes the CDF of the noncentral Beta distribution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/beta_nc/beta_nc.html">
+      BETA_NC</a>
+      is a FORTRAN90 library which
+      evaluates the CDF of the noncentral Beta distribution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_values/test_values.html">
+      TEST_VALUES</a>
+      is a FORTRAN90 library which
+      stores a few values of various mathematical functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms179/toms179.html">
+      TOMS179</a>
+      is a FORTRAN90 library which
+      approximates the incomplete Beta function.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Armido Didonato, Alfred Morris, Jr,<br>
+          Algorithm 708:
+          Significant Digit Computation of the Incomplete Beta
+          Function Ratios,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 18, Number 3, pages 360-373, 1992.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms708.f90">toms708.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "toms708.sh">toms708.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms708_prb.f90">toms708_prb.f90</a>,
+          a sample calling program;
+        </li>
+        <li>
+          <a href = "toms708_prb.sh">toms708_prb.sh</a>,
+          commands to compile, link and run the test program;
+        </li>
+        <li>
+          <a href = "toms708_prb_output.txt">toms708_prb_output.txt</a>,
+          output from a run of the test program;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ALGDIV</b> computes ln(gamma(b)/gamma(a+b)) when 8 <= B.
+        </li>
+        <li>
+          <b>ALNREL</b> evaluates the function ln(1 + a).
+        </li>
+        <li>
+          <b>APSER</b> yields the incomplete beta ratio i(sub(1-x))(b,a) for
+        </li>
+        <li>
+          <b>BASYM</b> uses an asymptotic expansion for Ix(A,B) for large A and B.
+        </li>
+        <li>
+          <b>BCORR</b> evaluates  del(a0) + del(b0) - del(a0 + b0)  where
+        </li>
+        <li>
+          <b>BETA_INC_VALUES</b> returns some values of the incomplete Beta function.
+        </li>
+        <li>
+          <b>BETA_LOG_VALUES</b> returns some values of the Beta function for testing.
+        </li>
+        <li>
+          <b>BETALN</b> evaluates the logarithm of the Beta function.
+        </li>
+        <li>
+          <b>BFRAC</b> uses a continued fraction expansion for ix(a,b) when a,b .gt. 1.
+        </li>
+        <li>
+          <b>BGRAT</b> uses an asymptotic expansion for Ix(a,b) when a is larger than b.
+        </li>
+        <li>
+          <b>BPSER</b> uses the power series expansion for evaluating ix(a,b) when b <= 1
+        </li>
+        <li>
+          <b>BRATIO</b> evaluates the incomplete beta function Ix(A,B).
+        </li>
+        <li>
+          <b>BRCMP1</b> evaluates exp(mu) * (x**a*y**b/beta(a,b)).
+        </li>
+        <li>
+          <b>BRCOMP</b> evaluates X**a * y**b / beta(a,b).
+        </li>
+        <li>
+          <b>BUP</b> evaluates ix(a,b) - ix(a+n,b) where n is a positive integer.
+        </li>
+        <li>
+          <b>ERFC1</b> evaluates the complementary error function
+        </li>
+        <li>
+          <b>ERF</b> evaluates the real error function.
+        </li>
+        <li>
+          <b>ERF_VALUES</b> returns some values of the ERF or "error" function for testing.
+        </li>
+        <li>
+          <b>ESUM</b> evaluates exp(mu + x).
+        </li>
+        <li>
+          <b>EXPARG</b> reports the largest safe arguments for EXP(X).
+        </li>
+        <li>
+          <b>FPSER</b> evaluates Ix(A,B) for small B and X <= 0.5.
+        </li>
+        <li>
+          <b>GAM1</b> computes 1/gamma(a+1) - 1  for -0.5 <= a <= 1.5
+        </li>
+        <li>
+          <b>GAMLN1</b> evaluates ln(gamma(1 + a)) for -0.2 <= A <= 1.25
+        </li>
+        <li>
+          <b>GAMLN</b> evaluates ln(gamma(a)) for positive A.
+        </li>
+        <li>
+          <b>GAMMA_INC_VALUES</b> returns some values of the incomplete Gamma function.
+        </li>
+        <li>
+          <b>GAMMA_LOG_VALUES</b> returns some values of the Log Gamma function for testing.
+        </li>
+        <li>
+          <b>GRAT1</b> evaluates the incomplete Gamma ratio functions P(A,X) and Q(A,X).
+        </li>
+        <li>
+          <b>GSUMLN</b> evaluates the function Log ( Gamma ( A + B ) ) in a special range.
+        </li>
+        <li>
+          <b>IPMPAR</b> provides the integer machine constants for the computer
+        </li>
+        <li>
+          <b>PSI</b> evaluates the Psi or Digamma function.
+        </li>
+        <li>
+          <b>PSI_VALUES</b> returns some values of the Psi or Digamma function for testing.
+        </li>
+        <li>
+          <b>REXP</b> evaluates the function Exp(X) - 1.
+        </li>
+        <li>
+          <b>RLOG1</b> evaluates the function X - Log ( 1 + X ).
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 08 January 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

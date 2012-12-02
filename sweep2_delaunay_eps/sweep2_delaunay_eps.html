@@ -1,0 +1,270 @@
+<html>
+
+  <head>
+    <title>
+      SWEEP2_DELAUNAY_EPS - Plot the SWEEP2 Delaunay Triangulation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SWEEP2_DELAUNAY_EPS <br> Plot the SWEEP2 Delaunay Triangulation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SWEEP2_DELAUNAY_EPS</b> 
+      is a FORTRAN90 program which
+      plots the
+      Delaunay triangulation output from 
+      <a href = "../../c_src/sweep2/sweep2.html">
+      sweep2</a>.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>sweep2_delaunay_eps</b> <i>points</i> <i>triangles</i> <i>graph</i>
+        </dt>
+        <dd>
+          <i>points</i> is a text file of point coordinates.  Each line lists 
+          the <b>x</b> and <b>y</b> coordinates of one point.  This file
+          can be considered a comment-free form of a real TABLE file.<br>
+          <i>triangles</i> is a text file of triangle descriptions created by
+          <b>sweep2</b>.  Each line lists indices of the three points that make
+          up a triangle.  Indices are counted starting at 0.  This file
+          can be considered a comment-free form of an integer TABLE file.<br>
+          <i>graph</i>: is an Encapsulated PostScript file containing an image of
+          the Delaunay triangulation.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../c_src/sweep2/sweep2.html">
+      SWEEP2</a>,
+      a C program which
+      performs the Delaunay
+      triangulation of a set of points, by Steve Fortune.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sweep2_voronoi_eps/sweep2_voronoi_eps.html">
+      SWEEP2_VORONOI_EPS</a>,
+      a FORTRAN90 program which 
+      produces an Encapsulated
+      PostScript image of the Voronoi diagram of a set of points, as
+      processed by the SWEEP2 program.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams - 
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, pages 345-405, September 1991.
+        </li>
+        <li>
+          Steve Fortune,<br>
+          A Sweepline Algorithm for Voronoi Diagrams,<br>
+          Algorithmica, Volume 2, pages 153-174, 1987.
+        </li>
+        <dd>
+          A copy of the original release of the SWEEP2 code is available through
+          NETLIB at
+          <a href = "http://www.netlib.org/voronoi/sweep2">
+          http://www.netlib.org/voronoi/sweep2</a>
+        </dd>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sweep2_delaunay_eps.f90">sweep2_delaunay_eps.f90</a>, 
+          the source code.
+        </li>
+        <li>
+          <a href = "sweep2_delaunay_eps.csh">sweep2_delaunay_eps.csh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>DIAMOND</b> is a simple pointset of 9 points:
+      <ul>
+        <li>
+          <a href = "diamond.txt">diamond.txt</a>,
+          the file containing the point coordinates.
+        </li>
+        <li>
+          <a href = "diamond_del.txt">diamond_del.txt</a>,
+          the file containing the triangle information.
+        </li>
+        <li>
+          <a href = "diamond_del.png">diamond_del.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the triangulation.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TEST</b> is a pointset of 100 points:
+      <ul>
+        <li>
+          <a href = "test.txt">test.txt</a>,
+          the file containing the point coordinates.
+        </li>
+        <li>
+          <a href = "test_del.txt">test_del.txt</a>,
+          the file containing the triangle information.
+        </li>
+        <li>
+          <a href = "test_del.png">test_del.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the triangulation.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for SWEEP2_DELAUNAY_EPS.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DTABLE_DATA_READ</b> reads data from a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_READ</b> reads the header from a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_PRINT</b> prints a double precision matrix.
+        </li>
+        <li>
+          <b>DTABLE_PRINT_SOME</b> prints some of a double precision matrix.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_FILENAMES</b> gets the filenames from commandline or user.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>ITABLE_DATA_READ</b> reads data from an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_HEADER_READ</b> reads the header from an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_PRINT</b> prints an integer matrix.
+        </li>
+        <li>
+          <b>ITABLE_PRINT_SOME</b> prints some of an integer matrix.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TRIANGULATION_PLOT_EPS</b> plots a triangulation of a pointset.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,1757 @@
+<html>
+
+  <head>
+    <title>
+      VORONOI_WEIGHT - Estimate Voronoi Weights in a Region
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      VORONOI_WEIGHT <br> Estimate Voronoi Weights in a Region
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>VORONOI_WEIGHT</b>
+      is a FORTRAN90 program which
+      estimates the volume of the
+      Voronoi cells associated with N points contained in the M-dimensional
+      unit hypercube.
+    </p>
+
+    <p>
+      One use for the weights produced by this calculation is for
+      improving an equal-weight quadrature scheme.  That is, we suppose
+      that the integral of a function over the unit hypercube is
+      to be approximated.  Typically, this could be done by evaluating
+      the function at each point in the dataset, and taking the average:
+      <blockquote>
+        Integral(f) = sum ( 1 <= I <= N ) F(X(I) ) / N
+      </blockquote>
+      This amounts to using a quadrature scheme in which each point
+      has the same weight, namely 1/N.
+    </p>
+
+    <p>
+      Instead, it is possible to use the weights computed by this program,
+      to produce a refined estimate of the integral:
+      <blockquote>
+        Integral(f) = sum ( 1 <= I <= N ) W(I) * F(X(I) )
+      </blockquote>
+    </p>
+
+    <p>
+      For more information, see the section 2.2, "Optimal Quadrature Rules",
+      in the Du, Faber and Gunzburger reference.
+    </p>
+
+    <p>
+      The weights are the M-dimensional volumes of the Voronoi cells
+      associated with the points.  These volumes are not computed directly;
+      instead, a sampling scheme (in fact, an equal weight quadrature
+      method!) is used.
+    </p>
+
+    <p>
+      The program is interactive, and requires the user to:
+      <ul>
+        <li>
+          specify the file containing the point set:<br>
+          <b>read halton_02_00010.txt</b>
+        </li>
+        <li>
+          specify the sampling method:<br>
+          <b>sample_function = RANDOM / UNIFORM / HALTON / GRID</b><br>
+          generate sample points using RANDOM_NUMBER, or UNIFORM,
+          or HALTON, or GRID;
+        </li>
+        <li>
+          specify the number of sampling points:<br>
+          <b>sample_num = 200000</b>
+        </li>
+        <li>
+          request that the weights be estimated:<br>
+          <b>estimate</b>
+        </li>
+        <li>
+          request that the weights be written to a file:<br>
+          <b>write halton_02_00010_weights.txt</b>
+        </li>
+        <li>
+          Quit<br>
+          <b>quit</b>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The input commands may be stored in an file.
+      A reasonable set of input commands might be:
+      <pre><b>
+        #  halton_02_00010.inp
+        #
+        read halton_02_00010.txt
+        sample_num = 5000
+        sample_function = uniform
+        estimate
+        write halton_02_00010_weights.txt
+        quit
+      </b></pre>
+    </p>
+
+    <p>
+      Commands beginning with a "#" are comments, and are ignored
+      by the program.
+    </p>
+
+    <p>
+      The "read halton_02_00010.txt" command causes a dataset to
+      be read in.  The format of the dataset input file allows comment
+      lines beginning with a "#" character.  Each noncomment line contains
+      the coordinates for one point of the dataset.
+    </p>
+
+    <p>
+      The "sample_num = 5000" command specifies that the unit hypercube
+      is to be sampled 5000 times in estimating the volumes of the
+      Voronoi cells.
+    </p>
+
+    <p>
+      The "sample_function = uniform" command specifies that the sample
+      points are to be generated as uniform random numbers.
+    </p>
+
+    <p>
+      The "estimate" command tells the program to carry out the
+      estimation procedure.
+    </p>
+
+    <p>
+      The "write halton_02_00010_weight.txt" command writes the
+      weights to a file, one weight per line.  The file will contain
+      some comment lines indicating the parameters used in constructing
+      the weights.
+    </p>
+
+    <p>
+      The "quit" command terminates the program.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt/cvt.html">
+      CVT</a>,
+      a FORTRAN90 library which
+      can compute routines to
+      estimate the coordinates of a Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/faure/faure.html">
+      FAURE</a>,
+      a FORTRAN90 library which
+      can compute N elements
+      of an M-dimensional Faure sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grid/grid.html">
+      GRID</a>,
+      a FORTRAN90 library which
+      can compute N elements
+      of an M-dimensional grid sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/halton/halton.html">
+      HALTON</a>,
+      a FORTRAN90 library which
+      can compute N elements
+      of an M-dimensional Halton sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hammersley/hammersley.html">
+      HAMMERSLEY</a>,
+      a FORTRAN90 library which
+      can compute N elements
+      of an M-dimensional Hammersley sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ihs/ihs.html">
+      IHS</a>,
+      a FORTRAN90 library which
+      can compute N elements
+      of an M-dimensional improved hypercube sample.
+    </p>
+
+    <p>
+      <a href = "../../f_src/integral_test/integral_test.html">
+      INTEGRAL_TEST</a>,
+      a FORTRAN90 program which
+      can read the weights
+      generated by this program, and the associated
+      original data points, and test the corresponding quadrature rule
+      on a number of multi-dimensional test integrals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_center/latin_center.html">
+      LATIN_CENTER</a>,
+      a FORTRAN90 library which
+      can compute N elements
+      of an M-dimensional Latin center sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_edge/latin_edge.html">
+      LATIN_EDGE</a>,
+      a FORTRAN90 library which
+      can compute N elements
+      of an M-dimensional Latin edge sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_random/latin_random.html">
+      LATIN_RANDOM</a>,
+      a FORTRAN90 library which
+      can compute N elements
+      of an M-dimensional Latin random sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nintlib/nintlib.html">
+      NINTLIB</a>,
+      a FORTRAN90 library which
+      can estimate the integral
+      of a function over an M-dimensional region.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules/quadrature_rules.html">
+      QUADRATURE_RULES</a>,
+      a dataset directory which
+      contains sets of files that define quadrature
+      rules over various 1D intervals or multidimensional hypercubes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sobol/sobol.html">
+      SOBOL</a>,
+      a FORTRAN90 library which 
+      can compute N elements
+      of an M-dimensional Sobol sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_voronoi/table_voronoi.html">
+      TABLE_VORONOI</a>,
+      a FORTRAN90 program which
+      can read a file containing
+      the coordinates of a set of points in 2D, and compute information
+      about the associated Voronoi diagram.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_nint/test_nint.html">
+      TEST_NINT</a>,
+      a FORTRAN90 library which
+      defines test functions
+      for multidimensional integration.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      can compute N elements
+      of an M-dimensional uniform random sequence.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, Number 3, September 1991, pages 345-405.
+        </li>
+        <li>
+          Qiang Du, Vance Faber, Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review,<br>
+          Volume 41, Number 4, December 1999, pages 637-676.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "voronoi_weight.f90">voronoi_weight.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "voronoi_weight.sh">voronoi_weight.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/cvt/cvt_02_00010.txt">
+      cvt_02_00010.txt</a>:
+      <ul>
+        <li>
+          <a href = "cvt_02_00010_weight_a.txt">
+          cvt_02_00010_weight_a.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_00010_weight_b.txt">
+          cvt_02_00010_weight_b.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_00010_weight_c.txt">
+          cvt_02_00010_weight_c.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "cvt_02_00010_weight_d.txt">
+          cvt_02_00010_weight_d.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_00010_weight_e.txt">
+          cvt_02_00010_weight_e.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_00010_weight_f.txt">
+          cvt_02_00010_weight_f.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_00010_weight_g.txt">
+          cvt_02_00010_weight_g.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/cvt/cvt_02_00100.txt">
+      cvt_02_00100.txt</a>:
+      <ul>
+        <li>
+          <a href = "cvt_02_00100_weight_a.txt">
+          cvt_02_00100_weight_a.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_00100_weight_b.txt">
+          cvt_02_00100_weight_b.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_00100_weight_c.txt">
+          cvt_02_00100_weight_c.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "cvt_02_00100_weight_d.txt">
+          cvt_02_00100_weight_d.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_00100_weight_e.txt">
+          cvt_02_00100_weight_e.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_00100_weight_f.txt">
+          cvt_02_00100_weight_f.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_00100_weight_g.txt">
+          cvt_02_00100_weight_g.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/cvt/cvt_02_01000.txt">
+      cvt_02_01000.txt</a>:
+      <ul>
+        <li>
+          <a href = "cvt_02_01000_weight_a.txt">
+          cvt_02_01000_weight_a.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_01000_weight_b.txt">
+          cvt_02_01000_weight_b.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_01000_weight_c.txt">
+          cvt_02_01000_weight_c.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "cvt_02_01000_weight_d.txt">
+          cvt_02_01000_weight_d.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_01000_weight_e.txt">
+          cvt_02_01000_weight_e.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_01000_weight_f.txt">
+          cvt_02_01000_weight_f.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_01000_weight_g.txt">
+          cvt_02_01000_weight_g.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/cvt/cvt_02_10000.txt">
+      cvt_02_10000.txt</a>:
+      <ul>
+        <li>
+          <a href = "cvt_02_10000_weight_a.txt">
+          cvt_02_10000_weight_a.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_10000_weight_b.txt">
+          cvt_02_10000_weight_b.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_10000_weight_c.txt">
+          cvt_02_10000_weight_c.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "cvt_02_10000_weight_d.txt">
+          cvt_02_10000_weight_d.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 100000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_10000_weight_e.txt">
+          cvt_02_10000_weight_e.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_02_10000_weight_f.txt">
+          cvt_02_10000_weight_f.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/cvt/cvt_07_00010.txt">
+      cvt_07_00010.txt</a>:
+      <ul>
+        <li>
+          <a href = "cvt_07_00010_weight_a.txt">
+          cvt_07_00010_weight_a.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_00010_weight_b.txt">
+          cvt_07_00010_weight_b.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_00010_weight_c.txt">
+          cvt_07_00010_weight_c.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "cvt_07_00010_weight_d.txt">
+          cvt_07_00010_weight_d.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_00010_weight_e.txt">
+          cvt_07_00010_weight_e.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_00010_weight_f.txt">
+          cvt_07_00010_weight_f.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_00010_weight_g.txt">
+          cvt_07_00010_weight_g.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/cvt/cvt_07_00100.txt">
+      cvt_07_00100.txt</a>:
+      <ul>
+        <li>
+          <a href = "cvt_07_00100_weight_a.txt">
+          cvt_07_00100_weight_a.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_00100_weight_b.txt">
+          cvt_07_00100_weight_b.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_00100_weight_c.txt">
+          cvt_07_00100_weight_c.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "cvt_07_00100_weight_d.txt">
+          cvt_07_00100_weight_d.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_00100_weight_e.txt">
+          cvt_07_00100_weight_e.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_00100_weight_f.txt">
+          cvt_07_00100_weight_f.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_00100_weight_g.txt">
+          cvt_07_00100_weight_g.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/cvt/cvt_07_01000.txt">
+      cvt_07_01000.txt</a>:
+      <ul>
+        <li>
+          <a href = "cvt_07_01000_weight_a.txt">
+          cvt_07_01000_weight_a.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_01000_weight_b.txt">
+          cvt_07_01000_weight_b.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_01000_weight_c.txt">
+          cvt_07_01000_weight_c.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "cvt_07_01000_weight_d.txt">
+          cvt_07_01000_weight_d.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 1000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_01000_weight_e.txt">
+          cvt_07_01000_weight_e.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_01000_weight_f.txt">
+          cvt_07_01000_weight_f.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_07_01000_weight_g.txt">
+          cvt_07_01000_weight_g.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/cvt/cvt_16_00010.txt">
+      cvt_16_00010.txt</a>:
+      <ul>
+        <li>
+          <a href = "cvt_16_00010_weight_a.txt">
+          cvt_16_00010_weight_a.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_00010_weight_b.txt">
+          cvt_16_00010_weight_b.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_00010_weight_c.txt">
+          cvt_16_00010_weight_c.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "cvt_16_00010_weight_d.txt">
+          cvt_16_00010_weight_d.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_00010_weight_e.txt">
+          cvt_16_00010_weight_e.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_167_00010_weight_f.txt">
+          cvt_16_00010_weight_f.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_00010_weight_g.txt">
+          cvt_16_00010_weight_g.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/cvt/cvt_16_00100.txt">
+      cvt_16_00100.txt</a>:
+      <ul>
+        <li>
+          <a href = "cvt_16_00100_weight_a.txt">
+          cvt_16_00100_weight_a.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_00100_weight_b.txt">
+          cvt_16_00100_weight_b.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_00100_weight_c.txt">
+          cvt_16_00100_weight_c.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "cvt_16_00100_weight_d.txt">
+          cvt_16_00100_weight_d.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 1000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_00100_weight_e.txt">
+          cvt_16_00100_weight_e.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_00100_weight_f.txt">
+          cvt_16_00100_weight_f.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_00100_weight_g.txt">
+          cvt_16_00100_weight_g.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/cvt/cvt_16_01000.txt">
+      cvt_16_01000.txt</a>:
+      <ul>
+        <li>
+          <a href = "cvt_16_01000_weight_a.txt">
+          cvt_16_01000_weight_a.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_01000_weight_b.txt">
+          cvt_16_01000_weight_b.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_01000_weight_c.txt">
+          cvt_16_01000_weight_c.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "cvt_16_01000_weight_d.txt">
+          cvt_16_01000_weight_d.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 1000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_01000_weight_e.txt">
+          cvt_16_01000_weight_e.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_01000_weight_f.txt">
+          cvt_16_01000_weight_f.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "cvt_16_01000_weight_g.txt">
+          cvt_16_01000_weight_g.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/halton/halton_02_00010.txt">
+      halton_02_00010.txt</a>:
+      <ul>
+        <li>
+          <a href = "halton_02_00010_weight_a.txt">
+          halton_02_00010_weight_a.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_00010_weight_b.txt">
+          halton_02_00010_weight_b.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_00010_weight_c.txt">
+          halton_02_00010_weight_c.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "halton_02_00010_weight_d.txt">
+          halton_02_00010_weight_d.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_00010_weight_e.txt">
+          halton_02_00010_weight_e.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_00010_weight_f.txt">
+          halton_02_00010_weight_f.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_00010_weight_g.txt">
+          halton_02_00010_weight_g.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/halton/halton_02_00100.txt">
+      halton_02_00100.txt</a>:
+      <ul>
+        <li>
+          <a href = "halton_02_00100_weight_a.txt">
+          halton_02_00100_weight_a.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_00100_weight_b.txt">
+          halton_02_00100_weight_b.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_00100_weight_c.txt">
+          halton_02_00100_weight_c.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "halton_02_00100_weight_d.txt">
+          halton_02_00100_weight_d.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_00100_weight_e.txt">
+          halton_02_00100_weight_e.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_00100_weight_f.txt">
+          halton_02_00100_weight_f.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_00100_weight_g.txt">
+          halton_02_00100_weight_g.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/halton/halton_02_01000.txt">
+      halton_02_01000.txt</a>:
+      <ul>
+        <li>
+          <a href = "halton_02_01000_weight_a.txt">
+          halton_02_01000_weight_a.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_01000_weight_b.txt">
+          halton_02_01000_weight_b.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_01000_weight_c.txt">
+          halton_02_01000_weight_c.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "halton_02_01000_weight_d.txt">
+          halton_02_01000_weight_d.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_01000_weight_e.txt">
+          halton_02_01000_weight_e.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_01000_weight_f.txt">
+          halton_02_01000_weight_f.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_01000_weight_g.txt">
+          halton_02_01000_weight_g.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/halton/halton_02_10000.txt">
+      halton_02_10000.txt</a>:
+      <ul>
+        <li>
+          <a href = "halton_02_10000_weight_a.txt">
+          halton_02_10000_weight_a.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_10000_weight_b.txt">
+          halton_02_10000_weight_b.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_10000_weight_c.txt">
+          halton_02_10000_weight_c.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "halton_02_10000_weight_d.txt">
+          halton_02_10000_weight_d.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 100000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_10000_weight_e.txt">
+          halton_02_10000_weight_e.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_02_10000_weight_f.txt">
+          halton_02_10000_weight_f.txt</a>,
+          M = 2, N = 10000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/halton/halton_03_00010.txt">
+      halton_03_00010.txt</a>:
+      <ul>
+        <li>
+          <a href = "halton_03_00010_weight_a.txt">
+          halton_03_00010_weight_a.txt</a>,
+          M = 3, N = 10, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_00010_weight_b.txt">
+          halton_03_00010_weight_b.txt</a>,
+          M = 3, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_00010_weight_c.txt">
+          halton_03_00010_weight_c.txt</a>,
+          M = 3, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "halton_03_00010_weight_d.txt">
+          halton_03_00010_weight_d.txt</a>,
+          M = 3, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_00010_weight_e.txt">
+          halton_03_00010_weight_e.txt</a>,
+          M = 3, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_00010_weight_f.txt">
+          halton_03_00010_weight_f.txt</a>,
+          M = 3, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_00010_weight_g.txt">
+          halton_03_00010_weight_g.txt</a>,
+          M = 3, N = 10, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/halton/halton_03_00100.txt">
+      halton_03_00100.txt</a>:
+      <ul>
+        <li>
+          <a href = "halton_03_00100_weight_a.txt">
+          halton_03_00100_weight_a.txt</a>,
+          M = 3, N = 100, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_00100_weight_b.txt">
+          halton_03_00100_weight_b.txt</a>,
+          M = 3, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_00100_weight_c.txt">
+          halton_03_00100_weight_c.txt</a>,
+          M = 3, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "halton_03_00100_weight_d.txt">
+          halton_03_00100_weight_d.txt</a>,
+          M = 3, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_00100_weight_e.txt">
+          halton_03_00100_weight_e.txt</a>,
+          M = 3, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_00100_weight_f.txt">
+          halton_03_00100_weight_f.txt</a>,
+          M = 3, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_00100_weight_g.txt">
+          halton_03_00100_weight_g.txt</a>,
+          M = 3, N = 100, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/halton/halton_03_01000.txt">
+      halton_03_01000.txt</a>:
+      <ul>
+        <li>
+          <a href = "halton_03_01000_weight_a.txt">
+          halton_03_01000_weight_a.txt</a>,
+          M = 3, N = 1000, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_01000_weight_b.txt">
+          halton_03_01000_weight_b.txt</a>,
+          M = 3, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_01000_weight_c.txt">
+          halton_03_01000_weight_c.txt</a>,
+          M = 3, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "halton_03_01000_weight_d.txt">
+          halton_03_01000_weight_d.txt</a>,
+          M = 3, N = 1000, SAMPLE_NUM = 1000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_01000_weight_e.txt">
+          halton_03_01000_weight_e.txt</a>,
+          M = 3, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_01000_weight_f.txt">
+          halton_03_01000_weight_f.txt</a>,
+          M = 3, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "halton_03_01000_weight_g.txt">
+          halton_03_01000_weight_g.txt</a>,
+          M = 3, N = 1000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/uniform/uniform_02_00010.txt">
+      uniform_02_00010.txt</a>:
+      <ul>
+        <li>
+          <a href = "uniform_02_00010_weight_a.txt">
+          uniform_02_00010_weight_a.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_00010_weight_b.txt">
+          uniform_02_00010_weight_b.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_00010_weight_c.txt">
+          uniform_02_00010_weight_c.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "uniform_02_00010_weight_d.txt">
+          uniform_02_00010_weight_d.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_00010_weight_e.txt">
+          uniform_02_00010_weight_e.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_00010_weight_f.txt">
+          uniform_02_00010_weight_f.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_00010_weight_g.txt">
+          uniform_02_00010_weight_g.txt</a>,
+          M = 2, N = 10, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/uniform/uniform_02_00100.txt">
+      uniform_02_00100.txt</a>:
+      <ul>
+        <li>
+          <a href = "uniform_02_00100_weight_a.txt">
+          uniform_02_00100_weight_a.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_00100_weight_b.txt">
+          uniform_02_00100_weight_b.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_00100_weight_c.txt">
+          uniform_02_00100_weight_c.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "uniform_02_00100_weight_d.txt">
+          uniform_02_00100_weight_d.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_00100_weight_e.txt">
+          uniform_02_00100_weight_e.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_00100_weight_f.txt">
+          uniform_02_00100_weight_f.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_00100_weight_g.txt">
+          uniform_02_00100_weight_g.txt</a>,
+          M = 2, N = 100, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/uniform/uniform_02_01000.txt">
+      uniform_02_01000.txt</a>:
+      <ul>
+        <li>
+          <a href = "uniform_02_01000_weight_a.txt">
+          uniform_02_01000_weight_a.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_01000_weight_b.txt">
+          uniform_02_01000_weight_b.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_01000_weight_c.txt">
+          uniform_02_01000_weight_c.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "uniform_02_01000_weight_d.txt">
+          uniform_02_01000_weight_d.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER, SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_01000_weight_e.txt">
+          uniform_02_01000_weight_e.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_01000_weight_f.txt">
+          uniform_02_01000_weight_f.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_02_01000_weight_g.txt">
+          uniform_02_01000_weight_g.txt</a>,
+          M = 2, N = 1000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/uniform/uniform_07_00010.txt">
+      uniform_07_00010.txt</a>:
+      <ul>
+        <li>
+          <a href = "uniform_07_00010_weight_a.txt">
+          uniform_07_00010_weight_a.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_00010_weight_b.txt">
+          uniform_07_00010_weight_b.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_00010_weight_c.txt">
+          uniform_07_00010_weight_c.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "uniform_07_00010_weight_d.txt">
+          uniform_07_00010_weight_d.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_00010_weight_e.txt">
+          uniform_07_00010_weight_e.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_00010_weight_f.txt">
+          uniform_07_00010_weight_f.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_00010_weight_g.txt">
+          uniform_07_00010_weight_g.txt</a>,
+          M = 7, N = 10, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/uniform/uniform_07_00100.txt">
+      uniform_07_00100.txt</a>:
+      <ul>
+        <li>
+          <a href = "uniform_07_00100_weight_a.txt">
+          uniform_07_00100_weight_a.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_00100_weight_b.txt">
+          uniform_07_00100_weight_b.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_00100_weight_c.txt">
+          uniform_07_00100_weight_c.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "uniform_07_00100_weight_d.txt">
+          uniform_07_00100_weight_d.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_00100_weight_e.txt">
+          uniform_07_00100_weight_e.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_00100_weight_f.txt">
+          uniform_07_00100_weight_f.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_00100_weight_g.txt">
+          uniform_07_00100_weight_g.txt</a>,
+          M = 7, N = 100, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/uniform/uniform_07_01000.txt">
+      uniform_07_01000.txt</a>:
+      <ul>
+        <li>
+          <a href = "uniform_07_01000_weight_a.txt">
+          uniform_07_01000_weight_a.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_01000_weight_b.txt">
+          uniform_07_01000_weight_b.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_01000_weight_c.txt">
+          uniform_07_01000_weight_c.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "uniform_07_01000_weight_d.txt">
+          uniform_07_01000_weight_d.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 1000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER, SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_01000_weight_e.txt">
+          uniform_07_01000_weight_e.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_01000_weight_f.txt">
+          uniform_07_01000_weight_f.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_07_01000_weight_g.txt">
+          uniform_07_01000_weight_g.txt</a>,
+          M = 7, N = 1000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/uniform/uniform_16_00010.txt">
+      uniform_16_00010.txt</a>:
+      <ul>
+        <li>
+          <a href = "uniform_16_00010_weight_a.txt">
+          uniform_16_00010_weight_a.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_00010_weight_b.txt">
+          uniform_16_00010_weight_b.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_00010_weight_c.txt">
+          uniform_16_00010_weight_c.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "uniform_16_00010_weight_d.txt">
+          uniform_16_00010_weight_d.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = RANDOM_NUMBER,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_00010_weight_e.txt">
+          uniform_16_00010_weight_e.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_00010_weight_f.txt">
+          uniform_16_00010_weight_f.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_00010_weight_g.txt">
+          uniform_16_00010_weight_g.txt</a>,
+          M = 16, N = 10, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/uniform/uniform_16_00100.txt">
+      uniform_16_00100.txt</a>:
+      <ul>
+        <li>
+          <a href = "uniform_16_00100_weight_a.txt">
+          uniform_16_00100_weight_a.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_00100_weight_b.txt">
+          uniform_16_00100_weight_b.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_00100_weight_c.txt">
+          uniform_16_00100_weight_c.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "uniform_16_00100_weight_d.txt">
+          uniform_16_00100_weight_d.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 1000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER, SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_00100_weight_e.txt">
+          uniform_16_00100_weight_e.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_00100_weight_f.txt">
+          uniform_16_00100_weight_f.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_00100_weight_g.txt">
+          uniform_16_00100_weight_g.txt</a>,
+          M = 16, N = 100, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following weight files
+      were calculated using the input dataset
+      <a href = "../../datasets/uniform/uniform_16_01000.txt">
+      uniform_16_01000.txt</a>:
+      <ul>
+        <li>
+          <a href = "uniform_16_01000_weight_a.txt">
+          uniform_16_01000_weight_a.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 10000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_01000_weight_b.txt">
+          uniform_16_01000_weight_b.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_01000_weight_c.txt">
+          uniform_16_01000_weight_c.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 987654321;
+        </li>
+        <li>
+          <a href = "uniform_16_01000_weight_d.txt">
+          uniform_16_01000_weight_d.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 1000000,
+          SAMPLE_FUNCTION = RANDOM_NUMBER, SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_01000_weight_e.txt">
+          uniform_16_01000_weight_e.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = HALTON,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_01000_weight_f.txt">
+          uniform_16_01000_weight_f.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 1000000, SAMPLE_FUNCTION = GRID,
+          SEED = 123456789;
+        </li>
+        <li>
+          <a href = "uniform_16_01000_weight_g.txt">
+          uniform_16_01000_weight_g.txt</a>,
+          M = 16, N = 1000, SAMPLE_NUM = 100000000, SAMPLE_FUNCTION = UNIFORM,
+          SEED = 123456789;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for VORONOI_WEIGHT.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DATA_READ</b> reads generator coordinate data from a file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>FIND_CLOSEST</b> finds the Voronoi cell generator closest to a point X.
+        </li>
+        <li>
+          <b>GET_SEED</b> returns a seed for the random number generator.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_TO_HALTON_VECTOR</b> computes an element of a vector Halton sequence.
+        </li>
+        <li>
+          <b>PRIME</b> returns any of the first PRIME_MAX prime numbers.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>REGION_SAMPLER</b> returns a sample point in the physical region.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TUPLE_NEXT_FAST</b> computes the next element of a tuple space, "fast".
+        </li>
+        <li>
+          <b>VORONOI_WEIGHT_ESTIMATE</b> estimates the volumes of Voronoi regions.
+        </li>
+        <li>
+          <b>VORONOI_WEIGHT_WRITE</b> writes a Voronoi weight dataset to a file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,245 @@
+<html>
+
+  <head>
+    <title>
+      FD2D_PREDATOR_PREY - Marcus Garvie's 2D Predator Prey Simulation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FD2D_PREDATOR_PREY <br> Predator Prey Simulation <br>
+      by Marcus Garvie
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FD2D_PREDATOR_PREY</b>
+      is a FORTRAN90 program which
+      solves a predator-prey system
+      in a two dimensional region.  The program requires both some
+      interactive input from the user, and two simple FORTRAN90
+      routines that define the initial values.
+    </p>
+
+    <p>
+      The nondimensional problem has the form
+      <pre>
+        du/dt =         del u + ( 1 - u ) * u        - v * h(u/alpha)
+
+        dv/dt = delta * del v     - gamma * v + beta * v * h(u/alpha)
+      </pre>
+      in a square [A,B]x[A,B], with initial conditions:
+      <pre>
+        u(x,y,0) = u0(x,y)
+        v(x,y,0) = v0(x,y)
+      </pre>
+      and Neumann boundary conditions along the boundary of the square:
+      <pre>
+        du/dn = 0
+        dv/dn = 0
+      </pre>
+      The Type II functional response employed here is
+      <pre>
+        h(eta) = eta / ( 1 + eta )
+      </pre>
+      The parameters ALPHA, BETA, GAMMA and DELTA are strictly positive.
+    </p>
+
+    <p>
+      The user must input a value H specifying the desired space step
+      to be used in discretizing the space dimension.
+    </p>
+
+    <p>
+      A finite difference scheme is employed to integrate the problem
+      from time 0 to a maximum time T.  The user must input the value
+      T, as well as an appropriate time step DELT.
+    </p>
+
+    <p>
+      A typical input for this problem is:
+      <pre>
+        ALPHA =   0.4
+        BETA  =   2.0
+        GAMMA =   0.6
+        DELTA =  10.0
+        A     =   0.0
+        B     = 500.0
+        H     =   1.0
+        T     = 150.0
+        DELT  =   0.041666666666666
+        SOLVE =   0
+      </pre>
+      with the following initial values of U and V supplied in
+      auxiliary subroutines:
+      <pre>
+        ustar = gamma * alpha / ( beta - gamma )
+
+        u0(i,j) = ustar - 2.0E-07 * ( x(i,j) - 0.1 * y(i,j) - 225.0 )
+          * ( x(i,j) - 0.1 * y(i,j) - 675.0 )
+
+        vstar = ( 1.0 - ustar ) * ( alpha + ustar )
+
+        v0(i,j) = vstar - 3.0E-05 * ( x(i,j) - 450.0 )
+          - 1.2E-04 * ( y(i,j) - 150.0 )
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FD2D_PREDATOR_PREY</b> is available in
+      <a href = "../../f_src/fd2d_predator_prey/fd2d_predator_prey.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fd2d_predator_prey/fd2d_predator_prey.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/fd1d_predator_prey/fd1d_predator_prey.html">
+      FD1D_PREDATOR_PREY</a>,
+      a MATLAB program which
+      uses finite differences to solve a 1D predator prey problem.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Marcus Garvie,<br>
+          Finite-Difference Schemes for Reaction-Diffusion Equations
+          Modeling Predator-Prey Interactions in MATLAB,<br>
+          Bulletin of Mathematical Biology,<br>
+          Volume 69, Number 3, 2007, pages 931-956.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fd2d_predator_prey.f90">fd2d_predator_prey.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "fd2d_predator_prey.sh">fd2d_predator_prey.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fd2d_predator_prey_prb.f90">fd2d_predator_prey_prb.f90</a>,
+          typical user routines to initialize U and V;
+        </li>
+        <li>
+          <a href = "fd2d_predator_prey_prb_gmres.sh">fd2d_predator_prey_prb_gmres.sh</a>,
+          commands to compile, link and run FD2D with the user routines;
+        </li>
+        <li>
+          <a href = "fd2d_predator_prey_prb_gmres_input.txt">fd2d_predator_prey_prb_gmres_input.txt</a>,
+          interactive input from the user, specifying the GMRES solver.
+        </li>
+        <li>
+          <a href = "fd2d_predator_prey_prb_gmres_output.txt">fd2d_predator_prey_prb_gmres_output.txt</a>,
+          printed output from the sample run, using the GMRES solver.
+        </li>
+        <li>
+          <a href = "fd2d_predator_prey_prb_jacobi.sh">fd2d_predator_prey_prb_jacobi.sh</a>,
+          commands to compile, link and run FD2D with the user routines;
+        </li>
+        <li>
+          <a href = "fd2d_predator_prey_prb_jacobi_input.txt">fd2d_predator_prey_prb_jacobi_input.txt</a>,
+          interactive input from the user, specifying the Jacobi solver.
+        </li>
+        <li>
+          <a href = "fd2d_predator_prey_prb_jacobi_output.txt">fd2d_predator_prey_prb_jacobi_output.txt</a>,
+          printed output from the sample run, using the Jacobi solver.
+        </li>
+        <li>
+          <a href = "u2d.png">u2d.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the U component of the solution.
+        </li>
+        <li>
+          <a href = "v2d.png">v2d.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the V component of the solution.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FD2D_PREDATOR_PREY.
+        </li>
+        <li>
+          <b>DS3_DIAGONAL2</b> reorders two square DS3 matrices so diagonal entries are first.
+        </li>
+        <li>
+          <b>DS3_JAC_SL</b> solves a DS3 system using Jacobi iteration.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>I4VEC2_SORT_A_PLUS2</b> ascending sorts integer pairs, and adjusts real vectors.
+        </li>
+        <li>
+          <b>MATVEC_TRIAD</b> computes A*X for a matrix A stored in SLAP Triad form.
+        </li>
+        <li>
+          <b>MSOLVE_IDENTITY</b> applies the identity matrix preconditioner.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>SPARSE</b> manages the storage of sparse matrix information.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 23 March 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

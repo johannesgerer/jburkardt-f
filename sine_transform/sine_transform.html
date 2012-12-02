@@ -1,0 +1,209 @@
+<html>
+
+  <head>
+    <title>
+      SINE_TRANSFORM - A Discrete Fourier Transform for Real Data
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      SINE_TRANSFORM <br> A Discrete Fourier Transform for Real Data
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SINE_TRANSFORM</b>
+      is a FORTRAN90 library which
+      demonstrates some simple properties of the discrete sine transform
+      for real data.
+    </p>
+
+    <p>
+      The code is not optimized in any way, and is intended instead for
+      investigation and education.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SINE_TRANSFORM</b> is available in
+      <a href = "../../c_src/sine_transform/sine_transform.html">a C version</a> and
+      <a href = "../../cpp_src/sine_transform/sine_transform.html">a C++ version</a> and
+      <a href = "../../f77_src/sine_transform/sine_transform.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/sine_transform/sine_transform.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sine_transform/sine_transform.html">a MATLAB version</a>.
+    </>p
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fft_serial/fft_serial.html">
+      FFT_SERIAL</a>,
+      a FORTRAN90 program which
+      demonstrates the computation of a Fast Fourier Transform,
+      and is intended as a starting point for implementing a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fftpack5.1/fftpack5.1.html">
+      FFTPACK5.1</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      <a href = "../../f_src/haar/haar.html">
+      HAAR</a>,
+      a FORTRAN90 library which
+      computes the Haar transform of data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sftpack/sftpack.html">
+      SFTPACK</a>,
+      a FORTRAN90 library which
+      implements the "slow" Fourier transform, intended as a teaching
+      tool and comparison with the fast Fourier transform.
+    </p>
+
+    <p>
+      <a href = "../../f_src/walsh/walsh.html">
+      WALSH</a>,
+      a FORTRAN90 library which
+      implements versions of the Walsh and Haar transforms.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wavelet/wavelet.html">
+      WAVELET</a>,
+      a FORTRAN90 library which
+      does some simple calculations with wavelet transforms;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Briggs, Van Emden Henson,<br>
+          The DFT: An Owner's Manual for the Discrete Fourier Transform,<br>
+          SIAM, 1995,<br>
+          ISBN13: 978-0-898713-42-8,<br>
+          LC: QA403.5.B75.
+        </li>
+        <li>
+          Eleanor Chu, Alan George,<br>
+          Inside the FFT Black Box,<br>
+          CRC Press,<br>
+          ISBN: 0849302706,<br>
+          LC: QA403.5C5.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sine_transform.f90">sine_transform.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "sine_transform.sh">sine_transform.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sine_transform_prb.f90">sine_transform_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "sine_transform_prb.sh">sine_transform_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "sine_transform_prb_output.txt">sine_transform_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "sine_transform_prb03.png">sine_transform_prb03.png</a>,
+          a PNG image comparing the function and interpolant.
+        </li>
+        <li>
+          <a href = "sine_transform_prb04.png">sine_transform_prb04.png</a>,
+          a PNG image comparing the function and interpolant.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>SINE_TRANSFORM_DATA</b> does a sine transform on a vector of data.
+        </li>
+        <li>
+          <b>SINE_TRANSFORM_FUNCTION</b> does a sine transform on functional data.
+        </li>
+        <li>
+          <b>SINE_TRANSFORM_INTERPOLANT</b> evaluates the sine transform interpolant.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last modified on 18 February 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

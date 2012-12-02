@@ -1,0 +1,85 @@
+September 30 2009  10:57:18.362 PM
+ 
+TET_MESH_L2Q
+  FORTRAN90 version
+  Read a "linear" tet mesh and
+  write out a "quadratic" tet mesh.
+ 
+  Read a dataset of NODE_NUM1 points in 3 dimensions.
+  Read an associated tet mesh of TETRA_NUM
+  tetrahedrons, using 4 nodes per tetrahedron.
+ 
+  Create new nodes which are midpoints of sides,
+  generate new node and tet mesh data for
+  quadratic 10-node tetrahedrons, and write them out.
+ 
+  Read the header of "mesh_nodes.txt".
+ 
+  Spatial dimension DIM_NUM =        3
+ 
+  Number of linear nodes =           8
+ 
+  Read the data in "mesh_nodes.txt".
+ 
+  The first 5 nodes:
+ 
+  Row         1             2             3       
+  Col
+    1    0.00000       0.00000       0.00000    
+    2    0.00000       0.00000       1.00000    
+    3    0.00000       1.00000       0.00000    
+    4    0.00000       1.00000       1.00000    
+    5    1.00000       0.00000       0.00000    
+ 
+ 
+  Read the header of "mesh_elements.txt".
+ 
+  Tetrahedron order =        4
+  Number of tetras =        6
+ 
+  Read the data in "mesh_elements.txt".
+ 
+  First 5 tetrahedrons:
+ 
+  Row       1      2      3      4
+  Col
+ 
+    1       4      3      5      1
+    2       4      2      5      1
+    3       4      7      3      5
+    4       4      7      8      5
+    5       4      6      2      5
+ 
+MESH_BASE_ONE:
+  The element indexing appears to be 1-based!
+  No conversion is necessary.
+  Number of quadratic nodes =       27
+ 
+  First 5 quadratic nodes:
+ 
+  Row         1             2             3       
+  Col
+    1    0.00000       0.00000       0.00000    
+    2    0.00000       0.00000       1.00000    
+    3    0.00000       1.00000       0.00000    
+    4    0.00000       1.00000       1.00000    
+    5    1.00000       0.00000       0.00000    
+ 
+ 
+  First 5 quadratic tetrahedrons
+ 
+  Row       1      2      3      4      5      6      7      8      9     10
+  Col
+ 
+    1       4      3      5      1     16     19     11     17     10     12
+    2       4      2      5      1     13     19     11     14      9     12
+    3       4      7      3      5     21     16     19     18     24     17
+    4       4      7      8      5     21     22     19     27     24     25
+    5       4      6      2      5     20     13     19     15     23     14
+  Wrote the quadratic nodes to "mesh_l2q_nodes.txt".
+  Wrote the quadratic tetrahedrons to "mesh_l2q_elements.txt".
+ 
+TET_MESH_L2Q
+  Normal end of execution.
+ 
+September 30 2009  10:57:18.372 PM

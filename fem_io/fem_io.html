@@ -1,0 +1,363 @@
+<html>
+
+  <head>
+    <title>
+      FEM_IO - Read or Write a Finite Element Model
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FEM_IO <br> Read or Write a Finite Element Model
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FEM_IO</b>
+      is a FORTRAN90 library which
+      reads or writes the data that defines a finite element model.
+    </p>
+
+    <p>
+      The finite element model is assumed to include three items:
+      <ul>
+        <li>
+          Node coordinates;
+        </li>
+        <li>
+          Elements defined by a sequence of node indices;
+        </li>
+        <li>
+          Node data;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FEM_IO</b> is available in
+      <a href = "../../cpp_src/fem_io/fem_io.html">a C++ version</a> and
+      <a href = "../../f_src/fem_io/fem_io.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fem_io/fem_io.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fem_to_mesh/fem_to_mesh.html">
+      FEM_TO_MESH</a>,
+      a FORTRAN90 program which
+      reads a pair of FEM files defining node coordinates and elements,
+      and creates a corresponding MESH file.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fem_to_tec/fem_to_tec.html">
+      FEM_TO_TEC</a>,
+      a MATLAB program which
+      converts an FEM model
+      into a TEC graphics file.
+    </p>
+
+    <p>
+      <a href = "../../data/fem1d/fem1d.html">
+      FEM1D</a>,
+      a data directory which
+      contains examples of 1D FEM files,
+      three text files that describe a 1D finite element model;
+    </p>
+
+    <p>
+      <a href = "../../data/fem2d/fem2d.html">
+      FEM2D</a>,
+      a data directory which
+      contains examples of 2D FEM files,
+      three text files that describe a 2D finite element geometry;
+    </p>
+
+    <p>
+      <a href = "../../m_src/fem2d_pack/fem2d_pack.html">
+      FEM2D_PACK</a>,
+      a MATLAB library which
+      is useful for 2D finite element calculations.
+    </p>
+
+    <p>
+      <a href = "../../data/fem3d/fem3d.html">
+      FEM3D</a>,
+      a data directory which
+      contains examples of 3D FEM files,
+      three text files that describe a 3D finite element geometry;
+    </p>
+
+    <p>
+      <a href = "../../m_src/mesh_io/mesh_io.html">
+      MESH_IO</a>,
+      a MATLAB library which
+      can read or write MESH files, which can be used to define the geometry
+      of a finite element mesh in 2D or 3D, using triangles, quadrilaterals,
+      tetrahedrons or hexahedrons.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Finite Element Methods,<br>
+          Academic Press, 1988,<br>
+          ISBN: 0126330107,<br>
+          LC: TA347.F5.S3313..
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200,<br>
+          LC: TA640.2.Z54
+        </li>
+        <li>
+          Daniel Zwillinger, editor,<br>
+          CRC Standard Mathematical Tables and Formulae,<br>
+          30th Edition,<br>
+          CRC Press, 1996,<br>
+          ISBN: 0-8493-2479-3.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fem_io.f90">fem_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "fem_io.sh">fem_io.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>FEM_IO_PRB</b> is a test program which tests the routines
+      that read and write finite element data.
+      <ul>
+        <li>
+          <a href = "fem_io_prb.f90">fem_io_prb.f90</a>
+          is the source code of the tests.
+        </li>
+        <li>
+          <a href = "fem_io_prb.sh">fem_io_prb.sh</a> runs all the tests.
+        </li>
+        <li>
+          <a href = "fem_io_prb_output.txt">fem_io_prb_output.txt</a>
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>ELL</b> is an example of a 2D finite element model
+      in which a scalar value is stored. This data was computed by the
+      <a href = "../../m_src/free_fem_poisson/free_fem_poisson.html">
+      FREE_FEM_POISSON</a> program and is read by FEM_READ.
+      <ul>
+        <li>
+          <a href = "ell_nodes.txt">ell_nodes.txt</a>
+        </li>
+        <li>
+          <a href = "ell_elements.txt">ell_elements.txt</a>
+        </li>
+        <li>
+          <a href = "ell_values.txt">ell_values.txt</a>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>P01</b> is a 3D rectangular channel, with dimensions 1x1x3,
+      using 584 nodes and 2568 elements. This data was created by DISTMESH.
+      <ul>
+        <li>
+          <a href = "p01_nodes.txt">p01_nodes.txt</a>
+        </li>
+        <li>
+          <a href = "p01_elements.txt">p01_elements.txt</a>
+        </li>
+        <li>
+          <a href = "p01_values.txt">p01_values.txt</a>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TINY</b> is a "tiny" example of a 2D finite element model
+      in which a vector value is stored.  This data was written
+      by the FEM_WRITE routine.
+      <ul>
+        <li>
+          <a href = "tiny_nodes.txt">tiny_nodes.txt</a>
+        </li>
+        <li>
+          <a href = "tiny_elements.txt">tiny_elements.txt</a>
+        </li>
+        <li>
+          <a href = "tiny_values.txt">tiny_values.txt</a>
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DTABLE_DATA_READ</b> reads data from a DTABLE file.
+        </li>
+        <li>
+          <b>DTABLE_DATA_WRITE</b> writes data to a DTABLE file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_READ</b> reads the header from a DTABLE file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_WRITE</b> writes the header to a DTABLE file.
+        </li>
+        <li>
+          <b>FEM_DATA_READ</b> reads data from a set of FEM files.
+        </li>
+        <li>
+          <b>FEM_HEADER_PRINT</b> prints the header to set of FEM files.
+        </li>
+        <li>
+          <b>FEM_HEADER_READ</b> reads the sizes of arrays in a set of FEM files.
+        </li>
+        <li>
+          <b>FEM_WRITE</b> writes data files associated with a finite element solution.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_NAME_SPECIFICATION</b> determines the names of the input files.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of rows in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>ITABLE_DATA_READ</b> reads data from an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_DATA_WRITE</b> writes data to an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_HEADER_READ</b> reads the header from an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_HEADER_WRITE</b> writes the header to an integer table file.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads a R8 number from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads a R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 September 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

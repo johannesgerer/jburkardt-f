@@ -1,0 +1,73 @@
+ 3 February 2008  11:45:59.214 AM                                               
+ 
+INT_EXACTNESS_GEN_LAGUERRE
+  FORTRAN90 version
+ 
+  Investigate the polynomial exactness of a generalized Gauss-Laguerre
+  quadrature rule by integrating exponentially weighted 
+  monomials up to a given degree over the [0,+oo) interval.
+ 
+  The rule may be defined on another interval, [A,+oo)
+  in which case it is adjusted to the [0,+oo) interval.
+ 
+INT_EXACTNESS_GEN_LAGUERRE: User input:
+  Quadrature rule X file = "gen_lag_o4_a0.5_x.txt".
+  Quadrature rule W file = "gen_lag_o4_a0.5_w.txt".
+  Quadrature rule R file = "gen_lag_o4_a0.5_r.txt".
+  Maximum degree to check =       10
+  Weighting function exponent ALPHA =   0.500000    
+ 
+  Spatial dimension =        1
+  Number of points  =        4
+ 
+  The quadrature rule to be tested is
+  a generalized Gauss-Laguerre rule
+  ORDER =        4
+  A =        0.00000    
+  ALPHA =   0.500000    
+ 
+  OPTION = 0, standard rule:
+    Integral ( A <= x < oo ) x^alpha exp(-x) f(x) dx
+    is to be approximated by
+    sum ( 1 <= I <= ORDER ) w(i) * f(x(i)).
+ 
+  Weights W:
+ 
+  w( 1) =   0.4530087465586076    
+  w( 2) =   0.3816169601717996    
+  w( 3) =   0.5079462757224078E-01
+  w( 4) =   0.8065911501100311E-03
+ 
+  Abscissas X:
+ 
+  x( 1) =   0.5235260767382691    
+  x( 2) =    2.156648763269094    
+  x( 3) =    5.137387546176711    
+  x( 4) =    10.18243761381592    
+ 
+  Region R:
+ 
+  r( 1) =    0.000000000000000    
+  r( 2) =   0.1000000000000000E+31
+ 
+  A generalized Gauss-Laguerre rule would be able to exactly
+  integrate monomials up to and including degree =        7
+ 
+          Error          Degree
+ 
+        0.0000000000000000    0
+        0.0000000000000003    1
+        0.0000000000000004    2
+        0.0000000000000003    3
+        0.0000000000000004    4
+        0.0000000000000008    5
+        0.0000000000000016    6
+        0.0000000000000025    7
+        0.0105306458247669    8
+        0.0504362510554503    9
+        0.1330978618904361   10
+ 
+INT_EXACTNESS_GEN_LAGUERRE:
+  Normal end of execution.
+ 
+ 3 February 2008  11:45:59.216 AM                                               

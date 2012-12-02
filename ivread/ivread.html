@@ -1,0 +1,809 @@
+<html>
+
+  <head>
+    <title>
+      IVREAD - 3D Graphics File Conversion
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      IVREAD <br> 3D Graphics File Conversion
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>IVREAD</b>
+      is a FORTRAN90 program which
+      reads a 3D graphics file and converts the information
+      to another format.
+    </p>
+
+    <p>
+      <b>IVREAD</b> was originally written to read SGI Inventor 3D graphics
+      files and convert them to Digistar VLA format.  Since then, the program
+      has evolved to allow the input and output of:
+      <ul>
+        <li>
+          ASE - <a href = "http://www.autodesk.com">AutoCAD</a>
+          ASCII export files;
+        </li>
+        <li>
+          BYU - <a href =
+          "../../data/byu/byu.html">
+          Movie.BYU surface geometry files</a>(output only);
+        </li>
+        <li>
+          DXF - <a href = "http://www.autodesk.com">AutoCAD</a> DXF files;
+        </li>
+        <li>
+          HRC - <a href = "http://www.softimage.com">SoftImage</a>
+          hierarchy files;
+        </li>
+        <li>
+          IV - <a href = "http://www.sgi.com">SGI Inventor</a> files;
+        </li>
+        <li>
+          OBJ - a file format from ALIAS (
+          <a href = "http://www.alias.com/eng/index.shtml">
+                     http://www.alias.com/eng/index.shtml</a>)
+        </li>
+        <li>
+          OFF - Object file format for
+          <a href = "http://www.geomview.org/">GeomView</a>
+        </li>
+        <li>
+          OOGL - CMESH files from
+          <a href = "http://www.geomview.org/">GeomView</a>
+          (input only);
+        </li>
+        <li>
+          POV - <a href = "http://www.povray.org/">
+          Persistence of Vision</a> files (output only);
+        </li>
+        <li>
+          SMF - Michael Garland's format for
+          <a href =
+          "http://www.cs.cmu.edu/afs/cs/user/garland/www/quadrics/qslim.html">
+          QSLIM</a>;
+        </li>
+        <li>
+          STL -
+          <a href = "../../data/stla/stla.html">
+          ASCII Stereolithography files</a>;
+        </li>
+        <li>
+          TEC - <a href = "http://www.amtec.com/">
+          TECPLOT</a> files (output only);
+        </li>
+        <li>
+          TS - Mathematica <a href =
+          "http://documents.wolfram.com/v4/AddOns/Grph_ThreeScript-.html">
+          ThreeScript</a>;
+        </li>
+        <li>
+          TXT - text files (output only);
+        </li>
+        <li>
+          TRI/TRIA -
+          <a href = "../../data/tri/tri.html">
+          a simple ASCII triangle format</a>
+          requested by Greg Hood;
+        </li>
+        <li>
+          UCD - <a href = "http://www.avs.com">
+          Advanced Visual Systems (AVS)</a>
+          Unstructured Cell Data (output only);
+        </li>
+        <li>
+          VLA -
+          <a href = "../../data/vla/vla.html">
+          Digistar VLA files;</a>
+        </li>
+        <li>
+          WRL - VRML (Virtual Reality Modeling Language) files (output only).
+        </li>
+        <li>
+          XYZ -
+          <a href = "../../data/xyz/xyz.html">
+          XYZ files</a>
+          (inefficient but simple, point and line format);
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      There is also a simple-minded facility to project any 3D image
+      onto a 2D plane, and make a
+      <a href = "../../data/ps/ps.html">PostScript image</a> of the result.
+    </p>
+
+    <p>
+      Graphics file formats are often poorly documented; hence this program
+      was written primarily by examining typical files and struggling
+      to interpret them.  Particularly in the case of Inventor and DXF
+      files, the program is not able to handle all the subtleties of
+      the file format, and may mangle data, or even crash.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>ivread</b> <i>input.ext</i> <i>output.ext</i>
+        </dt>
+        <dd>
+          converts <i>input.ext</i> to <i>output.ext</i>, where
+          the input and output formats are determined by the
+          file name extensions.
+        </dd>
+        <dt>
+          <b>ivread</b>
+        </dt>
+        <dd>
+          if no files are specified, an interactive dialog
+          is set up, and the user can specify the files to
+          be converted.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/grf_io/grf_io.html">
+      GRF_IO</a>,
+      a FORTRAN90 library which
+      can read or write a GRF file.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/ivcon/ivcon.html">
+      IVCON</a>,
+      a C++ program which
+      reads 3D graphics file information in a variety of formats,
+      and can output the same information in a different format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/obj_io/obj_io.html">
+      OBJ_IO</a>,
+      a FORTRAN90 library which
+      can read or write an OBJ file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pbma_io/pbma_io.html">
+      PBMA_IO</a>,
+      a FORTRAN90 library which
+      can read or write an ASCII Portable Bit Map (PBM) file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pgma_io/pgma_io.html">
+      PGMA_IO</a>,
+      a FORTRAN90 library which
+      can read or write an ASCII Portable Gray Map (PGM) file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/plot3d_io/plot3d_io.html">
+      PLOT3D_IO</a>,
+      a FORTRAN90 library which
+      can read or write a PLOT3D file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ppma_io/ppma_io.html">
+      PPMA_IO</a>,
+      a FORTRAN90 library which
+      can read or write an ASCII Portable Pixel Map (PPM) file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stla_io/stla_io.html">
+      STLA_IO</a>,
+      a FORTRAN90 library which
+      can read or write an ASCII Stereolithography file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_to_fem/tec_to_fem.html">
+      TEC_TO_FEM</a>,
+      a FORTRAN90 program which
+      can read a TECPLOT file describing a
+      surface in 3D composed of triangles, and write
+      a set of FEM files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_to_obj/tec_to_obj.html">
+      TEC_TO_OBJ</a>,
+      a FORTRAN90 program which
+      can read a TECPLOT file describing a
+      surface in 3D composed of triangles or quadrilaterals, and write
+      an OBJ file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_write/tec_write.html">
+      TEC_WRITE</a>,
+      a FORTRAN90 library which
+      can write a TECPLOT file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xyz_io/xyz_io.html">
+      XYZ_IO</a>,
+      a FORTRAN90 library which
+      reads and writes XYZ files.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Adrian Bowyer, John Woodwark,<br>
+          A Programmer's Geometry,<br>
+          Butterworths, 1983.
+        </li>
+        <li>
+          James Foley, Andries van Dam, Steven Feiner, John Hughes,<br>
+          Computer Graphics, Principles and Practice,<br>
+          Addison Wesley, Second Edition, 1990.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms,<br>
+          Academic Press, 1978, second edition,<br>
+          ISBN 0-12-519260-6.
+        </li>
+        <li>
+          3D Systems, Inc,<br>
+          Stereolithography Interface Specification,<br>
+          October 1989.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ivread.f90">ivread.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "ivread.sh">ivread.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Tests and Examples:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "../../data/ase/cube.ase">cube.ase</a>;
+        </li>
+        <li>
+          <a href = "../../data/byu/cube.byu">cube.byu</a>;
+        </li>
+        <li>
+          <a href = "../../data/dxf/diamond.dxf">diamond.dxf</a>;
+        </li>
+        <li>
+          <a href = "../../data/hrc/cube.hrc">cube.hrc</a>;
+        </li>
+        <li>
+          <a href = "../../data/iv/materials.iv">materials.iv</a>;
+        </li>
+        <li>
+          <a href = "../../data/obj/cube.obj">cube.obj</a>;
+        </li>
+        <li>
+          <a href = "../../data/off/cube.off">cube.off</a>;
+        </li>
+        <li>
+          <a href = "../../data/oogl/surface.oogl">surface.oogl</a>;
+        </li>
+        <li>
+          <a href = "../../data/pov/cube.pov">cube.pov</a>;
+        </li>
+        <li>
+          <a href = "../../data/smf/cube_face.smf">cube_face.smf</a>;
+        </li>
+        <li>
+          <a href = "../../data/stl/magnolia.stl">magnolia.stl</a>;
+        </li>
+        <li>
+          <a href = "../../data/tec/cube.tec">cube.tec</a>;
+        </li>
+        <li>
+          <a href = "../../data/tri/cube.tria">cube.tria</a>;
+        </li>
+        <li>
+          <a href = "../../data/vla/diamond.vla">diamond.vla</a>;
+        </li>
+        <li>
+          <a href = "../../data/wrl/materials.wrl">materials.wrl</a>;
+        </li>
+        <li>
+          <a href = "../../data/xyz/spiralpoints.xyz">spiralpoints.xyz</a>;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for IVREAD.
+        </li>
+        <li>
+          <b>ANGLE_RAD_3D</b> returns the angle in radians between two vectors in 3D.
+        </li>
+        <li>
+          <b>ASE_READ</b> reads graphics information from an ASE file.
+        </li>
+        <li>
+          <b>ASE_WRITE</b> writes graphics information to an ASE file.
+        </li>
+        <li>
+          <b>BYU_READ</b> reads graphics data from a Movie.BYU surface geometry file.
+        </li>
+        <li>
+          <b>BYU_WRITE</b> writes out the graphics data as a Movie.BYU surface geometry file.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_CONTROL</b> reports whether a character is a control character or not.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>COMMAND_LINE</b> works with command line parameters.
+        </li>
+        <li>
+          <b>COR3_NORMAL_SET</b> recomputes zero node normal vectors.
+        </li>
+        <li>
+          <b>COR3_RANGE</b> computes and prints the coordinate minima and maxima.
+        </li>
+        <li>
+          <b>CROSS0_3D</b> computes the cross product of (P1-P0) and (P2-P0) in 3D.
+        </li>
+        <li>
+          <b>DATA_CHECK</b> checks the input data, and enforces limits.
+        </li>
+        <li>
+          <b>DATA_INIT</b> initializes internal graphics data.
+        </li>
+        <li>
+          <b>DATA_READ</b> reads a file into internal graphics data.
+        </li>
+        <li>
+          <b>DATA_REPORT</b> gives a summary of the contents of the data file.
+        </li>
+        <li>
+          <b>DATA_WRITE</b> writes the internal graphics data to a file.
+        </li>
+        <li>
+          <b>DEGREES_TO_RADIANS</b> converts an angle from degrees to radians.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>DOT0_3D</b> computes the dot product of (P1-P0) and (P2-P0) in 3D.
+        </li>
+        <li>
+          <b>DXF_READ</b> reads graphics information from an AutoCAD DXF file.
+        </li>
+        <li>
+          <b>DXF_WRITE</b> writes graphics data to an AutoCAD DXF file.
+        </li>
+        <li>
+          <b>EDGE_ADD_NODES</b> adds the edge defined by two nodes to the edge list.
+        </li>
+        <li>
+          <b>EDGE_BOUND</b> reports the edges which are part of the boundary.
+        </li>
+        <li>
+          <b>EDGE_COUNT</b> determines the number of edges in a graph.
+        </li>
+        <li>
+          <b>EDGE_MATCH_FACE</b> seeks an edge common to a face and the edge list.
+        </li>
+        <li>
+          <b>EDGE_MATCH_NODES</b> seeks an edge of the form (N1,N2) or (N2,N1) in EDGE.
+        </li>
+        <li>
+          <b>EDGE_NULL_DELETE</b> deletes face edges with zero length.
+        </li>
+        <li>
+          <b>ENORM_ND</b> computes the Euclidean norm of a vector in ND.
+        </li>
+        <li>
+          <b>ENORM0_3D</b> computes the Euclidean norm of (P1-P0) in 3D.
+        </li>
+        <li>
+          <b>FACE_AREA_SET</b> computes the area of the faces.
+        </li>
+        <li>
+          <b>FACE_CHECK</b> checks and analyzes a set of faces.
+        </li>
+        <li>
+          <b>FACE_FLIP</b> flips faces to achieve a consistent orientation.
+        </li>
+        <li>
+          <b>FACE_NORMAL_AVE</b> sets face normals as average of face vertex normals.
+        </li>
+        <li>
+          <b>FACE_NULL_DELETE</b> deletes faces of order less than 3.
+        </li>
+        <li>
+          <b>FACE_PRINT</b> prints out information about a face.
+        </li>
+        <li>
+          <b>FACE_REVERSE_ORDER</b> reverses the order of the nodes in each face.
+        </li>
+        <li>
+          <b>FACE_SORT</b> renumbers the faces in order of object and tier.
+        </li>
+        <li>
+          <b>FACE_SUBSET</b> selects a subset of the current faces as the new object.
+        </li>
+        <li>
+          <b>FACE_TO_EDGE</b> converts face data to edge data.
+        </li>
+        <li>
+          <b>FACE_TO_LINE</b> converts face information to line information.
+        </li>
+        <li>
+          <b>FACE_TOUCH</b> reports whether two polygonal faces touch.
+        </li>
+        <li>
+          <b>FILE_GET_NEXT_WORD</b> returns the next word and trailing context from a file.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HELLO</b> prints out a message about the program.
+        </li>
+        <li>
+          <b>HELP</b> prints out a help message about the interactive commands.
+        </li>
+        <li>
+          <b>HRC_READ</b> reads graphics information from a SoftImage HRC file.
+        </li>
+        <li>
+          <b>HRC_WRITE</b> writes graphics data to an HRC SoftImage file.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two integer values.
+        </li>
+        <li>
+          <b>I4_TO_S_ZERO</b> converts an integer to a string, with zero padding.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>INFILE</b> determines the input filename and type.
+        </li>
+        <li>
+          <b>INTERACT</b> interacts with the user to specify input and output files.
+        </li>
+        <li>
+          <b>INTNEX</b> "reads" integers from a string, one at a time.
+        </li>
+        <li>
+          <b>IV_POINT_WRITE</b> writes point and line data to an Inventor file.
+        </li>
+        <li>
+          <b>IV_READ</b> reads graphics information from an Inventor file.
+        </li>
+        <li>
+          <b>IV_WRITE</b> writes graphics data to an Inventor file.
+        </li>
+        <li>
+          <b>I4VEC_MAX</b> computes the maximum element of an integer array.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_ROTATE</b> rotates an object in place.
+        </li>
+        <li>
+          <b>LCON</b> reports whether a character is a control character or not.
+        </li>
+        <li>
+          <b>MESH_T3</b> produces a grid of pairs of 3 node triangles.
+        </li>
+        <li>
+          <b>NEWS</b> prints out news (old and new) about the program.
+        </li>
+        <li>
+          <b>NODE_RELAX</b> smooths a shape by an averaging operation on the node positions.
+        </li>
+        <li>
+          <b>NODE_TO_VERTEX_MATERIAL</b> extends node material definitions to vertices.
+        </li>
+        <li>
+          <b>OBJ_READ</b> reads graphics information from a Wavefront OBJ file.
+        </li>
+        <li>
+          <b>OBJ_WRITE</b> writes graphics information to a WaveFront OBJ file.
+        </li>
+        <li>
+          <b>OBJECT_BUILD</b> builds edge-connected "objects" out of polygonal faces.
+        </li>
+        <li>
+          <b>OBJECT_INVERT</b> makes an inverted duplicate of the object.
+        </li>
+        <li>
+          <b>OFF_READ</b> reads graphics information from a GEOMVIEW OFF file.
+        </li>
+        <li>
+          <b>OFF_WRITE</b> writes graphics information to a GEOMVIEW OFF file.
+        </li>
+        <li>
+          <b>OOGL_READ</b> reads graphics information from a OOGL file.
+        </li>
+        <li>
+          <b>OOGL_GRID</b> adds a grid to an OOGL data file.
+        </li>
+        <li>
+          <b>OUTFILE</b> determines the output filename and type.
+        </li>
+        <li>
+          <b>PI</b> returns the value of pi.
+        </li>
+        <li>
+          <b>PLANE_EXP2IMP_3D</b> converts an explicit plane to implicit form in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP_POINT_NEAREST_3D:</b> nearest point on a implicit plane to a point in 3D.
+        </li>
+        <li>
+          <b>POINTS_DISTANCE_3D</b> finds the distance between two points in 3D.
+        </li>
+        <li>
+          <b>POLY_2_TRI</b> converts a collection of polygons into a collection of triangles.
+        </li>
+        <li>
+          <b>POV_WRITE</b> writes graphics information to a POV file.
+        </li>
+        <li>
+          <b>PROJECT_2D</b> projects 3D data to 2D based on user choices.
+        </li>
+        <li>
+          <b>PROJECT_ANGLE</b> converts 3D data to 2D using a presentation angle.
+        </li>
+        <li>
+          <b>PROJECT_OPLANE</b> projects 3D points onto an orthographic plane.
+        </li>
+        <li>
+          <b>PROJECT_PPLANE</b> projects a point through a focus point onto a perspective plane.
+        </li>
+        <li>
+          <b>PS_WRITE</b> writes 2D face and line information to a PostScript file.
+        </li>
+        <li>
+          <b>R4_RANDOM</b> returns a random real in a given range.
+        </li>
+        <li>
+          <b>R4_SWAP</b> switches two R4's.
+        </li>
+        <li>
+          <b>R4COL_FIND</b> seeks a table column equal to a real vector.
+        </li>
+        <li>
+          <b>RGB_TO_HUE</b> converts (R,G,B) colors to a hue value between 0 and 1.
+        </li>
+        <li>
+          <b>RELNEX</b> "reads" real numbers from a string, one at a time.
+        </li>
+        <li>
+          <b>R4VEC_TO_S</b> "writes" an R4VEC into a string.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>S_CONTROL_BLANK</b> replaces control characters with blanks.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_IS_I4</b> returns .TRUE. if STRING represents an integer.
+        </li>
+        <li>
+          <b>S_IS_R4</b> returns .TRUE. if STRING represents a real number.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R4</b> reads an R4 from a string.
+        </li>
+        <li>
+          <b>S_TRIM_ZEROS</b> removes trailing zeros from a string.
+        </li>
+        <li>
+          <b>SMF_READ</b> reads graphics information from an SMF file.
+        </li>
+        <li>
+          <b>SMF_WRITE</b> writes graphics information to an SMF file.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into linear order.
+        </li>
+        <li>
+          <b>STLA_READ</b> reads graphics information from an ASCII StereoLithography file.
+        </li>
+        <li>
+          <b>STLA_WRITE</b> writes graphics information to an ASCII StereoLithography file.
+        </li>
+        <li>
+          <b>TEC_WRITE</b> writes graphics information to a TECPLOT file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TMAT_INIT</b> initializes the geometric transformation matrix.
+        </li>
+        <li>
+          <b>TMAT_MXM</b> multiplies two geometric transformation matrices.
+        </li>
+        <li>
+          <b>TMAT_MXP</b> multiplies a geometric transformation matrix times a point.
+        </li>
+        <li>
+          <b>TMAT_MXP2</b> multiplies a geometric transformation matrix times N points.
+        </li>
+        <li>
+          <b>TMAT_MXV</b> multiplies a geometric transformation matrix times a vector.
+        </li>
+        <li>
+          <b>TMAT_ROT_AXIS</b> applies a coordinate axis rotation to the geometric transformation matrix.
+        </li>
+        <li>
+          <b>TMAT_ROT_VECTOR:</b> arbitrary axis rotation to geometric transformation matrix.
+        </li>
+        <li>
+          <b>TMAT_SCALE</b> applies a scaling to the geometric transformation matrix.
+        </li>
+        <li>
+          <b>TMAT_SHEAR</b> applies a shear to the geometric transformation matrix.
+        </li>
+        <li>
+          <b>TMAT_TRANS</b> applies a translation to the geometric transformation matrix.
+        </li>
+        <li>
+          <b>TRIA_READ</b> reads graphics information from an ASCII triangle file.
+        </li>
+        <li>
+          <b>TRIA_WRITE</b> writes the graphics data to an ASCII "triangle" file.
+        </li>
+        <li>
+          <b>TS_READ</b> reads graphics information from a Mathematica TS file.
+        </li>
+        <li>
+          <b>TS_WRITE</b> writes graphics information to a Mathematica TS file.
+        </li>
+        <li>
+          <b>TXT_WRITE</b> writes the graphics data to a text file.
+        </li>
+        <li>
+          <b>UCD_WRITE</b> writes graphics data to an AVS UCD file.
+        </li>
+        <li>
+          <b>VECTOR_UNIT_ND</b> normalizes a vector in ND.
+        </li>
+        <li>
+          <b>VERTEX_NORMAL_SET</b> recomputes the face vertex normal vectors.
+        </li>
+        <li>
+          <b>VERTEX_TO_NODE_MATERIAL</b> extends vertex material definitions to nodes.
+        </li>
+        <li>
+          <b>VLA_READ</b> reads graphics information from a VLA file.
+        </li>
+        <li>
+          <b>VLA_WRITE</b> writes graphics data to a VLA file.
+        </li>
+        <li>
+          <b>VRML_READ</b> reads graphics information from a VRML file.
+        </li>
+        <li>
+          <b>VRML_WRITE</b> writes graphics data to a VRML file.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+        <li>
+          <b>XGL_WRITE</b> writes graphics data to an XGL file.
+        </li>
+        <li>
+          <b>XYZ_READ</b> reads graphics information from an XYZ file.
+        </li>
+        <li>
+          <b>XYZ_WRITE</b> writes graphics data to an XYZ file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

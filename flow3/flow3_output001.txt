@@ -1,0 +1,414 @@
+January 18 2007   7:10:08.109 AM
+  
+ FLOW3
+   FORTRAN90 version
+   This is the version of 01 January 2001.
+   The maximum problem size is           41  by           13
+  
+ INPUT:
+   Read control information from the user.
+  
+#  INPUT001.TXT
+#
+#  11 May 1996
+#
+#  Control the flow profile, but not the size of the control parameters.
+#
+#  Note that this run will fail to find the target solution,
+#  and will get a local minimum instead.
+#
+plot_file = flow3_001_plt.txt
+march_file = flow3_001_mar.txt
+ibump =              0
+igrad =              1
+ijac =              1
+  
+iopt(1) =              1
+iopt(2) =              1
+iopt(3) =              1
+iopt(4) =              1
+iopt(5) =              0
+  
+iplot =              0
+istep1 =              1
+istep2 =             10
+itype =              1
+iwrite =              1
+maxnew =             10
+maxstp =             10
+nparb =              3
+nparf =              1
+nx =             11
+ny =              4
+  
+para1(1) =   0.100000E-03
+para1(2) =    0.00000    
+para1(3) =    0.00000    
+para1(4) =    0.00000    
+para1(5) =    1.00000    
+  
+partar(1) =   0.500000    
+partar(2) =   0.375000    
+partar(3) =   0.500000    
+partar(4) =   0.375000    
+partar(5) =    1.00000    
+  
+tolnew =   0.100000E-04
+tolopt =   0.100000E-04
+wateu =    1.00000    
+watev =    0.00000    
+watep =    0.00000    
+wateb =    0.00000    
+xbleft =    1.00000    
+xbltar =    1.00000    
+xbrite =    3.00000    
+xbrtar =    3.00000    
+xprof =    3.00000    
+ybleft =    0.00000    
+ybltar =    0.00000    
+ybrite =    0.00000    
+ybrtar =    0.00000    
+  
+ GO command!
+  
+ Flow - GO signal from user input.
+  
+ FLOW3 - Note.
+   Number of elements  =           60
+   Number of nodes =            147
+  
+ PR_DAT:
+   Values of user-definable variables:
+  
+   Number of horizontal elements, NX =           11
+   Number of vertical elements, NY =              4
+  
+   NPARF =            1  inflow parameters
+   NPARB =            3  bump parameters
+   NPARR = 1 inverse viscosity parameters.
+   NPAR =             5  total parameters
+  
+ Parameter  Type  Free to Vary?
+  
+     1  Inflow  Yes
+     2  Shape   Yes
+     3  Shape   Yes
+     4  Shape   Yes
+     5  NU_INV  No 
+  
+ NOPT =            4  optimization parameters.
+  
+  
+ ITAR = 0:
+   The target data is computed from a flow.
+  
+ ISHAPBT =            2
+   Target bump modeled by C0 quadratic splines.
+ ISHAPFT =            2
+   Target inflow modeled by C0 quadratic splines.
+  
+   Target bump from x,y =      1.00000000000000       0.000000000000000E+000
+                 to x,y =      3.00000000000000       0.000000000000000E+000
+  
+   PARTAR, the parameter values at target point:
+  
+  Inflow   0.500000    
+  Bump     0.375000      0.500000      0.375000    
+  NU_INV    1.00000    
+  
+ ISHAPB =            2
+   Bump modeled by C0 piecewise quadratics.
+  
+ ISHAPF =            2
+   Inflow modeled by C0 piecewise quadratics.
+  
+   Feasible bump from x,y =     1.00000000000000       0.000000000000000E+000
+                    to x,y =    3.00000000000000       0.000000000000000E+000
+  
+   The flow discrepancy is measured at XPROF =    3.00000000000000     
+  
+  
+   Cost function is weighted sum of these costs:
+  
+  
+   U, V and P discrepancies at profile line,
+   SQRT(Integral (InflowSlope)**2 ),
+   SQRT(Integral (BumpSlope-LineSlope)**2).
+  
+ Weight factors:
+  
+   Bump control cost,   WATEB =    0.000000000000000E+000
+   Pressure discrepancy, WATEP =   0.000000000000000E+000
+   U discrepancy, WATEU =           1.00000000000000     
+   V discrepancy, WATEV =          0.000000000000000E+000
+  
+ ISMOOTH =            0
+   Use averaged dUdY, dVdY, dPdY.
+  
+ IGRID = 0, X and Y nodes are equally spaced.
+  
+  
+ Generation of starting point for Newton:
+   IPRED =            1
+   G(I) = GOLD(I) + SENS(I,J) * (PAR(J)-PAROLD(J))
+  
+   IJAC = 1, Jacobian is evaluated on every step.
+   JJAC = 1, do NOT update the jacobian for
+   finite difference points.  A new regular point
+   always gets a new jacobian.
+  
+  
+   Up to MAXNEW =           10  Newton iterations.
+   TOLNEW, Newton iteration tolerance =   1.000000000000000E-005
+   The continuation stepsize is STPMAX =    1.00000000000000     
+  
+ Derivative information:
+  
+ Discretized sensitivities will be computed.
+ Finite difference sensitivities will be computed.
+ Direct cost finite differences will be computed.
+  
+ Cost gradient approximation option IGRAD =            1
+   Chain rule on discretized sensitivities.
+  
+ ITYPE =            1
+   This is a 1D march.
+  
+   The first parameter set will be associated with
+   point number                     1
+   The second with point           10
+  
+   The first parameter set:
+  
+  
+  Inflow   0.100000E-03
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV    1.00000    
+  
+   The second parameter set:
+  
+  
+  Inflow    0.00000    
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV    0.00000    
+  
+ IBC =            0
+   Bump sensitivity boundary condition uses
+   finite element estimate of dUdY, dVdY.
+  
+ IBUMP = 0:
+   No isoparametric elements will be used.
+   Y coordinates of midside nodes above the bump
+   will be adjusted to preserve straight sides.
+  
+   DISPLAY graphics file is not written.
+   Diagnostic output option, IWRITE =            1
+  
+   The flow system to be solved is NavierStokes
+  
+ MARCH_FILE_OPEN - Note:
+   Opening the marching file "flow3_001_mar.txt".
+  
+ NODE_SET - The number of unknowns is NEQN =          338
+  
+ FLOW3
+   Computing the target solution, GTAR.
+PR_COST1: Cost associated with target solution.  0.6613E-13
+  
+ PR_SOLUTION:
+    Computed target solution
+  
+  
+  Inflow   0.500000    
+  Bump     0.375000      0.500000      0.375000    
+  NU_INV    1.00000    
+  
+ PR_WORK:
+  
+           0  continuation auxilliary points calculated.
+           4  finite difference auxilliary points calculated.
+           0  marching points calculated.
+           0  optimization points calculated.
+           0  target points calculated.
+  
+           0  calls to CubSpl.
+           2  calls to SGBTRF, LU factor routine.
+           7  calls to SGBTRS, the LU solver.
+           6  calls to FloSol.
+           2  calls to FPrime.
+          13  calls to FX.
+           5  calls to GET_COST.
+           3  calls to COST_GRADIENT.
+           0  calls to GetFix.
+           1  calls to GetGrd.
+           0  calls to GetSen.
+           6  calls to Newton.
+           0  calls to PltWrt.
+           6  calls to SetBas.
+           1  calls to NODE_SET.
+           6  calls to SetQXY.
+           6  calls to XY_SET.
+           0  calls to Snoit.
+           0  calls to SolCon.
+           0  calls to Sumit.
+           0  calls to Trans.
+           0  calls to UVal.
+        2700  calls to UValQ.
+           0  calls to UpValQ.
+           0  calls to Xofxsi.
+  
+           0  continuation steps by SolCon.
+           0  attempted dampings of the Newton iteration.
+           0  falterings of the Newton iteration.
+           0  total failures of the Newton iteration.
+           7  Newton iteration steps.
+           0  zero-step Newton processes.
+           7  right hand sides for LU solver.
+           1  starts and restarts
+  
+ IMemry - Note:
+   All data has been reset to zero.
+  
+ MARCH - Begin march!
+  
+ MARCH: Distance =   0.111111111666667     
+PR_COST1: Cost  0.4349    
+  
+ PR_SOLUTION:
+    Marching solution point
+  
+  
+  Inflow   0.100000E-03
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV    1.00000    
+PR_COST1: Cost  0.4350    
+  
+ PR_SOLUTION:
+    Marching solution point
+  
+  
+  Inflow   0.888889E-04
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV   0.888889    
+PR_COST1: Cost  0.4350    
+  
+ PR_SOLUTION:
+    Marching solution point
+  
+  
+  Inflow   0.777778E-04
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV   0.777778    
+PR_COST1: Cost  0.4350    
+  
+ PR_SOLUTION:
+    Marching solution point
+  
+  
+  Inflow   0.666667E-04
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV   0.666667    
+PR_COST1: Cost  0.4350    
+  
+ PR_SOLUTION:
+    Marching solution point
+  
+  
+  Inflow   0.555556E-04
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV   0.555556    
+PR_COST1: Cost  0.4350    
+  
+ PR_SOLUTION:
+    Marching solution point
+  
+  
+  Inflow   0.444444E-04
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV   0.444444    
+PR_COST1: Cost  0.4351    
+  
+ PR_SOLUTION:
+    Marching solution point
+  
+  
+  Inflow   0.333333E-04
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV   0.333333    
+PR_COST1: Cost  0.4351    
+  
+ PR_SOLUTION:
+    Marching solution point
+  
+  
+  Inflow   0.222222E-04
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV   0.222222    
+PR_COST1: Cost  0.4351    
+  
+ PR_SOLUTION:
+    Marching solution point
+  
+  
+  Inflow   0.111111E-04
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV   0.111111    
+PR_COST1: Cost  0.4351    
+  
+ PR_SOLUTION:
+    Marching solution point
+  
+  
+  Inflow    0.00000    
+  Bump      0.00000       0.00000       0.00000    
+  NU_INV    0.00000    
+  
+ PR_WORK:
+  
+           1  continuation auxilliary points calculated.
+          55  finite difference auxilliary points calculated.
+          10  marching points calculated.
+          10  optimization points calculated.
+           0  target points calculated.
+  
+           0  calls to CubSpl.
+          11  calls to SGBTRF, LU factor routine.
+          72  calls to SGBTRS, the LU solver.
+          76  calls to FloSol.
+          11  calls to FPrime.
+         133  calls to FX.
+          76  calls to GET_COST.
+          30  calls to COST_GRADIENT.
+          11  calls to GetFix.
+          11  calls to GetGrd.
+          10  calls to GetSen.
+          76  calls to Newton.
+           0  calls to PltWrt.
+          76  calls to SetBas.
+           0  calls to NODE_SET.
+          76  calls to SetQXY.
+          76  calls to XY_SET.
+           0  calls to Snoit.
+          10  calls to SolCon.
+           0  calls to Sumit.
+           0  calls to Trans.
+        3960  calls to UVal.
+       27720  calls to UValQ.
+           0  calls to UpValQ.
+           0  calls to Xofxsi.
+  
+          11  continuation steps by SolCon.
+           0  attempted dampings of the Newton iteration.
+           0  falterings of the Newton iteration.
+           0  total failures of the Newton iteration.
+          62  Newton iteration steps.
+           9  zero-step Newton processes.
+         112  right hand sides for LU solver.
+           0  starts and restarts
+  
+ AFTER - Closing the marching file "flow3_001_mar.txt".
+ 
+FLOW3
+  Normal end of execution.
+ 
+January 18 2007   7:10:09.161 AM

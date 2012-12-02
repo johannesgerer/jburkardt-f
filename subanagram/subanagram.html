@@ -1,0 +1,265 @@
+<html>
+
+  <head>
+    <title>
+      SUBANAGRAM - Program to Find Subanagrams
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SUBANAGRAM <br> Program to Find Subanagrams
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SUBANAGRAM</b>
+      is a FORTRAN90 program which
+      creates a list of subanagrams of a master word;
+      the user can require that the subanagrams be at least a given number
+      of letters in length.
+    </p>
+
+    <p>
+      For instance, given the minimum length requirement of 4 letters,
+      and the master word <i>sprite</i>,
+      there are as many as 85 subanagrams, including:
+      <pre>
+        ires
+        pert
+        pest
+        pets
+        pier
+        piers
+        pies
+        ...(more)...
+        tires
+        tries
+        trip
+        tripe
+        trips
+      </pre>
+    </p>
+
+    <p>
+      The program simply opens a large "dictionary file" containing a list of words,
+      and checks whether any word in the file matches the length requirement,
+      and is a subanagram of the master word.
+    </p>
+
+    <p>
+      Every word list has
+      peculiarities, that is, it includes words that a user may reject,
+      and it omits words that a user might have accepted.  Hence the output
+      of this program is only a reasonable estimate of the subanagrams of
+      a given word; a user must examine the list carefully and may find
+      many words that need to be deleted, and may think of others that could
+      be added.
+    </p>
+
+    <p>
+      Textropolis is an iPhone application which presents you with the name
+      of a city and asks for as many words as you can form, using only the
+      letters in the city name.  It also wants the words to be at least
+      4 letters long.  This program can be used to generate a list of
+      candidate words for Textropolis's puzzles.  However, Textropolis's
+      dictionary file is quite different from the one used by this program, so
+      many words found by this program are rejected, and Textropolis
+      allows some words unknown to the dictionary file used by this program.
+    </p>
+
+
+    <h3 align = "center">
+      Dedication:
+    </h3>
+
+    <p>
+      <i>
+        This program is dedicated to Vivian Benton.
+      </i>
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>subanagram</b> <i>min_length</i> <i>master_word</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>min_length</i> is the minimum length (number of letters) allowed
+          in any subanagram of the master word; 3, 4 or 5 are typical values;
+        </li>
+        <li>
+          <i>master_word</i> is the master word, which doesn't actually have
+          to be a word, but which should contain no blanks.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/anagram/anagram.html">
+      ANAGRAM</a>,
+      a C++ program which
+      computes anagrams of a word or phrase.
+    </p>
+
+    <p>
+      <a href = "../../f_src/puzzles/puzzles.html">
+      PUZZLES</a>,
+      FORTRAN90 programs which
+      were used to solve puzzles.
+    </p>
+
+    <p>
+      <a href = "../../datasets/words/words.html">
+      WORDS</a>,
+      a dataset directory which
+      contains lists of words.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wordsnake/wordsnake.html">
+      WORDSNAKE</a>,
+      a FORTRAN90 program which
+      rearranges a list of words so that
+      they have maximum overlap;
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "subanagram.f90">subanagram.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "subanagram.sh">subanagram.sh</a>,
+          commands to compile the source code.
+        </li>
+        <li>
+          <a href = "../../datasets/words/wordlist.txt">wordlist.txt</a>,
+          the dictionary file used by the program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "amsterdam.txt">amsterdam.txt</a>,
+          subanagrams of "Amsterdam" of length at least 4.
+        </li>
+        <li>
+          <a href = "baltimore.txt">baltimore.txt</a>,
+          subanagrams of "Baltimore" of length at least 4.
+        </li>
+        <li>
+          <a href = "bangalore.txt">bangalore.txt</a>,
+          subanagrams of "Bangalore" of length at least 4.
+        </li>
+        <li>
+          <a href = "barcelona.txt">barcelona.txt</a>,
+          subanagrams of "Barcelona" of length at least 4.
+        </li>
+        <li>
+          <a href = "blueplaty.txt">blueplaty.txt</a>,
+          subanagrams of "Blue Platy" of length at least 4.
+        </li>
+        <li>
+          <a href = "bucharest.txt">bucharest.txt</a>,
+          subanagrams of "Bucharest" of length at least 4.
+        </li>
+        <li>
+          <a href = "kingstown.txt">kingstown.txt</a>,
+          subanagrams of "Kingstown" of length at least 4.
+        </li>
+        <li>
+          <a href = "sprite.txt">sprite.txt</a>,
+          subanagrams of "sprite" of length at least 5.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for SUBANAGRAM.
+        </li>
+        <li>
+          <b>CH_LOW</b> lowercases a single character.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>S_LOW</b> replaces all uppercase letters by lowercase ones.
+        </li>
+        <li>
+          <b>S_NONALPHA_DELETE</b> removes nonalphabetic characters from a string.
+        </li>
+        <li>
+          <b>S_S_SUBANAGRAM_SORTED</b> determines if S2 is a "subanagram" of S1.
+        </li>
+        <li>
+          <b>S_SORT_A</b> sorts a string into ascending order.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 August 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

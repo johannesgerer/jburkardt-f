@@ -1,0 +1,61 @@
+#  cvt_run_96.inp
+#
+#  Modified:
+#
+#    28 June 2005
+#
+#  Discussion:
+#
+#    800 flow solutions from INOUT_FLOW2
+#
+#    Preprocessing:
+#    * Solutions 1-400 we subtract 5/3 of steady.txt
+#    * Solutions 401-800 we subtract 1/3 of steady.txt
+#    * We do NOT normalize each result.
+#    * We use mass matrix preconditioning.
+#
+#  Our run type is 9.
+#
+9
+#
+#  The name of the file containing the coordinates of the nodes:
+#
+/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/xy.dat
+#
+#  The name of the file containing the steady state solution:
+#
+/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/steady.dat
+#
+#  The name of the first solution file in the first series.
+#
+/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up001.txt
+#
+#  The name of the first solution file in the next series.
+#
+NONE
+#
+#  The range of cluster sizes to examine.  Because these values are
+#  equal, the program knows we don't want to study a bunch of values,
+#  but rather generate the data for one size and write them to a file.
+#
+2  2
+#
+#  The number of different random initial configurations to check.
+#
+15
+#
+#  The number of energy iterations to take.
+#
+30
+#
+#  The name of the element file for mass matrix preconditioning, or NONE.
+#
+/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/element.dat
+#
+#  0 to use Euclidean distance, 1 to use angular difference in clustering.
+#
+0
+#
+#  NO, we don't want comments in the output files.
+#
+NO

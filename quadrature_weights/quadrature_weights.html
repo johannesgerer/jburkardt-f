@@ -1,0 +1,213 @@
+<html>
+
+  <head>
+    <title>
+      QUADRATURE_WEIGHTS - Computation of Weights for Quadrature Rules
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      QUADRATURE_WEIGHTS <br> Computation of Weights for Quadrature Rules
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>QUADRATURE_WEIGHTS</b>
+      is a FORTRAN90 library which
+      illustrates techniques for computing the weights of a quadrature
+      rule, assuming that the points have been specified.
+    </p>
+
+    <h3 align="center">
+      The Vandermonde Matrix
+    </h3>
+
+    <p>
+      We assume that the quadrature formula approximates integrals of the form:
+      <pre>
+        I(F) = Integral ( A <= X <= B ) F(X) dX 
+      </pre>
+      by specifying N points X and weights W such that
+      <pre>
+        Q(F) = Sum ( 1 <= I <= N ) W(I) * F(X(I))
+      </pre>
+    </p>
+
+    <p>
+      Now let us assume that the points X have been specified, but that the
+      corresponding values W remain to be determined.
+    </p>
+
+    <p>
+      If we require that the quadrature rule with N points integrates the first
+      N monomials exactly, then we have N conditions on the weights W.
+    </p>
+
+    <p>
+      The I-th condition, for the monomial X^(I-1), has the form:
+      <pre>
+        W(1)*X(1)^(I-1) + W(2)*X(2)^(I-1)+...+W(N)*X(N)^(I-1) = (B^I-A^I)/I.
+      </pre>
+    </p>
+
+    <p>
+      The corresponding matrix is known as the Vandermonde matrix.  It is
+      theoretically guaranteed to be nonsingular as long as the X's are
+      distinct, but its condition number grows quickly with N.  Therefore,
+      this simple, direct approach is often abandoned when more accuracy
+      or high order rules are needed.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/clenshaw_curtis_rule/clenshaw_curtis_rule.html">
+      CLENSHAW_CURTIS_RULE</a>,
+      a FORTRAN90 program which
+      defines a Clenshaw Curtis quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrule/quadrule.html">
+      QUADRULE</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for 1-dimensional domains.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms655/toms655.html">
+      TOMS655</a>,
+      a FORTRAN90 library which
+      computes the weights for interpolatory quadrature rule;<br>
+      this library is commonly called <b>IQPACK</b>;<br>
+      this is a FORTRAN90 version of ACM TOMS algorithm 655.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+        <li>
+          Sylvan Elhay, Jaroslav Kautsky,<br>
+          Algorithm 655: IQPACK, FORTRAN Subroutines for the Weights of
+          Interpolatory Quadrature,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 13, Number 4, December 1987, pages 399-415.
+        </li>
+        <li>
+          Jaroslav Kautsky, Sylvan Elhay,<br>
+          Calculation of the Weights of Interpolatory Quadratures,<br>
+          Numerische Mathematik,<br>
+          Volume 40, 1982, pages 407-422.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <b>QW_VANDERMONDE</b> uses the Vandermonde matrix approach.  It assumes
+      that the abscissas have been chosen, that the interval [A,B] is known,
+      and that the integrals of polynomials of degree 0 through N-1 can be
+      computed.  (The examples here use a finite interval and a unit weight function,
+      but the method can easily be extended to non-finite intervals and non-unit
+      weight functions.)
+      <ul>
+        <li>
+          <a href = "qw_vandermonde.f90">qw_vandermonde.f90</a>, 
+          the source code for the Vandermonde matrix approach.
+        </li>
+        <li>
+          <a href = "qw_vandermonde.sh">qw_vandermonde.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+        <li>
+          <a href = "qw_vandermonde_prb.f90">qw_vandermonde_prb.f90</a>,
+          a sample calling program for the Vandermonde matrix approach.
+        </li>
+        <li>
+          <a href = "qw_vandermonde_prb.sh">qw_vandermonde_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "qw_vandermonde_prb_output.txt">qw_vandermonde_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>QW_GOLUB_WELSCH</b> uses the Golub-Welsch approach to compute
+      a Gaussian quadrature rule given information about the Jacobi matrix
+      associated with the polynomials that are orthonormal with respect
+      to the given weight function.  Note that this approach computes
+      both the abscissas and the weights.
+      <ul>
+        <li>
+          <a href = "qw_golub_welsch.f90">qw_golub_welsch.f90</a>, 
+          the source code for the Golub-Welsch approach.
+        </li>
+        <li>
+          <a href = "qw_golub_welsch.sh">qw_golub_welsch.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+        <li>
+          <a href = "qw_golub_welsch_prb.f90">qw_golub_welsch_prb.f90</a>,
+          a sample calling program for the Golub-Welsch approach.
+        </li>
+        <li>
+          <a href = "qw_golub_welsch_prb.sh">qw_golub_welsch_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "qw_golub_welsch_prb_output.txt">qw_golub_welsch_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 05 April 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

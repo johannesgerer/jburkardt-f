@@ -1,0 +1,291 @@
+<html>
+
+  <head>
+    <title>
+      LAGRANGE_INTERP_ND - M-dimensional Lagrange Interpolant
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      LAGRANGE_INTERP_ND <br> M-dimensional Lagrange Interpolant
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>LAGRANGE_INTERP_ND</b>
+      is a FORTRAN90 library which
+      defines and evaluates the Lagrange polynomial p(x) 
+      which interpolates a set of data depending on a M-dimensional argument
+      that was evaluated on a product grid,
+      so that p(x(i)) = z(i).
+    </p>
+
+    <p>
+      The interpolation function requires that the data points defining the interpolant
+      lie on a product grid [A1,B1]x[A2,B2]x...x[Am,Bm], to be defined
+      by a vector AB of dimension (M,2).
+    </p>
+
+    <p>
+      The interpolation function requires that the user supply a vector N_1D of length M,
+      which specifies the number or "order" of data points in each dimension.  The number
+      of points in the product grid will then be the product of the entries
+      in N_1D.
+    </p>
+
+    <p>
+      (A second version of the interpolation function uses instead a vector IND of length M,
+      which is interpreted as a set of "levels".  Each level corresponds in
+      a simple way to the number of "order" of data points.  In particular,
+      levels 0, 1, 2, 3, 4 correspond to 1, 3, 5, 9 and 17 points.  This
+      version is useful when a nested rule is desired.)
+    </p>
+
+    <p>
+      The interpolation function sets the location of the data points in each dimension
+      using the Clenshaw Curtis rule, that is, using the N extrema of
+      the Chebyshev polynomial of the first kind of order N-1.  Those
+      polynomials are defined on [-1,+1], but a simple linear mapping
+      is used to adjust the points to the interval specified by the user.
+    </p>
+
+    <p>
+      The interpolation function needs data at the data points.  It is assumed that this
+      will be supplied by a user specified function of the form
+      <pre>
+        v = f ( m, n, x )
+      </pre>
+      where M is the spatial dimension, N is the number of points to be
+      evaluated, X is a vector of dimension (M,N) containing the points,
+      and the result is the vector V of dimension (N) containing the function
+      values.
+    </p>
+
+    <p>
+      Typical usage involves several steps.  
+      The size of the interpolant grid is determined by a call like:
+      <pre>
+        call lagrange_interp_nd_size ( m, ind, nd )
+      </pre>
+      Then the interpolant grid is determined by
+      <pre>
+        call lagrange_interp_nd_grid ( m, ind, ab, nd, xd )
+      </pre>
+      and the interpolant data is evaluated by
+      <pre>
+        call f ( m, nd, xd, zd )
+      </pre>
+      Once the interpolant has been defined, the user is free to evaluate
+      it repeatedly, by specifying NI points XI, and requesting the interpolated
+      values ZI by:
+      <pre>
+        call lagrange_interp_nd_value ( m, ind, ab, nd, zd, ni, xi, zi );
+      </pre>
+    </p>
+
+    <p>
+      <b>LAGRANGE_INTERP_ND</b> needs the R8LIB library.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>LAGRANGE_INTERP_ND</b> is available in
+      <a href = "../../c_src/lagrange_interp_nd/lagrange_interp_nd.html">a C version</a> and
+      <a href = "../../cpp_src/lagrange_interp_nd/lagrange_interp_nd.html">a C++ version</a> and
+      <a href = "../../f77_src/lagrange_interp_nd/lagrange_interp_nd.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/lagrange_interp_nd/lagrange_interp_nd.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/lagrange_interp_nd/lagrange_interp_nd.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/lagrange_interp_1d/lagrange_interp_1d.html">
+      LAGRANGE_INTERP_1D</a>,
+      a FORTRAN90 library which
+      defines and evaluates the Lagrange polynomial p(x) 
+      which interpolates a set of data, so that p(x(i)) = y(i).
+    </p>
+
+    <p>
+      <a href = "../../f_src/lagrange_interp_2d/lagrange_interp_2d.html">
+      LAGRANGE_INTERP_2D</a>,
+      a FORTRAN90 library which
+      defines and evaluates the Lagrange polynomial p(x,y) 
+      which interpolates a set of data depending on a 2D argument
+      that was evaluated on a product grid,
+      so that p(x(i),y(j)) = z(i,j).
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>,
+      a FORTRAN90 library which
+      contains many utility routines using double precision real (R8) arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/rbf_interp_nd/rbf_interp_nd.html">
+      RBF_INTERP_ND</a>,
+      a FORTRAN90 library which
+      defines and evaluates radial basis function (RBF) interpolants to multidimensional data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/shepard_interp_nd/shepard_interp_nd.html">
+      SHEPARD_INTERP_ND</a>,
+      a FORTRAN90 library which
+      defines and evaluates Shepard interpolants to multidimensional data,
+      based on inverse distance weighting.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_interp_nd/sparse_interp_nd.html">
+      SPARSE_INTERP_ND</a>
+      a FORTRAN90 library which
+      can be used to define a sparse interpolant to a function f(x) of a 
+      multidimensional argument.
+    </p>
+
+    <p>
+      <a href = "../../m_src/spinterp/spinterp.html">
+      SPINTERP</a>,
+      a MATLAB library which
+      carries out piecewise multilinear hierarchical sparse grid interpolation;
+      an earlier version of this software is ACM TOMS Algorithm 847,
+      by Andreas Klimke;
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_interp_nd/test_interp_nd.html">
+      TEST_INTERP_ND</a>,
+      a FORTRAN90 library which
+      defines test problems for interpolation of data z(x),
+      depending on an M-dimensional argument.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Philip Davis,<br>
+          Interpolation and Approximation,<br>
+          Dover, 1975,<br>
+          ISBN: 0-486-62495-1,<br>
+          LC: QA221.D33
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "lagrange_interp_nd.f90">lagrange_interp_nd.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "lagrange_interp_nd.sh">lagrange_interp_nd.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "lagrange_interp_nd_prb.f90">lagrange_interp_nd_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "lagrange_interp_nd_prb.sh">lagrange_interp_nd_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "lagrange_interp_nd_prb_output.txt">lagrange_interp_nd_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CC_COMPUTE_POINTS:</b> abscissas of a Clenshaw Curtis rule.
+        </li>
+        <li>
+          <b>LAGRANGE_BASIS_1D</b> evaluates the Lagrange basis polynomials.
+        </li>
+        <li>
+          <b>LAGRANGE_INTERP_ND_GRID</b> sets an M-dimensional Lagrange interpolant grid.
+        </li>
+        <li>
+          <b>LAGRANGE_INTERP_ND_GRID2</b> sets an M-dimensional Lagrange interpolant grid.
+        </li>
+        <li>
+          <b>LAGRANGE_INTERP_ND_SIZE</b> sizes an M-dimensional Lagrange interpolant.
+        </li>
+        <li>
+          <b>LAGRANGE_INTERP_ND_SIZE2</b> sizes an M-dimensional Lagrange interpolant.
+        </li>
+        <li>
+          <b>LAGRANGE_INTERP_ND_VALUE</b> evaluates an ND Lagrange interpolant.
+        </li>
+        <li>
+          <b>LAGRANGE_INTERP_ND_VALUE2</b> evaluates an ND Lagrange interpolant.
+        </li>
+        <li>
+          <b>ORDER_FROM_LEVEL_135</b> evaluates the 135 level-to-order relationship.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 September 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,186 @@
+<html>
+
+  <head>
+    <title>
+      VEC_IO - File I/O for Fixed Length Vectors
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      VEC_IO <br> File I/O for Fixed Length Vectors
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>VEC_IO</b>
+      is a FORTRAN90 library which
+      provides a simple interface to read or write a set of
+      vectors to a file, which are of a single fixed size.  The vectors
+      can be read or written in any order.  Several sets of files can
+      be handled at one time.
+    </p>
+
+    <p>
+      A common procedure computationally involves computing a state
+      variable U(T,X,Y) at a fixed set of nodes, and for an increasing
+      sequence of equally spaced times.  For certain optimization
+      problems, this process is followed by a <i>backwards</i> computation,
+      in which the data is analyzed in reverse order.
+    </p>
+
+    <p>
+      Since the data U(T,X,Y) for a single time step may require a
+      large amount of storage, and usually only two sets of data
+      are needed at any point in the computation, namely the values
+      at the current time, and at the future or previous time, it
+      is convenient to store the solution data for each timestep
+      in a single file.
+    </p>
+
+    <p>
+      A simple use of <b>VEC_IO</b> allows the user to write each
+      solution vector to the file in forward order, and then to
+      read back the same solution data in reverse order.  Of course,
+      more general access patterns are also available.
+    </p>
+
+    <p>
+      At the moment, the only kind of data that can be written or
+      read is a double precision vector of length <b>N</b>.
+      Sets of this data can be stored in an unformatted direct access file,
+      or a formatted direct access file.
+    </p>
+
+    <p>
+      It would also be useful to allow other data types, such
+      as single precision or integer data, and other file formats,
+      but this has not yet been set up.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cell/cell.html">
+      CELL</a>,
+      a FORTRAN90 library which
+      defines a cell array, a generalization of an array which
+      can compactly store and retrieve vector or matrix data of 
+      varying size, such as the rows of a triangular matrix.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_io/table_io.html">
+      TABLE_IO</a>,
+      a FORTRAN90 library which
+      reads vector and table data
+      from a file.  However, these routines read or write ALL the
+      data in one operation, and only use the ASCII file format.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "vec_io.f90">vec_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "vec_io.sh">vec_io.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "vec_io_prb.f90">vec_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "vec_io_prb.sh">vec_io_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "vec_io_prb_output.txt">vec_io_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>FILE_COPY</b> makes a copy of a file.
+        </li>
+        <li>
+          <b>FILE_DELETE</b> deletes a named file if it exists.
+        </li>
+        <li>
+          <b>FILE_EXIST</b> reports whether a file exists.
+        </li>
+        <li>
+          <b>FILE_IS_OPEN</b> reports whether a file (specified by filename) is open.
+        </li>
+        <li>
+          <b>FILE_RENAME</b> renames a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>R8AD_IO</b> reads or writes fixed size vectors, using R8AD protocol.
+        </li>
+        <li>
+          <b>R8UD_IO</b> reads or writes fixed size vectors, using R8UD protocol.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 05 October 2005.
+
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

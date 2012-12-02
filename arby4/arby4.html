@@ -1,0 +1,670 @@
+<html>
+
+  <head>
+    <title>
+      ARBY4 - Reduced Basis Fluid Flow Code
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ARBY4 <br> Reduced Basis Fluid Flow Code
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ARBY4</b>
+      is a FORTRAN90 program which
+      analyzes a 2D fluid flow using the reduced
+      basis method.
+    </p>
+
+    <p>
+      The reduced basis idea is related to the finite element method.
+      In the finite element method, a completely arbitrary basis is
+      set up.  The reduced basis method seeks, instead, to use a much
+      smaller set of basis functions which somehow represent the most
+      typical behaviors of the solution.
+    </p>
+
+    <p>
+      Such a basis set might be determined by computing lots of solution
+      vectors, or from theoretical considerations.  It can also be 
+      determined by taking the state equations, repeatedly 
+      differentiating them with respect to a parameter, and solving the
+      resulting systems.  This then allows a sort of Taylor expansion
+      of the solution with the parameter acting as the independent
+      variable.  
+    </p>
+
+    <p>
+      In a true Taylor expansion, the coefficients of the
+      basis vectors are strictly determined by the size of the increment
+      in the independent variable.  But in this approach, it is assumed
+      that although the Taylor coefficients may quickly become inaccurate,
+      the corresponding Taylor basis vectors will still be useful
+      for representing the solution.  It remains, then, to determine
+      the now unknown coefficients.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bump/bump.html">
+      BUMP</a>,
+      a FORTRAN90 program which
+      seeks the appropriate channel inflow and bump shape which will cause the flow to most
+      closely match a given downflow profile.
+    </p>
+
+    <p>
+      <a href = "../../f_src/channel/channel.html">
+      CHANNEL</a>,
+      a FORTRAN90 program which
+      seeks the appropriate channel inflow which will cause the flow to most
+      closely match a given downflow profile.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms611/toms611.html">
+      TOMS611</a>,
+      a FORTRAN90 library which
+      minimizes a functional.  It is used by ARBY4.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Janet Peterson,<br>
+          The Reduced Basis Method for Incompressible Viscous Flow Calculations,<br>
+          SIAM Journal of Scientific and Statistical Computing,<br>
+          Volume 10, Number 4, pages 777-786, July 1989.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "arby4.f90">arby4.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "arby4.sh">arby4.sh</a>, 
+          commands to compile and load the source code.
+        </li>
+        <li>
+          <a href = "arby4_dict.txt">arby4_dict.txt</a>, 
+          a "data dictionary" for the program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test08_input.txt">test08_input.txt</a>, sample input #8.
+        </li>
+        <li>
+          <a href = "test08_output.txt">test08_output.txt</a>, sample output #8.
+        </li>
+        <li>
+          <a href = "test09_input.txt">test09_input.txt</a>, sample input #9.
+        </li>
+        <li>
+          <a href = "test09_output.txt">test09_output.txt</a>, sample output #9.
+        </li>
+        <li>
+          <a href = "test10_input.txt">test10_input.txt</a>, sample input #10.
+        </li>
+        <li>
+          <a href = "test10_output.txt">test10_output.txt</a>, sample output #10.
+        </li>
+        <li>
+          <a href = "test11_input.txt">test11_input.txt</a>, sample input #11.
+        </li>
+        <li>
+          <a href = "test11_output.txt">test08_output.txt</a>, sample output #11.
+        </li>
+        <li>
+          <a href = "test12_input.txt">test12_input.txt</a>, sample input #12.
+        </li>
+        <li>
+          <a href = "test12_output.txt">test12_output.txt</a>, sample output #12.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ARBY4</b> solves a fluid flow problem which has several parameters.
+        </li>
+        <li>
+          <b>DIFFPRB</b> estimates the jacobian of the reduced function, using finite differences.
+        </li>
+        <li>
+          <b>DIFSENFL</b> computes a central difference estimate for the first NCOFRB 
+        </li>
+        <li>
+          <b>DIFSENRB</b> estimates the reduced sensitivities using finite differences.
+        </li>
+        <li>
+          <b>FLOWBC</b> computes the specified boundary values at a given position.
+        </li>
+        <li>
+          <b>FPBCRB</b> evaluates the jacobian of the reduced boundary conditions.
+        </li>
+        <li>
+          <b>FPFERB</b> evaluates the reduced basis jacobian directly.
+        </li>
+        <li>
+          <b>FPFL</b> computes the jacobian of the Navier Stokes residual function
+        </li>
+        <li>
+          <b>FPIRB</b> computes the jacobian of the reduced basis solution GRB
+        </li>
+        <li>
+          <b>FPRB</b> evaluates the reduced basis jacobian directly.
+        </li>
+        <li>
+          <b>FXBCRB</b> evaluates the reduced boundary conditions.
+        </li>
+        <li>
+          <b>FXFERB</b> evaluates the finite element portion of the reduced function.
+        </li>
+        <li>
+          <b>FXFL</b> computes the residual of the Navier Stokes equations,
+        </li>
+        <li>
+          <b>FXFL2RB</b> projects a full residual into a reduced residual.
+        </li>
+        <li>
+          <b>FXIRB</b> computes the residual of the reduced basis solution GRB
+        </li>
+        <li>
+          <b>FXRB</b> evaluates the boundary conditions and finite element equations
+        </li>
+        <li>
+          <b>GETGSEN</b> computes the coefficients of the sensitivity matrix S,
+        </li>
+        <li>
+          <b>GETBCRB</b> computes the vectors that will be placed into the set
+        </li>
+        <li>
+          <b>GETFERB</b> computes the finite element reduced basis vectors
+        </li>
+        <li>
+          <b>GETSENFL</b> computes the matrix SENFL of sensitivity vectors.
+        </li>
+        <li>
+          <b>GETSENRB</b> computes the value of the reduced sensitivities by
+        </li>
+        <li>
+          <b>GFL2RB</b> projects a full solution vector GFL into GRB, the 
+        </li>
+        <li>
+          <b>GRB2FL</b> computes the full solution GFL represented by a set of
+        </li>
+        <li>
+          <b>HELLO</b> prints the program name, date of revision, time and date,
+        </li>
+        <li>
+          <b>HELP</b> prints out a list of the interactive commands which the
+        </li>
+        <li>
+          <b>INIT</b> sets problem data to default values.
+        </li>
+        <li>
+          <b>NEWTFL</b> is given an initial estimate of the solution of the full
+        </li>
+        <li>
+          <b>NEWTRB</b> is given an initial estimate of the solution of the reduced
+        </li>
+        <li>
+          <b>OPTDIFFL</b> optimizes the full problem, without gradient information.
+        </li>
+        <li>
+          <b>OPTDIFRB</b> optimizes the reduced problem, without gradient information.
+        </li>
+        <li>
+          <b>PICFL</b> carries out simple iteration on the full Navier Stokes equations.
+        </li>
+        <li>
+          <b>PICMFERB</b> evaluates the simple iteration matrix for a reduced problem.
+        </li>
+        <li>
+          <b>PICMFL</b> computes the Picard iteration matrix for the full Navier Stokes equations.
+        </li>
+        <li>
+          <b>PICRB</b> carries out simple iteration on the reduced Navier Stokes equations. 
+        </li>
+        <li>
+          <b>PICVFERB</b> computes the finite element portion of the right hand
+        </li>
+        <li>
+          <b>PICVFL</b> computes the right hand side for Picard iteration on the
+        </li>
+        <li>
+          <b>REYSEN</b> sets up the right hand side RHS associated with the ISEN-th 
+        </li>
+        <li>
+          <b>TEST2</b> compares U, V, and P for the full solution and the reduced
+        </li>
+        <li>
+          <b>TEST3</b> verifies that RB*RFACT = SENFL
+        </li>
+        <li>
+          <b>TEST4</b> ???
+        </li>
+        <li>
+          <b>TEST5</b> is given the QR factors of the reduced basis matrix, and 
+        </li>
+        <li>
+          <b>PRUVPFL</b> prints the values of velocity and pressure for all nodes
+        </li>
+        <li>
+          <b>PRUVPRB</b> prints the values of the reduced velocity and pressure 
+        </li>
+        <li>
+          <b>UVPRB</b> is given:
+        </li>
+        <li>
+          <b>BMPCST</b> evaluates the cost of the bump control.
+        </li>
+        <li>
+          <b>BMPSPL</b> sets up or updates the spline data that describes the bump.
+        </li>
+        <li>
+          <b>BSP</b> computes the value and spatial derivatives of the linear basis
+        </li>
+        <li>
+          <b>CAPCHR</b> accepts a STRING of characters and replaces any lowercase
+        </li>
+        <li>
+          <b>CAVITY</b> sets up the standard driven cavity problem.
+        </li>
+        <li>
+          <b>CAVITY2</b> sets up the H C Lee driven cavity problem.
+        </li>
+        <li>
+          <b>CHANNL</b> sets up the standard channel problem.
+        </li>
+        <li>
+          <b>CHRCTD</b> accepts a string of characters, and tries to extract a
+        </li>
+        <li>
+          <b>CHRCTI</b> accepts a STRING of characters and reads an integer
+        </li>
+        <li>
+          <b>CHRDB1</b> accepts a string of characters and removes all
+        </li>
+        <li>
+          <b>CHRUP2</b> copies STRING into STRNG2, up to, but not including, the
+        </li>
+        <li>
+          <b>DDETFL</b> computes the determinant of a double precision band matrix
+        </li>
+        <li>
+          <b>DDETRB</b> computes the determinant of a double precision matrix
+        </li>
+        <li>
+          <b>DELHMS</b> returns the number of seconds between TIME1 and TIME2. 
+        </li>
+        <li>
+          <b>DFACFL</b> factors a double precision band matrix by elimination.
+        </li>
+        <li>
+          <b>DFACRB</b> factors a double precision dense matrix.
+        </li>
+        <li>
+          <b>DIFSET</b> computes the NCOF coefficients for a centered finite difference
+        </li>
+        <li>
+          <b>DISCST</b> computes the discrepancy integrals for the pressure,
+        </li>
+        <li>
+          <b>DSOLFL</b> solves the linear system
+        </li>
+        <li>
+          <b>DSOLRB</b> solves the linear system
+        </li>
+        <li>
+          <b>DVEQ</b> returns .TRUE. if the N elements of the double precision
+        </li>
+        <li>
+          <b>DVNEQ</b> returns .TRUE. if any of the N elements of the double precision
+        </li>
+        <li>
+          <b>FACT</b> computes the (real) factorial of a nonnegative integer.
+        </li>
+        <li>
+          <b>GETCST</b> is given the value of the solution, GFL, the target
+        </li>
+        <li>
+          <b>GQUAD1</b> returns the weights and abscissas for a 1 dimensional,
+        </li>
+        <li>
+          <b>GRID</b> computes the X or Y coordinate of the I-th gridpoint.
+        </li>
+        <li>
+          <b>INTPRS</b> interpolates the pressure at the midside nodes.
+        </li>
+        <li>
+          <b>L2NORM</b> computes the "big" L2 norm of the velocity over the flow region,
+        </li>
+        <li>
+          <b>LBASE</b> evalualates the IVAL-th Lagrange polynomial based
+        </li>
+        <li>
+          <b>LEQI</b> is a case insensitive comparison of two strings for
+        </li>
+        <li>
+          <b>LEQIDB</b> is a case insensitive comparison of two strings for
+        </li>
+        <li>
+          <b>NBINOM</b> calculates the number of combinations of M things taken N
+        </li>
+        <li>
+          <b>NRMFLO</b> returns norms of a flow solution or flow residual.
+        </li>
+        <li>
+          <b>PCVAL</b> evaluates a piecewise constant function at a given point.
+        </li>
+        <li>
+          <b>PLDX</b> evaluates the derivative of a piecewise linear function with
+        </li>
+        <li>
+          <b>PLDX1</b> evaluates the X derivative of the piecewise linear
+        </li>
+        <li>
+          <b>PLTOPN</b> opens the plotting file.
+        </li>
+        <li>
+          <b>PLVAL</b> evaluates a piecewise linear function at a given point.
+        </li>
+        <li>
+          <b>PLVAL1</b> evaluates the piecewise linear polynomial which is 1
+        </li>
+        <li>
+          <b>PQDX</b> evaluates the derivative of a piecewise quadratic function with
+        </li>
+        <li>
+          <b>PQDX1</b> evaluates the X derivative of the piecewise quadratic
+        </li>
+        <li>
+          <b>PQVAL</b> evaluates a piecewise quadratic function at a given point.
+        </li>
+        <li>
+          <b>PQVAL1</b> evaluates the piecewise quadratic polynomial which is 1
+        </li>
+        <li>
+          <b>PRBMAT</b> prints all nonzero entries of rows ILO to IHI, columns JLO to 
+        </li>
+        <li>
+          <b>PRDAT</b> prints the problem information.
+        </li>
+        <li>
+          <b>PRDMAT</b> prints out a portion of a dense matrix.
+        </li>
+        <li>
+          <b>PRELEM</b> prints out data about one or more elements.
+        </li>
+        <li>
+          <b>PRFXFLN</b> prints out the norm of a full residual.
+        </li>
+        <li>
+          <b>PRGRB</b> prints out the reduced basis solution.
+        </li>
+        <li>
+          <b>PRINDX</b> prints out the integer variables that define the
+        </li>
+        <li>
+          <b>PRMATFL</b> prints entries from a matrix A associated with a full
+        </li>
+        <li>
+          <b>PRPAR</b> prints out the current parameters.
+        </li>
+        <li>
+          <b>PRSENN</b> prints out the norms of the sensitivities.
+        </li>
+        <li>
+          <b>PRVECFL</b> prints out some entries of a vector indexed by node number.
+        </li>
+        <li>
+          <b>PRVECRB</b> prints out entries ILO through IHI of a vector.
+        </li>
+        <li>
+          <b>PRXY</b> prints the X and Y coordinates of each node.
+        </li>
+        <li>
+          <b>QBF</b> evaluates a particular quadratic basis function at a point
+        </li>
+        <li>
+          <b>REFBSP</b> evaluates one of the three linear basis functions,
+        </li>
+        <li>
+          <b>REFQBF</b> evaluates one of the six quadratic basis functions,
+        </li>
+        <li>
+          <b>SETBAN</b> computes NLBAND, the lower band width of the Jacobian matrix
+        </li>
+        <li>
+          <b>SETGEO</b> is given a set of flow parameters in PAR, and an
+        </li>
+        <li>
+          <b>SETLOG</b> determines some data that depends on the user input.
+        </li>
+        <li>
+          <b>SETNOD</b> assigns numbers to the nodes and elements, decides which 
+        </li>
+        <li>
+          <b>SETPFL</b> computes the value of the finite element basis functions at 
+        </li>
+        <li>
+          <b>SETPRB</b> is given:
+        </li>
+        <li>
+          <b>SETQ3</b> sets the abscissas and weights for a three point quadrature 
+        </li>
+        <li>
+          <b>SETXY</b> sets the X and Y coordinates of the nodes.
+        </li>
+        <li>
+          <b>STEP</b> sets up a forward facing step problem.
+        </li>
+        <li>
+          <b>TARGET</b> is called to save the current parameters and solution
+        </li>
+        <li>
+          <b>TRANS</b> calculates the biquadratic transformation which maps the 
+        </li>
+        <li>
+          <b>UVPFL</b> evaluates the velocities and pressure, and their X and Y
+        </li>
+        <li>
+          <b>UVPNRM</b> returns the "norm" of the solution.  Here, the norm of
+        </li>
+        <li>
+          <b>UVPQFL</b> evaluates the velocities and pressure, and their X and Y
+        </li>
+        <li>
+          <b>UVPQRB</b> is given:
+        </li>
+        <li>
+          <b>WRDIS</b> writes information to a file which can be used to create
+        </li>
+        <li>
+          <b>WRTEC</b> writes out information which can be used for with the
+        </li>
+        <li>
+          <b>XOFXSI</b> is given the XSI, ETA coordinates of a point in an
+        </li>
+        <li>
+          <b>DASUM</b> takes the sum of the absolute values of the entries of 
+        </li>
+        <li>
+          <b>DAXPY</b> adds a multiple of one vector to another.
+        </li>
+        <li>
+          <b>DCOPY</b> copies a vector X to a vector Y.
+        </li>
+        <li>
+          <b>DDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>DGBTF2</b> ???
+        </li>
+        <li>
+          <b>DGBTRF</b> ???
+        </li>
+        <li>
+          <b>DGBTRS</b> ???
+        </li>
+        <li>
+          <b>DGEMM</b> ???
+        </li>
+        <li>
+          <b>DGEMV</b> ???
+        </li>
+        <li>
+          <b>DGEQR2</b> computes a QR factorization of a real m by n matrix A:
+        </li>
+        <li>
+          <b>DGEQRF</b> computes a QR factorization of a real M-by-N matrix A:
+        </li>
+        <li>
+          <b>DGER</b> ???
+        </li>
+        <li>
+          <b>DGETF2</b> ???
+        </li>
+        <li>
+          <b>DGETRF</b> ???
+        </li>
+        <li>
+          <b>DGETRS</b> ???
+        </li>
+        <li>
+          <b>DLAPY2</b> returns sqrt(x**2+y**2), avoiding overflow.
+        </li>
+        <li>
+          <b>DLARF</b> ???
+        </li>
+        <li>
+          <b>DLARFB</b> ???
+        </li>
+        <li>
+          <b>DLARFT</b> ???
+        </li>
+        <li>
+          <b>DLASWP</b> ???
+        </li>
+        <li>
+          <b>DNRM2</b> returns the euclidean norm of a vector.
+        </li>
+        <li>
+          <b>DORG2R</b> ???
+        </li>
+        <li>
+          <b>DORGQR</b> ???
+        </li>
+        <li>
+          <b>DSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>DSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>DTBSV</b> ???
+        </li>
+        <li>
+          <b>DTRMM</b> ???
+        </li>
+        <li>
+          <b>DTRMV</b> ???
+        </li>
+        <li>
+          <b>DTRSM</b> ???
+        </li>
+        <li>
+          <b>IDAMAX</b> FINDS THE INDEX OF ELEMENT HAVING MAX. ABSOLUTE VALUE.
+        </li>
+        <li>
+          <b>ILAENV</b> ???
+        </li>
+        <li>
+          <b>LSAME</b> ???
+        </li>
+        <li>
+          <b>XERBLA</b> is an error handler for the LAPACK routines.
+        </li>
+        <li>
+          <b>DLAMCH</b> ???
+        </li>
+        <li>
+          <b>DLAMC1</b> ???
+        </li>
+        <li>
+          <b>DLAMC2</b> ???
+        </li>
+        <li>
+          <b>DLAMC3</b> is intended to force  A  and  B  to be stored prior to doing
+        </li>
+        <li>
+          <b>DLAMC4</b> ???
+        </li>
+        <li>
+          <b>DLAMC5</b> ???
+        </li>
+        <li>
+          <b>DLARFG</b> ???
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 December 2007.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

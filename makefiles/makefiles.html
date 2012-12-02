@@ -1,0 +1,187 @@
+<html>
+
+  <head>
+    <title>
+      MAKEFILES - Examples of the use of Makefiles
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MAKEFILES <br> Examples of the use of Makefiles
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MAKEFILES</b>
+      is a directory of FORTRAN90 programs which
+      illustrate how a "makefile" can
+      be used to manage the compilation and loading of a FORTRAN90 program.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      A makefile is usually stored in a file named <i>makefile</i>.
+    </p>
+
+    <p>
+      The purpose of a makefile is to record or infer the commands
+      necessary to compile and load a program (or, more generally,
+      to "build" a program or object that depends on objects),
+      to intelligently automate this task, and to efficiently
+      update all objects that depend on an object that has itself
+      just been updated.
+    </p>
+
+    <p>
+      The most natural example for which a makefile is useful would
+      involve the relationship between several text files containing
+      F90 routines (with extension ".f90"),
+      the object files created by compiling separately each F90 file
+      (with extension ".o"), and the executable program that can be
+      created by loading them all together (which, by default, is
+      called "a.out", but which we will rename to "f90_simple".
+    </p>
+
+    <p>
+      We suppose we start with files <i>f90_simple.f90</i>, <i>midpoint.f90</i>,
+      and <i>f.f90</i>.  If we wished to build the
+      executable <i>f90_simple</i>, we need to create <i>f90_simple.o</i>,
+      <i>midpoint.o</i>, <i>f.o</i>, and then load them together,
+      and rename the result to <i>f90_simple</i>.
+    </p>
+
+    <p>
+      The "dependencies" or relationships between these files can
+      be thought of as follows:
+      <pre>
+        <b>f90_simple</b> needs <i>f90_simple.o</i>, <i>midpoint.o</i> and <i>f.o</i>.
+          The commands to create <b>f90_simple</b> are
+          f90 f90_simple.o midpoint.o sub2.o
+          mv a.out f90_simple
+
+        <b>f90_simple.o</b> needs <i>f90_simple.f90</i>.
+          The command to create <b>f90_simple.o</b> is
+          f90 -c f90_simple.f90
+
+        <b>midpoint.o</b> needs <i>midpoint.f90</i>.
+          The command to create <b>midpoint.o</b> is
+          f90 -c midpoint.f90
+
+        <b>f.o</b> needs <i>f.f90</i>.
+          The command to create <b>f.o</b> is
+          f90 -c f.f90
+      </pre>
+    </p>
+
+    <p>
+      The corresponding makefile records these relationships.  Each
+      <i>dependency line</i> lists a "target" (something you want to make),
+      followed by a colon, and then a list of the components on which that
+      target depends.  There follow one or more <i>command lines</i> that
+      tell how to put the components together to make the target.  Note
+      that each command line must begin with a TAB character.  We will
+      use the symbol <b>--TAB--&gt;</b> to suggest this.  Here is what the
+      makefile would look like
+      <pre>
+        <b>f90_simple</b> : <i>f90_simple.o</i> <i>midpoint.o</i> <i>f.o</i>
+        <i>--TAB--&gt;</i> f90 f90_simple.o midpoint.o f.o
+        <i>--TAB--&gt;</i> mv a.out f90_simple
+        <b>f90_simple.o</b> : <i>f90_simple.f90</i>
+        <i>--TAB--&gt;</i> f90 -c f90_simple.f90
+        <b>midpoint.o</b> : <i>midpoint.f90</i>
+        <i>--TAB--&gt;</i> f90 -c midpoint.f90
+        <b>f.o</b> : <i>f.f90</i>
+        <i>--TAB--&gt;</i> f90 -c f.f90
+      </pre>
+    </p>
+
+    <p>
+      To create the program, type <i>make f90_simple</i>.  If you just
+      edited <b>midpoint.f90</b> and want only to recompile it, type
+      <i>make midpoint.o</i>.  But if you just edited <b>midpoint.f90</b>,
+      and you want to recompile it, and then also recreate the program,
+      then type <i>make f90_simple</i>.  The <b>make</b> program will notice
+      that <i>midpoint.f90</i> has been updated, and automatically
+      recompile it, and then rebuild <b>f90_simple</b>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MAKEFILES</b> is available in
+      <a href = "../../c_src/makefiles/makefiles.html">a C version</a> and
+      <a href = "../../cpp_src/makefiles/makefiles.html">a C++ version</a> and
+      <a href = "../../f77_src/makefiles/makefiles.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/makefiles/makefiles.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Robert Mecklenburg,<br>
+          Managing Projects with GNU Make,<br>
+          O'Reilly, 2004,<br>
+          ISBN: 0596006101.
+        </li>
+        <li>
+          Steve Talbot,<br>
+          Managing Projects with Make,<br>
+          O'Reilly, 1990,<br>
+          ISBN: 0-937-175-18-8.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "f90_simple/f90_simple.html">a simple FORTRAN90 example</a>
+        </li>
+        <li>
+          <a href = "module/module.html">an example that uses a module</a>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 page</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 04 December 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

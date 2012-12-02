@@ -1,0 +1,351 @@
+<html>
+
+  <head>
+    <title>
+      SPHERE_CVT - Spherical Centroidal Voronoi Tesselation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPHERE_CVT <br> Spherical Centroidal Voronoi Tesselation 
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPHERE_CVT</b>
+      is a FORTRAN90 program which 
+      seeks to determine N well-separated sites on the unit sphere in 3D,
+      using centroidal Voronoi tessellation (CVT) techniques.
+    </p>
+
+    <p>
+      The code assumes that good separation will follow automatically
+      if the points are the centroids of their Voronoi regions.
+      Thus, the code actually places N points at random on the sphere,
+      and then applies probabilistic centroidal Voronoi tessellation
+      techniques in an attempt to force the the CVT condition to be satisfied.
+      The output of the program is an
+      <a href = "../../data/xyz/xyz.html">XYZ file</a> 
+      containing the coordinates of the points.
+    </p>
+
+    <p>
+      According to Steven Fortune, it is possible to compute the Delaunay 
+      triangulation of points on a sphere by computing their convex hull.  
+      If the sphere is the unit sphere at the origin, the facet normals are 
+      the Voronoi vertices.  
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SPHERE_CVT</b> is available in
+      <a href = "../../f_src/sphere_cvt/sphere_cvt.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sphere_cvt/sphere_cvt.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/sphere_delaunay/sphere_delaunay.html">
+      SPHERE_DELAUNAY</a>, 
+      a FORTRAN90 program which
+      computes the Delaunay triangulation of points on a sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_design_rule/sphere_design_rule.html">
+      SPHERE_DESIGN_RULE</a>,
+      a FORTRAN90 library which 
+      returns point sets on the surface of the unit sphere, known as "designs",
+      which can be useful for estimating integrals on the surface, among other uses.
+    </p>
+
+    <p>
+      <a href = "../../datasets/sphere_lebedev_rule/sphere_lebedev_rule.html">
+      SPHERE_LEBEDEV_RULE</a>, 
+      a dataset directory which 
+      contains sets of points on a sphere which can be used for
+      quadrature rules of a known precision;
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_quad/sphere_quad.html">
+      SPHERE_QUAD</a>,
+      a FORTRAN90 library which 
+      estimates the integral of a function defined on the sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_stereograph/sphere_stereograph.html">
+      SPHERE_STEREOGRAPH</a>,
+      a FORTRAN90 library which
+      computes the stereographic mapping between points on the unit sphere
+      and points on the plane Z = 1; a generalized mapping is also available.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_voronoi/sphere_voronoi.html">
+      SPHERE_VORONOI</a>,
+      a FORTRAN90 program which 
+      computes and plots the Voronoi diagram of points on the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/sphere_voronoi_display_opengl/sphere_voronoi_display_opengl.html">
+      SPHERE_VORONOI_DISPLAY_OPENGL</a>,
+      a C++ program which
+      displays a sphere and randomly selected generator points, and then
+      gradually colors in points in the sphere that are closest to each generator.
+    </p>
+
+    <p> 
+      <a href = "../../m_src/sphere_xyz_display/sphere_xyz_display.html">
+      SPHERE_XYZ_DISPLAY</a>,
+      a MATLAB program which
+      reads XYZ information defining points in 3D, 
+      and displays a unit sphere and the points in the MATLAB graphics window.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stripack/stripack.html">
+      STRIPACK</a>,
+      a FORTRAN90 library which
+      can determine the Voronoi diagram or Delaunay triangulation of
+      a given set of points on the sphere.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams - 
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, pages 345-405, September 1991.
+        </li>
+        <li>
+          Qiang Du, Vance Faber, Max Gunzburger,<br>
+          Centroidal Voronoi Tesselations: Applications and Algorithms,<br>
+          SIAM Review, Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Jacob Goodman, Joseph ORourke, editors,<br>
+          Handbook of Discrete and Computational Geometry,<br>
+          Second Edition,<br>
+          CRC/Chapman and Hall, 2004,<br>
+          ISBN: 1-58488-301-4,<br>
+          LC: QA167.H36.
+        </li>
+        <li>
+          Douglas Hardin, Edward Saff,<br>
+          Discretizing Manifolds via Minimum Energy Points, <br>
+          Notices of the American Mathematical Society,<br>
+          Volume 51, Number 10, November 2004, pages 1186-1194.
+        </li>
+        <li>
+          Edward Saff, Arno Kuijlaars,<br>
+          Distributing Many Points on a Sphere, <br>
+          The Mathematical Intelligencer,<br>
+          Volume 19, Number 1, 1997, pages 5-11.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sphere_cvt.f90">sphere_cvt.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "sphere_cvt.sh">sphere_cvt.sh</a>, 
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "random32/random32.html">32 random points.</a>
+        </li>
+        <li>
+          <a href = "refine_del/refine_del.html">Delaunay refinement</a>,
+          start with soccer ball centers, add midpoints of Delaunay sides;
+        </li>
+        <li>
+          <a href = "refine_vor/refine_vor.html">Voronoi refinement</a>,
+          start with soccer ball centers, add Voronoi vertices;
+        </li>
+        <li>
+          <a href = "soccer32/soccer32.html">32 soccer ball centers.</a>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SPIRAL32</b> carries out a calculation that begins with 32
+      points on a spiral.
+      <ul>
+        <li>
+          <a href = "spiral32_output.txt">spiral32_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "spiral32_init.xyz">spiral32_init.xyz</a>, 
+          the initial dataset.
+        </li>
+        <li>
+          <a href = "spiral32_init_del.png">spiral32_init_del.png</a>, 
+          a PNG image of the Delaunay triangulation of the initial dataset.
+        </li>
+        <li>
+          <a href = "spiral32_init_vor.png">spiral32_init_vor.png</a>, 
+          a PNG image of the Voronoi diagram of the initial dataset;
+        </li>
+         <li>
+          <a href = "spiral32_final.xyz">spiral32_final.xyz</a>, 
+          the final dataset.
+        </li>
+        <li>
+          <a href = "spiral32_final_del.png">spiral32_final_del.png</a>, 
+          a PNG image of the Delaunay triangulation of the final dataset; 
+        </li>
+        <li>
+          <a href = "spiral32_final_vor.png">spiral32_final_vor.png</a>, 
+          a PNG image of the Voronoi diagram of the final dataseet;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for SPHERE_CVT.
+        </li>
+        <li>
+          <b>DELAUNAY_MIDPOINTS</b> returns the midpoints of a Delaunay triangulation.
+        </li>
+        <li>
+          <b>FIND_CLOSEST</b> finds the nearest R point to each S point.
+        </li>
+        <li>
+          <b>GENERATOR_INITIALIZE</b> sets initial values for the generators.
+        </li>
+        <li>
+          <b>HALTON_MEMORY</b> sets or returns quantities associated with the Halton sequence.
+        </li>
+        <li>
+          <b>HALTON_VECTOR_SEQUENCE</b> computes the next N elements in the vector Halton sequence.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_TO_HALTON_VECTOR_SEQUENCE</b> computes N elements of a vector Halton sequence.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector A(I)=I.
+        </li>
+        <li>
+          <b>MOTION</b> computes the "motion" between two sets of points on the sphere.
+        </li>
+        <li>
+          <b>PRIME</b> returns any of the first PRIME_MAX prime numbers.
+        </li>
+        <li>
+          <b>R83VEC_UNIT_L2</b> makes each R83 vector in an R83VEC have unit L2 norm.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>SPHERE_CVT_CENTROID</b> computes the centroids of the regions.
+        </li>
+        <li>
+          <b>SOCCER_CENTERS</b> returns the centers of the truncated icosahedron in 3D.
+        </li>
+        <li>
+          <b>SOCCER_VERTICES</b> returns the vertices of the truncated icosahedron in 3D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_HALTONS_3D</b> picks a Halton point on the unit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_SAMPLES_3D</b> picks a random point on the unit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_SPIRALPOINTS_3D</b> produces spiral points on the unit sphere in 3D.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>VORONOI_VERTICES</b> returns the vertices of a Voronoi diagram.
+        </li>
+        <li>
+          <b>XYZ_PRINT</b> prints out a set of XYZ points.
+        </li>
+        <li>
+          <b>XYZ_WRITE</b> writes out a set of XYZ points to a file.
+        </li>
+      </ul>
+    </p>
+ 
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 August 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial html skeleton created by HTMLINDEX. -->
+
+</html>

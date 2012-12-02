@@ -1,0 +1,784 @@
+<html>
+
+  <head>
+    <title>
+      COMBO - Kreher and Stinson Combinatorial Routines
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      COMBO <br> Kreher and Stinson Combinatorial Routines
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>COMBO</b>
+      is a FORTRAN90 library which
+      implements some of the combinatorial algorithms of Kreher and Stinson.
+    </p>
+
+    <p>
+      Routines are available to count, list, rank and unrank such objects
+      <ul>
+        <li>
+          <b>BAL</b>, balanced sequences;
+        </li>
+        <li>
+          <b>CYCLE</b>, permutations of the first N integers in cycle form;
+        </li>
+        <li>
+          <b>GRAPH</b>, graphs stored as a list of edges.
+        </li>
+        <li>
+          <b>GRAY</b>, Gray codes;
+        </li>
+        <li>
+          <b>KNAPSACK</b>, optimally filling a knapsack of given size using
+          a set of smaller objects;
+        </li>
+        <li>
+          <b>KSUBSET</b>, subsets of size exactly K from a set of N objects;
+        </li>
+        <li>
+          <b>NPART</b>, partitions of an integer having exactly N parts;
+        </li>
+        <li>
+          <b>PART</b>, partitions of an integer;
+        </li>
+        <li>
+          <b>PERM</b>, permutations of the first N integers in standard form;
+        </li>
+        <li>
+          <b>PRUEFER</b>, Pruefer codes;
+        </li>
+        <li>
+          <b>RGF</b>, restricted growth functions;
+        </li>
+        <li>
+          <b>SETPART</b>, partitions of a set;
+        </li>
+        <li>
+          <b>SUBSET</b>, subsets of a set of N objects;
+        </li>
+        <li>
+          <b>TABLEAU</b>, tableaus;
+        </li>
+        <li>
+          <b>TREE</b>, trees;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Some of these sets of objects can be ordered in several different
+      ways, and in some cases, a separate set of ranking, unranking, and
+      successor routines are available for the various orderings
+      (lexical, colexical, revolving door, Trotter-Johnson).
+    </p>
+
+    <p>
+      Kreher and Stinson provide C source-code for the routines,
+      as well as other information, at
+      <a href = "http://www.math.mtu.edu/~kreher/cages.html">
+      their web site.</a>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>COMBO</b> is available in
+      <a href = "../../c_src/combo/combo.html">a C version</a> and
+      <a href = "../../cpp_src/combo/combo.html">a C++ version</a> and
+      <a href = "../../f77_src/combo/combo.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/combo/combo.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/combo/combo.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/combination_lock/combination_lock.html">
+      COMBINATION_LOCK</a>,
+      a FORTRAN90 program which
+      simulates the process of determining the secret combination of a lock.
+    </p>
+
+    <p>
+      <a href = "../../f_src/floyd/floyd.html">
+      FLOYD</a>,
+      a FORTRAN90 library which
+      implements Floyd's algorithm for finding the shortest distance between pairs of
+      nodes on a directed graph.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grafpack/grafpack.html">
+      GRAFPACK</a>,
+      a FORTRAN90 library which
+      carries out computations involving graphs.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/knapsack/knapsack.html">
+      KNAPSACK</a>,
+      a FORTRAN77 library which
+      solves a variety of knapsack problems.
+    </p>
+
+    <p>
+      <a href = "../../datasets/knapsack_01/knapsack_01.html">
+      KNAPSACK_01</a>,
+      a dataset directory which
+      contains test data for the 0/1 knapsack problem;
+    </p>
+
+    <p>
+      <a href = "../../f77_src/lamp/lamp.html">
+      LAMP</a>,
+      a FORTRAN77 library which
+      solves linear assignment and matching problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lau_np/lau_np.html">
+      LAU_NP</a>,
+      a FORTRAN90 library which
+      implements heuristic algorithms for various NP-hard combinatorial problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/partial_digest/partial_digest.html">
+      PARTIAL_DIGEST</a>,
+      a FORTRAN90 library which
+      solves the partial digest problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/partition_problem/partition_problem.html">
+      PARTITION_PROBLEM</a>,
+      a FORTRAN90 library which
+      seeks solutions of the partition problem, splitting a set of integers into
+      two subsets with equal sum.
+    </p>
+
+    <p>
+      <a href = "../../f_src/select/select.html">
+      SELECT</a>,
+      a FORTRAN90 library which
+      generates various combinatorial objects.
+    </p>
+
+    <p>
+      <a href = "../../f_src/set_theory/set_theory.html">
+      SET_THEORY</a>,
+      a FORTRAN90 library which
+      demonstrates various set theoretic operations using several models of a set.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset/subset.html">
+      SUBSET</a>,
+      a FORTRAN90 library which
+      generates, ranks and unranks various combinatorial objects.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset_sum/subset_sum.html">
+      SUBSET_SUM</a>,
+      a FORTRAN90 library which
+      seeks solutions of the subset sum problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/unicycle/unicycle.html">
+      UNICYCLE</a>,
+      a FORTRAN90 library which
+      considers permutations containing a single cycle, sometimes called cyclic permutations.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox, Linus Schrage,<br>
+          A Guide to Simulation,<br>
+          Second Edition,<br>
+          Springer, 1987,<br>
+          ISBN: 0387964673,<br>
+          LC: QA76.9.C65.B73.
+        </li>
+        <li>
+          William Cody, Kenneth Hillstrom,<br>
+          Chebyshev Approximations for the Natural Logarithm of the
+          Gamma Function,
+          Mathematics of Computation,<br>
+          Volume 21, Number 98, April 1967, pages 198-203.
+        </li>
+        <li>
+          Robert Fenichel,<br>
+          Algorithm 329:
+          Distribution of Indistinguishable Objects into
+          Distinguishable Slots,<br>
+          Communications of the ACM,<br>
+          Volume 11, Number 6, June 1968, page 430.
+        </li>
+        <li>
+          Bennett Fox,<br>
+          Algorithm 647:
+          Implementation and Relative Efficiency of Quasirandom
+          Sequence Generators,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 12, Number 4, December 1986, pages 362-376.
+        </li>
+        <li>
+          John Hart, Ward Cheney, Charles Lawson, Hans Maehly,
+          Charles Mesztenyi, John Rice, Henry Thacher,
+          Christoph Witzgall,<br>
+          Computer Approximations,<br>
+          Wiley, 1968,<br>
+          LC: QA297.C64.
+        </li>
+        <li>
+          Brian Hayes,<br>
+          The Easiest Hard Problem,<br>
+          American Scientist,<br>
+          Volume 90, Number 2, March-April 2002, pages 113-117.
+        </li>
+        <li>
+          Donald Kreher, Douglas Simpson,<br>
+          Combinatorial Algorithms,<br>
+          CRC Press, 1998,<br>
+          ISBN: 0-8493-3988-X,<br>
+          LC: QA164.K73.
+        </li>
+        <li>
+          Pierre LEcuyer,<br>
+          Random Number Generation,<br>
+          in Handbook of Simulation,<br>
+          edited by Jerry Banks,<br>
+          Wiley, 1998,<br>
+          ISBN: 0471134031,<br>
+          LC: T57.62.H37.
+        </li>
+        <li>
+          Peter Lewis, Allen Goodman, James Miller,<br>
+          A Pseudo-Random Number Generator for the System/360,<br>
+          IBM Systems Journal,<br>
+          Volume 8, 1969, pages 136-143.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms for Computers and Calculators,<br>
+          Second Edition,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0-12-519260-6,<br>
+          LC: QA164.N54.
+        </li>
+        <li>
+          Robert Sedgewick,<br>
+          Algorithms in C,<br>
+          Addison-Wesley, 1990,<br>
+          ISBN: 0-201-51425-7,<br>
+          LC: QA76.73.C15S43.
+        </li>
+        <li>
+          Jack vanLint, Richard Wilson,<br>
+          A Course in Combinatorics,<br>
+          Cambridge, 1992,<br>
+          ISBN: 0-521-42260-4,<br>
+          LC: QA164.L56.
+        </li>
+        <li>
+          ML Wolfson, HV Wright,<br>
+          Algorithm 160:
+          Combinatorial of M Things Taken N at a Time,<br>
+          Communications of the ACM,<br>
+          Volume 6, Number 4, April 1963, page 161.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "combo.f90">combo.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "combo.sh">combo.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "combo_prb.f90">combo_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "combo_prb.sh">combo_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "combo_prb_output.txt">combo_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BACKTRACK</b> supervises a backtrack search.
+        </li>
+        <li>
+          <b>BAL_SEQ_CHECK</b> checks a balanced sequence.
+        </li>
+        <li>
+          <b>BAL_SEQ_ENUM</b> enumerates the balanced sequences.
+        </li>
+        <li>
+          <b>BAL_SEQ_RANK</b> ranks a balanced sequence.
+        </li>
+        <li>
+          <b>BAL_SEQ_SUCCESSOR</b> computes the lexical balanced sequence successor.
+        </li>
+        <li>
+          <b>BAL_SEQ_TO_TABLEAU</b> converts a balanced sequence to a 2 by N tableau.
+        </li>
+        <li>
+          <b>BAL_SEQ_UNRANK</b> unranks a balanced sequence.
+        </li>
+        <li>
+          <b>BELL_NUMBERS</b> computes the Bell numbers.
+        </li>
+        <li>
+          <b>BINOMIAL</b> computes the binomial coefficient C(N,K).
+        </li>
+        <li>
+          <b>COMBIN</b> computes the combinatorial coefficient C(N,K).
+        </li>
+        <li>
+          <b>CYCLE_CHECK</b> checks a permutation in cycle form.
+        </li>
+        <li>
+          <b>CYCLE_TO_PERM</b> converts a permutation from cycle to array form.
+        </li>
+        <li>
+          <b>DIST_ENUM</b> returns the number of distributions of indistinguishable objects.
+        </li>
+        <li>
+          <b>DIST_NEXT</b> returns the next distribution of indistinguishable objects.
+        </li>
+        <li>
+          <b>EDGE_CHECK</b> checks a graph stored by edges.
+        </li>
+        <li>
+          <b>EDGE_DEGREE</b> returns the degree of the nodes of a graph stored by edges.
+        </li>
+        <li>
+          <b>EDGE_ENUM</b> enumerates the maximum number of edges in a graph on N_NODE nodes.
+        </li>
+        <li>
+          <b>FALL</b> computes the falling factorial function [X]_N.
+        </li>
+        <li>
+          <b>GRAY_CODE_CHECK</b> checks a Gray code element.
+        </li>
+        <li>
+          <b>GRAY_CODE_ENUM</b> enumerates the Gray codes on N digits.
+        </li>
+        <li>
+          <b>GRAY_CODE_RANK</b> computes the rank of a Gray code element.
+        </li>
+        <li>
+          <b>GRAY_CODE_SUCCESSOR</b> computes the binary reflected Gray code successor.
+        </li>
+        <li>
+          <b>GRAY_CODE_UNRANK</b> computes the Gray code element of given rank.
+        </li>
+        <li>
+          <b>I4_FACTORIAL</b> computes the factorial of an I4.
+        </li>
+        <li>
+          <b>I4_FACTORIAL_VALUES</b> returns values of the factorial function for testing.
+        </li>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4VEC_BACKTRACK</b> supervises a backtrack search for an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_PART1</b> partitions an integer N into NPART parts.
+        </li>
+        <li>
+          <b>I4VEC_PART2</b> partitions an integer N into NPART nearly equal parts.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SEARCH_BINARY_A</b> searches the ascending sorted I4VEC for a value.
+        </li>
+        <li>
+          <b>I4VEC_SEARCH_BINARY_D</b> searches a descending sorted I4VEC for a value.
+        </li>
+        <li>
+          <b>I4VEC_SORT_INSERT_A</b> uses an ascending insertion sort on an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORT_INSERT_D</b> uses a descending insertion sort on an I4VEC.
+        </li>
+        <li>
+          <b>KNAPSACK_01</b> solves the 0/1 knapsack problem.
+        </li>
+        <li>
+          <b>KNAPSACK_RATIONAL</b> solves the rational knapsack problem.
+        </li>
+        <li>
+          <b>KNAPSACK_REORDER</b> reorders the knapsack data by "profit density".
+        </li>
+        <li>
+          <b>KSUBSET_COLEX_CHECK</b> checks a K subset in colex form.
+        </li>
+        <li>
+          <b>KSUBSET_COLEX_RANK</b> computes the colex rank of a K subset.
+        </li>
+        <li>
+          <b>KSUBSET_COLEX_SUCCESSOR</b> computes the K subset colex successor.
+        </li>
+        <li>
+          <b>KSUBSET_COLEX_UNRANK</b> computes the K subset of given colex rank.
+        </li>
+        <li>
+          <b>KSUBSET_ENUM</b> enumerates the K element subsets of an N set.
+        </li>
+        <li>
+          <b>KSUBSET_LEX_CHECK</b> checks a K subset in lex form.
+        </li>
+        <li>
+          <b>KSUBSET_LEX_RANK</b> computes the lexicographic rank of a K subset.
+        </li>
+        <li>
+          <b>KSUBSET_LEX_SUCCESSOR</b> computes the K subset lexicographic successor.
+        </li>
+        <li>
+          <b>KSUBSET_LEX_UNRANK</b> computes the K subset of given lexicographic rank.
+        </li>
+        <li>
+          <b>KSUBSET_REVDOOR_RANK</b> computes the revolving door rank of a K subset.
+        </li>
+        <li>
+          <b>KSUBSET_REVDOOR_SUCCESSOR</b> computes the K subset revolving door successor.
+        </li>
+        <li>
+          <b>KSUBSET_REVDOOR_UNRANK</b> computes the K subset of given revolving door rank.
+        </li>
+        <li>
+          <b>MARRIAGE</b> finds a stable set of marriages for given preferences.
+        </li>
+        <li>
+          <b>MOUNTAIN</b> enumerates the mountains.
+        </li>
+        <li>
+          <b>NPART_ENUM</b> enumerates the number of partitions of N with NPART parts.
+        </li>
+        <li>
+          <b>NPART_RSF_LEX_RANDOM</b> returns a random RSF NPART partition.
+        </li>
+        <li>
+          <b>NPART_RSF_LEX_RANK</b> computes the lex rank of an RSF NPART partition.
+        </li>
+        <li>
+          <b>NPART_RSF_LEX_SUCCESSOR</b> computes the RSF lex successor for NPART partitions.
+        </li>
+        <li>
+          <b>NPART_RSF_LEX_UNRANK</b> unranks an RSF NPART partition in the lex ordering.
+        </li>
+        <li>
+          <b>NPART_SF_LEX_SUCCESSOR</b> computes SF NPART partition.
+        </li>
+        <li>
+          <b>NPART_TABLE</b> tabulates the number of partitions of N having NPART parts.
+        </li>
+        <li>
+          <b>PART_ENUM</b> enumerates the number of partitions of N.
+        </li>
+        <li>
+          <b>PART_RSF_CHECK</b> checks a reverse standard form partition of an integer.
+        </li>
+        <li>
+          <b>PART_SF_CHECK</b> checks a standard form partition of an integer.
+        </li>
+        <li>
+          <b>PART_SF_CONJUGATE</b> computes the conjugate of a partition.
+        </li>
+        <li>
+          <b>PART_SF_MAJORIZE</b> determines if partition A majorizes partition B.
+        </li>
+        <li>
+          <b>PART_SUCCESSOR</b> computes the lexicographic partition successor.
+        </li>
+        <li>
+          <b>PART_TABLE</b> tabulates the number of partitions of N.
+        </li>
+        <li>
+          <b>PARTITION_GREEDY</b> attacks the partition problem with a greedy algorithm.
+        </li>
+        <li>
+          <b>PARTN_SF_CHECK</b> checks an SF partition of an integer with largest entry NMAX.
+        </li>
+        <li>
+          <b>PARTN_ENUM</b> enumerates the partitions of N with maximum element NMAX.
+        </li>
+        <li>
+          <b>PARTN_SUCCESSOR</b> computes partitions whose largest part is NMAX.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks a representation of a permutation.
+        </li>
+        <li>
+          <b>PERM_ENUM</b> enumerates the permutations on N digits.
+        </li>
+        <li>
+          <b>PERM_INV</b> computes the inverse of a permutation.
+        </li>
+        <li>
+          <b>PERM_LEX_RANK</b> computes the lexicographic rank of a permutation.
+        </li>
+        <li>
+          <b>PERM_LEX_SUCCESSOR</b> computes the lexicographic permutation successor.
+        </li>
+        <li>
+          <b>PERM_LEX_UNRANK</b> computes the permutation of given lexicographic rank.
+        </li>
+        <li>
+          <b>PERM_MUL</b> computes the product of two permutations.
+        </li>
+        <li>
+          <b>PERM_PARITY</b> computes the parity of a permutation.
+        </li>
+        <li>
+          <b>PERM_PRINT</b> prints a permutation.
+        </li>
+        <li>
+          <b>PERM_TJ_RANK</b> computes the Trotter-Johnson rank of a permutation.
+        </li>
+        <li>
+          <b>PERM_TJ_SUCCESSOR</b> computes the Trotter-Johnson permutation successor.
+        </li>
+        <li>
+          <b>PERM_TJ_UNRANK</b> computes the permutation of given Trotter-Johnson rank.
+        </li>
+        <li>
+          <b>PERM_TO_CYCLE</b> converts a permutation from array to cycle form.
+        </li>
+        <li>
+          <b>PRUEFER_CHECK</b> checks a Pruefer code.
+        </li>
+        <li>
+          <b>PRUEFER_ENUM</b> enumerates the Pruefer codes on N-2 digits.
+        </li>
+        <li>
+          <b>PRUEFER_RANK</b> ranks a Pruefer code.
+        </li>
+        <li>
+          <b>PRUEFER_SUCCESSOR</b> computes the lexical Pruefer sequence successor.
+        </li>
+        <li>
+          <b>PRUEFER_TO_TREE</b> converts a Pruefer code to a tree.
+        </li>
+        <li>
+          <b>PRUEFER_UNRANK</b> unranks a Pruefer code.
+        </li>
+        <li>
+          <b>QUEENS</b> finds possible positions for the K-th nonattacking queen.
+        </li>
+        <li>
+          <b>R4_UNIFORM</b> returns a scaled pseudorandom R4.
+        </li>
+        <li>
+          <b>R8_GAMMA_LOG</b> calculates the natural logarithm of GAMMA ( X ) for positive X.
+        </li>
+        <li>
+          <b>R8VEC_BACKTRACK</b> supervises a backtrack search for an R8VEC.
+        </li>
+        <li>
+          <b>RGF_CHECK</b> checks a restricted growth function.
+        </li>
+        <li>
+          <b>RGF_ENUM</b> enumerates the restricted growth functions on M.
+        </li>
+        <li>
+          <b>RGF_G_ENUM</b> enumerates the generalized restricted growth functions.
+        </li>
+        <li>
+          <b>RGF_RANK</b> ranks a restricted growth function.
+        </li>
+        <li>
+          <b>RGF_SUCCESSOR</b> generates the next restricted growth function.
+        </li>
+        <li>
+          <b>RGF_TO_SETPART</b> converts a restricted growth function to a set partition.
+        </li>
+        <li>
+          <b>RGF_UNRANK</b> returns the restricted growth function of a given rank.
+        </li>
+        <li>
+          <b>SETPART_CHECK</b> checks a set partition.
+        </li>
+        <li>
+          <b>SETPART_ENUM</b> enumerates the partitions of a set of M elements.
+        </li>
+        <li>
+          <b>SETPART_TO_RGF</b> converts a set partition to a restricted growth function.
+        </li>
+        <li>
+          <b>STIRLING_NUMBERS1</b> computes Stirling numbers of the first kind.
+        </li>
+        <li>
+          <b>STIRLING_NUMBERS2</b> computes Stirling numbers of the second kind.
+        </li>
+        <li>
+          <b>SUBSET_COLEX_RANK</b> computes the colexicographic rank of a subset.
+        </li>
+        <li>
+          <b>SUBSET_COLEX_SUCCESSOR</b> computes the subset colexicographic successor.
+        </li>
+        <li>
+          <b>SUBSET_COLEX_UNRANK</b> computes the subset of given colexicographic rank.
+        </li>
+        <li>
+          <b>SUBSET_CHECK</b> checks a subset.
+        </li>
+        <li>
+          <b>SUBSET_COMPLEMENT</b> computes the complement of a set.
+        </li>
+        <li>
+          <b>SUBSET_DISTANCE</b> computes the Hamming distance between two sets.
+        </li>
+        <li>
+          <b>SUBSET_ENUM</b> enumerates the subsets of a set with N elements.
+        </li>
+        <li>
+          <b>SUBSET_INTERSECT</b> computes the intersection of two sets.
+        </li>
+        <li>
+          <b>SUBSET_LEX_RANK</b> computes the lexicographic rank of a subset.
+        </li>
+        <li>
+          <b>SUBSET_LEX_SUCCESSOR</b> computes the subset lexicographic successor.
+        </li>
+        <li>
+          <b>SUBSET_LEX_UNRANK</b> computes the subset of given lexicographic rank.
+        </li>
+        <li>
+          <b>SUBSET_UNION</b> computes the union of two sets.
+        </li>
+        <li>
+          <b>SUBSET_WEIGHT</b> computes the Hamming weight of a set.
+        </li>
+        <li>
+          <b>SUBSET_XOR</b> computes the symmetric difference of two sets.
+        </li>
+        <li>
+          <b>SUBSETSUM_SWAP</b> seeks a solution of the subset sum problem by swapping.
+        </li>
+        <li>
+          <b>TABLEAU_CHECK</b> checks a 2 by N tableau.
+        </li>
+        <li>
+          <b>TABLEAU_ENUM</b> enumerates the 2 by N standard tableaus.
+        </li>
+        <li>
+          <b>TABLEAU_TO_BAL_SEQ</b> converts a 2 by N tableau to a balanced sequence.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TREE_CHECK</b> checks a tree.
+        </li>
+        <li>
+          <b>TREE_ENUM</b> enumerates the trees on N nodes.
+        </li>
+        <li>
+          <b>TREE_RANK</b> ranks a tree.
+        </li>
+        <li>
+          <b>TREE_SUCCESSOR</b> returns the successor of a tree.
+        </li>
+        <li>
+          <b>TREE_TO_PRUEFER</b> converts a tree to a Pruefer code.
+        </li>
+        <li>
+          <b>TREE_UNRANK</b> unranks a tree.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

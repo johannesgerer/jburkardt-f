@@ -1,0 +1,2047 @@
+<html>
+
+  <head>
+    <title>
+      GEOMETRY - Geometric Calculations
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GEOMETRY <br> Geometric Calculations
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GEOMETRY</b> 
+      is a FORTRAN90 library which 
+      carries out geometric calculations in 2, 3 and N dimensional space.  
+    </p>
+
+    <p>
+      These calculations include angles, areas, containment, distances, 
+      intersections, lengths, and volumes.  
+    </p>
+
+    <p>
+      Some geometric objects can be described in a variety of ways.
+      For instance, a line has implicit, explicit and parametric
+      representations.  The names of routines often will specify
+      the representation used, and there are routines to convert
+      from one representation to another.
+    </p>
+
+    <p>
+      Another useful task is the delineation of a standard geometric
+      object.  For instance, there is a routine that will return
+      the location of the vertices of an octahedron, and others to
+      produce a series of "equally spaced" points on a circle, ellipse,
+      sphere, or within the interior of a triangle.
+    </p>
+
+    <p>
+      An open source directory of computational geometry routines is available
+      at <a href = "http://www.cgal.org/">http://www.cgal.org</a>,
+      the Computational Geometry Algorithms Library.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>GEOMETRY</b> is available in
+      <a href = "../../c_src/geometry/geometry.html">a C version</a> and
+      <a href = "../../cpp_src/geometry/geometry.html">a C++ version</a> and
+      <a href = "../../f77_src/geometry/geometry.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/geometry/geometry.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/geometry/geometry.html">a MATLAB version</a>.   
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dutch/dutch.html">
+      DUTCH</a>,
+      a FORTRAN90 library which
+      carries out tasks in computational geometry.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geompack/geompack.html">
+      GEOMPACK</a>,
+      a FORTRAN90 library which
+      can compute Delaunay triangulations Voronoi diagrams and other information,
+      written by Barry Joe.
+    </p>
+
+    <p>
+      <a href = "../../f_src/polygon_moments/polygon_moments.html">
+      POLYGON_MOMENTS</a>,
+      a FORTRAN90 library which
+      computes arbitrary moments of a polygon.
+    </p>
+
+    <p>
+      <a href = "../../f_src/simplex_coordinates/simplex_coordinates.html">
+      SIMPLEX_COORDINATES</a>, 
+      a FORTRAN90 library which
+      computes the Cartesian coordinates of the vertices of a regular
+      simplex in M dimensions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_grid/sphere_grid.html">
+      SPHERE_GRID</a>, 
+      a FORTRAN90 library which 
+      provides a number of ways of generating grids of points, or of
+      points and lines, or of points and lines and faces, over the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      reads a file of point coordinates in the TABLE format and writes out
+      the Delaunay triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh/tet_mesh.html">
+      TET_MESH</a>,
+      a FORTRAN90 library which
+      carries out various operations on tetrahedral meshes.
+    </p>
+
+    <p>
+      <a href = "../../datasets/tetrahedrons/tetrahedrons.html">
+      TETRAHEDRONS</a>, 
+      a dataset directory which 
+      contains examples of tetrahedrons; 
+    </p>
+
+    <p>
+      <a href = "../../datasets/triangles/triangles.html">
+      TRIANGLES</a>, 
+      a dataset directory which 
+      contains examples of triangles; 
+    </p>
+
+    <p>
+      <a href = "../../c_src/triangulate/triangulate.html">
+      TRIANGULATE</a>,
+      a C program which 
+      triangulates a (possibly nonconvex) polygon.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation/triangulation.html">
+      TRIANGULATION</a>,
+      a FORTRAN90 library which
+      defines and analyzes triangulations.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/triangulation_display_opengl/triangulation_display_opengl.html">
+      TRIANGULATION_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads files defining a triangulation and displays an image using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_triangle_neighbors/triangulation_triangle_neighbors.html">
+      TRIANGULATION_TRIANGLE_NEIGHBORS</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, determines the neighboring
+      triangles of each triangle, and writes that information to a file.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Gerard Bashein, Paul Detmer,<br>
+          Centroid of a Polygon,<br>
+          in Graphics Gems IV,<br>
+          edited by Paul Heckbert,<br>
+          AP Professional, 1994,<br>
+          ISBN: 0123361559,<br>
+          LC: T385.G6974.
+        </li>
+        <li>      
+          SF Bockman,<br>
+          Generalizing the Formula for Areas of Polygons to Moments,<br>
+          American Mathematical Society Monthly,<br>
+          Volume 96, Number 2, February 1989, pages 131-132.
+        </li>
+        <li>
+          Adrian Bowyer, John Woodwark,<br>
+          A Programmer's Geometry,<br>
+          Butterworths, 1983,<br>
+          ISBN: 0408012420.
+        </li>
+        <li>
+          Paulo Cezar Pinto Carvalho, Paulo Roma Cavalcanti,<br>
+          Point in Polyhedron Testing Using Spherical Polygons,<br>
+          in Graphics Gems V,<br>
+          edited by Alan Paeth,<br>
+          Academic Press, 1995,<br>
+          ISBN: 0125434553,<br>
+          LC: T385.G6975.
+        </li>
+        <li>
+          Daniel Cohen,<br>
+          Voxel Traversal along a 3D Line,<br>
+          in Graphics Gems IV,<br>
+          edited by Paul Heckbert,<br>
+          AP Professional, 1994,<br>
+          ISBN: 0123361559,<br>
+          LC: T385.G6974.
+        </li>
+        <li>
+          Thomas Cormen, Charles Leiserson, Ronald Rivest,<br>
+          Introduction to Algorithms,<br>
+          MIT Press, 2001,<br>
+          ISBN: 0262032937,<br>
+          LC: QA76.C662.
+        </li>
+        <li>
+          Marc deBerg, Marc Krevald, Mark Overmars, 
+          Otfried Schwarzkopf,<br>
+          Computational Geometry,<br>
+          Springer, 2000,<br>
+          ISBN: 3-540-65620-0,<br>
+          LC: QA448.D38.C65.
+        </li>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1,<br>
+          LC: QA214.L56.
+        </li>
+        <li>
+          James Foley, Andries vanDam, Steven Feiner, John Hughes,<br>
+          Computer Graphics, Principles and Practice,<br>
+          Second Edition,<br>
+          Addison Wesley, 1995,<br>
+          ISBN: 0201848406,<br>
+          LC: T385.C5735.
+        </li>
+        <li>
+          Martin Gardner,<br>
+          The Mathematical Carnival,<br>
+          Knopf, 1975,<br>
+          ISBN: 0394494067,<br>
+          LC: QA95.G286.
+        </li>
+        <li>
+          Priamos Georgiades,<br>
+          Signed Distance From Point To Plane,<br>
+          in Graphics Gems III,<br>
+          edited by David Kirk,<br>
+          Academic Press, 1992,<br>
+          ISBN: 0124096735,<br>
+          LC: T385.G6973.
+        </li>
+        <li>
+          Branko Gruenbaum, Geoffrey Shephard,<br>
+          Pick's Theorem,<br>
+          The American Mathematical Monthly,<br>
+          Volume 100, Number 2, February 1993, pages 150-161.
+        </li>
+        <li>
+          John Harris, Horst Stocker,<br>
+          Handbook of Mathematics and Computational Science,<br>
+          Springer, 1998,<br>
+          ISBN: 0-387-94746-9,<br>
+          LC: QA40.S76.
+        </li>
+        <li>
+          Barry Joe,<br>
+          GEOMPACK - a software package for the generation of meshes
+          using geometric algorithms,<br>
+          Advances in Engineering Software,<br>
+          Volume 13, 1991, pages 325-331.
+        </li>
+        <li>
+          Anwei Liu, Barry Joe,<br>
+          Quality Local Refinement of Tetrahedral Meshes Based
+          on 8-Subtetrahedron Subdivision,<br>
+          Mathematics of Computation,<br>
+          Volume 65, Number 215, July 1996, pages 1183-1200.
+        </li>
+        <li>
+          Jack Kuipers,<br>
+          Quaternions and Rotation Sequences,<br>
+          Princeton, 1998,<br>
+          ISBN: 0691102988,<br>
+          LC: QA196.K85.
+        </li>
+        <li>
+          Robert Miller,<br>
+          Computing the Area of a Spherical Polygon,<br>
+          in Graphics Gems IV,<br>
+          edited by Paul Heckbert,<br>
+          Academic Press, 1994,<br>
+          ISBN: 0123361559,<br>
+          LC: T385.G6974.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms for Computers and Calculators,<br>
+          Second Edition,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0-12-519260-6,<br>
+          LC: QA164.N54.
+        </li>
+        <li>
+          Atsuyuki Okabe, Barry Boots, Kokichi Sugihara, Sung Nok Chiu,<br>
+          Spatial Tesselations: 
+          Concepts and Applications of Voronoi Diagrams,<br>
+          Second Edition,<br>
+          Wiley, 2000,<br>,
+          ISBN: 0-471-98635-6,<br>
+          LC: QA278.2.O36.
+        </li>
+        <li>
+          Joseph ORourke,<br>
+          Computational Geometry,<br>
+          Second Edition,<br>
+          Cambridge, 1998,<br>
+          ISBN: 0521649765,<br>
+          LC: QA448.D38.
+        </li>
+        <li>
+          Edward Saff, Arno Kuijlaars,<br>
+          Distributing Many Points on a Sphere,<br>
+          The Mathematical Intelligencer,<br>
+          Volume 19, Number 1, 1997, pages 5-11.
+        </li>
+        <li>
+          Philip Schneider, David Eberly,<br>
+          Geometric Tools for Computer Graphics,<br>
+          Elsevier, 2002,<br>
+          ISBN: 1558605940,<br>
+          LC: T385.S334.
+        </li>
+        <li>
+          Peter Schorn, Frederick Fisher,<br>
+          Testing the Convexity of a Polygon,<br>
+          in Graphics Gems IV,<br>
+          edited by Paul Heckbert,<br>
+          AP Professional, 1994,<br>
+          ISBN: 0123361559,<br>
+          LC: T385.G6974.
+        </li>
+        <li>
+          Moshe Shimrat,<br>
+          Algorithm 112:
+          Position of Point Relative to Polygon,<br>
+          Communications of the ACM,<br>
+          Volume 5, Number 8, August 1962, page 434.
+        </li>
+        <li>
+          Kenneth Stephenson,<br>
+          Introduction to Circle Packing, 
+          The Theory of Discrete Analytic Functions,<br>
+          Cambridge, 2005,<br>
+          ISBN: 0521823560,<br>
+          LC: QA640.7S74.
+        </li>
+        <li>
+          Allen VanGelder,<br>
+          Efficient Computation of Polygon Area and Polyhedron Volume,<br>
+          in Graphics Gems V, <br>
+          edited by Alan Paeth,<br>
+          AP Professional, 1995,<br>
+          ISBN: 0125434553,<br>
+          LC: T385.G6975.
+        </li>
+        <li>
+          Daniel Zwillinger, Steven Kokoska,<br>
+          Standard Probability and Statistical Tables,<br>
+          CRC Press, 2000,<br>
+          ISBN: 1-58488-059-7,<br>
+          LC: QA273.3.Z95.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "geometry.f90">
+          geometry.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "geometry.sh">
+          geometry.sh</a>, 
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "geometry_prb.f90">
+          geometry_prb.f90</a>, the calling
+          program;
+        </li>
+        <li>
+          <a href = "geometry_prb.sh">
+          geometry_prb.sh</a>, commands to compile,
+          link and run the sample test program;
+        </li>
+        <li>
+          <a href = "geometry_prb_output.txt">
+          geometry_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE_BOX_2D</b> "boxes" an angle defined by three points in 2D.
+        </li>
+        <li>
+          <b>ANGLE_CONTAINS_POINT_2D</b> determines if an angle contains a point, in 2D.
+        </li>
+        <li>
+          <b>ANGLE_DEG_2D</b> returns the angle swept out between two rays in 2D.
+        </li>
+        <li>
+          <b>ANGLE_HALF_2D</b> finds half an angle in 2D.
+        </li>
+        <li>
+          <b>ANGLE_RAD_2D</b> returns the angle in radians swept out between two rays in 2D.
+        </li>
+        <li>
+          <b>ANGLE_RAD_3D</b> returns the angle in radians between two rays in 3D.
+        </li>
+        <li>
+          <b>ANGLE_RAD_ND</b> returns the angle in radians between two rays in ND.
+        </li>
+        <li>
+          <b>ANGLE_TURN_2D</b> computes a turning angle in 2D.
+        </li>
+        <li>
+          <b>ANNULUS_AREA_2D</b> computes the area of a circular annulus in 2D.
+        </li>
+        <li>
+          <b>ANNULUS_SECTOR_AREA_2D</b> computes the area of an annular sector in 2D.
+        </li>
+        <li>
+          <b>ANNULUS_SECTOR_CENTROID_2D</b> computes the centroid of an annular sector in 2D.
+        </li>
+        <li>
+          <b>ARC_COSINE</b> computes the arc cosine function, with argument truncation.
+        </li>
+        <li>
+          <b>ARC_SINE</b> computes the arc sine function, with argument truncation.
+        </li>
+        <li>
+          <b>ATAN4</b> computes the inverse tangent of the ratio Y / X.
+        </li>
+        <li>
+          <b>BALL_UNIT_SAMPLE_2D</b> picks a random point in the unit ball in 2D.
+        </li>
+        <li>
+          <b>BALL_UNIT_SAMPLE_3D</b> picks a random point in the unit ball in 3D.
+        </li>
+        <li>
+          <b>BALL_UNIT_SAMPLE_ND</b> picks a random point in the unit ball in ND.
+        </li>
+        <li>
+          <b>BASIS_MAP_3D</b> computes the matrix which maps one basis to another in 3D.
+        </li>
+        <li>
+          <b>BOX_01_CONTAINS_POINT_2D</b> determines if a point is inside the unit box in 2D.
+        </li>
+        <li>
+          <b>BOX_01_CONTAINS_POINT_ND</b> determines if a point is inside the unit box in ND.
+        </li>
+        <li>
+          <b>BOX_CONTAINS_POINT_2D</b> determines if a point is inside a box in 2D.
+        </li>
+        <li>
+          <b>BOX_CONTAINS_POINT_ND</b> determines if a point is inside a box in ND.
+        </li>
+        <li>
+          <b>BOX_CONTAINS_SEGMENT_ND</b> reports if a box contains a line segment in ND.
+        </li>
+        <li>
+          <b>BOX_RAY_INT_2D:</b> intersection ( box, ray ) in 2D.
+        </li>
+        <li>
+          <b>BOX_SEGMENT_CLIP_2D</b> uses a box to clip a line segment in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_ARC_POINT_NEAR_2D</b> : nearest point on a circular arc.
+        </li>
+        <li>
+          <b>CIRCLE_AREA_2D</b> computes the area of a circle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_DIA2IMP_2D</b> converts a diameter to an implicit circle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_EXP_CONTAINS_POINT_2D:</b> explicit circle contains a point in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_EXP2IMP_2D</b> converts a circle from explicit to implicit form in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_CONTAINS_POINT_2D:</b> implicit circle contains a point in 2D?
+        </li>
+        <li>
+          <b>CIRCLE_IMP_LINE_EXP_DIST_2D:</b> distance ( impl circle, explicit line ) in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_LINE_PAR_INT_2D:</b> ( imp circle, param line ) intersection in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_POINT_DIST_2D:</b> distance ( implicit circle, point ) in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_POINT_DIST_SIGNED_2D:</b> signed distance ( imp circle, point ) in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_POINT_NEAR_2D:</b> nearest ( implicit circle, point ) in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_POINTS_2D</b> returns points on an implicit circle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_POINTS_3D</b> returns points on an implicit circle in 3D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_POINTS_ARC_2D:</b> N points on an arc of an implicit circle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_PRINT_2D</b> prints an implicit circle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_PRINT_2D</b> prints an implicit circle in 3D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP2EXP_2D</b> converts a circle from implicit to explicit form in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_LLR2IMP_2D</b> converts a circle from LLR to implicit form in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_LUNE_AREA_2D</b> returns the area of a circular lune in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_LUNE_CENTROID_2D</b> returns the centroid of a circular lune in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_PPPR2IMP_3D</b> converts a circle from PPPR to implicit form in 3D.
+        </li>
+        <li>
+          <b>CIRCLE_PPR2IMP_2D</b> converts a circle from PPR to implicit form in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_SECTOR_AREA_2D</b> computes the area of a circular sector in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_SECTOR_CENTROID_2D</b> returns the centroid of a circular sector in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_SECTOR_CONTAINS_POINT_2D</b> : is a point inside a circular sector?
+        </li>
+        <li>
+          <b>CIRCLE_SECTOR_PRINT_2D</b> prints a circular sector in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_TRIANGLE_AREA_2D</b> returns the area of a circle triangle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_TRIPLE_ANGLE_2D</b> returns an angle formed by three circles in 2D.
+        </li>
+        <li>
+          <b>CIRCLES_IMP_INT_2D:</b> finds the intersection of two implicit circles in 2D.
+        </li>
+        <li>
+          <b>COMBIN2</b> computes the binomial coefficient C(N,K).
+        </li>
+        <li>
+          <b>CONE_AREA_3D</b> computes the surface area of a right circular cone in 3D.
+        </li>
+        <li>
+          <b>CONE_CENTROID_3D</b> returns the centroid of a cone in 3D.
+        </li>
+        <li>
+          <b>CONE_VOLUME_3D</b> computes the volume of a right circular cone in 3D.
+        </li>
+        <li>
+          <b>CONV3D</b> converts 3D data to a 2D projection.
+        </li>
+        <li>
+          <b>COS_DEG</b> returns the cosine of an angle given in degrees.
+        </li>
+        <li>
+          <b>COT_DEG</b> returns the cotangent of an angle given in degrees.
+        </li>
+        <li>
+          <b>COT_RAD</b> returns the cotangent of an angle.
+        </li>
+        <li>
+          <b>CSC_DEG</b> returns the cosecant of an angle given in degrees.
+        </li>
+        <li>
+          <b>CUBE_SHAPE_3D</b> describes a cube in 3D.
+        </li>
+        <li>
+          <b>CUBE_SIZE_3D</b> gives "sizes" for a cube in 3D.
+        </li>
+        <li>
+          <b>CYLINDER_POINT_DIST_3D:</b> distance from a cylinder to a point in 3D.
+        </li>
+        <li>
+          <b>CYLINDER_POINT_DIST_SIGNED_3D:</b> signed distance from cylinder to point in 3D.
+        </li>
+        <li>
+          <b>CYLINDER_POINT_INSIDE_3D</b> determines if a cylinder contains a point in 3D.
+        </li>
+        <li>
+          <b>CYLINDER_POINT_NEAR_3D:</b> nearest point on a cylinder to a point in 3D.
+        </li>
+        <li>
+          <b>CYLINDER_SAMPLE_3D</b> samples a cylinder in 3D.
+        </li>
+        <li>
+          <b>CYLINDER_VOLUME_3D</b> determines the volume of a cylinder in 3D.
+        </li>
+        <li>
+          <b>DEGREES_TO_RADIANS</b> converts an angle from degrees to radians.
+        </li>
+        <li>
+          <b>DGE_DET</b> computes the determinant of a matrix factored by DGE_FA.
+        </li>
+        <li>
+          <b>DGE_FA</b> factors a general matrix.
+        </li>
+        <li>
+          <b>DGE_SL</b> solves a system factored by DGE_FA.
+        </li>
+        <li>
+          <b>DIRECTION_PERT_3D</b> randomly perturbs a direction vector in 3D.
+        </li>
+        <li>
+          <b>DIRECTION_UNIFORM_2D</b> picks a random direction vector in 2D.
+        </li>
+        <li>
+          <b>DIRECTION_UNIFORM_3D</b> picks a random direction vector in 3D.
+        </li>
+        <li>
+          <b>DIRECTION_UNIFORM_ND</b> generates a random direction vector in ND.
+        </li>
+        <li>
+          <b>DISK_POINT_DIST_3D</b> determines the distance from a disk to a point in 3D.
+        </li>
+        <li>
+          <b>DMS_TO_RADIANS</b> converts an angle from degrees/minutes/seconds to radians.
+        </li>
+        <li>
+          <b>DODEC_SHAPE_3D</b> describes a dodecahedron in 3D.
+        </li>
+        <li>
+          <b>DODEC_SIZE_3D</b> gives "sizes" for a dodecahedron in 3D.
+        </li>
+        <li>
+          <b>DUAL_SHAPE_3D</b> constructs the dual of a shape in 3D.
+        </li>
+        <li>
+          <b>DUAL_SIZE_3D</b> determines sizes for a dual of a shape in 3D.
+        </li>
+        <li>
+          <b>ELLIPSE_AREA_2D</b> returns the area of an ellipse in 2D.
+        </li>
+        <li>
+          <b>ELLIPSE_POINT_DIST_2D</b> finds the distance from a point to an ellipse in 2D.
+        </li>
+        <li>
+          <b>ELLIPSE_POINT_NEAR_2D</b> finds the nearest point on an ellipse in 2D.
+        </li>
+        <li>
+          <b>ELLIPSE_POINTS_2D</b> returns N points on an tilted ellipse in 2D.
+        </li>
+        <li>
+          <b>ELLIPSE_POINTS_ARC_2D</b> returns N points on a tilted elliptical arc in 2D.
+        </li>
+        <li>
+          <b>GET_SEED</b> returns a seed for the random number generator.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GLOB2LOC_3D</b> converts from a global to a local coordinate system in 3D.
+        </li>
+        <li>
+          <b>HALFPLANE_CONTAINS_POINT_2D</b> reports if a half-plane contains a point in 2d.
+        </li>
+        <li>
+          <b>HALFSPACE_IMP_TRIANGLE_INT_3D:</b> intersection ( imp halfspace, triangle ).
+        </li>
+        <li>
+          <b>HALFSPACE_NORMAL_TRIANGLE_INT_3D:</b> intersection ( norm halfspace, triangle ).
+        </li>
+        <li>
+          <b>HALFSPACE_TRIANGLE_INT_3D:</b> intersection ( halfspace, triangle ) in 3D.
+        </li>
+        <li>
+          <b>HAVERSINE</b> computes the haversine of an angle.
+        </li>
+        <li>
+          <b>HELIX_SHAPE_3D</b> computes points on a helix in 3D.
+        </li>
+        <li>
+          <b>HEXAGON_AREA_2D</b> returns the area of a regular hexagon in 2D.
+        </li>
+        <li>
+          <b>HEXAGON_CONTAINS_POINT_2D</b> finds if a point is inside a hexagon in 2D.
+        </li>
+        <li>
+          <b>HEXAGON_SHAPE_2D</b> returns points on the unit regular hexagon in 2D.
+        </li>
+        <li>
+          <b>HEXAGON_UNIT_AREA_2D</b> returns the area of a unit regular hexagon in 2D.
+        </li>
+        <li>
+          <b>HEXAGON_VERTICES_2D</b> returns the vertices of the unit hexagon in 2D.
+        </li>
+        <li>
+          <b>I4_DEDEKIND_FACTOR</b> computes a function needed for a Dedekind sum. 
+        </li>
+        <li>
+          <b>I4_DEDEKIND_SUM</b> computes the Dedekind sum of two I4's.
+        </li>
+        <li>
+          <b>I4_FACTORIAL2</b> computes the double factorial function.
+        </li>
+        <li>
+          <b>I4_GCD</b> finds the greatest common divisor of two I4's.
+        </li>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>I4_LCM</b> computes the least common multiple of two I4's.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two I4's.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4COL_COMPARE</b> compares columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_FIND_ITEM</b> searches a table by columns for a given scalar value.
+        </li>
+        <li>
+          <b>I4COL_FIND_PAIR_WRAP</b> searches a table by columns for a pair of items.
+        </li>
+        <li>
+          <b>I4COL_SORT_A</b> ascending sorts an integer array of columns.
+        </li>
+        <li>
+          <b>I4COL_SORTED_UNIQUE_COUNT</b> counts unique elements in an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SWAP</b> swaps columns I and J of a integer array of column data.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an integer matrix.
+        </li>
+        <li>
+          <b>I4MAT_PRINT_SOME</b> prints some of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4ROW_COMPARE</b> compares two rows of a integer array.
+        </li>
+        <li>
+          <b>I4ROW_SORT_A</b> ascending sorts the rows of an integer array.
+        </li>
+        <li>
+          <b>I4ROW_SORTED_UNIQUE_COUNT</b> counts unique elements in an IROW array.
+        </li>
+        <li>
+          <b>I4ROW_SWAP</b> swaps two rows of an integer array.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D</b> reorders an array of integers into a descending heap.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an integer vector to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_LCM</b> returns the least common multiple of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_A</b> ascending sorts an integer array using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SORTED_UNIQUE</b> gets the unique elements in a sorted integer array.
+        </li>
+        <li>
+          <b>I4VEC_UNIFORM</b> returns a scaled pseudorandom I4VEC.
+        </li>
+        <li>
+          <b>I4VEC2_COMPARE</b> compares pairs of integers stored in two vectors.
+        </li>
+        <li>
+          <b>I4VEC2_SORT_A</b> ascending sorts a vector of pairs of integers.
+        </li>
+        <li>
+          <b>I4VEC2_SORTED_UNIQUE</b> gets the unique elements in a sorted I4VEC2.
+        </li>
+        <li>
+          <b>ICOS_SHAPE</b> describes an icosahedron.
+        </li>
+        <li>
+          <b>ICOS_SIZE</b> gives "sizes" for an icosahedron.
+        </li>
+        <li>
+          <b>LINE_EXP_IS_DEGENERATE_ND</b> finds if an explicit line is degenerate in ND.
+        </li>
+        <li>
+          <b>LINE_EXP_NORMAL_2D</b> computes a unit normal vector to a line in 2D.
+        </li>
+        <li>
+          <b>LINE_EXP_PERP_2D</b> computes a line perpendicular to a line and through a point.
+        </li>
+        <li>
+          <b>LINE_EXP_POINT_DIST_2D:</b> distance ( explicit line, point ) in 2D.
+        </li>
+        <li>
+          <b>LINE_EXP_POINT_DIST_3D:</b> distance ( explicit line, point ) in 3D.
+        </li>
+        <li>
+          <b>LINE_EXP_POINT_DIST_SIGNED_2D:</b> signed distance ( exp line, point ) in 2D.
+        </li>
+        <li>
+          <b>LINE_EXP_POINT_NEAR_2D:</b> point on an explicit line nearest a point in 2D.
+        </li>
+        <li>
+          <b>LINE_EXP_POINT_NEAR_3D:</b> nearest point on explicit line to point in 3D.
+        </li>
+        <li>
+          <b>LINE_EXP2IMP_2D</b> converts an explicit line to implicit form in 2D.
+        </li>
+        <li>
+          <b>LINE_EXP2PAR_2D</b> converts a line from explicit to parametric form in 2D.
+        </li>
+        <li>
+          <b>LINE_EXP2PAR_3D</b> converts a line from explicit to parametric form in 3D.
+        </li>
+        <li>
+          <b>LINE_IMP_IS_DEGENERATE_2D</b> finds if an implicit point is degenerate in 2D.
+        </li>
+        <li>
+          <b>LINE_IMP_POINT_DIST_2D:</b> distance ( implicit line, point ) in 2D.
+        </li>
+        <li>
+          <b>LINE_IMP_POINT_DIST_SIGNED_2D:</b> signed distance ( imp line, point ) in 2D.
+        </li>
+        <li>
+          <b>LINE_IMP2EXP_2D</b> converts an implicit line to explicit form in 2D.
+        </li>
+        <li>
+          <b>LINE_IMP2PAR_2D</b> converts an implicit line to parametric form in 2D.
+        </li>
+        <li>
+          <b>LINE_PAR_POINT_DIST_2D:</b> distance ( parametric line, point ) in 2D.
+        </li>
+        <li>
+          <b>LINE_PAR_POINT_DIST_3D:</b> distance ( parametric line, point ) in 3D.
+        </li>
+        <li>
+          <b>LINE_PAR2EXP_2D</b> converts a parametric line to explicit form in 2D.
+        </li>
+        <li>
+          <b>LINE_PAR2IMP_2D</b> converts a parametric line to implicit form in 2D.
+        </li>
+        <li>
+          <b>LINES_EXP_ANGLE_3D</b> finds the angle between two explicit lines in 3D.
+        </li>
+        <li>
+          <b>LINES_EXP_ANGLE_ND</b> returns the angle between two explicit lines in ND.
+        </li>
+        <li>
+          <b>LINES_EXP_DIST_3D</b> computes the distance between two explicit lines in 3D.
+        </li>
+        <li>
+          <b>LINES_EXP_DIST_3D_2</b> computes the distance between two explicit lines in 3D.
+        </li>
+        <li>
+          <b>LINES_EXP_EQUAL_2D</b> determines if two explicit lines are equal in 2D.
+        </li>
+        <li>
+          <b>LINES_EXP_INT_2D</b> determines where two explicit lines intersect in 2D.
+        </li>
+        <li>
+          <b>LINES_EXP_NEAR_3D</b> computes the nearest points on two explicit lines in 3D.
+        </li>
+        <li>
+          <b>LINES_EXP_PARALLEL_2D</b> determines if two lines are parallel in 2D.
+        </li>
+        <li>
+          <b>LINES_EXP_PARALLEL_3D</b> determines if two lines are parallel in 3D.
+        </li>
+        <li>
+          <b>LINES_IMP_ANGLE_2D</b> finds the angle between two implicit lines in 2D.
+        </li>
+        <li>
+          <b>LINES_IMP_DIST_2D</b> determines the distance between two implicit lines in 2D.
+        </li>
+        <li>
+          <b>LINES_IMP_INT_2D</b> determines where two implicit lines intersect in 2D.
+        </li>
+        <li>
+          <b>LINES_PAR_ANGLE_2D</b> finds the angle between two parametric lines in 2D.
+        </li>
+        <li>
+          <b>LINES_PAR_ANGLE_3D</b> finds the angle between two parametric lines in 3D.
+        </li>
+        <li>
+          <b>LINES_PAR_DIST_3D</b> finds the distance between two parametric lines in 3D.
+        </li>
+        <li>
+          <b>LINES_PAR_INT_2D</b> determines where two parametric lines intersect in 2D.
+        </li>
+        <li>
+          <b>LOC2GLOB_3D</b> converts from a local to global coordinate system in 3D.
+        </li>
+        <li>
+          <b>LVEC_PRINT</b> prints a logical vector.
+        </li>
+        <li>
+          <b>MINABS</b> finds a local minimum of F(X) = A * abs ( X ) + B.
+        </li>
+        <li>
+          <b>MINQUAD</b> finds a local minimum of F(X) = A * X * X + B * X + C.
+        </li>
+        <li>
+          <b>OCTAHEDRON_SHAPE_3D</b> describes an octahedron in 3D.
+        </li>
+        <li>
+          <b>OCTAHEDRON_SIZE_3D</b> returns size information for an octahedron in 3D.
+        </li>
+        <li>
+          <b>PARALLELOGRAM_AREA_2D</b> computes the area of a parallelogram in 2D.
+        </li>
+        <li>
+          <b>PARALLELOGRAM_AREA_3D</b> computes the area of a parallelogram in 3D.
+        </li>
+        <li>
+          <b>PARALLELOGRAM_CONTAINS_POINT_2D:</b> is point inside a parallelogram in 2D.
+        </li>
+        <li>
+          <b>PARALLELOGRAM_CONTAINS_POINT_3D:</b> point "inside" parallelogram in 3D.
+        </li>
+        <li>
+          <b>PARALLELOGRAM_POINT_DIST_3D:</b> distance ( parallelogram, point ) in 3D.
+        </li>
+        <li>
+          <b>PARABOLA_EX:</b> extremal point of a parabola determined by three points.
+        </li>
+        <li>
+          <b>PARABOLA_EX2:</b> extremal point of a parabola determined by three points.
+        </li>
+        <li>
+          <b>PARALLELEPIPED_CONTAINS_POINT_3D:</b> point inside parallelepiped in 3D.
+        </li>
+        <li>
+          <b>PARALLELEPIPED_POINT_DIST_3D:</b> distance ( parallelepiped, point ) in 3D.
+        </li>
+        <li>
+          <b>PERM_INVERSE</b> inverts a permutation "in place".
+        </li>
+        <li>
+          <b>PLANE_EXP_GRID_3D</b> computes points and lines making up a planar grid in 3D.
+        </li>
+        <li>
+          <b>PLANE_EXP_NORMAL_3D</b> finds the normal to an explicit plane in 3D.
+        </li>
+        <li>
+          <b>PLANE_EXP_POINT_DIST_3D:</b> distance ( explicit plane, point ) in 3D.
+        </li>
+        <li>
+          <b>PLANE_EXP_PRO2</b> produces 2D coordinates of points that lie in a plane, in 3D.
+        </li>
+        <li>
+          <b>PLANE_EXP_PRO3</b> projects points orthographically onto a plane, in 3D.
+        </li>
+        <li>
+          <b>PLANE_EXP_PROJECT_3D</b> projects points through a point onto a plane in 3D.
+        </li>
+        <li>
+          <b>PLANE_EXP2IMP_3D</b> converts an explicit plane to implicit form in 3D.
+        </li>
+        <li>
+          <b>PLANE_EXP2NORMAL_3D</b> converts an explicit plane to normal form in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP_IS_DEGENERATE_3D</b> is TRUE if an implicit plane is degenerate.
+        </li>
+        <li>
+          <b>PLANE_IMP_LINE_PAR_INT_3D:</b> intersection ( impl plane, param line ) in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP_POINT_DIST_3D:</b> distance ( implicit plane, point ) in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP_POINT_DIST_SIGNED_3D:</b> signed distance ( imp plane, point) in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP_POINT_NEAR_3D:</b> nearest point on a implicit plane to a point in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP_SEGMENT_NEAR_3D:</b> nearest ( implicit plane, line segment ) in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP_TRIANGLE_INT_3D:</b> intersection ( implicit plane, triangle ) in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP_TRIANGLE_INT_ADD_3D</b> is a utility for plane/triangle intersections.
+        </li>
+        <li>
+          <b>PLANE_IMP_TRIANGLE_NEAR_3D:</b> nearest ( implicit plane, triangle ) in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP2EXP_3D</b> converts an implicit plane to explicit form in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP2NORMAL_3D</b> converts an implicit plane to normal form in 3D.
+        </li>
+        <li>
+          <b>PLANE_NORMAL_BASIS_3D</b> finds two perpendicular vectors in a plane in 3D.
+        </li>
+        <li>
+          <b>PLANE_NORMAL_LINE_EXP_INT_3D:</b> intersection of plane and line in 3D.
+        </li>
+        <li>
+          <b>PLANE_NORMAL_TETRAHEDRON_INTERSECT</b> intersects a plane and a tetrahedron.
+        </li>
+        <li>
+          <b>PLANE_NORMAL_TRIANGLE_INT_3D:</b> intersection ( normal plane, triangle ) in 3D.
+        </li>
+        <li>
+          <b>PLANE_NORMAL_UNIFORM_3D</b> generates a random normal plane in 3D.
+        </li>
+        <li>
+          <b>PLANE_NORMAL_UNIFORM_ND</b> generates a random normal plane in ND.
+        </li>
+        <li>
+          <b>PLANE_NORMAL2EXP_3D</b> converts a normal plane to explicit form in 3D.
+        </li>
+        <li>
+          <b>PLANE_NORMAL2IMP_3D</b> converts a normal form plane to implicit form in 3D.
+        </li>
+        <li>
+          <b>PLANES_IMP_ANGLE_3D:</b> dihedral angle between implicit planes in 3D.
+        </li>
+        <li>
+          <b>POINTS_AVOID_POINT_NAIVE_2D:</b> is a point "far" from a set of points in 2D?
+        </li>
+        <li>
+          <b>POINTS_BISECT_LINE_IMP_2D:</b> implicit bisector line between two points in 2D.
+        </li>
+        <li>
+          <b>POINTS_BISECT_LINE_PAR_2D:</b> parametric bisector line between points in 2D.
+        </li>
+        <li>
+          <b>POINTS_CENTROID_2D</b> computes the discrete centroid of a point set in 2D.
+        </li>
+        <li>
+          <b>POINTS_COLIN_2D</b> estimates the colinearity of 3 points in 2D.
+        </li>
+        <li>
+          <b>POINTS_COLIN_3D</b> estimates the colinearity of 3 points in 3D.
+        </li>
+        <li>
+          <b>POINTS_DIST_ND</b> finds the distance between two points in ND.
+        </li>
+        <li>
+          <b>POINTS_HULL_2D</b> computes the convex hull of 2D points.
+        </li>
+        <li>
+          <b>POINTS_PLOT</b> plots a pointset.
+        </li>
+        <li>
+          <b>POINTS_POINT_NEAR_NAIVE_ND</b> finds the nearest point to a given point in ND.
+        </li>
+        <li>
+          <b>POLAR_TO_XY</b> converts polar coordinates to XY coordinates.
+        </li>
+        <li>
+          <b>POLYGON_1_2D</b> integrates the function 1 over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_ANGLES_2D</b> computes the interior angles of a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_AREA_2D</b> computes the area of a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_AREA_2D_2</b> computes the area of a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_AREA_3D</b> computes the area of a polygon in 3D.
+        </li>
+        <li>
+          <b>POLYGON_AREA_3D_2</b> computes the area of a polygon in 3D.
+        </li>
+        <li>
+          <b>POLYGON_CENTROID_2D</b> computes the centroid of a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_CENTROID_2D_2</b> computes the centroid of a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_CENTROID_3D</b> computes the centroid of a polygon in 3D.
+        </li>
+        <li>
+          <b>POLYGON_CONTAINS_POINT_2D</b> finds if a point is inside a simple polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_CONTAINS_POINT_2D_2:</b> is a point inside a convex polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_DIAMETER_2D</b> computes the diameter of a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_EXPAND_2D</b> expands a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_INRAD_DATA_2D</b> determines polygonal data from its inner radius in 2D.
+        </li>
+        <li>
+          <b>POLYGON_IS_CONVEX_2D</b> determines whether a polygon is convex in 2D.
+        </li>
+        <li>
+          <b>POLYGON_LATTICE_AREA_2D</b> computes the area of a lattice polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_NORMAL_3D</b> computes the normal vector to a polygon in 3D.
+        </li>
+        <li>
+          <b>POLYGON_OUTRAD_DATA_2D</b> determines polygonal data from its outer radius in 2D.
+        </li>
+        <li>
+          <b>POLYGON_POINT_DIST_2D:</b> distance ( polygon, point ) in 2D.
+        </li>
+        <li>
+          <b>POLYGON_POINT_NEAR_2D</b> computes the nearest point on a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_SIDE_DATA_2D</b> determines polygonal data from its side length in 2D.
+        </li>
+        <li>
+          <b>POLYGON_SOLID_ANGLE_3D:</b> projected solid angle of a 3D plane polygon.
+        </li>
+        <li>
+          <b>POLYGON_X_2D</b> integrates the function X over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_XX_2D</b> integrates the function X*X over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_XY_2D</b> integrates the function X*Y over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_Y_2D</b> integrates the function Y over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_YY_2D</b> integrates the function Y*Y over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYHEDRON_AREA_3D</b> computes the surface area of a polyhedron in 3D.
+        </li>
+        <li>
+          <b>POLYHEDRON_CENTROID_3D</b> computes the centroid of a polyhedron in 3D.
+        </li>
+        <li>
+          <b>POLYHEDRON_CONTAINS_POINT_3D</b> determines if a point is inside a polyhedron.
+        </li>
+        <li>
+          <b>POLYHEDRON_VOLUME_3D</b> computes the volume of a polyhedron in 3D.
+        </li>
+        <li>
+          <b>POLYHEDRON_VOLUME_3D_2</b> computes the volume of a polyhedron in 3D.
+        </li>
+        <li>
+          <b>POLYLINE_ARCLENGTH_ND</b> computes the arclength of points on a polyline in ND.
+        </li>
+        <li>
+          <b>POLYLINE_INDEX_POINT_ND</b> evaluates a polyline at a given arclength in ND.
+        </li>
+        <li>
+          <b>POLYLINE_LENGTH_ND</b> computes the length of a polyline in ND.
+        </li>
+        <li>
+          <b>POLYLINE_POINTS_ND</b> computes equally spaced points on a polyline in ND.
+        </li>
+        <li>
+          <b>POLYLOOP_ARCLENGTH_ND</b> computes the arclength of points on a polyloop in ND.
+        </li>
+        <li>
+          <b>POLYLOOP_LENGTH_ND</b> computes the length of a polyloop in ND.
+        </li>
+        <li>
+          <b>POLYLOOP_POINTS_ND</b> computes equally spaced points on a polyloop in ND.
+        </li>
+        <li>
+          <b>PROVEC</b> projects a vector from M space into N space.
+        </li>
+        <li>
+          <b>PYRAMID_VOLUME_3D</b> computes the volume of a pyramid with square base in 3D.
+        </li>
+        <li>
+          <b>QUAD_AREA_2D</b> computes the area of a quadrilateral in 2D.
+        </li>
+        <li>
+          <b>QUAD_AREA2_2D</b> computes the area of a quadrilateral in 2D.
+        </li>
+        <li>
+          <b>QUAD_AREA_3D</b> computes the area of a quadrilateral in 3D.
+        </li>
+        <li>
+          <b>QUAD_CONTAINS_POINT_2D:</b> is point inside a convex quadrilateral in 2D.
+        </li>
+        <li>
+          <b>QUAD_CONVEX_RANDOM</b> returns a random convex quadrilateral.
+        </li>
+        <li>
+          <b>QUAD_POINT_DIST_2D:</b> distance ( quadrilateral, point ) in 2D.
+        </li>
+        <li>
+          <b>QUAD_POINT_DIST_SIGNED_2D:</b> signed distance ( quadrilateral, point ) in 2D.
+        </li>
+        <li>
+          <b>QUAD_POINT_NEAR_2D</b> computes the nearest point on a quadrilateral in 2D.
+        </li>
+        <li>
+          <b>QUAT_CONJ</b> conjugates a quaternion.
+        </li>
+        <li>
+          <b>QUAT_INV</b> inverts a quaternion.
+        </li>
+        <li>
+          <b>QUAT_MUL</b> multiplies two quaternions.
+        </li>
+        <li>
+          <b>QUAT_NORM</b> computes the norm of a quaternion.
+        </li>
+        <li>
+          <b>R4_UNIFORM_01</b> returns a unit pseudorandom R4.
+        </li>
+        <li>
+          <b>R8_HUGE</b> returns a very large R8.
+        </li>
+        <li>
+          <b>R8_IS_INT</b> determines if a real number represents an integer value.
+        </li>
+        <li>
+          <b>R8_MODP</b> returns the nonnegative remainder of real division.
+        </li>
+        <li>
+          <b>R8_NORMAL_01</b> returns a unit pseudonormal R8.
+        </li>
+        <li>
+          <b>R8_PI</b> returns the value of pi.
+        </li>
+        <li>
+          <b>R8_SIGN_OPPOSITE_STRICT</b> is TRUE if two R8's are strictly of opposite sign.
+        </li>
+        <li>
+          <b>R8_SWAP</b> switches two R8's.
+        </li>
+        <li>
+          <b>R8_UNIFORM</b> returns a scaled pseudorandom R8.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R82VEC_PERMUTE</b> permutes a R82 vector in place.
+        </li>
+        <li>
+          <b>R82VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R82VEC.
+        </li>
+        <li>
+          <b>R8MAT_DET_2D</b> computes the determinant of a 2 by 2 matrix.
+        </li>
+        <li>
+          <b>R8MAT_DET_3D</b> computes the determinant of a 3 by 3 matrix.
+        </li>
+        <li>
+          <b>R8MAT_DET_4D</b> computes the determinant of a 4 by 4 matrix.
+        </li>
+        <li>
+          <b>R8MAT_DET_5D</b> computes the determinant of a 5 by 5 matrix.
+        </li>
+        <li>
+          <b>R8MAT_INVERSE_2D</b> inverts a 2 by 2 real matrix using Cramer's rule.
+        </li>
+        <li>
+          <b>R8MAT_INVERSE_3D</b> inverts a 3 by 3 real matrix using Cramer's rule.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints a real matrix.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_SOLVE</b> uses Gauss-Jordan elimination to solve an N by N linear system.
+        </li>
+        <li>
+          <b>R8MAT_SOLVE_2D</b> solves a 2 by 2 linear system using Cramer's rule.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints a R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM</b> fills scaled pseudorandom R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM_01</b> returns a unit pseudorandom R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_ANGLE_3D</b> computes the angle between two vectors in 3D.
+        </li>
+        <li>
+          <b>R8VEC_ANY_NORMAL</b> returns some normal vector to V1.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET</b> searches a sorted array for successive brackets of a value.
+        </li>
+        <li>
+          <b>R8VEC_CROSS_PRODUCT_2D</b> finds the cross product of a pair of vectors in 2D.
+        </li>
+        <li>
+          <b>R8VEC_CROSS_PRODUCT_AFFINE_2D</b> finds the affine cross product in 2D.
+        </li>
+        <li>
+          <b>R8VEC_CROSS_PRODUCT_3D</b> computes the cross product of two vectors in 3D.
+        </li>
+        <li>
+          <b>R8VEC_CROSS_PRODUCT_AFFINE_3D</b> computes the affine cross product in 3D.
+        </li>
+        <li>
+          <b>R8VEC_DISTANCE</b> returns the Euclidean distance between two vectors.
+        </li>
+        <li>
+          <b>R8VEC_DOT_PRODUCT</b> finds the dot product of a pair of vectors in ND.
+        </li>
+        <li>
+          <b>R8VEC_DOT_PRODUCT_AFFINE</b> computes the affine dot product V1-V0 * V2-V0.
+        </li>
+        <li>
+          <b>R8VEC_EQ</b> is true if every pair of entries in two vectors is equal.
+        </li>
+        <li>
+          <b>R8VEC_GT</b> == ( A1 > A2 ) for real vectors.
+        </li>
+        <li>
+          <b>R8VEC_LT</b> == ( A1 < A2 ) for real vectors.
+        </li>
+        <li>
+          <b>R8VEC_NORM</b> returns the L2 norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM_AFFINE</b> returns the affine norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORMAL_01</b> samples the unit normal probability distribution.
+        </li>
+        <li>
+          <b>R8VEC_POLARIZE</b> decomposes an R8VEC into normal and parallel components.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_TRIPLE_PRODUCT</b> finds the triple product in 3D.
+        </li>
+        <li>
+          <b>R8VEC_SWAP</b> swaps the entries of two real vectors.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM</b> returns a scaled pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>RADEC_DISTANCE_3D</b> - angular distance, astronomical units, sphere in 3D.
+        </li>
+        <li>
+          <b>RADEC_TO_XYZ</b> converts right ascension/declination to (X,Y,Z) coordinates.
+        </li>
+        <li>
+          <b>RADIANS_TO_DEGREES</b> converts an angle from radians to degrees.
+        </li>
+        <li>
+          <b>RADIANS_TO_DMS</b> converts an angle from radians to degrees/minutes/seconds.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN90 random number seed.
+        </li>
+        <li>
+          <b>ROTATION_AXIS_VECTOR_3D</b> rotates a vector around an axis vector in 3D.
+        </li>
+        <li>
+          <b>ROTATION_AXIS2MAT_3D</b> converts a rotation from axis to matrix format in 3D.
+        </li>
+        <li>
+          <b>ROTATION_AXIS2QUAT_3D</b> converts rotation from axis to quaternion form in 3D.
+        </li>
+        <li>
+          <b>ROTATION_MAT_VECTOR_3D</b> applies a marix rotation to a vector in 3d.
+        </li>
+        <li>
+          <b>ROTATION_MAT2AXIS_3D</b> converts a rotation from matrix to axis format in 3D.
+        </li>
+        <li>
+          <b>ROTATION_MAT2QUAT_3D</b> converts rotation from matrix to quaternion format.
+        </li>
+        <li>
+          <b>ROTATION_QUAT_VECTOR_3D</b> applies a quaternion rotation to a vector in 3D.
+        </li>
+        <li>
+          <b>ROTATION_QUAT2AXIS_3D</b> converts rotation from quaternion to axis form in 3D.
+        </li>
+        <li>
+          <b>ROTATION_QUAT2MAT_3D</b> converts rotation from quaternion to matrix form in 3D.
+        </li>
+        <li>
+          <b>RTP_TO_XYZ</b> converts (R,Theta,Phi) to (X,Y,Z) coordinates.
+        </li>
+        <li>
+          <b>SEC_DEG</b> returns the secant of an angle given in degrees.
+        </li>
+        <li>
+          <b>SEGMENT_CONTAINS_POINT_1D</b> reports if a line segment contains a point in 1D.
+        </li>
+        <li>
+          <b>SEGMENT_CONTAINS_POINT_2D</b> reports if a line segment contains a point in 2D.
+        </li>
+        <li>
+          <b>SEGMENT_POINT_COORDS_2D:</b> coordinates of a point on a line segment in 2D.
+        </li>
+        <li>
+          <b>SEGMENT_POINT_COORDS_3D:</b> coordinates of a point on a line segment in 3D.
+        </li>
+        <li>
+          <b>SEGMENT_POINT_DIST_2D:</b> distance ( line segment, point ) in 2D.
+        </li>
+        <li>
+          <b>SEGMENT_POINT_DIST_3D:</b> distance ( line segment, point ) in 3D.
+        </li>
+        <li>
+          <b>SEGMENT_POINT_NEAR_2D:</b> nearest point on line segment to point in 2D.
+        </li>
+        <li>
+          <b>SEGMENT_POINT_NEAR_3D:</b> nearest point on line segment to point in 3D.
+        </li>
+        <li>
+          <b>SEGMENTS_CURVATURE_2D</b> computes the curvature of two line segments in 2D.
+        </li>
+        <li>
+          <b>SEGMENTS_DIST_2D</b> computes the distance between two line segments in 2D.
+        </li>
+        <li>
+          <b>SEGMENTS_DIST_3D</b> computes the distance between two line segments in 3D.
+        </li>
+        <li>
+          <b>SEGMENTS_DIST_3D_OLD</b> computes the distance between two line segments in 3D.
+        </li>
+        <li>
+          <b>SEGMENTS_INT_1D</b> computes the intersection of two line segments in 1D.
+        </li>
+        <li>
+          <b>SEGMENTS_INT_2D</b> computes the intersection of two line segments in 2D.
+        </li>
+        <li>
+          <b>SHAPE_POINT_DIST_2D:</b> distance ( regular shape, point ) in 2D.
+        </li>
+        <li>
+          <b>SHAPE_POINT_NEAR_2D:</b> nearest point ( regular shape, point ) in 2D.
+        </li>
+        <li>
+          <b>SHAPE_PRINT_3D</b> prints information about a polyhedron in 3D.
+        </li>
+        <li>
+          <b>SHAPE_RAY_INT_2D:</b> intersection ( regular shape, ray ) in 2D.
+        </li>
+        <li>
+          <b>SIMPLEX_LATTICE_LAYER_POINT_NEXT:</b> next simplex lattice layer point.
+        </li>
+        <li>
+          <b>SIMPLEX_LATTICE_POINT_NEXT</b> returns the next simplex lattice point.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_LATTICE_POINT_NUM_ND:</b> count lattice points.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_VOLUME_ND</b> computes the volume of the unit simplex in ND.
+        </li>
+        <li>
+          <b>SIMPLEX_VOLUME_ND</b> computes the volume of a simplex in ND.
+        </li>
+        <li>
+          <b>SIN_DEG</b> returns the sine of an angle given in degrees.
+        </li>
+        <li>
+          <b>SIN_POWER_INT</b> evaluates the sine power integral.
+        </li>
+        <li>
+          <b>SOCCER_SHAPE_3D</b> describes a truncated icosahedron in 3D.
+        </li>
+        <li>
+          <b>SOCCER_SIZE_3D</b> gives "sizes" for a truncated icosahedron in 3D.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>SPHERE_CAP_AREA_2D</b> computes the surface area of a spherical cap in 2D.
+        </li>
+        <li>
+          <b>SPHERE_CAP_AREA_3D</b> computes the surface area of a spherical cap in 3D.
+        </li>
+        <li>
+          <b>SPHERE_CAP_AREA_ND</b> computes the area of a spherical cap in ND.
+        </li>
+        <li>
+          <b>SPHERE_CAP_VOLUME_2D</b> computes the volume of a spherical cap in 2D.
+        </li>
+        <li>
+          <b>SPHERE_CAP_VOLUME_3D</b> computes the volume of a spherical cap in 3D.
+        </li>
+        <li>
+          <b>SPHERE_CAP_VOLUME_ND</b> computes the volume of a spherical cap in ND.
+        </li>
+        <li>
+          <b>SPHERE_DIA2IMP_3D</b> converts a diameter to an implicit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_DISTANCE_XYZ</b> computes great circle distances on a sphere.
+        </li>
+        <li>
+          <b>SPHERE_DISTANCE1</b> computes great circle distances on a sphere.
+        </li>
+        <li>
+          <b>SPHERE_DISTANCE2</b> computes great circle distances on a sphere.
+        </li>
+        <li>
+          <b>SPHERE_DISTANCE3</b> computes great circle distances on a sphere.
+        </li>
+        <li>
+          <b>SPHERE_EXP_CONTAINS_POINT_3D:</b> does an explicit sphere contain a point in 3D.
+        </li>
+        <li>
+          <b>SPHERE_EXP_POINT_NEAR_3D:</b> nearest point on explicit sphere to a point in 3D.
+        </li>
+        <li>
+          <b>SPHERE_EXP2IMP_3D</b> converts a sphere from explicit to implicit form in 3D.
+        </li>
+        <li>
+          <b>SPHERE_IMP_AREA_3D</b> computes the surface area of an implicit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_IMP_AREA_ND</b> computes the surface area of an implicit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_IMP_CONTAINS_POINT_3D:</b> point in implicit sphere in 3D?
+        </li>
+        <li>
+          <b>SPHERE_IMP_LINE_PROJECT_3D</b> projects a line onto an implicit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_IMP_LOCAL2XYZ_3D:</b> local to XYZ coordinates on implicit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_IMP_POINT_NEAR_3D:</b> nearest point on implicit sphere to a point in 3D.
+        </li>
+        <li>
+          <b>SPHERE_IMP_POINT_PROJECT_3D</b> projects a point onto an implicit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_IMP_VOLUME_3D</b> computes the volume of an implicit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_IMP_VOLUME_ND</b> computes the volume of an implicit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_IMP_ZONE_AREA_3D</b> computes the surface area of a spherical zone in 3D.
+        </li>
+        <li>
+          <b>SPHERE_IMP_ZONE_VOLUME_3D</b> computes the volume of a spherical zone in 3D.
+        </li>
+        <li>
+          <b>SPHERE_IMP2EXP_3D</b> converts a sphere from implicit to explicit form in 3D.
+        </li>
+        <li>
+          <b>SPHERE_K</b> computes a factor useful for spherical computations.
+        </li>
+        <li>
+          <b>SPHERE_TRIANGLE_ANGLES_TO_AREA</b> computes the area of a spherical triangle.
+        </li>
+        <li>
+          <b>SPHERE_TRIANGLE_CONTAINS_POINT:</b> does a spherical triangle contain a point.
+        </li>
+        <li>
+          <b>SPHERE_TRIANGLE_SIDES_TO_ANGLES</b> computes spherical triangle angles.
+        </li>
+        <li>
+          <b>SPHERE_TRIANGLE_VERTICES_TO_ANGLES:</b> spherical triangle angles from vertices.
+        </li>
+        <li>
+          <b>SPHERE_TRIANGLE_VERTICES_TO_AREA</b> computes the area of a spherical triangle.
+        </li>
+        <li>
+          <b>SPHERE_TRIANGLE_VERTICES_TO_CENTROID</b> gets a spherical triangle centroid.
+        </li>
+        <li>
+          <b>SPHERE_TRIANGLE_VERTICES_TO_ORIENTATION:</b> orientation of a spherical triangle.
+        </li>
+        <li>
+          <b>SPHERE_TRIANGLE_VERTICES_TO_SIDES</b> computes spherical triangle sides.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_AREA_ND</b> computes the surface area of a unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_AREA_VALUES</b> returns some areas of the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_SAMPLE_2D</b> picks a random point on the unit sphere (circle) in 2D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_SAMPLE_3D</b> picks a random point on the unit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_SAMPLE_3D_2</b> is a BAD method for sampling the unit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_SAMPLE_ND</b> picks a random point on the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_SAMPLE_ND_2</b> picks a random point on the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_SAMPLE_ND_3</b> picks a random point on the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_VOLUME_ND</b> computes the volume of a unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_VOLUME_VALUES</b> returns some volumes of the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE01_DISTANCE_XYZ</b> computes great circle distances on a unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_POLYGON_AREA</b> returns the area of a spherical polygon.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_ANGLES_TO_AREA</b> computes the area of a spherical triangle.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_SIDES_TO_ANGLES</b> computes spherical triangle angles.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_VERTICES_TO_ANGLES:</b> spherical triangle angles by vertices.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_VERTICES_TO_AREA</b> computes the area of a spherical triangle.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_VERTICES_TO_CENTROID</b> gets a spherical triangle "centroid".
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_VERTICES_TO_MIDPOINTS:</b> midsides of a spherical triangle.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_VERTICES_TO_SIDES</b> computes spherical triangle sides.
+        </li>
+        <li>
+          <b>STRING_2D</b> groups line segments into connected lines in 2D.
+        </li>
+        <li>
+          <b>SUPER_ELLIPSE_POINTS_2D</b> returns N points on a tilted superellipse in 2D.
+        </li>
+        <li>
+          <b>TAN_DEG</b> returns the tangent of an angle given in degrees.
+        </li>
+        <li>
+          <b>TETRAHEDRON_BARYCENTRIC_3D:</b> barycentric coordinates of a point in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_CENTROID_3D</b> computes the centroid of a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_CIRCUMSPHERE_3D</b> computes the circumsphere of a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_CONTAINS_POINT_3D</b> finds if a point is inside a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_DIHEDRAL_ANGLES_3D</b> computes dihedral angles of a tetrahedron.
+        </li>
+        <li>
+          <b>TETRAHEDRON_EDGE_LENGTH_3D</b> returns edge lengths of a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_FACE_ANGLES_3D</b> returns the 12 face angles of a tetrahedron 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_FACE_AREAS_3D</b> returns the 4 face areas of a tetrahedron 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_INSPHERE_3D</b> finds the insphere of a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_LATTICE_LAYER_POINT_NEXT:</b> next tetrahedron lattice layer point.
+        </li>
+        <li>
+          <b>TETRAHEDRON_LATTICE_POINT_NEXT</b> returns the next tetrahedron lattice point.
+        </li>
+        <li>
+          <b>TETRAHEDRON_QUALITY1_3D:</b> "quality" of a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_QUALITY2_3D:</b> "quality" of a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_QUALITY3_3D</b> computes the mean ratio of a tetrahedron.
+        </li>
+        <li>
+          <b>TETRAHEDRON_QUALITY4_3D</b> computes the minimum solid angle of a tetrahedron.
+        </li>
+        <li>
+          <b>TETRAHEDRON_RHOMBIC_SHAPE_3D</b> describes a rhombic tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_RHOMBIC_SIZE_3D</b> gives "sizes" for a rhombic tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_SAMPLE_3D</b> returns random points in a tetrahedron.
+        </li>
+        <li>
+          <b>TETRAHEDRON_SHAPE_3D</b> describes a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_SIZE_3D</b> gives "sizes" for a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRAHEDRON_SOLID_ANGLES_3D</b> computes solid angles of a tetrahedron.
+        </li>
+        <li>
+          <b>TETRAHEDRON_UNIT_LATTICE_POINT_NUM_3D:</b> count lattice points.
+        </li>
+        <li>
+          <b>TETRAHEDRON_VOLUME_3D</b> computes the volume of a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TMAT_INIT</b> initializes the geometric transformation matrix.
+        </li>
+        <li>
+          <b>TMAT_MXM</b> multiplies two geometric transformation matrices.
+        </li>
+        <li>
+          <b>TMAT_MXP</b> multiplies a geometric transformation matrix times a point.
+        </li>
+        <li>
+          <b>TMAT_MXP2</b> multiplies a geometric transformation matrix times N points.
+        </li>
+        <li>
+          <b>TMAT_MXV</b> multiplies a geometric transformation matrix times a vector.
+        </li>
+        <li>
+          <b>TMAT_ROT_AXIS:</b> coordinate axis rotation to geometric transformation matrix.
+        </li>
+        <li>
+          <b>TMAT_ROT_VECTOR:</b> arbitrary axis rotation to geometric transformation matrix.
+        </li>
+        <li>
+          <b>TMAT_SCALE</b> applies a scaling to the geometric transformation matrix.
+        </li>
+        <li>
+          <b>TMAT_SHEAR</b> applies a shear to the geometric transformation matrix.
+        </li>
+        <li>
+          <b>TMAT_TRANS</b> applies a translation to the geometric transformation matrix.
+        </li>
+        <li>
+          <b>TORUS_AREA_3D</b> returns the area of a torus in 3D.
+        </li>
+        <li>
+          <b>TORUS_VOLUME_3D</b> computes the volume of a torus in 3D.
+        </li>
+        <li>
+          <b>TP_TO_XYZ</b> converts unit spherical TP coordinates to XYZ coordinates.
+        </li>
+        <li>
+          <b>TRIANGLE_ANGLES_2D</b> computes the angles of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_ANGLES_3D</b> computes the angles of a triangle in 3D.
+        </li>
+        <li>
+          <b>TRIANGLE_AREA_2D</b> computes the area of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_AREA_3D</b> computes the area of a triangle in 3D.
+        </li>
+        <li>
+          <b>TRIANGLE_AREA_3D_2</b> computes the area of a triangle in 3D.
+        </li>
+        <li>
+          <b>TRIANGLE_AREA_3D_3</b> computes the area of a triangle in 3D.
+        </li>
+        <li>
+          <b>TRIANGLE_AREA_HERON</b> computes the area of a triangle using Heron's formula.
+        </li>
+        <li>
+          <b>TRIANGLE_AREA_VECTOR_3D</b> computes the area vector of a triangle in 3D.
+        </li>
+        <li>
+          <b>TRIANGLE_BARYCENTRIC_2D</b> finds the barycentric coordinates of a point in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_CENTROID_2D</b> computes the centroid of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_CENTROID_3D</b> computes the centroid of a triangle in 3D.
+        </li>
+        <li>
+          <b>TRIANGLE_CIRCUMCENTER_2D</b> computes the circumcenter of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_CIRCUMCENTER_2D_2</b> computes the circumcenter of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_CIRCUMCIRCLE_2D</b> computes the circumcircle of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_CIRCUMCIRCLE_2D_2</b> computes the circumcircle of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_CIRCUMRADIUS_2D</b> computes the circumradius of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_CONTAINS_LINE_EXP_3D</b> finds if a line is inside a triangle in 3D.
+        </li>
+        <li>
+          <b>TRIANGLE_CONTAINS_LINE_PAR_3D:</b> finds if a line is inside a triangle in 3D.
+        </li>
+        <li>
+          <b>TRIANGLE_CONTAINS_POINT_2D_1</b> finds if a point is inside a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_CONTAINS_POINT_2D_2</b> finds if a point is inside a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_CONTAINS_POINT_2D_3</b> finds if a point is inside a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_DIAMETER_2D</b> computes the diameter of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_EDGE_LENGTH_2D</b> returns edge lengths of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_GRIDPOINTS_2D</b> computes gridpoints within a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_INCENTER_2D</b> computes the incenter of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_INCIRCLE_2D</b> computes the inscribed circle of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_INRADIUS_2D:</b> radius of the inscribed circle of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_IS_DEGENERATE_ND</b> finds if a triangle is degenerate in ND.
+        </li>
+        <li>
+          <b>TRIANGLE_LATTICE_LAYER_POINT_NEXT:</b> next triangle lattice layer point.
+        </li>
+        <li>
+          <b>TRIANGLE_LATTICE_POINT_NEXT</b> returns the next triangle lattice point.
+        </li>
+        <li>
+          <b>TRIANGLE_LINE_IMP_INT_2D:</b> implicit line intersects a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_ORIENTATION_2D</b> determines the orientation of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_ORTHOCENTER_2D</b> computes the orthocenter of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_POINT_DIST_2D:</b> distance ( triangle, point ) in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_POINT_DIST_3D:</b> distance ( triangle, point ) in 3D.
+        </li>
+        <li>
+          <b>TRIANGLE_POINT_DIST_SIGNED_2D:</b> signed distance ( triangle, point ) in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_POINT_NEAR_2D</b> computes the nearest point on a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_QUALITY_2D:</b> "quality" of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_RIGHT_LATTICE_POINT_NUM_2D:</b> count lattice points.
+        </li>
+        <li>
+          <b>TRIANGLE_SAMPLE</b> returns random points in a triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_LATTICE_POINT_NUM_2D:</b> count lattice points.
+        </li>
+        <li>
+          <b>TRIANGLE_XSI_TO_XY_2D</b> converts from barycentric to XY coordinates in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_XY_TO_XSI_2D</b> converts from XY to barycentric in 2D.
+        </li>
+        <li>
+          <b>TRUNCATED_OCTAHEDRON_SHAPE_3D</b> describes a truncated octahedron in 3D.
+        </li>
+        <li>
+          <b>TRUNCATED_OCTAHEDRON_SIZE_3D</b> gives "sizes" for a truncated octahedron in 3D.
+        </li>
+        <li>
+          <b>TUBE_2D</b> constructs a "tube" of given width around a path in 2D.
+        </li>
+        <li>
+          <b>VECTOR_DIRECTIONS_ND</b> returns the direction angles of a vector in ND.
+        </li>
+        <li>
+          <b>VECTOR_ROTATE_2D</b> rotates a vector around the origin in 2D.
+        </li>
+        <li>
+          <b>VECTOR_ROTATE_3D</b> rotates a vector around an axis vector in 3D.
+        </li>
+        <li>
+          <b>VECTOR_ROTATE_BASE_2D</b> rotates a vector around a base point in 2D.
+        </li>
+        <li>
+          <b>VECTOR_SEPARATION_ND</b> finds the angular separation between vectors in ND.
+        </li>
+        <li>
+          <b>VECTOR_UNIT_ND</b> normalizes a vector in ND.
+        </li>
+        <li>
+          <b>VOXELS_DIST_L1_ND</b> computes the L1 distance between voxels in ND.
+        </li>
+        <li>
+          <b>VOXELS_LINE_3D</b> computes voxels along a line in 3D.
+        </li>
+        <li>
+          <b>VOXELS_REGION_3D</b> arranges contiguous voxels into regions in 3D.
+        </li>
+        <li>
+          <b>VOXELS_STEP_3D</b> computes voxels along a line from a given point in 3D.
+        </li>
+        <li>
+          <b>XY_TO_POLAR</b> converts XY coordinates to polar coordinates.
+        </li>
+        <li>
+          <b>XYZ_TO_RADEC</b> converts (X,Y,Z) to right ascension/declination coordinates.
+        </li>
+        <li>
+          <b>XYZ_TO_RTP</b> converts (X,Y,Z) to (R,Theta,Phi) coordinates.
+        </li>
+        <li>
+          <b>XYZ_TO_TP</b> converts (X,Y,Z) to (Theta,Phi) coordinates.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 October 2010.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

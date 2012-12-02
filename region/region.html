@@ -1,0 +1,233 @@
+<html>
+
+  <head>
+    <title>
+      REGION - Group Voxels into Regions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      REGION <br> Group Voxels into Regions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>REGION</b>
+      is a FORTRAN90 library which
+      manipulates 3D voxel data.
+    </p>
+
+    <p>
+      As part of a project, we had to take a file of voxel data representing
+      a brain scan.  Each voxel had an integer value representing the intensity
+      of a signal.  Only voxels with an intensity above a certain value were
+      to be considered.  Those voxels were then grouped into contiguous regions.
+    </p>
+
+    <p>
+      A further complication was the desire to be able to include an
+      enclosing surface image of the brain, project the internal regions
+      out along a line from a point to the surface, and mark the surface
+      with the color associated with the region.  Some of the routines
+      in this package are associated with that task.
+    </p>
+
+    <p>
+      A simple routine called <b>IVOXEL_TO_OBJ</b> allows you to take a
+      voxel array and create a corresponding OBJ 3D graphics file.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../c_src/ascii_to_mri/ascii_to_mri.html">
+      ASCII_TO_MRI</a>,
+      a C program which
+      restores MRI data to its original binary format, having been
+      previously converted to an ASCII text file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/image_components/image_components.html">
+      IMAGE_COMPONENTS</a>,
+      a FORTRAN90 library which
+      seeks the connected "nonzero" or "nonblack" components of an image or integer vector,
+      array or 3D block.
+    </p>
+
+    <p>
+      <a href = "../../c_src/mri_to_ascii/mri_to_ascii.html">
+      MRI_TO_ASCII</a>,
+      a C program which
+      reads a (binary) MRI file and makes an ASCII copy that can be
+      handled by REGION.
+    </p>
+
+    <p>
+      <a href = "../../c_src/mri_to_pgm/mri_to_pgm.html">
+      MRI_TO_PGM</a>,
+      a C program which
+      converts the binary data in an MRI file to a sequence of PGM image files.
+    </p>
+
+    <p>
+      <a href = "../../m_src/obj_display/obj_display.html">
+      OBJ_DISPLAY</a>,
+      a MATLAB program which
+      reads an OBJ 3D graphics file and displays it on the screen.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "region.f90">region.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "region.sh">region.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "region_prb.f90">region_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "region_prb.sh">region_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "region_prb_output.txt">region_prb_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "roi.ascii">roi.ascii</a>, the sample data file.
+        </li>
+        <li>
+          <a href = "roi.obj">roi.obj</a>, an OBJ version of the data.
+        </li>
+        <li>
+          <a href = "roi.png">roi.png</a>, a PNG snapshot of the 3D object.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>FACE_PRINT</b> prints the nodes that define one face of a voxel.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>IVOXEL_BOUND_PRINT</b> writes bounding faces to an OBJ file.
+        </li>
+        <li>
+          <b>IVOXEL_COUNT_POSITIVE</b> counts the positive entries in a voxel array.
+        </li>
+        <li>
+          <b>IVOXEL_PLOT</b> prints out a typewriter plot of the Z slices.
+        </li>
+        <li>
+          <b>IVOXEL_PLOT2</b> prints out a typewriter plot of the regions.
+        </li>
+        <li>
+          <b>IVOXEL_PLOT3</b> prints out a typewriter plot of data/100.
+        </li>
+        <li>
+          <b>IVOXEL_READ</b> reads MRI data from an ASCII file, one item per line.
+        </li>
+        <li>
+          <b>IVOXEL_SUM</b> sums the entries in a voxel array.
+        </li>
+        <li>
+          <b>IVOXEL_THICKEN</b> "thickens" the voxels.
+        </li>
+        <li>
+          <b>IVOXEL_THRESH</b> zeroes out array entries below a given threshhold.
+        </li>
+        <li>
+          <b>IVOXEL_TO_OBJ</b> writes out an OBJ file from a voxel array.
+        </li>
+        <li>
+          <b>IVOXEL_TO_REGION</b> arranges a set of voxels into contiguous regions.
+        </li>
+        <li>
+          <b>IVOXEL_WRITE</b> writes MRI data to an ASCII file, one item per line.
+        </li>
+        <li>
+          <b>NODE_PRINT</b> prints the nodes that define one face of a voxel.
+        </li>
+        <li>
+          <b>REGION_BLANK</b> zeroes out voxels in a particular numbered region.
+        </li>
+        <li>
+          <b>REGION_CENTER</b> computes the centers of mass of the regions.
+        </li>
+        <li>
+          <b>RVOXEL_TO_IVOXEL</b> copies real voxel data into an integer voxel array.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a timestamp.
+        </li>
+        <li>
+          <b>TRANSPORT</b> transports voxels to the boundary, counts intermediate hits.
+        </li>
+        <li>
+          <b>TRANSVOX</b> transports one voxel to the boundary.
+        </li>
+        <li>
+          <b>VOXEL_INDEX_STEP</b> computes indices of voxels along a line from a given point.
+        </li>
+        <li>
+          <b>VOXEL_NODES</b> returns the indices of the nodes of a voxel.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 02 October 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

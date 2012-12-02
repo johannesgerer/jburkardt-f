@@ -1,0 +1,265 @@
+19 June 2012  11:06:32.544 AM
+ 
+SVD_DEMO
+  FORTRAN90 version
+  Demonstrate the singular value decomposition (SVD)
+ 
+  A real MxN matrix A can be factored as:
+ 
+    A = U * S * V'
+ 
+  where
+ 
+    U = MxM orthogonal,
+    S = MxN zero except for diagonal,
+    V = NxN orthogonal.
+ 
+  The diagonal of S contains only nonnegative numbers
+  and these are arranged in descending order.
+ 
+  Matrix row order    M =        5
+  Matrix column order N =        3
+  Random number SEED    =    123456789
+  (Chosen by user.)
+ 
+  We choose a "random" matrix A, with integral
+  values between 0 and 10.
+ 
+  The matrix A:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1       2.            1.            1.      
+    2      10.            3.            4.      
+    3       8.            1.            4.      
+    4       6.            0.            8.      
+    5       4.            6.            8.      
+ 
+  The orthogonal factor U:
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1  -0.122437      0.452879E-01  0.140845      0.268239     -0.944017    
+    2  -0.552266      0.468282      0.415306      0.468609      0.289209    
+    3  -0.447998      0.400116     -0.569765E-01 -0.782546     -0.153558    
+    4  -0.485998     -0.124504     -0.821077      0.272025      0.118521E-01
+    5  -0.493068     -0.776574      0.360930     -0.148586      0.383248E-01
+ 
+  The diagonal factor S:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1    19.3031          0.            0.      
+    2       0.         6.20391          0.      
+    3       0.            0.         4.11136    
+    4       0.            0.            0.      
+    5       0.            0.            0.      
+ 
+  The orthogonal factor V:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1  -0.737695      0.664259      0.120690    
+    2  -0.268643     -0.452811      0.850172    
+    3  -0.619384     -0.594746     -0.512485    
+ 
+  The product U * S * V':
+ 
+  Col          1             2             3      
+  Row
+ 
+    1    2.00000       1.00000          1.      
+    2    10.0000       3.00000       4.00000    
+    3    8.00000       1.00000       4.00000    
+    4       6.        0.177636E-14      8.      
+    5    4.00000       6.00000       8.00000    
+ 
+  Frobenius Norm of A, A_NORM =    20.6882    
+ 
+  ABSOLUTE ERROR for A = U*S*V':
+  Frobenius norm of difference A-U*S*V' =   0.110783E-13
+ 
+  RELATIVE ERROR for A = U*S*V':
+  Ratio of DIF_NORM / A_NORM =   0.535492E-15
+ 
+RANK_ONE_TEST:
+  Compare A to the sum of R rank one matrices.
+ 
+         R    Absolute      Relative
+              Error         Error
+ 
+         0     20.6882         1.00000    
+         1     7.44256        0.359750    
+         2     4.11136        0.198730    
+         3    0.110783E-13    0.535492E-15
+ 
+RANK_ONE_PRINT_TEST:
+  Print the sums of R rank one matrices.
+ 
+  Rank R =        0
+ 
+  Col          1             2             3      
+  Row
+ 
+    1       0.            0.            0.      
+    2       0.            0.            0.      
+    3       0.            0.            0.      
+    4       0.            0.            0.      
+    5       0.            0.            0.      
+ 
+  Rank R =        1
+ 
+  Col          1             2             3      
+  Row
+ 
+    1    1.74348      0.634916       1.46386    
+    2    7.86414       2.86385       6.60289    
+    3    6.37939       2.32316       5.35627    
+    4    6.92050       2.52021       5.81060    
+    5    7.02117       2.55687       5.89512    
+ 
+  Rank R =        2
+ 
+  Col          1             2             3      
+  Row
+ 
+    1    1.93011      0.507694       1.29676    
+    2    9.79393       1.54835       4.87505    
+    3    8.02827       1.19915       3.87995    
+    4    6.40742       2.86996       6.26998    
+    5    3.82091       4.73842       8.76048    
+ 
+  Rank R =        3
+ 
+  Col          1             2             3      
+  Row
+ 
+    1    2.00000       1.00000          1.      
+    2    10.0000       3.00000       4.00000    
+    3    8.00000       1.00000       4.00000    
+    4       6.        0.177636E-14      8.      
+    5    4.00000       6.00000       8.00000    
+ 
+  Original matrix A:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1       2.            1.            1.      
+    2      10.            3.            4.      
+    3       8.            1.            4.      
+    4       6.            0.            8.      
+    5       4.            6.            8.      
+ 
+  The pseudoinverse of A:
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1   0.136627E-01  0.834365E-01  0.582892E-01 -0.188605E-01 -0.537102E-01
+    2   0.275234E-01  0.593865E-01 -0.347508E-01 -0.153936      0.138178    
+    3  -0.179694E-01 -0.789400E-01 -0.168804E-01  0.129878      0.452783E-01
+ 
+PSEUDO_PRODUCT_TEST
+ 
+  The following relations MUST hold:
+ 
+   A  * A+ * A  = A
+   A+ * A  * A+ = A+
+ ( A  * A+ ) is MxM symmetric;
+ ( A+ * A  ) is NxN symmetric
+ 
+  Here are the Frobenius norms of the errors
+  in these relationships:
+ 
+   A  * A+ * A  = A              0.857176E-14
+   A+ * A  * A+ = A+             0.122872E-15
+ ( A  * A+ ) is MxM symmetric;   0.111472E-14
+ ( A+ * A  ) is NxN symmetric;   0.105909E-14
+ 
+  In some cases, the matrix A * A+
+  may be interesting (if M <= N, then
+  it MIGHT look like the identity.)
+ 
+ 
+  A * A+:
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1   0.368794E-01  0.147319      0.649473E-01 -0.617791E-01  0.760358E-01
+    2   0.147319      0.696764      0.411118     -0.130901      0.585450E-01
+    3   0.649473E-01  0.411118      0.364041      0.214692     -0.110391    
+    4  -0.617791E-01 -0.130901      0.214692      0.925862      0.399650E-01
+    5   0.760358E-01  0.585450E-01 -0.110391      0.399650E-01  0.976453    
+ 
+  In some cases, the matrix A+ * A
+  may be interesting (if N <= M, then
+  it MIGHT look like the identity.)
+ 
+ 
+  A+ * A:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1    1.00000      0.277556E-15  0.222045E-15
+    2   0.333067E-15   1.00000      0.222045E-15
+    3  -0.277556E-15 -0.333067E-15   1.00000    
+ 
+PSEUDO_LINEAR_SOLVE_TEST
+ 
+  Given:
+    b = A * x1
+  so that b is in the range of A, solve
+    A * x = b
+  using the pseudoinverse:
+    x2 = A+ * b.
+ 
+  Norm of x1 =    9.84886    
+  Norm of x2 =    9.84886    
+  Norm of residual =   0.367925E-13
+ 
+  For N < M, most systems A*x=b will not be
+  exactly and uniquely solvable, except in the 
+  least squares sense.
+ 
+  Here is an example:
+ 
+  Given b is NOT in the range of A, solve
+    A * x = b
+  using the pseudoinverse:
+    x2 = A+ * b.
+ 
+  Norm of x2 =   0.172320    
+  Norm of residual =   0.475409    
+ 
+  Given:
+    b = A' * x1
+  so that b is in the range of A', solve
+    A' * x = b
+  using the pseudoinverse:
+    x2 = A+' * b.
+ 
+  Norm of x1 =    10.3441    
+  Norm of x2 =    8.44769    
+  Norm of residual =   0.512380E-13
+ 
+COMPARE_LINPACK_LAPACK:
+  While the singular values should be identical,
+  the orthogonal factors may have some differences.
+ 
+  Maximum differences:
+ 
+  U(LAPACK) - U(LINPACK):    2.12500    
+  S(LAPACK) - S(LINPACK):   0.758860E-14
+  V(LAPACK) - V(LINPACK):    2.00000    
+ 
+SVD_DEMO:
+  Normal end of execution.
+ 
+19 June 2012  11:06:32.546 AM

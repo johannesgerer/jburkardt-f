@@ -1,0 +1,72 @@
+#  FLOW3_04.INP
+#
+#  09 May 1996
+#
+#  Compare with FLOW3_02.INP.
+#
+#  Mesh:       11 by 4
+#  Weights:    (1, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump, 1 Re
+#  Type:       3, optimization
+#  ipred:      1, use previous solution for Newton start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  Single run, no restarts.
+#
+march_file=flow3_04_mar.txt
+ibump=2
+#
+#  Estimate (U^H)_R with finite differences, use that for
+#  cost gradient (J^H)_R.
+#
+igrad=2
+ijac=1
+#
+#  Only the Reynolds number is allowed to vary.
+#
+iopt(1)=0
+iopt(2)=0
+iopt(3)=0
+iopt(4)=0
+iopt(5)=1
+
+iplot=0
+itype=3
+iwrite=1
+maxnew=10
+maxstp=20
+nparb=3
+nparf=1
+nx=11
+ny=4
+
+para1(1)=0.5
+para1(2)=0.375
+para1(3)=0.5
+para1(4)=0.375
+para1(5)=1.0
+
+partar(1)=0.5
+partar(2)=0.375
+partar(3)=0.5
+partar(4)=0.375
+partar(5)=10.0
+
+tolnew=0.0000000001
+tolopt=0.00000000001
+wateu=1.0
+watev=0.0
+watep=0.0
+wateb=0.0
+xbleft=1.0
+xbltar=1.0
+xbrite=3.0
+xbrtar=3.0
+xprof=3.0
+ybleft=0.0
+ybltar=0.0
+ybrite=0.0
+ybrtar=0.0
+go
+stop

@@ -1,0 +1,243 @@
+<html>
+
+  <head>
+    <title>
+      EXTRACT - Painless Module Extraction
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      EXTRACT <br> Painless Module Extraction
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>EXTRACT</b> 
+      is a FORTRAN90 program which 
+      pulls a copy of a FORTRAN 
+      block data, function, module, program or subroutine from a big file, 
+      and saves the copy in a little file.  
+    </p>
+
+    <p>
+      I've found <b>EXTRACT</b> extremely useful, 
+      as an alternative to printing out a huge library of routines, or using 
+      an editor to extract the seven routines I need from a collection of 200.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>extract</b> <i>module</i> <i>file.f</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>module</i> is the name of the desired module;
+        </li>
+        <li>
+          <i>file.f</i> is the file to be searched.
+        </li>
+      </ul>
+      If the module is found, it is written to a file named <i>module.f</i>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/catalog/catalog.html">
+      CATALOG</a>,
+      a C++ program which
+      reads a C, C++, FORTRAN77 or FORTRAN90 program and prints every line 
+      that begins with a special index tag.  If the program has been marked
+      up expecting this convention, it is a handy way of making a table
+      of contents of a program file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f77_cleanup/f77_cleanup.html">
+      F77_CLEANUP</a>,
+      a FORTRAN90 program which
+      makes a copy of a FORTRAN77 file in which some minor cleanups have
+      been made.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fixcon/fixcon.html">
+      FIXCON</a>,
+      a FORTRAN90 program which
+      reads a FORTRAN file using FORTRAN77 continuation statements,
+      and makes a copy that uses FORTRAN90 continuation instead.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90split/f90split.html">
+      F90SPLIT</a>,
+      a FORTRAN90 program which
+      reads a FORTRAN file and creates individual files for every
+      subroutine or function in the file.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/htmlindex/htmlindex.html">
+      HTMLINDEX</a>,
+      a C++ program which
+      reads a FORTRAN program and writes a skeleton HTML page describing it,
+      assuming that each subroutine includes a '!!' or 'cc' description line.
+    </p>
+
+    <p>
+      <a href = "../../f_src/include_files/include_files.html">
+      INCLUDE_FILES</a>,
+      a FORTRAN90 program which
+      reads a FORTRAN program with INCLUDE statements, and makes a copy
+      with the indicated files included.
+    </p>
+
+    <p>
+      <a href = "../../f_src/module_mark/module_mark.html">
+      MODULE_MARK</a>,
+      a FORTRAN90 program which 
+      replaces bare "END" statements by "END (module name)" statements
+      in a FORTRAN90 file.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "extract.f90">extract.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "extract.sh">extract.sh</a>, 
+          BASH commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "extract_prb.f90">extract_prb.f90</a>, 
+          a sample text file from which modules are to be extracted;
+        </li>
+        <li>
+          <a href = "extract_prb.sh">extract_prb.sh</a>,
+          a BASH script which invokes EXTRACT several times, to extract
+          modules from EXTRACT_PRB.F90.  The script also prints out
+          the modules to show what has been retrieved.
+        </li>
+        <li>
+          <a href = "extract_prb_output.txt">extract_prb_output.txt</a>, 
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for EXTRACT.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>FILE_EXT</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>MODULE_FIND</b> searches a file for the first line of a given module.
+        </li>
+        <li>
+          <b>MODULE_WRITE</b> writes out the lines of a file until 'END' is reached.
+        </li>
+        <li>
+          <b>S_BEFORE_SS_COPY</b> copies a string up to a given substring.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.  
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_INDEXI</b> is a case-insensitive INDEX function.
+        </li>
+        <li>
+          <b>S_OF_I4</b> converts an integer to a left-justified string.
+        </li>
+        <li>
+          <b>S_SPLIT</b> divides a string into three parts, given the middle.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 August 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

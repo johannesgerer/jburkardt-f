@@ -1,0 +1,1958 @@
+<html>
+
+  <head>
+    <title>
+      PLOT_TO_PS - PostScript Graphics Creation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PLOT_TO_PS <br> PostScript Graphics Creation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PLOT_TO_PS</b>
+      is a FORTRAN90 program which
+      reads a text file of
+      plot commands and creates a PostScript file.
+    </p>
+
+    <p>
+      I often use this utility to make simple graphics illustrations.
+    </p>
+
+    <h3 align = "center">
+      Commands:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>ARC</b> X Y R ANGLE1 ANGLE2
+        </dt>
+        <dd>
+          draw the circular arc from ANGLE1 to ANGLE2, for a circle
+          of radius R and center (X,Y).
+        </dd>
+        <dt>
+          <b>ARROW</b> X1 Y1 X2 Y2
+        </dt>
+        <dd>
+          draw an arrow from (X1,Y1) to (X2,Y2).
+        </dd>
+        <dt>
+          <b>CIRCLE</b> X Y R
+        </dt>
+        <dd>
+          draw a circle of radius R and center (X,Y).
+        </dd>
+        <dt>
+          <b>CIRCLE_FILL</b> X Y R
+        </dt>
+        <dd>
+          draw a circle of radius R and center (X,Y) and fill it with
+          the current fill color.
+        </dd>
+        <dt>
+          <b>DEBUG</b>
+        </dt>
+        <dd>
+          switch the debugging state.
+        </dd>
+        <dt>
+          <b>DRAWTO</b> X Y
+        </dt>
+        <dd>
+          draw a line from the current point to (X,Y).
+        </dd>
+        <dt>
+          <b>ELLIPSE</b> X Y R1 R2 ANGLE
+        </dt>
+        <dd>
+          draw an ellipse centered at (X,Y) with axes lengths R1 and R2,
+          an an angle ANGLE.
+        </dd>
+        <dt>
+          <b>ELLIPSE_FILL</b> X Y R1 R2 ANGLE
+        </dt>
+        <dd>
+          draw an ellipse centered at (X,Y) with axes lengths R1 and R2,
+          an an angle ANGLE, and fill it with the current color.
+        </dd>
+        <dt>
+          <b>ENDFILE</b>
+        </dt>
+        <dd>
+          indicate the end of the file.
+        </dd>
+        <dt>
+          <b>ENDPAGE</b>
+        </dt>
+        <dd>
+          indicate the end of this "page" or image.
+        </dd>
+        <dt>
+          <b>FILE</b> NAME
+        </dt>
+        <dd>
+          specifies the name of the output file.
+        </dd>
+        <dt>
+          <b>FILL_GRAY</b> GRAY
+        </dt>
+        <dd>
+          sets the fill color to the given shade of gray.
+        </dd>
+        <dt>
+          <b>FILL_RGB</b> R G B
+        </dt>
+        <dd>
+          sets the fill color to the given RGB color.
+        </dd>
+        <dt>
+          <b>FONT_SIZE</b> H
+        </dt>
+        <dd>
+          sets the font size to the given height.
+        </dd>
+        <dt>
+          <b>GRID</b> X1 Y1 X2 Y2 N1 N2
+        </dt>
+        <dd>
+          draws an N1 by N2 grid in the box from (X1,Y1) to (X2,Y2).
+        </dd>
+        <dt>
+          <b>HIST_FAT</b> W
+        </dt>
+        <dd>
+          sets the width of histogram bars to W.
+        </dd>
+        <dt>
+          <b>HISTOGRAM</b> (followed by X,Y pairs, then END)
+        </dt>
+        <dd>
+          processes histogram data.
+        </dd>
+        <dt>
+          <b>LABEL</b> text
+        </dt>
+        <dd>
+          prints the text at the current position and current font size
+          and current line color.
+        </dd>
+        <dt>
+          <b>LABEL_SLANT</b> ANGLE
+        </dt>
+        <dd>
+          sets a slant angle for a label.
+        </dd>
+        <dt>
+          <b>LINE</b> X1 Y1 X2 Y2
+        </dt>
+        <dd>
+          draws a line from (X1,Y1) to (X2,Y2).
+        </dd>
+        <dt>
+          <b>LINE_GRAY</b> GRAY
+        </dt>
+        <dd>
+          sets the line color to the given gray shade.
+        </dd>
+        <dt>
+          <b>LINE_RGB</b> R G B
+        </dt>
+        <dd>
+          sets the line color to the given RGB color.
+        </dd>
+        <dt>
+          <b>LINE_WIDTH</b> N
+        </dt>
+        <dd>
+          sets the line width.  1 is the finest.
+        </dd>
+        <dt>
+          <b>LINETO</b> X Y
+        </dt>
+        <dd>
+          draws a line from the current point to (X,Y).  Same as DRAWTO.
+        </dd>
+        <dt>
+          <b>MOVETO</b> X Y
+        </dt>
+        <dd>
+          moves to (X,Y) without drawing.
+        </dd>
+        <dt>
+          <b>PAGE</b>
+        </dt>
+        <dd>
+          begins a new page or image.
+        </dd>
+        <dt>
+          <b>POINT</b> X Y
+        </dt>
+        <dd>
+          draws a point at (X,Y).
+        </dd>
+        <dt>
+          <b>POINT_LIST</b> (followed by X,Y pairs, then END)
+        </dt>
+        <dd>
+          draws a point at each of the (X,Y) pairs that follow.
+        </dd>
+        <dt>
+          <b>POLYGON</b> (followed by X,Y pairs, then END)
+        </dt>
+        <dd>
+          draws a outlined polygon by connecting the (X,Y) pairs that follow.
+        </dd>
+        <dt>
+          <b>POLYGON_FILL</b> (followed by X,Y pairs, then END)
+        </dt>
+        <dd>
+          draws a filled polygon by connecting the (X,Y) pairs that follow.
+        </dd>
+        <dt>
+          <b>RADIUS</b> X Y R ANGLE
+        </dt>
+        <dd>
+          for the circle of radius R and center (X,Y), draw the
+          radial line at angle ANGLE.
+        </dd>
+        <dt>
+          <b>SECTOR</b> X Y R ANGLE1 ANGLE2
+        </dt>
+        <dd>
+          draws the sector of a circle centered at (X,Y) with radius R,
+          from ANGLE1 to ANGLE2.
+        </dd>
+        <dt>
+          <b>SECTOR_FILL</b> X Y R ANGLE1 ANGLE2
+        </dt>
+        <dd>
+          draws the sector of a circle centered at (X,Y) with radius R,
+          from ANGLE1 to ANGLE2, and fills it with current color.
+        </dd>
+        <dt>
+          <b>SPACE</b> X1 Y1 X2 Y2
+        </dt>
+        <dd>
+          defines the coordinate space to use in the current page.
+        </dd>
+        <dt>
+          <b>SQUARE</b> X Y R
+        </dt>
+        <dd>
+          draws a square centered at (X,Y) with radius R.
+        </dd>
+        <dt>
+          <b>SQUARE_FILL</b> X Y R
+        </dt>
+        <dd>
+          draws a square centered at (X,Y) with radius R and fills it.
+        </dd>
+        <dt>
+          <b>STAR</b> X Y R
+        </dt>
+        <dd>
+          draws a star centered at (X,Y) with radius R.
+        </dd>
+        <dt>
+          <b>STAR_CIRCLE</b> X Y R
+        </dt>
+        <dd>
+          draws open circles at the ten vertices of a star centered at (X,Y)
+          with radius R.
+        </dd>
+        <dt>
+          <b>STAR_DISK</b> X Y R
+        </dt>
+        <dd>
+          draws filled disks at the ten vertices of a star centered at (X,Y)
+          with radius R.
+        </dd>
+        <dt>
+          <b>TRIANGLE</b> X1 Y1 X2 Y2 X3 Y3
+        </dt>
+        <dd>
+          draws a triangle with the given vertices.
+        </dd>
+        <dt>
+          <b>TRIANGLE_FILL</b> X1 Y1 X2 Y2 X3 Y3
+        </dt>
+        <dd>
+          draws a triangle with the given vertices, and fills it with
+          the current color.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Software:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/grf_to_eps/grf_to_eps.html">
+      GRF_TO_EPS</a>,
+      a FORTRAN90 program which
+      converts a GRF file to
+      <a href = "../../data/eps/eps.html">EPS format</a>;
+    </p>
+
+    <p>
+      <a href = "../../m_src/points_01_plot/points_01_plot.html">
+      POINTS_01_PLOT</a>,
+      a MATLAB program which
+      reads an ASCII file containing points
+      in the unit square, and makes an Encapsulated PostScript image;
+    </p>
+
+    <p>
+      <a href = "../../f_src/ps_write/ps_write.html">
+      PS_WRITE</a>,
+      a FORTRAN90 library which
+      implements PostScript graphics routines
+      that is used by <b>PLOT_TO_PS</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_plot/triangulation_plot.html">
+      TRIANGULATION_PLOT</a>,
+      a FORTRAN90 program which
+      makes a PostScript image of a triangulation of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/vector_plot/vector_plot.html">
+      VECTOR_PLOT</a>,
+      a FORTRAN90 program which
+      plots velocity fields and the velocity direction fields.
+    </p>
+
+    <p>
+      <a href = "../../f_src/voronoi_plot/voronoi_plot.html">
+      VORONOI_PLOT</a>,
+      a FORTRAN90 program which
+      plots the Voronoi neighborhoods of points in the 2D unit square,
+      using L1, L2 or LInfinity norms;
+    </p>
+
+    <p>
+      <a href = "../../m_src/xy_display/xy_display.html">
+      XY_DISPLAY</a>,
+      a MATLAB program which
+      reads XY information defining points in 2D,
+      and displays an image in a MATLAB graphics window;
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xy_display_opengl/xy_display_opengl.html">
+      XY_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads XY information defining points in 2D,
+      and displays an image using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../m_src/xyl_display/xyl_display.html">
+      XYL_DISPLAY</a>,
+      a MATLAB program which
+      reads XYL information defining points and lines in 2D,
+      and displays an image in a MATLAB graphics window.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xyl_display_opengl/xyl_display_opengl.html">
+      XYL_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads XYL information defining points and lines in 2D,
+      and displays an image using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../m_src/xyz_display/xyz_display.html">
+      XYZ_DISPLAY</a>,
+      a MATLAB program which
+      reads XYZ information defining points in 3D,
+      and displays an image in the MATLAB graphics window.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xyz_display_opengl/xyz_display_opengl.html">
+      XYZ_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads XYZ information defining points in 3D,
+      and displays an image using OpenGL.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Henry McGilton, Mary Campione,<br>
+          PostScript by Example,<br>
+          Addison-Wesley,<br>
+          ISBN: 0-201-63228-4
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "plot_to_ps.f90">plot_to_ps.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "plot_to_ps.sh">plot_to_ps.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      Note that the program creates a PostScript file, but that,
+      for display on this web page, we have used the ImageMagick
+      program <b>convert</b> to convert them to
+      PNG files.
+    </p>
+
+    <p>
+      <b>123</b> is an attempt to make a plot of "1, 2, 3"
+      <ul>
+        <li>
+          <a href = "123.plot">123.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "123.png">123.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>AREA_BASIS</b> illustrates how the barycentric coordinates
+      of a point in a triangle can be defined by the relative areas
+      of subtriangles:
+      <ul>
+        <li>
+          <a href = "area_basis.plot">area_basis.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "area_basis.png">area_basis.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>BILL_020</b> is a figure for page 20 of Bill's book, a plot
+      of a typical linear basis function for a grid of triangular
+      elements arranged in a hexagonal grid:
+      <ul>
+        <li>
+          <a href = "bill_020.plot">bill_020.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "bill_020.png">bill_020.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>BILL_020_RECTANGLE</b> is a version of <b>BILL_020</b> in which
+      the elements of interest are included in a rectangular grid.
+      <ul>
+        <li>
+          <a href = "bill_020_rectangle.plot">bill_020_rectangle.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "bill_020_rectangle.png">bill_020_rectangle.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>BILL_055</b> is a figure for page 55 of Bill's book:
+      <ul>
+        <li>
+          <a href = "bill_055.plot">bill_055.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "bill_055.png">bill_055.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>BILL_060</b> is a figure for page 60 of Bill's book:
+      <ul>
+        <li>
+          <a href = "bill_060.plot">bill_060.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "bill_060.png">bill_060.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>BILL_061</b> is a figure for page 61 of Bill's book:
+      <ul>
+        <li>
+          <a href = "bill_061.plot">bill_061.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "bill_061.png">bill_061.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>BURGERS_EQUATION</b> is a 2D grid of points for a discretized
+      Burgers equation, with red nodes for initial condition, green for
+      boundaries, and gray for initially unknown:
+      <ul>
+        <li>
+          <a href = "burgers_equation.plot">burgers_equation.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "burgers_equation.png">burgers_equation.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CENTER_OF_MASS</b> plots the center of mass of 6 weighted points:
+      <ul>
+        <li>
+          <a href = "center_of_mass.plot">center_of_mass.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "center_of_mass.png">center_of_mass.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CENTROID</b> plots the centroid of 6 (equally weighted) points:
+      <ul>
+        <li>
+          <a href = "centroid.plot">centroid.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "centroid.png">centroid.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CHEBYSHEV</b> illustrates the determination of the Chebyshev points.
+      <ul>
+        <li>
+          <a href = "chebyshev.plot">chebyshev.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "chebyshev.png">chebyshev.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CIRCLE</b> is a plot of a circle:
+      <ul>
+        <li>
+          <a href = "circle.plot">circle.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "circle.png">circle.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CLIMB</b> is an illustration for a trigonometry problem, without
+      which, our students, upon hearing that a train climbed 1 mile up
+      a slope, would draw a diagram in which the <i>horizontal</I>
+      distance was 1 mile:
+      <ul>
+        <li>
+          <a href = "climb.plot">climb.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "climb.png">climb.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>COMPONENTS_**</b> illustrate the connected components algorithm.
+      <ul>
+        <li>
+          <a href = "components_01.plot">components_01.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "components_01.png">components_01.png</a>,
+          a PNG image.
+        </li>
+        <li>
+          <a href = "components_02.plot">components_02.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "components_02.png">components_02.png</a>,
+          a PNG image.
+        </li>
+        <li>
+          <a href = "components_03.plot">components_03.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "components_03.png">components_03.png</a>,
+          a PNG image.
+        </li>
+        <li>
+          <a href = "components_04.plot">components_04.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "components_04.png">components_04.png</a>,
+          a PNG image.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CONVEX_HULL</b> illustrate the computation of the convex hull.
+      <ul>
+        <li>
+          <a href = "convex_hull_edge0.plot">convex_hull_edge0.plot</a>, the input;
+        </li>
+        <li>
+          <a href = convex_hull_edge0.png">convex_hull_edge0.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "convex_hull_edge1.plot">convex_hull_edge1.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "convex_hull_edge1.png">convex_hull_edge1.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "convex_hull_edge2.plot">convex_hull_edge2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = convex_hull_edge2.png">convex_hull_edge2.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "convex_hull_edge3.plot">convex_hull_edge3.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "convex_hull_edge3.png">convex_hull_edge3.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "convex_hull_edge4.plot">convex_hull_edge4.plot</a>, the input;
+        </li>
+        <li>
+          <a href = convex_hull_edge4.png">convex_hull_edge4.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "convex_hull.plot">convex_hull.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "convex_hull.png">convex_hull.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CRESCENT</b> illustrates the construction of a crescent shape
+      from two circles.
+      <ul>
+        <li>
+          <a href = "crescent.plot">crescent.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "crescent.png">crescent.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>DIATOM</b> fills in a region by plotting lots of points in it:
+      <ul>
+        <li>
+          <a href = "diatom.plot">diatom.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "diatom.png">diatom.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>DOUBLE_CIRCLE</b> is a plot of intersecting circles:
+      <ul>
+        <li>
+          <a href = "double_circle.plot">double_circle.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "double_circle.png">double_circle.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EGYPTIAN</b> illustrates an odd fact about Egyptian mathematics:
+      <ul>
+        <li>
+          <a href = "egyptian.plot">egyptian.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "egyptian.png">egyptian.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>FEM_MESH_1D</b> illustrates the construction of nodes and elements for
+      a 1D finite element mesh:
+      <ul>
+        <li>
+          <a href = "fem_mesh_1d.plot">fem_mesh_1d.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "fem_mesh_1d.png">fem_mesh_1d.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>ELL</b> illustrates the construction of nodes and elements for
+      a 2D finite element mesh on an L-shaped region:
+      <ul>
+        <li>
+          <a href = "ell_region.plot">ell_region.plot</a>, the region.
+        </li>
+        <li>
+          <a href = "ell_region.png">ell_region.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "ell_nodes.plot">ell_nodes.plot</a>, the nodes.
+        </li>
+        <li>
+          <a href = "ell_nodes.png">ell_nodes.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "ell_elements.plot">ell_elements.plot</a>, the elements.
+        </li>
+        <li>
+          <a href = "ell_elements.png">ell_elements.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRAPH_DIJKSTRA</b> illustrates a graph used to demonstrate
+      Dijkstra's shortest path algorithm.
+      <ul>
+        <li>
+          <a href = "graph_dijkstra.plot">graph_dijkstra.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "graph_dijkstra.png">graph_dijkstra.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRAPH_DISCONNECTED</b> illustrates a disconnected graph
+      <ul>
+        <li>
+          <a href = "graph_disconnected.plot">graph_disconnected.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "graph_disconnected.png">graph_disconnected.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRAPH_MST</b> illustrates a graph suitable for the minimum spanning
+      tree problem, with 10 nodes and 17 links labeled with lengths.
+      <ul>
+        <li>
+          <a href = "graph_mst.plot">graph_mst.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "graph_mst.png">graph_mst.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRAPH_MST2</b> illustrates a graph suitable for the minimum spanning
+      tree problem, with 13 nodes and 21 links labeled with lengths.
+      <ul>
+        <li>
+          <a href = "graph_mst2.plot">graph_mst2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "graph_mst2.png">graph_mst2.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRAPH_MST_TREE</b> illustrates one spanning tree for the
+      <b>GRAPH_MST</b> graph.
+      <ul>
+        <li>
+          <a href = "graph_mst_tree.plot">graph_mst_tree.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "graph_mst_tree.png">graph_mst_tree.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRAPH_MST_TREE_MINIMAL</b> illustrates the minimal spanning tree for the
+      <b>GRAPH_MST</b> graph.
+      <ul>
+        <li>
+          <a href = "graph_mst_tree_minimal.plot">graph_mst_tree_minimal.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "graph_mst_tree_minimal.png">graph_mst_tree_minimal.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRAPH_PATHS</b> is a graph on which we can ask the question
+      of whether you can reach node A from node B.
+      <ul>
+        <li>
+          <a href = "graph_paths.plot">graph_paths.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "graph_paths.png">graph_paths.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRAPH_SIMPLE</b> illustrates a simple graph with 5 nodes and
+      4 links on a 3x3 bit of graph paper.
+      <ul>
+        <li>
+          <a href = "graph_simple.plot">graph_simple.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "graph_simple.png">graph_simple.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRAPH_TSP</b> illustrates a graph suitable for the minimum spanning
+      tree problem or the traveling salesman problem,
+      with 5 nodes and 10 links labeled with lengths.
+      <ul>
+        <li>
+          <a href = "graph_tsp.plot">graph_tsp.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "graph_tsp.png">graph_tsp.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRID_CLIFF</b> is a small finite element grid for Gene Cliff:
+      <ul>
+        <li>
+          <a href = "grid_cliff.plot">grid_cliff.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "grid_cliff.png">grid_cliff.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRID_CLIFF2</b> illustrates how portions of the grid in
+      <b>GRID_CLIFF</b> might be assigned to separate processors:
+      <ul>
+        <li>
+          <a href = "grid_cliff2.plot">grid_cliff2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "grid_cliff2.png">grid_cliff2.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HEAT_EQUATION</b> illustrates how a discretized version of the
+      1D time dependent heat equation might be set up and solved.
+      <ul>
+        <li>
+          <a href = "heat_equation.plot">heat_equation.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "heat_equation.png">heat_equation.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HISTOGRAM</b> makes a histogram:
+      <ul>
+        <li>
+          <a href = "histogram.plot">histogram.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "histogram.png">histogram.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HORIZON</b> illustrates the problem of determining the distance to
+      the horizon:
+      <ul>
+        <li>
+          <a href = "horizon.plot">horizon.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "horizon.png">horizon.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HULL</b> shows some points and their convex hull:
+      <ul>
+        <li>
+          <a href = "hull.plot">hull.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "hull.png">hull.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>ICAM</b> is a plan of the first floor of the Wright House.
+      <ul>
+        <li>
+          <a href = "icam.plot">icam.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "icam.png">icam.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>LINE_DIST</b> shows the computation of the distance of a point
+      from a line.
+      <ul>
+        <li>
+          <a href = "line_dist.plot">line_dist.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "line_dist.png">line_dist.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>LINE_PERP</b> shows the projection value s for points
+      perpendicular to a line.
+      <ul>
+        <li>
+          <a href = "line_perp.plot">line_perp.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "line_perp.png">line_perp.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>LINE_POINTS</b> shows how the formula p=p1+s*(p2-p1)
+      defines a line.
+      <ul>
+        <li>
+          <a href = "line_points.plot">line_points.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "line_points.png">line_points.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MANHOLE</b> illustrates the construction of a curve of constant
+      width which is not a circle:
+      <ul>
+        <li>
+          <a href = "manhole.plot">manhole.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "manhole.png">manhole.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MAZE1</b> and <b>MAZE2</b> illustrate a simple maze.
+      <ul>
+        <li>
+          <a href = "maze1.plot">maze1.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "maze1.png">maze1.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "maze2.plot">maze2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "maze2.png">maze2.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MUSEUM1</b> and <b>MUSEUM2</b> illustrate the problem of
+      visiting all the rooms in a museum.
+      <ul>
+        <li>
+          <a href = "museum1.plot">museum1.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "museum1.png">museum1.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "museum2.plot">museum2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "museum2.png">museum2.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>POINT_LINE_ORIENTATION</b> illustrates the problem of the relationship
+      of a point to a line in 2D.
+      <ul>
+        <li>
+          <a href = "point_line_orientation.plot">point_line_orientation.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "point_line_orientation.png">point_line_orientation.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>POINT_TRIANGLE_ORIENTATION</b> illustrates the problem of the relationship
+      of a point to a triangle in 2D.
+      <ul>
+        <li>
+          <a href = "point_triangle_orientation.plot">point_triangle_orientation.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "point_triangle_orientation.png">point_triangle_orientation.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>POINTS</b> is just some points on a grid:
+      <ul>
+        <li>
+          <a href = "points.plot">points.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "points.png">points.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>POLYGON</b> makes a outline cross:
+      <ul>
+        <li>
+          <a href = "polygon.plot">polygon.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "polygon.png">polygon.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>POLYGON_FILL</b> makes a gray-filled cross:
+      <ul>
+        <li>
+          <a href = "polygon_fill.plot">polygon_fill.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "polygon_fill.png">polygon_fill.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>PRODUCT_GRIDS*</b> shows a family of 2D product grids, for a talk
+      on sparse grids.
+      <ul>
+        <li>
+          <a href = "product_grids.plot">product_grids.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "product_grids.png">product_grids.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "product_grids2.plot">product_grids2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "product_grids2.png">product_grids2.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "product_grids3.plot">product_grids3.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "product_grids3.png">product_grids3.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "product_grids4.plot">product_grids4.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "product_grids4.png">product_grids4.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "product_grids5.plot">product_grids5.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "product_grids5.png">product_grids5.png</a>,
+          the resulting PNG file.
+        <li>
+          <a href = "product_grids6.plot">product_grids6.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "product_grids6.png">product_grids6.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "product_grids7.plot">product_grids7.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "product_grids7.png">product_grids7.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "product_grids8.plot">product_grids8.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "product_grids8.png">product_grids8.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>PROTOTEIN</b> was an example of a simplified model of a protein
+      that can fold:
+      <ul>
+        <li>
+          <a href = "prototein.plot">prototein.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "prototein.png">prototein.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>REFLECTOR</b> is a plot used to illustrate the solution
+      of a problem involving a "reflector".  It illustrates the
+      'RADIUS' command:
+      <ul>
+        <li>
+          <a href = "reflector.plot">reflector.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "reflector.png">reflector.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SIXBYSIX_1</b> a 6 by six array of dots used to illustrate
+      a talk involving a finite difference grid.
+      <ul>
+        <li>
+          <a href = "sixbysix_1.plot">sixbysix_1.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "sixbysix_1.png">sixbysix_1.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SIXBYSIX_2</b> a 6 by six array of dots used to illustrate
+      a talk involving a finite difference grid.
+      <ul>
+        <li>
+          <a href = "sixbysix_2.plot">sixbysix_2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "sixbysix_2.png">sixbysix_2.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SIXBYSIX_3</b> a 6 by six array of dots used to illustrate
+      a talk involving a finite difference grid.
+      <ul>
+        <li>
+          <a href = "sixbysix_3.plot">sixbysix_3.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "sixbysix_3.png">sixbysix_3.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SIXBYSIX_4</b> a 6 by six array of dots used to illustrate
+      a talk involving a finite difference grid.
+      <ul>
+        <li>
+          <a href = "sixbysix_4.plot">sixbysix_4.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "sixbysix_4.png">sixbysix_4.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SNAKE_POLYGON</b> illustrates a polygon to be triangulated:
+      <ul>
+        <li>
+          <a href = "snake_polygon.plot">snake_polygon.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "snake_polygon.png">snake_polygon.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "snake_polygon_triangulated.plot">snake_polygon_triangulated.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "snake_polygon_triangulated.png">snake_polygon_triangulated.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SPIRAL</b> was an illustration of a spiral search on a grid:
+      <ul>
+        <li>
+          <a href = "spiral.plot">spiral.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "spiral.png">spiral.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SQUARE</b> is a square, with a blue face, thick red lines, and
+      dark gree vertices.
+      <ul>
+        <li>
+          <a href = "square.plot">square.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "square.png">square.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>STAR</b> is a plot of a star.
+      <ul>
+        <li>
+          <a href = "star.plot">star.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "star.png">star.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>STOMACHION</b> is a puzzle of Archimedes, involving 14 polygonal
+      pieces that can be formed into a 12 by 12 square in 536 ways.
+      <ul>
+        <li>
+          <a href = "stomachion.plot">stomachion.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "stomachion.png">stomachion.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TANK</b> is an illustration of the problem of determining the
+      volume of a partially filled cylindrical tank:
+      <ul>
+        <li>
+          <a href = "tank.plot">tank.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tank.png">tank.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TASKS1</b> shows how a sequential computer carries out 11 tasks,
+      one at a time.
+      <ul>
+        <li>
+          <a href = "tasks1.plot">tasks1.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks1.png">tasks1.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TASKS2</b> shows how an embarassingly parallel calculation looks.
+      <ul>
+        <li>
+          <a href = "tasks2.plot">tasks2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks2.png">tasks2.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TASKS3</b> shows how the tasks of Gauss elimination might look
+      to a parallel computer.
+      <ul>
+        <li>
+          <a href = "tasks3.plot">tasks3.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks3.png">tasks3.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TASKS4</b> shows how a task on a graph might look to a parallel computer.
+      <ul>
+        <li>
+          <a href = "tasks4.plot">tasks4.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks4.png">tasks4.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "tasks4_1.plot">tasks4_1.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks4_1.png">tasks4_1.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "tasks4_2.plot">tasks4_2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks4_2.png">tasks4_2.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "tasks4_3.plot">tasks4_3.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks4_3.png">tasks4_3.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "tasks4_4.plot">tasks4_4.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks4_4.png">tasks4_4.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "tasks4_5.plot">tasks4_5.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks4_5.png">tasks4_5.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "tasks4_6.plot">tasks4_6.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks4_6.png">tasks4_6.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "tasks4_7.plot">tasks4_7.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks4_7.png">tasks4_7.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "tasks4_8.plot">tasks4_8.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tasks4_8.png">tasks4_8.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TREES1</b> shows how 9 trees can make lots of lines of 3:
+      <ul>
+        <li>
+          <a href = "trees1.plot">trees1.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "trees1.png">trees1.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TREES2</b> shows how 16 trees can make lots of lines of 4:
+      <ul>
+        <li>
+          <a href = "trees2.plot">trees2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "trees2.png">trees2.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TRIANGLE_CENTROID</b> is a plot of a triangle which suggests
+      how the centroid is computed.
+      <ul>
+        <li>
+          <a href = "triangle_centroid.plot">triangle_centroid.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "triangle_centroid.png">triangle_centroid.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TRIANGLE_DISTANCE</b> illustrates the problem of determining the
+      distance from a poiont to a (solid) triangle.
+      <ul>
+        <li>
+          <a href = "triangle_distance.plot">triangle_distance.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "triangle_distance.png">triangle_distance.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TRIANGLE_EXAMPLE1</b> is a plot of a triangle with the vertices
+      labeled, used for an illustration in a discussion of triangles.
+      <ul>
+        <li>
+          <a href = "triangle_example1.plot">triangle_example1.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "triangle_example1.png">triangle_example1.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TRIANGLE_EXAMPLE2</b> is a plot of a triangle with the vertices
+      labeled, used for an illustration in a discussion of triangles.
+      <ul>
+        <li>
+          <a href = "triangle_example2.plot">triangle_example2.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "triangle_example2.png">triangle_example2.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TRIANGLE_ORIENTATION</b> shows how the sign of the three barycentric coordinates
+      of a point determine the point's location relative to the triangle.
+      <ul>
+        <li>
+          <a href = "triangle_orientation.plot">triangle_orientation.plot</a>,
+          the input, showing only plus and minus regions.
+        </li>
+        <li>
+          <a href = "triangle_orientation.png">triangle_orientation.png</a>,
+          the resulting PNG file.
+        </li>
+        <li>
+          <a href = "triangle_orientation2.plot">triangle_orientation2.plot</a>,
+          the input, showing plus, zero, and minus regions;
+        </li>
+        <li>
+          <a href = "triangle_orientation2.png">triangle_orientation2.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TRIANGULATION_01</b> is a triangulation which is not maximal because
+      a node is unused.
+      <ul>
+        <li>
+          <a href = "triangulation_01.plot">triangulation_01.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "triangulation_01.png">triangulation_01.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TRIANGULATION_02</b> is a triangulation which is not maximal because
+      a triangle is unused.
+      <ul>
+        <li>
+          <a href = "triangulation_02.plot">triangulation_02.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "triangulation_02.png">triangulation_02.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TRIANGULATION_03</b> is a triangulation which is maximal.
+      <ul>
+        <li>
+          <a href = "triangulation_03.plot">triangulation_03.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "triangulation_03.png">triangulation_03.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TRIANGULATION_04</b> is a triangulation which is not maximal because
+       another line can be drawn, forming another triangle.
+      <ul>
+        <li>
+          <a href = "triangulation_04.plot">triangulation_04.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "triangulation_04.png">triangulation_04.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TSP_CROSSING</b> illustrates how a portion of a proposed solution to
+      the traveling salesman problem might exhibit a crossing.
+      <ul>
+        <li>
+          <a href = "tsp_crossing.plot">tsp_crossing.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tsp_crossing.png">tsp_crossing.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TUTTE</b> is the Tutte graph:
+      <ul>
+        <li>
+          <a href = "tutte.plot">tutte.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "tutte.png">tutte.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>WEIGHT</b> makes a line graph of someone's weight:
+      <ul>
+        <li>
+          <a href = "weight.plot">weight.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "weight.png">weight.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>WORMS</b> makes an illustration of some rectilinear worms on a grid:
+      <ul>
+        <li>
+          <a href = "worms.plot">worms.plot</a>, the input;
+        </li>
+        <li>
+          <a href = "worms.png">worms.png</a>,
+          the resulting PNG file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for PLOT_TO_PS.
+        </li>
+        <li>
+          <b>BOX_CLIP_LINE_2D</b> uses a box to clip a line segment in 2D.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CIRCLE_POINTS</b> returns N equally spaced points on a circle in 2D.
+        </li>
+        <li>
+          <b>DEGREES_TO_RADIANS</b> converts an angle from degrees to radians.
+        </li>
+        <li>
+          <b>ELLIPSE_POINTS</b> returns N points on an ellipse in 2D.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>POINT_INSIDE_BOX_2D</b> determines if a point is inside a box in 2D.
+        </li>
+        <li>
+          <b>PROCESS</b> processes the user input.
+        </li>
+        <li>
+          <b>PROCESS_HISTOGRAM</b> processes the input defining a histogram.
+        </li>
+        <li>
+          <b>PROCESS_POLYGON</b> processes the input defining an outlined polygon.
+        </li>
+        <li>
+          <b>PROCESS_POLYGON_FILL</b> processes the input defining a filled polygon.
+        </li>
+        <li>
+          <b>PS_ARROW</b> draws an arrow from (X1,Y1) to (X2,Y2).
+        </li>
+        <li>
+          <b>PS_CIRCLE</b> draws a circle.
+        </li>
+        <li>
+          <b>PS_CIRCLE_ARC</b> draws a circular arc.
+        </li>
+        <li>
+          <b>PS_CIRCLE_FILL</b> draws a filled circle.
+        </li>
+        <li>
+          <b>PS_COLOR_FILL_SET</b> sets the fill color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE</b> handles the line color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE_SET</b> sets the line color.
+        </li>
+        <li>
+          <b>PS_COMMENT</b> inserts a comment into the PostScript file.
+        </li>
+        <li>
+          <b>PS_DEFAULT</b> sets the internal settings to their default values
+        </li>
+        <li>
+          <b>PS_FILE_CLOSE</b> closes a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_HEAD</b> writes header information to a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_OPEN</b> opens a new version of a PostScript file with a given name.
+        </li>
+        <li>
+          <b>PS_FILE_TAIL</b> writes trailer information to a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILL_GRAY</b> sets the gray fill for polygons.
+        </li>
+        <li>
+          <b>PS_FONT_SIZE</b> sets the font size.
+        </li>
+        <li>
+          <b>PS_GRID_CARTESIAN</b> draws a cartesian grid.
+        </li>
+        <li>
+          <b>PS_LABEL</b> prints a label at the current position.
+        </li>
+        <li>
+          <b>PS_LABEL_SLANT</b> prints a slanted label at a given position.
+        </li>
+        <li>
+          <b>PS_LINE_CLOSED</b> adds the graph of a closed line to a PostScript file.
+        </li>
+        <li>
+          <b>PS_LINE_WIDTH</b> sets the line width.
+        </li>
+        <li>
+          <b>PS_LINETO</b> draws a line from the current point to the given point.
+        </li>
+        <li>
+          <b>PS_MARK_CIRCLE</b> marks a point with a small open circle.
+        </li>
+        <li>
+          <b>PS_MARK_DISK</b> marks a point with a small filled disk.
+        </li>
+        <li>
+          <b>PS_MOVETO</b> "moves to" a new point, which becomes the current point.
+        </li>
+        <li>
+          <b>PS_PAGE_HEAD</b> writes header information on a new page.
+        </li>
+        <li>
+          <b>PS_PAGE_TAIL</b> writes tail information at the end of a page.
+        </li>
+        <li>
+          <b>PS_POLYGON_FILL</b> adds a filled polygon to a PostScript file.
+        </li>
+        <li>
+          <b>PS_SECTOR</b> draws a circular sector.
+        </li>
+        <li>
+          <b>PS_SECTOR_FILL</b> draws a filled circular sector.
+        </li>
+        <li>
+          <b>PS_SETTING_INT</b> sets, gets, or prints integer internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>PS_SETTING_REAL</b> sets, gets, or prints real internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>PS_SQUARE</b> draws a square.
+        </li>
+        <li>
+          <b>PS_SQUARE_FILL</b> draws a filled square.
+        </li>
+        <li>
+          <b>PS_STAR</b> draws an open star of given radius.
+        </li>
+        <li>
+          <b>PS_STAR_CIRCLE</b> draws open circles at the 10 points on a star of given radius.
+        </li>
+        <li>
+          <b>PS_STAR_DISK</b> draws filled disks at the 10 points on a star of given radius.
+        </li>
+        <li>
+          <b>PS_STAR_POINTS</b> returns 10 points on a star of given radius.
+        </li>
+        <li>
+          <b>PS_TRIANGLE</b> draws an open triangle.
+        </li>
+        <li>
+          <b>PS_TRIANGLE_FILL</b> draws a filled triangle.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>SECTOR_POINTS</b> returns N equally spaced points on a circle in 2D.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WORD_EXTRACT</b> extracts the next word from a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 October 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

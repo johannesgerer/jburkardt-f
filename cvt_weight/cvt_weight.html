@@ -1,0 +1,140 @@
+<html>
+
+  <head>
+    <title>
+      CVT_WEIGHT - Try to Prescribe CVT Cell Sizes
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CVT_WEIGHT <br> Try to Prescribe CVT Cell Sizes
+    </H1>
+
+    <hr>
+
+    <p>
+      <b>CVT_WEIGHT</b>
+      is a FORTRAN90 library which
+      implemented an experimental effort to compute a centroidal
+      Voronoi tessellation (CVT) in which there were cells of specified
+      size.
+    </p>
+
+    <p>
+      Normally, given arbitrary initial data and a constant density,
+      the CVT would comprise cells of roughly equal area.  In this case,
+      a modification was made to the CVT iteration, in an attempt to drive
+      the algorithm towards cells of prescribed sizes.  While we were
+      convinced this idea ought to work...it didn't.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <UL>
+        <li>
+          <A href = "cvt_weight.f90">cvt_weight.f90</A>, the source code.
+        </li>
+        <li>
+          <A href = "cvt_weight.sh">cvt_weight.sh</A>,
+          commands to compile the source code.
+        </li>
+      </UL>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <UL>
+        <li>
+          <A href = "cvt_weight_prb.f90">cvt_weight_prb.f90</A>, a sample
+          problem.
+        </li>
+        <li>
+          <A href = "cvt_weight_prb.sh">cvt_weight_prb.sh</A>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <A href = "cvt_weight_prb_output.txt">cvt_weight_prb_output.txt</A>, sample
+          problem output.
+        </li>
+      </UL>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <UL>
+        <li>
+          <b>CELL_VOLUME_COMPUTATION</b> estimates the cell volumes by sampling.
+        </li>
+        <li>
+          <b>CVT_DENSE_ITERATION</b> takes one step of the CVT density iteration.
+        </li>
+        <li>
+          <b>FIND_CLOSEST</b> finds the Voronoi cell generator closest to a point.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>REGION_SAMPLER</b> returns sample points in the physical region.
+        </li>
+        <li>
+          <b>REGION_SAMPLER_WEIGHTED</b> returns weighted sample points
+        </li>
+        <li>
+          <b>RVEC_BRACKET</b> searches a sorted array for successive brackets of a value.
+        </li>
+        <li>
+          <b>RVEC_EVEN</b> returns N real values, evenly spaced between ALO and AHI.
+        </li>
+        <li>
+          <b>SPLINE_CONSTANT_VAL</b> evaluates a piecewise constant spline at a point.
+        </li>
+        <li>
+          <b>SPLINE_LINEAR_VAL</b> evaluates a linear spline at a specific point.
+        </li>
+        <li>
+          <b>TEST_REGION</b> determines if a point is within the physical region.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </UL>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 October 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

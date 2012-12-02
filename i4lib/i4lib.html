@@ -1,0 +1,834 @@
+<html>
+
+  <head>
+    <title>
+      I4LIB - A Single Precision Integer Arithmetic Utility Library
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      I4LIB <br> A Single Precision Integer Arithmetic Utility Library
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>I4LIB</b> 
+      is a FORTRAN90 library which 
+      contains many utility routines for "I4" or "single precision integer"
+      arithmetic.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>I4LIB</b> is available in
+      <a href = "../../c_src/i4lib/i4lib.html">a C version</a> and
+      <a href = "../../cpp_src/i4lib/i4lib.html">a C++ version</a> and
+      <a href = "../../f77_src/i4lib/i4lib.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/i4lib/i4lib.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/i4lib/i4lib.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/c4lib/c4lib.html">
+      C4LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for "C4" or
+      single precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/c8lib/c8lib.html">
+      C8LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for "C8" or
+      double precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/i8lib/i8lib.html">
+      I8LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "I8" or "double precision integer"
+      arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r16lib/r16lib.html">
+      R16LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R16" or 
+      "quadruple precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r4lib/r4lib.html">
+      R4LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R4" or 
+      "single precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R8" or 
+      "double precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subpak/subpak.html">
+      SUBPAK</a>, 
+      a FORTRAN90 library which
+      contains many utility routines;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Thomas Cormen, Charles Leiserson, Ronald Rivest,<br>
+          Introduction to Algorithms,<br>
+          MIT Press, 2001,<br>
+          ISBN: 0262032937,<br>
+          LC: QA76.C662.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms for Computers and Calculators,<br>
+          Second Edition,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0-12-519260-6,<br>
+          LC: QA164.N54.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "i4lib.f90">i4lib.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "i4lib.sh">i4lib.sh</a>, 
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "i4lib_prb.f90">i4lib_prb.f90</a>, a sample calling
+          program;
+        </li>
+        <li>
+          <a href = "i4lib_prb.sh">i4lib_prb.sh</a>, commands to 
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "i4lib_prb_output.txt">i4lib_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>I4_BIT_HI1</b> returns the position of the high 1 bit base 2 in an I4.
+        </li>
+        <li>
+          <b>I4_BIT_LO0</b> returns the position of the low 0 bit base 2 in an I4.
+        </li>
+        <li>
+          <b>I4_BIT_LO1</b> returns the position of the low 1 bit base 2 in an I4.
+        </li>
+        <li>
+          <b>I4_BIT_REVERSE</b> reverses the bits in an I4.
+        </li>
+        <li>
+          <b>I4_CHARACTERISTIC</b> gives the characteristic for an I4.
+        </li>
+        <li>
+          <b>I4_CHOOSE</b> computes the binomial coefficient C(N,K) as an I4.
+        </li>
+        <li>
+          <b>I4_DIV_ROUNDED</b> computes the rounded result of I4 division.
+        </li>
+        <li>
+          <b>I4_DIVP</b> returns the smallest multiple of J greater than or equal to I.
+        </li>
+        <li>
+          <b>I4_EVEN</b> returns TRUE if an I4 is even.
+        </li>
+        <li>
+          <b>I4_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>I4_GCD</b> finds the greatest common divisor of two I4's.
+        </li>
+        <li>
+          <b>I4_GCDB</b> finds the greatest common divisor of the form K**N of two I4's.
+        </li>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>I4_HUGE_NORMALIZER</b> returns the "normalizer" for I4_HUGE.
+        </li>
+        <li>
+          <b>I4_IS_POWER_OF_2</b> reports whether an I4 is a power of 2.
+        </li>
+        <li>
+          <b>I4_IS_PRIME</b> reports whether an I4 is prime.
+        </li>
+        <li>
+          <b>I4_LCM</b> computes the least common multiple of two I4's.
+        </li>
+        <li>
+          <b>I4_LOG_10</b> returns the integer part of the logarithm base 10 of an I4.
+        </li>
+        <li>
+          <b>I4_LOG_2</b> returns the integer part of the logarithm base 2 of an I4.
+        </li>
+        <li>
+          <b>I4_LOG_I4</b> returns the logarithm of an I4 to an I4 base.
+        </li>
+        <li>
+          <b>I4_LOG_R8</b> returns the logarithm of an I4 to an R8 base.
+        </li>
+        <li>
+          <b>I4_MANT</b> computes the "mantissa" of a double precision number.
+        </li>
+        <li>
+          <b>I4_MODDIV</b> breaks an I4 into a multiple of a divisor and remainder.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of I4 division.
+        </li>
+        <li>
+          <b>I4_MOP</b> returns the I-th power of -1 as an I4 value.
+        </li>
+        <li>
+          <b>I4_ODD</b> returns TRUE if an I4 is odd.
+        </li>
+        <li>
+          <b>I4_POWER</b> returns the integer power of an I4.
+        </li>
+        <li>
+          <b>I4_SIGN</b> evaluates the sign of an I4.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>I4_SWAP3</b> swaps three I4's.
+        </li>
+        <li>
+          <b>I4_TO_ANGLE</b> maps I4's to points on a circle.
+        </li>
+        <li>
+          <b>I4_TO_DIGITS_DECIMAL</b> determines the last N decimal digits of an I4.
+        </li>
+        <li>
+          <b>I4_TO_FAC</b> converts an I4 into a product of prime factors.
+        </li>
+        <li>
+          <b>I4_TO_HALTON</b> computes one element of a leaped Halton subsequence.
+        </li>
+        <li>
+          <b>I4_TO_ISBN</b> converts an I4 to an ISBN digit.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4_UNSWAP3</b> unswaps three I4's.
+        </li>
+        <li>
+          <b>I4_WALSH_1D</b> evaluates the Walsh function.
+        </li>
+        <li>
+          <b>I4_WIDTH</b> returns the "width" of an I4.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4_XOR</b> calculates the exclusive OR of two I4's.
+        </li>
+        <li>
+          <b>I43MAT_FLIP_COLS</b> swaps the columns of an I43MAT.
+        </li>
+        <li>
+          <b>I43MAT_FLIP_ROWS</b> swaps the rows of an I43MAT.
+        </li>
+        <li>
+          <b>I4COL_COMPARE</b> compares columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_FIND</b> searches an I4COL for a particular column value.
+        </li>
+        <li>
+          <b>I4COL_FIND_ITEM</b> searches an I4COL for a given scalar value.
+        </li>
+        <li>
+          <b>I4COL_FIND_PAIR_WRAP</b> searches an I4COL for a pair of items.
+        </li>
+        <li>
+          <b>I4COL_FIRST_INDEX</b> indexes the first occurrence of values in an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORT_A</b> ascending sorts an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORT_D</b> descending sorts an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORT2_A</b> ascending sorts the elements of each column of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORT2_D</b> descending sorts elements of each column of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORTED_SINGLETON_COUNT</b> counts singletons in an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORTED_UNIQUE</b> keeps unique elements in a sorted I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORTED_UNIQUE_COUNT</b> counts unique elements in an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SWAP</b> swaps columns J1 and J2 of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_UNIQUE_INDEX</b> indexes the unique occurrence of values in an I4COL.
+        </li>
+        <li>
+          <b>I4I4_SORT_A</b> ascending sorts a pair of integers.
+        </li>
+        <li>
+          <b>I4I4I4_SORT_A</b> ascending sorts a triple of integers.
+        </li>
+        <li>
+          <b>I4INT_TO_R4INT</b> maps an I4INT to an R4INT.
+        </li>
+        <li>
+          <b>I4INT_TO_R8INT</b> maps an I4INT to an R8INT.
+        </li>
+        <li>
+          <b>I4LIST_PRINT</b> prints an I4LIST.
+        </li>
+        <li>
+          <b>I4MAT_BORDER_ADD</b> adds a "border" to an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_BORDER_CUT</b> cuts the "border" of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_ELIM</b> carries out exact Gauss elimination on an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_FLIP_COLS</b> swaps the columns of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_FLIP_ROWS</b> swaps the rows of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_HISTOGRAM</b> computes a histogram of the elements of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_INDICATOR</b> sets up an "indicator" I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_L1_INVERSE</b> inverts a unit lower triangular I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_MAX</b> returns the maximum of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_MAX_INDEX</b> returns the location of the maximum of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_MIN</b> returns the minimum of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_MIN_INDEX</b> returns the location of the minimum of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_MM</b> multiplies two I4MAT's.
+        </li>
+        <li>
+          <b>I4MAT_PERM</b> permutes the rows and columns of a square I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PERM_UNIFORM</b> selects a random permutation of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PERM2</b> permutes the rows and columns of a rectangular I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PERM2_UNIFORM</b> selects a random permutation of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT_SOME</b> prints some of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_RED</b> divides out common factors in a row or column of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_U1_INVERSE</b> inverts a unit upper triangular I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_UNIFORM</b> returns a scaled pseudorandom I4MAT.
+        </li>
+        <li>
+          <b>I4ROW_COMPARE</b> compares two rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_FIND_ITEM</b> searches the rows of an I4ROW for a given value.
+        </li>
+        <li>
+          <b>I4ROW_FIND_PAIR_WRAP</b> searches rows of an I4ROW for a pair of items.
+        </li>
+        <li>
+          <b>I4ROW_MAX</b> returns the maximums of the rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_MEAN</b> returns the means of the rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_MIN</b> returns the minimums of the rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SORT_A</b> ascending sorts the rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SORT_D</b> descending sorts the rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SORT2_D</b> descending sorts the elements of each row of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SORTED_UNIQUE</b> keeps unique elements in an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SORTED_UNIQUE_COUNT</b> counts unique elements in an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SUM</b> returns the sums of the rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SWAP</b> swaps two rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_VARIANCE</b> returns the variances of an I4ROW.
+        </li>
+        <li>
+          <b>I4VEC_ADD</b> computes C = A + B for I4VEC's.
+        </li>
+        <li>
+          <b>I4VEC_AMAX</b> returns the largest magnitude in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_AMAX_INDEX</b> returns the index of the largest magnitude in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_AMIN</b> returns the smallest magnitude in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_AMIN_INDEX</b> returns the index of the smallest magnitude in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_AMINZ</b> returns the smallest nonzero magnitude in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_AMINZ_INDEX</b> returns the smallest nonzero magnitude in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_ANY_LT:</b> ( any ( A < B ) ) for I4VEC's.
+        </li>
+        <li>
+          <b>I4VEC_ASCEND_SUB</b> computes the longest ascending subsequence of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_ASCENDS</b> determines if an I4VEC is (weakly) ascending.
+        </li>
+        <li>
+          <b>I4VEC_AXPY</b> adds a scaled multiple of one I4VEC to another.
+        </li>
+        <li>
+          <b>I4VEC_BRACKET</b> searches a sorted I4VEC for successive brackets of a value.
+        </li>
+        <li>
+          <b>I4VEC_COMPARE</b> compares two I4VEC's.
+        </li>
+        <li>
+          <b>I4VEC_COPY</b> copies an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_CUM</b> computes the cumulutive sum of the entries of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_DESCENDS</b> determines if an I4VEC is decreasing.
+        </li>
+        <li>
+          <b>I4VEC_DIRECT_PRODUCT</b> creates a direct product of I4VEC's.
+        </li>
+        <li>
+          <b>I4VEC_DIRECT_PRODUCT2</b> creates a direct product of I4VEC's.
+        </li>
+        <li>
+          <b>I4VEC_EVEN_ALL</b> is TRUE if all entries of an I4VEC are even.
+        </li>
+        <li>
+          <b>I4VEC_EVEN_ANY</b> is TRUE if any entry of an I4VEC is even.
+        </li>
+        <li>
+          <b>I4VEC_FIRST_INDEX</b> indexes the first occurrence of values in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_FRAC</b> searches for the K-th smallest element in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_GCD</b> returns the greatest common divisor of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_A</b> reorders an I4VEC into an ascending heap.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D</b> reorders an I4VEC into an descending heap.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D_EXTRACT</b> extracts the maximum value from a heap descending I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D_INSERT</b> inserts a new I4 into a heap descending I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D_MAX</b> returns the maximum value in a heap descending I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_HISTOGRAM</b> computes a histogram of the elements of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEX</b> returns the first location of a given value in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEX_DELETE_ALL</b> deletes a value in an indexed sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEX_DELETE_DUPES</b> deletes duplicates from an indexed sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEX_DELETE_ONE</b> deletes one copy of I4 from an indexed sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEX_INSERT</b> inserts an I4 into an indexed sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEX_INSERT_UNIQUE</b> inserts a unique I4 into an indexed sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEX_ORDER</b> sorts an I4VEC using an index vector.
+        </li>
+        <li>
+          <b>I4VEC_INDEX_SEARCH</b> searches for an I4 in an indexed sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEX_SORT_UNIQUE</b> creates a sorted unique index for an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEXED_HEAP_D</b> creates a descending heap from an indexed I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEXED_HEAP_D_EXTRACT:</b> extract from heap descending indexed I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEXED_HEAP_D_INSERT:</b> insert value into heap descending indexed I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDEXED_HEAP_D_MAX:</b> maximum value in heap descending indexed I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_INSERT</b> inserts a value into an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_LCM</b> returns the least common multiple of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_MASK_PRINT</b> prints a masked I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_MAX</b> computes the maximum element of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_MAX_INDEX</b> computes the index of a maximum element of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_MAX_INDEX_LAST</b> returns the last maximal element location in an I4VEC
+        </li>
+        <li>
+          <b>I4VEC_MEAN</b> returns the mean of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_MEDIAN</b> returns the median of an unsorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_MERGE_A</b> merges two ascending sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_MIN</b> computes the minimum element of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_MIN_INDEX</b> computes the index of the minimum element of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_NONZERO_COUNT</b> counts the nonzero entries in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_NONZERO_FIRST</b> left-shifts all nonzeros in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_ODD_ALL</b> is TRUE if all entries of an I4VEC are odd.
+        </li>
+        <li>
+          <b>I4VEC_ODD_ANY</b> is TRUE if any entry of an I4VEC is odd.
+        </li>
+        <li>
+          <b>I4VEC_ORDER_TYPE</b> determines if I4VEC is (non)strictly ascending/descending.
+        </li>
+        <li>
+          <b>I4VEC_PAIRWISE_PRIME</b> checks whether an I4VEC's entries are pairwise prime.
+        </li>
+        <li>
+          <b>I4VEC_PART</b> partitions an integer NVAL into N nearly equal parts.
+        </li>
+        <li>
+          <b>I4VEC_PART_QUICK_A</b> reorders an I4VEC as part of a quick sort.
+        </li>
+        <li>
+          <b>I4VEC_PERMUTE</b> permutes an I4VEC in place.
+        </li>
+        <li>
+          <b>I4VEC_PERMUTE_UNIFORM</b> randomly permutes an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_PRINT_SOME</b> prints "some" of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_PRODUCT</b> returns the product of the entries of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_RED</b> divides out common factors in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_ROTATE</b> rotates an I4VEC in place.
+        </li>
+        <li>
+          <b>I4VEC_RUN_COUNT</b> counts runs of equal values in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SEARCH_BINARY_A</b> searches an ascending sorted I4VEC for a value.
+        </li>
+        <li>
+          <b>I4VEC_SEARCH_BINARY_D</b> searches a descending sorted I4VEC for a value.
+        </li>
+        <li>
+          <b>I4VEC_SORT_BUBBLE_A</b> ascending sorts an I4VEC using bubble sort.
+        </li>
+        <li>
+          <b>I4VEC_SORT_BUBBLE_D</b> descending sorts an I4VEC using bubble sort.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_A</b> ascending sorts an I4VEC using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_D</b> descending sorts an I4VEC using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_INDEX_D</b> does an indexed heap descending sort of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORT_INSERT_A</b> uses an ascending insertion sort on an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORT_INSERT_D</b> uses a descending insertion sort on an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORT_QUICK_A</b> ascending sorts an I4VEC using quick sort.
+        </li>
+        <li>
+          <b>I4VEC_SORT_SHELL_A</b> ascending sorts an I4VEC using Shell's sort.
+        </li>
+        <li>
+          <b>I4VEC_SORTED_UNDEX</b> returns unique sorted indexes for a sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORTED_UNIQUE</b> finds the unique elements in a sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORTED_UNIQUE_COUNT</b> counts the unique elements in a sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORTED_UNIQUE_HIST</b> histograms the unique elements of a sorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SPLIT</b> "splits" an unsorted I4VEC based on a splitting value.
+        </li>
+        <li>
+          <b>I4VEC_STD</b> returns the standard deviation of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SUM</b> returns the sum of the entries of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SWAP</b> swaps the entries of two I4VEC's.
+        </li>
+        <li>
+          <b>I4VEC_TRANSPOSE_PRINT</b> prints an I4VEC "transposed".
+        </li>
+        <li>
+          <b>I4VEC_UNDEX</b> returns unique sorted indexes for an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_UNIFORM</b> returns a scaled pseudorandom I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_UNIQUE_COUNT</b> counts the unique elements in an unsorted I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_UNIQUE_INDEX</b> indexes the unique occurrence of values in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_VALUE_INDEX</b> indexes entries equal to a given value in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_VALUE_NUM</b> counts entries equal to a given value in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_VARIANCE</b> returns the variance of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_WIDTH</b> returns the "width" of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_ZERO</b> sets the entries of an I4VEC to 0.
+        </li>
+        <li>
+          <b>I4VEC2_COMPARE</b> compares entries of an I4VEC2.
+        </li>
+        <li>
+          <b>I4VEC2_PRINT</b> prints a pair of integer vectors.
+        </li>
+        <li>
+          <b>I4VEC2_SORT_A</b> ascending sorts a vector of pairs of integers.
+        </li>
+        <li>
+          <b>I4VEC2_SORT_D</b> descending sorts a vector of pairs of integers.
+        </li>
+        <li>
+          <b>I4VEC2_SORTED_UNIQUE</b> keeps the unique elements in a sorted I4VEC2.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PERM_CYCLE</b> analyzes a permutation.
+        </li>
+        <li>
+          <b>PERM_UNIFORM</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>PRIME</b> returns any of the first PRIME_MAX prime numbers.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 August 2010.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

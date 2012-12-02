@@ -1,0 +1,772 @@
+crystal.doc
+
+18 November 1996
+
+  I need the PVM library...PVM_RECV, PVM_UPKINT, etc.
+ 
+14 November 1996
+
+  OK, now it is time to test out the call from MAIN_TIME_STEP_LOOP to
+  COMPUTE_LOCAL_COST.
+
+
+13 November 1996
+
+  Retrieved pvm3.h from NETLIB, to try to compile compute_global_cost.c
+
+  Reply from Wing Chui helped me finish up a decent version of
+  COMPUTE_LOCAL_COST.  Now, who calls COMPUTE_LOCAL_COST?  MAIN_TIME_STEP_LOOP?
+ 
+08 November 1996
+
+  I'm a little stuck.  SETCST is actually running on a subdomain.  It needs
+  to know ILOW and IHIGH, the low and high I and J indices, and the type
+  of physics in this subdomain (melt/crystal/void).  Then the CINC increment
+  it computes must be passed to the main processor and summed.  I sent
+  a note to Wing Chui asking for help.
+
+
+06 November 1996
+
+  Next goal, pass ICOST from CRYQED through to SETCST.
+  SETCST is called by MAIN_TIME_STEP_LOOP.  
+  The variables ICOST and VAVE must be passed in, and CINC passed out.
+  SETCST may have to compute areas, gradients or vorticities.
+  PPCRYSTAL is divided up into components, so ICRYS and JCRYS don't
+  work the same way any more.
+ 
+  I turned off the Tecplot file output for now.
+ 
+  I sent a note to Prasad, making two suggestions:
+    * declare variables in INCLUDE files
+    * use DOUBLE PRECISION rather than REAL*8
+
+
+05 November 1996
+
+  James and Yanzhao here.  Max says our goals will be:
+
+    * James and Yanzhao will get an Alpha, and connectivity,
+      so they can get a copy of the code and run it.
+
+    * I will give them a copy of Zhang's thesis, and some
+      hardcopy portions of the code, to look over for now.
+
+    * Max and I will identify three particular optimizations
+      we want to do, and strive to get them done by spring.
+      When we have problems evaluating certain quantities, we
+      will contact Stonybrook and ask for help.
+
+  Gave Yanzhao some documents:
+    crystal.doc
+    main.c
+    cryqed.f
+    func.f
+    timestep.c
+    stprint.f
+
+  I promised to send him a copy of Zhang's thesis.
+
+  I had some trouble trying to figure out the interface between the
+  FORTRAN routine FUNC and the C routine MAIN_TIME_STEP_LOOP.  In the
+  real code, FUNC will set some parameters and call MAIN_TIME_STEP_LOOP,
+  which will return COST.  Right now, I'm just trying to return the
+  value of COST.  I had some trouble getting MAIN_TIME_STEP_LOOP to
+  compile, but now that's done and I'm seeing if I can do any
+  value passing now.
+
+  Ah, the good news is that MAIN_TIME_STEP_LOOP computes COST=7.1
+  and passes it back up to FUNC, and FUNC gets it.
+
+
+31 October 1996
+
+  OK, to fill in the details:
+    Wing Chui sent me a copy of PPCRYSTAL, the parallel version of MASTRAPP2D, 
+  which is to be taken as the current working copy of the code.
+    I got it to run on the Alpha.
+    Now, I am trying to get the QED algorithm grafted into the current
+  code, which is hard because part of PPCRYSTAL is written in C.
+
+  Today, I am working on getting SETCST, the cost functional calculator,
+  called by the PPCRYSTAL routine MAIN_TIME_STEP_LOOP in file TIMESTEP.C.
+
+08 October 1996
+
+  I think I got PPCRYSTAL to run today.  Instead of trying
+    ppcrystal -i input -o output -e error
+  I simply tried
+    ppcrystal < input > output
+  and I got pages out output.
+
+  Now to check it.
+
+07 October 1996
+
+  AlphaMax: ppcrystal -i test1.in -o test1.out -e test1.err
+  ERROR in start_up(), can't reopen stdin to test1.in
+
+06 October 1996
+
+  I conceived the idea of using the Gnu C compiler on the Alpha.
+  (PPCRYSTAL is only intended to run on Sun's, RS6000, or Paragons.
+  The C code includes various "ifdef" statements that could hurt me.)
+  The C routines compile, with minor complaints, but now I can't load
+  since I didn't specify where the FORTRAN libraries were.
+
+04 October 1996
+
+  I received a copy of the parallel crystal code from Wing Chui.
+
+  I was able to make a file "make_ppcrystal.csh" which compiled
+  the FORTRAN routines, but the C routines would not compile.
+  Sent mail to Wing Chui.
+ 
+09 September 1996
+
+  At the meeting, I complained that the code was hard to read and hard to use.
+  Prasad asked me to look at the parallel version of version 1, and the new
+  version 2, and report to him, presumably to say whether or not my concerns
+  had been met.  Since that time, I have not received either code, and am
+  still waiting.
+
+
+27 August 1996
+
+  Split INITL into SETP and SETRU, a logical division.
+ 
+22 June 1996
+
+  I am trying to determine the meaning of the program variables
+  AE1, AE2, AK1, AK2, which may be d ETA/d X, or d ETA/d N, 
+  or something similar.  I need to understand them so that I
+  can understand the computation of flux, so that I can finish
+  up the heat flux cost function.
+ 
+  By the way, do they want heat flux into the crystal, or out of it?
+ 
+ 
+
+04 June 1996
+
+  Max said Prasad is proposing an August meeting.
+  I asked him whether I should work furiously on CRYSTAL or not.  He said
+  all that was necessary is that I be able to present a few graphs, presumably
+  of the behavior of the cost functionals they proposed...
+ 
+15 May 1996
+
+  Figure out how to do heat flux, probably B1JBL, B2JBL, etc.
+
+
+13 May 1996
+
+  Routine WRTEC added (restored, actually, from original CRYSTAL)
+  for writing TECPLOT files.  Now access it, and try TECPLOT.
+
+
+26 March 1996
+
+  It seems as though my vorticity routine is computing quite a few NAN's.
+  I have spent all day trying to track down why, and still no sign.  
+  I am reduced to printing out the entire VORT array (partly since I
+  don't have a copy of the SGI FORTRAN Language manual, so that I can
+  find out how to check for ISNAN).
+
+  The problem may occur in GRADNT, where I divide by HKSI or HETA.
+  I'll bet these are never set for the void, and that's where I'm
+  getting NAN's.  
+
+  Indeed, that turned out to be the problem...
+
+
+
+25 March 1996
+
+  Max says vorticity doesn't have RHO in it, so what I wrote is fine.
+
+  As far as the flow under the crystal is concerned, I'm just going
+  to integrate the ENTIRE flow under the crystal, not the first row
+  of control volumes, or a fixed physical band of space.  It's a
+  crock, but I'll note that now, and move on.
+
+  I added VORT to the list of data written by RSWRIT so that I 
+  can plot it.
+
+
+23 March 1996
+
+  I wrote a routine to compute vorticity, although it might have to be
+  modified to work on mass velocity rather than velocity.
+
+  I am thinking about the measurement of flow velocity under the crystal,
+  and I am going to have to ask Zhang for some clarification.
+
+
+22 March 1996
+
+  Zhang and Prasad suggested the following costs:
+
+    1) Flow velocity under the crystal;
+    2) Heat flux through the crystal/through the free surface;
+    3) Flow vorticity.
+
+  And the following parameters:
+
+    1) The rotation rates of the crucible and crystal;
+    2) The temperature profile on the crucible wall;
+    3) The melt height/crucible radius or aspect ratio;
+    4) The crystal diameter/crucible diameter.
+
+
+23 February 1996
+
+  I faxed Max a 5 page report, with some nice graphs.
+
+
+21 February 1996
+
+  Max asked me to write up a 2 or 3 page report on my difficulties
+  with the shape optimization, to submit to Prasad.
+
+
+25 January 1996
+
+  First unpleasant result: I allowed all 7 interior crucible nodes
+  to vary, but forced them to lie between 0 and 0.25.  The 6th node,
+  for some reason, ducked down to zero.  Amazingly, the crucible
+  bottom curve DID NOT FOLLOW the curve, that is, the 6th node
+  "fell off" the bottom of the crucible, and the code generated
+  some mostly straight curve between nodes 5 and 6, which was very
+  very unsatisfactory.
+
+
+  Thank God I am using DQED!  I was able to proceed from the previous
+  disaster by further requiring monotonicity.  Now my problem is that
+  I'm getting a step function solution.  After three steps, four of
+  the interior nodes are equal to 0.25, and the others will probably
+  come there shortly.  
+
+  I thought I had a mistake in my cost functional, since I was dividing
+  by the area, when apparently I should divide by the square root of
+  the area, but even after that fix the result was practically the same.
+  
+  I wonder if the LENGTH of the crucible bottom determines the amount
+  of heat transmitted...
+
+
+24 January 1996
+
+  I seem to have found some mistakes in the DQED documentation, in the
+  matter of the size of the work arrays.  I think I worked out the
+  correct information, and I now have a job running.  Privately,
+  I doubt its success.  I expect a floating overflow.
+
+
+23 January 1996
+
+  I modified DQED, splitting DIFJAC into DIFCEN and DIFFOR, for central
+  and forward difference jacobian estimates.  Now I'm trying to test
+  both routines.  OK, got that going.  
+
+  Now try to make a version of CRYSTAL that uses DQED.  I have a 
+  preliminary version, called "CRYQED".  It successfully evaluated
+  the residual for a given set of parameters.  Now I'll try to take
+  a few optimization steps.
+
+
+22 January 1996
+
+  I talked to Max today.  He is still interested in shape optimization.
+  In order to get around the deficiencies in the grid generation code,
+  he's willing to do constrained optimization.  So he suggests using
+  Zhang's cubic spline boundary, and constraining the range of the
+  coefficients so they don't move too far.  He wonders whether we will
+  still face problems with wiggly boundaries.
+
+  First thing I have to do is get CRYSTAL to work with DQED.
+
+
+18 January 1996
+
+  I was able to get my first decent optimization run.
+
+  The parameter I chose to work with was the wall temperature, TW.
+  I understand this to be the temperature that the crucible is heated to.
+  In a physical situation, this is obviously an easily varied parameter.
+
+  For the cost function, I chose a desired velocity magnitude, VAVE,
+  and for any fixed time I considered the function F(T) to be
+
+  F(T) = SQRT ( Integral (Liquid region) (VAVE - SQRT(U**2 + V**2) )**2 )
+
+  which gives me RMS integral of the total deviation from the average.
+
+  Then, to account for the time integration, I set
+
+  J = Integral (T0 to T1) F(T) / ( (T1-T0) AREAL ) 
+
+  where the divisions by (T1-T0) and AREAL, the area of the liquid region, 
+  are used for normalization.  So presumably this gives me the RMS deviation
+  over a unit space for a unit time.  (I think I left in another constant
+  scaling factor in J, which essentially just makes its value lie in 
+  the hundreds, rather than in the hundredths.)
+
+  For my sample case, I set TW initially to 1712, roughly the value
+  Zhang uses.  The value of VAVE I set to 1850, which I came up with as
+  a figure not to far from the average velocity magnitude for the original
+  data.  For the time integration, I only took two time steps (this
+  is what Zhang recommends for test runs.  A real run is recommended
+  to use 200 time steps).
+
+  The iteration proceeded as follows:
+
+  Step      TW        COST
+     0    1712        1132.75
+     1    1711.92     1132.74
+     2    1711.15     1132.68
+     3    1708.08     1132.40
+     4    1695.78     1129.98
+     *    1671.20     1140.74
+     5    1690.07     1126.16
+     *    1678.65     1151.31
+     6    1688.08     1122.99
+     7    1684.10     1098.47
+     8    1683.82     1097.61
+     9    1683.95     1097.30
+    10    1683.91     1097.2334
+    11    1683.90     1097.2321
+    12    1683.9093   1097.2320
+    13    1683.9093.. 1097.2320..
+
+    Convergence declared.
+
+  By the way, to solve the underlying problem for a single case
+  takes about 90 seconds.  This solution, which evaluated 36 separate
+  cases (including rejected iterates and forward difference evaluations)
+  required 2,739 seconds, or about 45 minutes.
+
+  I removed the direct solver option today.
+
+
+17 January 1996
+
+  I talked to Wing Chui, who works for James Glimm.  He is doing the
+  parallelization of the code.  He said he did not think the code
+  could handle different boundaries, and that Zhang makes very strong
+  assumptions about the boundaries.  He also said his version of the
+  code wouldn't help me, since he is not changing the algorithms, but
+  rather making it parallel.
+
+16 January 1996
+
+  I wrote to Hui Zhang about my problems using various crucible shapes,
+  and he said that his adaptive code could not handle such shapes, not
+  even large variations of his basic cubic spline shape.  I told this
+  to Max, and he said we'll give up on shape optimization for now, and
+  I should just try to find something (anything) to optimize.
+
+  So today I am cutting out the ISHAPE option from CRYSTAL first.
+
+
+12 January 1996
+
+  Today I'm just going to try to get the linear problem to converge.
+  It fails with the parameter equal to 0.330344138731816.    
+
+  Strategies:
+
+  1) Try increasing the number of linear iterations.  That can't
+     help, because using a direct solver, it still failed.
+
+  2) Try increasing the number of nonlinear iterations.
+     Tripling the nonlinear iterations seems to make a difference
+     in the computed values, although the blow up still occurs.
+     I'll try multiplying both linear and nonlinear iterations by 10.
+     Well, not so great, so how about 100?  This is taking forever!!!
+
+  3) Try decreasing the time step.
+
+  Hold on.  I have discovered that, for the linear problem with the
+  given parameter value, ADAPT returns a cell that is essentially
+  a triangle, with an area of 1.0E-18.
+
+
+11 January 1996
+
+  After a struggle, I got the LINPACK banded solver to work on the
+  linear systems.  I'd like to see how much more the cost is in time
+  and storage, given the much greater accuracy I can achieve.  If
+  that doesn't seem feasible, I could still try increasing the number
+  of iterations that the iterative linear solver takes, or try to force
+  it to use a true residual when deciding to stop.
+
+  The LINPACK solver took about 7 times the time, and while it made
+  some significant differences in the values of U, the nonlinear
+  iteration didn't do much better.
+
+  I made a cleaned up, but much bigger, version of SETUP.
+
+
+10 January 1996
+
+  1) I sent a note to Hui Zhang, hoping for help on the problem of
+     varying the shapes.
+
+  2) I am thinking about just replacing the linear solver with a banded
+     solver.  At least that would clean up one problem.
+
+  3) I could try optimization using Zhang's cubic spline, which at least
+     would turn the blame for overflows back to him.  It might be worth
+     a try, though I already saw an overflow with his splines in the
+     example I sent him.
+
+  I added an argument ICOST, and a new cost function which measures
+  the discrepancy between the local temperature and TF.  Didn't seem
+  to help much.
+
+
+09 January 1996
+
+  Model problem still works.
+
+  I noticed a mistake in the program.  SETCST did not take the square root
+  of the integral, and divided it by FLAREA.  The main program then
+  divided the result by FLAREA again.
+
+  I am taking the square root, and not dividing by FLAREA at all now.
+
+  When I try a simple piecewise linear bottom, the ADAPT routine forces
+  XC(2,18)=XC(3,18), YC(2,18)=YC(3,18), and the same for (2,19) and (3,19).
+  This makes the code fail, but I don't know why it is happening.
+  Of course, this only happens when the shape is concave up (I think
+  that's the case), which goes along with my experiences with the
+  power curve and other curves, where upward concavity was a sure
+  sign of a problem.
+
+  Best remedy: Ask Hui Zhang.  In fact, try setting his cubic spline
+  to be concave up, and see what happens.
+
+
+08 January 1996
+
+  GENBUN and the other FISHPACK routines are not usable, since they
+  assume that the five-diagonal system includes 1, -2, 1 in one
+  direction.
+
+
+07 January 1996
+
+  I removed the second call to INITL, since it's a "no-op", although
+  I really suspect that it's probably needed, since INITL only works
+  over L1 by M1, whose definition changes from the solid to the liquid
+  portion of the code.  
+
+  I got a test problem for GENBUN set up and running.  Now if the
+  printer ever comes back up, I can print it out and look it over.
+
+
+06 January 1996
+
+  I have thoughts of replacing the iterative solver.  Before doing so,
+  the first thing to do is to write a residual routine.
+
+  The SLATEC library routine GENBUN seems to solve the five-diagonal
+  system I am looking at.
+
+  While trying to write the residual routine, I discovered that the
+  off-diagonal coefficients are computed with a negative sign.
+
+
+05 January 1996
+
+  OK, I tried the flat bottom code, and now I'm really discouraged.
+  The floating point overflow comes because the iterations for
+  velocity are diverging.  It seems that for almost any geometry
+  except the original one, this happens.  
+
+  I have to consider several possibilities:
+
+  * I have introduced an error into, say, SETUP2.  I could check
+    this by going back to the original code and inserting my
+    flat bottom routine.
+
+  * I have somehow missed some piece of code that assumes that the
+    bottom is at 0, or the right hand side is at 1.
+
+  I would really like to pitch this accursed adaptive grid and do
+  it myself!  
+
+  Also, I would like to replace the iterative solver.
+
+  Max: wants a graph showing optimization of a cost function
+  with respect to some parameter.  He'd prefer a shape function,
+  but a temperature or other parameter would be OK.  He'll be
+  back in two weeks to check.
+
+
+04 January 1996
+
+  Now I'm trying a family of shapes with a flat bottom, and I'm going
+  to alter the ratio of X and Y in the flow area...  Anything to get
+  a damn result.
+
+  I found a problem that may explain my poor results so far.
+  Inside of INIGRD, the X coordinates of the first and last
+  boundary nodes are set to 0 and 0.25, regardless of the XBOT
+  data.  My attempts to specify various curves for the bottom
+  therefore had a 0 at the beginning and an 0.25 tacked on at the
+  end, which badly distorted the grid.  I have replaced this
+  code, setting the first boundary X coordinate to XBOT(1) and the
+  last to XBOT(NBOT).  Let's see what happens.
+
+  Well, that seems to have been the problem.
+
+  Now, let me look at some simple piecewise linear shapes,
+  ISHAPE=1.  The problem here seems to be that the optimization
+  code wants to try XBOT(2)=1.125, which sticks the bottom
+  through the free surface.
+
+  Let me move right along to ISHAPE=2.  OK, same sort of problem,
+  it tried to evaluate with XBOT(3)=-3.3, which is going to cause
+  problems.  I can see that I may need to constrain the parameter
+  choices, and also the size of parameter changes.  But let me
+  keep moving.
+
+  Try the power function.  Well, that blows up too, at -1.336.
+  I graphed the region, and nothing actually looks bad.  I'm at
+  a loss to explain it.
+
+  Guess I'd better code up the flat bottom.
+
+
+03 January 1996
+
+  Moved arrays AP, CON, AIM, AIP, AJM, AJP, GAM to SETUP2, since they
+  are used locally there only.  I trust SETUP2 to properly initialize
+  them.
+
+
+02 January 1996
+
+  I ran the standard run, and it was OK, surprisingly.
+
+  I have thought about the shape problem, and my conclusions are:
+
+    I need to find a constrained optimizer;
+    I need to revise the code so that the boundary nodes defining
+      the crucible don't have to be X a function of Y.
+
+
+28 December 1995
+
+  I am trying a new parameterization of the crucible shapes.  Still
+  using a linear bottom, but now set up so that there is a constant
+  area.  Of course, this still doesn't avoid the possibility of
+  meaningless computations if par(1) gets large, in which case the
+  crucible bottom would stick out through the free surface.
+
+        xbot(1)=-par(1)
+        ybot(1)=0.0
+ 
+        xbot(2)=0.0
+        ybot(2)=0.50
+ 
+        xbot(3)=+par(1)
+        ybot(3)=1.0
+
+  Floating overflow, floating overflow, I'm going crazy!
+
+  Tried a sort of quadratic bottom, and it was no good.  SMSNO kept
+  retrying the step, after first taking a huge step into the
+  meaningless negative zone.
+
+
+21 December 1995
+
+  Ready to try calling 611.
+
+  Failed...because it tried to set PAR(1)=-0.86.
+
+  1) I need to find another way of dealing with the boundary, short
+     of Zhang's requirement that it be monotonic.
+
+  2) I need to find a family of crucible bottoms that have constant
+     area, so that that doesn't skew the results.
+
+  3) I need a parameterization that stays within a reasonable family
+     of shapes, that is, which doesn't make the bottom of the crucible
+     pop up out of the melt, or drop down to hell.
+
+
+19 December 1995
+
+  The crystal code is now a subroutine, of the form
+
+    subroutine crystal(cost,npar,par)
+
+  which makes it suitable for hooking up with an optimization code.
+  Maybe I should try something other than 611?
+
+
+13 December 1995
+
+  Yet another joy: not only VOL, but the X, Y values are zeroed out
+  in the solid zone when the liquid zone is handled, and vice versa.
+  Will this madness never cease?
+
+  Merged RSWRIT and PLWRIT, and updated CPLOT accordingly.
+
+  Ran first case of one-parameter linear bump, and plotted.
+
+
+12 December 1995
+
+  Trying to understand why VOL doesn't add up to 1.2 * 1.0, I looked
+  at INIGRD, but found loads of junk there.  So I'm trying to replace
+  INIGRD by rational code.  It should not be surprising that even a
+  routine as simple as INIGRD is very, very difficult to rewrite
+  properly.
+
+  OK, I have gotten set up properly, I think.  I am currently computing
+  just a two dimensional area instead of a 3D volume, but that's OK.
+  Now I need to add code to do a very simple parameterized lower boundary,
+  and see how the cost varies as I change the parameter.
+
+
+11 December 1995
+
+  I have eliminated all the common blocks.
+
+10 December 1995
+
+  I sketched a cost functional which computes the average flow magnitude
+  over the time integration.  However, I'm having the usual untraceable
+  problems: an illegal format real number, used in an unknown routine,
+  which kills the computation with no way of finding out where.
+
+  The flow region volume computed in the cost functional is too small.
+  I will have to examine the VOL variable.
+
+  I am trying to get rid of the last big common block.
+
+07 December 1995
+
+  Got rid of the separate dimension statements for U, V, W and so on.
+  Increased the TITLE array from CHARACTER*7 to CHARACTER*20.
+  Wrote a separate PRDAT to print out data values.
+  Got rid of L2, L3, M2, M3.
+
+  Code now runs correctly on SGI which it did not used to do, only
+  it takes 950 CPU seconds, whereas on the ALPHA it takes 84 seconds.
+
+06 December 1995
+
+  I hope to finish up GAMSOR and SETUP2 today, so that I can start
+  sketching out my finite difference approach.
+
+  The code, saved as CRYSTAL.F.12.06, works properly, and should be saved.
+
+05 December 1995
+
+  Clawing my way back.  I'm down to FLUX, GAMSOR and SETUP2 being "old style",
+  and the current code can pretty much reproduce the IDEMON=2 run
+  of the original code.
+
+04 December 1995
+
+  By the injudicious use of the CP command, I overwrote my only
+  current copy of CRYSTAL.  
+
+03 December 1995
+
+  I have been trying very hard to find the error, which is a floating
+  point divide by zero.  None of the local operating systems are
+  any help whatsoever in even telling me which routine this error
+  occurs in.
+
+  I have been working on a Frankenstein program, which began entirely
+  as the old code, and which I have been converting to the new code
+  one routine at a time.  This is extremely tedious.  I'm down to
+  a few big suspects at this point: SETUP2, SOLVE, ADAPTIVE, and 
+  so on.  Perhaps in the next day or two I'll nail it.
+
+
+01 December 1995
+
+  I made a small correction to the original CRYSTAL, and ran it,
+  and it blew up.  So I backed out the change, and am rerunning it,
+  but am worried.
+
+  Basically, I'm trying to get the original CRYSTAL and the current one
+  to agree, before I go on to compute finite difference sensitivities.
+  But the new one is blowing up.
+
+  LATER: Is this possible?  The original crystal seems to run OK on the
+  ALPHA, and bomb on the SGI.  Let me verify this.  Yes, the original
+  Crystal RUNS on the ALPHA, and BOMBS on the SGI.
+
+  Therefore, let me move to the ALPHA to check the new CRYSTAL.
+
+
+  OK, here's the deal.
+
+    CRYSTAL_ORIG.F is the original code, pretty much.
+    CRYSTAL_ORIG2.F is the original code, with "minimal" changes, just
+      enough to get it to run on the ALPHA without complaint.
+
+
+30 November 1995
+
+  Wonder why the Marangoni number was changed from 0 to -1000?
+  The code didn't work, so I reset FMA to 0, but I wonder if Hui Zhang
+  suggested it.
+
+
+29 November 1995
+
+  Max proposed the following:
+
+    Run a simple finite difference sensitivity computation.
+    Use the quantities that define the shape of the crucible as parameters.
+
+    Here, you can simply compute quantities like dU/dP1.
+
+    Once you have this, define a cost functional which is the time
+    integral of the norm of the flow, and try to minimize this with
+    P1 through PN.
+
+    The first thing to do is to examine how the curve is defined, and
+    whether you want to use grid points as parameters, or a polynomial.
+    In other words, choose your parameters.
+ 
+ 
+08 September 1995
+
+  Look up S V Patankar, Numerical Heat Transfer and Fluid Flow
+
+07 September 1995
+
+  Sent Zhang a copy of my updated code, and he returned it with a few
+  corrections.
+
+31 August 1995
+
+  I found out why the original version of CRYSTAL was differing from
+  my current version: the old version used, in one place, AMIN1 instead
+  of DMIN1.  
+
+  Now I am trying to find the source of a floating point check.
+
+
+30 August 1995
+
+  Trying to track down a very tiny difference in the results.
+  Right now, I am working on comparing my START with the original.
+  The current result is that if I execute the original START
+  up to the print statement, and then mine, all is OK.
+
+  So I just have to back up to find the problem.
+
+
+Question: Where do I get TECPLOT?

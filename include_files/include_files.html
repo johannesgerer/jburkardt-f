@@ -1,0 +1,224 @@
+<html>
+
+  <head>
+    <title>
+      INCLUDE_FILES - Explicitly Include Files
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      INCLUDE_FILES <br> Explicitly Include Files
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>INCLUDE_FILES</b>
+      is a FORTRAN90 program which
+      makes a copy of a FORTRAN file, in which INCLUDE statements
+      are replaced by the corresponding include files.
+    </p>
+
+    <p>
+      The format for a FORTRAN include statement is either
+      <pre><b>
+        <b>include</b> '<i>file.txt</i>'
+      </b></pre>
+      or
+      <pre><b>
+        <b>include</b> "<i>file.txt</i>"
+      </b></pre>
+      This program reads a file with such include statements, and
+      replaces each such occurrence by the text of the corresponding file.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>include_files</b> <i>file1.f</i> <i>file2.f</i>
+        </dt>
+        <dd>
+          reads the file <i>file1.f</i> and creates a copy <i>file2.f</i>
+          with all available INCLUDE files included.
+        </dd>
+        <dt>
+          <b>include_files</b>
+        </dt>
+        <dd>
+          asks the user for the names of the files <i>file1.f</i> and
+          <i>file2.f</i>.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/catalog/catalog.html">
+      CATALOG</a>,
+      a C++ program which
+      reads a C, C++, FORTRAN77 or FORTRAN90 program and prints every line 
+      that begins with a special index tag.  If the program has been marked
+      up expecting this convention, it is a handy way of making a table
+      of contents of a program file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/extract/extract.html">
+      EXTRACT</a>,
+      a FORTRAN90 program which
+      extracts a subroutine, function
+      or module by name from a FORTRAN77 or FORTRAN90 file.
+    </p>
+
+    <p>
+      <a href = "../../c_src/f77split/f77split.html">
+      F77SPLIT</a>,
+      a C program which
+      reads a FORTRAN77 file and creates
+      individual files for every subroutine or function in the file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90split/f90split.html">
+      F90SPLIT</a>,
+      a FORTRAN90 program which
+      reads a FORTRAN90 file and creates
+      individual files for every subroutine or function in the file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fixcon/fixcon.html">
+      FIXCON</a>,
+      a FORTRAN90 program which
+      reads a FORTRAN file that uses
+      FORTRAN77 continuation statements,
+      and makes a copy that uses FORTRAN90 continuation instead.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/htmlindex/htmlindex.html">
+      HTMLINDEX</a>,
+      a C++ program which
+      reads a FORTRAN77 or FORTRAN90 program
+      and writes a skeleton HTML page describing it, assuming that each
+      subroutine includes a '!!' or 'cc' description line.
+    </p>
+
+    <p>
+      <a href = "../../f_src/module_mark/module_mark.html">
+      MODULE_MARK</a>,
+      a FORTRAN90 program which
+      replaces bare "END" statements by "END (module name)" statements
+      in a FORTRAN90 file.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "include_files.f90">include_files.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "include_files.sh">include_files.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "file1.for">file1.for</a>, a FORTRAN file with INCLUDE
+          statements in three locations.
+        </li>
+        <li>
+          <a href = "params.txt">params.txt</a>, the file to be included.
+        </li>
+        <li>
+          <a href = "file2.for">file2.for</a>, the FORTRAN file created by
+          <b>INCLUDE_FILES</b>.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for INCLUDE_FILES.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>INCLUDE_FILES</b> makes a copy of a FORTRAN file with INCLUDE files included.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TAB_BLANKS</b> replaces TAB characters by 6 spaces.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 August 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

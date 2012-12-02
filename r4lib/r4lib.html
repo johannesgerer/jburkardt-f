@@ -1,0 +1,1153 @@
+<html>
+
+  <head>
+    <title>
+      R4LIB - A Single Precision Real Arithmetic Utility Library
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      R4LIB <br> A Single Precision Real Arithmetic Utility Library
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>R4LIB</b> 
+      is a FORTRAN90 library which
+      contains a number of utility routines for "R4" or "single precision real"
+      arithmetic.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>R4LIB</b> is available in
+      <a href = "../../c_src/r4lib/r4lib.html">a C version</a> and
+      <a href = "../../cpp_src/r4lib/r4lib.html">a C++ version</a> and
+      <a href = "../../f77_src/r4lib/r4lib.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/r4lib/r4lib.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/c4lib/c4lib.html">
+      C4LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for "C4" or
+      single precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/c8lib/c8lib.html">
+      C8LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for "C8" or
+      double precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/i4lib/i4lib.html">
+      I4LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "I4" or "single precision integer"
+      arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/i8lib/i8lib.html">
+      I8LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "I8" or "double precision integer"
+      arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r16lib/r16lib.html">
+      R16LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R16" or
+      "quadruple precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R8" or 
+      "double precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subpak/subpak.html">
+      SUBPAK</a>, 
+      a FORTRAN90 library which
+      contains many utility routines;
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "r4lib.f90">r4lib.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "r4lib.sh">r4lib.sh</a>, 
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "r4lib_prb.f90">r4lib_prb.f90</a>, a sample calling
+          program;
+        </li>
+        <li>
+          <a href = "r4lib_prb.sh">r4lib_prb.sh</a>, commands to 
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "r4lib_prb_output.txt">r4lib_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_LOG_10</b> returns the integer part of the logarithm base 10 of an I4.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of I4 division.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4INT_TO_R4INT</b> maps an I4INT to an R4INT.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_PERMUTE</b> permutes an I4VEC in place.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PERM_UNIFORM</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>R4_ABS</b> returns the absolute value of an R4.
+        </li>
+        <li>
+          <b>R4_ADD</b> returns the sum of two R4's.
+        </li>
+        <li>
+          <b>R4_ATAN</b> computes the inverse tangent of the ratio Y / X.
+        </li>
+        <li>
+          <b>R4_CAS</b> returns the "casine" of an R4.
+        </li>
+        <li>
+          <b>R4_CEILING</b> rounds an R4 "up" (towards +oo) to the next I4.
+        </li>
+        <li>
+          <b>R4_CHOOSE</b> computes the binomial coefficient C(N,K) as an R4.
+        </li>
+        <li>
+          <b>R4_CHOP</b> chops an R4 to a given number of binary places.
+        </li>
+        <li>
+          <b>R4_CSQRT</b> returns the complex square root of an R4.
+        </li>
+        <li>
+          <b>R4_CUBE_ROOT</b> returns the cube root of an R4.
+        </li>
+        <li>
+          <b>R4_DIFF</b> computes the difference of two R4's to a specified accuracy.
+        </li>
+        <li>
+          <b>R4_DIGIT</b> returns a particular decimal digit of an R4.
+        </li>
+        <li>
+          <b>R4_EPSILON</b> returns the R4 roundoff unit.
+        </li>
+        <li>
+          <b>R4_EXP</b> computes the exponential function, avoiding overflow and underflow.
+        </li>
+        <li>
+          <b>R4_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>R4_FACTORIAL2</b> computes the double factorial function.
+        </li>
+        <li>
+          <b>R4_FLOOR</b> rounds an R4 "down" (towards -oo) to the next integer.
+        </li>
+        <li>
+          <b>R4_FRACTION</b> uses real arithmetic on an integer ratio.
+        </li>
+        <li>
+          <b>R4_FRACTIONAL</b> returns the fraction part of an R4.
+        </li>
+        <li>
+          <b>R4_HUGE</b> returns the largest legal R4.
+        </li>
+        <li>
+          <b>R4_IN_01</b> is TRUE if an R4 is in the range [0,1].
+        </li>
+        <li>
+          <b>R4_IS_INT</b> determines if an R4 represents an integer value.
+        </li>
+        <li>
+          <b>R4_LOG_2</b> returns the logarithm base 2 of an R4.
+        </li>
+        <li>
+          <b>R4_LOG_10</b> returns the logarithm base 10 of an R4.
+        </li>
+        <li>
+          <b>R4_LOG_B</b> returns the logarithm base B of an R4.
+        </li>
+        <li>
+          <b>R4_MANT</b> computes the "mantissa" or "fraction part" of an R4.
+        </li>
+        <li>
+          <b>R4_MOD</b> returns the remainder of R4 division.
+        </li>
+        <li>
+          <b>R4_MODP</b> returns the nonnegative remainder of R4 division.
+        </li>
+        <li>
+          <b>R4_MOP</b> returns the I-th power of -1 as an R4.
+        </li>
+        <li>
+          <b>R4_NINT</b> returns the nearest integer to an R4.
+        </li>
+        <li>
+          <b>R4_NORMAL</b> returns a scaled pseudonormal R4.
+        </li>
+        <li>
+          <b>R4_NORMAL_01</b> returns a unit pseudonormal R4.
+        </li>
+        <li>
+          <b>R4_PI</b> returns the value of pi as an R4.
+        </li>
+        <li>
+          <b>R4_POWER</b> computes the P-th power of an R4.
+        </li>
+        <li>
+          <b>R4_POWER_FAST</b> computes an integer power of an R4.
+        </li>
+        <li>
+          <b>R4_PYTHAG</b> computes sqrt ( A * A + B * B ), avoiding overflow and underflow.
+        </li>
+        <li>
+          <b>R4_ROUND2</b> rounds an R4 to a specified number of binary digits.
+        </li>
+        <li>
+          <b>R4_ROUNDB</b> rounds an R4 to a given number of digits in a given base.
+        </li>
+        <li>
+          <b>R4_ROUNDX</b> rounds an R4.
+        </li>
+        <li>
+          <b>R4_SIGN</b> returns the sign of an R4.
+        </li>
+        <li>
+          <b>R4_SIGN_OPPOSITE</b> is TRUE if two R4's are not of the same sign.
+        </li>
+        <li>
+          <b>R4_SIGN_OPPOSITE_STRICT</b> is TRUE if two R4's are strictly of opposite sign.
+        </li>
+        <li>
+          <b>R4_SWAP</b> swaps two R4's.
+        </li>
+        <li>
+          <b>R4_SWAP3</b> swaps three R4's.
+        </li>
+        <li>
+          <b>R4_TINY</b> returns the smallest positive R4.
+        </li>
+        <li>
+          <b>R4_TO_R4_DISCRETE</b> maps R to RD in [RMIN, RMAX] with NR possible values.
+        </li>
+        <li>
+          <b>R4_TO_DHMS</b> converts decimal days into days, hours, minutes, seconds.
+        </li>
+        <li>
+          <b>R4_TO_I4</b> maps X in [XMIN, XMAX] to integer IX in [IXMIN, IXMAX].
+        </li>
+        <li>
+          <b>R4_UNIFORM</b> returns a scaled pseudorandom R4.
+        </li>
+        <li>
+          <b>R4_UNIFORM_01</b> returns a unit pseudorandom R4.
+        </li>
+        <li>
+          <b>R4_UNSWAP3</b> unswaps three R4's.
+        </li>
+        <li>
+          <b>R4_WALSH_1D</b> evaluates the Walsh function.
+        </li>
+        <li>
+          <b>R4COL_COMPARE</b> compares columns in an R4COL.
+        </li>
+        <li>
+          <b>R4COL_DUPLICATES</b> generates an R4COL with some duplicate columns.
+        </li>
+        <li>
+          <b>R4COL_FIND</b> seeks a column value in an R4COL.
+        </li>
+        <li>
+          <b>R4COL_FIRST_INDEX</b> indexes the first occurrence of values in an R4COL.
+        </li>
+        <li>
+          <b>R4COL_INSERT</b> inserts a column into an R4COL.
+        </li>
+        <li>
+          <b>R4COL_MAX</b> returns the maximums in an R4COL.
+        </li>
+        <li>
+          <b>R4COL_MAX_INDEX</b> returns the indices of column maximums in an R4COL.
+        </li>
+        <li>
+          <b>R4COL_MAX_ONE</b> rescales an R4COL so each column maximum is 1.
+        </li>
+        <li>
+          <b>R4COL_MEAN</b> returns the column means of an R4COL.
+        </li>
+        <li>
+          <b>R4COL_MIN</b> returns the column minimums of an R4COL.
+        </li>
+        <li>
+          <b>R4COL_MIN_INDEX</b> returns the indices of column minimums in an R4COL.
+        </li>
+        <li>
+          <b>R4COL_PART_QUICK_A</b> reorders the columns of an R4COL.
+        </li>
+        <li>
+          <b>R4COL_PERMUTE</b> permutes an R4COL in place.
+        </li>
+        <li>
+          <b>R4COL_SORT_HEAP_A</b> ascending heapsorts an R4COL.
+        </li>
+        <li>
+          <b>R4COL_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R4COL.
+        </li>
+        <li>
+          <b>R4COL_SORT_QUICK_A</b> ascending quick sorts an R4COL.
+        </li>
+        <li>
+          <b>R4COL_SORTED_TOL_UNDEX</b> indexes tolerably unique entries in a sorted R4COL.
+        </li>
+        <li>
+          <b>R4COL_SORTED_TOL_UNIQUE</b> keeps tolerably unique elements in a sorted R4COL.
+        </li>
+        <li>
+          <b>R4COL_SORTED_TOL_UNIQUE_COUNT:</b> tolerably unique elements in a sorted R4COL.
+        </li>
+        <li>
+          <b>R4COL_SORTED_UNDEX</b> returns unique sorted indexes for a sorted R4COL.
+        </li>
+        <li>
+          <b>R4COL_SORTED_UNIQUE</b> keeps unique elements in a sorted R4COL.
+        </li>
+        <li>
+          <b>R4COL_SORTED_UNIQUE_COUNT</b> counts unique elements in a sorted R4COL.
+        </li>
+        <li>
+          <b>R4COL_SORTR_A</b> ascending sorts one column of an R4COL, adjusting all columns.
+        </li>
+        <li>
+          <b>R4COL_SUM</b> sums the columns of an R4COL.
+        </li>
+        <li>
+          <b>R4COL_SWAP</b> swaps columns I and J of an R4COL.
+        </li>
+        <li>
+          <b>R4COL_TO_R8VEC</b> converts an R4COL to an R4VEC.
+        </li>
+        <li>
+          <b>R4COL_TOL_UNDEX</b> indexes tolerably unique entries of an R4COL.
+        </li>
+        <li>
+          <b>R4COL_TOL_UNIQUE_COUNT</b> counts tolerably unique entries in an R4COL.
+        </li>
+        <li>
+          <b>R4COL_TOL_UNIQUE_INDEX</b> indexes tolerably unique entries in an R4COL.
+        </li>
+        <li>
+          <b>R4COL_UNDEX</b> returns unique sorted indexes for an R4COL.
+        </li>
+        <li>
+          <b>R4COL_UNIQUE_COUNT</b> counts the unique columns in an unsorted R4COL.
+        </li>
+        <li>
+          <b>R4COL_UNIQUE_INDEX</b> indexes the unique occurrence of values in an R4COL.
+        </li>
+        <li>
+          <b>R4COL_VARIANCE</b> returns the variances of an R4COL.
+        </li>
+        <li>
+          <b>R4MAT_BORDER_ADD</b> adds a "border" to an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_BORDER_CUT</b> cuts the "border" of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_CHOLESKY_FACTOR</b> computes the Cholesky factor of a symmetric matrix.
+        </li>
+        <li>
+          <b>R4MAT_CHOLESKY_SOLVE</b> solves a Cholesky factored linear system A * x = b.
+        </li>
+        <li>
+          <b>R4MAT_CHORESKY_FACTOR</b> computes the "Choresky" factor of a symmetric matrix.
+        </li>
+        <li>
+          <b>R4MAT_COPY</b> copies an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_DET</b> computes the determinant of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_DET_2D</b> computes the determinant of a 2 by 2 R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_DET_3D</b> computes the determinant of a 3 by 3 R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_DET_4D</b> computes the determinant of a 4 by 4 R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_DET_5D</b> computes the determinant of a 5 by 5 R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_DIAG_ADD_SCALAR</b> adds a scalar to the diagonal of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_DIAG_ADD_VECTOR</b> adds a vector to the diagonal of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_DIAG_GET_VECTOR</b> gets the value of the diagonal of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_DIAG_SET_SCALAR</b> sets the diagonal of an R4MAT to a scalar value.
+        </li>
+        <li>
+          <b>R4MAT_DIAG_SET_VECTOR</b> sets the diagonal of an R4MAT to a vector.
+        </li>
+        <li>
+          <b>R4MAT_EXPAND_LINEAR</b> linearly interpolates new data into an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_EXPAND_LINEAR2</b> expands an R4MAT by linear interpolation.
+        </li>
+        <li>
+          <b>R4MAT_GIVENS_POST</b> computes the Givens postmultiplier rotation matrix.
+        </li>
+        <li>
+          <b>R4MAT_GIVENS_PRE</b> computes the Givens premultiplier rotation matrix.
+        </li>
+        <li>
+          <b>R4MAT_HESS</b> approximates a Hessian matrix via finite differences.
+        </li>
+        <li>
+          <b>R4MAT_HOUSE_AXH</b> computes A*H where H is a compact Householder matrix.
+        </li>
+        <li>
+          <b>R4MAT_HOUSE_FORM</b> constructs a Householder matrix from its compact form.
+        </li>
+        <li>
+          <b>R4MAT_HOUSE_HXA</b> computes H*A where H is a compact Householder matrix.
+        </li>
+        <li>
+          <b>R4MAT_HOUSE_POST</b> computes a Householder post-multiplier matrix.
+        </li>
+        <li>
+          <b>R4MAT_HOUSE_PRE</b> computes a Householder pre-multiplier matrix.
+        </li>
+        <li>
+          <b>R4MAT_IDENTITY</b> stores the identity matrix in an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_IN_01</b> is TRUE if the entries of an R4MAT are in the range [0,1].
+        </li>
+        <li>
+          <b>R4MAT_INDICATOR</b> sets up an "indicator" R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_INVERSE_2D</b> inverts a 2 by 2 R4MAT using Cramer's rule.
+        </li>
+        <li>
+          <b>R4MAT_INVERSE_3D</b> inverts a 3 by 3 R4MAT using Cramer's rule.
+        </li>
+        <li>
+          <b>R4MAT_INVERSE_4D</b> inverts a 4 by 4 R4MAT using Cramer's rule.
+        </li>
+        <li>
+          <b>R4MAT_JAC</b> estimates a dense jacobian matrix of the function FX.
+        </li>
+        <li>
+          <b>R4MAT_L_INVERSE</b> inverts a lower triangular R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_L_PRINT</b> prints a lower triangular R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_L_SOLVE</b> solves a lower triangular linear system.
+        </li>
+        <li>
+          <b>R4MAT_L1_INVERSE</b> inverts a unit lower triangular R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_LT_SOLVE</b> solves a transposed lower triangular linear system.
+        </li>
+        <li>
+          <b>R4MAT_LU</b> computes the LU factorization of a rectangular R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_MAX</b> returns the maximum entry of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_MAX_INDEX</b> returns the location of the maximum entry of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_MAXCOL_MINROW</b> gets the maximum column minimum row of an M by N R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_MAXROW_MINCOL</b> gets the maximum row minimum column of an M by N R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_MIN</b> returns the minimum entry of an M by N R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_MIN_INDEX</b> returns the location of the minimum entry of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_MINCOL_MAXROW</b> gets the minimum column maximum row of an M by N R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_MINROW_MAXCOL</b> gets the minimum row maximum column of an M by N R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_MM</b> multiplies two R4MAT's.
+        </li>
+        <li>
+          <b>R4MAT_MTV</b> multiplies a transposed matrix times a vector
+        </li>
+        <li>
+          <b>R4MAT_MV</b> multiplies a matrix times a vector.
+        </li>
+        <li>
+          <b>R4MAT_NINT</b> rounds the entries of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_NORM_EIS</b> returns the EISPACK norm of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_NORM_FRO</b> returns the Frobenius norm of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_NORM_L1</b> returns the matrix L1 norm of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_NORM_L2</b> returns the matrix L2 norm of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_NORM_LI</b> returns the matrix L-oo norm of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_NULLSPACE</b> computes the nullspace of a matrix.
+        </li>
+        <li>
+          <b>R4MAT_NULLSPACE_SIZE</b> computes the size of the nullspace of a matrix.
+        </li>
+        <li>
+          <b>R4MAT_ORTH_UNIFORM</b> returns a random orthogonal R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_PLOT</b> "plots" an R4MAT, with an optional title.
+        </li>
+        <li>
+          <b>R4MAT_PLOT_SYMBOL</b> returns a symbol for an element of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_POLY_CHAR</b> computes the characteristic polynomial of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_POWER</b> computes a nonnegative power of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_POWER_METHOD</b> applies the power method to an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_PRINT</b> prints an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_PRINT_SOME</b> prints some of an R4MAT.
+        </li>
+        <li>
+          <b>R4VEC_01_TO_AB</b> shifts and rescales an R4VEC to lie within given bounds.
+        </li>
+        <li>
+          <b>R4VEC_AB_TO_01</b> shifts and rescales an R4VEC to lie within [0,1].
+        </li>
+        <li>
+          <b>R4VEC_AB_TO_CD</b> shifts and rescales an R4VEC from one interval to another.
+        </li>
+        <li>
+          <b>R4VEC_AMAX</b> returns the maximum absolute value in an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_AMAX_INDEX</b> returns the index of the maximum absolute value in an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_AMIN</b> returns the minimum absolute value in an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_AMIN_INDEX</b> returns the index of the minimum absolute value in an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_ANY_NORMAL</b> returns some normal vector to V1.
+        </li>
+        <li>
+          <b>R4VEC_ASCENDS</b> determines if an R4VEC is (weakly) ascending.
+        </li>
+        <li>
+          <b>R4VEC_ASCENDS_STRICTLY</b> determines if an R4VEC is strictly ascending.
+        </li>
+        <li>
+          <b>R4VEC_BLEND</b> performs weighted interpolation of two R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_BRACKET</b> searches a sorted R4VEC for successive brackets of a value.
+        </li>
+        <li>
+          <b>R4VEC_BRACKET2</b> searches a sorted R4VEC for successive brackets of a value.
+        </li>
+        <li>
+          <b>R4VEC_BRACKET3</b> finds the interval containing or nearest a given value.
+        </li>
+        <li>
+          <b>R4VEC_BRACKET4</b> finds the nearest interval to each of a vector of values.
+        </li>
+        <li>
+          <b>R4VEC_CEILING</b> rounds "up" (towards +oo) entries of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_CIRCULAR_VARIANCE</b> returns the circular variance of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_COMPARE</b> compares two R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_CONVOLVE_CIRC</b> returns the discrete circular convolution of two R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_COPY</b> copies an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_CORRELATION</b> returns the correlation of two R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_CROSS_PRODUCT_2D</b> finds the cross product of a pair of vectors in 2D.
+        </li>
+        <li>
+          <b>R4VEC_CROSS_PRODUCT_AFFINE_2D</b> finds the affine cross product in 2D.
+        </li>
+        <li>
+          <b>R4VEC_CROSS_PRODUCT_3D</b> computes the cross product of two R4VEC's in 3D.
+        </li>
+        <li>
+          <b>R4VEC_CROSS_PRODUCT_AFFINE_3D</b> computes the affine cross product in 3D.
+        </li>
+        <li>
+          <b>R4VEC_CUM</b> computes the cumulutive sum of the entries of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_DIF</b> computes coefficients for estimating the N-th derivative.
+        </li>
+        <li>
+          <b>R4VEC_DIFF_NORM</b> returns the L2 norm of the difference of R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_DIFF_NORM_L1</b> returns the L1 norm of the difference of R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_DIFF_NORM_L2</b> returns the L2 norm of the difference of R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_DIFF_NORM_LI</b> returns the L-oo norm of the difference of R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_DIRECT_PRODUCT</b> creates a direct product of R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_DIRECT_PRODUCT2</b> creates a direct product of R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_DISTANCE</b> returns the Euclidean distance between two R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_DISTINCT</b> is true if the entries in an R4VEC are distinct.
+        </li>
+        <li>
+          <b>R4VEC_DOT_PRODUCT</b> finds the dot product of a pair of R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_DOT_PRODUCT_AFFINE</b> computes the affine dot product V1-V0 * V2-V0.
+        </li>
+        <li>
+          <b>R4VEC_EQ</b> is true if two R4VECs are equal.
+        </li>
+        <li>
+          <b>R4VEC_EVEN</b> returns an R4VEC of evenly spaced values.
+        </li>
+        <li>
+          <b>R4VEC_EVEN_SELECT</b> returns the I-th of N evenly spaced values in [ XLO, XHI ].
+        </li>
+        <li>
+          <b>R4VEC_EVEN2</b> linearly interpolates new numbers into an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_EVEN3</b> evenly interpolates new data into an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_EXPAND_LINEAR</b> linearly interpolates new data into an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_EXPAND_LINEAR2</b> linearly interpolates new data into an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_FIRST_INDEX</b> indexes the first occurrence of values in an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_FLOOR</b> rounds "down" (towards -oo) entries of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_FRAC</b> searches for the K-th smallest entry in an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_FRACTION</b> returns the fraction parts of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_GT</b> == ( A1 > A2 ) for R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_HEAP_A</b> reorders an R4VEC into an ascending heap.
+        </li>
+        <li>
+          <b>R4VEC_HEAP_D</b> reorders an R4VEC into an descending heap.
+        </li>
+        <li>
+          <b>R4VEC_HEAP_D_EXTRACT:</b> extract maximum from a heap descending sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_HEAP_D_INSERT</b> inserts a value into a heap descending sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_HEAP_D_MAX</b> returns the maximum value in a heap descending sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_HISTOGRAM</b> histograms an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_HOUSE_COLUMN</b> defines a Householder premultiplier that "packs" a column.
+        </li>
+        <li>
+          <b>R4VEC_I4VEC_DOT_PRODUCT</b> finds the dot product of an R4VEC and an I4VEC.
+        </li>
+        <li>
+          <b>R4VEC_IN_01</b> is TRUE if the entries of an R4VEC are in the range [0,1].
+        </li>
+        <li>
+          <b>R4VEC_INDEX_DELETE_ALL</b> deletes a value from an indexed sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDEX_DELETE_DUPES</b> deletes duplicates from an indexed sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDEX_DELETE_ONE</b> deletes one copy of a value from indexed sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDEX_INSERT</b> inserts a value in an indexed sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDEX_INSERT_UNIQUE</b> inserts a unique value in an indexed sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDEX_ORDER</b> sorts an R4VEC using an index vector.
+        </li>
+        <li>
+          <b>R4VEC_INDEX_SEARCH</b> searches for a value in an indexed sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDEX_SORT_UNIQUE</b> creates a sorted unique index for an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDEX_SORTED_RANGE:</b> search index sorted vector for elements in a range.
+        </li>
+        <li>
+          <b>R4VEC_INDEXED_HEAP_D</b> creates a descending heap from an indexed R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDEXED_HEAP_D_EXTRACT:</b> extract from heap descending indexed R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDEXED_HEAP_D_INSERT:</b> insert value into heap descending indexed R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDEXED_HEAP_D_MAX:</b> maximum value in heap descending indexed R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_INDICATOR</b> sets an R4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>R4VEC_INSERT</b> inserts a value into an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_IS_INT</b> is TRUE if the entries of an R4VEC are integers.
+        </li>
+        <li>
+          <b>R4VEC_LINSPACE</b> creates a vector of linearly spaced values.
+        </li>
+        <li>
+          <b>R4VEC_LT</b> == ( A1 < A2 ) for R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_MASK_PRINT</b> prints a masked R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_MAX</b> returns the maximum value in an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_MAX_INDEX</b> returns the index of the maximum value in an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_MEAN</b> returns the mean of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_MEDIAN</b> returns the median of an unsorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_MIN</b> returns the minimum value of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_MIN_INDEX</b> returns the index of the minimum value in an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_MIN_POS</b> returns the minimum positive value of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_MIRROR_NEXT</b> steps through all sign variations of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NEGATIVE_STRICT:</b> every element of an R4VEC is strictly negative.
+        </li>
+        <li>
+          <b>R4VEC_NINT</b> rounds entries of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NORM</b> returns the L2 norm of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NORM_AFFINE</b> returns the affine norm of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NORM_L1</b> returns the L1 norm of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NORM_L2</b> returns the L2 norm of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NORM_LI</b> returns the L-oo norm of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NORM_LP</b> returns the LP norm of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NORM_SQUARED</b> returns the square of the L2 norm of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NORMAL_01</b> returns a unit pseudonormal R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NORMALIZE</b> normalizes an R4VEC in the Euclidean norm.
+        </li>
+        <li>
+          <b>R4VEC_NORMALIZE_L1</b> normalizes an R4VEC to have unit sum.
+        </li>
+        <li>
+          <b>R4VEC_NORMSQ</b> returns the square of the L2 norm of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_NORMSQ_AFFINE</b> returns the affine squared norm of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_ORDER_TYPE</b> determines if R4VEC is (non)strictly ascending/descending.
+        </li>
+        <li>
+          <b>R4VEC_PART_QUICK_A</b> reorders an R4VEC as part of a quick sort.
+        </li>
+        <li>
+          <b>R4VEC_PERMUTE</b> permutes an R4VEC in place.
+        </li>
+        <li>
+          <b>R4VEC_PERMUTE_CYCLIC</b> performs a cyclic permutation of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_PERMUTE_UNIFORM</b> randomly permutes an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_POLARIZE</b> decomposes an R4VEC into normal and parallel components.
+        </li>
+        <li>
+          <b>R4VEC_POSITIVE_STRICT:</b> every element of an R4VEC is strictly positive.
+        </li>
+        <li>
+          <b>R4VEC_PRINT</b> prints an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_PRINT_PART</b> prints "part" of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_PRINT_SOME</b> prints "some" of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_PRINT2</b> prints out an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_PRODUCT</b> returns the product of the entries of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_RANGE</b> finds the range of Y's within a restricted X range.
+        </li>
+        <li>
+          <b>R4VEC_RANGE_2</b> updates a range to include a new array.
+        </li>
+        <li>
+          <b>R4VEC_REVERSE</b> reverses the elements of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_ROTATE</b> "rotates" the entries of an R4VEC in place.
+        </li>
+        <li>
+          <b>R4VEC_SCALAR_TRIPLE_PRODUCT</b> computes the scalar triple product.
+        </li>
+        <li>
+          <b>R4VEC_SEARCH_BINARY_A</b> searches an ascending sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SHIFT</b> performs a shift on an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SHIFT_CIRCULAR</b> performs a circular shift on an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SORT_BUBBLE_A</b> ascending sorts an R4VEC using bubble sort.
+        </li>
+        <li>
+          <b>R4VEC_SORT_BUBBLE_D</b> descending sorts an R4VEC using bubble sort.
+        </li>
+        <li>
+          <b>R4VEC_SORT_HEAP_A</b> ascending sorts an R4VEC using heap sort.
+        </li>
+        <li>
+          <b>R4VEC_SORT_HEAP_D</b> descending sorts an R4VEC using heap sort.
+        </li>
+        <li>
+          <b>R4VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SORT_HEAP_INDEX_D</b> does an indexed heap descending sort of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SORT_HEAP_MASK_A:</b> indexed heap ascending sort of a masked R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SORT_INSERT_A</b> ascending sorts an R4VEC using an insertion sort.
+        </li>
+        <li>
+          <b>R4VEC_SORT_INSERT_INDEX_A</b> ascending index sorts an R4VEC using insertion.
+        </li>
+        <li>
+          <b>R4VEC_SORT_INSERT_INDEX_D</b> descending index sorts an R4VEC using insertion.
+        </li>
+        <li>
+          <b>R4VEC_SORT_QUICK_A</b> ascending sorts an R4VEC using quick sort.
+        </li>
+        <li>
+          <b>R4VEC_SORT_SHELL_A</b> ascending sorts an R4VEC using Shell's sort.
+        </li>
+        <li>
+          <b>R4VEC_SORT2_A</b> ascending sorts an R4VEC and adjusts an associated R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SORTED_MERGE_A</b> merges two ascending sorted R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC_SORTED_NEAREST</b> returns the nearest element in a sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SORTED_RANGE</b> searches a sorted vector for elements in a range.
+        </li>
+        <li>
+          <b>R4VEC_SORTED_SPLIT</b> "splits" a sorted R4VEC, given a splitting value.
+        </li>
+        <li>
+          <b>R4VEC_SORTED_UNDEX</b> returns unique sorted indexes for a sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SORTED_UNIQUE</b> keeps the unique elements in a sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SORTED_UNIQUE_COUNT</b> counts the unique elements in a sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SORTED_UNIQUE_HIST</b> histograms the unique elements of a sorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SPLIT</b> "splits" an unsorted R4VEC based on a splitting value.
+        </li>
+        <li>
+          <b>R4VEC_STD</b> returns the standard deviation of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_STUTTER</b> makes a "stuttering" copy of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SUM</b> returns the sum of the entries of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SWAP</b> swaps the entries of two R4VECs.
+        </li>
+        <li>
+          <b>R4VEC_TRANSPOSE_PRINT</b> prints an R4VEC "transposed".
+        </li>
+        <li>
+          <b>R4VEC_UNDEX</b> returns unique sorted indexes for an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_UNIFORM</b> returns a scaled pseudorandom R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_UNIFORM_01</b> returns a unit pseudorandom R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_UNIQUE_COUNT</b> counts the unique elements in an unsorted R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_UNIQUE_INDEX</b> indexes the unique occurrence of values in an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_VARIANCE</b> returns the variance of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_VECTOR_TRIPLE_PRODUCT</b> computes the vector triple product.
+        </li>
+        <li>
+          <b>R4VEC_WRITE</b> writes an R4VEC to a file.
+        </li>
+        <li>
+          <b>R4VEC_ZERO</b> zeroes out an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC2_COMPARE</b> compares two entries in an R4VEC2.
+        </li>
+        <li>
+          <b>R4VEC2_PRINT</b> prints an R4VEC2.
+        </li>
+        <li>
+          <b>R4VEC2_PRINT_SOME</b> prints "some" of an R4VEC2.
+        </li>
+        <li>
+          <b>R4VEC2_SORT_A</b> ascending sorts an R4VEC2.
+        </li>
+        <li>
+          <b>R4VEC2_SORT_D</b> descending sorts an R4VEC2.
+        </li>
+        <li>
+          <b>R4VEC2_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R4VEC2.
+        </li>
+        <li>
+          <b>R4VEC2_SORTED_UNIQUE</b> keeps unique elements in a sorted R4VEC2.
+        </li>
+        <li>
+          <b>R4VEC2_SORTED_UNIQUE_INDEX</b> indexes unique elements in a sorted R4VEC2.
+        </li>
+        <li>
+          <b>R4VEC2_SUM_MAX_INDEX</b> returns the index of the maximum sum of two R4VEC's.
+        </li>
+        <li>
+          <b>R4VEC3_PRINT</b> prints an R4VEC3.
+        </li>
+        <li>
+          <b>ROOTS_TO_R4POLY</b> converts polynomial roots to polynomial coefficients.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 May 2011.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

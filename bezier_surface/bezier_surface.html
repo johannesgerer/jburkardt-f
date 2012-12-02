@@ -1,0 +1,289 @@
+<html>
+
+  <head>
+    <title>
+      BEZIER_SURFACE - Routines for Bezier Surface Information
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BEZIER_SURFACE <br> Routines for Bezier Surface Information
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BEZIER_SURFACE</b>
+      is a FORTRAN90 library which
+      reads, writes, prints, and
+      otherwise manipulates the data that defines a Bezier surface.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>BEZIER_SURFACE</b> is available in
+      <a href = "../../f_src/bezier_surface/bezier_surface.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/bezier_surface/bezier_surface.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/bezier_surface/bezier_surface.html">
+      BEZIER_SURFACE</a>,
+      a data directory which
+      contains a description and
+      examples of the Bezier Surface file format.
+    </p>
+
+    <p>
+      <a href = "../../m_src/bezier_surface_display/bezier_surface_display.html">
+      BEZIER_SURFACE_DISPLAY</a>,
+      a MATLAB program which
+      reads a pair of Bezier Surface data files and display the surface.
+    </p>
+
+    <p>
+      <a href = "../../data/table/table.html">
+      TABLE</a>,
+      a data format which
+      is used for both the node and rectangle files.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Edward Angel,<br>
+          Interactive Computer Graphics,
+          a Top-Down Approach with OpenGL,<br>
+          Addison-Wesley, 2000,<br>
+          ISBN: 0-201-38597-X,<br>
+          LC: T385.A514.
+        </li>
+        <li>
+          The Wikipedia article "Utah teapot" in
+          <a href = "http://en.wikipedia.org/wiki/Utah_teapot">
+                     http://en.wikipedia.org/wiki/Utah_teapot</a>
+
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bezier_surface.f90">bezier_surface.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "bezier_surface.sh">bezier_surface.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bezier_surface_prb.f90">bezier_surface_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "bezier_surface_prb.sh">bezier_surface_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "bezier_surface_prb_output.txt">bezier_surface_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "../../data/bezier_surface/teapot_nodes.txt">
+                     ../../data/bezier_surface/teapot_nodes.txt</a>
+          the node file for the teapot example.
+        </li>
+        <li>
+          <a href = "../../data/bezier_surface/teapot_rectangles.txt">
+                     ../../data/bezier_surface/teapot_rectangles.txt</a>
+          the rectangle file for the teapot example.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BEZIER_PATCH_EVALUATE</b> evaluates a Bezier patch.
+        </li>
+        <li>
+          <b>BEZIER_SURFACE_NEIGHBORS</b> determines Bezier rectangle neighbors.
+        </li>
+        <li>
+          <b>BEZIER_SURFACE_NODE_PRINT</b> prints nodes.
+        </li>
+        <li>
+          <b>BEZIER_SURFACE_NODE_READ</b> reads nodes from a node file.
+        </li>
+        <li>
+          <b>BEZIER_SURFACE_NODE_SIZE</b> counts nodes in a node file.
+        </li>
+        <li>
+          <b>BEZIER_SURFACE_NODE_WRITE</b> writes nodes to a node file.
+        </li>
+        <li>
+          <b>BEZIER_SURFACE_RECTANGLE_PRINT</b> prints rectangles.
+        </li>
+        <li>
+          <b>BEZIER_SURFACE_RECTANGLE_READ</b> reads rectangles from a rectangle file.
+        </li>
+        <li>
+          <b>BEZIER_SURFACE_RECTANGLE_SIZE</b> counts rectangles in a rectangle file.
+        </li>
+        <li>
+          <b>BEZIER_SURFACE_RECTANGLE_WRITE</b> writes rectangle to a rectangle file.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4MAT_DATA_READ</b> reads data from an I4MAT file.
+        </li>
+        <li>
+          <b>I4MAT_HEADER_READ</b> reads the header from an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT_SOME</b> prints some of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_WRITE</b> writes an I4MAT file.
+        </li>
+        <li>
+          <b>I4ROW_COMPARE</b> compares two rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SORT_A</b> ascending sorts the rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SWAP</b> swaps two rows of an I4ROW.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised 27 December 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

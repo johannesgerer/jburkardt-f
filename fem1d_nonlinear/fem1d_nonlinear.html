@@ -1,0 +1,305 @@
+<html>
+
+  <head>
+    <title>
+      FEM1D_NONLINEAR - Finite Element Method for 1D Nonlinear Problem
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FEM1D_NONLINEAR <br> Finite Element Method for 1D Nonlinear Problem.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FEM1D_NONLINEAR</b>
+      is a FORTRAN90 program which
+      applies the finite element method to a simple nonlinear
+      boundary value problem in one spatial dimension.
+    </p>
+
+    <p>
+      The nonlinear boundary problem involves an unknown function <b>u</b> on
+      an interval <b>[a,b]</b>.  Typically, a single boundary condition, either
+      <b>u(a)</b> or <b>u'(a)</b>, is given at the left endpoint, and
+      <b>u(b)</b> or <b>u'(b)</b> at the right endpoint.  The associated differential
+      equation, which must hold in the interior of <b>[a,b]</b>, happens to have
+      the form:
+      <pre>
+        -d/dx ( p(x) du/dx ) + q(x) * u + u * du/dx = f(x)
+      </pre>
+      where <b>p(x)</b>, <b>q(x)</b> and <b>f(x)</b> are given functions.
+    </p>
+
+    <p>
+      The nonlinearity arises because of the term <b>u*du/dx</b>; if this term
+      were not present, standard finite element techniques would allow the system
+      to be set up and solved almost as easily as a linear system of algebraic
+      equations is solved.
+    </p>
+
+    <p>
+      Newton's method, which works well for scalar nonlinear equations, can also
+      be applied to this problem, as long as we are willing to extend our notions
+      of a function and derivative.  We need to imagine our differential equation
+      as a function <b>F(u)</b>:
+      <pre>
+        F(u) = -d/dx ( p(x) du/dx ) + q(x) * u + u * du/dx - f(x)
+      </pre>
+      (with the boundary conditions wrapped in here somewhere as well!)
+      If we differentiate this function, we get a Jacobian operator, which is
+      evaluated at <b>u</b>, and applied to any small increment <b>v</b>.  This equation
+      implicitly describes the tangent plane of solutions near to a given
+      solution <b>u</b>.
+      <pre>
+        J(u,v) = -d/dx ( p(x) dv/dx ) + q(x) * v + u * dv/dx + v * du/dx
+      </pre>
+      Now if we apply the finite element formulation to represent <b>u</b> and
+      <b>v</b> in terms of sums of basis functions, we can set up a linear
+      system, to be evaluated at <b>u</b> and solved for the Newton increment
+      <b>delta_u</b>:
+      <pre>
+        J(u,delta_u) = - F(u)
+      </pre>
+      By using the Newton increment to update <b>u</b> and repeating the process
+      as needed, we can expect to get a good finite element solution of our original
+      nonlinear boundary value problem.
+    <p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+   <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FEM1D_NONLINEAR</b> is available in
+      <a href = "../../cpp_src/fem1d_nonlinear/fem1d_nonlinear.html">a C++ version</a> and
+      <a href = "../../f77_src/fem1d_nonlinear/fem1d_nonlinear.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fem1d_nonlinear/fem1d_nonlinear.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fem1d_nonlinear/fem1d_nonlinear.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/fem1d/fem1d.html">
+      FEM1D</a>,
+      a data directory which
+      contains examples of 1D FEM files,
+      three text files that describe a 1D finite element model;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d/fem1d.html">
+      FEM1D</a>,
+      a FORTRAN90 program which
+      applies the finite element method to a 1D linear two point boundary value problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_adaptive/fem1d_adaptive.html">
+      FEM1D_ADAPTIVE</a>,
+      a FORTRAN90 program which
+      applies the finite element method to a 1D linear two point boundary value problem
+      using adaptive refinement to improve the solution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_bvp_linear/fem1d_bvp_linear.html">
+      FEM1D_BVP_LINEAR</a>,
+      a FORTRAN90 program which
+      applies the finite element method, with piecewise linear elements,
+      to a two point boundary value problem in one spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_heat_steady/fem1d_heat_steady.html">
+      FEM1D_HEAT_STEADY</a>,
+      a FORTRAN90 program which
+      uses the finite element method to solve the steady (time independent)
+      heat equation in 1D.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_pack/fem1d_pack.html">
+      FEM1D_PACK</a>,
+      a FORTRAN90 library which
+      contains utilities for 1D finite element calculations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_pmethod/fem1d_pmethod.html">
+      FEM1D_PMETHOD</a>,
+      a FORTRAN90 program which
+      applies the p-method version of the finite element method to a 1D linear
+      two point boundary value problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_project/fem1d_project.html">
+      FEM1D_PROJECT</a>,
+      a FORTRAN90 program which
+      projects data into a finite element space, including the least squares
+      approximation of data, or the projection of a finite element solution
+      from one mesh to another.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_sample/fem1d_sample.html">
+      FEM1D_SAMPLE</a>,
+      a FORTRAN90 program which
+      samples a scalar or vector finite element function of one variable,
+      defined by <a href = "../data/fem/fem.html">FEM files</a>,
+      returning interpolated values at the sample points.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Finite Element Methods,<br>
+          Academic Press, 1988,<br>
+          ISBN: 0126330107,<br>
+          LC: TA347.F5.S3313..
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200,<br>
+          LC: TA640.2.Z54
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fem1d_nonlinear.f90">fem1d_nonlinear.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "fem1d_nonlinear.sh">fem1d_nonlinear.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "problem1_output.txt">problem1_output.txt</a>,
+          the output from solving problem 1.
+        </li>
+        <li>
+          <a href = "problem2_output.txt">problem2_output.txt</a>,
+          the output from solving problem 2.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FEM1D_NONLINEAR.
+        </li>
+        <li>
+          <b>ASSEMBLE_NEWTON</b> assembles the Newton linear system.
+        </li>
+        <li>
+          <b>ASSEMBLE_PICARD</b> assembles the Picard linear system.
+        </li>
+        <li>
+          <b>COMPARE</b> compares the computed and exact solutions.
+        </li>
+        <li>
+          <b>FF</b> returns the right hand side of the differential equation.
+        </li>
+        <li>
+          <b>GEOMETRY</b> sets up the geometry for the interval [XL,XR].
+        </li>
+        <li>
+          <b>INIT</b> initializes variables that define the problem.
+        </li>
+        <li>
+          <b>OUTPUT</b> prints out the computed solution at the nodes.
+        </li>
+        <li>
+          <b>PHI</b> evaluates a linear basis function and its derivative.
+        </li>
+        <li>
+          <b>PP</b> returns the value of the coefficient function P(X).
+        </li>
+        <li>
+          <b>PRSYS</b> prints out the tridiagonal linear system to be solved.
+        </li>
+        <li>
+          <b>QQ</b> returns the value of the coefficient function Q(X).
+        </li>
+        <li>
+          <b>SOLVE</b> solves a tridiagonal matrix system of the form A*x = b.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>U_EXACT</b> returns the value of the exact solution at a point X.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 29 April 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

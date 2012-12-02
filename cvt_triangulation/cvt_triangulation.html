@@ -1,0 +1,750 @@
+<html>
+
+  <head>
+    <title>
+      CVT_TRIANGULATION - Centroidal Voronoi Tessellation for Triangularization
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CVT_TRIANGULATION <br> Centroidal Voronoi Tessellation <br>
+      for Triangularization
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CVT_TRIANGULATION</b>
+      is a FORTRAN90 program which
+      applies CVT methods to produce triangularizations
+      of various test regions.
+    </p>
+
+    <p>
+      Note that, when using this program, we begin with a <i>region</i>,
+      which is to be filled up with a number of (unspecified) points
+      and triangularized.
+    </p>
+
+    <p>
+      Other programs, such as <b>TABLE_DELAUNAY</b>, are available for
+      the case where the points are already given, and only the triangles
+      need to be determined.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt_tet_mesh/cvt_tet_mesh.html">
+      CVT_TET_MESH</a>,
+      a FORTRAN90 program which
+      applies CVT methods to produce a tetrahedral mesh
+      of various test regions in 3D.
+    </p>
+
+    <p>
+      <a href = "../../m_src/distmesh/distmesh.html">
+      DISTMESH</a>,
+      a MATLAB program which
+      takes the definition of
+      a 2D region, and fills it up with a set of nodes, and triangulates
+      those nodes to make a triangulation of the region.  The region may
+      be nonconvex and may include holes; the user may request a specific
+      density for the nodes, and may require certain points to be in the
+      set of nodes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid_triangulate/hex_grid_triangulate.html">
+      HEX_GRID_TRIANGULATE</a>,
+      a FORTRAN90 program which
+      uses this library of test regions and computes points on a hexagonal grid
+      inside each region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/plot_points/plot_points.html">
+      PLOT_POINTS</a>,
+      a FORTRAN90 program which
+      can be used to make simple plots of
+      the computed points.  For nonconvex regions, the
+      Delaunay plots can be confusing.  The plotting program is
+      simple-minded, and merrily draws sides of triangles that
+      go through holes or areas exterior to the region.  In a few
+      cases, it has been possible to draw the outline of the boundary
+      of the region, but PLOT_POINTS cannot do very much in this regard.
+    </p>
+
+    <p>
+      <a href = "../../data/table/table.html">
+      TABLE</a>,
+      a file format which
+      is used for the output files containing the
+      CVT points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      reads in a <b>TABLE</b> file of points and writes out a
+      corresponding triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_triangulation/test_triangulation.html">
+      TEST_TRIANGULATION</a>,
+      a FORTRAN90 library which 
+      can set up a number
+      of triangulation test problems.
+    </p>
+
+    <p>
+      <a href = "../../c_src/triangle/triangle.html">
+      TRIANGLE</a>,
+      a C program which
+      computes a triangulation of a geometric region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation/triangulation.html">
+      TRIANGULATION</a>,
+      a FORTRAN90 library which
+      carries
+      out various operations on order 3 ("linear") or order 6
+      ("quadratic") triangulations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_boundary_nodes/triangulation_boundary_nodes.html">
+      TRIANGULATION_BOUNDARY_NODES</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, determines which nodes
+      lie on the boundary, and writes their coordinates to a file.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/triangulation_display_opengl/triangulation_display_opengl.html">
+      TRIANGULATION_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads files defining a triangulation and displays an image
+      using Open GL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_l2q/triangulation_l2q.html">
+      TRIANGULATION_L2Q</a>,
+      a FORTRAN90 program which
+      reads data defining a 3-node triangulation and generates
+      midside nodes and writes out the corresponding 6-node triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_mask/triangulation_mask.html">
+      TRIANGULATION_MASK</a>,
+      a FORTRAN90 program which
+      takes an existing triangulation and deletes triangles and
+      their corresponding nodes as requested by the user.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order3/triangulation_order3.html">
+      TRIANGULATION_ORDER3</a>,
+      a data directory which 
+      contains a description and
+      examples of order 3 triangulations.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order6/triangulation_order6.html">
+      TRIANGULATION_ORDER6</a>,
+      a data directory which 
+      contains a description and
+      examples of order 6 triangulations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_orient/triangulation_orient.html">
+      TRIANGULATION_ORIENT</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, makes sure that
+      every triangle has positive orientation, and if not, writes a
+      corrected triangle file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_plot/triangulation_plot.html">
+      TRIANGULATION_PLOT</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation and creates a
+      PostScript image of the nodes and triangles.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_q2l/triangulation_q2l.html">
+      TRIANGULATION_Q2L</a>,
+      a FORTRAN90 program which
+      reads data defining a 6-node triangulation, and subdivides
+      each triangle into 4 3-node triangles, writing the resulting
+      triangulation to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_quality/triangulation_quality.html">
+      TRIANGULATION_QUALITY</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation and computes a number
+      of quality measures.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_rcm/triangulation_rcm.html">
+      TRIANGULATION_RCM</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, determines an ordering
+      of the nodes that will reduce the bandwidth of the adjacency
+      matrix, and writes the new triangulation information to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_refine/triangulation_refine.html">
+      TRIANGULATION_REFINE</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, replaces each triangle
+      by four congruent smaller ones, and writes the new triangulation
+      information to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_triangle_neighbors/triangulation_triangle_neighbors.html">
+      TRIANGULATION_TRIANGLE_NEIGHBORS</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, determines the neighboring
+      triangles of each triangle, and writes that information to a file.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, Number 3, September 1991, pages 345-405.
+        </li>
+        <li>
+          Marc deBerg, Marc Krevald, Mark Overmars,
+          Otfried Schwarzkopf,<br>
+          Computational Geometry,<br>
+          Springer, 2000,<br>
+          ISBN: 3-540-65620-0.
+        </li>
+        <li>
+          Qiang Du, Vance Faber, Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review,<br>
+          Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Lili Ju, Qiang Du, Max Gunzburger,<br>
+          Probabilistic methods for centroidal Voronoi tessellations
+          and their parallel implementations,<br>
+          Parallel Computing,<br>
+          Volume 28, 2002, pages 1477-1500.
+        </li>
+        <li>
+          Joseph ORourke,<br>
+          Computational Geometry,<br>
+          Second Edition,<br>
+          Cambridge, 1998,<br>
+          ISBN: 0521649765,<br>
+          LC: QA448.D38.
+        </li>
+        <li>
+          Per-Olof Persson, Gilbert Strang,<br>
+          A Simple Mesh Generator in MATLAB,<br>
+          SIAM Review,<br>
+          Volume 46, Number 2, June 2004, pages 329-345.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_triangulation.f90">cvt_triangulation.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "cvt_triangulation.sh">cvt_triangulation.sh</a>,
+          commands to compile, link and run the source code.
+        </li>
+        <li>
+          <a href = "cvt_triangulation_output.txt">cvt_triangulation_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      There are some files for use with the PLOT_POINTS program:
+      <ul>
+        <li>
+          <a href = "plot_points_input.txt">plot_points_input.txt</a>,
+          contains the input commands to PLOT_POINTS to make the plots.
+        </li>
+        <li>
+          <a href = "plot_points_output.txt">plot_points_output.txt</a>,
+          contains the printed output from PLOT_POINTS.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>Region 1</b> is the circle:
+      <ul>
+        <li>
+          <a href = "cvt_p01.txt">cvt_p01.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p01.png">cvt_p01.png</a>,
+          a PNG image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p01_dot.png">cvt_p01_dot.png</a>,
+          a PNG image of
+          the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p01_del.png">cvt_p01_del.png</a>,
+          a PNG image of
+          the Delaunay mesh.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 2</b> is the circle with a circular hole:
+      <ul>
+        <li>
+          <a href = "cvt_p02.txt">cvt_p02.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p02.png">cvt_p02.png</a>,
+          a PNG image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p02_dot.png">cvt_p02_dot.png</a>,
+          a PNG image of
+          the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p02_del.png">cvt_p02_del.png</a>,
+          a PNG image of
+          the Delaunay mesh.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 3</b> is the square with a circular hole:
+      <ul>
+        <li>
+          <a href = "cvt_p03.txt">cvt_p03.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p03.png">cvt_p03.png</a>,
+          a PNG image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p03_del.png">cvt_p03_del.png</a>,
+          a PNG image of
+          the Delaunay mesh.
+        </li>
+        <li>
+          <a href = "cvt_p03_hbf.txt">cvt_p03_hbf.txt</a>,
+          the coordinates of points generated
+          using hexagonal initialization, an expanded boundary
+          and fixed points.
+        </li>
+        <li>
+          <a href = "cvt_p03_hbf.png">cvt_p03_hbf.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points generated
+          using hexagonal initialization, an expanded boundary
+          and fixed points.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 4</b> is the hexagon with a hexagonal hole:
+      <ul>
+        <li>
+          <a href = "cvt_p04.txt">cvt_p04.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p04.png">cvt_p04.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p04_del.png">cvt_p04_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 5</b> is the horn:
+      <ul>
+        <li>
+          <a href = "cvt_p05.txt">cvt_p05.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p05.png">cvt_p05.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p05_del.png">cvt_p05_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 6</b> is the superellipse with the superelliptical hole:
+      <ul>
+        <li>
+          <a href = "cvt_p06.txt">cvt_p06.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p06.png">cvt_p06.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p06_del.png">cvt_p06_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 7</b> is the "bicycle seat":
+      <ul>
+        <li>
+          <a href = "cvt_p07.txt">cvt_p07.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p07.png">cvt_p07.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p07_del.png">cvt_p07_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh.
+        </li>
+      </ul>
+
+    <p>
+      <b>Region 8</b> is the pie slice:
+      <ul>
+        <li>
+          <a href = "cvt_p08.txt">cvt_p08.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p08_boundary.png">cvt_p08_boundary.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p08_boundary_fixed.png">cvt_p08_boundary_fixed.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points and the region's boundary, with fixed points.
+        </li>
+        <li>
+          <a href = "cvt_p08_del.png">cvt_p08_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh.
+        </li>
+        <li>
+          <a href = "cvt_p08_fixed_del.png">cvt_p08_fixed_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh, with fixed points.
+        </li>
+        <li>
+          <a href = "cvt_p08_hex.png">cvt_p08_hex.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the initial points from a hex grid.
+        </li>
+        <li>
+          <a href = "cvt_p08_hbf.png">cvt_p08_hbf.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the mesh using hexagonal initialization, boundary constraints,
+          and fixed points.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 9</b> is the square with two hexagonal holes:
+      <ul>
+        <li>
+          <a href = "cvt_p09.txt">cvt_p09.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p09.png">cvt_p09.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p09_del.png">cvt_p09_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 10</b> is the unit square:
+      <ul>
+        <li>
+          <a href = "cvt_p10.txt">cvt_p10.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p10.png">cvt_p10.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p10_del.png">cvt_p10_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 11</b> is the L-shaped region:
+      <ul>
+        <li>
+          <a href = "cvt_p11.txt">cvt_p11.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p11.png">cvt_p11.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p11_boundary.png">cvt_p11_boundary.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p11_boundary_fixed.png">cvt_p11_boundary_fixed.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the region's boundary with fixed points.
+        </li>
+        <li>
+          <a href = "cvt_p11_del.png">cvt_p11_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh.
+        </li>
+        <li>
+          <a href = "cvt_p11_fixed_del.png">cvt_p11_fixed_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh, using fixed points.
+        </li>
+        <li>
+          <a href = "cvt_p11_hex.png">cvt_p11_hex.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          hexagonal points in the region.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 12</b> is the H-shaped region:
+      <ul>
+        <li>
+          <a href = "cvt_p12.txt">cvt_p12.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p12.png">cvt_p12.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p12_boundary.png">cvt_p12_boundary.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p12_boundary_fixed.png">cvt_p12_boundary_fixed.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the region's boundary with fixed points.
+        </li>
+        <li>
+          <a href = "cvt_p12_fixed_del.png">cvt_p12_fixed_del.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          the Delaunay mesh, using fixed points.
+        </li>
+        <li>
+          <a href = "cvt_p12_hex.png">cvt_p12_hex.png</a>,
+          a <a href = "../../png/png.html">PNG</a> image of
+          hexagonal points in the region.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 13</b> is the fork:
+      <ul>
+        <li>
+          <a href = "cvt_p13.txt">cvt_p13.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p13.png">cvt_p13.png</a>,
+          a PNG image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p13_boundary.png">cvt_p13_boundary.png</a>,
+          a PNG image of
+          the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p13_fixed_del.png">cvt_p13_fixed_del.png</a>,
+          a PNG image of
+          the Delaunay mesh, using fixed points.
+        </li>
+        <li>
+          <a href = "cvt_p13_hex.png">cvt_p13_hex.png</a>,
+          a PNG image of
+          hexagonal points in the region.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>Region 14</b> is Lake Alpha, with Beta Island:
+      <ul>
+        <li>
+          <a href = "cvt_p14.txt">cvt_p14.txt</a>,
+          a text file containing the CVT points.
+        </li>
+        <li>
+          <a href = "cvt_p14.png">cvt_p14.png</a>,
+          a PNG image of
+          the points and the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p14_boundary.png">cvt_p14_boundary.png</a>,
+          a PNG image of
+          the region's boundary.
+        </li>
+        <li>
+          <a href = "cvt_p14_boundary_fixed.png">cvt_p14_boundary_fixed.png</a>,
+          a PNG image of
+          the region's boundary with fixed points.
+        </li>
+        <li>
+          <a href = "cvt_p14_fixed_del.png">cvt_p14_fixed_del.png</a>,
+          a PNG image of
+          the Delaunay mesh, using fixed points.
+        </li>
+        <li>
+          <a href = "cvt_p14_hex.png">cvt_p14_hex.png</a>,
+          a PNG image of
+          hexagonal points in the region.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for CVT_TRIANGULATION.
+        </li>
+        <li>
+          <b>TEST01</b> uses CVT techniques on a given test problem.
+        </li>
+        <li>
+          <b>FIND_CLOSEST</b> finds the closest point to each sample.
+        </li>
+        <li>
+          <b>CVT_WRITE</b> writes a CVT dataset to a file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 November 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

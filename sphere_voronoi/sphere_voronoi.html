@@ -1,0 +1,364 @@
+<html>
+
+  <head>
+    <title>
+      SPHERE_VORONOI - Voronoi Diagram on Unit Sphere
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPHERE_VORONOI <br> Voronoi Diagram on Unit Sphere
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPHERE_VORONOI</b>
+      is a FORTRAN90 program which
+      computes and plots the  Voronoi diagram of points on the unit sphere.
+    </p>
+
+    <p>
+      <b>SPHERE_VORONOI</b> takes as input an XYZ file, containing
+      coordinates of points on the unit sphere in 3D.
+      It passes this data to Renka's  STRIPACK library which
+      computes the Voronoi diagram.  The program then takes one
+      "snapshot" of the diagram, which is written to an
+      EPS image file, and stores the vertex and line information defines
+      the Voronoi triangulation as XYZ and XYZF files.
+    </p>
+
+    <p>
+      According to Steven Fortune, it is possible to compute the Delaunay triangulation
+      of points on a sphere by computing their convex hull.  If the sphere is the unit
+      sphere at the origin, the facet normals are the Voronoi vertices.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote><code>
+        <b>sphere_voronoi</b> <i>file.xyz</i>
+      </code></blockquote>
+      reads the XYZ file <i>file.xyz</i> containing the point coordinates,
+      creates an EPS file <i>file.eps</i> containing a 2D projection of the Voronoi
+      diagram, and creates an XYZ file <i>file.voronoi.xyz</i> and an XYZF file
+      <i>file.xyzf</i> which can be used, in conjunction with <i>file_voronoi.xyz</i>
+      to display the 3D Voronoi diagram.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SPHERE_VORONOI</b> is available in
+      <a href = "../../f_src/sphere_voronoi/sphere_voronoi.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sphere_voronoi/sphere_voronoi.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/sphere_cvt/sphere_cvt.html">
+      SPHERE_CVT</a>,
+      a FORTRAN90 library which
+      creates a mesh of well-separated points on a unit sphere using Centroidal Voronoi
+      Tessellations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_delaunay/sphere_delaunay.html">
+      SPHERE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      computes and plots the Delaunay triangulation of points on the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_design_rule/sphere_design_rule.html">
+      SPHERE_DESIGN_RULE</a>,
+      a FORTRAN90 library which
+      returns point sets on the surface of the unit sphere, known as "designs",
+      which can be useful for estimating integrals on the surface, among other uses.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_quad/sphere_quad.html">
+      SPHERE_QUAD</a>,
+      a FORTRAN90 library which 
+      estimates the integral of a function defined on the sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_stereograph/sphere_stereograph.html">
+      SPHERE_STEREOGRAPH</a>,
+      a FORTRAN90 library which
+      computes the stereographic mapping between points on the unit sphere
+      and points on the plane Z = 1; a generalized mapping is also available.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/sphere_voronoi_display_opengl/sphere_voronoi_display_opengl.html">
+      SPHERE_VORONOI_DISPLAY_OPENGL</a>,
+      a C++ program which
+      displays a sphere and randomly selected generator points, and then
+      gradually colors in points in the sphere that are closest to each generator.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/sphere_xyz_display_opengl/sphere_xyz_display_opengl.html">
+      SPHERE_XYZ_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads XYZ information defining points in 3D,
+      and displays a unit sphere and the points, using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stripack/stripack.html">
+      STRIPACK</a>,
+      a FORTRAN90 library which
+      is used by <b>SPHERE_VORONOI</b> to compute the Voronoi tessellation
+      and Delaunay triangulation of the points on the sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stripack_interactive/stripack_interactive.html">
+      STRIPACK_INTERACTIVE</a>,
+      a FORTRAN90 program which
+      reads a set of points on the unit sphere, computes the Delaunay triangulation,
+      and writes it to a file.
+    </p>
+
+    <p>
+      <a href = "../../data/xyz/xyz.html">
+      XYZ</a>,
+      a data directory which
+      contains examples of XYZ files,
+      a simple 3D graphics point format;
+    </p>
+
+    <p>
+      <a href = "../../f_src/xyz_io/xyz_io.html">
+      XYZ_IO</a>,
+      a FORTRAN90 library which
+      reads and writes XYZ files.
+    </p>
+
+    <p>
+      <a href = "../../data/xyzf/xyzf.html">
+      XYZF</a>,
+      a data directory which
+      contains examples of XYZF files,
+      a simple 3D graphics point and face format;
+    </p>
+
+    <p>
+      <a href = "../../m_src/xyzf_display/xyzf_display.html">
+      XYZF_DISPLAY</a>,
+      a MATLAB program which
+      reads XYZF information defining points and faces in 3D,
+      and displays an image using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xyzf_display_opengl/xyzf_display_opengl.html">
+      XYZF_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads XYZF information defining points and faces in 3D,
+      and displays an image using OpenGL.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Jacob Goodman, Joseph ORourke, editors,<br>
+          Handbook of Discrete and Computational Geometry,<br>
+          Second Edition,<br>
+          CRC/Chapman and Hall, 2004,<br>
+          ISBN: 1-58488-301-4,<br>
+          LC: QA167.H36.
+        </li>
+        <li>
+          Robert Renka,<br>
+          Algorithm 772: STRIPACK, <br>
+          Delaunay Triangulation and Voronoi Diagram on the Surface
+          of a Sphere,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 23, Number 3, 1997.
+        </li>
+        <li>
+          Edward Saff, Arno Kuijlaars,<br>
+          Distributing Many Points on a Sphere, <br>
+          The Mathematical Intelligencer,<br>
+          Volume 19, Number 1, 1997, pages 5-11.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sphere_voronoi.f90">sphere_voronoi.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "sphere_voronoi.sh">sphere_voronoi.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>GEN_00010</b> is a test set of 10 points:
+      <ul>
+        <li>
+          <a href = "gen_00010.xyz">gen_00010.xyz</a>,
+          the point coordinates.
+        </li>
+        <li>
+          <a href = "gen_00010.png">gen_00010.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Voronoi diagram for the data.
+        </li>
+        <li>
+          <a href = "gen_00010.voronoi.xyz">gen_00010.voronoi.xyz</a>,
+          the coordinates of the Voronoi vertices.
+        </li>
+        <li>
+          <a href = "gen_00010.voronoi.xyzf">gen_00010.voronoi.xyzf</a>,
+          the indices of the Voronoi vertices that form each face.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GEN_00100</b> is a test set of 100 points:
+      <ul>
+        <li>
+          <a href = "gen_00100.xyz">gen_00100.xyz</a>,
+          the point coordinates.
+        </li>
+        <li>
+          <a href = "gen_00100.png">gen_00100.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Voronoi diagram for the data.
+        </li>
+        <li>
+          <a href = "gen_00100.voronoi.xyz">gen_00100.voronoi.xyz</a>,
+          the coordinates of the Voronoi vertices.
+        </li>
+        <li>
+          <a href = "gen_00100.voronoi.xyzf">gen_00100.voronoi.xyzf</a>,
+          the indices of the Voronoi vertices that form each face.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for SPHERE_VORONOI.
+        </li>
+        <li>
+          <b>STRIPACK_INTERFACE</b> calls STRIPACK routines.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the numeric value of a base 10 digit.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of rows in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>POLY_COUNT</b> counts the number of polygons of each size in the diagram.
+        </li>
+        <li>
+          <b>POLY_COUNT_MAX</b> determines the highest order polygon.
+        </li>
+        <li>
+          <b>S_INDEX_LAST_C</b> finds the LAST occurrence of a given character.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>VR_TO_XYZF</b> makes an XYZF file of Voronoi diagram data.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+        <li>
+          <b>XYZ_READ</b> reads graphics information from an XYZ file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 19 December 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

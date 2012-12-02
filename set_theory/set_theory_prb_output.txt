@@ -1,0 +1,589 @@
+September 20 2011   8:19:51.961 PM
+ 
+SET_THEORY_PRB
+  FORTRAN90 version
+  Test the SET_THEORY library.
+ 
+TEST01
+  Test the set theory functions
+  with the B4SET representation of a set.
+ 
+  A:
+   5  10  15  20  25  30
+ 
+  B:
+   3   6   9  12  15  18  21  24  27  30
+ 
+  C = ~ B:
+   1   2   4   5   7   8  10  11  13  14  16  17  19  20  22  23  25  26  28  29
+  31  32
+ 
+  D = A intersect B:
+  15  30
+ 
+  E = A union B:
+   3   5   6   9  10  12  15  18  20  21  24  25  27  30
+ 
+  F = A xor B:
+   3   5   6   9  10  12  18  20  21  24  25  27
+ 
+  G = A ~ B:
+   5  10  20  25
+ 
+  H = B ~ A:
+   3   6   9  12  18  21  24  27
+ 
+  B4SET_IS_MEMBER ( i, A ) reports whether i is a member of A
+ 
+  10 is a member of A.
+  11 is not a member of A.
+  12 is not a member of A.
+  13 is not a member of A.
+  14 is not a member of A.
+  15 is a member of A.
+  16 is not a member of A.
+  17 is not a member of A.
+  18 is not a member of A.
+  19 is not a member of A.
+  20 is a member of A.
+ 
+  B4SET_IS_SUBSET ( D, A ) reports whether D is a subset of A
+ 
+  ( A intersect B ) is a subset of A.
+ 
+  W:
+   1  11  21  31
+ 
+  W := W + 6:
+   1   6  11  21  31
+ 
+  W := W - 31:
+   1   6  11  21
+ 
+  W := W union [ 4, 5, 6, 7 ]:
+   1   4   5   6   7  11  21
+ 
+TEST02
+  All subsets of a set,
+  using the colexicographic ordering
+  with the B4SET representation of a set.
+ 
+  B4SET_COLEX_RANK ranks,
+  B4SET_COLEX_SUCCESSOR lists,
+  B4SET_COLEX_UNRANK unranks.
+  B4SET_ENUM enumerates.
+ 
+  For N =        5
+  the number of subsets is       32
+ 
+ 
+  Rank:    0
+  (Empty set)
+ 
+  Rank:    1
+   1
+ 
+  Rank:    2
+   2
+ 
+  Rank:    3
+   1   2
+ 
+  Rank:    4
+   3
+ 
+  Rank:    5
+   1   3
+ 
+  Rank:    6
+   2   3
+ 
+  Rank:    7
+   1   2   3
+ 
+  Rank:    8
+   4
+ 
+  Rank:    9
+   1   4
+ 
+  Rank:   10
+   2   4
+ 
+  Rank:   11
+   1   2   4
+ 
+  Rank:   12
+   3   4
+ 
+  Rank:   13
+   1   3   4
+ 
+  Rank:   14
+   2   3   4
+ 
+  Rank:   15
+   1   2   3   4
+ 
+  Rank:   16
+   5
+ 
+  Rank:   17
+   1   5
+ 
+  Rank:   18
+   2   5
+ 
+  Rank:   19
+   1   2   5
+ 
+  Rank:   20
+   3   5
+ 
+  Rank:   21
+   1   3   5
+ 
+  Rank:   22
+   2   3   5
+ 
+  Rank:   23
+   1   2   3   5
+ 
+  Rank:   24
+   4   5
+ 
+  Rank:   25
+   1   4   5
+ 
+  Rank:   26
+   2   4   5
+ 
+  Rank:   27
+   1   2   4   5
+ 
+  Rank:   28
+   3   4   5
+ 
+  Rank:   29
+   1   3   4   5
+ 
+  Rank:   30
+   2   3   4   5
+ 
+  Rank:   31
+   1   2   3   4   5
+ 
+  The element of rank   10
+   2   4
+ 
+  The rank of this element is computed as   10
+ 
+TEST03
+  All subsets of a set,
+  using the lexicographic ordering,
+  with the B4SET representation of a set.
+ 
+  B4SET_LEX_RANK ranks,
+  B4SET_LEX_SUCCESSOR lists,
+  B4SET_LEX_UNRANK unranks.
+  B4SET_ENUM enumerates.
+ 
+  For N =        5
+  the number of subsets is       32
+ 
+ 
+  Rank:    0
+  (Empty set)
+ 
+  Rank:    1
+   5
+ 
+  Rank:    2
+   4
+ 
+  Rank:    3
+   4   5
+ 
+  Rank:    4
+   3
+ 
+  Rank:    5
+   3   5
+ 
+  Rank:    6
+   3   4
+ 
+  Rank:    7
+   3   4   5
+ 
+  Rank:    8
+   2
+ 
+  Rank:    9
+   2   5
+ 
+  Rank:   10
+   2   4
+ 
+  Rank:   11
+   2   4   5
+ 
+  Rank:   12
+   2   3
+ 
+  Rank:   13
+   2   3   5
+ 
+  Rank:   14
+   2   3   4
+ 
+  Rank:   15
+   2   3   4   5
+ 
+  Rank:   16
+   1
+ 
+  Rank:   17
+   1   5
+ 
+  Rank:   18
+   1   4
+ 
+  Rank:   19
+   1   4   5
+ 
+  Rank:   20
+   1   3
+ 
+  Rank:   21
+   1   3   5
+ 
+  Rank:   22
+   1   3   4
+ 
+  Rank:   23
+   1   3   4   5
+ 
+  Rank:   24
+   1   2
+ 
+  Rank:   25
+   1   2   5
+ 
+  Rank:   26
+   1   2   4
+ 
+  Rank:   27
+   1   2   4   5
+ 
+  Rank:   28
+   1   2   3
+ 
+  Rank:   29
+   1   2   3   5
+ 
+  Rank:   30
+   1   2   3   4
+ 
+  Rank:   31
+   1   2   3   4   5
+ 
+  The element of rank   10
+   2   4
+ 
+  The rank of this element is computed as   10
+ 
+TEST04
+  Test the set theory functions
+  with the LSET representation of a set.
+ 
+  A:
+   5  10  15  20  25  30  35  40  45  50
+ 
+  B:
+   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48
+ 
+  C = ~ B:
+   1   2   4   5   7   8  10  11  13  14  16  17  19  20  22  23  25  26  28  29
+  31  32  34  35  37  38  40  41  43  44  46  47  49  50
+ 
+  D = A intersect B:
+  15  30  45
+ 
+  E = A union B:
+   3   5   6   9  10  12  15  18  20  21  24  25  27  30  33  35  36  39  40  42
+  45  48  50
+ 
+  F = A xor B:
+   3   5   6   9  10  12  18  20  21  24  25  27  33  35  36  39  40  42  48  50
+ 
+  G = A ~ B:
+   5  10  20  25  35  40  50
+ 
+  H = B ~ A:
+   3   6   9  12  18  21  24  27  33  36  39  42  48
+ 
+  LSET_IS_MEMBER ( i, A ) reports whether i is a member of A
+ 
+  10 is a member of A.
+  11 is not a member of A.
+  12 is not a member of A.
+  13 is not a member of A.
+  14 is not a member of A.
+  15 is a member of A.
+  16 is not a member of A.
+  17 is not a member of A.
+  18 is not a member of A.
+  19 is not a member of A.
+  20 is a member of A.
+ 
+  LSET_IS_SUBSET ( D, A ) reports whether D is a subset of A
+ 
+  ( A intersect B ) is a subset of A.
+ 
+  W:
+   1  11  21  31  41
+ 
+  W := W + 6:
+   1   6  11  21  31  41
+ 
+  W := W - 31:
+   1   6  11  21  41
+ 
+  W := W union [16, 26, 36, 46]:
+   1   6  11  16  21  26  36  41  46
+ 
+TEST05
+  All subsets of a set,
+  using the colexicographic ordering
+  with the LSET representation of a set.
+ 
+  LSET_COLEX_RANK ranks,
+  LSET_COLEX_SUCCESSOR lists,
+  LSET_COLEX_UNRANK unranks.
+  LSET_ENUM enumerates.
+ 
+  For N =        5
+  the number of subsets is       32
+ 
+ 
+  Rank:    0
+  (Empty set)
+ 
+  Rank:    1
+   1
+ 
+  Rank:    2
+   2
+ 
+  Rank:    3
+   1   2
+ 
+  Rank:    4
+   3
+ 
+  Rank:    5
+   1   3
+ 
+  Rank:    6
+   2   3
+ 
+  Rank:    7
+   1   2   3
+ 
+  Rank:    8
+   4
+ 
+  Rank:    9
+   1   4
+ 
+  Rank:   10
+   2   4
+ 
+  Rank:   11
+   1   2   4
+ 
+  Rank:   12
+   3   4
+ 
+  Rank:   13
+   1   3   4
+ 
+  Rank:   14
+   2   3   4
+ 
+  Rank:   15
+   1   2   3   4
+ 
+  Rank:   16
+   5
+ 
+  Rank:   17
+   1   5
+ 
+  Rank:   18
+   2   5
+ 
+  Rank:   19
+   1   2   5
+ 
+  Rank:   20
+   3   5
+ 
+  Rank:   21
+   1   3   5
+ 
+  Rank:   22
+   2   3   5
+ 
+  Rank:   23
+   1   2   3   5
+ 
+  Rank:   24
+   4   5
+ 
+  Rank:   25
+   1   4   5
+ 
+  Rank:   26
+   2   4   5
+ 
+  Rank:   27
+   1   2   4   5
+ 
+  Rank:   28
+   3   4   5
+ 
+  Rank:   29
+   1   3   4   5
+ 
+  Rank:   30
+   2   3   4   5
+ 
+  Rank:   31
+   1   2   3   4   5
+ 
+  The element of rank   10
+   2   4
+ 
+  The rank of this element is computed as   10
+ 
+TEST06
+  All subsets of a set,
+  using the lexicographic ordering,
+  with the LSET representation of a set.
+ 
+  LSET_LEX_RANK ranks,
+  LSET_LEX_SUCCESSOR lists,
+  LSET_LEX_UNRANK unranks.
+  LSET_ENUM enumerates.
+ 
+  For N =        5
+  the number of subsets is       32
+ 
+ 
+  Rank:    0
+  (Empty set)
+ 
+  Rank:    1
+   5
+ 
+  Rank:    2
+   4
+ 
+  Rank:    3
+   4   5
+ 
+  Rank:    4
+   3
+ 
+  Rank:    5
+   3   5
+ 
+  Rank:    6
+   3   4
+ 
+  Rank:    7
+   3   4   5
+ 
+  Rank:    8
+   2
+ 
+  Rank:    9
+   2   5
+ 
+  Rank:   10
+   2   4
+ 
+  Rank:   11
+   2   4   5
+ 
+  Rank:   12
+   2   3
+ 
+  Rank:   13
+   2   3   5
+ 
+  Rank:   14
+   2   3   4
+ 
+  Rank:   15
+   2   3   4   5
+ 
+  Rank:   16
+   1
+ 
+  Rank:   17
+   1   5
+ 
+  Rank:   18
+   1   4
+ 
+  Rank:   19
+   1   4   5
+ 
+  Rank:   20
+   1   3
+ 
+  Rank:   21
+   1   3   5
+ 
+  Rank:   22
+   1   3   4
+ 
+  Rank:   23
+   1   3   4   5
+ 
+  Rank:   24
+   1   2
+ 
+  Rank:   25
+   1   2   5
+ 
+  Rank:   26
+   1   2   4
+ 
+  Rank:   27
+   1   2   4   5
+ 
+  Rank:   28
+   1   2   3
+ 
+  Rank:   29
+   1   2   3   5
+ 
+  Rank:   30
+   1   2   3   4
+ 
+  Rank:   31
+   1   2   3   4   5
+ 
+  The element of rank   10
+   2   4
+ 
+  The rank of this element is computed as   10
+ 
+SET_THEORY_PRB
+  Normal end of execution.
+ 
+September 20 2011   8:19:51.971 PM

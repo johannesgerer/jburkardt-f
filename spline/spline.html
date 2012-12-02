@@ -1,0 +1,571 @@
+<html>
+
+  <head>
+    <title>
+      SPLINE - Interpolation and Approximation of Data
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPLINE <br> Interpolation and Approximation of Data
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPLINE</b>
+      is a FORTRAN90 library which
+      defines and evaluates spline functions.
+    </p>
+
+    <p>
+      These spline functions are typically used to
+      <ul>
+        <li>
+          interpolate data exactly at a set of points;
+        </li>
+        <li>
+          approximate data at many points, or over an interval.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The most common use of this software is for situations where
+      a set of (X,Y) data points is known, and it is desired to
+      determine a smooth function which passes exactly through
+      those points, and which can be evaluated everywhere.
+      Thus, it is possible to get a formula that allows you to
+      "connect the dots".
+    </p>
+
+    <p>
+      Of course, you could could just connect the dots with
+      straight lines, but that would look ugly, and if there really
+      is some function that explains your data, you'd expect it to
+      curve around rather than make sudden angular turns.  The
+      functions in <b>SPLINE</b> offer a variety of choices for
+      slinky curves that will make pleasing interpolants of your data.
+    </p>
+
+    <p>
+      There are a variety of types of approximation curves
+      available, including:
+      <ul>
+        <li>
+          least squares polynomials,
+        </li>
+        <li>
+          divided difference polynomials,
+        </li>
+        <li>
+          piecewise polynomials,
+        </li>
+        <li>
+          B splines,
+        </li>
+        <li>
+          Bernstein splines,
+        </li>
+        <li>
+          beta splines,
+        </li>
+        <li>
+          Bezier splines,
+        </li>
+        <li>
+          Hermite splines,
+        </li>
+        <li>
+          Overhauser (or Catmull-Rom) splines.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Also included are a set of routines that return the local "basis matrix",
+      which allows the evaluation of the spline in terms of local function
+      data.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SPLINE</b> is available in
+      <a href = "../../c_src/spline/spline.html">a C version</a> and
+      <a href = "../../cpp_src/spline/spline.html">a C++ version</a> and
+      <a href = "../../f77_src/spline/spline.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/spline/spline.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/spline/spline.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bernstein/bernstein.html">
+      BERNSTEIN</a>,
+      a FORTRAN90 library which
+      evaluates the Bernstein polynomials, 
+      useful for uniform approximation of functions;
+    </p>
+
+    <p>
+      <a href = "../../f_src/chebyshev/chebyshev.html">
+      CHEBYSHEV</a>,
+      a FORTRAN90 library which
+      computes the Chebyshev interpolant/approximant to a given function
+      over an interval.
+    </p>
+
+    <p>
+      <a href = "../../f_src/divdif/divdif.html">
+      DIVDIF</a>,
+      a FORTRAN90 library which
+      uses divided differences to interpolate data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite/hermite.html">
+      HERMITE</a>,
+      a FORTRAN90 library which
+      computes the Hermite interpolant, a polynomial that matches function values
+      and derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite_cubic/hermite_cubic.html">
+      HERMITE_CUBIC</a>,
+      a FORTRAN90 library which
+      can compute the value, derivatives or integral of a Hermite cubic polynomial,
+      or manipulate an interpolating function made up of piecewise Hermite cubic
+      polynomials.
+    </p>
+
+    <p>
+      <a href = "../../f_src/interp/interp.html">
+      INTERP</a>,
+      a FORTRAN90 library which
+      can be used for parameterizing and interpolating data;
+    </p>
+
+    <p>
+      <a href = "../../f_src/lagrange_approx_1d/lagrange_approx_1d.html">
+      LAGRANGE_APPROX_1D</a>,
+      a FORTRAN90 library which
+      defines and evaluates the Lagrange polynomial p(x) of degree m
+      which approximates a set of nd data points (x(i),y(i)).
+    </p>
+
+    <p>
+      <a href = "../../f_src/lagrange_interp_1d/lagrange_interp_1d.html">
+      LAGRANGE_INTERP_1D</a>,
+      a FORTRAN90 library which
+      defines and evaluates the Lagrange polynomial p(x) 
+      which interpolates a set of data, so that p(x(i)) = y(i).
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes a wide variety of numerical software, including
+      solvers for linear systems of equations, interpolation of data,
+      numerical quadrature, linear least squares data fitting,
+      the solution of nonlinear equations, ordinary differential equations,
+      optimization and nonlinear least squares, simulation and random numbers,
+      trigonometric approximation and Fast Fourier Transforms.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pppack/pppack.html">
+      PPPACK</a>,
+      a FORTRAN90 library which
+      implements piecewise polynomial functions,
+      including, in particular, cubic splines,
+      by Carl deBoor.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_approx/test_approx.html">
+      TEST_APPROX</a>,
+      a FORTRAN90 library which
+      defines a number of test problems for approximation and interpolation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_interp_1d/test_interp_1d.html">
+      TEST_INTERP_1D</a>,
+      a FORTRAN90 library which
+      defines test problems for interpolation of data y(x),
+      depending on a 1D argument.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms446/toms446.html">
+      TOMS446</a>,
+      a FORTRAN90 library which
+      manipulates Chebyshev series for interpolation and approximation;<br>
+      this is a version of ACM TOMS algorithm 446,
+      by Roger Broucke.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          JA Brewer, DC Anderson,<br>
+          Visual Interaction with Overhauser Curves and Surfaces,<br>
+          SIGGRAPH 77,<br>
+          in Proceedings of the 4th Annual Conference on Computer Graphics
+          and Interactive Techniques,<br>
+          ASME, July 1977, pages 132-137.
+        </li>
+        <li>
+          Edwin Catmull, Raphael Rom,<br>
+          A Class of Local Interpolating Splines,<br>
+          in Computer Aided Geometric Design,<br>
+          edited by Robert Barnhill, Richard Reisenfeld,<br>
+          Academic Press, 1974,<br>
+          ISBN: 0120790505,<br>
+          LC: QA464.I58.
+        </li>
+        <li>
+          Samuel Conte, Carl deBoor,<br>
+          Elementary Numerical Analysis,<br>
+          Second Edition,<br>
+          McGraw Hill, 1972,<br>
+          ISBN: 07-012446-4,<br>
+          LC: QA297.C65.
+        </li>
+        <li>
+          Alan Davies, Philip Samuels,<br>
+          An Introduction to Computational Geometry for Curves and Surfaces,<br>
+          Clarendon Press, 1996,<br>
+          ISBN: 0-19-851478-6,<br>
+          LC: QA448.D38.
+        </li>
+        <li>
+          Carl deBoor,<br>
+          A Practical Guide to Splines,<br>
+          Springer, 2001,<br>
+          ISBN: 0387953663,<br>
+          LC: QA1.A647.v27.
+        </li>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1,<br>
+          LC: QA214.L56.
+        </li>
+        <li>
+          Gisela Engeln-Muellges, Frank Uhlig,<br>
+          Numerical Algorithms with C,<br>
+          Springer, 1996,<br>
+          ISBN: 3-540-60530-4,<br>
+          LC: QA297.E56213.
+        </li>
+        <li>
+          James Foley, Andries vanDam, Steven Feiner, John Hughes,<br>
+          Computer Graphics, Principles and Practice,<br>
+          Second Edition,<br>
+          Addison Wesley, 1995,<br>
+          ISBN: 0201848406,<br>
+          LC: T385.C5735.
+        </li>
+        <li>
+          Fred Fritsch, Judy Butland,<br>
+          A Method for Constructing Local Monotone Piecewise
+          Cubic Interpolants,<br>
+          SIAM Journal on Scientific and Statistical Computing,<br>
+          Volume 5, Number 2, 1984, pages 300-304.
+        </li>
+        <li>
+          Fred Fritsch, Ralph Carlson,<br>
+          Monotone Piecewise Cubic Interpolation,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 17, Number 2, April 1980, pages 238-246.
+        </li>
+        <li>
+          David Kahaner, Cleve Moler, Steven Nash,<br>
+          Numerical Methods and Software,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0-13-627258-4,<br>
+          LC: TA345.K34.
+        </li>
+        <li>
+          David Rogers, Alan Adams,<br>
+          Mathematical Elements for Computer Graphics,<br>
+          Second Edition,<br>
+          McGraw Hill, 1989,<br>
+          ISBN: 0070535299,<br>
+          LC: T385.R6.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "spline.f90">spline.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "spline.sh">spline.sh</a>, commands to compile
+          the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "spline_prb.f90">spline_prb.f90</a>, the test program;
+        </li>
+        <li>
+          <a href = "spline_prb.sh">spline_prb.sh</a>, commands
+          to compile, link and run the test program;
+        </li>
+        <li>
+          <a href = "spline_prb_output.txt">spline_prb_output.txt</a>, the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BASIS_FUNCTION_B_VAL</b> evaluates the B spline basis function.
+        </li>
+        <li>
+          <b>BASIS_FUNCTION_BETA_VAL</b> evaluates the beta spline basis function.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_B_UNI</b> sets up the uniform B spline basis matrix.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_BETA_UNI</b> sets up the uniform beta spline basis matrix.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_BEZIER</b> sets up the cubic Bezier spline basis matrix.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_HERMITE</b> sets up the Hermite spline basis matrix.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_OVERHAUSER_NONUNI:</b> nonuniform Overhauser spline basis matrix.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_OVERHAUSER_NUL</b> sets the nonuniform left Overhauser basis matrix.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_OVERHAUSER_NUR:</b> the nonuniform right Overhauser basis matrix.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_OVERHAUSER_UNI</b> sets the uniform Overhauser spline basis matrix.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_OVERHAUSER_UNI_L</b> sets the left uniform Overhauser basis matrix.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_OVERHAUSER_UNI_R</b> sets the right uniform Overhauser basis matrix.
+        </li>
+        <li>
+          <b>BASIS_MATRIX_TMP</b> computes Q = T * MBASIS * P
+        </li>
+        <li>
+          <b>BC_VAL</b> evaluates a parameterized N-th degree Bezier curve in 2D.
+        </li>
+        <li>
+          <b>BEZ_VAL</b> evaluates an N-th degree Bezier function at a point.
+        </li>
+        <li>
+          <b>BP_APPROX</b> evaluates the Bernstein polynomial approximant to F(X) on [A,B].
+        </li>
+        <li>
+          <b>BP01</b> evaluates the Bernstein basis polynomials for [0,1] at a point.
+        </li>
+        <li>
+          <b>BPAB</b> evaluates the Bernstein basis polynomials for [A,B] at a point.
+        </li>
+        <li>
+          <b>CHFEV</b> evaluates a cubic polynomial given in Hermite form.
+        </li>
+        <li>
+          <b>D3_MXV</b> multiplies a D3 matrix times a vector.
+        </li>
+        <li>
+          <b>D3_NP_FS</b> factors and solves an D3 system.
+        </li>
+        <li>
+          <b>D3_UNIFORM</b> randomizes a D3 matrix.
+        </li>
+        <li>
+          <b>DATA_TO_DIF</b> sets up a divided difference table from raw data.
+        </li>
+        <li>
+          <b>DIF_VAL</b> evaluates a divided difference polynomial at a point.
+        </li>
+        <li>
+          <b>LEAST_SET_OLD</b> constructs the least squares polynomial approximation to data.
+        </li>
+        <li>
+          <b>LEAST_VAL_OLD</b> evaluates a least squares polynomial defined by LEAST_SET_OLD.
+        </li>
+        <li>
+          <b>LEAST_SET</b> defines a least squares polynomial for given data.
+        </li>
+        <li>
+          <b>LEAST_VAL</b> evaluates a least squares polynomial defined by LEAST_SET.
+        </li>
+        <li>
+          <b>LEAST_VAL2</b> evaluates a least squares polynomial defined by LEAST_SET.
+        </li>
+        <li>
+          <b>PARABOLA_VAL2</b> evaluates a parabolic interpolant through tabular data.
+        </li>
+        <li>
+          <b>PCHST:</b> PCHIP sign-testing routine.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two real values.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> is a portable pseudorandom number generator.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET</b> searches a sorted R8VEC for successive brackets of a value.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET3</b> finds the interval containing or nearest a given value.
+        </li>
+        <li>
+          <b>R8VEC_DISTINCT</b> is true if the entries in an R8VEC are distinct.
+        </li>
+        <li>
+          <b>R8VEC_EVEN</b> returns N real values, evenly spaced between ALO and AHI.
+        </li>
+        <li>
+          <b>R8VEC_INDICATOR</b> sets an R8VEC to the indicator vector.
+        </li>
+        <li>
+          <b>R8VEC_ORDER_TYPE</b> determines the order type of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORT_BUBBLE_A</b> ascending sorts an R8VEC using bubble sort.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> sets a double precision vector to unit pseudorandom numbers.
+        </li>
+        <li>
+          <b>R8VEC_UNIQUE_COUNT</b> counts the unique elements in an unsorted R8VEC.
+        </li>
+        <li>
+          <b>SPLINE_B_VAL</b> evaluates a cubic B spline approximant.
+        </li>
+        <li>
+          <b>SPLINE_BETA_VAL</b> evaluates a cubic beta spline approximant.
+        </li>
+        <li>
+          <b>SPLINE_BEZIER_VAL</b> evaluates a cubic Bezier spline.
+        </li>
+        <li>
+          <b>SPLINE_CONSTANT_VAL</b> evaluates a piecewise constant spline at a point.
+        </li>
+        <li>
+          <b>SPLINE_CUBIC_SET</b> computes the second derivatives of a piecewise cubic spline.
+        </li>
+        <li>
+          <b>SPLINE_CUBIC_VAL</b> evaluates a piecewise cubic spline at a point.
+        </li>
+        <li>
+          <b>SPLINE_CUBIC_VAL2</b> evaluates a piecewise cubic spline at a point.
+        </li>
+        <li>
+          <b>SPLINE_HERMITE_SET</b> sets up a piecewise cubic Hermite interpolant.
+        </li>
+        <li>
+          <b>SPLINE_HERMITE_VAL</b> evaluates a piecewise cubic Hermite interpolant.
+        </li>
+        <li>
+          <b>SPLINE_LINEAR_INT</b> evaluates the integral of a piecewise linear spline.
+        </li>
+        <li>
+          <b>SPLINE_LINEAR_INTSET</b> sets a piecewise linear spline with given integral properties.
+        </li>
+        <li>
+          <b>SPLINE_LINEAR_VAL</b> evaluates a piecewise linear spline at a point.
+        </li>
+        <li>
+          <b>SPLINE_OVERHAUSER_NONUNI_VAL</b> evaluates the nonuniform Overhauser spline.
+        </li>
+        <li>
+          <b>SPLINE_OVERHAUSER_UNI_VAL</b> evaluates the uniform Overhauser spline.
+        </li>
+        <li>
+          <b>SPLINE_OVERHAUSER_VAL</b> evaluates an Overhauser spline.
+        </li>
+        <li>
+          <b>SPLINE_PCHIP_SET</b> sets derivatives for a piecewise cubic Hermite interpolant.
+        </li>
+        <li>
+          <b>SPLINE_PCHIP_VAL</b> evaluates a piecewise cubic Hermite function.
+        </li>
+        <li>
+          <b>SPLINE_QUADRATIC_VAL</b> evaluates a piecewise quadratic spline at a point.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 29 January 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,73 @@
+December  9 2003  10:58:37.805 AM
+ 
+MAXMIN_TEST
+  Demonstrate the use of the F90 statements:
+ 
+  MAXVAL ( V ) returns maximum value of a vector V;
+  MAXVAL ( A ) returns a vector of maximum values;
+  MAXLOC ( V ) returns the index of the maximum value;
+  MAXLOC ( A ) returns a vector of maximum value indices.
+ 
+  and the corresponding minimum operators:
+ 
+  MINVAL ( V );
+  MINVAL ( A );
+  MINLOC ( V );
+  MINLOC ( A ).
+ 
+  Warning: the MAXLOC and MINLOC routines have a very
+  fussy and nonintuitive interface, designed to make
+  it equally impossible to work with vectors as with
+  multi-index arrays.
+ 
+TEST01
+  For a real vector V, use
+  v_maxval = maxval ( v )
+  v_maxloc = maxloc ( v )
+  v_minval = minval ( v )
+  v_minloc = minloc ( v )
+ 
+     I   V(I)
+ 
+     1   5.00000    
+     2   9.00000    
+     3   2.00000    
+     4   0.00000    
+     5   4.00000    
+     6   5.00000    
+     7   9.00000    
+     8   0.00000    
+     9   8.00000    
+    10   5.00000    
+ 
+  v_maxval =    9.00000    
+  v_maxloc =      2
+  v_minval =    0.00000    
+  v_minloc =      4
+ 
+TEST02
+  For a real 2D array A, use
+  a_maxval = maxval ( a )
+  a_maxloc = maxloc ( a )
+  a_minval = minval ( a )
+  a_minloc = minloc ( a )
+ 
+     I   A(I,1:N)
+ 
+     1   11.0000       12.0000       13.0000    
+     2   21.0000       22.0000       23.0000    
+     3   31.0000       32.0000       33.0000    
+     4   41.0000       42.0000       43.0000    
+     5   51.0000       52.0000       53.0000    
+ 
+  a_maxval =    53.0000    
+  a_maxloc =      5     3
+  a_minval =    11.0000    
+  a_minloc =      1     1
+   53.00000    
+           5           3
+   11.00000    
+           1           1
+ 
+MAXMIN_TEST:
+  Normal end of execution.

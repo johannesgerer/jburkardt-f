@@ -1,0 +1,1046 @@
+<html>
+
+  <head>
+    <title>
+      CVT_BASIS_FLOW - PDE Model Reduction by Voronoi Techniques
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CVT_BASIS_FLOW <br> PDE Model Reduction by Voronoi Techniques
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CVT_BASIS_FLOW</b>
+      is a FORTRAN90 program which
+      extracts representative solution
+      modes of a set of solutions to a fluid flow PDE.
+    </p>
+
+    <p>
+      The selection process uses K-Means clustering, which can be considered
+      to be a discrete version of the CVT algorithm (Centroidal Voronoi
+      Tessellation).
+    </p>
+
+    <p>
+      The selected modes will generally be "well spread out" in the space
+      spanned by the set of solutions.  Such a set of modes might be useful
+      as a basis for a low-dimensional approximation of new solutions,
+      as long as it may be assumed that these new solutions do not
+      have significant components that were not evident
+      in the original solution data.
+    </p>
+
+    <p>
+      Specifically, a partial differential equation (PDE) has been
+      defined, specifying the time dependent flow of a fluid through
+      a region.  The PDE specification includes a parameter ALPHA
+      whose value strongly affects the behavior of the flow.  The
+      steady state solution S0 is computed for a particular value
+      of ALPHA.  Then the time dependent problem is solved over a
+      fixed time interval, with ALPHA varying from time to time.
+      A set of several hundred solutions S(T(I),ALPHA(I)) are saved.
+    </p>
+
+    <p>
+      The need is to try to extract from this solution data the
+      typical modes of behavior of the solution.  Such a set of modes
+      may then be used as a finite element basis that is highly tuned
+      to the physics of the problem, so that a very small set of
+      basis functions can be used to closely approximate the behavior
+      of the solution over a range of values of ALPHA.
+    </p>
+
+    <p>
+      The method of extracting information from the solution data
+      uses a form of K-Means clustering.
+      The program will try to cluster the data, that is, to organize
+      the data by defining a number of cluster centers, which are
+      also points in N dimensional space, and assigning each record
+      to the cluster associated with a particular center.
+    </p>
+
+    <p>
+      The method of assigning data aims to minimize the cluster energy,
+      which is taken to be the sum of the squares of the distances of
+      each data point from its cluster center.
+    </p>
+
+    <p>
+      In some contexts, it makes sense to use the usual Euclidean sort
+      of distance.  In others, it may make more sense to replace each
+      data record by a normalized version, and to assign distance
+      by computing angles between the unit vectors.
+    </p>
+
+    <p>
+      Because the data comes from a finite element computation, and
+      the results may be used as a new reduced basis, it may be
+      desirable to carry out mass matrix preconditioning of the data,
+      so that output vectors (cluster generators) are pairwise orthogonal
+      in the L2 inner product (integration of the product of the finite
+      element functions over the domain).
+    </p>
+
+    <p>
+      Because the results may be used as a new reduced basis, it may be
+      desirable, once the results have been computed, to apply a
+      Gram-Schmidt orthogonalization procedure, so that the basis
+      vectors have unit Euclidean norm, and are pairwise orthogonal.
+    </p>
+
+    <p>
+      The current version of the program assumes that a steady state
+      solution <b>SS</b> of the PDE is known, and that a multiple
+      of SS is to be subtracted from each solution vector before processing.
+    </p>
+
+    <p>
+      <b>FILES</b>: the program assumes the existence of the following files:
+      (the actual names of the files are specified by the user at run time.
+      The names used here are just suggestions.)
+      <ul>
+        <li>
+          <i>xy.txt</i>, contains the coordinates of each node, with
+          one pair of coordinates per line of the file;
+        </li>
+        <li>
+          <i>ss.txt</i>, contains the steady state solution values at each
+          node; normally, there are two values per node (horizontal and
+          vertical velocity).  However, the program will accept data
+          that is scalar, or with a higher number of components than 2.
+          Most of the ensuing discussion assumes that the number of
+          components is 2, but that's just because that is the problem
+          we are usually working on;
+        </li>
+        <li>
+          <i>uv01.txt</i>, <i>uv02.txt</i>, ..., contains the solution values
+          at each node for solution 1, 2, and so on; the number of components
+          (normally 2) must be the same as for the steady state solution
+          file.
+        </li>
+        <li>
+          <i>element.txt</i>, contains the indices of the six nodes that
+          make up each element, with one set of six indices per line of
+          the file <i>(only needed if mass matrix
+          preconditioning is used)</i>;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>INPUT</b>: at run time, the user specifies:
+      <ul>
+        <li>
+          <i>run_type</i> describes how we subtract off the steady state,
+          whether we drop some data, and other options.  The current
+          values range from 1 to 8.  The most common value is 6, used
+          with the TCELL data:
+          <ol>
+            <li>
+              no steady state file is used, no preprocessing is carried out;
+            </li>
+            <li>
+              no steady state file is used, no preprocessing is carried out;
+            </li>
+            <li>
+              subtract 1/3 SS from solution 1, 5/3 SS from solutions
+              2 to 201, and 1/3 SS from solutions 202 through 401.
+            </li>
+            <li>
+              subtract 1/3 SS from solution 1, 5/3 SS from solutions
+              2 to 201, and 1/3 SS from solutions 202 through 401,
+              and drop the even-numbered data.
+            </li>
+            <li>
+              subtract 1/3 SS from solution 1, 5/3 SS from solutions
+              2 to 201, and 1/3 SS from solutions 202 through 401,
+              and skip half the data and normalize it.
+            </li>
+            <li>
+              subtract 5/3 SS from solutions
+              1 to 250, and 1/3 SS from solutions 251 through 500, do not
+              normalize.
+            </li>
+            <li>
+              subtract 5/3 SS from solutions
+              1 to 250, and 1/3 SS from solutions 251 through 500,
+              normalize the data.
+            </li>
+            <li>
+              subtract 5/3 SS from solutions
+              1 to 250, and 1/3 SS from solutions 251 through 500, then
+              drop the odd-numbered data, do not
+              normalize.
+            </li>
+          </ol>
+        </li>
+        <li>
+          <i>xy_file</i>, the name of the <b>xy</b> file containing the
+          node coordinates;
+        </li>
+        <li>
+          <i>steady_file</i>, the name of the steady state solution file,
+          or "none" if the data does not need to be preprocessed (run_type
+          1 or 2);
+        </li>
+        <li>
+          <i>uv0_file</i>, the name of the first solution file (the program
+          will assume all the files are numbered consecutively).
+          <b>The code has been modified so that you may now specify more
+          than one set of solution families.  Enter "none" if there are
+          no more families, or else the name of the first file in the
+          next family.  Up to 10 separate families of files are allowed.</b>
+        </li>
+        <li>
+          <i>cluster_lo, cluster_hi</i>, the range of cluster sizes to check.
+          In most cases, you simply want to specify the <b>same number</b>
+          for both these values, namely, the requested basis size.
+        </li>
+        <li>
+          <i>cluster_it_max</i>, the number of different times you want to
+          try to cluster the data; I often use 15.
+        </li>
+        <li>
+          <i>energy_it_max</i>, the number of times you want to try to improve
+          a given clustering by swapping points from one cluster to another;
+          I often use 50 or 100.
+        </li>
+        <li>
+          <i>element_file</i>, the name of the element file, if mass matrix
+          preconditioning is desired, or else "none".
+        </li>
+        <li>
+          <i>normal</i>, 0 to use raw data, 1 to normalize; here, after
+          we have subtracted the steady state and preconditioned the data
+          vectors, we are offering also to make each data vector have
+          unit norm before clustering.  At the moment, I'm working with
+          the raw data.
+        </li>
+        <li>
+          <i>comment</i>, "Y" if initial comments may be included in the
+          beginning of the output files.  These comments always start with
+          a "#" character in column 1.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>OUTPUT</b>: the program computes <b>basis_num</b> basis vectors.
+      The first vector is written to the file <i>gen_001.txt</i>; again,
+      the output vectors are written with two values per line, since
+      this represents the two components of velocity at a particular
+      node.
+    </p>
+
+    <p>
+      <dl>
+        <dt>
+          Linkage:
+        </dt>
+        <dd>
+          The program calls numerous LAPACK routines for the processing
+          of the mass matrix.  The text for these routines is not included
+          in the source code.  The compiled program must be linked to
+          the LAPACK library.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/brain_sensor_pod/brain_sensor_pod.html">
+      BRAIN_SENSOR_POD</a>,
+      a MATLAB program which
+      applies the method of Proper Orthogonal Decomposition
+      to seek underlying patterns in sets of 40 sensor readings of
+      brain activity.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cvt_basis/cvt_basis.html">
+      CVT_BASIS</a>,
+      a FORTRAN90 program which
+      is similar to <b>CVT_BASIS_FLOW</b>, but handles any general
+      set of data vectors.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pod_basis_flow/pod_basis_flow.html">
+      POD_BASIS_FLOW</a>,
+      a FORTRAN90 program which
+      is similar to <b>CVT_BASIS_FLOW</b>,
+      but uses POD methods to extract representative modes from the data.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, Number 3, pages 345-405, September 1991.
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Hyung-Chun Lee,<br>
+          Centroidal Voronoi Tessellation-Based Reduced-Order
+          Modelling of Complex Systems,<br>
+          SIAM Journal on Scientific Computing,<br>
+          Volume 28, Number 2, 2006, pages 459-484.
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Janet Peterson and Rebecca Brannon,<br>
+          User Manual and Supporting Information for Library of Codes
+          for Centroidal Voronoi Placement and Associated Zeroth,
+          First, and Second Moment Determination,<br>
+          Sandia National Laboratories Technical Report SAND2002-0099,<br>
+          February 2002,<br>
+          <a href = "../../publications/bgpb_2002.pdf">
+                    ../../publications/bgpb_2002.pdf </a>
+        </li>
+        <li>
+          Qiang Du, Vance Faber, Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review, Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Lili Ju, Qiang Du, Max Gunzburger,<br>
+          Probabilistic methods for centroidal Voronoi tessellations
+          and their parallel implementations,<br>
+          Parallel Computing,<br>
+          Volume 28, 2002, pages 1477-1500.
+        </li>
+        <li>
+          Wendy Martinez, Angel Martinez,<br>
+          Computational Statistics Handbook with MATLAB,<br>
+          Chapman and Hall / CRC, 2002.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_basis_flow.f90">cvt_basis_flow.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "cvt_basis_flow.sh">cvt_basis_flow.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      PDE solution datasets you may copy include:
+      <ul>
+        <li>
+          <a href = "../../datasets/cavity_flow/cavity_flow.html">
+          CAVITY</a>, the driven cavity;
+        </li>
+        <li>
+          <a href = "../../datasets/inout_flow/inout_flow.html">
+          INOUT</a>, flow in and out of a chamber;
+        </li>
+        <li>
+          <a href = "../../datasets/inout_flow2/inout_flow2.html">
+          INOUT #2</a>, flow in and out of a chamber, using a finer grid
+          and more timesteps;
+        </li>
+        <li>
+          <a href = "../../datasets/tcell_flow/tcell_flow.html">
+          TCELL</a>, flow through a T-cell;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      This program has been run with a number of different datasets,
+      and with various requirements as to normalization and so on.
+      The purpose of most of the runs is to find a generator set of
+      given size.  The input and output of each run is stored in
+      a separate subdirectory.
+    </p>
+
+    <p>
+      Now we worked with 500 flow solutions in the TCELL region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We DON'T normalize the PDE solutions.
+      <ul>
+        <li>
+          <a href = "run_22/run_22.html">run 22</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_13/run_13.html">run 13</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_14/run_14.html">run 14</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_15/run_15.html">run 15</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs worked with 500 flow solutions in the TCELL region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  Now we NORMALIZE the PDE solutions before processing them.
+      <ul>
+        <li>
+          <a href = "run_23/run_23.html">run 23</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_16/run_16.html">run 16</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_17/run_17.html">run 17</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_18/run_18.html">run 18</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs worked with 500 flow solutions in the TCELL region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We DON'T normalize the PDE solutions.  We discard
+      half the data, keeping the EVEN steps, 2, 4, ..., 500.
+      <ul>
+        <li>
+          <a href = "run_24/run_24.html">run 24</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_19/run_19.html">run 19</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_20/run_20.html">run 20</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_21/run_21.html">run 21</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the INOUT region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We DON'T normalize the PDE solutions.
+      <ul>
+        <li>
+          <a href = "run_25/run_25.html">run 25</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_26/run_26.html">run 26</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_27/run_27.html">run 27</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_28/run_28.html">run 28</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the INOUT region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We NORMALIZE the PDE solutions.
+      <ul>
+        <li>
+          <a href = "run_29/run_29.html">run 29</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_30/run_30.html">run 30</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_31/run_31.html">run 31</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_32/run_32.html">run 32</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the INOUT region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We DON'T normalize the PDE solutions.  Before
+      we proceed, we DROP the ODD numbered PDE solutions
+      <ul>
+        <li>
+          <a href = "run_33/run_33.html">run 33</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_34/run_34.html">run 34</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_35/run_35.html">run 35</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_36/run_36.html">run 36</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the CAVITY region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We DON'T normalize the PDE solutions.
+      <ul>
+        <li>
+          <a href = "run_37/run_37.html">run 37</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_38/run_38.html">run 38</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_39/run_39.html">run 39</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_40/run_40.html">run 40</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the CAVITY region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We NORMALIZE the PDE solutions.
+      <ul>
+        <li>
+          <a href = "run_41/run_41.html">run 41</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_42/run_42.html">run 42</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_43/run_43.html">run 43</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_44/run_44.html">run 44</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the CAVITY region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We DON'T normalize the PDE solutions.  Before
+      we proceed, we DROP the ODD numbered PDE solutions
+      <ul>
+        <li>
+          <a href = "run_45/run_45.html">run 45</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_46/run_46.html">run 46</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_47/run_47.html">run 47</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_48/run_48.html">run 48</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the CAVITY region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We normalize the PDE solutions.  We use MASS MATRIX
+      preconditioning.
+      <ul>
+        <li>
+          <a href = "run_49/run_49.html">run 49</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_50/run_50.html">run 50</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_51/run_51.html">run 51</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the INOUT region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We normalize the PDE solutions.  We use MASS MATRIX
+      preconditioning.
+      <ul>
+        <li>
+          <a href = "run_52/run_52.html">run 52</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_53/run_53.html">run 53</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_54/run_54.html">run 54</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the TCELL region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We normalize the PDE solutions.  We use MASS MATRIX
+      preconditioning.
+      <ul>
+        <li>
+          <a href = "run_55/run_55.html">run 55</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_76/run_76.html">run 76</a>, 5 elements;
+        </li>
+        <li>
+          <a href = "run_77/run_77.html">run 77</a>, 7 elements;
+        </li>
+        <li>
+          <a href = "run_56/run_56.html">run 56</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_57/run_57.html">run 57</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the CAVITY region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We do not normalize the PDE solutions.  We use MASS MATRIX
+      preconditioning.
+      <ul>
+        <li>
+          <a href = "run_58/run_58.html">run 58</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_59/run_59.html">run 59</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_60/run_60.html">run 60</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the INOUT region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We do not normalize the PDE solutions.  We use MASS MATRIX
+      preconditioning.
+      <ul>
+        <li>
+          <a href = "run_61/run_61.html">run 61</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_62/run_62.html">run 62</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_63/run_63.html">run 63</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the TCELL region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We do not normalize the PDE solutions.  We use MASS MATRIX
+      preconditioning.
+      <ul>
+        <li>
+          <a href = "run_64/run_64.html">run 64</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_78/run_78.html">run 78</a>, 5 elements;
+        </li>
+        <li>
+          <a href = "run_81/run_81.html">run 81</a>, 6 elements;
+        </li>
+        <li>
+          <a href = "run_79/run_79.html">run 79</a>, 7 elements;
+        </li>
+        <li>
+          <a href = "run_65/run_65.html">run 65</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_82/run_82.html">run 82</a>, 9 elements;
+        </li>
+        <li>
+          <a href = "run_80/run_80.html">run 80</a>, 10 elements;
+        </li>
+        <li>
+          <a href = "run_83/run_83.html">run 83</a>, 11 elements;
+        </li>
+        <li>
+          <a href = "run_84/run_84.html">run 84</a>, 12 elements;
+        </li>
+        <li>
+          <a href = "run_85/run_85.html">run 85</a>, 13 elements;
+        </li>
+        <li>
+          <a href = "run_86/run_86.html">run 86</a>, 14 elements;
+        </li>
+        <li>
+          <a href = "run_87/run_87.html">run 87</a>, 15 elements;
+        </li>
+        <li>
+          <a href = "run_66/run_66.html">run 66</a>, 16 elements;
+        </li>
+        <li>
+          <a href = "run_88/run_88.html">run 88</a>, 17 elements;
+        </li>
+        <li>
+          <a href = "run_89/run_89.html">run 89</a>, 18 elements;
+        </li>
+        <li>
+          <a href = "run_90/run_90.html">run 90</a>, 19 elements;
+        </li>
+        <li>
+          <a href = "run_91/run_91.html">run 91</a>, 20 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the CAVITY region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We do not normalize the PDE solutions.  We drop the
+      odd numbered data vectors.  We use MASS MATRIX preconditioning.
+      <ul>
+        <li>
+          <a href = "run_67/run_67.html">run 67</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_68/run_68.html">run 68</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_69/run_69.html">run 69</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the INOUT region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We do not normalize the PDE solutions.  We drop the
+      odd numbered data vectors.  We use MASS MATRIX preconditioning.
+      <ul>
+        <li>
+          <a href = "run_70/run_70.html">run 70</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_71/run_71.html">run 71</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_72/run_72.html">run 72</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 500 flow solutions in the TCELL region.
+      We subtract 5/3 of steady solution from 1-250, and 1/3 from 251
+      through 500.  We do not normalize the PDE solutions.  We drop the
+      odd numbered data vectors.  We use MASS MATRIX preconditioning.
+      <ul>
+        <li>
+          <a href = "run_73/run_73.html">run 73</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_74/run_74.html">run 74</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_75/run_75.html">run 75</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 800 flow solutions in the INOUT2 region.
+      We subtract 5/3 of steady solution from 1-400, and 1/3 from 401
+      through 800.  We DON'T normalize the PDE solutions.
+      <ul>
+        <li>
+          <a href = "run_92/run_92.html">run 92</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_93/run_93.html">run 93</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_94/run_94.html">run 94</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_95/run_95.html">run 95</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 800 flow solutions in the INOUT2 region.
+      We subtract 5/3 of steady solution from 1-400, and 1/3 from 401
+      through 800.  We DON'T normalize the PDE solutions.
+      We use mass matrix preconditioning.
+      <ul>
+        <li>
+          <a href = "run_96/run_96.html">run 96</a>, 2 elements;
+        </li>
+        <li>
+          <a href = "run_97/run_97.html">run 97</a>, 4 elements;
+        </li>
+        <li>
+          <a href = "run_98/run_98.html">run 98</a>, 8 elements;
+        </li>
+        <li>
+          <a href = "run_99/run_99.html">run 99</a>, 16 elements;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The next set of runs works with 40 scalar flow solutions in the
+      one-dimensional BURGERS equation.
+      <ul>
+        <li>
+          <a href = "run_100/run_100.html">run 100</a>, 4 elements;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main routine for the CVT_BASIS_FLOW program.
+        </li>
+        <li>
+          <b>ANALYSIS_NORMAL</b> computes the energy for a range of number of clusters.
+        </li>
+        <li>
+          <b>ANALYSIS_RAW</b> computes the energy for a range of number of clusters.
+        </li>
+        <li>
+          <b>BANDWIDTH_DETERMINE</b> computes the lower bandwidth of a finite element matrix.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CLUSTER_CENSUS</b> computes and prints the population of each cluster.
+        </li>
+        <li>
+          <b>CLUSTER_INITIALIZE_RAW</b> initializes the cluster centers to random values.
+        </li>
+        <li>
+          <b>CLUSTER_LIST</b> prints out the assignments.
+        </li>
+        <li>
+          <b>DATA_TO_GNUPLOT</b> writes data to a file suitable for processing by GNUPLOT.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>DISTANCE_NORMAL_SQ</b> computes the distance between normalized vectors.
+        </li>
+        <li>
+          <b>DTABLE_DATA_READ</b> reads data from a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_DATA_WRITE</b> writes data to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_READ</b> reads the header from a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_WRITE</b> writes the header to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_WRITE</b> writes a double precision table file.
+        </li>
+        <li>
+          <b>ENERGY_NORMAL</b> computes the total energy of a given clustering.
+        </li>
+        <li>
+          <b>ENERGY_RAW</b> computes the total energy of a given clustering.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_EXIST</b> reports whether a file exists.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HMEANS_NORMAL</b> seeks the minimal energy of a cluster of a given size.
+        </li>
+        <li>
+          <b>HMEANS_RAW</b> seeks the minimal energy of a cluster of a given size.
+        </li>
+        <li>
+          <b>I4_INPUT</b> prints a prompt string and reads an integer from the user.
+        </li>
+        <li>
+          <b>I4_RANGE_INPUT</b> reads a pair of integers from the user, representing a range.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>ITABLE_DATA_READ</b> reads data from an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_HEADER_READ</b> reads the header from an integer table file.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an integer vector.
+        </li>
+        <li>
+          <b>KMEANS_NORMAL</b> tries to improve a partition of points.
+        </li>
+        <li>
+          <b>KMEANS_RAW</b> tries to improve a partition of points.
+        </li>
+        <li>
+          <b>MASS_MATRIX</b> computes the mass matrix.
+        </li>
+        <li>
+          <b>NEAREST_CLUSTER_NORMAL</b> finds the cluster nearest to a data point.
+        </li>
+        <li>
+          <b>NEAREST_CLUSTER_RAW</b> finds the cluster nearest to a data point.
+        </li>
+        <li>
+          <b>NEAREST_POINT</b> finds the center point nearest a data point.
+        </li>
+        <li>
+          <b>POINT_GENERATE</b> generates data points for the problem.
+        </li>
+        <li>
+          <b>POINT_PRINT</b> prints out the values of the data points.
+        </li>
+        <li>
+          <b>R8VEC_NORM2</b> returns the 2-norm of a vector.
+        </li>
+        <li>
+          <b>R8VEC_RANGE_INPUT</b> reads two DP vectors from the user, representing a range.
+        </li>
+        <li>
+          <b>R8VEC_UNIT_EUCLIDEAN</b> normalizes a N-vector in the Euclidean norm.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>REFQBF</b> evaluates a reference element quadratic basis function.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INPUT</b> prints a prompt string and reads a string from the user.
+        </li>
+        <li>
+          <b>S_OF_I4</b> converts an integer to a left-justified string.
+        </li>
+        <li>
+          <b>S_REP_CH</b> replaces all occurrences of one character by another.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an integer vector from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_SET</b> sets a quadrature rule in a unit triangle.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

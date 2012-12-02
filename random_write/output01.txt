@@ -1,0 +1,86 @@
+ 
+RANDOM_WRITE:
+  FORTRAN90 version
+ 
+  This program makes a file of random integers 
+  for input to the DIEHARD tests.
+ 
+  Select a sequence from this list:
+ 
+  1.  A multiply-with-carry (MWC) generator
+      x(n) = a * x(n-1) + carry mod 2^32
+  2.  A MWC generator on pairs of 16 bits
+  3.  The "Mother of all random number generators"
+  4.  The KISS generator
+  5.  The simple but very good generator COMBO
+  6.  The lagged Fibonacci-MWC combination ULTRA
+  7.  A combination MWC/subtract-with-borrow 
+      (SWB) generator, period ~ 10^364
+  8.  An extended congruential generator
+  9.  The Super-Duper generator
+ 10.  A subtract-with-borrow generator
+ 11.  Any specified congruential generator
+ 12.  The 31-bit generator ran2 from Numerical Recipes
+ 13.  Any specified shift-register generator,
+      31 or 32 bits
+ 14.  The system generator in Sun Fortran f77
+ 15.  Any lagged-Fibonacci generator,  
+      x(n) = x(n-r) op x(n-s)
+ 16.  An inverse congruential generator
+ 
+ 
+RANDOM_WRITE:
+  Enter your choice, 1 to 16:
+ 
+This program creates a binary file containing 11+ 
+megabytes of 32-bit integers from a multiply-with-carry
+generator
+  x(n)=a*x(n-1)+carry mod 2^32
+You choose the multiplier from a list.   The period 
+of the generator will be a*2^31-1.  This class of 
+generators is particularly well suited for 
+implementation in machine language, and I predict
+that many system generators in the future will be 
+of this class rather than the linear congruential 
+generators for modulus 2^32 that are common today.
+ 
+To illustrate how the carry works, suppose from
+the current (32-bit) x and (30 bit) c, one forms 
+a*x+c.  This may be done in a 64-(or double 32-) 
+bit register in most modern CPU's.  Then the new 
+random x is the lower 32 bits, the new carry the 
+upper 32.  
+ 
+To see how well such a simple and fast generator 
+performs on tests of randomness, this program makes
+a large file with the multiply-with-carry generator
+implemented in 16-bit integer arithmetic.  Those 
+finding it suitable may wish to make an assembler 
+version for their system.
+It seems to pass all tests.
+ 
+      Select multiplier "a" from this list:
+-------------------------------------------------------
+ 1791398085 1929682203 1683268614 1965537969 1675393560
+ 1967773755 1517746329 1447497129 1655692410 1606218150
+ 2051013963 1075433238 1557985959 1781943330 1893513180
+ 1631296680 2131995753 2083801278 1873196400 1554115554
+-------------------------------------------------------
+  (In general, for any choice of `a`, let m=a*2^32-1. 
+  If both m and (m-1)/2 are prime, then the period will
+  be (m-1)/2).
+ 
+  Enter multiplier A:
+  Enter a seed integer x and initial carry c:
+ 
+  Computation is beginning.
+  Please be patient!
+ 
+  FINISHED
+  The data has been written to "mwc1.32".
+  2,867,200 32-bit random integers (11,468,800 bytes)
+  have been written.
+  The period is   0.384700E+19
+ 
+RANDOM_WRITE:
+  Normal end of execution.

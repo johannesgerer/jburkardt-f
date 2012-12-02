@@ -1,0 +1,223 @@
+<html>
+
+  <head>
+    <title>
+      FFTW3 - Fast Fourier Transforms - FORTRAN77 Calling Examples
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FFTW3 <br> Fast Fourier Transforms <br> FORTRAN77 Calling Examples
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FFTW3</b> 
+      is a directory of FORTRAN90 programs which
+      demonstrate the use of the <b>FFTW3</b> library,
+      which was written by Matteo Frigo and Steven Johnson.
+    </p>
+
+    <p>
+      <b>FFTW3</b> is a library of C routines which can compute
+      the Fast Fourier transform very efficiently.
+    </p>
+
+    <p>
+      <b>FFTW3</b> can compute the discrete Fourier transform of:
+      <ul>
+        <li>
+          complex data;
+        </li>
+        <li>
+          real data;
+        </li>
+        <li> 
+          even-symmetric real data (cosine transform);
+        </li>
+        <li>
+          odd-symmetric real data (sine transform);
+        </li>
+      </ul>
+      <b>FFTW3</b> can also compute the discrete Hartley 
+      transform of real data.
+    </p>
+
+    <p>
+      The length of the data is not required to be a power of
+      2.  Any length of data can be processed.
+    </p>
+
+    <p>
+      The data is not restricted to 1 dimensional vectors.  <b>FFTW3</b>
+      can handle data that is 2 or 3 dimensional.  In fact, the program
+      can handle data with any dimensionality.
+    </p>
+
+    <p>
+      Interested users should go to the FFTW home page:
+      <a href = "http://www.fftw.org/">
+                 http://www.fftw.org/</a>
+      which contains the current source code, examples, and documentation.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      Any program, subroutine or function that calls the FFTW3 functions must
+      include, in its declarations, the statement
+      <pre><code>
+        include "fftw3.f90"
+      </code></pre>
+      which will add the appropriate declarations for the FFTW3 functions.
+    </p>
+
+    <p>
+      At link time, you must include the compiled FFTW3 library, which
+      is probably a file with the name <b>libfftw3.a</b>.  
+      If <b>directory</b> is the directory where this library is stored,
+      then an appropriate command might be
+      <pre><code>
+        gfortran myprog.f90 -L<b>directory</b> -lfftw3
+      </code></pre>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FFTW3</b> examples are available in
+      <a href = "../../c_src/fftw3/fftw3.html">a C version</a> and
+      <a href = "../../f77_src/fftw3/fftw3.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fftw3/fftw3.html">a FORTRAN90 version</a>. 
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fftpack5/fftpack5.html">
+      FFTPACK5</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fftpack5.1/fftpack5.1.html">
+      FFTPACK5.1</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+      a C++ library which
+      includes a number of FFT routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which 
+      includes a number of FFT routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sftpack/sftpack.html">
+      SFTPACK</a>,
+      a FORTRAN90 library which
+      implements the "slow" Fourier transform, intended as a teaching
+      tool and comparison with the fast Fourier transform.
+    </p>
+
+    <p>
+      <a href = "../../f_src/walsh/walsh.html">
+      WALSH</a>,
+      a FORTRAN90 library which
+      implements versions of the Walsh and Haar transforms.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      The FFTW3 library was written by Matteo Frigo and Steven Johnson.7
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Briggs, Van Emden Henson,<br>
+          The Discrete Fourier Transform,<br> 
+          SIAM,<br>
+          LC: QA403.5 B75
+        </li>
+        <li>
+          Elbert Brigham,<br>
+          The Fast Fourier Transform and Its Applications,<br>
+          Prentice-Hall, 1988.
+        </li>
+        <li>
+          Matteo Frigo, Steven Johnson,<br>
+          User Manual for FFTW.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fftw3.f90">fftw3.f90</a>,
+          the FFTW3 FORTRAN90 include file,
+          which defines various symbolic constants.
+        </li>
+        <li>
+          <a href = "fftw3_prb.f90">fftw3_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "fftw3_prb.sh">fftw3_prb.sh</a>,
+          commands to compile, link and run the sample calling program.
+        </li>
+        <li>
+          <a href = "fftw3_prb_output.txt">fftw3_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 18 February 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

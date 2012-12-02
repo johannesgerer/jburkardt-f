@@ -1,0 +1,87 @@
+January 25 2007   7:10:25.329 AM
+ 
+TET_MESH_REFINE
+  FORTRAN90 version
+  READ a tet mesh, REFINE it, and WRITE the new data.
+ 
+  READ:
+    a node dataset of NODE_NUM1 points in 3 dimensions.
+    a tet mesh of TETRA_NUM1 tets of order TET_ORDER.
+ 
+  REFINE:
+    compute a new set of nodes and tets, which is an
+    eightfold refinement of the input mesh.
+ 
+  WRITE:
+    a node dataset of NODE_NUM2 points in 3 dimensions.
+    a tet mesh of 8*TETRA_NUM1 tets of order TET_ORDER.
+ 
+  Read the header of "nodes_order4.txt".
+ 
+  Spatial dimension DIM_NUM =        3
+  Number of input nodes =            8
+ 
+  Read the data in "nodes_order4.txt".
+ 
+  The first 5 input nodes:
+ 
+  Row         1             2             3       
+  Col
+    1    0.00000       0.00000       0.00000    
+    2    0.00000       0.00000       1.00000    
+    3    0.00000       1.00000       0.00000    
+    4    0.00000       1.00000       1.00000    
+    5    1.00000       0.00000       0.00000    
+ 
+ 
+  Read the header of "tetras_order4.txt".
+ 
+  Tetrahedron order =              4
+  Number of input tetras =         6
+ 
+  Read the data in "tetras_order4.txt".
+ 
+  First 5 input tetrahedrons:
+ 
+  Row       1      2      3      4
+  Col
+ 
+    1       4      3      5      1
+    2       4      2      5      1
+    3       4      7      3      5
+    4       4      7      8      5
+    5       4      6      2      5
+ 
+  Number of refined nodes =        27
+  Number of refined tetras =       48
+ 
+  First 5 output nodes:
+ 
+  Row         1             2             3       
+  Col
+    1    0.00000       0.00000       0.00000    
+    2    0.00000       0.00000       1.00000    
+    3    0.00000       1.00000       0.00000    
+    4    0.00000       1.00000       1.00000    
+    5    1.00000       0.00000       0.00000    
+ 
+ 
+  First 5 output tetrahedrons
+ 
+  Row       1      2      3      4
+  Col
+ 
+    1       4     16     19     11
+    2       3     16     17     10
+    3       5     19     17     10
+    4       1     11     10     12
+    5      16     19     11     10
+ 
+ 
+  Wrote the refined nodes to "nodes_order4.ref.txt".
+  Wrote the refined tetrahedrons to "tetras_order4.ref.txt".
+ 
+TET_MESH_REFINE
+  Normal end of execution.
+ 
+January 25 2007   7:10:25.353 AM

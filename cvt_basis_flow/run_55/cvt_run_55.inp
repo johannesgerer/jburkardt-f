@@ -1,0 +1,61 @@
+#  cvt_run_55.inp
+#
+#  Modified:
+#
+#    27 June 2005
+#
+#  Discussion:
+#
+#    T-Cell flow.
+#
+#    Preprocessing:
+#    * Solutions 1-250 we subtract 5/3 of steady.txt
+#    * Solutions 251-500 we subtract 1/3 of steady.txt
+#    * Solutions are normalized.
+#    * Mass-matrix preconditioning.
+#
+#  Run type:
+#
+7
+#
+#  The name of the file containing the coordinates of the nodes:
+#
+/a/fs/r1/src-samples/datasets/tcell_flow/xy.txt
+#
+#  The name of the file containing the steady state solution:
+#
+/a/fs/r1/src-samples/datasets/tcell_flow/steady.txt
+#
+#  The name of the first solution file in the first series.
+#
+/a/fs/r1/src-samples/datasets/tcell_flow/up001.txt
+#
+#  The name of the first solution file in the next series.
+#
+NONE
+#
+#  The range of cluster sizes to examine.  Because these values are
+#  equal, the program knows we don't want to study a bunch of values,
+#  but rather generate the data for one size and write them to a file.
+#
+4, 4
+#
+#  The number of different random initial configurations to check.
+#
+15
+#
+#  The number of energy iterations to take.
+#
+30
+#
+#  The name of the element file for mass matrix preconditioning, or NONE.
+#
+/a/fs/r1/src-samples/datasets/tcell_flow/elements.txt
+#
+#  0 to use Euclidean distance, 1 to use angular difference in clustering.
+#
+0
+#
+#  NO, we don't want comments in the output files.
+#
+NO

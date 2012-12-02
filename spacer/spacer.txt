@@ -1,0 +1,509 @@
+spacer.txt  05 April 2000
+
+
+SPACER: A package for performing Principal Coordinates Analysis on sets of 
+aligned sequences.
+
+
+Des Higgins
+Higgins@EMBL-Heidelberg.DE
+European Molecular Biology Laboratory
+Postfach 10.2209
+Meyerhofstrasse 1
+W-6900 Heidelberg, Germany
+
+
+CONTENTS:
+
+  1.  Compiling/installation/simple usage
+  2.  DISTANCES
+  3.  SPACER
+  4.  READAL3
+
+
+1. COMPILING/INSTALLATION/SIMPLE USAGE
+
+Installation
+
+  This package comes with three small FORTRAN programs.   They have only 
+been tested on a VAX running VMS but do not use any unusual grammar so 
+there is a reasonable chance that they will compile using any standard F77 
+compiler.   The READAL3 program does use a check for digits in an 
+alignment file and DISTANCES converts from lower to upper case, using 
+ASCII codes so these will definitely need to be modified if you use an EBCDIC 
+machine.  
+
+  All input and output is done via text files or simple questions and answers 
+on the screen;  no graphics!    The supplied programs are dimensioned for 
+up to 650 sequences of maximum length 5000 residues each; these dimensions 
+can be changed easily by editing the programs.   Find PARAMETER statements 
+in the programs and edit the numbers after MAXN= (number of sequences) and 
+MAXL= (maximum length of sequences).  Change ALL occurences of these 
+statements in each program (sorry about that).
+
+Compile and link the 3 programs as follows, using SPACER as an example:
+
+$ FORT  distances               (takes distances.for and produces distances.obj)
+$ LINK distances                (takes distances.obj and produces distances.exe)
+
+You can then delete distances.obj; run the program with:
+
+$ RUN distances                 (this runs distances.exe)
+
+Repeat this for SPACER and READAL3.   That's it!
+
+
+Simple usage
+
+  The sequences must be aligned already in a multiple alignment.   There are 
+literally dozens of different multiple alignment formats.   My programs have to 
+read these, which presents a real headache.  I have adopted one format (PIR 
+format with gaps denoted by hyphens '-') as my standard and supply a small 
+utility program, READAL3, which will attempt to read other formats and 
+convert.   It is difficult to allow for all variations, so be careful.   
+Some software will write multiple alignments out in PIR format anyway (e.g. 
+CLUSTAL V (Higgins, Bleasby and Fuchs, 1992)).   
+
+  I will start by assuming that you have a multiple alignment in PIR format; 
+if you do not, then read the notes below on READAL3 and try running it on a 
+multiple alignment.   Here is an example file with 12 globins in PIR format, 
+already aligned.   The sequence names are from SWISSPROT (Bairoch and 
+Boeckmann, 1991).  You could try cutting this out with an editor and using it.
+
+
+>P1;HBA$ELEMA       
+ 
+ V--LSDKDKTNVKATWSKVGDHASDYVAEALERMFFSFPTTKTYFPHF-DLSH-----GS
+ GQVKGHGKKVGEALTQAVGHLDDLPSALSALSDLHAHKLRVDPVNFKLLSHCLLVTLSSH
+ QPT-EFTPEVHASLDKFLSNVSTVLTSKYR------
+*
+>P1;HBA$PHOVI       
+ 
+ V--LSPADKTNVKATWDKIGGHAGEYGGEALERTFTAFPTTKTYFPHF-DLSH-----GS
+ AQVKAHGKKVADALTTAVAHMDDLPGALSALSDLHAHKLRVDPVNFKLLSHCLLVTLACH
+ HPA-DFTPAVHASLDKFFSAVSTVLTSKYR------
+*
+>P1;HBA$PHYCA       
+ 
+ V--LSPADKTNVKAAWAKVGNHAADFGAEALERMFMSFPSTKTYFSHF-DLGH-----NS
+ TQVKGHGKKVADALTKAVGHLDTLPDALSDLSDLHAHKLRVDPVNFKLLSHCLLVTLAAH
+ LPG-DFTPSVHASLDKFLASVSTVLTSKYR------
+*
+>P1;HBA$PONPY       
+ 
+ V--LSPADKTNVKTAWGKVGAHAGDYGAEALERMFLSFPTTKTYFPHF-DLSH-----GS
+ AQVKDHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAH
+ LPA-EFTPAVHASLDKFLASVSTVLTSKYR------
+*
+>P1;HBBA$CAPHI      
+ 
+ M--LTAEEKAAVTGFWGKV--KVDEVGAEALGRLLVVYPWTQRFFEHFGDLSSADAVMNN
+ AKVKAHGKKVLDSFSNGMKHLDDLKGTFAQLSELHCDKLHVDPENFKLLGNVLVVVLARH
+ HGS-EFTPLLQAEFQKVVAGVANALAHRYH------
+*
+>P1;HBBL$XENLA      
+ 
+ V-HLSADEKSAINAVWSKV--NIENDGHDALTRLLVVFPWTQRYFSSFGNLSNVAAISGN
+ AKVRAHGKKVLSAVDESIHHLDDIKNFLSVLSTKHAEELHVDPENFKRLADVLVIVLAGK
+ LGA-AFTPQVQAAWEKFSAGLVAALSHGYF------
+*
+>P1;HBBZ$MOUSE      
+ 
+ MVHFTAEEKAAITSIWDKV--DLEKVGGETLGRLLIVYPWTQRFFDKFGNLSSALAIMGN
+ PRIRAHGKKVLTSLGLGVKNMDNLKETFAHLSELHCDKLHVDPENFKLLGNMLVIVLSTH
+ FAK-EFTPEVQAAWQKLVIGVANALSHKYH------
+*
+>P1;HBD$AOTTR       
+ 
+ V-HLTGDEKSAVAALWGKV--NVEEVGGEALGRLLVVYPWTQRFFESFGALSSPDAVMGN
+ PKVKAHGKKVLGAFSDGLAHLDNLKGTFAQLSELHCDKLHVDPENFRLLGNVLVCVLARN
+ FGK-EFTPLLQAAFQKVVAGVATALAHKYH------
+*
+>P1;MYG$CALJA       
+ 
+ G--LSDGEWQLVLNVWGKVEADIPSHGQEVLISLFKGHPETLEKFDKFKHLKSEDEMKAS
+ EELKKHGVTVLTALGGILKKKGHHEAELKPLAQSHATKHKIPVKYLEFISDAIVHVLQKK
+ HPG-DFGADAQGAMKKALELFRNDMAAKYKELGFQG
+*
+>P1;MYG$CANFA       
+ 
+ G--LSDGEWQIVLNIWGKVETDLAGHGQEVLIRLFKNHPETLDKFDKFKHLKTEDEMKGS
+ EDLKKHGNTVLTALGGILKKKGHHEAELKPLAQSHATKHKIPVKYLEFISDAIIQVLQSK
+ HSG-DFHADTEAAMKKALELFRNDIAAKYKELGFQG
+*
+>P1;MYG$CASFI       
+ 
+ G--LSDGEWQLVLHVWGKVEADLAGHGQEVLIRLFKGHPETLEKFNKFKHIKSEDEMKAS
+ EDLKKHGVTVLTALGGVLKKKGHHEAEIKPLAQSHATKHKIPIKYLEFISEAIIHVLQSK
+ HPG-XFGADAXGAMNKALELFRKDIAAKYKELGFQG
+*
+>P1;MYG$CEBAP       
+ 
+ G--LSDGEWQLVLNVWGKVEADIPSHGQEVLISLFKGHPETLEKFDKFKHLKSEDEMKAS
+ EELKKHGATVLTALGGILKKKGQHEAELKPLAQSHATKHKIPVKYLEFISDAIVHVLQKK
+ HPG-DFGADAQGAMKKALELFRNDMAAKYKELGFQG
+*
+
+  The beginning of each sequence is marked with a right angle bracket (>); 
+the name of the sequence follows a few characters later, after the 
+semi-colon; the next line is ignored and the end of the sequence is marked 
+by an asterisk.   Each sequence here is exactly the same length after 
+including the gap characters (-).    The READAL3 program will attempt to 
+generate this format from a normal-looking multiple alignment.
+
+  Take the above file (or your own) and run DISTANCES to extract a distance 
+matrix.   This is a file with a distance between each pair of sequences.   
+You finally compute the principal coordinate analysis by running SPACER 
+and giving the name of the file containing the distance matrix.  
+
+
+
+2. DISTANCES
+
+  The DISTANCES program reads a multiple alignment data file in PIR format 
+and outputs a distance matrix file.  You are asked to specify the names of 
+the input and output files, and to choose options.  The options specify 
+whether you wish to delete all positions with a gap; whether you are using 
+proteins or nucleic acids in your sequences, and whether to use an 
+amino-acid weight matrix.  
+
+
+INPUT FORMAT:    
+
+  As described above, the sequences must be aligned already!  Further, 
+they must be in PIR or FASTA (Lipman and Pearson, 1985) format with 
+a modification:  gaps are specified by using the hyphen "-" character.   
+Do not use dots "." or spaces " " for gaps; they will simply be ignored!
+The program checks the characters immediately after each angle bracket 
+">" to determine whether PIR or FASTA format is being used.   
+
+  If the 4th character in the line is a semi-colon ";", then PIR format 
+is assumed: the name after the semi-colon is read as the name of the 
+sequence; the next line is normally used as a descriptive title line and 
+is ignored; the sequence is then read in free format until an asterisk "*" 
+is found.  This marks the end of the sequence; the next line beginning 
+with a ">" is treated as the start of the next sequence.
+
+  FASTA format is simpler.  There is no second title line and there is no 
+asterisk to mark the end of the sequence.    The only way the program can 
+distinguish between PIR and FASTA formats is to check for the semi-colon 
+as the fourth character on the main title line; if there is none, FASTA 
+format is assumed.  
+
+
+OUTPUT FORMAT:  
+
+  The output file from DISTANCES is a text file consisting of the following.  
+First, the number of sequences being examined (one integer); secondly the 
+lower left triangle of a matrix of all pairwise distances between the 
+sequences, including the main diagonal.  This data is printed as real 
+numbers.  The values will later be read in free format, so if you are
+creating such a file in a text editor, you have some freedom in how you
+lay out the data (FLW).  
+
+A small example distance matrix file is shown below for 8 sequences
+
+      8  
+
+    0.00
+    1.01   0.00
+    0.95   2.14    0.00
+    1.91   1.81    4.56  0.00
+    3.60   4.08    1.02  1.99   0.00
+    1.03   1.88    2.01  3.01   0.66   0.00
+   44.04   0.01  493.1   0.001 14.1   10.0    0.00
+    0.01   0.01    0.99  9.91   9.9    1.02   2.02   0.00
+
+  You can spread each row of the matrix over as many lines as you like.   The 
+diagonal values of zero should be present.   Normally the distance between an 
+object and itself is zero (unless you use funny distances or have funny 
+objects).
+
+
+OPTIONS (Toss gaps):
+
+  You will be asked whether or not you wish to "toss" all gaps.  This means 
+that any sites (positions/columns in the multiple alignment) with a gap in 
+ANY sequence will be removed.   If you do this, you throw away some of the 
+data, but you guarantee that the distances will be euclidean.  
+
+  This is good because it means that "like" is compared with "like" in all 
+sequences.   It is easy to invent situations (although they are rare in 
+practice) where strange combinations of gaps opposite regions that are very 
+similar in sequences that are otherwise very distant, will generate very 
+weird distance matrices.   On the other hand, with most sequence data sets 
+(any I have seen), the effect of not deleting gaps is small.   You get a 
+slight distortion of the distances but it is very small.  If you are worried 
+about distorting the distances, you can see the effect when you get the 
+output from SPACER; see the documentation there for details.  So, in summary, 
+deleting gaps is the safer, more conservative option but it is usually not 
+needed.
+
+OPTIONS (Proteins or DNA):   
+
+  The program must know whether the sequences are amino acid or nucleic 
+acid.   Please take the trouble to tell it which here.
+
+OPTIONS (Identity distance or Smith AA distance):  
+
+  The default option is to calculate a distance between a pair of sequences, 
+based on the number of mismatches only (Identity Distance).  The actual 
+distance is the square root of the number of differences, ignoring positions 
+where either sequence (or any sequence if gaps are tossed) has a gap.   If 
+all positions with a gap are removed, this distance is guaranteed to be 
+euclidean.  For DNA sequences, this distance is fine.   For proteins, it 
+is often nice to use a weight matrix which gives greater weight to amino 
+acids which are judged to be similar.  Unfortunately, the most commonly 
+used weight matrices (PAM matrices, Dayhoff et al, 1978) are not very useful 
+for calculating Euclidean distances.  A simplistic distance matrix that 
+does give Euclidean distances is that of Smith and Smith (1990).  It is 
+shown below:
+
+  D  0
+  E  1 0
+  K  2 2 0
+  R  2 2 1 0
+  H  2 2 1 1 0
+  N  2 2 2 2 2 0
+  Q  2 2 2 2 2 1 0
+  S  2 2 2 2 2 2 2 0
+  T  2 2 2 2 2 2 2 1 0
+  I  3 3 3 3 3 3 3 3 3 0
+  L  3 3 3 3 3 3 3 3 3 1 0
+  V  3 3 3 3 3 3 3 3 3 1 1 0
+  F  3 3 3 3 3 3 3 3 3 2 2 2 0
+  W  3 3 3 3 3 3 3 3 3 2 2 2 1 0
+  Y  3 3 3 3 3 3 3 3 3 2 2 2 1 1 0
+  C  3 3 3 3 3 3 3 3 3 2 2 2 2 2 2 0
+  M  3 3 3 3 3 3 3 3 3 2 2 2 2 2 2 2 0
+  A  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0
+  G  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0
+  P  3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0
+
+     D E K R H N Q S T I L V F W Y C M A G P      
+
+  These distances can be used because, in effect, they are arranged to give 
+an exact hierarchy of the amino acids.  
+
+
+2.  SPACER
+
+  Principal Coordinates Analysis (PCOORD) was invented by John Gower and 
+described in Gower (1966).  It is a method for carrying out ordination, also 
+known as multidimensional scaling.   The most familiar ordination method is 
+Principal Components Analysis (PCA).  PCA is related to PCOORD but there are 
+important differences.  Ordination methods work by attempting to embed the 
+objects (sequences in this case) in a space of N dimensions, where N is less 
+than the number of objects.   The distribution of the objects in this space 
+(or almost always, just a few dimensions of it) is used to examine patterns 
+of relatedness between the objects.   
+
+  PCOORD takes the N by N distance matrix containing the distances between 
+all N sequences and finds a space of N-1 dimensions where these distances are 
+preserved.  If the distances are euclidean, then it gives an exact solution.  
+This is also known as classical multidimensional scaling.  The analysis 
+ranks the dimensions, in terms of the amount of variation accounted for by 
+each.  A plot of the positions of the objects in the first 2 or 3 dimensions 
+is then used to visualise a summary of the ordination.   
+
+  Run SPACER and give the name of a distance matrix file, generated by 
+DISTANCES.  The program will then prompt for the name of the output file and 
+will ask if you want to use a file of symbols.   Symbols are just characters 
+(digits, letters, etc.) that can be used to label the sequences or groups of 
+sequences in the output.   If you just press <RETURN>, the program will just 
+use an asterisk "*" for each sequence in the plots if it cannot find a symbol 
+file.  The format of this file is very simple:  put one symbol per sequence 
+into it in free format i.e. spaces are ignored.   An example symbols file 
+for the globin alignment example used earlier in this documentation is 
+shown below:
+
+  AAAA
+  BBBB
+  MMMM
+
+  In this case, I use A's for the first 4 sequences, since they are all 
+alpha globins, B's for the next 4 sequences, which are beta globins, and 
+then M's for the last 4 sequences  of myoglobins.  I could have used a
+different symbol for each sequence.
+
+  Then the analysis is carried out and sent to the output file.  The output 
+includes all of the eigenvalues.   If the input distances are exactly 
+euclidean, then you expect all eigenvalues to be non-negative.   Some 
+rounding errors may produce a small number of very small negative eigenvalues.  
+If the distances are not euclidean, then the absolute size of the negative 
+eigenvalues is a measure of the distortion.   If this is small relative to 
+the sum of all eigenvalues (including the absolute values of the negative 
+ones) then the distortion is not serious.  
+
+  The coordinates of the sequences along the first 10 axes (dimensions) of the 
+ordination are listed and the positions of the sequences in the first 3 
+dimensions are plotted on simple scatter plots.  The symbols in the symbol 
+file are used here if one was specified, or asterisks are used.  If two or 
+more points coincide on the plots, an asterisk is printed.  Finally, you get 
+the percentage of the total variation in the data set, accounted for by each 
+of the first 10 dimensions.
+
+
+3.  READAL3
+
+  The READAL3 program attempts to read a variety of multiple alignment 
+formats and write out the alignment in PIR format, with hyphens for gaps.  
+There are so many possible formats that it is very difficult for me to 
+write a completely general purpose program.   All I have tried to do is 
+write a program that will read a few different formats, unaided, and make 
+it easy for you to edit other formats into a state where the program can 
+read them too.
+
+  BE CAREFUL!!!!  Please check the output; it is very easy for this program to 
+quietly produce a completely scrambled output file that will look reasonable at 
+first glance, because the input format got the better of my format detection  
+(or because my program is badly written - it has more "go to"'s per line than 
+any program I have ever written and it is only 150 lines long).  
+
+  The output files produced by CLUSTAL (Higgins and Sharp, 1988, 1989), 
+CLUSTALV (Higgins, Bleasby and Fuchs, 1992) can be automatically read by 
+READAL3.  An example for the file of 12 globins, used above is shown here:
+
+-----Example file that READAL3 can read-----
+CLUSTAL V multiple sequence alignment
+
+
+HBA$ELEMA       V--LSDKDKTNVKATWSKVGDHASDYVAEALERMFFSFPTTKTYFPHF-DLSH-----GS
+HBA$PHOVI       V--LSPADKTNVKATWDKIGGHAGEYGGEALERTFTAFPTTKTYFPHF-DLSH-----GS
+HBA$PHYCA       V--LSPADKTNVKAAWAKVGNHAADFGAEALERMFMSFPSTKTYFSHF-DLGH-----NS
+HBA$PONPY       V--LSPADKTNVKTAWGKVGAHAGDYGAEALERMFLSFPTTKTYFPHF-DLSH-----GS
+HBBA$CAPHI      M--LTAEEKAAVTGFWGKV--KVDEVGAEALGRLLVVYPWTQRFFEHFGDLSSADAVMNN
+HBBL$XENLA      V-HLSADEKSAINAVWSKV--NIENDGHDALTRLLVVFPWTQRYFSSFGNLSNVAAISGN
+HBBZ$MOUSE      MVHFTAEEKAAITSIWDKV--DLEKVGGETLGRLLIVYPWTQRFFDKFGNLSSALAIMGN
+HBD$AOTTR       V-HLTGDEKSAVAALWGKV--NVEEVGGEALGRLLVVYPWTQRFFESFGALSSPDAVMGN
+MYG$CALJA       G--LSDGEWQLVLNVWGKVEADIPSHGQEVLISLFKGHPETLEKFDKFKHLKSEDEMKAS
+MYG$CANFA       G--LSDGEWQIVLNIWGKVETDLAGHGQEVLIRLFKNHPETLDKFDKFKHLKTEDEMKGS
+MYG$CASFI       G--LSDGEWQLVLHVWGKVEADLAGHGQEVLIRLFKGHPETLEKFNKFKHIKSEDEMKAS
+MYG$CEBAP       G--LSDGEWQLVLNVWGKVEADIPSHGQEVLISLFKGHPETLEKFDKFKHLKSEDEMKAS
+                .  ............*.*.  .........*.......*.*...*..* ....     ..
+
+HBA$ELEMA       GQVKGHGKKVGEALTQAVGHLDDLPSALSALSDLHAHKLRVDPVNFKLLSHCLLVTLSSH
+HBA$PHOVI       AQVKAHGKKVADALTTAVAHMDDLPGALSALSDLHAHKLRVDPVNFKLLSHCLLVTLACH
+HBA$PHYCA       TQVKGHGKKVADALTKAVGHLDTLPDALSDLSDLHAHKLRVDPVNFKLLSHCLLVTLAAH
+HBA$PONPY       AQVKDHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAH
+HBBA$CAPHI      AKVKAHGKKVLDSFSNGMKHLDDLKGTFAQLSELHCDKLHVDPENFKLLGNVLVVVLARH
+HBBL$XENLA      AKVRAHGKKVLSAVDESIHHLDDIKNFLSVLSTKHAEELHVDPENFKRLADVLVIVLAGK
+HBBZ$MOUSE      PRIRAHGKKVLTSLGLGVKNMDNLKETFAHLSELHCDKLHVDPENFKLLGNMLVIVLSTH
+HBD$AOTTR       PKVKAHGKKVLGAFSDGLAHLDNLKGTFAQLSELHCDKLHVDPENFRLLGNVLVCVLARN
+MYG$CALJA       EELKKHGVTVLTALGGILKKKGHHEAELKPLAQSHATKHKIPVKYLEFISDAIVHVLQKK
+MYG$CANFA       EDLKKHGNTVLTALGGILKKKGHHEAELKPLAQSHATKHKIPVKYLEFISDAIIQVLQSK
+MYG$CASFI       EDLKKHGVTVLTALGGVLKKKGHHEAEIKPLAQSHATKHKIPIKYLEFISEAIIHVLQSK
+MYG$CEBAP       EELKKHGATVLTALGGILKKKGQHEAELKPLAQSHATKHKIPVKYLEFISDAIVHVLQKK
+                .....**..*....................*...*.....................*...
+
+HBA$ELEMA       QPTEFTPEVHASLDKFLSNVSTVLTSKYR------
+HBA$PHOVI       HPADFTPAVHASLDKFFSAVSTVLTSKYR------
+HBA$PHYCA       LPGDFTPSVHASLDKFLASVSTVLTSKYR------
+HBA$PONPY       LPAEFTPAVHASLDKFLASVSTVLTSKYR------
+HBBA$CAPHI      HGSEFTPLLQAEFQKVVAGVANALAHRYH------
+HBBL$XENLA      LGAAFTPQVQAAWEKFSAGLVAALSHGYF------
+HBBZ$MOUSE      FAKEFTPEVQAAWQKLVIGVANALSHKYH------
+HBD$AOTTR       FGKEFTPLLQAAFQKVVAGVATALAHKYH------
+MYG$CALJA       HPGDFGADAQGAMKKALELFRNDMAAKYKELGFQG
+MYG$CANFA       HSGDFHADTEAAMKKALELFRNDIAAKYKELGFQG
+MYG$CASFI       HPGXFGADAXGAMNKALELFRKDIAAKYKELGFQG
+MYG$CEBAP       HPGDFGADAQGAMKKALELFRNDMAAKYKELGFQG
+                ... *.... ....*............*.      
+
+
+-----End of example file-----
+
+
+RULES FOR MULTIPLE ALIGNMENT FORMATS:
+
+  In general, READAL3 only reads multiple alignments of the "blocked" variety.   
+All residues must be present in all sequences.   The blocks of sequence must 
+not be interspersed with extra lines showing identical or similar residues 
+between consecutive sequences.   A consensus line of the type produced by 
+CLUSTAL is allowed after each block provided it only contains blanks " ", 
+stars "*" or dots ".".  Each block of sequence must have all of the sequence 
+names along the left hand side, with at least one blank between each name and 
+the sequence.  All sequences must be exactly the same length, including gaps 
+i.e. the sides of the blocks of alignment must be flat.  
+
+1) Heading:
+
+     Either leave the first line of the file BLANK and start the alignment
+     anywhere you like or  use the first few lines for comments/arbitrary 
+     text.   If the first line is not blank, the program will skip the first 
+     lines of text until it finds a completely blank line. 
+
+2) Gap characters:      
+
+     Only use hyphens for gaps, not space or dot characters.
+
+3) Sequence numbering:  
+
+     Numbers are allowed in most positions in the alignment and will be 
+     ignored e.g. left or right of an alignment block or on extra lines.
+
+4) Sequence names:
+
+     The name of every sequence must appear along the LEFT hand side of 
+     every block of sequence alignment.   THESE NAMES MUST NOT CONTAIN 
+     ANY BLANKS.   The program will start looking for the sequences 
+     themselves after the first blank after each name.  
+
+5) Format of the alignment blocks:
+
+     The blocks of aligned sequences may be broken up by columns of blanks, 
+     to improve readability.   The blank columns will be ignored.
+
+6) End of the alignment:
+
+     There must be at least one blank line at the end of the file.
+
+  You will be asked if you want to use a file specifying fragments.  This is 
+to allow you to only use parts of the alignment.  The format of the file 
+is just a series of pairs of integers in free format, specifying the 
+beginning and end of each fragment.   To specify these positions, use 
+positions along the alignment e.g. 10, 25 to specify a fragment from 
+position 10 to position 25 inclusive.  
+
+
+REFERENCES
+
+Dayhoff, M. O. 1978. 
+Atlas of protein structure and function. 
+Volume 5.  Suppl 3.  
+National Biomedical Research Foundation, Silver Spring, Md.
+
+Gower, J. C. 1966.  
+Some distance properties of latent root and vector 
+methods used in multivariate analysis.  
+Biometrika 53:325-328.
+
+Higgins, D.G., Bleasby, A. J. and Fuchs, R. (1992, in press)
+CLUSTAL V: improved software for multiple sequence alignment.
+CABIOS, 8(2): in press.
+
+Higgins, D. G., and P. M. Sharp. 1988. 
+CLUSTAL: a package for performing multiple sequence alignment 
+on a microcomputer.  
+Gene 73:237-244.
+
+Higgins, D. G., and P. M. Sharp. 1989. 
+Fast and sensitive multiple sequence alignments on a microcomputer.  
+CABIOS, 5:151-153.
+
+Higgins, D.G. (1992)      
+Sequence ordinations: a multivariate analysis approach to 
+analysing large sequence data sets.   
+CABIOS, 8(1): 15-22.
+
+Smith, R. F., and T. F. Smith. 1990. 
+Automatic generation of primary sequence patterns from sets of related 
+protein sequences.  
+Proc. Natl. Acad. Sci. USA 87:118-122.
+
+
+P.S. FLW means "famous last words".
+
+
+
+

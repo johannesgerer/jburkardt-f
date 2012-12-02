@@ -1,0 +1,377 @@
+<html>
+
+  <head>
+    <title>
+      FEM1D_SAMPLE - Evaluate a Finite Element Function of a 1D Argument
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FEM1D_SAMPLE <br>  Evaluate a Finite Element Function of a 1D Argument
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FEM1D_SAMPLE</b>
+      is a FORTRAN90 program which
+      can evaluate a finite element function of a 1D argument.
+    </p>
+
+    <p>
+      The current version of the program can only handle finite element
+      meshes which are made of piecewise constant or piecewise linear basis functions.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>fem1d_sample</b> <i>fem_prefix</i> <i>sample_prefix</i>
+      </blockquote>
+      where <i>fem_prefix</i> is the common prefix for the FEM files:
+      <ul>
+        <li>
+          <i>fem_prefix</i><b>_nodes.txt</b>,    the node coordinates.
+        </li>
+        <li>
+          <i>fem_prefix</i><b>_elements.txt</b>, the nodes that make up each element;
+        </li>
+        <li>
+          <i>fem_prefix</i><b>_values.txt</b>,   the values defined at each node.
+        </li>
+      </ul>
+      and <i>sample_prefix</i> is the common prefix for the SAMPLE files,
+      for which the node file is input, and the values file is created by the program:
+      <ul>
+        <li>
+          <i>sample_prefix</i><b>_nodes.txt</b>,  the node coordinates where samples are desired.
+        </li>
+        <li>
+          <i>sample_prefix</i><b>_values.txt</b>, the values computed at each sample node.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FEM1D_SAMPLE</b> is available in
+      <a href = "../../cpp_src/fem1d_sample/fem1d_sample.html">a C++ version</a> and
+      <a href = "../../f77_src/fem1d_sample/fem1d_sample.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fem1d_sample/fem1d_sample.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fem1d_sample/fem1d_sample.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/discrete_pdf_sample/discrete_pdf_sample.html">
+      DISCRETE_PDF_SAMPLE</a>,
+      a FORTRAN90 program which
+      demonstrates how to construct a Probability Density Function (PDF)
+      from a table of sample data, and then to use that PDF to create new samples.
+    </p>
+
+    <p>
+      <a href = "../../data/fem1d/fem1d.html">
+      FEM1D</a>,
+      a data directory which
+      contains examples of 1D FEM files,
+      three text files that describe a 1D finite element model;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d/fem1d.html">
+      FEM1D</a>,
+      a FORTRAN90 program which
+      applies the finite element method to a 1D linear two point boundary value problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_adaptive/fem1d_adaptive.html">
+      FEM1D_ADAPTIVE</a>,
+      a FORTRAN90 program which
+      applies the finite element method to a 1D linear two point boundary value problem
+      using adaptive refinement to improve the solution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_bvp_linear/fem1d_bvp_linear.html">
+      FEM1D_BVP_LINEAR</a>,
+      a FORTRAN90 program which
+      applies the finite element method, with piecewise linear elements,
+      to a two point boundary value problem in one spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_heat_steady/fem1d_heat_steady.html">
+      FEM1D_HEAT_STEADY</a>,
+      a FORTRAN90 program which
+      uses the finite element method to solve the steady (time independent)
+      heat equation in 1D.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_nonlinear/fem1d_nonlinear.html">
+      FEM1D_NONLINEAR</a>,
+      a FORTRAN90 program which
+      applies the finite element method to a 1D nonlinear two point boundary value problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_pack/fem1d_pack.html">
+      FEM1D_PACK</a>,
+      a FORTRAN90 library which
+      contains utilities for 1D finite element calculations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_pmethod/fem1d_pmethod.html">
+      FEM1D_PMETHOD</a>,
+      a FORTRAN90 program which
+      applies the p-method version of the finite element method to a 1D linear
+      two point boundary value problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_project/fem1d_project.html">
+      FEM1D_PROJECT</a>,
+      a FORTRAN90 program which
+      projects data into a finite element space, including the least squares
+      approximation of data, or the projection of a finite element solution
+      from one mesh to another.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_sample/fem2d_sample.html">
+      FEM2D_SAMPLE</a>,
+      a FORTRAN90 program which
+      evaluates a finite element function defined on an order 3 or order 6 triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem3d_sample/fem3d_sample.html">
+      FEM3D_SAMPLE</a>,
+      a FORTRAN90 program which
+      evaluates a finite element function defined on 3D tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/piecewise_linear_product_integral/piecewise_linear_product_integral.html">
+      PIECEWISE_LINEAR_PRODUCT_INTEGRAL</a>,
+      a FORTRAN90 library which
+      calculates the exact value of the integral of the product of two
+      piecewise linear functions F(X) and G(X).
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Finite Element Methods,<br>
+          Academic Press, 1988,<br>
+          ISBN: 0126330107,<br>
+          LC: TA347.F5.S3313.
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200,<br>
+          LC: TA640.2.Z54.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fem1d_sample.f90">fem1d_sample.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "fem1d_sample.sh">fem1d_sample.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>P1</b> is FEM data for the vector function f(x)=[ 1, x, x^2], on a grid of 11
+      evenly spaced nodes from -5 to 5, using piecewise constant basis functions.
+      <ul>
+        <li>
+          <a href = "p1_fem_nodes.txt">p1_fem_nodes.txt</a>,
+          the FEM nodes.
+        </li>
+        <li>
+          <a href = "p1_fem_elements.txt">p1_fem_elements.txt</a>,
+          the FEM elements.
+        </li>
+        <li>
+          <a href = "p1_fem_values.txt">p1_fem_values.txt</a>,
+          the FEM nodal values.
+        </li>
+        <li>
+          <a href = "p1_sample_nodes.txt">p1_sample_nodes.txt</a>,
+          the sample nodes.
+        </li>
+        <li>
+          <a href = "p1_sample_values.txt">p1_sample_values.txt</a>,
+          the sample nodal values.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>P2</b> is FEM data for the vector function f(x)=[ 1, x, x^2], on a grid of 11
+      evenly spaced nodes from -5 to 5, using piecewise linear basis functions.
+      <ul>
+        <li>
+          <a href = "p2_fem_nodes.txt">p2_fem_nodes.txt</a>,
+          the FEM nodes.
+        </li>
+        <li>
+          <a href = "p2_fem_elements.txt">p2_fem_elements.txt</a>,
+          the FEM elements.
+        </li>
+        <li>
+          <a href = "p2_fem_values.txt">p2_fem_values.txt</a>,
+          the FEM nodal values.
+        </li>
+        <li>
+          <a href = "p2_sample_nodes.txt">p2_sample_nodes.txt</a>,
+          the sample nodes.
+        </li>
+        <li>
+          <a href = "p2_sample_values.txt">p2_sample_values.txt</a>,
+          the sample nodal values.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FEM1D_SAMPLE.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DTABLE_DATA_READ</b> reads data from a DTABLE file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_READ</b> reads the header from a DTABLE file.
+        </li>
+        <li>
+          <b>DTABLE_WRITE0</b> writes a DTABLE file with no headers.
+        </li>
+        <li>
+          <b>FEM1D_EVALUATE</b> evaluates a 1D FEM function at sample points.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>ITABLE_DATA_READ</b> reads data from an ITABLE file.
+        </li>
+        <li>
+          <b>ITABLE_HEADER_READ</b> reads the header from an integer table file.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET4</b> finds the nearest interval to each of a vector of values.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 June 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

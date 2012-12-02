@@ -1,0 +1,229 @@
+<html>
+
+  <head>
+    <title>
+      RING_MPI - Estimating Communication Rates in MPI
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      RING_MPI <br> Estimating Communication Rates in MPI
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>RING_MPI</b>
+      is a FORTRAN90 program which
+      estimates the time it takes to send a vector of N double precision values
+      through each process in a ring.
+    </p>
+
+    <p>
+      Process 0 sends N double precision values to process 1, which passes them
+      to process 2, and so on, until process P-1 sends them back to process 0.
+      The time for this transmission is recorded.  The experiment is repeated 
+      several times, and for several different array sizes N.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>RING_MPI</b> is available in
+      <a href = "../../c_src/ring_mpi/ring_mpi.html">a C version</a> and
+      <a href = "../../cpp_src/ring_mpi/ring_mpi.html">a C++ version</a> and
+      <a href = "../../f77_src/ring_mpi/ring_mpi.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/ring_mpi/ring_mpi.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/communicator_mpi/communicator_mpi.html">
+      COMMUNICATOR_MPI</a>,
+      a FORTRAN90 program which
+      creates new communicators involving a subset of initial
+      set of MPI processes in the default communicator MPI_COMM_WORLD.
+    </p>
+
+    <p>
+      <a href = "../../f_src/heat_mpi/heat_mpi.html">
+      HEAT_MPI</a>,
+      a FORTRAN90 program which
+      solves the 1D Time Dependent Heat Equation using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hello_mpi/hello_mpi.html">
+      HELLO_MPI</a>,
+      a FORTRAN90 program which
+      prints out "Hello, world!" using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../examples/moab/moab.html">
+      MOAB</a>,
+      examples which
+      illustrate the use of the MOAB job scheduler for a computer cluster.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi/mpi.html">
+      MPI</a>,
+      FORTRAN90 programs which
+      illustrate the use of the MPI application program interface
+      for carrying out parallel computatioins in a distributed memory environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi_stubs/mpi_stubs.html">
+      MPI_STUBS</a>,
+      a FORTRAN90 library which
+      contains "stub" MPI routines, allowing a user to compile, load, and possibly
+      run an MPI program on a serial machine.
+    </p>
+
+    <p>
+      <a href = "../../f_src/multitask_mpi/multitask_mpi.html">
+      MULTITASK_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates how to "multitask", that is, to execute several unrelated
+      and distinct tasks simultaneously, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_mpi/prime_mpi.html">
+      PRIME_MPI</a>,
+      a FORTRAN90 program which
+      counts the number of primes between 1 and N, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_mpi/quad_mpi.html">
+      QUAD_MPI</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule, and carries out the
+      computation in parallel using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/random_mpi/random_mpi.html">
+      RANDOM_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates one way to generate the same sequence of random numbers
+      for both sequential execution and parallel execution under MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/satisfy_mpi/satisfy_mpi.html">
+      SATISFY_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates, for a particular circuit, an exhaustive search
+      for solutions of the circuit satisfiability problem, using MPI to
+      carry out the calculation in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/search_mpi/search_mpi.html">
+      SEARCH_MPI</a>,
+      a FORTRAN90 program which
+      searches integers between A and B for a value J such that F(J) = C,
+      using MPI for parallel execution.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Peter Pacheco,<br>
+          Parallel Programming with MPI,<br>
+          Morgan Kaufman, 1996,<br>
+          ISBN: 1558603395,<br>
+          LC: QA76.642.P3.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ring_mpi.f90">ring_mpi.f90</a>, the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>RING_FSU</b> compiles and runs the program on the FSU HPC cluster.
+      <ul>
+        <li>
+          <a href = "ring_fsu.sh">ring_fsu.sh</a>,
+          the MOAB script.
+        </li>
+        <li>
+          <a href = "ring_fsu_output.txt">ring_fsu_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>RING_LOCAL</b> compiles and runs the program on the local system,
+      which might work if OpenMPI is installed, and which might make sense if
+      your system has multiple cores.
+      <ul>
+        <li>
+          <a href = "ring_local.sh">ring_local.sh</a>,
+          the script.
+        </li>
+        <li>
+          <a href = "ring_local_output.txt">ring_local_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 19 October 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

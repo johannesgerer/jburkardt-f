@@ -1,0 +1,614 @@
+<html>
+
+  <head>
+    <title>
+      TEST_TET_MESH - Mesh Generation Test Regions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_TET_MESH <br> Mesh Generation Test Regions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_TET_MESH</b>
+      is a FORTRAN90 library which
+      sets up a number
+      of test problems for mesh generation ("tetrahedralization")
+      in 3D.
+    </p>
+
+    <p>
+      As far as possible, a uniform and abstract approach has been used.
+      For each test region, a number of routines are provided, via which
+      it is possible for the user to determine many things about the region.
+      Often, just one or two routines would be needed for a particular
+      purpose.  The names of the routines, and their purposes are:
+      <ul>
+        <li>
+          <b>BOUNDARY_NEAREST:</b> returns the nearest point on the boundary
+          of the region to a given point or set of points;
+        </li>
+        <li>
+          <b>BOUNDARY_PROJECT:</b> projects exterior points onto the boundary.
+        </li>
+        <li>
+          <b>BOUNDARY_SEGMENT:</b> returns a sequence of roughly equally spaced
+          points that lie on one particular boundary segment;
+        </li>
+        <li>
+          <b>BOUNDARY_SEGMENT_LENGTH:</b> returns the "length" (number of
+          nodes) of a particular boundary segment.  This simply counts
+          the number of points needed to trace or approximate the
+          boundary segment;
+        </li>
+        <li>
+          <b>BOUNDARY_SEGMENT_NUM:</b> returns the number of boundary segments.
+          Simple regions have one boundary segment.  A region with one hole
+          has two, and so on;
+        </li>
+        <li>
+          <b>BOX:</b> returns a bounding box for the region.  All points in
+          the region are within this box;
+        </li>
+        <li>
+          <b>DENSITY:</b> the value of the mesh density function at any
+          point in the region.  If this is not constant, then high values
+          correspond to places where many more mesh points should be placed;
+        </li>
+        <li>
+          <b>ELEMENT_SIZE:</b> returns a requested typical element size.  This
+          refers to the average size of the triangles formed by a triangulation
+          of the points;
+        </li>
+        <li>
+          <b>FIXED_NUM:</b> returns the number of points which must be
+          included as nodes of the mesh (which may be zero);
+        </li>
+        <li>
+          <b>FIXED_POINTS:</b> returns the coordinates of the points which
+          must be included as nodes of the mesh;
+        </li>
+        <li>
+          <b>HEADER:</b> prints a brief description of the problem;
+        </li>
+        <li>
+          <b>HOLE_NUM:</b> returns the number of "holes" in the region;
+        </li>
+        <li>
+          <b>HOLE_POINT:</b> returns the coordinates of one point in a hole
+          (useful when TRIANGLE is to be invoked);
+        </li>
+        <li>
+          <b>INSIDE:</b> reports which of a given set of points are
+          inside the region.
+        </li>
+        <li>
+          <b>SAMPLE:</b> returns a set of sample points from the region,
+          chosen with uniform probability;
+        </li>
+        <li>
+          <b>SDIST:</b> returns the signed distance to the boundary of
+          the region for each of a set of input points.
+          (a positive distance means the point is outside the region,
+           a negative distance means it is inside);
+          <i>(Not ready for problems 4, 5, 6, 7, 8, 9 )</i>
+        </li>
+        <li>
+          <b>TITLE:</b> a title for the problem;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The test problems include:
+      <ol>
+        <li>
+          The 3x1x1 channel;
+        </li>
+        <li>
+          The vertical cylinder, R = 1, H = 4;
+        </li>
+        <li>
+          The unit cube;
+        </li>
+        <li>
+          The unit sphere;
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      MATLAB has a command
+      <b>delaunay3()</b> that can compute the tet mesh for a set of 3D points.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt_tet_mesh/cvt_tet_mesh.html">
+      CVT_TET_MESH</a>,
+      a FORTRAN90 program which
+      uses CVT methods to compute a tet mesh in a region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geompack/geompack.html">
+      GEOMPACK</a>,
+      a FORTRAN90 library which
+      contains a routine
+      <b>DTRIS3</b> that can compute the tet mesh for a set of 3D points,
+      as well as the adjacency information.
+    </p>
+
+    <p>
+      <a href = "../../f_src/keast/keast.html">
+      KEAST</a>,
+      a FORTRAN90 library which
+      defines a number of quadrature rules
+      for a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_tet_mesh/table_tet_mesh.html">
+      TABLE_TET_MESH</a>,
+      a FORTRAN90 program which
+      can compute the tet mesh for a given set of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh/tet_mesh.html">
+      TET_MESH</a>,
+      a FORTRAN90 library which
+      is useful for tet mesh calculations.
+    </p>
+
+    <p>
+      <a href = "../../m_src/tet_mesh_display/tet_mesh_display.html">
+      TET_MESH_DISPLAY</a>,
+      a MATLAB program which
+      can read in the
+      node and tetra files defining a tet mesh and display a wireframe
+      image.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/tet_mesh_display_opengl/tet_mesh_display_opengl.html">
+      TET_MESH_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads a tet mesh and displays the nodes and edges using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_l2q/tet_mesh_l2q.html">
+      TET_MESH_L2Q</a>,
+      a FORTRAN90 program which
+      converts a linear to quadratic tet mesh.
+    </p>
+
+    <p>
+      <a href = "../../data/tet_mesh_order4/tet_mesh_order4.html">
+      TET_MESH_ORDER4</a>,
+      a data directory which
+      contains a description and
+      examples of a tet mesh using order 4 elements.
+    </p>
+
+    <p>
+      <a href = "../../data/tet_mesh_order10/tet_mesh_order10.html">
+      TET_MESH_ORDER10</a>,
+      a data directory which
+      contains a description and
+      examples of a tet mesh using order 10 elements.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_q2l/tet_mesh_q2l.html">
+      TET_MESH_Q2L</a>,
+      a FORTRAN90 program which
+      converts a quadratic to linear tet mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_quality/tet_mesh_quality.html">
+      TET_MESH_QUALITY</a>,
+      a FORTRAN90 program which
+      computes the quality of a tet mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_rcm/tet_mesh_rcm.html">
+      TET_MESH_RCM</a>,
+      a FORTRAN90 program which
+      takes a tet mesh and
+      relabels the nodes to reduce the bandwidth of the
+      corresponding adjacency matrix.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_tet_neighbors/tet_mesh_tet_neighbors.html">
+      TET_MESH_TET_NEIGHBORS</a>,
+      a FORTRAN90 program which
+      computes the tetrahedral adjacency information.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Per-Olof Persson, Gilbert Strang,<br>
+          A Simple Mesh Generator in MATLAB,<br>
+          SIAM Review,<br>
+          Volume 46, Number 2, June 2004, pages 329-345.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_tet_mesh.f90">test_tet_mesh.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "test_tet_mesh.sh">test_tet_mesh.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      TEST_TET_MESH_PRB carries out some simple tasks with the
+      sample problems.
+      <ul>
+        <li>
+          <a href = "test_tet_mesh_prb.f90">test_tet_mesh_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "test_tet_mesh_prb.sh">test_tet_mesh_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "test_tet_mesh_prb_output.txt">test_tet_mesh_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ARC_COSINE</b> computes the arc cosine function, with argument truncation.
+        </li>
+        <li>
+          <b>BALL_UNIT_SAMPLE_3D</b> picks a random point in the unit ball in 3D.
+        </li>
+        <li>
+          <b>CYLINDER_POINT_DIST_3D</b> determines the distance from a cylinder to a point in 3D.
+        </li>
+        <li>
+          <b>CYLINDER_POINT_DIST_SIGNED_3D:</b> signed distance from cylinder to point in 3D.
+        </li>
+        <li>
+          <b>CYLINDER_POINT_INSIDE_3D</b> determines if a cylinder contains a point in 3D.
+        </li>
+        <li>
+          <b>CYLINDER_POINT_NEAR_3D</b> determines the nearest point on a cylinder to a point in 3D.
+        </li>
+        <li>
+          <b>DISK_POINT_DIST_3D</b> determines the distance from a disk to a point in 3D.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_EDGE_NUM</b> counts the boundary edges in a problem.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_EDGES</b> returns the boundary edges for any problem.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_FACE_NUM</b> counts the boundary faces in a problem.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_FACES</b> returns the boundary faces in any problem.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_NODE_NUM</b> counts the boundary nodes in a problem.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_NODES</b> returns the boundary nodes in problem 01.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_PROJECT</b> projects exterior points to the boundary.
+        </li>
+        <li>
+          <b>P00_BOX</b> returns a bounding box for a problem.
+        </li>
+        <li>
+          <b>P00_FIXED_NUM</b> returns the number of fixed points in a problem.
+        </li>
+        <li>
+          <b>P00_FIXED_POINTS</b> returns the fixed points in a problem.
+        </li>
+        <li>
+          <b>P00_HEADER</b> prints some information about a problem.
+        </li>
+        <li>
+          <b>P00_INSIDE</b> reports if a point is inside the region in a problem.
+        </li>
+        <li>
+          <b>P00_SAMPLE</b> samples points from the region in a problem.
+        </li>
+        <li>
+          <b>P00_SAMPLE_H1</b> samples points from the enlarged region in a problem.
+        </li>
+        <li>
+          <b>P00_SDIST</b> returns the signed distance to the region in a problem.
+        </li>
+        <li>
+          <b>P00_TEST_NUM</b> returns the number of available tests.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns a title for a problem.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_EDGE_NUM</b> counts the boundary edges in problem 01.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_EDGES</b> returns the boundary edges in problem 01.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_FACE_NUM</b> counts the boundary faces in problem 01.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_FACES</b> returns the boundary faces in problem 01.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_NODE_NUM</b> counts the boundary nodes in problem 01.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_NODES</b> returns the boundary nodes in problem 01.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 01.
+        </li>
+        <li>
+          <b>P01_BOX</b> returns a bounding box for problem 01.
+        </li>
+        <li>
+          <b>P01_FIXED_NUM</b> returns the number of fixed points in problem 01.
+        </li>
+        <li>
+          <b>P01_FIXED_POINTS</b> returns the fixed points in problem 01.
+        </li>
+        <li>
+          <b>P01_HEADER</b> prints some information about problem 01.
+        </li>
+        <li>
+          <b>P01_INSIDE</b> reports if a point is inside the region in problem 01.
+        </li>
+        <li>
+          <b>P01_SAMPLE</b> samples points from the region in problem 01.
+        </li>
+        <li>
+          <b>P01_SAMPLE_H1</b> samples points from the enlarged region in problem 01.
+        </li>
+        <li>
+          <b>P01_SDIST</b> returns the signed distance to the region in problem 01.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns a title for problem 01.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_EDGE_NUM</b> counts the boundary edges in problem 02.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_EDGES</b> returns the boundary edges in problem 02.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_FACE_NUM</b> counts the boundary faces in problem 02.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_FACES</b> returns the boundary faces in problem 02.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_NODE_NUM</b> counts the boundary nodes in problem 02.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_NODES</b> returns the boundary nodes in problem 02.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 02.
+        </li>
+        <li>
+          <b>P02_BOX</b> returns a bounding box for problem 02.
+        </li>
+        <li>
+          <b>P02_FIXED_NUM</b> returns the number of fixed points in problem 02.
+        </li>
+        <li>
+          <b>P02_FIXED_POINTS</b> returns the fixed points in problem 02.
+        </li>
+        <li>
+          <b>P02_HEADER</b> prints some information about problem 02.
+        </li>
+        <li>
+          <b>P02_INSIDE</b> reports if a point is inside the region in problem 02.
+        </li>
+        <li>
+          <b>P02_SAMPLE</b> samples points from the region in problem 02.
+        </li>
+        <li>
+          <b>P02_SAMPLE_H1</b> samples points from the enlarged region in problem 02.
+        </li>
+        <li>
+          <b>P02_SDIST</b> returns the signed distance to the region in problem 02.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns a title for problem 02.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_EDGE_NUM</b> counts the boundary edges in problem 03.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_EDGES</b> returns the boundary edges in problem 03.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_FACE_NUM</b> counts the boundary faces in problem 03.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_FACES</b> returns the boundary faces in problem 03.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_NODE_NUM</b> counts the boundary nodes in problem 03.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_NODES</b> returns the boundary nodes in problem 03.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 03.
+        </li>
+        <li>
+          <b>P03_BOX</b> returns a bounding box for problem 03.
+        </li>
+        <li>
+          <b>P03_FIXED_NUM</b> returns the number of fixed points in problem 03.
+        </li>
+        <li>
+          <b>P03_FIXED_POINTS</b> returns the fixed points in problem 03.
+        </li>
+        <li>
+          <b>P03_HEADER</b> prints some information about problem 03.
+        </li>
+        <li>
+          <b>P03_INSIDE</b> reports if a point is inside the region in problem 03.
+        </li>
+        <li>
+          <b>P03_SAMPLE</b> samples points from the region in problem 03.
+        </li>
+        <li>
+          <b>P03_SAMPLE_H1</b> samples points from the enlarged region in problem 03.
+        </li>
+        <li>
+          <b>P03_SDIST</b> returns the signed distance to the region in problem 03.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns a title for problem 03.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_EDGE_NUM</b> counts the boundary edges in problem 04.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_EDGES</b> returns the boundary edges in problem 04.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_FACE_NUM</b> counts the boundary faces in problem 04.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_FACES</b> returns the boundary faces in problem 04.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_NODE_NUM</b> counts the boundary nodes in problem 04.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_NODES</b> returns the boundary nodes in problem 04.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 04.
+        </li>
+        <li>
+          <b>P04_BOX</b> returns a bounding box for problem 04.
+        </li>
+        <li>
+          <b>P04_FIXED_NUM</b> returns the number of fixed points in problem 04.
+        </li>
+        <li>
+          <b>P04_FIXED_POINTS</b> returns the fixed points in problem 04.
+        </li>
+        <li>
+          <b>P04_HEADER</b> prints some information about problem 04.
+        </li>
+        <li>
+          <b>P04_INSIDE</b> reports if a point is inside the region in problem 04.
+        </li>
+        <li>
+          <b>P04_SAMPLE</b> samples points from the region in problem 04.
+        </li>
+        <li>
+          <b>P04_SAMPLE_H1</b> samples points from the enlarged region in problem 04.
+        </li>
+        <li>
+          <b>P04_SDIST</b> returns the signed distance to the region in problem 04.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns a title for problem 04.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8VEC_ANY_NORMAL</b> returns some normal vector to V1.
+        </li>
+        <li>
+          <b>R8VEC_LENGTH</b> returns the Euclidean length of a vector.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 October 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

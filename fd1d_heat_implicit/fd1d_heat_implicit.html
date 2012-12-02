@@ -1,0 +1,309 @@
+<html>
+
+  <head>
+    <title>
+      FD1D_HEAT_IMPLICIT - TIme Dependent 1D Heat Equation, Finite Difference, Implicit Time Stepping
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FD1D_HEAT_IMPLICIT <br> 
+      Finite Difference Solution of the<br> 
+      Time Dependent 1D Heat Equation<br>
+      using Implicit Time Stepping
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FD1D_HEAT_IMPLICIT</b> 
+      is a FORTRAN90 program which
+      solves the time-dependent 1D heat equation, using the finite difference
+      method in space, and an implicit version of the method of lines to handle
+      integration in time.
+    </p>
+
+    <p>
+      This program solves
+      <pre>
+        dUdT - k * d2UdX2 = F(X,T)
+      </pre>
+      over the interval [A,B] with boundary conditions
+      <pre>
+        U(A,T) = UA(T),
+        U(B,T) = UB(T),
+      </pre>
+      over the time interval [T0,T1] with initial conditions
+      <pre>
+        U(X,T0) = U0(X)
+      </pre>
+    </p>
+
+    <p>
+      A second order finite difference is used to approximate the
+      second derivative in space.
+    </p>
+
+    <p>
+      The solver applies an
+      implicit backward Euler approximation to the first derivative in time.
+    </p>
+
+    <p>
+      The resulting finite difference form can be written as
+      <pre>
+       U(X,T+dt) - U(X,T)                     ( U(X-dx,+dtT) - 2 U(X,+dtT) + U(X+dx,+dtT) )
+       ------------------  = F(X,T+dt) + k *  ---------------------------------------------
+                dt                                   dx * dx
+      </pre>
+      or, assuming we have solved for all values of U at time T, we have
+      <pre>
+            -     k * dt / dx / dx   * U(X-dt,T+dt)
+      + ( 1 + 2 * k * dt / dx / dx ) * U(X,   T+dt)
+            -     k * dt / dx / dx   * U(X+dt,T+dt)
+      =               dt             * F(X,   T+dt)
+      +                                U(X,   T)
+      </pre>
+      which can be written as A*x=b, where A is a tridiagonal matrix whose
+      entries are the same for every time step.  
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FD1D_HEAT_IMPLICIT</b> is available in
+      <a href = "../../c_src/fd1d_heat_implicit/fd1d_heat_implicit.html">a C version</a> and
+      <a href = "../../cpp_src/fd1d_heat_implicit/fd1d_heat_implicit.html">a C++ version</a> and
+      <a href = "../../f77_src/fd1d_heat_implicit/fd1d_heat_implicit.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fd1d_heat_implicit/fd1d_heat_implicit.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fd1d_heat_implicit/fd1d_heat_implicit.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fd1d_burgers_lax/fd1d_burgers_lax.html">
+      FD1D_BURGERS_LAX</a>, 
+      a FORTRAN90 program which 
+      applies the finite difference method and the Lax-Wendroff method
+      to solve the non-viscous time-dependent Burgers equation 
+      in one spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_burgers_leap/fd1d_burgers_leap.html">
+      FD1D_BURGERS_LEAP</a>, 
+      a FORTRAN90 program which 
+      applies the finite difference method and the leapfrog approach
+      to solve the non-viscous time-dependent Burgers equation in one spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_bvp/fd1d_bvp.html">
+      FD1D_BVP</a>,
+      a FORTRAN90 program which
+      applies the finite difference method
+      to a two point boundary value problem in one spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_heat_explicit/fd1d_heat_explicit.html">
+      FD1D_HEAT_EXPLICIT</a>,
+      a FORTRAN90 program which
+      uses the finite difference method to solve the time dependent
+      heat equation in 1D, using an explicit time step method.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_heat_steady/fd1d_heat_steady.html">
+      FD1D_HEAT_STEADY</a>,
+      a FORTRAN90 program which
+      uses the finite difference method to solve the steady (time independent)
+      heat equation in 1D.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_predator_prey/fd1d_predator_prey.html">
+      FD1D_PREDATOR_PREY</a>, 
+      a FORTRAN90 program which
+      uses finite differences to solve a 1D predator prey problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_wave/fd1d_wave.html">
+      FD1D_WAVE</a>,
+      a FORTRAN90 program which
+      applies the finite difference method to solve the time-dependent
+      wave equation utt = c * uxx in one spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fem_50_heat/fem_50_heat.html">
+      FEM_50_HEAT</a>,
+      a MATLAB program which
+      applies the finite element method to solve the 2D heat equation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d/fem1d.html">
+      FEM1D</a>,
+      a FORTRAN90 program which 
+      applies the finite element 
+      method, with piecewise linear basis functions, to a linear
+      two point boundary value problem;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_heat/fem2d_heat.html">
+      FEM2D_HEAT</a>,
+      a FORTRAN90 program which
+      applies the finite element method to solve the 2D heat equation.
+    </p>
+
+    <p>
+      <a href = "../../m_src/hot_pipe/hot_pipe.html">
+      HOT_PIPE</a>,
+      a MATLAB program which
+      uses <b>FEM_50_HEAT</b> to solve a heat problem in a pipe.
+    </p>
+
+    <p>
+      <a href = "../../m_src/hot_point/hot_point.html">
+      HOT_POINT</a>,
+      a MATLAB program which
+      uses <b>FEM_50_HEAT</b> to solve a heat problem with a point source.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          George Lindfield, John Penny,<br>
+          Numerical Methods Using MATLAB,<br>
+          Second Edition,<br>
+          Prentice Hall, 1999,<br>
+          ISBN: 0-13-012641-1,<br>
+          LC: QA297.P45.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fd1d_heat_implicit.f90">fd1d_heat_implicit.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "fd1d_heat_implicit.sh">fd1d_heat_implicit.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "x,txt">x.txt</a>
+          a file containing the spatial coordinates.
+        </li>
+        <li>
+          <a href = "t,txt">t.txt</a>
+          a file containing the times.
+        </li>
+        <li>
+          <a href = "u,txt">u.txt</a>
+          a file containing the values of the computed solution at each point X and time T.
+        </li>
+        <li>
+          <a href = "solution.png">solution.png</a>
+          a PNG image of the MATLAB graphics created by the commands:
+          <pre>
+            x = load ( 'x.txt' );
+            t = load ( 't.txt' );
+            u = load ( 'u.txt' );
+            [ xg, tg ] = meshgrid ( x, t );
+            mesh ( xg, tg, u );
+          </pre>
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FD1D_HEAT_IMPLICIT.
+        </li>
+        <li>
+          <b>F</b> returns the right hand side of the heat equation.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>R83_NP_FA</b> factors an R83 matrix without pivoting.
+        </li>
+        <li>
+          <b>R83_NP_SL</b> solves an R83 system factored by R83_NP_FA.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>U0</b> returns the initial condition at the starting time.
+        </li>
+        <li>
+          <b>UA</b> returns the Dirichlet boundary condition at the left endpoint.
+        </li>
+        <li>
+          <b>UB</b> returns the Dirichlet boundary condition at the right endpoint.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 May 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

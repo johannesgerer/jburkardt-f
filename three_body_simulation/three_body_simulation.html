@@ -1,0 +1,261 @@
+<html>
+
+  <head>
+    <title>
+      THREE_BODY_SIMULATION - Planar Three Body Problem Simulation
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      THREE_BODY_SIMULATION <br> Planar Three Body Problem Simulation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>THREE_BODY_SIMULATION</b>
+      is a FORTRAN90 program which
+      simulates the solution of the planar three body problem.
+    </p>
+
+    <p>
+      Three bodies, regarded as point masses, are constrained to lie in a plane.
+      The masses of each body are given, as are the positions and velocities
+      at a starting time T = 0.  The bodies move in accordance with the gravitational
+      force between them.
+    </p>
+
+    <p>
+      The force exerted on the 0-th body by the 1st body can be written:
+      <pre>
+        F = - m0 m1 ( p0 - p1 ) / |p0 - p1|^3
+      </pre>
+      assuming that units have been normalized to that the gravitational
+      coefficient is 1.  Newton's laws of motion can be written:
+      <pre>  
+        m0 p0'' = - m0 m1 ( p0 - p1 ) / |p0 - p1|^3 
+                  - m0 m2 ( p0 - p2 ) / |p0 - p2|^3
+  
+        m1 p1'' = - m1 m0 ( p1 - p0 ) / |p1 - p0|^3 
+                  - m1 m2 ( p1 - p2 ) / |p1 - p2|^3
+  
+        m2 p2'' = - m2 m0 ( p2 - p0 ) / |p2 - p0|^3 
+                  - m2 m1 ( p2 - p1 ) / |p2 - p1|^3
+      </pre>
+    </p>
+
+    <p>
+      Letting
+      <pre>
+        y1 = p0(x)
+        y2 = p0(y)
+        y3 = p0'(x)
+        y4 = p0'(y)
+      </pre>
+      and using similar definitions for p1 and p2, the 3 second order vector 
+      equations can be rewritten as 12 first order equations.  In particular,
+      the first four are:
+      <pre>
+        y1' = y3
+        y2' = y4
+        y3' = - m1 ( y1 - y5  ) / |(y1,y2) - (y5,y6) |^3 
+              - m2 ( y1 - y9  ) / |(y1,y2) - (y9,y10)|^3
+        y4' = - m1 ( y2 - y6  ) / |(y1,y2) - (y5,y6) |^3 
+              - m2 ( y2 - y10 ) / |(y1,y2) - (y9,y10)|^3
+      </pre>
+      and so on.
+      This first order system can be integrated by a standard ODE solver.
+    </p>
+
+    <p>
+      Note that when any two bodies come close together, the solution changes
+      very rapidly, and very small steps must be taken by the ODE solver.
+      For this system, the first near collision occurs around T=15.8299, and
+      the results produced by the ODE solver will not be very accurate after
+      that point.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>THREE_BODY_SIMULATION</b> is available in
+      <a href = "../../c_src/three_body_simulation/three_body_simulation.html">a C version</a> and
+      <a href = "../../cpp_src/three_body_simulation/three_body_simulation.html">a C++ version</a> and
+      <a href = "../../f77_src/three_body_simulation/three_body_simulation.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/three_body_simulation/three_body_simulation.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/three_body_simulation/three_body_simulation.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/brownian_motion_simulation/brownian_motion_simulation.html">
+      BROWNIAN_MOTION_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates Brownian motion in an M-dimensional region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/duel_simulation/duel_simulation.html">
+      DUEL_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates N repetitions of a duel between two players, each of
+      whom has a known firing accuracy.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fair_dice_simulation/fair_dice_simulation.html">
+      FAIR_DICE_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates N tosses of 2 dice, making a histogram of the results.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ising_2d_simulation/ising_2d_simulation.html">
+      ISING_2D_SIMULATION</a>,
+      a FORTRAN90 program which
+      carries out a Monte Carlo simulation of an Ising model.
+      a 2D array of positive and negative charges,
+      each of which is likely to flip to be in agreement with neighbors.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ising_3d_simulation/ising_3d_simulation.html">
+      ISING_3D_SIMULATION</a>,
+      a FORTRAN90 library which
+      carries out a Monte Carlo simulation of a 3D Ising model.
+    </p>
+
+    <p>
+      <a href = "../../f_src/poisson_simulation/poisson_simulation.html">
+      POISSON_SIMULATION</a>,
+      a FORTRAN90 library which
+      simulates a Poisson process in which events randomly occur with an
+      average waiting time of Lambda.
+    </p>
+
+    <p>
+      <a href = "../../f_src/reactor_simulation/reactor_simulation.html">
+      REACTOR_SIMULATION</a>,
+      a FORTRAN90 program which
+      is a simple Monte Carlo simulation of the shielding effect of a slab
+      of a certain thickness in front of a neutron source.  This program was
+      provided as an example with the book "Numerical Methods and Software."
+    </p>
+
+    <p>
+      <a href = "../../f_src/rkf45/rkf45.html">
+      RKF45</a>,
+      a FORTRAN90 library which
+      implements the Runge-Kutta-Fehlberg ODE solver.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Original MATLAB version by Dominik Gruntz, Joerg Waldvogel;
+      FORTRAN90 version by John Burkardt.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Dominik Gruntz, Joerg Waldvogel,<br>
+          "Orbits in the Planar Three-Body Problem",<br>
+          Walter Gander, Jiri Hrebicek,<br>
+          Solving Problems in Scientific Computing using Maple and Matlab,<br>
+          Springer, 1997,<br>
+          ISBN: 3-540-61793-0,<br>
+          LC: Q183.9.G36.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "simple_rkf45.f90">simple_rkf45.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "simple_rkf45.sh">simple_rkf45.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+        <li>
+          <a href = "simple_rkf45_output.txt">simple_rkf45_output.txt</a>,
+          printed output from the run.
+        </li>
+        <li>
+          <a href = "simple_rkf45_t.txt">simple_rkf45_t.txt</a>,
+          the values of time T at every 0.1 seconds.
+        </li>
+        <li>
+          <a href = "simple_rkf45_y.txt">simple_rkf45_y.txt</a>,
+          the values of the 12 state variables at every time.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <b>SIMPLE_RKF45</b> simulates the problem by calling the ODE integrator RKF45.  
+      This approach loses accuracy when the bodies come close to colliding, which is
+      likely to happen often.
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for SIMPLE_RKF45.
+        </li>
+        <li>
+          <b>SIMPLE_RUN</b> runs the simple three body ODE system.
+        </li>
+        <li>
+          <b>SIMPLE_F</b> returns the right hand side of the three body ode system.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last modified on 04 April 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

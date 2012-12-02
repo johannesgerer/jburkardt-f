@@ -1,0 +1,235 @@
+July 15 2003   2:53:47.999 PM
+ 
+CVT_BASIS
+  Arrange a set of PDE solution data into clusters.
+ 
+  Null cluster policy:
+  0, do nothing, accept null clusters;
+  1, reset center to a random data point;
+  2, reset center to random point in hull;
+ 
+  NULL_CLUSTER_POLICY =      1
+ 
+RANDOM_INITIALIZE
+  Initialize RANDOM_NUMBER with user SEED =     12345678
+ 
+What is the run type?
+ 
+  RUN_TYPE =      7
+ 
+  For RUN_TYPE = 7,
+  read in the steady state solution from "STEADY.TXT"
+  and, letting SS be the steady state solution,
+  subtract 5/3 SS from solutions 1 through 250
+  subtract 1/3 SS from solutions 251 through 500.
+  We NORMALIZE the result.
+ 
+What is the name of the XY data file?
+ 
+  The file "/a/fs/r1/src-samples/datasets/inout_flow/xy.txt" contains 1681 lines.
+ 
+  X minimum :    0.00000    
+  X maximum :    1.00000    
+  Y minimum :    0.00000    
+  Y maximum :    1.00000    
+ 
+What is the name of the steady state file?
+ 
+  Steady state information was read from
+  the file "/a/fs/r1/src-samples/datasets/inout_flow/steady.txt".
+ 
+  Steady max norm =   0.300000    
+  Steady l2 norm =     3.38866    
+ 
+What is the name of the first solution file?
+ 
+We believe the number of solution files is    500
+ 
+  The data is stored in an M by N matrix.
+ 
+  The "spatial" dimension M is     3362
+  The number of data points N is    500
+ 
+All the data has been read into POINT.
+ 
+Enter lower and upper number of clusters
+ 
+  The program will try to determine the minimum energy
+  of a clustering, for cluster sizes in the range:
+      16    16
+ 
+Enter the number of different random cluster configurations to check
+ 
+  For each number of clusters, the number of
+  distinct initial random configurations to be checked
+  will be      15
+ 
+Enter the number of energy iterations
+ 
+  For each initial random configuration, the number of
+  times the program will recompute the cluster centers,
+  cluster components, and energy is     30
+ 
+Enter element file for mass matrix preconditioning or "None".
+ 
+  Number of elements =    800
+  Number of nodes per element =      6
+ 
+  The bandwidth of the matrix is     85
+ 
+  Compute the mass matrix.
+ 
+  Cholesky-factor the mass matrix.
+ 
+Enter 0 to use raw data, 1 to use normalized data.
+ 
+NORMAL = 0
+  Data will NOT be normalized.
+ 
+Number of clusters allowed:     16
+ 
+     1
+Initial_RAW    0.240816         0
+HMEANS_RAW     0.389106E-02    31
+KMEANS_RAW     0.363160E-02    10
+ 
+     2
+Initial_RAW    0.235231         0
+HMEANS_RAW     0.363549E-02    17
+KMEANS_RAW     0.358088E-02     6
+ 
+     3
+Initial_RAW    0.239754         0
+HMEANS_RAW     0.466720E-02    31
+KMEANS_RAW     0.432501E-02    14
+ 
+     4
+Initial_RAW    0.240441         0
+HMEANS_RAW     0.370122E-02    25
+KMEANS_RAW     0.357336E-02    12
+ 
+     5
+Initial_RAW    0.243674         0
+HMEANS_RAW     0.540895E-02    31
+KMEANS_RAW     0.431489E-02    28
+ 
+     6
+Initial_RAW    0.240135         0
+HMEANS_RAW     0.466995E-02    31
+KMEANS_RAW     0.375931E-02    21
+ 
+     7
+Initial_RAW    0.237403         0
+HMEANS_RAW     0.473222E-02    31
+KMEANS_RAW     0.375931E-02    20
+ 
+     8
+Initial_RAW    0.240710         0
+HMEANS_RAW     0.490471E-02    31
+KMEANS_RAW     0.376210E-02    25
+ 
+     9
+Initial_RAW    0.241616         0
+HMEANS_RAW     0.398825E-02    31
+KMEANS_RAW     0.358794E-02    10
+ 
+    10
+Initial_RAW    0.241656         0
+HMEANS_RAW     0.460316E-02    31
+KMEANS_RAW     0.375745E-02    21
+ 
+    11
+Initial_RAW    0.243169         0
+HMEANS_RAW     0.505154E-02    31
+KMEANS_RAW     0.431489E-02    24
+ 
+    12
+Initial_RAW    0.232888         0
+HMEANS_RAW     0.455499E-02    31
+KMEANS_RAW     0.375931E-02    18
+ 
+    13
+Initial_RAW    0.241371         0
+HMEANS_RAW     0.421248E-02    31
+KMEANS_RAW     0.361091E-02    11
+ 
+    14
+Initial_RAW    0.240140         0
+HMEANS_RAW     0.422793E-02    31
+KMEANS_RAW     0.362737E-02    16
+ 
+    15
+Initial_RAW    0.238289         0
+HMEANS_RAW     0.440381E-02    31
+KMEANS_RAW     0.358794E-02    18
+ 
+ANALYSIS_RAW:
+  Computed energy range for given cluster size:
+ 
+  (The minimum and maximum should be close if
+  we're taking enough iterations.)
+ 
+  Number
+  of       Minimum      Maximum
+  Clusters Energy       Energy
+ 
+     16        0.0036        0.0043
+ 
+  Energy table:
+ 
+Number
+of                   Energy
+Clusters  Energy     /point      Sqrt(E/Pt)
+ 
+     16        0.0036        0.0000        0.0027
+ 
+CLUSTER_CENSUS
+  Individual cluster population and energy
+ 
+  Index    Population   Percentage   Energy  Percentage  Min  Max
+ 
+      1           173           34  0.479007          8   78  250
+      2            13            2  0.428934          7   43   55
+      3            10            2  0.466576          8   23   32
+      4            69           13  0.209203          3  432  500
+      5            17            3  0.258671          4  351  367
+      6            28            5  0.299379          5  268  295
+      7            10            2  0.418447          7   33   42
+      8            22            4  0.461721          8   56   77
+      9            32            6  0.276588          4  296  327
+     10            19            3  0.223068          3  384  402
+     11            16            3  0.253334          4  368  383
+     12            11            2  0.600525         10    1   11
+     13            23            4  0.264376          4  328  350
+     14            29            5  0.196402          3  403  431
+     15            17            3  0.410546          7  251  267
+     16            11            2  0.490317          8   12   22
+ 
+               ------          ---  ------------    ---
+ 
+  Total           500          100   5.73709        100    1  500
+ 
+CVT_BASIS:
+  Writing cluster generators to individual files.
+ 
+  Write file gen_001.txt
+  Write file gen_002.txt
+  Write file gen_003.txt
+  Write file gen_004.txt
+  Write file gen_005.txt
+  Write file gen_006.txt
+  Write file gen_007.txt
+  Write file gen_008.txt
+  Write file gen_009.txt
+  Write file gen_010.txt
+  Write file gen_011.txt
+  Write file gen_012.txt
+  Write file gen_013.txt
+  Write file gen_014.txt
+  Write file gen_015.txt
+  Write file gen_016.txt
+ 
+CVT_BASIS
+  Normal end of execution.
+ 
+July 15 2003   2:57:12.410 PM

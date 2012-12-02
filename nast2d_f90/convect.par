@@ -1,0 +1,51 @@
+convection      problem: Natural convection with heated side walls
+
+none 		infile: file to read initial values from
+none  		outfile: file to write final values
+
+1.0		xlength: domain size in x-direction
+1.0		ylength: domain size in y-direction
+20		imax: number of interior cells in x-direction
+20		jmax: number of interior cells in y-direction
+
+5.0e3		t_end: final time
+0.01		delt: time stepsize
+0.5             tau:  safety factor for time stepsize control
+
+10000.0		del_trace: time step for writing particles for particle tracing
+10000.0		del_inj:   time step for injecting particles
+10000.0		del_streak:time step for writing particles of streaklines
+500.0		del_vec:   time step for writing velocity and pressure values
+
+none            file to write velocity and pressure values
+none 		file to write particle positions for particle tracing
+none        	file to write particle positions of streaklines
+
+0		N: number of particlelines
+0.0		pos1x: coordinates of the final points
+0.0		pos1y: of the line on which
+0.0		pos2x: particles for particle tracing
+0.0		pos2y: and streaklines are injected
+
+500		itermax: maximal number of pressure iterations in one time step
+1e-9		eps : stopping tolerance for pressure iteration
+1.7		omg : relaxation parameter for SOR iteration
+0.9		gamma: upwind differencing factor   
+2               p_bound: flag for treatment of the pressure boundary conditions
+                         1 = modify the equation at the boundary (book p. 37)
+                         2 = copy pressure values near the boundary (book p. 39)
+
+985.7	       	Re: Reynolds number
+7.07		Pr: Prandtl number
+2.1e-4    		beta: coefficient of volume expansion
+0.0		GX:            
+-9.706e-2	GY: volume forces, e.g. gravity
+0.0		UI:
+0.0		VI: initial values
+0.0             TI:
+
+2		wW: flags for boundary conditions
+2		wO:   1 = slip         3 = inflow/outflow
+2		wN:   2 = no-slip      4 = periodic
+2		wS:  
+ 

@@ -1,0 +1,737 @@
+<html>
+
+  <head>
+    <title>
+      GEOMPACK3 - Computational Geometry in 2D, 3D, ND
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GEOMPACK3 <br> Computational Geometry in 2D, 3D, ND
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GEOMPACK3</b>
+      is a FORTRAN90 library which
+      handles certain computational geometry problems.
+    </p>
+
+    <p>
+      In particular, <b>GEOMPACK3</b> can compute the Voronoi diagram,
+      and the Delaunay triangulation, of a set of points in the plane,
+      and can carry out analogous operations for points in 3D and
+      in N-dimensional space.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dutch/dutch.html">
+      DUTCH</a>,
+      a FORTRAN90 library which
+      carries out tasks in computational geometry.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geometry/geometry.html">
+      GEOMETRY</a>,
+      a FORTRAN90 library which
+      performs geometric calculations in 2, 3 and N dimensional space.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geompack/geompack.html">
+      GEOMPACK</a>,
+      a FORTRAN90 library which
+      contains a subset of the routines in GEOMPACK3, but only
+      those for certain 2D calculations.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/tet_mesh_display_opengl/tet_mesh_display_opengl.html">
+      TET_MESH_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads a tet mesh and displays the nodes and edges using OpenGL.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Barry Joe
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Barry Joe, <br>
+          GEOMPACK - a software package for the generation of meshes
+          using geometric algorithms, <br>
+          Advances in Engineering Software,<br>
+          Volume 13, pages 325-331, 1991.
+        </li>
+        <li>
+          George Forsythe, Michael Malcolm, Cleve Moler, <br>
+          Computer Methods for Mathematical Computations,<br>
+          Prentice Hall, 1971.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "geompack3.f90">geompack3.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "geompack3.sh">geompack3.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "geompack3_prb.f90">geompack3_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "geompack3_prb.sh">geompack3_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "geompack3_prb_output.txt">geompack3_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE</b> computes the size of an angle in 2D.
+        </li>
+        <li>
+          <b>ANGLE3</b> computes the size of a plane angle in 3D.
+        </li>
+        <li>
+          <b>AREAPG</b> computes twice the signed area of a simple polygon.
+        </li>
+        <li>
+          <b>AREATR</b> computes twice the signed area of a triangle.
+        </li>
+        <li>
+          <b>AVAILF</b> returns the index of the next available record in the FC array.
+        </li>
+        <li>
+          <b>AVAILK</b> returns the position of the next available record in the FC array.
+        </li>
+        <li>
+          <b>BARYCK</b> computes the barycentric coordinates of a point in KD.
+        </li>
+        <li>
+          <b>BARYTH</b> computes barycentric coordinates of a point in 3D.
+        </li>
+        <li>
+          <b>BCDTRI</b> constructs a boundary-constrained Delaunay triangulation in 3D.
+        </li>
+        <li>
+          <b>BNSRT2</b> bin sorts a set of 2D points.
+        </li>
+        <li>
+          <b>BNSRT3</b> bin sorts a set of 3D points.
+        </li>
+        <li>
+          <b>BNSRTK</b> bin sorts a set of KD points.
+        </li>
+        <li>
+          <b>CCRADI</b> computes the circumradius of a tetrahedron.
+        </li>
+        <li>
+          <b>CCSPH</b> finds the circumsphere through the vertices of a tetrahedron.
+        </li>
+        <li>
+          <b>CCSPHK</b> finds the circumsphere through a simplex in KD.
+        </li>
+        <li>
+          <b>CMCIRC</b> determines if a point is in the circumcircle of three points.
+        </li>
+        <li>
+          <b>CUTFAC</b> traces a cut face of a polyhedron from a starting edge.
+        </li>
+        <li>
+          <b>CVDEC2</b> decomposes a polygonal region into convex polygons.
+        </li>
+        <li>
+          <b>CVDEC3</b> decomposes polyhedra into convex parts.
+        </li>
+        <li>
+          <b>CVDECF</b> updates a polyhedral decomposition.
+        </li>
+        <li>
+          <b>CVDTRI</b> converts boundary triangles to Delaunay triangles.
+        </li>
+        <li>
+          <b>DHPSRT</b> sorts a list of double precision points in KD.
+        </li>
+        <li>
+          <b>DIAEDG</b> determines which diagonal to use in a quadrilateral.
+        </li>
+        <li>
+          <b>DIAM2</b> finds the diameter of a convex polygon.
+        </li>
+        <li>
+          <b>DIAM3</b> finds the diameter of a set of 3D points.
+        </li>
+        <li>
+          <b>DLESS</b> determines the lexicographically lesser of two double precision values.
+        </li>
+        <li>
+          <b>DSCONV</b> converts the representation of a convex polyhedron.
+        </li>
+        <li>
+          <b>DSCPH</b> initalizes the convex polyhedron data structure.
+        </li>
+        <li>
+          <b>DSFTDW</b> does one step of the heap sort algorithm for double precision data.
+        </li>
+        <li>
+          <b>DSMCPR</b> initializes the polygonal decomposition data structure.
+        </li>
+        <li>
+          <b>DSMDF2</b> sets up a mesh distribution function data structure in 2D.
+        </li>
+        <li>
+          <b>DSMDF3</b> sets up a mesh distribution function data structure in 3D.
+        </li>
+        <li>
+          <b>DSPGDC</b> initializes the polygonal decomposition data structure.
+        </li>
+        <li>
+          <b>DSPHDC</b> initializes the polyhedral decomposition data structure.
+        </li>
+        <li>
+          <b>DSPHFH</b> initializes the polyhedral decomposition data structure.
+        </li>
+        <li>
+          <b>DSPHIH</b> updates the polyhedral decomposition data structure.
+        </li>
+        <li>
+          <b>DTRIMK</b> constructs a Delaunay triangulation of points in KD.
+        </li>
+        <li>
+          <b>DTRIS2</b> constructs the Delaunay triangulation of vertices in 2D.
+        </li>
+        <li>
+          <b>DTRIS3</b> constructs a Delaunay triangulation of vertices in 3D.
+        </li>
+        <li>
+          <b>DTRISK</b> constructs a Delaunay triangulation of vertices in KD.
+        </li>
+        <li>
+          <b>DTRIW2</b> constructs a Delaunay triangulation of vertices in 2D.
+        </li>
+        <li>
+          <b>DTRIW3</b> constructs a Delaunay triangulation of vertices in 3D.
+        </li>
+        <li>
+          <b>DTRIWK</b> constructs a Delaunay triangulation of vertices in KD.
+        </li>
+        <li>
+          <b>EDGHT</b> searches a hash table for an edge record.
+        </li>
+        <li>
+          <b>EMNRTH</b> computes the mean ratio of a tetrahedron.
+        </li>
+        <li>
+          <b>EQDIS2</b> subdivides convex polygons for equidistribution.
+        </li>
+        <li>
+          <b>EQDIS3</b> subdivides polyhedra for equidistribution.
+        </li>
+        <li>
+          <b>FNDMSW</b> finds local transformation that improve a 3D triangulation.
+        </li>
+        <li>
+          <b>FNDSEP</b> finds separators to resolve a reflex vertex.
+        </li>
+        <li>
+          <b>FNDSPF</b> finds separators to resolve a reflex vertex.
+        </li>
+        <li>
+          <b>FNDSPH</b> finds a separator from top or bottom hole vertex.
+        </li>
+        <li>
+          <b>FNDTRI</b> finds two triangles containing a given edge.
+        </li>
+        <li>
+          <b>FRSMPX</b> shifts vertices to the first K+1 are in general position in KD.
+        </li>
+        <li>
+          <b>FRSTET</b> shifts vertices so the first 4 vertices are in general position in 3D.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GTIME</b> returns the current CPU time in seconds.
+        </li>
+        <li>
+          <b>HEXAGON_VERTICES_2D</b> returns the vertices of the unit hexagon in 2D.
+        </li>
+        <li>
+          <b>HOLVRT</b> determines top and bottom vertices of holes in polygonal regions.
+        </li>
+        <li>
+          <b>HTDEL</b> deletes a record from the hash table.
+        </li>
+        <li>
+          <b>HTDELK</b> deletes a record from the hash table.
+        </li>
+        <li>
+          <b>HTINS</b> inserts a record into the hash table.
+        </li>
+        <li>
+          <b>HTINSK</b> inserts a record into the hash table.
+        </li>
+        <li>
+          <b>HTSDLK</b> searches for a record in the hash table, and deletes it if found.
+        </li>
+        <li>
+          <b>HTSRC</b> searches for a record in the hash table.
+        </li>
+        <li>
+          <b>HTSRCK</b> searches for a record in the hash table.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>IFACTY</b> determines the type of an interior face in a 3D triangulation.
+        </li>
+        <li>
+          <b>IHPSRT</b> sorts a list of integer points in KD.
+        </li>
+        <li>
+          <b>ILESS</b> determines the lexicographically lesser of two integer values.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>IMPTR3</b> improves a 3D triangulation.
+        </li>
+        <li>
+          <b>IMPTRD</b> further improves a 3D triangulation.
+        </li>
+        <li>
+          <b>IMPTRF</b> improves a given triangulation in 3D.
+        </li>
+        <li>
+          <b>INTTRI</b> generates triangles inside a convex polygon.
+        </li>
+        <li>
+          <b>INSED2</b> inserts an edge into the head and polygon vertex lists.
+        </li>
+        <li>
+          <b>INSED3</b> inserts an edge into the polyhedral decomposition data structure.
+        </li>
+        <li>
+          <b>INSEH3</b> inserts an edge into the polyhedral decomposition data structure.
+        </li>
+        <li>
+          <b>INSFAC</b> inserts a new cut face into a polyhedral decomposition.
+        </li>
+        <li>
+          <b>INSPH</b> finds the center and radius of the insphere of a tetrahedron.
+        </li>
+        <li>
+          <b>INSVR2</b> inserts a point into the vertex coordinate and polygon vertex lists.
+        </li>
+        <li>
+          <b>INSVR3</b> inserts a point into the polyhedral decomposition database.
+        </li>
+        <li>
+          <b>INTMVG</b> generates interior mesh vertices in a shrunken polyhedron.
+        </li>
+        <li>
+          <b>INTPG</b> integrates a mesh distribution function over a polygon.
+        </li>
+        <li>
+          <b>INTPH</b> integrates a mesh distribution function over a polyhedron.
+        </li>
+        <li>
+          <b>ISFTDW</b> does one step of the heap sort algorithm for integer data.
+        </li>
+        <li>
+          <b>ITRIS3</b> constructs an initial triangulation of 3D vertices.
+        </li>
+        <li>
+          <b>JNHOLE</b> joins a hole boundary to the boundary of the surrounding polygon.
+        </li>
+        <li>
+          <b>LFCINI</b> initializes two lists of faces.
+        </li>
+        <li>
+          <b>LOP</b> applies the local optimization procedure to two triangles.
+        </li>
+        <li>
+          <b>LRLINE</b> determines whether a point is left, right, or on a directed line.
+        </li>
+        <li>
+          <b>LSRCT3</b> searches a 3D triangulation for the tetrahedron containing a point.
+        </li>
+        <li>
+          <b>LUFAC</b> factors a matrix.
+        </li>
+        <li>
+          <b>LUSOL</b> solves a linear system involving a matrix factored by LUFAC.
+        </li>
+        <li>
+          <b>MDF2</b> evaluates a heuristic mesh distribution function in 2D.
+        </li>
+        <li>
+          <b>MDF3</b> evaluates a heuristic mesh distribution function in 3D.
+        </li>
+        <li>
+          <b>MFDEC2</b> further divides convex polygons to limit mesh function variation.
+        </li>
+        <li>
+          <b>MFDEC3</b> subdivides polyhedra to control the mesh distribution function.
+        </li>
+        <li>
+          <b>MINANG</b> determines the minimum of the boundary angles for a separator.
+        </li>
+        <li>
+          <b>MMASEP</b> finds the best of four possible separators.
+        </li>
+        <li>
+          <b>MTREDG</b> sets fields for a triangle as needed by routine TMERGE.
+        </li>
+        <li>
+          <b>NWSXED</b> creates new simplices from insertion of an interior vertex.
+        </li>
+        <li>
+          <b>NWSXFC</b> creates new simplices from the insertion of a face vertex.
+        </li>
+        <li>
+          <b>NWSXIN</b> creates new simplices from the insertion of an interior vertex.
+        </li>
+        <li>
+          <b>NWSXOU</b> creates new simplices for vertices outside the current convex hull.
+        </li>
+        <li>
+          <b>NWTHED</b> creates new tetrahedra from the insertion of a vertex, in 3D.
+        </li>
+        <li>
+          <b>NWTHFC</b> creates new tetrahedra after the insertion of a new face vertex.
+        </li>
+        <li>
+          <b>NWTHIN</b> creates new tetrahedra after the insertion of an interior vertex.
+        </li>
+        <li>
+          <b>NWTHOU</b> creates new tetrahedra outside the current convex hull.
+        </li>
+        <li>
+          <b>OPSIDE</b> tests if points are on opposite sides of a triangular face.
+        </li>
+        <li>
+          <b>OPSIDK</b> tests if points are on opposite sides of a face in KD.
+        </li>
+        <li>
+          <b>ORDER3</b> reorders 3 integers into ascending order.
+        </li>
+        <li>
+          <b>ORDERK</b> reorders K elements of an array in nondecreasing order.
+        </li>
+        <li>
+          <b>PRIME</b> returns a prime greater than a given value K.
+        </li>
+        <li>
+          <b>PRMDF2</b> does preprocessing for the mesh distribution function evaluation.
+        </li>
+        <li>
+          <b>PRMDF3</b> does preprocessing for the mesh distribution function evaluation.
+        </li>
+        <li>
+          <b>PTPOLG</b> determines where a point lies with respect to a polygon.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>RADRTH</b> computes the aspect ratio of a tetrahedron.
+        </li>
+        <li>
+          <b>RANDPT</b> generates N random points in KD.
+        </li>
+        <li>
+          <b>RESEDG</b> resolves a reflex edge by a cut polygon.
+        </li>
+        <li>
+          <b>RESHOL</b> finds a cut face in a polyhedron to resolve an interior hole.
+        </li>
+        <li>
+          <b>RESVRF</b> resolves a reflex vertex of a simple polygon.
+        </li>
+        <li>
+          <b>RESVRH</b> resolves a hole vertex on a face by finding a separator.
+        </li>
+        <li>
+          <b>RESVRT</b> resolves a reflex vertex of a simply connected polygon.
+        </li>
+        <li>
+          <b>RMCLED</b> removes collinear adjacent convex polyhedron edges from the database.
+        </li>
+        <li>
+          <b>RMCPFC</b> removes coplanar adjacent polyhedron faces from the data base.
+        </li>
+        <li>
+          <b>ROTIAR</b> rotates elements of an integer array.
+        </li>
+        <li>
+          <b>ROTIPG</b> rotates the indices of the vertices of a simple polygon.
+        </li>
+        <li>
+          <b>ROTPG</b> rotates a convex polygon.
+        </li>
+        <li>
+          <b>SANGMN</b> computes the minimum solid angle of a tetrahedron.
+        </li>
+        <li>
+          <b>SDANG</b> computes the solid and dihedral angles of a tetrahedron.
+        </li>
+        <li>
+          <b>SEPFAC</b> traces out a separator in a convex polyhedron.
+        </li>
+        <li>
+          <b>SEPMDF</b> determines a separator that splits a convex polygon.
+        </li>
+        <li>
+          <b>SEPSHP</b> determines a separator that splits a convex polygon.
+        </li>
+        <li>
+          <b>SFC1MF</b> seeks a separator or cut face in a convex polyhedron.
+        </li>
+        <li>
+          <b>SFC2MF</b> finds a separator or cut face in a convex polyhedron.
+        </li>
+        <li>
+          <b>SFCSHP</b> seeks a separator or cut face in a convex polyhedron.
+        </li>
+        <li>
+          <b>SFDWMF</b> sifts down a heap.
+        </li>
+        <li>
+          <b>SFUPMF</b> sifts up a heap.
+        </li>
+        <li>
+          <b>SHRNK2</b> shrinks a convex polygon.
+        </li>
+        <li>
+          <b>SHRNK3</b> shrinks a convex polyhedron.
+        </li>
+        <li>
+          <b>SMPXDA</b> deletes simplices whose circumhypersphere contains a vertex.
+        </li>
+        <li>
+          <b>SMPXLS</b> constructs a list of simplices from the FC array.
+        </li>
+        <li>
+          <b>SPDEC2</b> decomposes a polygonal region with holes into simple polygons.
+        </li>
+        <li>
+          <b>SPDECH</b> decomposes a face of a polyhedral region.
+        </li>
+        <li>
+          <b>STATS</b> computes statistical measurements for data.
+        </li>
+        <li>
+          <b>SWAPDG</b> applies swaps in a KD triangulation.
+        </li>
+        <li>
+          <b>SWAPEC</b> swaps diagonal edges in a 2D triangulation
+        </li>
+        <li>
+          <b>SWAPES</b> swaps faces in a 3D triangulation.
+        </li>
+        <li>
+          <b>SWAPHS</b> swaps faces in a KD triangulation.
+        </li>
+        <li>
+          <b>SWAPMU</b> swaps faces in a KD triangulation.
+        </li>
+        <li>
+          <b>SWAPTF</b> swaps tranformable faces in a 3D triangulation.
+        </li>
+        <li>
+          <b>SWPREM</b> tries to remove an interior vertex.
+        </li>
+        <li>
+          <b>TETLST</b> constructs a list of tetrahedra from the FC array.
+        </li>
+        <li>
+          <b>TETMU</b> computes a tetrahedron shape measure.
+        </li>
+        <li>
+          <b>TETSIZ</b> smooths PSI values and computes tetrahedron sizes.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TMERGE</b> forms triangles near the boundary by merging vertex chains.
+        </li>
+        <li>
+          <b>TRIBFC</b> generates a Delaunay triangulation on polyhedron boundary faces.
+        </li>
+        <li>
+          <b>TRIPR3</b> generates mesh vertices in a decomposed polygonal region.
+        </li>
+        <li>
+          <b>TRISIZ</b> smooths PSI and computes triangle sizes.
+        </li>
+        <li>
+          <b>TRPOLG</b> generates a Delaunay triangular mesh inside a convex polygon.
+        </li>
+        <li>
+          <b>UMDF2</b> is a sample user mesh distribution function for 2D.
+        </li>
+        <li>
+          <b>UMDF3</b> is a sample user mesh distribution function for 3D.
+        </li>
+        <li>
+          <b>UPDATF</b> updates a record in FC after a local transformation.
+        </li>
+        <li>
+          <b>UPDATK</b> updates a record in FC after a local transformation.
+        </li>
+        <li>
+          <b>UPDATR</b> updates a record in FC after a local transformation.
+        </li>
+        <li>
+          <b>URAND</b> is a uniform random number generator.
+        </li>
+        <li>
+          <b>VBEDG</b> determines the boundary edges of a 2D triangulation.
+        </li>
+        <li>
+          <b>VBFAC</b> determines the boundary faces of a 3D triangulation.
+        </li>
+        <li>
+          <b>VBFACK</b> determines the boundary faces of a KD triangulation.
+        </li>
+        <li>
+          <b>VISPOL</b> computes the visibility polygon from an eyepoint.
+        </li>
+        <li>
+          <b>VISVRT</b> determines a list of visible vertices.
+        </li>
+        <li>
+          <b>VOLCPH</b> computes the volume of a convex polyhedron.
+        </li>
+        <li>
+          <b>VOLTH</b> computes the volume of a tetrahedron.
+        </li>
+        <li>
+          <b>VORNBR</b> determines the Voronoi neighbors of a point.
+        </li>
+        <li>
+          <b>VPLEFT</b> is called by VISPOL for the LEFT operation.
+        </li>
+        <li>
+          <b>VPRGHT</b> is called by VISPOL for the RIGHT operation.
+        </li>
+        <li>
+          <b>VPSCNA</b> is called by VISPOL for the SCANA operation.
+        </li>
+        <li>
+          <b>VPSCNB</b> is called by VISPOL for the SCANB operation.
+        </li>
+        <li>
+          <b>VPSCNC</b> is called by VISPOL for the SCANC operation.
+        </li>
+        <li>
+          <b>VPSCND</b> is called by VISPOL for the SCAND operation.
+        </li>
+        <li>
+          <b>WALKT2</b> walks through a 2D triangulation searching for a point.
+        </li>
+        <li>
+          <b>WALKT3</b> walks through a 3D triangulation searching for a point.
+        </li>
+        <li>
+          <b>WALKTH</b> finds the Delaunay simplex containing a point by "walking".
+        </li>
+        <li>
+          <b>WIDTH2</b> determines the width of a convex polygon.
+        </li>
+        <li>
+          <b>WIDTH3</b> determines the width of a convex polyhedron.
+        </li>
+        <li>
+          <b>XEDGE</b> determines whether two edges, or an edge and a ray intersect.
+        </li>
+        <li>
+          <b>XLINE</b> intersects two lines parallel to given lines.
+        </li>
+        <li>
+          <b>XPGHPL</b> intersects a convex polygon with a half plane.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

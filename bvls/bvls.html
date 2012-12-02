@@ -1,0 +1,257 @@
+<html>
+
+  <head>
+    <title>
+      BVLS - Bounded Variable Least Squares Solver
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BVLS <br> Bounded Variable Least Squares Solver
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BVLS</b>
+      is a FORTRAN90 library which
+      solves a least squares problem with bounds on the variables,
+      by Charles Lawson and Richard Hanson.
+    </p>
+
+    <p>
+      Given an M by N matrix, A, and an M-vector, B, BVLS computes an
+      N-vector X that solves the least-squares problem:
+      <blockquote>
+        A * X = B<br>
+        subject to BND(1,J) &lt;= X(J) &lt;= BND(2,J) for 1 &lt;= J &lt;= N.
+      </blockquote>
+    </p>
+
+    <p>
+      The program allows the user to bound some or all of the variables.
+      The user is also free to constrain some variables with only a one-sided
+      bounded.  The values BND(1,J) = -huge(ONE) and BND(2,J) = huge(ONE) are
+      suggested choices to designate that there is no constraint in that
+      direction.  The parameter ONE is 1.0 in the working precision.
+    </p>
+
+    <p>
+      This algorithm is a generalization of the routine NNLS, which solves
+      the least-squares problem:
+      <blockquote>
+        A * X = B<br>
+        subject to 0 &lt;= X(J) for all J.
+      </blockquote>
+    </p>
+
+    <p>
+      The subroutine NNLS appeared in 'Solving Least Squares Problems'
+      by Lawson and Hanson, Prentice-Hall, 1974.  Work on BVLS was started
+      by Charles Lawson and Richard Hanson at Jet Propulsion Laboratory,
+      1973 June 12.  Many modifications were subsequently made.
+    </p>
+
+    <p>
+      This FORTRAN90 version was completed in April, 1995 by Richard Hanson.
+      Assumed shape arrays, automatic arrays, array operations, internal
+      subroutines and FORTRAN90 elemental functions are used.  Comments are
+      prefixed with an exclamation mark.  More than 72 characters appear on some lines.
+      The BVLS package is an additional item for the reprinting of the book
+      by SIAM Publications and the distribution of the code package
+      using netlib and Internet or network facilities.
+    </p>
+
+    <p>
+      The original source code is available through NETLIB at<br>
+      <a href = "http://www.netlib.org/lawson-hanson/index.html">
+                 http://www.netlib.org/lawson-hanson/index.html</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/brent/brent.html">
+      BRENT</a>,
+      a FORTRAN90 library which
+      contains Richard Brent's routines for finding the zero, local minimizer,
+      or global minimizer of a scalar function of a scalar argument, without
+      the use of derivative information.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      solves constrained least squares problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lawson/lawson.html">
+      LAWSON</a>,
+      a FORTRAN90 library which
+      solves least squares problems, and computes singular value
+      decompositions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nl2sol/nl2sol.html">
+      NL2SOL</a>,
+      a FORTRAN90 library which
+      implements an adaptive nonlinear least-squares algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/praxis/praxis.html">
+      PRAXIS</a>,
+      a FORTRAN90 library which
+      minimizes a scalar function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/qr_solve/qr_solve.html">
+      QR_SOLVE</a>,
+      a FORTRAN90 library which
+      computes the least squares solution of a linear system A*x=b.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms611/toms611.html">
+      TOMS611</a>,
+      a FORTRAN90 library which
+      seeks the minimizer of a scalar functional
+      of multiple variables.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Charles Lawson and Richard Hanson.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Charles Lawson, Richard Hanson,<br>
+          Solving Least Squares Problems,<br>
+          Revised edition, <br>
+          SIAM, 1995,<br>
+          ISBN: 0898713560,<br>
+          LC: QA275.L38.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bvls.f90">bvls.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "bvls.sh">bvls.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bvls_prb.f90">bvls_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "bvls_prb.sh">bvls_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "bvls_prb_output.txt">bvls_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BVLS</b> solves a least squares problem with bounds on the variables.
+        </li>
+        <li>
+          <b>INITIALIZE</b> initializes internal data.
+        </li>
+        <li>
+          <b>SELECT_ANOTHER_COEFF_TO!_SOLVE_FOR</b>
+        </li>
+        <li>
+          <b>TEST_COEF_J_FOR_DIAG!_ELT_AND_DIRECTION_OF_CHANGE</b>
+        </li>
+        <li>
+          <b>MOVE_J_FROM_SET_Z_TO_SET_P</b>
+        </li>
+        <li>
+          <b>TEST_SET_P_AGAINST_CONSTRAINTS</b>
+        </li>
+        <li>
+          <b>SEE_IF_ALL_CONSTRAINED_COEFFS!_ARE_FEASIBLE</b>
+        </li>
+        <li>
+          <b>MOVE_COEF_I_FROM_SET_P_TO_SET_Z</b>
+        </li>
+        <li>
+          <b>TERMINATION</b>
+        </li>
+        <li>
+          <b>ROTG</b> performs a Givens rotation.
+        </li>
+        <li>
+          <b>NRM2</b> returns the Euclidean norm of a vector.
+        </li>
+        <li>
+          <b>HTC</b> constructs a Householder transformation.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

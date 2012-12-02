@@ -1,0 +1,1156 @@
+<html>
+
+  <head>
+    <title>
+      CHRPAK - Characters and Strings
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CHRPAK <br> Characters and Strings
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CHRPAK</b>
+      is a FORTRAN90 library which
+      handles characters and strings.  
+    </p>
+
+    <p>
+      <b>CHRPAK</b> began when I simply wanted to be able to capitalize
+      a string.  Now it has expanded to a number of interesting uses.
+      Many unusual situations are provided for, including
+      <ul> 
+        <li>
+          string '31.2' <=> numeric value 31.2;
+        </li>
+        <li>
+          uppercase <=> lowercase;
+        </li>
+        <li>
+          removal of control characters or blanks;
+        </li>
+        <li>
+          sorting, merging, searching.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Many of the routine names begin with the name of the data type they 
+      operate on:
+      <ul>
+        <li>
+          <b>B4</b> - a 4 byte word;
+        </li>
+        <li>
+          <b>CH</b> - a character;
+        </li>
+        <li>
+          <b>CHVEC</b> - a vector of characters;
+        </li>
+        <li>
+          <b>DEC</b> - a decimal fraction;
+        </li>
+        <li>
+          <b>DIGIT</b> - a character representing a numeric digit;
+        </li>
+        <li>
+          <b>I4</b> - an integer ( kind = 4 );
+        </li>
+        <li>
+          <b>R4</b> - a real ( kind = 4 );
+        </li>
+        <li>
+          <b>R8</b> - a real ( kind = 8 );
+        </li>
+        <li>
+          <b>RAT</b> - a ratio I/J;
+        </li>
+        <li>
+          <b>S</b> - a string;
+        </li>
+        <li>
+          <b>SVEC</b> - a vector of strings;
+        </li>
+        <li>
+          <b>SVECI</b> - a vector of strings, implicitly capitalized;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+ 
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CHRPAK</b> is available in 
+      <a href = "../../c_src/chrpak/chrpak.html">a C version</a> and
+      <a href = "../../cpp_src/chrpak/chrpak.html">a C++ version</a> and
+      <a href = "../../f77_src/chrpak/chrpak.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/chrpak/chrpak.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/chrpak/chrpak.html">a MATLAB version</a>. 
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Carl Branden, John Tooze,<br>
+          Introduction to Protein Structure,<br>
+          Second Edition,<br>
+          Garland Publishing, 1999,<br>
+          ISBN: 0815323050,<br>
+          LC: QP551.B7635.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox, Linus Schrage,<br>
+          A Guide to Simulation,<br>
+          Second Edition,<br>
+          Springer, 1987,<br>
+          ISBN: 0387964673,<br>
+          LC: QA76.9.C65.B73.
+        </li>
+        <li>
+          IEEE Standards Committee 754,<br>
+          IEEE Standard for Binary Floating Point Arithmetic,<br>
+          ANSI/IEEE Standard 754-1985,<br>
+          SIGPLAN Notices,<br>
+          Volume 22, Number 2, 1987, pages 9-25.
+        </li>
+        <li>
+          Donald Knuth,<br>
+          The Art of Computer Programming,<br>
+          Volume 3, Sorting and Searching,<br>
+          Second Edition,<br>
+          Addison Wesley, 1998,<br>
+          ISBN: 0201896850,<br>
+          LC: QA76.6.K64.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms for Computers and Calculators,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0-12-519260-6,<br>
+          LC: QA164.N54.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "chrpak.f90">chrpak.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "chrpak.sh">chrpak.sh</a>, commands to compile
+          the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "chrpak_prb.f90">chrpak_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "chrpak_prb.sh">chrpak_prb.sh</a>, commands to
+          compile and run the calling program;
+        </li>
+        <li>
+          <a href = "chrpak_prb_output.txt">chrpak_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>A_TO_I4</b> returns the index of an alphabetic character.
+        </li>
+        <li>
+          <b>B4_IEEE_TO_R4</b> converts a 4 byte IEEE word into an R4.
+        </li>
+        <li>
+          <b>B4_IEEE_TO_SEF</b> converts an IEEE real word to S * 2**E * F format.
+        </li>
+        <li>
+          <b>BASE_TO_I4</b> returns the value of an integer represented in some base.
+        </li>
+        <li>
+          <b>BINARY_TO_I4</b> converts a binary representation into an integer value.
+        </li>
+        <li>
+          <b>BINARY_TO_R4</b> converts a binary representation into an R4.
+        </li>
+        <li>
+          <b>BINARY_TO_R8</b> converts a binary representation into an R8.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_COUNT_CHVEC_ADD</b> adds a character vector to a character count.
+        </li>
+        <li>
+          <b>CH_COUNT_FILE_ADD</b> adds characters in a file to a character count.
+        </li>
+        <li>
+          <b>CH_COUNT_HISTOGRAM_PRINT</b> prints a histogram of a set of character counts.
+        </li>
+        <li>
+          <b>CH_COUNT_INIT</b> initializes a character count.
+        </li>
+        <li>
+          <b>CH_COUNT_PRINT</b> prints a set of character counts.
+        </li>
+        <li>
+          <b>CH_COUNT_S_ADD</b> adds a character string to a character histogram.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.  
+        </li>
+        <li>
+          <b>CH_EXTRACT</b> extracts the next nonblank character from a string.
+        </li>
+        <li>
+          <b>CH_INDEX</b> is the first occurrence of a character in a string.
+        </li>
+        <li>
+          <b>CH_INDEX_LAST</b> is the last occurrence of a character in a string.
+        </li>
+        <li>
+          <b>CH_INDEXI:</b> (case insensitive) first occurrence of a character in a string.
+        </li>
+        <li>
+          <b>CH_IS_ALPHA</b> is TRUE if CH is an alphabetic character.
+        </li>
+        <li>
+          <b>CH_IS_ALPHANUMERIC</b> is TRUE if CH is alphanumeric.
+        </li>
+        <li>
+          <b>CH_IS_CONTROL</b> is TRUE if a character is a control character.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> is TRUE if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_IS_FORMAT_CODE</b> is TRUE if a character is a FORTRAN format code.
+        </li>
+        <li>
+          <b>CH_IS_LOWER</b> is TRUE if a character is a lower case letter.
+        </li>
+        <li>
+          <b>CH_IS_PRINTABLE</b> is TRUE if C is printable.
+        </li>
+        <li>
+          <b>CH_IS_SPACE</b> is TRUE if a character is a whitespace character.
+        </li>
+        <li>
+          <b>CH_IS_UPPER</b> is TRUE if CH is an upper case letter.
+        </li>
+        <li>
+          <b>CH_LOW</b> lowercases a single character.
+        </li>
+        <li>
+          <b>CH_NEXT</b> reads the next character from a string, ignoring blanks and commas.
+        </li>
+        <li>
+          <b>CH_NOT_CONTROL</b> = CH is NOT a control character.
+        </li>
+        <li>
+          <b>CH_ROMAN_TO_I4</b> returns the integer value of a single Roman digit.
+        </li>
+        <li>
+          <b>CH_SCRABBLE</b> returns the character on a given Scrabble tile.
+        </li>
+        <li>
+          <b>CH_SCRABBLE_FREQUENCY</b> returns the Scrabble frequency of a character.
+        </li>
+        <li>
+          <b>CH_SCRABBLE_POINTS</b> returns the Scrabble point value of a character.
+        </li>
+        <li>
+          <b>CH_SCRABBLE_SELECT</b> selects a character with the Scrabble probability.
+        </li>
+        <li>
+          <b>CH_SWAP</b> swaps two characters.
+        </li>
+        <li>
+          <b>CH_TO_AMINO_NAME</b> converts a character to an amino acid name.
+        </li>
+        <li>
+          <b>CH_TO_BRAILLE</b> converts an ASCII character to a Braille character string.
+        </li>
+        <li>
+          <b>CH_TO_CH3_AMINO</b> converts a 1 character to a 3 character code for amino acids.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT_BIN</b> returns the integer value of a binary digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT_OCT</b> returns the integer value of an octal digit.
+        </li>
+        <li>
+          <b>CH_TO_EBCDIC</b> converts a character to EBCDIC.
+        </li>
+        <li>
+          <b>CH_TO_MILITARY</b> converts an ASCII character to a Military code word.
+        </li>
+        <li>
+          <b>CH_TO_MORSE</b> converts an ASCII character to a Morse character string.
+        </li>
+        <li>
+          <b>CH_TO_ROT13</b> converts a character to its ROT13 equivalent.
+        </li>
+        <li>
+          <b>CH_TO_SCRABBLE</b> returns the Scrabble index of a character.
+        </li>
+        <li>
+          <b>CH_TO_SOUNDEX</b> converts an ASCII character to a Soundex character.
+        </li>
+        <li>
+          <b>CH_TO_SYM</b> returns a printable symbol for any ASCII character.
+        </li>
+        <li>
+          <b>CH_UNIFORM</b> returns a random character in a given range.
+        </li>
+        <li>
+          <b>CH3_TO_CH_AMINO</b> converts a 3 character to a 1 character code for amino acids.
+        </li>
+        <li>
+          <b>CH4_TO_I4</b> converts a four character string to an integer.
+        </li>
+        <li>
+          <b>CH4_TO_R4</b> converts a 4 character string to an R4.
+        </li>
+        <li>
+          <b>CH4VEC_TO_I4VEC</b> converts an string of characters into an array of integers.
+        </li>
+        <li>
+          <b>CHR4_TO_8</b> replaces pairs of hexadecimal digits by a character.
+        </li>
+        <li>
+          <b>CHR8_TO_4</b> replaces characters by a pair of hexadecimal digits.
+        </li>
+        <li>
+          <b>CHRA_TO_S</b> replaces control characters by printable symbols.
+        </li>
+        <li>
+          <b>CHRASC</b> converts a vector of ASCII codes into character strings.
+        </li>
+        <li>
+          <b>CHRASS</b> "understands" an assignment statement of the form LHS = RHS.
+        </li>
+        <li>
+          <b>CHRCTF</b> reads an integer or rational fraction from a string.
+        </li>
+        <li>
+          <b>CHRCTG</b> reads an integer, decimal fraction or a ratio from a string.
+        </li>
+        <li>
+          <b>CHRCTI2</b> finds and reads an integer from a string.
+        </li>
+        <li>
+          <b>CHRCTP</b> reads a parenthesized complex number from a string.
+        </li>
+        <li>
+          <b>CHRS_TO_A</b> replaces all control symbols by control characters.
+        </li>
+        <li>
+          <b>CHVEC_PERMUTE</b> permutes a character vector in place.
+        </li>
+        <li>
+          <b>CHVEC_PRINT</b> prints a character vector.
+        </li>
+        <li>
+          <b>CHVEC_REVERSE</b> reverses the elements of a character vector.
+        </li>
+        <li>
+          <b>CHVEC_TO_S</b> converts a character vector to a string.
+        </li>
+        <li>
+          <b>CHVEC2_PRINT</b> prints two vectors of characters.
+        </li>
+        <li>
+          <b>COMMA</b> moves commas left through blanks in a string.
+        </li>
+        <li>
+          <b>DEC_TO_S_LEFT</b> returns a left-justified representation of IVAL * 10**JVAL.
+        </li>
+        <li>
+          <b>DEC_TO_S_RIGHT</b> returns a right justified representation of IVAL * 10**JVAL.
+        </li>
+        <li>
+          <b>DIGIT_BIN_TO_CH</b> returns the character representation of a binary digit.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.  
+        </li>
+        <li>
+          <b>DIGIT_OCT_TO_CH</b> returns the character representation of an octal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>EBCDIC_TO_CH</b> converts an EBCDIC character to ASCII.
+        </li>
+        <li>
+          <b>EBCDIC_TO_S</b> converts a string of EBCDIC characters to ASCII.
+        </li>
+        <li>
+          <b>FILLCH</b> writes a string into a subfield of a string.
+        </li>
+        <li>
+          <b>FILLIN</b> writes an integer into a subfield of a string.
+        </li>
+        <li>
+          <b>FILLRL</b> writes a real into a subfield of a string.
+        </li>
+        <li>
+          <b>FLT_TO_S</b> returns a representation of MANT * 10**IEXP.
+        </li>
+        <li>
+          <b>FORCOM</b> splits a FORTRAN line into "fortran" and "comment".
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HEX_DIGIT_TO_I4</b> converts a hexadecimal digit to an I4.
+        </li>
+        <li>
+          <b>HEX_TO_BINARY_DIGITS</b> converts a hexadecimal digit to 4 binary digits.
+        </li>
+        <li>
+          <b>HEX_TO_I4</b> converts a hexadecimal string to its integer value.
+        </li>
+        <li>
+          <b>HEX_TO_S</b> converts a hexadecimal string into characters.
+        </li>
+        <li>
+          <b>I2_BYTE_SWAP</b> swaps bytes in an 8-byte word.
+        </li>
+        <li>
+          <b>I4_BYTE_SWAP</b> swaps bytes in a 4-byte word.
+        </li>
+        <li>
+          <b>I4_EXTRACT</b> "extracts" an I4 from the beginning of a string.
+        </li>
+        <li>
+          <b>I4_GCD</b> finds the greatest common divisor of I and J.
+        </li>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>I4_INPUT</b> prints a prompt string and reads an I4 from the user.
+        </li>
+        <li>
+          <b>I4_LENGTH</b> computes the number of characters needed to print an I4.
+        </li>
+        <li>
+          <b>I4_NEXT</b> "reads" I4's from a string, one at a time.
+        </li>
+        <li>
+          <b>I4_NEXT_READ</b> finds and reads the next I4 in a string.
+        </li>
+        <li>
+          <b>I4_RANGE_INPUT</b> reads a pair of I4's from the user, representing a range.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>I4_TO_A</b> returns the I-th alphabetic character.
+        </li>
+        <li>
+          <b>I4_TO_AMINO_CODE</b> converts an integer to an amino code.
+        </li>
+        <li>
+          <b>I4_TO_BASE</b> represents an integer in any base up to 16.
+        </li>
+        <li>
+          <b>I4_TO_BINARY</b> produces the binary representation of an I4.
+        </li>
+        <li>
+          <b>I4_TO_BINHEX</b> returns the I-th character in the BINHEX encoding.
+        </li>
+        <li>
+          <b>I4_TO_CH4</b> converts an I4 to a 4 character string.
+        </li>
+        <li>
+          <b>I4_TO_HEX</b> produces the hexadecimal representation of an I4.
+        </li>
+        <li>
+          <b>I4_TO_HEX_DIGIT</b> converts a (small) I4 to a hexadecimal digit.
+        </li>
+        <li>
+          <b>I4_TO_MONTH_ABB</b> returns the 3 character abbreviation of a given month.
+        </li>
+        <li>
+          <b>I4_TO_MONTH_NAME</b> returns the name of a given month.
+        </li>
+        <li>
+          <b>I4_TO_NUNARY</b> produces the "base -1" representation of an I4.
+        </li>
+        <li>
+          <b>I4_TO_OCT</b> produces the octal representation of an integer.
+        </li>
+        <li>
+          <b>I4_TO_S_LEFT</b> converts an I4 to a left-justified string.
+        </li>
+        <li>
+          <b>I4_TO_S_RIGHT</b> converts an I4 to a right justified string.
+        </li>
+        <li>
+          <b>I4_TO_S_RIGHT_COMMA</b> converts an I4 to a right justified string with commas.
+        </li>
+        <li>
+          <b>I4_TO_S_ROMAN</b> converts an I4 to a string of Roman numerals.
+        </li>
+        <li>
+          <b>I4_TO_S_ZERO</b> converts an I4 to a string, with zero padding.
+        </li>
+        <li>
+          <b>I4_TO_S32</b> converts an I4 to an S32.
+        </li>
+        <li>
+          <b>I4_TO_UNARY</b> produces the "base 1" representation of an I4.
+        </li>
+        <li>
+          <b>I4_TO_UUDECODE</b> returns the I-th character in the UUDECODE encoding.
+        </li>
+        <li>
+          <b>I4_TO_XXDECODE</b> returns the I-th character in the XXDECODE encoding.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_TO_CH4VEC</b> converts an I4VEC into a string.
+        </li>
+        <li>
+          <b>IC_TO_IBRAILLE</b> converts an ASCII integer code to a Braille code.
+        </li>
+        <li>
+          <b>IC_TO_IEBCDIC</b> converts an ASCII character code to an EBCDIC code.
+        </li>
+        <li>
+          <b>IC_TO_IMORSE</b> converts an ASCII integer code to a Morse integer code.
+        </li>
+        <li>
+          <b>IC_TO_ISOUNDEX</b> converts an ASCII integer code to a Soundex integer code.
+        </li>
+        <li>
+          <b>IEBCDIC_TO_IC</b> converts an EBCDIC character code to ASCII.
+        </li>
+        <li>
+          <b>ISTRCMP</b> compares two strings, returning +1, 0, or -1.
+        </li>
+        <li>
+          <b>ISTRNCMP</b> compares the start of two strings, returning +1, 0, or -1.
+        </li>
+        <li>
+          <b>LEN_NONNULL</b> returns the length of a string up to the last non-null character.
+        </li>
+        <li>
+          <b>MALPHNUM2</b> is TRUE if a string contains only alphanumerics and underscores.
+        </li>
+        <li>
+          <b>MILITARY_TO_CH</b> converts a Military code word to an ASCII character.
+        </li>
+        <li>
+          <b>MONTH_NAME_TO_I4</b> returns the month number of a given month
+        </li>
+        <li>
+          <b>NAMEFL</b> replaces "lastname, firstname" by "firstname lastname".
+        </li>
+        <li>
+          <b>NAMELF</b> replaces "firstname lastname" by "lastname, firstname".
+        </li>
+        <li>
+          <b>NAMELS</b> reads a NAMELIST line, returning the variable name and value.
+        </li>
+        <li>
+          <b>NEXCHR</b> returns the next nonblank character from a string.
+        </li>
+        <li>
+          <b>NEXSTR</b> returns the next nonblank characters from a string.
+        </li>
+        <li>
+          <b>NUMBER_INC</b> increments the integer represented by a string.
+        </li>
+        <li>
+          <b>OCT_TO_I4</b> converts an octal string to its integer value.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PERM_INVERSE3</b> produces the inverse of a given permutation.
+        </li>
+        <li>
+          <b>PERM_UNIFORM</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>R4_TO_B4_IEEE</b> converts an R4 to a 4 byte IEEE word.
+        </li>
+        <li>
+          <b>R4_TO_BINARY</b> represents an R4 as a string of binary digits.
+        </li>
+        <li>
+          <b>R4_TO_CH4</b> converts an R4 to a 4 character string.
+        </li>
+        <li>
+          <b>R4_TO_FLT</b> computes the scientific representation of an R4.
+        </li>
+        <li>
+          <b>R4_TO_S_LEFT</b> writes an R4 into a left justified character string.
+        </li>
+        <li>
+          <b>R4_TO_S_RIGHT</b> writes an R4 into a right justified character string.
+        </li>
+        <li>
+          <b>R4_TO_S32</b> encodes an R4 as 32 characters.
+        </li>
+        <li>
+          <b>R4_TO_SEF</b> represents an R4 as R = S * 2**E * F.
+        </li>
+        <li>
+          <b>R4_UNIFORM_01</b> returns a unit pseudorandom R4.
+        </li>
+        <li>
+          <b>R8_EXTRACT</b> "extracts" an R8 from the beginning of a string.
+        </li>
+        <li>
+          <b>R8_INPUT</b> prints a prompt string and reads an R8 from the user.
+        </li>
+        <li>
+          <b>R8_NEXT</b> "reads" R8's from a string, one at a time.
+        </li>
+        <li>
+          <b>R8_TO_BINARY</b> represents an R8 as a string of binary digits.
+        </li>
+        <li>
+          <b>R8_TO_S_LEFT</b> writes an R8 into a left justified string.
+        </li>
+        <li>
+          <b>R8_TO_S_LEFT</b> writes an R8 into a right justified string.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8VEC_TO_S</b> "writes" an R8VEC into a string.
+        </li>
+        <li>
+          <b>RANGER</b> "understands" a range defined by a string like '4:8'.
+        </li>
+        <li>
+          <b>RAT_TO_S_LEFT</b> returns a left-justified representation of IVAL/JVAL.
+        </li>
+        <li>
+          <b>RAT_TO_S_RIGHT</b> returns a right-justified representation of IVAL/JVAL.
+        </li>
+        <li>
+          <b>S_ADJUSTL</b> flushes a string left.
+        </li>
+        <li>
+          <b>S_ADJUSTR</b> flushes a string right.
+        </li>
+        <li>
+          <b>S_AFTER_SS_COPY</b> copies a string after a given substring.
+        </li>
+        <li>
+          <b>S_ALPHA_LAST</b> returns the location of the last alphabetic character.
+        </li>
+        <li>
+          <b>S_ANY_ALPHA</b> is TRUE if a string contains any alphabetic character.
+        </li>
+        <li>
+          <b>S_ANY_CONTROL</b> is TRUE if a string contains any control characters.
+        </li>
+        <li>
+          <b>S_B2U</b> replaces interword blanks by underscores.
+        </li>
+        <li>
+          <b>S_BEFORE_SS_COPY</b> copies a string up to a given substring.
+        </li>
+        <li>
+          <b>S_BEGIN</b> is TRUE if one string matches the beginning of the other.
+        </li>
+        <li>
+          <b>S_BEHEAD_SUBSTRING</b> "beheads" a string, removing a given substring.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_BLANKS_INSERT</b> inserts blanks into a string, sliding old characters over.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.  
+        </li>
+        <li>
+          <b>S_CAT1</b> concatenates two strings, with a single blank separator.  
+        </li>
+        <li>
+          <b>S_CENTER</b> centers the non-blank portion of a string.
+        </li>
+        <li>
+          <b>S_CENTER_INSERT</b> inserts one string into the center of another.
+        </li>
+        <li>
+          <b>S_CH_BLANK</b> replaces each occurrence of a particular character by a blank.
+        </li>
+        <li>
+          <b>S_CH_COUNT</b> counts occurrences of a particular character in a string.
+        </li>
+        <li>
+          <b>S_CH_DELETE</b> removes all occurrences of a character from a string.
+        </li>
+        <li>
+          <b>S_CH_LAST</b> returns the last nonblank character in a string.
+        </li>
+        <li>
+          <b>S_CHOP</b> "chops out" a portion of a string, and closes up the hole.
+        </li>
+        <li>
+          <b>S_CONTROL_BLANK</b> replaces control characters with blanks.
+        </li>
+        <li>
+          <b>S_CONTROL_COUNT</b> returns the number of control characters in a string.
+        </li>
+        <li>
+          <b>S_CONTROL_DELETE</b> removes all control characters from a string.
+        </li>
+        <li>
+          <b>S_COPY</b> copies one string into another.
+        </li>
+        <li>
+          <b>S_DETAG</b> removes from a string all substrings marked by angle brackets.
+        </li>
+        <li>
+          <b>S_DETROFF</b> removes obnoxious "character" + backspace pairs from a string.  
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.  
+        </li>
+        <li>
+          <b>S_EQIDB</b> compares two strings, ignoring case and blanks.
+        </li>
+        <li>
+          <b>S_ESCAPE_TEX</b> de-escapes TeX escape sequences.
+        </li>
+        <li>
+          <b>S_FILL</b> overwrites every character of a string by a given character.
+        </li>
+        <li>
+          <b>S_FIRST_NONBLANK</b> returns the location of the first nonblank.
+        </li>
+        <li>
+          <b>S_GEI</b> = ( S1 is lexically greater than or equal to S2 ).
+        </li>
+        <li>
+          <b>S_GTI</b> = S1 is lexically greater than S2.
+        </li>
+        <li>
+          <b>S_INDEX</b> seeks the first occurrence of a substring.
+        </li>
+        <li>
+          <b>S_INDEX_SET</b> searches a string for any of a set of characters.
+        </li>
+        <li>
+          <b>S_INDEXI</b> is a case-insensitive INDEX function.  
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_INDEX_LAST_C</b> finds the LAST occurrence of a given character.
+        </li>
+        <li>
+          <b>S_I_APPEND</b> appends an integer to a string.
+        </li>
+        <li>
+          <b>S_INC_C</b> "increments" the characters in a string.  
+        </li>
+        <li>
+          <b>S_INC_N</b> increments the digits in a string.
+        </li>
+        <li>
+          <b>S_INPUT</b> prints a prompt string and reads a string from the user.
+        </li>
+        <li>
+          <b>S_IS_ALPHA</b> returns TRUE if the string contains only alphabetic characters.
+        </li>
+        <li>
+          <b>S_IS_ALPHANUMERIC</b> = string contains only alphanumeric characters.
+        </li>
+        <li>
+          <b>S_IS_DIGIT</b> returns TRUE if a string contains only decimal digits.
+        </li>
+        <li>
+          <b>S_IS_F77_NAME</b> = input string represent a legal FORTRAN77 identifier.
+        </li>
+        <li>
+          <b>S_IS_F90_NAME</b> = input string represent a legal FORTRAN90 identifier.
+        </li>
+        <li>
+          <b>S_IS_I</b> is TRUE if a string represents an integer.
+        </li>
+        <li>
+          <b>S_IS_R</b> is TRUE if a string represents a real number.
+        </li>
+        <li>
+          <b>S_LEFT_INSERT</b> inserts one string flush left into another.
+        </li>
+        <li>
+          <b>S_LEI</b> = ( S1 is lexically less than or equal to S2 ).
+        </li>
+        <li>
+          <b>S_LOW</b> replaces all uppercase letters by lowercase ones.
+        </li>
+        <li>
+          <b>S_LTI</b> = ( S1 is lexically less than S2 ).
+        </li>
+        <li>
+          <b>S_NEQI</b> compares two strings for non-equality, ignoring case.
+        </li>
+        <li>
+          <b>S_NO_CONTROL</b> = string contains no control characters.
+        </li>
+        <li>
+          <b>S_NONALPHA_DELETE</b> removes nonalphabetic characters from a string.
+        </li>
+        <li>
+          <b>S_OF_I4</b> converts an integer to a left-justified string.
+        </li>
+        <li>
+          <b>S_ONLY_ALPHAB</b> checks if a string is only alphabetic and blanks.
+        </li>
+        <li>
+          <b>S_ONLY_DIGITB</b> returns TRUE if the string contains only digits or blanks.
+        </li>
+        <li>
+          <b>S_OVERLAP</b> determines the overlap between two strings.
+        </li>
+        <li>
+          <b>S_PAREN_CHECK</b> checks the parentheses in a string.
+        </li>
+        <li>
+          <b>S_R_APPEND</b> appends a real number to a string.
+        </li>
+        <li>
+          <b>S_REPLACE_CH</b> replaces all occurrences of one character by another.
+        </li>
+        <li>
+          <b>S_REPLACE_ONE</b> replaces the first occurrence of SUB1 with SUB2.
+        </li>
+        <li>
+          <b>S_REPLACE_REC</b> is a recursive replacement of one string by another.
+        </li>
+        <li>
+          <b>S_REPLACE</b> replaces all occurrences of SUB1 by SUB2 in a string.
+        </li>
+        <li>
+          <b>S_REPLACE_I</b> replaces all occurrences of SUB1 by SUB2 in a string.
+        </li>
+        <li>
+          <b>S_REVERSE</b> reverses the characters in a string.
+        </li>
+        <li>
+          <b>S_RIGHT_INSERT</b> inserts a string flush right into another.
+        </li>
+        <li>
+          <b>S_ROMAN_TO_I4</b> converts a Roman numeral to an integer.
+        </li>
+        <li>
+          <b>S_S_DELETE</b> removes all occurrences of a substring from a string.
+        </li>
+        <li>
+          <b>S_S_DELETE2</b> recursively removes a substring from a string.
+        </li>
+        <li>
+          <b>S_S_INSERT</b> inserts a substring into a string.
+        </li>
+        <li>
+          <b>S_S_SUBANAGRAM</b> determines if S2 is a "subanagram" of S1.
+        </li>
+        <li>
+          <b>S_S_SUBANAGRAM_SORTED</b> determines if S2 is a "subanagram" of S1.
+        </li>
+        <li>
+          <b>S_SET_DELETE</b> removes any characters in one string from another string.  
+        </li>
+        <li>
+          <b>S_SHIFT_CIRCULAR</b> circular shifts the characters in a string to the right.
+        </li>
+        <li>
+          <b>S_SHIFT_LEFT</b> shifts the characters in a string to the left and blank pads.
+        </li>
+        <li>
+          <b>S_SHIFT_RIGHT</b> shifts the characters in a string to the right and blank pads.
+        </li>
+        <li>
+          <b>S_SKIP_SET</b> finds the first entry of a string that is NOT in a set.
+        </li>
+        <li>
+          <b>S_SORT_A</b> sorts a string into ascending order.
+        </li>
+        <li>
+          <b>S_SPLIT</b> divides a string into three parts, given the middle.
+        </li>
+        <li>
+          <b>S_SWAP</b> swaps two strings.
+        </li>
+        <li>
+          <b>S_TAB_BLANK</b> replaces each TAB character by one space.
+        </li>
+        <li>
+          <b>S_TAB_BLANKS</b> replaces TAB characters by 6 spaces.
+        </li>
+        <li>
+          <b>S_TO_C4</b> reads a complex number from a string.
+        </li>
+        <li>
+          <b>S_TO_CHVEC</b> converts a string to a character vector.
+        </li>
+        <li>
+          <b>S_TO_DATE</b> converts the F90 date string to a more usual format.
+        </li>
+        <li>
+          <b>S_TO_DEC</b> reads a number from a string, returning a decimal result.
+        </li>
+        <li>
+          <b>S_TO_EBCDIC</b> converts a character string from ASCII to EBCDIC.
+        </li>
+        <li>
+          <b>S_TO_FORMAT</b> reads a FORTRAN format from a string.
+        </li>
+        <li>
+          <b>S_TO_HEX</b> replaces a character string by a hexadecimal representation.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an integer vector from a string.
+        </li>
+        <li>
+          <b>S_TO_L</b> reads a logical value from a string.
+        </li>
+        <li>
+          <b>S_TO_R4</b> reads an R4 value from a string.
+        </li>
+        <li>
+          <b>S_TO_R4VEC</b> reads an R4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 value from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_ROT13</b> "rotates" the alphabetical characters in a string by 13 positions.
+        </li>
+        <li>
+          <b>S_TO_SOUNDEX</b> computes the Soundex code of a string.
+        </li>
+        <li>
+          <b>S_TO_W</b> reads the next blank-delimited word from a string.
+        </li>
+        <li>
+          <b>S_TOKEN_EQUAL</b> checks whether a string is equal to any of a set of strings.
+        </li>
+        <li>
+          <b>S_TOKEN_MATCH</b> matches the beginning of a string and a set of tokens.
+        </li>
+        <li>
+          <b>S_TRIM_ZEROS</b> removes trailing zeros from a string.
+        </li>
+        <li>
+          <b>S_U2B</b> replaces underscores by blanks.
+        </li>
+        <li>
+          <b>S_WORD_APPEND</b> appends a word to a string.
+        </li>
+        <li>
+          <b>S_WORD_CAP</b> capitalizes the first character of each word in a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>S_WORD_EXTRACT_FIRST</b> extracts the first word from a string.
+        </li>
+        <li>
+          <b>S_WORD_FIND</b> finds the word of a given index in a string.
+        </li>
+        <li>
+          <b>S_WORD_INDEX</b> finds the word of a given index in a string.
+        </li>
+        <li>
+          <b>S_WORD_NEXT</b> "reads" words from a string, one at a time.
+        </li>
+        <li>
+          <b>S_WORD_PERMUTE</b> permutes the words in a string.
+        </li>
+        <li>
+          <b>S32_TO_I4</b> returns an I4 equivalent to a 32 character string.
+        </li>
+        <li>
+          <b>S32_TO_R4</b> converts a 32-character variable into an R4.
+        </li>
+        <li>
+          <b>SEF_TO_B4_IEEE</b> converts SEF information to a 4 byte IEEE real word.
+        </li>
+        <li>
+          <b>SEF_TO_R4</b> converts SEF information to an R4 = S * 2.0**E * F.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>STATE_ID</b> returns the 2 letter Postal Code for one of the 50 states.
+        </li>
+        <li>
+          <b>STATE_NAME</b> returns the name of one of the 50 states.
+        </li>
+        <li>
+          <b>SVEC_LAB</b> makes an index array for an array of (repeated) strings.
+        </li>
+        <li>
+          <b>SVEC_MERGE_A</b> merges two ascending sorted string arrays.
+        </li>
+        <li>
+          <b>SVEC_PERMUTE</b> permutes a string vector in place.
+        </li>
+        <li>
+          <b>SVEC_REVERSE</b> reverses the elements of a string vector.
+        </li>
+        <li>
+          <b>SVEC_SEARCH_BINARY_A</b> searches an ascending sorted string vector.
+        </li>
+        <li>
+          <b>SVEC_SORT_HEAP_A</b> ascending sorts an SVEC using heap sort.
+        </li>
+        <li>
+          <b>SVEC_SORT_HEAP_A_INDEX:</b> case-sensitive indexed heap sort of an SVEC.
+        </li>
+        <li>
+          <b>SVEC_SORTED_UNIQUE:</b> number of unique entries in a sorted SVEC.
+        </li>
+        <li>
+          <b>SVECI_SEARCH_BINARY_A:</b> search ascending sorted implicitly capitalized SVEC 
+        </li>
+        <li>
+          <b>SVECI_SORT_HEAP_A</b> heap sorts an SVEC of implicitly capitalized strings.
+        </li>
+        <li>
+          <b>SVECI_SORT_HEAP_A_INDEX</b> index heap sorts an SVECI.
+        </li>
+        <li>
+          <b>SYM_TO_CH</b> returns the character represented by a symbol.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TOKEN_EXPAND</b> makes sure certain tokens have spaces surrounding them.
+        </li>
+        <li>
+          <b>TOKEN_EXTRACT</b> "extracts" a token from the beginning of a string.
+        </li>
+        <li>
+          <b>TOKEN_INDEX</b> finds the N-th FORTRAN variable name in a string.
+        </li>
+        <li>
+          <b>TOKEN_NEXT</b> finds the next FORTRAN variable name in a string.
+        </li>
+        <li>
+          <b>WORD_BOUNDS</b> returns the start and end of each word in a string.
+        </li>
+        <li>
+          <b>WORD_LAST_READ</b> returns the last word from a string.
+        </li>
+        <li>
+          <b>WORD_NEXT</b> finds the next (blank separated) word in a string.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+        <li>
+          <b>WORD_NEXT2</b> returns the first word in a string.
+        </li>
+        <li>
+          <b>WORD_SWAP</b> swaps two words in a given string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 September 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

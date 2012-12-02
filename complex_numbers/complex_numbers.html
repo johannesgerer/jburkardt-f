@@ -1,0 +1,177 @@
+<html>
+
+  <head>
+    <title>
+      COMPLEX_NUMBERS - Complex Numbers in FORTRAN90 Programming
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      COMPLEX_NUMBERS <br> Complex Numbers in FORTRAN90 Programming
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>COMPLEX_NUMBERS</b> is a FORTRAN90 program which
+      demonstrates very briefly some of the features of using complex
+      numbers in a FORTRAN90 program. 
+    </p>
+
+    <p>
+      The first issue is how to declare a complex variable, including
+      the choice of single precision or double precision, whether
+      the variable is a scalar, vector, or array, and whether the variable
+      is initialized with a value, or assigned one.
+    </p>
+
+    <p>
+      A second issue concerns the question of how a complex variable is
+      to be printed out.
+    </p>
+
+    <p>
+      Another issue concerns how a complex variable is to operated on
+      by the arithmetic operators of addition, subtraction, multiplication,
+      division, and exponentiation.
+    </p>
+ 
+    <p>
+      The language also provides a number of intrinsic functions that
+      can be applied to a complex variable.  The names of these functions
+      can sometimes be easy to forget.  Moreover, it is occasionally true
+      that there may be a selection of functions with similar names
+      (say, "exp", "cexp" and "dcexp") which may or may not produce the
+      desired results.
+    </p>
+
+    <p>
+      Another issue concerns the details of double precision calculation.
+      Even a single accidental use of a single precision function name
+      in a double precision computation can result in the loss of half
+      the digits of accuracy.  Thus, it sometimes really matters whether
+      you use "cmplx" or "dcmplx" to assign values to a double precision
+      complex variable.
+    </p>
+
+    <p>
+      A peculiar feature of FORTRAN90 is that the generic <b>cmplx()</b> function
+      will produce a result whose real and imaginary parts are single precision,
+      no matter what the type of the input arguments or the target output value.
+      The only ways to avoid this are to add the <b>kind=</b> qualifier, as in
+      <blockquote>
+        a = cmplx ( b, c, kind = 8 )
+      </blockquote>
+      or to use the <b>dcmplx</b> function specific to double precision:
+      <blockquote>
+        a = dcmplx ( b, c )
+      </blockquote>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      <b>COMPLEX_NUMBERS</b> is available in
+      <a href = "../../c_src/complex_numbers/complex_numbers.html">a C version</a> and
+      <a href = "../../cpp_src/complex_numbers/complex_numbers.html">a C++ version</a> and
+      <a href = "../../f77_src/complex_numbers/complex_numbers.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/complex_numbers/complex_numbers.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/complex_numbers/complex_numbers.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/c4lib/c4lib.html">
+      C4LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for "C4" or
+      single precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/c8lib/c8lib.html">
+      C8LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for "C8" or
+      double precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_intrinsics/f90_intrinsics.html">
+      F90_INTRINSICS</a>,
+      FORTRAN90 programs which
+      include some examples of the use of intrinsic functions 
+      included with the FORTRAN90 standard language.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gfortran_intrinsics/gfortran_intrinsics.html">
+      GFORTRAN_INTRINSICS</a>,
+      FORTRAN90 programs which
+      include some examples of the use of intrinsic functions 
+      included with the GFORTRAN compiler.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "complex_numbers.f90">complex_numbers.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "complex_numbers.sh">complex_numbers.sh</a>,
+          commands that compile and load the program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "complex_numbers_output.txt">complex_numbers_output.txt</a>, 
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 05 November 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

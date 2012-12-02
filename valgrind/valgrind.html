@@ -1,0 +1,146 @@
+<html>
+
+  <head>
+    <title>
+      VALGRIND - FORTRAN90 Examples of the VALGRIND Memory Leak Detector
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      VALGRIND <br> FORTRAN90 Examples of the VALGRIND Memory Leak Detector
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>VALGRIND</b>
+      is a directory of FORTRAN90 programs which
+      illustrate the use of VALGRIND, a suite of programs which includes
+      a memory leak detector.
+    </p>
+
+    <p>
+      The simplest way to use VALGRIND on a program that is suspected of having
+      memory leaks is to compile with the "-g" option, and then issue the VALGRIND
+      command followed by the normal execution command:
+      <pre>
+        gfortran -g myprog.f90
+        mv a.out myprog
+        valgrind myprog
+      </pre>
+    </p>
+
+    <p>
+      On a Macintosh, it is necessary to include a particular switch that
+      generates the necessary symbol tables in order that VALGRIND can report
+      line numbers.
+      <pre>
+        valgrind --dsymutil=yes myprog
+      </pre>
+    </p>
+
+    <p>
+      Essentially, VALGRIND runs the program, but constantly watches to detect
+      illegal memory references, and prints messages when these are spotted.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>VALGRIND</b> examples are available in
+      <a href = "../../c_src/valgrind/valgrind.html">a C version</a> and
+      <a href = "../../cpp_src/valgrind/valgrind.html">a C++ version</a> and
+      <a href = "../../f77_src/valgrind/valgrind.html">a FORTRAN77 version</a>.
+      <a href = "../../f_src/valgrind/valgrind.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Julian Seward, et al,<br>
+          Valgrind Documentation.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>TEST01</b> is an example in which 11 elements of the Fibonacci sequence
+      are stored in a vector allocated only for 10 elements:
+      <ul>
+        <li>
+          <a href = "test01.f90">test01.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "test01.sh">test01.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "test01_output.txt">test01_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "test01_valgrind_output.txt">test01_valgrind_output.txt</a>,
+          the output file using VALGRIND.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TEST02</b> is an example in which some uninitialized data is accessed.
+      <ul>
+        <li>
+          <a href = "test02.f90">test02.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "test02.sh">test02.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "test02_output.txt">test02_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "test02_valgrind_output.txt">test02_valgrind_output.txt</a>,
+          the output file using VALGRIND.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 19 May 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

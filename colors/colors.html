@@ -1,0 +1,560 @@
+<html>
+
+  <head>
+    <title>
+      COLORS - Color Coordinate Conversion
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      COLORS <br> Color Coordinate Conversion
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>COLORS</b>
+      is a FORTRAN90 library which
+      converts color data from one system to another.
+    </p>
+
+    <p>
+      The color coordinate systems considered include CIELAB, CIELUV,
+      CIExyY, CIEXYZ, CMY, CMYK, HLS, HSI, HSV, HVC, LCC, NCS,
+      PhotoYCC, RGB, Y'CbCr, Y'IQ, Y'PbPr and Y'UV.
+    </p>
+
+    <p>
+      Color specification and conversion is a suprisingly difficult
+      subject.  For a particular situation, getting more red just means
+      increasing some number.  But to accurately try to take a given
+      color that shows up on one computer monitor screen, write down
+      the color specification numbers and the illumination, and then
+      figure out the corresponding color specification numbers in a
+      different color system on a different device (a printer, a
+      television) with a different illumination is actually an
+      extraordinary art.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../datasets/color/color.html">
+      COLOR</a>,
+      a dataset directory which
+      describes colors by name, triples of integers between 0 and 255,
+      or triples of real numbers between 0 and 1.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          George Agoston,<br>
+          Color Theory and Its Application in Art and Design,<br>
+          Second edition,<br>
+          Springer, 1987,<br>
+          ISBN: 038709654X,<br>
+          LC: QC495.A32.
+        </li>
+        <li>
+          Wayne Brown, Barry Shepherd,<br>
+          Graphics File Formats,<br>
+          Manning Publications, 1995,<br>
+          ISBN: 1884777007,<br>
+          LC: T385.B777.
+        </li>
+        <li>
+          James Foley, Andries vanDam, Steven Feiner, John Hughes,<br>
+          Computer Graphics, Principles and Practice,<br>
+          Second Edition,<br>
+          Addison Wesley, 1995,<br>
+          ISBN: 0201848406,<br>
+          LC: T385.C5735.
+        </li>
+        <li>
+          Brand Fortner,<br>
+          Number by Colors,
+          A Guide to Using Color to Understand Technical Data,<br>
+          Springer, 1997,<br>
+          ISBN: 0387946853,<br>
+          LC: QC495.F6.
+        </li>
+        <li>
+          Edward Giorgianni, Thomas Madden,<br>
+          Digital Color Management, Encoding Solutions,<br>
+          Addison Wesley, 1998,<br>
+          ISBN: 0201634260,<br>
+          LC: TA1637.G56.
+        </li>
+        <li>
+          Jonas Gomes, Luiz Velho,<br>
+          Image Processing for Computer Graphics,<br>
+          Springer, 1997,<br>
+          ISBN: 0387948546,<br>
+          LC: T385.G65.
+        </li>
+        <li>
+          Roy Hall,<br>
+          Illumination and Color in Computer Generated Imagery,<br>
+          Springer, 1989,<br>
+          ISBN: 0387967745,<br>
+          LC: T385.H327.
+        </li>
+        <li>
+          International Electrotechnical Commission,<br>
+          The sRGB standard,<br>
+          Standard IEC 61966-2-1,<br>
+          <a href = "http://www.srgb.com">http://www.srgb.com</a>
+        </li>
+        <li>
+          Deane Judd, Gunter Wyszecki,<br>
+          Color in Business, Science, and Industry,<br>
+          Wiley, 1975,<br>
+          ISBN: 0471452122,<br>
+          LC: QC495.J79.
+        </li>
+        <li>
+          Olof Kylander, Karin Kylander,<br>
+          GIMP: The Official Handbook,<br>
+          Coriolis Open Press, 1999,<br>
+          ISBN: 1576105202,<br>
+          LC: T385.K866.
+        </li>
+        <li>
+          David Martindale, Alan Paeth,<br>
+          Television Color Encoding and Hot Broadcast Colors,<br>
+          in Graphics Gems II,<br>
+          edited by James Arvo,<br>
+          Academic Press, 1991,<br>
+          ISBN: 0120644819,<br>
+          LC: T385.G6972.
+        </li>
+        <li>
+          Calvin McCamy, H Marcus, JG Davidson,<br>
+          A Color Rendition Chart,<br>
+          Journal of Applied Photographic Engineering,<br>
+          Volume 11, Number 3, 1976, pages 95-99.
+        </li>
+        <li>
+          Guenter Wyszecki, Walter Stiles,<br>
+          Color Science: Concepts and Methods, Quantitative Data
+          and Formulas,<br>
+          John Wiley, 1967,<br>
+          ISBN: 0-471-02106-7,<br>
+          LC: QC495.W88.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "colors.f90">colors.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "colors.sh">colors.sh</a>,
+          commands to compile the source code;
+        </li>
+        <li>
+          <a href = "colors.txt">colors.txt</a>, a color name data file
+          with the R, G, B values are integers between 0 and 255.
+        </li>
+        <li>
+          <a href = "colors_real.txt">colors_real.txt</a>,
+          a color name data file with the R, G, B, values as real numbers
+          between 0.0 and 1.0.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "colors_prb.f90">colors_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "colors_prb.sh">colors_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "colors_prb_output.txt">colors_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE_TO_RGB</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>ATAN4</b> computes the inverse tangent of the ratio Y / X.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CHART_XYZ_CAP</b> returns the CIE XYZ values of a 24 box color chart.
+        </li>
+        <li>
+          <b>CMY_CHECK</b> corrects out-of-range CMY color coordinates.
+        </li>
+        <li>
+          <b>CMY_TO_CMYK</b> converts CMY to CMYK color coordinates.
+        </li>
+        <li>
+          <b>CMY_TO_RGB</b> converts CMY to RGB color coordinates.
+        </li>
+        <li>
+          <b>CMYK_CHECK</b> corrects out-of-range CMYK color coordinates.
+        </li>
+        <li>
+          <b>CMYK_TO_CMY</b> converts CMYK to CMY color coordinates.
+        </li>
+        <li>
+          <b>CMYK_TO_RGB</b> converts CMYK to RGB color coordinates.
+        </li>
+        <li>
+          <b>GET_SEED</b> returns a seed for the random number generator.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GRAYSCALE_LUV</b> returns a grayscale in the CIE LUV system.
+        </li>
+        <li>
+          <b>GRAYSCALE_RGB</b> returns a grayscale in the RGB system.
+        </li>
+        <li>
+          <b>HLS_CHECK</b> corrects out-of-range HLS color coordinates.
+        </li>
+        <li>
+          <b>HLS_TO_RGB</b> converts HLS to RGB color coordinates.
+        </li>
+        <li>
+          <b>HLS_VALUE</b> is a utility function used by HLS_TO_RGB.
+        </li>
+        <li>
+          <b>HSI_TO_RGB</b> converts HSI to RGB color coordinates.
+        </li>
+        <li>
+          <b>HSV_CHECK</b> corrects out-of-range HSV color coordinates.
+        </li>
+        <li>
+          <b>HSV_TO_RGB</b> converts HSV to RGB color coordinates.
+        </li>
+        <li>
+          <b>HVC_CHECK</b> corrects out-of-range HVC color coordinates.
+        </li>
+        <li>
+          <b>I4_LOG_2</b> returns the integer part of the logarithm base 2 of |I|.
+        </li>
+        <li>
+          <b>I4_TO_ANGLE</b> maps integers to points on a circle.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>INTERP</b> does simple linear interpolation in a table.
+        </li>
+        <li>
+          <b>LAB_CHECK</b> corrects out-of-range CIE LAB color coordinates.
+        </li>
+        <li>
+          <b>LAB_PROP</b> returns certain properties of a CIE LAB color.
+        </li>
+        <li>
+          <b>LAB_TO_XYZ_CAP</b> converts CIE LAB to CIE XYZ color coordinates.
+        </li>
+        <li>
+          <b>LCC_TO_RGBPRIME</b> converts LCC to R'G'B' color coordinates.
+        </li>
+        <li>
+          <b>LCC_TO_YCBCR</b> converts LCC to Y'CbCr color coordinates.
+        </li>
+        <li>
+          <b>LCC_TO_YCC</b> converts LCC to PhotoYCC color coordinates.
+        </li>
+        <li>
+          <b>LIN_TO_NONLIN</b> converts a linear light intensity to nonlinear video signal.
+        </li>
+        <li>
+          <b>LUV_CHECK</b> corrects out-of-range CIE LUV color coordinates.
+        </li>
+        <li>
+          <b>LUV_PROP</b> returns certain properties of a CIE LUV color.
+        </li>
+        <li>
+          <b>LUV_TO_XYZ_CAP</b> converts CIE LUV to CIE XYZ color coordinates.
+        </li>
+        <li>
+          <b>NAME_TEST</b> supplies color names for tests.
+        </li>
+        <li>
+          <b>NAME_TO_PRIMARIES</b> returns CIE xy chromaticities of television primaries.
+        </li>
+        <li>
+          <b>NAME_TO_RGB</b> converts a string to RGB colors.
+        </li>
+        <li>
+          <b>NAME_TO_XYZ</b> converts a color or illuminant name to CIE xyz color coordinates.
+        </li>
+        <li>
+          <b>NCS_CHECK</b> corrects out-of-range NCS color coordinates.
+        </li>
+        <li>
+          <b>NCS_TO_RGB</b> converts NCS to RGB color coordinates.
+        </li>
+        <li>
+          <b>NM_TO_RGBCIE</b> converts a pure light wavelength to CIE RGB color coordinates.
+        </li>
+        <li>
+          <b>NM_TO_XYZ</b> converts a pure light wavelength to CIE xyz color coordinates.
+        </li>
+        <li>
+          <b>NM_TO_XYZ_CAP</b> converts a pure light wavelength to CIE XYZ color coordinates.
+        </li>
+        <li>
+          <b>NONLIN_TO_LIN</b> converts a nonlinear video signal to a linear light intensity.
+        </li>
+        <li>
+          <b>PRIMARIES_TO_Y</b> computes the luminance function for given primaries.
+        </li>
+        <li>
+          <b>R8_CUBERT</b> returns the cube root of an R8.
+        </li>
+        <li>
+          <b>R8_MODP</b> returns the nonnegative remainder of real division.
+        </li>
+        <li>
+          <b>R8_SWAP</b> switches two R8's.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8MAT_SOLVE</b> uses Gauss-Jordan elimination to solve an N by N linear system.
+        </li>
+        <li>
+          <b>RADIANS_TO_DEGREES</b> converts an angle from radians to degrees.
+        </li>
+        <li>
+          <b>RGB709_TO_XYZ_CAP</b> converts RGB709 to CIE XYZ color coordinates.
+        </li>
+        <li>
+          <b>RGB_CHECK</b> corrects out-of-range RGB color coordinates.
+        </li>
+        <li>
+          <b>RGB_UNIFORM</b> returns a random RGB color.
+        </li>
+        <li>
+          <b>RGB_NAMED_UNIFORM</b> returns a random named RGB color.
+        </li>
+        <li>
+          <b>RGB_TEST</b> supplies RGB values for tests.
+        </li>
+        <li>
+          <b>RGB_TO_CMY</b> converts RGB to CMY color coordinates.
+        </li>
+        <li>
+          <b>RGB_TO_CMYK</b> converts RGB to CMYK color coordinates.
+        </li>
+        <li>
+          <b>RGB_TO_HLS</b> converts RGB to HLS color coordinates.
+        </li>
+        <li>
+          <b>RGB_TO_HSI</b> converts RGB to HSI color coordinates.
+        </li>
+        <li>
+          <b>RGB_TO_HSV</b> converts RGB to HSV color coordinates.
+        </li>
+        <li>
+          <b>RGB_TO_HUE</b> converts (R,G,B) colors to a hue value between 0 and 1.
+        </li>
+        <li>
+          <b>RGB_TO_NAME</b> converts RGB colors to the name of the nearest color.
+        </li>
+        <li>
+          <b>RGB_TO_NCS</b> converts RGB to NCS color coordinates.
+        </li>
+        <li>
+          <b>RGB_TO_RGBPRIME</b> converts RGB to R'G'B' color coordinates.
+        </li>
+        <li>
+          <b>RGB_TO_YCBCR</b> converts RGB to Y'CbCr color coordinates.
+        </li>
+        <li>
+          <b>RGB_TO_YIQ</b> converts RGB to Y'IQ color coordinates.
+        </li>
+        <li>
+          <b>RGB_TO_YPBPR</b> converts RGB to Y'PbPr color coordinates.
+        </li>
+        <li>
+          <b>RGB_TO_YUV</b> converts RGB to Y'UV color coordinates.
+        </li>
+        <li>
+          <b>RGBCIE_TO_XYZ_CAP</b> converts CIE RGB to CIE XYZ color coordinates.
+        </li>
+        <li>
+          <b>RGBPRIME_TO_LCC</b> converts R'G'B' to LCC color coordinates.
+        </li>
+        <li>
+          <b>RGBPRIME_TO_RGB</b> converts R'G'B' to RGB color coordinates.
+        </li>
+        <li>
+          <b>S_C_DELETE</b> removes all occurrences of a character from a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>SRGB_TO_XYZ_CAP</b> converts sRGB to CIE XYZ color coordinates.
+        </li>
+        <li>
+          <b>T_TO_SPD</b> evaluates the black body power spectrum at a given temperature.
+        </li>
+        <li>
+          <b>T_TO_XY</b> returns CIE xyz color coordinates for black body radiation.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UVPRIME_TO_XYZ</b> converts CIE u'v' to CIE xyz color coordinates.
+        </li>
+        <li>
+          <b>UVPRIMEY_TO_XYZ_CAP</b> converts CIE u'v'Y to CIE XYZ color coordinates.
+        </li>
+        <li>
+          <b>XY_TO_UVWPRIME</b> converts CIE xy to CIE u'v'w' color coordinates.
+        </li>
+        <li>
+          <b>XYY_CHECK</b> corrects out-of-range CIE xyY color coordinates.
+        </li>
+        <li>
+          <b>XYY_TO_XYZ_CAP</b> converts CIE xyY to CIE XYZ color coordinates.
+        </li>
+        <li>
+          <b>XYZ_CAP_TO_LAB</b> converts CIE XYZ to CIE LAB color coordinates.
+        </li>
+        <li>
+          <b>XYZ_CAP_TO_LUV</b> converts CIE XYZ to CIE LUV color coordinates.
+        </li>
+        <li>
+          <b>XYZ_CAP_TO_RGB709</b> converts CIE XYZ to RGB709 color coordinates.
+        </li>
+        <li>
+          <b>XYZ_CAP_TO_RGBCIE</b> converts CIE XYZ to CIE RGB color coordinates.
+        </li>
+        <li>
+          <b>XYZ_CAP_TO_SRGB</b> converts CIE XYZ to sRGB color coordinates.
+        </li>
+        <li>
+          <b>XYZ_CAP_TO_UVWPRIME</b> converts CIE XYZ to CIE u'v'w' color coordinates.
+        </li>
+        <li>
+          <b>XYZ_CAP_TO_XYY</b> converts CIE XYZ to CIE xyY color coordinates.
+        </li>
+        <li>
+          <b>XYZ_CAP_TO_YCC</b> converts CIE XYZ to PhotoYCC color coordinates.
+        </li>
+        <li>
+          <b>XYZCAP_CHECK</b> corrects out-of-range CIE XYZ color coordinates.
+        </li>
+        <li>
+          <b>YCBCR_CHECK</b> corrects out-of-range Y'CbCr color coordinates.
+        </li>
+        <li>
+          <b>YCBCR_TO_LCC</b> converts Y'CbCr to LCC color coordinates.
+        </li>
+        <li>
+          <b>YCBCR_TO_RGB</b> converts Y'CbCr to RGB color coordinates.
+        </li>
+        <li>
+          <b>YCBCR_TO_YCC</b> converts Y'CbCr to PhotoYCC color coordinates.
+        </li>
+        <li>
+          <b>YCC_TEST</b> supplies PhotoYCC values for tests.
+        </li>
+        <li>
+          <b>YCC_TO_LCC</b> converts PhotoYCC to LCC color coordinates.
+        </li>
+        <li>
+          <b>YCC_TO_XYZ_CAP</b> converts PhotoYCC to CIE XYZ color coordinates.
+        </li>
+        <li>
+          <b>YCC_TO_YCBCR</b> converts PhotoYCC to Y'CbCr color coordinates.
+        </li>
+        <li>
+          <b>YIQ_CHECK</b> corrects out-of-range Y'IQ color coordinates.
+        </li>
+        <li>
+          <b>YIQ_TO_RGB</b> converts Y'IQ to RGB color coordinates.
+        </li>
+        <li>
+          <b>YIQ_TO_YUV</b> converts Y'IQ to Y'UV color coordinates.
+        </li>
+        <li>
+          <b>YPBPR_TO_RGB</b> converts Y'PbPr to RGB color coordinates.
+        </li>
+        <li>
+          <b>YUV_CHECK</b> corrects out-of-range Y'UV color coordinates.
+        </li>
+        <li>
+          <b>YUV_TO_RGB</b> converts Y'UV to RGB color coordinates.
+        </li>
+        <li>
+          <b>YUV_TO_YIQ</b> converts Y'UV to Y'IQ color coordinates.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 31 December 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

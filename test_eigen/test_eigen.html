@@ -1,0 +1,253 @@
+<html>
+
+  <head>
+    <title>
+      TEST_EIGEN - Test Matrices for Eigenvalue Analysis
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_EIGEN <br> Test Matrices for Eigenvalue Analysis
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_EIGEN</b>
+      is a FORTRAN90 library which
+      generates eigenvalue tests.
+    </p>
+
+    <p>
+      The current version of the code can only generate a symmetric
+      matrix with eigenvalues distributed according to a normal
+      distribution whose mean and standard deviation are specified
+      by the user (subroutine SYMM_TEST).
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_EIGEN</b> is available in
+      <a href = "../../c_src/test_eigen/test_eigen.html">a C version</a> and
+      <a href = "../../cpp_src/test_eigen/test_eigen.html">a C++ version</a> and
+      <a href = "../../f77_src/test_eigen/test_eigen.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_eigen/test_eigen.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_eigen/test_eigen.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/arpack/arpack.html">
+      ARPACK</a>,
+      a FORTRAN90 library which
+      computes eigenvalues for large matrices;
+    </p>
+
+    <p>
+      <a href = "../../f_src/eispack/eispack.html">
+      EISPACK</a>,
+      a FORTRAN90 library which
+      carries out eigenvalue computations;
+      superseded by LAPACK;
+    </p>
+
+    <p>
+      <a href = "../../f_src/lapack_examples/lapack_examples.html">
+      LAPACK_EXAMPLES</a>,
+      a FORTRAN90 program which
+      demonstrates the use of the LAPACK linear algebra library.
+    </p>
+
+    <p>
+      <a href = "../../f_src/power_method/power_method.html">
+      POWER_METHOD</a>,
+      a FORTRAN90 library which
+      carries out the power method for finding a dominant eigenvalue
+      and its eigenvector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_mat/test_mat.html">
+      TEST_MAT</a>,
+      a FORTRAN90 library which
+      defines test matrices.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms343/toms343.html">
+      TOMS343</a>,
+      a FORTRAN77 library which
+      computes the eigenvalues and
+      eigenvectors of a general real matrix;<br>
+      this is a FORTRAN77 version of ACM TOMS algorithm 343.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms384/toms384.html">
+      TOMS384</a>,
+      a FORTRAN77 library which
+      computes the eigenvalues and eigenvectors
+      of a symmetric matrix;<br>
+      this is a FORTRAN77 version of ACM TOMS algorithm 384.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Robert Gregory, David Karney,<br>
+          A Collection of Matrices for Testing Computational Algorithms,<br>
+          Wiley, 1969,<br>
+          ISBN: 0882756494,<br>
+          LC: QA263.G68.
+        </li>
+        <li>
+          Pete Stewart,<br>
+          Efficient Generation of Random Orthogonal Matrices With an Application
+          to Condition Estimators,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 17, Number 3, June 1980, pages 403-409.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_eigen.f90">test_eigen.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "test_eigen.sh">test_eigen.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_eigen_prb.f90">test_eigen_prb.f90</a>,
+          the calling program;
+        </li>
+        <li>
+          <a href = "test_eigen_prb.sh">test_eigen_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "test_eigen_prb_output.txt">test_eigen_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HISTOGRAM_FILE_WRITE</b> creates a plot file of histogram data.
+        </li>
+        <li>
+          <b>R8_NORMAL_01</b> returns a unit pseudonormal R8.
+        </li>
+        <li>
+          <b>R8_TO_S_LEFT</b> writes a real into a left justified character string.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8BIN_PRINT</b> prints the bins of a real vector.
+        </li>
+        <li>
+          <b>R8MAT_HOUSE_AXH</b> computes A*H where H is a compact Householder matrix.
+        </li>
+        <li>
+          <b>R8MAT_ORTH_UNIFORM</b> returns a random orthogonal R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8SYMM_TEST</b> determines a symmetric matrix with a certain eigenstructure.
+        </li>
+        <li>
+          <b>R8VEC_BIN</b> computes bins based on a given R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_HOUSE_COLUMN</b> defines a Householder premultiplier that "packs" a column.
+        </li>
+        <li>
+          <b>R8VEC_NORMAL</b> returns a scaled pseudonormal R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>S_LEFT</b> flushes a string left.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 21 February 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

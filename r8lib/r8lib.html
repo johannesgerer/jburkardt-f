@@ -1,0 +1,1631 @@
+<html>
+
+  <head>
+    <title>
+      R8LIB - A Double Precision Real Arithmetic Utility Library
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      R8LIB <br> A Double Precision Real Arithmetic Utility Library
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>R8LIB</b> 
+      is a FORTRAN90 library which 
+      contains a number of utility routines for "R8" or "double precision real"
+      arithmetic.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>R8LIB</b> is available in
+      <a href = "../../c_src/r8lib/r8lib.html">a C version</a> and
+      <a href = "../../cpp_src/r8lib/r8lib.html">a C++ version</a> and
+      <a href = "../../f77_src/r8lib/r8lib.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/r8lib/r8lib.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/r8lib/r8lib.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/c4lib/c4lib.html">
+      C4LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for "C4" or
+      single precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/c8lib/c8lib.html">
+      C8LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for "C8" or
+      double precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/i4lib/i4lib.html">
+      I4LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "I4" or "single precision integer"
+      arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/i8lib/i8lib.html">
+      I8LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "I8" or "double precision integer"
+      arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r16lib/r16lib.html">
+      R16LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R16" or 
+      "quadruple precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r4lib/r4lib.html">
+      R4LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R4" or 
+      "single precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subpak/subpak.html">
+      SUBPAK</a>, 
+      a FORTRAN90 library which
+      contains many utility routines;
+    </p>
+
+    <h3 align = "center">
+      References:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Thomas Cormen, Charles Leiserson, Ronald Rivest,<br>
+          Introduction to Algorithms,<br>
+          MIT Press, 2001,<br>
+          ISBN: 0262032937,<br>
+          LC: QA76.C662.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms for Computers and Calculators,<br>
+          Second Edition,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0-12-519260-6,<br>
+          LC: QA164.N54.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "r8lib.f90">r8lib.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "r8lib.sh">r8lib.sh</a>, 
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "r8lib_prb.f90">r8lib_prb.f90</a>, a sample calling
+          program;
+        </li>
+        <li>
+          <a href = "r8lib_prb.sh">r8lib_prb.sh</a>, commands to 
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "r8lib_prb_output.txt">r8lib_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_LOG_10</b> returns the integer part of the logarithm base 10 of an I4.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of I4 division.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4INT_TO_R8INT</b> maps an I4INT to an R8INT.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_PERMUTE</b> permutes an I4VEC in place.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>LEGENDRE_ZEROS</b> computes the zeros of the Legendre polynomial of degree N.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PERM_UNIFORM</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>R8_ABS</b> returns the absolute value of an R8.
+        </li>
+        <li>
+          <b>R8_ADD</b> returns the sum of two R8's.
+        </li>
+        <li>
+          <b>R8_AINT</b> truncates an R8 argument to an integer.
+        </li>
+        <li>
+          <b>R8_ATAN</b> computes the inverse tangent of the ratio Y / X.
+        </li>
+        <li>
+          <b>R8_CAS</b> returns the "casine" of an R8.
+        </li>
+        <li>
+          <b>R8_CEILING</b> rounds an R8 "up" (towards +oo) to an integral R8.
+        </li>
+        <li>
+          <b>R8_CHOOSE</b> computes the binomial coefficient C(N,K) as an R8.
+        </li>
+        <li>
+          <b>R8_CHOP</b> chops an R8 to a given number of binary places.
+        </li>
+        <li>
+          <b>R8_CSC</b> returns the cosecant of X.
+        </li>
+        <li>
+          <b>R8_CSQRT</b> returns the complex square root of an R8.
+        </li>
+        <li>
+          <b>R8_CUBE_ROOT</b> returns the cube root of an R8.
+        </li>
+        <li>
+          <b>R8_DIFF</b> computes the difference of two R8's to a specified accuracy.
+        </li>
+        <li>
+          <b>R8_DIGIT</b> returns a particular decimal digit of an R8.
+        </li>
+        <li>
+          <b>R8_DIVIDE_I4</b> returns an I4 fraction as an R8.
+        </li>
+        <li>
+          <b>R8_EPSILON</b> returns the R8 roundoff unit.
+        </li>
+        <li>
+          <b>R8_EXP</b> computes the exponential of an R16, avoiding overflow and underflow.
+        </li>
+        <li>
+          <b>R8_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>R8_FACTORIAL2</b> computes the double factorial function.
+        </li>
+        <li>
+          <b>R8_FLOOR</b> rounds an R8 "down" (towards -oo) to the nearest integral R8.
+        </li>
+        <li>
+          <b>R8_FRACTION</b> uses real arithmetic on an integer ratio.
+        </li>
+        <li>
+          <b>R8_FRACTIONAL</b> returns the fractional part of an R8.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates Gamma(X) for a real argument.
+        </li>
+        <li>
+          <b>R8_HUGE</b> returns a very large R8.
+        </li>
+        <li>
+          <b>R8_HYPOT</b> returns the value of sqrt ( X^2 + Y^2 ).
+        </li>
+        <li>
+          <b>R8_IN_01</b> is TRUE if an R8 is in the range [0,1].
+        </li>
+        <li>
+          <b>R8_INSIGNIFICANT</b> determines if an R8 is insignificant.
+        </li>
+        <li>
+          <b>R8_IS_INT</b> determines if an R8 represents an integer value.
+        </li>
+        <li>
+          <b>R8_LOG_2</b> returns the logarithm base 2 of an R8.
+        </li>
+        <li>
+          <b>R8_LOG_10</b> returns the logarithm base 10 of an R8.
+        </li>
+        <li>
+          <b>R8_LOG_B</b> returns the logarithm base B of an R8.
+        </li>
+        <li>
+          <b>R8_MANT</b> computes the "mantissa" or "fraction part" of an R8.
+        </li>
+        <li>
+          <b>R8_MOD</b> returns the remainder of R8 division.
+        </li>
+        <li>
+          <b>R8_MODP</b> returns the nonnegative remainder of R8 division.
+        </li>
+        <li>
+          <b>R8_MOP</b> returns the I-th power of -1 as an R8.
+        </li>
+        <li>
+          <b>R8_NINT</b> returns the nearest integer to an R8.
+        </li>
+        <li>
+          <b>R8_NORMAL</b> returns a scaled pseudonormal R8.
+        </li>
+        <li>
+          <b>R8_NORMAL_01</b> returns a unit pseudonormal R8.
+        </li>
+        <li>
+          <b>R8_PI</b> returns the value of pi as an R8.
+        </li>
+        <li>
+          <b>R8_POWER</b> computes the P-th power of an R8.
+        </li>
+        <li>
+          <b>R8_POWER_FAST</b> computes an integer power of an R8.
+        </li>
+        <li>
+          <b>R8_PYTHAG</b> computes sqrt ( A * A + B * B ), avoiding overflow and underflow.
+        </li>
+        <li>
+          <b>R8_ROUND2</b> rounds an R8 in base 2.
+        </li>
+        <li>
+          <b>R8_ROUNDB</b> rounds an R8 in a given base.
+        </li>
+        <li>
+          <b>R8_ROUNDX</b> rounds an R8 in base 10.
+        </li>
+        <li>
+          <b>R8_SIGN</b> returns the sign of an R8.
+        </li>
+        <li>
+          <b>R8_SIGN_CHAR</b> returns a character indicating the sign of an R8.
+        </li>
+        <li>
+          <b>R8_SIGN_MATCH</b> is TRUE if two R8's are of the same sign.
+        </li>
+        <li>
+          <b>R8_SIGN_MATCH_STRICT</b> is TRUE if two R8's are of the same strict sign.
+        </li>
+        <li>
+          <b>R8_SIGN_OPPOSITE</b> is TRUE if two R8's are not of the same sign.
+        </li>
+        <li>
+          <b>R8_SIGN_OPPOSITE_STRICT</b> is TRUE if two R8's are strictly of opposite sign.
+        </li>
+        <li>
+          <b>R8_SQRT_I4</b> returns the square root of an I4 as an R8.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>R8_SWAP3</b> swaps three R8's.
+        </li>
+        <li>
+          <b>R8_TINY</b> returns a very small but positive R8.
+        </li>
+        <li>
+          <b>R8_TO_R8_DISCRETE</b> maps R to RD in [RMIN, RMAX] with NR possible values.
+        </li>
+        <li>
+          <b>R8_TO_DHMS</b> converts decimal days into days, hours, minutes, seconds.
+        </li>
+        <li>
+          <b>R8_TO_I4</b> maps X in [XMIN, XMAX] to integer IX in [IXMIN, IXMAX].
+        </li>
+        <li>
+          <b>R8_UNIFORM</b> returns a scaled pseudorandom R8.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8_UNSWAP3</b> unswaps three R8's.
+        </li>
+        <li>
+          <b>R8_WALSH_1D</b> evaluates the Walsh function.
+        </li>
+        <li>
+          <b>R8_WRAP</b> forces an R8 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>R82_CHEBY</b> sets up the Chebyshev abscissas in an R8 interval.
+        </li>
+        <li>
+          <b>R82_DIST_L2</b> returns the L2 distance between a pair of R82's.
+        </li>
+        <li>
+          <b>R82_EQ</b> == ( A1 == A2 ) for two R82's.
+        </li>
+        <li>
+          <b>R82_GE</b> == ( A1 >= A2 ) for two R82's.
+        </li>
+        <li>
+          <b>R82_GT</b> == ( A1 > A2 ) for two R82's.
+        </li>
+        <li>
+          <b>R82_LE</b> == ( A1 <= A2 ) for two R82's.
+        </li>
+        <li>
+          <b>R82_LT</b> == ( A1 < A2 ) for two R82's.
+        </li>
+        <li>
+          <b>R82_NE</b> == ( A1 /= A2 ) for two R82's.
+        </li>
+        <li>
+          <b>R82_NORM</b> returns the Euclidean norm of an R82.
+        </li>
+        <li>
+          <b>R82_NORMALIZE</b> Euclidean normalizes an R82.
+        </li>
+        <li>
+          <b>R82_PRINT</b> prints an R82.
+        </li>
+        <li>
+          <b>R82_SWAP</b> swaps two R82 values.
+        </li>
+        <li>
+          <b>R82_UNIFORM</b> returns a random R82 value in a given range.
+        </li>
+        <li>
+          <b>R82POLY2_PRINT</b> prints a second order polynomial in two variables.
+        </li>
+        <li>
+          <b>R82POLY2_TYPE</b> analyzes a second order polynomial in two variables.
+        </li>
+        <li>
+          <b>R82POLY2_TYPE_PRINT</b> prints the meaning of the output from R82POLY2_TYPE.
+        </li>
+        <li>
+          <b>R82VEC_MAX</b> returns the maximum value in an R82VEC.
+        </li>
+        <li>
+          <b>R82VEC_MIN</b> returns the minimum value in an R82VEC.
+        </li>
+        <li>
+          <b>R82VEC_ORDER_TYPE</b> finds the order type of an R82VEC.
+        </li>
+        <li>
+          <b>R82VEC_PART_QUICK_A</b> reorders an R82VEC as part of a quick sort.
+        </li>
+        <li>
+          <b>R82VEC_PERMUTE</b> permutes an R82VEC in place.
+        </li>
+        <li>
+          <b>R82VEC_PRINT</b> prints an R82VEC.
+        </li>
+        <li>
+          <b>R82VEC_PRINT_PART</b> prints "part" of an R82VEC.
+        </li>
+        <li>
+          <b>R82VEC_SORT_HEAP_INDEX_A</b> ascending index heaps an R82VEC.
+        </li>
+        <li>
+          <b>R82VEC_SORT_QUICK_A</b> ascending sorts an R82VEC using quick sort.
+        </li>
+        <li>
+          <b>R83_NORM</b> returns the Euclidean norm of an R83.
+        </li>
+        <li>
+          <b>R83_NORMALIZE</b> normalizes an R83.
+        </li>
+        <li>
+          <b>R83_PRINT</b> prints an R83.
+        </li>
+        <li>
+          <b>R83_SWAP</b> swaps two R83's.
+        </li>
+        <li>
+          <b>R83VEC_MAX</b> returns the maximum value in an R83VEC.
+        </li>
+        <li>
+          <b>R83VEC_MIN</b> returns the minimum value in an R83VEC.
+        </li>
+        <li>
+          <b>R83VEC_NORMALIZE</b> normalizes each R83 in an R83VEC.
+        </li>
+        <li>
+          <b>R83VEC_PRINT_PART</b> prints "part" of an R83VEC.
+        </li>
+        <li>
+          <b>R84_NORMALIZE</b> normalizes an R84.
+        </li>
+        <li>
+          <b>R8BLOCK_EXPAND_LINEAR</b> linearly interpolates new data into an R8BLOCK.
+        </li>
+        <li>
+          <b>R8BLOCK_PRINT</b> prints an R8BLOCK.
+        </li>
+        <li>
+          <b>R8COL_COMPARE</b> compares columns in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_DUPLICATES</b> generates an R8COL with some duplicate columns.
+        </li>
+        <li>
+          <b>R8COL_FIND</b> seeks a column value in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_FIRST_INDEX</b> indexes the first occurrence of values in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_INSERT</b> inserts a column into an R8COL.
+        </li>
+        <li>
+          <b>R8COL_MAX</b> returns the maximums in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_MAX_INDEX</b> returns the indices of column maximums in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_MAX_ONE</b> rescales an R8COL so each column maximum is 1.
+        </li>
+        <li>
+          <b>R8COL_MEAN</b> returns the column means of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_MIN</b> returns the column minimums of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_MIN_INDEX</b> returns the indices of column minimums in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_NORMALIZE_LI</b> normalizes an R8COL with the column infinity norm.
+        </li>
+        <li>
+          <b>R8COL_PART_QUICK_A</b> reorders the columns of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_PERMUTE</b> permutes an R8COL in place.
+        </li>
+        <li>
+          <b>R8COL_SORT_HEAP_A</b> ascending heapsorts an R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORT_QUICK_A</b> ascending quick sorts an R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTED_TOL_UNDEX</b> indexes tolerably unique entries in a sorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTED_TOL_UNIQUE</b> keeps tolerably unique elements in a sorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTED_TOL_UNIQUE_COUNT:</b> tolerably unique elements in a sorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTED_UNDEX</b> returns unique sorted indexes for a sorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTED_UNIQUE</b> keeps unique elements in a sorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTED_UNIQUE_COUNT</b> counts unique elements in a sorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTR_A</b> ascending sorts one column of an R8COL, adjusting all columns.
+        </li>
+        <li>
+          <b>R8COL_SUM</b> sums the columns of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_SWAP</b> swaps columns I and J of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_TO_R8VEC</b> converts an R8COL to an R8VEC.
+        </li>
+        <li>
+          <b>R8COL_TOL_UNDEX</b> indexes tolerably unique entries of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_TOL_UNIQUE_COUNT</b> counts tolerably unique entries in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_TOL_UNIQUE_INDEX</b> indexes tolerably unique entries in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_UNDEX</b> returns unique sorted indexes for an R8COL.
+        </li>
+        <li>
+          <b>R8COL_UNIFORM</b> fills an R8COL with scaled pseudorandom numbers.
+        </li>
+        <li>
+          <b>R8COL_UNIQUE_COUNT</b> counts the unique columns in an unsorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_UNIQUE_INDEX</b> indexes the unique occurrence of values in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_VARIANCE</b> returns the variances of an R8COL.
+        </li>
+        <li>
+          <b>R8R8_COMPARE</b> compares two R8R8's.
+        </li>
+        <li>
+          <b>R8R8_PRINT</b> prints an R8R8.
+        </li>
+        <li>
+          <b>R8R8R8_COMPARE</b> compares two R8R8R8's.
+        </li>
+        <li>
+          <b>R8R8R8VEC_INDEX_INSERT_UNIQUE</b> inserts unique R8R8R in an indexed sorted list.
+        </li>
+        <li>
+          <b>R8R8R8VEC_INDEX_SEARCH</b> searches for R8R8R8 value in an indexed sorted list.
+        </li>
+        <li>
+          <b>R8R8VEC_INDEX_INSERT_UNIQUE</b> inserts a unique R8R8 in an indexed sorted list.
+        </li>
+        <li>
+          <b>R8R8VEC_INDEX_SEARCH</b> searches for an R8R8 in an indexed sorted list.
+        </li>
+        <li>
+          <b>R8INT_TO_R8INT</b> maps one R8INT to another.
+        </li>
+        <li>
+          <b>R8INT_TO_I4INT</b> maps an R8INT to an integer interval.
+        </li>
+        <li>
+          <b>R8MAT_ADD</b> computes C = alpha * A + beta * B for R8MAT's.
+        </li>
+        <li>
+          <b>R8MAT_AMAX</b> returns the maximum absolute value entry of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_BORDER_ADD</b> adds a "border" to an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_BORDER_CUT</b> cuts the "border" of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_CHOLESKY_FACTOR</b> computes the Cholesky factor of a symmetric matrix.
+        </li>
+        <li>
+          <b>R8MAT_CHOLESKY_SOLVE</b> solves a Cholesky factored linear system A * x = b.
+        </li>
+        <li>
+          <b>R8MAT_CHORESKY_FACTOR</b> computes the "Choresky" factor of a symmetric matrix.
+        </li>
+        <li>
+          <b>R8MAT_COPY</b> copies an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_DET</b> computes the determinant of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_DET_2D</b> computes the determinant of a 2 by 2 R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_DET_3D</b> computes the determinant of a 3 by 3 R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_DET_4D</b> computes the determinant of a 4 by 4 R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_DET_5D</b> computes the determinant of a 5 by 5 R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_DIAG_ADD_SCALAR</b> adds a scalar to the diagonal of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_DIAG_ADD_VECTOR</b> adds a vector to the diagonal of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_DIAG_GET_VECTOR</b> gets the value of the diagonal of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_DIAG_SET_SCALAR</b> sets the diagonal of an R8MAT to a scalar value.
+        </li>
+        <li>
+          <b>R8MAT_DIAG_SET_VECTOR</b> sets the diagonal of an R8MAT to a vector.
+        </li>
+        <li>
+          <b>R8MAT_EXPAND_LINEAR</b> linearly interpolates new data into an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_EXPAND_LINEAR2</b> expands an R8MAT by linear interpolation.
+        </li>
+        <li>
+          <b>R8MAT_FLIP_COLS</b> swaps the columns of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_FLIP_ROWS</b> swaps the rows of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_FSS</b> factors and solves a system with multiple right hand sides.
+        </li>
+        <li>
+          <b>R8MAT_GIVENS_POST</b> computes the Givens postmultiplier rotation matrix.
+        </li>
+        <li>
+          <b>R8MAT_GIVENS_PRE</b> computes the Givens premultiplier rotation matrix.
+        </li>
+        <li>
+          <b>R8MAT_HESS</b> approximates a Hessian matrix via finite differences.
+        </li>
+        <li>
+          <b>R8MAT_HOUSE_AXH</b> computes A*H where H is a compact Householder matrix.
+        </li>
+        <li>
+          <b>R8MAT_HOUSE_FORM</b> constructs a Householder matrix from its compact form.
+        </li>
+        <li>
+          <b>R8MAT_HOUSE_HXA</b> computes H*A where H is a compact Householder matrix.
+        </li>
+        <li>
+          <b>R8MAT_HOUSE_POST</b> computes a Householder post-multiplier matrix.
+        </li>
+        <li>
+          <b>R8MAT_HOUSE_PRE</b> computes a Householder pre-multiplier matrix.
+        </li>
+        <li>
+          <b>R8MAT_IDENTITY</b> stores the identity matrix in an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_IN_01</b> is TRUE if the entries of an R8MAT are in the range [0,1].
+        </li>
+        <li>
+          <b>R8MAT_INDICATOR</b> sets up an "indicator" R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_INSIGNIFICANT</b> determines if an R8MAT is insignificant.
+        </li>
+        <li>
+          <b>R8MAT_INVERSE_2D</b> inverts a 2 by 2 R8MAT using Cramer's rule.
+        </li>
+        <li>
+          <b>R8MAT_INVERSE_3D</b> inverts a 3 by 3 R8MAT using Cramer's rule.
+        </li>
+        <li>
+          <b>R8MAT_INVERSE_4D</b> inverts a 4 by 4 R8MAT using Cramer's rule.
+        </li>
+        <li>
+          <b>R8MAT_IS_IDENTITY</b> determines if an R8MAT is the identity.
+        </li>
+        <li>
+          <b>R8MAT_IS_NONNEGATIVE</b> checks whether an R8MAT is nonnegative.
+        </li>
+        <li>
+          <b>R8MAT_JAC</b> estimates a dense jacobian matrix of the function FX.
+        </li>
+        <li>
+          <b>R8MAT_L_INVERSE</b> inverts a lower triangular R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_L_PRINT</b> prints a lower triangular R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_L_SOLVE</b> solves a lower triangular linear system.
+        </li>
+        <li>
+          <b>R8MAT_L1_INVERSE</b> inverts a unit lower triangular R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_LT_SOLVE</b> solves a transposed lower triangular linear system.
+        </li>
+        <li>
+          <b>R8MAT_LU</b> computes the LU factorization of a rectangular R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_MAX</b> returns the maximum entry of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_MAX_INDEX</b> returns the location of the maximum entry of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_MAXCOL_MINROW</b> gets the maximum column minimum row of an M by N R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_MAXROW_MINCOL</b> gets the maximum row minimum column of an M by N R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_MIN</b> returns the minimum entry of an M by N R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_MIN_INDEX</b> returns the location of the minimum entry of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_MINCOL_MAXROW</b> gets the minimum column maximum row of an M by N R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_MINROW_MAXCOL</b> gets the minimum row maximum column of an M by N R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_MINVM</b> computes inverse(A) * B for R8MAT's.
+        </li>
+        <li>
+          <b>R8MAT_MM</b> multiplies two R8MAT's.
+        </li>
+        <li>
+          <b>R8MAT_MTV</b> multiplies a transposed matrix times a vector
+        </li>
+        <li>
+          <b>R8MAT_MV</b> multiplies a matrix times a vector.
+        </li>
+        <li>
+          <b>R8MAT_NINT</b> rounds the entries of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_NORM_EIS</b> returns the EISPACK norm of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_NORM_FRO</b> returns the Frobenius norm of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_NORM_L1</b> returns the matrix L1 norm of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_NORM_L2</b> returns the matrix L2 norm of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_NORM_LI</b> returns the matrix L-oo norm of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_NULLSPACE</b> computes the nullspace of a matrix.
+        </li>
+        <li>
+          <b>R8MAT_NULLSPACE_SIZE</b> computes the size of the nullspace of a matrix.
+        </li>
+        <li>
+          <b>R8MAT_ORTH_UNIFORM</b> returns a random orthogonal R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PLOT</b> "plots" an R8MAT, with an optional title.
+        </li>
+        <li>
+          <b>R8MAT_PLOT_SYMBOL</b> returns a symbol for an element of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_POLY_CHAR</b> computes the characteristic polynomial of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_POWER</b> computes a nonnegative power of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_POWER_METHOD</b> applies the power method to an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT2</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_REF</b> computes the row echelon form of a matrix.
+        </li>
+        <li>
+          <b>R8MAT_RMS</b> returns the RMS norm of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_RREF</b> computes the reduced row echelon form of a matrix.
+        </li>
+        <li>
+          <b>R8MAT_SCALE</b> multiplies an R8MAT by a scalar.
+        </li>
+        <li>
+          <b>R8MAT_SOLVE</b> uses Gauss-Jordan elimination to solve an N by N linear system.
+        </li>
+        <li>
+          <b>R8MAT_SOLVE_2D</b> solves a 2 by 2 linear system using Cramer's rule.
+        </li>
+        <li>
+          <b>R8MAT_SOLVE_3D</b> solves a 3 by 3 linear system using Cramer's rule.
+        </li>
+        <li>
+          <b>R8MAT_SOLVE2</b> computes the solution of an N by N linear system.
+        </li>
+        <li>
+          <b>R8MAT_SUM</b> returns the sum of the entries of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_SYMM_EIGEN</b> returns a symmetric matrix with given eigensystem.
+        </li>
+        <li>
+          <b>R8MAT_SYMM_JACOBI</b> applies Jacobi eigenvalue iteration to a symmetric matrix.
+        </li>
+        <li>
+          <b>R8MAT_TO_R8PLU</b> factors a general R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_TRACE</b> computes the trace of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE</b> makes a transposed copy of a matrix.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_IN_PLACE</b> transposes a square matrix in place.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_U_INVERSE</b> inverts an upper triangular R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_U1_INVERSE</b> inverts a unit upper triangular R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM</b> fills an R8MAT with scaled pseudorandom numbers.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM_01</b> fills an R8MAT with unit pseudorandom numbers.
+        </li>
+        <li>
+          <b>R8MAT_VAND2</b> returns the N by N row Vandermonde matrix A.
+        </li>
+        <li>
+          <b>R8MAT_ZERO</b> zeroes an R8MAT.
+        </li>
+        <li>
+          <b>R8PLU_DET</b> computes the determinant of an R8PLU matrix.
+        </li>
+        <li>
+          <b>R8PLU_INVERSE</b> computes the inverse of an R8PLU matrix.
+        </li>
+        <li>
+          <b>R8PLU_MUL</b> computes A * x using the PLU factors of A.
+        </li>
+        <li>
+          <b>R8PLU_SOL</b> solves a linear system A*x=b from the PLU factors.
+        </li>
+        <li>
+          <b>R8PLU_TO_R8MAT</b> recovers the matrix A that was factored by R8MAT_TO_R8PLU.
+        </li>
+        <li>
+          <b>R8POLY_DEGREE</b> returns the degree of a polynomial.
+        </li>
+        <li>
+          <b>R8POLY_DERIV</b> returns the derivative of a polynomial.
+        </li>
+        <li>
+          <b>R8POLY_LAGRANGE_0</b> evaluates the Lagrange factor at a point.
+        </li>
+        <li>
+          <b>R8POLY_LAGRANGE_1</b> evaluates the first derivative of the Lagrange factor.
+        </li>
+        <li>
+          <b>R8POLY_LAGRANGE_2</b> evaluates the second derivative of the Lagrange factor.
+        </li>
+        <li>
+          <b>R8POLY_LAGRANGE_COEF</b> returns the coefficients of a Lagrange polynomial.
+        </li>
+        <li>
+          <b>R8POLY_LAGRANGE_FACTOR</b> evaluates the polynomial Lagrange factor at a point.
+        </li>
+        <li>
+          <b>R8POLY_LAGRANGE_VAL</b> evaluates the IPOL-th Lagrange polynomial.
+        </li>
+        <li>
+          <b>R8POLY_ORDER</b> returns the order of a polynomial.
+        </li>
+        <li>
+          <b>R8POLY_PRINT</b> prints out a polynomial.
+        </li>
+        <li>
+          <b>R8POLY_SHIFT</b> adjusts the coefficients of a polynomial for a new argument.
+        </li>
+        <li>
+          <b>R8POLY_VALUE</b> evaluates an R8POLY.
+        </li>
+        <li>
+          <b>R8POLY_VALUE_HORNER</b> evaluates a polynomial using Horner's method.
+        </li>
+        <li>
+          <b>R8POLY2_EX</b> finds the extremal point of a parabola determined by three points.
+        </li>
+        <li>
+          <b>R8POLY2_EX2</b> finds extremal point of a parabola determined by three points.
+        </li>
+        <li>
+          <b>R8POLY2_ROOT</b> returns the two roots of a quadratic polynomial.
+        </li>
+        <li>
+          <b>R8POLY2_RROOT</b> returns the real parts of the roots of a quadratic polynomial.
+        </li>
+        <li>
+          <b>R8POLY2_VAL</b> evaluates a parabola defined by three data values.
+        </li>
+        <li>
+          <b>R8POLY2_VAL2</b> evaluates a parabolic interpolant through tabular data.
+        </li>
+        <li>
+          <b>R8POLY3_ROOT</b> returns the three roots of a cubic polynomial.
+        </li>
+        <li>
+          <b>R8POLY4_ROOT</b> returns the four roots of a quartic polynomial.
+        </li>
+        <li>
+          <b>R8ROW_COMPARE</b> compares rows in an R8ROW.
+        </li>
+        <li>
+          <b>R8ROW_MAX</b> returns the maximums of an R8ROW.
+        </li>
+        <li>
+          <b>R8ROW_MEAN</b> returns the means of an R8ROW.
+        </li>
+        <li>
+          <b>R8ROW_MIN</b> returns the minimums of an R8ROW.
+        </li>
+        <li>
+          <b>R8ROW_PART_QUICK_A</b> reorders the rows of an R8ROW.
+        </li>
+        <li>
+          <b>R8ROW_SORT_HEAP_A</b> ascending heapsorts an R8ROWL.
+        </li>
+        <li>
+          <b>R8ROW_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R8ROW.
+        </li>
+        <li>
+          <b>R8ROW_SORT_QUICK_A</b> ascending quick sorts an R8ROW.
+        </li>
+        <li>
+          <b>R8ROW_SORTED_UNIQUE_COUNT</b> counts unique elements in an R8ROW.
+        </li>
+        <li>
+          <b>R8ROW_SUM</b> returns the sums of the rows of an R8ROW.
+        </li>
+        <li>
+          <b>R8ROW_SWAP</b> swaps two rows of an R8ROW.
+        </li>
+        <li>
+          <b>R8ROW_TO_R8VEC</b> converts an R8ROW into an R8VEC.
+        </li>
+        <li>
+          <b>R8ROW_VARIANCE</b> returns the variances of an R8ROW.
+        </li>
+        <li>
+          <b>R8SLMAT_PRINT</b> prints a strict lower triangular R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_01_TO_AB</b> shifts and rescales an R8VEC to lie within given bounds.
+        </li>
+        <li>
+          <b>R8VEC_AB_TO_01</b> shifts and rescales an R8VEC to lie within [0,1].
+        </li>
+        <li>
+          <b>R8VEC_AB_TO_CD</b> shifts and rescales an R8VEC from one interval to another.
+        </li>
+        <li>
+          <b>R8VEC_ALL_NONPOSITIVE:</b> ( all ( A <= 0 ) ) for R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_AMAX</b> returns the maximum absolute value in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_AMAX_INDEX</b> returns the index of the maximum absolute value in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_AMIN</b> returns the minimum absolute value in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_AMIN_INDEX</b> returns the index of the minimum absolute value in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_ANY_NEGATIVE:</b> ( any A < 0 ) for R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_ANY_NONZERO:</b> ( any A nonzero ) for R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_ANY_NORMAL</b> returns some normal vector to V1.
+        </li>
+        <li>
+          <b>R8VEC_ASCENDS</b> determines if an R8VEC is (weakly) ascending.
+        </li>
+        <li>
+          <b>R8VEC_ASCENDS_STRICTLY</b> determines if an R8VEC is strictly ascending.
+        </li>
+        <li>
+          <b>R8VEC_BIN</b> computes bins based on a given R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_BLEND</b> performs weighted interpolation of two R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET</b> searches a sorted R8VEC for successive brackets of a value.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET2</b> searches a sorted R8VEC for successive brackets of a value.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET3</b> finds the interval containing or nearest a given value.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET4</b> finds the nearest interval to each of a vector of values.
+        </li>
+        <li>
+          <b>R8VEC_CEILING</b> rounds "up" (towards +oo) entries of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_CHEBYSHEV</b> creates a vector of Chebyshev spaced values.
+        </li>
+        <li>
+          <b>R8VEC_CIRCULAR_VARIANCE</b> returns the circular variance of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_COMPARE</b> compares two R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_CONVOLUTION</b> returns the convolution of two R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_CONVOLUTION_CIRC:</b> discrete circular convolution of two R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_COPY</b> copies an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_CORRELATION</b> returns the correlation of two R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_CROSS_PRODUCT_2D</b> finds the cross product of a pair of vectors in 2D.
+        </li>
+        <li>
+          <b>R8VEC_CROSS_PRODUCT_AFFINE_2D</b> finds the affine cross product in 2D.
+        </li>
+        <li>
+          <b>R8VEC_CROSS_PRODUCT_3D</b> computes the cross product of two R8VEC's in 3D.
+        </li>
+        <li>
+          <b>R8VEC_CROSS_PRODUCT_AFFINE_3D</b> computes the affine cross product in 3D.
+        </li>
+        <li>
+          <b>R8VEC_CUM</b> computes the cumulutive sums of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_CUM0</b> computes the cumulutive sums of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_DIF</b> computes coefficients for estimating the N-th derivative.
+        </li>
+        <li>
+          <b>R8VEC_DIFF_DOT_PRODUCT:</b> dot product of a pair of R8VEC differences.
+        </li>
+        <li>
+          <b>R8VEC_DIFF_NORM</b> returns the L2 norm of the difference of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DIFF_NORM_L1</b> returns the L1 norm of the difference of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DIFF_NORM_L2</b> returns the L2 norm of the difference of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DIFF_NORM_LI</b> returns the L-oo norm of the difference of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DIFF_NORM_SQUARED:</b> square of the L2 norm of the difference of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DIRECT_PRODUCT</b> creates a direct product of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DIRECT_PRODUCT2</b> creates a direct product of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DISTANCE</b> returns the Euclidean distance between two R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DISTINCT</b> is true if the entries in an R8VEC are distinct.
+        </li>
+        <li>
+          <b>R8VEC_DOT_PRODUCT</b> finds the dot product of a pair of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DOT_PRODUCT_AFFINE</b> computes the affine dot product V1-V0 * V2-V0.
+        </li>
+        <li>
+          <b>R8VEC_EQ</b> is true if two R8VECs are equal.
+        </li>
+        <li>
+          <b>R8VEC_EVEN</b> returns an R8VEC of evenly spaced values.
+        </li>
+        <li>
+          <b>R8VEC_EVEN_SELECT</b> returns the I-th of N evenly spaced values in [ XLO, XHI ].
+        </li>
+        <li>
+          <b>R8VEC_EVEN2</b> linearly interpolates new numbers into an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_EVEN3</b> evenly interpolates new data into an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_EXPAND_LINEAR</b> linearly interpolates new data into an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_EXPAND_LINEAR2</b> linearly interpolates new data into an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_FIRST_INDEX</b> indexes the first occurrence of values in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_FLOOR</b> rounds "down" (towards -oo) entries of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_FRAC</b> searches for the K-th smallest entry in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_FRACTION</b> returns the fraction parts of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_GT</b> == ( A1 > A2 ) for R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_HEAP_A</b> reorders an R8VEC into an ascending heap.
+        </li>
+        <li>
+          <b>R8VEC_HEAP_D</b> reorders an R8VEC into an descending heap.
+        </li>
+        <li>
+          <b>R8VEC_HEAP_D_EXTRACT:</b> extract maximum from a heap descending sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_HEAP_D_INSERT</b> inserts a value into a heap descending sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_HEAP_D_MAX</b> returns the maximum value in a heap descending sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_HISTOGRAM</b> histograms an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_HOUSE_COLUMN</b> defines a Householder premultiplier that "packs" a column.
+        </li>
+        <li>
+          <b>R8VEC_I4VEC_DOT_PRODUCT</b> finds the dot product of an R8VEC and an I4VEC.
+        </li>
+        <li>
+          <b>R8VEC_IN_01</b> is TRUE if the entries of an R8VEC are in the range [0,1].
+        </li>
+        <li>
+          <b>R8VEC_IN_AB</b> is TRUE if the entries of an R8VEC are in the range [A,B].
+        </li>
+        <li>
+          <b>R8VEC_INDEX_DELETE_ALL</b> deletes a value from an indexed sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDEX_DELETE_DUPES</b> deletes duplicates from an indexed sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDEX_DELETE_ONE</b> deletes one copy of a value from indexed sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDEX_INSERT</b> inserts a value in an indexed sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDEX_INSERT_UNIQUE</b> inserts a unique value in an indexed sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDEX_ORDER</b> sorts an R8VEC using an index vector.
+        </li>
+        <li>
+          <b>R8VEC_INDEX_SEARCH</b> searches for a value in an indexed sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDEX_SORT_UNIQUE</b> creates a sorted unique index for an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDEX_SORTED_RANGE:</b> search index sorted vector for elements in a range.
+        </li>
+        <li>
+          <b>R8VEC_INDEXED_HEAP_D</b> creates a descending heap from an indexed R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDEXED_HEAP_D_EXTRACT:</b> extract from heap descending indexed R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDEXED_HEAP_D_INSERT:</b> insert value into heap descending indexed R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDEXED_HEAP_D_MAX:</b> maximum value in heap descending indexed R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDICATOR</b> sets an R8VEC to the indicator vector.
+        </li>
+        <li>
+          <b>R8VEC_INSERT</b> inserts a value into an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INSIGNIFICANT</b> determines if an R8VEC is insignificant.
+        </li>
+        <li>
+          <b>R8VEC_IS_INT</b> is TRUE if the entries of an R8VEC are integers.
+        </li>
+        <li>
+          <b>R8VEC_IS_NONNEGATIVE</b> is TRUE if all the entries of an R8VEC are nonnegative.
+        </li>
+        <li>
+          <b>R8VEC_IS_ZERO</b> is TRUE if all the entries of an R8VEC are zero.
+        </li>
+        <li>
+          <b>R8VEC_LEGENDRE</b> creates a vector of Legendre-spaced values.
+        </li>
+        <li>
+          <b>R8VEC_LINSPACE</b> creates a vector of linearly spaced values.
+        </li>
+        <li>
+          <b>R8VEC_LT</b> == ( A1 < A2 ) for R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_MASK_PRINT</b> prints a masked R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_MAX</b> returns the maximum value in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_MAX_ABS_INDEX:</b> index of the maximum absolute value in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_MAX_INDEX</b> returns the index of the maximum value in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_MEAN</b> returns the mean of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_MEDIAN</b> returns the median of an unsorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_MIDSPACE</b> creates a vector of linearly spaced values.
+        </li>
+        <li>
+          <b>R8VEC_MIN</b> returns the minimum value of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_MIN_INDEX</b> returns the index of the minimum value in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_MIN_POS</b> returns the minimum positive value of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_MIRROR_NEXT</b> steps through all sign variations of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NEGATIVE_STRICT:</b> every element of an R8VEC is strictly negative.
+        </li>
+        <li>
+          <b>R8VEC_NINT</b> rounds entries of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM</b> returns the L2 norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM_AFFINE</b> returns the affine norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM_L0</b> returns the l0 "norm" of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM_L1</b> returns the L1 norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM_L2</b> returns the L2 norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM_LI</b> returns the L-oo norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM_LP</b> returns the LP norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM_SQUARED</b> returns the square of the L2 norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORMAL_01</b> returns a unit pseudonormal R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORMALIZE</b> normalizes an R8VEC in the Euclidean norm.
+        </li>
+        <li>
+          <b>R8VEC_NORMALIZE_L1</b> normalizes an R8VEC to have unit sum.
+        </li>
+        <li>
+          <b>R8VEC_NORMSQ</b> returns the square of the L2 norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORMSQ_AFFINE</b> returns the affine squared norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_ORDER_TYPE</b> determines if R8VEC is (non)strictly ascending/descending.
+        </li>
+        <li>
+          <b>R8VEC_PART_QUICK_A</b> reorders an R8VEC as part of a quick sort.
+        </li>
+        <li>
+          <b>R8VEC_PERMUTE</b> permutes an R8VEC in place.
+        </li>
+        <li>
+          <b>R8VEC_PERMUTE_CYCLIC</b> performs a cyclic permutation of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PERMUTE_UNIFORM</b> randomly permutes an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_POLARIZE</b> decomposes an R8VEC into normal and parallel components.
+        </li>
+        <li>
+          <b>R8VEC_POSITIVE_STRICT:</b> every element of an R8VEC is strictly positive.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT_PART</b> prints "part" of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT_SOME</b> prints "some" of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT2</b> prints out an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRODUCT</b> returns the product of the entries of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_RANGE</b> finds the range of Y's within a restricted X range.
+        </li>
+        <li>
+          <b>R8VEC_RANGE_2</b> updates a range to include a new array.
+        </li>
+        <li>
+          <b>R8VEC_REVERSE</b> reverses the elements of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_RMS</b> returns the RMS norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_ROTATE</b> "rotates" the entries of an R8VEC in place.
+        </li>
+        <li>
+          <b>R8VEC_SCALAR_TRIPLE_PRODUCT</b> computes the scalar triple product.
+        </li>
+        <li>
+          <b>R8VEC_SEARCH_BINARY_A</b> searches an ascending sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SHIFT</b> performs a shift on an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SHIFT_CIRCULAR</b> performs a circular shift on an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORT_BUBBLE_A</b> ascending sorts an R8VEC using bubble sort.
+        </li>
+        <li>
+          <b>R8VEC_SORT_BUBBLE_D</b> descending sorts an R8VEC using bubble sort.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_A</b> ascending sorts an R8VEC using heap sort.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_D</b> descending sorts an R8VEC using heap sort.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_INDEX_D</b> does an indexed heap descending sort of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_MASK_A:</b> indexed heap ascending sort of a masked R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORT_INSERT_A</b> ascending sorts an R8VEC using an insertion sort.
+        </li>
+        <li>
+          <b>R8VEC_SORT_INSERT_INDEX_A</b> ascending index sorts an R8VEC using insertion.
+        </li>
+        <li>
+          <b>R8VEC_SORT_INSERT_INDEX_D</b> descending index sorts an R8VEC using insertion.
+        </li>
+        <li>
+          <b>R8VEC_SORT_QUICK_A</b> ascending sorts an R8VEC using quick sort.
+        </li>
+        <li>
+          <b>R8VEC_SORT_SHELL_A</b> ascending sorts an R8VEC using Shell's sort.
+        </li>
+        <li>
+          <b>R8VEC_SORT2_A</b> ascending sorts an R8VEC and adjusts an associated R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORTED_MERGE_A</b> merges two ascending sorted R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_SORTED_NEAREST</b> returns the nearest element in a sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORTED_RANGE</b> searches a sorted vector for elements in a range.
+        </li>
+        <li>
+          <b>R8VEC_SORTED_SPLIT</b> "splits" a sorted R8VEC, given a splitting value.
+        </li>
+        <li>
+          <b>R8VEC_SORTED_UNDEX</b> returns unique sorted indexes for a sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORTED_UNIQUE</b> keeps the unique elements in a sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORTED_UNIQUE_COUNT</b> counts the unique elements in a sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORTED_UNIQUE_HIST</b> histograms the unique elements of a sorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SPLIT</b> "splits" an unsorted R8VEC based on a splitting value.
+        </li>
+        <li>
+          <b>R8VEC_STD</b> returns the standard deviation of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_STUTTER</b> makes a "stuttering" copy of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SUM</b> returns the sum of the entries of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SWAP</b> swaps the entries of two R8VECs.
+        </li>
+        <li>
+          <b>R8VEC_TRANSPOSE_PRINT</b> prints an R8VEC "transposed".
+        </li>
+        <li>
+          <b>R8VEC_UNDEX</b> returns unique sorted indexes for an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM</b> returns a scaled pseudorandom R8VEC
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIQUE_COUNT</b> counts the unique elements in an unsorted R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIQUE_INDEX</b> indexes the unique occurrence of values in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_VARIANCE</b> returns the variance of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_VECTOR_TRIPLE_PRODUCT</b> computes the vector triple product.
+        </li>
+        <li>
+          <b>R8VEC_WRITE</b> writes an R8VEC to a file.
+        </li>
+        <li>
+          <b>R8VEC_ZERO</b> zeroes out an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC2_COMPARE</b> compares two entries in an R8VEC2.
+        </li>
+        <li>
+          <b>R8VEC2_PRINT</b> prints an R8VEC2.
+        </li>
+        <li>
+          <b>R8VEC2_PRINT_SOME</b> prints "some" of an R8VEC2.
+        </li>
+        <li>
+          <b>R8VEC2_SORT_A</b> ascending sorts an R8VEC2.
+        </li>
+        <li>
+          <b>R8VEC2_SORT_D</b> descending sorts an R8VEC2.
+        </li>
+        <li>
+          <b>R8VEC2_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R8VEC2.
+        </li>
+        <li>
+          <b>R8VEC2_SORTED_UNIQUE</b> keeps unique elements in a sorted R8VEC2.
+        </li>
+        <li>
+          <b>R8VEC2_SORTED_UNIQUE_INDEX</b> indexes unique elements in a sorted R8VEC2.
+        </li>
+        <li>
+          <b>R8VEC2_SUM_MAX_INDEX</b> returns the index of the maximum sum of two R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC3_PRINT</b> prints an R8VEC3.
+        </li>
+        <li>
+          <b>R8VECPACK_PRINT</b> prints a packed vector.
+        </li>
+        <li>
+          <b>ROOTS_TO_R8POLY</b> converts polynomial roots to polynomial coefficients.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 June.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

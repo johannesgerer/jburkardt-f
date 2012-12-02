@@ -1,0 +1,331 @@
+<html>
+
+  <head>
+    <title>
+      MD - Molecular Dynamics
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MD <br> Molecular Dynamics
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MD</b> 
+      is a FORTRAN90 program which
+      carries out a molecular dynamics simulation.
+    </p>
+
+    <p>
+      The computation involves following the paths of particles which
+      exert a distance-dependent force on each other.  The particles
+      are not constrained by any walls; if particles meet, they simply
+      pass through each other.
+    </p>
+
+    </p>
+      The problem is treated as a coupled set of differential equations.
+      The system of differential equation is discretized by choosing a 
+      discrete time step.  Given the position and velocity of each particle
+      at one time step, the algorithm estimates these values at the next time step.
+    </p>
+
+    <p>
+      To compute the next position of each particle requires the evaluation of 
+      the right hand side of its corresponding differential equation.  Since each 
+      of these calculations is independent, there is a potential speedup if the 
+      program can take advantage of parallel computing.
+    </p>
+
+    <p>
+      This version of the program is intended as a starting point; 
+      students are asked to examine the program and add the appropriate
+      OpenMP directives to run it in parallel.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>md</b> <i>nd</i> <i>np</i> <i>step_num</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>nd</i> is the spatial dimension (2 or 3);
+        </li>
+        <li>
+          <i>np</i> is the number of particles (500, for instance);
+        </li>
+        <li>
+          <i>step_num</i> is the number of time steps (500, for instance).
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MD</b> is available in
+      <a href = "../../c_src/md/md.html">a C version</a> and
+      <a href = "../../cpp_src/md/md.html">a C++ version</a> and
+      <a href = "../../f77_src/md/md.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/md/md.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/md/md.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fft_serial/fft_serial.html">
+      FFT_SERIAL</a>,
+      a FORTRAN90 program which
+      demonstrates the computation of a Fast Fourier Transform,
+      and is intended as a starting point for developing a parallel version
+      using OpenMP.
+    <p>
+
+    <p>
+      <a href = "../../f_src/heated_plate/heated_plate.html">
+      HEATED_PLATE</a>,
+      a FORTRAN90 program which 
+      solves the steady state heat equation in a 2D
+      rectangular region, and is intended as
+      a starting point for implementing an OpenMP parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md_openmp/md_openmp.html">
+      MD_OPENMP</a>,
+      a FORTRAN90 program which 
+      carries out a molecular dynamics simulation,
+      using OpenMP for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md1/md1.html">
+      MD1</a>,
+      a FORTRAN90 program which 
+      carries out a molecular dynamics simulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md2/md2.html">
+      MD2</a>,
+      a FORTRAN90 program which 
+      carries out a molecular dynamics simulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md3/md3.html">
+      MD3</a>,
+      a FORTRAN90 program which 
+      carries out a molecular dynamics simulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md3glue/md3glue.html">
+      MD3GLUE</a>,
+      a FORTRAN90 program which 
+      carries out a molecular dynamics simulation.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/mdbnch/mdbnch.html">
+      MDBNCH</a>,
+      a FORTRAN77 program which
+      is a benchmark molecular simulation calculation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxm_serial/mxm_serial.html">
+      MXM_SERIAL</a>,
+      a FORTRAN90 program which
+      sets up a matrix multiplication problem A=B*C,
+      intended as a starting point for implementing a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/openmp/openmp.html">
+      OPENMP</a>, 
+      FORTRAN90 programs which
+      illustrate the use of OpenMP.
+    <p>
+
+    <p>
+      <a href = "../../f_src/poisson_serial/poisson_serial.html">
+      POISSON_SERIAL</a>,
+      a FORTRAN90 program which
+      computes an approximate solution to the Poisson equation in a rectangle,
+      and is intended as the starting point for the creation of a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_serial/prime_serial.html">
+      PRIME_SERIAL</a>,
+      a FORTRAN90 program which
+      counts the number of primes between 1 and N,
+      intended as a starting point for the creation of a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_serial/quad_serial.html">
+      QUAD_SERIAL</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule,
+      and is intended as a starting point for parallelization exercises.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Matthew Allen, Dominic Tildesley,<br>
+          Computer Simulation of Liquids,<br>
+          Oxford University Press, 1987,<br>
+          ISBN: 0198556454,<br>
+          LC: QC145.2.
+        </li>
+        <li>
+          Peter Arbenz, Wesley Petersen,<br>
+          Introduction to Parallel Computing - A practical guide with examples in C,<br>
+          Oxford University Press,<br>
+          ISBN: 0-19-851576-6,<br>
+          LC: QA76.58.P47.
+        </li>
+        <li>
+          Rohit Chandra, Leonardo Dagum, Dave Kohr, Dror Maydan,
+          Jeff McDonald, Ramesh Menon,<br>
+          Parallel Programming in OpenMP,<br>
+          Morgan Kaufmann, 2001,<br>
+          ISBN: 1-55860-671-8,<br>
+          LC: QA76.642.P32.
+        </li>
+        <li>
+          Barbara Chapman, Gabriele Jost, Ruud vanderPas, David Kuck,<br>
+          Using OpenMP: Portable Shared Memory Parallel Processing,<br>
+          MIT Press, 2007,<br>
+          ISBN13: 978-0262533027,<br>
+          LC: QA76.642.C49.
+        </li>
+        <li>
+          Furio Ercolessi,<br>
+          A Molecular Dynamics Primer.
+        </li>
+        <li>
+          Philipp Janert,<br>
+          Gnuplot in Action: Understanding Data with Graphs,<br>
+          Manning, 2008,<br>
+          ISBN: 1-933988-39-8.
+        </li>
+        <li>
+          Dennis Rapaport,<br>
+          An Introduction to Interactive Molecular-Dynamics Simulation,<br>
+          Computers in Physics,<br>
+          Volume 11, Number 4, July/August 1997, pages 337-347.
+        </li>
+        <li>
+          Dennis Rapaport,<br>
+          The Art of Molecular Dynamics Simulation,<br>
+          Cambridge University Press, 2004,<br>
+          ISBN: 0521825687.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "md.f90">md.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "md.sh">md.sh</a>, 
+          BASH commands to compile, link and load the program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "md_output.txt">md_output.txt</a>, 
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for MD.
+        </li>
+        <li>
+          <b>COMPUTE</b> computes the forces and energies.
+        </li>
+        <li>
+          <b>DIST</b> computes the displacement and distance between two particles.
+        </li>
+        <li>
+          <b>INITIALIZE</b> initializes the positions, velocities, and accelerations.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UPDATE</b> updates positions, velocities and accelerations.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 July 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

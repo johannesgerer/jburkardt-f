@@ -1,0 +1,486 @@
+<html>
+
+  <head>
+    <title>
+      SDE - Stochastic Differential Equations
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SDE <br> Stochastic Differential Equations
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SDE</b> 
+      is a FORTRAN90 library which 
+      illustrates the properties of stochastic differential equations and some
+      algorithms for handling them,
+      by Desmond Higham.
+    </p>
+
+    <p>
+      The library requires access to the QR_SOLVE library as well.
+    </p>
+
+    <p>
+      The original version of these routines is available at
+      <a href = "http://www.maths.strath.ac.uk/~aas96106/algfiles.html">
+                "http://www.maths.strath.ac.uk/~aas96106/algfiles.html".</a>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SDE</b> is available in
+      <a href = "../../c_src/sde/sde.html">a C version</a> and
+      <a href = "../../cpp_src/sde/sde.html">a C++ version</a> and
+      <a href = "../../f77_src/sde/sde.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/sde/sde.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sde/sde.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/black_scholes/black_scholes.html">
+      BLACK_SCHOLES</a>,
+      a FORTRAN90 library which
+      implements some simple approaches to
+      the Black-Scholes option valuation theory,
+      by Desmond Higham.
+    </p>
+
+    <p>
+      <a href = "../../m_src/brownian_motion_simulation/brownian_motion_simulation.html">
+      BROWNIAN_MOTION_SIMULATION</a>,
+      a MATLAB program which
+      simulates Brownian motion in an M-dimensional region.
+    </p>
+
+    <p>
+      <a href = "../../m_src/cnoise/cnoise.html">
+      CNOISE</a>,
+      a MATLAB library which
+      generates samples of noise obeying a 1/f^alpha power law,
+      by Miroslav Stoyanov.
+    </p>
+
+    <p>
+      <a href = "../../f_src/colored_noise/colored_noise.html">
+      COLORED_NOISE</a>,
+      a FORTRAN90 library which
+      generates samples of noise obeying a 1/f^alpha power law.
+    </p>
+
+    <p>
+      <a href = "../../f_src/correlation/correlation.html">
+      CORRELATION</a>,
+      a FORTRAN90 library which
+      contains examples of statistical correlation functions.
+    </p>
+
+    <p>
+      <a href = "../../examples/gnuplot/gnuplot.html">
+      GNUPLOT</a>,
+      examples which
+      illustrate the use of the gnuplot graphics program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pce_burgers/pce_burgers.html">
+      PCE_BURGERS</a>,
+      a FORTRAN90 program which
+      defines and solves a version of the time-dependent viscous Burgers equation,
+      with uncertain viscosity, using a polynomial chaos expansion in terms
+      of Hermite polynomials,
+      by Gianluca Iaccarino.
+    </p>
+
+    <p>
+      <a href = "../../m_src/pce_legendre/pce_legendre.html">
+      PCE_LEGENDRE</a>, 
+      a MATLAB program which
+      assembles the system matrix associated with a polynomal chaos expansion
+      of a 2D stochastic PDE, using Legendre polynomials;
+    </p>
+
+    <p>
+      <a href = "../../f_src/pce_ode_hermite/pce_ode_hermite.html">
+      PCE_ODE_HERMITE</a>,
+      a FORTRAN90 program which
+      sets up a simple scalar ODE for exponential decay with an uncertain
+      decay rate, using a polynomial chaos expansion in terms of Hermite polynomials.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pink_noise/pink_noise.html">
+      PINK_NOISE</a>,
+      a FORTRAN90 library which
+      computes a "pink noise" signal obeying a 1/f power law.
+    </p>
+
+    <p>
+      <a href = "../../f_src/qr_solve/qr_solve.html">
+      QR_SOLVE</a>,
+      a FORTRAN90 library which
+      computes the least squares solution of a linear system A*x=b.
+    </p>
+
+    <p>
+      <a href = "../../m_src/stochastic_diffusion/stochastic_diffusion.html">
+      STOCHASTIC_DIFFUSION</a>,
+      MATLAB functions which
+      implement several versions of a stochastic diffusivity coefficient.
+    </p>
+
+    <p>
+      <a href = "../../m_src/stochastic_gradient_nd_noise/stochastic_gradient_nd_noise.html">
+      STOCHASTIC_GRADIENT_ND_NOISE</a>,
+      a MATLAB program which
+      solves an optimization problem involving a functional over a system
+      with stochastic noise.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stochastic_rk/stochastic_rk.html">
+      STOCHASTIC_RK</a>,
+      a FORTRAN90 library which
+      applies a Runge Kutta (RK) scheme to a stochastic differential equation.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Original MATLAB version by Desmond Higham.
+      FORTRAN90 version by John Burkardt.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Desmond Higham,<br>
+          An Algorithmic Introduction to Numerical Simulation of
+          Stochastic Differential Equations,<br>
+          SIAM Review,<br>
+          Volume 43, Number 3, September 2001, pages 525-546.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sde.f90">sde.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "sde.sh">sde.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sde_prb.f90">sde_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "sde_prb.sh">sde_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "sde_prb_output.txt">sde_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The calling program creates various data and command files which
+      can be used with GNUPLOT to create images.
+      <ul>
+        <li>
+          <a href = "bpath_commands.txt">bpath_commands.txt</a>,
+          commands to plot the data from BPATH.
+        </li>
+        <li>
+          <a href = "bpath_data.txt">bpath_data.txt</a>,
+          data from BPATH.
+        </li>
+        <li>
+          <a href = "bpath.png">bpath.png</a>,
+          a plot of the BPATH data.
+        </li>
+        <li>
+          <a href = "bpath_average_commands.txt">bpath_average_commands.txt</a>,
+          commands to plot the data from BPATH_AVERAGE.
+        </li>
+        <li>
+          <a href = "bpath_average_data.txt">bpath_average_data.txt</a>,
+          data from BPATH_AVERAGE.
+        </li>
+        <li>
+          <a href = "bpath_average.png">bpath_average.png</a>,
+          a plot of the BPATH_AVERAGE data.
+        </li>
+        <li>
+          <a href = "chain_commands.txt">chain_commands.txt</a>,
+          commands to plot the data from CHAIN.
+        </li>
+        <li>
+          <a href = "chain_data.txt">chain_data.txt</a>,
+          data from CHAIN.
+        </li>
+        <li>
+          <a href = "chain.png">chain.png</a>,
+          a plot of the CHAIN data.
+        </li>
+        <li>
+          <a href = "em_commands.txt">em_commands.txt</a>,
+          commands to plot the data from EM.
+        </li>
+        <li>
+          <a href = "em1_data.txt">em1_data.txt</a>,
+          data from EM.
+        </li>
+        <li>
+          <a href = "em2_data.txt">em2_data.txt</a>,
+          data from EM.
+        </li>
+        <li>
+          <a href = "em.png">em.png</a>,
+          a plot of the EM data.
+        </li>
+        <li>
+          <a href = "emstrong_commands.txt">emstrong_commands.txt</a>,
+          commands to plot the data from EMSTRONG.
+        </li>
+        <li>
+          <a href = "emstrong_data.txt">emstrong_data.txt</a>,
+          data from EMSTRONG.
+        </li>
+        <li>
+          <a href = "emstrong.png">emstrong.png</a>,
+          a plot of the EMSTRONG data.
+        </li>
+        <li>
+          <a href = "emweak0_commands.txt">emweak0_commands.txt</a>,
+          commands to plot the data from EMWEAK with the standard EM method.
+        </li>
+        <li>
+          <a href = "emweak0_data.txt">emweak0_data.txt</a>,
+          data from EMWEAK with the standard EM method.
+        </li>
+        <li>
+          <a href = "emweak0.png">emweak0.png</a>,
+          a plot of the data from EMWEAK with the standard EM method.
+        </li>
+        <li>
+          <a href = "emweak1_commands.txt">emweak1_commands.txt</a>,
+          commands to plot the data from EMWEAK with the weak EM method.
+        </li>
+        <li>
+          <a href = "emweak1_data.txt">emweak1_data.txt</a>,
+          data from EMWEAK with the weak EM method.
+        </li>
+        <li>
+          <a href = "emweak1.png">emweak1.png</a>,
+          a plot of the data from EMWEAK with the weak EM method.
+        </li>
+        <li>
+          <a href = "milstrong_commands.txt">milstrong_commands.txt</a>,
+          commands to plot the MILSTRONG data.
+        </li>
+        <li>
+          <a href = "milstrong_data.txt">milstrong_data.txt</a>,
+          data from MILSTRONG.
+        </li>
+        <li>
+          <a href = "milstrong.png">milstrong.png</a>,
+          a plot of the strong convergence data from MILSTRONG.
+        </li>
+        <li>
+          <a href = "stab_asymptotic_commands.txt">stab_asymptotic_commands.txt</a>,
+          commands to plot the STAB_ASYMPTOTIC data.
+        </li>
+        <li>
+          <a href = "stab_asymptotic_data1.txt">stab_asymptotic_data1.txt</a>,
+          data from STAB_ASYMPTOTIC.
+        </li>
+        <li>
+          <a href = "stab_asymptotic_data2.txt">stab_asymptotic_data2.txt</a>,
+          data from STAB_ASYMPTOTIC.
+        </li>
+        <li>
+          <a href = "stab_asymptotic_data3.txt">stab_asymptotic_data3.txt</a>,
+          data from STAB_ASYMPTOTIC.
+        </li>
+        <li>
+          <a href = "stab_asymptotic.png">stab_asymptotic.png</a>,
+          a plot of the asymptotic stability results from STAB_ASYMPTOTIC.
+        </li>
+        <li>
+          <a href = "stab_meansquare_commands.txt">stab_meansquare_commands.txt</a>,
+          commands to plot the STAB_MEANSQUARE data.
+        </li>
+        <li>
+          <a href = "stab_meansquare_data1.txt">stab_meansquare_data1.txt</a>,
+          data from STAB_MEANSQUARE.
+        </li>
+        <li>
+          <a href = "stab_meansquare_data2.txt">stab_meansquare_data2.txt</a>,
+          data from STAB_MEANSQUARE.
+        </li>
+        <li>
+          <a href = "stab_meansquare_data3.txt">stab_meansquare_data3.txt</a>,
+          data from STAB_MEANSQUARE.
+        </li>
+        <li>
+          <a href = "stab_meansquare.png">stab_meansquare.png</a>,
+          a plot of the meansquare stability results from STAB_MEANSQUARE.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BPATH</b> performs a Brownian path simulation.
+        </li>
+        <li>
+          <b>BPATH_AVERAGE:</b> displays the average of 1000 Brownian paths.
+        </li>
+        <li>
+          <b>BPATH_AVERAGE_GNUPLOT</b> writes a GNUPLOT input file to plot BPATH_AVERAGE data.
+        </li>
+        <li>
+          <b>BPATH_GNUPLOT</b> writes a GNUPLOT input file to plot BPATH data.
+        </li>
+        <li>
+          <b>CHAIN</b> tests the stochastic Chain Rule.
+        </li>
+        <li>
+          <b>CHAIN_GNUPLOT</b> writes a GNUPLOT input file to plot CHAIN data.
+        </li>
+        <li>
+          <b>EM</b> applies the Euler-Maruyama method to a linear SDE.
+        </li>
+        <li>
+          <b>EM_GNUPLOT</b> writes a GNUPLOT input file to plot EM data.
+        </li>
+        <li>
+          <b>EMSTRONG</b> tests the strong convergence of the EM method.
+        </li>
+        <li>
+          <b>EMSTRONG_GNUPLOT</b> writes a GNUPLOT input file to plot EMSTRONG data.
+        </li>
+        <li>
+          <b>EMWEAK</b> tests the weak convergence of the Euler-Maruyama method.
+        </li>
+        <li>
+          <b>EMWEAK_GNUPLOT</b> writes a GNUPLOT input file to plot EMWEAK data.
+        </li>
+        <li>
+          <b>FILENAME_INC</b> increments a partially numeric filename.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>MILSTRONG</b> tests the strong convergence of the Milstein method.
+        </li>
+        <li>
+          <b>MILSTRONG_GNUPLOT</b> writes a GNUPLOT input file to plot MILSTRONG data.
+        </li>
+        <li>
+          <b>R8_NORMAL_01</b> returns a unit pseudonormal R8.
+        </li>
+        <li>
+          <b>R8_SIGN</b> returns the sign of an R8.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8MAT_NORMAL_01</b> returns a unit pseudonormal R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_MEAN</b> returns the mean of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORMAL_01</b> returns a unit pseudonormal R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>STAB_ASYMPTOTIC</b> examines asymptotic stability.
+        </li>
+        <li>
+          <b>STAB_MEANSQUARE</b> examines mean-square stability.
+        </li>
+        <li>
+          <b>STOCHASTIC_INTEGRAL_ITO</b> approximates the Ito integral of W(t) dW.
+        </li>
+        <li>
+          <b>STOCHASTIC_INTEGRAL_STRAT</b> approximates the Stratonovich integral of W(t) dW.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 21 September 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

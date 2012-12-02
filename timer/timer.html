@@ -1,0 +1,314 @@
+<html>
+
+  <head>
+    <title>
+      TIMER - Compute Elapsed Time
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TIMER <br> Compute Elapsed Time
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TIMER</b>
+      is a directory of FORTRAN90 programs which
+      examine methods for computing
+      the elapsed CPU time of a part of a calculation.
+    </p>
+
+    <p>
+      The idea is that you want to
+      determine the amount of CPU time taken by a piece of your code, so
+      you write lines like this:
+      <pre><tt>
+        call timer ( t1 )
+        do i = 1, n
+          ...some big calculation...
+        end do
+        call timer ( t2 )
+        write ( *, * ) 'Elapsed CPU time = ', t2 - t1
+      </pre></tt>
+    </p>
+
+    <p>
+      Early versions of FORTRAN did not specify a standard way to access
+      a system timer. Users on UNIX systems
+      could access a system library routine called ETIME for this purpose,
+      but ETIME was not part of the FORTRAN language, and was not to be found on
+      other operating systems.
+    </p>
+
+    <p>
+      FORTRAN90 added the SYSTEM_CLOCK function which can measure real time:
+      <pre><tt>
+        call system_clock ( t1, clock_rate, clock_max )
+        do i = 1, n
+          ...some big calculation...
+        end do
+        call system_clock ( t2, clock_rate, clock_max )
+        write ( *, * ) 'Elapsed real time = ', real ( t2 - t1 ) / real ( clock_rate )
+      </pre></tt>
+    </p>
+
+    <p>
+      FORTRAN95 added the CPU_TIME function which measures CPU time:
+      <pre><tt>
+        call cpu_time ( t1 )
+        do i = 1, n
+          ...some big calculation...
+        end do
+        call cpu_time ( t2 )
+        write ( *, * ) 'Elapsed CPU time = ', t2 - t1
+      </pre></tt>
+    </p>
+
+    <p>
+      On various
+      computers, there are often vendor-supplied routines to do this chore.
+      You will often find that the timer is inaccurate; some operations will
+      be reported as taking zero time; other operations will be reported
+      with times that differ by 5 or 10 percent.  Moreover, two timers that
+      profess to measure the same thing may produce results that are
+      consistently different by a factor of 40 percent.
+    </p>
+
+    <p>
+      Another problem is "wrap around".  Many timers reach a maximum value,
+      and then reset themselves to zero.  If this happens to you, (it's
+      happened to me many times!) you may find that a certain procedure
+      seems to take negative time!
+    </p>
+
+    <p>
+      Some timers return CPU time, that is, the amount of elapsed computer
+      time that was used by your program; other routines return "real" time
+      or "wall clock" time, which will not account for situations in which
+      your program started, and then was paused for some reason (swapped out,
+      waiting for I/O, or other system functions), and then finished.
+    </p>
+
+    <p>
+      For parallel programming, the important thing to measure is the elapsed
+      wallclock time.  This can be found by subtracting an initial reading of
+      the wallclock time from a final one.
+    </p>
+
+    <p>
+      The OpenMP system provides a function used as follows:
+      <pre>
+        seconds = omp_get_wtime ( )
+        operations to time;
+        seconds = omp_get_wtime ( ) - seconds;
+      </pre>
+      while the MPI system provides a similar function used as:
+      <pre>
+        seconds = MPI_Wtime ( );
+        operations;
+        seconds = MPI_Wtime ( ) - seconds;
+      </pre>
+      and in MATLAB, wallclock time can be taken with "tic" and "toc":
+      <pre>
+        tic;
+        operation;
+        seconds = toc;
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TIMER</b> is available in
+      <a href = "../../c_src/timer/timer.html">a C version</a> and
+      <a href = "../../cpp_src/timer/timer.html">a C++ version</a> and
+      <a href = "../../f77_src/timer/timer.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/timer/timer.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/timer/timer.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/linpack_bench/linpack_bench.html">
+      LINPACK_BENCH</a>,
+      a FORTRAN90 program which
+      measures the time needed to factor and solve a linear system.
+    </p>
+
+    <p>
+      <a href = "../../f_src/matmul/matmul.html">
+      MATMUL</a>,
+      a FORTRAN90 program which
+      is an interactive matrix multiplication benchmark program.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/mdbnch/mdbnch.html">
+      MDBNCH</a>,
+      a FORTRAN77 program which
+      is a benchmark code for a molecular dynamics calculation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/memory_test/memory_test.html">
+      MEMORY_TEST</a>,
+      a FORTRAN90 program which
+      declares and uses a sequence of larger
+      and larger vectors, to see how big a vector can be used on a given
+      machine and compiler.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi/mpi.html">
+      MPI</a>,
+      FORTRAN90 programs which
+      illustrate the use of the MPI application program interface
+      for carrying out parallel computations in a distributed memory environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxv/mxv.html">
+      MXV</a>,
+      a FORTRAN90 program which
+      compares the performance of (DO I, DO J) loops, (DO J, DO I ) loops,
+      and MATMUL for computing the product of an MxN matrix A and an N vector X.
+    </p>
+
+    <p>
+      <a href = "../../f_src/openmp/openmp.html">
+      OPENMP</a>,
+      FORTRAN90 programs which
+      illustrate the use of the OpenMP application program interface
+      for carrying out parallel computations in a shared memory environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sum_million/sum_million.html">
+      SUM_MILLION</a>,
+      a FORTRAN90 program which
+      sums the integers from 1 to 1,000,000, as a demonstration of how
+      to rate a computer's speed;
+    </p>
+
+    <p>
+      <a href = "../../f_src/timestamp/timestamp.html">
+      TIMESTAMP</a>,
+      a FORTRAN90 library which
+      displays the current wall clock time.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wtime/wtime.html">
+      WTIME</a>,
+      a FORTRAN90 library which
+      returns a reading of the wall clock time in seconds.
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>TIMER_CPU_TIME</b> uses the very convenient FORTRAN95 CPU_TIME routine:
+      <ul>
+        <li>
+          <a href = "timer_cpu_time.f90">timer_cpu_time.f90</a>, the test;
+        </li>
+        <li>
+          <a href = "timer_cpu_time.sh">timer_cpu_time.sh</a>,
+          commands to compile and run the test;
+        </li>
+        <li>
+          <a href = "timer_cpu_time_output.txt">timer_cpu_time_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TIMER_ETIME</b> uses the ETIME routine, which is only available
+      on UNIX systems:
+      <ul>
+        <li>
+          <a href = "timer_etime.f90">timer_etime.f90</a>, the test;
+        </li>
+        <li>
+          <a href = "timer_etime.sh">timer_etime.sh</a>,
+          commands to compile and run the test;
+        </li>
+        <li>
+          <a href = "timer_etime_output.txt">timer_etime_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TIMER_OMP_GET_WTIME</b> uses the OpenMP wall clock function <b>omp_get_wtime()</b>:
+      <ul>
+        <li>
+          <a href = "timer_omp_get_wtime.f90">timer_omp_get_wtime.f90</a>, the test;
+        </li>
+        <li>
+          <a href = "timer_omp_get_wtime.sh">timer_omp_get_wtime.sh</a>,
+          commands to compile and run the test;
+        </li>
+        <li>
+          <a href = "timer_omp_get_wtime_output.txt">timer_omp_get_wtime_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TIMER_SYSTEM_CLOCK</b> uses the FORTRAN90 SYSTEM_CLOCK routine:
+      <ul>
+        <li>
+          <a href = "timer_system_clock.f90">timer_system_clock.f90</a>,
+          the test;
+        </li>
+        <li>
+          <a href = "timer_system_clock.sh">timer_system_clock.sh</a>,
+          commands to compile and run the test;
+        </li>
+        <li>
+          <a href = "timer_system_clock_output.txt">timer_system_clock_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 May 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

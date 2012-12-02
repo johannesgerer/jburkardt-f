@@ -1,0 +1,329 @@
+<html>
+
+  <head>
+    <title>
+      PS_LG_ALIGN - Profile/Sequence Local Gap Alignment
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PS_LG_ALIGN <br> Profile/Sequence Local Gap Alignment
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PS_LG_ALIGN</b>
+      is a FORTRAN90 library which
+      implements some of the string
+      alignment algorithms described in the reference <b>[Chao]</b>.
+    </p>
+
+    <p>
+      These
+      algorithms carry out the computation in <I>linear space</I>, and compute
+      not just the optimal alignment score, but also the corresponding optimal
+      alignment.  The alignments considered are local, that is, only
+      contiguous portion of the sequence is mapped to a portion of the profile.
+      Gaps in the alignment are assigned an affine gap penalty.
+    </p>
+
+    <p>
+      It's important to be able to compute alignments using "linear space",
+      that is, just a few vectors whose length <b>N</b> is equal to that
+      of a typical string.  A quadratic algorithm would require a two
+      dimensional array of total dimension <b>N*N</b>.  Realistic alignment
+      problems can involve strings of <b>N</b>=100,000 elements or more,
+      so a quadratic algorithm would be expensive or impossible to use.
+    </p>
+
+    <p>
+      The optimal alignment score is computed without explicitly constructing
+      the corresponding alignment.  So a major feature of the algorithms is
+      how to backtrack from the score to retrieve the alignment.  It is a matter
+      of some difficulty to recover  the matching, particularly if the best
+      score was calculated with a linear space algorithm, which discards a
+      great deal of intermediate information.  However, the linear space
+      algorithm implemented here can also compute the optimal matching, based
+      on the idea of a recursive subdivision of the problem.
+    </p>
+
+    <p>
+      This set of algorithms does not actually match a pair of sequences,
+      but rather matches a sequence to a "profile".  A profile is constructed
+      based on information from many sequences, and can be thought of as
+      a "generalized sequence", or a set of indices, where for each index
+      we specify the likelihood that each possible nucleic acid will occur.
+      These likelihoods can then be used to score the alignments we consider
+      with the new candidate sequence.
+    </p>
+
+    <p>
+      This set of routines assumes that an insertion or deletion of length
+      <b>K</b> is penalized using an "affine gap penalty formula" of the form:
+      <blockquote>
+        Penalty = Gap_Open + K * Gap_Extend
+      </blockquote>
+      This choice of penalty function has a major effect on the form
+      of the matching algorithms, particularly in the linear space case.
+      For the profile problems covered by these algorithms, the gap penalties
+      are further adjusted using profile-position percentages specified by
+      the user.
+    </p>
+
+    <p>
+      Routines that use quadratic space are included as well, so the algorithms
+      can be compared for storage, speed, and correctness.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/ps_gg_align/ps_gg_align.html">
+      PS_GG_ALIGN</a>,
+      a FORTRAN90 library which
+      implements a profile/sequence global alignment using an affine gap penalty.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ps_qg_align/ps_qg_align.html">
+      PS_QG_ALIGN</a>,
+      a FORTRAN90 library which
+      implements a profile/sequence quasiglobal alignment using an affine gap penalty.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ss_gd_align/ss_gd_align.html">
+      SS_GD_ALIGN</a>,
+      a FORTRAN90 library which
+      globally aligns two sequences using a distance matrix.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ss_gg_align/ss_gg_align.html">
+      SS_GG_ALIGN</a>,
+      a FORTRAN90 library which
+      globally aligns two sequences using an affine gap penalty.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ss_lg_align/ss_lg_align.html">
+      SS_LG_ALIGN</a>,
+      a FORTRAN90 library which
+      locally aligns two sequences using an affine gap penalty.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ss_qg_align/ss_qg_align.html">
+      SS_QG_ALIGN</a>,
+      a FORTRAN90 library which
+      quasi-globally aligns two sequences using an affine gap penalty.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Kun-Mao Chao, Ross Hardison, Webb Miller,<br>
+          Recent Developments in Linear-Space Alignment Methods: A Survey,<br>
+          Journal of Computational Biology, <br>
+          Volume 1, Number 4, 1994, pages 271-291.
+        </li>
+        <li>
+          Eugene Myers and Webb Miller,<br>
+          Optimal Alignments in Linear Space,<br>
+          CABIOS, volume 4, number 1, 1988, pages 11-17.
+        </li>
+        <li>
+          Michael Waterman,<br>
+          Introduction to Computational Biology,<br>
+          Chapman and Hall, 1995.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ps_lg_align.f90">ps_lg_align.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "ps_lg_align.sh">ps_lg_align.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "profile.txt">profile.txt</a>, a sample profile scoring
+          data file.
+        </li>
+        <li>
+          <a href = "ps_lg_align_prb.f90">ps_lg_align_prb.f90</a>, a sample
+          program to read a profile scoring data file.
+        </li>
+        <li>
+          <a href = "ps_lg_align_prb.sh">ps_lg_align_prb.sh</a>,
+          commands to compile, link and run the sample program.
+        </li>
+        <li>
+          <a href = "ps_lg_align_prb_output.txt">ps_lg_align_prb_output.txt</a>, output
+          from running the sample problem.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>A_INDEX</b> sets up a reverse index for the amino acid codes.
+        </li>
+        <li>
+          <b>A_TO_I4</b> returns the index of an alphabetic character.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two integer values.
+        </li>
+        <li>
+          <b>I4_TO_A</b> returns the I-th alphabetic character.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an integer vector.
+        </li>
+        <li>
+          <b>I4VEC2_COMPARE</b> compares pairs of integers stored in two vectors.
+        </li>
+        <li>
+          <b>I4VEC2_PRINT</b> prints a pair of integer vectors.
+        </li>
+        <li>
+          <b>I4VEC2_SORT_A</b> ascending sorts a vector of pairs of integers.
+        </li>
+        <li>
+          <b>PROFILE_SCORE_PRINT</b> prints profile scoring data.
+        </li>
+        <li>
+          <b>PROFILE_SCORE_READ</b> reads profile scoring data from a file.
+        </li>
+        <li>
+          <b>PROFILE_SCORE_READ2</b> returns a small amount of information from a profile.
+        </li>
+        <li>
+          <b>PS_GG_BSL</b> determines a global gap backward alignment score in linear space.
+        </li>
+        <li>
+          <b>PS_GG_FSL</b> determines a global gap forward alignment score in linear space.
+        </li>
+        <li>
+          <b>PS_LG_BPQ</b> determines a local gap backward alignment path in quadratic space.
+        </li>
+        <li>
+          <b>PS_LG_BSL</b> determines a local gap backward alignment score in linear space.
+        </li>
+        <li>
+          <b>PS_LG_BSQ</b> determines a local gap backward alignment score in quadratic space.
+        </li>
+        <li>
+          <b>PS_LG_CORNERS</b> determines the "corners" of an optimal local alignment.
+        </li>
+        <li>
+          <b>PS_LG_FPQ</b> determines a local gap forward alignment path in quadratic space.
+        </li>
+        <li>
+          <b>PS_LG_FSL</b> determines a local gap forward alignment score in linear space.
+        </li>
+        <li>
+          <b>PS_LG_FSQ</b> determines a local gap forward alignment score in quadratic space.
+        </li>
+        <li>
+          <b>PS_LG_MATCH_PRINT</b> prints a local gap alignment.
+        </li>
+        <li>
+          <b>PS_LG_RPL</b> determines a local gap recursive alignment path in linear space.
+        </li>
+        <li>
+          <b>PS_LG_RPL_POP</b> pops the data describing a subproblem off of the stack.
+        </li>
+        <li>
+          <b>PS_LG_RPL_PUSH</b> pushes the data describing a subproblem onto the stack.
+        </li>
+        <li>
+          <b>R4MAT_IMAX</b> returns the location of the maximum of a real M by N matrix.
+        </li>
+        <li>
+          <b>R4VEC2_SUM_IMAX</b> returns the index of the maximum sum of two real vectors.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_CHVEC</b> converts a string to a character vector.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into linear order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WORD_LAST_READ</b> returns the last word from a string.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 29 December 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

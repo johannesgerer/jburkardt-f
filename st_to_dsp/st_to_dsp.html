@@ -1,0 +1,178 @@
+<html>
+
+  <head>
+    <title>
+      ST_TO_DSP - Convert Sparse Matrix File from ST to DSP Format
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ST_TO_DSP <br> Convert Sparse Matrix File from ST to DSP Format
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ST_TO_DSP</b>
+      is a FORTRAN90 program which
+      converts a sparse matrix file from
+      the ST (zero-based index) to DSP (one-based-index) format.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>st_to_dsp</b> <i>file.st</i>
+        </dt>
+        <dd>
+          reads the user's data file <i>file.st</i>, reads the data,
+          and writes the converted data to <i>file.dsp</i>.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/dsp/dsp.html">
+      DSP</a>,
+      a file format which
+      is used for the output of this program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dsp_to_st/dsp_to_st.html">
+      DSP_TO_ST</a>,
+      a FORTRAN90 program which
+      converts a DSP sparse matrix file to ST format.
+    </p>
+
+    <p>
+      <a href = "../../m_src/mm_to_msm/mm_to_msm.html">
+      MM_TO_MSM</a>,
+      a MATLAB program which
+      reads a Matrix Market file defining a sparse matrix, and creates
+      a corresponding MATLAB sparse matrix data structure.
+    </p>
+
+    <p>
+      <a href = "../../data/st/st.html">
+      ST</a>,
+      a data format which
+      is used for the input to this program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/st_io/st_io.html">
+      ST_IO</a>,
+      a FORTRAN90 library which
+      reads and writes sparse linear systems stored in the ST "sparse triplet"
+      Sparse Matrix format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/st_to_hb/st_to_hb.html">
+      ST_TO_HB</a>,
+      a FORTRAN90 program which
+      converts a sparse matrix file from ST format to
+       HB format (Harwell Boeing format);
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "st_to_dsp.f90">st_to_dsp.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "st_to_dsp.sh">st_to_dsp.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      The <b>KERSHAW</b> matrix is a 4 by 4 matrix.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "../../data/st/kershaw.st">kershaw.st</a>,
+          the Kershaw matrix, stored in an ST format file.
+        </li>
+        <li>
+          <a href = "../../data/dsp/kershaw.dsp">kershaw.dsp</a>,
+          the Kershaw matrix, stored in a DSP format file created by the
+          command <blockquote><b>st_to_dsp kershaw.st</b>.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for ST_TO_DSP.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_INDEX_LAST_C</b> finds the LAST occurrence of a given character.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 August 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

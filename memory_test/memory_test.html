@@ -1,0 +1,325 @@
+<html>
+
+  <head>
+    <title>
+      MEMORY_TEST - How Big Can Arrays Be?
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MEMORY_TEST <br> How Big Can Arrays Be?
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MEMORY_TEST</b>
+      is a FORTRAN90 program which
+      declares and uses a sequence of larger and larger arrays,
+      to see what the memory limits are on a given computer.
+    </p>
+
+    <p>
+      The program tries an increasing series of values of <b>N</b>, using
+      powers of 2, between limits that you set.  At some point, the program
+      may ask for more memory than can be provided, and crash.  This is one
+      way to find out what the memory ceiling is!  The relevant power of 2
+      is likely to be in the 20's:
+      <table border="1">
+        <tr>
+          <th>Log(N)</th><th>N</th>
+        </tr>
+        <tr>
+          <td>20</td><td>1,048,576</td>
+        </tr>
+          <tr>
+          <td>21</td><td>2,097,152</td>
+        </tr>
+        <tr>
+          <td>22</td><td>4,194,304</td>
+        </tr>
+        <tr>
+          <td>23</td><td>8,388,608</td>
+        </tr>
+        <tr>
+          <td>24</td><td>16,777,216</td>
+        </tr>
+        <tr>
+          <td>25</td><td>33,554,432</td>
+        </tr>
+        <tr>
+          <td>26</td><td>67,108,864</td>
+        </tr>
+        <tr>
+          <td>27</td><td>134,217,728</td>
+        </tr>
+        <tr>
+          <td>28</td><td>268,435,456</td>
+        </tr>
+        <tr>
+          <td>29</td><td>536,870,912</td>
+        </tr>
+        <tr>
+          <td>30</td><td>1,073,741,824</td>
+        </tr>
+      </table>
+    </p>
+
+    <p>
+      Remember that your memory is probably described in terms of bytes,
+      but that integers and reals require 4 bytes, and double precision reals
+      require 8 bytes.
+    </p>
+
+    <h3 align = "center">
+      Problems with Large Arrays:
+    </h3>
+
+    <p>
+      The use of very large arrays in a perfectly legal program
+      can cause a failure that appears as a "segmentation fault".
+    </p>
+
+    <p>
+      This might be caused, for instance, by the use of automatic arrays
+      in a subprogram.  An automatic array is one whose dimension
+      is passed into the subprogram as an argument, but whose memory
+      is only created when the subprogram is entered.  Some compilers,
+      presumably expecting such arrays to be small, use memory from
+      the stack; if the available memory is exceeded, the program crashes.
+    </p>
+
+    <p>
+      You might be able to make such an error go away by replacing the
+      automatic arrays by explicitly allocated arrays.  Their memory
+      comes from the heap, which is, typically, a more substantial
+      resource.
+    </p>
+
+    <p>
+      You could allocate the arrays in the calling program.
+    </p>
+
+    <p>
+      On Unix, you can determine the current stacksize, in kilobytes, by the
+      command
+      <pre>
+        ulimit -S -s
+      </pre>
+      My system reported the value as "8192".  You can increase this limit to
+      a numeric value:
+      <pre>
+        ulimit -S -s 16384
+      </pre>
+      or simply ask that it be unlimited using the command:
+      <pre>
+        ulimit -s unlimited
+      </pre>
+    </p>
+
+    <p>
+      Alternatively, your FORTRAN compiler may have a switch that controls
+      the size of the stack, or that changes the method of getting memory
+      for automatic arrays.  For the Intel <b>ifort</b> compiler, the
+      switch <b>-heap-arrays [n]</b> means that arrays larger than
+      <b>n</b> will be assigned memory from the heap rather than the stack.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>memory_test</b> <i>log_n_min</i> <i>log_n_max</i>
+      </blockquote>
+      runs the program for sizes <b>N</b> = 2<sup>log_n_min</sup> to
+      2<sup>log_n_max</sup>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MEMORY_TEST</b> is available in
+      <a href = "../../c_src/memory_test/memory_test.html">a C version</a> and
+      <a href = "../../cpp_src/memory_test/memory_test.html">a C++ version</a> and
+      <a href = "../../f_src/memory_test/memory_test.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/memory_test/memory_test.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/linpack_bench/linpack_bench.html">
+      LINPACK_BENCH</a>,
+      a FORTRAN90 program which
+      measures the time needed to factor and solve a linear system.
+    </p>
+
+    <p>
+      <a href = "../../f_src/machine/machine.html">
+      MACHINE</a>,
+      a FORTRAN90 library which
+      can return various machine constants.
+    </p>
+
+    <p>
+      <a href = "../../f_src/matmul/matmul.html">
+      MATMUL</a>,
+      a FORTRAN90 program which
+      is an interactive
+      matrix multiplication benchmark program.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/mdbnch/mdbnch.html">
+      MDBNCH</a>,
+      a FORTRAN77 program which
+      is a benchmark
+      code for a molecular dynamics calculation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/timer/timer.html">
+      TIMER</a>,
+      a FORTRAN90 program which
+      demonstrates how to compute CPU time or elapsed time.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "memory_test.f90">memory_test.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "memory_test.sh">memory_test.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "memory_test_output_aspen.txt">memory_test_output_aspen.txt</a>,
+          a run of the program on Aspen, a SUN workstation,
+          up to LOG(N) = 27.
+        </li>
+        <li>
+          <a href = "memory_test_output_chili.txt">memory_test_output_chili.txt</a>,
+          a run of the program on Chili, an ALPHA workstation,
+          up to LOG(N) = 27.
+        </li>
+        <li>
+          <a href = "memory_test_output_class15.txt">memory_test_output_class15.txt</a>,
+          a run of the program on Class15, an ALPHA workstation,
+          up to LOG(N) = 27.
+        </li>
+        <li>
+          <a href = "memory_test_output_g5.txt">memory_test_output_g5.txt</a>,
+          a run of the program on an Apple G5,
+          20 &lt;= LOG(N) &lt;= 27.
+        </li>
+        <li>
+          <a href = "memory_test_output_phoenix.txt">memory_test_output_phoenix.txt</a>,
+          a run of the program on (one node of) Phoenix, a LINUX cluster,
+          up to LOG(N) = 26.
+        </li>
+        <li>
+          <a href = "memory_test_output_quadrature.txt">memory_test_output_quadrature.txt</a>,
+          a run of the program on Quadrature, a LINUX workstation,
+          up to LOG(N) = 27.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for MEMORY_TEST.
+        </li>
+        <li>
+          <b>I4MAT_ALLOCATED_MEMORY_TEST</b> declares and uses an I4MAT of size N.
+        </li>
+        <li>
+          <b>I4VEC_MEMORY_ALLOCATED_TEST</b> uses an allocated I4VEC of size N.
+        </li>
+        <li>
+          <b>I4VEC_MEMORY_AUTOMATIC_TEST</b> uses an automatic I4VEC of size N.
+        </li>
+        <li>
+          <b>R4MAT_MEMORY_ALLOCATED_TEST</b> declares and uses an R4MAT of size N.
+        </li>
+        <li>
+          <b>R4VEC_MEMORY_ALLOCATED_TEST</b> uses an allocated R4VEC of size N.
+        </li>
+        <li>
+          <b>R4VEC_MEMORY_AUTOMATIC_TEST</b> uses an automatic R4VEC of size N.
+        </li>
+        <li>
+          <b>R8MAT_MEMORY_ALLOCATED_TEST</b> uses an allocated R8MAT of size N.
+        </li>
+        <li>
+          <b>R8VEC_MEMORY_ALLOCATED_TEST</b> uses an allocated R8VEC of size N.
+        </li>
+        <li>
+          <b>R8VEC_MEMORY_AUTOMATIC_TEST</b> uses an automatic R8VEC of size N.
+        </li>
+        <li>
+          <b>REAL_TIME</b> returns the real time in seconds.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

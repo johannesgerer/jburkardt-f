@@ -1,0 +1,361 @@
+CPLOT.DICT  02 May 1996
+
+This file contains a list of the important variables in the CPLOT program,
+and their definitions.
+
+c
+c***********************************************************************
+c
+ 
+COST   REAL COST, the value of the cost functional
+       associated with this solution.
+ 
+COST2  REAL COST2, the value of the cost functional
+       associated with the second solution.
+ 
+CVFLAG LOGICAL CVFLAG(MAXL,MAXM).
+       CVFLAG is used to "flag" which control volumes are "naturally"
+       visible.  A control volume (I,J) is visible if its corner nodes
+       ALL have NCFLAG(I,J) TRUE.  The indices of these corner nodes
+       are:  [I,J], [I+1,J], [I,J+1] and [I+1,J+1].
+ 
+DELX   REAL DELX.
+       The X spacing between nodes.  In some cases,
+       this spacing is modified to create isoparametric elements.
+ 
+DELY   REAL DELY.
+       The Y spacing between nodes.  In some cases,
+       this spacing is modified to create isoparametric elements.
+ 
+DEV    CHARACTER*10 DEV.
+       The graphics output device to be used.  Current legal
+       values for DEV include:
+ 
+       cgmb - CGM binary file.
+       ps   - PostScript file.
+       xws  - X window screen (interactive).
+ 
+DSHSIZ REAL DSHSIZ, the length, in the X, Y coordinate
+       system, of the dashed lines.  If it is negative or zero,
+       an error occurs.
+ 
+       Warning: If the X and Y coordinates use different scale
+       factors, then dashes at different angles will seem to
+       have different lengths.
+ 
+DXCDP  REAL DXCDP(MAXL,MAXM), the difference between
+       the second and first values of XC.
+ 
+DXDP   REAL DXDP(MAXL,MAXM), the difference between
+       the second and first values of X.
+ 
+DYCDP  REAL DYCDP(MAXL,MAXM), the difference between
+       the second and first values of YC.
+ 
+DYDP   REAL DYDP(MAXL,MAXM), the difference between
+       the second and first values of Y.
+ 
+E      REAL E(MAXL,MAXM), the magnetic stream function.
+ 
+FILDAT CHARACTER*80 FILDAT.
+       The name of the data file to be read in, which contains
+       the information defining the mesh and the physical
+       parameters.
+ 
+FILGRF CHARACTER*80 FILGRF, the name of the output
+       graphics file.
+ 
+FILINP CHARACTER*80 FILINP.
+       The name of a file in which will be placed a copy of the
+       input typed by the user while running Display.
+ 
+GAMT   REAL GAMT(MAXL,MAXM), the diffusion coefficient.
+ 
+GRACE  REAL GRACE.
+       The size of the "grace" margin on the plot.
+ 
+ICMAX  INTEGER ICMAX, the maximum color index to use in color 
+       contour graphics.
+
+ICMIN  INTEGER ICMIN, the minimum color index to use in color 
+       contour graphics.
+ 
+ICOLOR INTEGER ICOLOR(MAXOBJ).
+       Contains the color indexes for each object.
+       However, in some cases, ICOLOR is actual a color table
+       index.
+ 
+ICRYS1 Input, INTEGER ICRYS, the I coordinate of the row of corner
+       nodes that define the bottom of the crystal.
+
+ICRYS2 Input, INTEGER ICRYS, the I coordinate of the row of corner
+       nodes that define the top of the crystal.
+ 
+IPLOT  INTEGER IPLOT.
+       The number of plots made so far.
+ 
+ITABLE INTEGER ITABLE, the desired color table.
+ 
+       1: low black to high white
+       2: low blue to high yellow
+       3: low red, high blue, with bands between.
+       4: low red, yellow, green, blue, high white.
+       5: low white, blue, green, yellow, high red.
+       6: low blue to high red
+       7: linear table between 2 user colors.
+       8: linear table between N user colors.
+       9: low white to high black.
+ 
+JCMAX,
+JCMIN  INTEGER JCMAX, JCMIN, the maximum and
+       minimum color indices to use in the color bar.
+ 
+JCRYS1 INTEGER JCRYS1, the J coordinate of the column of corner
+       nodes that define the left side of the crystal.  For an
+       undoubled region, J=1.
+
+JCRYS2 INTEGER JCRYS2, the J coordinate of the column of corner
+       nodes that define the right side of the crystal.
+
+KCRYS  INTEGER KCRYS(MAXL,MAXM),
+       0, if control volume (I,J) is away from the crystal.
+       1, if control volume (I,J) is on the external crystal boundary.
+       2, if control volume (I,J) is on the internal crystal boundary.
+       3, if control volume (I,J) is in the crystal interior.
+ 
+KMELT  INTEGER KMELT(MAXL,MAXM),
+       0, if control volume (I,J) is away from the melt.
+       1, if control volume (I,J) is on the external melt boundary.
+       2, if control volume (I,J) is on the internal melt boundary.
+       3, if control volume (I,J) is in the melt interior.
+ 
+KVOID  INTEGER KVOID(MAXL,MAXM),
+       0, if control volume (I,J) is away from the void.
+       1, if control volume (I,J) is on the external void boundary.
+       2, if control volume (I,J) is on the internal void boundary.
+       3, if control volume (I,J) is in the void interior.
+ 
+L      INTEGER L, the number of rows of data.
+ 
+LBAR   LOGICAL LBAR, is .TRUE. if the color bar should
+       be shown.
+ 
+LFLAG  LOGICAL LFLAG(MAXL,MAXM), .TRUE. if primary node
+       (I,J) lies within the visible data, .FALSE. otherwise.
+ 
+LGOPEN LOGICAL LGOPEN.
+       LGOPEN is TRUE if a graphics file has been opened via a call
+       to GRFINI (and hence should be closed by GRFCLS).
+
+       LGOPEN is FALSE if a graphics file is not open.
+
+M      INTEGER M, the number of columns of data.
+ 
+MAXBOT INTEGER MAXBOT, the maximum number of crucible nodes
+       allowed.
+ 
+MAXL,
+MAXM   INTEGER MAXL, MAXM, the maximum allowed number of
+       rows and columns of data.
+ 
+MAXOBJ INTEGER MAXOBJ.
+       The number of graphical "objects".
+ 
+NBOT   INTEGER NBOT, the number of crucible nodes.
+ 
+NCON   INTEGER NCON, the number of color contour
+       regions drawn, and hence, the number of colors
+       to be displayed in the color bar.
+ 
+NCFLAG LOGICAL NCFLAG(MAXL,MAXM).
+       NCFLAG is used to "flag" which corner nodes are "naturally" visible.
+       A corner node [I,J] is generally visible if its coordinates 
+       XC(I,J) and YC(I,J) satisfy: 
+         XSMIN <= XC(I,J) <= XSMAX
+         YSMIN <= YC(I,J) <= YSMAX.
+ 
+NPFLAG LOGICAL NPFLAG(MAXL,MAXM).
+       NPFLAG is used to "flag" which primary nodes are "naturally" visible.
+       A primary node (I,J) is generally visible if its control
+       volume CV(I,J) is visible, as recorded by CVFLAG.
+ 
+NXSKIP INTEGER NXSKIP.
+       NXSKIP is used to "thin" out a vector plot.
+ 
+       If NXSKIP=1, then a standard vector plot is made.
+ 
+       Otherwise, in the X direction, vectors are drawn only
+       in columns 1, 1+NXSKIP, 1+2*NXSKIP and so on.
+ 
+NYSKIP INTEGER NYSKIP.
+       NYSKIP is used to "thin" out a vector plot.
+ 
+       If NYSKIP=1, then a standard vector plot is made.
+ 
+       Otherwise, in the Y direction, vectors are drawn only
+       in rows 1, 1+NYSKIP, 1+2*NYSKIP and so on.
+ 
+OBJECT CHARACTER*25 OBJECT(MAXOBJ), the names of the
+       graphical objects.
+ 
+OVRLAY LOGICAL OVRLAY.
+       If OVRLAY is true, then the next time that a plot is
+       requested, a "new frame" command is suppressed, so that
+       the new plot is shown on top of the previous one.
+ 
+P      REAL P(MAXL,MAXM), the pressure.
+ 
+PC     REAL PC(MAXL,MAXM), the corrected pressure.
+ 
+PSI    REAL PSI(MAXL,MAXM), the stream function.
+ 
+REFLEC LOGICAL REFLEC, .TRUE. if the region is
+       reflected, .FALSE. otherwise.
+ 
+RUETA,
+RUKSI  REAL RUETA(MAXL,MAXM), RUKSI(MAXL,MAXM), the
+       the momentum in the ETA and KSI directions.
+ 
+SCALECV REAL SCALECV.
+       A scale factor for the control volume numbers, which has a
+       default value of 1.
+
+SCALENB REAL SCALENB.
+       A scale factor for the size of the nodes that define the
+       crucible shape, which has a default value of 1.
+
+SCALENC REAL SCALENC.
+       A scale factor for the size of the corner nodes, which has a
+       default value of 1.
+
+SCALENP REAL SCALENP.
+       A scale factor for the size of the primary nodes, which has a
+       default value of 1.
+
+SCALEV REAL SCALEV.
+       A scale factor for velocity vectors.  This starts out at 1.0.
+ 
+SHOW   LOGICAL SHOW(MAXOBJ).
+       Contains, for each object, a flag determining whether it
+       is to be shown or not.
+ 
+SMAX,
+SMIN   REAL SMAX, SMIN, the maximum and minimum
+       values of the quantity whose color contours are
+       being drawn.  These numbers will be printed along
+       with the color bar.
+ 
+SRANGE REAL SRANGE.
+       The maximum of XSMAX-XSMIN and YSMAX-YSMIN.
+       This gives the size of a square containing the data
+       window.
+ 
+T      REAL T(MAXL,MAXM), the temperature.
+ 
+TE     REAL TE(MAXL,MAXM), the turbulent epsilon.
+ 
+TITLE  CHARACTER*40 TITLE.
+       A title for the plots.
+ 
+TITLE2 CHARACTER*40 TITLE2.
+       A subtitle used in the profile plots.
+ 
+TK     REAL TK(MAXL,MAXM), the turbulent K.
+ 
+TNOW   REAL TNOW, the current time.
+ 
+TNOW2  REAL TNOW2, the second time.
+ 
+U      REAL U(MAXL,MAXM), the horizontal velocity.
+ 
+V      REAL V(MAXL,MAXM), the vertical velocity.
+ 
+VECSCL REAL VECSCL.
+       A scale factor for velocity vectors.  This starts out at
+       1.0.
+ 
+VPFLAG LOGICAL VPFLAG(MAXL,MAXM), a flag which determines
+       whether data the primary node (I,J) should be displayed.
+       VPFLAG(I,J) is TRUE by default, by the user may reset
+       its value implicitly via the VPN option.
+ 
+VMAG   REAL VMAG(MAXL,MAXM), the velocity magnitude.
+ 
+VORT   REAL VORT(MAXL,MAXM), the vorticity.
+ 
+W      REAL W(MAXL,MAXM), the axial velocity.
+  
+X1MAX,
+X1MIN  REAL X1MAX, X1MIN, the maximum and minimum X
+       coordinates of the plot, which includes a small grace margin.
+ 
+X2MAX,
+X2MIN  REAL X2MAX, X2MIN, the maximum and minimum X
+       coordinates that should be used for plotting.  No plotting
+       commands should exceed these values.  This is where the
+       "frame" might be drawn.
+ 
+XBOT   REAL XBOT(NBOT).
+       XBOT contains the X coordinates of the crucible bottom nodes.
+ 
+XC     REAL XC(MAXL,MAXM).
+       XC contains the X coordinates of the corner nodes.
+ 
+XMAX   REAL XMAX.
+       The maximum X coordinate of all the nodes.
+       The maximum entry in the XC array.
+ 
+XMIN   REAL XMIN.
+       The minimum X coordinate of all the nodes.
+       The minimum entry in the XC array.
+ 
+XP     REAL XP(MAXL,MAXM).
+       XP contains the X coordinates of the primary nodes.
+
+XSMAX  REAL XSMAX.
+       The maximum X coordinate of the data to be displayed.
+       XSMAX defaults to XMAX, but can be made smaller to
+       focus on a portion of the region.
+ 
+XSMIN  REAL XSMIN.
+       The minimum X coordinate of the data to be displayed.
+       XSMIN defaults to XMIN, but can be made larger to
+       focus on a portion of the region.
+  
+Y1MAX,
+Y1MIN  REAL Y1MAX, Y1MIN, the maximum and minimum Y
+       coordinates of the plot, which includes a small grace margin.
+ 
+Y2MAX,
+Y2MIN  REAL Y2MAX, Y2MIN, the maximum and minimum Y
+       coordinates that should be used for plotting.  No plotting commands
+       should  exceed these values.  This is where the "frame" might be
+       drawn.
+ 
+YBOT   REAL YBOT(NBOT).
+       YBOT contains the Y coordinates of the crucible bottom nodes.
+ 
+YC     REAL YC(MAXL,MAXM).
+       YC contains the Y coordinates of the corner nodes.
+ 
+YMAX   REAL YMAX.
+       The maximum Y coordinate of all the nodes.
+       The maximum value attained by the YC array.
+ 
+YMIN   REAL YMIN.
+       The minimum Y coordinate of all the nodes.
+       The minimum value attained by the YC array.
+ 
+YP     REAL YP(MAXL,MAXM).
+       YP contains the Y coordinates of the primary nodes.
+
+YSMAX  REAL YSMAX.
+       The maximum Y coordinate of the data to be displayed.
+       YSMAX defaults to YMAX, but can be made smaller to
+       focus on a portion of the region.
+ 
+YSMIN  REAL YSMIN.
+       The minimum Y coordinate of the data to be displayed.
+       YSMIN defaults to YMIN, but can be made larger to
+       focus on a portion of the region.
+ 

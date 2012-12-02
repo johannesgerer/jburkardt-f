@@ -1,0 +1,332 @@
+<html>
+
+  <head>
+    <title>
+      SPAETH2 - Cluster Analysis Tools
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPAETH2 <br> Cluster Analysis Tools
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPAETH2</b>
+      is a FORTRAN90 library which
+      analyzes data by grouping it
+      into clusters.
+    </p>
+
+    <p>
+      The current implementation
+      of the code is "under development": some things work, and some
+      don't.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa058/asa058.html">
+      ASA058</a>,
+      a FORTRAN90 library which
+      implements the K-means algorithm of Sparks.
+    </p>
+
+    <p>
+      <a href = "../../f_src/asa136/asa136.html">
+      ASA136</a>,
+      a FORTRAN90 library which
+      implements the Hartigan and Wong clustering algorithm.
+    </p>
+
+    <p>
+      <a href = "../../datasets/cities/cities.html">
+      CITIES</a>,
+      a dataset directory which
+      contains sets of information about cities and the distances
+      between them;
+    </p>
+
+    <p>
+      <a href = "../../f_src/cities/cities.html">
+      CITIES</a>,
+      a FORTRAN90 library which
+      handles various problems associated with a set of "cities" on a map.
+    </p>
+
+    <p>
+      <a href = "../../f_src/kmeans/kmeans.html">
+      KMEANS</a>,
+      a FORTRAN90 library which
+      contains several different algorithms for the K-Means problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lau_np/lau_np.html">
+      LAU_NP</a>,
+      a FORTRAN90 library which
+      implements heuristic algorithms for various NP-hard combinatorial problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/point_merge/point_merge.html">
+      POINT_MERGE</a>,
+      a FORTRAN90 library which
+      considers N points in M dimensional space, and counts or indexes
+      the unique or "tolerably unique" items.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spaeth/spaeth.html">
+      SPAETH</a>,
+      a FORTRAN90 library which
+      can cluster data according to various principles.
+    </p>
+
+    <p>
+      <a href = "../../datasets/spaeth/spaeth.html">
+      SPAETH</a>,
+      a dataset directory which
+      contains datasets for cluster analysis;
+    </p>
+
+    <p>
+      <a href = "../../datasets/spaeth2/spaeth2.html">
+      SPAETH2</a>,
+      a dataset directory which
+      contains datasets for cluster analysis;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Helmuth Spaeth,<br>
+          Cluster Analysis Algorithms
+          for Data Reduction and Classification of Objects,<br>
+          Ellis Horwood, 1980,<br>
+          QA278 S6813.
+        </li>
+        <li>
+          Helmuth Spaeth,<br>
+          Cluster Dissection and Analysis,<br>
+          Theory, FORTRAN Programs, Examples,<br>
+          Ellis Horwood, 1985,<br>
+          QA278 S68213.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "spaeth2.f90">spaeth2.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "spaeth2.sh">spaeth2.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "spaeth2_prb.f90">spaeth2_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "spaeth2_prb.sh">spaeth2_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "spaeth2_prb_output.txt">spaeth2_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CLUDIA</b> clusters data for which a distance matrix has been supplied.
+        </li>
+        <li>
+          <b>CLUSTA</b> solves the multiple location problem in N dimensions.
+        </li>
+        <li>
+          <b>CLUSTER_CENTROIDS</b> determines the centroids of a clustering.
+        </li>
+        <li>
+          <b>CLUSTER_MEDIANS</b> determines the medians of a clustering.
+        </li>
+        <li>
+          <b>CLUSTER_MEDIAN_DISTANCE</b> finds the cluster median distance.
+        </li>
+        <li>
+          <b>CLUSTER_POPULATION</b> sets the cluster populations from the assignment array.
+        </li>
+        <li>
+          <b>CLUSTER_VARIANCE</b> determines the variances associated with a clustering.
+        </li>
+        <li>
+          <b>COLPER</b> seeks a column permutation which maximizes the "bond energy".
+        </li>
+        <li>
+          <b>DATA_D_READ</b> reads a real data set stored in a file.
+        </li>
+        <li>
+          <b>DATA_D_PRINT</b> prints a real data set.
+        </li>
+        <li>
+          <b>DATA_D_SHOW</b> makes a typewriter plot of a real data set.
+        </li>
+        <li>
+          <b>DATA_SIZE</b> counts the size of a data set stored in a file.
+        </li>
+        <li>
+          <b>DIF_INVERSE</b> returns the inverse of the second difference matrix.
+        </li>
+        <li>
+          <b>DISMEA</b> constructs a set of hierarchical clusters.
+        </li>
+        <li>
+          <b>DIVGOW</b> constructs a set of hierarchical clusters by doubling.
+        </li>
+        <li>
+          <b>EMEANS</b> clusters data using a variant of the K-Means algorithm for L1 norms.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HIERCL</b> implements seven agglomerative hierarchical clustering methods.
+        </li>
+        <li>
+          <b>HMEANS</b> clusters data using the H-Means algorithm.
+        </li>
+        <li>
+          <b>I4_FACTORIAL</b> computes the factorial N!
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an integer vector to the indicator vector A(I)=I.
+        </li>
+        <li>
+          <b>I4VEC_PERML</b> generates permutations of a vector in lexicographic order.
+        </li>
+        <li>
+          <b>I4VEC_PERMS</b> generates permutations of a vector in lexicographic order.
+        </li>
+        <li>
+          <b>JOINER</b> uses a very simple cluster assignment algorithm.
+        </li>
+        <li>
+          <b>KMEANS</b> clusters data using the K-Means algorithm.
+        </li>
+        <li>
+          <b>LEADER</b> uses a very simple cluster assignment algorithm.
+        </li>
+        <li>
+          <b>LINKER</b> contructs a minimal tree for a symmetric distance matrix.
+        </li>
+        <li>
+          <b>ORDERED</b> clusters one-dimensional ordered data into NC clusters.
+        </li>
+        <li>
+          <b>PROFILE</b> seeks an optimal variable ordering for a set of data.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>R8MAT_DET</b> computes the determinant of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_ASCENDS</b> determines if a double precision vector is (weakly) ascending.
+        </li>
+        <li>
+          <b>R8VEC_SORT_BUBBLE_A</b> ascending bubble sorts an R8VEC.
+        </li>
+        <li>
+          <b>RANDP</b> randomly partitions a set of M items into N clusters.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>STANDN</b> solves the single location problem in N dimensions.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRANSF</b> transforms a data set to have zero mean and unit variance.
+        </li>
+        <li>
+          <b>URAND</b> returns a pseudo-random number uniformly distributed in [0,1].
+        </li>
+        <li>
+          <b>WMEANS</b> clusters data using the determinant criterion.
+        </li>
+        <li>
+          <b>ZWEIGO</b> organizes a set of data into two clusters.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial html skeleton created by HTMLINDEX. -->
+
+</html>

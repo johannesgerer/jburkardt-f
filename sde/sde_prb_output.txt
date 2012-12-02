@@ -1,0 +1,199 @@
+27 September 2012  10:22:52.378 AM
+ 
+SDE_PRB
+  FORTRAN90 version
+  Test the SDE library.
+ 
+TEST01:
+  BPATH generates a sample Brownian motion path
+ 
+  BPATH data stored in "bpath_data.txt".
+  BPATH plot commands stored in "bpath_commands.txt".
+ 
+TEST02:
+  BPATH_AVERAGE generates many Brownian paths
+  and averages them.
+ 
+  BPATH_AVERAGE data stored in "bpath_average_data.txt".
+  BPATH_AVERAGE plot commands stored in "bpath_average_commands.txt".
+ 
+TEST03:
+  CHAIN solves a stochastic differential equation for
+  a function of a stochastic variable X.
+  We can solve for X(t), and then evaluate V(X(t)).
+  Or, we can apply the stochastic chain rule to derive an
+  an SDE for V, and solve that.
+ 
+  Maximum | Sqrt(X) - V | =   0.142923E-01
+ 
+  CHAIN data stored in "chain_data.txt".
+  CHAIN plot commands stored in "chain_commands.txt".
+ 
+TEST04:
+  EM solves a stochastic differential equation
+  using the Euler-Maruyama method.
+ 
+  | Exact X(T) - EM X(T) | =   0.662559    
+ 
+  EM data #1 stored in "em1_data.txt".
+ 
+  EM data #2 stored in "em2_data.txt".
+  EM plot commands stored in "em_commands.txt".
+ 
+TEST05:
+  EMSTRONG investigates the strong convergence
+  of the Euler-Maruyama method.
+ 
+EMSTRONG:
+  Least squares solution to Error = c * dt ^ q
+  (Expecting Q to be about 1/2.)
+  Computed Q =   0.523444    
+  Residual is   0.132182    
+ 
+  EMSTRONG data stored in "emstrong_data.txt".
+  EMSTRONG plot commands stored in "emstrong_commands.txt".
+ 
+TEST06:
+  EMWEAK investigates the weak convergence
+  of the Euler-Maruyama method.
+ 
+EMWEAK:
+  Using standard Euler-Maruyama method.
+  Least squares solution to Error = c * dt ^ q
+  (Expecting Q to be about 1.)
+  Computed Q =    1.01802    
+  Residual is   0.150786    
+ 
+  EMWEAK data stored in "emweak0_data.txt".
+  EMWEAK plot commands stored in "emweak0_commands.txt".
+ 
+EMWEAK:
+  Using weak Euler-Maruyama method.
+  Least squares solution to Error = c * dt ^ q
+  (Expecting Q to be about 1.)
+  Computed Q =    1.00968    
+  Residual is   0.184308    
+ 
+  EMWEAK data stored in "emweak1_data.txt".
+  EMWEAK plot commands stored in "emweak1_commands.txt".
+ 
+TEST07:
+  MILSTRONG investigates the strong convergence
+  of the Milstein method.
+ 
+MILSTEIN:
+  Least squares solution to Error = c * dt ^ q
+  Expecting Q to be about 1.
+  Computed Q =    1.01720    
+  Residual is   0.449634E-02
+ 
+  MILSTRONG data stored in "milstrong_data.txt".
+  MILSTRONG plot commands stored in "milstrong_commands.txt".
+ 
+TEST08:
+  STAB_ASYMPTOTIC investigates the asymptotic
+  stability of the Euler-Maruyama method.
+ 
+  For technical reasons, the plotting is done
+  in the same routine as the computations.
+ 
+STAB_ASYMPTOTIC:
+  Investigate asymptotic stability of Euler-Maruyama
+  solution with stepsize DT and MU.
+ 
+  SDE is asymptotically stable if
+    Real ( lambda - 1/2 mu^2 ) < 0.
+ 
+  EM with DT is asymptotically stable if
+    E log ( | 1 + lambda dt - sqrt(dt) mu n(0,1) | ) < 0.
+  where n(0,1) is a normal random value.
+ 
+  Lambda =   0.500000    
+  Mu =        2.44949    
+  SDE asymptotic stability test =   -2.50000    
+ 
+  dt =   0.500000    
+  EM asymptotic test =   0.150451    
+ 
+  Data for DT =   0.500000     stored in "stab_asymptotic1_data.txt".
+ 
+  dt =   0.250000    
+  EM asymptotic test =  -0.509627E-01
+ 
+  Data for DT =   0.250000     stored in "stab_asymptotic2_data.txt".
+ 
+  dt =   0.125000    
+  EM asymptotic test =  -0.172760    
+ 
+  Data for DT =   0.125000     stored in "stab_asymptotic3_data.txt".
+  STAB_ASYMPTOTIC plot commands stored in "stab_asymptotic_commands.txt".
+ 
+TEST09:
+  STAB_MEANSQUARE investigates the mean square
+  stability of the Euler-Maruyama method.
+ 
+  For technical reasons, the plotting is done
+  in the same routine as the computations.
+ 
+STAB_MEANSQUARE:
+  Investigate mean square stability of Euler-Maruyama
+  solution with stepsize DT and MU.
+ 
+  SDE is mean square stable if
+    Real ( lambda + 1/2 |mu|^2 ) < 0.
+ 
+  EM with DT is mean square stable if
+    |1+dt^2| + dt * |mu|^2 - 1.0 < 0.
+ 
+  Lambda =   -3.00000    
+  Mu =        1.73205    
+  SDE mean square stability test =   -1.50000    
+ 
+  dt =    1.00000    
+  EM mean square stability test =    6.00000    
+ 
+  Data for DT =    1.00000     stored in "stab_meansquare1_data.txt".
+ 
+  dt =   0.500000    
+  EM mean square stability test =   0.750000    
+ 
+  Data for DT =   0.500000     stored in "stab_meansquare2_data.txt".
+ 
+  dt =   0.250000    
+  EM mean square stability test =  -0.187500    
+ 
+  Data for DT =   0.250000     stored in "stab_meansquare3_data.txt".
+  STAB_MEANSQUARE plot commands stored in "stab_meansquare_commands.txt".
+ 
+TEST10:
+  Estimate the Ito integral of W(t) dW over [0,1].
+ 
+                                                 Abs          Rel
+         N        Exact        Estimate          Error        Error
+ 
+       100   -0.30114922       -0.35566608        0.55E-01   -0.18    
+       400   -0.17995973       -0.18591577        0.60E-02   -0.33E-01
+      1600    0.41074701        0.41902712        0.83E-02    0.20E-01
+      6400   -0.49717412       -0.50117424        0.40E-02   -0.80E-02
+     25600   -0.49994574       -0.50567961        0.57E-02   -0.11E-01
+    102400   -0.12558214       -0.12625784        0.68E-03   -0.54E-02
+    409600   -0.46687285       -0.46555045        0.13E-02   -0.28E-02
+ 
+TEST11:
+  Estimate the Stratonovich integral of W(t) dW over [0,1].
+ 
+                                                 Abs          Rel
+         N        Exact        Estimate          Error        Error
+ 
+       100    0.19885078        0.25183686        0.53E-01    0.27    
+       400    0.92485014E-02    0.17883905E-01    0.86E-02    0.93    
+      1600     2.8490694         2.8699130        0.21E-01    0.73E-02
+      6400    0.51811392E-01    0.56285076E-01    0.45E-02    0.86E-01
+     25600     1.1052669         1.1005340        0.47E-02    0.43E-02
+    102400    0.69697521        0.69694422        0.31E-04    0.44E-04
+    409600    0.32536627        0.32389391        0.15E-02    0.45E-02
+ 
+SDE_PRB
+  Normal end of execution.
+ 
+27 September 2012  10:22:59.301 AM

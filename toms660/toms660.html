@@ -1,0 +1,223 @@
+<html>
+
+  <head>
+    <title>
+      TOMS660 - Interpolation of Scattered Data in the Plane
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOMS660 <br> Interpolation of Scattered Data in the Plane
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS660</b>
+      is a FORTRAN90 library which
+      interpolates scattered 2D data,
+      also called "qshep2d",
+      by Robert Renka.
+    </p>
+
+    <p>
+      <b>TOMS660</b> takes a set of data values ZDAT(XDAT,YDAT), where the
+      points (XDAT,YDAT) are "scattered" in the plane, and constructs an
+      interpolating function Z(X,Y) which matches the given data, and
+      extends smoothly through the plane.
+    </p>
+
+    <p>
+      <b>TOMS660</b> is primarily a FORTRAN90 "translation" of a
+      FORTRAN77 program which was written by Robert Renka and published
+      in the ACM Transactions on Mathematical Software.
+    </p>
+
+    <p>
+      <b>TOMS660</b> is ACM Transactions on Mathematical Software Algorithm
+      number 660.  The original text of any ACM TOMS algorithm is available
+      through ACM:
+              <a href = "http://www.acm.org/pubs/calgo/">
+                         http://www.acm.org/pubs/calgo</a>
+      or NETLIB:
+      <a href = "http://www.netlib.org/toms/index.html">
+      http://www.netlib.org/toms/index.html</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TOMS660</b> is available in
+      <a href = "../../f77_src/toms660/toms660.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms660/toms660.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/rbf_interp/rbf_interp.html">
+      RBF_INTERP</a>,
+      a FORTRAN90 library which
+      defines and evaluates radial basis interpolants to multidimensional data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms526/toms526.html">
+      TOMS526</a>,
+      a FORTRAN90 library which
+      interpolates scattered bivariate data,
+      This is a FORTRAN90 version of ACM TOMS algorithm 526,
+      by Hiroshi Akima;
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms661/toms661.html">
+      TOMS661</a>,
+      a FORTRAN90 library which
+      takes scattered 3D data and produces an interpolating function F(X,Y,Z),
+      this is a FORTRAN90 version of ACM TOMS algorithm 661,
+      called <b>qshep3d</b>,
+      by Robert Renka.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms790/toms790.html">
+      TOMS790</a>,
+      a FORTRAN90 library which
+      computes an interpolating function to a set of scattered data in the plane;<br>
+      this library is commonly called <b>CSHEP2D</b>;<br>
+      by Robert Renka;<br>
+      this is ACM TOMS algorithm 790.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms792/toms792.html">
+      TOMS792</a>,
+      a FORTRAN90 library which
+      tests functions that interpolate scattered data in the plane;<br>
+      by Robert Renka;<br>
+      this is ACM TOMS algorithm 792.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Robert Renka
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Richard Franke,<br>
+          Scattered Data Interpolation: Tests of Some Methods,<br>
+          Mathematics of Computation,<br>
+          Volume 38, Number 157, January 1982, pages 181-200.
+        </li>
+        <li>
+          Robert Renka,<br>
+          Algorithm 660,<br>
+          QSHEP2D, Quadratic Shepard method for bivariate interpolation
+          of scattered data,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 14, 1988, pages 149-150.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms660.f90">toms660.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "toms660.sh">toms660.sh</a>, commands to compile
+          the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms660_prb.f90">toms660_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "toms660_prb.sh">toms660_prb.sh</a>, commands
+          to compile, load and run the sample problem.
+        </li>
+        <li>
+          <a href = "toms660_prb_output.txt">toms660_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GETNP2</b> seeks the closest unmarked node to a point.
+        </li>
+        <li>
+          <b>GIVENS</b> constructs a Givens plane rotation.
+        </li>
+        <li>
+          <b>QS2GRD</b> evaluates the interpolant and its first spatial derivatives.
+        </li>
+        <li>
+          <b>QSHEP2</b> computes an interpolant to scattered data in the plane.
+        </li>
+        <li>
+          <b>QS2VAL</b> evaluates the interpolant function at a point.
+        </li>
+        <li>
+          <b>ROTATE</b> applies a Givens rotation.
+        </li>
+        <li>
+          <b>SETUP2</b> sets up a row of the least squares regression matrix.
+        </li>
+        <li>
+          <b>STORE2</b> creates a cell data structure for the scattered data.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 January 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

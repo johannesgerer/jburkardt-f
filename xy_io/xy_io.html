@@ -1,0 +1,426 @@
+<html>
+
+  <head>
+    <title>
+      XY_IO - XY File Input/Output routines.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      XY_IO <br> XY File Input/Output routines.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>XY_IO</b>
+      is a FORTRAN90 library which
+      reads and writes files in the XY, XYL and XYF formats.
+    </p>
+
+    <p>
+      XY files are a simple way of storing information about sets of points in 2D.
+    </p>
+
+    <p>
+      An XY file has a simple structure.  There are three kinds of records:
+      <ul>
+        <li>
+          COMMENT LINES begin with the character '#' and are ignored;
+        </li>
+        <li>
+          BLANK LINES are ignored;
+        </li>
+        <li>
+          COORDINATE LINES each contain one pair of X, Y coordinates;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Here is an example of an XY file containing 13 points:
+      <pre>
+#  house.xy
+#
+        0.000000        0.000000
+        6.000000        0.000000
+        6.000000        7.000000
+        3.000000       10.000000
+        0.000000        7.000000
+        4.000000        1.000000
+        5.000000        1.000000
+        5.000000        4.000000
+        4.000000        4.000000
+        5.000000        8.000000
+        5.000000       11.000000
+        4.000000       11.000000
+        4.000000        9.000000
+      </pre>
+    </p>
+
+    <p>
+      Of course, in many cases, we would like to describe LINES between the points.
+      We can add this information by including a second file, called an XYL file,
+      which consists of a string of point indices.  A line is drawn from one point
+      to the next and so on.  Each list of points is on a separate record.  Thus, an XYL file
+      associated with the above XY file might be:
+      <pre>
+#  house.xyl
+#
+ 1 2 3 4 5 1
+ 6 7 8 9 6
+ 10 11 12 13
+      </pre>
+    </p>
+
+    <p>
+      We might also like to describe FACES defined by the points.
+      We can add this information by including a file, called an XYF file,
+      which consists of a string of point indices.  A face is defined by
+      listing in counterclockwise order the vertices that lie on it.
+      No terminating "-1" is needed, and the first vertex is not repeated
+      as the final vertex. Thus, an XYF file
+      associated with the above XY file might be:
+      <pre>
+#  house.xyf
+#
+ 1 2 3 4 5
+ 6 7 8 9
+ 10 11 12 13
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>XY_IO</b> is available in
+      <a href = "../../cpp_src/xy_io/xy_io.html">a C++ version</a> and
+      <a href = "../../f_src/xy_io/xy_io.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/xy_io/xy_io.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/circle_points/circle_points.html">
+      CIRCLE_POINTS</a>,
+      a FORTRAN90 program which
+      computes points equally spaced on a circular arc, and writes them to an XY file;
+    </p>
+
+    <p>
+      <a href = "../../f_src/grf_to_xyl/grf_to_xyl.html">
+      GRF_TO_XYL</a>,
+      a FORTRAN90 program which
+      converts information describing the adjacency and embedding of an
+      abstract graph from GRF to XYL format.
+    </p>
+
+    <p>
+      <a href = "../../data/table/table.html">
+      TABLE</a>,
+      a data directory which
+      contains examples of TABLE files,
+      a simple format for N points in M dimensions;
+    </p>
+
+    <p>
+      <a href = "../../data/xy/xy.html">
+      XY</a>,
+      a data directory which
+      contains examples of XY files,
+      a simple 2D graphics point format;
+    </p>
+
+    <p>
+      <a href = "../../m_src/xy_display/xy_display.html">
+      XY_DISPLAY</a>,
+      a MATLAB program which
+      reads an XY file containing
+      the coordinates of points in 2D, and displays a plot of the
+      points in a MATLAB graphics window;
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xy_display_opengl/xy_display_opengl.html">
+      XY_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads an XY file of 2D point coordinates, and displays
+      an image of those points using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../data/xyf/xyf.html">
+      XYF</a>,
+      a data directory which
+      contains examples of XYF files,
+      a simple 2D graphics point and face format;
+    </p>
+
+    <p>
+      <a href = "../../m_src/xyf_display/xyf_display.html">
+      XYF_DISPLAY</a>,
+      a MATLAB program which
+      reads XYF information defining points and faces in 2D, and displays
+      an image using MATLAB.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xyf_display_opengl/xyf_display_opengl.html">
+      XYF_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads XYF information defining points and faces in 2D, and displays
+      an image using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../data/xyl/xyl.html">
+      XYL</a>,
+      a data directory which
+      contains examples of XYL files,
+      a simple 2D graphics point and line format;
+    </p>
+
+    <p>
+      <a href = "../../m_src/xyl_display/xyl_display.html">
+      XYL_DISPLAY</a>,
+      a MATLAB program which
+      reads XYL information defining points and lines in 2D, and displays
+      an image using MATLAB.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xyl_display_opengl/xyl_display_opengl.html">
+      XYL_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads XYL information defining points and lines in 2D, and displays
+      an image using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xyz_io/xyz_io.html">
+      XYZ_IO</a>,
+      a FORTRAN90 library which
+      reads and writes XYZ files, a simple 3D graphics point format.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "xy_io.f90">xy_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "xy_io.sh">xy_io.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "xy_io_prb.f90">xy_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "xy_io_prb.sh">xy_io_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "xy_io_prb_output.txt">xy_io_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "xy_io_prb_01.xy">xy_io_prb_01.xy</a>,
+          an XY file created by the example program.
+        </li>
+        <li>
+          <a href = "xy_io_prb_02.xy">xy_io_prb_02.xy</a>,
+          an XY file created by the example program.
+        </li>
+        <li>
+          <a href = "house.xy">house.xy</a>,
+          an XY file of points created by the example program.
+        </li>
+        <li>
+          <a href = "house.xyl">house.xyl</a>,
+          an XYL file of lines created by the example program.
+        </li>
+        <li>
+          <a href = "annulus.xy">annulus.xy</a>,
+          an XY file of points created by the example program.
+        </li>
+        <li>
+          <a href = "annulus.xyf">annulus.xyf</a>,
+          an XYF file of lines created by the example program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an integer vector from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 value from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>XY_DATA_PRINT</b> prints the data of an XY file.
+        </li>
+        <li>
+          <b>XY_DATA_READ</b> reads data from an XY file.
+        </li>
+        <li>
+          <b>XY_DATA_WRITE</b> writes the data of an XY file.
+        </li>
+        <li>
+          <b>XY_EXAMPLE</b> sets up sample XY data suitable for an XY file.
+        </li>
+        <li>
+          <b>XY_HEADER_PRINT</b> prints the header of an XY file.
+        </li>
+        <li>
+          <b>XY_HEADER_READ</b> determines the number of pairs of data in an XY file.
+        </li>
+        <li>
+          <b>XY_HEADER_WRITE</b> writes the header of an XY file.
+        </li>
+        <li>
+          <b>XY_READ_TEST</b> tests the XY file read routines.
+        </li>
+        <li>
+          <b>XY_WRITE</b> writes an XY file.
+        </li>
+        <li>
+          <b>XY_WRITE_TEST</b> tests the XY write routines.
+        </li>
+        <li>
+          <b>XYF_DATA_PRINT</b> prints the data of an XYF file.
+        </li>
+        <li>
+          <b>XYF_DATA_READ</b> reads the data in an XYF file.
+        </li>
+        <li>
+          <b>XYF_DATA_WRITE</b> writes the data of an XYF file.
+        </li>
+        <li>
+          <b>XYF_EXAMPLE</b> sets data suitable for a pair of XY and XYF files.
+        </li>
+        <li>
+          <b>XYF_EXAMPLE_SIZE</b> sizes the data to be created by XYF_EXAMPLE.
+        </li>
+        <li>
+          <b>XYF_HEADER_PRINT</b> prints the header of an XYF file.
+        </li>
+        <li>
+          <b>XYF_HEADER_READ</b> determines the number of face items in an XZF file.
+        </li>
+        <li>
+          <b>XYF_HEADER_WRITE</b> writes the header of an XYF file.
+        </li>
+        <li>
+          <b>XYF_WRITE</b> writes an XYF file.
+        </li>
+        <li>
+          <b>XYL_DATA_PRINT</b> prints the data of an XYL file.
+        </li>
+        <li>
+          <b>XYL_DATA_READ</b> reads the data in an XYL file.
+        </li>
+        <li>
+          <b>XYL_DATA_WRITE</b> writes the data of an XYL file.
+        </li>
+        <li>
+          <b>XYL_EXAMPLE</b> sets data suitable for a pair of XY and XYL files.
+        </li>
+        <li>
+          <b>XYL_EXAMPLE_SIZE</b> sizes the data to be created by XYL_EXAMPLE.
+        </li>
+        <li>
+          <b>XYL_HEADER_PRINT</b> prints the header of an XYL file.
+        </li>
+        <li>
+          <b>XYL_HEADER_READ</b> determines the number of line items in an XYL file.
+        </li>
+        <li>
+          <b>XYL_HEADER_WRITE</b> writes the header of an XYL file.
+        </li>
+        <li>
+          <b>XYL_WRITE</b> writes an XYL file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 08 January 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

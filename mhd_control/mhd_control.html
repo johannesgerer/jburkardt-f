@@ -1,0 +1,307 @@
+<html>
+
+  <head>
+    <title>
+      MHD_CONTROL - Control of the MHD Equations
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MHD_CONTROL <br> Control of the MHD Equations
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MHD_CONTROL</b>
+      is a FORTRAN90 program which
+      solves a control problem for a 2D time-dependent
+      magneto-hydrodynamic system.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/channel/channel.html">
+      CHANNEL</a>,
+      a FORTRAN90 program which
+      solves a simple
+      channel flow problem with no bump.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows_grid/direction_arrows_grid.html">
+      DIRECTION_ARROWS_GRID</a>,
+      a MATLAB program which
+      reads files of
+      node and velocity data, and, using interpolation, creates a
+      velocity direction plot with arrows
+      place on a uniform grid of the user's specification.
+    </p>
+
+    <p>
+      <a href = "../../datasets/mhd_control/mhd_control.html">
+      MHD_CONTROL</a>,
+      a dataset directory which
+      contains the velocity and
+      magnetic field values over 50 timesteps for a particular control
+      problem.
+    </p>
+
+    <p>
+      <a href = "../../math_src/mhd_control_movie/mhd_control_movie.html">
+      MHD_CONTROL</a>,
+      MATHEMATICA programs which
+      animate the magnetic and velocity fields.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_flow/mhd_flow.html">
+      MHD_FLOW</a>,
+      a FORTRAN90 program which
+      simulates the (uncontrolled) evolution of an MHD system.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nast2d_f90/nast2d_f90.html">
+      NAST2D_F90</a>,
+      a FORTRAN90 program which
+      uses the finite volume method to set up and solve
+      the 2D incompressible Navier Stokes equations with heat.
+    </p>
+
+    <p>
+      <a href = "../../f_src/plot_points/plot_points.html">
+      PLOT_POINTS</a>,
+      a FORTRAN90 program which
+      can plot the nodes that define the region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/vector_plot/vector_plot.html">
+      VECTOR_PLOT</a>,
+      a FORTRAN90 program which
+      can be used to create a velocity field vector plot from the output data files of
+      the <b>BUMP</b> program.
+    </p>
+
+    <p>
+      <a href = "../../m_src/vector_stream_grid/vector_stream_grid.html">
+      VECTOR_STREAM_GRID</a>,
+      a MATLAB program which
+      reads node and vector data from a file, computes an interpolatory function,
+      evaluates on a uniform grid of points specified by the user,
+      and displays a streamline plot of the vector field.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows_grid/velocity_arrows_grid.html">
+      VELOCITY_ARROWS_GRID</a>,
+      a MATLAB program which
+      reads files of node and velocity data, and, using interpolation, creates a
+      vector plot with arrows
+      placed on a uniform grid of the user's specification.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows_grid2/velocity_arrows_grid2.html">
+      VELOCITY_ARROWS_GRID2</a>,
+      a MATLAB program which
+      reads a single file of node and velocity data, and using interpolation is
+      able to display a velocity vector field along any uniform grid
+      of points specified by the user.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Max Gunzburger,<br>
+          Finite Element Methods for Viscous Incompressible Flows,<br>
+          A Guide to Theory, Practice, and Algorithms,<br>
+          Academic Press, 1989,<br>
+          ISBN: 0-12-307350-2,<br>
+          LC: TA357.G86.
+        </li>
+        <li>
+          Max Gunzburger, Catalin Trenchea,<br>
+          Analysis and Discretization of an Optimal Control Problem
+          for the Time-Periodic MHD Equations,<br>
+          Journal of Mathematical Analysis and Applications,<br>
+          Volume 308, Number 2, 2005, pages 440-466.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "mhd_control.f90">mhd_control.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "mhd_control.sh">mhd_control.sh</a>,
+          commands to compile the source code.
+        </li>
+        <li>
+          <a href = "mag_ic_09x09.txt">mag_ic_09x09.txt</a>,
+          a file containing an initial condition for the magnetic field
+          on a 9 x 9 element grid.
+        </li>
+        <li>
+          <a href = "mag_ic_13x13.txt">mag_ic_13x13.txt</a>,
+          a file containing an initial condition for the magnetic field
+          on a 13 x 13 element grid.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for MHD_CONTROL.
+        </li>
+        <li>
+          <b>ADJOINT</b> solves the linear adjoint equations for the control problem.
+        </li>
+        <li>
+          <b>BANDED</b> is the banded equation solver.
+        </li>
+        <li>
+          <b>BASIS_LINEAR</b> evaluates the linear basis functions associated with pressure.
+        </li>
+        <li>
+          <b>BASIS_QUAD</b> evaluates a quadratic basis function.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>COST_FNL</b> evaluates the cost functional at a given time for a specific target
+        </li>
+        <li>
+          <b>DECOMPOSE</b> breaks a 1-d vector into a 2-d vector by unknown and node
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>ERROR</b> computes the L^2 error in the state and target solutions.
+        </li>
+        <li>
+          <b>EVAL_2D</b> evaluates vector dimensioned (nodes, 4)  at the given point (x,y)
+        </li>
+        <li>
+          <b>EVAL</b> evaluates the velocities and the magnetic field
+        </li>
+        <li>
+          <b>EVAL_RHS</b> evaluates the rhs at the given point (x,y)
+        </li>
+        <li>
+          <b>FILE_COPY</b> makes a copy of a file.
+        </li>
+        <li>
+          <b>FILE_DELETE</b> deletes a named file if it exists.
+        </li>
+        <li>
+          <b>FILE_EXIST</b> reports whether a file exists.
+        </li>
+        <li>
+          <b>FILE_IS_OPEN</b> reports whether a file (specified by filename) is open.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next file name in a series.
+        </li>
+        <li>
+          <b>GEOMETRY</b> sets up x,y coordinate arrays, node array associating local node number to
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>L2NORM</b> calculates the L^2 norm of f.
+        </li>
+        <li>
+          <b>MAG_NSTOKE</b> solves the Navier Stokes equations coupled with magnetic field
+        </li>
+        <li>
+          <b>OUTPUT</b> outputs x, y, and velocities at each point
+        </li>
+        <li>
+          <b>POST_PROCESS</b> resets the pressure, by computing the mean and subtracting
+        </li>
+        <li>
+          <b>R8UD_IO</b> reads or writes fixed size vectors, using R8UD protocol.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>SET_INITIAL</b> sets the initial condition for the state solution.
+        </li>
+        <li>
+          <b>TARGET</b> sets value of target solution when it is given explicitly by a function
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UBDRY</b> evaluates the velocity inlet profile.
+        </li>
+        <li>
+          <b>XY_WRITE</b> writes the coordinate data to a file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

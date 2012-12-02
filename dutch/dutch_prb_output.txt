@@ -1,0 +1,411 @@
+ 2 January 2011   2:00:43.869 PM
+ 
+DUTCH_PRB
+  FORTRAN90 version
+  Test the DUTCH library.
+ 
+TEST01
+  POINTS_CONVEX_HULL_CUBIC_2D computes the convex hull
+  of a set of N 2D points, using an algorithm 
+  that is cubic in N.
+ 
+  Coordinates of the points:
+ 
+  Row          1             2      
+  Col
+ 
+    1    0.00000       0.00000    
+    2    1.00000       2.00000    
+    3    2.00000       0.00000    
+    4    1.00000       1.00000    
+    5    0.00000       2.00000    
+    6    1.00000       3.00000    
+    7    2.00000       2.00000    
+ 
+  Coordinates of the convex hull:
+ 
+  Row          1             2      
+  Col
+ 
+    1    2.00000       0.00000    
+    2    2.00000       2.00000    
+    3    1.00000       3.00000    
+    4    0.00000       2.00000    
+    5    0.00000       0.00000    
+ 
+TEST02
+  POINTS_CONVEX_HULL_NLOGN_2D computes the convex hull 
+  of a set of N 2D points using an algorithm
+  that is NlogN in N.
+ 
+  Coordinates of the points:
+ 
+  Row          1             2      
+  Col
+ 
+    1    0.00000       0.00000    
+    2    1.00000       2.00000    
+    3    2.00000       0.00000    
+    4    1.00000       1.00000    
+    5    0.00000       2.00000    
+    6    1.00000       3.00000    
+    7    2.00000       2.00000    
+ 
+  Coordinates of the convex hull:
+ 
+  Row          1             2      
+  Col
+ 
+    1    0.00000       2.00000    
+    2    1.00000       3.00000    
+    3    2.00000       2.00000    
+    4    2.00000       0.00000    
+    5    0.00000       0.00000    
+ 
+TEST03
+  POINTS_CONVEX_HULL_NLOGH_2D computes the convex hull
+  of a set of N 2D points using an algorithm
+  that is order NlogH.
+  (H is the number of points on the convex hull.)
+ 
+  Coordinates of the points:
+ 
+  Row          1             2      
+  Col
+ 
+    1    0.00000       0.00000    
+    2    1.00000       2.00000    
+    3    2.00000       0.00000    
+    4    1.00000       1.00000    
+    5    0.00000       2.00000    
+    6    1.00000       3.00000    
+    7    2.00000       2.00000    
+ 
+  Coordinates of the convex hull:
+ 
+  Row          1             2      
+  Col
+ 
+    1    0.00000       2.00000    
+    2    1.00000       3.00000    
+    3    2.00000       2.00000    
+    4    2.00000       0.00000    
+    5    0.00000       0.00000    
+ 
+TEST04
+  POLYCON_MINKOWSKI_SUM_LINEAR computes the Minkowski sum
+  of two convex polygons using a linear algorithm.
+ 
+  Coordinates of polygon U:
+ 
+     1   0.00000       0.00000    
+     2   2.00000       2.00000    
+     3  -1.00000       3.00000    
+     4  -2.00000       2.00000    
+ 
+  Coordinates of polygon V:
+ 
+     1   8.00000       2.00000    
+     2   9.00000       5.00000    
+     3   7.00000       4.00000    
+ 
+  Coordinates of Minkowski sum polygon W:
+ 
+     1   8.00000       2.00000    
+     2   10.0000       4.00000    
+     3   7.00000       5.00000    
+     4   6.00000       4.00000    
+     5   8.00000       2.00000    
+     6   9.00000       5.00000    
+     7   7.00000       4.00000    
+ 
+TEST05
+  POLYCON_MINKOWSKI_SUM_N2LOGN2 computes the Minkowski
+  sum of two convex polygons using a linear algorithm.
+ 
+  Coordinates of polygon U:
+ 
+     1   0.00000       0.00000    
+     2   2.00000       2.00000    
+     3  -1.00000       3.00000    
+     4  -2.00000       2.00000    
+ 
+  Coordinates of polygon V:
+ 
+     1   8.00000       2.00000    
+     2   9.00000       5.00000    
+     3   7.00000       4.00000    
+ 
+  Coordinates of Minkowski sum polygon W:
+ 
+  Row          1             2      
+  Col
+ 
+    1    6.00000       7.00000    
+    2    8.00000       8.00000    
+    3    11.0000       7.00000    
+    4    10.0000       4.00000    
+    5    8.00000       2.00000    
+    6    6.00000       4.00000    
+    7    5.00000       6.00000    
+ 
+TEST06
+  PERM_RANDOM produces a random permutation;
+  For this test, N =      4
+ 
+   4   2   3   1
+   4   1   2   3
+   4   3   1   2
+   2   4   1   3
+   1   4   3   2
+ 
+TEST07
+  POINTS_MINIDISC computes the smallest circle that
+  contains a set of N 2D points.
+ 
+  Coordinates of the points:
+ 
+     1   0.00000       0.00000    
+     2   1.00000       2.00000    
+     3   2.00000       0.00000    
+     4   1.00000       1.00000    
+     5   0.00000       2.00000    
+     6   1.00000       3.00000    
+     7   2.00000       2.00000    
+ 
+  The enclosing circle has:
+  Radius R =         1.66667    
+  Center (CX,CY)=    1.00000       1.33333    
+ 
+TEST08
+  LINE_SEG_VEC_INT_2D finds the intersections of a set
+  of line segments.
+ 
+  I, X1(I), Y1(I), X2(I), Y2(I)
+ 
+ 1    4.0    0.0    5.0    0.0
+ 2    0.0    1.0    3.0    1.0
+ 3    4.0    2.0    5.0    3.0
+ 4    1.0    0.0    5.0    4.0
+ 5    0.0    3.0    1.0    2.0
+ 6    1.0    4.0    4.0    1.0
+ 7    3.0    4.0    3.0    3.0
+ 8    2.0    4.0    2.0    0.0
+ 
+  Seg#1, Seg#2, Intersection
+ 
+     2     4   2.00000       1.00000    
+     2     8   2.00000       1.00000    
+     4     6   3.00000       2.00000    
+     4     8   2.00000       1.00000    
+     6     8   2.00000       3.00000    
+ 
+  No more intersections.
+ 
+TEST09
+  RECT_INT_2D finds the intersections of two rectangles.
+ 
+  For all tests, rectangle #1 is (0,0), (5,5).
+ 
+ 
+  Second rectangle:
+ 
+  1.0000  2.0000
+  2.0000  4.0000
+ 
+  Intersection rectangle:
+ 
+  1.0000  2.0000
+  2.0000  4.0000
+ 
+  Second rectangle:
+ 
+  3.0000  2.0000
+  5.0000  5.0000
+ 
+  Intersection rectangle:
+ 
+  3.0000  2.0000
+  5.0000  5.0000
+ 
+  Second rectangle:
+ 
+ -2.0000  2.0000
+  1.0000  4.0000
+ 
+  Intersection rectangle:
+ 
+  0.0000  2.0000
+  1.0000  4.0000
+ 
+  Second rectangle:
+ 
+  3.0000 -2.0000
+  9.0000  1.0000
+ 
+  Intersection rectangle:
+ 
+  3.0000  0.0000
+  5.0000  1.0000
+ 
+  Second rectangle:
+ 
+  2.0000 -3.0000
+  8.0000  8.0000
+ 
+  Intersection rectangle:
+ 
+  2.0000  0.0000
+  5.0000  5.0000
+ 
+  Second rectangle:
+ 
+  5.0000  1.0000
+  8.0000  3.0000
+ 
+  Intersection rectangle:
+ 
+  5.0000  1.0000
+  5.0000  3.0000
+ 
+  Second rectangle:
+ 
+  5.0000  5.0000
+  8.0000  8.0000
+ 
+  Intersection rectangle:
+ 
+  5.0000  5.0000
+  5.0000  5.0000
+ 
+  Second rectangle:
+ 
+  6.0000  7.0000
+  8.0000  9.0000
+ 
+  Intersection rectangle:
+ 
+  EMPTY
+ 
+TEST10
+  POLY_REORDER_NODES reorders the nodes of a polygon
+  so that node 1 is leftmost (and lowest, in ties).
+ 
+  The nodes:
+ 
+     1   4.00000       3.00000    
+     2   0.00000       3.00000    
+     3   0.00000       0.00000    
+     4   1.00000       0.00000    
+     5   2.00000       2.00000    
+     6   2.00000       5.00000    
+     7   3.00000       1.00000    
+     8   5.00000       0.00000    
+ 
+  The sequence of nodes:
+ 
+     1         7
+     2         8
+     3         1
+     4         6
+     5         2
+     6         5
+     7         4
+ 
+  The reordered sequence of nodes:
+ 
+     1         2
+     2         5
+     3         4
+     4         7
+     5         8
+     6         1
+     7         6
+ 
+TEST11
+  POLY_TRIANGULATE_2D triangulates a polygon.
+ 
+  The nodes of the polygon:
+ 
+     1   7.00000       0.00000    
+     2   7.00000       4.00000    
+     3   9.00000       5.00000    
+     4   4.00000       10.0000    
+     5   4.00000       4.00000    
+     6   6.00000       6.00000    
+     7   6.00000       2.00000    
+     8   4.00000       2.00000    
+     9   2.00000       4.00000    
+    10   2.00000       2.00000    
+    11   0.00000       2.00000    
+    12   2.00000       0.00000    
+    13   4.00000       1.00000    
+ 
+  The triangulation:
+ 
+  Row        1       2       3
+  Col
+ 
+    1       11      12      10
+    2       12      13      10
+    3       10      13       9
+    4        9      13       8
+    5       13       1       8
+    6        8       1       7
+    7        5       6       4
+    8        4       6       3
+    9        7       1       6
+   10        6       2       3
+   11        6       1       2
+ 
+ 
+TEST12
+  TRIANGULATE_TRICOLOR tricolors a triangulation.
+ 
+  The triangulation:
+ 
+  Row        1       2       3
+  Col
+ 
+    1       11      12      10
+    2       12      13      10
+    3       10      13       9
+    4        9      13       8
+    5       13       1       8
+    6        8       1       7
+    7        5       6       4
+    8        4       6       3
+    9        7       1       6
+   10        6       2       3
+   11        6       1       2
+ 
+ 
+  The node coloring
+ 
+     1         2
+     2         1
+     3         2
+     4         1
+     5         2
+     6         3
+     7         1
+     8         3
+     9         2
+    10         3
+    11         1
+    12         2
+    13         1
+ 
+TEST13
+  TRIANGULATION_BOUNDARY_COUNT determines the number of
+  edges that lie on the convex hull of a region that has
+  been triangulated.
+ 
+  Number of points =             13
+  Number of triangles =          16
+  Number of boundary edges =      8
+ 
+DUTCH_PRB
+  Normal end of execution.
+ 
+ 2 January 2011   2:00:43.871 PM

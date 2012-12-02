@@ -1,0 +1,435 @@
+<html>
+
+  <head>
+    <title>
+      TABLE_ORTHONORMALIZE - Orthonormalize a Set of Vectors
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TABLE_ORTHONORMALIZE <br> Orthonormalize a Set of Vectors
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TABLE_ORTHONORMALIZE</b>
+      is a FORTRAN90 program which
+      can read in a set of vectors and
+      orthonormalize them.
+    </p>
+
+    <p>
+      <i>Caution</i>: it may not be clear from the documentation, but
+      the program implicitly assumes that each vector represents a
+      velocity field, and hence can be thought of as a quantity
+      V(M/2,2), where "M" is the appropriate dimension if we think of
+      the quantity as a vector of scalar values.  Moreover, each
+      vector is written to a file as M/2 records of pairs of values.
+    </p>
+
+    <p>
+      For instance, the program can read three (or in general <b>N</b>)
+      files, each containing one of the M-dimensional vectors
+      <b>v<sub>1</sub></b>, <b>v<sub>2</sub></b> and <b>v<sub>3</sub></b>.
+      The program then outputs three new vectors <b>q<sub>1</sub></b>,
+      <b>q<sub>2</sub></b> and <b>q<sub>3</sub></b>, with the properties that
+      <ul>
+        <li>
+          The Euclidean norm of <b>q<sub>i</sub></b> is 1, for all <b>i</b>;
+        </li>
+        <li>
+          The dot product <b>q<sub>i</sub>&#149;q<sub>j</sub></b> is 0,
+          for <b>i</b> and <b>j</b> distinct;
+        </li>
+        <li>
+          The vectors <b>q<sub>i</sub></b> span the same space as the
+          original vectors <b>v<sub>i</sub></b>;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The algorithm collects the <b>N</b> input vectors <b>v<sub>j</sub></b>
+      into an <b>M</b> by <b>N</b> matrix <b>V</b>.  It then
+      calls the appropriate LAPACK routines (<b>SGEQRF</b> and <b>SORGQR</b>)
+      to compute the QR factorization:
+      <pre><b>
+        V = Q * R
+      </b></pre>
+      and outputs the individual columns of <b>Q</b> as the new vectors
+      <b>q<sub>j</sub></b>.
+    </p>
+
+    <p>
+      This routine can be useful as a postprocessing tool for the output
+      from
+      <a href = "../cvt_basis/cvt_basis.html">CVT_BASIS</a> for example.
+      However, orthonormalization would probably <i>not</i> be appropriate
+      if <b>CVT_BASIS</b> had done its computations using
+      mass matrix preconditioning.  In that case, the output vectors
+      have a special orthogonality property under an L2 inner product,
+      which would be lost if the vectors were processed by this program.
+    </p>
+
+    <p>
+      Some effort has been made to relieve the user of the tedious
+      necessity of specifying how many input files there are (the number
+      <b>N</b>), and what their dimensionality is (the number <b>M</b>).
+      It is assumed that the input data files have "consecutive" names,
+      such as <i>file01.txt</i>, <i>file02.txt</i>, ... and so on.
+      This is enough to figure out <b>N</b>.  And the program counts
+      the number of lines in the first file, and assumes this value
+      of <b>M</b> may safely be applied to all the files.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>table_orthonormalize</b> <i>input_file_01</i> <i>output_file_01</i>
+        </dt>
+        <dd>
+          reads <i>input_file_01</i>, orthonormalizes the vectors, and
+          writes them to <i>output_file_01</i>.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/lapack/lapack.html">
+      LAPACK</a>,
+      a FORTRAN90 library which
+      supplies the routines used to orthonormalize the vectors.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_barplot_ppma/table_barplot_ppma.html">
+      TABLE_BARPLOT_PPMA</a>,
+      a FORTRAN90 program which
+      reads a table file and creates a
+      PPMA bargraph of the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_border/table_border.html">
+      TABLE_BORDER</a>,
+      a FORTRAN90 program which
+      can be used to add a border
+      (of zero values) to a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns/table_columns.html">
+      TABLE_COLUMNS</a>,
+      a FORTRAN90 program which
+      can extract specific columns of data
+      from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns_permute/table_columns_permute.html">
+      TABLE_COLUMNS_PERMUTE</a>,
+      a FORTRAN90 program which
+      permutes the columns of a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      computes the Delaunay triangulation of a set
+      of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_histogram/table_histogram.html">
+      TABLE_HISTOGRAM</a>,
+      a FORTRAN90 program which
+      can make a histogram of a set of points
+      stored in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_io/table_io.html">
+      TABLE_IO</a>,
+      a FORTRAN90 library which
+      supplies the routines used to read the TABLE file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_latinize/table_latinize.html">
+      TABLE_LATINIZE</a>,
+      a FORTRAN90 program which 
+      reads a file of
+      points and creates a "latinized" version by adjusting the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_merge/table_merge.html">
+      TABLE_MERGE</a>,
+      a FORTRAN90 program which 
+      reads a file of
+      points, and removes duplicates, and points that are close to each other.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_quality/table_quality.html">
+      TABLE_QUALITY</a>,
+      a FORTRAN90 program which 
+      reads a file of
+      points and computes the quality of dispersion.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_record_match/table_record_match.html">
+      TABLE_RECORD_MATCH</a>,
+      a FORTRAN90 program which
+      can be used to find close records in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_scale/table_scale.html">
+      TABLE_SCALE</a>,
+      a FORTRAN90 program which
+      can be used to multiply the entries of a table file
+      by a scale vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_shift/table_shift.html">
+      TABLE_SHIFT</a>,
+      a FORTRAN90 program which
+      can be used to shift the entries of a table file
+      by a shift vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_stats/table_stats.html">
+      TABLE_STATS</a>,
+      a FORTRAN90 program which
+      can read a table file and compute certain statistics.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_tet_mesh/table_tet_mesh.html">
+      TABLE_TET_MESH</a>,
+      a FORTRAN90 program which
+      can read a table file of 3D data, and compute a
+      tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_top/table_top.html">
+      TABLE_TOP</a>,
+      a FORTRAN90 program which
+      can read a table file of M-dimensional data and
+      make a table of plots of all pairs of coordinates.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_unborder/table_unborder.html">
+      TABLE_UNBORDER</a>,
+      a FORTRAN90 program which
+      can be used to remove the border from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_uniform_noise/table_uniform_noise.html">
+      TABLE_UNIFORM_NOISE</a>,
+      a FORTRAN90 program which
+      can be used to add a uniform noise term to the data
+      in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_voronoi/table_voronoi.html">
+      TABLE_VORONOI</a>,
+      a FORTRAN90 program which
+      can be used to compute information about
+      the Voronoi diagram of the points.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Edward Anderson, Zhaojun Bai, Christian Bischof, Susan Blackford,
+          James Demmel, Jack Dongarra, Jeremy DuCroz, Anne Greenbaum,
+          Sven Hammarling, Alan McKenney, Danny Sorensen,<br>
+          LAPACK User's Guide,<br>
+          Third Edition,<br>
+          SIAM, 1999,<br>
+          QA76.73.F25L36
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "table_orthonormalize.f90">table_orthonormalize.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "table_orthonormalize.sh">table_orthonormalize.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      A set of sample input files you may copy, with M = 8 and N = 3:
+      <ul>
+        <li>
+          <a href = "v_01.txt">v_01.txt</a>, input file #1.
+        </li>
+        <li>
+          <a href = "v_02.txt">v_02.txt</a>, input file #2.
+        </li>
+        <li>
+          <a href = "v_03.txt">v_03.txt</a>, input file #3.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      A set
+      of output files corresponding to the sample input files,
+      with M = 8 and N = 3, including:
+      <ul>
+        <li>
+          <a href = "q_01.txt">q_01.txt</a>, output file #1.
+        </li>
+        <li>
+          <a href = "q_02.txt">q_02.txt</a>, output file #2.
+        </li>
+        <li>
+          <a href = "q_03.txt">q_03.txt</a>, output file #3.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TABLE_ORTHONORMALIZE.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns TRUE if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>Q_FACTOR</b> determines the Q factor of a matrix.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>S_INPUT</b> prints a prompt string and reads a string from the user.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>XY_READ_DATA</b> reads data from an XY file.
+        </li>
+        <li>
+          <b>XY_READ_HEADER</b> determines the number of pairs of data in an XY file.
+        </li>
+        <li>
+          <b>XY_WRITE</b> writes an XY file.
+        </li>
+        <li>
+          <b>XY_WRITE_DATA</b> writes the data of an XY file.
+        </li>
+        <li>
+          <b>XY_WRITE_HEADER</b> writes the header of an XY file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 31 October 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,392 @@
+<html>
+
+  <head>
+    <title>
+      FEKETE - High Order Interpolation and Quadrature in Triangles
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FEKETE <br> High Order Interpolation and Quadrature in Triangles
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FEKETE</b>
+      is a FORTRAN90 library which
+      can return information defining any of seven Fekete
+      rules for high order interpolation and quadrature in a triangle.
+    </p>
+
+    <p>
+      Fekete points can be defined for any region OMEGA.  To define
+      the Fekete points for a given region, let Poly(N) be some finite
+      dimensional vector space of polynomials, such as all polynomials
+      of degree less than L, or all polynomials whose monomial terms
+      have total degree less than some value L.
+    </p>
+
+    <p>
+      Let P(1:M) be any basis for Poly(N).  For this basis, the Fekete
+      points are defined as those points Z(1:M) which maximize the
+      determinant of the corresponding Vandermonde matrix:
+      <pre>
+        V = [ P1(Z1)  P1(Z2)  ... P1(ZM) ]
+            [ P2(Z1)  P2(Z2)  ... P2(ZM) ]
+            ...
+            [ PM(ZM)  P2(ZM)  ... PM(ZM) ]
+      </pre>
+    </p>
+
+    <p>
+      On the triangle, it is known that some Fekete points will lie
+      on the boundary, and that on each side of the triangle, these
+      points will correspond to a set of Gauss-Lobatto points.
+    </p>
+
+    <p>
+      The seven rules have the following orders and precisions:
+      <table border="1" align="center">
+        <tr>
+          <th>Rule</th><th>Order</th><th>Precision</th>
+        </tr>
+        <tr>
+          <td>1</td><td> 10</td><td> 3</td>
+        </tr>
+        <tr>
+          <td>2</td><td> 28</td><td> 6</td>
+        </tr>
+        <tr>
+          <td>3</td><td> 55</td><td> 9</td>
+        </tr>
+        <tr>
+          <td>4</td><td> 91</td><td>12</td>
+        </tr>
+        <tr>
+          <td>5</td><td> 91</td><td>12</td>
+        </tr>
+        <tr>
+          <td>6</td><td>136</td><td>15</td>
+        </tr>
+        <tr>
+          <td>7</td><td>190</td><td>18</td>
+        </tr>
+      </table>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FEKETE</b> is available in
+      <a href = "../../cpp_src/fekete/fekete.html">a C++ version</a> and
+      <a href = "../../f_src/fekete/fekete.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fekete/fekete.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dunavant/dunavant.html">
+      DUNAVANT</a>,
+      a FORTRAN90 library which
+      defines Dunavant rules for quadrature
+      on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/felippa/felippa.html">
+      FELIPPA</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for lines, triangles, quadrilaterals,
+      pyramids, wedges, tetrahedrons and hexahedrons.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gm_rule/gm_rule.html">
+      GM_RULE</a>,
+      a FORTRAN90 library which
+      defines a Grundmann-Moeller
+      rule for quadrature over a triangle, tetrahedron, or general
+      M-dimensional simplex.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lyness_rule/lyness_rule.html">
+      LYNESS_RULE</a>
+      a FORTRAN90 library which
+      returns Lyness-Jespersen quadrature rules for the triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ncc_triangle/ncc_triangle.html">
+      NCC_TRIANGLE</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes closed quadrature
+      rules on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nco_triangle/nco_triangle.html">
+      NCO_TRIANGLE</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes open quadrature
+      rules on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_tri/quadrature_rules_tri.html">
+      QUADRATURE_RULES_TRI</a>,
+      a dataset directory which
+      contains triples of files which
+      defines various quadrature
+      rules on triangles.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which
+      contains quadrature rules for a variety of unusual areas, surfaces and volumes in 2D,
+      3D and M-dimensions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_tri_int/test_tri_int.html">
+      TEST_TRI_INT</a>,
+      a FORTRAN90 library which
+      tests algorithms for quadrature over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms612/toms612.html">
+      TOMS612</a>,
+      a FORTRAN77 library which
+      estimates the integral of a function over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangle_exactness/triangle_exactness.html">
+      TRIANGLE_EXACTNESS</a>,
+      a FORTRAN90 program which
+      investigates the polynomial exactness of a quadrature rule for the triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangle_monte_carlo/triangle_monte_carlo.html">
+      TRIANGLE_MONTE_CARLO</a>,
+      a FORTRAN90 program which
+      uses the Monte Carlo method to estimate integrals over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wandzura/wandzura.html">
+      WANDZURA</a>,
+      a FORTRAN90 library which
+      definines Wandzura rules for quadrature on a triangle.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          SF Bockman,<br>
+          Generalizing the Formula for Areas of Polygons to Moments,<br>
+          American Mathematical Society Monthly,<br>
+          Volume 96, Number 2, February 1989, pages 131-132.
+        </li>
+        <li>
+          Hermann Engels,<br>
+          Numerical Quadrature and Cubature,<br>
+          Academic Press, 1980,<br>
+          ISBN: 012238850X,<br>
+          LC: QA299.3E5.
+        </li>
+        <li>
+          Arthur Stroud,<br>
+          Approximate Calculation of Multiple Integrals,<br>
+          Prentice Hall, 1971,<br>
+          ISBN: 0130438936,<br>
+          LC: QA311.S85.
+        </li>
+        <li>
+          Mark Taylor, Beth Wingate, Rachel Vincent,<br>
+          An Algorithm for Computing Fekete Points in the Triangle,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 38, Number 5, 2000, pages 1707-1720.
+        </li>
+        <li>
+          Stephen Wandzura, Hong Xiao,<br>
+          Symmetric Quadrature Rules on a Triangle,<br>
+          Computers and Mathematics with Applications,<br>
+          Volume 45, 2003, pages 1829-1840.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fekete.f90">fekete.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "fekete.sh">fekete.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fekete_prb.f90">fekete_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "fekete_prb.sh">fekete_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "fekete_prb_output.txt">fekete_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      One of the tests in the sample calling program creates
+      EPS files of
+      the abscissas in the unit triangle.  These have been converted
+      to PNG files for
+      display here.
+      <ul>
+        <li>
+          <a href = "fekete_rule_1.png">fekete_rule_1.png</a>,
+          a plot of rule 1.
+        </li>
+        <li>
+          <a href = "fekete_rule_2.png">fekete_rule_2.png</a>,
+          a plot of rule 2.
+        </li>
+        <li>
+          <a href = "fekete_rule_3.png">fekete_rule_3.png</a>,
+          a plot of rule 3.
+        </li>
+        <li>
+          <a href = "fekete_rule_4.png">fekete_rule_4.png</a>,
+          a plot of rule 4.
+        </li>
+        <li>
+          <a href = "fekete_rule_5.png">fekete_rule_5.png</a>,
+          a plot of rule 5.
+        </li>
+        <li>
+          <a href = "fekete_rule_6.png">fekete_rule_6.png</a>,
+          a plot of rule 6.
+        </li>
+        <li>
+          <a href = "fekete_rule_7.png">fekete_rule_7.png</a>,
+          a plot of rule 7.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>FEKETE_DEGREE</b> returns the degree of a given Fekete rule for the triangle.
+        </li>
+        <li>
+          <b>FEKETE_RULE</b> returns the points and weights of a Fekete rule.
+        </li>
+        <li>
+          <b>FEKETE_RULE_NUM</b> returns the number of Fekete rules available.
+        </li>
+        <li>
+          <b>FEKETE_ORDER_NUM</b> returns the order of a given Fekete rule for the triangle.
+        </li>
+        <li>
+          <b>FEKETE_SUBORDER</b> returns the suborders for a Fekete rule.
+        </li>
+        <li>
+          <b>FEKETE_SUBORDER_NUM</b> returns the number of suborders for a Fekete rule.
+        </li>
+        <li>
+          <b>FEKETE_SUBRULE</b> returns a compressed Fakete rule.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> increments a partially numeric filename.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>REFERENCE_TO_PHYSICAL_T3</b> maps T3 reference points to physical points.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRIANGLE_AREA</b> computes the area of a triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_POINTS_PLOT</b> plots a triangle and some points.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 December 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

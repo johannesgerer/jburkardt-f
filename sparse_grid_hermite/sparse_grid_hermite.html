@@ -1,0 +1,482 @@
+<html>
+
+  <head>
+    <title>
+      SPARSE_GRID_HERMITE - Sparse Grids Based on Gauss-Hermite Rules
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPARSE_GRID_HERMITE <br> Sparse Grids Based on Gauss-Hermite Rules
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPARSE_GRID_HERMITE</b>
+      is a FORTRAN90 library which
+      constructs sparse grids based on 1D Gauss-Hermite rules.
+    </p>
+
+    <p>
+      Sparse grids are more naturally constructed from a nested family
+      of quadrature rules.  Gauss-Hermite rules are not nested, but
+      have higher accuracy.  Thus, there can be a tradeoff.  If we compare
+      two sparse grids of the same "level", one using Gauss-Hermite rules
+      and the other a nested rule, then the Gauss-Hermite
+      sparse grid will have higher accuracy...but also a significantly
+      greater number of points.  When measuring efficiency, we really need
+      to balance the cost in quadrature points against the accuracy, and
+      so it is not immediately obvious which choice is best!
+    </p>
+
+    <p>
+      To slightly complicate matters, Gauss-Hermite rules are very weakly
+      nested, in that the rules of odd order all include the abscissa
+      value X=0.0.  A sparse grid is constructed by summing a set of product
+      rules.  The weak nesting of the Gauss-Hermite rules means that a few
+      of the points will be repeated across several sparse grids, and so
+      an efficient code will try to group those points together and sum
+      their weights.
+    </p>
+
+    <p>
+      Here is a table showing the number of points in a sparse grid based on
+      Gauss-Hermite rules, indexed by the spatial dimension, and by the
+      "level", which is simply an index for the family of sparse grids.
+      <table border = "1">
+        <tr>
+          <th>DIM:</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+        </tr>
+        <tr>
+          <th>LEVEL_MAX</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th>
+        </tr>
+        <tr>
+          <th>0</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td>
+        </tr>
+        <tr>
+          <th>1</th><td>3</td><td>5</td><td>7</td><td>9</td><td>11</td>
+        </tr>
+        <tr>
+          <th>2</th><td>7</td><td>21</td><td>37</td><td>57</td><td>81</td>
+        </tr>
+        <tr>
+          <th>3</th><td>15</td><td>73</td><td>159</td><td>289</td><td>471</td>
+        </tr>
+        <tr>
+          <th>4</th><td>31</td><td>221</td><td>597</td><td>1265</td><td>2341</td>
+        </tr>
+        <tr>
+          <th>5</th><td>63</td><td>609</td><td>2031</td><td>4969</td><td>10363</td>
+        </tr>
+        <tr>
+          <th>6</th><td>127</td><td>1573</td><td>6397</td><td>17945</td><td>41913</td>
+        </tr>
+      </table>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The code described and made available on this web page is distributed
+      under the
+      <a href = "gnu_lgpl.txt">GNU LGPL</a> license.
+    </p>
+
+    <h3 align = "center">
+      Languages
+    </h3>
+
+    <p>
+      <b>SPARSE_GRID_HERMITE</b> is available in
+      <a href = "../../cpp_src/sparse_grid_hermite/sparse_grid_hermite.html">a C++ version</a> and
+      <a href = "../../f_src/sparse_grid_hermite/sparse_grid_hermite.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sparse_grid_hermite/sparse_grid_hermite.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules/quadrature_rules.html">
+      QUADRATURE_RULES</a>,
+      a dataset directory which
+      defines quadrature rules;
+      a number of examples of sparse grid quadrature rules are included.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrule/quadrule.html">
+      QUADRULE</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for various intervals and weight functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sgmga/sgmga.html">
+      SGMGA</a>,
+      a FORTRAN90 library which
+      creates sparse grids based on a mixture of 1D quadrature rules,
+      allowing anisotropic weights for each dimension.
+    </p>
+
+    <p>
+      <a href = "../../c_src/smolpack/smolpack.html">
+      SMOLPACK</a>,
+      a C library which
+      implements Novak and Ritter's method for estimating the integral
+      of a function over a multidimensional hypercube using sparse grids.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_cc/sparse_grid_cc.html">
+      SPARSE_GRID_CC</a>,
+      a FORTRAN90 library which
+      creates sparse grids based on Clenshaw-Curtis rules.
+    </p>
+
+    <p>
+      <a href = "../../datasets/sparse_grid_f2/sparse_grid_f2.html">
+      SPARSE_GRID_F2</a>,
+      a dataset directory which
+      contains the abscissas of sparse
+      grids based on a Fejer Type 2 rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_gl/sparse_grid_gl.html">
+      SPARSE_GRID_GL</a>,
+      a FORTRAN90 library which
+      computes a sparse grid
+      based on 1D Gauss-Legendre rules.
+    </p>
+
+    <p>
+      <a href = "../../datasets/sparse_grid_gp/sparse_grid_gp.html">
+      SPARSE_GRID_GP</a>,
+      a dataset directory which
+      contains the abscissas of sparse
+      grids based on a Gauss Patterson rule.
+    </p>
+
+    <p>
+      <a href = "../../datasets/sparse_grid_hermite/sparse_grid_hermite.html">
+      SPARSE_GRID_HERMITE</a>,
+      a dataset directory which
+      contains the abscissas of sparse
+      grids based on a Gauss Hermite rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_laguerre/sparse_grid_laguerre.html">
+      SPARSE_GRID_LAGUERRE</a>,
+      a FORTRAN90 library which
+      creates sparse grids based on Gauss-Laguerre rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_mixed/sparse_grid_mixed.html">
+      SPARSE_GRID_MIXED</a>,
+      a FORTRAN90 library which
+      constructs a sparse grid using different rules in each spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../datasets/sparse_grid_ncc/sparse_grid_ncc.html">
+      SPARSE_GRID_NCC</a>,
+      a dataset directory which
+      contains the abscissas of sparse
+      grids based on a Newton Cotes Closed rule.
+    </p>
+
+    <p>
+      <a href = "../../datasets/sparse_grid_nco/sparse_grid_nco.html">
+      SPARSE_GRID_NCO</a>,
+      a dataset directory which
+      contains the abscissas of sparse
+      grids based on a Newton Cotes Open rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_open/sparse_grid_open.html">
+      SPARSE_GRID_OPEN</a>,
+      a FORTRAN90 library which
+      defines sparse grids based on open nested quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../m_src/toms847/toms847.html">
+      TOMS847</a>,
+      a MATLAB program which
+      uses sparse grids to carry out multilinear hierarchical interpolation.
+      It is commonly known as SPINTERP, and is by Andreas Klimke.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Volker Barthelmann, Erich Novak, Klaus Ritter,<br>
+          High Dimensional Polynomial Interpolation on Sparse Grids,<br>
+          Advances in Computational Mathematics,<br>
+          Volume 12, Number 4, 2000, pages 273-288.
+        </li>
+        <li>
+          Thomas Gerstner, Michael Griebel,<br>
+          Numerical Integration Using Sparse Grids,<br>
+          Numerical Algorithms,<br>
+          Volume 18, Number 3-4, 1998, pages 209-232.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms for Computers and Calculators,<br>
+          Second Edition,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0-12-519260-6,<br>
+          LC: QA164.N54.
+        </li>
+        <li>
+          Fabio Nobile, Raul Tempone, Clayton Webster,<br>
+          A Sparse Grid Stochastic Collocation Method for Partial Differential
+          Equations with Random Input Data,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 46, Number 5, 2008, pages 2309-2345.
+        </li>
+        <li>
+          Sergey Smolyak,<br>
+          Quadrature and Interpolation Formulas for Tensor Products of
+          Certain Classes of Functions,<br>
+          Doklady Akademii Nauk SSSR,<br>
+          Volume 4, 1963, pages 240-243.
+        </li>
+        <li>
+          Dennis Stanton, Dennis White,<br>
+          Constructive Combinatorics,<br>
+          Springer, 1986,<br>
+          ISBN: 0387963472,<br>
+          LC: QA164.S79.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sparse_grid_hermite.f90">sparse_grid_hermite.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "sparse_grid_hermite.sh">sparse_grid_hermite.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sparse_grid_hermite_prb.f90">sparse_grid_hermite_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "sparse_grid_hermite_prb.sh">
+          sparse_grid_hermite_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "sparse_grid_hermite_prb_output.txt">
+          sparse_grid_hermite_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The sample program creates three files, which
+      are an example of how a sparse grid quadrature rule for spatial dimension 2
+      and level 3 can be defined using a Hermite quadrature rule:
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_hermite/gh_d2_level3_r.txt">gh_d2_level3_r.txt</a>,
+          the "R" or "region" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_hermite/gh_d2_level3_w.txt">gh_d2_level3_w.txt</a>,
+          the "W" or "weight" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_hermite/gh_d2_level3_x.txt">gh_d2_level3_x.txt</a>,
+          the "X" or "abscissa" file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>COMP_NEXT</b> computes the compositions of the integer N into K parts.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HERMITE_COMPUTE</b> computes a Gauss-Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_COMPUTE_POINTS</b> computes points of a Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_COMPUTE_WEIGHTS</b> computes weights of a Hermite quadrature rule.
+        </li>
+        <li>
+          <b>IMTQLX</b> diagonalizes a symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>LEVEL_TO_ORDER_HERMITE:</b> default growth for Hermite sparse grids.
+        </li>
+        <li>
+          <b>MONOMIAL_INTEGRAL_HERMITE</b> integrates a Hermite monomial.
+        </li>
+        <li>
+          <b>MONOMIAL_QUADRATURE_HERMITE</b> applies a quadrature rule to a monomial.
+        </li>
+        <li>
+          <b>MONOMIAL_VALUE</b> evaluates a monomial.
+        </li>
+        <li>
+          <b>PRODUCT_HERMITE_WEIGHT</b> computes the weights of a Hermite product rule.
+        </li>
+        <li>
+          <b>R8_CHOOSE</b> computes the binomial coefficient C(N,K) as an R8.
+        </li>
+        <li>
+          <b>R8_FACTORIAL2</b> computes the double factorial function.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates Gamma(X) for a real argument.
+        </li>
+        <li>
+          <b>R8_HUGE</b> returns a very large R8.
+        </li>
+        <li>
+          <b>R8_MOP</b> returns the I-th power of -1 as an R8.
+        </li>
+        <li>
+          <b>R8COL_COMPARE</b> compares columns in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORT_HEAP_A</b> ascending heapsorts an R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTED_UNIQUE_COUNT</b> counts unique elements in a sorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_SWAP</b> swaps columns I and J of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_TOL_UNIQUE_COUNT</b> counts tolerably unique entries in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_UNDEX</b> returns unique sorted indexes for an R8COL.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8VEC_COMPARE</b> compares two R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DIRECT_PRODUCT2</b> creates a direct product of R8VEC's.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>SPARSE_GRID_HERMITE</b> computes a Hermite sparse grid.
+        </li>
+        <li>
+          <b>SPARSE_GRID_HERMITE_INDEX</b> indexes a Hermite sparse grid.
+        </li>
+        <li>
+          <b>SPARSE_GRID_HERMITE_POINT</b> computes the points of a Hermite sparse grid.
+        </li>
+        <li>
+          <b>SPARSE_GRID_HERMITE_SIZE</b> sizes a Hermite sparse grid, discounting duplicates.
+        </li>
+        <li>
+          <b>SPARSE_GRID_HERMITE_SIZE_TOTAL</b> Hermite sparse grid size counting duplicates.
+        </li>
+        <li>
+          <b>SPARSE_GRID_HERMITE_UNIQUE_INDEX</b> maps nonunique points to unique points.
+        </li>
+        <li>
+          <b>SPARSE_GRID_HERMITE_WEIGHT</b> computes Hermite sparse grid weights.
+        </li>
+        <li>
+          <b>SPARSE_GRID_HERMITE_WRITE</b> writes a Hermite sparse grid rule to files.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>VEC_COLEX_NEXT3</b> generates vectors in colex order.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 May 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

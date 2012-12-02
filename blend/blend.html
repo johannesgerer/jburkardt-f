@@ -1,0 +1,281 @@
+<html>
+
+  <head>
+    <title>
+      BLEND - Transfinite Interpolation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BLEND <br> Transfinite Interpolation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BLEND</b>
+      is a FORTRAN90 library which
+      "blends" multidimensional data, that is, performs a kind
+      of interpolation.  However, in this case, the data may be known at
+      points, or curves, or planes, and is to be extended to a higher-dimensional
+      domain.
+    </p>
+
+    <p>
+      This is a common way of creating a smooth set of data based on
+      a small set of known values.  For instance, if we measure the
+      temperature every hour, we naturally assume that the temperature
+      at 2:15 can be approximated by "blending" 1/4 of the temperature
+      at 3:00 and 3/4 of the temperature at 2:00.
+    </p>
+
+    <p>
+      Now suppose that we take the temperature at evenly spaced points
+      on the floor of a room.  We can again see how to use blending so
+      that, in each little square, we take a blend of the values at the
+      four corners to get the value at any point within the square.
+      Similar ideas can be used with a cube.
+    </p>
+
+    <p>
+      More complicated cases might arise where we know the temperature
+      everywhere along lines, or along planes that cut through a cube.
+      Even then, it is possible to blend the data in a smooth and
+      sensible way.
+    </p>
+
+    <p>
+      <b>BLEND</b> interpolates values based on a set of given data.
+      <b>BLEND</b> can handle input data that is 1, 2, or 3 dimensional.
+      In the general, 3D case, the data can depend on smoothly varying
+      space parameters (R,S,T) or on tabular indices (I,J,K).  The data
+      may be given at the corners, edges, or faces of the unit cube.
+      In the (R,S,T) case, <b>BLEND</b> can supply an interpolated value at
+      any point in the cube.  In the (I,J,K) case, <b>BLEND</b> will fill in
+      tabular values for all intermediate indices.
+    </p>
+
+    <p>
+      In the simplest case, where <b>BLEND</b> is only given data values at the
+      endpoints of a line segment, the 4 corners of a square, or the 8
+      corners of a cube, <b>BLEND</b> is equivalent to linear, bilinear
+      or trilinear finite element interpolation of the data.  However,
+      in the more interesting cases where <b>BLEND</b> is given, say, a formula
+      for the data along the sides of the square, or the edges of the
+      cube, the interpolation is called "transfinite", since in theory
+      it samples the input data at more than a finite number of points.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>BLEND</b> is available in
+      <a href = "../../cpp_src/blend/blend.html">a C++ version</a> and
+      <a href = "../../f_src/blend/blend.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/blend/blend.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/tiler_2d/tiler_2d.html">
+      TILER_2D</a>,
+      a FORTRAN90 program which
+      demonstrates a 2D example of transfinite interpolation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tiler_3d/tiler_3d.html">
+      TILER_3D</a>,
+      a FORTRAN90 program which
+      demonstrates a 3D example of transfinite interpolation.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Gordon,<br>
+          Blending-Function Methods of Bivariate and Multivariate
+          Interpolation and Approximation,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 8, Number 1, March 1971, pages 158-177.
+        </li>
+        <li>
+          William Gordon, Charles Hall,<br>
+          Transfinite Element Methods: Blending-Function Interpolation over
+          Arbitrary Curved Element Domains,<br>
+          Numerische Mathematik,<br>
+          Volume 21, Number 1, 1973, pages 109-129.
+        </li>
+        <li>
+          William Gordon, Charles Hall,<br>
+          Construction of Curvilinear Coordinate Systems and Application to
+          Mesh Generation,<br>
+          International Journal of Numerical Methods in Engineering,<br>
+          Volume 7, pages 461-477, 1973.
+        </li>
+        <li>
+          Charles Hall, Thomas Porsching,<br>
+          Numerical Analysis of Partial Differential Equations,<br>
+          Prentice-Hall, 1990,<br>
+          ISBN: 013626557X,<br>
+          LC: QA374.H29.
+        </li>
+        <li>
+          Joe Thompson, Bharat Soni, Nigel Weatherill,<br>
+          Handbook of Grid Generation,<br>
+          CRC Press, 1999.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "blend.f90">blend.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "blend.sh">blend.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "blend_prb.f90">blend_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "blend_prb.sh">blend_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "blend_prb_output.txt">blend_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BLEND_101</b> extends scalar endpoint data to a line.
+        </li>
+        <li>
+          <b>BLEND_102</b> extends scalar point data into a square.
+        </li>
+        <li>
+          <b>BLEND_103</b> extends scalar point data into a cube.
+        </li>
+        <li>
+          <b>BLEND_112</b> extends scalar line data into a square.
+        </li>
+        <li>
+          <b>BLEND_113</b> extends scalar line data into a cube.
+        </li>
+        <li>
+          <b>BLEND_123</b> extends scalar face data into a cube.
+        </li>
+        <li>
+          <b>BLEND_I_0D1</b> extends indexed scalar data at endpoints along a line.
+        </li>
+        <li>
+          <b>BLEND_IJ_0D1</b> extends indexed scalar data at corners into a table.
+        </li>
+        <li>
+          <b>BLEND_IJ_1D1</b> extends indexed scalar data along edges into a table.
+        </li>
+        <li>
+          <b>BLEND_IJ_W_1D1</b> extends weighted indexed scalar data along edges into a table.
+        </li>
+        <li>
+          <b>BLEND_IJK_0D1</b> extends indexed scalar corner data into a cubic table.
+        </li>
+        <li>
+          <b>BLEND_IJK_1D1</b> extends indexed scalar edge data into a cubic table.
+        </li>
+        <li>
+          <b>BLEND_IJK_2D1</b> extends indexed scalar face data into a cubic table.
+        </li>
+        <li>
+          <b>BLEND_R_0DN</b> extends vector data at endpoints into a line.
+        </li>
+        <li>
+          <b>BLEND_RS_0DN</b> extends vector data at corners into a square.
+        </li>
+        <li>
+          <b>BLEND_RS_1DN</b> extends vector data along sides into a square.
+        </li>
+        <li>
+          <b>BLEND_RST_0DN</b> extends vector data at corners into a cube.
+        </li>
+        <li>
+          <b>BLEND_RST_1DN</b> extends vector data on edges into a cube.
+        </li>
+        <li>
+          <b>BLEND_RST_2DN</b> extends vector data on faces into a cube.
+        </li>
+        <li>
+          <b>R8BLOCK_PRINT</b> prints a real block (a 3D matrix).
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 December 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

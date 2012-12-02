@@ -1,0 +1,1755 @@
+<html>
+
+  <head>
+    <title>
+      TEST_TRIANGULATION - Mesh Generation Test Regions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_TRIANGULATION <br> Mesh Generation Test Regions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_TRIANGULATION</b>
+      is a FORTRAN90 library which
+      sets up a number of triangulation test problems.
+    </p>
+
+    <p>
+      As far as possible, a uniform and abstract approach has been used.
+      For each test region, a number of routines are provided, via which
+      it is possible for the user to determine many things about the region.
+      Often, just one or two routines would be needed for a particular
+      purpose.  The names of the routines, and their purposes are:
+      <ul>
+        <li>
+          <b>BOUNDARY_NEAREST:</b> returns the nearest point on the boundary
+          of the region to a given point or set of points;
+        </li>
+        <li>
+          <b>BOUNDARY_PROJECT:</b> projects exterior points onto the boundary.
+        </li>
+        <li>
+          <b>BOUNDARY_SEGMENT:</b> returns a sequence of roughly equally spaced
+          points that lie on one particular boundary segment;
+        </li>
+        <li>
+          <b>BOUNDARY_SEGMENT_LENGTH:</b> returns the "length" (number of
+          nodes) of a particular boundary segment.  This simply counts
+          the number of points needed to trace or approximate the
+          boundary segment;
+        </li>
+        <li>
+          <b>BOUNDARY_SEGMENT_NUM:</b> returns the number of boundary segments.
+          Simple regions have one boundary segment.  A region with one hole
+          has two, and so on;
+        </li>
+        <li>
+          <b>BOX:</b> returns a bounding box for the region.  All points in
+          the region are within this box;
+        </li>
+        <li>
+          <b>DENSITY:</b> the value of the mesh density function at any
+          point in the region.  If this is not constant, then high values
+          correspond to places where many more mesh points should be placed;
+          is always 2 for this set;
+        </li>
+        <li>
+          <b>ELEMENT_SIZE:</b> returns a requested typical element size.  This
+          refers to the average size of the triangles formed by a triangulation
+          of the points;
+        </li>
+        <li>
+          <b>FIXED_NUM:</b> returns the number of points which must be
+          included as nodes of the mesh (which may be zero);
+        </li>
+        <li>
+          <b>FIXED_POINTS:</b> returns the coordinates of the points which
+          must be included as nodes of the mesh;
+        </li>
+        <li>
+          <b>HEADER:</b> prints a brief description of the problem;
+        </li>
+        <li>
+          <b>HOLE_NUM:</b> returns the number of "holes" in the region;
+        </li>
+        <li>
+          <b>HOLE_POINT:</b> returns the coordinates of one point in a hole
+          (useful when TRIANGLE is to be invoked);
+        </li>
+        <li>
+          <b>INSIDE:</b> reports which of a given set of points are
+          inside the region.
+        </li>
+        <li>
+          <b>SAMPLE:</b> returns a set of sample points from the region,
+          chosen with uniform probability;
+        </li>
+        <li>
+          <b>SAMPLE_H1:</b> returns a set of sample points from the region,
+          after it has been enlarged by an amount H1;
+        </li>
+        <li>
+          <b>SDIST:</b> returns the signed distance to the boundary of
+          the region for each of a set of input points.
+          (a positive distance means the point is outside the region,
+           a negative distance means it is inside);
+          <i>(Not ready for problems 4, 5, 6, 7, 8, 9 )</i>
+        </li>
+        <li>
+          <b>TITLE:</b> a title for the problem;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The test problems include:
+      <ol>
+        <li>
+          The unit circle;
+        </li>
+        <li>
+          The unit circle with a circular hole;
+        </li>
+        <li>
+          A square with a circular hole;
+        </li>
+        <li>
+          A hexagon with a hexagonal hole;
+        </li>
+        <li>
+          The horn;
+        </li>
+        <li>
+          The superellipse with a superelliptical hole;
+        </li>
+        <li>
+          The bicycle seat;
+        </li>
+        <li>
+          The slice of pie with a circular hole and triangular notch;
+        </li>
+        <li>
+          Jeff Borggaard's square with two hexagonal holes;
+        </li>
+        <li>
+          The unit square;
+        </li>
+        <li>
+          The L-shaped region;
+        </li>
+        <li>
+          John Shadid's H-shaped region;
+        </li>
+        <li>
+          The Sandia fork;
+        </li>
+        <li>
+          Marcus Garvie's Lake Alpha, with Beta Island;
+        </li>
+        <li>
+          Sangbum Kim's forward step;
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_TRIANGULATION</b> is available in
+      <a href = "../../f_src/test_triangulation/test_triangulation.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_triangulation/test_triangulation.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt_triangulation/cvt_triangulation.html">
+      CVT_TRIANGULATION</a>,
+      a FORTRAN90 program which
+      uses routines from the <b>TEST_TRIANGULATION</b> library
+      to create a CVT-based triangularization.
+    </p>
+
+    <p>
+      <a href = "../../m_src/distmesh/distmesh.html">
+      DISTMESH</a>,
+      a MATLAB program which
+      takes the definition of
+      a 2D region, and fills it up with a set of nodes, and triangulates
+      those nodes to make a triangulation of the region.  The region may
+      be nonconvex and may include holes; the user may request a specific
+      density for the nodes, and may require certain points to be in the
+      set of nodes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid_triangulate/hex_grid_triangulate.html">
+      HEX_GRID_TRIANGULATE</a>,
+      a FORTRAN90 program which
+      uses this library of test regions and computes points on a hexagonal grid
+      inside each region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_io/table_io.html">
+      TABLE_IO</a>,
+      a FORTRAN90 library which
+      is used to write some of the output files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation/triangulation.html">
+      TRIANGULATION</a>,
+      a FORTRAN90 library which
+      carries out various operations on order 3 ("linear") or order 6
+      ("quadratic") triangulations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_boundary_nodes/triangulation_boundary_nodes.html">
+      TRIANGULATION_BOUNDARY_NODES</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, determines which nodes
+      lie on the boundary, and writes their coordinates to a file.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/triangulation_display_opengl/triangulation_display_opengl.html">
+      TRIANGULATION_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads files defining a triangulation and displays an image
+      using Open GL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_l2q/triangulation_l2q.html">
+      TRIANGULATION_L2Q</a>,
+      a FORTRAN90 program which
+      reads data defining a 3-node triangulation and generates
+      midside nodes and writes out the corresponding 6-node triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_mask/triangulation_mask.html">
+      TRIANGULATION_MASK</a>,
+      a FORTRAN90 program which
+      takes an existing triangulation and deletes triangles and
+      their corresponding nodes as requested by the user.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order3/triangulation_order3.html">
+      TRIANGULATION ORDER3</a>,
+      a directory which
+      describes the format for triangulations of order 3.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order6/triangulation_order6.html">
+      TRIANGULATION ORDER6</a>,
+      a directory which
+      describes the format for
+      triangulations of order 6.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_orient/triangulation_orient.html">
+      TRIANGULATION_ORIENT</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, makes sure that
+      every triangle has positive orientation, and if not, writes a
+      corrected triangle file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_plot/triangulation_plot.html">
+      TRIANGULATION_PLOT</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation and creates a
+      PostScript image of the nodes and triangles.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_q2l/triangulation_q2l.html">
+      TRIANGULATION_Q2L</a>,
+      a FORTRAN90 program which
+      reads data defining a 6-node triangulation, and subdivides
+      each triangle into 4 3-node triangles, writing the resulting
+      triangulation to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_quality/triangulation_quality.html">
+      TRIANGULATION_QUALITY</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation and computes a number
+      of quality measures.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_rcm/triangulation_rcm.html">
+      TRIANGULATION_RCM</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, determines an ordering
+      of the nodes that will reduce the bandwidth of the adjacency
+      matrix, and writes the new triangulation information to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_refine/triangulation_refine.html">
+      TRIANGULATION_REFINE</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, replaces each triangle
+      by four congruent smaller ones, and writes the new triangulation
+      information to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_triangle_neighbors/triangulation_triangle_neighbors.html">
+      TRIANGULATION_TRIANGLE_NEIGHBORS</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, determines the neighboring
+      triangles of each triangle, and writes that information to a file.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Marc deBerg, Marc Krevald, Mark Overmars,
+          Otfried Schwarzkopf,<br>
+          Computational Geometry,<br>
+          Springer, 2000,<br>
+          ISBN: 3-540-65620-0.
+        </li>
+        <li>
+          Barry Joe, <br>
+          GEOMPACK - a software package for the generation of meshes
+          using geometric algorithms, <br>
+          Advances in Engineering Software,<br>
+          Volume 13, 1991, pages 325-331.
+        </li>
+        <li>
+          Joseph ORourke,<br>
+          Computational Geometry,<br>
+          Second Edition,<br>
+          Cambridge, 1998,<br>
+          ISBN: 0521649765,<br>
+          LC: QA448.D38.
+        </li>
+        <li>
+          Per-Olof Persson, Gilbert Strang,<br>
+          A Simple Mesh Generator in MATLAB,<br>
+          SIAM Review,<br>
+          Volume 46, Number 2, June 2004, pages 329-345.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_triangulation.f90">test_triangulation.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "test_triangulation.sh">test_triangulation.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      TEST_TRIANGULATION_PRB carries out some simple tasks with the
+      sample problems.
+      <ul>
+        <li>
+          <a href = "test_triangulation_prb.f90">test_triangulation_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "test_triangulation_prb.sh">test_triangulation_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "test_triangulation_prb_output.txt">test_triangulation_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      One of the routines in TEST_TRIANGULATION_PRB calls the appropriate
+      routines to determine the boundary of each region, and creates
+      an Encapsulated PostScript image.
+      <ul>
+        <li>
+          <a href = "p01_boundary.png">p01_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #1.
+        </li>
+        <li>
+          <a href = "p02_boundary.png">p02_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #2.
+        </li>
+        <li>
+          <a href = "p03_boundary.png">p03_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #3.
+        </li>
+        <li>
+          <a href = "p04_boundary.png">p04_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #4.
+        </li>
+        <li>
+          <a href = "p05_boundary.png">p05_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #5.
+        </li>
+        <li>
+          <a href = "p06_boundary.png">p06_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #6.
+        </li>
+        <li>
+          <a href = "p07_boundary.png">p07_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #7.
+        </li>
+        <li>
+          <a href = "p08_boundary.png">p08_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #8.
+        </li>
+        <li>
+          <a href = "p09_boundary.png">p09_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #9.
+        </li>
+        <li>
+          <a href = "p10_boundary.png">p10_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #10.
+        </li>
+        <li>
+          <a href = "p11_boundary.png">p11_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #11.
+        </li>
+        <li>
+          <a href = "p12_boundary.png">p12_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #12.
+        </li>
+        <li>
+          <a href = "p13_boundary.png">p13_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #13.
+        </li>
+        <li>
+          <a href = "p14_boundary.png">p14_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #14.
+        </li>
+        <li>
+          <a href = "p15_boundary.png">p15_boundary.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the boundary of the problem #15.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      One of the routines in TEST_TRIANGULATION_PRB creates an EPS
+      image of 200 sample points in each region.
+      <ul>
+        <li>
+          <a href = "p01_points.png">p01_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #1.
+        </li>
+        <li>
+          <a href = "p02_points.png">p02_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #2.
+        </li>
+        <li>
+          <a href = "p03_points.png">p03_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #3.
+        </li>
+        <li>
+          <a href = "p04_points.png">p04_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #4.
+        </li>
+        <li>
+          <a href = "p05_points.png">p05_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #5.
+        </li>
+        <li>
+          <a href = "p06_points.png">p06_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #6.
+        </li>
+        <li>
+          <a href = "p07_points.png">p07_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #7.
+        </li>
+        <li>
+          <a href = "p08_points.png">p08_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #8.
+        </li>
+        <li>
+          <a href = "p09_points.png">p09_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #9.
+        </li>
+        <li>
+          <a href = "p10_points.png">p10_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #10.
+        </li>
+        <li>
+          <a href = "p11_points.png">p11_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #11.
+        </li>
+        <li>
+          <a href = "p12_points.png">p12_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #12.
+        </li>
+        <li>
+          <a href = "p13_points.png">p13_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #13.
+        </li>
+        <li>
+          <a href = "p14_points.png">p14_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #14.
+        </li>
+        <li>
+          <a href = "p15_points.png">p15_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          sample points for problem #15.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      One of the routines in TEST_TRIANGULATION_PRB calls the appropriate
+      routine to create a
+      <a href = "../../data/poly/poly.html">POLY file</a>, which can be
+      displayed by the
+      <a href = "../../g_src/showme/showme.html">SHOWME</a> program,
+      or used as the start of a triangulation process involving
+      <a href = "../../cpp_src/triangle/triangle.html">TRIANGLE</a>.
+      <ul>
+        <li>
+          <a href = "../../data/poly/p01.poly">p01.poly</a>,
+          TEST_TRIANGULATION problem #1.
+        </li>
+        <li>
+          <a href = "../../data/p02.poly">p02.poly</a>,
+          TEST_TRIANGULATION problem #2.
+        </li>
+        <li>
+          <a href = "../../data/p03.poly">p03.poly</a>,
+          TEST_TRIANGULATION problem #3.
+        </li>
+        <li>
+          <a href = "../../data/p04.poly">p04.poly</a>,
+          TEST_TRIANGULATION problem #4.
+        </li>
+        <li>
+          <a href = "../../data/p05.poly">p05.poly</a>,
+          TEST_TRIANGULATION problem #5.
+        </li>
+        <li>
+          <a href = "../../data/p06.poly">p06.poly</a>,
+          TEST_TRIANGULATION problem #6.
+        </li>
+        <li>
+          <a href = "../../data/p07.poly">p07.poly</a>,
+          TEST_TRIANGULATION problem #7.
+        </li>
+        <li>
+          <a href = "../../data/p08.poly">p08.poly</a>,
+          TEST_TRIANGULATION problem #8.
+        </li>
+        <li>
+          <a href = "../../data/p09.poly">p09.poly</a>,
+          TEST_TRIANGULATION problem #9.
+        </li>
+        <li>
+          <a href = "../../data/p10.poly">p10.poly</a>,
+          TEST_TRIANGULATION problem #10.
+        </li>
+        <li>
+          <a href = "../../data/p11.poly">p11.poly</a>,
+          TEST_TRIANGULATION problem #11.
+        </li>
+        <li>
+          <a href = "../../data/p12.poly">p12.poly</a>,
+          TEST_TRIANGULATION problem #12.
+        </li>
+        <li>
+          <a href = "../../data/p13.poly">p13.poly</a>,
+          TEST_TRIANGULATION problem #13.
+        </li>
+        <li>
+          <a href = "../../data/p14.poly">p14.poly</a>,
+          TEST_TRIANGULATION problem #14.
+        </li>
+        <li>
+          <a href = "../../data/p15.poly">p15.poly</a>,
+          TEST_TRIANGULATION problem #15.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Simple changes to TEST_TRIANGULATION_PRB can be made so that
+      a file is created containing pairs of sample points and nearest
+      points on the boundary.  If the file lists these pairs followed by
+      a blank line, then the
+      <a href = "../../g_src/plot_points/plot_points.html">
+      PLOT_POINTS</a> can be used, with the "DASH" option, to illustrate
+      the results.
+      <ul>
+        <li>
+          <a href = "p06_boundary_nearest.txt">p06_boundary_nearest.txt</a>,
+          lists pairs of points and nearest boundary points for
+          problem 6.
+        </li>
+        <li>
+          <a href = "p06_boundary_nearest.png">p06_boundary_nearest.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the nearest point on the boundary.
+        </li>
+        <li>
+          <a href = "p07_boundary_nearest.txt">p07_boundary_nearest.txt</a>,
+          lists pairs of points and nearest boundary points for
+          problem 7.
+        </li>
+        <li>
+          <a href = "p07_boundary_nearest.png">p07_boundary_nearest.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the nearest point on the boundary.
+        </li>
+        <li>
+          <a href = "p08_boundary_nearest.txt">p08_boundary_nearest.txt</a>,
+          lists pairs of points and nearest boundary points for
+          problem 8.
+        </li>
+        <li>
+          <a href = "p08_boundary_nearest.png">p08_boundary_nearest.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the nearest point on the boundary.
+        </li>
+        <li>
+          <a href = "p09_boundary_nearest.txt">p09_boundary_nearest.txt</a>,
+          lists pairs of points and nearest boundary points for
+          problem 9.
+        </li>
+        <li>
+          <a href = "p09_boundary_nearest.png">p09_boundary_nearest.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the nearest point on the boundary.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      One of the routines in TEST_TRIANGULATION_PRB creates a set of
+      points on a hexagonal grid, contained in a given region.  This
+      dataset is written to a file.
+      <ul>
+        <li>
+          <a href = "p08_hex_grid_points.txt">p08_hex_grid_points.txt</a>,
+          hex grid points for problem 8.
+        </li>
+        <li>
+          <a href = "p08_hex_grid_points.png">p08_hex_grid_points.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the hex grid points for problem 8.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE_CONTAINS_POINT_2D</b> determines if an angle contains a point, in 2D.
+        </li>
+        <li>
+          <b>ANGLE_HALF_2D</b> finds half an angle in 2D.
+        </li>
+        <li>
+          <b>ANGLE_RAD_2D</b> returns the angle swept out between two rays in 2D.
+        </li>
+        <li>
+          <b>ATAN4</b> computes the inverse tangent of the ratio Y / X.
+        </li>
+        <li>
+          <b>BOX_CONTAINS_POINT_2D</b> determines if a point is inside a box in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_ARC_POINT_NEAR_2D</b> : nearest point on a circular arc.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_CONTAINS_POINT_2D</b> determines if a circle contains a point in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_POINT_NEAR_2D:</b> nearest ( implicit circle, point ) in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_SECTOR_CONTAINS_POINT_2D</b> : is a point inside a circular sector?
+        </li>
+        <li>
+          <b>COS_DEG</b> returns the cosine of an angle given in degrees.
+        </li>
+        <li>
+          <b>DTABLE_DATA_WRITE</b> writes data to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_WRITE</b> writes the header to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_WRITE</b> writes a double precision table file.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>FMIN_RC</b> seeks a minimizer of a scalar function of a scalar variable.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HEX_GRID_ANGLE</b> sets the points in an angled hex grid in a box.
+        </li>
+        <li>
+          <b>HEX_GRID_ANGLE_SIZE</b> counts the points in an angled hex grid in a box.
+        </li>
+        <li>
+          <b>HEXAGON_CONTAINS_POINT_2D</b> finds if a point is inside a hexagon in 2D.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_EPS</b> draws the boundary of a region as an EPS file.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_NEAREST</b> returns a nearest boundary point for any problem.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_PROJECT</b> projects exterior points to the boundary.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_SEGMENT</b> returns a boundary segment in a problem.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in a problem.
+        </li>
+        <li>
+          <b>P00_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in a problem.
+        </li>
+        <li>
+          <b>P00_BOX</b> returns a bounding box for a problem.
+        </li>
+        <li>
+          <b>P00_DENSITY</b> returns the density for a problem.
+        </li>
+        <li>
+          <b>P00_ELEMENT_SIZE</b> returns a typical element size for a problem.
+        </li>
+        <li>
+          <b>P00_FIXED_NUM</b> returns the number of fixed points in a problem.
+        </li>
+        <li>
+          <b>P00_FIXED_POINTS</b> returns the fixed points in a problem.
+        </li>
+        <li>
+          <b>P00_HEADER</b> prints some information about a problem.
+        </li>
+        <li>
+          <b>P00_HEX_GRID</b> returns hex grid points in a region.
+        </li>
+        <li>
+          <b>P00_HEX_GRID_COUNT</b> counts the number of hex grid points in a region.
+        </li>
+        <li>
+          <b>P00_HOLE_NUM</b> counts the holes in a problem.
+        </li>
+        <li>
+          <b>P00_HOLE_POINT</b> returns a point inside a given hole.
+        </li>
+        <li>
+          <b>P00_INSIDE</b> reports if a point is inside the region in a problem.
+        </li>
+        <li>
+          <b>P00_POINTS_EPS</b> draws points in a region as an EPS file.
+        </li>
+        <li>
+          <b>P00_POLY_WRITE</b> collects data and writes it to a POLY file.
+        </li>
+        <li>
+          <b>P00_SAMPLE</b> samples points from the region in a problem.
+        </li>
+        <li>
+          <b>P00_SAMPLE_H1</b> samples points from the enlarged region in a problem.
+        </li>
+        <li>
+          <b>P00_SDIST</b> returns the signed distance to the region in a problem.
+        </li>
+        <li>
+          <b>P00_TEST_NUM</b> returns the number of available tests.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns a title for a problem.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 01.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 01.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 01.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 01.
+        </li>
+        <li>
+          <b>P01_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 01.
+        </li>
+        <li>
+          <b>P01_BOX</b> returns a bounding box for problem 01.
+        </li>
+        <li>
+          <b>P01_DENSITY</b> returns the density for problem 01.
+        </li>
+        <li>
+          <b>P01_ELEMENT_SIZE</b> returns a typical element size for problem 01.
+        </li>
+        <li>
+          <b>P01_FIXED_NUM</b> returns the number of fixed points in problem 01.
+        </li>
+        <li>
+          <b>P01_FIXED_POINTS</b> returns the fixed points in problem 01.
+        </li>
+        <li>
+          <b>P01_HEADER</b> prints some information about problem 01.
+        </li>
+        <li>
+          <b>P01_HOLE_NUM</b> counts the holes in problem 01.
+        </li>
+        <li>
+          <b>P01_HOLE_POINT</b> returns a point inside a given hole in problem 1.
+        </li>
+        <li>
+          <b>P01_INSIDE</b> reports if a point is inside the region in problem 01.
+        </li>
+        <li>
+          <b>P01_SAMPLE</b> samples points from the region in problem 01.
+        </li>
+        <li>
+          <b>P01_SAMPLE_H1</b> samples points from the enlarged region in problem 01.
+        </li>
+        <li>
+          <b>P01_SDIST</b> returns the signed distance to the region in problem 01.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns a title for problem 01.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 02.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 02.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 02.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 02.
+        </li>
+        <li>
+          <b>P02_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 02.
+        </li>
+        <li>
+          <b>P02_BOX</b> returns a bounding box for problem 02.
+        </li>
+        <li>
+          <b>P02_DENSITY</b> returns the density for problem 02.
+        </li>
+        <li>
+          <b>P02_ELEMENT_SIZE</b> returns a typical element size for problem 02.
+        </li>
+        <li>
+          <b>P02_FIXED_NUM</b> returns the number of fixed points in problem 02.
+        </li>
+        <li>
+          <b>P02_FIXED_POINTS</b> returns the fixed points in problem 02.
+        </li>
+        <li>
+          <b>P02_HEADER</b> prints some information about problem 02.
+        </li>
+        <li>
+          <b>P02_HOLE_NUM</b> counts the holes in problem 02.
+        </li>
+        <li>
+          <b>P02_HOLE_POINT</b> returns a point inside a given hole in problem 2.
+        </li>
+        <li>
+          <b>P02_INSIDE</b> reports if a point is inside the region in problem 02.
+        </li>
+        <li>
+          <b>P02_SAMPLE</b> samples points from the region in problem 02.
+        </li>
+        <li>
+          <b>P02_SAMPLE_H1</b> samples points from the enlarged region in problem 02.
+        </li>
+        <li>
+          <b>P02_SDIST</b> returns the signed distance to the region in problem 02.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns a title for problem 02.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 03.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 03.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 03.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 03.
+        </li>
+        <li>
+          <b>P03_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 03.
+        </li>
+        <li>
+          <b>P03_BOX</b> returns a bounding box for problem 03.
+        </li>
+        <li>
+          <b>P03_DENSITY</b> returns the density for problem 03.
+        </li>
+        <li>
+          <b>P03_ELEMENT_SIZE</b> returns a typical element size for problem 03.
+        </li>
+        <li>
+          <b>P03_FIXED_NUM</b> returns the number of fixed points in problem 03.
+        </li>
+        <li>
+          <b>P03_FIXED_POINTS</b> returns the fixed points in problem 03.
+        </li>
+        <li>
+          <b>P03_HEADER</b> prints some information about problem 03.
+        </li>
+        <li>
+          <b>P03_HOLE_NUM</b> counts the holes in problem 03.
+        </li>
+        <li>
+          <b>P03_HOLE_POINT</b> returns a point inside a given hole in problem 3.
+        </li>
+        <li>
+          <b>P03_INSIDE</b> reports if a point is inside the region in problem 03.
+        </li>
+        <li>
+          <b>P03_SAMPLE</b> samples points from the region in problem 03.
+        </li>
+        <li>
+          <b>P03_SAMPLE</b> samples points from the enlarged region in problem 03.
+        </li>
+        <li>
+          <b>P03_SDIST</b> returns the signed distance to the region in problem 03.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns a title for problem 03.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 04.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 04.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 04.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 04.
+        </li>
+        <li>
+          <b>P04_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 04.
+        </li>
+        <li>
+          <b>P04_BOX</b> returns a bounding box for problem 04.
+        </li>
+        <li>
+          <b>P04_DENSITY</b> returns the density for problem 04.
+        </li>
+        <li>
+          <b>P04_ELEMENT_SIZE</b> returns a typical element size for problem 04.
+        </li>
+        <li>
+          <b>P04_FIXED_NUM</b> returns the number of fixed points in problem 04.
+        </li>
+        <li>
+          <b>P04_FIXED_POINTS</b> returns the fixed points in problem 04.
+        </li>
+        <li>
+          <b>P04_HEADER</b> prints some information about problem 04.
+        </li>
+        <li>
+          <b>P04_HOLE_NUM</b> counts the holes in problem 04.
+        </li>
+        <li>
+          <b>P04_HOLE_POINT</b> returns a point inside a given hole in problem 4.
+        </li>
+        <li>
+          <b>P04_INSIDE</b> reports if a point is inside the region in problem 04.
+        </li>
+        <li>
+          <b>P04_SAMPLE</b> samples points from the region in problem 04.
+        </li>
+        <li>
+          <b>P04_SAMPLE_H1</b> samples points from the enlarged region in problem 04.
+        </li>
+        <li>
+          <b>P04_SDIST</b> returns the signed distance to the region in problem 04.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns a title for problem 04.
+        </li>
+        <li>
+          <b>P05_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 05.
+        </li>
+        <li>
+          <b>P05_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 05.
+        </li>
+        <li>
+          <b>P05_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 05.
+        </li>
+        <li>
+          <b>P05_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 05.
+        </li>
+        <li>
+          <b>P05_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 05.
+        </li>
+        <li>
+          <b>P05_BOX</b> returns a bounding box for problem 05.
+        </li>
+        <li>
+          <b>P05_DENSITY</b> returns the density for problem 05.
+        </li>
+        <li>
+          <b>P05_ELEMENT_SIZE</b> returns a typical element size for problem 05.
+        </li>
+        <li>
+          <b>P05_FIXED_NUM</b> returns the number of fixed points in problem 05.
+        </li>
+        <li>
+          <b>P05_FIXED_POINTS</b> returns the fixed points in problem 05.
+        </li>
+        <li>
+          <b>P05_HEADER</b> prints some information about problem 05.
+        </li>
+        <li>
+          <b>P05_HOLE_NUM</b> counts the holes in problem 05.
+        </li>
+        <li>
+          <b>P05_HOLE_POINT</b> returns a point inside a given hole in problem 5.
+        </li>
+        <li>
+          <b>P05_INSIDE</b> reports if a point is inside the region in problem 05.
+        </li>
+        <li>
+          <b>P05_SAMPLE</b> samples points from the region in problem 05.
+        </li>
+        <li>
+          <b>P05_SAMPLE_H1</b> samples points from the enlarged region in problem 05.
+        </li>
+        <li>
+          <b>P05_SDIST</b> returns the signed distance to the region in problem 05.
+        </li>
+        <li>
+          <b>P05_TITLE</b> returns a title for problem 05.
+        </li>
+        <li>
+          <b>P06_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 06.
+        </li>
+        <li>
+          <b>P06_BOUNDARY_NEAREST</b> projects exterior points to the boundary in problem 06.
+        </li>
+        <li>
+          <b>P06_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 06.
+        </li>
+        <li>
+          <b>P06_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 06.
+        </li>
+        <li>
+          <b>P06_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 06.
+        </li>
+        <li>
+          <b>P06_BOX</b> returns a bounding box for problem 06.
+        </li>
+        <li>
+          <b>P06_DENSITY</b> returns the density for problem 06.
+        </li>
+        <li>
+          <b>P06_ELEMENT_SIZE</b> returns a typical element size for problem 06.
+        </li>
+        <li>
+          <b>P06_FIXED_NUM</b> returns the number of fixed points in problem 06.
+        </li>
+        <li>
+          <b>P06_FIXED_POINTS</b> returns the fixed points in problem 06.
+        </li>
+        <li>
+          <b>P06_HEADER</b> prints some information about problem 06.
+        </li>
+        <li>
+          <b>P06_HOLE_NUM</b> counts the holes in problem 06.
+        </li>
+        <li>
+          <b>P06_HOLE_POINT</b> returns a point inside a given hole in problem 6.
+        </li>
+        <li>
+          <b>P06_INSIDE</b> reports if a point is inside the region in problem 06.
+        </li>
+        <li>
+          <b>P06_SAMPLE</b> samples points from the region in problem 06.
+        </li>
+        <li>
+          <b>P06_SAMPLE_H1</b> samples points from the enlarged region in problem 06.
+        </li>
+        <li>
+          <b>P06_SDIST</b> returns the signed distance to the region in problem 06.
+        </li>
+        <li>
+          <b>P06_TITLE</b> returns a title for problem 06.
+        </li>
+        <li>
+          <b>P07_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 07.
+        </li>
+        <li>
+          <b>P07_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 07.
+        </li>
+        <li>
+          <b>P07_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 07.
+        </li>
+        <li>
+          <b>P07_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 07.
+        </li>
+        <li>
+          <b>P07_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 07.
+        </li>
+        <li>
+          <b>P07_BOX</b> returns a bounding box for problem 07.
+        </li>
+        <li>
+          <b>P07_DENSITY</b> returns the density for problem 07.
+        </li>
+        <li>
+          <b>P07_ELEMENT_SIZE</b> returns a typical element size for problem 07.
+        </li>
+        <li>
+          <b>P07_FIXED_NUM</b> returns the number of fixed points in problem 07.
+        </li>
+        <li>
+          <b>P07_FIXED_POINTS</b> returns the fixed points in problem 07.
+        </li>
+        <li>
+          <b>P07_HEADER</b> prints some information about problem 07.
+        </li>
+        <li>
+          <b>P07_HOLE_NUM</b> counts the holes in problem 07.
+        </li>
+        <li>
+          <b>P07_HOLE_POINT</b> returns a point inside a given hole in problem 7.
+        </li>
+        <li>
+          <b>P07_INSIDE</b> reports if a point is inside the region in problem 07.
+        </li>
+        <li>
+          <b>P07_SAMPLE</b> samples points from the region in problem 07.
+        </li>
+        <li>
+          <b>P07_SAMPLE_H1</b> samples points from the enlarged region in problem 07.
+        </li>
+        <li>
+          <b>P07_SDIST</b> returns the signed distance to the region in problem 07.
+        </li>
+        <li>
+          <b>P07_TITLE</b> returns a title for problem 07.
+        </li>
+        <li>
+          <b>P08_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 08.
+        </li>
+        <li>
+          <b>P08_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 08.
+        </li>
+        <li>
+          <b>P08_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 08.
+        </li>
+        <li>
+          <b>P08_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 08.
+        </li>
+        <li>
+          <b>P08_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 08.
+        </li>
+        <li>
+          <b>P08_BOX</b> returns a bounding box for problem 08.
+        </li>
+        <li>
+          <b>P08_DENSITY</b> returns the density for problem 08.
+        </li>
+        <li>
+          <b>P08_ELEMENT_SIZE</b> returns a typical element size for problem 08.
+        </li>
+        <li>
+          <b>P08_FIXED_NUM</b> returns the number of fixed points in problem 08.
+        </li>
+        <li>
+          <b>P08_FIXED_POINTS</b> returns the fixed points in problem 08.
+        </li>
+        <li>
+          <b>P08_HEADER</b> prints some information about problem 08.
+        </li>
+        <li>
+          <b>P08_HOLE_NUM</b> counts the holes in problem 08.
+        </li>
+        <li>
+          <b>P08_HOLE_POINT</b> returns a point inside a given hole in problem 8.
+        </li>
+        <li>
+          <b>P08_INSIDE</b> reports if a point is inside the region in problem 08.
+        </li>
+        <li>
+          <b>P08_SAMPLE</b> samples points from the region in problem 08.
+        </li>
+        <li>
+          <b>P08_SAMPLE_H1</b> samples points from the enlarged region in problem 08.
+        </li>
+        <li>
+          <b>P08_SDIST</b> returns the signed distance to the region in problem 08.
+        </li>
+        <li>
+          <b>P08_TITLE</b> returns a title for problem 08.
+        </li>
+        <li>
+          <b>P09_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 04.
+        </li>
+        <li>
+          <b>P09_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 09.
+        </li>
+        <li>
+          <b>P09_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 09.
+        </li>
+        <li>
+          <b>P09_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 09.
+        </li>
+        <li>
+          <b>P09_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 09.
+        </li>
+        <li>
+          <b>P09_BOX</b> returns a bounding box for problem 09.
+        </li>
+        <li>
+          <b>P09_DENSITY</b> returns the density for problem 09.
+        </li>
+        <li>
+          <b>P09_ELEMENT_SIZE</b> returns a typical element size for problem 09.
+        </li>
+        <li>
+          <b>P09_FIXED_NUM</b> returns the number of fixed points in problem 09.
+        </li>
+        <li>
+          <b>P09_FIXED_POINTS</b> returns the fixed points in problem 09.
+        </li>
+        <li>
+          <b>P09_HEADER</b> prints some information about problem 09.
+        </li>
+        <li>
+          <b>P09_HOLE_NUM</b> counts the holes in problem 09.
+        </li>
+        <li>
+          <b>P09_HOLE_POINT</b> returns a point inside a given hole in problem 9.
+        </li>
+        <li>
+          <b>P09_INSIDE</b> reports if a point is inside the region in problem 09.
+        </li>
+        <li>
+          <b>P09_SAMPLE</b> samples points from the region in problem 09.
+        </li>
+        <li>
+          <b>P09_SAMPLE_H1</b> samples points from the enlarged region in problem 09.
+        </li>
+        <li>
+          <b>P09_SDIST</b> returns the signed distance to the region in problem 09.
+        </li>
+        <li>
+          <b>P09_TITLE</b> returns a title for problem 09.
+        </li>
+        <li>
+          <b>P10_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 10.
+        </li>
+        <li>
+          <b>P10_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 10.
+        </li>
+        <li>
+          <b>P10_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 10.
+        </li>
+        <li>
+          <b>P10_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 10.
+        </li>
+        <li>
+          <b>P10_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 10.
+        </li>
+        <li>
+          <b>P10_BOX</b> returns a bounding box for problem 10.
+        </li>
+        <li>
+          <b>P10_DENSITY</b> returns the density for problem 10.
+        </li>
+        <li>
+          <b>P10_ELEMENT_SIZE</b> returns a typical element size for problem 10.
+        </li>
+        <li>
+          <b>P10_FIXED_NUM</b> returns the number of fixed points in problem 10.
+        </li>
+        <li>
+          <b>P10_FIXED_POINTS</b> returns the fixed points in problem 10.
+        </li>
+        <li>
+          <b>P10_HEADER</b> prints some information about problem 10.
+        </li>
+        <li>
+          <b>P10_HOLE_NUM</b> counts the holes in problem 10.
+        </li>
+        <li>
+          <b>P10_HOLE_POINT</b> returns a point inside a given hole in problem 10.
+        </li>
+        <li>
+          <b>P10_INSIDE</b> reports if a point is inside the region in problem 10.
+        </li>
+        <li>
+          <b>P10_SAMPLE</b> samples points from the region in problem 10.
+        </li>
+        <li>
+          <b>P10_SAMPLE_H1</b> samples points from the enlarged region in problem 10.
+        </li>
+        <li>
+          <b>P10_SDIST</b> returns the signed distance to the region in problem 10.
+        </li>
+        <li>
+          <b>P10_TITLE</b> returns a title for problem 10.
+        </li>
+        <li>
+          <b>P11_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 11.
+        </li>
+        <li>
+          <b>P11_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 11.
+        </li>
+        <li>
+          <b>P11_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 11.
+        </li>
+        <li>
+          <b>P11_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 11.
+        </li>
+        <li>
+          <b>P11_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 11.
+        </li>
+        <li>
+          <b>P11_BOX</b> returns a bounding box for problem 11.
+        </li>
+        <li>
+          <b>P11_DENSITY</b> returns the density for problem 11.
+        </li>
+        <li>
+          <b>P11_ELEMENT_SIZE</b> returns a typical element size for problem 11.
+        </li>
+        <li>
+          <b>P11_FIXED_NUM</b> returns the number of fixed points in problem 11.
+        </li>
+        <li>
+          <b>P11_FIXED_POINTS</b> returns the fixed points in problem 11.
+        </li>
+        <li>
+          <b>P11_HEADER</b> prints some information about problem 11.
+        </li>
+        <li>
+          <b>P11_HOLE_NUM</b> counts the holes in problem 11.
+        </li>
+        <li>
+          <b>P11_HOLE_POINT</b> returns a point inside a given hole in problem 11.
+        </li>
+        <li>
+          <b>P11_INSIDE</b> reports if a point is inside the region in problem 11.
+        </li>
+        <li>
+          <b>P11_SAMPLE</b> samples points from the region in problem 11.
+        </li>
+        <li>
+          <b>P11_SAMPLE_H1</b> samples points from the enlarged region in problem 11.
+        </li>
+        <li>
+          <b>P11_SDIST</b> returns the signed distance to the region in problem 11.
+        </li>
+        <li>
+          <b>P11_TITLE</b> returns a title for problem 11.
+        </li>
+        <li>
+          <b>P12_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 12.
+        </li>
+        <li>
+          <b>P12_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 12.
+        </li>
+        <li>
+          <b>P12_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 12.
+        </li>
+        <li>
+          <b>P12_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 12.
+        </li>
+        <li>
+          <b>P12_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 12.
+        </li>
+        <li>
+          <b>P12_BOX</b> returns a bounding box for problem 12.
+        </li>
+        <li>
+          <b>P12_DENSITY</b> returns the density for problem 12.
+        </li>
+        <li>
+          <b>P12_ELEMENT_SIZE</b> returns a typical element size for problem 12.
+        </li>
+        <li>
+          <b>P12_FIXED_NUM</b> returns the number of fixed points in problem 12.
+        </li>
+        <li>
+          <b>P12_FIXED_POINTS</b> returns the fixed points in problem 12.
+        </li>
+        <li>
+          <b>P12_HEADER</b> prints some information about problem 12.
+        </li>
+        <li>
+          <b>P12_HOLE_NUM</b> counts the holes in problem 12.
+        </li>
+        <li>
+          <b>P12_HOLE_POINT</b> returns a point inside a given hole in problem 12.
+        </li>
+        <li>
+          <b>P12_INSIDE</b> reports if a point is inside the region in problem 12.
+        </li>
+        <li>
+          <b>P12_SAMPLE</b> samples points from the region in problem 12.
+        </li>
+        <li>
+          <b>P12_SAMPLE_H1</b> samples points from the enlarged region in problem 12.
+        </li>
+        <li>
+          <b>P12_SDIST</b> returns the signed distance to the region in problem 12.
+        </li>
+        <li>
+          <b>P12_TITLE</b> returns a title for problem 12.
+        </li>
+        <li>
+          <b>P13_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 13.
+        </li>
+        <li>
+          <b>P13_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 13.
+        </li>
+        <li>
+          <b>P13_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 13.
+        </li>
+        <li>
+          <b>P13_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 13.
+        </li>
+        <li>
+          <b>P13_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 13.
+        </li>
+        <li>
+          <b>P13_BOX</b> returns a bounding box for problem 13.
+        </li>
+        <li>
+          <b>P13_DENSITY</b> returns the density for problem 13.
+        </li>
+        <li>
+          <b>P13_ELEMENT_SIZE</b> returns a typical element size for problem 13.
+        </li>
+        <li>
+          <b>P13_FIXED_NUM</b> returns the number of fixed points in problem 13.
+        </li>
+        <li>
+          <b>P13_FIXED_POINTS</b> returns the fixed points in problem 13.
+        </li>
+        <li>
+          <b>P13_HEADER</b> prints some information about problem 13.
+        </li>
+        <li>
+          <b>P13_HOLE_NUM</b> counts the holes in problem 13.
+        </li>
+        <li>
+          <b>P13_HOLE_POINT</b> returns a point inside a given hole in problem 13.
+        </li>
+        <li>
+          <b>P13_INSIDE</b> reports if a point is inside the region in problem 13.
+        </li>
+        <li>
+          <b>P13_SAMPLE</b> samples points from the region in problem 13.
+        </li>
+        <li>
+          <b>P13_SAMPLE_H1</b> samples points from the enlarged region in problem 13.
+        </li>
+        <li>
+          <b>P13_SDIST</b> returns the signed distance to the region in problem 13.
+        </li>
+        <li>
+          <b>P13_TITLE</b> returns a title for problem 13.
+        </li>
+        <li>
+          <b>P14_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 14.
+        </li>
+        <li>
+          <b>P14_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 14.
+        </li>
+        <li>
+          <b>P14_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 14.
+        </li>
+        <li>
+          <b>P14_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 14.
+        </li>
+        <li>
+          <b>P14_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 14.
+        </li>
+        <li>
+          <b>P14_BOX</b> returns a bounding box for problem 14.
+        </li>
+        <li>
+          <b>P14_DENSITY</b> returns the density for problem 14.
+        </li>
+        <li>
+          <b>P14_ELEMENT_SIZE</b> returns a typical element size for problem 14.
+        </li>
+        <li>
+          <b>P14_FIXED_NUM</b> returns the number of fixed points in problem 14.
+        </li>
+        <li>
+          <b>P14_FIXED_POINTS</b> returns the fixed points in problem 14.
+        </li>
+        <li>
+          <b>P14_HEADER</b> prints some information about problem 14.
+        </li>
+        <li>
+          <b>P14_HOLE_NUM</b> counts the holes in problem 14.
+        </li>
+        <li>
+          <b>P14_HOLE_POINT</b> returns a point inside a given hole in problem 14.
+        </li>
+        <li>
+          <b>P14_INSIDE</b> reports if a point is inside the region in problem 14.
+        </li>
+        <li>
+          <b>P14_SAMPLE</b> samples points from the region in problem 14.
+        </li>
+        <li>
+          <b>P14_SAMPLE_H1</b> samples points from the enlarged region in problem 14.
+        </li>
+        <li>
+          <b>P14_SDIST</b> returns the signed distance to the region in problem 14.
+        </li>
+        <li>
+          <b>P14_TITLE</b> returns a title for problem 14.
+        </li>
+        <li>
+          <b>P15_BOUNDARY_NEAREST</b> returns a nearest boundary point in problem 15.
+        </li>
+        <li>
+          <b>P15_BOUNDARY_PROJECT</b> projects exterior points to the boundary in problem 15.
+        </li>
+        <li>
+          <b>P15_BOUNDARY_SEGMENT</b> returns a boundary segment in problem 15.
+        </li>
+        <li>
+          <b>P15_BOUNDARY_SEGMENT_LENGTH</b> returns boundary segment lengths in problem 15.
+        </li>
+        <li>
+          <b>P15_BOUNDARY_SEGMENT_NUM</b> counts the boundary segments in problem 15.
+        </li>
+        <li>
+          <b>P15_BOX</b> returns a bounding box for problem 15.
+        </li>
+        <li>
+          <b>P15_DENSITY</b> returns the density for problem 15.
+        </li>
+        <li>
+          <b>P15_ELEMENT_SIZE</b> returns a typical element size for problem 15.
+        </li>
+        <li>
+          <b>P15_FIXED_NUM</b> returns the number of fixed points in problem 15.
+        </li>
+        <li>
+          <b>P15_FIXED_POINTS</b> returns the fixed points in problem 15.
+        </li>
+        <li>
+          <b>P15_HEADER</b> prints some information about problem 15.
+        </li>
+        <li>
+          <b>P15_HOLE_NUM</b> counts the holes in problem 15.
+        </li>
+        <li>
+          <b>P15_HOLE_POINT</b> returns a point inside a given hole in problem 15.
+        </li>
+        <li>
+          <b>P15_INSIDE</b> reports if a point is inside the region in problem 15.
+        </li>
+        <li>
+          <b>P15_SAMPLE</b> samples points from the region in problem 15.
+        </li>
+        <li>
+          <b>P15_SAMPLE_H1</b> samples points from the enlarged region in problem 15.
+        </li>
+        <li>
+          <b>P15_SDIST</b> returns the signed distance to the region in problem 15.
+        </li>
+        <li>
+          <b>P15_TITLE</b> returns a title for problem 15.
+        </li>
+        <li>
+          <b>POLY_WRITE</b> writes data to a POLY file.
+        </li>
+        <li>
+          <b>POLYGON_CONTAINS_POINT_2D</b> finds if a point is inside a simple polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_EXPAND_2D</b> expands a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_POINT_NEAR_2D</b> computes the nearest point on a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYLOOP_ARCLENGTH_ND</b> computes the arclength of points on a polyloop in ND.
+        </li>
+        <li>
+          <b>POLYLOOP_LENGTH_ND</b> computes the length of a polyloop in ND.
+        </li>
+        <li>
+          <b>POLYLOOP_POINTS_ND</b> computes equally spaced points on a polyloop in ND.
+        </li>
+        <li>
+          <b>QUAD_CONTAINS_POINT_2D</b> finds if a point is inside a convex quadrilateral in 2D.
+        </li>
+        <li>
+          <b>R8_MODP</b> returns the nonnegative remainder of R8 division.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM_01</b> returns a unit pseudorandom R8MAT.
+        </li>
+        <li>
+          <b>R8POLY2_RROOT</b> returns the real parts of the roots of a quadratic polynomial.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>SEGMENT_POINT_NEAR_2D</b> finds the line segment point nearest a point in 2D.
+        </li>
+        <li>
+          <b>SIN_DEG</b> returns the sine of an angle given in degrees.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TRIANGLE_CONTAINS_POINT_2D</b> finds if a point is inside a triangle in 2D.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 23 October 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

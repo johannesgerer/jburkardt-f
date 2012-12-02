@@ -1,0 +1,36 @@
+  ---------------------------------------------------------------
+               CUBPACK information
+               -------------------
+  The model for real numbers in the current installed version,
+  obtained with the declaration REAL(KIND=stnd), has the
+  following characteristics:
+                 base =   2
+  digits in this base =  53
+  This implies:
+             machine epsilon =  2.220446049250313E-16
+         largest real number =  1.7976931348623157E+308
+  smallest normalized number =  2.2250738585072014E-308
+
+  The lowest relative error that may be obtained with this
+  version is about 0.11E-13
+  Asking for lower error will push the routine to use the
+  maximal number of function evaluations it is allowed.
+
+
+  This version accepts a collection of hyper-rectangles
+    (and parallelepipeds) and simplices as integration regions.
+  Extrapolation using the epsilon-algorithm is available
+       for dimensions 1, 2 and 3.
+  The following values of KEY give different integration rules:
+  - finite interval: KEY = 1, 2, 3, 4, 5.
+       KEY < 1 defaults to 1; KEY > 5 defaults to 5.
+  - n-cube:          KEY = 3, 4       uses rule of degree 2*KEY+1
+            otherwise, uses for a square a rule of degree 13
+                                  3-cube a rule of degree 11
+                                         a rule of degree  7
+  - n-simplex:       KEY = 1, 2, 3, 4 uses rule of degree 2*KEY+1
+          otherwise, uses for a triangle a rule of degree 13
+                             tetrahedron a rule of degree  8
+                                         a rule of degree  7
+  KEY = 0 corresponds to our preferred choice.
+  ---------------------------------------------------------------

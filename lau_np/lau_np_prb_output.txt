@@ -1,0 +1,318 @@
+February 11 2009   5:01:15.464 PM
+ 
+LAU_NP_PRB
+  FORTRAN90 version
+ 
+  Tests for the LAU_NP package.
+ 
+TEST01
+  For a graph described by an arc list:
+  GRAPH_ARC_EULER_CIRC finds an
+  Euler circuit of a graph.
+ 
+  The graph has order NNODE =        5
+ 
+  The graph:
+ 
+       1           1       2
+       2           1       3
+       3           1       4
+       4           1       5
+       5           2       3
+       6           2       4
+       7           2       5
+       8           3       4
+       9           3       5
+      10           4       5
+ 
+  The nodes in the Euler circuit:
+ 
+         1         1
+         2         2
+         3         3
+         4         4
+         5         5
+         6         3
+         7         1
+         8         4
+         9         2
+        10         5
+ 
+TEST02
+  GRAPH_ARC_MIN_PATH computes the shortest path from one
+  node to another.
+ 
+ 
+  The weighted graph:
+ 
+       1           1       2   1.00000    
+       2           1       3   1.00000    
+       3           2       3   3.00000    
+       4           2       5   2.00000    
+       5           3       4   2.00000    
+       6           3       5   5.00000    
+ 
+  The distance matrix constructed by GRAPH_ARC_MIN_PATH:
+ 
+  Col         1             2             3             4             5       
+  Row
+ 
+    1    0.00000       1.00000       1.00000       3.00000       3.00000    
+    2    1.00000       0.00000       2.00000       4.00000       2.00000    
+    3    1.00000       2.00000       0.00000       2.00000       4.00000    
+    4    3.00000       4.00000       2.00000       0.00000       6.00000    
+    5    3.00000       2.00000       4.00000       6.00000       0.00000    
+ 
+ 
+  The routine actually also computes the path.
+  For instance, starting at node        4
+  we compute the shortest path to node        5
+ 
+       1         4
+       2         3
+       3         1
+       4         2
+       5         5
+ 
+TEST03
+  GRAPH_ARC_MIN_SPAN_TREE finds a minimum 
+  spanning tree.
+ 
+ 
+  The weighted graph:
+ 
+       1           1       2   100.000    
+       2           1       3   125.000    
+       3           1       4   120.000    
+       4           1       5   110.000    
+       5           2       3   40.0000    
+       6           2       4   65.0000    
+       7           2       5   60.0000    
+       8           3       4   45.0000    
+       9           3       5   55.0000    
+      10           4       5   50.0000    
+ 
+  The minimal spanning tree:
+ 
+       1           1       2   100.000    
+       2           2       3   40.0000    
+       3           3       4   45.0000    
+       4           4       5   50.0000    
+ 
+  The length of the minimal tree is    235.000    
+ 
+TEST04
+  For a graph defined by a distance matrix,
+  GRAPH_DIST_MIN_SPAN_TREE3 finds a minimum 
+  spanning tree.
+ 
+ 
+  The graph:
+ 
+  Col         1             2             3             4             5       
+  Row
+ 
+    1    0.00000       100.000       125.000       120.000       110.000    
+    2    100.000       0.00000       40.0000       65.0000       60.0000    
+    3    125.000       40.0000       0.00000       45.0000       55.0000    
+    4    120.000       65.0000       45.0000       0.00000       50.0000    
+    5    110.000       60.0000       55.0000       50.0000       0.00000    
+ 
+ 
+  The minimal spanning tree:
+ 
+       1           1       2   100.000    
+       2           2       3   40.0000    
+       3           3       4   45.0000    
+       4           4       5   50.0000    
+ 
+  The length of the minimal tree is    235.000    
+ 
+TEST05
+  INT_LP is a heuristic algorithm for the
+  integer ( kind = 4 ) linear programming problem.
+ 
+  COMPUTED SOLUTION:
+ 
+   0.000       2.000       1.000       0.000       1.000    
+ 
+  CORRECT SOLUTION:
+ 
+   0.000       2.000       1.000       0.000       1.000    
+ 
+TEST06
+  K_CENTER is a heuristic algorithm
+  for the K center problem.
+ 
+  COMPUTED RESULTS:
+ 
+  The centers: 
+ 
+      9  5  4  6
+ 
+  CORRECT RESULTS:
+ 
+  The centers: 
+ 
+      9  5  4  6
+ 
+TEST07
+  K_MEDIAN is a heuristic algorithm
+  for the K median problem.
+ 
+  COMPUTED RESULTS:
+ 
+  The K rows found: 
+ 
+      5  2  6  4
+ 
+  CORRECT RESULTS:
+ 
+  The K rows found: 
+ 
+      5  2  6  4
+ 
+TEST08
+  KNAPSACK is a heuristic algorithm
+  for the 0/1 knapsack problem.
+ 
+  COMPUTED RESULTS:
+ 
+  Objective function = 
+ 
+       1652.00    
+ 
+  Nonzero variables = 
+ 
+      7  4  1
+ 
+  CORRECT RESULTS:
+ 
+  Objective function = 
+ 
+       1652.00    
+ 
+  Nonzero variables = 
+ 
+      7  4  1
+ 
+TEST09
+  MULTI_KNAP is a heuristic algoritm for the
+  multidimensional 0/1 knapsack problem.
+ 
+  COMPUTED ANSWERS:
+ 
+  The objective function value:
+ 
+   88.0000    
+ 
+  The nonzero variables are:
+ 
+      1  3  6
+ 
+  CORRECT ANSWERS:
+ 
+  The objective function value:
+ 
+   88.0000    
+ 
+  The nonzero variables are:
+ 
+      1  3  6
+ 
+TEST10
+  PARTITION is a heuristic algorithm
+  for the graph partition problem.
+ 
+  The order of the sets, and of the items in the set,
+  does not matter.
+ 
+  COMPUTED RESULTS:
+ 
+  First set:
+ 
+      5 10  7  8  6
+ 
+  Second set:
+ 
+      9  3  2  4  1
+ 
+  Total cost =    25.0000    
+ 
+  CORRECT RESULTS:
+ 
+  First set:
+ 
+      9  3  1  4  2
+ 
+  Second set:
+ 
+      5 10  7  6  8
+ 
+  Total cost =    25.0000    
+ 
+TEST11
+  PMATCH is a heuristic algorithm
+  for the graph matching problem.
+ 
+  COMPUTED RESULTS:
+ 
+  Node   Paired Node
+ 
+         1         3
+         2         4
+         3         1
+         4         2
+         5         6
+         6         5
+ 
+TEST12
+  STEINER is a heuristic algorithm
+  for the Steiner tree problem.
+ 
+  COMPUTED RESULTS:
+ 
+  Steiner tree edges:
+ 
+      3  4
+      4  7
+      4  1
+      7  9
+      7  6
+      9 10
+ 
+  Total length =    20.0000    
+ 
+  CORRECT RESULTS:
+ 
+  Steiner tree edges:
+ 
+      3  4
+      4  7
+      4  1
+      7  9
+      7  6
+      9 10
+ 
+  Total length =    20.0000    
+ 
+TEST13
+  TSP is a heuristic algorithm
+  for the traveling salesman problem.
+ 
+  COMPUTED RESULTS:
+ 
+  1 13  2 15  9  5  7  3 12 14 10  8  6  4 11
+ 
+  Path length =    291.000    
+ 
+  CORRECT RESULTS:
+ 
+  1 13  2 15  9  5  7  3 12 14 10  8  6  4 11
+ 
+  Path length =    291.000    
+ 
+LAU_NP_PRB
+  Normal end of execution.
+ 
+February 11 2009   5:01:15.470 PM

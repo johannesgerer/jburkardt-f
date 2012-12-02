@@ -1,0 +1,346 @@
+<html>
+
+  <head>
+    <title>
+      REAL_PRECISION - Choosing the Precision of Real Arithmetic
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      REAL_PRECISION <br> Choosing the Precision of Real Arithmetic
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>REAL_PRECISION</b>
+      is a directory of FORTRAN90 programs which
+      illustrate the procedure for choosing the precision with which
+      real variables and constants are stored.
+    </p>
+
+    <p>
+      FORTRAN90 added a number of arithmetic inquiry functions:
+      <ul>
+        <li>
+          HUGE() returns the largest value of the given type.
+        </li>
+        <li>
+          TINY() returns the smallest value of the given type.
+        </li>
+        <li>
+          EPSILON() returns the precision of a real type.
+        </li>
+        <li>
+          DIGITS() counts the significant binary digits.
+        </li>
+        <li>
+          RANGE() provides the decimal exponent range.
+        </li>
+        <li>
+          PRECISION() provides the decimal precision.
+        </li>
+        <li>
+          RADIX() provides the base of the model.
+        </li>
+        <li>
+          MAXEXPONENT() returns the maximum exponent of a variable.
+        </li>
+        <li>
+          MINEXPONENT() returns the minimum exponent of a variable.
+        </li>
+        <li>
+          KIND() returns the "kind" of a variable.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The function <b>ID = SELECTED_REAL_KIND(P,R)</b> can be used to request a
+      "kind" (which will be an integer) that identifies a real type
+      with the given number of decimal digits of precision and
+      exponent range.
+    </p>
+
+    <p>
+      Sadly, the reality is that each compiler is free to
+      choose the values of ID that are valid, as well as the number
+      and properties of its real data types.  The only requirement is
+      that there be at least two real types, with one
+      more accurate than the other!  Moreover, for historical reasons,
+      any compiler may support nonstandard types, such as REAL*16.
+      Thus, if you are used to hardcoding declarations such as
+      "real ( kind = 8 ) x", the fact that they work on your system
+      is no guarantee they will even compile on another compiler.
+    </p>
+
+    <p>
+      Only the use of the <b>selected_real_kind</b> function allows
+      you to write code that will at least compile, if not run.
+      (It might not run because the precision you requested might
+      not be available.  My compiler returns a -1 in that case for
+      the identifier, and if I use that identifier as the kind value,
+      the program aborts.)
+    </p>
+
+    <p>
+      Real variables can be declared to have a particular type using
+      a declaration such as <b>real ( kind = id ) r</b>
+    </p>
+
+    <p>
+      Constants can be specified to beof the given type by appending
+      an underscore and the kind identifier:
+      <pre>
+        1.0_id
+        3.14159_id
+        1.0E+17_id
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/f90/f90.html">
+      F90</a>,
+      FORTRAN90 programs which
+      illustrate features of the FORTRAN90 language.
+    </p>
+
+    <p>
+      <a href = "../../f_src/g95_quadmath/g95_quadmath.html">
+      G95_QUADMATH</a>,
+      a FORTRAN90 program which
+      illustrates the use of quadruple precision real arithmetic
+      provided on some systems by the G95 compiler for FORTRAN.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gfortran_quadmath/gfortran_quadmath.html">
+      GFORTRAN_QUADMATH</a>,
+      a FORTRAN90 program which
+      illustrates the use of quadruple precision real arithmetic
+      provided on some systems by the Gnu GFORTRAN compiler for FORTRAN90.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Jeanne Adams, Walter Brainerd, Jeanne Martin, Brian Smith,
+          Jerrold Wagener,<br>
+          Fortran90 Handbook,<br>
+          Complete ANSI/ISO Reference,<br>
+          McGraw Hill, 1992,<br>
+          ISBN: 0-07-000406-4,<br>
+          LC: QA76.73.F28.F67.
+        </li>
+        <li>
+          Ian Chivers, Jane Sleightholme,<br>
+          Introduction to Programming with Fortran,<br>
+          Springer, 2005,<br>
+          ISBN: 1846280532,<br>
+          LC: QA76.73.F29.C48.
+        </li>
+        <li>
+          Miles Ellis, Ivor Philips, Thomas Lahey,<br>
+          Fortran90 Programming,<br>
+          Addison-Wesley, 1994,<br>
+          ISBN: 0-201-54446-6,<br>
+          LC: QA76.73.F25E435.
+        </li>
+        <li>
+          Michael Metcalf,<br>
+          Fortran95/2003 Explained,<br>
+          Oxford, 2004,<br>
+          ISBN: 0198526938,<br>
+          LC: QA76.73.F235.M48.
+        </li>
+        <li>
+          Larry Nyhoff, Sanford Leestma,<br>
+          Introduction to Fortran90 for Engineers and Scientists,<br>
+          Prentice-Hall, 1996,<br>
+          ISBN: 0135052157,<br>
+          LC: QA76.73.F25N925.
+        </li>
+        <li>
+          James Ortega,<br>
+          An Introduction to FORTRAN90 for Scientific Computing,<br>
+          Oxford, 1994,<br>
+          ISBN: 0-19-517213-2,<br>
+          LC: QA76.73.O75.
+        </li>
+        <li>
+          GNU,<br>
+          GFORTRAN Reference Manual,<br>
+          <a href = "../../pdf/gfortran.pdf">gfortran.pdf</a>.
+        </li>
+        <li>
+          GNU,<br>
+          G95 Reference Manual,<br>
+          <a href = "../../pdf/g95_manual.pdf">g95_manual.pdf</a>.
+        </li>
+        <li>
+          IBM Corporation,<br>
+          XLF Language Reference Manual
+        </li>
+        <li>
+          Intel Corporation,<br>
+          Intel Fortran Language Reference.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>REAL_KIND16</b> attempts to declare single, double and quadruple
+      precision real data using the NONSTANDARD statements REAL ( KIND = 4 ),
+      REAL ( KIND = 8 ), and REAL ( KIND = 16 ).  The G95 compiler seems
+      to support this language, while GFORTRAN does not.
+      <ul>
+        <li>
+          <a href = "real_kind16.f90">real_kind16.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "real_kind16.sh">real_kind16.sh</a>, commands that
+          compile and run the source code;
+        </li>
+        <li>
+          <a href = "real_kind16_output.txt">real_kind16_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>REAL_KIND_DEFAULT</b> declares a real variable of default
+      type and then uses inquiry functions to determine the characteristics
+      of that type.
+      <ul>
+        <li>
+          <a href = "real_kind_default.f90">real_kind_default.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "real_kind_default.sh">real_kind_default.sh</a>, commands that
+          compile and run the source code;
+        </li>
+        <li>
+          <a href = "real_kind_default_output.txt">real_kind_default_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>REAL_KIND_PRECISION6</b> requests a real type that guarantees a
+      precision of 6 decimal digits, and uses inquiry functions to determine
+      the characteristics of that type.
+      <ul>
+        <li>
+          <a href = "real_kind_precision6.f90">real_kind_precision6.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "real_kind_precision6.sh">real_kind_precision6.sh</a>, commands that
+          compile and run the source code;
+        </li>
+        <li>
+          <a href = "real_kind_precision6_output.txt">real_kind_precision6_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>REAL_KIND_PRECISION12</b> requests a real type that guarantees a
+      precision of 12 decimal digits, and uses inquiry functions to determine
+      the characteristics of that type.
+      <ul>
+        <li>
+          <a href = "real_kind_precision12.f90">real_kind_precision12.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "real_kind_precision12.sh">real_kind_precision12.sh</a>, commands that
+          compile and run the source code;
+        </li>
+        <li>
+          <a href = "real_kind_precision12_output.txt">real_kind_precision12_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>REAL_KIND_PRECISION18</b> requests a real type that guarantees a
+      precision of 18 decimal digits, and uses inquiry functions to determine
+      the characteristics of that type.
+      <ul>
+        <li>
+          <a href = "real_kind_precision18.f90">real_kind_precision18.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "real_kind_precision18.sh">real_kind_precision18.sh</a>, commands that
+          compile and run the source code;
+        </li>
+        <li>
+          <a href = "real_kind_precision18_output.txt">real_kind_precision18_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>REAL_KIND_PRECISION24</b> requests a real type that guarantees a
+      precision of 24 decimal digits, and uses inquiry functions to determine
+      the characteristics of that type.  This request FAILS with the GFORTRAN
+      compiler, but succeeds with the G95 compiler.
+      <ul>
+        <li>
+          <a href = "real_kind_precision24.f90">real_kind_precision24.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "real_kind_precision24.sh">real_kind_precision24.sh</a>, commands that
+          compile and run the source code;
+        </li>
+        <li>
+          <a href = "real_kind_precision24_output.txt">real_kind_precision24_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 February 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

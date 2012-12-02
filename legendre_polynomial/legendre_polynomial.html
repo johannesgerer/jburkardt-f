@@ -1,0 +1,295 @@
+<html>
+
+  <head>
+    <title>
+      LEGENDRE_POLYNOMIAL - Legendre Polynomials
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      LEGENDRE_POLYNOMIAL <br> Legendre Polynomials
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>LEGENDRE_POLYNOMIAL</b>
+      is a FORTRAN90 library which
+      evaluates the Legendre polynomial and associated functions.
+    </p>
+
+    <p>
+      The Legendre polynomial P(n,x) can be defined by:
+      <pre>
+        P(0,x) = 1
+        P(1,x) = x
+        P(n,x) = (2*n-1)/n * x * P(n-1,x) - (n-1)/n * P(n-2,x)
+      </pre>
+      where n is a nonnegative integer.
+    </p>
+
+    <p>
+      The N zeroes of P(n,x) are the abscissas used for Gauss-Legendre
+      quadrature of the integral of a function F(X) with weight function 1
+      over the interval [-1,1].
+    </p>
+
+    <p>
+      The Legendre polynomials are orthogonal under the inner product defined
+      as integration from -1 to 1:
+      <pre>
+        Integral ( -1 <= x <= 1 ) P(i,x) * P(j,x) dx 
+          = 0 if i =/= j
+          = 2 / ( 2*i+1 ) if i = j.
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>LEGENDRE_POLYNOMIAL</b> is available in
+      <a href = "../../cpp_src/legendre_polynomial/legendre_polynomial.html">a C++ version</a> and
+      <a href = "../../f_src/legendre_polynomial/legendre_polynomial.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/legendre_polynomial/legendre_polynomial.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/chebyshev_polynomial/chebyshev_polynomial.html">
+      CHEBYSHEV_POLYNOMIAL</a>,
+      a FORTRAN90 library which
+      evaluates the Chebyshev polynomial and associated functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite_polynomial/hermite_polynomial.html">
+      HERMITE_POLYNOMIAL</a>,
+      a FORTRAN90 library which
+      evaluates the physicist's Hermite polynomial, the probabilist's Hermite polynomial,
+      the Hermite function, and related functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/int_exactness_legendre/int_exactness_legendre.html">
+      INT_EXACTNESS_LEGENDRE</a>,
+      a FORTRAN90 program which
+      tests the polynomial exactness of Gauss-Legendre quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/jacobi_polynomial/jacobi_polynomial.html">
+      JACOBI_POLYNOMIAL</a>,
+      a FORTRAN90 library which
+      evaluates the Jacobi polynomial and associated functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/laguerre_polynomial/laguerre_polynomial.html">
+      LAGUERRE_POLYNOMIAL</a>,
+      a FORTRAN90 library which
+      evaluates the Laguerre polynomial, the generalized Laguerre polynomial,
+      and the Laguerre function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/legendre_rule/legendre_rule.html">
+      LEGENDRE_RULE</a>,
+      a FORTRAN90 program which
+      computes a 1D Gauss-Legendre quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/polpak/polpak.html">
+      POLPAK</a>,
+      a FORTRAN90 library which
+      evaluates a variety of mathematical functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_values/test_values.html">
+      TEST_VALUES</a>,
+      a FORTRAN90 library which
+      supplies test values of various mathematical functions.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Theodore Chihara,<br>
+          An Introduction to Orthogonal Polynomials,<br>
+          Gordon and Breach, 1978,<br>
+          ISBN: 0677041500,<br>
+          LC: QA404.5 C44.
+        </li>
+        <li>
+          Walter Gautschi,<br>
+          Orthogonal Polynomials: Computation and Approximation,<br>
+          Oxford, 2004,<br>
+          ISBN: 0-19-850672-4,<br>
+          LC: QA404.5 G3555.
+        </li>
+        <li>
+          Frank Olver, Daniel Lozier, Ronald Boisvert, Charles Clark,<br>
+          NIST Handbook of Mathematical Functions,<br>
+          Cambridge University Press, 2010,<br>
+          ISBN: 978-0521192255,<br>
+          LC: QA331.N57.
+        </li>
+        <li>
+          Gabor Szego,<br>
+          Orthogonal Polynomials,<br>
+          American Mathematical Society, 1992,<br>
+          ISBN: 0821810235,<br>
+          LC: QA3.A5.v23.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "legendre_polynomial.f90">legendre_polynomial.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "legendre_polynomial.sh">legendre_polynomial.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "legendre_polynomial_prb.f90">legendre_polynomial_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "legendre_polynomial_prb.sh">legendre_polynomial_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "legendre_polynomial_prb_output.txt">legendre_polynomial_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>IMTQLX</b> diagonalizes a symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>P_EXPONENTIAL_PRODUCT:</b> exponential products for P(n,x).
+        </li>
+        <li>
+          <b>P_INTEGRAL</b> evaluates a monomial integral associated with P(n,x).
+        </li>
+        <li>
+          <b>P_POLYNOMIAL</b> evaluates the Legendre polynomials P(n,x).
+        </li>
+        <li>
+          <b>P_POLYNOMIAL_COEFFICIENTS:</b> coefficients of Legendre polynomials P(n,x).
+        </li>
+        <li>
+          <b>P_POLYNOMIAL_PRIME</b> evaluates the derivative of Legendre polynomials P'(n,x).
+        </li>
+        <li>
+          <b>P_POLYNOMIAL_VALUES</b> returns values of the Legendre polynomials P(n,x).
+        </li>
+        <li>
+          <b>P_POLYNOMIAL_ZEROS:</b> zeros of Legendre function P(n,x).
+        </li>
+        <li>
+          <b>P_POWER_PRODUCT:</b> power products for Legendre polynomial P(n,x).
+        </li>
+        <li>
+          <b>P_QUADRATURE_RULE:</b> quadrature for Legendre function P(n,x).
+        </li>
+        <li>
+          <b>PM_POLYNOMIAL</b> evaluates the Legendre polynomials Pm(n,m,x).
+        </li>
+        <li>
+          <b>PM_POLYNOMIAL_VALUES</b> returns values of Legendre polynomials Pm(n,m,x).
+        </li>
+        <li>
+          <b>LEGENDRE_ASSOCIATED_NORMALIZED_VALUES:</b> normalized associated Legendre.
+        </li>
+        <li>
+          <b>LEGENDRE_FUNCTION_Q_VALUES</b> returns values of the Legendre Q function.
+        </li>
+        <li>
+          <b>LEGENDRE_ASSOCIATED_NORMALIZED:</b> normalized associated Legendre functions.
+        </li>
+        <li>
+          <b>LEGENDRE_FUNCTION_Q</b> evaluates the Legendre Q functions.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC2_PRINT</b> prints an R8VEC2.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 March 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

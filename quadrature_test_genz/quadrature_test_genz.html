@@ -1,0 +1,497 @@
+<html>
+
+  <head>
+    <title>
+      QUADRATURE_TEST_GENZ - Quadrature Rule Applied to Genz Integrals
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      QUADRATURE_TEST_GENZ <br> Quadrature Rule Applied to Genz Integrals
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>QUADRATURE_TEST_GENZ</b>
+      is a FORTRAN90 program which
+      reads three files that define
+      a quadrature rule, applies the quadrature rule to the set of
+      Genz test integrals, and reports the results.
+    </p>
+
+    <p>
+      The quadrature rule is defined by three text files:
+      <ol>
+        <li>
+          <i>the "X" file</i> lists the abscissas (N rows, M columns);
+        </li>
+        <li>
+          <i>the "W" file</i> lists the weights (N rows);
+        </li>
+        <li>
+          <i>the "R" file</i> lists the integration region corners
+          (2 rows, M columns);
+        </li>
+      </ol>
+      For more on quadrature rules, see the <b>QUADRATURE_RULES</b>
+      listing below.
+    </p>
+
+    <p>
+      The Genz integrand functions include:
+      <ol>
+        <li>
+          "Oscillatory": f(x) = cos ( 2 * pi * r + sum ( c(1:m) * x(1:m) ) );
+        </li>
+        <li>
+          "Product Peak": f(x) = 1 / product ( c(1:m)**2 + (x(1:m) - x0(1:m))**2);
+        </li>
+        <li>
+          "Corner Peak": f(x) = 1 / ( 1 + sum ( c(1:m) * x(1:m) ) )**(m+r);
+        </li>
+        <li>
+          "Gaussian": f(x) = exp(-sum(c(1:m)**2 * ( x(1:m) - x0(1:m))**2 ) );
+        </li>
+        <li>
+          "Continuous": f(x) = exp ( - sum ( c(1:m) * abs ( x(1:m) - x0(1:m) ) ) );
+        </li>
+        <li>
+          "Discontinuous": f(x) = exp(sum(c(1:m)*x(1:m)) for x(1:m) <= x0(1:m), 0 otherwise;
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <b>quadrature_test_genz</b> <i>prefix</i>
+      <dl>
+        <dt>
+          <i>prefix</i>
+        </dt>
+        <dd>
+          the common prefix for the files containing the abscissa (X),
+          weight (W) and region (R) information of the quadrature rule;
+        </dd>
+      </dl>
+    </p>
+
+    <p>
+      If the arguments are not supplied on the command line, the
+      program will prompt for them.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+      a C++ library which
+      includes routines for estimating multidimensional integrals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/integral_test/integral_test.html">
+      INTEGRAL_TEST</a>,
+      a FORTRAN90 program which
+      uses test integrals to evaluate sets of quadrature points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nint_exactness/nint_exactness.html">
+      NINT_EXACTNESS</a>,
+      a FORTRAN90 program which
+      demonstrates how to measure the
+      polynomial exactness of a multidimensional quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nintlib/nintlib.html">
+      NINTLIB</a>,
+      a FORTRAN90 library which
+      numerically estimates integrals
+      in multiple dimensions.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules/quadrature_rules.html">
+      QUADRATURE_RULES</a>,
+      a dataset directory which
+      contains a description and examples of quadrature rules defined
+      by a set of "X", "W" and "R" files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrature_test/quadrature_test.html">
+      QUADRATURE_TEST</a>,
+      a FORTRAN90 program which
+      reads files defining a quadrature rule, and
+      applies them to all the test integrals defined by <b>TEST_NINT</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which
+      contains quadrature
+      rules for a variety of unusual areas, surfaces and volumes in 2D,
+      3D and N-dimensions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_nint/test_nint.html">
+      TEST_NINT</a>,
+      a FORTRAN90 library which
+      defines a set of integrand functions to be used for testing
+      multidimensional quadrature rules and routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/testpack/testpack.html">
+      TESTPACK</a>,
+      a FORTRAN90 library which
+      defines a set of integrands used to test multidimensional quadrature.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Alan Genz,<br>
+          Testing Multidimensional Integration Routines,<br>
+          in Tools, Methods, and Languages for Scientific and
+          Engineering Computation,<br>
+          edited by B Ford, JC Rault, F Thomasset,<br>
+          North-Holland, 1984, pages 81-94,<br>
+          ISBN: 0444875700,<br>
+          LC: Q183.9.I53.
+        </li>
+        <li>
+          Alan Genz,<br>
+          A Package for Testing Multiple Integration Subroutines,<br>
+          in Numerical Integration:
+          Recent Developments, Software and Applications,<br>
+          edited by Patrick Keast, Graeme Fairweather,<br>
+          Reidel, 1987, pages 337-340,<br>
+          ISBN: 9027725144,<br>
+          LC: QA299.3.N38.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "quadrature_test_genz.f90">quadrature_test_genz.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "quadrature_test_genz.sh">quadrature_test_genz.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>CC_D2_LEVEL4</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 2 of level 4, 65 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level4_x.txt">
+          cc_d2_level4_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level4_w.txt">
+          cc_d2_level4_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level4_r.txt">
+          cc_d2_level4_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d2_level4_test.txt">cc_d2_level4_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D2_LEVEL5</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 2 of level 5, 145 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level5_x.txt">
+          cc_d2_level5_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level5_w.txt">
+          cc_d2_level5_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level5_r.txt">
+          cc_d2_level5_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d2_level5_test.txt">cc_d2_level5_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL0</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 0, 1 point.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level0_x.txt">
+          cc_d6_level0_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level0_w.txt">
+          cc_d6_level0_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level0_r.txt">
+          cc_d6_level0_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level0_test.txt">cc_d6_level0_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL1</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 1, 13 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level1_x.txt">
+          cc_d6_level1_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level1_w.txt">
+          cc_d6_level1_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level1_r.txt">
+          cc_d6_level1_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level1_test.txt">cc_d6_level1_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL2</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 2, 85 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level2_x.txt">
+          cc_d6_level2_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level2_w.txt">
+          cc_d6_level2_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level2_r.txt">
+          cc_d6_level2_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level2_test.txt">cc_d6_level2_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL3</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 3, 389 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level3_x.txt">
+          cc_d6_level3_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level3_w.txt">
+          cc_d6_level3_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level3_r.txt">
+          cc_d6_level3_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level3_test.txt">cc_d6_level3_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL4</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 4, 1457 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level4_x.txt">
+          cc_d6_level4_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level4_w.txt">
+          cc_d6_level4_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level4_r.txt">
+          cc_d6_level4_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level4_test.txt">cc_d6_level4_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL5</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 5, 4865 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level5_x.txt">
+          cc_d6_level5_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level5_w.txt">
+          cc_d6_level5_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level5_r.txt">
+          cc_d6_level5_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level5_test.txt">cc_d6_level5_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for QUADRATURE_TEST_GENZ.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 October 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

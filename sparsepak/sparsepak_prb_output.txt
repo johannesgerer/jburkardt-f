@@ -1,0 +1,805 @@
+June 26 2008  12:22:07.381 PM
+ 
+SPARSEPAK_PRB
+  FORTRAN90 version
+  Test the routines in the SPARSEPAK library.
+ 
+TEST02
+  Use the ND method.
+ 
+  The matrix order is N =     10
+ 
+ADJ_SET - Note:
+  Initializing adjacency information.
+  Number of equations N =       10
+  Maximum adjacency ADJ_MAX =      300
+ 
+  Number of adjacency entries NADJ =           18
+ 
+ADJ_PRINT
+  Show adjacency structure of sparse matrix.
+  The matrix order is       10
+  The number of entries is       18
+ 
+   Row         Nonzeros 
+ 
+     1          10
+     2          10     9
+     3           9     8
+     4           7     8
+     5           7     6
+     6           5
+     7           4     5
+     8           3     4
+     9           2     3
+    10           1     2
+ 
+  The initial envelope size is           25
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 X        X
+     2  X      XX
+     3   X    XX 
+     4    X  XX  
+     5     XXX   
+     6     XX    
+     7    XX X   
+     8   XX   X  
+     9  XX     X 
+    10 XX       X
+ 
+  Lower bandwidth =        9
+  Lower envelope contains        9 nonzeros.
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 X        X
+     2 XX        
+     3   X   XX  
+     4    XX     
+     5     X     
+     6      XX   
+     7  XX   X   
+     8        XX 
+     9         XX
+    10   XX     X
+ 
+  Lower bandwidth =        7
+  Lower envelope contains        5 nonzeros.
+ 
+    I    Perm(I)   InvPerm(I)
+ 
+     1     1     1
+     2    10     9
+     3     4     8
+     4     7     3
+     5     6     6
+     6     5     5
+     7     9     4
+     8     3    10
+     9     2     7
+    10     8     2
+ 
+  The reordered envelope size is           19
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 XX        
+     2 XX      X 
+     3   XX     X
+     4   XX X    
+     5     XX    
+     6    XXX    
+     7       XXX 
+     8       XX X
+     9  X    X X 
+    10   X    X X
+ 
+  Lower bandwidth =        7
+  Lower envelope contains        9 nonzeros.
+ 
+  Solution:
+ 
+   1.00000       3.00000       5.00000       7.00000       9.00000    
+   10.0000       8.00000       6.00000       4.00000       2.00000    
+ 
+TEST03
+  Use the QMD method.
+ 
+  The matrix order is N =     10
+ 
+ADJ_SET - Note:
+  Initializing adjacency information.
+  Number of equations N =       10
+  Maximum adjacency ADJ_MAX =      300
+ 
+  The number of adjacency entries NADJ =           18
+ 
+ADJ_PRINT
+  Show adjacency structure of sparse matrix.
+  The matrix order is       10
+  The number of entries is       18
+ 
+   Row         Nonzeros 
+ 
+     1          10
+     2          10     9
+     3           9     8
+     4           7     8
+     5           7     6
+     6           5
+     7           4     5
+     8           3     4
+     9           2     3
+    10           1     2
+ 
+  The initial envelope size is           25
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 X        X
+     2  X      XX
+     3   X    XX 
+     4    X  XX  
+     5     XXX   
+     6     XX    
+     7    XX X   
+     8   XX   X  
+     9  XX     X 
+    10 XX       X
+ 
+  Lower bandwidth =        9
+  Lower envelope contains        9 nonzeros.
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 XX        
+     2 XXX       
+     3  XXX      
+     4   XXX     
+     5    XXX    
+     6     XXX   
+     7      XXX  
+     8       XXX 
+     9        XXX
+    10         XX
+ 
+  Lower bandwidth =        1
+  Lower envelope contains        9 nonzeros.
+ 
+    I    Perm(I)   InvPerm(I)
+ 
+     1     1     1
+     2    10     3
+     3     2     5
+     4     9     7
+     5     3     9
+     6     8    10
+     7     4     8
+     8     7     6
+     9     5     4
+    10     6     2
+ 
+  The reordered envelope size is            9
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 XX        
+     2 XXX       
+     3  XXX      
+     4   XXX     
+     5    XXX    
+     6     XXX   
+     7      XXX  
+     8       XXX 
+     9        XXX
+    10         XX
+ 
+  Lower bandwidth =        1
+  Lower envelope contains        9 nonzeros.
+ 
+  IXLNZ array:
+ 
+         1         1
+         2         2
+         3         3
+         4         4
+         5         5
+         6         6
+         7         7
+         8         8
+         9         9
+        10        10
+        11        10
+ 
+  Solution:
+ 
+   1.00000       3.00000       5.00000       7.00000       9.00000    
+   10.0000       8.00000       6.00000       4.00000       2.00000    
+ 
+TEST04
+  Use the RCM method.
+ 
+  The matrix order is N =     10
+ 
+ADJ_SET - Note:
+  Initializing adjacency information.
+  Number of equations N =       10
+  Maximum adjacency ADJ_MAX =     3000
+ 
+  Number of adjacency entries NADJ =           18
+ 
+ADJ_PRINT
+  Show adjacency structure of sparse matrix.
+  The matrix order is       10
+  The number of entries is       18
+ 
+   Row         Nonzeros 
+ 
+     1          10
+     2          10     9
+     3           9     8
+     4           7     8
+     5           7     6
+     6           5
+     7           4     5
+     8           3     4
+     9           2     3
+    10           1     2
+ 
+  The initial envelope size is           25
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 X        X
+     2  X      XX
+     3   X    XX 
+     4    X  XX  
+     5     XXX   
+     6     XX    
+     7    XX X   
+     8   XX   X  
+     9  XX     X 
+    10 XX       X
+ 
+  Lower bandwidth =        9
+  Lower envelope contains        9 nonzeros.
+ 
+  The starting node was originally labeled      1
+ 
+    I    Perm(I)   InvPerm(I)
+ 
+     1     6    10
+     2     5     8
+     3     7     6
+     4     4     4
+     5     8     2
+     6     3     1
+     7     9     3
+     8     2     5
+     9    10     7
+    10     1     9
+ 
+  The reordered envelope size is            9
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 XX        
+     2 XXX       
+     3  XXX      
+     4   XXX     
+     5    XXX    
+     6     XXX   
+     7      XXX  
+     8       XXX 
+     9        XXX
+    10         XX
+ 
+  Lower bandwidth =        1
+  Lower envelope contains        9 nonzeros.
+ 
+  The envelope size is            9
+  The bandwidth is            1
+ 
+  Solution:
+ 
+   1.00000       3.00000       5.00000       7.00000       9.00000    
+   10.0000       8.00000       6.00000       4.00000       2.00000    
+ 
+TEST05
+  Use the RQT method.
+ 
+  The matrix order is N =     10
+ 
+ADJ_SET - Note:
+  Initializing adjacency information.
+  Number of equations N =       10
+  Maximum adjacency ADJ_MAX =      300
+ 
+  Number of adjacency entries NADJ =           18
+ 
+ADJ_PRINT
+  Show adjacency structure of sparse matrix.
+  The matrix order is       10
+  The number of entries is       18
+ 
+   Row         Nonzeros 
+ 
+     1          10
+     2          10     9
+     3           9     8
+     4           7     8
+     5           7     6
+     6           5
+     7           4     5
+     8           3     4
+     9           2     3
+    10           1     2
+ 
+  The initial envelope size is           25
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 X        X
+     2  X      XX
+     3   X    XX 
+     4    X  XX  
+     5     XXX   
+     6     XX    
+     7    XX X   
+     8   XX   X  
+     9  XX     X 
+    10 XX       X
+ 
+  Lower bandwidth =        9
+  Lower envelope contains        9 nonzeros.
+ 
+  After GENRQT, the  number of blocks is           10
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 X   X     
+     2  X   XX   
+     3   XXX     
+     4    X  XX  
+     5   XXX     
+     6      X XX 
+     7  XX   X   
+     8        XXX
+     9 XX      X 
+    10          X
+ 
+  Lower bandwidth =        8
+  Lower envelope contains        6 nonzeros.
+ 
+  The envelope size is           25
+ 
+    I    Perm(I)   InvPerm(I)
+ 
+     1     6    10
+     2     5     8
+     3     7     6
+     4     4     4
+     5     8     2
+     6     3     1
+     7     9     3
+     8     2     5
+     9    10     7
+    10     1     9
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 XX        
+     2 XXX       
+     3  XXX      
+     4   XXX     
+     5    XXX    
+     6     XXX   
+     7      XXX  
+     8       XXX 
+     9        XXX
+    10         XX
+ 
+  Lower bandwidth =        1
+  Lower envelope contains        9 nonzeros.
+ 
+  The reordered envelope size is            0
+ DEBUG: TS_FACTOR has NBLKS =           10
+ DEBUG: TS_FACTOR has K =            1
+ DEBUG: TS_FACTOR calls ES_FACTOR
+ DEBUG: TS_FACTOR modifies father diagonal.
+ DEBUG: TS_FACTOR has KFATHR =            2
+ DEBUG: TSFACTOR has COLBEG =            2  COLEND =            2
+ DEBUG: TS_FACTOR got this far.
+ DEBUG: TS_FACTOR has K =            2
+ DEBUG: TS_FACTOR calls ES_FACTOR
+ DEBUG: TS_FACTOR modifies father diagonal.
+ DEBUG: TS_FACTOR has KFATHR =            3
+ DEBUG: TSFACTOR has COLBEG =            3  COLEND =            3
+ DEBUG: TS_FACTOR got this far.
+ DEBUG: TS_FACTOR has K =            3
+ DEBUG: TS_FACTOR calls ES_FACTOR
+ DEBUG: TS_FACTOR modifies father diagonal.
+ DEBUG: TS_FACTOR has KFATHR =            4
+ DEBUG: TSFACTOR has COLBEG =            4  COLEND =            4
+ DEBUG: TS_FACTOR got this far.
+ DEBUG: TS_FACTOR has K =            4
+ DEBUG: TS_FACTOR calls ES_FACTOR
+ DEBUG: TS_FACTOR modifies father diagonal.
+ DEBUG: TS_FACTOR has KFATHR =            5
+ DEBUG: TSFACTOR has COLBEG =            5  COLEND =            5
+ DEBUG: TS_FACTOR got this far.
+ DEBUG: TS_FACTOR has K =            5
+ DEBUG: TS_FACTOR calls ES_FACTOR
+ DEBUG: TS_FACTOR modifies father diagonal.
+ DEBUG: TS_FACTOR has KFATHR =            6
+ DEBUG: TSFACTOR has COLBEG =            6  COLEND =            6
+ DEBUG: TS_FACTOR got this far.
+ DEBUG: TS_FACTOR has K =            6
+ DEBUG: TS_FACTOR calls ES_FACTOR
+ DEBUG: TS_FACTOR modifies father diagonal.
+ DEBUG: TS_FACTOR has KFATHR =            7
+ DEBUG: TSFACTOR has COLBEG =            7  COLEND =            7
+ DEBUG: TS_FACTOR got this far.
+ DEBUG: TS_FACTOR has K =            7
+ DEBUG: TS_FACTOR calls ES_FACTOR
+ DEBUG: TS_FACTOR modifies father diagonal.
+ DEBUG: TS_FACTOR has KFATHR =            8
+ DEBUG: TSFACTOR has COLBEG =            8  COLEND =            8
+ DEBUG: TS_FACTOR got this far.
+ DEBUG: TS_FACTOR has K =            8
+ DEBUG: TS_FACTOR calls ES_FACTOR
+ DEBUG: TS_FACTOR modifies father diagonal.
+ DEBUG: TS_FACTOR has KFATHR =            9
+ DEBUG: TSFACTOR has COLBEG =            9  COLEND =            9
+ DEBUG: TS_FACTOR got this far.
+ DEBUG: TS_FACTOR has K =            9
+ DEBUG: TS_FACTOR calls ES_FACTOR
+ DEBUG: TS_FACTOR modifies father diagonal.
+ DEBUG: TS_FACTOR has KFATHR =           10
+ DEBUG: TSFACTOR has COLBEG =           10  COLEND =           10
+ DEBUG: TS_FACTOR got this far.
+ DEBUG: TS_FACTOR has K =           10
+ DEBUG: TS_FACTOR calls ES_FACTOR
+ DEBUG: TS_FACTOR modifies father diagonal.
+ DEBUG: TS_FACTOR has KFATHR =            0
+ 
+  Solution:
+ 
+   1.00000       3.00000       5.00000       7.00000       9.00000    
+   10.0000       8.00000       6.00000       4.00000       2.00000    
+ 
+TEST06
+  Use the RCM method.
+ 
+  The matrix order is N =     64
+ 
+ADJ_SET - Note:
+  Initializing adjacency information.
+  Number of equations N =       64
+  Maximum adjacency ADJ_MAX =     3000
+ 
+  Number of adjacency entries NADJ =          224
+ 
+ADJ_PRINT
+  Show adjacency structure of sparse matrix.
+  The matrix order is       64
+  The number of entries is      224
+ 
+   Row         Nonzeros 
+ 
+     1          21    37    56
+     2          18    38    57
+     3          19    35    58
+     4          20    36    55
+     5          13    26    54    61
+     6          17    28    44    51
+     7          16    25    53    60
+     8          30    42    46
+     9          31    39    43
+    10          32    40    44
+    11          29    41    45
+    12          25    38    53    57
+    13           5    22    35    58
+    14          23    36    51    55
+    15          24    37    52    56
+    16           7    33    34    64
+    17           6    27    33    34
+    18           2    49
+    19           3    50
+    20           4    47
+    21           1    48
+    22          13    26    42    46
+    23          14    27    39    43
+    24          15    28    40    44
+    25           7    12    41    45
+    26           5    22    33    64
+    27          17    23    51    61
+    28           6    24    34    52
+    29          11    48    63
+    30           8    49    62
+    31           9    50    54
+    32          10    47    59
+    33          16    17    26    61
+    34          16    17    28    60
+    35           3    13    50    54
+    36           4    14    47    59
+    37           1    15    48    63
+    38           2    12    49    62
+    39           9    23    55
+    40          10    24    56
+    41          11    25    57
+    42           8    22    58
+    43           9    23    54    61
+    44           6    10    24    59
+    45          11    25    60    63
+    46           8    22    62    64
+    47          20    32    36
+    48          21    29    37
+    49          18    30    38
+    50          19    31    35
+    51           6    14    27    59
+    52          15    28    60    63
+    53           7    12    62    64
+    54           5    31    35    43
+    55           4    14    39
+    56           1    15    40
+    57           2    12    41
+    58           3    13    42
+    59          32    36    44    51
+    60           7    34    45    52
+    61           5    27    33    43
+    62          30    38    46    53
+    63          29    37    45    52
+    64          16    26    46    53
+ 
+  The initial envelope size is         1476
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 X                   X               X                  X        
+     2  X               X                   X                  X       
+     3   X               X               X                      X      
+     4    X               X               X                  X         
+     5     X       X            X                           X      X   
+     6      X          X          X               X      X             
+     7       X        X        X                           X      X    
+     8        X                     X           X   X                  
+     9         X                     X       X   X                     
+    10          X                     X       X   X                    
+    11           X                 X           X   X                   
+    12            X            X            X              X   X       
+    13     X       X        X            X                      X      
+    14              X        X            X              X   X         
+    15               X        X            X              X   X        
+    16       X        X                XX                             X
+    17      X          X         X     XX                              
+    18  X               X                              X               
+    19   X               X                              X              
+    20    X               X                          X                 
+    21 X                   X                          X                
+    22             X        X   X               X   X                  
+    23              X        X   X           X   X                     
+    24               X        X   X           X   X                    
+    25       X    X            X               X   X                   
+    26     X                X   X      X                              X
+    27                 X     X   X                       X         X   
+    28      X                 X   X     X                 X            
+    29           X                 X                  X              X 
+    30        X                     X                  X            X  
+    31         X                     X                  X   X          
+    32          X                     X              X           X     
+    33                XX        X      X                           X   
+    34                XX          X     X                         X    
+    35   X         X                     X              X   X          
+    36    X         X                     X          X           X     
+    37 X             X                     X          X              X 
+    38  X         X                         X          X            X  
+    39         X             X               X               X         
+    40          X             X               X               X        
+    41           X             X               X               X       
+    42        X             X                   X               X      
+    43         X             X                   X          X      X   
+    44      X   X             X                   X              X     
+    45           X             X                   X              X  X 
+    46        X             X                       X               X X
+    47                    X           X   X          X                 
+    48                     X       X       X          X                
+    49                  X           X       X          X               
+    50                   X           X   X              X              
+    51      X       X            X                       X       X     
+    52               X            X                       X       X  X 
+    53       X    X                                        X        X X
+    54     X                         X   X       X          X          
+    55    X         X                        X               X         
+    56 X             X                        X               X        
+    57  X         X                            X               X       
+    58   X         X                            X               X      
+    59                                X   X       X      X       X     
+    60       X                          X          X      X       X    
+    61     X                     X     X         X                 X   
+    62                              X       X       X      X        X  
+    63                             X       X       X      X          X 
+    64                X         X                   X      X          X
+ 
+  Lower bandwidth =       56
+  Lower envelope contains      112 nonzeros.
+ 
+  The starting node was originally labeled     21
+ 
+    I    Perm(I)   Perm_Inv(I)
+ 
+     1    19    63
+     2     3    37
+     3    50     2
+     4    58    24
+     5    35    13
+     6    31    43
+     7    42    40
+     8    13    11
+     9    54    10
+    10     9    51
+    11     8    55
+    12    22    39
+    13     5     8
+    14    43    26
+    15    39    58
+    16    30    34
+    17    46    36
+    18    55    29
+    19    26     1
+    20    61    30
+    21    23    64
+    22    49    12
+    23    62    21
+    24     4    54
+    25    64    46
+    26    14    19
+    27    33    28
+    28    27    49
+    29    18    59
+    30    20    16
+    31    38     6
+    32    53    45
+    33    36    27
+    34    16    42
+    35    51     5
+    36    17    33
+    37     2    61
+    38    47    31
+    39    12    15
+    40     7    56
+    41    59    50
+    42    34     7
+    43     6    14
+    44    57    48
+    45    32    52
+    46    25    17
+    47    60    38
+    48    44    62
+    49    28    22
+    50    41     3
+    51    10    35
+    52    45    53
+    53    52    32
+    54    24     9
+    55    11    18
+    56    40    60
+    57    63    44
+    58    15     4
+    59    29    41
+    60    56    47
+    61    37    20
+    62    48    23
+    63     1    57
+    64    21    25
+ 
+  The reordered envelope size is          371
+ 
+ADJ_SHOW
+  Display nonzero structure of matrix.
+ 
+     1 XXX                                                             
+     2 XX XX                                                           
+     3 X X XX                                                          
+     4  X X  XX                                                        
+     5  XX X  XX                                                       
+     6   X  X  XX                                                      
+     7    X  X   XX                                                    
+     8    XX  X   XX                                                   
+     9     XX  X   XX                                                  
+    10      X   X   XX                                                 
+    11       X   X    XX                                               
+    12       XX   X    X X                                             
+    13        XX   X     XX                                            
+    14         XX   X     XX                                           
+    15          X    X  X  X                                           
+    16           X    X     XX                                         
+    17           XX    X     X X                                       
+    18               X  X     X X                                      
+    19            XX     X     X X                                     
+    20             XX     X      XX                                    
+    21              XX     X    X X                                    
+    22                X     X      X X                                 
+    23                XX     X       XX                                
+    24                  X     X     X  X                               
+    25                 X X     X      X X                              
+    26                  X  X    X      X X                             
+    27                   XX      X      X X                            
+    28                    XX      X      XX                            
+    29                      X      X       X                           
+    30                        X     X       X                          
+    31                      XX       X     X X                         
+    32                       X X      X      XX                        
+    33                        X X      X    X  X                       
+    34                         X X      X     X X                      
+    35                          X X      X     X X                     
+    36                           XX       X     XX                     
+    37                             X X     X      X                    
+    38                              X  X    X      X                   
+    39                               XX      X    X X                  
+    40                                X X     X     XX                 
+    41                                 X X     X   X  X                
+    42                                  X X     X    X X               
+    43                                   XX      X    XX               
+    44                                     X X    X     X              
+    45                                      X  X   X     X             
+    46                                       XX     X   X X            
+    47                                        X X    X    XX           
+    48                                         X X    X  X  X          
+    49                                          XX     X   XX          
+    50                                            X X   X    X         
+    51                                             X  X  X    X        
+    52                                              XX    X  X X       
+    53                                               X X   X   XX      
+    54                                                XX    X X X      
+    55                                                  X X  X   X     
+    56                                                   X  X X   X    
+    57                                                    XX   X X X   
+    58                                                     XX   X XX   
+    59                                                       X X X  X  
+    60                                                        X X X  X 
+    61                                                         XX  XXX 
+    62                                                           X XX X
+    63                                                            XX XX
+    64                                                              XXX
+ 
+  Lower bandwidth =        9
+  Lower envelope contains      112 nonzeros.
+ 
+  The envelope size is          371
+  The bandwidth is            9
+ 
+  Solution:
+ 
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000       1.00000    
+   1.00000       1.00000       1.00000       1.00000    
+ 
+SPARSEPAK_PRB
+  Normal end of execution.
+ 
+June 26 2008  12:22:07.393 PM

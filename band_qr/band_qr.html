@@ -1,0 +1,270 @@
+<html>
+
+  <head>
+    <title>
+      BAND_QR - LAPACK-Style QR Factorization of Banded Matrices
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BAND_QR <br> LAPACK-Style QR Factorization of Banded Matrices
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BAND_QR</b>
+      is a FORTRAN90 library which
+      includes LAPACK-style routines to compute the QR factorization
+      of a banded matrix, 
+      by Alfredo Remon, Enrique Quintana-Orti, Gregorio Quintana-Orti.
+    </p>
+
+    <p>
+      The distinguishing features of these routines include the fact
+      that
+      <ul>
+        <li>
+          they accept the banded matrix in the compact "GB"
+          ("General Banded") format
+        </li>
+        <li>
+          the QR factors are also stored compactly, by overwriting
+          the input matrix storage.
+        </li>
+        <li>
+          large problems are handled efficiently by taking advantage
+          of the blocked version of the algorithm.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The routines, as originally developed, did not include a routine to
+      solve linear systems A*x=b once the QR factors had been computed.
+      A routine <b>DGBBQRS</b> has been written to carry out this computation
+      in cases where the QR factors were computed using <b>DGBBQR2</b>,
+      that is, the unblocked code.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      This software library includes routines which are distributed under
+      a separate license.  Each such routine is individually marked with
+      the following information:
+      <pre>
+        Copyright (c) 2007, Universidad Jaume I de Castellon
+        All rights reserved.
+
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions
+        are met:
+          * Redistributions of source code must retain the above copyright
+            notice, this list of conditions and the following disclaimer.
+          * Redistributions in binary form must reproduce the above copyright
+            notice, this list of conditions and the following disclaimer in the
+            documentation and/or other materials provided with the distribution.
+          * Neither the name of the <organization> nor the
+            names of its contributors may be used to endorse or promote
+            products derived from this software without specific prior written
+            permission.
+
+        This software is provided by <copyright holder> ''as is'' and any
+        express or implied warranties, including, but not limited to, the
+        implied warranties of merchantability and fitness for a particular
+        purpose are disclaimed.  In no event shall <copyright holder> be liable
+        for any direct, indirect, incidental, special, exemplary, or
+        consequential damages (including, but not limited to, procurement of
+        substitute goods or services; loss of use, data, or profits; or
+        business interruption) however caused and on any theory of liability,
+        whether in contract, strict liability, or tort (including negligence
+        or otherwise) arising in any way out of the use of this software, even
+        if advised of the possibility of such damage.
+      </pre>
+    </p>
+
+    <p>
+      Code not covered under the above license is made available under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>BAND_QR</b> is available in
+      <a href = "../../f77_src/band_qr/band_qr.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/band_qr/band_qr.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/lapack/lapack.html">
+      LAPACK</a>,
+      a FORTRAN90 library which
+      contains modern linear algebra routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linplus/linplus.html">
+      LINPLUS</a>,
+      a FORTRAN90 library which
+      carries out some linear algebra operations on matrices
+      in a variety of formats.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Certain routines in this library represent the work of:<br>
+      Alfredo Remon, Enrique Quintana-Orti, Gregorio Quintana-Orti,<br>
+      Dept. de Ingenieria y Ciencia de Computadores, Universidad Jaume I,<br>
+      12.080 Castellon, Spain,<br>
+      {gquintan,remon,quintana}@icc.uji.es
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Edward Anderson, Zhaojun Bai, Christian Bischof, Susan Blackford,
+          James Demmel, Jack Dongarra, Jeremy Du Croz, Anne Greenbaum,
+          Sven Hammarling, Alan McKenney, Danny Sorensen,<br>
+          LAPACK User's Guide,<br>
+          Third Edition,<br>
+          SIAM, 1999,<br>
+          ISBN: 0898714478,<br>
+          LC: QA76.73.F25L36
+        </li>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1,<br>
+          LC: QA214.L56.
+        </li>
+        <li>
+          Alfredo Remon, Enrique Quintana-Orti, Gregorio Quintana-Orti,<br>
+          LAPACK-Style Codes for the QR Factorization of Banded Matrices,<br>
+          To Appear.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "band_qr.f90">band_qr.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "band_qr.sh">band_qr.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "band_qr_prb.f90">band_qr_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "band_qr_prb.sh">band_qr_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "band_qr_prb_output.txt">band_qr_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DGBBQR2</b> QR factors an M by N band matrix in GB format, without blocking.
+        </li>
+        <li>
+          <b>DGBBQRF</b> QR factors an M by N band matrix in GB format, using blocking.
+        </li>
+        <li>
+          <b>DGBBQRS</b> solves A*X = B when A has been factored by DGBBQR2.
+        </li>
+        <li>
+          <b>DGEBQR2</b> QR factors an M by N band matrix in GE format, with no blocking.
+        </li>
+        <li>
+          <b>DGEBQRF</b> QR factors an M by N band matrix stored in GE format, with blocking.
+        </li>
+        <li>
+          <b>DGEQRS</b> solves a linear system factored by DGEQRF.
+        </li>
+        <li>
+          <b>DGEQRS_TWO</b> solves A*X = B when A has been factored by DGEQRF or DGEBQR2.
+        </li>
+        <li>
+          <b>R8GB_PRINT</b> prints an R8GB matrix.
+        </li>
+        <li>
+          <b>R8GB_PRINT_SOME</b> prints some of an R8GB matrix.
+        </li>
+        <li>
+          <b>R8GE_PRINT</b> prints an R8 GE matrix
+        </li>
+        <li>
+          <b>R8GE_PRINT_SOME</b> prints some of an R8 GE matrix.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints out the current YMDHMS date as a timestamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 04 April 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

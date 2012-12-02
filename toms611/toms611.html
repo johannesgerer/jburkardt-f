@@ -1,0 +1,399 @@
+<html>
+
+  <head>
+    <title>
+      TOMS611 - Unconstrained Minimization
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOMS611 <br> Unconstrained Minimization
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS611</b>
+      is a FORTRAN90 library which
+      carries out the unconstrained minimization of
+      a scalar function, by David Gay.
+    </p>
+
+    <p>
+      <b>TOMS611</b> is a FORTRAN90 implementation of
+      ACM TOMS algorithm 611.
+    </p>
+
+    <p>
+      <b>TOMS611</b> contains routines for the general unconstrained
+      minimization of a scalar function of several variables.  The routines
+      use a model/trust-region approach, and the double-dogleg technique
+      of Dennis and Mei.  In cases where the Hessian is not supplied by the
+      user, the BFGS secant update is used instead.
+    </p>
+
+    <p>
+      Three different implementations of the algorithm are available,
+      which allow the user to supply just the function, the function
+      and gradient, or function, gradient and hessian.
+    </p>
+
+    <p>
+      The user may also choose to supply the information about the
+      function through subroutines, or to use a version of the algorithm
+      that employs "reverse communication", allowing the user to
+      evaluate the function in any suitable way.
+    </p>
+
+    <p>
+      The original version of TOMS 611 is available
+      through ACM:
+              <a href = "http://www.acm.org/pubs/calgo/">
+                         http://www.acm.org/pubs/calgo</a>
+      or NETLIB:
+      <a href = "http://www.netlib.org/toms/index.html">
+      http://www.netlib.org/toms/index.html</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TOMS611</b> is available in
+      <a href = "../../f77_src/toms611/toms611.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms611/toms611.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/brent/brent.html">
+      BRENT</a>,
+      a FORTRAN90 library which
+      contains routines for finding zeroes or minima of a scalar
+      function of a scalar variable, without the use of derivative information,
+      by Richard Brent.
+    </p>
+
+    <p>
+      <a href = "../../f_src/bvls/bvls.html">
+      BVLS</a>,
+      a FORTRAN90 library which
+      applies least squares methods to solve a linear system for which
+      lower and upper constraints may have been placed on every variable.
+    </p>
+
+    <p>
+      <a href = "../../f_src/compass_search/compass_search.html">
+      COMPASS_SEARCH</a>,
+      a FORTRAN90 library which 
+      seeks the minimizer of a scalar function of several variables
+      using compass search, a direct search algorithm that does not use derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt/test_opt.html">
+      TEST_OPT</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_optimization/test_optimization.html">
+      TEST_OPTIMIZATION</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables, as described by Molga and Smutnicki.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      David Gay
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Alan Cline, Cleve Moler, Pete Stewart, James Wilkinson,<br>
+          An estimate for the Condition Number of a Matrix,<br>
+          Technical Report TM-310,<br>
+          Argonne National Laboratory, 1977.
+        </li>
+        <li>
+          John Dennis, David Gay, Roy Welsch,<br>
+          Algorithm 573:
+          An Adaptive Nonlinear Least-Squares Algorithm,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 7, Number 3, September 1981, pages 367-383.
+        </li>
+        <li>
+          John Dennis, Howell Mei,<br>
+          Two New Unconstrained Optimization Algorithms Which Use
+          Function and Gradient Values,<br>
+          Journal of Optimization Theory and Applications,<br>
+          Volume 28, 1979, pages 453-482.
+        </li>
+        <li>
+          John Dennis, Jorge More,<br>
+          Quasi-Newton Methods, Motivation and Theory,<br>
+          SIAM Review,<br>
+          Volume 19, Number 1, January 1977, pages 46-89.
+        </li>
+        <li>
+          David Gay,<br>
+          Algorithm 611:
+          Subroutines for Unconstrained
+          Minimization Using a Model/Trust Region Approach,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 9, Number 4, December 1983, pages 503-524.
+        </li>
+        <li>
+          David Gay,<br>
+          Computing Optimal Locally Constrained Steps,<br>
+          SIAM Journal on Scientific and Statistical Computing,<br>
+          Volume 2, Number 2, June 1981, pages 186-197.
+        </li>
+        <li>
+          Donald Goldfarb,<br>
+          Factorized Variable Metric Methods for Unconstrained Optimization,<br>
+          Mathematics of Computation,<br>
+          Volume 30, Number 136, October 1976, pages 796-811.
+        </li>
+        <li>
+          Steven Goldfeld, Richard Quandt, Hale Trotter,<br>
+          Maximization by Quadratic Hill-climbing,<br>
+          Econometrica,<br>
+          Volume 34, 1966, pages 541-551.
+        </li>
+        <li>
+          Michael Hebden,<br>
+          An Algorithm for Minimization Using Exact Second Derivatives,<br>
+          Technical Report: TP 515,
+          Theoretical Physics Division,<br>
+          AERE Harwell, 1973.
+        </li>
+        <li>
+          Jorge More,<br>
+          The Levenberg-Marquardt Algorithm, Implementation and Theory,<br>
+          in Springer Lecture Notes in Mathematics, Number 630,<br>
+          edited by GA Watson,<br>
+          Springer, 1978,<br>
+          LC: QA3.L28 Number 630.
+        </li>
+        <li>
+          Jorge More, Danny Sorensen,<br>
+          Computing a Trust Region Step,<br>
+          Technical Report ANL-81-83,<br>
+          Argonne National Laboratory, 1981.
+        </li>
+        <li>
+          Michael Powell,<br>
+          A Hybrid Method for Nonlinear Equations,<br>
+          in Numerical Methods for Nonlinear Algebraic Equations,<br>
+          edited by Philip Rabinowitz,<br>
+          Gordon and Breach, 1970,<br>
+          ISBN13: 978-0677142302,<br>
+          LC: QA218.N85.
+        </li>
+        <li>
+          Michael Powell,<br>
+          A Fortran Subroutine for Solving Systems of Nonlinear
+          Algebraic Equations,<br>
+          in Numerical Methods for Nonlinear Algebraic Equations,<br>
+          edited by Philip Rabinowitz,<br>
+          Gordon and Breach, 1970,<br>
+          ISBN13: 978-0677142302,<br>
+          LC: QA218.N85.
+        </li>
+        <li>
+          Pete Stewart,<br>
+          A Modification of Davidon's Minimization Method to Accept Difference
+          Approximations of Derivatives,<br>
+          Journal of the ACM,<br>
+          Volume 14, Number 1, January 1967, pages 72-83.
+        </li>
+        <li>
+          Richard Varga,<br>
+          Minimal Gerschgorin Sets,<br>
+          Pacific Journal of Mathematics,<br>
+          Volume 15, 1965, pages 719-729.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms611.f90">toms611.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "toms611.sh">toms611.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms611_prb.f90">toms611_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "toms611_prb.sh">toms611_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = toms611_prb_output.txt">toms611_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ASSST:</b> assess a candidate step.
+        </li>
+        <li>
+          <b>DBDOG:</b> compute double dogleg step
+        </li>
+        <li>
+          <b>DEFLT:</b> supply default values to iv and v.
+        </li>
+        <li>
+          <b>DOTPRD</b> returns the inner product of the p-vectors x and y.
+        </li>
+        <li>
+          <b>DUPDU:</b> update scale vector d for humsl
+        </li>
+        <li>
+          <b>GQTST:</b> compute goldfeld-quandt-trotter step by more-hebden technique
+        </li>
+        <li>
+          <b>HUMIT</b> carries out humsl (unconstrained minimization) iterations, using
+        </li>
+        <li>
+          <b>HUMSL</b> minimizes a general unconstrained objective function using
+        </li>
+        <li>
+          <b>ITSUM</b> prints an iteration summary.
+        </li>
+        <li>
+          <b>LITVMU</b> solves  (l**t)*x = y,  where  l  is an  n x n  lower triangular
+        </li>
+        <li>
+          <b>LIVMUL</b> solves l*x = y, where  l  is an  n x n  lower triangular
+        </li>
+        <li>
+          <b>LSQRT</b> computes rows n1 through n of the cholesky factor  l  of
+        </li>
+        <li>
+          <b>LSVMIN</b> estimates smallest sing. value of packed lower triang. matrix l
+        </li>
+        <li>
+          <b>LTVMUL</b> computes  x = (l**t)*y, where  l  is an  n x n  lower
+        </li>
+        <li>
+          <b>LUPDAT</b> computes lplus = secant update of l
+        </li>
+        <li>
+          <b>LVMUL</b> computes x = l*y, where  l  is an  n x n  lower triangular
+        </li>
+        <li>
+          <b>PARCK</b> checks parameters, prints changed values.
+        </li>
+        <li>
+          <b>RELDST</b> compute and return relative difference between x and x0
+        </li>
+        <li>
+          <b>RMDCON</b> return machine dependent constants used by nl2sol
+        </li>
+        <li>
+          <b>SGRAD2</b> computes finite difference gradient by stewart's scheme
+        </li>
+        <li>
+          <b>SLVMUL</b> sets y = s * x,  s = p x p symmetric matrix.
+        </li>
+        <li>
+          <b>SMSNO</b> minimizes a general unconstrained objective function using
+        </li>
+        <li>
+          <b>SNOIT</b> iteration driver for smsno...
+        </li>
+        <li>
+          <b>STOPX</b> ???
+        </li>
+        <li>
+          <b>SUMIT</b> carry out sumsl (unconstrained minimization) iterations, using
+        </li>
+        <li>
+          <b>SUMSL</b> minimizes a general unconstrained objective function using
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>V2NORM</b> returns the 2-norm of the p-vector x, taking
+        </li>
+        <li>
+          <b>VAXPY</b> sets w = a*x + y  --  w, x, y = p-vectors, a = scalar
+        </li>
+        <li>
+          <b>VCOPY</b> sets y = x, where x and y are p-vectors
+        </li>
+        <li>
+          <b>VDFLT</b> supplies default values to V.
+        </li>
+        <li>
+          <b>VSCOPY</b> sets p-vector y to scalar s
+        </li>
+        <li>
+          <b>VVMULP</b> sets x(i) = y(i) * z(i)**k, 1 <= i <= n (for k = 1 or -1)
+        </li>
+        <li>
+          <b>WZBFGS</b> compute  y  and  z  for  lupdat  corresponding to bfgs update.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 January 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

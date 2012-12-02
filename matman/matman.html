@@ -1,0 +1,406 @@
+<html>
+
+  <head>
+    <title>
+      MATMAN - An Interactive Matrix Manipulator
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055" >
+
+    <h1 align = "center">
+      MATMAN <br> The Matrix Manipulator
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MATMAN</b>
+      is a FORTRAN90 program which
+      allows an interactive user to define a matrix and carry out
+      the individual steps of certain algorithms.
+    </p>
+
+    <p>
+      The program is intended to do the arithmetic correctly, while forcing
+      a student to specify the correct sequence of operations to transform
+      an arbitrary matrix into row echelon form.
+    </p>
+
+    <p>
+      <b>MATMAN</b> was developed by Professor Charles Cullen of the University
+      of Pittsburgh, and John Burkardt, itinerant programmer.
+    </p>
+
+    <p>
+      <b>MATMAN</b> features include:
+      <ul>
+        <li>
+          <i>Interactivity</i>: students prescribe each row operation;
+        </li>
+        <li>
+          <i>Accuracy</i>: <b>MATMAN</b> does the arithmetic operations;
+        </li>
+        <li>
+          <i>Flexibility</i>: rational, real or decimal arithmetic may be used;
+        </li>
+        <li>
+          <i>Affordability</i>: the price is right (it's freeware);
+        </li>
+        <li>
+          <i>Portability</i>: complete FORTRAN source code available, executes
+          on IBM (DOS or Windows), Mac (68K or PPC), UNIX, VMS.
+        </li>
+        <li>
+          <i>Repeatability</i>: A transcript file records all work;
+        </li>
+        <li>
+          <i>Improvability</i>: The developers are responsive to user requests.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MATMAN</b> allows the user to:
+      <ul>
+        <li>
+          Request a sample problem, or type in a new one;
+        </li>
+        <li>
+          Choose decimal, integer, rational or real arithmetic;
+        </li>
+        <li>
+          Specify row or column operations in a natural form: "R1 <= 3 R1 + R2";
+        </li>
+        <li>
+          Determine if the matrix is in row echelon form;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <b>MATMAN</b> is available in
+      <a href = "../../f77_src/matman/matman.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/matman/matman.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "matman.f90">matman.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "matman.sh">matman.sh</a>, commands to
+          compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "input.txt">input.txt</a>, a sample set of input;
+        </li>
+        <li>
+          <a href = "output_sgi.txt">output_sgi.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for MATMAN.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_ALPHA</b> returns TRUE if C is an alphabetic character.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CHANGE</b> allows the user to change an entry in the array.
+        </li>
+        <li>
+          <b>CHRCTF</b> reads an integer or rational fraction from a string.
+        </li>
+        <li>
+          <b>CHRCTG</b> reads an integer, decimal fraction or a ratio from a string.
+        </li>
+        <li>
+          <b>CHRINP</b> requests new input if the LINE buffer is empty.
+        </li>
+        <li>
+          <b>COL_ADD</b> adds a multiple of one column to another.
+        </li>
+        <li>
+          <b>COL_ADD_PARAM</b> gets and checks the column add parameters.
+        </li>
+        <li>
+          <b>COL_APP</b> allows the user to append a column to the matrix.
+        </li>
+        <li>
+          <b>COL_AUTO</b> automatically column reduces the current matrix.
+        </li>
+        <li>
+          <b>COL_DIV</b> divides a column of the matrix by a scale factor.
+        </li>
+        <li>
+          <b>COL_DIV_PARAM</b> gets and checks the column divide parameters.
+        </li>
+        <li>
+          <b>COL_MUL</b> multiplies a column of the matrix by a scale factor.
+        </li>
+        <li>
+          <b>COL_MUL_PARAM</b> gets and checks the column multiply parameters.
+        </li>
+        <li>
+          <b>COL_OP_CHECK</b> checks for commands given in the form of ECO's.
+        </li>
+        <li>
+          <b>COL_SWAP</b> swaps two columns of a matrix.
+        </li>
+        <li>
+          <b>DEC_ADD</b> adds two decimal quantities.
+        </li>
+        <li>
+          <b>DEC_DIGIT_SET</b> allows the user to specify the number of decimal digits.
+        </li>
+        <li>
+          <b>DEC_DIV</b> divides two decimal values.
+        </li>
+        <li>
+          <b>DEC_MUL</b> multiplies two decimals.
+        </li>
+        <li>
+          <b>DEC_PRINT</b> prints out decimal vectors and matrices.
+        </li>
+        <li>
+          <b>DEC_READ</b> reads a decimal, rational or integer, and returns a decimal fraction.
+        </li>
+        <li>
+          <b>DEC_ROUND</b> rounds a decimal fraction to a given number of digits.
+        </li>
+        <li>
+          <b>DEC_TO_R4</b> converts a decimal ITOP * 10**IBOT to an R4.
+        </li>
+        <li>
+          <b>DEC_TO_RAT</b> converts a decimal to a rational representation.
+        </li>
+        <li>
+          <b>DEC_TO_S_LEFT</b> returns a left-justified representation of IVAL * 10**JVAL.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>FORM</b> converts from one arithmetic form to another.
+        </li>
+        <li>
+          <b>HELLO</b> greets the user on startup.
+        </li>
+        <li>
+          <b>HELP</b> prints out a brief list of the available commands.
+        </li>
+        <li>
+          <b>I4_DATA</b> stores and retrieves common data items.
+        </li>
+        <li>
+          <b>I4_GCD</b> finds the greatest common divisor of I and J.
+        </li>
+        <li>
+          <b>I4_PRINT</b> prints out integer vectors and matrices.
+        </li>
+        <li>
+          <b>I4_RANDOM</b> returns a random integer in a given range.
+        </li>
+        <li>
+          <b>I4_READ</b> reads an integer from the input buffer.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two integer values.
+        </li>
+        <li>
+          <b>I4_TO_S_LEFT</b> converts an integer to a left-justified string.
+        </li>
+        <li>
+          <b>INIT</b> initializes the data.
+        </li>
+        <li>
+          <b>LA_INP1</b> accepts the values of the entries of a matrix from the user.
+        </li>
+        <li>
+          <b>LA_OPT</b> checks for row echelon or reduced row echelon form.
+        </li>
+        <li>
+          <b>MAT_APPEND_IDENTITY</b> appends the identity matrix.
+        </li>
+        <li>
+          <b>MAT_PRINT</b> prints out the matrix.
+        </li>
+        <li>
+          <b>R4_PRINT</b> prints out real vectors and matrices.
+        </li>
+        <li>
+          <b>R4_READ</b> "reads" a real value from a line of text.
+        </li>
+        <li>
+          <b>R4_SWAP</b> switches two real values.
+        </li>
+        <li>
+          <b>R4_TO_DEC</b> converts a real value to a decimal fraction form.
+        </li>
+        <li>
+          <b>R4_TO_RAT</b> converts a real value to a rational value.
+        </li>
+        <li>
+          <b>R4_TO_S_LEFT</b> represents a real using 14 left_justified characters.
+        </li>
+        <li>
+          <b>R8_TO_DEC</b> converts an R8 to a decimal representation.
+        </li>
+        <li>
+          <b>RAT_ADD</b> adds two rational values.
+        </li>
+        <li>
+          <b>RAT_MUL</b> multiplies two fractions.
+        </li>
+        <li>
+          <b>RAT_PRINT</b> prints out rational vectors or matrices.
+        </li>
+        <li>
+          <b>RAT_READ</b> reads a rational value, expressed as integer, decimal or fraction.
+        </li>
+        <li>
+          <b>RAT_TO_DEC</b> converts a rational value to a decimal value.
+        </li>
+        <li>
+          <b>RAT_TO_R4</b> converts rational values to R4s.
+        </li>
+        <li>
+          <b>RAT_TO_S_LEFT</b> returns a left-justified representation of IVAL/JVAL.
+        </li>
+        <li>
+          <b>ROW_ADD</b> adds a multiple of one row to another.
+        </li>
+        <li>
+          <b>ROW_ADD_PARAM</b> gets and checks the row add parameters.
+        </li>
+        <li>
+          <b>ROW_AUTO</b> automatically row reduces the current matrix.
+        </li>
+        <li>
+          <b>ROW_DIV</b> divides row IROW of the A matrix by a scale factor.
+        </li>
+        <li>
+          <b>ROW_DIV_PARAM</b> gets and checks the row divide parameters.
+        </li>
+        <li>
+          <b>ROW_MUL</b> multiplies a row of the matrix by a scale factor.
+        </li>
+        <li>
+          <b>ROW_MUL_PARAM</b> gets and checks the row multiply parameters.
+        </li>
+        <li>
+          <b>ROW_OP_CHECK</b> checks for commands given in the form of ERO's.
+        </li>
+        <li>
+          <b>ROW_SWAP</b> swaps two rows of a matrix.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_CHOP</b> "chops out" a portion of a string, and closes up the hole.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_READ</b> extracts a character string from the input buffer.
+        </li>
+        <li>
+          <b>S_TO_DEC</b> reads a number from a string, returning a decimal result.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R4</b> reads an R4 from a string.
+        </li>
+        <li>
+          <b>PROBLEM_SOLVE_RANDOM</b> sets up a random linear system problem.
+        </li>
+        <li>
+          <b>SIZE_SET</b> allows the user to specify the size of a new problem.
+        </li>
+        <li>
+          <b>MAT_RANDOM</b> sets up a random problem.
+        </li>
+        <li>
+          <b>VALUE_READ</b> allows the user to specify one entry in the array.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

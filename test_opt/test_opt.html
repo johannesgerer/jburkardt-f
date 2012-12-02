@@ -1,0 +1,1553 @@
+<html>
+
+  <head>
+    <title>
+      TEST_OPT - Scalar Function Optimization Test Problems
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_OPT <br> Optimization of a Scalar Function <br> Test Problems
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_OPT</b>
+      is a FORTRAN90 library which 
+      defines test problems for the scalar function optimization problem. 
+    </p>
+
+    <p>
+      The scalar function optimization problem is to find a value
+      for the N-dimensional vector <b>X</b> which minimizes the value of
+      the given scalar function <b>F(X)</b>.  The function <b>F(X)</b> is 
+      not usually defined as the sum of squares of other functions.  
+      The minimum function value is not guaranteed to be zero.  
+    </p>
+
+    <p>
+      Any system of M nonlinear functions in N unknowns can be turned into
+      a scalar optimization problem.  One way to do this is to define the functional
+      <b>F(X)</b> to be the sum of the squares of the original nonlinear functions.
+      The minimizer of <b>F</b> will then minimize the sum of the squares of the
+      residuals.  Since this process involves squaring, it can be less accurate
+      than dealing directly with the original nonlinear functions: that is to say,
+      the derived optimization problem may be more convenient to solve, but might
+      provide less accurate results than applying a nonlinear solver to the original
+      system.
+    </p>
+
+    <p>
+      If a function <b>F(X)</b> is differentiable, then at an optimum, the
+      gradient vector must vanish.  Thus, it is also possible to start with an
+      optimization problem involving <b>F(X)</b> and turn it into a problem in
+      which we seek a zero of the nonlinear functions represented by the gradient
+      of <b>F</b>.  Of course, the gradient must be zero at a mininum, but 
+      the converse does not hold; thus unless we know more about <b>F</b>, it is not
+      safe to try to replace the optimization problem by a nonlinear function
+      solution.
+    </p>
+
+    <p>
+      For each test problem, routines are provided to evaluate the function,
+      gradient vector, and hessian matrix.  Routines are also provided to
+      indicate the number of variables, the problem title, a suitable starting 
+      point, and a minimizing solution, if known.
+    </p>
+
+    <p>
+      The functions defined include:
+      <ol>
+        <li>
+          The Fletcher-Powell helical valley function,<br>
+          N = 3.
+        </li>
+        <li>
+          The Biggs EXP6 function,<br>
+          N = 6.
+        </li>
+        <li>
+          The Gaussian function,<br>
+          N = 3.
+        </li>
+        <li>
+          The Powell badly scaled function,<br>
+          N = 2.
+        </li>
+        <li>
+          The Box 3-dimensional function,<br>
+          N = 3.
+        </li>
+        <li>
+          The variably dimensioned function,<br>
+          1 &lt;= N.
+        </li>
+        <li>
+          The Watson function,<br>
+          2 &lt;= N.
+        </li>
+        <li>
+          The penalty function #1,<br>
+          1 &lt;= N.
+        </li>
+        <li>
+          The penalty function #2,<br>
+          1 &lt;= N.
+        </li>
+        <li>
+          The Brown badly scaled function,<br>
+          N = 2.
+        </li>
+        <li>
+          The Brown and Dennis function,<br>
+          N = 4.
+        </li>
+        <li>
+          The Gulf R&D function,<br>
+          N = 3.
+        </li>
+        <li>
+          The trigonometric function,<br>
+          1 &lt;= N.
+        </li>
+        <li>
+          The extended Rosenbrock parabolic valley function,<br>
+          1 &lt;= N.
+        </li>
+        <li>
+          The extended Powell singular quartic function,<br>
+          4 &lt;= N.
+        </li>
+        <li>
+          The Beale function,<br>
+          N = 2.
+        </li>
+        <li>
+          The Wood function,<br>
+          N = 4.
+        </li>
+        <li>
+          The Chebyquad function,<br>
+          1 &lt;= N.
+        </li>
+        <li>
+          Leon's cubic valley function,<br>
+          N = 2.
+        </li>
+        <li>
+          Gregory and Karney's Tridiagonal Matrix Function,<br>
+          1 &lt;= N.
+        </li>
+        <li>
+          The Hilbert function,<br>
+          1 &lt;= N.
+        </li>
+        <li>
+          The De Jong Function F1,<br>
+          N = 3.
+        </li>
+        <li>
+          The De Jong Function F2,<br>
+          N = 2.
+        </li>
+        <li>
+          The De Jong Function F3 (discontinuous),<br>
+          N = 5.
+        </li>
+        <li>
+          The De Jong Function F4 (Gaussian noise),<br>
+          N = 30.
+        </li>
+        <li>
+          The De Jong Function F5,<br>
+          N = 2.
+        </li>
+        <li>
+          The Schaffer Function F6,<br>
+          N = 2.
+        </li>
+        <li>
+          The Schaffer Function F7,<br>
+          N = 2.
+        </li>
+        <li>
+          The Goldstein Price Polynomial,<br>
+          N = 2.
+        </li>
+        <li>
+          The Branin RCOS Function,<br>
+          N = 2.
+        </li>
+        <li>
+          The Shekel SQRN5 Function,<br>
+          N = 4.
+        </li>
+        <li>
+          The Shekel SQRN7 Function,<br>
+          N = 4.
+        </li>
+        <li>
+          The Shekel SQRN10 Function,<br>
+          N = 4.
+        </li>
+        <li>
+          The Six-Hump Camel-Back Polynomial,<br>
+          N = 2.
+        </li>
+        <li>
+          The Shubert Function,<br>
+          N = 2.
+        </li>
+        <li>
+          The Stuckman Function,<br>
+          N = 2.
+        </li>
+        <li>
+          The Easom Function,<br>
+          N = 2.
+        </li>
+        <li>
+          The Bohachevsky Function #1,<br>
+          N = 2.
+        </li>
+        <li>
+          The Bohachevsky Function #2,<br>
+          N = 2.
+        </li>
+        <li>
+          The Bohachevsky Function #3,<br>
+          N = 2.
+        </li>
+        <li>
+          The Colville Polynomial,<br>
+          N = 4.
+        </li>
+        <li>
+          The Powell 3D function,<br>
+          N = 3.
+        </li>
+        <li>
+          The Himmelblau function,<br>
+          N = 2.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_OPT</b> is available in
+      <a href = "../../f_src/test_opt/test_opt.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_opt/test_opt.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa047/asa047.html">
+      ASA047</a>,
+      a FORTRAN90 library which
+      minimizes a scalar function of several variables using the Nelder-Mead algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/brent/brent.html">
+      BRENT</a>,
+      a FORTRAN90 library which
+      contains Richard Brent's routines for finding the zero, local minimizer,
+      or global minimizer of a scalar function of a scalar argument, without
+      the use of derivative information.
+    </p>
+
+    <p>
+      <a href = "../../f_src/compass_search/compass_search.html">
+      COMPASS_SEARCH</a>,
+      a FORTRAN90 library which 
+      seeks the minimizer of a scalar function of several variables
+      using compass search, a direct search algorithm that does not use derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      solves constrained least squares problems.
+    </p>
+
+    <p>
+      <a href = "../../m_src/entrust/entrust.html">
+      ENTRUST</a>,
+      a MATLAB program which
+      minimizes a scalar function of several variables using trust region methods,
+      by Jeff Borggaard and Gene Cliff.
+    </p>
+
+    <p>
+      <a href = "../../f_src/minpack/minpack.html">
+      MINPACK</a>,
+      a FORTRAN90 library which
+      carries out the least squares minimization of the residual
+      of a set of linear or nonlinear equations.
+    </p>
+
+    <p>
+      <a href = "../../m_src/nelder_mead/nelder_mead.html">
+      NELDER_MEAD</a>,
+      a MATLAB program which
+      minimizes a scalar function of several variables using the Nelder-Mead algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nl2sol/nl2sol.html">
+      NL2SOL</a>,
+      a FORTRAN90 library which 
+      implements an adaptive nonlinear least-squares algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/praxis/praxis.html">
+      PRAXIS</a>,
+      a FORTRAN90 library which
+      minimizes a scalar
+      function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_nls/test_nls.html">
+      TEST_NLS</a>,
+      a FORTRAN90 library which
+      defines a number of problems for nonlinear least squares solvers.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_nonlin/test_nonlin.html">
+      TEST_NONLIN</a>,
+      a FORTRAN90 library which
+      defines a number of problems for nonlinear equation solvers.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt_con/test_opt_con.html">
+      TEST_OPT_CON</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables, with the search constrained to lie within a specified hyper-rectangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_optimization/test_optimization.html">
+      TEST_OPTIMIZATION</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables, as described by Molga and Smutnicki.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms611/toms611.html">
+      TOMS611</a>,
+      a FORTRAN90 library which
+      minimizes a scalar functional of multiple variables.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>   
+        <li>
+          Evelyn Beale,<br>
+          On an Iterative Method for Finding a Local Minimum of a Function
+          of More than One Variable,<br>
+          Technical Report 25, <br>
+          Statistical Techniques Research Group,<br>
+          Princeton University, 1958.
+        </li>
+        <li>
+          F K Branin,
+          A widely convergent method for finding multiple solutions of 
+          simultaneous nonlinear equations,<br>
+          IBM Journal of Research and Development,<br>
+          pages 504-522, September 1972.
+        </li>
+        <li>
+          Richard Brent,<br>
+          Algorithms for Minimization without Derivatives,<br>
+          Dover, 2002,<br>
+          ISBN: 0-486-41998-3,<br>
+          LC: QA402.5.B74.
+        </li>   
+        <li>
+          John Dennis, David Gay, Phuong Vu,<br>
+          A new nonlinear equations test problem,<br>
+          Technical Report 83-16,<br>
+          Mathematical Sciences Department,<br>
+          Rice University, 1983.
+        </li>
+        <li>
+          John Dennis, Robert Schnabel,<br>
+          Numerical Methods for Unconstrained Optimization 
+          and Nonlinear Equations,<br>
+          SIAM, 1996,<br>
+          ISBN13: 978-0-898713-64-0,<br>
+          LC: QA402.5.D44.
+        </li>
+        <li>
+          Noel deVilliers, David Glasser,<br>
+          A continuation method for nonlinear regression,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 18, 1981, pages 1139-1154.
+        </li>
+        <li>
+          Eric Easom,<br>
+          A survey of global optimization techniques,<br>
+          Master of Engineering thesis,<br>
+          University of Louisville, Louisville, Kentucky, 1990.
+        </li>
+        <li>
+          Chris Fraley,<br>
+          Solution of nonlinear least-squares problems,<br>
+          Technical Report STAN-CS-1165,<br>
+          Computer Science Department,<br>
+          Stanford University, 1987.
+        </li>  
+        <li>
+          Chris Fraley,<br>
+          Software performance on nonlinear least-squares problems,<br>
+          Technical Report SOL 88-17,<br>
+          Systems Optimization Laboratory,<br>
+          Department of Operations Research,<br>
+          Stanford University, 1988.
+        </li>
+        <li>
+          Allen Goldstein, J Price,<br>
+          On descent from local minima,<br>
+          Mathematics of Computation, <br>
+          Volume 25, Number 115, 1971.
+        </li>
+        <li>
+          David Himmelblau,<br>
+          Applied Nonlinear Programming,<br>
+          McGraw Hill, 1972,<br>
+          ISBN13: 978-0070289215,<br>
+          LC: T57.8.H55.
+        </li>
+        <li>
+          A Leon,<br>
+          A Comparison of Eight Known Optimizing Procedures,<br>
+          in Recent Advances in Optimization Techniques,<br>
+          edited by Abraham Lavi, Thomas Vogl,<br>
+          Wiley, 1966.
+        </li> 
+        <li>
+          JJ McKeown,<br>
+          Specialized versus general-purpose algorithms for functions 
+          that are sums of squared terms,<br>
+          Mathematical Programming,<br>
+          Volume 9, 1975, pages 57-68.
+        </li>  
+        <li>
+          JJ McKeown,<br>
+          On algorithms for sums of squares problems,<br>
+          in Towards Global Optimization,<br>
+          edited by L Dixon, Gabor Szego,<br>
+          North-Holland, 1975, pages 229-257.
+        </li>    
+        <li>
+          Zbigniew Michalewicz,<br>
+          Genetic Algorithms + Data Structures = Evolution Programs,<br>
+          Third Edition,<br>
+          Springer, 1996,<br>
+          ISBN: 3-540-60676-9,<br>
+          LC: QA76.618.M53.
+        </li> 
+        <li>
+          Jorge More, Burton Garbow, Kenneth Hillstrom,<br>
+          Testing unconstrained optimization software,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 7, Number 1, March 1981, pages 17-41.
+        </li>
+        <li>
+          Jorge More, Burton Garbow, Kenneth Hillstrom,<br>
+          Algorithm 566:
+          FORTRAN Subroutines for Testing unconstrained optimization software,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 7, Number 1, March 1981, pages 136-140.
+        </li>
+        <li>
+          Michael Powell,<br>
+          An Efficient Method for Finding the Minimum of a Function of
+          Several Variables Without Calculating Derivatives,<br>
+          Computer Journal,<br>
+          Volume 7, Number 2, 1964, pages 155-162.
+        </li>  
+        <li>
+          Douglas Salane,<br>
+          A continuation approach for solving large residual nonlinear 
+          least squares problems,<br>
+          SIAM Journal on Scientific and Statistical Computing,<br>
+          Volume 8, 1987, pages 655-671.
+        </li>
+        <li>
+          Bruno Shubert,<br>
+          A sequential method seeking the global maximum of a function,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 9, pages 379-388, 1972.
+        </li>
+      </ol>
+    </p>
+ 
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_opt.f90">test_opt.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "test_opt.sh">test_opt.sh</a>, 
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_opt_prb.f90">test_opt_prb.f90</a>, a sample calling
+          routine.
+        </li>
+        <li>
+          <a href = "test_opt_prb.sh">test_opt_prb.sh</a>, commands to
+          compile, link and run the calling routine.
+        </li>
+        <li>
+          <a href = "test_opt_prb_output.txt">test_opt_prb_output.txt</a>, 
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>P00_F</b> evaluates the objective function for any problem.
+        </li>
+        <li>
+          <b>P00_G</b> evaluates the gradient for any problem.
+        </li>
+        <li>
+          <b>P00_GDIF</b> approximates the gradient via finite differences.
+        </li>
+        <li>
+          <b>P00_H</b> evaluates the Hessian for any problem.
+        </li>
+        <li>
+          <b>P00_HDIF</b> approximates the Hessian via finite differences.
+        </li>
+        <li>
+          <b>P00_PROBLEM_NUM</b> returns the number of problems available.
+        </li>
+        <li>
+          <b>P00_N</b> returns the number of variables for any problem.
+        </li>
+        <li>
+          <b>P00_SOL</b> returns the solution for any problem.
+        </li>
+        <li>
+          <b>P00_START</b> returns a starting point for optimization for any problem.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns a title for any problem.
+        </li>
+        <li>
+          <b>P01_F</b> evaluates the objective function for problem 1.
+        </li>
+        <li>
+          <b>P01_G</b> evaluates the gradient for problem 1.
+        </li>
+        <li>
+          <b>P01_H</b> evaluates the Hessian for problem 1.
+        </li>
+        <li>
+          <b>P01_N</b> returns the number of variables for problem 1.
+        </li>
+        <li>
+          <b>P01_SOL</b> returns the solution for problem 1.
+        </li>
+        <li>
+          <b>P01_START</b> returns a starting point for optimization for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns a title for problem 1.
+        </li>
+        <li>
+          <b>P02_F</b> evaluates the objective function for problem 2.
+        </li>
+        <li>
+          <b>P02_G</b> evaluates the gradient for problem 2.
+        </li>
+        <li>
+          <b>P02_H</b> evaluates the Hessian for problem 2.
+        </li>
+        <li>
+          <b>P02_N</b> returns the number of variables for problem 2.
+        </li>
+        <li>
+          <b>P02_SOL</b> returns the solution for problem 2.
+        </li>
+        <li>
+          <b>P02_START</b> returns a starting point for optimization for problem 2.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns a title for problem 2.
+        </li>
+        <li>
+          <b>P03_F</b> evaluates the objective function for problem 3.
+        </li>
+        <li>
+          <b>P03_G</b> evaluates the gradient for problem 3.
+        </li>
+        <li>
+          <b>P03_YVEC</b> is an auxilliary routine for problem 3.
+        </li>
+        <li>
+          <b>P03_H</b> evaluates the Hessian for problem 3.
+        </li>
+        <li>
+          <b>P03_N</b> returns the number of variables for problem 3.
+        </li>
+        <li>
+          <b>P03_SOL</b> returns the solution for problem 3.
+        </li>
+        <li>
+          <b>P03_START</b> returns a starting point for optimization for problem 3.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns a title for problem 3.
+        </li>
+        <li>
+          <b>P04_F</b> evaluates the objective function for problem 4.
+        </li>
+        <li>
+          <b>P04_G</b> evaluates the gradient for problem 4.
+        </li>
+        <li>
+          <b>P04_H</b> evaluates the Hessian for problem 4.
+        </li>
+        <li>
+          <b>P04_N</b> returns the number of variables for problem 4.
+        </li>
+        <li>
+          <b>P04_SOL</b> returns the solution for problem 4.
+        </li>
+        <li>
+          <b>P04_START</b> returns a starting point for optimization for problem 4.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns a title for problem 4.
+        </li>
+        <li>
+          <b>P05_F</b> evaluates the objective function for problem 5.
+        </li>
+        <li>
+          <b>P05_G</b> evaluates the gradient for problem 5.
+        </li>
+        <li>
+          <b>P05_H</b> evaluates the Hessian for problem 5.
+        </li>
+        <li>
+          <b>P05_N</b> returns the number of variables for problem 5.
+        </li>
+        <li>
+          <b>P05_SOL</b> returns the solution for problem 5.
+        </li>
+        <li>
+          <b>P05_START</b> returns a starting point for optimization for problem 5.
+        </li>
+        <li>
+          <b>P05_TITLE</b> returns a title for problem 5.
+        </li>
+        <li>
+          <b>P06_F</b> evaluates the objective function for problem 6.
+        </li>
+        <li>
+          <b>P06_G</b> evaluates the gradient for problem 6.
+        </li>
+        <li>
+          <b>P06_H</b> evaluates the Hessian for problem 6.
+        </li>
+        <li>
+          <b>P06_N</b> returns the number of variables for problem 6.
+        </li>
+        <li>
+          <b>P06_SOL</b> returns the solution for problem 6.
+        </li>
+        <li>
+          <b>P06_START</b> returns a starting point for optimization for problem 6.
+        </li>
+        <li>
+          <b>P06_TITLE</b> returns a title for problem 6.
+        </li>
+        <li>
+          <b>P07_F</b> evaluates the objective function for problem 7.
+        </li>
+        <li>
+          <b>P07_G</b> evaluates the gradient for problem 7.
+        </li>
+        <li>
+          <b>P07_H</b> evaluates the Hessian for problem 7.
+        </li>
+        <li>
+          <b>P07_N</b> returns the number of variables for problem 7.
+        </li>
+        <li>
+          <b>P07_SOL</b> returns the solution for problem 7.
+        </li>
+        <li>
+          <b>P07_START</b> returns a starting point for optimization for problem 7.
+        </li>
+        <li>
+          <b>P07_TITLE</b> returns a title for problem 7.
+        </li>
+        <li>
+          <b>P08_F</b> evaluates the objective function for problem 8.
+        </li>
+        <li>
+          <b>P08_G</b> evaluates the gradient for problem 8.
+        </li>
+        <li>
+          <b>P08_H</b> evaluates the Hessian for problem 8.
+        </li>
+        <li>
+          <b>P08_N</b> returns the number of variables for problem 8.
+        </li>
+        <li>
+          <b>P08_SOL</b> returns the solution for problem 8.
+        </li>
+        <li>
+          <b>P08_START</b> returns a starting point for optimization for problem 8.
+        </li>
+        <li>
+          <b>P08_TITLE</b> returns a title for problem 8.
+        </li>
+        <li>
+          <b>P09_F</b> evaluates the objective function for problem 9.
+        </li>
+        <li>
+          <b>P09_G</b> evaluates the gradient for problem 9.
+        </li>
+        <li>
+          <b>P09_H</b> evaluates the Hessian for problem 9.
+        </li>
+        <li>
+          <b>P09_N</b> returns the number of variables for problem 9.
+        </li>
+        <li>
+          <b>P09_SOL</b> returns the solution for problem 9.
+        </li>
+        <li>
+          <b>P09_START</b> returns a starting point for optimization for problem 9.
+        </li>
+        <li>
+          <b>P09_TITLE</b> returns a title for problem 9.
+        </li>
+        <li>
+          <b>P10_F</b> evaluates the objective function for problem 10.
+        </li>
+        <li>
+          <b>P10_G</b> evaluates the gradient for problem 10.
+        </li>
+        <li>
+          <b>P10_H</b> evaluates the Hessian for problem 10.
+        </li>
+        <li>
+          <b>P10_N</b> returns the number of variables for problem 10.
+        </li>
+        <li>
+          <b>P10_SOL</b> returns the solution for problem 10.
+        </li>
+        <li>
+          <b>P10_START</b> returns a starting point for optimization for problem 10.
+        </li>
+        <li>
+          <b>P10_TITLE</b> returns a title for problem 10.
+        </li>
+        <li>
+          <b>P11_F</b> evaluates the objective function for problem 11.
+        </li>
+        <li>
+          <b>P11_G</b> evaluates the gradient for problem 11.
+        </li>
+        <li>
+          <b>P11_H</b> evaluates the Hessian for problem 11.
+        </li>
+        <li>
+          <b>P11_N</b> returns the number of variables for problem 11.
+        </li>
+        <li>
+          <b>P11_SOL</b> returns the solution for problem 11.
+        </li>
+        <li>
+          <b>P11_START</b> returns a starting point for optimization for problem 11.
+        </li>
+        <li>
+          <b>P11_TITLE</b> returns a title for problem 11.
+        </li>
+        <li>
+          <b>P12_F</b> evaluates the objective function for problem 12.
+        </li>
+        <li>
+          <b>P12_G</b> evaluates the gradient for problem 12.
+        </li>
+        <li>
+          <b>P12_H</b> evaluates the Hessian for problem 12.
+        </li>
+        <li>
+          <b>P12_N</b> returns the number of variables for problem 12.
+        </li>
+        <li>
+          <b>P12_SOL</b> returns the solution for problem 12.
+        </li>
+        <li>
+          <b>P12_START</b> returns a starting point for optimization for problem 12.
+        </li>
+        <li>
+          <b>P12_TITLE</b> returns a title for problem 12.
+        </li>
+        <li>
+          <b>P13_F</b> evaluates the objective function for problem 13.
+        </li>
+        <li>
+          <b>P13_G</b> evaluates the gradient for problem 13.
+        </li>
+        <li>
+          <b>P13_H</b> evaluates the Hessian for problem 13.
+        </li>
+        <li>
+          <b>P13_N</b> returns the number of variables for problem 13.
+        </li>
+        <li>
+          <b>P13_SOL</b> returns the solution for problem 13.
+        </li>
+        <li>
+          <b>P13_START</b> returns a starting point for optimization for problem 13.
+        </li>
+        <li>
+          <b>P13_TITLE</b> returns a title for problem 13.
+        </li>
+        <li>
+          <b>P14_F</b> evaluates the objective function for problem 14.
+        </li>
+        <li>
+          <b>P14_G</b> evaluates the gradient for problem 14.
+        </li>
+        <li>
+          <b>P14_H</b> evaluates the Hessian for problem 14.
+        </li>
+        <li>
+          <b>P14_N</b> returns the number of variables for problem 14.
+        </li>
+        <li>
+          <b>P14_SOL</b> returns the solution for problem 14.
+        </li>
+        <li>
+          <b>P14_START</b> returns a starting point for optimization for problem 14.
+        </li>
+        <li>
+          <b>P14_TITLE</b> returns a title for problem 14.
+        </li>
+        <li>
+          <b>P15_F</b> evaluates the objective function for problem 15.
+        </li>
+        <li>
+          <b>P15_G</b> evaluates the gradient for problem 15.
+        </li>
+        <li>
+          <b>P15_H</b> evaluates the Hessian for problem 15.
+        </li>
+        <li>
+          <b>P15_N</b> returns the number of variables for problem 15.
+        </li>
+        <li>
+          <b>P15_SOL</b> returns the solution for problem 15.
+        </li>
+        <li>
+          <b>P15_START</b> returns a starting point for optimization for problem 15.
+        </li>
+        <li>
+          <b>P15_TITLE</b> returns a title for problem 15.
+        </li>
+        <li>
+          <b>P16_F</b> evaluates the objective function for problem 16.
+        </li>
+        <li>
+          <b>P16_G</b> evaluates the gradient for problem 16.
+        </li>
+        <li>
+          <b>P16_H</b> evaluates the Hessian for problem 16.
+        </li>
+        <li>
+          <b>P16_N</b> returns the number of variables for problem 16.
+        </li>
+        <li>
+          <b>P16_SOL</b> returns the solution for problem 16.
+        </li>
+        <li>
+          <b>P16_START</b> returns a starting point for optimization for problem 16.
+        </li>
+        <li>
+          <b>P16_TITLE</b> returns a title for problem 16.
+        </li>
+        <li>
+          <b>P17_F</b> evaluates the objective function for problem 17.
+        </li>
+        <li>
+          <b>P17_G</b> evaluates the gradient for problem 17.
+        </li>
+        <li>
+          <b>P17_H</b> evaluates the Hessian for problem 17.
+        </li>
+        <li>
+          <b>P17_N</b> returns the number of variables for problem 17.
+        </li>
+        <li>
+          <b>P17_SOL</b> returns the solution for problem 17.
+        </li>
+        <li>
+          <b>P17_START</b> returns a starting point for optimization for problem 17.
+        </li>
+        <li>
+          <b>P17_TITLE</b> returns a title for problem 17.
+        </li>
+        <li>
+          <b>P18_F</b> evaluates the objective function for problem 18.
+        </li>
+        <li>
+          <b>P18_FVEC</b> is an auxilliary routine for problem 18.
+        </li>
+        <li>
+          <b>P18_G</b> evaluates the gradient for problem 18.
+        </li>
+        <li>
+          <b>P18_H</b> evaluates the Hessian for problem 18.
+        </li>
+        <li>
+          <b>P18_N</b> returns the number of variables for problem 18.
+        </li>
+        <li>
+          <b>P18_SOL</b> returns the solution for problem 18.
+        </li>
+        <li>
+          <b>P18_START</b> returns a starting point for optimization for problem 18.
+        </li>
+        <li>
+          <b>P18_TITLE</b> returns a title for problem 18.
+        </li>
+        <li>
+          <b>P19_F</b> evaluates the objective function for problem 19.
+        </li>
+        <li>
+          <b>P19_G</b> evaluates the gradient for problem 19.
+        </li>
+        <li>
+          <b>P19_H</b> evaluates the Hessian for problem 19.
+        </li>
+        <li>
+          <b>P19_N</b> returns the number of variables for problem 19.
+        </li>
+        <li>
+          <b>P19_SOL</b> returns the solution for problem 19.
+        </li>
+        <li>
+          <b>P19_START</b> returns a starting point for optimization for problem 19.
+        </li>
+        <li>
+          <b>P19_TITLE</b> returns a title for problem 19.
+        </li>
+        <li>
+          <b>P20_F</b> evaluates the objective function for problem 20.
+        </li>
+        <li>
+          <b>P20_G</b> evaluates the gradient for problem 20.
+        </li>
+        <li>
+          <b>P20_H</b> evaluates the Hessian for problem 20.
+        </li>
+        <li>
+          <b>P20_N</b> returns the number of variables for problem 20.
+        </li>
+        <li>
+          <b>P20_SOL</b> returns the solution for problem 20.
+        </li>
+        <li>
+          <b>P20_START</b> returns a starting point for optimization for problem 20.
+        </li>
+        <li>
+          <b>P20_TITLE</b> returns a title for problem 20.
+        </li>
+        <li>
+          <b>P21_F</b> evaluates the objective function for problem 21.
+        </li>
+        <li>
+          <b>P21_G</b> evaluates the gradient for problem 21.
+        </li>
+        <li>
+          <b>P21_H</b> evaluates the Hessian for problem 21.
+        </li>
+        <li>
+          <b>P21_N</b> returns the number of variables for problem 21.
+        </li>
+        <li>
+          <b>P21_SOL</b> returns the solution for problem 21.
+        </li>
+        <li>
+          <b>P21_START</b> returns a starting point for optimization for problem 21.
+        </li>
+        <li>
+          <b>P21_TITLE</b> returns a title for problem 21.
+        </li>
+        <li>
+          <b>P22_F</b> evaluates the objective function for problem 22.
+        </li>
+        <li>
+          <b>P22_G</b> evaluates the gradient for problem 22.
+        </li>
+        <li>
+          <b>P22_H</b> evaluates the Hessian for problem 22.
+        </li>
+        <li>
+          <b>P22_N</b> returns the number of variables for problem 22.
+        </li>
+        <li>
+          <b>P22_SOL</b> returns the solution for problem 22.
+        </li>
+        <li>
+          <b>P22_START</b> returns a starting point for optimization for problem 22.
+        </li>
+        <li>
+          <b>P22_TITLE</b> returns a title for problem 22.
+        </li>
+        <li>
+          <b>P23_F</b> evaluates the objective function for problem 23.
+        </li>
+        <li>
+          <b>P23_G</b> evaluates the gradient for problem 23.
+        </li>
+        <li>
+          <b>P23_H</b> evaluates the Hessian for problem 23.
+        </li>
+        <li>
+          <b>P23_N</b> returns the number of variables for problem 23.
+        </li>
+        <li>
+          <b>P23_SOL</b> returns the solution for problem 23.
+        </li>
+        <li>
+          <b>P23_START</b> returns a starting point for optimization for problem 23.
+        </li>
+        <li>
+          <b>P23_TITLE</b> returns a title for problem 23.
+        </li>
+        <li>
+          <b>P24_F</b> evaluates the objective function for problem 24.
+        </li>
+        <li>
+          <b>P24_G</b> evaluates the gradient for problem 24.
+        </li>
+        <li>
+          <b>P24_H</b> evaluates the Hessian for problem 24.
+        </li>
+        <li>
+          <b>P24_N</b> returns the number of variables for problem 24.
+        </li>
+        <li>
+          <b>P24_SOL</b> returns the solution for problem 24.
+        </li>
+        <li>
+          <b>P24_START</b> returns a starting point for optimization for problem 24.
+        </li>
+        <li>
+          <b>P24_TITLE</b> returns a title for problem 24.
+        </li>
+        <li>
+          <b>P25_F</b> evaluates the objective function for problem 25.
+        </li>
+        <li>
+          <b>P25_G</b> evaluates the gradient for problem 25.
+        </li>
+        <li>
+          <b>P25_H</b> evaluates the Hessian for problem 25.
+        </li>
+        <li>
+          <b>P25_N</b> returns the number of variables for problem 25.
+        </li>
+        <li>
+          <b>P25_P_GET</b> gets the value of a parameter for problem 25.
+        </li>
+        <li>
+          <b>P25_P_SET</b> sets the value of a parameter for problem 25.
+        </li>
+        <li>
+          <b>P25_P_VAL</b> sets or gets the value of a parameter for problem 25.
+        </li>
+        <li>
+          <b>P25_SOL</b> returns the solution for problem 25.
+        </li>
+        <li>
+          <b>P25_START</b> returns a starting point for optimization for problem 25.
+        </li>
+        <li>
+          <b>P25_TITLE</b> returns a title for problem 25.
+        </li>
+        <li>
+          <b>P26_F</b> evaluates the objective function for problem 26.
+        </li>
+        <li>
+          <b>P26_G</b> evaluates the gradient for problem 26.
+        </li>
+        <li>
+          <b>P26_H</b> evaluates the Hessian for problem 26.
+        </li>
+        <li>
+          <b>P26_N</b> returns the number of variables for problem 26.
+        </li>
+        <li>
+          <b>P26_SOL</b> returns the solution for problem 26.
+        </li>
+        <li>
+          <b>P26_START</b> returns a starting point for optimization for problem 26.
+        </li>
+        <li>
+          <b>P26_TITLE</b> returns a title for problem 26.
+        </li>
+        <li>
+          <b>P27_F</b> evaluates the objective function for problem 27.
+        </li>
+        <li>
+          <b>P27_G</b> evaluates the gradient for problem 27.
+        </li>
+        <li>
+          <b>P27_H</b> evaluates the Hessian for problem 27.
+        </li>
+        <li>
+          <b>P27_N</b> returns the number of variables for problem 27.
+        </li>
+        <li>
+          <b>P27_SOL</b> returns the solution for problem 27.
+        </li>
+        <li>
+          <b>P27_START</b> returns a starting point for optimization for problem 27.
+        </li>
+        <li>
+          <b>P27_TITLE</b> returns a title for problem 27.
+        </li>
+        <li>
+          <b>P28_F</b> evaluates the objective function for problem 28.
+        </li>
+        <li>
+          <b>P28_G</b> evaluates the gradient for problem 28.
+        </li>
+        <li>
+          <b>P28_H</b> evaluates the Hessian for problem 28.
+        </li>
+        <li>
+          <b>P28_N</b> returns the number of variables for problem 28.
+        </li>
+        <li>
+          <b>P28_SOL</b> returns the solution for problem 28.
+        </li>
+        <li>
+          <b>P28_START</b> returns a starting point for optimization for problem 28.
+        </li>
+        <li>
+          <b>P28_TITLE</b> returns a title for problem 28.
+        </li>
+        <li>
+          <b>P29_F</b> evaluates the objective function for problem 29.
+        </li>
+        <li>
+          <b>P29_G</b> evaluates the gradient for problem 29.
+        </li>
+        <li>
+          <b>P29_H</b> evaluates the Hessian for problem 29.
+        </li>
+        <li>
+          <b>P29_N</b> returns the number of variables for problem 29.
+        </li>
+        <li>
+          <b>P29_SOL</b> returns the solution for problem 29.
+        </li>
+        <li>
+          <b>P29_START</b> returns a starting point for optimization for problem 29.
+        </li>
+        <li>
+          <b>P29_TITLE</b> returns a title for problem 29.
+        </li>
+        <li>
+          <b>P30_F</b> evaluates the objective function for problem 30.
+        </li>
+        <li>
+          <b>P30_G</b> evaluates the gradient for problem 30.
+        </li>
+        <li>
+          <b>P30_H</b> evaluates the Hessian for problem 30.
+        </li>
+        <li>
+          <b>P30_N</b> returns the number of variables for problem 30.
+        </li>
+        <li>
+          <b>P30_SOL</b> returns the solution for problem 30.
+        </li>
+        <li>
+          <b>P30_START</b> returns a starting point for optimization for problem 30.
+        </li>
+        <li>
+          <b>P30_TITLE</b> returns a title for problem 30.
+        </li>
+        <li>
+          <b>P31_F</b> evaluates the objective function for problem 31.
+        </li>
+        <li>
+          <b>P31_G</b> evaluates the gradient for problem 31.
+        </li>
+        <li>
+          <b>P31_H</b> evaluates the Hessian for problem 31.
+        </li>
+        <li>
+          <b>P31_N</b> returns the number of variables for problem 31.
+        </li>
+        <li>
+          <b>P31_SOL</b> returns the solution for problem 31.
+        </li>
+        <li>
+          <b>P31_START</b> returns a starting point for optimization for problem 31.
+        </li>
+        <li>
+          <b>P31_TITLE</b> returns a title for problem 31.
+        </li>
+        <li>
+          <b>P32_F</b> evaluates the objective function for problem 32.
+        </li>
+        <li>
+          <b>P32_G</b> evaluates the gradient for problem 32.
+        </li>
+        <li>
+          <b>P32_H</b> evaluates the Hessian for problem 32.
+        </li>
+        <li>
+          <b>P32_N</b> returns the number of variables for problem 32.
+        </li>
+        <li>
+          <b>P32_SOL</b> returns the solution for problem 32.
+        </li>
+        <li>
+          <b>P32_START</b> returns a starting point for optimization for problem 32.
+        </li>
+        <li>
+          <b>P32_TITLE</b> returns a title for problem 32.
+        </li>
+        <li>
+          <b>P33_F</b> evaluates the objective function for problem 33.
+        </li>
+        <li>
+          <b>P33_G</b> evaluates the gradient for problem 33.
+        </li>
+        <li>
+          <b>P33_H</b> evaluates the Hessian for problem 33.
+        </li>
+        <li>
+          <b>P33_N</b> returns the number of variables for problem 33.
+        </li>
+        <li>
+          <b>P33_SOL</b> returns the solution for problem 33.
+        </li>
+        <li>
+          <b>P33_START</b> returns a starting point for optimization for problem 33.
+        </li>
+        <li>
+          <b>P33_TITLE</b> returns a title for problem 33.
+        </li>
+        <li>
+          <b>P34_F</b> evaluates the objective function for problem 34.
+        </li>
+        <li>
+          <b>P34_G</b> evaluates the gradient for problem 34.
+        </li>
+        <li>
+          <b>P34_H</b> evaluates the Hessian for problem 34.
+        </li>
+        <li>
+          <b>P34_N</b> returns the number of variables for problem 34.
+        </li>
+        <li>
+          <b>P34_SOL</b> returns the solution for problem 34.
+        </li>
+        <li>
+          <b>P34_START</b> returns a starting point for optimization for problem 34.
+        </li>
+        <li>
+          <b>P34_TITLE</b> returns a title for problem 34.
+        </li>
+        <li>
+          <b>P35_F</b> evaluates the objective function for problem 35.
+        </li>
+        <li>
+          <b>P35_G</b> evaluates the gradient for problem 35.
+        </li>
+        <li>
+          <b>P35_H</b> evaluates the Hessian for problem 35.
+        </li>
+        <li>
+          <b>P35_N</b> returns the number of variables for problem 35.
+        </li>
+        <li>
+          <b>P35_SOL</b> returns the solution for problem 35.
+        </li>
+        <li>
+          <b>P35_START</b> returns a starting point for optimization for problem 35.
+        </li>
+        <li>
+          <b>P35_TITLE</b> returns a title for problem 35.
+        </li>
+        <li>
+          <b>P36_F</b> evaluates the objective function for problem 36.
+        </li>
+        <li>
+          <b>P36_G</b> evaluates the gradient for problem 36.
+        </li>
+        <li>
+          <b>P36_H</b> evaluates the Hessian for problem 36.
+        </li>
+        <li>
+          <b>P36_P_INIT</b> initializes parameters for problem 36.
+        </li>
+        <li>
+          <b>P36_P_GET</b> gets the values of the parameters for problem 36.
+        </li>
+        <li>
+          <b>P36_P_SET</b> sets parameters for problem 36.
+        </li>
+        <li>
+          <b>P36_P_VAL</b> sets or gets parameters for problem 36.
+        </li>
+        <li>
+          <b>P36_N</b> returns the number of variables for problem 36.
+        </li>
+        <li>
+          <b>P36_SOL</b> returns the solution for problem 36.
+        </li>
+        <li>
+          <b>P36_START</b> returns a starting point for optimization for problem 36.
+        </li>
+        <li>
+          <b>P36_TITLE</b> returns a title for problem 36.
+        </li>
+        <li>
+          <b>P37_F</b> evaluates the objective function for problem 37.
+        </li>
+        <li>
+          <b>P37_G</b> evaluates the gradient for problem 37.
+        </li>
+        <li>
+          <b>P37_H</b> evaluates the Hessian for problem 37.
+        </li>
+        <li>
+          <b>P37_N</b> returns the number of variables for problem 37.
+        </li>
+        <li>
+          <b>P37_SOL</b> returns the solution for problem 37.
+        </li>
+        <li>
+          <b>P37_START</b> returns a starting point for optimization for problem 37.
+        </li>
+        <li>
+          <b>P37_TITLE</b> returns a title for problem 37.
+        </li>
+        <li>
+          <b>P38_F</b> evaluates the objective function for problem 38.
+        </li>
+        <li>
+          <b>P38_G</b> evaluates the gradient for problem 38.
+        </li>
+        <li>
+          <b>P38_H</b> evaluates the Hessian for problem 38.
+        </li>
+        <li>
+          <b>P38_N</b> returns the number of variables for problem 38.
+        </li>
+        <li>
+          <b>P38_SOL</b> returns the solution for problem 38.
+        </li>
+        <li>
+          <b>P38_START</b> returns a starting point for optimization for problem 38.
+        </li>
+        <li>
+          <b>P38_TITLE</b> returns a title for problem 38.
+        </li>
+        <li>
+          <b>P39_F</b> evaluates the objective function for problem 39.
+        </li>
+        <li>
+          <b>P39_G</b> evaluates the gradient for problem 39.
+        </li>
+        <li>
+          <b>P39_H</b> evaluates the Hessian for problem 39.
+        </li>
+        <li>
+          <b>P39_N</b> returns the number of variables for problem 39.
+        </li>
+        <li>
+          <b>P39_SOL</b> returns the solution for problem 39.
+        </li>
+        <li>
+          <b>P39_START</b> returns a starting point for optimization for problem 39.
+        </li>
+        <li>
+          <b>P39_TITLE</b> returns a title for problem 39.
+        </li>
+        <li>
+          <b>P40_F</b> evaluates the objective function for problem 40.
+        </li>
+        <li>
+          <b>P40_G</b> evaluates the gradient for problem 40.
+        </li>
+        <li>
+          <b>P40_H</b> evaluates the Hessian for problem 40.
+        </li>
+        <li>
+          <b>P40_N</b> returns the number of variables for problem 40.
+        </li>
+        <li>
+          <b>P40_SOL</b> returns the solution for problem 40.
+        </li>
+        <li>
+          <b>P40_START</b> returns a starting point for optimization for problem 40.
+        </li>
+        <li>
+          <b>P40_TITLE</b> returns a title for problem 40.
+        </li>
+        <li>
+          <b>P41_F</b> evaluates the objective function for problem 41.
+        </li>
+        <li>
+          <b>P41_G</b> evaluates the gradient for problem 41.
+        </li>
+        <li>
+          <b>P41_H</b> evaluates the Hessian for problem 41.
+        </li>
+        <li>
+          <b>P41_N</b> returns the number of variables for problem 41.
+        </li>
+        <li>
+          <b>P41_SOL</b> returns the solution for problem 41.
+        </li>
+        <li>
+          <b>P41_START</b> returns a starting point for optimization for problem 41.
+        </li>
+        <li>
+          <b>P41_TITLE</b> returns a title for problem 41.
+        </li>
+        <li>
+          <b>P42_F</b> evaluates the objective function for problem 42.
+        </li>
+        <li>
+          <b>P42_G</b> evaluates the gradient for problem 42.
+        </li>
+        <li>
+          <b>P42_H</b> evaluates the Hessian for problem 42.
+        </li>
+        <li>
+          <b>P42_N</b> returns the number of variables for problem 42.
+        </li>
+        <li>
+          <b>P42_SOL</b> returns the solution for problem 42.
+        </li>
+        <li>
+          <b>P42_START</b> returns a starting point for optimization for problem 42.
+        </li>
+        <li>
+          <b>P42_TITLE</b> returns a title for problem 42.
+        </li>
+        <li>
+          <b>P43_F</b> evaluates the objective function for problem 43.
+        </li>
+        <li>
+          <b>P43_G</b> evaluates the gradient for problem 43.
+        </li>
+        <li>
+          <b>P43_H</b> evaluates the Hessian for problem 43.
+        </li>
+        <li>
+          <b>P43_N</b> returns the number of variables for problem 43.
+        </li>
+        <li>
+          <b>P43_SOL</b> returns the solution for problem 43.
+        </li>
+        <li>
+          <b>P43_START</b> returns a starting point for optimization for problem 43.
+        </li>
+        <li>
+          <b>P43_TITLE</b> returns a title for problem 43.
+        </li>
+        <li>
+          <b>NORMAL_01_SAMPLE</b> samples the standard Normal PDF.
+        </li>
+        <li>
+          <b>R8_UNIFORM</b> returns a scaled pseudorandom R8.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8VEC_EVEN</b> returns N evenly spaced double precision values.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 October 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

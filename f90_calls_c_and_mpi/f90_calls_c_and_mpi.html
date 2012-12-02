@@ -1,0 +1,136 @@
+<html>
+
+  <head>
+    <title>
+      F90_CALLS_C_AND_MPI - Mixed Language MPI Programming
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      F90_CALLS_C_AND_MPI <br> Mixed Language MPI Programming
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>F90_CALLS_C_AND_MPI</b>
+      is a directory of FORTRAN90 programs which
+      illustrate the use of the MPI Message Passing Interface
+      in situations in which a C function is involved in the calculation.
+    </p>
+
+    <p>
+      Please note that this example takes advantage of the ISO C binding
+      module, which was actually only introduced into the FORTRAN standard
+      as part of FORTRAN 2003.  Your compiler may be willing to let your
+      FORTRAN90 program access it.  If not, you might consider moving to
+      FORTRAN 2003!.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/f90_calls_c/f90_calls_c.html">
+      F90_CALLS_C</a>,
+      FORTRAN90 programs which
+      illustrate how a FORTRAN90 program can call a C function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_calls_c++_and_mpi/f90_calls_c++_and_mpi.html">
+      F90_CALLS_C++_AND_MPI</a>,
+      FORTRAN90 programs which
+      illustrate how a FORTRAN90 program can call a C++ function while
+      executing under the MPI parallel programming environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi/mpi.html">
+      MPI</a>,
+      FORTRAN90 programs which
+      illustrate the use of the MPI application program interface
+      for carrying out parallel computations in a distributed memory environment.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Gropp, Ewing Lusk, Anthony Skjellum,<br>
+          Using MPI: Portable Parallel Programming with the
+          Message-Passing Interface,<br>
+          Second Edition,<br>
+          MIT Press, 1999,<br>
+          ISBN: 0262571323,<br>
+          LC: QA76.642.G76.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>QUAD</b> estimates an integral by evaluating a function at N points.
+      Under MPI, P processes are used, each of which evaluates the function at N/P
+      points, and the results are combined.  In this example, the main program
+      sets up MPI, but then calls an underlying function to compute the partial
+      results.  This function is written in C.  The FORTRAN compiler we are using
+      automatically appends an underscore to function names, so in the C code
+      we have to explicitly add an underscore to the end of the C function that
+      is called by the FORTRAN90 main program (because I didn't feel like looking
+      up the FORTRAN90 compiler option to suppress the underscore addition).
+      <ul>
+        <li>
+          <a href = "quad_main.f90">quad_main.f90</a>,
+          the main program.
+        </li>
+        <li>
+          <a href = "quad_sub.c">quad_sub.c</a>,
+          the C function.
+        </li>
+        <li>
+          <a href = "quad.sh">quad.sh</a>,
+          a script to compile and run the program.
+        </li>
+        <li>
+          <a href = "quad_output.txt">quad_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 31 August 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,522 @@
+<html>
+
+  <head>
+    <title>
+      CITIES - City Distance Tools
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CITIES <br> City Distance Tools
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CITIES</b>
+      is a FORTRAN90 library which
+      works with problems involving intercity distances.
+    </p>
+
+    <p>
+      Such problems include:
+      <ul>
+        <li>
+          traveling salesman problems (connected path through every city);
+        </li>
+        <li>
+          K-means calculations (find M spots that minimize total of the
+          distance from each city to its nearest spot);
+        </li>
+        <li>
+          K-medians calculations (make M of the cities "special", to minimize
+          the total distance from each city to its nearest special city);
+        </li>
+        <li>
+          Weighted K-means or K-medians (let the population of each city
+          be used as a weight, which makes some cities more important);
+        </li>
+        <li>
+          Minimal spanning trees (construct the shortest highway
+          system that connects all the cities, using only straight paths
+          from one city to another (ignore the possibility that two roads
+          could cross, or that a Y-shaped connector between three cities
+          might be cheaper);
+        </li>
+        <li>
+          Voronoi diagrams (assign each spot of land to the nearest city,
+          making "provinces");
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CITIES</b> is available in
+      <a href = "../../cpp_src/cities/cities.html">a C++ version</a> and
+      <a href = "../../f_src/cities/cities.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/cities/cities.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa058/asa058.html">
+      ASA058</a>,
+      a FORTRAN90 library which
+      contains the original text of the Sparks
+      clustering algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/asa136/asa136.html">
+      ASA136</a>,
+      a FORTRAN90 library which
+      implements the K-Means algorithm.
+    </p>
+
+    <p>
+      <a href = "../../datasets/cities/cities.html">
+      CITIES</a>,
+      a dataset directory which
+      contains a number of city distance datasets.
+    </p>
+
+    <p>
+      <a href = "../../f_src/distance_to_position/distance_to_position.html">
+      DISTANCE_TO_POSITION</a>,
+      a FORTRAN90 program which
+      estimates the positions of cities based on a city-to-city distance table.
+    </p>
+
+    <p>
+      <a href = "../../m_src/distance_to_position_sphere/distance_to_position_sphere.html">
+      DISTANCE_TO_POSITION_SPHERE</a>,
+      a MATLAB program which
+      estimates the positions of cities on a sphere (such as the earth)
+      based on a city-to-city distance table.
+    </p>
+
+    <p>
+      <a href = "../../f_src/floyd/floyd.html">
+      FLOYD</a>,
+      a FORTRAN90 library which
+      implements Floyd's algorithm for finding the shortest distance between pairs of
+      nodes on a directed graph.
+    </p>
+
+    <p>
+      <a href = "../../data/graph_representation/graph_representation.html">
+      GRAPH_REPRESENTATION</a>,
+      a data directory which
+      contains examples of ways of representing abstract
+      mathematical graphs
+    </p>
+
+    <p>
+      <a href = "../../f_src/kmeans/kmeans.html">
+      KMEANS</a>,
+      a FORTRAN90 library which
+      treats the K-means
+      problem of grouping a discrete set of N points into K clusters.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lau_np/lau_np.html">
+      LAU_NP</a>,
+      a FORTRAN90 library which
+      includes heuristic approaches
+      to certain NP-complete problems, including the traveling salesman
+      problem, the K-center problem and the K-median problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/point_merge/point_merge.html">
+      POINT_MERGE</a>,
+      a FORTRAN90 library which
+      considers N points in M dimensional space, and counts or indexes
+      the unique or "tolerably unique" items.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spaeth/spaeth.html">
+      SPAETH</a>,
+      a FORTRAN90 library which
+      can cluster data according to various principles.
+    </p>
+
+    <p>
+      <a href = "../../datasets/spaeth/spaeth.html">
+      SPAETH</a>,
+      a dataset collection which
+      contains a set of test data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spaeth2/spaeth2.html">
+      SPAETH2</a>,
+      a FORTRAN90 library which
+      can cluster data according to various principles.
+    </p>
+
+    <p>
+      <a href = "../../datasets/spaeth2/spaeth2.html">
+      SPAETH2</a>,
+      a dataset collection which
+      contains a set of test data.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms456/toms456.html">
+      TOMS456</a>,
+      a FORTRAN77 library which
+      solves the routing problem, connecting some nodes
+      in a network.
+    </p>
+
+    <p>
+      <a href = "../../datasets/tsp/tsp.html">
+      TSP</a>,
+      a dataset directory which
+      contains test data for the traveling salesperson problem;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, Number 3, pages 345-405, September 1991.
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Janet Peterson, Rebecca Brannon,<br>
+          User Manual and Supporting Information for Library of Codes
+          for Centroidal Voronoi Placement and Associated Zeroth,
+          First, and Second Moment Determination,<br>
+          Sandia National Laboratories Technical Report SAND2002-0099,<br>
+          February 2002.
+        </li>
+        <li>
+          Marc de Berg, Marc Krevald, Mark Overmars,
+          Otfried Schwarzkopf,<br>
+          Computational Geometry,<br>
+          Springer, 2000.
+        </li>
+        <li>
+          Qiang Du, Vance Faber, Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review, Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Alan Gibbons,<br>
+          Algorithmic Graph Theory,<br>
+          Cambridge University Press, 1985.
+        </li>
+        <li>
+          John Hartigan, M A Wong,<br>
+          Algorithm AS 136: A K-Means Clustering Algorithm,<br>
+          Applied Statistics,<br>
+          Volume 28, Number 1, 1979, pages 100-108.
+        </li>
+        <li>
+          Barry Joe, <br>
+          GEOMPACK - a software package for the generation of meshes
+          using geometric algorithms, <br>
+          Advances in Engineering Software,<br>
+          Volume 13, pages 325-331, 1991.
+        </li>
+        <li>
+          Hang Tong Lau,<br>
+          Algorithms on Graphs,<br>
+          Tab Books, 1989.
+        </li>
+        <li>
+          Atsuyuki Okabe, Barry Boots, Kokichi Sugihara, Sung Nok Chiu,<br>
+          Spatial Tesselations:
+          Concepts and Applications of Voronoi Diagrams,<br>
+          Second Edition,<br>
+          Wiley, 2000.
+        </li>
+        <li>
+          Joseph O'Rourke,<br>
+          Computational Geometry,<br>
+          Cambridge University Press,<br>
+          Second Edition, 1998.
+        </li>
+        <li>
+          Helmut Spaeth,<br>
+          Cluster Analysis Algorithms
+          for Data Reduction and Classification of Objects,<br>
+          Ellis Horwood, 1980.
+        </li>
+        <li>
+          David Sparks,<br>
+          Algorithm AS 58: Euclidean Cluster Analysis,<br>
+          Applied Statistics,<br>
+          Volume 22, Number 1, 1973,<br>
+          pages 126-130.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cities.f90">cities.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "cities.sh">cities.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cities_prb.f90">cities_prb.f90</a>,
+          a sample problem.
+        </li>
+        <li>
+          <a href = "cities_prb.sh">cities_prb.sh</a>,
+          commands to compile and run the problem.
+        </li>
+        <li>
+          <a href = "spaeth2_09_dist.txt">spaeth2_09_dist.txt</a>,
+          a distance table.
+        </li>
+        <li>
+          <a href = "wg22_dist.txt">wg22_dist.txt</a>,
+          a distance table.
+        </li>
+        <li>
+          <a href = "uscap_xy.txt">uscap_xy.txt</a>,
+          the coordinates of the US state capitols, using a cylindrical projection.
+        </li>
+        <li>
+          <a href = "cities_prb_output.txt">cities_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the value of a base 10 digit.
+        </li>
+        <li>
+          <b>DEGREES_TO_RADIANS</b> converts an angle from degrees to radians.
+        </li>
+        <li>
+          <b>DIST_TABLE_CHECK</b> checks a distance table.
+        </li>
+        <li>
+          <b>DMS_PRINT</b> prints the latitude and longitude in degrees/minutes/seconds.
+        </li>
+        <li>
+          <b>DMS_READ</b> reads DMS data from a file.
+        </li>
+        <li>
+          <b>DMS_TO_DIST</b> creates a distance table from latitudes and longitudes.
+        </li>
+        <li>
+          <b>DMS_TO_DISTANCE_EARTH</b> finds the distance between two points on the earth.
+        </li>
+        <li>
+          <b>DMS_TO_RADIANS</b> converts degrees, minutes, seconds to radians.
+        </li>
+        <li>
+          <b>DMS_TO_XY:</b> Latitude/Longitude in DMS to XY coordinates.
+        </li>
+        <li>
+          <b>DMS_WRITE</b> writes a DMS latitude, longitude file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_EXIST</b> reports whether a file exists.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_SIGN</b> evaluates the sign of an I4.
+        </li>
+        <li>
+          <b>I4_TO_A</b> returns the I-th alphabetic character.
+        </li>
+        <li>
+          <b>LAT_CHAR</b> returns a character for negative or positive latitude.
+        </li>
+        <li>
+          <b>LL_DEGREES_TO_DIST</b> creates a distance table from latitudes and longitudes.
+        </li>
+        <li>
+          <b>LL_DEGREES_TO_DISTANCE_EARTH:</b> distance between two points on the earth.
+        </li>
+        <li>
+          <b>LL_DEGREES_TO_XY:</b> Latitude/Longitude in degrees to XY coordinates.
+        </li>
+        <li>
+          <b>LL_RAD_DIST_SPHERE:</b> spherical distance, latitude and longitude in radians.
+        </li>
+        <li>
+          <b>LONG_CHAR</b> returns a character for negative or positive longitude.
+        </li>
+        <li>
+          <b>MAIN_READ_CODE</b> reads the name of the code file from the main file.
+        </li>
+        <li>
+          <b>MAIN_READ_DIST</b> reads the name of the distance file from the main file.
+        </li>
+        <li>
+          <b>MAIN_READ_DMS</b> reads the name of the DMS file from the main file.
+        </li>
+        <li>
+          <b>MAIN_READ_GEOM</b> reads the name of the geometry from the main file.
+        </li>
+        <li>
+          <b>MAIN_READ_NAME</b> reads the name of the name file from the main file.
+        </li>
+        <li>
+          <b>MAIN_READ_SIZE</b> reads the problem size N from the main file.
+        </li>
+        <li>
+          <b>MAIN_READ_XY</b> reads the name of the XY file from the main file.
+        </li>
+        <li>
+          <b>POINT_TO_DIST_TABLE</b> creates a distance table from Cartesian coordinates.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints a real vector.
+        </li>
+        <li>
+          <b>R8VEC2_DATA_READ</b> reads data from an R8VEC2 file.
+        </li>
+        <li>
+          <b>R8VEC2_HEADER_READ</b> reads the header from an R8VEC2 file.
+        </li>
+        <li>
+          <b>R8VEC2_PRINT</b> prints an R8VEC2.
+        </li>
+        <li>
+          <b>R8VEC2_WRITE</b> writes an R8VEC2 file.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.  
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_REP_ONE</b> replaces the first occurrence of SUB1 with SUB2.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_W</b> reads the next blank-delimited word from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 July 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial html skeleton created by HTMLINDEX. -->
+
+</html>

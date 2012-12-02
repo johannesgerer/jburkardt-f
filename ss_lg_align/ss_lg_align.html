@@ -1,0 +1,340 @@
+<html>
+
+  <head>
+    <title>
+      SS_LG_ALIGN - Sequence/sequence Local Gap Alignment
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SS_LG_ALIGN <br> Sequence/sequence Local Gap Alignment
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SS_LG_ALIGN</b> is a FORTRAN90 program
+      which implements some of the string
+      matching algorithms described in the reference <b>[Chao]</b>.
+    </p>
+
+    <p>
+      These algorithms look for optimal local alignments of two strings
+      using linear space.  (Compare the global alignment routines in
+      <a href = "../ss_gg_align/ss_gg_align.html">SS_GG_ALIGN</a>.)
+    </p>
+
+    <p>
+      It's important to be able to compute alignments using "linear space",
+      that is, just a few vectors whose length <b>N</b> is equal to that
+      of a typical string.  A quadratic algorithm would require a two
+      dimensional array of total dimension <b>N*N</b>.  Realistic alignment
+      problems can involve strings of <b>N</b>=100,000 elements or more,
+      so a quadratic algorithm would be expensive or impossible to use.
+    </p>
+
+    <p>
+      The "matching" being considered does not actually require that every
+      element of string <b>A</b> match an identical element of string <b>B</b>.
+      Instead, the matching algorithm is essentially looking for the highest
+      scoring way of associating a portion of one string with a portion of the
+      other, allowing the operations of "mutation" (change one letter to
+      another), "deletion" (drop a string of consecutive letters) and
+      "insertion (insert a string of consecutive letters).  Thus, at the same
+      time, we are measuring a sort of evolutionary distance between two
+      strings and a formal "editing distance" between them.
+    </p>
+
+    <p>
+      This set of routines assumes that an insertion or deletion of length
+      <b>K</b> is penalized using an "affine gap penalty formula" of the form:
+      <blockquote>
+        Penalty = Gap_Open + K * Gap_Extend
+      </blockquote>
+      This choice of penalty function has a major effect on the form
+      of the matching algorithms, particularly in the linear space case.
+    </p>
+
+    <p>
+      The score for the actual best matching is determined without explicitly
+      constructing the best matching.  It is a matter of some
+      difficulty to recover the matching corresponding to the best score.
+      This is particularly true if the algorithm is a linear space one, which
+      discards a great deal of intermediate information.  However, it is
+      possible to set up a recursive algorithm which determines the best
+      alignment, using only linear space.
+    </p>
+
+    <p>
+      Routines that use quadratic space are included as well, so the algorithms
+      can be compared for storage, speed, and correctness.
+    </p>
+
+    <p>
+      The names of the scoring and path routines include information
+      about whether they use a forward, backward, or recursive algorithm,
+      whether they compute the score or the path, and whether they use
+      linear or quadratic space.  Thus, the routine
+      <b>SS_LG_FSQ</b> uses the forward algorithm to compute the score,
+      with quadratic space requirements.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/ss_gd_align/ss_gd_align.html">
+      SS_GD_ALIGN</a>,
+      a FORTRAN90 library which
+      globally aligns two sequences using a distance matrix.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ss_gg_align/ss_gg_align.html">
+      SS_GG_ALIGN</a>,
+      a FORTRAN90 library which
+      globally aligns two sequences using an affine gap penalty
+    </p>
+
+    <p>
+      <a href = "../../f_src/ss_qg_align/ss_qg_align.html">
+      SS_QG_ALIGN</a>,
+      a FORTRAN90 library which
+      quasi-globally aligns two sequences using an affine gap penalty.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Kun-Mao Chao, Ross Hardison, Webb Miller,<br>
+          Recent Developments in Linear-Space Alignment Methods: A Survey,<br>
+          Journal of Computational Biology, <br>
+          Volume 1, Number 4, 1994, pages 271-291.
+        </li>
+        <li>
+          Eugene Myers, Webb Miller,<br>
+          Optimal Alignments in Linear Space,<br>
+          CABIOS,<br>
+          Volume 4, number 1, 1988, pages 11-17.
+        </li>
+        <li>
+          Michael Waterman,<br>
+          Introduction to Computational Biology,<br>
+          Chapman and Hall, 1995,<br>
+          ISBN: 0412993910,<br>
+          LC: QH438.4.M33.W38.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ss_lg_align.f90">ss_lg_align.f90</a>, the source code;
+        </li>
+       <li>
+          <a href = "ss_lg_align.sh">ss_lg_align.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Exa mples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ss_lg_align_prb.f90">ss_lg_align_prb.f90</a>, test
+          routines;
+        </li>
+        <li>
+          <a href = "ss_lg_align_prb.sh">ss_lg_align_prb.sh</a>,
+          commands to compile, link and run the test routines;
+        </li>
+        <li>
+          <a href = "ss_lg_align_prb_output.txt">ss_lg_align_prb_output.txt</a>, the
+          test output.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>A_INDEX</b> sets up a reverse index for the amino acid codes.
+        </li>
+        <li>
+          <b>A_TO_I4</b> returns the index of an alphabetic character.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CHVEC2_PRINT</b> prints two vectors of characters.
+        </li>
+        <li>
+          <b>CHVEC_PRINT</b> prints a vector of characters.
+        </li>
+        <li>
+          <b>GET_SEED</b> returns a seed for the random number generator.
+        </li>
+        <li>
+          <b>I4_RANDOM</b> returns a random integer in a given range.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two integer values.
+        </li>
+        <li>
+          <b>I4_TO_A</b> returns the I-th alphabetic character.
+        </li>
+        <li>
+          <b>I4_TO_AMINO_CODE</b> converts an integer to an amino code.
+        </li>
+        <li>
+          <b>I4VEC2_COMPARE</b> compares pairs of integers stored in two vectors.
+        </li>
+        <li>
+          <b>I4VEC2_PRINT</b> prints a pair of integer vectors.
+        </li>
+        <li>
+          <b>I4VEC2_SORT_A</b> ascending sorts a vector of pairs of integers.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an integer vector.
+        </li>
+        <li>
+          <b>MUTATE</b> applies a few mutations to a sequence.
+        </li>
+        <li>
+          <b>PAM120</b> returns the PAM 120 substitution matrix.
+        </li>
+        <li>
+          <b>PAM120_SCORE</b> computes a single entry sequence/sequence matching score.
+        </li>
+        <li>
+          <b>PAM200</b> returns the PAM 200 substitution matrix.
+        </li>
+        <li>
+          <b>PAM200_SCORE</b> computes a single entry sequence/sequence matching score.
+        </li>
+        <li>
+          <b>R4MAT_IMAX</b> returns the location of the maximum of a real M by N matrix.
+        </li>
+        <li>
+          <b>R4VEC2_SUM_IMAX</b> returns the index of the maximum sum of two real vectors.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_CHVEC</b> converts a string to a character vector.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>SIMPLE_SCORE</b> computes a single entry sequence/sequence matching score.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into linear order.
+        </li>
+        <li>
+          <b>SS_GG_BSL</b> determines a global gap backward alignment score in linear space.
+        </li>
+        <li>
+          <b>SS_GG_FSL</b> determines a global gap forward alignment score in linear space.
+        </li>
+        <li>
+          <b>SS_LG_BPQ</b> determines a local gap backward alignment path in quadratic space.
+        </li>
+        <li>
+          <b>SS_LG_BSL</b> determines a local gap backward alignment score in linear space.
+        </li>
+        <li>
+          <b>SS_LG_BSQ</b> determines a local gap backward alignment score in quadratic space.
+        </li>
+        <li>
+          <b>SS_LG_CORNERS</b> determines the "corners" of an optimal local alignment.
+        </li>
+        <li>
+          <b>SS_LG_FPQ</b> determines a local gap forward alignment path in quadratic space.
+        </li>
+        <li>
+          <b>SS_LG_FSL</b> determines a local gap forward alignment score in linear space.
+        </li>
+        <li>
+          <b>SS_LG_FSQ</b> determines a local gap forward alignment score in quadratic space.
+        </li>
+        <li>
+          <b>SS_LG_MATCH_PRINT</b> prints a local gap alignment.
+        </li>
+        <li>
+          <b>SS_LG_MATCH_SCORE</b> scores a local gap alignment.
+        </li>
+        <li>
+          <b>SS_LG_RPL</b> determines a local gap recursive alignment path in linear space.
+        </li>
+        <li>
+          <b>SS_LG_RPL_POP</b> pops the data describing a subproblem off of the stack.
+        </li>
+        <li>
+          <b>SS_LG_RPL_PUSH</b> pushes the data describing a subproblem onto the stack.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UNIFORM_01_SAMPLE</b> is a portable random number generator.
+        </li>
+        <li>
+          <b>WORD_LAST_READ</b> returns the last word from a string.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 December 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

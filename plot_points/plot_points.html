@@ -1,0 +1,865 @@
+<html>
+
+  <head>
+    <title>
+      PLOT_POINTS - Plot points
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PLOT_POINTS <br> Plot points
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PLOT_POINTS</b>
+      is a FORTRAN90 program which
+      reads data in the 
+      <a href = "../../data/xy/xy.html">
+      XY file format</a>
+      and creates an
+      <a href = "../../data/eps/eps.html">Encapsulated PostScript file</a>.
+    </p>
+
+    <p>
+      In fact, <b>PLOT_POINTS</b> can read data in the more general
+      <a href = "../../data/table/table.html">
+      TABLE file format</a>, allowing the user to select the two coordinates
+      that will play the role of <b>X</b> and <b>Y</b>.
+    </p>
+
+    <p>
+      Plots you can make include:
+      <ul>
+        <li>
+          a dot plot of the points,
+        </li>
+        <li>
+          the line formed by connecting consecutive points
+          (great for displaying Brownian motion), 
+        </li>
+        <li>
+          the Delaunay triangulation of the points, 
+        </li>
+        <li>
+          the Voronoi diagram,
+        </li>
+        <li>
+          the triangulated Voronoi polygons.
+        </li>
+        <li>
+          a balloon plot of the points, in which each point is
+          surrounded by a maximal circle that does not intersect
+          the others.  (assumes the points lie in [0,1] x [0,1]).
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can specify the input file, add one box or circle, specify
+      the kind of plot to be made, and a few other options, by entering
+      commands interactively.  The set of commands can be gotten
+      via the "HELP" command.  The full list is:
+      <table border = 1>
+        <tr><th>command          </th><th>Meaning</th></tr>
+        <tr><td>BALLOON          </td><td>a "balloon" plot of points.</td></tr>
+        <tr><td>DASH             </td><td>dash plot of connected points.</td></tr>
+        <tr><td>DOT              </td><td>dot plot of points.</td></tr>
+        <tr><td>DEL              </td><td>Delaunay triangulation plot</td></tr>
+        <tr><td>KM               </td><td>K-Means plot.</td></tr>
+        <tr><td>TH               </td><td>thin the points.</td></tr>
+        <tr><td>TV               </td><td>triangulated Voronoi diagram.</td></tr>
+        <tr><td>VOR              </td><td>Voronoi diagram plot.</td></tr>
+        <hr>
+        <tr><td>Q                </td><td>quit.</td></tr>
+        <tr><td>READ filename    </td><td>read another input file.</td></tr>
+        <tr><td>OUTPUT filename  </td><td>name the next output file.</td></tr>
+        <tr><td>BOX x1 y1 x2 y2  </td><td>draw a single box in the plot.</td></tr>
+        <tr><td>NOBOX            </td><td>do not draw a box in the plot.</td></tr>
+        <tr><td>CIRCLE x y r     </td><td>draw a single circle in the plot.</td></tr>
+        <tr><td>NOCIRCLE         </td><td>do not draw a circle in the plot.</td></tr>
+        <tr><td>MARKER_SIZE = n  </td><td>Specify marker size.</td></tr>
+        <tr><td>SHADOW           </td><td>mark X and Y axes for each point.</td></tr>
+        <tr><td>TITLE            </td><td>enter a title for the next plot.</td></tr>
+        <tr><td>X = n            </td><td>specify data index to use as X.</td></tr>
+        <tr><td>Y = n            </td><td>specify data index to use as Y.</td></tr>
+        <tr><td># comment        </td><td>make a comment.</td></tr>
+      </table>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/box_plot/box_plot.html">
+      BOX_PLOT</a>,
+      a MATLAB program which 
+      can color in specified entries of
+      a checkerboard, corresponding to pairs of integer data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ps_write/ps_write.html">
+      PS_WRITE</a>,
+      a FORTRAN90 library which
+      is used by PLOT_POINTS.
+    </p>
+
+    <p>
+      <a href = "../../m_src/xy_display/xy_display.html">
+      XY_DISPLAY</a>,
+      a MATLAB program which
+      can read a file of coordinates of points, and display an image of the
+      points in a MATLAB graphics window.
+    </p>
+
+    <p> 
+      <a href = "../../cpp_src/xy_display_opengl/xy_display_opengl.html">
+      XY_DISPLAY_OPENGL</a>,
+      a C++ program which
+      can read a file containing 2D point coordinates, and display
+      an image of those points using Open GL.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Barry Joe,<br>
+          GEOMPACK - a software package for the generation of meshes
+          using geometric algorithms, <br>
+          Advances in Engineering Software,<br>
+          Volume 13, pages 325-331, 1991.
+        </li>
+        <li>
+          Henry McGilton, Mary Campione,<br>
+          PostScript by Example,<br>
+          Addison-Wesley,<br>
+          ISBN: 0-201-63228-4
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "plot_points.f90">plot_points.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "plot_points.sh">plot_points.sh</a>, 
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "plot_points_input.txt">plot_points_input.txt</a>, 
+          a set of commands, that could be entered interactively,
+          to produce all the following plots.
+        </li>
+        <li>
+          <a href = "plot_points_output.txt">plot_points_output.txt</a>, 
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>ANNULUS_25</b> is 25 points in an annulus:
+      <ul>
+        <li>
+          <a href = "annulus_25.xy">annulus_25.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "annulus_25_dot.png">annulus_25_dot.png</a>, a dot plot.
+        </li>
+        <li>
+          <a href = "annulus_25_del.png">annulus_25_del.png</a>, 
+          the Delaunay triangulation plot.
+        </li>
+        <li>
+          <a href = "annulus_25_vor.png">annulus_25_vor.png</a>,
+          the Voronoi diagram plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>BROWNIAN_100</b> is 100 points of simulated Brownian motion,
+      created by 
+      <a href = "../../f_src/random_data/random_data.html">
+      the RANDOM_DATA</a> program:
+      <ul>
+        <li>
+          <a href = "brownian_100.xy">brownian_100.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "brownian_100_dash.png">brownian_100_dash.png</a>, 
+          a plot of the points, connecting consecutive points.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CIE_XY_81</b> is 81 points of CIE (x,y) coordinates for pure light,
+      created by a sample program that uses
+      <a href = "../../f_src/colors/colors.html">
+      the COLORS</a> library:
+      <ul>
+        <li>
+          <a href = "cie_xy_81.xy">cie_xy_81.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "cie_xy_81_dash.png">cie_xy_81_dash.png</a>, 
+          a plot of the points, connecting consecutive points.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CIRCLE_25</b> is 25 points on a circle:
+      <ul>
+        <li>
+          <a href = "circle_25.xy">circle_25.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "circle_25_dot.png">circle_25_dot.png</a>, a dot plot.
+        </li>
+        <li>
+          <a href = "circle_25_del.png">circle_25_del.png</a>, 
+          the Delaunay triangulation plot.
+        </li>
+        <li>
+          <a href = "circle_25_vor.png">circle_25_vor.png</a>, 
+          the Voronoi diagram plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CVT_02_00010</b> is a set of 10 points in 2D, generated by
+      a centroidal Voronoi Tessellation program, and part of the
+      <a href = "../../datasets/cvt/cvt.html">CVT dataset</a>:
+      <ul>
+        <li>
+          <a href = "cvt_02_00010.xy">
+          cvt_02_00010.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "cvt_02_00010_balloon.png">
+          cvt_02_00010_balloon.png</a>, 
+          a balloon plot.
+        </li>
+        <li>
+          <a href = "cvt_02_00010_dot.png">
+          cvt_02_00010_dot.png</a>, 
+          a dot plot.
+        </li>
+        <li>
+          <a href = "cvt_02_00010_vor.png">
+          cvt_02_00010_vor.png</a>, 
+          a Voronoi plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CVT_02_00100</b> is a set of 100 points in 2D, generated by
+      a centroidal Voronoi Tessellation program, and part of the
+      <a href = "../../datasets/cvt/cvt.html">CVT dataset</a>:
+      <ul>
+        <li>
+          <a href = "cvt_02_00100.xy">
+          cvt_02_00100.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "cvt_02_00100_balloon.png">
+          cvt_02_00100_balloon.png</a>, 
+          a balloon plot.
+        </li>
+        <li>
+          <a href = "cvt_02_00100_dot.png">
+          cvt_02_00100_dot.png</a>, 
+          a dot plot.
+        </li>
+        <li>
+          <a href = "cvt_02_00100_vor.png">
+          cvt_02_00100_vor.png</a>, 
+          a Voronoi plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>DIAMOND_09</b> is 9 points whose Voronoi diagram contains one
+      cell whose vertices are known exactly, and which looks roughly
+      like a diamond:
+      <ul>
+        <li>
+          <a href = "diamond_02_00009.xy">diamond_02_00009.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "diamond_02_00009_del.png">diamond_02_00009_del.png</a>, 
+          the Delaunay triangulation plot.
+        </li>
+        <li>
+          <a href = "diamond_02_00009_vor.png">diamond_02_00009_vor.png</a>, 
+          the Voronoi diagram plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GRID_49</b> is a set of 49 points in a grid:
+      <ul>
+        <li>
+          <a href = "grid_49.xy">grid_49.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "grid_49_dot.png">grid_49_dot.png</a>, a dot plot.
+        </li>
+        <li>
+          <a href = "grid_49_del.png">grid_49_del.png</a>, 
+          the Delaunay triangulation plot.
+        </li>
+        <li>
+          <a href = "grid_49_vor.png">grid_49_vor.png</a>, 
+          the Voronoi diagram plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>JU1</b> is Lili Ju's first data set.  Lili Ju gave me some data sets 
+      to analyze with this program.  The data represents certain 
+      centroidal Voronoi tessellation generators, using certain density
+      functions.  
+      <ul>
+        <li>
+          <a href = "ju1.xy">ju1.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "ju1_dot.png">ju1_dot.png</a>, a dot plot.
+        </li>
+        <li>
+          <a href = "ju1_del.png">ju1_delaunay.png</a>,
+          the Delaunay triangulation.
+        </li>
+        <li>
+          <a href = "ju1_tv.png">ju1_tv.png</a>, 
+          the triangulated Voronoi diagram.
+        </li>
+        <li>
+          <a href = "ju1_vor.png">ju1_vor.png</a>, the Voronoi diagram.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>JU2</b> is Lili Ju's second data set:
+      <ul>
+        <li>
+          <a href = "ju2.xy">ju2.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "ju2_dot.png">ju2_dot.png</a>, a dot plot.
+        </li>
+        <li>
+          <a href = "ju2_del.png">ju2_del.png</a>, 
+          the Delaunay triangulation.
+        </li>
+        <li>
+          <a href = "ju2_tv.png">ju2_tv.png</a>, the triangulated 
+          Voronoi diagram.
+        </li>
+        <li>
+          <a href = "ju2_vor.png">ju2_vor.png</a>, the Voronoi diagram.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>JU3</b> is Lili Ju's third data set:
+      <ul>
+        <li>
+          <a href = "ju3.xy">ju3.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "ju3_dot.png">ju3_dot.png</a>, a dot plot.
+        </li>
+        <li>
+          <a href = "ju3_del.png">ju3_del.png</a>, 
+          the Delaunay triangulation.
+        </li>
+        <li>
+          <a href = "ju3_vor.png">ju3_vor.png</a>, the Voronoi diagram.
+        </li>
+        <li>
+          <a href = "ju3_tv.png">ju3_tv.png</a>, 
+          the triangulated Voronoi diagram.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>LSUP_303</b> is 303 points that outline Lake Superior:
+      <ul>
+        <li>
+          <a href = "lsup_303.xy">lsup_303.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "lsup_303_dot.png">lsup_303_dot.png</a>, a dot plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>REPEATS_17</b> is a set of 17 points with some repeated:
+      <ul>
+        <li>
+          <a href = "repeats_17.xy">repeats_17.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "repeats_17_dot.png">repeats_17_dot.png</a>, a dot plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>UNIFORM_02_00010</b> is a set of 10 points in 2D, generated by
+      a uniform random number generator, and part of the
+      <a href = "../../datasets/uniform/uniform.html">UNIFORM dataset</a>:
+      <ul>
+        <li>
+          <a href = "uniform_02_00010.xy">
+          uniform_02_00010.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "uniform_02_00010_balloon.png">
+          uniform_02_00010_balloon.png</a>, 
+          a balloon plot.
+        </li>
+        <li>
+          <a href = "uniform_02_00010_dot.png">
+          uniform_02_00010_dot.png</a>, 
+          a dot plot.
+        </li>
+        <li>
+          <a href = "uniform_02_00010_vor.png">
+          uniform_02_00010_vor.png</a>, 
+          a Voronoi plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>UNIFORM_02_00100</b> is a set of 100 points in 2D, generated by
+      a uniform random number generator, and part of the
+      <a href = "../../datasets/uniform/uniform.html">UNIFORM dataset</a>:
+      <ul>
+        <li>
+          <a href = "uniform_02_00100.xy">
+          uniform_02_00100.xy</a>, the points.
+        </li>
+        <li>
+          <a href = "uniform_02_00100_balloon.png">
+          uniform_02_00100_balloon.png</a>, 
+          a balloon plot.
+        </li>
+        <li>
+          <a href = "uniform_02_00100_dot.png">
+          uniform_02_00100_dot.png</a>, 
+          a dot plot.
+        </li>
+        <li>
+          <a href = "uniform_02_00100_vor.png">
+          uniform_02_00100_vor.png</a>, 
+          a Voronoi plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>UNIFORM_02_00100_KM5</b> is a set of 100 points in 2D, generated by
+      a uniform random number generator, and organized into 5 clusters
+      using the 
+      <a href = "../../f_src/kmeans/kmeans.html">KMEANS program</a>:
+      <ul>
+        <li>
+          <a href = "uniform_02_00100_km5.txt">
+          uniform_02_00100_km5.txt</a>, is a file with a special format
+          containing the points and their cluster assignments and the
+          cluster centers.
+        </li>
+        <li>
+          <a href = "uniform_02_00100_km5.png">
+          uniform_02_00100_km5.png</a>, 
+          is a plot of the points organized into clusters.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>AA_POINT_DATA_MODULE</b> keeps track of some point data.
+        </li>
+        <li>
+          <b>MAIN</b> is the main program for PLOT_POINTS.
+        </li>
+        <li>
+          <b>ANGLE_CONTAINS_RAY_2D</b> determines if an angle contains a ray, in 2D.
+        </li>
+        <li>
+          <b>ANGLE_DEG_2D</b> returns the angle swept out between two rays in 2D.
+        </li>
+        <li>
+          <b>ANGLE_TO_RGB</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>BALLOON_PLOT</b> plots points with maximal nonintersecting circles.
+        </li>
+        <li>
+          <b>BOX_CLIP_LINE_2D</b> uses a box to clip a line segment in 2D.
+        </li>
+        <li>
+          <b>BOX_RAY_INT_2D:</b> intersection ( box, ray ) in 2D.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CIRCLE_POINTS</b> returns N equally spaced points on a circle in 2D.
+        </li>
+        <li>
+          <b>DASH_PLOT</b> plots a set of points, and connects them.
+        </li>
+        <li>
+          <b>DATA_READ</b> reads the point data from a file.
+        </li>
+        <li>
+          <b>DELAUNAY_PLOT</b> plots the Delaunay triangulation of a pointset.
+        </li>
+        <li>
+          <b>DIAEDG</b> chooses a diagonal edge.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>DOT_PLOT</b> makes a plot of a set of points.
+        </li>
+        <li>
+          <b>DTRIS2</b> constructs a Delaunay triangulation of 2D vertices.
+        </li>
+        <li>
+          <b>EPS_FILE_HEAD</b> writes header information to an encapsulated PostScript file.
+        </li>
+        <li>
+          <b>EPS_FILE_TAIL</b> writes trailer information to an encapsulated PostScript file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_RANGE</b> determines the minimum and maximum ranges of each column.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_LOG_2</b> returns the integer part of the logarithm base 2 of |I|.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>I4_TO_ANGLE</b> maps integers to points on a circle.
+        </li>
+        <li>
+          <b>I4_TO_RGB</b> maps integers to RGB colors.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D</b> reorders an array of integers into a descending heap.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an integer vector to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_A</b> ascending sorts an integer array using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SORTED_UNIQUE</b> gets the unique elements in a sorted integer array.
+        </li>
+        <li>
+          <b>KMEANS_PLOT</b> plots a K-Means diagram.
+        </li>
+        <li>
+          <b>LINE_EXP2IMP_2D</b> converts an explicit line to implicit form in 2D.
+        </li>
+        <li>
+          <b>LINE_EXP_NORMAL_2D</b> computes the normal to a line in 2D.
+        </li>
+        <li>
+          <b>LINES_EXP_INT_2D</b> determines where two explicit lines intersect in 2D.
+        </li>
+        <li>
+          <b>LINES_IMP_INT_2D</b> determines where two implicit lines intersect in 2D.
+        </li>
+        <li>
+          <b>LRLINE</b> determines if a point is left of, right or, or on a directed line.
+        </li>
+        <li>
+          <b>PERM_INV</b> inverts a permutation "in place".
+        </li>
+        <li>
+          <b>PLOT_SIZE</b> determines a plot range.
+        </li>
+        <li>
+          <b>POINT_INSIDE_BOX_2D</b> determines if a point is inside a box in 2D.
+        </li>
+        <li>
+          <b>POINTS_AVOID_POINT_ND</b> checks if a point is "far" from a set of points in ND.
+        </li>
+        <li>
+          <b>POINTS_COUNT</b> counts the valid point coordinates in a file.
+        </li>
+        <li>
+          <b>POINTS_READ</b> reads point coordinates from a file.
+        </li>
+        <li>
+          <b>POINTS_THIN</b> "thins" points that are too close to each other.
+        </li>
+        <li>
+          <b>PS_CIRCLE</b> draws a circle.
+        </li>
+        <li>
+          <b>PS_CIRCLE_FILL</b> draws a filled circle.
+        </li>
+        <li>
+          <b>PS_CLIP</b> defines a clipping polygon.
+        </li>
+        <li>
+          <b>PS_COLOR_FILL_SET</b> sets the fill color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE</b> handles the line color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE_SET</b> sets the line color.
+        </li>
+        <li>
+          <b>PS_COMMENT</b> inserts a comment into the PostScript file.
+        </li>
+        <li>
+          <b>PS_DEFAULT</b> sets the internal settings to their default values
+        </li>
+        <li>
+          <b>PS_FILE_CLOSE</b> closes a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_OPEN</b> opens a new version of a PostScript file with a given name.
+        </li>
+        <li>
+          <b>PS_FONT_SIZE</b> sets the font size.
+        </li>
+        <li>
+          <b>PS_LABEL</b> prints a label at the current position.
+        </li>
+        <li>
+          <b>PS_LINE</b> draws a line segment from (X1,Y1) to (X2,Y2).
+        </li>
+        <li>
+          <b>PS_LINE_CLOSED</b> adds the graph of a closed line to a PostScript file.
+        </li>
+        <li>
+          <b>PS_LINE_WIDTH</b> sets the line width.
+        </li>
+        <li>
+          <b>PS_MARK_CIRCLE</b> marks a point with a small open circle.
+        </li>
+        <li>
+          <b>PS_MARK_DISK</b> marks a point with a small filled disk.
+        </li>
+        <li>
+          <b>PS_MARK_POINT</b> marks a point with a tiny point.
+        </li>
+        <li>
+          <b>PS_MOVETO</b> "moves to" a new point, which becomes the current point.
+        </li>
+        <li>
+          <b>PS_PAGE_HEAD</b> writes header information on a new page.
+        </li>
+        <li>
+          <b>PS_PAGE_TAIL</b> writes tail information at the end of a page.
+        </li>
+        <li>
+          <b>PS_POLYGON_FILL</b> adds a filled polygon to a PostScript file.
+        </li>
+        <li>
+          <b>PS_SETTING_INT</b> sets, gets, or prints integer internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>PS_SETTING_REAL</b> sets, gets, or prints real internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>PS_TRIANGLE</b> draws an open triangle.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>R82VEC_PERMUTE</b> permutes an R82VEC in place.
+        </li>
+        <li>
+          <b>R82VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R82VEC.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT2_INVERSE</b> inverts a 2 by 2 real matrix using Cramer's rule.
+        </li>
+        <li>
+          <b>R8MAT_SOLVE</b> uses Gauss-Jordan elimination to solve an N by N linear system.
+        </li>
+        <li>
+          <b>RADIANS_TO_DEGREES</b> converts an angle from radians to degrees.
+        </li>
+        <li>
+          <b>RADIUS_MAXIMUS</b> finds the biggest possible nonintersecting sphere.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SWAPEC</b> swaps diagonal edges until all triangles are Delaunay.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TRIANGLE_CIRCUMCENTER_2D</b> computes the circumcenter of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_PRINT</b> prints out information defining a Delaunay triangulation.
+        </li>
+        <li>
+          <b>TRIVOR_PLOT</b> plots the triangulated Voronoi diagram of a set of points in 2D.
+        </li>
+        <li>
+          <b>VBEDG</b> determines which boundary edges are visible to a point.
+        </li>
+        <li>
+          <b>VORONOI_PLOT</b> plots the Voronoi diagram of a set of points in 2D.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 January 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

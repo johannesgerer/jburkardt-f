@@ -1,0 +1,208 @@
+<html>
+
+  <head>
+    <title>
+      DUEL_SIMULATION - Simulation of a Duel
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      DUEL_SIMULATION <br> Simulation of a Duel
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DUEL_SIMULATION</b>
+      is a FORTRAN90 program which
+      simulates N instances of a duel between two players.
+    </p>
+
+    <p>
+      Player A fires at player B, and hits with a probability of A_ACCURACY.
+      If Player A misses, then Player B fires at Player A, hitting with
+      a probability of B_ACCURACY.
+    </p>
+
+    <p>
+      The duel continues with alternating shots until only one player
+      survives.
+    </p>
+
+    <p>
+      The simulation is intended to estimate the probabilities that a
+      player will survive.
+    </p>
+
+    <p>
+      The exact probability that player 1 will survive is
+      <blockquote>
+        P(1) / ( P(1) + P(2) - P(1) * P(2) )
+      </blockquote>
+      while player 2's chance is
+      <blockquote>
+        P(2) * ( 1 - P(1) ) / ( P(1) + P(2) - P(1) * P(2) ).
+      </blockquote>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>DUEL_SIMULATION</b> is available in
+      <a href = "../../c_src/duel_simulation/duel_simulation.html">a C version</a> and
+      <a href = "../../cpp_src/duel_simulation/duel_simulation.html">a C++ version</a> and
+      <a href = "../../f77_src/duel_simulation/duel_simulation.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/duel_simulation/duel_simulation.html">a FORTRAN90 version</a> and
+      <a href = "../../math_src/duel_simulation/duel_simulation.html">a Mathematica version</a> and
+      <a href = "../../m_src/duel_simulation/duel_simulation.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/brownian_motion_simulation/brownian_motion_simulation.html">
+      BROWNIAN_MOTION_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates Brownian motion in an M-dimensional region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fair_dice_simulation/fair_dice_simulation.html">
+      FAIR_DICE_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates N tosses of 2 dice, making a histogram of the results.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ising_2d_simulation/ising_2d_simulation.html">
+      ISING_2D_SIMULATION</a>,
+      a FORTRAN90 program which
+      carries out a Monte Carlo simulation of an Ising model.
+      a 2D array of positive and negative charges,
+      each of which is likely to flip to be in agreement with neighbors.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ising_3d_simulation/ising_3d_simulation.html">
+      ISING_3D_SIMULATION</a>,
+      a FORTRAN90 program which
+      carries out a Monte Carlo simulation of an Ising model,
+      a 3D array of positive and negative charges,
+      each of which is likely to flip to be in agreement with neighbors.
+    </p>
+
+    <p>
+      <a href = "../../f_src/poisson_simulation/poisson_simulation.html">
+      POISSON_SIMULATION</a>,
+      a FORTRAN90 library which
+      simulates a Poisson process in which events randomly occur with an
+      average waiting time of Lambda.
+    </p>
+
+    <p>
+      <a href = "../../f_src/reactor_simulation/reactor_simulation.html">
+      REACTOR_SIMULATION</a>,
+      a FORTRAN90 program which
+      a simple Monte Carlo simulation of the shielding effect of a slab
+      of a certain thickness in front of a neutron source.  This program was
+      provided as an example with the book "Numerical Methods and Software."
+    </p>
+
+    <p>
+      <a href = "../../f_src/three_body_simulation/three_body_simulation.html">
+      THREE_BODY_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates the behavior of three planets, constrained to lie in a plane,
+      and moving under the influence of gravity,
+      by Walter Gander and Jiri Hrebicek.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Paul Nahin,<br>
+          Duelling Idiots and Other Probability Puzzlers,<br>
+          Princeton University Press, 2000,<br>
+          ISBN13: 978-0691009797,<br>
+          LC: QA273.N29.
+        </li>
+        <li>
+          Martin Shubik,<br>
+          "Does the Fittest Necessarily Survive?",<br>
+          in Readings in Game Theory and Political Behavior,<br>
+          edited by Martin Shubik,<br>
+          Doubleday, 1954,<br>
+          LC: H61.S53.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "duel_simulation.f90">duel_simulation.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "duel_simulation.sh">duel_simulation.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DUEL_SIMULATION</b> simulates a duel.
+        </li>
+        <li>
+          <b>DUEL_RESULT</b> returns the outcome of a single duel.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 September 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

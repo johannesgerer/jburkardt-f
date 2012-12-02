@@ -1,0 +1,102 @@
+ 4 October 2012  12:11:16.923 PM
+ 
+QR_SOLVE_PRB
+  FORTRAN90 version
+  Test the QR_SOLVE library.
+  QR_SOLVE needs the R8LIB library.
+  This test also needs the TEST_LS library.
+ 
+TEST01
+  NORMAL_SOLVE is a function with a simple interface which
+  solves a linear system A*x = b in the least squares sense.
+  Compare a tabulated solution X1 to the NORMAL_SOLVE result X2.
+ 
+  NORMAL_SOLVE cannot be applied when N < M,
+  or if the matrix does not have full column rank.
+ 
+  Number of problems =    6
+ 
+  Index     M     N     ||B||         ||X1 - X2||   ||X1||       ||X2||        ||R1||        ||R2||
+ 
+      1     5     3     6.205        0.2861E-07     5.461         5.461         1.075         1.075    
+      2     6     3     537.6        0.5416E-04     194.8         194.8         5.222         5.222    
+      3     5     3     40.37      ------------     10.84      ------------    0.5477E-06  ------------
+      4     3     5     232.1      ------------     7.416      ------------     0.000      ------------
+      5    10    10     1.000      ------------    0.1534E+08  ------------    0.1507E-09  ------------
+      6    10    10     1.000        0.5090E-15     1.000         1.000        0.4928E-15    0.2910E-15
+ 
+TEST02
+  QR_SOLVE is a function with a simple interface which
+  solves a linear system A*x = b in the least squares sense.
+  Compare a tabulated solution X1 to the QR_SOLVE result X2.
+ 
+  Number of problems =    6
+ 
+  Index     M     N     ||B||         ||X1 - X2||   ||X1||       ||X2||        ||R1||        ||R2||
+ 
+      1     5     3     6.205        0.2861E-07     5.461         5.461         1.075         1.075    
+      2     6     3     537.6        0.5416E-04     194.8         194.8         5.222         5.222    
+      3     5     3     40.37         26.68         10.84         28.80        0.5477E-06    0.6081E-13
+      4     3     5     232.1         10.37         7.416         12.75         0.000        0.8938E-13
+      5    10    10     1.000         2182.        0.1534E+08    0.1534E+08    0.1507E-09    0.5988E-09
+      6    10    10     1.000        0.6251E-15     1.000         1.000        0.4928E-15    0.1990E-15
+ 
+TEST03
+  SVD_SOLVE is a function with a simple interface which
+  solves a linear system A*x = b in the least squares sense.
+  Compare a tabulated solution X1 to the SVD_SOLVE result X2.
+ 
+  Number of problems =    6
+ 
+  Index     M     N     ||B||         ||X1 - X2||   ||X1||       ||X2||        ||R1||        ||R2||
+ 
+      1     5     3     6.205        0.2861E-07     5.461         5.461         1.075         1.075    
+      2     6     3     537.6        0.5416E-04     194.8         194.8         5.222         5.222    
+      3     5     3     40.37        0.5092E-07     10.84         10.84        0.5477E-06    0.4282E-13
+      4     3     5     232.1        0.1536E-12     7.416         7.416         0.000        0.1287E-12
+      5    10    10     1.000         1731.        0.1534E+08    0.1534E+08    0.1507E-09    0.6612E-09
+      6    10    10     1.000        0.7880E-15     1.000         1.000        0.4928E-15    0.4684E-15
+ 
+TEST04
+  DQRLS solves a linear system A*x = b in the least squares sense.
+ 
+  Coefficient matrix A:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:      1.            1.            1.      
+    2:      1.            2.            4.      
+    3:      1.            3.            9.      
+    4:      1.            4.           16.      
+    5:      1.            5.           25.      
+ 
+  Right hand side b:
+ 
+         1:    1.0000000    
+         2:    2.3000000    
+         3:    4.6000000    
+         4:    3.1000000    
+         5:    1.2000000    
+ 
+  Error code =   0
+  Estimated matrix rank =   3
+ 
+  Least squares solution x:
+ 
+         1:   -3.0200000    
+         2:    4.4914286    
+         3:  -0.72857143    
+ 
+  Residuals A*x-b
+ 
+         1:   0.25714286    
+         2:  -0.74857143    
+         3:   0.70285714    
+         4:  -0.18857143    
+         5:  -0.22857143E-01
+ 
+QR_SOLVE_PRB
+  Normal end of execution.
+ 
+ 4 October 2012  12:11:16.925 PM

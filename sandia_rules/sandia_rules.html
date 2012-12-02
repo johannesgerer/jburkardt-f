@@ -1,0 +1,916 @@
+<html>
+
+  <head>
+    <title>
+      SANDIA_RULES - Quadrature Rules of Gaussian Type
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SANDIA_RULES <br> Quadrature Rules of Gaussian Type
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SANDIA_RULES</b>
+      is a FORTRAN90 library which
+      generates a variety of quadrature rules of various orders and types.
+    </p>
+
+    <p>
+      This library is used, in turn, by several other libraries, including
+      <b>SPARSE_GRID_MIXED</b> and <b>SGMGA</b>.  This means that a program
+      that calls any of those libraries must have access to a compiled
+      copy of <b>SANDIA_RULES</b> as well.
+    </p>
+
+    <p>
+      <table border=1>
+        <tr>
+          <th>Name</th>
+          <th>Usual domain</th>
+          <th>Weight function</th>
+        </tr>
+        <tr>
+          <td>Gauss-Legendre</td>
+          <td>[-1,+1]</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Clenshaw-Curtis</td>
+          <td>[-1,+1]</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Fejer Type 2</td>
+          <td>[-1,+1]</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Gauss-Chebyshev 1</td>
+          <td>[-1,+1]</td>
+          <td>1/sqrt(1-x<sup>2</sup>)</td>
+        </tr>
+        <tr>
+          <td>Gauss-Chebyshev 2</td>
+          <td>[-1,+1]</td>
+          <td>sqrt(1-x<sup>2</sup>)</td>
+        </tr>
+        <tr>
+          <td>Gauss-Gegenbauer</td>
+          <td>[-1,+1]</td>
+          <td>(1-x<sup>2</sup>)<sup>alpha</sup></td>
+        </tr>
+        <tr>
+          <td>Gauss-Jacobi</td>
+          <td>[-1,+1]</td>
+          <td>(1-x)<sup>alpha</sup> (1+x)<sup>beta</sup></td>
+        </tr>
+        <tr>
+          <td>Gauss-Laguerre</td>
+          <td>[0,+oo)</td>
+          <td>e<sup>-x</sup></td>
+        </tr>
+        <tr>
+          <td>Generalized Gauss-Laguerre</td>
+          <td>[0,+oo)</td>
+          <td>x<sup>alpha</sup> e<sup>-x</sup></td>
+        </tr>
+        <tr>
+          <td>Gauss-Hermite</td>
+          <td>(-oo,+oo)</td>
+          <td>e<sup>-x*x</sup></td>
+        </tr>
+        <tr>
+          <td>Generalized Gauss-Hermite</td>
+          <td>(-oo,+oo)</td>
+          <td>|x|<sup>alpha</sup> e<sup>-x*x</sup></td>
+        </tr>
+        <tr>
+          <td>Hermite Genz-Keister</td>
+          <td>(-oo,+oo)</td>
+          <td>e<sup>-x*x</sup></td>
+        </tr>
+        <tr>
+          <td>Newton-Cotes-Closed</td>
+          <td>[-1,+1]</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Newton-Cotes-Open</td>
+          <td>[-1,+1]</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Newton-Cotes-Open-Half</td>
+          <td>[-1,+1]</td>
+          <td>1</td>
+        </tr>
+      </table>
+    </p>
+
+    <p>
+      For example, a Gauss-Gegenbauer quadrature rule is used to approximate:
+      <pre>
+        Integral ( -1 &lt;= x &lt;= +1 ) f(x) (1-x^2)^alpha dx
+      </pre>
+      where <b>alpha</b> is a real parameter chosen by the user.
+    </p>
+
+    <p>
+      The approximation to the integral is formed by computing a weighted sum
+      of function values at specific points:
+      <pre>
+        Sum ( 1 &lt;= i &lt;= n ) w(i) * f(x(i))
+      </pre>
+      The quantities <b>x</b> are the <i>abscissas</i> of the quadrature rule,
+      the values <b>w</b> are the <i>weights</i> of the quadrature rule, and the
+      number of terms <b>n</b> in the sum is the <i>order</i> of the quadrature rule.
+    </p>
+
+    <p>
+      As a matter of convenience, most of the quadrature rules are available
+      through three related functions:
+      <ul>
+        <li>
+          <b>name_COMPUTE</b> returns points X and weights W;
+        </li>
+        <li>
+          <b>name_COMPUTE_POINTS</b> returns points X;
+        </li>
+        <li>
+          <b>name_COMPUTE_WEIGHTS</b> returns weights W;
+        </li>
+      </ul>
+      In some cases, it is possible to compute points or weights separately;
+      in other cases, the point and weight functions actually call the
+      underlying function for the entire rule, and then discard the unrequested
+      information.
+    </p>
+
+    <p>
+      Some of these quadrature rules expect a parameter ALPHA, and perhaps also
+      a parameter BETA, in order to fully define the rule.  Therefore, the
+      argument lists of these functions vary.  They always include the input
+      quantity ORDER, but may have one or two additional inputs.  In order to offer
+      a uniform interface, there is also a family of functions with a standard
+      set of input arguments, ORDER, NP, and P.  Here NP is parameter counter,
+      and P is the parameter value vector P.  Using this interface, it is possible
+      to call all the quadrature functions with the same argument list.
+      The uniform interface functions can be identified by the
+      suffix <b>_NP</b> that appears in their names.  Generally, these functions
+      "unpack" the parameter vector where needed, and then call the corresponding
+      basic function.  Of course, for many rules NP is zero and P may be a null
+      pointer.
+      <ul>
+        <li>
+          <b>name_COMPUTE_NP ( ORDER, NP, P, X, W )</b>
+          unpacks parameters, calls name_COMPUTE, returns points X and weights W;
+        </li>
+        <li>
+          <b>name_COMPUTE_POINTS_NP ( ORDER, NP, P, X )</b>
+          unpacks parameters, calls name_COMPUTE_POINTS, returns points X;
+        </li>
+        <li>
+          <b>name_COMPUTE_WEIGHTS_NP ( ORDER, NP, P, W )</b>
+          unpacks parameters, calls name_COMPUTE_WEIGHTS, returns weights W;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SANDIA_RULES</b> is available in
+      <a href = "../../c_src/sandia_rules/sandia_rules.html">a C version</a> and
+      <a href = "../../cpp_src/sandia_rules/sandia_rules.html">a C++ version</a> and
+      <a href = "../../f_src/sandia_rules/sandia_rules.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sandia_rules/sandia_rules.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/quadrule/quadrule.html">
+      QUADRULE</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for 1-dimensional domains.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>,
+      a FORTRAN90 library which
+      contains many utility routines, using "R8" or
+      "double precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sgmga/sgmga.html">
+      SGMGA</a>,
+      a FORTRAN90 library which
+      creates sparse grids based on a mixture of 1D quadrature rules,
+      allowing anisotropic weights for each dimension.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          William Cody,<br>
+          An Overview of Software Development for Special Functions,<br>
+          in Numerical Analysis Dundee, 1975,<br>
+          edited by GA Watson,<br>
+          Lecture Notes in Mathematics 506,<br>
+          Springer, 1976.
+        </li>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+        <li>
+          Sylvan Elhay, Jaroslav Kautsky,<br>
+          Algorithm 655: IQPACK, FORTRAN Subroutines for the Weights of 
+          Interpolatory Quadrature,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 13, Number 4, December 1987, pages 399-415.
+        </li>
+        <li>
+          Alan Genz, Bradley Keister,<br>
+          Fully symmetric interpolatory rules for multiple integrals
+          over infinite regions with Gaussian weight,<br>
+          Journal of Computational and Applied Mathematics,<br>
+          Volume 71, 1996, pages 299-309.
+        </li>
+        <li>
+          John Hart, Ward Cheney, Charles Lawson, Hans Maehly,
+          Charles Mesztenyi, John Rice, Henry Thatcher,
+          Christoph Witzgall,<br>
+          Computer Approximations,<br>
+          Wiley, 1968,<br>
+          LC: QA297.C64.
+        </li>
+        <li>
+          Knut Petras,<br>
+          Smolyak Cubature of Given Polynomial Degree with Few Nodes
+          for Increasing Dimension,<br>
+          Numerische Mathematik,<br>
+          Volume 93, Number 4, February 2003, pages 729-753.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+        <li>
+          Shanjie Zhang, Jianming Jin,<br>
+          Computation of Special Functions,<br>
+          Wiley, 1996,<br>
+          ISBN: 0-471-11963-6,<br>
+          LC: QA351.C45
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sandia_rules.f90">sandia_rules.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "sandia_rules.sh">sandia_rules.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sandia_rules_prb.f90">sandia_rules_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "sandia_rules_prb.sh">sandia_rules_prb.sh</a>,
+          commands to compile, link and run the sample calling program.
+        </li>
+        <li>
+          <a href = "sandia_rules_prb_output.txt">sandia_rules_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BINARY_VECTOR_NEXT</b> generates the next binary vector.
+        </li>
+        <li>
+          <b>CCN_COMPUTE</b> computes a nested Clenshaw Curtis quadrature rule.
+        </li>
+        <li>
+          <b>CCN_COMPUTE_NP</b> computes a nested Clenshaw Curtis rule.
+        </li>
+        <li>
+          <b>CCN_COMPUTE_POINTS:</b> compute nested Clenshaw Curtis points.
+        </li>
+        <li>
+          <b>CCN_COMPUTE_POINTS_NP:</b> abscissas of a nested Clenshaw Curtis rule.
+        </li>
+        <li>
+          <b>CCN_COMPUTE_WEIGHTS:</b> weights for nested Clenshaw Curtis rule.
+        </li>
+        <li>
+          <b>CCN_COMPUTE_WEIGHTS_NP</b> computes nested Clenshaw Curtis weights.
+        </li>
+        <li>
+          <b>CHEBYSHEV1_COMPUTE</b> computes a Chebyshev type 1 quadrature rule.
+        </li>
+        <li>
+          <b>CHEBYSHEV1_INTEGRAL</b> evaluates a monomial Chebyshev type 1 integral.
+        </li>
+        <li>
+          <b>CHEBYSHEV2_COMPUTE</b> computes a Chebyshev type 2 quadrature rule.
+        </li>
+        <li>
+          <b>CHEBYSHEV2_INTEGRAL</b> evaluates a monomial Chebyshev type 2 integral.
+        </li>
+        <li>
+          <b>CLENSHAW_CURTIS_COMPUTE</b> computes a Clenshaw Curtis quadrature rule.
+        </li>
+        <li>
+          <b>CLENSHAW_CURTIS_COMPUTE_POINTS:</b> abscissas of a Clenshaw Curtis rule.
+        </li>
+        <li>
+          <b>CLENSHAW_CURTIS_COMPUTE_POINTS_NP:</b> abscissas of a Clenshaw Curtis rule.
+        </li>
+        <li>
+          <b>CLENSHAW_CURTIS_COMPUTE_WEIGHTS</b> computes Clenshaw Curtis weights.
+        </li>
+        <li>
+          <b>CLENSHAW_CURTIS_COMPUTE_WEIGHTS_NP</b> computes Clenshaw Curtis weights.
+        </li>
+        <li>
+          <b>COMP_NEXT</b> computes the compositions of the integer N into K parts.
+        </li>
+        <li>
+          <b>DIF_TO_R8POLY</b> converts a divided difference table to a standard polynomial.
+        </li>
+        <li>
+          <b>DIF_VALS</b> evaluates a divided difference polynomial at a set of points.
+        </li>
+        <li>
+          <b>FEJER2_COMPUTE</b> computes a Fejer Type 2 quadrature rule.
+        </li>
+        <li>
+          <b>FEJER2_COMPUTE_POINTS</b> returns the abscissas of a Fejer type 2 rule.
+        </li>
+        <li>
+          <b>FEJER2_COMPUTE_POINTS_NP</b> returns the abscissas of a Fejer type 2 rule.
+        </li>
+        <li>
+          <b>FEJER2_COMPUTE_WEIGHTS</b> computes weights for a Fejer type 2 quadrature rule.
+        </li>
+        <li>
+          <b>FEJER2_COMPUTE_WEIGHTS_NP:</b> weights for a Fejer type 2 quadrature rule.
+        </li>
+        <li>
+          <b>GEGENBAUER_COMPUTE</b> computes a Gegenbauer quadrature rule.
+        </li>
+        <li>
+          <b>GEGENBAUER_INTEGRAL</b> integrates a monomial with Gegenbauer weight.
+        </li>
+        <li>
+          <b>GEGENBAUER_RECUR</b> finds the value and derivative of a Gegenbauer polynomial.
+        </li>
+        <li>
+          <b>GEGENBAUER_ROOT</b> improves an approximate root of a Gegenbauer polynomial.
+        </li>
+        <li>
+          <b>GEN_HERMITE_COMPUTE</b> computes a generalized Gauss-Hermite quadrature rule.
+        </li>
+        <li>
+          <b>GEN_HERMITE_COMPUTE_POINTS:</b> abscissas of a Generalized Hermite rule.
+        </li>
+        <li>
+          <b>GEN_HERMITE_COMPUTE_POINTS_NP:</b> abscissas of a Generalized Hermite rule.
+        </li>
+        <li>
+          <b>GEN_HERMITE_COMPUTE_WEIGHTS:</b> weights of a Generalized Hermite rule.
+        </li>
+        <li>
+          <b>GEN_HERMITE_COMPUTE_WEIGHTS_NP:</b> weights of a Generalized Hermite rule.
+        </li>
+        <li>
+          <b>GEN_HERMITE_DR_COMPUTE</b> computes a Generalized Hermite rule.
+        </li>
+        <li>
+          <b>GEN_HERMITE_INTEGRAL</b> evaluates a monomial Generalized Hermite integral.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_COMPUTE:</b> generalized Gauss-Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_COMPUTE_POINTS:</b> points of a Generalized Laguerre rule.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_COMPUTE_POINTS_NP:</b> points of a Generalized Laguerre rule.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_COMPUTE_WEIGHTS:</b> weights of a Generalized Laguerre rule.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_COMPUTE_WEIGHTS_NP:</b> weights of a Generalized Laguerre rule.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_INTEGRAL</b> evaluates a monomial genearlized Laguerre integral.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_SS_COMPUTE</b> computes a Generalized Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_SS_RECUR</b> evaluates a Generalized Laguerre polynomial.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_SS_ROOT</b> seeks roots of a Generalized Laguerre polynomial.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HC_COMPUTE_WEIGHTS_FROM_POINTS:</b> Hermite-Cubic weights, user-supplied points.
+        </li>
+        <li>
+          <b>HCC_COMPUTE</b> computes a Hermite-Cubic-Chebyshev-Spacing quadrature rule.
+        </li>
+        <li>
+          <b>HCC_COMPUTE_NP</b> computes a Hermite-Cubic-Chebyshev-Spacing quadrature rule.
+        </li>
+        <li>
+          <b>HCC_COMPUTE_POINTS:</b> abscissas of a Hermite-Cubic-Chebyshev-Spacing rule.
+        </li>
+        <li>
+          <b>HCC_COMPUTE_POINTS_NP:</b> abscissas of a Hermite-Cubic-Chebyshev-Spacing rule.
+        </li>
+        <li>
+          <b>HCC_COMPUTE_WEIGHTS</b> computes Hermite-Cubic-Chebyshev-Spacing weights.
+        </li>
+        <li>
+          <b>HCC_COMPUTE_WEIGHTS_NP</b> computes Hermite-Cubic-Chebyshev-Spacing weights.
+        </li>
+        <li>
+          <b>HCE_COMPUTE</b> computes a Hermite-Cubic-Equal-Spacing quadrature rule.
+        </li>
+        <li>
+          <b>HCE_COMPUTE_NP</b> computes a Hermite-Cubic-Equal-Spacing quadrature rule.
+        </li>
+        <li>
+          <b>HCE_COMPUTE_POINTS:</b> abscissas of a Hermite-Cubic-Equal-Spacing rule.
+        </li>
+        <li>
+          <b>HCE_COMPUTE_POINTS_NP:</b> abscissas of a Hermite-Cubic-Equal-Spacing rule.
+        </li>
+        <li>
+          <b>HCE_COMPUTE_WEIGHTS</b> computes Hermite-Cubic-Equal-Spacing weights.
+        </li>
+        <li>
+          <b>HCE_COMPUTE_WEIGHTS_NP</b> computes Hermite-Cubic-Equal-Spacing weights.
+        </li>
+        <li>
+          <b>HDATA_TO_DIF</b> sets up a divided difference table from Hermite data.
+        </li>
+        <li>
+          <b>HERMITE_COMPUTE</b> computes a Gauss-Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_COMPUTE_POINTS</b> computes points of a Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_COMPUTE_POINTS_NP</b> computes points of a Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_COMPUTE_WEIGHTS</b> computes weights of a Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_COMPUTE_WEIGHTS_NP</b> computes weights of a Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_GENZ_KEISTER_LOOKUP</b> returns a Genz-Keister rule for Hermite problems.
+        </li>
+        <li>
+          <b>HERMITE_GENZ_KEISTER_LOOKUP_POINTS:</b> abscissas of a Genz-Keister Hermite rule.
+        </li>
+        <li>
+          <b>HERMITE_GENZ_KEISTER_LOOKUP_POINTS_NP:</b> Genz-Keister Hermite abscissas.
+        </li>
+        <li>
+          <b>HERMITE_GENZ_KEISTER_LOOKUP_WEIGHTS:</b> weights for Genz-Keister Hermite rule.
+        </li>
+        <li>
+          <b>HERMITE_GENZ_KEISTER_LOOKUP_WEIGHTS_NP</b> sets weights for a Patterson rule.
+        </li>
+        <li>
+          <b>HERMITE_GK18_LOOKUP_POINTS:</b> abscissas of a Hermite Genz-Keister 18 rule.
+        </li>
+        <li>
+          <b>HERMITE_GK22_LOOKUP_POINTS:</b> abscissas of a Genz-Keister 22 Hermite rule.
+        </li>
+        <li>
+          <b>HERMITE_GK24_LOOKUP_POINTS:</b> abscissas of a Genz-Keister 24 Hermite rule.
+        </li>
+        <li>
+          <b>HERMITE_INTEGRAL</b> evaluates a monomial Hermite integral.
+        </li>
+        <li>
+          <b>HERMITE_INTERPOLANT_RULE:</b> quadrature rule for a Hermite interpolant.
+        </li>
+        <li>
+          <b>HERMITE_LOOKUP_POINTS</b> returns the abscissas of a Hermite rule.
+        </li>
+        <li>
+          <b>HERMITE_LOOKUP_WEIGHTS</b> returns weights for Hermite quadrature rules.
+        </li>
+        <li>
+          <b>HERMITE_SS_COMPUTE</b> computes a Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_SS_RECUR</b> finds the value and derivative of a Hermite polynomial.
+        </li>
+        <li>
+          <b>HERMITE_SS_ROOT</b> improves an approximate root of a Hermite polynomial.
+        </li>
+        <li>
+          <b>I4_CHOOSE</b> computes the binomial coefficient C(N,K) as an I4.
+        </li>
+        <li>
+          <b>I4_LOG_2</b> returns the integer part of the logarithm base 2 of an I4.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_WRITE</b> writes an I4MAT file.
+        </li>
+        <li>
+          <b>I4VEC_MIN_MV</b> determines U(1:N) /\ V for vectors U and a single vector V.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>IMTQLX</b> diagonalizes a symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>JACOBI_COMPUTE:</b> Elhay-Kautsky method for Gauss-Jacobi quadrature rule.
+        </li>
+        <li>
+          <b>JACOBI_COMPUTE_POINTS</b> returns the points of a Jacobi rule.
+        </li>
+        <li>
+          <b>JACOBI_COMPUTE_POINTS_NP</b> returns the points of a Jacobi rule.
+        </li>
+        <li>
+          <b>JACOBI_COMPUTE_WEIGHTS</b> returns the weights of a Jacobi rule.
+        </li>
+        <li>
+          <b>JACOBI_COMPUTE_WEIGHTS_NP</b> returns the weights of a Jacobi rule.
+        </li>
+        <li>
+          <b>JACOBI_INTEGRAL</b> evaluates the integral of a monomial with Jacobi weight.
+        </li>
+        <li>
+          <b>JACOBI_SS_COMPUTE</b> computes a Jacobi quadrature rule.
+        </li>
+        <li>
+          <b>JACOBI_SS_RECUR</b> finds the value and derivative of a Jacobi polynomial.
+        </li>
+        <li>
+          <b>JACOBI_SS_ROOT</b> improves an approximate root of a Jacobi polynomial.
+        </li>
+        <li>
+          <b>LAGUERRE_COMPUTE:</b> Laguerre quadrature rule by the Elhay-Kautsky method.
+        </li>
+        <li>
+          <b>LAGUERRE_COMPUTE_POINTS</b> computes points of a Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>LAGUERRE_COMPUTE_POINTS_NP</b> computes points of a Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>LAGUERRE_COMPUTE_WEIGHTS</b> computes weights of a Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>LAGUERRE_COMPUTE_WEIGHTS_NP</b> computes weights of a Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>LAGUERRE_INTEGRAL</b> evaluates a monomial Laguerre integral.
+        </li>
+        <li>
+          <b>LAGUERRE_LOOKUP_POINTS</b> returns the abscissas of a Laguerre rule.
+        </li>
+        <li>
+          <b>LAGUERRE_LOOKUP_WEIGHTS</b> returns weights for Laguerre quadrature rules.
+        </li>
+        <li>
+          <b>LAGUERRE_SS_COMPUTE</b> computes a Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>LAGUERRE_SS_RECUR</b> finds the value and derivative of a Laguerre polynomial.
+        </li>
+        <li>
+          <b>LAGUERRE_SS_ROOT</b> improves an approximate root of a Laguerre polynomial.
+        </li>
+        <li>
+          <b>LEGENDRE_COMPUTE:</b> Legendre quadrature rule by the Elhay-Kautsky method.
+        </li>
+        <li>
+          <b>LEGENDRE_COMPUTE_POINTS</b> computes abscissas of a Legendre quadrature rule.
+        </li>
+        <li>
+          <b>LEGENDRE_COMPUTE_POINTS_NP</b> computes abscissas of a Legendre quadrature rule.
+        </li>
+        <li>
+          <b>LEGENDRE_COMPUTE_WEIGHTS</b> computes weights of a Legendre quadrature rule.
+        </li>
+        <li>
+          <b>LEGENDRE_COMPUTE_WEIGHTS_NP</b> computes weights of a Legendre quadrature rule.
+        </li>
+        <li>
+          <b>LEGENDRE_DR_COMPUTE</b> computes a Legendre quadrature rule.
+        </li>
+        <li>
+          <b>LEGENDRE_INTEGRAL</b> evaluates a monomial Legendre integral.
+        </li>
+        <li>
+          <b>LEGENDRE_ZEROS</b> computes the zeros of the Legendre polynomial of degree N.
+        </li>
+        <li>
+          <b>LEVEL_GROWTH_TO_ORDER:</b> convert Level and Growth to Order.
+        </li>
+        <li>
+          <b>LEVEL_TO_ORDER_DEFAULT:</b> default growth.
+        </li>
+        <li>
+          <b>LEVEL_TO_ORDER_EXPONENTIAL:</b> exponential growth.
+        </li>
+        <li>
+          <b>LEVEL_TO_ORDER_EXPONENTIAL_SLOW:</b> slow exponential growth.
+        </li>
+        <li>
+          <b>LEVEL_TO_ORDER_LINEAR:</b> linear growth.
+        </li>
+        <li>
+          <b>NC_COMPUTE</b> computes a Newton-Cotes quadrature rule.
+        </li>
+        <li>
+          <b>NCC_COMPUTE_POINTS:</b> Newton-Cotes Closed points
+        </li>
+        <li>
+          <b>NCC_COMPUTE_WEIGHTS:</b> Newton-Cotes Closed weights.
+        </li>
+        <li>
+          <b>NCO_COMPUTE_POINTS:</b> points for a Newton-Cotes Open quadrature rule.
+        </li>
+        <li>
+          <b>NCO_COMPUTE_WEIGHTS:</b> weights for a Newton-Cotes Open quadrature rule.
+        </li>
+        <li>
+          <b>NCOH_COMPUTE_POINTS:</b> points for a Newton-Cotes Open Half quadrature rule.
+        </li>
+        <li>
+          <b>NCOH_COMPUTE_WEIGHTS:</b> weights for a Newton-Cotes Open Half quadrature rule.
+        </li>
+        <li>
+          <b>PATTERSON_LOOKUP</b> returns the abscissas and weights of a Patterson rule.
+        </li>
+        <li>
+          <b>PATTERSON_LOOKUP_POINTS</b> returns the abscissas of a Patterson rule.
+        </li>
+        <li>
+          <b>PATTERSON_LOOKUP_POINTS_NP</b> returns the abscissas of a Patterson rule.
+        </li>
+        <li>
+          <b>PATTERSON_LOOKUP_WEIGHTS</b> sets weights for a Patterson rule.
+        </li>
+        <li>
+          <b>PATTERSON_LOOKUP_WEIGHTS_NP</b> sets weights for a Patterson rule.
+        </li>
+        <li>
+          <b>POINT_RADIAL_TOL_UNIQUE_COUNT</b> counts the tolerably unique points.
+        </li>
+        <li>
+          <b>POINT_RADIAL_TOL_UNIQUE_COUNT</b> counts the tolerably unique points.
+        </li>
+        <li>
+          <b>POINT_RADIAL_TOL_UNIQUE_COUNT_INC1</b> counts the tolerably unique points.
+        </li>
+        <li>
+          <b>POINT_RADIAL_TOL_UNIQUE_COUNT_INC2</b> counts the tolerably unique points.
+        </li>
+        <li>
+          <b>POINT_RADIAL_TOL_UNIQUE_INDEX</b> indexes the tolerably unique points.
+        </li>
+        <li>
+          <b>POINT_RADIAL_TOL_UNIQUE_INDEX_OLD</b> indexes the tolerably unique points.
+        </li>
+        <li>
+          <b>POINT_RADIAL_TOL_UNIQUE_INDEX_INC1</b> indexes the tolerably unique points.
+        </li>
+        <li>
+          <b>POINT_RADIAL_TOL_UNIQUE_INDEX_INC2</b> indexes unique temporary points.
+        </li>
+        <li>
+          <b>POINT_RADIAL_TOL_UNIQUE_INDEX_INC3</b> merges index data.
+        </li>
+        <li>
+          <b>POINT_UNIQUE_INDEX</b> indexes unique points.
+        </li>
+        <li>
+          <b>PRODUCT_MIXED_WEIGHT</b> computes the weights of a mixed product rule.
+        </li>
+        <li>
+          <b>R8_CEILING</b> rounds an R8 "up" (towards +oo) to the next integer.
+        </li>
+        <li>
+          <b>R8_CHOOSE</b> computes the binomial coefficient C(N,K) as an R8.
+        </li>
+        <li>
+          <b>R8_EPSILON</b> returns the R8 roundoff unit.
+        </li>
+        <li>
+          <b>R8_FACTORIAL</b> computes the factorial function.
+        </li>
+        <li>
+          <b>R8_FACTORIAL2</b> computes the double factorial function.
+        </li>
+        <li>
+          <b>R8_FLOOR</b> rounds an R8 "down" (towards -infinity) to the next integer.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates Gamma(X) for a real argument.
+        </li>
+        <li>
+          <b>R8_HUGE</b> returns a very large R8.
+        </li>
+        <li>
+          <b>R8_HYPER_2F1</b> evaluates the hypergeometric function F(A,B,C,X).
+        </li>
+        <li>
+          <b>R8_MOP</b> returns the I-th power of -1 as an R8 value.
+        </li>
+        <li>
+          <b>R8_PSI</b> evaluates the function Psi(X).
+        </li>
+        <li>
+          <b>R8COL_COMPARE</b> compares columns in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORT_HEAP_A</b> ascending heapsorts an R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTED_TOL_UNDEX</b> indexes tolerably unique entries in a sorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTED_TOL_UNIQUE_COUNT:</b> tolerably unique elements in a sorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_SORTED_UNIQUE_COUNT</b> counts unique elements in a sorted R8COL.
+        </li>
+        <li>
+          <b>R8COL_SWAP</b> swaps columns I and J of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_TOL_UNDEX</b> indexes tolerably unique entries of an R8COL.
+        </li>
+        <li>
+          <b>R8COL_TOL_UNIQUE_COUNT</b> counts tolerably unique entries in an R8COL.
+        </li>
+        <li>
+          <b>R8COL_UNDEX</b> returns unique sorted indexes for an R8COL.
+        </li>
+        <li>
+          <b>R8COL_UNIQUE_INDEX</b> indexes the unique occurrence of values in an R8COL.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8POLY_ANT_VAL</b> evaluates the antiderivative of a polynomial in standard form.
+        </li>
+        <li>
+          <b>R8VEC_CHEBYSHEV</b> creates a vector of Chebyshev spaced values.
+        </li>
+        <li>
+          <b>R8VEC_COMPARE</b> compares two R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DIRECT_PRODUCT2</b> creates a direct product of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_INDEX_SORTED_RANGE:</b> search index sorted vector for elements in a range.
+        </li>
+        <li>
+          <b>R8VEC_LEGENDRE</b> creates a vector of Legendre-spaced values.
+        </li>
+        <li>
+          <b>R8VEC_LINSPACE</b> creates a vector of linearly spaced values.
+        </li>
+        <li>
+          <b>R8VEC_MIN_POS</b> returns the minimum positive value of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>VEC_COLEX_NEXT3</b> generates vectors in colex order.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 October 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

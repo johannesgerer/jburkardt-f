@@ -1,0 +1,330 @@
+<html>
+
+  <head>
+    <title>
+      CVT_SIZE - CVT with Prescribed Cell Sizes
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CVT_SIZE <br> CVT with Prescribed Cell Sizes
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CVT_SIZE</b>
+      is a FORTRAN90 library which
+      attempts to compute a
+      (weighted) centroidal Voronoi tessellation (CVT) in which each cell
+      has a desired prescribed size.
+    </p>
+
+    <p>
+      Normally, given arbitrary initial data and a constant density,
+      the CVT would comprise cells of roughly equal area.  This program
+      modifies the CVT iteration, allowing the user to specify
+      a relative cell size for each cell.  Thus, if the region
+      has area 100, and we make a tessellation of two cells, and
+      we specify weights of 1 and 3, we would hope for the cells
+      to be computed with areas of 25 and 75 units respectively.
+    </p>
+
+    <p>
+      Internally, the desired cell sizes are normalized, and
+      then the appropriate root is taken to account for the
+      dimensionality of the space.  (In 2 space, you take the
+      square root of the normalized cell size, for instance.)
+      This gives you the weight to be assigned to a generator.
+    </p>
+
+    <p>
+      Then, when it is time to compute the distance for a sample
+      point to the center of each Voronoi cell and take the
+      "closest" one, we divide each cell's distance by the adjusted
+      weight.  This has the effect of making cells with a larger
+      weight seem closer than they really are, and hence they
+      attract more sample points, and end up with a larger area.
+    </p>
+
+    <p>
+      If only a small number of generators are used, or if the
+      weights vary greatly in size, the effects
+      of local geometry and curvature come into play, and the
+      chosen weights produce areas that are only roughly what is
+      desired.  Increasing the number
+      of cells being used seems to produce more regular behavior,
+      with the cells tending to have the areas requested by the user.
+    </p>
+
+    <p>
+      Some of the activity on this project was inspired by
+      a query from Professor Alexandru Telea, of the Department
+      of Mathematics and Computer Science, Technische
+      Universiteit Eindhoven.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/pbmlib/pbmlib.html">
+      PBMLIB</a>,
+      a FORTRAN90 library which
+      can create crisp and relatively small binary PPM images of the CVT regions.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, pages 345-405, September 1991.
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Janet Peterson, Rebecca Brannon,<br>
+          User Manual and Supporting Information for Library of Codes
+          for Centroidal Voronoi Placement and Associated Zeroth,
+          First, and Second Moment Determination,<br>
+          Sandia National Laboratories Technical Report SAND2002-0099,<br>
+          February 2002.
+        </li>
+        <li>
+          Qiang Du, Vance Faber, Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review, Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Lili Ju, Qiang Du, and Max Gunzburger,<br>
+          Probabilistic methods for centroidal Voronoi tessellations
+          and their parallel implementations,<br>
+          Parallel Computing,<br>
+          Volume 28, 2002, pages 1477-1500.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_size.f90">cvt_size.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "cvt_size.sh">cvt_size.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_size_prb.f90">cvt_size_prb.f90</a>, a sample problem.
+          To run the various cases below, you have to make changes to
+          the text of this file.
+        </li>
+        <li>
+          <a href = "cvt_size_prb.sh">cvt_size_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "cvt_size_prb_output.txt">cvt_size_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      We were interested in watching the behavior of the Voronoi
+      cells over "time".  We set up a problem with 10 generators,
+      with weights 1, 2, 3, ..., 10.  We started with random initial
+      locations for the generators, and carried out 100 iterations
+      of the CVT code.  We saved a
+      <a href = "../../data/ppmb/ppmb.html">PPMB</a> file containing
+      an image of each step, used the
+      <a href = "http://www.ijg.org/">CJPEG</a>
+      program to convert these to
+      <a href = "../../data/jpg/jpg.html">JPEG files</a> with
+      consecutive file names, fed that into
+      <a href = "http://www.apple.com/quicktime/">QuickTime Pro</a>
+      to create an animation, and saved the result as an MPEG-4
+      file.
+    </p>
+
+    <p>
+      <a href = "../../data/mp4/cvt_size_movie.html">
+      Click HERE to see the CVT movie</a>.
+    </p>
+
+    <p>
+      We ran the code on a variety of different sets of data.
+      <ul>
+        <li>
+          We ran a problem called
+          <a href = "cvt_1111133333/cvt_1111133333.html">
+          cvt_1111133333</a>
+          with 10 generators, with weights 1, 1, 1, 1, 1, 3, 3, 3, 3, 3.
+        </li>
+        <li>
+          We ran a problem called
+          <a href = "cvt_123456789x/cvt_123456789x.html">
+          cvt_123456789x</a>
+          with 10 generators, with weights 1, 2, 3, ..., 9, 10.
+        </li>
+        <li>
+          We ran a problem called
+          <a href = "cvt_1to37/cvt_1to37.html">
+          cvt_1to37</a>
+          with 10 generators, with weights 1, 5, 9, ..., 37.
+        </li>
+        <li>
+          We ran a problem called
+          <a href = "cvt_1to80/cvt_1to80.html">
+          cvt_1to80</a>
+          with 80 generators, with weights 1 through 80.
+        </li>
+        <li>
+          We ran a problem called
+          <a href = "cvt_1to317/cvt_1to317.html">
+          cvt_1to80</a>
+          with 80 generators, with weights 1, 5, 9, ..., 317.
+        </li>
+        <li>
+          We ran a problem called
+          <a href = "cvt_1to1024/cvt_1to1024.html">
+          cvt_1to1024</a>
+          with 11 generators, with weights 1, 2, 4, ..., 1024.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      We made a sequence of calculations giving half the cells weight 1
+      and half weight 4.  Increasing the number of generators seemed to
+      show regular behavior.
+      <ul>
+        <li>
+          <a href = "cvt_halfandhalf10/cvt_halfandhalf10.html">
+          cvt_halfandhalf10</a> uses 10 generators.
+        </li>
+        <li>
+          <a href = "cvt_halfandhalf20/cvt_halfandhalf20.html">
+          cvt_halfandhalf20</a> uses 20 generators.
+        </li>
+        <li>
+          <a href = "cvt_halfandhalf40/cvt_halfandhalf40.html">
+          cvt_halfandhalf40</a> uses 40 generators.
+        </li>
+        <li>
+          <a href = "cvt_halfandhalf80/cvt_halfandhalf80.html">
+          cvt_halfandhalf80</a> uses 80 generators.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE_TO_RGB</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CVT_SIZE_ITERATION</b> takes one step of the CVT size iteration.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>FIND_CLOSEST_SIZE</b> finds the Voronoi cell generator closest to a point X.
+        </li>
+        <li>
+          <b>GENERATOR_INIT</b> initializes the Voronoi cell generators.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HEXCOL</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>I4_LOG_2</b> returns the integer part of the logarithm base 2 of |I|.
+        </li>
+        <li>
+          <b>I4_TO_ANGLE</b> maps integers to points on a circle.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>R82VEC_DIST_L2</b> returns the L2 distance between a pair of real 2-vectors.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>REGION_PLOT_PPMB</b> makes a binary PPM plot of the CVT regions.
+        </li>
+        <li>
+          <b>REGION_SAMPLER</b> returns a sample point in the physical region.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

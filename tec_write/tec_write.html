@@ -1,0 +1,267 @@
+<html>
+
+  <head>
+    <title>
+      TEC_WRITE - Write TECPLOT ASCII Files
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEC_WRITE <br> Write TECPLOT ASCII Files
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEC_WRITE</b>
+      is a FORTRAN90 library which
+      can write TECPLOT ASCII files.
+    </p>
+
+    <p>
+      <a href = "http://www.tecplot.com/">
+      The TECPLOT home page</a> contains information about the TECPLOT
+      graphics program.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/fem_to_tec/fem_to_tec.html">
+      FEM_TO_TEC</a>,
+      a MATLAB program which
+      can convert an FEM model
+      into a TEC graphics file.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/ivcon/ivcon.html">
+      IVCON</a>,
+      a C++ program which
+      can read a variety of graphics
+      files and convert some of the information into a TEC file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ivread/ivread.html">
+      IVREAD</a>,
+      a FORTRAN90 program which
+      can read a variety of graphics
+      files and convert some of the information into a TEC file.
+    </p>
+
+    <p>
+      <a href = "../../data/tec/tec.html">
+      TEC</a>,
+      a data file directory which
+      contains sample TEC files.
+    </p>
+
+    <p>
+      <a href = "../../m_src/tec_io/tec_io.html">
+      TEC_IO</a>,
+      a MATLAB library which
+      reads or writes a
+      TEC file containing a finite element model.
+    </p>
+
+    <p>
+      <a href = "../../m_src/tec_to_fem/tec_to_fem.html">
+      TEC_TO_FEM</a>,
+      a MATLAB program which
+      can convert a TEC file
+      into an FEM model.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_to_obj/tec_to_obj.html">
+      TEC_TO_OBJ</a>,
+      a FORTRAN90 program which
+      can read a TECPLOT file describing a
+      surface in 3D composed of triangles or quadrilaterals, and write
+      an OBJ file.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Tecplot, Inc,<br>
+          TECPLOT Reference Manual,<br>
+          Version 10, Release 4,<br>
+          Tecplot, Inc, 2005.
+        </li>
+        <li>
+          Tecplot, Inc,<br>
+          TECPLOT User's Manual,<br>
+          Version 10,<br>
+          Tecplot, Inc, 2005.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "tec_write.f90">tec_write.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "tec_write.sh">tec_write.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "tec_write_prb.f90">tec_write_prb.f90</a>, a
+          sample problem.
+        </li>
+        <li>
+          <a href = "mydata.txt">mydata.txt</a>, a data file to be used.
+        </li>
+        <li>
+          <a href = "tec_write_prb.sh">tec_write_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "tec_write_prb_output.txt">tec_write_prb_output.txt</a>,
+          sample problem output.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      One example shows how to read a data file that represents a
+      slice of cylindrically symmetric data, and write it out
+      in TECPLOT format:
+      <ul>
+        <li>
+          <a href = "mydata.txt">mydata.txt</a>, a data file to be used.
+        </li>
+        <li>
+          <a href = "../../data/tec/cylinder_3d.dat">cylinder_3d.dat</a>,
+          the data, reformatted for TECPLOT as a 3D cylinder, made
+          by making many copies of the plane.
+        </li>
+        <li>
+          <a href = "../../data/tec/plane_slice.dat">plane_slice.dat</a>,
+          the data, reformatted as a plane slice for TECPLOT.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Data files created by the sample problem include:
+      <ul>
+        <li>
+          <a href = "../../data/tec/cylinder.dat">cylinder.dat</a>,
+          a 3D cylinder version of the data.
+        </li>
+        <li>
+          <a href = "../../data/tec/cylinder_slice.dat">cylinder_slice.dat</a>,
+          the data, treated as a 2D slice.
+        </li>
+        <li>
+          <a href = "../../data/tec/channel.dat">channel.dat</a>,
+          a 2D channel flow, one time step.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>R8VEC_EVEN</b> returns N real values, evenly spaced between ALO and AHI.
+        </li>
+        <li>
+          <b>TEC_WRITE_OPEN</b> opens a TECPLOT output file.
+        </li>
+        <li>
+          <b>TEC_WRITE_CLOSE</b> closes a TECPLOT output file.
+        </li>
+        <li>
+          <b>TEC_WRITE_HEADER</b> writes the two line TECPLOT header.
+        </li>
+        <li>
+          <b>TEC_WRITE_XY_LINE</b> writes out line data in XY geometry for use by TECPLOT.
+        </li>
+        <li>
+          <b>TEC_WRITE_XY_PUV</b> writes out PUV data in XY geometry for use by TECPLOT.
+        </li>
+        <li>
+          <b>TEC_WRITE_T3</b> writes data defining 3 node triangular elements.
+        </li>
+        <li>
+          <b>TEC_WRITE_T6</b> rewrites 6 node triangular elements as 3 node triangles.
+        </li>
+        <li>
+          <b>TEC_WRITE_XY_UV</b> writes out UV data in XY geometry for TECPLOT.
+        </li>
+        <li>
+          <b>TEC_WRITE_XY_PRUV</b> writes out PRUV data in XY geometry for TECPLOT.
+        </li>
+        <li>
+          <b>TEC_WRITE_XY_UVW</b> writes out UVW data in XY geometry for TECPLOT.
+        </li>
+        <li>
+          <b>TEC_WRITE_CYL_V</b> writes out V data in cylindrical geometry for TECPLOT.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TVEC_EVEN3</b> computes an evenly spaced set of angles between 0 and 2*PI.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 September 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

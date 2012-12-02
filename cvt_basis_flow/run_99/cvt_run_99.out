@@ -1,0 +1,298 @@
+July 19 2005   2:32:02.190 PM
+ 
+CVT_BASIS_FLOW
+  Arrange a set of PDE solution data into clusters.
+ 
+  This NEW version of the code handles up to
+    10 families of data.
+ 
+  Null cluster policy:
+  0, do nothing, accept null clusters;
+  1, reset center to a random data point;
+  2, reset center to random point in hull;
+ 
+  NULL_CLUSTER_POLICY =      1
+ 
+RANDOM_INITIALIZE
+  Initialize RANDOM_NUMBER with user SEED =    123456789
+ 
+  The variable RUN_TYPE determines preprocessing:
+ 
+* 1, NO steady state file, no preprocessing;
+ 
+* 2, NO steady state file, no preprocessing;
+ 
+* 3,    steady state file;
+    subtract 1/3 SS from solution  1
+    subtract 5/3 SS from solutions 2 through 201
+    subtract 1/3 SS from solutions 202 through 401.
+    do NOT normalize the data.
+    use all the data.
+ 
+* 4,    steady state file;
+    subtract 1/3 SS from solution  1
+    subtract 5/3 SS from solutions 2 through 201
+    subtract 1/3 SS from solutions 202 through 401.
+    do NOT normalize the data;
+    then discard the EVEN numbered data files.
+ 
+* 5,    steady state file;
+    subtract 1/3 SS from solution  1
+    subtract 5/3 SS from solutions 2 through 201
+    subtract 1/3 SS from solutions 202 through 401.
+    then NORMALIZE the data;
+    use all the data.
+ 
+* 6,    steady state file;
+    subtract 5/3 SS from solutions 1 through 250
+    subtract 1/3 SS from solutions 251 through 500.
+    do NOT normalize the data.
+    use all the data.
+ 
+* 7,    steady state file;
+    subtract 5/3 SS from solutions 1 through 250
+    subtract 1/3 SS from solutions 251 through 500.
+    then NORMALIZE the data;
+    use all the data.
+ 
+* 8,    steady state file;
+    subtract 5/3 SS from solutions 1 through 250
+    subtract 1/3 SS from solutions 251 through 500.
+    do NOT normalize the data.
+    then discard the ODD numbered data files.
+ 
+* 9,    steady state file;
+    subtract 5/3 SS from solutions 1 through 400
+    subtract 1/3 SS from solutions 401 through 800.
+    do NOT normalize the data.
+    use all the data.
+ 
+What is the run type (1 through 9)?
+ 
+  RUN_TYPE =      9
+ 
+  What is the XY data file name?
+ 
+  The file "/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/xy.dat" contains 3721 lines.
+ 
+  X minimum :    0.00000    
+  X maximum :    1.00000    
+  Y minimum :    0.00000    
+  Y maximum :    1.00000    
+ 
+What is the name of the steady state file or "none"?
+ 
+  Steady state information was read from
+  the file "/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/steady.dat".
+ 
+  Steady max norm =   0.300000    
+  Steady l2 norm =     5.05292    
+ 
+  It is time to read sets of solution files.
+ 
+  We assume that a series of solution files exists,
+  with "consecutive" names, like
+    fred001.txt, fred002,txt, ...
+  Just specify the FIRST name in the series, and
+  the program will read them all.
+ 
+  The program can read another series of data if
+  you specify yet another first name, or you can
+  type "none" when there are no more file series.
+ 
+ 
+What is the first solution file (in the first series)?
+ 
+What is the first solution file (in the NEXT series) or "NONE"?
+ 
+  The number of initial solution files is      1
+  The total number of solution files is    800
+ 
+  The data is stored in an M by N matrix.
+ 
+  The "spatial" dimension M is     7442
+  The number of data points N is    800
+ 
+ 
+  Processing files starting with "/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up001.txt".
+ 
+  All the data has been read into POINT.
+ 
+Enter lower and upper number of clusters
+ DEBUG: CLUSTER_LO =           16  cluster_hi =           16
+ 
+  The program will try to determine the minimum energy
+  of a clustering, for cluster sizes in the range:
+      16    16
+ 
+Enter the number of different random cluster configurations to check
+ 
+  For each number of clusters, the number of
+  distinct initial random configurations to be checked
+  will be      15
+ 
+Enter the number of energy iterations
+ 
+  For each initial random configuration, the number of
+  times the program will recompute the cluster centers,
+  cluster components, and energy is     30
+ 
+Enter element file for mass matrix preconditioning or "none".
+ 
+  Number of elements =   1800
+  Number of nodes per element =      6
+ 
+  The bandwidth of the matrix is    125
+ 
+  Compute the mass matrix.
+ 
+  Cholesky-factor the mass matrix.
+ 
+Enter 0 to use raw data, 1 to use normalized data.
+ 
+NORMAL = 0
+  Data will NOT be normalized.
+ 
+Number of clusters allowed:     16
+ 
+     1
+Initial_RAW    0.557103         0
+HMEANS_RAW     0.139722E-01    31
+KMEANS_RAW     0.121778E-01    29
+ 
+     2
+Initial_RAW    0.579592         0
+HMEANS_RAW     0.129907E-01    31
+KMEANS_RAW     0.122288E-01    28
+ 
+     3
+Initial_RAW    0.575984         0
+HMEANS_RAW     0.150895E-01    31
+KMEANS_RAW     0.122485E-01    30
+ 
+     4
+Initial_RAW    0.572814         0
+HMEANS_RAW     0.214624E-01    31
+KMEANS_RAW     0.205507E-01    30
+ 
+     5
+Initial_RAW    0.562196         0
+HMEANS_RAW     0.131178E-01    31
+KMEANS_RAW     0.121778E-01    20
+ 
+     6
+Initial_RAW    0.566879         0
+HMEANS_RAW     0.131598E-01    31
+KMEANS_RAW     0.122473E-01    18
+ 
+     7
+Initial_RAW    0.565687         0
+HMEANS_RAW     0.162397E-01    31
+KMEANS_RAW     0.134542E-01    30
+ 
+     8
+Initial_RAW    0.576510         0
+HMEANS_RAW     0.153550E-01    31
+KMEANS_RAW     0.122473E-01    30
+ 
+     9
+Initial_RAW    0.578984         0
+HMEANS_RAW     0.149330E-01    31
+KMEANS_RAW     0.134498E-01    30
+ 
+    10
+Initial_RAW    0.574515         0
+HMEANS_RAW     0.144145E-01    31
+KMEANS_RAW     0.134391E-01    29
+ 
+    11
+Initial_RAW    0.578281         0
+HMEANS_RAW     0.147861E-01    31
+KMEANS_RAW     0.122473E-01    28
+ 
+    12
+Initial_RAW    0.565726         0
+HMEANS_RAW     0.171453E-01    31
+KMEANS_RAW     0.159211E-01    30
+ 
+    13
+Initial_RAW    0.575023         0
+HMEANS_RAW     0.147126E-01    31
+KMEANS_RAW     0.122433E-01    29
+ 
+    14
+Initial_RAW    0.576508         0
+HMEANS_RAW     0.144699E-01    31
+KMEANS_RAW     0.122473E-01    27
+ 
+    15
+Initial_RAW    0.574087         0
+HMEANS_RAW     0.168528E-01    31
+KMEANS_RAW     0.158583E-01    27
+ 
+ANALYSIS_RAW:
+  Computed energy range for given cluster size:
+ 
+  (The minimum and maximum should be close if
+  we're taking enough iterations.)
+ 
+  Number
+  of       Minimum      Maximum
+  Clusters Energy       Energy
+ 
+     16        0.0122        0.0206
+ 
+  Energy table:
+ 
+Number
+of                   Energy
+Clusters  Energy     /point      Sqrt(E/Pt)
+ 
+     16        0.0122        0.0000        0.0039
+ 
+CLUSTER_CENSUS
+  Individual cluster population and energy
+ 
+  Index    Population   Percentage   Energy  Percentage  Min  Max
+ 
+      1            21            2   3.33076          7  413  433
+      2            21            2   2.29180          5   61   81
+      3           163           20   2.70151          6  638  800
+      4            30            3   3.18866          7  434  463
+      5            80           10   2.79759          6  558  637
+      6            14            1   2.62272          5   11   24
+      7           228           28   2.51031          5  173  400
+      8            12            1   4.32988          9  401  412
+      9            40            5   1.80683          4  133  172
+     10            17            2   2.63657          5   25   41
+     11            28            3   1.99783          4  105  132
+     12            23            2   1.99606          4   82  104
+     13            54            6   2.83192          6  504  557
+     14            19            2   2.45175          5   42   60
+     15            40            5   2.93997          6  464  503
+     16            10            1   3.70544          8    1   10
+ 
+               ------          ---  ------------    ---
+ 
+  Total           800          100   44.1396        100    1  800
+ 
+CVT_BASIS_FLOW:
+  Ready to write the cluster generators to files.
+ 
+  Do you want comments in the header of the file?
+  (These begin with the "#" character.) (Y/N)
+ 
+  Enter Y or N:
+ 
+  Writing first file gen_001.txt
+  Writing last file  gen_016.txt
+ 
+CPU_TIME (seconds):
+  Mass matrix:    8.85156    
+  CVT:            979.530    
+  Total:          988.382    
+ 
+CVT_BASIS_FLOW
+  Normal end of execution.
+ 
+July 19 2005   2:49:12.097 PM

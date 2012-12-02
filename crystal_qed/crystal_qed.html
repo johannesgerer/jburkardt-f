@@ -1,0 +1,239 @@
+<html>
+
+  <head>
+    <title>
+      CRYSTAL_QED - Crystallization Optimization
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CRYSTAL_QED <br> Crystallization Optimization
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CRYSTAL_QED</b>
+      is a FORTRAN90 program which
+      seeks a set of parameters that minimize a cost
+      functional associated with a crystallization problem.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/crystal/crystal.html">
+      CRYSTAL</a>,
+      a FORTRAN90 program which
+      simulates the growth of a silicon crystal under the Czochralski process.
+    </p>
+
+    <p>
+      <a href = "../../f_src/crystal_plot/crystal_plot.html">
+      CRYSTAL_PLOT</a>,
+      a FORTRAN90 program which
+      creates graphic images of data from <b>CRYSTAL</b> or <b>CRYSTAL_QED</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      carries out the least squares minimization of a bounded and constrained
+      functional; this library is required by <b>CRYSTAL_QED</b>.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <ol>
+      <li>
+        Suhas Patankar,<br>
+        Numerical Heat Transfer and Fluid Flow,<br>
+        Taylor and Francis, 1980,<br>
+        ISBN: 0891165223,<br>
+        LC: QC320.P37
+      </li>
+      <li>
+        Fumio Shimura,<br>
+        Semiconductor Silicon Crystal Technology,<br>
+        Academic Press, 1989,<br>
+        LC: TK7871.85 S523.
+      </li>
+    </ol>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "crystal_qed.f90">crystal_qed.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "crystal_qed.sh">crystal_qed.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "crystal_qed_output.txt">crystal_qed_output.txt</a>, sample problem
+          output.
+        </li>
+        <li>
+          <a href = "crystal_qed.rs">crystal_qed.rs</a>, a restart
+          file.
+        </li>
+        <li>
+          <a href = "crystal_qed.tec">crystal_qed.tec</a>, data from the
+          program suitable for input to the graphics program TECPLOT.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CRYSTAL_QED</b> seeks parameters that minimize a crystallization cost functional.
+        </li>
+        <li>
+          <b>DQEDEV</b> evaluates certain functions being treated by DQED.
+        </li>
+        <li>
+          <b>FUNC</b> communicates between the optimizer and the constitutive routines.
+        </li>
+        <li>
+          <b>ADAPT</b> executes MAGG, the multizone adaptive grid generation.
+        </li>
+        <li>
+          <b>CUBIC</b> constructs a cubic spline through data.
+        </li>
+        <li>
+          <b>DAMAX</b> returns the maximum absolute value of the entries of a vector.
+        </li>
+        <li>
+          <b>DIFLOW</b> computes the convection-diffusion coefficient ACOF.
+        </li>
+        <li>
+          <b>DOAREA</b> calculates control volume areas.
+        </li>
+        <li>
+          <b>FINDP</b> finds the boundary nodes associated with a Neumann condition.
+        </li>
+        <li>
+          <b>FLUX</b> computes the flux of various quantities.
+        </li>
+        <li>
+          <b>GAMSOR</b> sets the coefficients for the transport problems.
+        </li>
+        <li>
+          <b>GRADNT</b> estimats the gradient of PHI at a primary node index (I,J).
+        </li>
+        <li>
+          <b>HELLO</b> prints a brief message identifying the program.
+        </li>
+        <li>
+          <b>INIDAT</b> sets the initial values of certain data.
+        </li>
+        <li>
+          <b>INIGRD</b> makes an initial assignment of the grid points XC, YC.
+        </li>
+        <li>
+          <b>MOVGRD</b> calculates the new position of the interface and free surface.
+        </li>
+        <li>
+          <b>OUTPUT</b> prints some sample data from the ongoing solution.
+        </li>
+        <li>
+          <b>PMOD</b> interpolates the pressure at boundary corners.
+        </li>
+        <li>
+          <b>PRDAT</b> prints out the initial values of certain data.
+        </li>
+        <li>
+          <b>RESID</b> computes the residual of the linear equations.
+        </li>
+        <li>
+          <b>RSWRIT</b> writes out information which can be used for restarts or plots.
+        </li>
+        <li>
+          <b>SETCST</b> computes a portion on the cost functional.
+        </li>
+        <li>
+          <b>SETGEO</b> calculates various geometric quantities.
+        </li>
+        <li>
+          <b>SETP</b> estimates the values of pressure at the interfaces.
+        </li>
+        <li>
+          <b>SETRU</b> estimates the normal mass velocity component at interfaces.
+        </li>
+        <li>
+          <b>SETUP</b> calculates the coefficients of the equations, and solves them.
+        </li>
+        <li>
+          <b>SETX</b> calculates the locations of the primary nodes.
+        </li>
+        <li>
+          <b>SOLVE1</b> sets or modifies certain entries of the linear system.
+        </li>
+        <li>
+          <b>SOLVE2</b> is the tridiagonal matrix solver.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>VORTIC</b> computes the value of the vorticity.
+        </li>
+        <li>
+          <b>WRTEC</b> writes solution data to a TECPLOT input file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 16 February 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

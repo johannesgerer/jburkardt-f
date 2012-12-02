@@ -1,0 +1,251 @@
+January  2 2011   1:14:50.326 PM
+ 
+FEM2D_POISSON_SPARSE
+  FORTRAN90 version:
+ 
+  A version of FEM2D_POISSON using sparse storage
+  and an iterative solver.
+ 
+  Solution of the Poisson equation in an arbitrary region
+  in 2 dimensions.
+ 
+  - DEL H(x,y) DEL U(x,y) + K(x,y) * U(x,y) = F(x,y) in the region
+ 
+                    U(x,y) = G(x,y) on the boundary.
+ 
+  The finite element method is used,
+  with triangular elements,
+  which must be a 3 node linear triangle.
+ 
+  Node file is "lake_nodes.txt".
+  Element file is "lake_elements.txt".
+  Number of nodes =               621
+ 
+  First 10 nodes
+ 
+  Row         1             2       
+  Col
+ 
+    1    316.430       404.476    
+    2    291.049       400.709    
+    3    265.165       409.779    
+    4    241.468       402.403    
+    5    216.551       396.521    
+    6    163.285       411.371    
+    7    142.818       391.164    
+    8    111.954       346.703    
+    9    100.035       325.727    
+   10    103.987       302.516    
+ 
+  Element order =                   3
+  Number of elements =            974
+ 
+  First 10 elements
+ 
+  Row       1      2      3
+  Col
+ 
+    1     619    618     39
+    2     620    619     39
+    3     125    126      7
+    4     125    132    126
+    5     143    135    150
+    6     143    150    154
+    7     481     69    482
+    8     454     68    464
+    9     460    472    473
+   10     460    450    472
+ 
+  Quadrature order =                 3
+ 
+  Number of nonzero coefficients NZ_NUM =     3811
+ 
+  Part of Finite Element matrix A:
+ 
+  Col:        1             2             3             4             5
+  Row
+  ---
+    1    38.1432       0.00000       0.00000       0.00000       0.00000    
+    2    0.00000       26.8833       0.00000       0.00000       0.00000    
+    3    0.00000       0.00000       17.3269       0.00000       0.00000    
+    4    0.00000       0.00000       0.00000       29.7398       0.00000    
+    5    0.00000       0.00000       0.00000       0.00000       32.1393    
+ 
+  Col:        6             7             8             9            10
+  Row
+  ---
+    6    19.3873       0.00000       0.00000       0.00000       0.00000    
+    7    0.00000       31.9242       0.00000       0.00000       0.00000    
+    8    0.00000       0.00000       19.4226       0.00000       0.00000    
+    9    0.00000       0.00000       0.00000       19.4323       0.00000    
+   10    0.00000       0.00000       0.00000       0.00000       19.3334    
+ 
+  Part of right hand side vector F:
+ 
+         1   75.722004    
+         2   48.003598    
+         3   29.483373    
+         4   47.636355    
+         5   48.041335    
+         6   27.745294    
+         7   41.648929    
+         8   18.481132    
+         9   16.373685    
+        10   14.506157    
+ 
+  Part of A after adjustment for Dirichlet condition:
+ 
+  Col:        1             2             3             4             5
+  Row
+  ---
+    1    1.00000       0.00000       0.00000       0.00000       0.00000    
+    2    0.00000       1.00000       0.00000       0.00000       0.00000    
+    3    0.00000       0.00000       1.00000       0.00000       0.00000    
+    4    0.00000       0.00000       0.00000       1.00000       0.00000    
+    5    0.00000       0.00000       0.00000       0.00000       1.00000    
+ 
+  Col:        6             7             8             9            10
+  Row
+  ---
+    6    1.00000       0.00000       0.00000       0.00000       0.00000    
+    7    0.00000       1.00000       0.00000       0.00000       0.00000    
+    8    0.00000       0.00000       1.00000       0.00000       0.00000    
+    9    0.00000       0.00000       0.00000       1.00000       0.00000    
+   10    0.00000       0.00000       0.00000       0.00000       1.00000    
+ 
+  Part of F after adjustment for Dirichlet condition:
+ 
+         1   1.0549145    
+         2  0.98111051    
+         3  0.95292498    
+         4  0.88094008    
+         5  0.81649259    
+         6  0.78355232    
+         7  0.69362307    
+         8  0.53094571    
+         9  0.46442088    
+        10  0.40931678    
+  ITR =        1  Residual =   0.261618E+08
+  K =          1  Residual =    7759.88    
+  K =          2  Residual =    4033.04    
+  K =          3  Residual =    2064.68    
+  K =          4  Residual =    1043.06    
+  K =          5  Residual =    590.617    
+  K =          6  Residual =    322.866    
+  K =          7  Residual =    216.484    
+  K =          8  Residual =    135.267    
+  K =          9  Residual =    86.7598    
+  K =         10  Residual =    60.0294    
+  K =         11  Residual =    41.0438    
+  K =         12  Residual =    29.8870    
+  K =         13  Residual =    24.2582    
+  K =         14  Residual =    21.8413    
+  K =         15  Residual =    20.7500    
+  K =         16  Residual =    20.2328    
+  K =         17  Residual =    20.0105    
+  K =         18  Residual =    19.7626    
+  K =         19  Residual =    19.3900    
+  K =         20  Residual =    18.3958    
+  ITR =        2  Residual =    18.3958    
+  K =          1  Residual =    18.3958    
+  K =          2  Residual =    17.7722    
+  K =          3  Residual =    17.4770    
+  K =          4  Residual =    17.3160    
+  K =          5  Residual =    17.1703    
+  K =          6  Residual =    16.9056    
+  K =          7  Residual =    16.5692    
+  K =          8  Residual =    16.1985    
+  K =          9  Residual =    14.9125    
+  K =         10  Residual =    12.7793    
+  K =         11  Residual =    10.9527    
+  K =         12  Residual =    8.89099    
+  K =         13  Residual =    6.86045    
+  K =         14  Residual =    4.80118    
+  K =         15  Residual =    2.83188    
+  K =         16  Residual =    1.65976    
+  K =         17  Residual =   0.981748    
+  K =         18  Residual =   0.665924    
+  K =         19  Residual =   0.420939    
+  K =         20  Residual =   0.235930    
+  ITR =        3  Residual =   0.235930    
+  K =          1  Residual =   0.235929    
+  K =          2  Residual =   0.164212    
+  K =          3  Residual =   0.105276    
+  K =          4  Residual =   0.733652E-01
+  K =          5  Residual =   0.472247E-01
+  K =          6  Residual =   0.279413E-01
+  K =          7  Residual =   0.168423E-01
+  K =          8  Residual =   0.112185E-01
+  K =          9  Residual =   0.814604E-02
+  K =         10  Residual =   0.584313E-02
+  K =         11  Residual =   0.452534E-02
+  K =         12  Residual =   0.354520E-02
+  K =         13  Residual =   0.314372E-02
+  K =         14  Residual =   0.288613E-02
+  K =         15  Residual =   0.271897E-02
+  K =         16  Residual =   0.265755E-02
+  K =         17  Residual =   0.263704E-02
+  K =         18  Residual =   0.262256E-02
+  K =         19  Residual =   0.260362E-02
+  K =         20  Residual =   0.254773E-02
+  ITR =        4  Residual =   0.254773E-02
+  K =          1  Residual =   0.254773E-02
+  K =          2  Residual =   0.249656E-02
+  K =          3  Residual =   0.245217E-02
+  K =          4  Residual =   0.239541E-02
+  K =          5  Residual =   0.235476E-02
+  K =          6  Residual =   0.231478E-02
+  K =          7  Residual =   0.226651E-02
+  K =          8  Residual =   0.217984E-02
+  K =          9  Residual =   0.188785E-02
+  K =         10  Residual =   0.138505E-02
+  K =         11  Residual =   0.891989E-03
+  K =         12  Residual =   0.600467E-03
+  K =         13  Residual =   0.445279E-03
+  K =         14  Residual =   0.323841E-03
+  K =         15  Residual =   0.218872E-03
+  K =         16  Residual =   0.137001E-03
+  K =         17  Residual =   0.727478E-04
+  K =         18  Residual =   0.413069E-04
+  K =         19  Residual =   0.239360E-04
+  K =         20  Residual =   0.158441E-04
+  ITR =        5  Residual =   0.158441E-04
+  K =          1  Residual =   0.158441E-04
+  K =          2  Residual =   0.121049E-04
+  K =          3  Residual =   0.739210E-05
+  K =          4  Residual =   0.448480E-05
+  K =          5  Residual =   0.285688E-05
+  K =          6  Residual =   0.185708E-05
+  K =          7  Residual =   0.145440E-05
+  K =          8  Residual =   0.117317E-05
+  K =          9  Residual =   0.102672E-05
+  K =         10  Residual =   0.915139E-06
+ 
+MGMRES:
+  Iterations =       90
+  Final Residual =   0.915139E-06
+ 
+  Part of the solution vector U:
+ 
+         1   1.0549145    
+         2  0.98111051    
+         3  0.95292499    
+         4  0.88094010    
+         5  0.81649261    
+         6  0.78355235    
+         7  0.69362308    
+         8  0.53094573    
+         9  0.46442090    
+        10  0.40931677    
+ 
+FEM2D_POISSON_SPARSE:
+  Wrote an ASCII file
+    "lake_solution.txt"
+  of the form
+    U ( X(I), Y(I) )
+  which can be used for plotting.
+ 
+FEM2D_POISSON_SPARSE:
+  Normal end of execution.
+ 
+January  2 2011   1:14:50.368 PM

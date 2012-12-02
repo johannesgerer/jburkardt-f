@@ -1,0 +1,299 @@
+<html>
+
+  <head>
+    <title>
+      ALSCAL - Multidimensional Scaling Program
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ALSCAL <br> Multidimensional Scaling Program
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ALSCAL</b> 
+      is a FORTRAN90 program which
+      carries out multidimensional scaling (MDS), 
+      by Forrest Young and Rostyslaw Lewyckyj.
+    </p>
+
+    <p>
+      It uses
+      the alternating least squares approach to scaling.  It is capable
+      of a wide range of analyses, and is suitable for any type of
+      two or three way data, measured at the nominal, ordinal, interval
+      or ratio level.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/alscal_data_convert/alscal_data_convert.html">
+      ALSCAL_DATA_CONVERT</a>,
+      a FORTRAN90 program which
+      reads a data file containing object names and distances between objects
+      and reformats the data for input to ALSCAL.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Forrest Young and Rostyslaw Lewyckyj
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Forrest Young, Rostyslaw Lewyckyj,<br>
+          ALSCAL User's Guide,<br>
+          L L Thurstone Psychometric Laboratory,<br>
+          University of North Carolina, <br>
+          Chapel Hill, North Carolina, 27599
+        </li>
+        <li>
+          <a href = "http://forrest.psych.unc.edu/research/alscal.html">
+          the ALSCAL web page</a>.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "alscal.f90">alscal.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "alscal.sh">alscal.sh</a>, 
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "car.txt">car.txt</a>, a dataset;
+        </li>
+        <li>
+          <a href = "car_output.txt">car_output.txt</a>, analysis of the car dataset;
+        </li>
+        <li>
+          <a href = "city.txt">city.txt</a>, a dataset;
+        </li>
+        <li>
+          <a href = "city2.txt">city2.txt</a>, a dataset;
+        </li>
+        <li>
+          <a href = "cityfam.txt">cityfam.txt</a>, a dataset;
+        </li>
+        <li>
+          <a href = "inddiff.txt">inddiff.txt</a>, a dataset;
+        </li>
+        <li>
+          <a href = "jakobo.txt">jakobo.txt</a>, a dataset;
+        </li>
+        <li>
+          <a href = "jones.txt">jones.txt</a>, a dataset;
+        </li>
+        <li>
+          <a href = "trade.txt">trade.txt</a>, a dataset;
+        </li>
+      </ul>
+    </p>
+
+    <h2 align = "center">
+      List of Routines:
+    </h2>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program.
+        </li>
+        <li>
+          <b>ARNGE</b> rearranges the weight and stimulus matrices.
+        </li>
+        <li>
+          <b>BLOC2</b> finds blocks of ties.
+        </li>
+        <li>
+          <b>CATSES</b> computes a discrete nominal transformation.
+        </li>
+        <li>
+          <b>CJEIG</b> computes the eigenvalues and eigenvectors of a real symmetric matrix.
+        </li>
+        <li>
+          <b>CLEAR</b> clears the screen.
+        </li>
+        <li>
+          <b>COEF</b> obtains least stress coordinates.
+        </li>
+        <li>
+          <b>DISTP</b> computes distances and disparities for coordinates and weights.
+        </li>
+        <li>
+          <b>DRIVER</b> controls the flow of the program.
+        </li>
+        <li>
+          <b>EIGK</b> implements Kaiser's JK method for eigenanalysis of a real symmetric matrix.
+        </li>
+        <li>
+          <b>HITR</b> requests that the user hit RETURN, and waits for input.
+        </li>
+        <li>
+          <b>INIT</b> computes the initial configuration estimation in INDSCAL.
+        </li>
+        <li>
+          <b>INNER</b> computes stimulus coordinates.
+        </li>
+        <li>
+          <b>INSWM</b> computes the initial configuration for the stimulus weighted model.
+        </li>
+        <li>
+          <b>LENGTH</b> normalizes the length of disparities.
+        </li>
+        <li>
+          <b>LINT</b> performs constrained least squares linear regression.
+        </li>
+        <li>
+          <b>MINV</b> computes the inverse of a symmetric matrix.
+        </li>
+        <li>
+          <b>MSTRS</b> calculates the stress of two vectors and estimates missing data.
+        </li>
+        <li>
+          <b>NORMW</b> normalizes weight matrices for output.
+        </li>
+        <li>
+          <b>NORMX</b> normalizes the configuration for printing at end of job.
+        </li>
+        <li>
+          <b>OUTA</b> prints out asymmetric and rectangular matrices.
+        </li>
+        <li>
+          <b>OUTS</b> prints out symmetric matrices.
+        </li>
+        <li>
+          <b>PAGE</b> writes a form feed.
+        </li>
+        <li>
+          <b>PDDISP</b> prepares disparities for PDSCAL.
+        </li>
+        <li>
+          <b>PDDIST</b> calculates principal direction distances.
+        </li>
+        <li>
+          <b>PDINWT</b> obtains an initial estimate of the principal direction weights.
+        </li>
+        <li>
+          <b>PDMAIN</b> is the main subroutine for principal direction scaling.
+        </li>
+        <li>
+          <b>PDOUTT</b> prints Tucker's oblique decomposition of a subject's matrix of principal weights.
+        </li>
+        <li>
+          <b>PDOUTY</b> prints out CK, WK and XK.
+        </li>
+        <li>
+          <b>PDPLOT</b> plots each pair of directions of xk
+        </li>
+        <li>
+          <b>PDSCAL</b> computes principal direction weights.
+        </li>
+        <li>
+          <b>PDSTRS</b> calculates unnormalized stress.
+        </li>
+        <li>
+          <b>PDTUCK</b> obtains Tucker's oblique decomposition of WK.
+        </li>
+        <li>
+          <b>PDWGHT</b> calculates a(p,q), the weight of variable p on principal direction q.
+        </li>
+        <li>
+          <b>PDYUNG</b> obtains Young's principal directions solution.
+        </li>
+        <li>
+          <b>PLOTR</b> is a plot routine for ALSCAL.
+        </li>
+        <li>
+          <b>POLYF</b> does polynomial fitting.
+        </li>
+        <li>
+          <b>PPLOT</b> is a plot routine for ALSCAL.
+        </li>
+        <li>
+          <b>PRS</b> prepares ties for continuous ordinal transformation.
+        </li>
+        <li>
+          <b>SCUBE</b> solves a cubic equation.
+        </li>
+        <li>
+          <b>SES</b> prepares ties for discrete ordinal transformation.
+        </li>
+        <li>
+          <b>SHEL9</b> sorts data using Shell's sort.
+        </li>
+        <li>
+          <b>STEP0</b> reads and checks the problem parameters.
+        </li>
+        <li>
+          <b>STEP1</b> is the data input routine.
+        </li>
+        <li>
+          <b>STEP2</b> obtains starting configurations and scalings.
+        </li>
+        <li>
+          <b>STEP3</b> is the major computational routine.
+        </li>
+        <li>
+          <b>STEP3A</b> prints stress and correlations in distances.
+        </li>
+        <li>
+          <b>STEP4</b> outputs the results.
+        </li>
+        <li>
+          <b>TRS</b> computes Kruskal's least squares monotonic transformation.
+        </li>
+        <li>
+          <b>WPLOT</b> writes file "cplot.dat" for rotation of configuration by use of CPLOT.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 18 March 2008.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>
+

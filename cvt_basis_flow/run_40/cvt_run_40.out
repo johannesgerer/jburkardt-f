@@ -1,0 +1,222 @@
+June 22 2002   1:08:02.072 PM
+ 
+CVT_BASIS
+  Arrange a set of PDE solution data into clusters.
+ 
+  Null cluster policy:
+  0, do nothing, accept null clusters;
+  1, reset center to a random data point;
+  2, reset center to random point in hull;
+ 
+  NULL_CLUSTER_POLICY =      0
+ 
+RANDOM_INITIALIZE
+  Initialize RANDOM_NUMBER with user SEED =     12345678
+ 
+What is the run type?
+ 
+  RUN_TYPE =      6
+ 
+  For RUN_TYPE = 6,
+  read in the steady state solution from "STEADY.TXT"
+  and, letting SS be the steady state solution,
+  subtract 5/3 SS from solutions 1 through 250
+  subtract 1/3 SS from solutions 251 through 500.
+  We do NOT normalize the result.
+ 
+What is the name of the XY data file?
+ 
+  The file "/math/WWW/f_src/cvt_basis_cavity/xy.txt" contains 1681 lines.
+ 
+  X minimum :    0.00000    
+  X maximum :    1.00000    
+  Y minimum :    0.00000    
+  Y maximum :    1.00000    
+ 
+What is the name of the steady state file?
+ 
+  Steady state information was read from
+  the file "/math/WWW/f_src/cvt_basis_cavity/steady.txt".
+ 
+  Steady max norm =    3.00000    
+  Steady l2 norm =     33.7950    
+ 
+What is the name of the first solution file?
+ 
+We believe the number of solution files is    500
+ 
+  The data is stored in an M by N matrix.
+ 
+  The "spatial" dimension M is     3362
+  The number of data points N is    500
+ 
+All the data has been read into POINT.
+ 
+Enter lower and upper number of clusters
+ 
+  The program will try to determine the minimum energy
+  of a clustering, for cluster sizes in the range:
+      16    16
+ 
+Enter the number of different random cluster configurations to check
+ 
+  For each number of clusters, the number of
+  distinct initial random configurations to be checked
+  will be      15
+ 
+Enter the number of energy iterations
+ 
+  For each initial random configuration, the number of
+  times the program will recompute the cluster centers,
+  cluster components, and energy is     30
+ 
+Enter 0 to use raw data, 1 to use normalized data.
+ 
+NORMAL = 0
+  Data will NOT be normalized.
+ 
+Number of clusters allowed:     16
+ 
+     1
+Initial_RAW     24604.7         0
+HMEANS_RAW      2749.54        14
+KMEANS_RAW      1367.80        21
+ 
+     2
+Initial_RAW     24497.9         0
+HMEANS_RAW      2749.54        17
+KMEANS_RAW      1367.80        21
+ 
+     3
+Initial_RAW     24567.3         0
+HMEANS_RAW      2749.54        19
+KMEANS_RAW      1367.80        21
+ 
+     4
+Initial_RAW     24622.8         0
+HMEANS_RAW      2749.54        20
+KMEANS_RAW      1367.80        21
+ 
+     5
+Initial_RAW     24601.6         0
+HMEANS_RAW      2749.54        20
+KMEANS_RAW      1367.80        21
+ 
+     6
+Initial_RAW     24656.5         0
+HMEANS_RAW      3822.85        15
+KMEANS_RAW      834.856        22
+ 
+     7
+Initial_RAW     24542.3         0
+HMEANS_RAW      1837.30        22
+KMEANS_RAW      1367.80        18
+ 
+     8
+Initial_RAW     24508.7         0
+HMEANS_RAW      2749.54        19
+KMEANS_RAW      1367.80        21
+ 
+     9
+Initial_RAW     24492.3         0
+HMEANS_RAW      2749.54        15
+KMEANS_RAW      1367.80        21
+ 
+    10
+Initial_RAW     24758.2         0
+HMEANS_RAW      1834.51        21
+KMEANS_RAW      1367.80        18
+ 
+    11
+Initial_RAW     24477.8         0
+HMEANS_RAW      4358.50        19
+KMEANS_RAW      1367.80        22
+ 
+    12
+Initial_RAW     24469.0         0
+HMEANS_RAW      2749.54        20
+KMEANS_RAW      1367.80        21
+ 
+    13
+Initial_RAW     24581.0         0
+HMEANS_RAW      2138.01        20
+KMEANS_RAW      1367.80        20
+ 
+    14
+Initial_RAW     24735.2         0
+HMEANS_RAW      2749.54        15
+KMEANS_RAW      1367.80        21
+ 
+    15
+Initial_RAW     24480.4         0
+HMEANS_RAW      2749.54        16
+KMEANS_RAW      1367.80        21
+ 
+ANALYSIS_RAW:
+  Computed energy range for given cluster size:
+ 
+  (The minimum and maximum should be close if
+  we're taking enough iterations.)
+ 
+  Cluster  Minimum      Maximum
+  Size     Energy       Energy
+ 
+       16      834.8563     1367.8027
+ 
+  Energy table:
+ 
+Cluster              Energy
+Size      Energy     /point      Sqrt(E/Pt)
+ 
+       16      834.8563        1.6697        1.2922
+ 
+CLUSTER_CENSUS
+  Individual cluster population and energy
+ 
+  Index    Population   Percentage   Energy  Percentage  Min  Max
+ 
+      1             1            0   0.00000          0    1    1
+      2             8            1   223.125         26  251  258
+      3             1            0   0.00000          0    2    2
+      4             2            0   3.18104          0    3    4
+      5             3            0   5.06125          0    5    7
+      6            18            3   180.326         21  259  276
+      7            38            7   173.213         20  277  314
+      8             4            0   5.62754          0    8   11
+      9             6            1   9.11582          1   12   17
+     10           186           37   156.254         18  315  500
+     11             8            1   10.0913          1   18   25
+     12            11            2   11.8025          1   26   36
+     13            39            7   14.6541          1   76  114
+     14            16            3   14.5168          1   37   52
+     15           136           27   13.5871          1  115  250
+     16            23            4   14.3014          1   53   75
+ 
+               ------          ---  ------------    ---
+ 
+  Total           500          100   834.856        100    1  500
+ 
+CVT_BASIS:
+  Writing cluster generators to individual files.
+ 
+  Write file gen_001.txt
+  Write file gen_002.txt
+  Write file gen_003.txt
+  Write file gen_004.txt
+  Write file gen_005.txt
+  Write file gen_006.txt
+  Write file gen_007.txt
+  Write file gen_008.txt
+  Write file gen_009.txt
+  Write file gen_010.txt
+  Write file gen_011.txt
+  Write file gen_012.txt
+  Write file gen_013.txt
+  Write file gen_014.txt
+  Write file gen_015.txt
+  Write file gen_016.txt
+ 
+CVT_BASIS
+  Normal end of execution.
+ 
+June 22 2002   1:18:59.452 PM

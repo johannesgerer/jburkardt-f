@@ -1,0 +1,405 @@
+<html>
+
+  <head>
+    <title>
+      GM_RULE - Grundmann-Moeller Quadrature Rules for M-dimensional Simplexes.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GM_RULE <br> Grundmann-Moeller Quadrature Rules for M-dimensional Simplexes.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GM_RULE</b>
+      is a FORTRAN90 library which
+      defines Grundmann-Moeller quadrature rules for a simplex
+      (generalized triangle) in M dimensions.
+    </p>
+
+    <p>
+      The user can choose the spatial dimension M, thus defining the region
+      to be a triangle (M = 2), tetrahedron (M = 3) or a general M-dimensional
+      simplex.
+    </p>
+
+    <p>
+      The user chooses the index <b>S</b> of the rule.  Rules are available
+      with index <b>S</b> = 0 on up.  A rule of index <b>S</b> will exactly
+      integrate any polynomial of total degree <b>2*S+1</b> or less.
+    </p>
+
+    <p>
+      The rules are defined on the unit M-dimensional simplex.  A simple
+      linear transformation can be used to map the vertices and weights
+      to an arbitrary simplex, while preserving the accuracy of the rule.
+    </p>
+
+    <p>
+      The formula for the weight involves the ratio of factorials and a
+      high power.  Direct evaluation of this formula results in disastrous
+      inaccuracies, even for relatively low order rules.  The original
+      code has been revised to take a more cautious and accurate approach
+      to this computation.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>GM_RULE</b> is available in
+      <a href = "../../c_src/gm_rule/gm_rule.html">a C version</a> and
+      <a href = "../../cpp_src/gm_rule/gm_rule.html">a C++ version</a> and
+      <a href = "../../f77_src/gm_rule/gm_rule.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/gm_rule/gm_rule.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/gm_rule/gm_rule.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cubpack/cubpack.html">
+      CUBPACK</a>,
+      a FORTRAN90 library which
+      estimates the integral of a function
+      (or vector of functions) over a collection of M-dimensional
+      hyperrectangles and simplices.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dunavant/dunavant.html">
+      DUNAVANT</a>,
+      a FORTRAN90 library which
+      defines Dunavant rules for quadrature on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fekete/fekete.html">
+      FEKETE</a>,
+      a FORTRAN90 library which
+      defines Fekete rules for interpolation or quadrature on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/felippa/felippa.html">
+      FELIPPA</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for lines, triangles, quadrilaterals,
+      pyramids, wedges, tetrahedrons and hexahedrons.
+    </p>
+
+    <p>
+      <a href = "../../f_src/keast/keast.html">
+      KEAST</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lyness_rule/lyness_rule.html">
+      LYNESS_RULE</a>,
+      a FORTRAN90 library which
+      returns Lyness-Jespersen quadrature rules for the triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ncc_tetrahedron/ncc_tetrahedron.html">
+      NCC_TETRAHEDRON</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes Closed quadrature
+      rules on a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ncc_triangle/ncc_triangle.html">
+      NCC_TRIANGLE</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes Closed quadrature rules on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nco_tetrahedron/nco_tetrahedron.html">
+      NCO_TETRAHEDRON</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes Open quadrature rules on a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nco_triangle/nco_triangle.html">
+      NCO_TRIANGLE</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes Open quadrature rules on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_tet/quadrature_rules_tet.html">
+      QUADRATURE_RULES_TET</a>,
+      a dataset directory which
+      contains triples of files defining various quadrature rules on tetrahedrons.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_tri/quadrature_rules_tri.html">
+      QUADRATURE_RULES_TRI</a>,
+      a dataset directory which
+      contains triples of files defining various quadrature rules on triangles.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/simpack/simpack.html">
+      SIMPACK</a>,
+      a FORTRAN77 library which
+      approximate the integral of a function or vector of functions
+      over a M-dimensional simplex, or a region which is the
+      sum of M-dimensional simplexes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/simplex_coordinates/simplex_coordinates.html">
+      SIMPLEX_COORDINATES</a>,
+      a FORTRAN90 library which
+      computes the Cartesian coordinates of the vertices of a regular
+      simplex in M dimensions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for a variety of unusual areas, surfaces and volumes
+      in 2D, 3D and M-dimensions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_tri_int/test_tri_int.html">
+      TEST_TRI_INT</a>,
+      a FORTRAN90 library which
+      can be used to test algorithms for quadrature over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tetrahedron_exactness/tetrahedron_exactness.html">
+      TETRAHEDRON_EXACTNESS</a>,
+      a FORTRAN90 program which
+      investigates the polynomial exactness of a quadrature rule for the tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../m_src/tetrahedron_monte_carlo/tetrahedron_monte_carlo.html">
+      TETRAHEDRON_MONTE_CARLO</a>,
+      a MATLAB program which
+      uses the Monte Carlo method to estimate integrals over a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangle_exactness/triangle_exactness.html">
+      TRIANGLE_EXACTNESS</a>,
+      a FORTRAN90 program which
+      investigates the polynomial exactness of a quadrature rule for the triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangle_monte_carlo/triangle_monte_carlo.html">
+      TRIANGLE_MONTE_CARLO</a>,
+      a FORTRAN90 program which
+      uses the Monte Carlo method to estimate integrals over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wandzura/wandzura.html">
+      WANDZURA</a>,
+      a FORTRAN90 library which
+      definine Wandzura rules for quadrature on a triangle.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Paul Bratley, Bennett Fox, Linus Schrage,<br>
+          A Guide to Simulation,<br>
+          Second Edition,<br>
+          Springer, 1987,<br>
+          ISBN: 0387964673,<br>
+          LC: QA76.9.C65.B73.
+        </li>
+        <li>
+          Bennett Fox,<br>
+          Algorithm 647:
+          Implementation and Relative Efficiency of Quasirandom
+          Sequence Generators,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 12, Number 4, December 1986, pages 362-376.
+        </li>
+        <li>
+          Axel Grundmann, Michael Moeller,<br>
+          Invariant Integration Formulas for the N-Simplex
+          by Combinatorial Methods,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 15, Number 2, April 1978, pages 282-290.
+        </li>
+        <li>
+          Pierre LEcuyer,<br>
+          Random Number Generation,<br>
+          in Handbook of Simulation,<br>
+          edited by Jerry Banks,<br>
+          Wiley, 1998,<br>
+          ISBN: 0471134031,<br>
+          LC: T57.62.H37.
+        </li>
+        <li>
+          Peter Lewis, Allen Goodman, James Miller,<br>
+          A Pseudo-Random Number Generator for the System/360,<br>
+          IBM Systems Journal,<br>
+          Volume 8, 1969, pages 136-143.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms for Computers and Calculators,<br>
+          Second Edition,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0-12-519260-6,<br>
+          LC: QA164.N54.
+        </li>
+        <li>
+          ML Wolfson, HV Wright,<br>
+          Algorithm 160:
+          Combinatorial of M Things Taken N at a Time,<br>
+          Communications of the ACM,<br>
+          Volume 6, Number 4, April 1963, page 161.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "gm_rule.f90">gm_rule.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "gm_rule.sh">gm_rule.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "gm_rule_prb.f90">gm_rule_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "gm_rule_prb.sh">gm_rule_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "gm_rule_prb_output.txt">gm_rule_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>COMP_NEXT</b> computes the compositions of the integer N into K parts.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GM_RULE_SET</b> sets a Grundmann-Moeller rule.
+        </li>
+        <li>
+          <b>GM_RULE_SET_OLD</b> sets a Grundmann-Moeller rule.  (OBSOLETE VERSION)
+        </li>
+        <li>
+          <b>GM_RULE_SIZE</b> determines the size of a Grundmann-Moeller rule.
+        </li>
+        <li>
+          <b>I4_CHOOSE</b> computes the binomial coefficient C(N,K).
+        </li>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>MONOMIAL_VALUE</b> evaluates a monomial.
+        </li>
+        <li>
+          <b>R8_FACTORIAL</b> computes the factorial.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_MONOMIAL_INT</b> integrates a monomial over a simplex.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_MONOMIAL_QUADRATURE:</b> quadrature of monomials in a unit simplex.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_SAMPLE</b> returns uniformly random points from a general simplex.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_TO_GENERAL</b> maps the unit simplex to a general simplex.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_VOLUME</b> computes the volume of the unit simplex.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 06 February 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

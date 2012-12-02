@@ -1,0 +1,179 @@
+<html>
+
+  <head>
+    <title>
+      FEM2D_POISSON_ELL - A Problem in an L-shaped Region for FEM2D_POISSON
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FEM2D_POISSON_ELL <br> A Problem in an L-shaped Region for FEM2D_POISSON
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FEM2D_POISSON_ELL</b>
+      is a FORTRAN90 library which
+      defines the geometry of an L-shaped region, as well as boundary
+      conditions for a given Poisson problem, and is called by FEM2D_POISSON
+      as part of a solution procedure.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fem2d_poisson/fem2d_poisson.html">
+      FEM2D_POISSON</a>,
+      a FORTRAN90 program which
+      solves Poisson's equation on a triangulated region,
+      using the finite element method.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_poisson_lake/fem2d_poisson_lake.html">
+      FEM2D_POISSON_LAKE</a>,
+      a FORTRAN90 library which
+      defines the geometry of a lake-shaped region, as well as boundary
+      conditions for a given Poisson problem, and is called by FEM2D_POISSON
+      as part of a solution procedure.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Methode der Finiten Elemente,<br>
+          Teubner Studienbuecher, 1980,<br>
+          ISBN: 3-519-02349-0.
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ell.f90">ell.f90</a>,
+          the user-supplied routines to evaluate the right hand side,
+          linear coefficient, and boundary conditions;
+        </li>
+        <li>
+          <a href = "ell.sh">ell.sh</a>,
+          commands to compile the user routines, link them with
+          the partial program, and run the program;
+        </li>
+        <li>
+          <a href = "ell_nodes.txt">ell_nodes.txt</a>,
+          a text file containing a list, for each node, of its X and Y
+          coordinates;
+        </li>
+        <li>
+          <a href = "ell_nodes.png">ell_nodes.png</a>,
+          a PNG image of
+          the nodes;
+        </li>
+        <li>
+          <a href = "ell_elements.txt">ell_elements.txt</a>,
+          a text file containing a list, for each element, of the three
+          nodes that compose it;
+        </li>
+        <li>
+          <a href = "ell_elements.png">ell_elements.png</a>,
+          a PNG image of
+          the element mesh;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ell_output.txt">ell_output.txt</a>,
+          output from a run of the program;
+        </li>
+        <li>
+          <a href = "ell_solution.txt">ell_solution.txt</a>,
+          a text file containing the solution U at each node (X,Y);
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DIRICHLET_CONDITION</b> sets the value of a Dirichlet boundary condition.
+        </li>
+        <li>
+          <b>H_COEF</b> evaluates the coefficient K(X,Y) of DEL U in the Poisson equation.
+        </li>
+        <li>
+          <b>K_COEF</b> evaluates the coefficient K(X,Y) of U in the Poisson equation.
+        </li>
+        <li>
+          <b>RHS</b> gives the right-hand side of the differential equation.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

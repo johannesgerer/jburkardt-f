@@ -1,0 +1,831 @@
+December  1 2011   9:34:03.893 AM
+ 
+DIVDIF_PRB
+  FORTRAN90 version
+  Test the DIVDIF library.
+ 
+TEST01
+  For a divided difference polynomial:
+  DATA_TO_DIF_DISPLAY sets up a difference table
+  and displays intermediate calculations;
+  DIF_APPEND appends a new data point;
+  DIF_ANTIDERIV computes the antiderivative;
+  DIF_DERIV_TABLE computes the derivative;
+  DIF_SHIFT_ZERO shifts all the abscissas to 0;
+  DIF_VAL evaluates at a point.
+ 
+ 
+  Divided difference table:
+ 
+         1.00000       2.00000       3.00000       4.00000    
+ 
+    0    1.00000       4.00000       9.00000       16.0000    
+    1    3.00000       5.00000       7.00000    
+    2    1.00000       1.00000    
+    3    0.00000    
+ 
+  The divided difference polynomial:
+ 
+  p(x) =                              1.00000    
+       + ( x -    1.00000    ) * (    3.00000    
+       + ( x -    2.00000    ) * (    1.00000    
+       + ( x -    3.00000    ) * (    0.00000    
+   
+ 
+  Append the data (5,25) to the table.
+ 
+ 
+  The augmented divided difference polynomial:
+ 
+  p(x) =                              25.0000    
+       + ( x -    5.00000    ) * (    6.00000    
+       + ( x -    1.00000    ) * (    1.00000    
+       + ( x -    2.00000    ) * (   -0.00000    
+       + ( x -    3.00000    ) * (   -0.00000    
+    
+ 
+  Evaluate the table at a point.
+ 
+ 
+  P(    2.50000     ) =    6.25000    
+ 
+  The table, rebased at 0:
+ 
+  p(x) =                              0.00000    
+       + ( x -    0.00000    ) * (    0.00000    
+       + ( x -    0.00000    ) * (    1.00000    
+       + ( x -    0.00000    ) * (    0.00000    
+       + ( x -    0.00000    ) * (   -0.00000    
+    
+ 
+  The derivative:
+ 
+  p(x) =                              0.00000    
+       + ( x -    0.00000    ) * (    2.00000    
+       + ( x -    0.00000    ) * (    0.00000    
+       + ( x -    0.00000    ) * (   -0.00000    
+   
+ 
+  P'(    2.50000     ) =    5.00000    
+ 
+  The antiderivative:
+ 
+  p(x) =                              0.00000    
+       + ( x -    0.00000    ) * (    0.00000    
+       + ( x -    0.00000    ) * (    0.00000    
+       + ( x -    0.00000    ) * (   0.333333    
+       + ( x -    0.00000    ) * (    0.00000    
+       + ( x -    0.00000    ) * (   -0.00000    
+     
+ 
+  Ant(P)(    2.50000     ) =    5.20833    
+ 
+TEST02
+  DATA_TO_DIF takes a set of (X,F(X)) data
+  and computes a divided difference table.
+  DIF_VAL evaluates the corresponding polynomial
+  interpolant at an arbitrary point.
+ 
+  By increasing the number of data points,
+  the approximation should improve for a while.
+  However, our function is non-differentiable
+  at one point, so the approximation begins to
+  misbehave rapidly.
+ 
+  Our interval is [-1,1].
+  Our function is F(X) = |X| + X/2 + X^2
+ 
+  We estimate the interpolation error using
+  1001 equally spaced sample points.
+ 
+ 
+  Order  Interpolation Error
+ 
+       1     21.8098    
+       2     7.42584    
+       3     4.25619    
+       4     1.77410    
+       5     1.29096    
+       6    0.574654    
+       7    0.780890    
+       8    0.306298    
+       9    0.800873    
+      10    0.237708    
+      11     1.16303    
+      12    0.251076    
+      13     2.07481    
+      14    0.336099    
+      15     4.22181    
+      16    0.543287    
+ 
+TEST03
+  DIF_BASIS computes Lagrange basis polynomials
+  in difference form.
+ 
+ 
+  The base points:
+ 
+     1     1.00000    
+     2     2.00000    
+     3     3.00000    
+     4     4.00000    
+     5     5.00000    
+ 
+  The table of difference vectors defining the basis
+  polynomials.  Each column represents a polynomial.
+ 
+     1.00000       0.00000       0.00000       0.00000       0.00000    
+    -1.00000       1.00000       0.00000       0.00000       0.00000    
+    0.500000      -1.00000      0.500000       0.00000       0.00000    
+   -0.166667      0.500000     -0.500000      0.166667       0.00000    
+    0.416667E-01 -0.166667      0.250000     -0.166667      0.416667E-01
+ 
+  Evaluate basis polynomial #3 at a set of points.
+ 
+      X        Y
+ 
+   1.00000       0.00000    
+   1.50000     -0.546875    
+   2.00000       0.00000    
+   2.50000      0.703125    
+   3.00000       1.00000    
+   3.50000      0.703125    
+   4.00000       0.00000    
+   4.50000     -0.546875    
+   5.00000       0.00000    
+ 
+TEST04
+  DIF_ROOT seeks a zero of F(x).
+  F(X) = (X+3)*(X+1)*(X-1)
+ 
+ 
+   Step  NTAB    XROOT        F(XROOT)      XDELT
+ 
+      0     2  0.500000      -2.62500      -1.50000    
+      1     3  0.723404      -1.77490      0.223404    
+      2     4   1.06502      0.545816      0.341618    
+      3     5   1.00211      0.169268E-01 -0.629093E-01
+      4     6   1.00000      0.183853E-04 -0.211021E-02
+      5     6   1.00000      0.214566E-10 -0.229816E-05
+ 
+DIF_ROOT - Absolute convergence,
+  The function value meets the error tolerance.
+ 
+  Estimated root =    1.00000    
+  F(X) =   0.214566E-10
+ 
+TEST05
+  DIF_TO_R8POLY converts a difference table to a
+  polynomial;
+  DIF_SHIFT_ZERO shifts a divided difference 
+  table to all zero abscissas;
+ 
+  These are equivalent operations!
+ 
+ 
+  Divided difference table:
+ 
+         1.00000       2.00000       3.00000       4.00000    
+ 
+    0   -2.00000       2.00000       14.0000       40.0000    
+    1    4.00000       12.0000       26.0000    
+    2    4.00000       7.00000    
+    3    1.00000    
+ 
+  Divided difference table:
+ 
+         1.00000       2.00000       3.00000       4.00000    
+ 
+    0   -2.00000       2.00000       14.0000       40.0000    
+    1    4.00000       12.0000       26.0000    
+    2    4.00000       7.00000    
+    3    1.00000    
+ 
+  The divided difference polynomial:
+ 
+  p(x) =                             -2.00000    
+       + ( x -    1.00000    ) * (    4.00000    
+       + ( x -    2.00000    ) * (    4.00000    
+       + ( x -    3.00000    ) * (    1.00000    
+   
+ 
+  Using DIF_SHIFT_ZERO
+ 
+  p(x) =     1.00000     * x ^   3
+         -   2.00000     * x ^   2
+         +   3.00000     * x
+         -   4.00000    
+ 
+  The divided difference polynomial after DIF_SHIFT_ZERO:
+ 
+  p(x) =                             -4.00000    
+       + ( x -    0.00000    ) * (    3.00000    
+       + ( x -    0.00000    ) * (   -2.00000    
+       + ( x -    0.00000    ) * (    1.00000    
+   
+ 
+  Using DIF_TO_R8POLY
+ 
+  p(x) =     1.00000     * x ^   3
+         -   2.00000     * x ^   2
+         +   3.00000     * x
+         -   4.00000    
+ 
+TEST06
+  R8POLY_ANT_COF computes the coefficients of the
+  antiderivative of a polynomial;
+  R8POLY_ANT_VAL evaluates the antiderivative of
+  a polynomial;
+  R8POLY_DER_COF computes the coefficients of the
+  derivative of a polynomial;
+  R8POLY_DER_VAL evaluates the derivative of
+  a polynomial;
+  R8POLY_PRINT prints a polynomial;
+  R8POLY_VAL evaluates a polynomial.
+ 
+  Our initial polynomial:
+ 
+  p(x) =     5.00000     * x ^   4
+         +   4.00000     * x ^   3
+         +   3.00000     * x ^   2
+         +   2.00000     * x
+         +   1.00000    
+ 
+  The antiderivative polynomial:
+ 
+  p(x) =     1.00000     * x ^   5
+         +   1.00000     * x ^   4
+         +   1.00000     * x ^   3
+         +   1.00000     * x ^   2
+         +   1.00000     * x
+ 
+  The derivative polynomial:
+ 
+  p(x) =     20.0000     * x ^   3
+         +   12.0000     * x ^   2
+         +   6.00000     * x
+         +   2.00000    
+ 
+  Evaluate the polynomial, antiderivative and
+  derivative, using only the original polynomial
+  coefficients:
+ 
+     X             P(X)         Anti_P(X)     P'(X)
+ 
+   0.00000       1.00000       0.00000       2.00000    
+   1.00000       15.0000       5.00000       40.0000    
+   2.00000       129.000       62.0000       222.000    
+ 
+TEST07
+  R8POLY_BASIS computes Lagrange basis polynomials
+  in standard form.
+ 
+     5.00000      -10.0000       10.0000      -5.00000       1.00000    
+    -6.41667       17.8333      -19.5000       10.1667      -2.08333    
+     2.95833      -9.83333       12.2500      -6.83333       1.45833    
+   -0.583333       2.16667      -3.00000       1.83333     -0.416667    
+    0.416667E-01 -0.166667      0.250000     -0.166667      0.416667E-01
+ 
+  Basis polynomial 3 in standard form:
+ 
+  p(x) =    0.250000     * x ^   4
+         -   3.00000     * x ^   3
+         +   12.2500     * x ^   2
+         -   19.5000     * x
+         +   10.0000    
+ 
+  Evaluate basis polynomial 3 at a set of points.
+ 
+      X        Y
+ 
+     1.00000       0.00000    
+     1.50000     -0.546875    
+     2.00000       0.00000    
+     2.50000      0.703125    
+     3.00000       1.00000    
+     3.50000      0.703125    
+     4.00000       0.00000    
+     4.50000     -0.546875    
+     5.00000       0.00000    
+ 
+TEST08
+  R8POLY_SHIFT shifts polynomial coefficients.
+ 
+  Polynomial coefficients for argument X
+ 
+    1   6.00000    
+    2  -1.00000    
+    3   2.00000    
+ 
+  SCALE =    2.00000    
+  SHIFT =    3.00000    
+ 
+  Polynomial coefficients for argument 
+    Z = SCALE * X + SHIFT
+ 
+    1   12.0000    
+    2  -3.50000    
+    3  0.500000    
+ 
+TEST085
+  LAGRANGE_VAL uses naive Lagrange interpolation
+  to compute the polynomial interpolant to data.
+ 
+  By increasing the number of data points,
+  the approximation should improve for a while.
+  However, our function is non-differentiable
+  at one point, so the approximation begins to
+  misbehave rapidly.
+ 
+  Our interval is [-1,1].
+  Our function is F(X) = |X| + X/2 + X^2
+ 
+  We estimate the interpolation error using
+  1001 equally spaced sample points.
+ 
+ 
+  Order  Interpolation Error
+ 
+       1     21.6256    
+       2     5.77350    
+       3     3.84900    
+       4     1.44339    
+       5     1.17589    
+       6    0.432190    
+       7    0.750253    
+       8    0.212163    
+       9    0.791373    
+      10    0.156429    
+      11     1.15965    
+      12    0.175307    
+      13     2.07338    
+      14    0.265743    
+      15     4.22110    
+      16    0.478744    
+ 
+TEST09
+  LAGRANGE_RULE computes Lagrange interpolation formulas;
+ 
+  Lagrange Interpolation Rules on [-1,1]
+  using equally spaced abscissas.
+ 
+      Abscissa       Weight
+ 
+    1   0.00000         1.00000    
+ 
+      Abscissa       Weight
+ 
+    1  -1.00000        0.500000    
+    2   1.00000       -0.500000    
+ 
+      Abscissa       Weight
+ 
+    1  -1.00000        0.500000    
+    2   0.00000        -1.00000    
+    3   1.00000        0.500000    
+ 
+      Abscissa       Weight
+ 
+    1  -1.00000        0.562500    
+    2 -0.333333        -1.68750    
+    3  0.333333         1.68750    
+    4   1.00000       -0.562500    
+ 
+      Abscissa       Weight
+ 
+    1  -1.00000        0.666667    
+    2 -0.500000        -2.66667    
+    3   0.00000         4.00000    
+    4  0.500000        -2.66667    
+    5   1.00000        0.666667    
+ 
+      Abscissa       Weight
+ 
+    1  -1.00000        0.813802    
+    2 -0.600000        -4.06901    
+    3 -0.200000         8.13802    
+    4  0.200000        -8.13802    
+    5  0.600000         4.06901    
+    6   1.00000       -0.813802    
+ 
+      Abscissa       Weight
+ 
+    1  -1.00000         1.01250    
+    2 -0.666667        -6.07500    
+    3 -0.333333         15.1875    
+    4   0.00000        -20.2500    
+    5  0.333333         15.1875    
+    6  0.666667        -6.07500    
+    7   1.00000         1.01250    
+ 
+      Abscissa       Weight
+ 
+    1  -1.00000         1.27657    
+    2 -0.714286        -8.93601    
+    3 -0.428571         26.8080    
+    4 -0.142857        -44.6801    
+    5  0.142857         44.6801    
+    6  0.428571        -26.8080    
+    7  0.714286         8.93601    
+    8   1.00000        -1.27657    
+ 
+TEST095
+  LAGRANGE_RULE sets the weights for a Lagrange rule.
+  LAGRANGE_SUM uses the rule to compute the Lagrange
+  interpolant to data at a given point.
+ 
+  For this test, the data abscissas are 
+  equally spaced.
+ 
+  By increasing the number of data points,
+  the approximation should improve for a while.
+  However, our function is non-differentiable
+  at one point, so the approximation begins to
+  misbehave rapidly.
+ 
+  Our interval is [-1,1].
+  Our function is F(X) = |X| + X/2 + X^2
+ 
+  We estimate the interpolation error using
+  1001 equally spaced sample points.
+ 
+ 
+  Order  Interpolation Error
+ 
+       1     21.6256    
+       2     5.77350    
+       3     3.84900    
+       4     1.44339    
+       5     1.17589    
+       6    0.432190    
+       7    0.750253    
+       8    0.212163    
+       9    0.791373    
+      10    0.156429    
+      11     1.15965    
+      12    0.175307    
+      13     2.07338    
+      14    0.265743    
+      15     4.22110    
+      16    0.478744    
+ 
+TEST10
+  LAGRANGE_RULE computes Lagrange interpolation formulas;
+ 
+  Lagrange Interpolation Rules on [-1,1]
+  using Chebyshev T abscissas.
+ 
+      Abscissa       Weight
+ 
+    1  0.612323E-16     1.00000    
+ 
+      Abscissa       Weight
+ 
+    1  0.707107       -0.707107    
+    2 -0.707107        0.707107    
+ 
+      Abscissa       Weight
+ 
+    1  0.866025        0.666667    
+    2  0.612323E-16    -1.33333    
+    3 -0.866025        0.666667    
+ 
+      Abscissa       Weight
+ 
+    1  0.923880       -0.765367    
+    2  0.382683         1.84776    
+    3 -0.382683        -1.84776    
+    4 -0.923880        0.765367    
+ 
+      Abscissa       Weight
+ 
+    1  0.951057        0.988854    
+    2  0.587785        -2.58885    
+    3  0.612323E-16     3.20000    
+    4 -0.587785        -2.58885    
+    5 -0.951057        0.988854    
+ 
+      Abscissa       Weight
+ 
+    1  0.965926        -1.38037    
+    2  0.707107         3.77124    
+    3  0.258819        -5.15160    
+    4 -0.258819         5.15160    
+    5 -0.707107        -3.77124    
+    6 -0.965926         1.38037    
+ 
+      Abscissa       Weight
+ 
+    1  0.974928         2.03448    
+    2  0.781831        -5.70048    
+    3  0.433884         8.23743    
+    4  0.612323E-16    -9.14286    
+    5 -0.433884         8.23743    
+    6 -0.781831        -5.70048    
+    7 -0.974928         2.03448    
+ 
+      Abscissa       Weight
+ 
+    1  0.980785        -3.12145    
+    2  0.831470         8.88912    
+    3  0.555570        -13.3035    
+    4  0.195090         15.6926    
+    5 -0.195090        -15.6926    
+    6 -0.555570         13.3035    
+    7 -0.831470        -8.88912    
+    8 -0.980785         3.12145    
+ 
+TEST105
+  LAGRANGE_RULE sets the weights for a Lagrange rule.
+  LAGRANGE_SUM uses the rule to compute the Lagrange
+  interpolant to data at a given point.
+ 
+  For this test, the data abscissas are the
+  zeroes of the Chebyshev T polynomials.
+ 
+  By increasing the number of data points,
+  the approximation should improve for a while.
+  However, our function is non-differentiable
+  at one point, so the approximation begins to
+  misbehave rapidly.
+ 
+  Our interval is [-1,1].
+  Our function is F(X) = |X| + X/2 + X^2
+ 
+  We estimate the interpolation error using
+  1001 equally spaced sample points.
+ 
+ 
+  Order  Interpolation Error
+ 
+       1     21.6256    
+       2     2.68963    
+       3     3.17447    
+       4     1.45818    
+       5    0.939631    
+       6    0.498479    
+       7    0.417001    
+       8    0.237630    
+       9    0.226331    
+      10    0.134644    
+      11    0.138630    
+      12    0.848785E-01
+      13    0.920554E-01
+      14    0.575380E-01
+      15    0.647685E-01
+      16    0.411167E-01
+ 
+TEST11
+  LAGRANGE_RULE computes Lagrange interpolation formulas;
+ 
+  Lagrange Interpolation Rules on [-1,1]
+  using Chebyshev U abscissas.
+ 
+      Abscissa       Weight
+ 
+    1  0.612323E-16     1.00000    
+ 
+      Abscissa       Weight
+ 
+    1  0.500000        -1.00000    
+    2 -0.500000         1.00000    
+ 
+      Abscissa       Weight
+ 
+    1  0.707107         1.00000    
+    2  0.612323E-16    -2.00000    
+    3 -0.707107         1.00000    
+ 
+      Abscissa       Weight
+ 
+    1  0.809017        -1.10557    
+    2  0.309017         2.89443    
+    3 -0.309017        -2.89443    
+    4 -0.809017         1.10557    
+ 
+      Abscissa       Weight
+ 
+    1  0.866025         1.33333    
+    2  0.500000        -4.00000    
+    3  0.612323E-16     5.33333    
+    4 -0.500000        -4.00000    
+    5 -0.866025         1.33333    
+ 
+      Abscissa       Weight
+ 
+    1  0.900969        -1.72119    
+    2  0.623490         5.58867    
+    3  0.222521        -8.69014    
+    4 -0.222521         8.69014    
+    5 -0.623490        -5.58867    
+    6 -0.900969         1.72119    
+ 
+      Abscissa       Weight
+ 
+    1  0.923880         2.34315    
+    2  0.707107        -8.00000    
+    3  0.382683         13.6569    
+    4  0.612323E-16    -16.0000    
+    5 -0.382683         13.6569    
+    6 -0.707107        -8.00000    
+    7 -0.923880         2.34315    
+ 
+      Abscissa       Weight
+ 
+    1  0.939693        -3.32737    
+    2  0.766044         11.7526    
+    3  0.500000        -21.3333    
+    4  0.173648         27.5867    
+    5 -0.173648        -27.5867    
+    6 -0.500000         21.3333    
+    7 -0.766044        -11.7526    
+    8 -0.939693         3.32737    
+ 
+TEST115
+  LAGRANGE_RULE sets the weights for a Lagrange rule.
+  LAGRANGE_SUM uses the rule to compute the Lagrange
+  interpolant to data at a given point.
+ 
+  For this test, the data abscissas are the
+  zeroes of the Chebyshev U polynomials.
+ 
+  By increasing the number of data points,
+  the approximation should improve for a while.
+  However, our function is non-differentiable
+  at one point, so the approximation begins to
+  misbehave rapidly.
+ 
+  Our interval is [-1,1].
+  Our function is F(X) = |X| + X/2 + X^2
+ 
+  We estimate the interpolation error using
+  1001 equally spaced sample points.
+ 
+ 
+  Order  Interpolation Error
+ 
+       1     21.6256    
+       2     3.54441    
+       3     3.42531    
+       4     1.21041    
+       5     1.04470    
+       6    0.426424    
+       7    0.466772    
+       8    0.208267    
+       9    0.253426    
+      10    0.120212    
+      11    0.154982    
+      12    0.768700E-01
+      13    0.102714    
+      14    0.526975E-01
+      15    0.721390E-01
+      16    0.379989E-01
+ 
+TEST12
+  NCC_RULE computes closed Newton Cotes formulas
+  for quadrature (approximate integration).
+ 
+ 
+  Newton-Cotes Closed Quadrature Rule:
+ 
+      Abscissa       Weight
+ 
+    1  -1.00000      0.869213E-01
+    2 -0.714286      0.414005    
+    3 -0.428571      0.153125    
+    4 -0.142857      0.345949    
+    5  0.142857      0.345949    
+    6  0.428571      0.153125    
+    7  0.714286      0.414005    
+    8   1.00000      0.869213E-01
+ 
+TEST13
+  NCO_RULE computes open Newton Cotes formulas
+  for quadrature (approximate integration).
+ 
+ 
+  Newton-Cotes Open Quadrature Rule:
+ 
+      Abscissa       Weight
+ 
+    1 -0.777778      0.797768    
+    2 -0.555556      -1.25134    
+    3 -0.333333       2.21741    
+    4 -0.111111     -0.763839    
+    5  0.111111     -0.763839    
+    6  0.333333       2.21741    
+    7  0.555556      -1.25134    
+    8  0.777778      0.797768    
+ 
+TEST14
+  ROOTS_TO_DIF computes the divided difference
+  polynomial with given roots;
+  DIF_TO_R8POLY converts it to a standard form
+  polynomial.
+ 
+ 
+  The roots:
+ 
+     1     3.00000    
+ 
+  The polynomial:
+ 
+  p(x) =     1.00000     * x
+         -   3.00000    
+ 
+  The roots:
+ 
+     1     3.00000    
+     2     1.00000    
+ 
+  The polynomial:
+ 
+  p(x) =     1.00000     * x ^   2
+         -   4.00000     * x
+         +   3.00000    
+ 
+  The roots:
+ 
+     1     3.00000    
+     2     1.00000    
+     3     2.00000    
+ 
+  The polynomial:
+ 
+  p(x) =     1.00000     * x ^   3
+         -   6.00000     * x ^   2
+         +   11.0000     * x
+         -   6.00000    
+ 
+  The roots:
+ 
+     1     3.00000    
+     2     1.00000    
+     3     2.00000    
+     4     4.00000    
+ 
+  The polynomial:
+ 
+  p(x) =     1.00000     * x ^   4
+         -   10.0000     * x ^   3
+         +   35.0000     * x ^   2
+         -   50.0000     * x
+         +   24.0000    
+ 
+TEST15
+  ROOTS_TO_R8POLY computes polynomial coefficients
+  from roots.
+ 
+ 
+  The roots:
+ 
+     1     3.00000    
+ 
+  The polynomial:
+ 
+  p(x) =     1.00000     * x
+         -   3.00000    
+ 
+  The roots:
+ 
+     1     3.00000    
+     2     1.00000    
+ 
+  The polynomial:
+ 
+  p(x) =     1.00000     * x ^   2
+         -   4.00000     * x
+         +   3.00000    
+ 
+  The roots:
+ 
+     1     3.00000    
+     2     1.00000    
+     3     2.00000    
+ 
+  The polynomial:
+ 
+  p(x) =     1.00000     * x ^   3
+         -   6.00000     * x ^   2
+         +   11.0000     * x
+         -   6.00000    
+ 
+  The roots:
+ 
+     1     3.00000    
+     2     1.00000    
+     3     2.00000    
+     4     4.00000    
+ 
+  The polynomial:
+ 
+  p(x) =     1.00000     * x ^   4
+         -   10.0000     * x ^   3
+         +   35.0000     * x ^   2
+         -   50.0000     * x
+         +   24.0000    
+ 
+DIVDIF_PRB
+  Normal end of execution.
+ 
+December  1 2011   9:34:03.919 AM

@@ -1,0 +1,16 @@
+# em_commands.txt
+# created by sde::em_gnuplot.
+#
+# Usage:
+#  gnuplot < em_commands.txt
+#
+set term png
+set output "em.png"
+set xlabel "t"
+set ylabel "X(t)"
+set title "Exact X(t) and Euler-Maruyama Estimate"
+set grid
+set style data lines
+plot "em1_data.txt" using 1:2 title "Exact X(t))", \
+     "em2_data.txt" using 1:2 title "EM X(t)"
+quit

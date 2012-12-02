@@ -1,0 +1,266 @@
+<html>
+
+  <head>
+    <title>
+      CVT_MOD - Centroidal Voronoi Tessellation on Logical Torus
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CVT_MOD <br> Centroidal Voronoi Tessellation on Logical Torus
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CVT_MOD</b> 
+      is a FORTRAN90 library which 
+      creates Centroidal Voronoi Tessellation (CVT) datasets in which the
+      geometry is a logical torus.
+    </p>
+
+    <p>
+      A 2D unit logical torus is the unit square, but with "wraparound".
+      This is the connectivity frequently seen in video games, in which
+      a spaceship flies off the top of the screen and immediately reappears
+      at the bottom of the screen.  In the general M-dimensional case,
+      the extreme minimum and maximum values of each coordinate are
+      identified, and modular arithmetic may be used to determine
+      distances.
+    </p>
+
+    <p>
+      For details on the underlying CVT calculation, refer to
+      <b>CVT_DATASET</b>.  This program is a modification of that one, in 
+      which distances are computed using modular arithmetic.  For the
+      current code, the region is a unit hypercube, although there's
+      no real difficulty in allowing the widths in each dimension to
+      vary.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt/cvt.html">
+      CVT</a>,
+      a FORTRAN90 library which
+      computes a Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cvt_dataset/cvt_dataset.html">
+      CVT_DATASET</a>,
+      a FORTRAN90 program which
+      defines and computes a CVT.
+    </p>
+
+    <p>
+      <a href = "../../data/table/table.html">
+      TABLE</a> ,
+      a file format which
+      is used for the output of <b>CVT_MOD</b>.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams - 
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, Number 3, pages 345-405, September 1991.
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Janet Peterson and Rebecca Brannon,<br>
+          User Manual and Supporting Information for Library of Codes
+          for Centroidal Voronoi Placement and Associated Zeroth,
+          First, and Second Moment Determination,<br>
+          Sandia National Laboratories Technical Report SAND2002-0099,<br>
+          February 2002.
+        </li>
+        <li>
+          Qiang Du, Vance Faber, and Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review, Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Lili Ju, Qiang Du, and Max Gunzburger,<br>
+          Probabilistic methods for centroidal Voronoi tessellations
+          and their parallel implementations,<br>
+          Parallel Computing,<br>
+          Volume 28, 2002, pages 1477-1500.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_mod.f90">cvt_mod.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "cvt_mod.sh">cvt_mod.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_mod_prb.f90">cvt_mod_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "cvt_mod_prb.sh">cvt_mod_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "cvt_mod_prb_output.txt">cvt_mod_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+        <li>
+          <a href = "cvt_mod_02_00400.txt">cvt_mod_02_00400.txt</a>,
+          a set of 400 CVT (mod 1) points on a 1.0 x 2.0 domain.
+        </li>
+        <li>
+          <a href = "cvt_mod_02_00400.png">cvt_mod_02_00400.png</a>,
+          a PNG image of the set.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CVT_ITERATION_MOD</b> takes one step of the CVT iteration.
+        </li>
+        <li>
+          <b>CVT_MOD_WRITE</b> writes a CVT MOD dataset to a file.
+        </li>
+        <li>
+          <b>DATA_READ</b> reads generator coordinate data from a file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>FIND_CLOSEST_MOD</b> finds the Voronoi cell generator closest to a point X.
+        </li>
+        <li>
+          <b>GET_SEED</b> returns a seed for the random number generator.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_TO_HALTON_VECTOR</b> computes an element of a vector Halton sequence.
+        </li>
+        <li>
+          <b>PARAM_PRINT</b> prints the program parameters.
+        </li>
+        <li>
+          <b>PRIME</b> returns any of the first PRIME_MAX prime numbers.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>REGION_SAMPLER_MOD</b> returns a sample point in the physical region.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TEST_REGION</b> determines if a point is within the physical region.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TUPLE_NEXT_FAST</b> computes the next element of a tuple space, "fast".
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

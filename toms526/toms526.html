@@ -1,0 +1,236 @@
+<html>
+
+  <head>
+    <title>
+      TOMS526 - Bivariate interpolation of scattered data
+    </title>
+  </head>
+
+  <body alink="#ff3300" bgcolor="#eeeeee" link="#cc0000" vlink="#000055">
+
+    <h1 align="center">
+      TOMS526 <br> Bivariate interpolation of scattered data
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS526</b>
+      is a FORTRAN90 library which
+      interpolates scattered bivariate data,
+      by Hiroshi Akima.
+    </p>
+
+    <p>
+      <b>TOMS526</b> accepts a set of (X,Y) data points scattered in 2D,
+      with associated Z data values, and is able to construct a smooth
+      interpolation function Z(X,Y), which agrees with the given data,
+      and can be evaluated at other points in the plane.
+    </p>
+
+    <p>
+      <b>TOMS526</b> is a FORTRAN90 version of ACM TOMS Algorithm 526.
+    </p>
+
+    <p>
+      The original, true, correct version of ACM TOMS 526 is available
+      in the TOMS subdirectory of
+      <a href="http://www.netlib.org/">the NETLIB web site</a>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TOMS526</b> is available in
+      <a href = "../../f77_src/toms526/toms526.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms526/toms526.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align="center">
+      Related Data and Packages:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/rbf_interp/rbf_interp.html">
+      RBF_INTERP</a>,
+      a FORTRAN90 library which
+      defines and evaluates radial basis interpolants to multidimensional data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms660/toms660.html">
+      TOMS660</a>,
+      a FORTRAN90 library which
+      takes scattered 2D data and produces an interpolating function F(X,Y),
+      this is a FORTRAN90 version of ACM TOMS algorithm 660,
+      called <b>qshep2d</b>,
+      by Robert Renka.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms661/toms661.html">
+      TOMS661</a>,
+      a FORTRAN90 library which
+      takes scattered 3D data and produces an interpolating function F(X,Y,Z),
+      this is a FORTRAN90 version of ACM TOMS algorithm 661,
+      called <b>qshep3d</b>,
+      by Robert Renka.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms790/toms790.html">
+      TOMS790</a>,
+      a FORTRAN77 library which
+      computes an interpolating function to a set of scattered data in the plane;<br>
+      this library is commonly called <b>CSHEP2D</b>;<br>
+      by Robert Renka;<br>
+      this is ACM TOMS algorithm 790.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms792/toms792.html">
+      TOMS792</a>,
+      a FORTRAN77 library which
+      tests functions that interpolate scattered data in the plane;<br>
+      by Robert Renka;<br>
+      this is ACM TOMS algorithm 792.
+    </p>
+
+    <h3 align="center">
+      Author:
+    </h3>
+
+    <p>
+      Original FORTRAN77 version by Hiroshi Akima.
+      FORTRAN90 version by John Burkardt.
+    </p>
+
+    <h3 align="center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hiroshi Akima,<br>
+          Algorithm 526:
+          A Method of Bivariate Interpolation and Smooth Surface Fitting
+          for Values Given at Irregularly Distributed Points,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 4, Number 2, June 1978, pages 160-164.
+        </li>
+        <li>
+          Hiroshi Akima, <br>
+          On Estimating Partial Derivatives for Bivariate Interpolation
+          of Scattered Data,<br>
+          Rocky Mountain Journal of Mathematics,<br>
+          Volume 14, Number 1, Winter 1984, pages 41-51.
+        </li>
+        <li>
+          Richard Franke,<br>
+          Scattered Data Interpolation: Tests of Some Methods,<br>
+          Mathematics of Computation,<br>
+          Volume 38, Number 157, January 1982, pages 181-200.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align="center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms526.f90">toms526.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "toms526.sh">toms526.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align="center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms526_prb.f90">toms526_prb.f90</a>,
+          a sample problem.
+        </li>
+        <li>
+          <a href = "toms526_prb.sh">toms526_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "toms526_prb_output.txt">toms526_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align="center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>IDBVIP</b> performs bivariate interpolation of irregular X, Y data.
+        </li>
+        <li>
+          <b>IDGRID</b> organizes grid points for surface fitting.
+        </li>
+        <li>
+          <b>IDLCTN</b> finds the triangle that contains a point.
+        </li>
+        <li>
+          <b>IDPDRV</b> estimates first and second partial derivatives at data points.
+        </li>
+        <li>
+          <b>IDPTIP</b> performs interpolation, determining a value of Z given X and Y.
+        </li>
+        <li>
+          <b>IDSFFT</b> performs smooth surface fitting when the projections of the
+        </li>
+        <li>
+          <b>IDTANG</b> performs triangulation.
+        </li>
+        <li>
+          <b>IDXCHG</b> determines whether two triangles should be exchanged.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 January 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,232 @@
+<html>
+
+  <head>
+    <title>
+      BURGERS_SOLUTION - Exact Solution of Time Dependent 1D Viscous Burgers Equation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BURGERS_SOLUTION <br> Exact Solution of Time Dependent 1D Viscous Burgers Equation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BURGERS_SOLUTION</b>
+      is a FORTRAN90 library which
+      evaluates an exact solution of the time-dependent 1D viscous Burgers equation.
+    </p>
+
+    <p>
+      The form of the Burgers equation considered here is:
+      <pre>
+        du       du        d^2 u
+        -- + u * -- = nu * -----
+        dt       dx        dx^2
+      </pre>
+      for -1.0 < x < +1.0, and 0.0 < t.
+    </p>
+
+    <p>
+      Initial conditions are u(x,0) = - sin(pi*x).  Boundary conditions
+      are u(-1,t) = u(+1,t) = 0.  The viscosity parameter nu is taken
+      to be 0.01 / pi, although this is not essential.
+    </p>
+
+    <p>
+      The authors note an integral representation for the solution u(x,t),
+      and present a better version of the formula that is amenable to
+      approximation using Hermite quadrature.  
+    </p>
+
+    <p>
+      This program library does little more than evaluate the exact solution
+      at a user-specified set of points, using the quadrature rule.
+      Internally, the order of this quadrature rule is set to 8, but the
+      user can easily modify this value if greater accuracy is desired.
+    </p>
+    
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>BURGERS_SOLUTION</b> is available in
+      <a href = "../../c_src/burgers_solution/burgers_solution.html">a C version</a> and
+      <a href = "../../cpp_src/burgers_solution/burgers_solution.html">a C++ version</a> and
+      <a href = "../../f77_src/burgers_solution/burgers_solution.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/burgers_solution/burgers_solution.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/burgers_solution/burgers_solution.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../datasets/burgers/burgers.html">
+      BURGERS</a>,
+      a dataset directory which
+      contains 40 solutions of the Burgers equation in one space dimension and time,
+      at equally spaced times from 0 to 1, with values
+      at 41 equally spaced nodes in [0,1];
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_burgers_lax/fd1d_burgers_lax.html">
+      FD1D_BURGERS_LAX</a>,
+      a FORTRAN90 program which
+      applies the finite difference method and the Lax-Wendroff method
+      to solve the non-viscous Burgers equation
+      in one spatial dimension and time.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_burgers_leap/fd1d_burgers_leap.html">
+      FD1D_BURGERS_LEAP</a>,
+      a FORTRAN90 program which
+      applies the finite difference method and the leapfrog approach
+      to solve the non-viscous Burgers equation in one spatial dimension and time.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Claude Basdevant, Michel Deville, Pierre Haldenwang, J Lacroix, 
+          J Ouazzani, Roger Peyret, Paolo Orlandi, Anthony Patera,<br>
+          Spectral and finite difference solutions of the Burgers equation,<br>
+          Computers and Fluids,<br>
+          Volume 14, Number 1, 1986, pages 23-41.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "burgers_solution.f90">burgers_solution.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "burgers_solution.sh">burgers_solution.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "burgers_solution_prb.f90">burgers_solution_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "burgers_solution_prb.sh">burgers_solution_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "burgers_solution_prb_output.txt">burgers_solution_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "burgers_test01.txt">burgers_test01.txt</a>,
+          a data file of solution values for -1 <= x <= +1, 
+          0 <= t <= 3/pi, using 11 grid points in x and in t.
+        </li>
+        <li>
+          <a href = "burgers_test02.txt">burgers_test02.txt</a>,
+          a data file of solution values for -1 <= x <= +1, 
+          0 <= t <= 3/pi, using 41 grid points in x and in t.
+        </li>
+        <li>
+          <a href = "burgers_test02.png">burgers_test01.png</a>,
+          an image of U(X,T) for the burgers_test02 data,
+          produced by MATLAB's surf() command.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BURGERS_SOLUTION</b> evaluates a solution to the Burgers equation.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HERMITE_EK_COMPUTE</b> computes a Gauss-Hermite quadrature rule.
+        </li>
+        <li>
+          <b>IMTQLX</b> diagonalizes a symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates Gamma(X) for a real argument.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8VEC_EVEN</b> returns an R8VEC of evenly spaced values.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 16 November 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

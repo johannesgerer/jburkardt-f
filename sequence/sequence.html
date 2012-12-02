@@ -1,0 +1,186 @@
+<html>
+
+  <head>
+    <title>
+      SEQUENCE - Fill in a Sequence
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SEQUENCE <br> Fill in a Sequence
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SEQUENCE</b>
+      is a FORTRAN90 program which
+      reads a numeric sequence with missing values,
+      and fills in the missing values.
+    </p>
+
+    <p>
+      The input to the program is a string representing a sequence,
+      with missing values denoted by question marks.  For instance,
+      we might enter the following sequence:
+      <pre>
+        ? 3 6 ? 15
+      </pre>
+      The program will try to determine the simplest rule of a certain
+      kind that can be used to fill in the question marks.
+    </p>
+
+    <p>
+      The rule deduced for the sequence is found by constructing the
+      polynomial that interpolates the known data.  Abscissas for the
+      data are assigned by position in the sequence.  Thus for the
+      above sequence, the three known values have abscissas of 2, 3
+      and 5, which means we might think of the sequence as a table:
+      <table "border" = 1>
+        <tr>
+          <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        </tr>
+        <tr>
+          <td>?</td><td>3</td><td>6</td><td>?</td><td>15</td>
+        </tr>
+      </table>
+    </p>
+
+    <p>
+      Once the interpolating polynomial is found, it is evaluated at
+      the points where data was not given, and the results are reported
+      back to the user.  In the example case, we would get the
+      filled in sequence:
+      <pre>
+        1 3 6 10 15
+      </pre>
+    </p>
+
+    <p>
+      Note that this procedure will always be able to produce a result,
+      but it may not be the expected result.  This is particularly so
+      when the sequence is most easily represented in terms of a geometric
+      calculation, as in
+      <pre>
+        1 2 4 8 16 32
+      </pre>
+      or as in the Fibonacci sequence:
+      <pre>
+        1 1 2 3 5 8 13 21 34 55
+      </pre>
+      both of which this program will be unable to recognize.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/puzzles/puzzles.html">
+      PUZZLES</a>,
+      FORTRAN90 programs which
+      were used to solve various puzzles.
+    </p>
+
+    <h3 align = "center">
+      Source code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sequence.f90">sequence.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "sequence.sh">sequence.sh</a>,
+          commands to compile, link and load the source code;
+        </li>
+        <li>
+          <a href = "sequence_input.txt">sequence_input.txt</a>, sample input;
+        </li>
+        <li>
+          <a href = "sequence_output.txt">sequence_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>SEQUENCE</b> reads in a sequence and calls SEQUENCE_FILLER to fill it in.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DATA_TO_DIF</b> sets up a divided difference table from raw data.
+        </li>
+        <li>
+          <b>DIF_TO_POLY</b> converts a divided difference polynomial to standard form.
+        </li>
+        <li>
+          <b>DIF_VAL</b> evaluates a divided difference polynomial at a point.
+        </li>
+        <li>
+          <b>POLY_PRINT</b> prints out a polynomial.
+        </li>
+        <li>
+          <b>R4VEC_DISTINCT</b> is true if the entries in an R4VEC are distinct.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_IS_R</b> is TRUE if a string represents a real number.
+        </li>
+        <li>
+          <b>S_TO_R</b> reads a real number from a string.
+        </li>
+        <li>
+          <b>SEQUENCE_FILLER</b> "fills in" a sequence with missing values.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 23 April 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

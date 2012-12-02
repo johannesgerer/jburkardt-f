@@ -1,0 +1,373 @@
+<html>
+
+  <head>
+    <title>
+      PRIME_OPENMP - Count Primes Using OpenMP
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PRIME_OPENMP <br> Count Primes Using OpenMP
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PRIME_OPENMP</b> 
+      is a FORTRAN90 program which
+      counts the number of primes between 1 and N,
+      using OpenMP to carry out the calculation in parallel.
+    </p>
+
+    <p>
+      The algorithm is completely naive.  For each integer I, it simply checks
+      whether any smaller J evenly divides it.  The total amount of work
+      for a given N is thus roughly proportional to 1/2*N^2.
+    </p>
+
+    <p>
+      This program is mainly a starting point for investigations into
+      parallelization.
+    </p>
+
+    <p>
+      Here are the counts of the number of primes for some selected values of N:
+      <table border="1" align="center">
+        <tr>
+          <th>N</th><th>Pi(N), Number of Primes</th>
+        </tr>
+<tr><td>         1</td><td>         0</td></tr>
+<tr><td>         2</td><td>         1</td></tr>
+<tr><td>         4 </td><td>        2</td></tr>
+<tr><td>         8</td><td>         4</td></tr>
+<tr><td>        16</td><td>         6</td></tr>
+<tr><td>        32</td><td>        11</td></tr>
+<tr><td>        64</td><td>        18</td></tr>
+<tr><td>       128</td><td>        31</td></tr>
+<tr><td>       256</td><td>        54</td></tr>
+<tr><td>       512</td><td>        97</td></tr>
+<tr><td>      1024</td><td>       172</td></tr>
+<tr><td>      2048</td><td>       309</td></tr>
+<tr><td>      4096</td><td>       564</td></tr>
+<tr><td>      8192</td><td>      1028</td></tr>
+<tr><td>     16384</td><td>      1900</td></tr>
+<tr><td>     32768</td><td>      3512 </td></tr>
+<tr><td>     65536</td><td>      6542</td></tr>
+<tr><td>    131072</td><td>     12251</td></tr>
+ 
+      </table> 
+    </p>
+
+    <p>
+      The following results were observed for the elapsed time on a machine
+      that had 2 cores:
+      <table border="1" align="center">
+        <tr>
+          <th>N</th><th>Pi(N)</th><th>Time (1 Thread)</th><th>Time (2 Threads)</th><th>Time (4 Threads)</th>
+        </tr>
+<tr><td>   16384</td><td>      1900</td><td>        0.377</td><td> 0.293</td><td> 0.220</td></tr>
+<tr><td>   32768</td><td>      3512</td><td>        1.392</td><td> 1.061</td><td> 0.824</td></tr>
+<tr><td>   65536</td><td>      6542</td><td>        5.221</td><td> 3.883</td><td> 3.012</td></tr>
+<tr><td>  131072</td><td>     12251</td><td>       19.727</td><td>14.592</td><td>11.672</td></tr>
+      </table> 
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      In the BASH shell, the program could be run with 2 threads using the commands:
+      <pre>
+        export OMP_NUM_THREADS=2
+        ./prime_openmp
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>PRIME_OPENMP</b> is available in
+      <a href = "../../c_src/prime_openmp/prime_openmp.html">a C version</a> and
+      <a href = "../../cpp_src/prime_openmp/prime_openmp.html">a C++ version</a> and
+      <a href = "../../f77_src/prime_openmp/prime_openmp.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/prime_openmp/prime_openmp.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dijkstra_openmp/dijkstra_openmp.html">
+      DIJKSTRA_OPENMP</a>,
+      a FORTRAN90 program which
+      uses OpenMP to parallelize a simple example of Dijkstra's 
+      minimum distance algorithm for graphs.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fft_openmp/fft_openmp.html">
+      FFT_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates the computation of a Fast Fourier Transform
+      in parallel, using OpenMP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/heated_plate_openmp/heated_plate_openmp.html">
+      HEATED_PLATE_OPENMP</a>,
+      a FORTRAN90 program which 
+      solves the steady (time independent) heat equation in a 2D
+      rectangular region, using OpenMP to run in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hello_openmp/hello_openmp.html">
+      HELLO_OPENMP</a>,
+      a FORTRAN90 program which 
+      prints out "Hello, world!" using the OpenMP parallel programming environment. 
+    </p>
+
+    <p>
+      <a href = "../../f_src/mandelbrot_openmp/mandelbrot_openmp.html">
+      MANDELBROT_OPENMP</a>,
+      a FORTRAN90 program which
+      generates an ASCII Portable Pixel Map (PPM) image of the Mandelbrot fractal set,
+      using OpenMP for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md_openmp/md_openmp.html">
+      MD_OPENMP</a>,
+      a FORTRAN90 program which
+      carries out a molecular dynamics simulation in parallel,
+      using OpenMP.
+    <p>
+
+    <p>
+      <a href = "../../f_src/multitask_openmp/multitask_openmp.html">
+      MULTITASK_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates how to "multitask", that is, to execute several unrelated
+      and distinct tasks simultaneously, using OpenMP for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxv_openmp/mxv_openmp.html">
+      MXM_OPENMP</a>,
+      a FORTRAN90 program which
+      computes a dense matrix product C=A*B,
+      using OpenMP for parallel execution.
+    <p>
+
+    <p>
+      <a href = "../../f_src/mxv_openmp/mxv_openmp.html">
+      MXV_OPENMP</a>,
+      a FORTRAN90 program which
+      compares the performance of plain vanilla Fortran and the FORTRAN90
+      intrinsic routine MATMUL, for the matrix multiplication problem
+      y=A*x, with and without parallelization by OpenMP.
+    <p>
+
+    <p>
+      <a href = "../../f_src/openmp/openmp.html">
+      OPENMP</a>,
+      FORTRAN90 programs which
+      illustrate the use of the OpenMP application program interface
+      for carrying out parallel computations in a shared memory environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/poisson_openmp/poisson_openmp.html">
+      POISSON_OPENMP</a>,
+      a FORTRAN90 program which
+      computes an approximate solution to the Poisson equation in a rectangle,
+      using the Jacobi iteration to solve the linear system, and OpenMP to
+      carry out the Jacobi iteration in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_mpi/prime_mpi.html">
+      PRIME_MPI</a>,
+      a FORTRAN90 program which 
+      counts the number of primes between 1 and N, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../m_src/prime_parfor/prime_parfor.html">
+      PRIME_PARFOR</a>,
+      a MATLAB program which 
+      counts the number of primes between 1 and N; it runs in parallel
+      using MATLAB's "parfor" facility.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_serial/prime_serial.html">
+      PRIME_SERIAL</a>,
+      a FORTRAN90 program which
+      counts the number of primes between 1 and N,
+      intended as a starting point for the creation of a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_openmp/quad_openmp.html">
+      QUAD_OPENMP</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule, and carries out the
+      computation in parallel using OpenMP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/random_openmp/random_openmp.html">
+      RANDOM_OPENMP</a>,
+      a FORTRAN90 program which
+      illustrates how a parallel program using OpenMP can generate multiple
+      distinct streams of random numbers.
+    </p>
+
+    <p>
+      <a href = "../../f_src/satisfy_openmp/satisfy_openmp.html">
+      SATISFY_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates, for a particular circuit, an exhaustive search
+      for solutions of the circuit satisfiability problem,
+      using OpenMP for parallel execution.
+    <p>
+
+    <p>
+      <a href = "../../f_src/schedule_openmp/schedule_openmp.html">
+      SCHEDULE_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates the default, static, and dynamic methods of "scheduling"
+      loop iterations in OpenMP to avoid work imbalance.
+    <p>
+
+    <p>
+      <a href = "../../f_src/sgefa_openmp/sgefa_openmp.html">
+      SGEFA_OPENMP</a>,
+      a FORTRAN90 program which 
+      reimplements the SGEFA/SGESL linear algebra routines from
+      LINPACK for use with OpenMP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ziggurat_openmp/ziggurat_openmp.html">
+      ZIGGURAT_OPENMP</a>, 
+      a FORTRAN90 program which
+      demonstrates how the ZIGGURAT library can be used to generate random numbers
+      in an OpenMP parallel program.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Eratosthenes,<br>
+          A Method For Finding Prime Numbers,<br>
+          Papyrus 487.
+        </li>
+        <li>
+          Michael Quinn,<br>
+          Parallel Programming in C with MPI and OpenMP,<br>
+          McGraw-Hill, 2004,<br>
+          ISBN13: 978-0071232654,<br>
+          LC: QA76.73.C15.Q55.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "prime_openmp.f90">prime_openmp.f90</a>, the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>PRIME_LOCAL</b> runs the program locally.
+      <ul>
+        <li>
+          <a href = "prime_local.sh">prime_local.sh</a>,
+          commands to compile the program and run with 1, 2, 4, and 8 threads.
+        </li>
+        <li>
+          <a href = "prime_local_output.txt">prime_local_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>PRIME_ITHACA</b> runs the program through ITHACA's batch system.
+      <ul>
+        <li>
+          <a href = "prime_ithaca.sh">prime_ithaca.sh</a>,
+          commands to compile the program and run with 1, 2, 4, and 8 threads.
+        </li>
+        <li>
+          <a href = "prime_ithaca_output.txt">prime_ithaca_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for PRIME_OPENMP.
+        </li>
+        <li>
+          <b>PRIME_NUMBER</b> returns the number of primes between 1 and N.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 September 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

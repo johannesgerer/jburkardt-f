@@ -1,0 +1,262 @@
+<html>
+
+  <head>
+    <title>
+      CVT_MOD_DATASET - Centroidal Voronoi Tessellation on Logical Torus
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CVT_MOD_DATASET <br> Centroidal Voronoi Tessellation on Logical Torus
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CVT_MOD_DATASET</b>
+      is a FORTRAN90 program which
+      creates Centroidal Voronoi Tessellation (CVT) datasets in which the
+      geometry is a logical torus.
+    </p>
+
+    <p>
+      A 2D unit logical torus is the unit square, but with "wraparound".
+      This is the connectivity frequently seen in video games, in which
+      a spaceship flies off the top of the screen and immediately reappears
+      at the bottom of the screen.  In the general M-dimensional case,
+      the extreme minimum and maximum values of each coordinate are
+      identified, and modular arithmetic may be used to determine
+      distances.
+    </p>
+
+    <p>
+      For details on the underlying CVT calculation, refer to
+      <a href =
+      "../../f_src/cvt_dataset/cvt_dataset.html">
+      CVT_DATASET</a>.  This program is a modification of that one, in
+      which distances are computed using modular arithmetic.  For the
+      current code, the region is a unit hypercube, although there's
+      no real difficulty in allowing the widths in each dimension to
+      vary.
+    </p>
+
+    <p>
+      A reasonable set of input commands might be:
+      <pre>
+        #  cvt_mod_02_00010.inp
+        #
+        m = 2
+        n = 10
+        seed = 123456789
+        #
+        initialize random
+        sample_function_cvt = random
+        sample_num_cvt = 500000
+        iterate 100
+        write cvt_mod_02_00010.txt
+        #
+        quit
+      </pre>
+    </p>
+
+    <p>
+      Here, the user first specifies the spatial dimension <b>M</b>, the
+      number of generators <b>N</b>, and the random number seed
+      (for later reproducibility).
+    </p>
+
+    <p>
+      Then, the user specifies that the initial positions of the generators
+      are to chosen at random; that during the iterations, the volume
+      estimation will also be done using random sampling, and that the
+      number of sampling points in an iteration will be 500,000.
+      The <b>iterate 100</b> command causes 100 iterations to be carried
+      out, and then the resulting generators are written to a file.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt_mod/cvt_mod.html">
+      CVT_MOD</a>,
+      a FORTRAN90 library which
+      contains routines which compute the datasets.
+      A compiled copy of this library is necessary to build
+      <b>CVT_MOD_DATASET</b>.
+    </p>
+
+    <p>
+      <a href = "../../datasets/cvt_mod/cvt_mod.html">
+      CVT_MOD</a>,
+      a dataset directory which
+      contains sample files created
+      by <b>CVT_MOD_DATASET</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/faure_dataset/faure_dataset.html">
+      FAURE_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Faure quasirandom dataset;
+    </p>
+
+    <p>
+      <a href = "../../f_src/grid_dataset/grid_dataset.html">
+      GRID_DATASET</a>,
+      a FORTRAN90 program which
+      creates a grid sequence and writes it to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_center_dataset/latin_center_dataset.html">
+      LATIN_CENTER_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Latin Center Hypercube dataset;
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_edge_dataset/latin_edge_dataset.html">
+      LATIN_EDGE_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Latin Edge Hypercube dataset;
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_random_dataset/latin_random_dataset.html">
+      LATIN_RANDOM_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Latin Random Hypercube dataset;
+    </p>
+
+    <p>
+      <a href = "../../f_src/niederreiter2_dataset/niederreiter2_dataset.html">
+      NIEDERREITER2_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Niederreiter quasirandom dataset with base 2;
+    </p>
+
+    <p>
+      <a href = "../../f_src/normal_dataset/normal_dataset.html">
+      NORMAL_DATASET</a>,
+      a FORTRAN90 program which
+      generates a dataset of multivariate normal pseudorandom values and writes them to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sobol_dataset/sobol_dataset.html">
+      SOBOL_DATASET</a>,
+      a FORTRAN90 program which
+      computes a Sobol quasirandom sequence and writes it to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform_dataset/uniform_dataset.html">
+      UNIFORM_DATASET</a>,
+      a FORTRAN90 program which
+      generates a dataset of multivariate uniform pseudorandom values and writes them to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/van_der_corput_dataset/van_der_corput_dataset.html">
+      VAN_DER_CORPUT_DATASET</a>,
+      a FORTRAN90 program which
+      creates a van der Corput quasirandom sequence and writes it to a file.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, Number 3, pages 345-405, September 1991.
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Janet Peterson, Rebecca Brannon,<br>
+          User Manual and Supporting Information for Library of Codes
+          for Centroidal Voronoi Placement and Associated Zeroth,
+          First, and Second Moment Determination,<br>
+          Sandia National Laboratories Technical Report SAND2002-0099,<br>
+          February 2002,<br>
+          <a href = "../../publications/bgpb_2002.pdf">
+                    ../../publications/bgpb_2002.pdf </a>
+        </li>
+        <li>
+          Qiang Du, Vance Faber, Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review, Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Lili Ju, Qiang Du, Max Gunzburger,<br>
+          Probabilistic methods for centroidal Voronoi tessellations
+          and their parallel implementations,<br>
+          Parallel Computing,<br>
+          Volume 28, 2002, pages 1477-1500.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_mod_dataset.f90">cvt_mod_dataset.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "cvt_mod_dataset.sh">cvt_mod_dataset.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for CVT_MOD_DATASET.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

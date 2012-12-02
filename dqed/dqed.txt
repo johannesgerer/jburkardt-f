@@ -1,0 +1,1304 @@
+DQED.TXT  09 November 2000
+ 
+ 
+Introduction
+
+
+DQED solves the constrained nonlinear least squares problem:
+ 
+  Minimize the sum of squares of MEQUA generally nonlinear equations,
+ 
+    f(1:MEQUA)(x) = 0,  Equation (1)
+ 
+where x is a set of NVARS unknowns.  The vector function with these MEQUA 
+components is called f(x) in the discussion that follows.  
+
+The components of x may have upper and lower bounds given by the user.  In 
+fact, all of the possible cases can be specified: 
+
+  no bounds on X; 
+  bounds at one end only;
+  upper and lower bounds.  
+
+Linear constraints on the unknowns, more general than simple bounds, can also 
+be given.  These linear constraints can be of the equality or inequality type:
+ 
+  a(L,1) x(1)+ ... + a(L,NVARS) x(NVARS) = y(L), L = 1,...,MCON,  Equation (2)
+ 
+with bounds specified on the right hand side values y(L), again given by the 
+user.  The constraints can actually be slightly nonlinear.  In this case
+the constraints can be described as:
+ 
+  g(L)(x) =  y(L), L = 1,...,MCON,  Equation (2')
+
+where bounds are specified on each y(L).  The functions g(L)(x) must be defined 
+for all x in the set described by the simple bounds.
+
+Experienced users may wish to turn directly to the examples before reading the 
+subprogram documentation.
+
+There is no size relation required for the problem dimensions MEQUA, NVARS, and 
+MCON except that MEQUA and NVARS are both positive, and MCON is nonnegative.
+ 
+DQED will do a decent job of solving most nonlinear
+least squares problems that can be expressed as Equations (1) and (2)
+above, provided that continuous derivatives of the functions
+with respect to the parameters can be computed.  This can also
+include problems where the derivatives must be computed using
+some form of numerical differentiation.  Numerical
+differentiation is not provided with this software for solving
+nonlinear least squares problems.  
+ 
+The authors also plan to develop methods that will do a much
+better job of coping with constraints more general than the
+essentially linear ones indicated above in Equations (2)-(2').  There
+are nonlinear least squares problems with innocent-looking but
+highly nonlinear constraints where this package will fail to
+work.  The authors also hope to reduce the overhead required by
+the software.  This high overhead is due primarily to the method
+used to solve the inner-loop quadratic model problem.  The
+authors recommend that users consider using the option number
+14, described below, to suppress use of the quadratic model.  The
+user may find that the software works quite well without the
+quadratic model.  This may be important when the function and
+derivatives evaluations are not expensive but many individual
+problems are being solved.
+ 
+There are two fundamental ways to use the subprogram DQED.
+
+The most straightforward way is to make one call to DQED and obtain values 
+for the unknowns, x.  The user provides a subprogram DQEDEV that gives 
+DQED the values of the functions f(x) and g(x), and the derivative or Jacobian 
+matrices for f(x) and g(x) at each desired point x.  This usage is called 
+'forward communication.'
+
+An alternate way to use DQED is to provide an option that allows the user to 
+communicate these values by 'reverse communication.'  DQED returns to the 
+user calling program and requests values for f(x) and g(x), and the Jacobian
+matrices for f(x) and g(x) for a given value of x.  This framework is often 
+required in applications that have complicated algorithmic requirements for 
+evaluation of the functions.  
+
+Examples using both 'forward' and 'reverse' communication are provided.
+
+The source code for DQED can be obtained from NETLIB, in the OPT
+subdirectory.
+
+
+Calling Sequence Explained
+
+There are arrays used by the subprogram that must have
+dimensions equivalent to the following declarations.
+
+  INTEGER IWORK(LIWORK)
+  DOUBLE PRECISION WORK(LWORK)
+ 
+The array dimensions for the arrays IWORK and WORK can
+change if either option 14 or option 15 are in use.  
+ 
+In the usual case,
+ 
+  NPMAX=5,
+ 
+unless the user is using option 15, when
+ 
+  NPMAX = user specified value, must be >= 2.
+ 
+In the usual case,
+ 
+  NALL = MCON + 2*NVARS + NPMAX + 1,
+ 
+unless the user is using option 14, when
+ 
+  NALL = MCON + NVARS + 2.
+ 
+Also, if MCON is zero, then
+
+  NPLUS = 0
+
+else
+
+  NPLUS = 3*NALL + 2.
+
+In terms of these values defined above,
+
+  LIWORK >= 3*MCON + 9*NVARS + 4*NPMAX + NALL + 11
+
+  LWORK >= NALL*NALL + 4*NALL + NVARS*NPMAX + 33*NVARS 
+    + MEQUA*NPMAX + max(MEQUA,NVARS)*NPMAX + 13*NPMAX + 9*MCON + 26
+    + NPLUS
+
+
+SUBROUTINE DQED(DQEDEV, MEQUA, NVARS, MCON, IND, BL, BU, X, FJ, LDFJ, FNORM, 
+  IGO, IOPT, ROPT, IWORK, WORK)
+ 
+DQEDEV Input, EXTERNAL DQEDEV.
+
+       This is the name of a subprogram that the user will usually
+       supply for evaluation of the values of the constraints and
+       model, and the derivatives of these functions.  The user must
+       provide this subprogram unless 'reverse communication' is used.
+       A model for writing the subprogram DQEDEV is provided under
+       the heading "Example 1 Using Forward Communication".
+
+       Users may find it convenient to modify this model subprogram
+       when writing a subprogram for their own application.  If
+       'reverse communication' is used, the user does not need to write
+       a stub or dummy subroutine named DQEDEV.  All that is required
+       is to declare exactly this name in an EXTERNAL statement.  The
+       code package has a dummy subroutine DQEDEV that will be used
+       in the linking or load step.  "Example 2 Using Reverse
+       Communication", listed below, illustrates this detail.
+ 
+MEQUA  Input, INTEGER MEQUA.
+       The number of least squares equations.  MEQUA must be positive.
+
+NVARS  Input, INTEGER NVARS.
+       The number of unknowns or variables.  NVARS must be positive.
+
+MCON   Input, INTEGER MCON.
+       The number of general constraints for the solution, not including
+       simple bounds.  MCON must be nonnegative. 
+ 
+IND    Input, INTEGER IND(NVARS+MCON).
+
+       IND describes the form of the simple bounds that the
+       components of x are to satisfy.  Components numbered 1,...,NVARS
+       are used to describe the form of the simple bounds that the
+       unknown are to satisfy.  Components numbered
+       NVARS+1,...,NVARS+MCON are used to describe the form of the
+       general MCON linear constraints.  The first NVARS components of
+       IND indicate the type of simple bounds that the solution is
+       to satisfy.  The corresponding entries of BL and BU are
+       the bounding value.  The only values of IND allowed are 1,2,3
+       or 4.  Other values are errors.  
+
+       Specifically, IND(J)=
+
+         1, if x(J)>= BL(J) is required; BU(J) is not used.
+         2, if x(J)<= BU(J) is required; BL(J) is not used.
+         3, if x(J)>= BL(J) and x(J)<= BU(J) is required.
+         4, if no bounds on x(J) are required; BL, BU are not used.
+
+       General linear constraints of the form shown in Equation (2) require
+       that bounds be given for the linear functions y(L).  
+
+       Specifically, IND(NVARS+L)=
+
+         1, if y(L)>= BL(NVARS+L) is required; BU is not needed.
+         2, if y(L)<= BU(NVARS+L) is required; BL is not needed.
+         3, if y(L)>= BL(NVARS+L) and y(L)<= BU(NVARS+L)            
+         4, if no bounds on y(L) are required; BL, BU are not used.
+ 
+       The values of the bounds for the unknowns may be changed by the
+       user during the evaluation of the functions f(x) and g(x) and
+       their Jacobian matrices.
+
+BL     Input, REAL BL(NVARS+MCON).
+       For each component J, if IND(J) requires it, BL(J) is the lower
+       value for X(J).
+
+BU     Input, REAL BU(NVARS+MCON).
+       For each component J, if IND(J) requires it, BU(J) is the upper
+       value for X(J).
+
+X      Input/output, REAL X(NVARS).
+       The array X contains the NVARS values, x,  where the
+       functions f(x) and g(x) and their Jacobian matrices will be
+       evaluated by the subprogram DQED.  After the computation has
+       successfully completed, the array X will contain a solution,
+       namely the unknowns of the problem, x.  Success is determined
+       by an appropriate value for IGO.  
+
+       On input, the array X must contain a starting guess
+       for the unknowns of the problem, x.  The initial values do not
+       need to satisfy the constraints or the bounds.  If they do not
+       satisfy the bounds, then the point will be simply projected onto
+       the bounds as a first step.  The first linear change to the
+       values of x must satisfy the general constraints.  It is here
+       that the assumption of their linearity is utilized.
+ 
+FJ     Input/output, REAL FJ(LDFJ,NVARS+1).
+       FJ is used to store the linear constraints of Equation (2) or more 
+       generally the Jacobian matrix of the functions g(x) with respect to 
+       the variables x, and the Jacobian matrix of the function f(x).  The 
+       Jacobian matrix of the (linear) constraints is placed in rows 1,...,MCON.
+       The Jacobian matrix of f(x) is placed in rows MCON+1, ...,MCON+MEQUA. 
+ 
+       Normally the array FJ is assigned values by the user when the nonlinear 
+       solver requests evaluations of the constraints g(x) and the function f(x)
+       together with the Jacobian matrices G(x) and J(x).  The values
+       of the constraint functions g(L)(x) are placed in the array
+       FJ(L,NVARS+1), L=1,...,MCON.  The values of the model functions
+       f(I)(x) are placed in the array at entries FJ(MCON+I,NVARS+1),
+       I=1,...,MEQUA.
+
+LDFJ   Input, INTEGER LDFJ, the leading or row dimension of the array FJ.
+       LDFJ must be greater than or equal to MEQUA+MCON.  
+
+FNORM  Output, REAL FNORM.
+
+       This is the value of the Euclidean length or square root of sums
+       of squares of components of the function f(x) after the
+       approximate solution, x, has been found.  During the computation
+       it is updated and equals the best value of the length of f(x)
+       that has been found.
+ 
+IGO    Input/output, INTEGER IGO.
+
+       This flag directs user action and informs the user about the
+       type of results obtained by the subprogram.  The user may find
+       it convenient to treat the cases abs(IGO) <= 1 the same as
+       IGO=1.  This has no effect on the solution process.
+ 
+       The user can interrupt the computation at any time, obtaining
+       the best values of the vector x up to this point, by setting
+       IGO to any value .gt. 1 and then return control to DQED.  For
+       example if a calculation must be done in a certain length of
+       time, the user can, as the end of the time draws near, set
+       IGO=20 and return control to DQED.  It is important that this
+       method be used to stop further computing, rather than simply
+       proceeding.  The reason for this is that certain flags in DQED
+       must be reset before any further solving on subsequent problems
+       can take place.  The value of IGO .gt. 1 used to interrupt the
+       computation is arbitrary and is the value of IGO returned.  If
+       values of IGO =2,...,18 are used to flag this interrupt, they do
+       not mean the same thing as indicated below.  For this reason the
+       value IGO=20 is recommended for signaling interrupts in DQED.
+
+       Another situation that may occur is the request for an
+       evaluation of the functions and derivatives at a point x where
+       these can't be evaluated.  If this occurs, set IGO=99 and return
+       control to DQED.  This will have the effect of defining the
+       derivatives to be all zero and the functions to be 'large.'
+       Thus a reduction in the trust region around the current best
+       estimate will occur.  Assigning the value IGO=99 will not cause
+       DQED to stop computing.
+ 
+       Output values of IGO:
+
+       0, Place the value of f(x) in FJ(MCON+*,NVARS+1).  If
+       'reverse communication' is being used, CALL DQED again.  If
+       'forward communication' is being used, do a RETURN.
+ 
+       1 or -1,  Evaluate the Jacobians for the functions g(x)
+       and f(x) as well as evaluating g(x) and f(x).  Use the vector x
+       that is now in the array X as the values where this
+       evaluation will be performed.  Place the Jacobian matrix
+       for g(x) in the first MCON rows of FJ.  Place the Jacobian
+       matrix for f(x) in rows MCON+1,...,MCON+MEQUA in FJ.  Place
+       the value of g(x) in FJ(*,NVARS+1).  Place the value of f(x) in
+       FJ(MCON+*,NVARS+1).
+ 
+       Users who have complicated functions whose derivatives cannot be
+       computed analytically may want to use the numerical differentiation
+       subroutine JAGC.  This is available on the SLATEC library. 
+ 
+       If 'reverse communication' is being used, CALL DQED again.
+       If 'forward communication' is being used, do a RETURN.
+ 
+       A value IGO=-1 flags that that the number of terms in the
+       quadratic model is being restricted by the amount of storage
+       given for that purpose.  It is suggested, but it is not
+       required, that additional storage be given for the quadratic
+       model parameters.  See the following description of the option
+       array, option number 15, for the way to designate more storage
+       for this purpose.
+ 
+       2, The function f(x) has a length less than TOLF.  This is
+       the value for IGO to be expected when an actual zero value of
+       f(x) is anticipated.   See the description of the option array
+       for the value.
+ 
+       3, The function f(x) has reached a value that may be a
+       local minimum.  However, the bounds on the trust region
+       defining the size of the step are being hit at each step.  Thus
+       the situation is suspect.  (Situations of this type can occur
+       when the solution is at infinity in some of the components of
+       the unknowns, x.  See the description of the option array for
+       ways to avoid this value of output value of IGO.
+ 
+       4, The function f(x) has reached a local minimum.  This is
+       the value of IGO that is expected when a nonzero value of f(x)
+       is anticipated.  See the description of the option array for the
+       conditions that have been satisfied.
+ 
+       5, The model problem solver has noted a value for the
+       linear or quadratic model problem residual vector length that is
+       >= the current value of the function, which is the Euclidean
+       length of f(x).  This situation probably means that the
+       evaluation of f(x) has more uncertainty or noise than is
+       possible to account for in the tolerances used to note a local
+       minimum.  The value for x is suspect, but a minimum has probably
+       been found.
+ 
+       6, A small change (absolute) was noted for the vector x.  A
+       full model problem step was taken.  The condition for IGO=4 may
+       also be satisfied, so that a minimum has been found.  However,
+       this test is made before the test for IGO=4.
+ 
+       7, A small change (relative to the length of x) was noted
+       for the vector x.  A full model problem step was taken.  The
+       condition for IGO=4 may also be satisfied, so that a minimum has
+       been found.  However, this test is made before the test for
+       IGO=4.
+ 
+       8, More than ITMAX iterations were taken to obtain the
+       solution.  The value obtained for x is suspect, although it is
+       the best set of x values that occurred in the entire
+       computation.  See the description of the option array for
+       directions on how to increase this value.  Note that the
+       nominal value for ITMAX, 75, is sufficient to solve all of the
+       nonlinear test problems described in Reference (2).
+ 
+       9 through 18, Errors in the usage of the subprogram were noted.
+       The exact condition will be noted using an error processor that
+       prints an informative message unless this printing has been
+       suppressed.  A minimum value has not been found for x.  The
+       relation between IGO and the error number are IGO=NERR + 8.
+       Here NERR is the identifying number. 
+
+IOPT   Input, INTEGER IOPT(17+*).
+
+       IOPT must have a dimension of at least 17!  The dimension of
+       IOPT may be greater than 17 if many options are specified.
+
+       IOPT is an array of option indices and option values, which
+       makes it easy for the user to specify many different DQED options.
+       In some cases, the ROPT array may also be used.  See the
+       example for details.
+
+       99, There are no more options to change.  Normally this is the first and
+       only option that a user needs to specify, and it can be simply 
+       IOPT(1)=99.  The total dimension of IOPT must be at least 17, however.  
+       This can lead to a hard-to-find program bug if the dimension is too 
+       small.
+ 
+       1, Change the amount of printed output.  The next value of IOPT is the 
+       print level desired, IPRINT.  Any value of IPRINT .gt. 0 gives all the 
+       available output.
+ 
+       2, Change the value of ITMAX.  The next value of IOPT is the value of 
+       ITMAX desired.
+ 
+       3, Pass prior determined bounds for the box containing the initial point.
+       This box is the trust region for the first move from the initial point. 
+       The next entry in IOPT points to the place in ROPT where the NVARS  
+       values for the edges of the box are found.
+ 
+       4, Change the value of TOLF.  The next entry of IOPT points to the place 
+       in ROPT where the new value of TOLF is found.
+ 
+       5, Change the value of TOLX.  The next entry of IOPT points to the place
+       in ROPT where the new value of TOLX is found.
+ 
+       6, Change the value of TOLD.  The next entry of IOPT points to the place 
+       in ROPT where the new value of TOLD is found.
+ 
+       7, Change the value of TOLSRN.  The next entry of IOPT points to the 
+       place in ROPT where the new value of TOLSNR is found.
+ 
+       8, Change the value of TOLP.  The next entry of IOPT points to the place
+       in ROPT where the new value of TOLP is found.
+ 
+       9, Change the value of TOLUSE.  The next entry of IOPT points to the
+       place in ROPT where the new value of TOLUSE is found.
+ 
+       10, Change the value of COND.  The next entry of IOPT points to the 
+       place in ROPT where the new value of COND is found.
+ 
+       11, Change the value of LEVEL.  The next entry of IOPT is the new value 
+       of LEVEL.
+ 
+       12, Pass an option array to the subprogram DQEDGN used as the inner loop 
+       solver for the model problem.  The next entry of IOPT is the starting 
+       location for the option array for DQEDGN within the array IOPT.  Thus
+       the option array for DQEDGN must be a part of the array IOPT.
+ 
+       13, Move (or leap) the processing pointer LP for the option array by the
+       next value in IOPT.
+ 
+       14, Change a logical flag that suppresses the use of the quadratic model
+       in the inner loop.  Use the next value in IOPT for this flag.  If this 
+       value = 1, then never use the quadratic model.  Just use the linear 
+       model.  Otherwise, use the quadratic model when appropriate.  This option 
+       decreases the amount of scratch storage as well as the computing 
+       overhead required by the code package.  A user may want to determine if   
+       the application really requires the use of the quadratic model.
+       If it does not, then use this option to save both storage and computing 
+       time.
+ 
+       15, Change NTERMS, the maximum number of array columns that can be used 
+       for saving quadratic model data.  The value of NTERMS is one more
+       than the maximum number of terms used.  Each unit increase for NTERMS 
+       increases the required dimension of the array WORK by 2*MEQUA+NVARS.
+       Use the value in IOPT(LP+1) for the new value of NTERMS.  Decreasing 
+       this value to 2 (its minimum) decreases the amount of storage
+       required by the code package.
+ 
+       16, Change a logical flag so that 'reverse communication' is used 
+       instead of 'forward communication.'  Example EX01, listed below,
+       uses 'forward communication.'  Example EX02, also listed below, uses 
+       'reverse communication.'  Use the next value in IOPT for this flag.  If 
+       this value = 1, then use 'reverse communication.'  Otherwise,
+       use 'forward communication.'  
+
+       WARNING:  This usage may not work unless the operating system
+       saves variables between subroutine calls to DQED.
+ 
+       17, Do not allow the flag IGO to return with the value IGO=3.  This 
+       means that convergence will not be claimed unless a full model step is 
+       taken.  Normal output values will then be IGO = 2, 4, 6 or 7.
+       Use the next value in IOPT for this flag.  If this value = 1, then 
+       force a full model step.  Otherwise, do not force a full model step 
+       if small steps are noted.
+ 
+ROPT   Input, REAL ROPT(*).
+
+       Depending on the options specified by the user in IOPT, ROPT may
+       contain real numbers required to set certain DQED options.
+
+IWORK  Input/output/workspace, INTEGER IWORK(*).
+
+       IWORK is an integer scratch array that DQED uses for storage of 
+       intermediate results.  It is important not to modify the contents of 
+       this storage during the computation.
+ 
+       The array locations IWORK(1) and IWORK(2) must contain the actual 
+       lengths of the arrays WORK and IWORK before the call to DQED.  These 
+       array entries are replaced by the actual amount of storage required for 
+       each array.  If the amount of storage for either array is too small, an 
+       informative error message will be printed, and the value IGO=13 or 14 
+       returned.
+ 
+       The user may find it useful to let the subprogram DQED return the 
+       amounts of storage required for these arrays.  For example set 
+       IWORK(1)=1, IWORK(2)=1.  The subprogram will return with IGO=13, 
+       IWORK(1)=required length of WORK, and IWORK(2)=required length of IWORK. 
+       Appropriate error messages will normally be printed.
+
+WORK   Workspace, REAL WORK(*).
+
+       WORK is a real scratch array that DQED uses for storage of 
+       intermediate results.  It is important not to modify the contents of 
+       this storage during the computation.
+ 
+       The array location IWORK(1) must contain the actual length of WORK 
+       before the call to DQED.  This array entry is replaced by the actual 
+       amount of storage required.  If the amount of storage is too small, an 
+       informative error message will be printed, and the value IGO=13 or 14 
+       returned.
+ 
+
+The Option Array
+
+In order to use the option array technique to change selected
+data within a subprogram, it is necessary to understand how this
+array is processed within the software.  Let LP designate the
+processing pointer that moves to positions of the IOPT array.
+Initially  LP=1, and as each option is noted and changed, the
+value of LP is updated.  The values of IOPT(LP) determine what
+options get changed.  The amount that LP changes is known by the
+software to be equal to the value two except for two options.
+These exceptional cases are the last option (=99) and the 'leap'
+option (=13) which advances LP by the value in IOPT(LP+1).  A
+negative value for IOPT(LP) means that this option is not to be
+changed.  This aids the programmer in using options;  often the
+code for using an option can be in the calling program but a
+negative value of the option number avoids rewriting code.
+ 
+Glossary of Items Modified by Options.  
+
+Those items with Nominal Values listed can be changed.
+
+The quantity 'eps', used below, is the machine precision
+parameter.  Its value is obtained by a call to the Bell Labs.
+Port subprogram D1MACH(4).  It is machine dependent.
+
+The conditions 
+
+  (abs(FB-PV)<=TOLSNR*FB and abs(FC-PV) <= TOLP*FB)
+
+and 
+
+  (ABS(FC-FL)<=TOLSNR*FB) 
+
+together with taking a full model step, must be satisfied before the 
+condition IGO=4 is returned.  Decreasing any of the values for TOLF, TOLD, 
+TOLX, TOLSNR, or TOLP will likely increase the number of iterations
+required for convergence.
+ 
+ 
+     Names    Nominal         Definition
+              Values
+     -----    -------         ----------
+     FC                       Current value of length of f(x).
+
+     FB                       Best value of length of f(x).
+
+     FL                       Value of length of f(x) at the previous step.
+
+     PV                       Predicted value of length of f(x),
+                              after the step is taken, using the
+                              approximating model.
+
+              MIN(1.D-5,
+     TOLF     sqrt(eps))      Tolerance for stopping when FC <= TOLF.
+
+              MIN(1.D-5,
+     TOLD     sqrt(eps))      Tolerance for stopping when
+                              change to x values has length
+                              <= TOLD.
+              MIN(1.D-5,
+     TOLX     sqrt(eps))      Tolerance for stopping when
+                              change to x values has length
+                              <= TOLX*length of x values.
+
+     TOLSNR    1.D-5          Tolerance used in stopping
+                              condition IGO=4.  Explained below.
+
+     TOLP      1.D-5          Tolerance used in stopping
+                              condition IGO=4.  Explained below.
+ 
+     COND       30.           Largest condition number to allow
+                              when solving for the quadratic
+                              model coefficients.  Increasing
+                              this value may result in more
+                              terms being used in the quadratic
+                              model.
+
+     TOLUSE   sqrt(eps)       A tolerance that is used to avoid
+                              values of x in the quadratic
+                              model's interpolation of previous
+                              points.  Decreasing this value may
+                              result in more terms being used in
+                              the quadratic model.
+
+      ITMAX     75            The number of iterations to take
+                              with the algorithm before giving
+                              up and noting it with the value
+                              IGO=8.
+
+      IPRINT     0            Control the level of printed
+                              output in the solver.  A value
+                              of IPRINT .gt. 0 will result in
+                              output of information about each
+                              iteration.  The output unit used
+                              is obtained using the Bell Labs.
+                              Port subprogram, i. e. I1MACH(2).
+
+      LEVEL      1            Error processor error level.  See
+                              the SLATEC library documentation
+                              for XERROR for an explanation.
+
+      NTERMS     5            One more than the maximum number
+                              of terms used in the quadratic
+                              model.
+ 
+Option Usage Example
+
+In the Fortran code fragment that follows, an example is given
+where we change the value of TOLF and decrease the maximum
+number of iterations allowed from 75 to 30.
+
+In this example the dimensions of IOPT and ROPT must satisfy:
+ 
+      double precision ropt(1)
+      integer iopt(5)
+      .
+      .
+      .
+c
+c  Set the option to change the value of TOLF.
+c
+      iopt(1)=4
+c
+c  The next entry points to the place in ROPT where
+c  the new value of TOLF is located.
+c
+      iopt(2)=1
+c
+c  This is the new value of TOLF.  
+c
+      ropt(1)=1.d-9
+c
+c  Change the number of iterations.
+c
+      iopt(3)=2
+c
+c  This next entry is the new value for the maximum number of iterations.
+c
+      iopt(4)=30
+c
+c  This next option is a signal that there are no more options.
+c
+      iopt(5)=99
+      .
+      .
+      .
+      call dqed
+      .
+      .
+      .
+
+
+Examples
+
+The following complete program units, EX01 and EX02, show how one can use the 
+nonlinear solver for fitting exponential functions to given data.  These 
+examples are calculations that match two terms of an exponential series to 
+five given data points.   
+
+There are some subtle points about exponential fitting
+that are important to note.  First, the signs of the
+exponential arguments are restricted to be nonpositive.
+The size of the arguments should not be much larger than the start
+of the time data (reciprocated).  This is the reason the lower
+bounds are set a bit less than the reciprocal of the time value.
+In many applications that require exponential modeling this is a
+natural assumption.  The nonlinear solver allows these bounds
+on the arguments explicitly.  
+
+In addition, the coefficients are constrained to be nonnegative.  
+These bounds are harder to justify.  The idea is to avoid the 
+situation where a coefficient is very large and negative, and 
+the corresponding exponential argument is also large and negative.  
+The resulting contribution to the series may be very small, 
+but its presence is spurious.  
+
+Finally, the single general linear constraint that keeps the arguments 
+separated (by 0.05 in this example) is used for two purposes.   First, it 
+naturally orders these values so that the first one is algebraically largest.  
+Second, this constraint moves the parameters from the local minimum 
+corresponding to the initial values used in the examples.  This constraint also
+retains the validity of the model function 
+
+  h(t) = w*exp(x*t) + y*exp(z*t).  
+
+Namely, if the arguments are allowed to coalesce to the same value, then 
+the model itself must change.  The form of the model can become 
+
+  h(t)=(a+b*t)*exp(c*t) 
+
+or 
+
+  h(t) = d*exp(e*t).
+
+Either one could occur, and the choice is problem dependent.
+
+
+c  EX1.F  25 January 1996
+c
+      program ex1
+c
+c***********************************************************************
+c
+c  EX1 illustrates the use of the Hanson-Krogh nonlinear least squares 
+c  solver DQED for fitting two exponentials to data.
+c 
+c  The problem is to find values for the four variables x(1),...,x(4),
+c  which specify the model function
+c 
+c    h(t) = x(1)*exp(x(2)*t) + x(3)*exp(x(4)*t)
+c
+c  which mininize the sum of the squares of the error between h(t) and
+c  recorded values of h at five values of t:
+c
+c    t=0.05, 0.1, 0.4, 0.5, and 1.0.
+c
+c  We also have problem constraints that 
+c
+c        0 <= x(1)
+c    -25.0 <= x(2) <= 0
+c        0 <= x(3)
+c    -25.0 <= x(4) <= 0. 
+c
+c  and a minimal separation requirement between x(2) and x(4) that
+c  can be expressed as
+c
+c     0.05 <= x(2) - x(4)
+c
+c
+c  Output from Example 1 Program
+c 
+c   model is h(t) = x(1)*exp(-t*x(2)) + x(3)*exp(t*x(4))
+c  x(1),x(2),x(3),x(4) =
+c      1.999475    -.999801     .500057   -9.953988
+c   residual after the fit =   4.2408d-04
+c   output flag from solver =                      4
+c 
+      integer ldfj
+      integer liwork
+      integer lwork
+      integer mcon
+      integer mequa
+      integer nvars
+c
+      parameter (liwork=84)
+      parameter (lwork=640)
+      parameter (mcon=1)
+      parameter (mequa=5)
+      parameter (nvars=4)
+c
+      parameter (ldfj=mcon+mequa)
+c
+      double precision bl(nvars+mcon)
+      double precision bu(nvars+mcon)
+      double precision fj(ldfj,nvars+1)
+      double precision fnorm
+      integer i
+      integer igo
+      integer ind(nvars+mcon)
+      integer iopt(24)
+      integer iwork(liwork)
+      double precision ropt(1)
+      double precision work(lwork)
+      double precision x(nvars)
+c
+      external dqedev
+c
+c  Define the bounding constraints on the variables X(1) through X(4),
+c  and then the linear constraints on the separation condition.
+c
+c  1: 0.0 <= X(1)
+c
+      ind(1)=1
+      bl(1)=0.0
+      bu(1)=0.0
+c
+c  2: -25.0 <= X(2) <= 0.0
+c
+      ind(2)=3
+      bl(2)=-25.0
+      bu(2)=0.0
+c
+c  3: 0.0 <= X(3)
+c
+      ind(3)=1
+      bl(3)=0.0
+      bu(3)=0.0
+c
+c  4: -25.0 <= X(4) <= 0.0
+c
+      ind(4)=3
+      bl(4)=-25.0
+      bu(4)=0.0
+c
+c  5: 0.05 <= X(2) - X(4)
+c
+      ind(5)=1
+      bl(5)=0.05
+      bu(5)=0.0
+c
+c  Define the initial values of the variables.
+c  We don't know anything more, so all variables are set zero.
+c
+      do i = 1,nvars
+        x(i) = 0.0
+      enddo
+c
+c  Tell how much storage we gave the solver.
+c
+      iwork(1) = lwork
+      iwork(2) = liwork
+c
+c  No additional options are in use.
+c
+      iopt(1) = 99
+c
+c  Call the program.
+c
+      call dqed(dqedev,mequa,nvars,mcon,ind,bl,bu,x,fj,ldfj,fnorm,igo,
+     &  iopt,ropt,iwork,work)
+
+      write(*,*)' '
+      write(*,*)'h(t) = x(1)*exp(-t*x(2)) + x(3)*exp(t*x(4))'
+      write(*,*)' '
+      write(*,*)'Constrained minimizing X:'
+      write(*,*)' '
+      write(*,*)(x(i),i=1,nvars)
+      write(*,*)' '
+      write(*,*)'Residual of the fitted data, FNORM = ',fnorm
+      write(*,*)'DQED output flag IGO = ',igo
+ 
+      stop
+      end
+      subroutine dqedev(x,fj,ldfj,igo,iopt,ropt)
+c
+c***********************************************************************
+c
+c  DQEDEV is the subprogram for evaluating the functions and derivatives 
+c  for the nonlinear solver DQED.
+c 
+c  The user problem has MCON constraint functions,
+c  MEQUA least squares equations, and involves NVARS
+c  unknown variables.
+c 
+c  When this subprogram is entered, the general (near)
+c  linear constraint partial derivatives, the derivatives
+c  for the least squares equations, and the associated
+c  function values are placed into the array FJ(*,*).
+c  All partials and functions are evaluated at the point
+c  in X(*).  Then the subprogram returns to the calling
+c  program unit.  Typically one could do the following
+c  steps:
+c 
+c    step 1. Place the partials of the i-th constraint
+c            function with respect to variable j in the
+c            array FJ(i,j), i=1,...,MCON, j=1,...,NVARS.
+c
+c    step 2. Place the values of the i-th constraint
+c            equation into FJ(i,NVARS+1).
+c
+c    step 3. Place the partials of the i-th least squares
+c            equation with respect to variable j in the
+c            array FJ(MCON+i,j), i=1,...,MEQUA,
+c            j=1,...,NVARS.
+c
+c    step 4. Place the value of the i-th least squares
+c            equation into FJ(MCON+i,NVARS+1).
+c
+c    step 5. Return to the calling program unit.
+c
+      integer ldfj
+c
+      integer mcon
+      integer mequa
+      integer nvars
+c
+      parameter (mcon=1)
+      parameter (mequa=5)
+      parameter (nvars=4)
+c
+      double precision f(mequa)
+      double precision fj(ldfj,nvars+1)
+      integer i
+      integer igo
+      integer iopt(*)
+      double precision ropt(*)
+      double precision t(mequa)
+      double precision x(nvars)
+c
+      data t/0.05,0.10,0.40,0.50,1.00/
+
+      data f/2.206d+00,1.994d+00,1.350d+00,1.216d+00,.7358d0/
+c 
+c  Set the value of the constraint, and the residual functions.
+c
+      fj(1,5) = x(2) - x(4)
+
+      do i = 1,mequa
+
+        fj(mcon+i,5) = x(1)*exp(x(2)*t(i)) + x(3)*exp(x(4)*t(i)) - f(i)
+
+      enddo
+c
+c  If IGO is nonzero, compute the derivatives.
+c
+      if(igo.ne.0)then
+
+        fj(1,1) = 0.0
+        fj(1,2) = 1.0
+        fj(1,3) = 0.0
+        fj(1,4) = -1.0
+
+        do i = 1,mequa
+
+          fj(mcon+i,1) = exp(x(2)*t(i))
+          fj(mcon+i,2) = x(1)*t(i)*exp(x(2)*t(i))
+          fj(mcon+i,3) = exp(x(4)*t(i))
+          fj(mcon+i,4) = x(3)*t(i)*exp(x(4)*t(i))
+
+        enddo
+
+      endif
+
+      return
+      end
+
+
+c  EX2.F  25 January 1996
+c
+      program ex2
+c
+c***********************************************************************
+c
+c  EX2 illustrates the use of the Hanson-Krogh nonlinear least squares 
+c  solver DQED for fitting two exponentials to data.
+c 
+c  The problem is to find values for the four variables x(1),...,x(4),
+c  which specify the model function
+c 
+c    h(t) = x(1)*exp(x(2)*t) + x(3)*exp(x(4)*t)
+c
+c  which mininize the sum of the squares of the error between h(t) and
+c  recorded values of h at five values of t:
+c
+c    t=0.05, 0.1, 0.4, 0.5, and 1.0.
+c
+c  We also have problem constraints that 
+c
+c        0 <= x(1)
+c    -25.0 <= x(2) <= 0
+c        0 <= x(3)
+c    -25.0 <= x(4) <= 0. 
+c
+c  and a minimal separation requirement between x(2) and x(4) that
+c  can be expressed as
+c
+c     0.05 <= x(2) - x(4)
+c
+c
+c  Output from Example 2 Program
+c 
+c  model is h(t) = x(1)*exp(-t*x(2)) + x(3)*exp(t*x(4))
+c  x(1),x(2),x(3),x(4) =
+c      1.999475    -.999801     .500057   -9.953988
+c   residual after the fit =   4.2408d-04
+c   number of evaluations of parameter model =    14
+c   output flag from solver =                      4
+c 
+      integer ldfj
+      integer liwork
+      integer lwork
+      integer mcon
+      integer mequa
+      integer nvars
+c
+      parameter (liwork=84)
+      parameter (lwork=640)
+      parameter (mcon=1)
+      parameter (mequa=5)
+      parameter (nvars=4)
+c
+      parameter (ldfj=mcon+mequa)
+c
+      double precision bl(nvars+mcon)
+      double precision bu(nvars+mcon)
+      double precision f(mequa)
+      double precision fj(ldfj,nvars+1)
+      double precision fnorm
+      integer i
+      integer igo
+      integer ind(nvars+mcon)
+      integer iopt(24)
+      integer iwork(liwork)
+      integer niters
+      double precision ropt(1)
+      double precision t(mequa)
+      double precision work(lwork)
+      double precision x(nvars)
+c
+      external dqedev
+c
+      data t/0.05,0.10,0.40,0.50,1.00/
+
+      data f/2.206d+00,1.994d+00,1.350d+00,1.216d+00,.7358d0/
+c
+c  Define the bounding constraints on the variables X(1) through X(4),
+c  and then the linear constraints on the separation condition.
+c
+c  1: 0.0 <= X(1)
+c
+      ind(1)=1
+      bl(1)=0.0
+      bu(1)=0.0
+c
+c  2: -25.0 <= X(2) <= 0.0
+c
+      ind(2)=3
+      bl(2)=-25.0
+      bu(2)=0.0
+c
+c  3: 0.0 <= X(3)
+c
+      ind(3)=1
+      bl(3)=0.0
+      bu(3)=0.0
+c
+c  4: -25.0 <= X(4) <= 0.0
+c
+      ind(4)=3
+      bl(4)=-25.0
+      bu(4)=0.0
+c
+c  5: 0.05 <= X(2) - X(4)
+c
+      ind(5)=1
+      bl(5)=0.05
+      bu(5)=0.0
+c
+c  Define the initial values of the variables.
+c  We don't know anything at all, so all variables are set zero.
+c
+      do i=1,nvars
+        x(i) = 0.0
+      enddo
+c
+c  Tell how much storage we gave the solver.
+c
+      iwork(1) = lwork
+      iwork(2) = liwork
+c
+c  Initialize the call counter.
+c
+      niters = 0
+c
+c  Use reverse commumication to evaluate the derivatives.
+c
+      iopt(1)=16
+      iopt(2)=1
+c
+c  No more options.
+c
+      iopt(3) = 99
+
+10    continue
+
+       call dqed(dqedev,mequa,nvars,mcon,ind,bl,bu,x,fj,ldfj,fnorm,
+     &   igo,iopt,ropt,iwork,work)
+
+      if (igo.gt.1)then
+
+        write(*,*)' '
+        write(*,*)'h(t) = x(1)*exp(-t*x(2)) + x(3)*exp(t*x(4))'
+        write(*,*)' '
+        write(*,*)'Constrained minimizing X:'
+        write(*,*)' '
+        write(*,*)(x(i),i=1,nvars)
+        write(*,*)' '
+        write(*,*)'Residual of the fitted data, FNORM = ',fnorm
+        write(*,*)'Number of model evaluations NITERS = ',niters
+        write(*,*)'DQED output flag IGO = ',igo
+        stop
+
+      endif
+c
+c  Count function evaluations.
+c
+      niters = niters + 1
+c 
+c  Set the value of the constraint, and the residual functions.
+c
+      fj(1,5) = x(2) - x(4)
+
+      do i = 1,mequa
+
+        fj(mcon+i,5) = x(1)*exp(x(2)*t(i)) + x(3)*exp(x(4)*t(i)) - f(i)
+
+      enddo
+c
+c  If IGO is nonzero, compute the derivatives.
+c
+      if(igo.ne.0)then
+
+        fj(1,1) = 0.0
+        fj(1,2) = 1.0
+        fj(1,3) = 0.0
+        fj(1,4) = -1.0
+
+        do i = 1,mequa
+
+          fj(mcon+i,1) = exp(x(2)*t(i))
+          fj(mcon+i,2) = x(1)*t(i)*exp(x(2)*t(i))
+          fj(mcon+i,3) = exp(x(4)*t(i))
+          fj(mcon+i,4) = x(3)*t(i)*exp(x(4)*t(i))
+
+        enddo
+
+      endif
+
+      go to 10
+      end
+
+ 
+ 
+References
+
+J J Dongarra, J R Bunch, C B Moler, G W Stewart,
+LINPACK User's Guide, 
+Society for Industrial and Applied Mathematics, 
+Philadelphia, PA, 1979.
+ 
+R J Hanson,
+"Least Squares with Bounds and Linear Constraints," 
+SIAM Journal of Scientific and Statistical Computing, 
+Volume 7, number 3, July 1986, pages 826-834.
+ 
+R B Schnabel, P D Frank,
+"Tensor Methods for Nonlinear Equations," 
+SIAM Journal of Numerical Analysis, 
+Volume 21, number 5, October 1984, pages 815-843.
+
+
+subroutine dpchek(df,dqedev,fj,iopt,ldfj,nvars,ropt,x,y)
+
+DPCHEK carries out a check of the user's jacobian evaluation
+routine, by comparing each column with a finite difference estimate.
+
+DF     Workspace, DOUBLE PRECISION DF(NVARS).
+
+DQEDEV Input, EXTERNAL DQEDEV, the name of the user written jacobian
+       and function evaluation routine.
+
+FJ     Workspace, DOUBLE PRECISION FJ(LDFJ,NVARS+1), space to store
+       the jacobian and the function, as required by DQEDEV.
+
+IOPT   Throughput, INTEGER IOPT(*), parameters to be passed 
+       to DQEDEV.
+
+LDFJ   Input, INTEGER LDFJ, the leading dimension of FJ, which must
+       be at least NVARS.
+
+NVARS  Input, INTEGER NVARS, the number of variables.
+
+ROPT   Throughput, DOUBLE PRECISION ROPT(*), parameters to be passed
+       to DQEDEV.
+
+X      Input, DOUBLE PRECISION X(NVARS), the point at which the
+       jacobian should be evaluated.
+
+Y      Workspace, DOUBLE PRECISION Y(NVARS).
+
+
+subroutine difcen(fj,func,fx,iopt,ldfj,mcon,mequa,nvars,ropt,x)
+
+DIFCEN estimates the jacobian of a set of NEQN nonlinear functions
+with respect to a set of NVARS variables, using central finite 
+differences, requiring 2*(MCON+MEQUA) function evaluations.
+
+FJ     Output, DOUBLE PRECISION FJ(LDFJ,NVARS), the estimated
+       jacobian.
+
+FUNC   Input, EXTERNAL FUNC, the name of the user written 
+       function evaluation routine.  FUNC should have the form:
+
+         subroutine func(fx,iopt,mcon,mequa,nvars,ropt,x)
+
+       and should accept X as input, and return in FX the value
+       of the MEQUA+MCON functions.
+
+FX     Workspace, DOUBLE PRECISION FX(MEQUA+MCON).
+
+IOPT   Throughput, INTEGER IOPT(*), parameters to be passed 
+       to FUNC.
+
+LDFJ   Input, INTEGER LDFJ, the leading dimension of FJ, which must
+       be at least MEQUA+MCON.
+
+MCON   Input, INTEGER MCON, the number of constraints.
+
+MEQUA  Input, INTEGER MEQUA, the number of nonlinear functions. 
+
+NVARS  Input, INTEGER NVARS, the number of variables.
+
+ROPT   Throughput, DOUBLE PRECISION ROPT(*), parameters to be passed
+       to FUNC.
+
+X      Input, DOUBLE PRECISION X(NVARS), the point at which the
+       jacobian should be evaluated.
+
+
+subroutine diffor(fj,func,fx,iopt,ldfj,mcon,mequa,nvars,ropt,x)
+
+DIFFOR estimates the jacobian of a set of NEQN nonlinear functions
+with respect to a set of NVARS variables, using forward finite 
+differences, requiring MCON+MEQUA+1 function evaluations.
+
+FJ     Output, DOUBLE PRECISION FJ(LDFJ,NVARS), the estimated
+       jacobian.
+
+FUNC   Input, EXTERNAL FUNC, the name of the user written 
+       function evaluation routine.  FUNC should have the form:
+
+         subroutine func(fx,iopt,mcon,mequa,nvars,ropt,x)
+
+       and should accept X as input, and return in FX the value
+       of the MEQUA+MCON functions.
+
+FX     Workspace, DOUBLE PRECISION FX(MEQUA+MCON).
+
+IOPT   Throughput, INTEGER IOPT(*), parameters to be passed 
+       to FUNC.
+
+LDFJ   Input, INTEGER LDFJ, the leading dimension of FJ, which must
+       be at least MEQUA+MCON.
+
+MCON   Input, INTEGER MCON, the number of constraints.
+
+MEQUA  Input, INTEGER MEQUA, the number of nonlinear functions. 
+
+NVARS  Input, INTEGER NVARS, the number of variables.
+
+ROPT   Throughput, DOUBLE PRECISION ROPT(*), parameters to be passed
+       to FUNC.
+
+X      Input, DOUBLE PRECISION X(NVARS), the point at which the
+       jacobian should be evaluated.
+
+
+subroutine dqedev(x,fj,ldfj,igo,iopt,ropt)
+
+DQEDEV evaluates certain functions being treated by DQED, as well 
+as their partial derivatives.
+
+The user has NVARS variables X(I), and is trying to minimize
+the square root of the sum of the squares of MEQUA functions
+F(I)(X), subject to MCON constraints which have the form
+
+  BL(I) <= G(I)(X) <= BU(I)
+
+where either the left or right bounding inequality may be dropped.
+
+
+X      Input, REAL X(*), an array of length NVARS, containing
+       the values of the independent variables at which the
+       functions and partial derivatives should be evaluated.
+
+FJ     Output, REAL FJ(LDFJ,NVARS+1).
+
+       If IGO is nonzero, then partial derivatives must
+       be placed in the first NVARS columns of FJ, as
+       follows:
+
+         Rows I = 1 to MCON, and columns J = 1 to NVARS
+         should contain the partials of the I-th constraint
+         function G(I) with respect to the J-th variable.
+
+         Rows I=MCON+1 to MCON+MEQUA, and columns J = 1 to NVARS
+         should contain the partials of the (I-MCON)-th nonlinear
+         function F(I-MCON) with respect to the J-th variable.
+
+       Regardless of the value of IGO, column NVARS+1 must be
+       assigned the values of the constraints and functions,
+       as follows:
+
+         Rows I = 1 to MCON, column J = NVARS+1, should contain 
+         the value of G(I).
+
+         Rows I=MCON+1 to MCON+MEQUA, column J = NVARS+1, should
+         contain the value of F(I-MCON).
+
+LDFJ   Input, INTEGER LDFJ, the leading dimension of FJ, which
+       must be at least MCON+MEQUA.
+
+IGO    Input/output, INTEGER IGO.
+
+       On input, IGO tells the user whether the partial derivatives
+       are needed.  
+
+         0, the partial derivatives are not needed.
+         nonzero, the partial derivatives are needed.
+
+       On output, the user may reset the input value of IGO if one
+       of two situations is encountered:
+
+         99, the functions, constraints, or partial derivatives
+         could not be evaluated at the given input point X.  Request
+         that DQED reject that point, and try a different one.
+
+         Any other value, abort the run.
+
+IOPT   Input, INTEGER IOPT(*), the integer option array.
+
+ROPT   Input, REAL ROPT(*), the real option array.

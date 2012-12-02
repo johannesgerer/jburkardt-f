@@ -1,0 +1,289 @@
+<html>
+
+  <head>
+    <title>
+      FLOW5 - A Finite Element Code for Fluid Flow
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FLOW5 <br> A Finite Element Code for Fluid Flow
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FLOW5</b>
+      is a FORTRAN90 program which
+      uses the finite element method to solve for the steady state
+      velocity and pressure in a fluid flow region.
+    </p>
+
+    <p>
+      The fluid is presumed to be incompressible.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bump/bump.html">
+      BUMP</a>,
+      a FORTRAN90 program which
+      solves a fluid flow problem
+      in a channel including a bump which obstructs and redirects the flow.
+    </p>
+
+    <p>
+      <a href = "../../data/fem2d/fem2d.html">
+      FEM2D</a>,
+      a data directory which 
+      contains a description of the data files
+      that can be used to describe a 2D finite element model.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fem_io/fem_io.html">
+      FEM_IO</a>,
+      a MATLAB library which
+      reads and writes the node, element and data files that define a finite element model.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fem_to_tec/fem_to_tec.html">
+      FEM_TO_TEC</a>,
+      a MATLAB program which
+      can convert an FEM model into a TEC graphics file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_pack/fem2d_pack.html">
+      FEM2D_PACK</a>,
+      a FORTRAN90 library which
+      contains utilities for 2D finite element calculations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_poisson/fem2d_poisson.html">
+      FEM2D_POISSON</a>,
+      a FORTRAN90 program which
+      solves Poisson's equation
+      on a square, using the finite element method.
+    </p>
+
+    <p>
+      <a href = "../../f_src/flow3/flow3.html">
+      FLOW3</a>,
+      a FORTRAN90 program which
+      uses the finite element method to solve for the steady state
+      velocity and pressure in a fluid flow region.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/inout/inout.html">
+      INOUT</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in a square region with
+      an inlet and an outlet.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_control/mhd_control.html">
+      MHD_CONTROL</a>,
+      a FORTRAN90 program which
+      tries to control the evolution of an MHD system so that a particular
+      state is achieved.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_flow/mhd_flow.html">
+      MHD_FLOW</a>,
+      a FORTRAN90 program for the
+      evolution of an MHD system.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nast2d_f90/nast2d_f90.html">
+      NAST2D_F90</a>,
+      a FORTRAN90 program which
+      uses the finite volume method to set up and solve
+      the 2D incompressible Navier Stokes equations with heat.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/tcell/tcell.html">
+      TCELL</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in a "T"-shaped region.
+    </p>
+
+    <p>
+      <a href = "../../m_src/toms866/toms866.html">
+      TOMS866</a>,
+      a MATLAB library which
+      is the Incompressible Flow Iterative Solution Software;<br>
+      this library is commonly called <b>IFISS</b>;<br>
+      this is ACM TOMS algorithm 866.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Max Gunzburger,<br>
+          Finite Element Methods for Viscous Incompressible Flows,<br>
+          A Guide to Theory, Practice, and Algorithms,<br>
+          Academic Press, 1989,<br>
+          ISBN: 0-12-307350-2,<br>
+          LC: TA357.G86.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "flow5.f90">flow5.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "flow5.sh">flow5.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cavity_output.txt">cavity_output.txt</a>,
+          the output file;
+        </li>
+        <li>
+          <a href = "cavity_elements.txt">cavity_elements.txt</a>,
+          the element file,
+          suitable for input to the DISPLAY4 graphics program;
+        </li>
+        <li>
+          <a href = "cavity_uvp.txt">cavity_uvp.txt</a>,
+          the node file, suitable for
+          input to the DISPLAY4 graphics program;
+        </li>
+        <li>
+          <a href = "cavity.tec">cavity.tec</a>,
+          a graphics file suitable for
+          input to the TECPLOT graphics program;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FLOW5.
+        </li>
+        <li>
+          <b>BSP</b> evaluates the linear basis functions for pressure.
+        </li>
+        <li>
+          <b>DGB_FA</b> factors a matrix stored in LINPACK general band storage.
+        </li>
+        <li>
+          <b>DGB_SL</b> solves a system factored by DGB_FA.
+        </li>
+        <li>
+          <b>FP</b> computes the jacobian matrix A of the Navier Stokes residual.
+        </li>
+        <li>
+          <b>FX</b> computes the residual RES of the Navier Stokes equations.
+        </li>
+        <li>
+          <b>INTPRS</b> interpolates the pressure at the midside nodes.
+        </li>
+        <li>
+          <b>NEWTON</b> applies Newton iteration, seeking a solution of FX(G) = 0.
+        </li>
+        <li>
+          <b>QBF</b> evaluates a nonisoparametric quadratic basis function.
+        </li>
+        <li>
+          <b>R8VEC_AMAX</b> returns the maximum absolute value in a real vector.
+        </li>
+        <li>
+          <b>REFBSP</b> evaluates a reference element linear basis function.
+        </li>
+        <li>
+          <b>REFQBF</b> evaluates a reference element quadratic basis function.
+        </li>
+        <li>
+          <b>SETBAN</b> computes the lower band width of the Jacobian matrix.
+        </li>
+        <li>
+          <b>SETBAS</b> evaluates the basis functions at each quadrature point.
+        </li>
+        <li>
+          <b>SETQUAD</b> sets the abscissas and weights for quadrature in a triangle.
+        </li>
+        <li>
+          <b>SETNOD</b> assigns numbers to the nodes and elements.
+        </li>
+        <li>
+          <b>SETXY</b> sets the X and Y coordinates of the nodes.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRANS</b> calculates the biquadratic reference element transformation.
+        </li>
+        <li>
+          <b>UVPNORM</b> returns the "norm" of the computed finite element solution.
+        </li>
+        <li>
+          <b>UVALQ</b> evaluates velocities and pressure at a quadrature point in an element.
+        </li>
+        <li>
+          <b>WRITE_DISPLAY_FILE</b> writes solution information to two files.
+        </li>
+        <li>
+          <b>WRITE_TECPLOT_FILE</b> writes out solution information for use with TECPLOT.
+        </li>
+        <li>
+          <b>XOFXSI</b> computes X and Y given XSI and ETA coordinates.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+  </body>
+
+</html>

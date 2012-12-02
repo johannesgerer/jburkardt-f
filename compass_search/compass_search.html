@@ -1,0 +1,285 @@
+<html>
+
+  <head>
+    <title>
+      COMPASS_SEARCH - The Compass Search Optimization Algorithm
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      COMPASS_SEARCH <br> The Compass Search Optimization Algorithm
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>COMPASS_SEARCH</b> 
+      is a FORTRAN90 library which 
+      seeks the minimizer of a scalar function of several variables
+      using compass search, a direct search algorithm that does not use derivatives.
+    </p>
+
+    <p>
+      The algorithm, which goes back to Fermi and Metropolis, is easy to describe.  
+      The algorithm begins with a starting point X, and a step size DELTA.
+    </p>
+
+    <p>
+      For each dimension I, the algorithm considers perturbing X(I) by adding
+      or subtracting DELTA.
+    </p>
+
+    <p>
+      If a perturbation is found which decreases the function, this becomes the
+      new X.  Otherwise DELTA is halved.
+    </p>
+
+    <p>
+      The iteration halts when DELTA reaches a minimal value.
+    </p> 
+
+    <p>
+      The algorithm is not guaranteed to find a global minimum.  It can, for 
+      instance, easily be attracted to a local minimum.  Moreover, the algorithm
+      can diverge if, for instance, the function decreases as the argument goes
+      to infinity.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+ 
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>COMPASS_SEARCH</b> is available in
+      <a href = "../../c_src/compass_search/compass_search.html">a C version</a> and
+      <a href = "../../cpp_src/compass_search/compass_search.html">a C++ version</a> and
+      <a href = "../../f77_src/compass_search/compass_search.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/compass_search/compass_search.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/compass_search/compass_search.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa047/asa047.html">
+      ASA047</a>,
+      a FORTRAN90 library which
+      minimizes a scalar function of several variables using the Nelder-Mead algorithm.
+    </p>
+
+    <p>
+      <a href = "../../m_src/entrust/entrust.html">
+      ENTRUST</a>,
+      a MATLAB program which
+      minimizes a scalar function of several variables using trust-region methods.
+    </p>
+
+    <p>
+      <a href = "../../m_src/nelder_mead/nelder_mead.html">
+      NELDER_MEAD</a>,
+      a MATLAB program which
+      minimizes a scalar function of several variables using the Nelder-Mead algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/praxis/praxis.html">
+      PRAXIS</a>,
+      a FORTRAN90 library which 
+      implements the principal axis method of Richard Brent for minimization of
+      a function without the use of derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt/test_opt.html">
+      TEST_OPT</a>,
+      a FORTRAN90 library which 
+      defines test problems
+      requiring the minimization of a scalar function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt_con/test_opt_con.html">
+      TEST_OPT_CON</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables, with the search constrained to lie within a specified hyper-rectangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms178/toms178.html">
+      TOMS178</a>,
+      a FORTRAN90 library which
+      optimizes a scalar functional of multiple variables using the Hooke-Jeeves method.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      John Burkardt
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Evelyn Beale,<br>
+          On an Iterative Method for Finding a Local Minimum of a Function
+          of More than One Variable,<br>
+          Technical Report 25, <br>
+          Statistical Techniques Research Group,<br>
+          Princeton University, 1958.
+        </li>
+        <li>
+          Richard Brent,<br>
+          Algorithms for Minimization without Derivatives,<br>
+          Dover, 2002,<br>
+          ISBN: 0-486-41998-3,<br>
+          LC: QA402.5.B74.
+        </li>
+        <li>
+          Charles Broyden,<br>
+          A class of methods for solving nonlinear simultaneous equations,<br>
+          Mathematics of Computation,<br>
+          Volume 19, 1965, pages 577-593.
+        </li>
+        <li>
+          David Himmelblau,<br>
+          Applied Nonlinear Programming,<br>
+          McGraw Hill, 1972,<br>
+          ISBN13: 978-0070289215,<br>
+          LC: T57.8.H55.
+        </li>
+        <li>
+          Tamara Kolda, Robert Michael Lewis, Virginia Torczon,<br>
+          Optimization by Direct Search: New Perspectives on Some Classical and Modern Methods,<br>
+          SIAM Review,<br>
+          Volume 45, Number 3, 2003, pages 385-482.
+        </li>
+        <li>
+          Ken McKinnon,<br>
+          Convergence of the Nelder-Mead simplex method to a nonstationary point,<br>
+          SIAM Journal on Optimization,<br>
+          Volume 9, Number 1, 1998, pages 148-158.
+        </li>
+        <li>
+          Zbigniew Michalewicz,<br>
+          Genetic Algorithms + Data Structures = Evolution Programs,<br>
+          Third Edition,<br>
+          Springer, 1996,<br>
+          ISBN: 3-540-60676-9,<br>
+          LC: QA76.618.M53.
+        </li>
+        <li>
+          Jorge More, Burton Garbow, Kenneth Hillstrom,<br>
+          Testing unconstrained optimization software,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 7, Number 1, March 1981, pages 17-41. 
+        </li>
+        <li>
+          Michael Powell,<br>
+          An Iterative Method for Finding Stationary Values of a Function
+          of Several Variables,<br>
+          Computer Journal,<br>
+          Volume 5, 1962, pages 147-151.
+        </li> 
+        <li>
+          Howard Rosenbrock,<br>
+          An Automatic Method for Finding the Greatest or Least Value of a Function,<br>
+          Computer Journal,<br>
+          Volume 3, 1960, pages 175-184.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "compass_search.f90">compass_search.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "compass_search.sh">compass_search.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "compass_search_prb.f90">compass_search_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "compass_search_prb.sh">compass_search_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "compass_search_prb_output.txt">compass_search_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>COMPASS_SEARCH</b> carries out a direct search minimization algorithm.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 05 January 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,154 @@
+c
+c     02/27/04 - Added values:
+c
+c       nuc_max - Max number of user-coded functions.
+c       ntl_max - Max number of table functions. (already defined)
+c       npl_max - Max number of polynomial functions.
+c       nsf_max - Max number of segmented functions.
+c       nrg_max - Max number of registry values.
+c
+c
+c     03/27/03 - Added nev_max (number of element vertices).
+c                nne_max was used in itn, itb, etc. This was
+c                too large, since at most 4 are used.
+c
+c     03/09/03 - Added some parameters for higher order.
+c                Also arranged parameters into groups.
+c
+c     05/23/02 - Added table bounds.
+c
+c     These parameters (all of the form xxxx_max) are used for defining
+c     the maximum numbers of equations, boundary conditions, zones, etc.
+c     allowed in the code (particularly in readop and seta). This file
+c     must be included (using the line "include 'params.max'") before
+c     including any of the following files:
+c
+c       common.eqs   (storage for interpreted equations)
+c       common.bcs   (storage for boundary conditions)
+c       common.tre   (storage for trees)
+c       common.ins   (storage for instruction list)
+c       common.stc   (storage for stored constants)
+c       common.all   List of names for base functions.
+c       common.ho    Storage of higher-order info.
+c
+c     Order of finite element spaces.
+c     -------------------------------
+c
+c       iqp_max  - Order indicator for finite elements.
+c       lp_kmax  - Maximum "kick" order.
+c       lp_lmax  - Maximum number of p-refinement levels.
+c
+c     Note: Using maximum lp_kmax & lp_lmax gives 
+c
+c             nns_max = 1+(lp_kmax+1)*2^(lp_lmax-1)
+c
+c           Then, iqp_max = 1 gives 
+c
+c             2*nqs_max-1 >= 2*(nns_max-1)
+c
+c     Any combination of k & lp with 1+(k+1)*2^(lp-1) <= nns_max is ok.
+c
+      parameter(iqp_max =4 )
+      parameter(lp_kmax =2 )
+      parameter(lp_lmax =5 )
+c
+c     Geometry
+c     --------
+c
+c       nz_max  - Maximum number of zones allowed.
+c       ns_max  - Maximum number of boundary numbers in domain.
+c
+      parameter(nz_max =10)
+      parameter(ns_max =20)
+c
+c       nev_max - Maximum number of vertices per element.
+c       nns_max - Maximum number of nodes/element side.
+c       nqs_max - Maximum number of quadrature points/element side.
+c     * nqb_max - Maximum number of quadrature points (edge).
+c
+      parameter(nev_max=4 )
+      parameter(nns_max=10)
+      parameter(nqs_max=10)
+c     parameter(nqb_max=2 )  Obsolete. Same as nqs_max.
+c
+c       nne_max - Maximum number of nodes/element.
+c       nne_max - Maximum number of nodes/element.
+c       nqp_max - Maximum number of quadrature points (element).
+c
+        parameter(nne_max=nns_max*nns_max)
+        parameter(nqp_max=nqs_max*nqs_max)
+c
+c     Equation reading, processing & storage.
+c     ---------------------------------------
+c
+c       ncl_max - Maximum number of continuation lines allowed.
+c       ntr_max - Maximum number of storage for trees.
+c       nin_max - Maximum size of instruction list.
+c
+      parameter(ncl_max=5 )
+      parameter(ntr_max=20000)
+      parameter(nin_max=20000)
+c
+c       ncn_max - Maximum number of named constants.
+c       nbf_max - Maximum number of base functions.
+c       nfn_max - Maximum number of defined functions.
+c       nun_max - Maximum number of unknowns allowed
+c       nmt_max - Maximum number of matrices.
+c       nsc_max - Maximum number of stored constants.
+c
+c       nis_max - Maximum number of initialization specs.
+c
+      parameter(ncn_max=50)
+      parameter(nbf_max=50)
+      parameter(nfn_max=100)
+      parameter(nun_max=10)
+      parameter(nmt_max=50)
+      parameter(nsc_max=5000)
+c
+      parameter(nis_max=50)
+c
+c       ne_max  - Average number of entries per matrix.
+c       nme_max - Maximum total number of matrix entries.
+c
+      parameter(ne_max=4)
+        parameter(nme_max=nmt_max*ne_max)
+c
+c       nam_max - Maximum number of names allowed.
+c
+        parameter(nam_max=ncn_max+nbf_max+nun_max+nfn_max+nmt_max)
+c
+c       neq_max - Maximum number of equations allowed
+c       nbc_max - Maximum number of boundary conditions.
+c       nt_max  - Maximum average number of terms per equation.
+c       ntx_max - Maximum number of terms per equation.
+c       ntb_max - Maximum number of terms allowed in bc's.
+c
+      parameter(neq_max=50)
+      parameter(nbc_max=50)
+      parameter(nt_max =50)
+      parameter(ntx_max=500)
+        parameter(ntq_max=neq_max*nt_max)
+        parameter(ntb_max=nt_max*nbc_max)
+c
+c       ntl_max - Maximum number of tables.
+c       ntd_max - Maximum space for table data.
+c
+      parameter(ntl_max=10)
+      parameter(ntd_max=100*ntl_max)
+c
+c     02/27/04
+c
+c       nuc_max - Max number of user-coded functions.
+c       npl_max - Max number of polynomial functions.
+c       nsf_max - Max number of segmented functions.
+c       nrg_max - Max number of registry values.
+c
+c       ntl_max - Maximum number of tables.
+c       ntd_max - Maximum space for table data.
+c
+      parameter(nuc_max=50)
+      parameter(npl_max=50)
+      parameter(npd_max=10*npl_max)
+      parameter(nsf_max=50)
+      parameter(nsd_max=10*nsf_max)
+      parameter(nrg_max=100)

@@ -1,0 +1,352 @@
+<html>
+
+  <head>
+    <title>
+      GNUFOR - a GNUPLOT / FORTRAN90 interface
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GNUFOR <br> a GNUPLOT / FORTRAN90 interface
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GNUFOR</b>
+      is a FORTRAN90 library which
+      provides an interface to the GNUPLOT plotting software.
+    </p>
+
+    <p>
+      <b>GNUFOR</b> makes it possible, while running a FORTRAN90 program
+      on a UNIX system, to generate some data and request an immediate
+      plot.  This is done by issuing a SYSTEM command that starts up
+      GNUPLOT, and feeding it the appropriate commands and data.  The
+      FORTRAN90 program pauses while the graph is displayed in an X window,
+      and the user can admire the plots for a while, before hitting
+      return and giving control back to the FORTRAN90 program.
+    </p>
+
+    <p>
+      Thanks to some suggestions of Morag Am-Shallem, the FORTRAN90
+      program can continue execution without waiting for GNUPLOT.  In this way,
+      for example,
+      a program that was computing some quantity can, from time to time,
+      display an updated plot of what it is doing.  A user can glance at
+      the picture from time to time, while the FORTRAN90 program merrily
+      computes away.  Something like this can be done with a C program
+      that calls the GNUPLOT_I package.
+    </p>
+
+    <p>
+      To use this program, the command "gnuplot" must be in your path.
+    </p>
+
+    <p>
+      <a href = "http://science.webhostinggeeks.com/gnufor-gnuplot">A Serbo-Croatian version</a> 
+      of this article is available, translated by Jovana Milutinovich from 
+      <a href = "http://webhostinggeeks.com/">Geeks Education</a>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>GNUFOR</b> is available in
+      <a href = "../../f77_src/gnufor/gnufor.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/gnufor/gnufor.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../examples/gnuplot/gnuplot.html">
+      GNUPLOT</a>,
+      examples which
+      illustrate the use of the GNUPLOT graphics program.
+    </p>
+
+    <p>
+      <a href = "../../c_src/gnuplot_i/gnuplot_i.html">
+      GNUPLOT_I</a>,
+      a C library which
+      allows an executing C, C++, FORTRAN77 or FORTRAN90 program 
+      to interact with the GNUPLOT graphics program.
+    </p>
+
+    <p>
+      <a href = "../../c_src/gnuplot_i_examples/gnuplot_i_examples.html">
+      GNUPLOT_I_EXAMPLES</a>,
+      C programs which
+      demonstrate the use of the GNUPLOT_I library for interactive  
+      runtime GNUPLOT graphics.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/gnuplot_i_examples/gnuplot_i_examples.html">
+      GNUPLOT_I_EXAMPLES</a>,
+      C++ programs which
+      demonstrate the use of the GNUPLOT_I library for interactive  
+      runtime GNUPLOT graphics.
+    </p>
+
+    <p>
+      <a href = "../../examples/graphics_examples_gnuplot/graphics_examples_gnuplot.html">
+      GRAPHICS_EXAMPLES_GNUPLOT</a>,
+      gnuplot scripts which
+      illustrate how various kinds of data can be displayed and analyzed graphically
+      using the interactive executable graphics program gnuplot.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spring_ode2/spring_ode2.html">
+      SPRING_ODE2</a>,
+      a FORTRAN90 program which
+      shows how gnuplot graphics can be used to illustrate
+      a solution of the ordinary differential equation (ODE) that describes
+      the motion of a weight attached to a spring.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Philipp Janert,<br>
+          Gnuplot in Action: Understanding Data with Graphs,<br>
+          Manning, 2008,<br>
+          ISBN: 1-933988-39-8.
+        </li>
+        <li>
+          Thomas Williams, Colin Kelley, John Campbell, David Kotz, Russell Lang,<br>
+          gnuplot, An Interactive Plotting Program,<br>
+          The Free Software Foundation, 1990.
+        </li>
+        <li>
+          <a href = "http://www.gnuplot.info/">http://www.gnuplot.info/</a>,
+          the GNUPLOT Website</a>.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "gnufor.f90">gnufor.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "gnufor.sh">gnufor.sh</a>, commands to compile
+          the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "gnufor_prb.f90">gnufor_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "gnufor_prb.sh">gnufor_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "gnufor_prb_output.txt">gnufor_prb_output.txt</a>,
+          printed output from a run of the sample problem.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TEST01</b>:
+      <ul>
+        <li>
+          <a href = "test01_data.txt">test01_data.txt</a>, data file #1.
+        </li>
+        <li>
+          <a href = "test01_commands.txt">test01_commands.txt</a>,
+          command file #1.
+        </li>
+        <li>
+          <a href = "test01.png">test01.png</a>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TEST02</b>:
+      <ul>
+        <li>
+          <a href = "test02_data.txt">test02_data.txt</a>, data file #2.
+        </li>
+        <li>
+          <a href = "test02_commands.txt">test02_commands.txt</a>,
+          command file #2.
+        </li>
+        <li>
+          <a href = "test02.png">test02.png</a>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TEST03</b>:
+      <ul>
+        <li>
+          <a href = "test03_data.txt">test03_data.txt</a>, data file #3.
+        </li>
+        <li>
+          <a href = "test03_commands.txt">test03_commands.txt</a>,
+          command file #3.
+        </li>
+        <li>
+          <a href = "test03.png">test03.png</a>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TEST04</b>:
+      <ul>
+        <li>
+          <a href = "test04_data.txt">test04_data.txt</a>, data file #4.
+        </li>
+        <li>
+          <a href = "test04_commands.txt">test04_commands.txt</a>,
+          command file #4.
+        </li>
+        <li>
+          <a href = "test04.png">test04.png</a>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TEST05</b>:
+      <ul>
+        <li>
+          <a href = "test05_data.txt">test05_data.txt</a>, data file #5.
+        </li>
+        <li>
+          <a href = "test05_commands.txt">test05_commands.txt</a>,
+          command file #5.
+        </li>
+        <li>
+          <a href = "test05.png">test05.png</a>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TEST06</b>:
+      <ul>
+        <li>
+          <a href = "test06_data.txt">test06_data.txt</a>, data file #6.
+        </li>
+        <li>
+          <a href = "table.txt">table.txt</a>,
+          a table of data created for command file #6.
+        </li>
+        <li>
+          <a href = "test06_commands.txt">test06_commands.txt</a>,
+          command file #6.
+        </li>
+        <li>
+          <a href = "test06.png">test06.png</a>
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>RUN_GNUPLOT</b> runs GNUPLOT with a given command file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> returns the YMDHMS date as a timestamp.
+        </li>
+        <li>
+          <b>WRITE_VECTOR_DATA</b> writes vector data to a file, for plotting by GNUPLOT.
+        </li>
+        <li>
+          <b>WRITE_VECTOR_PLOT</b> writes GNUPLOT commands to plot vectors.
+        </li>
+        <li>
+          <b>WRITE_XY_DATA</b> writes X(1:N), Y(1:N) data to a file.
+        </li>
+        <li>
+          <b>WRITE_XY_PLOT</b> writes GNUPLOT commands to plot X(1:N), Y(1:N) data.
+        </li>
+        <li>
+          <b>WRITE_XYY_DATA</b> writes a table of data to a file, for plotting by GNUPLOT.
+        </li>
+        <li>
+          <b>WRITE_XYY_PLOTS</b> writes GNUPLOT commands to make multiple (X,Y) plots.
+        </li>
+        <li>
+          <b>WRITE_XYZ_DATA</b> writes X(1:N), Y(1:N), Z(1:N) data to a file.
+        </li>
+        <li>
+          <b>WRITE_XYZ_PLOT</b> writes commands to plot parametric (X,Y,Z) data.
+        </li>
+        <li>
+          <b>WRITE_XYZGRID_CONTOUR</b> writes commands to plot contours of Z(X,Y).
+        </li>
+        <li>
+          <b>WRITE_XYZGRID_DATA</b> writes a file of XYZ grid data.
+        </li>
+        <li>
+          <b>WRITE_XYZGRID_SURFACE</b> writes a file of GNUPLOT commands to plot a 3D surface.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 24 June 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

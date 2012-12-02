@@ -1,0 +1,321 @@
+<html>
+
+  <head>
+    <title>
+      SPHERE_STEREOGRAPH - Stereographic Mapping Between Sphere and Plane
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPHERE_STEREOGRAPH <br>
+      Stereographic Mapping Between Sphere and Plane
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPHERE_STEREOGRAPH</b>
+      is a FORTRAN90 program which
+      implements the standard stereographic mapping between the unit sphere and
+      the plane Z=1, as well as a generalization of this mapping.
+    </p>
+
+    <p>
+      The stereographic projection preserves angles, and is a conformal mapping.
+      This implies, for instance, that the Delaunay triangulation of a sphere
+      maps to a corresponding Delaunay triangulation of the plane.
+    </p>
+
+    <p>
+      Circles on the sphere that do not pass through the focus will be
+      projected to circles on the plane.  Circles on the sphere that do pass
+      through the focus will be projected to straight lines on the plane.
+    </p>
+
+    <h3 align = "center">
+      The Standard Projection
+    </h3>
+
+    <p>
+      We start with a sphere of radius 1 and center <b>C</b> = (0,0,0).
+    </p>
+
+    <p>
+      A plane is chosen, tangent to the sphere, at a point of tangency
+      <b>T</b> which we take to be the "north pole", <b>T</b> = (0,0,1).
+      We use a focus point <b>F</b>, which we take to be the "south pole",
+      (0,0,-1)
+    </p>
+
+    <p>
+      For any point <b>P</b> on the sphere, the stereographic projection <b>Q</b>
+      of the point is defined by drawing the line from <b>F</b> through <b>P</b>,
+      and computing <b>Q</b> as the intersection of this line with the plane.
+    </p>
+
+    <p>
+      For any point <b>Q</b> on the plane, the stereographic inverse projection
+      <b>P</b> of the point is defined by drawing the line from <b>F</b>
+      through <b>Q</b>, and
+      computing <b>P</b> as the intersection of this line with the sphere.
+    </p>
+
+    <p>
+      The function <b>sphere_stereograph</b> carries out the standard projection,
+      and <b>sphere_stereograph_inverse</b> does the inverse.
+    </p>
+
+    <h3 align = "center">
+      Projection with arbitrary center and focus
+    </h3>
+
+    <p>
+      One way to generalize the projection is to allow the center <b>C</b> and
+      focus point <b>F</b> to be arbitrary.  If we assume the point of tangency
+      is antipodal to <b>F</b> then <b>T</b> = 2*<b>C</b>-<b>F</b>.  Once these
+      points are defined, the stereographic projection relative to <b>F</b>,
+      <b>C</b>, and <b>T</b> can be set up in the same way as before.
+    </p>
+
+    <p>
+      The function <b>sphere_stereograph2</b> carries out the generalized
+      projection, and <b>sphere_stereograph2_inverse</b> does the inverse.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SPHERE_STEREOGRAPH</b> is available in
+      <a href = "../../cpp_src/sphere_stereograph/sphere_stereograph.html">a C++ version</a> and
+      <a href = "../../f_src/sphere_stereograph/sphere_stereograph.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sphere_stereograph/sphere_stereograph.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/geometry/geometry.html">
+      GEOMETRY</a>,
+      a FORTRAN90 library which
+      performs geometric calculations in 2, 3 and M dimensional space.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_cvt/sphere_cvt.html">
+      SPHERE_CVT</a>,
+      a FORTRAN90 library which
+      creates a mesh of well-separated points on a unit sphere using
+      a Centroidal Voronoi Tessellation (CVT).
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_delaunay/sphere_delaunay.html">
+      SPHERE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      computes and plots the Delaunay triangulation of points on the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_design_rule/sphere_design_rule.html">
+      SPHERE_DESIGN_RULE</a>,
+      a FORTRAN90 library which
+      returns point sets on the surface of the unit sphere, known as designs,
+      which can be useful for estimating integrals on the surface.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_grid/sphere_grid.html">
+      SPHERE_GRID</a>,
+      a FORTRAN90 library which
+      provides a number of ways of generating grids of points, or of
+      points and lines, or of points and lines and faces, over the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_lebedev_rule/sphere_lebedev_rule.html">
+      SPHERE_LEBEDEV_RULE</a>,
+      a FORTRAN90 library which
+      computes Lebedev quadrature rules for the unit sphere;
+    </p>
+
+    <p>
+      <a href = "../../m_src/sphere_stereograph_display/sphere_stereograph_display.html">
+      SPHERE_STEREOGRAPH_DISPLAY</a>,
+      a MATLAB library which
+      computes and displays the results of several stereographic projections
+      between a sphere and a plane.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_voronoi/sphere_voronoi.html">
+      SPHERE_VORONOI</a>,
+      a FORTRAN90 program which
+      computes and plots the Voronoi diagram of points on the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stripack/stripack.html">
+      STRIPACK</a>,
+      a FORTRAN90 library which
+      computes the Delaunay triangulation or Voronoi diagram of points
+      on a unit sphere,
+      by Robert Renka.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stripack_interactive/stripack_interactive.html">
+      STRIPACK_INTERACTIVE</a>,
+      a FORTRAN90 program which
+      reads a set of points on the unit sphere, computes the Delaunay triangulation,
+      and writes it to a file.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          C F Marcus,<br>
+          The stereographic projection in vector notation,<br>
+          Mathematics Magazine,<br>
+          Volume 39, Number 2, March 1966, pages 100-102.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sphere_stereograph.f90">sphere_stereograph.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "sphere_stereograph.sh">sphere_stereograph.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sphere_stereograph_prb.f90">sphere_stereograph_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "sphere_stereograph_prb.sh">sphere_stereograph_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "sphere_stereograph_prb_output.txt">sphere_stereograph_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>PLANE_NORMAL_BASIS_3D</b> finds two perpendicular vectors in a plane in 3D.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8MAT_NORM_FRO_AFFINE</b> returns the Frobenius norm of an R8MAT difference.
+        </li>
+        <li>
+          <b>R8MAT_NORMAL_01</b> returns a unit pseudonormal R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM_01</b> fills an R8MAT with unit pseudorandom numbers.
+        </li>
+        <li>
+          <b>R8VEC_ANY_NORMAL</b> returns some normal vector to V1.
+        </li>
+        <li>
+          <b>R8VEC_CROSS_PRODUCT_3D</b> computes the cross product of two R8VEC's in 3D.
+        </li>
+        <li>
+          <b>R8VEC_NORM</b> returns the L2 norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORM_AFFINE</b> returns the affine norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_NORMAL_01</b> returns a unit pseudonormal R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_TRANSPOSE_PRINT</b> prints an R8VEC "transposed".
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>SPHERE_STEREOGRAPH</b> computes the stereographic image of points on a sphere.
+        </li>
+        <li>
+          <b>SPHERE_STEREOGRAPH_INVERSE</b> computes stereographic preimages of points.
+        </li>
+        <li>
+          <b>SPHERE_STEREOGRAPH2</b> computes the stereographic image of points on a sphere.
+        </li>
+        <li>
+          <b>SPHERE_STEREOGRAPH2_INVERSE</b> computes stereographic preimages of points.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UNIFORM_ON_SPHERE01_MAP</b> maps uniform points onto the unit sphere.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 September 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,331 @@
+<html>
+
+  <head>
+    <title>
+      SFTPACK - "Slow" Fourier Transforms
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SFTPACK <br> "Slow" Fourier Transforms
+    </h1>
+
+    <hr>
+ 
+    <p>
+      <b>SFTPACK</b> 
+      is a FORTRAN90 library which 
+      carries out some "slow" Fourier transforms, that is, Fourier
+      transforms without the techniques that allow for very fast
+      computation. 
+    </p>
+
+    <p>
+      The intention is to make the underlying calculation clear,
+      and to provide a simple check and comparison of timing and usage 
+      for the fast calculations.
+    </p>
+
+    <p>
+      The fast Fourier transform is a highly efficient procedure.  However,
+      the coding of the algorithm, and the conventions for indexing, ordering,
+      and normalization, can make it quite difficult to understand what is
+      being done, or even to see how to use the software correctly.  This
+      means that a coding error or mistaken use can be undetected.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+ 
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SFTPACK</b> is available in
+      <a href = "../../c_src/sftpack/sftpack.html">a C version</a> and
+      <a href = "../../cpp_src/sftpack/sftpack.html">a C++ version</a> and
+      <a href = "../../f77_src/sftpack/sftpack.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/sftpack/sftpack.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sftpack/sftpack.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/c4lib/c4lib.html">
+      C4LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for single precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/c8lib/c8lib.html">
+      C8LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for double precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fft_openmp/fft_openmp.html">
+      FFT_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates the computation of a Fast Fourier Transform
+      in parallel, using OpenMP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fft_serial/fft_serial.html">
+      FFT_SERIAL</a>,
+      a FORTRAN90 program which
+      demonstrates the computation of a Fast Fourier Transform,
+      and is intended as a starting point for implementing an OpenMP parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fftpack5/fftpack5.html">
+      FFTPACK5</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fftpack5.1/fftpack5.1.html">
+      FFTPACK5.1</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      <a href = "../../f_src/haar/haar.html">
+      HAAR</a>,
+      a FORTRAN90 library which
+      computes the Haar transform of data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sine_transform/sine_transform.html">
+      SINE_TRANSFORM</a>,
+      a FORTRAN90 library which
+      demonstrates some simple properties of the discrete sine transform.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wavelet/wavelet.html">
+      WAVELET</a>,
+      a FORTRAN90 library which
+      does some simple wavelet calculations;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Briggs, Van Emden Henson,<br>
+          The DFT: An Owner's Manual for the Discrete Fourier Transform,<br> 
+          SIAM, 1995,<br>
+          ISBN13: 978-0-898713-42-8,<br>
+          LC: QA403.5.B75.
+        </li>
+        <li>
+          Ralph Hartley,<br>
+          A More Symmetrical Fourier Analysis Applied to Transmission 
+          Problems,<br>
+          Proceedings of the Institute of Radio Engineers,<br>
+          Volume 30, 1942, pages 144-150.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sftpack.f90">sftpack.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "sftpack.sh">sftpack.sh</a>, commands to compile the code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sftpack_prb.f90">sftpack_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "sftpack_prb.sh">sftpack_prb.sh</a>, commands to
+          compile, link and run the sample problem;
+        </li>
+        <li>
+          <a href = "sftpack_prb_output.txt">sftpack_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>C4MAT_PRINT_SOME</b> prints some of a C4MAT.
+        </li>
+        <li>
+          <b>C4MAT_SFTB</b> computes a "slow" backward Fourier transform of a C4MAT.
+        </li>
+        <li>
+          <b>C4MAT_SFTF</b> computes a "slow" forward Fourier transform of a C4MAT.
+        </li>
+        <li>
+          <b>C4MAT_UNIFORM_01</b> returns a unit pseudorandom C4MAT.
+        </li>
+        <li>
+          <b>C8MAT_PRINT_SOME</b> prints some of a C8MAT.
+        </li>
+        <li>
+          <b>C8MAT_SFTB</b> computes a "slow" backward Fourier transform of a C8MAT.
+        </li>
+        <li>
+          <b>C8MAT_SFTF</b> computes a "slow" forward Fourier transform of a C8MAT.
+        </li>
+        <li>
+          <b>C8MAT_UNIFORM_01</b> returns a unit pseudorandom C8MAT.
+        </li>
+        <li>
+          <b>C4VEC_PRINT_PART</b> prints "part" of a C4VEC.
+        </li>
+        <li>
+          <b>C4VEC_SFTB</b> computes a "slow" backward Fourier transform of a C4VEC.
+        </li>
+        <li>
+          <b>C4VEC_SFTF</b> computes a "slow" forward Fourier transform of a C4VEC.
+        </li>
+        <li>
+          <b>C4VEC_UNIFORM_01</b> returns a unit pseudorandom C4VEC.
+        </li>
+        <li>
+          <b>C8VEC_PRINT_PART</b> prints "part" of a C8VEC.
+        </li>
+        <li>
+          <b>C8VEC_SFTB</b> computes a "slow" backward Fourier transform of a C8VEC.
+        </li>
+        <li>
+          <b>C8VEC_SFTF</b> computes a "slow" forward Fourier transform of a C8VEC.
+        </li>
+        <li>
+          <b>C8VEC_UNIFORM_01</b> returns a unit pseudorandom C8VEC.
+        </li>
+        <li>
+          <b>R4VEC_PRINT_PART</b> prints "part" of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SCT</b> computes a "slow" cosine transform of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SFTB</b> computes a "slow" backward Fourier transform of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SFTF</b> computes a "slow" forward Fourier transform of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SHT</b> computes a "slow" Hartley transform of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SQCTB</b> computes a "slow" quarter cosine transform backward of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SQCTF</b> computes a "slow" quarter cosine transform forward of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SQSTB</b> computes a "slow" quarter sine transform backward of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SQSTF</b> computes a "slow" quarter sine transform forward of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_SST</b> computes a "slow" sine transform of an R4VEC.
+        </li>
+        <li>
+          <b>R4VEC_UNIFORM</b> returns a scaled pseudorandom R4VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT_PART</b> prints "part" of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SCT</b> computes a "slow" cosine transform of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SFTB</b> computes a "slow" backward Fourier transform of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SFTF</b> computes a "slow" forward Fourier transform of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SHT</b> computes a "slow" Hartley transform of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SQCTB</b> computes a "slow" quarter cosine transform backward of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SQCTF</b> computes a "slow" quarter cosine transform forward of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SQSTB</b> computes a "slow" quarter sine transform backward of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SQSTF</b> computes a "slow" quarter sine transform forward of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SST</b> computes a "slow" sine transform of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM</b> returns a scaled pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 22 June 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

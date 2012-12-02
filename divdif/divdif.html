@@ -1,0 +1,379 @@
+<html>
+
+  <head>
+    <title>
+      DIVDIF - Divided Difference Polynomials
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      DIVDIF <br> Divided Difference Polynomials
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DIVDIF</b>
+      is a FORTRAN90 library which
+      creates, prints and manipulates divided difference polynomials
+      based on data tabulated at evenly spaced or unevenly spaced argument values.
+    </p>
+
+    <p>
+      Divided difference polynomials are a
+      systematic method of computing polynomial approximations to scattered
+      data.  The representations are compact, and may easily be updated with
+      new data, rebased at zero, or analyzed to produce the standard form
+      polynomial, integral or derivative polynomials.
+    </p>
+
+    <p>
+      Other routines are available to convert the divided difference
+      representation to standard polynomial format.  This is a natural
+      way to determine the coefficients of the polynomial that interpolates
+      a given set of data, for instance.
+    </p>
+
+    <p>
+      One surprisingly simple but useful routine is available to take
+      a set of roots and compute the divided difference or standard form
+      polynomial that passes through those roots.
+    </p>
+
+    <p>
+      Finally, the Newton-Cotes quadrature formulas can be derived using
+      divided difference methods, so a few routines are given which can
+      compute the weights and abscissas of open or closed rules for an
+      arbitrary number of nodes.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>DIVDIF</b> is available in
+      <a href = "../../c_src/divdif/divdif.html">a C version</a> and
+      <a href = "../../cpp_src/divdif/divdif.html">a C++ version</a> and
+      <a href = "../../f77_src/divdif/divdif.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/divdif/divdif.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/divdif/divdif.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bernstein/bernstein.html">
+      BERNSTEIN</a>,
+      a FORTRAN90 library which
+      evaluates the Bernstein polynomials, 
+      useful for uniform approximation of functions;
+    </p>
+
+    <p>
+      <a href = "../../f_src/chebyshev/chebyshev.html">
+      CHEBYSHEV</a>,
+      a FORTRAN90 library which
+      computes the Chebyshev interpolant/approximant to a given function
+      over an interval.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite/hermite.html">
+      HERMITE</a>,
+      a FORTRAN90 library which
+      computes the Hermite interpolant, a polynomial that matches function values
+      and derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lagrange_interp_1d/lagrange_interp_1d.html">
+      LAGRANGE_INTERP_1D</a>,
+      a FORTRAN90 library which
+      defines and evaluates the Lagrange polynomial p(x) 
+      which interpolates a set of data, so that p(x(i)) = y(i).
+    </p>
+
+    <p>
+      <a href = "../../f_src/pppack/pppack.html">
+      PPPACK</a>,
+      a FORTRAN90 library which
+      computes piecewise polynomial functions, including cubic splines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/rbf_interp/rbf_interp.html">
+      RBF_INTERP</a>,
+      a FORTRAN90 library which
+      defines and evaluates radial basis interpolants to multidimensional data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spline/spline.html">
+      SPLINE</a>,
+      a FORTRAN90 library which
+      can construct and evaluate spline interpolants and approximants.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_approx/test_approx.html">
+      TEST_APPROX</a>,
+      a FORTRAN90 library which
+      defines test functions for approximation and interpolation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms446/toms446.html">
+      TOMS446</a>,
+      a FORTRAN90 library which
+      manipulates Chebyshev series for interpolation and approximation;<br>
+      this is a version of ACM TOMS algorithm 446,
+      by Roger Broucke.
+    </p>
+
+    <p>
+      <a href = "../../f_src/vandermonde_interp_1d/vandermonde_interp_1d.html">
+      VANDERMONDE_INTERP_1D</a>,
+      a FORTRAN90 library which
+      finds a polynomial interpolant to data y(x) of a 1D argument,
+      by setting up and solving a linear system for the polynomial coefficients,
+      involving the Vandermonde matrix.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Philip Davis,<br>
+          Interpolation and Approximation,<br>
+          Dover, 1975,<br>
+          ISBN: 0-486-62495-1,<br>
+          LC: QA221.D33
+        </li>
+        <li>
+          Carl deBoor,<br>
+          A Practical Guide to Splines,<br>
+          Springer, 2001,<br>
+          ISBN: 0387953663,<br>
+          LC: QA1.A647.v27.
+        </li>
+        <li>
+          Jean-Paul Berrut, Lloyd Trefethen,<br>
+          Barycentric Lagrange Interpolation,<br>
+          SIAM Review,<br>
+          Volume 46, Number 3, September 2004, pages 501-517.
+        </li>
+        <li>
+          FM Larkin,<br>
+          Root Finding by Divided Differences,<br>
+          Numerische Mathematik,<br>
+          Volume 37, pages 93-104, 1981.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "divdif.f90">divdif.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "divdif.sh">divdif.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "divdif_prb.f90">divdif_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "divdif_prb.sh">divdif_prb.sh</a>, commands to compile,
+          link and run the calling program;
+        </li>
+        <li>
+          <a href = "divdif_prb_output.txt">divdif_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CHEBY_T_ZERO</b> returns zeroes of the Chebyshev polynomial T(N)(X).
+        </li>
+        <li>
+          <b>CHEBY_U_ZERO</b> returns zeroes of the Chebyshev polynomial U(N)(X).
+        </li>
+        <li>
+          <b>DATA_TO_DIF</b> sets up a divided difference table from raw data.
+        </li>
+        <li>
+          <b>DATA_TO_DIF_DISPLAY</b> computes a divided difference table and shows how.
+        </li>
+        <li>
+          <b>DATA_TO_R8POLY</b> computes the coefficients of a polynomial interpolating data.
+        </li>
+        <li>
+          <b>DIF_ANTIDERIV</b> computes the antiderivative of a divided difference polynomial.
+        </li>
+        <li>
+          <b>DIF_APPEND</b> adds a pair of data values to a divided difference table.
+        </li>
+        <li>
+          <b>DIF_BASIS</b> computes all Lagrange basis polynomials in divided difference form.
+        </li>
+        <li>
+          <b>DIF_BASIS_I:</b> I-th Lagrange basis polynomial in divided difference form.
+        </li>
+        <li>
+          <b>DIF_DERIV</b> computes the derivative of a polynomial in divided difference form.
+        </li>
+        <li>
+          <b>DIF_PRINT</b> prints the polynomial represented by a divided difference table.
+        </li>
+        <li>
+          <b>DIF_ROOT</b> seeks a zero of F(X) using divided difference techniques.
+        </li>
+        <li>
+          <b>DIF_SHIFT_X</b> replaces one abscissa of a divided difference table.
+        </li>
+        <li>
+          <b>DIF_SHIFT_ZERO</b> shifts a divided difference table so all abscissas are zero.
+        </li>
+        <li>
+          <b>DIF_TO_R8POLY</b> converts a divided difference table to a standard polynomial.
+        </li>
+        <li>
+          <b>DIF_VAL</b> evaluates a divided difference polynomial at a point.
+        </li>
+        <li>
+          <b>DIF_VALS</b> evaluates a divided difference polynomial at a set of points.
+        </li>
+        <li>
+          <b>LAGRANGE_RULE</b> computes the weights of a Lagrange interpolation rule.
+        </li>
+        <li>
+          <b>LAGRANGE_SUM</b> carries out a Lagrange interpolation rule.
+        </li>
+        <li>
+          <b>LAGRANGE_VAL</b> applies a naive form of Lagrange interpolation.
+        </li>
+        <li>
+          <b>NC_RULE</b> computes the weights of a Newton-Cotes quadrature rule.
+        </li>
+        <li>
+          <b>NCC_RULE</b> computes the coefficients of a Newton-Cotes closed quadrature rule.
+        </li>
+        <li>
+          <b>NCO_RULE</b> computes the coefficients of a Newton-Cotes open quadrature rule.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>R8POLY_ANT_COF</b> integrates a polynomial in standard form.
+        </li>
+        <li>
+          <b>R8POLY_ANT_VAL</b> evaluates the antiderivative of a polynomial in standard form.
+        </li>
+        <li>
+          <b>R8POLY_BASIS</b> computes all Lagrange basis polynomials in standard form.
+        </li>
+        <li>
+          <b>R8POLY_BASIS_1</b> computes the I-th Lagrange basis polynomial in standard form.
+        </li>
+        <li>
+          <b>R8POLY_DER_COF</b> computes the coefficients of the derivative of a polynomial.
+        </li>
+        <li>
+          <b>R8POLY_DER_VAL</b> evaluates the derivative of a polynomial in standard form.
+        </li>
+        <li>
+          <b>R8POLY_ORDER</b> returns the order of a polynomial.
+        </li>
+        <li>
+          <b>R8POLY_PRINT</b> prints out a polynomial.
+        </li>
+        <li>
+          <b>R8POLY_SHIFT</b> adjusts the coefficients of a polynomial for a new argument.
+        </li>
+        <li>
+          <b>R8POLY_VAL_HORNER</b> evaluates a polynomial in standard form.
+        </li>
+        <li>
+          <b>R8VEC_DISTINCT</b> is true if the entries in an R8VEC are distinct.
+        </li>
+        <li>
+          <b>R8VEC_EVEN</b> returns N values, evenly spaced between ALO and AHI.
+        </li>
+        <li>
+          <b>R8VEC_EVEN_SELECT</b> returns the I-th of N evenly spaced values in [ XLO, XHI ].
+        </li>
+        <li>
+          <b>R8VEC_INDICATOR</b> sets an R8VEC to the indicator vector A(I)=I.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>ROOTS_TO_DIF</b> sets a divided difference table for a polynomial from its roots.
+        </li>
+        <li>
+          <b>ROOTS_TO_R8POLY</b> converts polynomial roots to polynomial coefficients.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 25 May 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

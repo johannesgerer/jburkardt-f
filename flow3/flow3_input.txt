@@ -1,0 +1,1710 @@
+FLOW.INP  07 June 1994
+ 
+********************************************************************
+
+INPUT FILES
+
+
+FLOW allows the user to specify values for certain control 
+parameters, and to request that the code "restart" the solution
+procedure once parameters have been changed. 
+
+
+List of input files:
+-------------------
+
+
+The first input file, "INPUT.01", is considered a standard run, 
+against which most of the others are compared.
+
+
+#  INPUT.01  
+#
+#  Mesh:          21 by 7, 
+#  Weights:       (1, 0, 0), 
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:          0, optimization
+#
+#  INPUT.02  
+#
+#  Mesh:          21 by 7
+#  Weights:     * (1, 0, 0.001)
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:          0, optimization
+#
+#  INPUT.03
+#
+#  Mesh:          21 by 7
+#  Weights:     * (1, 0, 0.001), 
+#               * (1, 0, 0.00001)
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:          0, optimization
+#
+#  INPUT.04
+# 
+#  Mesh:          21 by 7
+#  Weights:     * (1, 0, 0.001),
+#               * (1, 0, 0.00001),
+#               * (1, 0, 0)
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:          0, optimization
+#
+#  INPUT.05  
+#
+#  Mesh:          21 by 7
+#  Weights:     * (1, 0, 0.001),
+#               * (1, 0, 0.00001),
+#               * (1, 0, 0)
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  MAXOPT:      * 20
+#  Type:          0, optimization
+#
+#  INPUT.06  
+#
+#  Mesh:          21 by 7
+#  Weights:     * (1, 0, 0.001),
+#               * (1, 0, 0.00001),
+#               * (1, 0, 0)
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  MAXOPT:      * 10
+#  Type:          0, optimization
+#
+#  INPUT.07  
+#
+#  Mesh:          21 by 7
+#  Weights:       (1, 0, 0)
+#  Reynolds:    * 10.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:          0, optimization
+#
+#  INPUT.08  
+#
+#  Mesh:          21 by 7
+#  Weights:       (1, 0, 0)
+#  Reynolds:    * 25.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:          0, optimization
+#
+#  INPUT.09  
+#
+#  Mesh:          21 by 7
+#  Weights:       (1, 0, 0)
+#  Reynolds:    * 50.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:          0, optimization
+# 
+#  INPUT.10  
+#
+#  Mesh:        * 41 by 13
+#  Weights:       (1, 0, 0)
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:          0, optimization
+#
+#  INPUT.11  
+#
+#  Mesh:          21 by 7
+#  Weights:       (1, 0, 0)
+#  Reynolds:      1.0
+#  Parameters:  * 3 inflow, 1 bump.
+#  Type:          0, optimization
+#
+#  INPUT.12  
+#
+#  Mesh:          21 by 7
+#  Weights:       (1, 0.001, 0)
+#                 (1, 0.00001, 0)
+#  Reynolds:      1.0
+#  Parameters:  * 3 inflow, 1 bump.
+#  Type:          0, optimization
+#
+#  INPUT.13
+#  
+#  Mesh:          21 by 7
+#  Weights:       (1, 0.001, 0)
+#                 (1, 0.00001, 0)
+#  Reynolds:      1.0
+#  Parameters:  * 3 inflow, 1 bump.
+#  Type:          0, optimization
+#
+#  INPUT.14  
+#
+#  Mesh:          21 by 7, 
+#  Weights:       (1, 0, 0), 
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:          0, optimization
+#
+#  INPUT.15  
+#
+#  Mesh:          21 by 7, 
+#  Weights:       (1, 0, 0), 
+#  Reynolds:      1.0
+#  Parameters:  * 5 inflow, 0 bump.
+#  Type:          0, optimization
+#
+#  INPUT.16  
+#
+#  Mesh:          21 by 7, 
+#  Weights:       (1, 0, 0), 
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:        * 1, 1D march.
+#
+#  INPUT.17  
+#
+#  Mesh:          21 by 7, 
+#  Weights:       (1, 0, 0), 
+#  Reynolds:      1.0
+#  Parameters:  * 1 bump.
+#  Type:          0, optimization
+#
+#  INPUT.18  
+#
+#  Mesh:          21 by 7, 
+#  Weights:       (1, 0, 0), 
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:        * 1, 1D march.
+#
+#  INPUT.19 
+# 
+#  Mesh:          21 by 7, 
+#  Weights:       (1, 0, 0), 
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:        * 2, 2D march.
+#
+#  INPUT.20  
+#
+#  Mesh:          21 by 7, 
+#  Weights:       (1, 0, 0), 
+#  Reynolds:      1.0
+#  Parameters:    1 inflow, 3 bump.
+#  Type:        * 2, 2D march.
+#
+#  INPUT.21  
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       2, 2D march.
+#
+#  INPUT.22  
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       1, 1D march.
+#
+#  INPUT.23
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 0 bump
+#  Type:       3, sensitivity
+#
+#  INPUT.24
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 3 inflow, 0 bump
+#  Type:       3, sensitivity
+#
+#  INPUT.25
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0.01, 0)
+#  Reynolds:   1.0
+#  Parameters: 3 inflow, 0 bump
+#  Type:       3, sensitivity
+#
+#  INPUT.26
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0.01)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, sensitivity
+#
+#  INPUT.27
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 1, 1, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, sensitivity
+#
+********************************************************************
+
+#  INPUT.101
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      0, use 0 for start.
+#
+#  INPUT.102
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities.
+#  Ipred:      1, use previous solution for start.
+#
+#  INPUT.103
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities.
+#  Ipred:      2, use Euler prediction for start.
+#
+#  INPUT.104
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 0 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      0, use 0 for start.
+#
+#  INPUT.105
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 0 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      1, use previous solution for start.
+#
+#  INPUT.106
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 0 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      2, use Euler prediction for start.
+#
+#  INPUT.107
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      0, use 0 for start.
+#
+#  INPUT.108
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      1, use previous point for start.
+#
+#  INPUT.109
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      2, use Euler prediction for start.
+#
+#  INPUT.110
+#
+#  Mesh:       41 by 13
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      0, use 0 for start.
+#
+#  INPUT.111
+#
+#  Mesh:       41 by 13
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      1, use previous point for start.
+#
+#  INPUT.112
+#
+#  Mesh:       41 by 13
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      2, use Euler prediction for start.
+#
+#  INPUT.113
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      0, use 0 for start.
+#
+#  INPUT.114
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      1, use previous point for start.
+#
+#  INPUT.115
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      2, use Euler prediction for start.
+#
+********************************************************************
+
+#  INPUT.201
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, always update Newton matrix.
+#
+#  INPUT.202
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       4, Update Newton matrix every IJAC steps.
+#
+#  INPUT.203
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       10, Update Newton matrix every IJAC steps.
+#
+********************************************************************
+#  INPUT.301
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  INPUT.302
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   100.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  INPUT.303
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   100.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  INPUT.304
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   100.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  INPUT.305
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   500.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  INPUT.306
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   200.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  INPUT.307
+#
+#  Mesh:       31 by 10
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   200.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  INPUT.308
+#
+#  Mesh:       41 by 13
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   200.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+********************************************************************
+#  INPUT.401
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+********************************************************************
+#  INPUT.501
+#
+#  The standard test problem.
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Parameters: 1 inflow, 3 bump, 1 flow strength
+#
+
+#  INPUT.502
+#
+#  This data file sets up a 3D march.
+#  
+#  The 2D march, for WATEB=0, corresponds to INPUT.20, which
+#  produced the banana shaped cost function contour plot.
+#
+#  The expectation is that as WATEB increases to 1, the banana
+#  shape will disappear.
+#
+********************************************************************
+
+Detailed information about input files:
+--------------------------------------
+
+
+INPUT.01  Mesh:          21 by 7
+          Weights:       (1, 0, 0)
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump
+          Type:          0, optimization
+
+          Control the flow profile,
+          but not the size of the control parameters.
+
+          Discussion:
+
+          This run was made as a "baseline", in order to show that
+          including the cost of control, and using weights on the 
+          cost functions, could be helpful.
+          
+          This run was a "traditional" run, using as a cost only 
+          the discrepancy between the target and computed flows
+          along a specified horizontal line.
+
+          The target flow was not reached, and in fact, it seems
+          that a local minimum was found instead.  The optimizer
+          declared convergence.
+
+          The final parameter values were:
+
+            0.508, -0.022, 0.526, 0.061
+
+
+INPUT.02  Mesh:          21 by 7
+          Weights:     * (1, 0, 0.001)
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          Type:          0, optimization
+
+          INPUT.01 seemed to get stuck at a local min.
+
+          This run tries to avoid the local min by adding a cost to
+          the bump parameter.
+
+          Control the flow profile, and the cost of the bump.
+
+          Discussion:
+
+          This run did much better compared to the previous one,
+          at least in the sense that it came closer to the target
+          solution.  
+
+          In particular, the shape of the bump was much more
+          satisfactory.  The second and fourth parameters have
+          much less influence on the flow, and typically get
+          stuck in values that are far from the desired ones.
+          For this run, the second parameter is positive, and
+          both it and the fourth parameter are much closer to the
+          correct values.
+
+          The final parameter values were:
+
+            0.500, 0.260, 0.478, 0.369
+
+
+INPUT.03  Mesh:          21 by 7
+          Weights:     * (1, 0, 0.001), 
+                       * (1, 0, 0.00001)
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          Type:          0, optimization
+
+          Make two runs, using smaller weights on the bump for
+          the second run.
+
+          Discussion:
+
+          Although run #2 was so much better than run #1, the
+          functional that we really want to minimize was still
+          fairly large, having a value of 0.763E-3.  
+
+          In order to improve this, we needed to restart the
+          run with lower weights on the third (bump) cost.
+
+          Here's the results:
+
+          Parameter values after first part of run:
+
+            0.500, 0.260, 0.478, 0.369
+
+          Discrepancy cost:  
+
+            0.763E-3
+
+          Parameter values after second part of run:
+
+            0.500, 0.340, 0.503, 0.370
+
+          Discrepancy cost:
+
+            0.801E-5
+
+
+INPUT.04  Mesh:          21 by 7
+          Weights:     * (1, 0, 0.001),
+                       * (1, 0, 0.00001),
+                       * (1, 0, 0)
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          Type:          0, optimization
+
+          Starting from 0, solve (to convergence) the
+          minimization problem for three runs,
+          in each case, using the previous solution as the
+          starting point for the next minimization.
+
+          Discussion:
+
+          If this method works, then we have shown that we can use
+          the control costs as a way of smoothing out the main 
+          cost functional when we are far from the solution, but
+          then drop them down to zero as we approach, so that
+          our final solution is a true minimum of the main cost
+          functional.  
+
+          The results (sketched below) show that this approach
+          allowed us to avoid the local minimum, and to converge
+          in to the correct answer.
+
+          Parameter values after first part of run:
+
+            0.500, 0.260, 0.477, 0.369
+
+          Discrepancy cost:  
+
+            0.763E-3
+
+          Number of steps:
+
+            38
+
+          Parameter values after second part of run:
+
+            0.500, 0.340, 0.503, 0.370
+
+          Discrepancy cost:
+
+            0.801E-5
+
+          Number of steps:
+
+            31
+
+          Parameter values after third part of run:
+
+            0.500, 0.375, 0.500, 0.375
+
+          Discrepancy cost:
+
+            0.296E-11
+
+          Number of steps:
+
+            26
+
+INPUT.05  Mesh:          21 by 7
+          Weights:     * (1, 0, 0.001),
+                       * (1, 0, 0.00001),
+                       * (1, 0, 0)
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          MAXOPT:      * 20
+          Type:          0, optimization
+
+          Starting from 0, solve (up to 20 steps) the 
+          minimization problem for three runs,
+          in each case, using the previous solution as the
+          starting point for the next minimization.
+
+          Discussion:
+
+          In INPUT.04, we solved each minimization problem to
+          convergence.  This may have been wasteful after a
+          certain point.  We'd like to demonstrate that such
+          accuracy is not necessary.
+ 
+          The results (sketched below) show that it is not 
+          necessary to converge to a minimum for one run
+          before starting the next one.
+
+          Parameter values after first part of run:
+
+            0.502, 0.417, 0.510, 0.307
+
+          Discrepancy functional:
+
+            0.607E-4
+
+          Number of steps:
+
+            20 
+
+          Parameter values after second part of run:
+
+            0.500, 0.392, 0.499, 0.377
+
+          Discrepancy functional:
+
+            0.835E-5
+
+          Number of steps:
+
+            20
+
+          Parameter values after third part of run:
+
+            0.500, 0.375, 0.500, 0.375
+
+          Discrepancy functional:
+
+            0.716E-11
+
+          Number of steps:
+
+            27
+
+
+INPUT.06  Mesh:          21 by 7
+          Weights:     * (1, 0, 0.001),
+                       * (1, 0, 0.00001),
+                       * (1, 0, 0)
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          MAXOPT:      * 10
+          Type:          0, optimization
+
+          Starting from 0, solve (up to 10 steps) the 
+          minimization problem for three runs,
+          in each case, using the previous solution as the
+          starting point for the next minimization.
+
+          Discussion:
+
+          Now we'd like to test the limits of the economies
+          introduced in INPUT.05.  This time, we only take 10
+          steps per minimization, keeping everything else the same.
+ 
+          The results show that for this case, we didn't take
+          enough steps in order to avoid the local minimum.
+
+          Parameter values after first part of run:
+
+            0.523, 0.001, 0.455, -0.075
+
+          Discrepancy functional:
+
+            0.168E-2
+
+          Number of steps:
+
+            10 
+
+          Parameter values after second part of run:
+
+            0.513, 0.007, 0.498, -0.087
+
+          Discrepancy functional:
+
+            0.273E-4
+
+          Number of steps:
+
+            10
+
+          Parameter values after third part of run:
+
+            0.508, -0.022, 0.526, 0.061
+
+          Discrepancy functional:
+
+            0.880E-5
+
+          Number of steps:
+
+            41
+
+INPUT.07  Mesh:          21 by 7
+          Weights:       (1, 0, 0)
+          Reynolds:    * 10.0
+          Parameters:    1 inflow, 3 bump.
+          Type:          0, optimization
+
+          Single run, no restarts.
+
+          Discussion:
+
+          This is the first run with a Reynolds number that is 
+          not 1.  Janet warned me that the Reynolds number might
+          be missing from some places, which would show up when
+          a value different from 1 was used.  
+
+          Also, the NSTOKE code may not converge for high
+          Reynolds number.  
+
+          However, no convergence problems were noted for this
+          data.
+
+          On the other hand, the parameters "converged" again to
+          a "local" or "undesirable" minimum, although this time
+          at least the "small" variables #2 and #4 were both
+          positive.
+
+          Parameter values after run:
+
+            0.506, 0.013, 0.530, 0.058
+
+          Discrepancy functional:
+
+            0.510E-5
+
+          Number of steps:
+
+            43
+
+
+INPUT.08  Mesh:          21 by 7
+          Weights:       (1, 0, 0)
+          Reynolds:    * 25.0
+          Parameters:    1 inflow, 3 bump.
+          Type:          0, optimization
+          Discussion:
+
+          Code took more optimization steps, and significantly more
+          Newton steps, but no convergence problems showed up.
+
+          Parameter values after run:
+
+            0.501, 0.011, 0.525, 0.152
+
+          Discrepancy functional:
+
+            0.124E-5
+
+          Number of steps:
+
+            49
+ 
+ 
+INPUT.09  Mesh:          21 by 7
+          Weights:       (1, 0, 0)
+          Reynolds:    * 50.0
+          Parameters:    1 inflow, 3 bump.
+          Type:          0, optimization
+
+          Discussion:
+
+          NSTOKE failed to converge!
+          This occurred on the first computation of the flow, with
+          parameters (1, 0, 0, 0).  NSTOKE took 8 steps without
+          convergence, the difference in the last two steps being
+          953.  The situation rapidly deteriorated.
+          Looking at the final solution showed it to be real 
+          garbage.
+          The horizontal flows at the profile line, for instance, 
+          were almost all NEGATIVE.  
+
+          So my first impression is that, for a Reynolds number of 
+          50, we're going to have problems with NSTOKE convergence 
+          unless we're more careful about getting a good starting 
+          point, or perhaps, damping the iteration.
+ 
+
+INPUT.10  Mesh:        * 41 by 13
+          Weights:       (1, 0, 0)
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          Type:          0, optimization
+ 
+          Single run, no restart.
+ 
+          Discussion:
+
+          This run was made simply to examine the effects of mesh
+          refinement on the calculation.
+
+          The main point to note is that this finer calculation 
+          managed to avoid the local minimum that snagged INPUT.01, 
+          and reached the target value instead.
+
+          On the other hand, it took 1.5 hours!
+ 
+INPUT.11  Mesh:          21 by 7
+          Weights:       (1, 0, 0)
+          Reynolds:      1.0
+          Parameters:  * 3 inflow, 1 bump.
+          Type:          0, optimization
+
+          The code was just changed to allow the parameters to be
+          read in from the data file.  The first run of this
+          data set was simply to test that option.
+
+          This run will also be used to compare two ways of 
+          computing the cost of inflow control.
+
+          Discussion:
+
+          Depressingly, this run shows the same kind of "wiggle"
+          problems that the usual "bump" runs show.
+
+          The optimizer seems stuck at the following "solution":
+
+          Parameters:
+
+            0.446, 0.450, 0.329, 0.498
+
+          whereas the correct solution would be:
+
+            0.375, 0.500, 0.375, 0.500
+
+          This may reflect the poor nature of the flow discrepancy
+          cost functional, at least at low Reynolds number, or
+          the insensitivity of the flow to wiggles in the splines.
+
+
+INPUT.12  Mesh:          21 by 7
+          Weights:       (1, 0.001, 0)
+                         (1, 0.00001, 0)
+          Reynolds:      1.0
+          Parameters:  * 3 inflow, 1 bump.
+          Type:          0, optimization
+
+          Discussion:
+
+          Since the previous run didn't do what I wanted, I tried
+          the same trick.
+
+          Alas, the solution still has wiggles, and what's worse,
+          the raw cost of control with the wiggly inflow is less
+          than for the smooth inflow.  
+
+          This really means I have to write the new cost function!
+
+          Results of first run:
+
+            0.423, 0.306, 0.423, 0.499
+
+          Results of second run:
+
+            0.421, 0.334, 0.413, 0.499,
+
+
+INPUT.13  Mesh:          21 by 7
+          Weights:       (1, 0.001, 0)
+                         (1, 0.00001, 0)
+          Reynolds:      1.0
+          Parameters:  * 3 inflow, 1 bump.
+          Type:          0, optimization
+
+          I added an input parameter, ICOST, and set it so that if
+          ICOST is 1, then the inflow cost is based on the integral
+          of the square of the slope of the inflow, rather than
+          on the square of the value.
+
+          The results were dramatic.
+
+          Results of first run:
+
+            0.375, 0.500, 0.375, 0.501
+
+          Results of second run:
+
+            0.375, 0.500, 0.375, 0.500
+
+
+INPUT.14  Mesh:          21 by 7, 
+          Weights:       (1, 0, 0), 
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          Type:          0, optimization
+
+          I added cost function #2, which measures the discrepancy
+          in U, V and P along the profile line.  However, initial
+          results showed slower convergence.  Perhaps this is
+          because the pressures are so much larger.
+
+
+INPUT.15  Mesh:          21 by 7, 
+          Weights:       (1, 0, 0), 
+          Reynolds:      1.0
+          Parameters:  * 5 inflow, 0 bump.
+          Type:          0, optimization
+
+          Single run, ONE step!
+ 
+          The only purpose of this run is to demonstrate how flow 
+          in the channel tends to parabolic form regardless of 
+          inflow conditions.
+ 
+
+INPUT.16  Mesh:          21 by 7, 
+          Weights:       (1, 0, 0), 
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          Type:        * 1, 1D march.
+
+          First test of 1D marching capability, requiring that the
+          march begin and end on specified points.
+
+
+INPUT.17  Mesh:          21 by 7, 
+          Weights:       (1, 0, 0), 
+          Reynolds:      1.0
+          Parameters:  * 1 bump.
+          Type:          0, optimization
+
+          I simply wanted to plot the sensitivity of the flow with
+          respect to the single bump parameter.
+ 
+
+INPUT.18  Mesh:          21 by 7, 
+          Weights:       (1, 0, 0), 
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          Type:        * 1, 1D march.
+
+          Second test of 1D marching capability, allowing march
+          to begin before, and end after, two specified points.
+
+
+INPUT.19  Mesh:          21 by 7, 
+          Weights:       (1, 0, 0), 
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          Type:        * 2, 2D march.
+
+          This was the first test of the 2D marching ability.
+
+
+INPUT.20  Mesh:          21 by 7, 
+          Weights:       (1, 0, 0), 
+          Reynolds:      1.0
+          Parameters:    1 inflow, 3 bump.
+          Type:        * 2, 2D march.
+
+This is the 2D march I made on the NCSA Cray, to get
+data for the Scientific Visualization class.
+
+
+#  INPUT.21  
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       2, 2D march.
+#
+#  2D march from just before local min through global min and 
+#  beyond.
+#
+This is a repeat of run 20, but with cost function 2.
+
+
+#  INPUT.22  
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       1, 1D march.
+#
+#  Start at (0,0,0,0) and increase each parameter in turn until
+#  we reach the target value.
+#
+#  This is the input file I used to generate the movie I made
+#  for the scientific visualization presentation.
+
+
+#  INPUT.23
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 0 bump
+#  Type:       3, sensitivity
+#
+#  I am testing the sensitivity formulation, and need a simple
+#  problem.
+#
+#  INPUT.24
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 3 inflow, 0 bump
+#  Type:       3, sensitivity
+#
+This run was disappointing, in the sense that it got "hung up"
+on what was probably a local minimum.  The functional value
+was very small (about 1.0E-8) but the shape of the inflow
+was very different from the desired 0.375, 0.500, 0.375 shape:
+
+  0.42955      0.28060      0.43017
+
+and was not changing.  This was probably due, in part, to the
+insensitivity of the flow to anything in the inflow except its
+bulk, and to the ultimate unsuitability (?) of the spline basis.
+Naw, splines must be OK.
+
+
+
+#  INPUT.25
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0.01, 0)
+#  Reynolds:   1.0
+#  Parameters: 3 inflow, 0 bump
+#  Type:       3, sensitivity
+#
+With this run, I added a small weight to the inflow control cost.
+This produced a much better solution.  After ten steps, we had
+
+  0.36956  0.50138  0.36954
+
+
+#  INPUT.26
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0.01)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, sensitivity
+#
+#  I want to see what controlling the bump cost does, with a
+#  sensitivity run.  (I found a slight mistake in BCOST that
+#  would affect such a run, but apparently I've never made
+#  such a run before...)
+#
+
+#  INPUT.27
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 1, 1, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, sensitivity
+#
+#  I want to do a run with just two parameters, so I can plot
+#  the optimization history.
+#
+*********************************************************************
+
+#  INPUT.101
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      0, use 0 for start.
+#
+
+This was the first of a set of three comparison runs, in which
+I was trying out the new parameter IPRED.  I am trying to
+use the Euler prediction to get a good Newton starting point.
+
+However, this set of three runs (101, 102, 103) was very
+disappointing, with almost no difference.
+
+#  INPUT.102
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities.
+#  Ipred:      1, use previous solution for start.
+#
+#  INPUT.103
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities.
+#  Ipred:      2, use Euler prediction for start.
+#
+
+
+#  INPUT.104
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 0 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      0, use 0 for start.
+#
+This set of runs was similar to (101, 102, 103) except that
+I cut down to a single, flow parameter, because I was hoping
+that the code was OK, and the previous problem was too hard.
+Or else that the difficulties occurred in the shape calculations.
+
+Indeed, that seems to be the case.  The 106 run took only one
+Newton step to converge, instead of four.  So now I have to
+concentrate on what's going wrong with the shape calculations.
+
+I will do that by going to 1 flow, 1 bump parameter.
+
+#  INPUT.105
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 0 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      1, use previous solution for start.
+#
+#  INPUT.106
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 0 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      2, use Euler prediction for start.
+#
+#  INPUT.107
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      0, use 0 for start.
+#
+These runs were made to try to focus on the behavior of the bump.
+If there was a problem with the bump calculations, it would be
+easier to see it if there were no flow parameters, and only one
+bump parameter.  
+
+In all three runs (107, 108, 109), there was very little variation.
+There were 6 optimization steps, and 27 or 28 Newton steps.
+
+The computation on the second optimization step may be indicative
+of whether things are going well or not:
+
+  IPRED=0            IPRED=1            IPRED=2
+
+  9.03               0.38               0.95e-1
+  0.59               0.33e-2            0.19e-2
+  0.85e-4            0.16e-8            0.10e-7
+  0.31e-10           0.33e-12           0.62e-12
+ 
+#  INPUT.108
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      1, use previous point for start.
+#
+#  INPUT.109
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      2, use Euler prediction for start.
+#
+#  INPUT.110
+#
+#  Mesh:       41 by 13
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      0, use 0 for start.
+#
+These runs were made to see what effect a finer mesh would have on 
+the results.
+
+Each of the runs (110, 111, 112) took 6 optimization steps, with a 
+total of 28, 26 and 27 Newton steps respectively.
+
+Again, we look at step number 2 of the optimization to watch the
+behavior of the Newton iteration:
+
+  IPRED=0     IPRED=1     IPRED=2
+
+  9           0.5         0.12
+  0.6         0.3e-2      0.2e-2
+  0.1e-4      0.1e-8      0.1e-7
+  0.1e-11     0.9e-12     0.1e-11
+
+#  INPUT.111
+#
+#  Mesh:       41 by 13
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      1, use previous point for start.
+#
+#  INPUT.112
+#
+#  Mesh:       41 by 13
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 0 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      2, use Euler prediction for start.
+#
+#  INPUT.113
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      0, use 0 for start.
+#
+This family of runs was made to examine the behavior when 1 inflow
+and 1 bump parameter were used.  
+
+No suprises occurred.  The behavior was very similar to 1 inflow 
+and 3 bump parameters.
+
+#  INPUT.114
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      1, use previous point for start.
+#
+#  INPUT.115
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities
+#  Ipred:      2, use Euler prediction for start.
+#
+*********************************************************************
+
+This series of runs was a test of the new IJAC option, to see
+if I could get good results while holding the Newton matrix
+fixed.  Using IJAC=10, for instance, seemed to slow down the
+rate of convergence, but speed up the calculation, since I
+avoided reforming and factoring the jacobian.  IJAC=10 ran
+in about 1/4 the time of IJAC=1.
+
+#  INPUT.201
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, always update Newton matrix.
+#
+#  INPUT.202
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       4, Update Newton matrix every IJAC steps.
+#
+#  INPUT.203
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 3 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       10, Update Newton matrix every IJAC steps.
+#
+*********************************************************************
+
+#  INPUT.301
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  This is a "Baseline" input file, with Reynolds number 1.
+#  We will use this for comparisons against a Reynolds number
+#  of 100.
+#
+#  INPUT.302
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   100.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  We try a straight Newton method, which we expect will fail
+#  at this high Reynolds number.  Indeed, the method failed
+#  immediately, right at the target point!
+#
+#  INPUT.303
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   100.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  This is a high Reynolds number problem. 
+#
+#  A "straight" Newton method will not generally converge for
+#  such a high Reynolds number, so we use simple iteration
+#  with a tolerance of 0.001, followed by Newton iteration
+#  with a tolerance of 0.0000000001.
+#
+#  This method converged nicely, and the optimization was
+#  successful.
+#
+#  78 simple iterations and 53 Newton iterations were required.
+#
+#  INPUT.304
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   100.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  With this example, I turned off Newton iteration, using only
+#  simple iteration.  I also reduced the simple iteration tolerance
+#  to what the Newton iteration tolerance was.
+#
+#  The results were as expected: simple iteration by itself
+#  converged, but much more slowly than Newton.
+#
+#  500 simple iteration steps were required, in total.
+ 
+ 
+#  INPUT.305
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   500.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  This is a high Reynolds number problem. 
+#
+#  A "straight" Newton method will not generally converge for
+#  such a high Reynolds number, so we use simple iteration
+#  with a tolerance of 0.001, followed by Newton iteration
+#  with a tolerance of 0.0000000001.
+#
+ 
+ 
+#  INPUT.306
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   200.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+
+#  INPUT.307
+#
+#  Mesh:       31 by 10
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   200.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  The story so far: I've been trying to run higher Reynolds number
+#  problems.  I can get to 100, but not 200.  But that was while
+#  running with a fairly coarse mesh (21 by 7).  Now I will rerun
+#  this case, but using the next finer grade mesh, and see what
+#  happens.  If this still fails, I'll try 41 by 13.
+#
+ 
+#  INPUT.308
+#
+#  Mesh:       41 by 13
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   200.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  #306 and #307 failed to converge with 21x7 and 31x10 meshes.
+#  This is our last try.  And lo, it converges!
+#
+********************************************************************
+
+#  INPUT.401
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Reynolds:   1.0
+#  Parameters: 1 inflow, 1 bump
+#  Type:       3, optimization using sensitivities.
+#  ipred:      2, use Euler prediction for start.
+#  ijac:       1, update Newton matrix every step.
+#
+#  This is the first run using a target bump with
+#  different X values than the space of solutions.
+#
+********************************************************************
+
+#  INPUT.501
+#
+#  The standard test problem.
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Parameters: 1 inflow, 3 bump, 1 flow strength
+#
+
+#  INPUT.502
+#
+#  This data file sets up a 3D march.
+#  
+#  The 2D march, for WATEB=0, corresponds to INPUT.20, which
+#  produced the banana shaped cost function contour plot.
+#
+#  The expectation is that as WATEB increases to 1, the banana
+#  shape will disappear.
+#
+
+I was able to compute 800 points in about 10 minutes on the ALPHA.
+I still haven't been able to plot them, since I can't get stupid
+DICER to work yet!FLOW3.INP  20 June 1994
+ 
+********************************************************************
+
+
+List of input files:
+-------------------
+
+#  INPUT.501
+#
+#  The standard test problem.
+#
+#  Mesh:       21 by 7
+#  Weights:    (1, 0, 0, 0, 0)
+#  Parameters: 1 inflow, 3 bump, 1 flow strength
+#
+
+#  INPUT.502
+#
+#  This data file sets up a 3D march.
+#  
+#  The 2D march, for WATEB=0, corresponds to INPUT.20, which
+#  produced the banana shaped cost function contour plot.
+#
+#  The expectation is that as WATEB increases to 1, the banana
+#  shape will disappear.
+#
+
+I was able to compute 800 points in about 10 minutes on the ALPHA.
+
+
+#  INPUT.503  14 June 1994
+#
+#  This problem is related to the standard input problem, except
+#  that the discrepancy in the VERTICAL flow has been included
+#  in the cost, along with the horizontal flow.  I expect to
+#  find a local minimum, roughly where I found it for the
+#  standard problem.
+#
+
+#  INPUT.504  15 June 1994
+#
+#  This data file sets up a 3D march.  
+#
+#  This problem is identical to INPUT.502, except that WATEV=1,
+#  so that vertical velocity discrepancy is added to the cost.
+#
+#  We expect that the banana shape that showed up in one slice
+#  of the 3D plot for 502 will disappear in this problem.
+#  
+
+#  INPUT.505  16 June 1994
+#
+#  This problem is related to the standard input problem, except
+#  that only the pressure discrepancy is included in the cost.
+#
+
+#  INPUT.506  16 June 1994
+#
+#  This data file sets up a 3D march.  
+#
+#  This problem is similar to #502, except that only pressure 
+#  discrepancies are used to calculate the cost.
+#
+
+#  INPUT.507  16 June 1994
+#
+#  Set the cost using U, V and P.  
+#  Use only 1 inflow and 1 bump parameter, and start with REYNLD=1.
+#  
+
+#  INPUT.508  17 June 1994
+#
+#  This data file sets up a 3D march.  
+#
+#  We only use one flow and one bump parameter.
+#
+#  Our cost function involves U+V+P, and we are looking at
+#  varying WATEB from 0 to 1.
+#
+
+This input file was used to generate a movie for MAX#4.
+
+#  INPUT.509  17 June 1994
+#
+#  This data file sets up a 2D march.  
+#
+#  We only use one flow and one bump parameter.
+#
+#  Our cost function involves U+V, and we are looking at
+#  varying WATEB from 0 to 1.
+#
+#  I'm just trying to see whether to modify run 508 to drop
+#  the pressure cost, in order to get nice round functional
+#  contours.
+#
+
+#  INPUT.510  18 June 1994
+#
+#  This data file sets up a 2D march.  
+#
+#  We only use one flow and one bump parameter.
+#
+#  Our cost function involves U+V+P, and we are looking at
+#  varying WATEB from 0 to 10.
+#
+#  I'm just trying to see whether to modify run 508 to increase
+#  the final bump cost, in order to get nice round functional
+#  contours.
+#
+
+#  INPUT.511  20 June 1994
+#
+#  This file is similar to the standard test problem,
+#  except that the optimization is carried out with
+#  WATEB=1.
+#
+
+I want to see WATEB making it easier to solve the problem quickly.
+Then I will try to modify the program so that it is easy to solve
+in the "vertical" direction, that is, to let WATEB gradually go
+to zero.
+
+

@@ -1,0 +1,152 @@
+<html>
+
+  <head>
+    <title>
+      BAYES_BETA: Bayesian Parameter Estimation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BAYES_BETA <br> Bayesian Parameter Estimation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BAYES_BETA</b>
+      if a FORTRAN90 program which
+      is a simple Bayesian Statistics demonstration.
+    </p>
+
+    <p>
+      Suppose we're watching a "system" and trying to analyze its behavior.
+      Each time we observe the system, it flips a coin a certain number of
+      times, and reports the number of heads and tails.  We want to estimate
+      THETA1 and THETA2, the probabilities of heads and of tails.
+    </p>
+
+    <p>
+      We treat the values of THETA1 and THETA2 as random variables
+      themselves, controlled by a Beta probability density function, which has
+      parameters ALPHA1 and ALPHA2.  We make an arbitrary or informed guess
+      for initial values of ALPHA1 and ALPHA2.  We observe the system,
+      and adjust ALPHA1 and ALPHA2 using Bayes's Law.  We continue until
+      we are satisfied that our estimates seem to have converged.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bayes_dice/bayes_dice.html">
+      BAYES_DICE</a>,
+      a FORTRAN90 program which
+      uses Bayesian analysis to adjust a model of loaded dice
+      based on a sequence of experimental observations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/bayes_weight/bayes_weight.html">
+      BAYES_WEIGHT</a>,
+      a FORTRAN90 program which
+      uses Bayesian analysis to adjust a model of loaded dice
+      based on a sequence of experimental observations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/bdmlib/bdmlib.html">
+      BDMLIB</a>,
+      a FORTRAN90 library which
+      estimates the weights in a Dirichlet mixtured based on sample data;
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bayes_beta.f90">bayes_beta.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "bayes_beta.sh">bayes_beta.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bayes_beta_output.txt">bayes_beta_output.txt</a>, a sample run;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BAYES_BETA</b> does a simple demonstration of Bayesian statistics.
+        </li>
+        <li>
+          <b>TEST01</b> does a simple demonstration of Bayesian statistics.
+        </li>
+        <li>
+          <b>BETA</b> returns the value of the Beta function.
+        </li>
+        <li>
+          <b>BETA_MAX</b> returns the most likely values of T1 and T2 for a Beta PDF.
+        </li>
+        <li>
+          <b>BETA_PDF</b> returns the value of the Beta probability density function.
+        </li>
+        <li>
+          <b>BETA_PLOT</b> "plots" the Beta distribution for given parameters.
+        </li>
+        <li>
+          <b>LOG_GAMMA</b> calculates the natural logarithm of GAMMA ( X ) for positive X.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a timestamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 August 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

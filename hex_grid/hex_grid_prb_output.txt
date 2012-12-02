@@ -1,0 +1,360 @@
+May 18 2007   7:49:19.302 AM
+ 
+HEX_GRID_PRB
+  FORTRAN90 version
+  Tests for the HEX_GRID library.
+ 
+TEST01
+  For a hexagonal grid of points in the unit square,
+  given NODES_PER_LAYER, the number of grid points
+  along the first layer,
+ 
+  HEX_GRID_01_LAYERS computes LAYERS, the number of
+  layers.
+ 
+   NODES  LAYERS
+     PER
+   LAYER
+ 
+       1       1
+       2       2
+       3       3
+       4       4
+       5       5
+       6       6
+       7       7
+       8       9
+       9      10
+      10      11
+      11      12
+      21      24
+      41      47
+      81      93
+     101     116
+    1001    1155
+   10001   11548
+ 
+TEST02
+  For a hexagonal grid of points in the unit square,
+  given NODES_PER_LAYER, the number of grid points
+  along the first layer,
+ 
+  HEX_GRID_01_H computes HX and HY, the spacings
+  in the row and column directions.
+ 
+    NODES    LAYERS   HX          HY
+      PER
+    LAYER
+ 
+       1       1    1.000000    1.000000
+       2       2    1.000000    0.866025
+       3       3    0.500000    0.433013
+       4       4    0.333333    0.288675
+       5       5    0.250000    0.216506
+       6       6    0.200000    0.173205
+       7       7    0.166667    0.144338
+       8       9    0.142857    0.123718
+       9      10    0.125000    0.108253
+      10      11    0.111111    0.096225
+      11      12    0.100000    0.086603
+      21      24    0.050000    0.043301
+      41      47    0.025000    0.021651
+      81      93    0.012500    0.010825
+     101     116    0.010000    0.008660
+    1001    1155    0.001000    0.000866
+   10001   11548    0.000100    0.000087
+ 
+  LAYERS is chosen so that LAYERS-1 layers just fit
+  inside the unit square, but LAYERS layers do not.
+ 
+  LAYERS      HY     (LAYERS-1)*HY    LAYERS*HY
+ 
+       1    1.000000    0.000000    1.000000
+       2    0.866025    0.866025    1.732051
+       3    0.433013    0.866025    1.299038
+       4    0.288675    0.866025    1.154701
+       5    0.216506    0.866025    1.082532
+       6    0.173205    0.866025    1.039230
+       7    0.144338    0.866025    1.010363
+       9    0.123718    0.989743    1.113461
+      10    0.108253    0.974279    1.082532
+      11    0.096225    0.962250    1.058475
+      12    0.086603    0.952628    1.039230
+      24    0.043301    0.995929    1.039230
+      47    0.021651    0.995929    1.017580
+      93    0.010825    0.995929    1.006755
+     116    0.008660    0.995929    1.004589
+    1155    0.000866    0.999393    1.000259
+   11548    0.000087    1.000000    1.000086
+ 
+TEST03
+  For a hexagonal grid of points in the unit square,
+  given NODES_PER_LAYER, the number of grid points
+  along the first layer,
+ 
+  HEX_GRID_01_N computes N, the total number of grid
+  points in the unit square.
+ 
+    NODES   LAYERS           N
+      PER
+    LAYER
+ 
+       1       1             1
+       2       2             3
+       3       3             8
+       4       4            14
+       5       5            23
+       6       6            33
+       7       7            46
+       8       9            68
+       9      10            85
+      10      11           105
+      11      12           126
+      21      24           492
+      41      47          1904
+      81      93          7487
+     101     116         11658
+    1001    1155       1155578
+   10001   11548     115485774
+ 
+TEST04
+  For a hexagonal grid of points in the unit square,
+  given NODES_PER_LAYER, the number of grid points
+  along the first layer,
+ 
+  HEX_GRID_01_POINTS computes P, the coordinates
+  of the points of the grid.
+ 
+  HEX_GRID_WRITE writes the data to a file.
+ 
+   NODES  LAYERS    N    Filename
+     PER
+   LAYER
+ 
+       1    1       1    hex_grid_01_1_1_1.txt
+       2    2       3    hex_grid_01_2_2_3.txt
+       3    3       8    hex_grid_01_3_3_8.txt
+       4    4      14    hex_grid_01_4_4_14.txt
+       5    5      23    hex_grid_01_5_5_23.txt
+       6    6      33    hex_grid_01_6_6_33.txt
+       7    7      46    hex_grid_01_7_7_46.txt
+       8    9      68    hex_grid_01_8_9_68.txt
+       9   10      85    hex_grid_01_9_10_85.txt
+      10   11     105    hex_grid_01_10_11_105.txt
+      11   12     126    hex_grid_01_11_12_126.txt
+      21   24     492    hex_grid_01_21_24_492.txt
+      41   47    1904    hex_grid_01_41_47_1904.txt
+      81   93    7487    hex_grid_01_81_93_7487.txt
+     101  116   11658    hex_grid_01_101_116_11658.txt
+ 
+TEST05
+  For a hexagonal grid of points in the unit box,
+  HEX_GRID_01_APPROXIMATE_N seeks the value of
+  NODES_PER_LAYER that produces a mesh of about N points.
+ 
+ 
+  N_GOAL  NODES_PER_LAYER       N
+ 
+     100               10     105
+     200               14     216
+     500               22     538
+   10000               93    9898
+ 
+TEST06
+  For a hexagonal grid of points in the unit box,
+  HEX_GRID_01_APPROXIMATE_H seeks the value of
+  NODES_PER_LAYER that produces a mesh with spacing
+  that is H or less.
+ 
+ 
+      H_GOAL      NODES_PER_LAYER      H                      N
+ 
+     .100000                   11     .100000               126
+    0.100000E-01              101    0.100000E-01         11658
+    0.100000E-03            10001    0.100000E-03     115485774
+ 
+TEST07
+  For a hexagonal grid of points in a coordinate box,
+  given NODES_PER_LAYER, the number of grid points
+  along the first layer,
+ 
+  HEX_GRID_LAYERS computes LAYERS, the number of
+  layers.
+ 
+  Coordinate box:
+    1.0000 <= X <=   4.0000
+    2.0000 <= Y <=   7.0000
+ 
+   NODES  LAYERS
+     PER
+   LAYER
+ 
+       1       1
+       2       2
+       3       4
+       4       6
+       5       8
+       6      10
+       7      12
+       8      14
+       9      16
+      10      18
+      11      20
+      21      39
+      41      77
+      81     154
+     101     193
+ 
+TEST08
+  For a hexagonal grid of points in a coordinate box,
+  given NODES_PER_LAYER, the number of grid points
+  along the first layer,
+ 
+  HEX_GRID_H computes HX and HY, the spacings
+  in the row and column directions.
+ 
+  Coordinate box:
+    1.0000 <= X <=   4.0000
+    2.0000 <= Y <=   7.0000
+ 
+    NODES    LAYERS   HX          HY
+      PER
+    LAYER
+ 
+       1       1    3.000000    5.000000
+       2       2    3.000000    2.598076
+       3       4    1.500000    1.299038
+       4       6    1.000000    0.866025
+       5       8    0.750000    0.649519
+       6      10    0.600000    0.519615
+       7      12    0.500000    0.433013
+       8      14    0.428571    0.371154
+       9      16    0.375000    0.324760
+      10      18    0.333333    0.288675
+      11      20    0.300000    0.259808
+      21      39    0.150000    0.129904
+      41      77    0.075000    0.064952
+      81     154    0.037500    0.032476
+     101     193    0.030000    0.025981
+ 
+  LAYERS is chosen so that LAYERS-1 layers just fit
+  inside the unit square, but LAYERS layers do not.
+ 
+  LAYERS      HY     (LAYERS-1)*HY    LAYERS*HY
+ 
+       1    5.000000    0.000000    5.000000
+       2    2.598076    2.598076    5.196152
+       4    1.299038    3.897114    5.196152
+       6    0.866025    4.330127    5.196152
+       8    0.649519    4.546633    5.196152
+      10    0.519615    4.676537    5.196152
+      12    0.433013    4.763140    5.196152
+      14    0.371154    4.824999    5.196152
+      16    0.324760    4.871393    5.196152
+      18    0.288675    4.907477    5.196152
+      20    0.259808    4.936345    5.196152
+      39    0.129904    4.936345    5.066249
+      77    0.064952    4.936345    5.001297
+     154    0.032476    4.968821    5.001297
+     193    0.025981    4.988306    5.014287
+ 
+TEST09
+  For a hexagonal grid of points in a coordinate box,
+  given NODES_PER_LAYER, the number of grid points
+  along the first layer,
+ 
+  HEX_GRID_N computes N, the total number of grid
+  points in the coordinate box.
+ 
+  Coordinate box:
+    1.0000 <= X <=   4.0000
+    2.0000 <= Y <=   7.0000
+ 
+    NODES   LAYERS           N
+      PER
+    LAYER
+ 
+       1       1             1
+       2       2             3
+       3       4            10
+       4       6            21
+       5       8            36
+       6      10            55
+       7      12            78
+       8      14           105
+       9      16           136
+      10      18           171
+      11      20           210
+      21      39           800
+      41      77          3119
+      81     154         12397
+     101     193         19397
+ 
+TEST10
+  For a hexagonal grid of points in a coordinate box,
+  given NODES_PER_LAYER, the number of grid points
+  along the first layer,
+ 
+  HEX_GRID_POINTS computes P, the coordinates
+  of the points of the grid.
+ 
+  HEX_GRID_WRITE writes the data to a file.
+ 
+  Coordinate box:
+    1.0000 <= X <=   4.0000
+    2.0000 <= Y <=   7.0000
+ 
+   NODES  LAYERS    N    Filename
+     PER
+   LAYER
+ 
+       1    1       1    hex_grid_1_1_1.txt
+       2    2       3    hex_grid_2_2_3.txt
+       3    4      10    hex_grid_3_4_10.txt
+       4    6      21    hex_grid_4_6_21.txt
+       5    8      36    hex_grid_5_8_36.txt
+       6   10      55    hex_grid_6_10_55.txt
+       7   12      78    hex_grid_7_12_78.txt
+       8   14     105    hex_grid_8_14_105.txt
+       9   16     136    hex_grid_9_16_136.txt
+      10   18     171    hex_grid_10_18_171.txt
+      11   20     210    hex_grid_11_20_210.txt
+      21   39     800    hex_grid_21_39_800.txt
+ 
+TEST11
+  For a hexagonal grid of points in a coordinate box,
+  HEX_GRID_APPROXIMATE_N seeks the value of
+  NODES_PER_LAYER that produces a mesh of about N points.
+ 
+  Coordinate box:
+    1.0000 <= X <=   4.0000
+    2.0000 <= Y <=   7.0000
+ 
+  N_GOAL  NODES_PER_LAYER       N
+ 
+     100                7      78
+     200               10     171
+     500               16     450
+   10000               73   10078
+ 
+TEST12
+  For a hexagonal grid of points in the unit box,
+  HEX_GRID_APPROXIMATE_H seeks the value of
+  NODES_PER_LAYER that produces a mesh with spacing
+  that is H or less.
+ 
+ 
+  Coordinate box:
+    1.0000 <= X <=   4.0000
+    2.0000 <= Y <=   7.0000
+ 
+      H_GOAL      NODES_PER_LAYER      H                      N
+ 
+     .100000                   31     .100000              1769
+    0.100000E-01              301    0.100000E-01        173689
+    0.100000E-03            30001    0.100000E-03    1732108868
+ 
+HEX_GRID_PRB
+  Normal end of execution.
+ 
+May 18 2007   7:49:19.731 AM

@@ -1,0 +1,312 @@
+<html>
+
+  <head>
+    <title>
+      CYCLIC_REDUCTION - A Direct Solution Method for Tridiagonal Linear Systems.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CYCLIC_REDUCTION <br> A Direct Solution Method for Tridiagonal Linear Systems.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CYCLIC_REDUCTION</b> 
+      is a FORTRAN90 library which
+      applies the cyclic reduction method to solve a tridiagonal system of
+      linear equations A*x=b.
+    </p>
+
+    <p>
+      The matrix is assumed to be diagonally dominant - that is, for every row,
+      we require that the magnitude of the diagonal entry be at least as great
+      as the sum of the magnitudes of the two off-diagonal elements.  This is
+      (just barely) true for the "-1, 2, -1" matrix, for instance.
+    </p>
+
+    <p>
+      Other methods for solving tridiagonal linear systems include:
+      <ul>
+        <li>
+          Gauss elimination with pivoting;
+        </li>
+        <li>
+          the Thomas algorithm, (Gauss elimination without pivoting);
+        </li>
+        <li>
+          the Jacobi, Gauss-Seidel, and SOR iterative methods;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Cyclic reduction is a form of Gauss elimination.  It proceeds by first
+      eliminating half of the variables simultaneously, then half of the remainder,
+      and so on.  This amounts to more work, but the work in each elimination
+      step can be done in parallel.  Thus, unlike the Gauss and Thomas algorithms,
+      cyclic reduction offers a procedure for the direct solution of a tridiagonal
+      linear system that can take advantage of parallelism.
+    </p>
+
+    <p>
+      Cyclic reduction can also be adapted to the block tridiagonal linear systems
+      that arise when Poisson's equation is discretized over a 2D region.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CYCLIC_REDUCTION</b> is available in
+      <a href = "../../c_src/cyclic_reduction/cyclic_reduction.html">a C version</a> and
+      <a href = "../../cpp_src/cyclic_reduction/cyclic_reduction.html">a C++ version</a> and
+      <a href = "../../f77_src/cyclic_reduction/cyclic_reduction.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/cyclic_reduction/cyclic_reduction.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/cyclic_reduction/cyclic_reduction.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../c_src/csparse/csparse.html">
+      CSPARSE</a>, 
+      a C library which
+      carries out the direct solution of sparse linear systems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dlap/dlap.html">
+      DLAP</a>,
+      a FORTRAN90 library which
+      carries out the iterative solution of sparse linear systems.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/lapack_examples/lapack_examples.html">
+      LAPACK_EXAMPLES</a>,
+      a FORTRAN77 program which
+      demonstrates the use of the LAPACK linear algebra library.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack/linpack.html">
+      LINPACK</a>, 
+      a FORTRAN90 library which
+      factors and solves systems of linear equations in a variety of
+      formats and arithmetic types.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linplus/linplus.html">
+      LINPLUS</a>,
+      a FORTRAN90 library which
+      carries out simple manipulations of matrices in a variety of formats.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mgmres/mgmres.html">
+      MGMRES</a>,
+      a FORTRAN90 library which 
+      applies the restarted GMRES algorithm to solve a sparse linear system.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparsekit/sparsekit.html">
+      SPARSEKIT</a>, 
+      a FORTRAN90 library which
+      carries out operations on sparse matrices, including conversion between various formats.
+    </p>
+
+    <p>
+      <a href = "../../c_src/super_lu/super_lu.html">
+      SUPER_LU</a>, 
+      a C library which 
+      implements some very fast direct 
+      solvers for systems of sparse linear equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_mat/test_mat.html">
+      TEST_MAT</a>,
+      a FORTRAN90 library which 
+      defines test matrices, some of
+      which have known determinants, eigenvalues and eigenvectors,
+      inverses and so on.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Gene Golub, Charles VanLoan,<br>
+          Matrix Computations,<br>
+          Third Edition,<br>
+          Johns Hopkins, 1996,<br>
+          ISBN: 0-8018-4513-X,<br>
+          LC: QA188.G65.
+        </li>
+        <li>
+          Roger Hockney,<br>
+          A fast direct solution of Poisson's equation using Fourier Analysis,<br>
+          Journal of the ACM,<br>
+          Volume 12, Number 1, pages 95-113, January 1965.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cyclic_reduction.f90">cyclic_reduction.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "cyclic_reduction.sh">cyclic_reduction.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cyclic_reduction_prb.f90">cyclic_reduction_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "cyclic_reduction_prb.sh">cyclic_reduction_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "cyclic_reduction_prb_output.txt">cyclic_reduction_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>C83_CR_FA</b> decomposes a C83 matrix using cyclic reduction.
+        </li>
+        <li>
+          <b>C83_CR_SL</b> solves a linear system factored by C83_CR_FA.
+        </li>
+        <li>
+          <b>C83_CR_SLS</b> solves several linear systems factored by C83_CR_FA.
+        </li>
+        <li>
+          <b>C83_INDICATOR</b> sets up a C83 indicator matrix.
+        </li>
+        <li>
+          <b>C83_MXV</b> multiplies a C83 matrix times a C8VEC.
+        </li>
+        <li>
+          <b>C83_PRINT</b> prints a C83 matrix.
+        </li>
+        <li>
+          <b>C83_PRINT_SOME</b> prints some of a C83 matrix.
+        </li>
+        <li>
+          <b>C8MAT_PRINT</b> prints a C8MAT.
+        </li>
+        <li>
+          <b>C8MAT_PRINT_SOME</b> prints some of a C8MAT.
+        </li>
+        <li>
+          <b>C8VEC_INDICATOR</b> sets a C8VEC to an "indicator" vector.
+        </li>
+        <li>
+          <b>C8VEC_PRINT</b> prints a C8VEC, with an optional title.
+        </li>
+        <li>
+          <b>C8VEC_PRINT_SOME</b> prints some of a C8VEC.
+        </li>
+        <li>
+          <b>R83_CR_FA</b> decomposes an R83 matrix using cyclic reduction.
+        </li>
+        <li>
+          <b>R83_CR_SL</b> solves a linear systems factored by R83_CR_FA.
+        </li>
+        <li>
+          <b>R83_CR_SLS</b> solves several linear systems factored by R83_CR_FA.
+        </li>
+        <li>
+          <b>R83_PRINT</b> prints an R83 matrix.
+        </li>
+        <li>
+          <b>R83_PRINT_SOME</b> prints some of an R83 matrix.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_INDICATOR</b> sets an R8VEC to the indicator vector.
+        </li>
+        <li>
+          <b>R83_MXV</b> multiplies an R83 matrix times an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC, with an optional title.
+        </li>
+        <li>
+          <b>R8VEC_PRINT_SOME</b> prints "some" of an R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 06 May 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

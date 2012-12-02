@@ -1,0 +1,360 @@
+<html>
+
+  <head>
+    <title>
+      CCN_RULE - Nested Clenshaw Curtis Quadrature Rules
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CCN_RULE <br> Nested Clenshaw Curtis Quadrature Rules
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CCN_RULE</b>
+      is a FORTRAN90 program which
+      generates a quadrature rule based on a nested set of points
+      inspired by the Clenshaw Curtis quadrature rule.
+    </p>
+
+    <p>
+      The data defining the rule is written to three files for easy use as input
+      to other programs.
+    </p>
+
+    <p>
+      The nested Clenshaw Curtis quadrature rule is used as follows:
+      <pre>
+        Integral ( A &lt;= x &lt;= B ) f(x) dx
+      </pre>
+      is to be approximated by
+      <pre>
+        Sum ( 1 &lt;= i &lt;= order ) w(i) * f(x(i))
+      </pre>
+    </p>
+
+    <p>
+      If the order of the CCN rule is 1, 3, 5, 9, 17, 33, or in general
+      2^L+1, then the rule is identical to the Clenshaw Curtis rule.
+    </p>
+
+    <p>
+      Otherwise, the rule is based on a subset of the points in the
+      Clenshaw Curtis rule of next highest order in the sequence 2^L+1.
+    </p>
+
+    <p>
+      The CCN rule has no special accuracy properties, except that the
+      rules of odd order are symmetric, and hence get one extra degree of
+      precision.  Moreover, the rules of even order have a single unpaired
+      point which is assigned weight zero, so that it is equivalent
+      to the immediately preceding rule of odd order.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>ccn_rule</b> <i>n</i> <i>a</i> <i>b</i> <i>filename</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>n</i> is the order, or number of points in the quadrature rule;
+        </li>
+        <li>
+          <i>a</i> is the left endpoint;
+        </li>
+        <li>
+          <i>b</i> is the right endpoint;
+        </li>
+        <li>
+          <i>filename</i> specifies the output filenames:
+          name<i>file</i><b>_w.txt</b>,
+          <i>filename</i><b>_x.txt</b>, and <i>filename</i><b>_r.txt</b>,
+          containing the weights, abscissas, and interval limits.
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CCN_RULE</b> is available in
+      <a href = "../../cpp_src/ccn_rule/ccn_rule.html">a C++ version</a> and
+      <a href = "../../f_src/ccn_rule/ccn_rule.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/ccn_rule/ccn_rule.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/chebyshev1_rule/chebyshev1_rule.html">
+      CHEBYSHEV1_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Chebyshev type 1 quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/chebyshev2_rule/chebyshev2_rule.html">
+      CHEBYSHEV2_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Chebyshev type 2 quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/clenshaw_curtis_rule/clenshaw_curtis_rule.html">
+      CLENSHAW_CURTIS_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Chebyshev type 1 quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gegenbauer_rule/gegenbauer_rule.html">
+      GEGENBAUER_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Gegenbauer quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gen_hermite_rule/gen_hermite_rule.html">
+      GEN_HERMITE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a generalized Gauss-Hermite quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gen_laguerre_rule/gen_laguerre_rule.html">
+      GEN_LAGUERRE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a generalized Gauss-Laguerre quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite_rule/hermite_rule.html">
+      HERMITE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Hermite quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/int_exactness_legendre/int_exactness_legendre.html">
+      INT_EXACTNESS_LEGENDRE</a>,
+      a FORTRAN90 program which
+      checks the polynomial exactness
+      of a Gauss-Legendre quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/jacobi_rule/jacobi_rule.html">
+      JACOBI_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Jacobi quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/laguerre_rule/laguerre_rule.html">
+      LAGUERRE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Laguerre quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/legendre_rule/legendre_rule.html">
+      LEGENDRE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Legendre quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/legendre_rule_fast/legendre_rule_fast.html">
+      LEGENDRE_RULE_FAST</a>,
+      a FORTRAN90 program which
+      uses a fast (order N) algorithm to compute a Gauss-Legendre quadrature rule of given order.
+    </p>
+
+    <p>
+      <a href = "../../f_src/patterson_rule/patterson_rule.html">
+      PATTERSON_RULE</a>,
+      a FORTRAN90 program which
+      computes a Gauss-Patterson quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_ccn/quadrature_rules_ccn.html">
+      QUADRATURE_RULES_CCN</a>,
+      a dataset directory which
+      contains quadrature rules for integration on [-1,+1],
+      using a nested Clenshaw Curtis rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tanh_sinh_rule/tanh_sinh_rule.html">
+      TANH_SINH_RULE</a>,
+      a FORTRAN90 program which
+      computes and writes out a tanh-sinh quadrature rule of given order.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ccn_rule.f90">ccn_rule.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "ccn_rule.sh">ccn_rule.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>CCN_09</b> is a nested Clenshaw Curtis rule of order 9,
+      which will exactly match the standard Clenshaw Curtis rule.
+      <ul>
+        <li>
+          <a href = "ccn_o9_r.txt">ccn_o9_r.txt</a>,
+          the region file created by the command
+          <pre><b>
+            ccn_rule 9 -1 +1 ccn_o9
+          </b></pre>
+        </li>
+        <li>
+          <a href = "ccn_o9_w.txt">ccn_o9_w.txt</a>,
+          the weight file created by the command
+          <pre><b>
+            ccn_rule 9 -1 +1 ccn_o9
+          </b></pre>
+        </li>
+        <li>
+          <a href = "ccn_o9_x.txt">ccn_o9_x.txt</a>,
+          the abscissa file created by the command
+          <pre><b>
+            ccn_rule 9 -1 +1 ccn_o9
+          </b></pre>
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for CCN_RULE.
+        </li>
+        <li>
+          <b>CCN_COMPUTE_POINTS:</b> compute Clenshaw Curtis Nested points.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>NC_COMPUTE</b> computes a Newton-Cotes quadrature rule.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>RESCALE</b> rescales a Legendre quadrature rule from [-1,+1] to [A,B].
+        </li>
+        <li>
+          <b>RULE_WRITE</b> writes a quadrature rule to a file.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 value from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 06 March 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

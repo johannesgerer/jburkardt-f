@@ -1,0 +1,487 @@
+<html>
+
+  <head>
+    <title>
+      TABLE_SHIFT - Shift a Table Dataset
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TABLE_SHIFT <br> Shift a Table Dataset
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TABLE_SHIFT</b>
+      is a FORTRAN90 program which
+      adjusts an M dimensional
+      dataset of N points by adding a shift vector to each entry.
+    </p>
+
+    <p>
+      <b>TABLE_SHIFT</b> expects the input data file to be in the simple
+      <a href = "../../data/table/table.html">
+      TABLE format</a>.
+    </p>
+
+    <p>
+      This program was written partly to provide a visual check of
+      the results of the
+      <a href =
+      "../../f_src/cvt_mod_dataset/cvt_mod_dataset.html">
+      CVT_MOD_DATASET</a> program, which purports to produce a set of
+      CVT points that "don't know about" the boundary.  If that's true,
+      then the picture should be roughly isotropic.  That is, you shouldn't
+      notice any significant difference between the pattern near or far
+      from the boundaries.  It's hard to tell from a plot of the data
+      whether this is so, but it is possible to use this program to make
+      3 more copies of the data, shifted by (0,1), (1,0) and (1,1), then
+      concatenate the original and three copies, and make a plot of the
+      new data over [0,0] x [2,2], and see whether there are boundary effects.
+      Such a comparison is made in the test data below.
+    </p>
+
+    <h3 aign = "center">
+      Example:
+    </h3>
+
+    <p>
+      For some reason, you need to concatenate two graphics files.
+      For technical reasons, this will work, as long as we can increment
+      all the indices in the second file by 100.
+    </p>
+
+    <p>
+      File 1 looks like this:
+      <pre>
+        1  2  3
+        4  5  6
+        7  8  9
+       10 11 12
+      </pre>
+      and File 2 looks like this:
+      <pre>
+        3  2  1
+        6  5  4
+        9  8  7
+       12 11 10
+      </pre>
+      but we want the values in File 2 to be increased by 100 before we
+      merge the files.  So we just say:
+
+      <pre><b>
+        table_shift <i>file2.txt</i>
+      </b></pre>
+      and then specify a shift vector of (100,100,100) to get
+      a transformed File 2 that looks like this:
+      <pre>
+        103  102 101
+        106  105 104
+        109  108 107
+        112  111 110
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>table_shift</b> <i>file.txt</i>
+        </dt>
+        <dd>
+          reads the user's data file <i>file.txt</i>,
+          prompts for a shift vector from the user, and then writes
+          the shifted data to a file which will be called <i>file.shift.txt</i>.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/file_increment/file_increment.html">
+      FILE_INCREMENT</a>,
+      a MATLAB program which
+      makes a copy of a file containing an integer array, after incrementing
+      each entry by a given value.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_barplot_ppma/table_barplot_ppma.html">
+      TABLE_BARPLOT_PPMA</a>,
+      a FORTRAN90 program which
+      reads a table file and creates a
+      PPMA bargraph of the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_border/table_border.html">
+      TABLE_BORDER</a>,
+      a FORTRAN90 program which
+      can be used to add a border
+      (of zero values) to a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns/table_columns.html">
+      TABLE_COLUMNS</a>,
+      a FORTRAN90 program which
+      can extract specific columns of data
+      from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns_permute/table_columns_permute.html">
+      TABLE_COLUMNS_PERMUTE</a>,
+      a FORTRAN90 program which
+      permutes the columns of a
+      table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      computes the Delaunay triangulation of a set
+      of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_histogram/table_histogram.html">
+      TABLE_HISTOGRAM</a>,
+      a FORTRAN90 program which
+      can make a histogram of a set of points
+      stored in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_io/table_io.html">
+      TABLE_IO</a>,
+      a FORTRAN90 library which
+      supplies the routines used to read the TABLE file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_latinize/table_latinize.html">
+      TABLE_LATINIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and creates a "latinized" version by adjusting the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_merge/table_merge.html">
+      TABLE_MERGE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points, and removes duplicates, and points that are close to each other.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_orthonormalize/table_orthonormalize.html">
+      TABLE_ORTHONORMALIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and orthonormalizes the columns.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_quality/table_quality.html">
+      TABLE_QUALITY</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and computes the quality of dispersion.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_record_match/table_record_match.html">
+      TABLE_RECORD_MATCH</a>,
+      a FORTRAN90 program which
+      can be used to find close records in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_scale/table_scale.html">
+      TABLE_SCALE</a>,
+      a FORTRAN90 program which
+      can be used to multiply the entries of a table file
+      by a scale vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_stats/table_stats.html">
+      TABLE_STATS</a>,
+      a FORTRAN90 program which
+      can read a table file and compute certain statistics.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_tet_mesh/table_tet_mesh.html">
+      TABLE_TET_MESH</a>,
+      a FORTRAN90 program which
+      can read a table file of 3D data, and compute a
+      tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_top/table_top.html">
+      TABLE_TOP</a>,
+      a FORTRAN90 program which
+      can read a table file of M-dimensional data and
+      make a table of plots of all pairs of coordinates.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_unborder/table_unborder.html">
+      TABLE_UNBORDER</a>,
+      a FORTRAN90 program which
+      can be used to remove the border from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_uniform_noise/table_uniform_noise.html">
+      TABLE_UNIFORM_NOISE</a>,
+      a FORTRAN90 program which
+      can be used to add a uniform noise term to the data
+      in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_voronoi/table_voronoi.html">
+      TABLE_VORONOI</a>,
+      a FORTRAN90 program which
+      can be used to compute information about
+      the Voronoi diagram of the points.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "table_shift.f90">table_shift.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "table_shift.sh">table_shift.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>CVT</b> consists of 100 CVT points computed in a way
+      that incurs boundary effects.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "cvt_00.txt">cvt_00.txt</a>,
+          100 CVT points in 2D.
+        </li>
+        <li>
+          <a href = "cvt_00.png">cvt_00.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          image of the points.
+        </li>
+        <li>
+          <a href = "cvt_01.txt">cvt_01.txt</a>,
+          100 CVT points in 2D, shifted by (0,1).
+        </li>
+        <li>
+          <a href = "cvt_10.txt">cvt_10.txt</a>,
+          100 CVT points in 2D, shifted by (1,0).
+        </li>
+        <li>
+          <a href = "cvt_11.txt">cvt_11.txt</a>,
+          100 CVT points in 2D, shifted by (1,1).
+        </li>
+        <li>
+          <a href = "cvt_all.txt">cvt_all.txt</a>,
+          400 CVT points in 2D, containing the original
+          data and the three shifted sets.
+        </li>
+        <li>
+          <a href = "cvt_all.png">cvt_all.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the 400 points.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CVT MOD</b> consists of 100 CVT points computed in a way
+      that purports to avoid boundary effects.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "cvt_mod_00.txt">cvt_mod_00.txt</a>,
+          100 CVT MOD points in 2D.
+        </li>
+        <li>
+          <a href = "cvt_mod_00.png">cvt_mod_00.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the points.
+        </li>
+        <li>
+          <a href = "cvt_mod_01.txt">cvt_mod_01.txt</a>,
+          100 CVT MOD points in 2D, shifted by (0,1).
+        </li>
+        <li>
+          <a href = "cvt_mod_10.txt">cvt_mod_10.txt</a>,
+          100 CVT MOD points in 2D, shifted by (1,0).
+        </li>
+        <li>
+          <a href = "cvt_mod_11.txt">cvt_mod_11.txt</a>,
+          100 CVT MOD points in 2D, shifted by (1,1).
+        </li>
+        <li>
+          <a href = "cvt_mod_all.txt">cvt_mod_all.txt</a>,
+          400 CVT MOD points in 2D, containing the original
+          data and the three shifted sets.
+        </li>
+        <li>
+          <a href = "cvt_mod_all.png">cvt_mod_all.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the 400 points.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>FILE1</b> and <b>FILE2</b> are simple integer files that we take to
+       refer to indices of graphical objects.  Before merging the two files, we need
+       to add 100 to each entry in FILE2.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "file1.txt">file1.txt</a>,
+          the first file (4 lines, 3 columns).
+        </li>
+        <li>
+          <a href = "file2.txt">file2.txt</a>,
+          the second file (4 lines, 3 columns).
+        </li>
+        <li>
+          <a href = "file2.shift.txt">file2.shift.txt</a>,
+          the second file, shifted by (100,100,100).
+        </li>
+        <li>
+          <a href = "file3.txt">file3.txt</a>,
+          the file made by merging file1.txt and file2.shift.txt.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TABLE_SHIFT.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DTABLE_DATA_PRINT_SOME</b> prints some of a double precision table dataset.
+        </li>
+        <li>
+          <b>DTABLE_DATA_READ</b> reads double precision table data from a file.
+        </li>
+        <li>
+          <b>DTABLE_DATA_WRITE</b> writes a double precision table dataset to a file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_READ</b> reads header data from a file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_WRITE</b> writes the table header data to a file.
+        </li>
+        <li>
+          <b>DTABLE_SHIFTED_WRITE</b> writes a real shifted table dataset to a file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

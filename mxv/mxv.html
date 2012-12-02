@@ -1,0 +1,261 @@
+<html>
+
+  <head>
+    <title>
+      MXVP - Matrix Vector Multiplication Timings
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MXV <br> Matrix Vector Multiplication Timings
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MXV</b> 
+      is a FORTRAN90 program which 
+      sets up several matrix vector multiplication problems y=A*x,
+      and carries them out using 
+      <ul>
+        <li>
+          Nested DO I, DO J loops;
+        </li>
+        <li>
+          Nested DO J, DO I loops;
+        </li>
+        <li>
+          the MATMUL FORTRAN90 intrinsic function;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The user is allowed to specify M and N, the number of matrix rows and columns.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>mxv</b> <i>m</i> <i>n</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <b>m</b> is the number of matrix rows;
+        </li>
+        <li>
+          <b>n</b> is the number of matrix columns;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Sample Results:
+    </h3>
+
+    <p>
+      <pre>
+          M        N       FLOP  doIdoJ  doJdoI  MATMUL
+
+         10       10        100       8      11       3
+
+         10      100      1,000      27      29      32
+        100       10      1,000      23      31      32
+
+         10    1,000     10,000      35      33     172
+        100      100     10,000      31      36     200
+      1,000       10     10,000      42      54     277
+
+         10   10,000    100,000      18      33     159
+     10,000       10    100,000      25      34     176
+
+         10  100,000  1,000,000      16      32     142
+        100   10,000  1,000,000       6      37     174
+      1,000    1,000  1,000,000      17      40     234
+     10,000      100  1,000,000      28      37     171
+    100,000       10  1,000,000      24      33      88
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MXV</b> is available in
+      <a href = "../../c_src/mxv/mxv.html">a C version</a> and
+      <a href = "../../cpp_src/mxv/mxv.html">a C++ version</a> and
+      <a href = "../../f77_src/mxv/mxv.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/mxv/mxv.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/mxv/mxv.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/f90_intrinsics/f90_intrinsics.html">
+      F90_INTRINSICS</a>,
+      FORTRAN90 programs which
+      illustrate the use of FORTRAN90 intrinsic functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack_bench/linpack_bench.html">
+      LINPACK_BENCH</a>,
+      a FORTRAN90 program which 
+      measures the time needed to factor and solve a "large" (N=1000)
+      dense linear system of equations, and is used as a benchmark.
+    </p>
+
+    <p>
+      <a href = "../../f_src/matmul/matmul.html">
+      MATMUL</a>,
+      a FORTRAN90 program which
+      is an interactive matrix multiplication benchmark program.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/mdbnch/mdbnch.html">
+      MDBNCH</a>,
+      a FORTRAN77 program which
+      is a benchmark molecular simulation calculation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxm/mxm.html">
+      MXM</a>,
+      a FORTRAN90 program which
+      sets up a matrix multiplication problem A=B*C of arbitrary size,
+      and compares the time required for IJK, IKJ, JIK, JKI, KIJ and KJI orderings
+      of the loops.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxv_openmp/mxv_openmp.html">
+      MXV_OPENMP</a>,
+      a FORTRAN90 program which
+      compares the performance of plain vanilla Fortran and the FORTRAN90
+      intrinsic routine MATMUL, for the matrix multiplication problem
+      y=A*x, with and without parallelization by OpenMP.
+    <p>
+
+    <p>
+      <a href = "../../f_src/nas/nas.html">
+      NAS</a>,
+      a FORTRAN90 program which
+      runs the NASA kernel benchmark.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sum_million/sum_million.html">
+      SUM_MILLION</a>,
+      a FORTRAN90 program which 
+      sums the integers from 1 to 1,000,000, as a demonstration of how
+      to rate a computer's speed;
+    </p>
+
+    <p>
+      <a href = "../../f_src/timer/timer.html">
+      TIMER</a>,
+      FORTRAN90 programs which
+      demonstrate how to compute CPU time or elapsed time.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          John Burkardt, Paul Puglielli,<br>
+          Pittsburgh Supercomputing Center,<br>
+          <a href = "../../presentations/matmul.pdf">
+          MATMUL: An Interactive Matrix Multiplication Benchmark
+          </a>
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "mxv.f90">mxv.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "mxv.sh">mxv.sh</a>,
+          commands to compile and link the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for MXV.
+        </li>
+        <li>
+          <b>MATGEN</b> generates a random matrix A and vector X.
+        </li>
+        <li>
+          <b>MXV_MATMUL</b> computes y = A * x, using the FORTRAN90 MATMUL function.
+        </li>
+        <li>
+          <b>MXV_DOIDOJ</b> computes y = A * x, using DO I, DO J loops.
+        </li>
+        <li>
+          <b>MXV_DOJDOI</b> computes y = A * x, using DO J, DO I loops.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 23 May 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,609 @@
+<html>
+
+  <head>
+    <title>
+      TEST_INT_LAGUERRE - Quadrature Tests for Semi-Infinite Intervals
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_INT_LAGUERRE <br> Quadrature Tests for Semi-Infinite Intervals
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_INT_LAGUERRE</b>
+      is a FORTRAN90 library which
+      defines integration problems over
+      semi-infinite intervals of the form [ALPHA,+oo).
+    </p>
+
+    <p>
+      The test integrands would normally be used to testing one
+      dimensional quadrature software.  It is possible to invoke a
+      particular function by index, or to try out all available functions,
+      as demonstrated in the sample calling program.
+    </p>
+
+    <p>
+      The test integrands include:
+      <ol>
+        <li>
+          1 / ( x * log(x)^2 );
+        </li>
+        <li>
+          1 / ( x * log(x)^(3/2) );
+        </li>
+        <li>
+          1 / ( x^1.01 );
+        </li>
+        <li>
+          Sine integral;
+        </li>
+        <li>
+          Fresnel integral;
+        </li>
+        <li>
+          Complementary error function;
+        </li>
+        <li>
+          Bessel function;
+        </li>
+        <li>
+          Debye function;
+        </li>
+        <li>
+          Gamma(Z=4) function;
+        </li>
+        <li>
+          1/(1+x*x); (Stroud)
+        </li>
+        <li>
+          1 / ( (1+x) * sqrt(x) ); (Stroud)
+        </li>
+        <li>
+          exp ( - x ) * cos ( x ); (Stroud)
+        </li>
+        <li>
+          sin(x) / x; (Stroud)
+        </li>
+        <li>
+          sin ( exp(-x) + exp(-4x) ); (Stroud)
+        </li>
+        <li>
+          log(x) / ( 1+100*x*x); (QUADPACK)
+        </li>
+        <li>
+          cos(0.5*pi*x) / sqrt(x); (QUADPACK)
+        </li>
+        <li>
+          exp ( - x / 2^beta ) * cos ( x ) / sqrt ( x )
+        </li>
+        <li>
+          x^2 * exp ( - x / 2^beta )
+        </li>
+        <li>
+          x^(beta-1) / ( 1 + 10 x )^2
+        </li>
+        <li>
+          1 / ( 2^beta * ( ( x - 1 )^2 + (1/4)^beta ) * ( x - 2 ) )
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      The library includes not just the integrand, but also the value of
+      ALPHA which defines the interval of integration, and the exact value
+      of the integral (or, typically, an estimate of this value).
+      Thus, for each integrand function, three subroutines are supplied.  For
+      instance, for function #1, we have the routines:
+      <ul>
+        <li>
+          <b>P01_FUN</b> evaluates the integrand for problem 1.
+        </li>
+        <li>
+          <b>P01_ALPHA</b> returns the value of ALPHA for problem 1.
+        </li>
+        <li>
+          <b>P01_EXACT</b> returns the estimated integral for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns a title for problem 1.
+        </li>
+      </ul>
+      So once you have the calling sequences for these routines, you
+      can easily evaluate the function, or integrate it on the
+      appropriate interval, or compare your estimate of the integral
+      to the exact value.
+    </p>
+
+    <p>
+      Moreover, since the same interface is used for each function,
+      if you wish to work with problem 5 instead, you simply change
+      the "01" to "05" in your routine calls.
+    </p>
+
+    <p>
+      If you wish to call <i>all</i> of the functions, then you
+      simply use the generic interface, which again has three
+      subroutines, but which requires you to specify the problem
+      number as an extra input argument:
+      <ul>
+        <li>
+          <b>P00_FUN</b> evaluates the integrand for any problem.
+        </li>
+        <li>
+          <b>P00_ALPHA</b> returns the value of ALPHA for any problem.
+        </li>
+        <li>
+          <b>P00_EXACT</b> returns the exact integral for any problem.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns a title for any problem.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Finally, some demonstration routines are built in for
+      simple quadrature methods.  These routines include
+      <ul>
+        <li>
+          <b>P00_EXP_TRANSFORM</b> applies an exponential change of
+          variables, and then uses a Gauss-Legendre quadrature formula
+          to estimate the integral for any problem.
+        </li>
+        <li>
+          <b>P00_GAUSS_LAGUERRE</b> uses a Gauss-Laguerre quadrature formula
+          to estimate the integral for any problem.
+        </li>
+        <li>
+          <b>P00_RAT_TRANSFORM</b> applies a rational change of
+          variables, and then uses a Gauss-Legendre quadrature formula
+          to estimate the integral for any problem.
+        </li>
+      </ul>
+      and can be used with any of the sample integrands.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_INT_LAGUERRE</b> is available in
+      <a href = "../../c_src/test_int_laguerre/test_int_laguerre.html">a C version</a> and
+      <a href = "../../cpp_src/test_int_laguerre/test_int_laguerre.html">a C++ version</a> and
+      <a href = "../../f77_src/test_int_laguerre/test_int_laguerre.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_int_laguerre/test_int_laguerre.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_int_laguerre/test_int_laguerre.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/quadpack/quadpack.html">
+      QUADPACK</a>,
+      a FORTRAN90 library which
+      estimates integrals of functions in one dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrule/quadrule.html">
+      QUADRULE</a>,
+      a FORTRAN90 library which
+      defines various quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int/test_int.html">
+      TEST_INT</a>,
+      a FORTRAN90 library which
+      defines some test integration problems over finite intervals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_2d/test_int_2d.html">
+      TEST_INT_2D</a>,
+      a FORTRAN90 library which
+      defines test integrands for 2D quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_hermite/test_int_hermite.html">
+      TEST_INT_HERMITE</a>,
+      a FORTRAN90 library which
+      defines some test integration problems over infinite intervals.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+        <li>
+          Robert Piessens, Elise deDoncker-Kapenga,
+          Christian Ueberhuber, David Kahaner,<br>
+          QUADPACK: A Subroutine Package for Automatic Integration,<br>
+          Springer, 1983,<br>
+          ISBN: 3540125531,<br>
+          LC: QA299.3.Q36.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_int_laguerre.f90">test_int_laguerre.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "test_int_laguerre.sh">test_int_laguerre.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_int_laguerre_prb.f90">test_int_laguerre_prb.f90</a>,
+          the calling program;
+        </li>
+        <li>
+          <a href = "test_int_laguerre_prb.sh">test_int_laguerre_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "test_int_laguerre_prb_output.txt">test_int_laguerre_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>LAGUERRE_COMPUTE</b> computes a Gauss-Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>LAGUERRE_RECUR</b> finds the value and derivative of a Laguerre polynomial.
+        </li>
+        <li>
+          <b>LAGUERRE_ROOT</b> improves an approximate root of a Laguerre polynomial.
+        </li>
+        <li>
+          <b>LEGENDRE_COMPUTE</b> computes a Gauss-Legendre quadrature rule.
+        </li>
+        <li>
+          <b>P00_ALPHA</b> returns the value of ALPHA for any problem.
+        </li>
+        <li>
+          <b>P00_EXACT</b> returns the exact integral for any problem.
+        </li>
+        <li>
+          <b>P00_EXP_TRANSFORM</b> applies an exponential transform and Gauss-Legendre rule.
+        </li>
+        <li>
+          <b>P00_FUN</b> evaluates the integrand for any problem.
+        </li>
+        <li>
+          <b>P00_GAUSS_LAGUERRE</b> applies a Gauss-Laguerre rule.
+        </li>
+        <li>
+          <b>P00_PROBLEM_NUM</b> returns the number of test integration problems.
+        </li>
+        <li>
+          <b>P00_RAT_TRANSFORM</b> applies a rational transform and Gauss-Legendre rule.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns the title for any problem.
+        </li>
+        <li>
+          <b>P01_ALPHA</b> returns ALPHA for problem 1.
+        </li>
+        <li>
+          <b>P01_EXACT</b> returns the exact integral for problem 1.
+        </li>
+        <li>
+          <b>P01_FUN</b> evaluates the integrand for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns the title for problem 1.
+        </li>
+        <li>
+          <b>P02_ALPHA</b> returns ALPHA for problem 2.
+        </li>
+        <li>
+          <b>P02_EXACT</b> returns the exact integral for problem 2.
+        </li>
+        <li>
+          <b>P02_FUN</b> evaluates the integrand for problem 2.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns the title for problem 2.
+        </li>
+        <li>
+          <b>P03_ALPHA</b> returns ALPHA for problem 3.
+        </li>
+        <li>
+          <b>P03_EXACT</b> returns the exact integral for problem 3.
+        </li>
+        <li>
+          <b>P03_FUN</b> evaluates the integrand for problem 3.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns the title for problem 3.
+        </li>
+        <li>
+          <b>P04_ALPHA</b> returns ALPHA for problem 4.
+        </li>
+        <li>
+          <b>P04_EXACT</b> returns the estimated integral for problem 4.
+        </li>
+        <li>
+          <b>P04_FUN</b> evaluates the integrand for problem 4.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns the title for problem 4.
+        </li>
+        <li>
+          <b>P05_ALPHA</b> returns ALPHA for problem 5.
+        </li>
+        <li>
+          <b>P05_EXACT</b> returns the estimated integral for problem 5.
+        </li>
+        <li>
+          <b>P05_FUN</b> evaluates the integrand for problem 5.
+        </li>
+        <li>
+          <b>P05_TITLE</b> returns the title for problem 5.
+        </li>
+        <li>
+          <b>P06_ALPHA</b> returns ALPHA for problem 6.
+        </li>
+        <li>
+          <b>P06_EXACT</b> returns the exact integral for problem 6.
+        </li>
+        <li>
+          <b>P06_FUN</b> evaluates the integrand for problem 6.
+        </li>
+        <li>
+          <b>P06_TITLE</b> returns the title for problem 6.
+        </li>
+        <li>
+          <b>P07_ALPHA</b> returns ALPHA for problem 7.
+        </li>
+        <li>
+          <b>P07_EXACT</b> returns the exact integral for problem 7.
+        </li>
+        <li>
+          <b>P07_FUN</b> evaluates the integrand for problem 7.
+        </li>
+        <li>
+          <b>P07_TITLE</b> returns the title for problem 7.
+        </li>
+        <li>
+          <b>P08_ALPHA</b> returns ALPHA for problem 8.
+        </li>
+        <li>
+          <b>P08_EXACT</b> returns the estimated integral for problem 8.
+        </li>
+        <li>
+          <b>P08_FUN</b> evaluates the integrand for problem 8.
+        </li>
+        <li>
+          <b>P08_TITLE</b> returns the title for problem 8.
+        </li>
+        <li>
+          <b>P09_ALPHA</b> returns ALPHA for problem 9.
+        </li>
+        <li>
+          <b>P09_EXACT</b> returns the estimated integral for problem 9.
+        </li>
+        <li>
+          <b>P09_FUN</b> evaluates the integrand for problem 9.
+        </li>
+        <li>
+          <b>P09_TITLE</b> returns the title for problem 9.
+        </li>
+        <li>
+          <b>P10_ALPHA</b> returns ALPHA for problem 10.
+        </li>
+        <li>
+          <b>P10_EXACT</b> returns the estimated integral for problem 10.
+        </li>
+        <li>
+          <b>P10_FUN</b> evaluates the integrand for problem 10.
+        </li>
+        <li>
+          <b>P10_TITLE</b> returns the title for problem 10.
+        </li>
+        <li>
+          <b>P11_ALPHA</b> returns ALPHA for problem 11.
+        </li>
+        <li>
+          <b>P11_EXACT</b> returns the estimated integral for problem 11.
+        </li>
+        <li>
+          <b>P11_FUN</b> evaluates the integrand for problem 11.
+        </li>
+        <li>
+          <b>P11_TITLE</b> returns the title for problem 11.
+        </li>
+        <li>
+          <b>P12_ALPHA</b> returns ALPHA for problem 12.
+        </li>
+        <li>
+          <b>P12_EXACT</b> returns the estimated integral for problem 12.
+        </li>
+        <li>
+          <b>P12_FUN</b> evaluates the integrand for problem 12.
+        </li>
+        <li>
+          <b>P12_TITLE</b> returns the title for problem 12.
+        </li>
+        <li>
+          <b>P13_ALPHA</b> returns ALPHA for problem 13.
+        </li>
+        <li>
+          <b>P13_EXACT</b> returns the estimated integral for problem 13.
+        </li>
+        <li>
+          <b>P13_FUN</b> evaluates the integrand for problem 13.
+        </li>
+        <li>
+          <b>P13_TITLE</b> returns the title for problem 13.
+        </li>
+        <li>
+          <b>P14_ALPHA</b> returns ALPHA for problem 14.
+        </li>
+        <li>
+          <b>P14_EXACT</b> returns the estimated integral for problem 14.
+        </li>
+        <li>
+          <b>P14_FUN</b> evaluates the integrand for problem 14.
+        </li>
+        <li>
+          <b>P14_TITLE</b> returns the title for problem 14.
+        </li>
+        <li>
+          <b>P15_ALPHA</b> returns ALPHA for problem 15.
+        </li>
+        <li>
+          <b>P15_EXACT</b> returns the estimated integral for problem 15.
+        </li>
+        <li>
+          <b>P15_FUN</b> evaluates the integrand for problem 15.
+        </li>
+        <li>
+          <b>P15_TITLE</b> returns the title for problem 15.
+        </li>
+        <li>
+          <b>P16_ALPHA</b> returns ALPHA for problem 16.
+        </li>
+        <li>
+          <b>P16_EXACT</b> returns the estimated integral for problem 16.
+        </li>
+        <li>
+          <b>P16_FUN</b> evaluates the integrand for problem 16.
+        </li>
+        <li>
+          <b>P16_TITLE</b> returns the title for problem 16.
+        </li>
+        <li>
+          <b>P17_ALPHA</b> returns ALPHA for problem 17.
+        </li>
+        <li>
+          <b>P17_EXACT</b> returns the exact integral for problem 17.
+        </li>
+        <li>
+          <b>P17_FUN</b> evaluates the integrand for problem 17.
+        </li>
+        <li>
+          <b>P17_TITLE</b> returns the title for problem 17.
+        </li>
+        <li>
+          <b>P18_ALPHA</b> returns ALPHA for problem 18.
+        </li>
+        <li>
+          <b>P18_EXACT</b> returns the exact integral for problem 18.
+        </li>
+        <li>
+          <b>P18_FUN</b> evaluates the integrand for problem 18.
+        </li>
+        <li>
+          <b>P18_TITLE</b> returns the title for problem 18.
+        </li>
+        <li>
+          <b>P19_ALPHA</b> returns ALPHA for problem 19.
+        </li>
+        <li>
+          <b>P19_EXACT</b> returns the exact integral for problem 19.
+        </li>
+        <li>
+          <b>P19_FUN</b> evaluates the integrand for problem 19.
+        </li>
+        <li>
+          <b>P19_TITLE</b> returns the title for problem 19.
+        </li>
+        <li>
+          <b>P20_ALPHA</b> returns ALPHA for problem 10.
+        </li>
+        <li>
+          <b>P20_EXACT</b> returns the exact integral for problem 20.
+        </li>
+        <li>
+          <b>P20_FUN</b> evaluates the integrand for problem 20.
+        </li>
+        <li>
+          <b>P20_TITLE</b> returns the title for problem 20.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates Gamma(X) for a real argument.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 December 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

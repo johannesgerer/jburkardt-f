@@ -1,0 +1,110 @@
+September 22 2006   8:44:03.916 AM
+ 
+SVD_BASIS_WEIGHT (FORTRAN90 version)
+  Given a PDE for which:
+    C is the number of components of the solution 
+      at any single point,
+    P is the number of points where a solution is given,
+    N is the number of solution vectors,
+    L is the number of modes to be extracted.
+ 
+  Then we let M = C*P be the abstract spatial dimension.
+ 
+  If requested, we compute the average solution,
+  subtract it from each solution, and save that
+  as mode #0.
+ 
+  Set up A, the M by N matrix of solution vectors,
+ 
+  Get A = U * S * V', the singular value decomposition.
+ 
+  The first L columns of U are our dominant modes.
+ 
+ 
+  How many basis vectors (L) are to be extracted?
+ 
+  L =      4
+ 
+  You specify a consecutive sequence of file names
+  by giving the first "base" file name.
+ 
+  If there are no more sequences to enter,
+  just hit RETURN.
+ 
+  Enter a new base file name, or RETURN.
+ 
+     1:  "data01.txt".
+ 
+  According to the first base file,
+  The number of solution components C =        3
+  The number of solution points P =            4
+  The "size" of each solution M = (C*P) =     12
+ 
+  You specify a consecutive sequence of file names
+  by giving the first "base" file name.
+ 
+  If there are no more sequences to enter,
+  just hit RETURN.
+ 
+  Enter a new base file name, or RETURN.
+ 
+  RETURN was entered.
+  Presumably, there are no more file sequences.
+ 
+  The number of data files N =      5
+ 
+  The data is stored in an M by N matrix A.
+ 
+  The "spatial" dimension M is       12
+  The number of data points N is      5
+ 
+  The data has been read into the matrix A.
+ 
+  Enter the weight file name:
+ 
+SVD_BASIS_WEIGHT:
+  Averaging of data is optional.
+  The program can average the data vectors,
+  subtract it from each data vector,
+  and write out the data average vector as an
+  extra "mode 0" vector.
+ 
+  Do you want to compute and use the average? (Y/N)
+ 
+  Enter Y or N:
+ 
+  The user does not want the average vector.
+ 
+SINGULAR_VECTORS
+  For an MxN matrix A in general storage,
+  The LAPACK routine DGESVD computes the 
+  singular value decomposition:
+ 
+    A = U * S * V'
+ 
+ 
+  The leading singular values:
+ 
+     1     75.702665    
+     2     11.151941    
+     3     7.5139023    
+     4     2.6400929    
+ 
+  Because the CLEAN option is on,
+  we will set very tiny vector entries to 0.
+ 
+SVD_BASIS_WEIGHT:
+  Ready to write the left singular vectors to files.
+ 
+  Do you want comments in the header of the file?
+  (These begin with the "#" character.) (Y/N)
+ 
+  Enter Y or N:
+ 
+  Writing first file svd_001.txt
+  Writing last file  svd_004.txt
+ 
+SVD_BASIS_WEIGHT
+  Normal end of execution.
+ 
+September 22 2006   8:44:03.958 AM

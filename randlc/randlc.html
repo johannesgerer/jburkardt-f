@@ -1,0 +1,197 @@
+<html>
+
+  <head>
+    <title>
+      RANDLC - NAS Parallel Benchmark Pseudorandom Number Generator
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      RANDLC <br> NAS Parallel Benchmark Pseudorandom Number Generator
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>RANDLC</b>
+      is a FORTRAN90 library which
+      implements a version of the pseudorandom number generator used by
+      the NAS Parallel Benchmarks.
+    </p>
+
+    <p>
+      The generator has the form
+      <pre>
+        X(K+1) = A * X(K) mod 2^46
+      </pre>
+      where the suggested value of the multiplier A is 5^13 = 1220703125.
+    </p>
+
+    <p>
+      This scheme generates 2^44 numbers before repeating.
+    </p>
+
+    <p>
+      The web site for the NAS Parallel Benchmarks is
+      <a href = "http://www.nas.nasa.gov/Resources/Software/npb.html">
+                 http://www.nas.nasa.gov/Resources/Software/npb.html</a>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>RANDLC</b> is available in
+      <a href = "../../c_src/randlc/randlc.html">a C version</a> and
+      <a href = "../../cpp_src/randlc/randlc.html">a C++ version</a> and
+      <a href = "../../f77_src/randlc/randlc.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/randlc/randlc.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/randlc/randlc.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa183/asa183.html">
+      ASA183</a>,
+      a FORTRAN90 library which
+      implements the Wichman-Hill pseudorandom number generator.
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90_random/f90_random.html">
+      F90_RANDOM</a>,
+      FORTRAN90 programs which
+      illustrate the use of Fortran's random number generator routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/normal/normal.html">
+      NORMAL</a>,
+      a FORTRAN90 library which
+      computes a sequence of pseudorandom normally distributed values.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN09 library which
+      computes elements of a pseudorandom sequence.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          David Bailey, Eric Barszcz, John Barton, D Browning, Robert Carter,
+          Leonardo Dagum, Rod Fatoohi,
+          Samuel Fineberg, Paul Frederickson, Thomas Lasinski, Robert Schreiber, Horst Simon,
+          V Venkatakrishnan, Sisira Weeratunga,<br>
+          The NAS Parallel Benchmarks,<br>
+          RNR Technical Report RNR-94-007,
+          March 1994.
+        </li>
+        <li>
+          Donald Knuth,<br>
+          The Art of Computer Programming,
+          Volume 2, Seminumerical Algorithms,<br>
+          Third Edition,<br>
+          Addison Wesley, 1997,<br>
+          ISBN: 0201896842,<br>
+          LC: QA76.6.K64.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "randlc.f90">randlc.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "randlc.sh">randlc.sh</a>,
+          commands to compiler the library.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "randlc_prb.f90">randlc_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "randlc_prb.sh">randlc_prb.sh</a>,
+          commands to compile, link and run the sample code.
+        </li>
+        <li>
+          <a href = "randlc_prb_output.txt">randlc_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>RANDLC</b> returns a uniform pseudorandom value.
+        </li>
+        <li>
+          <b>RANDLC_JUMP</b> returns the K-th element of a uniform pseudorandom sequence.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 06 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

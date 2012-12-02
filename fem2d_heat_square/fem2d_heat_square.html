@@ -1,0 +1,270 @@
+<html>
+
+  <head>
+    <title>
+      FEM2D_HEAT_SQUARE - FEM2D_HEAT applied to a SQUARE region
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FEM2D_HEAT_SQUARE <br> FEM2D_HEAT applied to a SQUARE region
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FEM2D_HEAT_SQUARE</b>
+      is a FORTRAN90 library which
+      defines the geometry of a square region, as well as boundary and initial
+      conditions for a given heat problem, and is called by FEM2D_HEAT
+      as part of a solution procedure.
+    </p>
+
+    <p>
+      The mesh uses 81 nodes and forms 32 quadratic triangular elements.
+    </p>
+
+    <p>
+      We assume that the equation to be solved is
+      <blockquote><b>
+        dUdT - Laplacian U + K * U = F
+      </b></blockquote>
+      with
+      <blockquote><b>
+        K = 0,
+      </b></blockquote>
+      and
+      <blockquote><b>
+        F = (2*pi*pi-1)*sin(pi*x)*sin(pi*y)*exp(-t).
+      </b></blockquote>
+      The exact solution is:
+      <blockquote><b>
+        U = sin(pi*x) * sin(pi*y) * exp(-t).
+      </b></blockquote>
+      which is the formula we use to define our functions <b>G</b>
+      (for the boundary conditions) and <b>H</b> (for the initial
+      conditions).
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/contour_sequence4/contour_sequence4.html">
+      CONTOUR_SEQUENCE4</a>,
+      a MATLAB program which
+      makes a sequence of contour plots based on a single XY coordinate file,
+      and a sequence of Z(X,Y) data files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_heat/fem2d_heat.html">
+      FEM2D_HEAT</a>,
+      a FORTRAN90 program which
+      uses the finite element method and the backward Euler method to solve the
+      2D time-dependent heat equation on an arbitrary triangulated region.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "square.f90">square.f90</a>,
+          the user-supplied routines to evaluate the right hand side,
+          linear coefficient, initial and boundary conditions;
+        </li>
+        <li>
+          <a href = "square.sh">square.sh</a>,
+          commands to compile the user routines, link them with
+          the partial program, and run the program;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "square_output.txt">square_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "square_nodes.png">square_nodes.png</a>,
+          a PNG image of
+          the 49 nodes;
+        </li>
+        <li>
+          <a href = "square_nodes.txt">square_nodes.txt</a>,
+          a text file containing a list, for each node, of its X and Y
+          coordinates;
+        </li>
+        <li>
+          <a href = "square_elements.png">square_elements.png</a>,
+          a PNG image of
+          the 32 elements;
+        </li>
+        <li>
+          <a href = "square_elements.txt">square_elements.txt</a>,
+          a text file containing a list, for each element, of the six
+          nodes that compose it;
+        </li>
+        <li>
+          <a href = "square_time.txt">square_time.txt</a>,
+          a text file containing the solution times;
+        </li>
+        <li>
+          <a href = "u0000.txt">u0000.txt</a>,
+          the solution U at time step 0;
+        </li>
+        <li>
+          <a href = "u0001.txt">u0001.txt</a>,
+          the solution U at time step 1;
+        </li>
+        <li>
+          <a href = "u0002.txt">u0002.txt</a>,
+          the solution U at time step 2;
+        </li>
+        <li>
+          <a href = "u0003.txt">u0003.txt</a>,
+          the solution U at time step 3;
+        </li>
+        <li>
+          <a href = "u0004.txt">u0004.txt</a>,
+          the solution U at time step 4;
+        </li>
+        <li>
+          <a href = "u0005.txt">u0005.txt</a>,
+          the solution U at time step 5;
+        </li>
+        <li>
+          <a href = "u0006.txt">u0006.txt</a>,
+          the solution U at time step 6;
+        </li>
+        <li>
+          <a href = "u0007.txt">u0007.txt</a>,
+          the solution U at time step 7;
+        </li>
+        <li>
+          <a href = "u0008.txt">u0008.txt</a>,
+          the solution U at time step 8;
+        </li>
+        <li>
+          <a href = "u0009.txt">u0009.txt</a>,
+          the solution U at time step 9;
+        </li>
+        <li>
+          <a href = "u0010.txt">u0010.txt</a>,
+          the solution U at time step 10;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The MATLAB program <b>CONTOUR_SEQUENCE4</b> can make contour
+      plots from the sequence of solutions:
+      <ul>
+        <li>
+          <a href = "u0000.png">u0000.png</a>,
+          the solution U at time step 0;
+        </li>
+        <li>
+          <a href = "u0001.png">u0001.png</a>,
+          the solution U at time step 1;
+        </li>
+        <li>
+          <a href = "u0002.png">u0002.png</a>,
+          the solution U at time step 2;
+        </li>
+        <li>
+          <a href = "u0003.png">u0003.png</a>,
+          the solution U at time step 3;
+        </li>
+        <li>
+          <a href = "u0004.png">u0004.png</a>,
+          the solution U at time step 4;
+        </li>
+        <li>
+          <a href = "u0005.png">u0005.png</a>,
+          the solution U at time step 5;
+        </li>
+        <li>
+          <a href = "u0006.png">u0006.png</a>,
+          the solution U at time step 6;
+        </li>
+        <li>
+          <a href = "u0007.png">u0007.png</a>,
+          the solution U at time step 7;
+        </li>
+        <li>
+          <a href = "u0008.png">u0008.png</a>,
+          the solution U at time step 8;
+        </li>
+        <li>
+          <a href = "u0009.png">u0009.png</a>,
+          the solution U at time step 9;
+        </li>
+        <li>
+          <a href = "u0010.png">u0010.png</a>,
+          the solution U at time step 10;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DIRICHLET_CONDITION</b> sets the value of a Dirichlet boundary condition.
+        </li>
+        <li>
+          <b>INITIAL_CONDITION</b> sets the initial condition.
+        </li>
+        <li>
+          <b>K_COEF</b> evaluates the coefficient K(X,Y,T) function.
+        </li>
+        <li>
+          <b>RHS</b> gives the right-hand side of the differential equation.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 29 December 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

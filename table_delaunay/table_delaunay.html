@@ -1,0 +1,345 @@
+<html>
+
+  <head>
+    <title>
+      TABLE_DELAUNAY - Triangulate Points in 2D
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TABLE_DELAUNAY <br> Triangulate Points in 2D
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TABLE_DELAUNAY</b>
+      is a FORTRAN90 program which
+      computes the Delaunay triangulation of a set of points in the plane.
+    </p>
+
+    <p>
+      Specifically, <b>TABLE_DELAUNAY</b> reads a data file of node coordinates,
+      computes the Delaunay triangulation of those points, and writes a
+      triangle file listing the indices of nodes that form each triangle.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>table_delaunay</b> <i>prefix</i>
+      </blockquote>
+      where <i>prefix</i> is the common prefix for the node and triangle files,
+      <ul>
+        <li>
+          <i>prefix</i><b>_nodes.txt</b>,    the node coordinate file (input).
+        </li>
+        <li>
+          <i>prefix</i><b>_elements.txt</b>,    the element file (output).
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TABLE_DELAUNAY</b> is available in
+      <a href = "../../cpp_src/table_delaunay/table_delaunay.html">a C++ version</a> and
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/table_delaunay/table_delaunay.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/delaunay_lmap_2d/delaunay_lmap_2d.html">
+      DELAUNAY_LMAP_2D</a>,
+      a FORTRAN90 program which
+      computes the Delaunay triangulation of points in the plane under a linear mapping.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geompack/geompack.html">
+      GEOMPACK</a>,
+      a FORTRAN90 library which
+      contains the routines used for computing the Delaunay triangulation, by Barry Joe.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stripack/stripack.html">
+      STRIPACK</a>,
+      a FORTRAN90 library which
+      can compute the Delaunay triangulation or Voronoi diagram
+      of points on a sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_io/table_io.html">
+      TABLE_IO</a>,
+      a FORTRAN90 library which
+      supplies the routines used to read the TABLE file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_tet_mesh/table_tet_mesh.html">
+      TABLE_TET_MESH</a>,
+      a FORTRAN90 program which
+      can read a table file of 3D data, and compute a tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_voronoi/table_voronoi.html">
+      TABLE_VORONOI</a>,
+      a FORTRAN90 program which
+      can be used to compute information about
+      the Voronoi diagram of the points.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/triangulation_display_opengl/triangulation_display_opengl.html">
+      TRIANGULATION_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads files defining a triangulation and displays an image using Open GL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_plot/triangulation_plot.html">
+      TRIANGULATION_PLOT</a>,
+      a FORTRAN90 program which
+      may be used to visualize triangulations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tripack/tripack.html">
+      TRIPACK</a>,
+      a FORTRAN90 library which
+      can compute the Delaunay triangulation of points in the plane.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Marc deBerg, Marc Krevald, Mark Overmars,
+          Otfried Schwarzkopf,<br>
+          Computational Geometry,<br>
+          Springer, 2000,<br>
+          ISBN: 3-540-65620-0,<br>
+          LC: QA448.D38.C65.
+        </li>
+        <li>
+          Herbert Edelsbrunner,<br>
+          Geometry and Topology for Mesh Generation,<br>
+          Cambridge, 2001,<br>
+          ISBN: 0-521-79309-2,<br>
+          LC: QA377.E36.
+        </li>
+        <li>
+          Barry Joe,<br>
+          GEOMPACK - a software package for the generation of meshes
+          using geometric algorithms,<br>
+          Advances in Engineering Software,<br>
+          Volume 13, pages 325-331, 1991.
+        </li>
+        <li>
+          Joseph ORourke,<br>
+          Computational Geometry,<br>
+          Second Edition,<br>
+          Cambridge, 1998,<br>
+          ISBN: 0521649765,<br>
+          LC: QA448.D38.
+        </li>
+        <li>
+          Per-Olof Persson, Gilbert Strang,<br>
+          A Simple Mesh Generator in MATLAB,<br>
+          SIAM Review,<br>
+          Volume 46, Number 2, pages 329-345, June 2004.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "table_delaunay.f90">table_delaunay.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "table_delaunay.sh">table_delaunay.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>P09</b> is a set of 211 nodes in a region with two hexagonal
+      holes.  When TABLE_DELAUNAY triangulates the data, the holes get
+      filled in.
+      <ul>
+        <li>
+          <a href = "p09_nodes.txt">
+          p09_nodes.txt</a>,
+          the nodes.
+        </li>
+        <li>
+          <a href = "p09_nodes.png">
+          p09_nodes.png</a>,
+          a PNG image of the nodes.
+        </li>
+        <li>
+          <a href = "p09_elements.txt">
+          p09_elements.txt</a>,
+          the triangulation created by TABLE_DELAUNAY.
+        </li>
+        <li>
+          <a href = "p09_triangulation.png">
+          p09_triangulation.png</a>,
+          a PNG image of the triangulation.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TABLE_DELAUNAY.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DIAEDG</b> chooses a diagonal edge.
+        </li>
+        <li>
+          <b>DTRIS2</b> constructs a Delaunay triangulation of 2D vertices.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of I4 division.
+        </li>
+        <li>
+          <b>I4_SIGN</b> evaluates the sign of an I4.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_WRITE</b> writes an I4MAT file.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>LRLINE</b> determines if a point is left of, right or, or on a directed line.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PERM_INVERSE</b> inverts a permutation "in place".
+        </li>
+        <li>
+          <b>R82VEC_PERMUTE</b> permutes an R82VEC in place.
+        </li>
+        <li>
+          <b>R82VEC_SORT_HEAP_INDEX_A</b> ascending index heaps an R82VEC.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SWAPEC</b> swaps diagonal edges until all triangles are Delaunay.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>VBEDG</b> determines which boundary edges are visible to a point.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 October 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

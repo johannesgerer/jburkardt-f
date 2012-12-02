@@ -1,0 +1,400 @@
+<html>
+
+  <head>
+    <title>
+      C4LIB - A Single Precision Complex Arithmetic Utility Library
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      C4LIB <br> A Single Precision Complex Arithmetic Utility Library
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>C4LIB</b> 
+      is a FORTRAN90 library which 
+      implements certain
+      elementary functions for "C4" or single precision complex variables.
+    </p>
+
+    <p>
+      The symbol "C4" is used to suggest a single precision complex
+      variable.  Here the 4 indicates that the underlying pair of
+      real numbers each use 4 bytes of storage.
+    </p>
+
+    <p>
+      C4LIB contains routines that operate on scalars, vectors or
+      doubly dimensioned arrays of C4's.  A vector of C4's is denoted
+      a C4VEC, and a doubly dimensioned array is a C4MAT.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>C4LIB</b> is available in
+      <a href = "../../c_src/c4lib/c4lib.html">a C version</a> and
+      <a href = "../../cpp_src/c4lib/c4lib.html">a C++ version</a> and
+      <a href = "../../f77_src/c4lib/c4lib.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/c4lib/c4lib.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blas1_c/blas1_c.html">
+      BLAS1_C</a>,
+      a FORTRAN90 library which
+      contains basic linear algebra routines for vector-vector operations,
+      using single precision complex arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/c8lib/c8lib.html">
+      C8LIB</a>,
+      a FORTRAN90 library which
+      implements certain elementary functions for "C8" or 
+      double precision complex variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/complex_numbers/complex_numbers.html">
+      COMPLEX_NUMBERS</a>, 
+      a FORTRAN90 program which
+      demonstrates some simple features involved in the use of
+      complex numbers in FORTRAN90 programming.
+    </p>
+
+    <p>
+      <a href = "../../f_src/i4lib/i4lib.html">
+      I4LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "I4" or "single precision integer"
+      arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/i8lib/i8lib.html">
+      I8LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "I8" or "double precision integer"
+      arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack_c/linpack_c.html">
+      LINPACK_C</a>, 
+      a FORTRAN90 library which
+      solves linear systems using single precision complex arithmetic;
+    </p>
+
+    <p>
+      <a href = "../../f_src/r16lib/r16lib.html">
+      R16LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R16" or
+      "quadruple precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r4lib/r4lib.html">
+      R4LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R4" or 
+      "single precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R8" or 
+      "double precision real" arithmetic.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "c4lib.f90">c4lib.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "c4lib.sh">c4lib.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "c4lib_prb.f90">c4lib_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "c4lib_prb.sh">c4lib_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "c4lib_prb_output.txt">c4lib_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>C4_ABS</b> evaluates the absolute value of a C4.
+        </li>
+        <li>
+          <b>C4_ACOS</b> evaluates the inverse cosine of a C4.
+        </li>
+        <li>
+          <b>C4_ACOSH</b> evaluates the inverse hyperbolic cosine of a C4.
+        </li>
+        <li>
+          <b>C4_ADD</b> adds two C4's.
+        </li>
+        <li>
+          <b>C4_ARG</b> returns the argument of a C4.
+        </li>
+        <li>
+          <b>C4_ASIN</b> evaluates the inverse sine of a C4.
+        </li>
+        <li>
+          <b>C4_ASINH</b> evaluates the inverse hyperbolic sine of a C4.
+        </li>
+        <li>
+          <b>C4_ATAN</b> evaluates the inverse tangent of a C4.
+        </li>
+        <li>
+          <b>C4_ATANH</b> evaluates the inverse hyperbolic tangent of a C4.
+        </li>
+        <li>
+          <b>C4_CONJ</b> evaluates the conjugate of a C4.
+        </li>
+        <li>
+          <b>C4_COPY</b> copies a C4.
+        </li>
+        <li>
+          <b>C4_COS</b> evaluates the cosine of a C4.
+        </li>
+        <li>
+          <b>C4_COSH</b> evaluates the hyperbolic cosine of a C4.
+        </li>
+        <li>
+          <b>C4_CUBE_ROOT</b> returns the principal cube root of a C4.
+        </li>
+        <li>
+          <b>C4_DIV</b> divides two C4's.
+        </li>
+        <li>
+          <b>C4_DIV_R8</b> divides a C4 by an R8.
+        </li>
+        <li>
+          <b>C4_EXP</b> evaluates the exponential of a C4.
+        </li>
+        <li>
+          <b>C4_I</b> returns the imaginary unit, i as a C4.
+        </li>
+        <li>
+          <b>C4_IMAG</b> evaluates the imaginary part of a C4.
+        </li>
+        <li>
+          <b>C4_INV</b> evaluates the inverse of a C4.
+        </li>
+        <li>
+          <b>C4_LE_L1</b> := X <= Y for C4 values, and the L1 norm.
+        </li>
+        <li>
+          <b>C4_LE_L2</b> := X <= Y for C4 values, and the L2 norm.
+        </li>
+        <li>
+          <b>C4_LE_LI</b> := X <= Y for C4 values, and the L Infinity norm.
+        </li>
+        <li>
+          <b>C4_LOG</b> evaluates the logarithm of a C4.
+        </li>
+        <li>
+          <b>C4_MAG</b> returns the magnitude of a C4.
+        </li>
+        <li>
+          <b>C4_MUL</b> multiplies two C4's.
+        </li>
+        <li>
+          <b>C4_NEG</b> returns the negative of a C4.
+        </li>
+        <li>
+          <b>C4_NORM_L1</b> evaluates the L1 norm of a C4.
+        </li>
+        <li>
+          <b>C4_NORM_L2</b> evaluates the L2 norm of a C4.
+        </li>
+        <li>
+          <b>C4_NORM_LI</b> evaluates the L-infinity norm of a C4.
+        </li>
+        <li>
+          <b>C4_NORMAL_01</b> returns a unit pseudonormal C4.
+        </li>
+        <li>
+          <b>C4_ONE</b> returns the value of 1 as a C4.
+        </li>
+        <li>
+          <b>C4_PRINT</b> prints a C4.
+        </li>
+        <li>
+          <b>C4_REAL</b> evaluates the real part of a C4.
+        </li>
+        <li>
+          <b>C4_SIN</b> evaluates the sine of a C4.
+        </li>
+        <li>
+          <b>C4_SINH</b> evaluates the hyperbolic sine of a C4.
+        </li>
+        <li>
+          <b>C4_SQRT</b> returns the principal square root of a C4.
+        </li>
+        <li>
+          <b>C4_SUB</b> subtracts two C4's.
+        </li>
+        <li>
+          <b>C4_SWAP</b> swaps two C4's.
+        </li>
+        <li>
+          <b>C4_TAN</b> evaluates the tangent of a C4.
+        </li>
+        <li>
+          <b>C4_TANH</b> evaluates the hyperbolic tangent of a C4.
+        </li>
+        <li>
+          <b>C4_TO_CARTESIAN</b> converts a C4 to Cartesian form.
+        </li>
+        <li>
+          <b>C4_TO_POLAR</b> converts a C4 to polar form.
+        </li>
+        <li>
+          <b>C4_UNIFORM_01</b> returns a unit pseudorandom C4.
+        </li>
+        <li>
+          <b>C4_ZERO</b> returns the value of 0 as a C4.
+        </li>
+        <li>
+          <b>C4MAT_IDENTITY</b> sets a C4MAT to the identity.
+        </li>
+        <li>
+          <b>C4MAT_INDICATOR</b> returns the C4MAT indicator matrix.
+        </li>
+        <li>
+          <b>C4MAT_NINT</b> rounds the entries of a C4MAT.
+        </li>
+        <li>
+          <b>C4MAT_PRINT</b> prints a C4MAT.
+        </li>
+        <li>
+          <b>C4MAT_PRINT_OLD</b> prints a C4MAT, with an optional title.
+        </li>
+        <li>
+          <b>C4MAT_PRINT_SOME</b> prints some of a C4MAT.
+        </li>
+        <li>
+          <b>C4MAT_UNIFORM_01</b> returns a unit pseudorandom C4MAT.
+        </li>
+        <li>
+          <b>C4VEC_INDICATOR</b> sets a C4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>C4VEC_NINT</b> rounds the entries of a C4VEC.
+        </li>
+        <li>
+          <b>C4VEC_NORM_L2</b> returns the L2 norm of a C4VEC.
+        </li>
+        <li>
+          <b>C4VEC_PRINT</b> prints a C4VEC, with an optional title.
+        </li>
+        <li>
+          <b>C4VEC_PRINT_SOME</b> prints some of a C4VEC.
+        </li>
+        <li>
+          <b>C4VEC_SORT_A_L1</b> ascending sorts a C4VEC by L1 norm.
+        </li>
+        <li>
+          <b>C4VEC_SORT_A_L2</b> ascending sorts a C4VEC by L2 norm.
+        </li>
+        <li>
+          <b>C4VEC_SORT_A_LI</b> ascending sorts a C4VEC by L-infinity norm.
+        </li>
+        <li>
+          <b>C4VEC_SPIRAL</b> returns N points on a spiral between C1 and C2.
+        </li>
+        <li>
+          <b>C4VEC_UNIFORM_01</b> returns a unit pseudorandom C4VEC.
+        </li>
+        <li>
+          <b>C4VEC_UNITY</b> returns the N roots of unity.
+        </li>
+        <li>
+          <b>CARTESIAN_TO_C4</b> converts a Cartesian form to a C4.
+        </li>
+        <li>
+          <b>POLAR_TO_C4</b> converts a polar form to a C4.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 December 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

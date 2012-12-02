@@ -1,0 +1,215 @@
+<html>
+
+  <head>
+    <title>
+      MOVIE_DATA_REFORMAT - Reformat Movie Data to CSV Format
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MOVIE_DATA_REFORMAT <br> Reformat Movie Data to CSV Format
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MOVIE_DATA_REFORMAT</b>
+      is a FORTRAN90 program which
+      reformats movie data, copied from THE NUMBERS movie data web page, 
+      into a CSV format suitable for input to a statistical analysis package such as "R".
+    </p>
+
+    <p>
+      A browser can copy the tabular movie data for one year
+      but stores the copied data as a list, one item per line.
+    </p>
+
+    <p>
+      This program puts all the data for a movie on one line,
+      separating data items by commas, quoting string data,
+      removing dollar signs and commas from numbers.
+    </p>
+
+    <p>
+      Empty string data is set to "?".
+    </p>
+
+    <p>
+      It also removes control characters.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>movie_data_reformat</b> <i>movie_data_file</i>
+      </blockquote>
+      reads data items from <i>movie_data_file</i>, and creates consecutive
+      records of 9 data items per line, each associated with a particular movie.
+      The output file has the same "first name" as the input file, but now has
+      the extension ".csv", for "Comma Separated Values".
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/csv/csv.html">
+      CSV</a>,
+      a data directory which
+      contains examples of Comma Separated Value files;
+    </p>
+
+    <p>
+      <a href = "../../f_src/csv_io/csv_io.html">
+      CSV_IO</a>,
+      a FORTRAN90 library which
+      reads and writes files that use the CSV, or comma separated value, format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/csv_io/csv_io.html">
+      CSV_IO</a>,
+      FORTRAN90 programs which
+      illustrate how to read or write data in the CSV (comma separated value) format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/filum/filum.html">
+      FILUM</a>,
+      a FORTRAN90 library which
+      can work with information in text files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/reformat/reformat.html">
+      REFORMAT</a>,
+      a FORTRAN90 program which
+      makes a copy of a file with a given number of "words" per line.
+    </p>
+
+    <p>
+      <a href = "../../datasets/stats/stats.html">
+      STATS</a>,
+      a dataset directory which
+      contains datasets for computational statistics,
+      including biometric measurements, movie attendance and sales,
+      taxicab fares and distances;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          <a href = "http://www.the-numbers.com">http://www.the-numbers.com</a>,
+          THE NUMBERS movie data web site.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "movie_data_reformat.f90">movie_data_reformat.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "movie_data_reformat.sh">movie_data_reformat.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "movies_2010.txt">movies_2010.txt</a>,
+          the movie data for 670 movies from 2010, comprising 6030 lines of data.
+        </li>
+        <li>
+          <a href = "movies_2010.csv">movies_2010.csv</a>,
+          the output file created by MOVIE_DATA_REFORMAT, comprising 670 lines of
+          data, plus one header line.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for MOVIE_DATA_REFORMAT.
+        </li>
+        <li>
+          <b>CH_INDEX_LAST</b> is the last occurrence of a character in a string.
+        </li>
+        <li>
+          <b>CH_IS_CONTROL</b> is TRUE if a character is a control character.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_CH_DELETE</b> removes all occurrences of a character from a string.
+        </li>
+        <li>
+          <b>S_CONTROL_BLANK</b> replaces control characters with blanks.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on Wed Jan  4 14:58:46 2012
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

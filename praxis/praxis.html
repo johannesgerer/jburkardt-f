@@ -1,0 +1,249 @@
+<html>
+
+  <head>
+    <title>
+      PRAXIS - Scalar Function Optimization
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PRAXIS <br> Scalar Function Optimization
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PRAXIS</b> 
+      is a FORTRAN90 library which 
+      minimizes a scalar function of a vector argument,
+      without needing derivative information,
+      by Richard Brent.
+    </p>
+
+    <p>
+      <b>PRAXIS</b> seeks an M-dimensional point X which minimizes a
+      given scalar function <b>F(X)</b>.  The code is a refinement 
+      of Powell's method of conjugate search directions.  The user
+      does not need to supply the partial derivatives of the function
+      <b>F(X)</b>.  In fact, the function <b>F(X)</b> need not be
+      smoothly differentiable.  
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>PRAXIS</b> is available in
+      <a href = "../../f77_src/praxis/praxis.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/praxis/praxis.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/brent/brent.html">
+      BRENT</a>,
+      a FORTRAN90 library which
+      contains Richard Brent's routines for finding the zero, local minimizer,
+      or global minimizer of a scalar function of a scalar argument, without
+      the use of derivative information.
+    </p>
+
+    <p>
+      <a href = "../../f_src/bvls/bvls.html">
+      BVLS</a>,
+      a FORTRAN90 library which
+      applies least squares methods to solve a linear system for which
+      lower and upper constraints may have been placed on every variable.
+    </p>
+
+    <p>
+      <a href = "../../f_src/compass_search/compass_search.html">
+      COMPASS_SEARCH</a>,
+      a FORTRAN90 library which 
+      seeks the minimizer of a scalar function of several variables
+      using compass search, a direct search algorithm that does not use derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      solves constrained least squares problems.
+    </p>
+
+    <p>
+      <a href = "../../m_src/entrust/entrust.html">
+      ENTRUST</a>,
+      a MATLAB program which
+      solves problems in scalar optimization or nonlinear least squares.
+    </p>
+
+    <p>
+      <a href = "../../f_src/minpack/minpack.html">
+      MINPACK</a>,
+      a FORTRAN90 library which
+      solves systems of nonlinear equations, or the least squares minimization of the 
+      residual of a set of linear or nonlinear equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nl2sol/nl2sol.html">
+      NL2SOL</a>,
+      a FORTRAN90 library which 
+      implements an adaptive nonlinear least-squares algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt/test_opt.html">
+      TEST_OPT</a>,
+      a FORTRAN90 library which 
+      defines test problems
+      requiring the minimization of a scalar function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt_con/test_opt_con.html">
+      TEST_OPT_CON</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables, with the search constrained to lie within a specified hyper-rectangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_optimization/test_optimization.html">
+      TEST_OPTIMIZATION</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables, as described by Molga and Smutnicki.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms611/toms611.html">
+      TOMS611</a>,
+      a FORTRAN90 library which
+      seeks the minimizer of a scalar functional
+      of multiple variables.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          Richard Brent,<br>
+          Algorithms for Minimization without Derivatives,<br>
+          Dover, 2002,<br>
+          ISBN: 0-486-41998-3,<br>
+          LC: QA402.5.B74.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "praxis.f90">praxis.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "praxis.sh">praxis.sh</a>, commands to compile the 
+          source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "praxis_prb.f90">praxis_prb.f90</a>, sample calling program.
+        </li>
+        <li>
+          <a href = "praxis_prb.sh">praxis_prb.sh</a>, commands to
+          compile, link, load and run the calling program.
+        </li>
+        <li>
+          <a href = "praxis_prb_output.txt">praxis_prb_output.txt</a>, 
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>FLIN</b> is the function of one variable to be minimized by MINNY.
+        </li>
+        <li>
+          <b>MINFIT</b> computes the singular value decomposition of an N by N array.
+        </li>
+        <li>
+          <b>MINNY</b> minimizes a scalar function of N variables along a line.
+        </li>
+        <li>
+          <b>PRAXIS</b> seeks an N-dimensional minimizer X of a scalar function F(X).
+        </li>
+        <li>
+          <b>PRINT2</b> prints certain data about the progress of the iteration.
+        </li>
+        <li>
+          <b>QUAD</b> seeks to minimize the scalar function F along a particular curve.
+        </li>
+        <li>
+          <b>R8_HYPOT</b> returns the value of sqrt ( X^2 + Y^2).
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SWAP</b> swaps the entries of two R8VECs.
+        </li>
+        <li>
+          <b>SORT</b> sorts a vector D and adjusts the corresponding columns of a matrix V.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 22 March 2012.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

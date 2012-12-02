@@ -1,0 +1,312 @@
+<html>
+
+  <head>
+    <title>
+      FD1D_PREDATOR_PREY - Marcus Garvie's 1D Predator Prey Simulation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FD1D_PREDATOR_PREY <br> Predator Prey Simulation <br>
+      by Marcus Garvie
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FD1D_PREDATOR_PREY</b>
+      is an FORTRAN90 program which
+      solves a predator-prey system in a one dimensional region.
+    </p>
+
+    <p>
+      The program requires both some interactive input from the user, and
+      two simple FORTRAN90 routines that define the initial values.
+    </p>
+
+    <p>
+      The nondimensional problem has the form
+      <pre>
+        du/dt =         del u + ( 1 - u ) * u        - v * h(u/alpha)
+
+        dv/dt = delta * del v     - gamma * v + beta * v * h(u/alpha)
+      </pre>
+      with initial conditions:
+      <pre>
+        u(x,0) = u0(x)
+        v(x,0) = v0(x)
+      </pre>
+      and boundary conditions at the left and right endpoints [A,B]:
+      <pre>
+        du/dx = 0
+        dv/dx = 0
+      </pre>
+      The Type II functional response employed here is
+      <pre>
+        h(eta) = eta / ( 1 + eta )
+      </pre>
+      The parameters ALPHA, BETA, GAMMA and DELTA are strictly positive.
+    </p>
+
+    <p>
+      The user must input a value H specifying the desired space step
+      to be used in discretizing the space dimension.
+    </p>
+
+    <p>
+      A finite difference scheme is employed to integrate the problem
+      from time 0 to a maximum time T.  The user must input the value
+      T, as well as an appropriate time step DELT.
+    </p>
+
+    <p>
+      A typical input for this problem is:
+      <pre>
+        ALPHA =   0.3
+        BETA  =   2.0
+        GAMMA =   0.8
+        DELTA =   1.0
+        A     =   0.0
+        B     = 200.0
+        H     =   0.5
+        T     =  40.0
+        DELT  =   0.0104
+        GAUSS =   0        (0 = direct solution, 1 = Jacobi )
+      </pre>
+      with the following initial values of U and V supplied in
+      auxiliary subroutines:
+      <pre>
+        u0(1:n) = exp ( - ( x(1:n) - 100.0 )**2 ) / 5.0
+        v0(1:n) = 2.0 / 5.0
+      </pre>
+    </p>
+
+    <p>
+      The user is prompted for all the necessary parameters, time and
+      space-steps.  The formulas for the initial values of the functions
+      U and V must be supplied by two FORTRAN90 subroutines.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FD1D_PREDATOR_PREY</b> is available in
+      <a href = "../../f77_src/fd1d_predator_prey/fd1d_predator_prey.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fd1d_predator_prey/fd1d_predator_prey.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fd1d_predator_prey/fd1d_predator_prey.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fd1d_burgers_lax/fd1d_burgers_lax.html">
+      FD1D_BURGERS_LAX</a>,
+      a FORTRAN90 program which
+      applies the finite difference method and the Lax-Wendroff method
+      to solve the non-viscous time-dependent Burgers equation
+      in one spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_burgers_leap/fd1d_burgers_leap.html">
+      FD1D_BURGERS_LEAP</a>,
+      a FORTRAN90 program which
+      applies the finite difference method and the leapfrog approach
+      to solve the non-viscous time-dependent Burgers equation in one spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_bvp/fd1d_bvp.html">
+      FD1D_BVP</a>,
+      a FORTRAN90 program which
+      applies the finite difference method
+      to a two point boundary value problem in one spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_heat_explicit/fd1d_heat_explicit.html">
+      FD1D_HEAT_EXPLICIT</a>,
+      a FORTRAN90 program which
+      uses the finite difference method and explicit time stepping
+      to solve the time dependent heat equation in 1D.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_heat_implicit/fd1d_heat_implicit.html">
+      FD1D_HEAT_IMPLICIT</a>,
+      a FORTRAN90 program which
+      uses the finite difference method and implicit time stepping
+      to solve the time dependent heat equation in 1D.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_heat_steady/fd1d_heat_steady.html">
+      FD1D_HEAT_STEADY</a>,
+      a FORTRAN90 program which
+      uses the finite difference method to solve the steady (time independent)
+      heat equation in 1D.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fd1d_predator_prey_plot/fd1d_predator_prey_plot.html">
+      FD1D_PREDATOR_PREY_PLOT</a>,
+      a MATLAB program which
+      displays the solution components computed by FD1D.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd1d_wave/fd1d_wave.html">
+      FD1D_WAVE</a>,
+      a FORTRAN90 program which
+      applies the finite difference method to solve the time-dependent
+      wave equation utt = c * uxx in one spatial dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fd2d_predator_prey/fd2d_predator_prey.html">
+      FD2D_PREDATOR_PREY</a>,
+      a FORTRAN90 program which
+      uses the finite element method to solve a simulation of the 2D
+      predator prey equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d/fem1d.html">
+      FEM1D</a>,
+      a FORTRAN90 program which
+      applies the finite element
+      method, with piecewise linear basis functions, to a two point boundary
+      value problem;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Marcus Garvie,<br>
+          Finite-Difference Schemes for Reaction-Diffusion Equations
+          Modeling Predator-Prey Interactions in MATLAB,<br>
+          Bulletin of Mathematical Biology,<br>
+          Volume 69, Number 3, 2007, pages 931-956.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fd1d_predator_prey.f90">fd1d_predator_prey.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "fd1d_predator_prey.sh">fd1d_predator_prey.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fd1d_predator_prey_prb.f90">fd1d_predator_prey_prb.f90</a>,
+          typical user routines to initialize U and V;
+        </li>
+        <li>
+          <a href = "fd1d_predator_prey_prb.sh">fd1d_predator_prey_prb.sh</a>,
+          commands to compile, link and run FD1D with the user routines;
+        </li>
+        <li>
+          <a href = "fd1d_predator_prey_prb_input.txt">fd1d_predator_prey_prb_input.txt</a>,
+          interactive input from the user.
+        </li>
+        <li>
+          <a href = "fd1d_predator_prey_prb_output.txt">fd1d_predator_prey_prb_output.txt</a>,
+          printed output from the sample run.
+        </li>
+        <li>
+          <a href = "u1d.txt">u1d.txt</a>,
+          a file of (X,U(X)) values at the final time.
+        </li>
+        <li>
+          <a href = "v1d.txt">v1d.txt</a>,
+          a file of (X,V(X)) values at the final time.
+        </li>
+        <li>
+          <a href = "uv1d.png">uv1d.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the U and V solutions, created directly by the program.
+        </li>
+        <li>
+          <a href = "u1d.png">u1d.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the U solution, created by using
+          GNUPLOT on the <i>u1d.txt</i> file.
+        </li>
+        <li>
+          <a href = "v1d.png">v1d.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+           the V solution, created by using
+          GNUPLOT on the <i>v1d.txt</i> file
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FD1D_PREDATOR_PREY.
+        </li>
+        <li>
+          <b>D3_JAC_SL</b> solves a D3 system using Jacobi iteration.
+        </li>
+        <li>
+          <b>D3_NP_FA</b> factors a D3 matrix without pivoting.
+        </li>
+        <li>
+          <b>D3_NP_SL</b> solves a D3 system factored by D3_NP_FA.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UV_PLOT_EPS</b> creates an EPS file image of U(X) and V(X).
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 February 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

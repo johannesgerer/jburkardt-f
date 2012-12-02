@@ -1,0 +1,710 @@
+<html>
+
+  <head>
+    <title>
+      QUADRATURE_TEST - Quadrature Rule Applied to Test Integrals
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      QUADRATURE_TEST <br> Quadrature Rule Applied to Test Integrals
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>QUADRATURE_TEST</b>
+      is a FORTRAN90 program which
+      reads three files that define
+      a quadrature rule, applies the quadrature rule to a set of
+      test integrals, and reports the results.
+    </p>
+
+    <p>
+      The quadrature rule is defined by three text files:
+      <ol>
+        <li>
+          <i>the "X" file</i> lists the abscissas (N rows, M columns);
+        </li>
+        <li>
+          <i>the "W" file</i> lists the weights (N rows);
+        </li>
+        <li>
+          <i>the "R" file</i> lists the integration region corners
+          (2 rows, M columns);
+        </li>
+      </ol>
+      For more on quadrature rules, see the <b>QUADRATURE_RULES</b>
+      listing below.
+    </p>
+
+    <p>
+      The test integrals come from the <b>TEST_NINT</b> library.
+    </p>
+
+    <p>
+      The list of integrand functions includes:
+      <ol>
+        <li>
+          f(x) = ( sum ( x(1:m) ) )**2;
+        </li>
+        <li>
+          f(x) = ( sum ( 2 * x(1:m) - 1 ) )**4;
+        </li>
+        <li>
+          f(x) = ( sum ( x(1:m) ) )**5;
+        </li>
+        <li>
+          f(x) = ( sum ( 2 * x(1:m) - 1 ) )**6;
+        </li>
+        <li>
+          f(x) = 1 / ( 1 + sum ( 2 * x(1:m) ) );
+        </li>
+        <li>
+          f(x) = product ( 2 * abs ( 2 * x(1:m) - 1 ) );
+        </li>
+        <li>
+          f(x) = product ( pi / 2 ) * sin ( pi * x(1:m) );
+        </li>
+        <li>
+          f(x) = ( sin ( (pi/4) * sum ( x(1:m) ) ) )**2;
+        </li>
+        <li>
+          f(x) = exp ( sum ( c(1:m) * x(1:m) ) );
+        </li>
+        <li>
+          f(x) = sum ( abs ( x(1:m) - 0.5 ) );
+        </li>
+        <li>
+          f(x) = exp ( sum ( abs ( 2 * x(1:m) - 1 ) ) );
+        </li>
+        <li>
+          f(x) = product ( 1 <= i <= m ) ( i * cos ( i * x(i) ) );
+        </li>
+        <li>
+          f(x) = product ( 1 <= i <= m ) t(n(i))(x(i)), t(n(i))
+          is a Chebyshev polynomial;
+        </li>
+        <li>
+          f(x) = sum ( 1 <= i <= m ) (-1)**i * product ( 1 <= j <= i ) x(j);
+        </li>
+        <li>
+          f(x) = product ( 1 <= i <= order ) x(mod(i-1,m)+1);
+        </li>
+        <li>
+          f(x) = sum ( abs ( x(1:m) - x0(1:m) ) );
+        </li>
+        <li>
+          f(x) = sum ( ( x(1:m) - x0(1:m) )**2 );
+        </li>
+        <li>
+          f(x) = 1 inside an m-dimensional sphere around x0(1:m), 0 outside;
+        </li>
+        <li>
+          f(x) = product ( sqrt ( abs ( x(1:m) - x0(1:m) ) ) );
+        </li>
+        <li>
+          f(x) = ( sum ( x(1:m) ) )**power;
+        </li>
+        <li>
+          f(x) = c * product ( x(1:m)^e(1:m) ) on the surface of
+          an m-dimensional unit sphere;
+        </li>
+        <li>
+          f(x) = c * product ( x(1:m)^e(1:m) ) in an m-dimensional ball;
+        </li>
+        <li>
+          f(x) = c * product ( x(1:m)^e(1:m) ) in the unit m-dimensional simplex;
+        </li>
+        <li>
+          f(x) = product ( abs ( 4 * x(1:m) - 2 ) + c(1:m) )
+          / ( 1 + c(1:m) ) );
+        </li>
+        <li>
+          f(x) = exp ( c * product ( x(1:m) ) );
+        </li>
+        <li>
+          f(x) = product ( c(1:m) * exp ( - c(1:m) * x(1:m) ) );
+        </li>
+        <li>
+          f(x) = cos ( 2 * pi * r + sum ( c(1:m) * x(1:m) ) ), <br>
+          Genz "Oscillatory";
+        </li>
+        <li>
+          f(x) = 1 / product ( c(1:m)**2 + (x(1:m) - x0(1:m))**2),<br>
+          Genz "Product Peak";
+        </li>
+        <li>
+          f(x) = 1 / ( 1 + sum ( c(1:m) * x(1:m) ) )**(m+r),<br>
+          Genz "Corner Peak";
+        </li>
+        <li>
+          f(x) = exp(-sum(c(1:m)**2 * ( x(1:m) - x0(1:m))**2 ) ),<br>
+          Genz "Gaussian";
+        </li>
+        <li>
+          f(x) = exp ( - sum ( c(1:m) * abs ( x(1:m) - x0(1:m) ) ) ),
+          Genz "Continuous";
+        </li>
+        <li>
+          f(x) = exp(sum(c(1:m)*x(1:m)) for x(1:m) <= x0(1:m), 0 otherwise,<br>
+          Genz "Discontinuous";
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>quadrature_test</b> <i>prefix</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>prefix</i> is the common prefix for the files containing the abscissa (X),
+          weight (W) and region (R) information of the quadrature rule;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      If the arguments are not supplied on the command line, the
+      program will prompt for them.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>QUADRATURE_TEST</b> is available in
+      <a href = "../../cpp_src/quadrature_test/quadrature_test.html">a C++ version</a> and
+      <a href = "../../f_src/quadrature_test/quadrature_test.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/quadrature_test/quadrature_test.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/integral_test/integral_test.html">
+      INTEGRAL_TEST</a>,
+      a FORTRAN90 program which
+      uses test integrals to evaluate sets of quadrature points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nint_exactness/nint_exactness.html">
+      NINT_EXACTNESS</a>,
+      a FORTRAN90 program which
+      demonstrates how to measure the
+      polynomial exactness of a multidimensional quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nintlib/nintlib.html">
+      NINTLIB</a>,
+      a FORTRAN90 library which
+      numerically estimates integrals
+      in multiple dimensions.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules/quadrature_rules.html">
+      QUADRATURE_RULES</a>,
+      a dataset directory which
+      contains a description and examples of quadrature rules defined
+      by a set of "X", "W" and "R" files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrature_test_genz/quadrature_test_genz.html">
+      QUADRATURE_TEST_GENZ</a>,
+      a FORTRAN90 program which
+      reads files defining a quadrature rule,
+      and applies it to the Genz test integrands.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which
+      contains quadrature
+      rules for a variety of unusual areas, surfaces and volumes in 2D,
+      3D and N-dimensions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_nint/test_nint.html">
+      TEST_NINT</a>,
+      a FORTRAN90 library which
+      defines a set of integrand functions to be used for testing
+      multidimensional quadrature rules and routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/testpack/testpack.html">
+      TESTPACK</a>,
+      a FORTRAN90 library which
+      defines a set of integrands used to test multidimensional quadrature.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          JD Beasley, SG Springer,<br>
+          Algorithm AS 111:
+          The Percentage Points of the Normal Distribution,<br>
+          Applied Statistics,<br>
+          Volume 26, 1977, pages 118-121.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox, Harald Niederreiter,<br>
+          Implementation and Tests of Low-Discrepancy Sequences,<br>
+          ACM Transactions on Modeling and Computer Simulation,<br>
+          Volume 2, Number 3, July 1992, pages 195-213.
+        </li>
+        <li>
+          Roger Broucke,<br>
+          Algorithm 446:
+          Ten Subroutines for the Manipulation of Chebyshev Series,<br>
+          Communications of the ACM,<br>
+          Volume 16, 1973, pages 254-256.
+        </li>
+        <li>
+          William Cody, Kenneth Hillstrom,<br>
+          Chebyshev Approximations for the Natural Logarithm of the
+          Gamma Function,
+          Mathematics of Computation,<br>
+          Volume 21, Number 98, April 1967, pages 198-203.
+        </li>
+        <li>
+          Richard Crandall,<br>
+          Projects in Scientific Computing,<br>
+          Springer, 2005,<br>
+          ISBN: 0387950095,<br>
+          LC: Q183.9.C733.
+        </li>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+        <li>
+          Gerald Folland,<br>
+          How to Integrate a Polynomial Over a Sphere,<br>
+          American Mathematical Monthly,<br>
+          Volume 108, Number 5, May 2001, pages 446-448.
+        </li>
+        <li>
+          Leslie Fox, Ian Parker,<br>
+          Chebyshev Polynomials in Numerical Analysis,<br>
+          Oxford Press, 1968,<br>
+          LC: QA297.F65.
+        </li>
+        <li>
+          Alan Genz,<br>
+          Testing Multidimensional Integration Routines,<br>
+          in Tools, Methods, and Languages for Scientific and
+          Engineering Computation,<br>
+          edited by B Ford, JC Rault, F Thomasset,<br>
+          North-Holland, 1984, pages 81-94,<br>
+          ISBN: 0444875700,<br>
+          LC: Q183.9.I53.
+        </li>
+        <li>
+          Alan Genz,<br>
+          A Package for Testing Multiple Integration Subroutines,<br>
+          in Numerical Integration:
+          Recent Developments, Software and Applications,<br>
+          edited by Patrick Keast, Graeme Fairweather,<br>
+          Reidel, 1987, pages 337-340,<br>
+          ISBN: 9027725144,<br>
+          LC: QA299.3.N38.
+        </li>
+        <li>
+          Kenneth Hanson,<br>
+          Quasi-Monte Carlo: halftoning in high dimensions?<br>
+          in Computatinal Imaging,<br>
+          Edited by CA Bouman, RL Stevenson,<br>
+          Proceedings SPIE,<br>
+          Volume 5016, 2003, pages 161-172.
+        </li>
+        <li>
+          John Hart, Ward Cheney, Charles Lawson, Hans Maehly,
+          Charles Mesztenyi, John Rice, Henry Thatcher,
+          Christoph Witzgall,<br>
+          Computer Approximations,<br>
+          Wiley, 1968,<br>
+          LC: QA297.C64.
+        </li>
+        <li>
+          Stephen Joe, Frances Kuo<br>
+          Remark on Algorithm 659:
+          Implementing Sobol's Quasirandom Sequence Generator,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 29, Number 1, March 2003, pages 49-57.
+        </li>
+        <li>
+          David Kahaner, Cleve Moler, Steven Nash,<br>
+          Numerical Methods and Software,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0-13-627258-4,<br>
+          LC: TA345.K34.
+        </li>
+        <li>
+          Bradley Keister,<br>
+          Multidimensional Quadrature Algorithms,<br>
+          Computers in Physics,<br>
+          Volume 10, Number 2, March/April, 1996, pages 119-122.
+        </li>
+        <li>
+          Arnold Krommer, Christoph Ueberhuber,<br>
+          Numerical Integration on Advanced Compuer Systems,<br>
+          Springer, 1994,<br>
+          ISBN: 3540584102,<br>
+          LC: QA299.3.K76.
+        </li>
+        <li>
+          Anargyros Papageorgiou, Joseph Traub,<br>
+          Faster Evaluation of Multidimensional Integrals,<br>
+          Computers in Physics,<br>
+          Volume 11, Number 6, November/December 1997, pages 574-578.
+        </li>
+        <li>
+          Thomas Patterson,<br>
+          On the Construction of a Practical Ermakov-Zolotukhin
+          Multiple Integrator,<br>
+          in Numerical Integration:
+          Recent Developments, Software and Applications,<br>
+          edited by Patrick Keast and Graeme Fairweather,<br>
+          D. Reidel, 1987, pages 269-290.
+        </li>
+        <li>
+          Arthur Stroud,<br>
+          Approximate Calculation of Multiple Integrals,<br>
+          Prentice Hall, 1971,<br>
+          ISBN: 0130438936,<br>
+          LC: QA311.S85.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+        <li>
+          Xiaoqun Wang, Kai-Tai Fang,<br>
+          The Effective Dimension and quasi-Monte Carlo Integration,<br>
+          Journal of Complexity,<br>
+          Volume 19, pages 101-124, 2003.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "quadrature_test.f90">quadrature_test.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "quadrature_test.sh">quadrature_test.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>CC_D2_LEVEL4</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 2 of level 4, 65 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level4_x.txt">
+          cc_d2_level4_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level4_w.txt">
+          cc_d2_level4_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level4_r.txt">
+          cc_d2_level4_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d2_level4_test.txt">cc_d2_level4_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D2_LEVEL5</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 2 of level 5, 145 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level5_x.txt">
+          cc_d2_level5_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level5_w.txt">
+          cc_d2_level5_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d2_level5_r.txt">
+          cc_d2_level5_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d2_level5_test.txt">cc_d2_level5_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL0</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 0, 1 point.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level0_x.txt">
+          cc_d6_level0_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level0_w.txt">
+          cc_d6_level0_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level0_r.txt">
+          cc_d6_level0_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level0_test.txt">cc_d6_level0_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL1</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 1, 13 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level1_x.txt">
+          cc_d6_level1_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level1_w.txt">
+          cc_d6_level1_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level1_r.txt">
+          cc_d6_level1_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level1_test.txt">cc_d6_level1_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL2</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 2, 85 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level2_x.txt">cc_d6_level2_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level2_w.txt">cc_d6_level2_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level2_r.txt">cc_d6_level2_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level2_test.txt">cc_d6_level2_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL3</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 3, 389 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level3_x.txt">cc_d6_level3_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level3_w.txt">cc_d6_level3_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level3_r.txt">cc_d6_level3_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level3_test.txt">cc_d6_level3_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL4</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 4, 1457 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level4_x.txt">cc_d6_level4_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level4_w.txt">cc_d6_level4_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level4_r.txt">cc_d6_level4_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level4_test.txt">cc_d6_level4_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CC_D6_LEVEL5</b> is a Clenshaw-Curtis sparse grid quadrature
+      rule in dimension 6 of level 5, 4865 points.
+      <ul>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level5_x.txt">cc_d6_level5_x.txt</a>,
+          the "X" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level5_w.txt">cc_d6_level5_w.txt</a>,
+          the "W" file.
+        </li>
+        <li>
+          <a href = "../../datasets/sparse_grid_cc/cc_d6_level5_r.txt">cc_d6_level5_r.txt</a>,
+          the "R" file.
+        </li>
+        <li>
+          <a href = "cc_d6_level5_test.txt">cc_d6_level5_test.txt</a>,
+          the test results.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for QUADRATURE_TEST.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DTABLE_DATA_READ</b> reads data from a DTABLE file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_READ</b> reads the header from a DTABLE file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 October 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

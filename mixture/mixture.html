@@ -1,0 +1,258 @@
+<html>
+
+  <head>
+    <title>
+      MIXTURE - Dirichlet Mixture Simulation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MIXTURE <br> Dirichlet Mixture Simulation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MIXTURE</b>
+      is a FORTRAN90 program which
+      simulates a process
+      governed by a Dirichlet Mixture probability density function (PDF).
+    </p>
+
+    <p>
+      Each realization of the process
+      involves choosing one of a specified set of Dirichlet PDF's, with
+      given weight, and then sampling that PDF.
+    </p>
+
+    <p>
+      The current code is pretty rough, and simply does a simulation.
+      An improved version would involve using the simulation to test procedures
+      for estimating the number of Dirichlet densities in the mixture, and
+      their parameters, using a Bayesian approach.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa266/asa266.html">
+      ASA266</a>,
+      a FORTRAN90 library which
+      evaluates various properties of a Dirichlet distribution.
+    </p>
+
+    <h3 align = "center">
+      References:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          Carl Branden, John Tooze,<br>
+          Introduction to Protein Structure,<br>
+          Second Edition,<br>
+          Garland Publishing, 1999,<br>
+          ISBN: 0815323050,<br>
+          LC: QP551.B7635.
+        </li>
+        <li>
+          Luc Devroye,<br>
+          Non-Uniform Random Variate Generation,<br>
+          Springer, 1986,<br>
+          ISBN: 0387963057,<br>
+          LC: QA274.D48.
+        </li>
+        <li>
+          William Kennedy, James Gentle,<br>
+          Statistical Computing,<br>
+          Marcel Dekker, 1980,<br>
+          ISBN: 0824768981,<br>
+          LC: QA276.4.K46.
+        </li>
+        <li>
+          Kimmen Sjoelander, Kevin Karplus, Michael Brown, Richard Hughey, Anders Krogh,
+          Siara Mian, David Haussler,<br>
+          Dirichlet Mixtures: a method for improved detection of weak but significant
+          protein sequence homology,<br>
+          Computer Applications in the Biosciences,<br>
+          Volume 12, Number 4, pages 327-345, 1996.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "mixture.f90">mixture.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "mixture.sh">mixture.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "mixture.txt">mixture.txt</a>, a mixture definition file;
+        </li>
+        <li>
+          <a href = "mixture_output.txt">mixture_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for the mixture simulation.
+        </li>
+        <li>
+          <b>AMINO_PRINT</b> prints the amino acid parameters.
+        </li>
+        <li>
+          <b>BINOMIAL_SAMPLE</b> samples the Binomial PDF.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_NEXT</b> "reads" space-separated characters from a string, one at a time.
+        </li>
+        <li>
+          <b>CH_TO_AMINO_NAME</b> converts a character to an amino acid name.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>COMP_PARAM_PRINT</b> prints the parameters for the mixture components.
+        </li>
+        <li>
+          <b>COMP_STATS_PRINT</b> prints the mean and variance for the mixture components.
+        </li>
+        <li>
+          <b>DISCRETE_CDF_INV</b> inverts the Discrete CDF.
+        </li>
+        <li>
+          <b>DISCRETE_SAMPLE</b> samples the Discrete PDF.
+        </li>
+        <li>
+          <b>FAVOR_RATIO_COMPUTE</b> computes the ratio by which a component density favors an amino acid.
+        </li>
+        <li>
+          <b>FAVOR_RATIO_PRINT</b> prints the favor ratios.
+        </li>
+        <li>
+          <b>GAMMA_LOG</b> calculates the natural logarithm of GAMMA ( X ) for positive X.
+        </li>
+        <li>
+          <b>I4_NEXT</b> "reads" integers from a string, one at a time.
+        </li>
+        <li>
+          <b>MIXTURE_PRINT</b> prints the Dirichlet mixture parameters.
+        </li>
+        <li>
+          <b>MIXTURE_READ</b> reads the Dirichlet mixture parameters from a file.
+        </li>
+        <li>
+          <b>MULTINOMIAL_PDF</b> computes a Multinomial PDF.
+        </li>
+        <li>
+          <b>MULTINOMIAL_SAMPLE</b> samples the Multinomial PDF.
+        </li>
+        <li>
+          <b>OBSERVE</b> repeatedly observes the process and updates the parameter estimates.
+        </li>
+        <li>
+          <b>R4_NEXT</b> "reads" real numbers from a string, one at a time.
+        </li>
+        <li>
+          <b>R4_RANDOM</b> returns a random real in a given range.
+        </li>
+        <li>
+          <b>R4ROW_MEAN</b> returns the means of rows of a real array.
+        </li>
+        <li>
+          <b>RR4OW_VARIANCE</b> returns the variances of the rows of a real array.
+        </li>
+        <li>
+          <b>S_BEGIN</b> is TRUE if one string matches the beginning of the other.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_TO_R4</b> reads a real number from a string.
+        </li>
+        <li>
+          <b>SAMPLE_ANALYZE</b> analyzes the samples from the Dirichlet mixture PDF.
+        </li>
+        <li>
+          <b>SAMPLE_PROJECT</b> computes the projection of a sample onto the mixture components.
+        </li>
+        <li>
+          <b>SAMPLE_PROJECT</b> computes the projection of a sample onto the mixture components.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WEIGHT_INIT</b> initializes the estimated weights.
+        </li>
+        <li>
+          <b>WEIGHT_UPDATE</b> updates the estimated weights.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 20 October 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

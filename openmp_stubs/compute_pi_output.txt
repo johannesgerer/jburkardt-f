@@ -1,0 +1,58 @@
+ 
+COMPUTE_PI
+  FORTRAN90/OpenMP version
+ 
+  Estimate the value of PI by summing a series.
+ 
+  The number of processors available =        1
+  The number of threads available    =        1
+ 
+R8_TEST:
+  Estimate the value of PI,
+  using double precision arithmetic.
+ 
+  N = number of terms computed and added;
+ 
+  MODE = SEQ for sequential code;
+  MODE = OMP for Open MP enabled code;
+  (performance depends on whether Open MP is used,
+  and how many processes are available!)
+ 
+  ESTIMATE = the computed estimate of PI;
+ 
+  ERROR = ( the computed estimate - PI );
+ 
+  TIME = elapsed wall clock time;
+ 
+  Note that you can't increase N forever, because:
+  A) ROUNDOFF starts to be a problem, and
+  B) maximum integer size is a problem.
+ 
+  The maximum integer:              2147483647
+ 
+ 
+             N Mode    Estimate        Error           Time
+ 
+             1  SEQ    3.2000000000    0.584073E-01     0.00000    
+             1  OMP    3.2000000000    0.584073E-01     0.00000    
+            10  SEQ    3.1424259850    0.833331E-03     0.00000    
+            10  OMP    3.1424259850    0.833331E-03     0.00000    
+           100  SEQ    3.1416009869    0.833333E-05     0.00000    
+           100  OMP    3.1416009869    0.833333E-05     0.00000    
+          1000  SEQ    3.1415927369    0.833333E-07     0.00000    
+          1000  OMP    3.1415927369    0.833333E-07     0.00000    
+         10000  SEQ    3.1415926544    0.833341E-09     0.00000    
+         10000  OMP    3.1415926544    0.833341E-09     0.00000    
+        100000  SEQ    3.1415926536    0.836842E-11     0.00000    
+        100000  OMP    3.1415926536    0.836842E-11     0.00000    
+       1000000  SEQ    3.1415926536    0.284217E-13     0.00000    
+       1000000  OMP    3.1415926536    0.284217E-13     0.00000    
+      10000000  SEQ    3.1415926536    0.621725E-13     0.00000    
+      10000000  OMP    3.1415926536    0.621725E-13     0.00000    
+     100000000  SEQ    3.1415926536    0.633271E-12     0.00000    
+     100000000  OMP    3.1415926536    0.633271E-12     0.00000    
+    1000000000  SEQ    3.1415926536    0.177636E-12     0.00000    
+    1000000000  OMP    3.1415926536    0.177636E-12     0.00000    
+ 
+COMPUTE_PI
+  Normal end of execution.

@@ -1,0 +1,222 @@
+<html>
+
+  <head>
+    <title>
+      TILER_2D - 2D Transfinite Interpolation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TILER_2D <br> 2D Transfinite Interpolation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TILER_2D</b>
+      is a FORTRAN90 program which
+      demonstrates how to
+      graphically "tile" a 2D box with a repeated pattern, using transfinite interpolation.
+    </p>
+
+    <p>
+      The box has been divided into subregions that are not rectilinear,
+      nor the same size or shape.  A simple "tile pattern" of the letter "R"
+      is used.  The program must stretch and twist the pattern to fit into
+      each subregion.  The resulting tiled object is written out as a PostScript
+      file.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blend/blend.html">
+      BLEND</a>,
+      a FORTRAN90 library which
+      carries out the blending operations
+      demonstrated by <b>TILER_2D</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/frieze/frieze.html">
+      FRIEZE</a>,
+      a FORTRAN90 program which
+      is similar to TILER_2D.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ps_write/ps_write.html">
+      PS_WRITE</a>,
+      a FORTRAN90 library which
+      supplies routines used to create a PostScript image of the mapping.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tiler_3d/tiler_3d.html">
+      TILER_3D</a>,
+      a FORTRAN90 program which
+      does blending in 3D.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Gordon, Charles Hall,<br>
+          Construction of Curvilinear Coordinate Systems and Application to
+          Mesh Generation,<br>
+          International Journal of Numerical Methods in Engineering,<br>
+          Volume 7, pages 461-477, 1973.
+        </li>
+        <li>
+          Joe Thompson, Bharat Soni, Nigel Weatherill,<br>
+          Handbook of Grid Generation,<br>
+          CRC Press, 1999.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "tiler_2d.f90">tiler_2d.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "tiler_2d.sh">tiler_2d.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "tiler_2d.png">tiler_2d.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image
+          of the mapping;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TILER_2D.
+        </li>
+        <li>
+          <b>BOUNDARY_2D</b> maps a point (U,V) to its corresponding (X,Y) coordinates.
+        </li>
+        <li>
+          <b>BOX_TILER_2D</b> selects one sub-box at a time to be tiled.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE</b> handles the line color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE_SET</b> sets the line color.
+        </li>
+        <li>
+          <b>PS_COMMENT</b> inserts a comment into the PostScript file.
+        </li>
+        <li>
+          <b>PS_DEFAULT</b> sets the internal settings to their default values
+        </li>
+        <li>
+          <b>PS_FILE_CLOSE</b> closes a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_HEAD</b> writes header information to a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_OPEN</b> opens a new version of a PostScript file with a given name.
+        </li>
+        <li>
+          <b>PS_FILE_TAIL</b> writes trailer information to a PostScript file.
+        </li>
+        <li>
+          <b>PS_LINE_CLOSED</b> adds the graph of a closed line to a PostScript file.
+        </li>
+        <li>
+          <b>PS_LINE_OPEN</b> adds the graph of a line to a PostScript file.
+        </li>
+        <li>
+          <b>PS_PAGE_HEAD</b> writes header information on a new page.
+        </li>
+        <li>
+          <b>PS_PAGE_TAIL</b> writes tail information at the end of a page.
+        </li>
+        <li>
+          <b>PS_SETTING_INT</b> sets, gets, or prints integer internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>PS_SETTING_REAL</b> sets, gets, or prints real internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two real values.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>SUB_BOX_TILER_2D</b> "tiles" a sub-box with the given pattern.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 05 January 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,666 @@
+<html>
+
+  <head>
+    <title>
+      FLOW3 - A Finite Element Code for Fluid Flow
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FLOW3 <br> A Finite Element Code for Fluid Flow
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FLOW3</b>
+      is a FORTRAN90 program which
+      uses the finite element method to solve for the steady state
+      velocity and pressure of an incompressible fluid in a 2D flow region.
+    </p>
+
+    <p>
+      <b>FLOW3</b> writes a graphics dump file that can be read in
+      and plotted by
+      <a href = "../../f_src/display3/display3.html">DISPLAY3</a>.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+     <pre>
+       <b>flow3</b> &lt; <i>input_file</i> &gt; <i>output_file</i>
+     </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bump/bump.html">
+      BUMP</a>,
+      a FORTRAN90 program which
+      solves a fluid flow problem
+      in a channel including a bump which obstructs and redirects the flow.
+    </p>
+
+    <p>
+      <a href = "../../f_src/channel/channel.html">
+      CHANNEL</a>,
+      a FORTRAN90 program which
+      solves a fluid flow problem in a channel.
+    </p>
+
+    <p>
+      <a href = "../../data/fem/fem.html">
+      FEM</a>,
+      a data directory which
+      contains a description of the data files
+      that can be used to describe a finite element model.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fem_io/fem_io.html">
+      FEM_IO</a>,
+      a MATLAB library which
+      reads and writes
+      the node, element and data files that define a finite element model.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_pack/fem2d_pack.html">
+      FEM2D_PACK</a>,
+      a FORTRAN90 library which
+      contains utilities for 2D finite element calculations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_poisson/fem2d_poisson.html">
+      FEM2D_POISSON</a>,
+      a FORTRAN90 program which
+      solves Poisson's equation
+      on a square, using the finite element method.
+    </p>
+
+    <p>
+      <a href = "../../f_src/flow5/flow5.html">
+      FLOW5</a>,
+      a FORTRAN90 program which
+      is a later version of the FLOW3 program.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/hcell/hcell.html">
+      HCELL</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in an "H"-shaped region.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/inout/inout.html">
+      INOUT</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in a square region with
+      an inlet and an outlet.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_control/mhd_control.html">
+      MHD_CONTROL</a>,
+      a FORTRAN90 program which
+      tries to control the evolution of an MHD system so that a particular
+      state is achieved.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_flow/mhd_flow.html">
+      MHD_FLOW</a>,
+      a FORTRAN90 program which
+      models the evolution of an MHD system.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/nast2d/nast2d.html">
+      NAST2D</a>,
+      a C++ program which
+      computes the pressure
+      and velocity for a Navier Stokes flow.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nast2d_f90/nast2d_f90.html">
+      NAST2D_F90</a>,
+      a FORTRAN90 program which
+      solves the 2D Navier Stokes equations with heat,
+      by Griebel, Dornseifer and Neunhoeffer
+    </p>
+
+    <p>
+      <a href = "../../f77_src/tcell/tcell.html">
+      TCELL</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in a "T"-shaped region.
+    </p>
+
+    <p>
+      <a href = "../../m_src/toms866/toms866.html">
+      TOMS866</a>,
+      a MATLAB library which
+      is the Incompressible Flow Iterative Solution Software;<br>
+      this library is commonly called <b>IFISS</b>;<br>
+      this is ACM TOMS algorithm 866.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Max Gunzburger,<br>
+          Finite Element Methods for Viscous Incompressible Flows,<br>
+          A Guide to Theory, Practice, and Algorithms,<br>
+          Academic Press, 1989,<br>
+          ISBN: 0-12-307350-2,<br>
+          LC: TA357.G86.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "flow3.f90">flow3.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "flow3.sh">flow3.sh</a>,
+          commands to compile and load the source code;
+        </li>
+        <li>
+          <a href = "flow3_dictionary.txt">flow3_dictionary.txt</a>,
+          a list of internal variables.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "flow3_input.txt">flow3_input.txt</a>,
+          a description of some of the problems;
+        </li>
+        <li>
+          <a href = "flow3_input001.txt">flow3_input001.txt</a>, input file for problem 1;
+        </li>
+        <li>
+          <a href = "flow3_output001.txt">flow3_output001.txt</a>, output file for problem 1;
+        </li>
+        <li>
+          <a href = "flow3_march001.txt">flow3_march001.txt</a>, marching file for problem 1;
+        </li>
+        <li>
+          <a href = "flow3_input002.txt">flow3_input002.txt</a>, input file for problem 2;
+        </li>
+        <li>
+          <a href = "flow3_input003.txt">flow3_input003.txt</a>, input file for problem 3;
+        </li>
+        <li>
+          <a href = "flow3_input004.txt">flow3_input004.txt</a>, input file for problem 4;
+        </li>
+        <li>
+          <a href = "flow3_input005.txt">flow3_input005.txt</a>, input file for problem 5;
+        </li>
+        <li>
+          <a href = "flow3_input006.txt">flow3_input006.txt</a>, input file for problem 6;
+        </li>
+        <li>
+          <a href = "flow3_input007.txt">flow3_input007.txt</a>, input file for problem 7;
+        </li>
+        <li>
+          <a href = "flow3_input008.txt">flow3_input008.txt</a>, input file for problem 8;
+        </li>
+        <li>
+          <a href = "flow3_input009.txt">flow3_input009.txt</a>, input file for problem 9;
+        </li>
+        <li>
+          <a href = "flow3_input751.txt">flow3_input751.txt</a>,
+          input file for problem 751;
+        </li>
+        <li>
+          <a href = "flow3_input796.txt">flow3_input796.txt</a>,
+          input file for problem 796;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FLOW3.
+        </li>
+        <li>
+          <b>AFTER</b> shuts down files and stops.
+        </li>
+        <li>
+          <b>BSP</b> evaluates the basis functions associated with pressure.
+        </li>
+        <li>
+          <b>BUMP_BC</b> computes the boundary conditions for velocity sensitivities.
+        </li>
+        <li>
+          <b>BUMP_BC1</b> computes the value of the boundary conditions for the
+        </li>
+        <li>
+          <b>BUMP_BC2</b> evaluates the velocity sensitivity boundary conditions.
+        </li>
+        <li>
+          <b>BUMP_COST</b> evaluates the cost of the bump control.
+        </li>
+        <li>
+          <b>BUMP_DER</b> differentiates the bump control cost with respect to the parameters.
+        </li>
+        <li>
+          <b>BUMP_FX</b> measures the residual in the bump sensitivity equations.
+        </li>
+        <li>
+          <b>BUMP_SEN</b> sets up the right hand side F associated with the
+        </li>
+        <li>
+          <b>BUMP_SPL</b> sets up or updates the spline data that describes the bump.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CHKDAT</b> performs some simple checks on the input data.
+        </li>
+        <li>
+          <b>CHKOPT</b> is called at the end of an optimization to check the results.
+        </li>
+        <li>
+          <b>CHRCTD</b> accepts a string of characters, and tries to extract a
+        </li>
+        <li>
+          <b>CHRCTI</b> accepts a STRING of characters and reads an integer
+        </li>
+        <li>
+          <b>COST_GRADIENT</b> returns the gradient of the cost functional.
+        </li>
+        <li>
+          <b>CUBSPL</b> is given data and boundary conditions for a cubic
+        </li>
+        <li>
+          <b>DISC_COST</b> computes the discrepancy cost integrals.
+        </li>
+        <li>
+          <b>DISC_DER</b> computes the derivative of the discrepancy cost integrals
+        </li>
+        <li>
+          <b>DMEMRY</b> allows the user to define the name of a real
+        </li>
+        <li>
+          <b>FLO_SPL_SET</b> sets up or updates the spline data that describes the inflow.
+        </li>
+        <li>
+          <b>FLO_SPL_VAL</b> computes boundary velocities specified by a parameterized spline.
+        </li>
+        <li>
+          <b>FLODUV</b> differentiates the parabolic inflow with respect to parameter.
+        </li>
+        <li>
+          <b>FLOSEN</b> sets up the right hand side F associated with the
+        </li>
+        <li>
+          <b>FLOSOL</b> is given a set of flow parameters in PARA, and an
+        </li>
+        <li>
+          <b>FPRIME</b> computes the jacobian of the Navier Stokes or Stokes functions.
+        </li>
+        <li>
+          <b>FPRNAB</b> computes the jacobian of the Navier Stokes or Stokes residual
+        </li>
+        <li>
+          <b>FX</b> computes the residual of the Navier Stokes or Stokes equations.
+        </li>
+        <li>
+          <b>GET_COST</b> determines the cost of a solution G given a target solution GTAR.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GETDU</b> estimates spatial derivatives of state variables at nodes.
+        </li>
+        <li>
+          <b>GETDU4</b> uses the Zienkiewicz-Zhou technique to attempt to improve the
+        </li>
+        <li>
+          <b>GETFIX</b> computes GRADF, a correction for the finite difference
+        </li>
+        <li>
+          <b>GETGRD</b> estimates the derivatives of the variables with respect to parameters.
+        </li>
+        <li>
+          <b>GETSEN</b> computes the sensitivities of the state variables U, V and
+        </li>
+        <li>
+          <b>GQUAD1</b> returns the weights and abscissas for a 1 dimensional,
+        </li>
+        <li>
+          <b>HELLO</b> prints out an introductory message.
+        </li>
+        <li>
+          <b>ILAENV</b> is called from the LAPACK routines to choose problem-dependent
+        </li>
+        <li>
+          <b>IMEMRY</b> allows the user to define the name of an integer variable,
+        </li>
+        <li>
+          <b>INIT</b> initializes the program parameters.
+        </li>
+        <li>
+          <b>INPUT</b> reads user input of the form "name = value".
+        </li>
+        <li>
+          <b>INTERV</b> computes LEFT, the maximum value of I so that
+        </li>
+        <li>
+          <b>ISAMAX</b> finds the index of the vector element of maximum absolute value.
+        </li>
+        <li>
+          <b>LBASE</b> evalualates the IVAL-th Lagrange polynomial.
+        </li>
+        <li>
+          <b>LMEMRY</b> allows the user to define the name of a logical variable,
+        </li>
+        <li>
+          <b>LSAME</b> returns .TRUE. if CA is the same letter as CB regardless of
+        </li>
+        <li>
+          <b>LSPOLY</b> evaluates a polynomial in (1, x, y, x*x, xy, y*y) at (x,y)..
+        </li>
+        <li>
+          <b>MARCH</b> carries out a one, two or three dimensional "march".
+        </li>
+        <li>
+          <b>MARCH_FILE_OPEN</b> opens the marching file.
+        </li>
+        <li>
+          <b>NAMELS</b> reads a line of user input which is similar in form
+        </li>
+        <li>
+          <b>NEWTON</b> solves the nonlinear system of equations.
+        </li>
+        <li>
+          <b>NODE_SET</b> assigns numbers to the nodes.
+        </li>
+        <li>
+          <b>NODNAB</b> returns the neighbor index number of node J relative to node I.
+        </li>
+        <li>
+          <b>NUSEN</b> sets the right hand side of the NU_INV sensitivity equation.
+        </li>
+        <li>
+          <b>OSOLVE</b> carries out the optimization algorithm for a fixed grid,
+        </li>
+        <li>
+          <b>PLDX</b> evaluates the derivative of a piecewise linear function.
+        </li>
+        <li>
+          <b>PLDX1</b> evaluates the X derivative of a piecewise linear basis function.
+        </li>
+        <li>
+          <b>PLOT_FILE_OPEN</b> opens the plotting file.
+        </li>
+        <li>
+          <b>PLOT_FILE_WRITE</b> writes geometry and solution information to a plot file.
+        </li>
+        <li>
+          <b>PLVAL</b> evaluates a piecewise linear function at a given point.
+        </li>
+        <li>
+          <b>PLVAL1</b> evaluates the piecewise linear basis function.
+        </li>
+        <li>
+          <b>PPVALU</b> evaluates a piecewise polynomial function or its derivative.
+        </li>
+        <li>
+          <b>PQDX</b> evaluates the derivative of a piecewise quadratic function.
+        </li>
+        <li>
+          <b>PQDX1</b> evaluates the X derivative of the piecewise quadratic basis function.
+        </li>
+        <li>
+          <b>PQVAL</b> evaluates a piecewise quadratic function at a given point.
+        </li>
+        <li>
+          <b>PQVAL1</b> evaluates the piecewise quadratic basis function.
+        </li>
+        <li>
+          <b>PR_BUMP</b> prints out the boundary conditions for the bump sensitivities,
+        </li>
+        <li>
+          <b>PR_COST1</b> prints out the current cost function.
+        </li>
+        <li>
+          <b>PR_COST2</b> prints out the current cost function.
+        </li>
+        <li>
+          <b>PR_COST_SEN</b> prints out the cost sensitivities.
+        </li>
+        <li>
+          <b>PR_DAT</b> prints the user input file data.
+        </li>
+        <li>
+          <b>PR_DISC</b> prints the discrepancy along the profile line.
+        </li>
+        <li>
+          <b>PR_DU2</b> prints out a comparison of the original dUdY vector and
+        </li>
+        <li>
+          <b>PR_FX3</b> prints out the maximum of the P, U, and V residuals.
+        </li>
+        <li>
+          <b>PR_GS2</b> prints the maximum finite coefficient differences and sensitivities.
+        </li>
+        <li>
+          <b>PR_PARAMETER</b> prints out the current parameters.
+        </li>
+        <li>
+          <b>PR_PROFILE</b> prints out the solution along the profile line.
+        </li>
+        <li>
+          <b>PR_PUV</b> prints the nodal values of the finite differences and sensitivities.
+        </li>
+        <li>
+          <b>PR_SOLUTION</b> prints out information about a single solution.
+        </li>
+        <li>
+          <b>PR_SPL_DATA</b> prints the raw spline data for the simple cases ISHAPE = 1 or 2.
+        </li>
+        <li>
+          <b>PR_SPLN</b> prints a spline interpolant or its derivatives.
+        </li>
+        <li>
+          <b>PR_WORK</b> reports the amount of work carried out.
+        </li>
+        <li>
+          <b>PROBAS</b> orthonormalizes N vectors of length M.
+        </li>
+        <li>
+          <b>PROJEC</b> projects an M vector into an N dimensional subspace.
+        </li>
+        <li>
+          <b>QBF</b> evaluates a quadratic basis function in a nonisoparametric element.
+        </li>
+        <li>
+          <b>QSOLVE</b> seeks an optimal set of parameter values.
+        </li>
+        <li>
+          <b>REFBSP</b> evaluates a linear basis function in the reference triangle.
+        </li>
+        <li>
+          <b>REFQBF</b> evaluates one of the six quadratic basis functions,
+        </li>
+        <li>
+          <b>RINT_TO_RINT</b> maps a real interval to another real interval.
+        </li>
+        <li>
+          <b>RSOLVE</b> computes the flow solution for a given set of parameters.
+        </li>
+        <li>
+          <b>R4VEC_EVEN</b> returns N real values, evenly spaced between ALO and AHI.
+        </li>
+        <li>
+          <b>S_BEFORE_SS_COPY</b> copies a string up to a given substring.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>SCOPY</b> copies a vector, x, to a vector, y.
+        </li>
+        <li>
+          <b>SDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>SETBAN</b> computes the half band width of the Jacobian matrix.
+        </li>
+        <li>
+          <b>SETBAS</b> evaluates the basis functions at each quadrature point.
+        </li>
+        <li>
+          <b>SETNAB</b> sets up the node neighbor array.
+        </li>
+        <li>
+          <b>SETQXY</b> sets the abscissas and weights for a quadrature rule on a triangle.
+        </li>
+        <li>
+          <b>SGBSCN</b> scans a matrix stored in LINPACK/LAPACK "general band" mode,
+        </li>
+        <li>
+          <b>SGBTF2</b> computes an LU factorization of a real m-by-n band matrix A
+        </li>
+        <li>
+          <b>SGBTRF</b> computes an LU factorization of a real m-by-n band matrix A
+        </li>
+        <li>
+          <b>SGBTRS</b> solves a system of linear equations
+        </li>
+        <li>
+          <b>SGEMM</b>  performs one of the matrix-matrix operations
+        </li>
+        <li>
+          <b>SGEMV</b>  performs one of the matrix-vector operations
+        </li>
+        <li>
+          <b>SGER</b>   performs the rank 1 operation
+        </li>
+        <li>
+          <b>SGETF2</b> computes an LU factorization of a general m-by-n matrix A
+        </li>
+        <li>
+          <b>SGETRF</b> computes an LU factorization of a general M-by-N matrix A
+        </li>
+        <li>
+          <b>SGETRS</b> solves a system of linear equations
+        </li>
+        <li>
+          <b>SLASWP</b> performs a series of row interchanges on the matrix A.
+        </li>
+        <li>
+          <b>SOLCON</b> computes the flow solution for a given set of parameters.
+        </li>
+        <li>
+          <b>SSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>SSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>STBSV</b>  solves one of the systems of equations
+        </li>
+        <li>
+          <b>STRSM</b>  solves one of the matrix equations
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRANS</b> calculates the mapping from reference to physical elements.
+        </li>
+        <li>
+          <b>UPVALQ</b> evaluates sensitivities at a quadrature point in a given element.
+        </li>
+        <li>
+          <b>UVAL</b> evaluates the velocities and pressure at any point in a given element.
+        </li>
+        <li>
+          <b>UVALQ</b> evaluates the velocities and pressure, and their X and Y
+        </li>
+        <li>
+          <b>XERBLA</b>  is an error handler for the LAPACK routines.
+        </li>
+        <li>
+          <b>XOFXSI</b> is given the XSI, ETA coordinates of a point in an
+        </li>
+        <li>
+          <b>XY_PRINT</b> prints the X and Y coordinates of the nodes.
+        </li>
+        <li>
+          <b>XY_SET</b> sets the X and Y coordinates of the nodes.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 18 January 2007.
+    </i>
+
+  </body>
+
+</html>

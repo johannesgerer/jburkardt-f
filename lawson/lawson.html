@@ -1,0 +1,263 @@
+<html>
+
+  <head>
+    <title>
+      LAWSON - Least Squares Routines
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      LAWSON <br> Least Squares Routines
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>LAWSON</b>
+      is a FORTRAN90 library which
+      solves least squares
+      problems.
+    </p>
+
+    <p>
+      The most common least squares problems considers an overdetermined
+      M by N linear system A*X=B.  A least squares solution X is sought
+      which has the property that, although it generally is not a solution
+      of the system, it is the best approximation to a solution, in the
+      sense that it minimizes the L2 norm of the residual R=A*X-B.
+    </p>
+
+    <p>
+      In some cases, a unique solution to the system A*X=B will exist,
+      and in that case the least squares solution will coincide with
+      what is ordinarily meant by a solution.
+    </p>
+
+    <p>
+      In underdetermined cases, where multiple solutions exist,
+      the least squares solution is usually taken to be that solution X
+      which has minimum L2 norm, that is, which minimizes ||X||.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>LAWSON</b> is available in
+      <a href = "../../f77_src/lawson/lawson.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/lawson/lawson.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/brent/brent.html">
+      BRENT</a>,
+      a FORTRAN90 library which
+      contains Richard Brent's routines for finding the zero, local minimizer,
+      or global minimizer of a scalar function of a scalar argument, without
+      the use of derivative information.
+    </p>
+
+    <p>
+      <a href = "../../f_src/bvls/bvls.html">
+      BVLS</a>,
+      a FORTRAN90 library which
+      applies least squares methods to solve a linear system for which
+      lower and upper constraints may have been placed on every variable.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      solves constrained least squares problems.
+    </p>
+
+    <p>
+      <a href = "../../m_src/entrust/entrust.html">
+      ENTRUST</a>,
+      a MATLAB program which
+      solves problems in scalar optimization or nonlinear least squares.
+    </p>
+
+    <p>
+      <a href = "../../f_src/minpack/minpack.html">
+      MINPACK</a>,
+      a FORTRAN90 library which
+      solves systems of nonlinear equations, or the least squares minimization of the
+      residual of a set of linear or nonlinear equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nl2sol/nl2sol.html">
+      NL2SOL</a>,
+      a FORTRAN90 library which
+      implements an adaptive nonlinear least-squares algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/qr_solve/qr_solve.html">
+      QR_SOLVE</a>,
+      a FORTRAN90 library which
+      computes the least squares solution of a linear system A*x=b.
+    </p>
+
+    <p>
+      <a href = "../../f_src/praxis/praxis.html">
+      PRAXIS</a>,
+      a FORTRAN90 library which
+      minimizes a scalar function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt/test_opt.html">
+      TEST_OPT</a>,
+      a FORTRAN90 library which
+      defines test problems
+      requiring the minimization of a scalar function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms611/toms611.html">
+      TOMS611</a>,
+      a FORTRAN90 library which
+      seeks the minimizer of a scalar functional
+      of multiple variables.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Gene Golub, Christian Reinsch,<br>
+          Singular Value Decomposition and Least Squares Solutions,<br>
+          Numerische Mathematik,<br>
+          Volume 14, Number 5, April 1970, pages 403-420.
+        </li>
+        <li>
+          Charles Lawson, Richard Hanson,<br>
+          Solving Least Squares Problems,<br>
+          SIAM, 1995,<br>
+          ISBN: 0898713560,<br>
+          LC: QA275.L38.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "lawson.f90">lawson.f90</a>, the main source code.
+        </li>
+        <li>
+          <a href = "lawson.sh">lawson.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "lawson_prb.f90">lawson_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "lawson_prb.dat">lawson_prb.dat</a>,
+          a data file used by the sample problem.
+        </li>
+        <li>
+          <a href = "lawson_prb.sh">lawson_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "lawson_prb_output.txt">lawson_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BNDACC</b> accumulates information for a banded least squares problem.
+        </li>
+        <li>
+          <b>BNDSOL</b> solves a banded least squares problem accumulated by BNDACC.
+        </li>
+        <li>
+          <b>DIFF</b> is used in tests that depend on machine precision.
+        </li>
+        <li>
+          <b>G1</b> computes an orthogonal rotation matrix.
+        </li>
+        <li>
+          <b>G2</b> applies a rotation matrix to a vector (X,Y).
+        </li>
+        <li>
+          <b>GEN</b> generates numbers for construction of test cases.
+        </li>
+        <li>
+          <b>H12</b> constructs or applies a Householder transformation.
+        </li>
+        <li>
+          <b>HFTI:</b> Householder forward triangulation with column interchanges.
+        </li>
+        <li>
+          <b>LDP</b> implements least distance programming
+        </li>
+        <li>
+          <b>MFEOUT</b> labeled matrix output for use with singular value analysis.
+        </li>
+        <li>
+          <b>NNLS</b> implements the nonnegative least squares algorithm.
+        </li>
+        <li>
+          <b>QRBD</b> uses the QR algorithm for the singular values of a bidiagonal matrix.
+        </li>
+        <li>
+          <b>SVA</b> carries out a singular value analysis.
+        </li>
+        <li>
+          <b>SVDRS:</b> singular value decomposition also treating right side vector.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 21 October 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

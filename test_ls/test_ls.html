@@ -1,0 +1,321 @@
+<html>
+
+  <head>
+    <title>
+      TEST_LS - Linear Least Squares Test Problems
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_LS <br> Linear Least Squares Test Problems
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_LS</b>
+      is a FORTRAN90 library which
+      defines a number of linear least squares problems of the form A*x=b,
+      where A is an M by N matrix.
+    </p>
+
+    <p>
+      Some linear least squares problems include constraints on the data,
+      such as requiring that every entry of X be positive.  This library
+      only contains unconstrained problems.  For such problems, the task is
+      typically to find a vector X which minimizes the Euclidean norm of
+      the residual r=Ax-b, or, in cases where multiple minimizers exist,
+      to find the minimizer of minimal Euclidean norm.
+    </p>
+
+    <p>
+      <b>TEST_LS</b> requires access to a compiled copy of the R8LIB library.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_LS</b> is available in
+      <a href = "../../c_src/test_ls/test_ls.html">a C version</a> and
+      <a href = "../../cpp_src/test_ls/test_ls.html">a C++ version</a> and
+      <a href = "../../f77_src/test_ls/test_ls.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_ls/test_ls.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_ls/test_ls.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bvls/bvls.html">
+      BVLS</a>,
+      a FORTRAN90 library which
+      applies least squares methods to solve a linear system for which
+      lower and upper constraints may have been placed on every variable,
+      by Charles Lawson and Richard Hanson.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      solves constrained least squares problems,
+      by Richard Hanson and Fred Krogh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lawson/lawson.html">
+      LAWSON</a>,
+      a FORTRAN90 library which
+      contains routines for solving least squares problems and singular value
+      decompositions (SVD),
+      by Charles Lawson, Richard Hanson.
+    </p>
+
+    <p>
+      <a href = "../../f_src/llsq/llsq.html">
+      LLSQ</a>,
+      a FORTRAN90 library which
+      solves the simple linear least squares problem of finding the formula
+      of a straight line y=a*x+b which minimizes the root-mean-square error
+      to a set of N data points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/minpack/minpack.html">
+      MINPACK</a>,
+      a FORTRAN90 library which
+      solves systems of nonlinear equations, or the least squares minimization of the
+      residual of a set of linear or nonlinear equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes a wide variety of numerical software, including
+      solvers for linear systems of equations, interpolation of data,
+      numerical quadrature, linear least squares data fitting,
+      the solution of nonlinear equations, ordinary differential equations,
+      optimization and nonlinear least squares, simulation and random numbers,
+      trigonometric approximation and Fast Fourier Transforms (FFT).
+    </p>
+
+    <p>
+      <a href = "../../f_src/qr_solve/qr_solve.html">
+      QR_SOLVE</a>,
+      a FORTRAN90 library which
+      computes the least squares solution of a linear system A*x=b.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>,
+      a FORTRAN90 library which
+      contains many utility routines using double precision real (R8) arithmetic.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Cleve Moler,<br>
+          Numerical Computing with MATLAB,<br>
+          SIAM, 2004,<br>
+          ISBN13: 978-0-898716-60-3,<br>
+          LC: QA297.M625,<br>
+          ebook: http://www.mathworks.com/moler/chapters.html
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_ls.f90">test_ls.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "test_ls.sh">test_ls.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_ls_prb.f90">test_ls_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "test_ls_prb.sh">test_ls_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "test_ls_prb_output.txt">test_ls_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>P00_A</b> returns the matrix A for any least squares problem.
+        </li>
+        <li>
+          <b>P00_B</b> returns the right hand side B for any least squares problem.
+        </li>
+        <li>
+          <b>P00_M</b> returns the number of equations M for any least squares problem.
+        </li>
+        <li>
+          <b>P00_N</b> returns the number of variables N for any least squares problem.
+        </li>
+        <li>
+          <b>P00_PROB_NUM</b> returns the number of least squares problems.
+        </li>
+        <li>
+          <b>P00_X</b> returns the least squares solution X for any least squares problem.
+        </li>
+        <li>
+          <b>P01_A</b> returns the matrix A for problem 1.
+        </li>
+        <li>
+          <b>P01_B</b> returns the right hand side B for problem 1.
+        </li>
+        <li>
+          <b>P01_M</b> returns the number of equations M for problem 1.
+        </li>
+        <li>
+          <b>P01_N</b> returns the number of variables N for problem 1.
+        </li>
+        <li>
+          <b>P01_X</b> returns the least squares solution X for problem 1.
+        </li>
+        <li>
+          <b>P02_A</b> returns the matrix A for problem 2.
+        </li>
+        <li>
+          <b>P02_B</b> returns the right hand side B for problem 2.
+        </li>
+        <li>
+          <b>P02_M</b> returns the number of equations M for problem 2.
+        </li>
+        <li>
+          <b>P02_N</b> returns the number of variables N for problem 2.
+        </li>
+        <li>
+          <b>P02_X</b> returns the least squares solution X for problem 2.
+        </li>
+        <li>
+          <b>P03_A</b> returns the matrix A for problem 3.
+        </li>
+        <li>
+          <b>P03_B</b> returns the right hand side B for problem 3.
+        </li>
+        <li>
+          <b>P03_M</b> returns the number of equations M for problem 3.
+        </li>
+        <li>
+          <b>P03_N</b> returns the number of variables N for problem 3.
+        </li>
+        <li>
+          <b>P03_X</b> returns the least squares solution X for problem 3.
+        </li>
+        <li>
+          <b>P04_A</b> returns the matrix A for problem 4.
+        </li>
+        <li>
+          <b>P04_B</b> returns the right hand side B for problem 4.
+        </li>
+        <li>
+          <b>P04_M</b> returns the number of equations M for problem 4.
+        </li>
+        <li>
+          <b>P04_N</b> returns the number of variables N for problem 4.
+        </li>
+        <li>
+          <b>P04_X</b> returns the least squares solution X for problem 4.
+        </li>
+        <li>
+          <b>P05_A</b> returns the matrix A for problem 5.
+        </li>
+        <li>
+          <b>P05_B</b> returns the right hand side B for problem 5.
+        </li>
+        <li>
+          <b>P05_M</b> returns the number of equations M for problem 5.
+        </li>
+        <li>
+          <b>P05_N</b> returns the number of variables N for problem 5.
+        </li>
+        <li>
+          <b>P05_X</b> returns the least squares solution X for problem 5.
+        </li>
+        <li>
+          <b>P06_A</b> returns the matrix A for problem 6.
+        </li>
+        <li>
+          <b>P06_B</b> returns the right hand side B for problem 6.
+        </li>
+        <li>
+          <b>P06_M</b> returns the number of equations M for problem 6.
+        </li>
+        <li>
+          <b>P06_N</b> returns the number of variables N for problem 6.
+        </li>
+        <li>
+          <b>P06_X</b> returns the least squares solution X for problem 6.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 04 October 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

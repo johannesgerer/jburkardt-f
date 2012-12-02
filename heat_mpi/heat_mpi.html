@@ -1,0 +1,331 @@
+<html>
+
+  <head>
+    <title>
+      HEAT_MPI - Solve the 1D Time Dependent Heat Equation using MPI
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      HEAT_MPI <br> Solve the 1D Time Dependent Heat Equation using MPI
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>HEAT_MPI</b>
+      is a FORTRAN90 program which
+      solves the 1D Time Dependent Heat Equation using MPI.
+    </p>
+
+    <h3 align = "center">
+      The continuous problem
+    </h3>
+
+    <p>
+      This program solves
+      <pre>
+        dUdT - k * d2UdX2 = F(X,T)
+      </pre>
+      over the interval [A,B] with boundary conditions
+      <pre>
+        U(A,T) = UA(T),
+        U(B,T) = UB(T),
+      </pre>
+      over the time interval [T0,T1] with initial conditions
+      <pre>
+        U(X,T0) = U0(X)
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      The finite difference discretization
+    </h3>
+
+    <p>
+      To apply the finite difference method, we define a grid of
+      points X(1) through X(N), and a grid of times T(1) through T(M).
+      In the simplest case, both grids are evenly spaced.  We denote
+      by U(I,J) the approximate solution at spatial point X(I) and
+      time T(J).
+    </p>
+
+    <p>
+      A second order finite difference can be used to approximate the
+      second derivative in space, using the solution at three
+      points equally separated in space.
+    </p>
+
+    <p>
+      A forward Euler approximation to the first derivative in time
+      is used, which relates the value of the solution to its value
+      at a short interval in the future.
+    </p>
+
+    <p>
+      Thus, at the spatial point X(I) and time T(J), the discretized differential
+      equation defines a relationship between U(I-1,J), U(I,J), U(I+1,J)
+      and the "future" value U(I,J+1).  This relationship can be drawn
+      symbolically as a four node stencil:
+      <pre>
+                     U(I,J+1)
+                      |
+                      |
+        U(I-1,J)-----U(I,J)--------U(I+1,J)
+      </pre>
+    </p>
+
+    <p>
+      Since we are given the value of the solution at the initial time,
+      we can use the stencil, plus the boundary condition information,
+      to advance the solution to the next time step.  Repeating this
+      operation gives us an approximation to the solution at every
+      point in the space-time grid.
+    </p>
+
+    <h3 align = "center">
+      Using MPI to compute the solution:
+    </h3>
+
+    <p>
+      To solve the 1D heat equation using MPI, we use a form of domain
+      decomposition.  Given P processors, we divided the interval [A,B]
+      into P equal subintervals.  Each processor can set up the stencil
+      equations that define the solution almost independently.  The exception
+      is that every processor needs to receive a copy of the solution
+      values determined for the nodes on its immediately left and right sides.
+    </p>
+
+    <p>
+      Thus, each processor uses MPI to send its leftmost solution value to its
+      left neighbor, and its rightmost solution value to its rightmost neighbor.
+      Of course, each processor must then also receive the corresponding information
+      that its neighbors send to it.  (However, the first and last processor
+      only have one neighbor, and use boundary condition information to determine
+      the behavior of the solution at the node which is not next to another
+      processor's node.)
+    </p>
+
+    <p>
+      The naive way of setting up the information exchange works, but can
+      be inefficient, since each processor sends a message and then waits for
+      confirmation of receipt, which can't happen until some processor has
+      moved to the "receive" stage, which only happens because the first or
+      last processor doesn't have to receive information on a given step.
+    </p>
+
+    <p>
+      It is worth investigating how to improve the information exchange
+      (an exercise for the reader!).  The odd processors could SEND while the
+      even processors RECEIVE for instance, guaranteeing that messages would
+      not have to wait in a buffer.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>HEAT_MPI</b> is available in
+      <a href = "../../c_src/heat_mpi/heat_mpi.html">a C version</a> and
+      <a href = "../../cpp_src/heat_mpi/heat_mpi.html">a C++ version</a> and
+      <a href = "../../f77_src/heat_mpi/heat_mpi.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/heat_mpi/heat_mpi.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/communicator_mpi/communicator_mpi.html">
+      COMMUNICATOR_MPI</a>,
+      a FORTRAN90 program which
+      creates new communicators involving a subset of initial
+      set of MPI processes in the default communicator MPI_COMM_WORLD.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hello_mpi/hello_mpi.html">
+      HELLO_MPI</a>,
+      a FORTRAN90 program which
+      prints out "Hello, world!" using the MPI parallel programming environment.
+    </p>
+
+    <p>
+      <a href = "../../examples/moab/moab.html">
+      MOAB</a>,
+      examples which
+      illustrate the use of the MOAB job scheduler for a computer cluster.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi/mpi.html">
+      MPI</a>,
+      FORTRAN90 programs which
+      illustrate the use of the MPI application program interface
+      for carrying out parallel computations in a distributed memory environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi_stubs/mpi_stubs.html">
+      MPI_STUBS</a>,
+      a FORTRAN90 library which
+      is a set of "stub" MPI routines, which allows
+      a user to compile, load, and possibly run an MPI program on a
+      serial machine.
+    </p>
+
+    <p>
+      <a href = "../../f_src/multitask_mpi/multitask_mpi.html">
+      MULTITASK_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates how to "multitask", that is, to execute several unrelated
+      and distinct tasks simultaneously, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_mpi/prime_mpi.html">
+      PRIME_MPI</a>,
+      a FORTRAN90 program which
+      counts the number of primes between 1 and N, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_mpi/quad_mpi.html">
+      QUAD_MPI</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule, and carries out the
+      computation in parallel using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/random_mpi/random_mpi.html">
+      RANDOM_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates one way to generate the same sequence of random numbers
+      for both sequential execution and parallel execution under MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ring_mpi/ring_mpi.html">
+      RING_MPI</a>,
+      a FORTRAN90 program which
+      uses the MPI parallel programming environment, and measures the time
+      necessary to copy a set of data around a ring of processes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/satisfy_mpi/satisfy_mpi.html">
+      SATISFY_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates, for a particular circuit, an exhaustive search
+      for solutions of the circuit satisfiability problem, using MPI to
+      carry out the calculation in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/search_mpi/search_mpi.html">
+      SEARCH_MPI</a>,
+      a FORTRAN90 program which
+      searches integers between A and B for a value J such that F(J) = C,
+      using MPI for parallel execution.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Gropp, Ewing Lusk, Anthony Skjellum,<br>
+          Using MPI: Portable Parallel Programming with the
+          Message-Passing Interface,<br>
+          Second Edition,<br>
+          MIT Press, 1999,<br>
+          ISBN: 0262571323,<br>
+          LC: QA76.642.G76.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "heat_mpi.f90">heat_mpi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "heat2_mpi.f90">heat2_mpi.f90</a>,
+          a revised version of the source code which tries to
+          speed up the transfer of information by having odd and even
+          processors do SENDS and RECEIVES in pairs.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>HEAT_FSU</b> compiles and runs the program on the FSU HPC cluster.
+      <ul>
+        <li>
+          <a href = "heat_fsu.sh">heat_fsu.sh</a>,
+          the MOAB script.
+        </li>
+        <li>
+          <a href = "heat_fsu_output.txt">heat_fsu_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HEAT_SYSX</b> compiles and runs the program on Virginia Techs's System X.
+      <ul>
+        <li>
+          <a href = "heat_sysx.sh">heat_sysx.sh</a>,
+          BASH commands to compile, link and load the source code on System X.
+        </li>
+        <li>
+          <a href = "heat_sysx_output.txt">heat_sysx_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 22 October 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

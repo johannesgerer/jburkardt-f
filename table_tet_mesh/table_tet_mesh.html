@@ -1,0 +1,603 @@
+<html>
+
+  <head>
+    <title>
+      TABLE_TET_MESH - A Tet Mesh of Points in 3D
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TABLE_TET_MESH <br> A Tet Mesh of Points in 3D
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TABLE_TET_MESH</b>
+      is a FORTRAN90 program which
+      computes the
+      Delaunay tetrahedral mesh ("tet mesh") of a set of points in 3D.
+    </p>
+
+    <p>
+      Specifically, <b>TABLE_TET_MESH</b> reads a data file containing
+      the coordinates of a set of points in 3D, computes the Delaunay
+      tet mesh, and writes out a file of sets of
+      four node indices that form a mesh of tetrahedrons.
+    </p>
+
+    <p>
+      The input node coordinate data file and the output tetrahedron
+      node index file are in the simple
+      <a href = "../../data/table/table.html">
+      TABLE file format</a>, one set of node coordinates or one
+      set of four node indices, respectively, on each line.
+    </p>
+
+    <p>
+      A <i>tet mesh</i> of 3d points is the analog of the
+      triangularization of points in 2d.  In other words, it is a maximal
+      organization of the points into nonintersecting tetrahedrons.
+      Since it is a Delaunay tet mesh, it has the additional
+      property that, of all maximal tet meshes, this one has the
+      largest minimum angle.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>table_tet_mesh</b> <i>nodes.txt</i>
+        </dt>
+        <dd>
+          reads the node coordinates in <i>nodes.txt</i>, computes
+          the tetrahedron information, and writes it to the file
+          <i>nodes</i>.<b>tetras</b>.<i>txt</i>.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt_tet_mesh/cvt_tet_mesh.html">
+      CVT_TET_MESH</a>,
+      a FORTRAN90 program which
+      uses CVT methods to compute a tet mesh in a region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geompack3/geompack3.html">
+      GEOMPACK3</a>,
+      a FORTRAN90 library which
+      computes Delaunay meshes and Voronoi diagrams in 3D, by Barry Joe.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mesh_bandwidth/mesh_bandwidth.html">
+      MESH_BANDWIDTH</a>,
+      a FORTRAN90 program which
+      returns the geometric bandwidth associated with a mesh of
+      elements of any order and in a space of arbitrary dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_barplot_ppma/table_barplot_ppma.html">
+      TABLE_BARPLOT_PPMA</a>,
+      a FORTRAN90 program which
+      reads a table file and creates a
+      PPMA bargraph of the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_border/table_border.html">
+      TABLE_BORDER</a>,
+      a FORTRAN90 program which
+      can be used to add a border
+      (of zero values) to a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns/table_columns.html">
+      TABLE_COLUMNS</a>,
+      a FORTRAN90 program which
+      can extract specific columns of data
+      from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns_permute/table_columns_permute.html">
+      TABLE_COLUMNS_PERMUTE</a>,
+      a FORTRAN90 program which
+      permutes the columns of a
+      table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      computes the Delaunay triangulation of a set
+      of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_histogram/table_histogram.html">
+      TABLE_HISTOGRAM</a>,
+      a FORTRAN90 program which
+      can make a histogram of a set of points
+      stored in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_io/table_io.html">
+      TABLE_IO</a>,
+      a FORTRAN90 library which
+      supplies the routines used to read the TABLE file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_latinize/table_latinize.html">
+      TABLE_LATINIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and creates a "latinized" version by adjusting the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_merge/table_merge.html">
+      TABLE_MERGE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points, and removes duplicates, and points that are close to each other.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_orthonormalize/table_orthonormalize.html">
+      TABLE_ORTHONORMALIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and orthonormalizes the columns.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_quality/table_quality.html">
+      TABLE_QUALITY</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and computes the quality of dispersion.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_record_match/table_record_match.html">
+      TABLE_RECORD_MATCH</a>,
+      a FORTRAN90 program which
+      can be used to find close records in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_scale/table_scale.html">
+      TABLE_SCALE</a>,
+      a FORTRAN90 program which
+      can be used to multiply the entries of a table file
+      by a scale vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_shift/table_shift.html">
+      TABLE_SHIFT</a>,
+      a FORTRAN90 program which
+      can be used to shift the entries of a table file
+      by a shift vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_stats/table_stats.html">
+      TABLE_STATS</a>,
+      a FORTRAN90 program which
+      can read a table file and compute certain statistics.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_top/table_top.html">
+      TABLE_TOP</a>,
+      a FORTRAN90 program which
+      can read a table file of M-dimensional data and
+      make a table of plots of all pairs of coordinates.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_unborder/table_unborder.html">
+      TABLE_UNBORDER</a>,
+      a FORTRAN90 program which
+      can be used to remove the border from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_uniform_noise/table_uniform_noise.html">
+      TABLE_UNIFORM_NOISE</a>,
+      a FORTRAN90 program which
+      can be used to add a uniform noise term to the data
+      in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_voronoi/table_voronoi.html">
+      TABLE_VORONOI</a>,
+      a FORTRAN90 program which
+      can be used to compute information about
+      the Voronoi diagram of the points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_tet_mesh/test_tet_mesh.html">
+      TEST_TET_MESH</a>,
+      a FORTRAN90 library which
+      defines a few test regions for the generation
+      of a tet mesh.
+    </p>
+
+    <p>
+      <a href = "../../m_src/tet_mesh_display_matlab/tet_mesh_display_matlab.html">
+      TET_MESH_DISPLAY</a>,
+      a MATLAB program which
+      can read in the
+      node and tetra files defining a tet mesh and display a wireframe
+      image.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/tet_mesh_display_opengl/tet_mesh_display_opengl.html">
+      TET_MESH_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads a tet mesh and displays the
+      nodes and edges using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_l2q/tet_mesh_l2q.html">
+      TET_MESH_L2Q</a>,
+      a FORTRAN90 program which
+      can read in the
+      node and tetra files defining a 4-node tet mesh and write out
+      files for a 10-node tet mesh by adding midside nodes.
+    </p>
+
+    <p>
+      <a href = "../../data/tet_mesh_order4/tet_mesh_order4.html">
+      TET_MESH_ORDER4</a>,
+      a data directory which
+      contains a description and
+      examples of a tet mesh using order 4 elements.
+    </p>
+
+    <p>
+      <a href = "../../data/tet_mesh_order10/tet_mesh_order10.html">
+      TET_MESH_ORDER10</a>,
+      a data directory which
+      contains a description and
+      examples of a tet mesh using order 10 elements.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_q2l/tet_mesh_q2l.html">
+      TET_MESH_Q2L</a>,
+      a FORTRAN90 program which
+      converts a quadratic to linear tet mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_quality/tet_mesh_quality.html">
+      TET_MESH_QUALITY</a>,
+      a FORTRAN90 program which
+      computes the quality of a tet mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_rcm/tet_mesh_rcm.html">
+      TET_MESH_RCM</a>,
+      a FORTRAN90 program which
+      takes a tet mesh and
+      relabels the nodes to reduce the bandwidth of the
+      corresponding adjacency matrix.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_tet_neighbors/tet_mesh_tet_neighbors.html">
+      TET_MESH_TET_NEIGHBORS</a>,
+      a FORTRAN90 program which
+      computes the tetrahedral adjacency information.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Herbert Edelsbrunner,<br>
+          Geometry and Topology for Mesh Generation,<br>
+          Cambridge, 2001,<br>
+          QA377.E36,<br>
+          ISBN 0-521-79309-2.
+        </li>
+        <li>
+          Barry Joe,<br>
+          GEOMPACK - a software package for the generation of meshes
+          using geometric algorithms,<br>
+          Advances in Engineering Software,<br>
+          Volume 13, pages 325-331, 1991.
+        </li>
+        <li>
+          Per-Olof Persson, Gilbert Strang,<br>
+          A Simple Mesh Generator in MATLAB,<br>
+          SIAM Review,<br>
+          Volume 46, Number 2, pages 329-345, June 2004.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "table_tet_mesh.f90">table_tet_mesh.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "table_tet_mesh.sh">table_tet_mesh.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>CUBE</b> is a simple dataset of 8 nodes:
+      <ul>
+        <li>
+          <a href = "cube_nodes.txt">cube_nodes.txt</a>,
+          the coordinates of 8 nodes that form the vertices of a cube.
+        </li>
+        <li>
+          <a href = "cube_nodes_tetras.txt">
+          cube_nodes_tetras.txt</a>,
+          the tetrahedron file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>P01_00050</b> is a dataset of 50 nodes in a 3x1x1 channel.
+      <ul>
+        <li>
+          <a href = "../cvt_tetra/p01_00050_nodes.txt">p01_00050_nodes.txt</a>,
+          the coordinates of 50 nodes.
+        </li>
+        <li>
+          <a href = "p01_00050_tetras.txt">
+          p01_00050_tetras.txt</a>,
+          the tetrahedron file.
+        </li>
+        <li>
+          <a href = "p01_00050_output.txt">
+          p01_00050_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>P01_00400</b> is a dataset of 400 nodes in a 3x1x1 channel.
+      <ul>
+        <li>
+          <a href = "../cvt_tetra/p01_00400_nodes.txt">p01_00400_nodes.txt</a>,
+          the coordinates of 400 nodes.
+        </li>
+        <li>
+          <a href = "p01_00400_tetras.txt">
+          p01_00400_tetras.txt</a>,
+          the tetrahedron file.
+        </li>
+        <li>
+          <a href = "p01_00400_output.txt">
+          p01_00400_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>P01_03200</b> is a dataset of 3200 nodes in a 3x1x1 channel.
+      <ul>
+        <li>
+          <a href = "../cvt_tetra/p01_03200_nodes.txt">p01_03200_nodes.txt</a>,
+          the coordinates of 3200 nodes.
+        </li>
+        <li>
+          <a href = "p01_03200_tetras.txt">
+          p01_03200_tetras.txt</a>,
+          the tetrahedron file.
+        </li>
+        <li>
+          <a href = "p01_03200_output.txt">
+          p01_03200_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TABLE_TET_MESH.
+        </li>
+        <li>
+          <b>AVAILF</b> returns the index of the next available record in the FC array.
+        </li>
+        <li>
+          <b>BARYTH</b> computes barycentric coordinates of a point in 3D.
+        </li>
+        <li>
+          <b>CCSPH</b> finds the circumsphere through the vertices of a tetrahedron.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DHPSRT</b> sorts a list of double precision points in KD.
+        </li>
+        <li>
+          <b>DLESS</b> determines the lexicographically lesser of two double precision values.
+        </li>
+        <li>
+          <b>DSFTDW</b> does one step of the heap sort algorithm for double precision data.
+        </li>
+        <li>
+          <b>DTRIS3</b> constructs a Delaunay triangulation of vertices in 3D.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>FRSTET</b> shifts vertices so the first 4 vertices are in general position in 3D.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HTDEL</b> deletes a record from the hash table.
+        </li>
+        <li>
+          <b>HTINS</b> inserts a record into the hash table.
+        </li>
+        <li>
+          <b>HTSRC</b> searches for a record in the hash table.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_WRITE</b> writes an I4MAT file.
+        </li>
+        <li>
+          <b>NWTHOU</b> creates new tetrahedra outside the current convex hull.
+        </li>
+        <li>
+          <b>OPSIDE</b> tests if points are on opposite sides of a triangular face.
+        </li>
+        <li>
+          <b>ORDER3</b> reorders 3 integers into ascending order.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SWAPES</b> swaps faces in a 3D triangulation.
+        </li>
+        <li>
+          <b>TETLST</b> constructs a list of tetrahedra from the FC array.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UPDATF</b> updates a record in FC after a local transformation.
+        </li>
+        <li>
+          <b>VBFAC</b> determines the boundary faces of a 3D triangulation.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 20 October 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

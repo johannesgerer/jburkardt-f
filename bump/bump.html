@@ -1,0 +1,456 @@
+<html>
+
+  <head>
+    <title>
+      BUMP - Flow Over a Bump
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BUMP <br> Flow Over a Bump
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BUMP</b>
+      is a FORTRAN90 program which
+      solves a 2D steady incompressible flow problem set in a channel with a small
+      bump.
+    </p>
+
+    <p>
+      <b>BUMP</b> is a preliminary version of the code that eventually became
+      the <b>FLOW</b> programs.  The code was designed to solve for the
+      flow field in a channel with a parameterized bump.  Data for the flow
+      profile downstream from the bump was given, and the idea was to determine
+      a bump parameter value that produced the best match with the given
+      profile.  In later programs, this task became much more elaborate.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/channel/channel.html">
+      CHANNEL</a>,
+      a FORTRAN90 program which
+      solves a simple channel flow problem with no bump.
+    </p>
+
+    <p>
+      <a href = "../../data/fem2d/fem2d.html">
+      FEM2D</a>,
+      a data directory which
+      contains a description of the data files
+      that can be used to describe a 2D finite element model.
+    </p>
+
+    <p>
+      <a href = "../../f_src/flow3/flow3.html">
+      FLOW3</a>,
+      a FORTRAN90 program which
+      solves steady incompressible
+      Navier Stokes equations in 2D using the finite element method.
+    </p>
+
+    <p>
+      <a href = "../../f_src/flow5/flow5.html">
+      FLOW5</a>,
+      a FORTRAN90 program which
+      solves steady incompressible
+      Navier Stokes equations in 2D using the finite element method.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/hcell/hcell.html">
+      HCELL</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in an "H"-shaped region.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/inout/inout.html">
+      INOUT</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in a square region with
+      an inlet and an outlet.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_control/mhd_control.html">
+      MHD_CONTROL</a>,
+      a FORTRAN90 program which
+      tries to control the evolution of an MHD system so that a particular
+      state is achieved.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_flow/mhd_flow.html">
+      MHD_FLOW</a>,
+      a FORTRAN90 program which
+      computes the evolution of an MHD system.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nast2d_f90/nast2d_f90.html">
+      NAST2D_F90</a>,
+      a FORTRAN90 program which
+      uses the finite volume method to set up and solve
+      the 2D incompressible Navier Stokes equations with heat.
+    </p>
+
+    <p>
+      <a href = "../../c_src/nsasm/nsasm.html">
+      NSASM</a>,
+      a C library which
+      sets up the sparse matrix needed for
+      a Newton iteration to solve a finite element formulation of
+      the steady incompressible 2D Navier Stokes equations.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/tcell/tcell.html">
+      TCELL</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in a "T"-shaped region.
+    </p>
+
+    <p>
+      <a href = "../../m_src/toms866/toms866.html">
+      TOMS866</a>,
+      a MATLAB library which
+      is the Incompressible Flow Iterative Solution Software;<br>
+      this library is commonly called <b>IFISS</b>;<br>
+      this is ACM TOMS algorithm 866.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          John Burkardt, Max Gunzburger, Janet Peterson,<br>
+          Discretization of Cost and Sensitivities in Shape Optimization,<br>
+          in Computation and Control IV,<br>
+          edited by Bowers and Lund,<br>
+          Proceedings of the Fourth Bozeman Conference on Computation
+          and Control,<br>
+          Birkhaeuser, 1995.
+        </li>
+        <li>
+          Max Gunzburger,<br>
+          Finite Element Methods for Viscous Incompressible Flows,<br>
+          A Guide to Theory, Practice, and Algorithms,<br>
+          Academic Press, 1989,<br>
+          ISBN: 0-12-307350-2,<br>
+          LC: TA357.G86.
+        </li>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Methode der Finiten Elemente,<br>
+          Teubner Studienbuecher, 1980,<br>
+          ISBN: 3-519-02349-0.
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bump.f90">bump.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "bump.sh">bump.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      The program writes out "XY" (node coordinate) and "UV" (velocity
+      component) data files at each step.
+      <ul>
+        <li>
+          <a href = "bump_output.txt">bump_output.txt</a>, printed output from a
+          run of the program.
+        </li>
+        <li>
+          <a href = "xy_001.txt">xy_001.txt</a>,
+          grid information, step 1.
+        </li>
+        <li>
+          <a href = "uv_001.txt">uv_001.txt</a>,
+          velocity information, step 1.
+        </li>
+        <li>
+          <a href = "uv_001_vec.png">uv_001_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the velocity information.
+        </li>
+        <li>
+          <a href = "xy_002.txt">xy_002.txt</a>,
+          grid information, step 2.
+        </li>
+        <li>
+          <a href = "uv_002.txt">uv_002.txt</a>,
+          velocity information, step 2.
+        </li>
+        <li>
+          <a href = "uv_002_vec.png">uv_002_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the velocity information.
+        </li>
+        <li>
+          <a href = "xy_003.txt">xy_003.txt</a>,
+          grid information, step 3.
+        </li>
+        <li>
+          <a href = "uv_003.txt">uv_003.txt</a>,
+          velocity information, step 3.
+        </li>
+        <li>
+          <a href = "uv_003_vec.png">uv_003_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the velocity information.
+        </li>
+        <li>
+          <a href = "xy_004.txt">xy_004.txt</a>,
+          grid information, step 4.
+        </li>
+        <li>
+          <a href = "uv_004.txt">uv_004.txt</a>,
+          velocity information, step 4.
+        </li>
+        <li>
+          <a href = "uv_004_vec.png">uv_004_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the velocity information.
+        </li>
+        <li>
+          <a href = "xy_005.txt">xy_005.txt</a>,
+          grid information, step 5.
+        </li>
+        <li>
+          <a href = "uv_005.txt">uv_005.txt</a>,
+          velocity information, step 5.
+        </li>
+        <li>
+          <a href = "uv_005_vec.png">uv_005_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the velocity information.
+        </li>
+        <li>
+          <a href = "xy_006.txt">xy_006.txt</a>,
+          grid information, step 6.
+        </li>
+        <li>
+          <a href = "uv_006.txt">uv_006.txt</a>,
+          velocity information, step 6.
+        </li>
+        <li>
+          <a href = "uv_006_vec.png">uv_006_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the velocity information.
+        </li>
+        <li>
+          <a href = "xy_007.txt">xy_007.txt</a>,
+          grid information, step 7.
+        </li>
+        <li>
+          <a href = "uv_007.txt">uv_007.txt</a>,
+          velocity information, step 7.
+        </li>
+        <li>
+          <a href = "uv_007_vec.png">uv_007_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the velocity information.
+        </li>
+        <li>
+          <a href = "xy_008.txt">xy_008.txt</a>,
+          grid information, step 8.
+        </li>
+        <li>
+          <a href = "uv_008.txt">uv_008.txt</a>,
+          velocity information, step 8.
+        </li>
+        <li>
+          <a href = "uv_008_vec.png">uv_008_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the velocity information.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for BUMP.
+        </li>
+        <li>
+          <b>BSP</b> evaluates the linear basis function associated with pressure.
+        </li>
+        <li>
+          <b>DAXPY</b> computes constant times a vector plus a vector.
+        </li>
+        <li>
+          <b>DDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>DGBFA</b> factors a real band matrix by elimination.
+        </li>
+        <li>
+          <b>DGBSL</b> solves a real banded system factored by DGBCO or DGBFA.
+        </li>
+        <li>
+          <b>DSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> increments a partially numeric filename.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GETG</b> extracts the values of a quantity along the profile line.
+        </li>
+        <li>
+          <b>GRAM</b> computes and stores the Gram matrix.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>IDAMAX</b> finds the index of the vector element of maximum absolute value.
+        </li>
+        <li>
+          <b>IGETL</b> gets the local unknown number along the profile line.
+        </li>
+        <li>
+          <b>LINSYS</b> solves the linearized Navier Stokes equation.
+        </li>
+        <li>
+          <b>NSTOKE</b> solves the Navier Stokes equation using Taylor-Hood elements.
+        </li>
+        <li>
+          <b>PVAL</b> computes a table of pressures at all the nodes.
+        </li>
+        <li>
+          <b>QBF</b> evaluates the quadratic basis functions.
+        </li>
+        <li>
+          <b>REFBSP</b> evaluates the linear basis functions in a reference triangle.
+        </li>
+        <li>
+          <b>REFQBF</b> evaluates the quadratic basis functions on reference triangle
+        </li>
+        <li>
+          <b>RESID</b> computes the residual.
+        </li>
+        <li>
+          <b>SETBAN</b> computes the half band width.
+        </li>
+        <li>
+          <b>SETBAS</b> evaluates the basis functions at each integration point.
+        </li>
+        <li>
+          <b>SETGRD</b> sets up the geometric grid.
+        </li>
+        <li>
+          <b>SETLIN</b> determines unknown numbers along the profile line.
+        </li>
+        <li>
+          <b>SETQUD</b> sets midpoint quadrature rule information.
+        </li>
+        <li>
+          <b>SETXY</b> sets the grid coordinates based on the value of the parameter.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRANS</b> calculates the element transformation mapping.
+        </li>
+        <li>
+          <b>UBDRY</b> sets the parabolic inflow in terms of the value of the parameter
+        </li>
+        <li>
+          <b>UBUMP</b> calculates the sensitivity dU/dA on the bump.
+        </li>
+        <li>
+          <b>UVAL</b> evaluates the velocities at a given quadrature point.
+        </li>
+        <li>
+          <b>UV_WRITE</b> writes a velocity file.
+        </li>
+        <li>
+          <b>XY_WRITE</b> creates node coordinate data.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

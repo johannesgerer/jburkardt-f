@@ -1,0 +1,147 @@
+<html>
+
+  <head>
+    <title>
+      BLACS - Basic Linear Algebra Communication Subprograms
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055" >
+
+    <h1 align = "center">
+      BLACS <br> Basic Linear Algebra Communication Subprograms
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BLACS</b>
+      is a directory of FORTRAN90 programs which
+      illustrate the use of the BLACS library.
+    </p>
+
+    <p>
+      The BLACS, or "Basic Linear Algebra Communication Subprograms",
+      form a linear algebra-oriented message passing interface that may be
+      implemented efficiently and uniformly across a large range of
+      distributed memory platforms.
+    </p>
+
+    <p>
+      The length of time required to implement efficient distributed memory
+      algorithms makes it impractical to rewrite programs for every new
+      parallel machine.  The BLACS exist in order to make linear algebra
+      applications both easier to program and more portable.  It is for
+      this reason that the BLACS are used as the communication layer of
+      the distributed memory linear algebra package SCALAPACK, for instance.
+    </p>
+
+    <p>
+      MPI is one example of a distributed memory system.  A program written
+      at the BLACS level can run on under MPI.  The same program should run
+      correctly on systems that use other distributed memory systems.  The
+      key is that on each system, the installation of the BLACS library
+      takes into account the interfact between the standard BLACS routines
+      and the local distributed memory system.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs
+    </h3>
+
+    <p>
+      <a href = "../../f_src/mpi/mpi.html">
+      MPI</a>,
+      FORTRAN90 programs which
+      demonstrate the use of MPI for parallel computing in
+      distributed memory systems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/openmp/openmp.html">
+      OPENMP</a>
+      FORTRAN90 programs which
+      illustrate the use of the OpenMP application program interface
+      for carrying out parallel computations in a shared memory environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/scalapack/scalapack.html">
+      SCALAPACK</a>,
+      FORTRAN90 programs which
+      demonstrate the use of SCALAPACK.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Jack Dongarra, Clinton Whaley,<br>
+          A User's Guide to the BLACS, v1.1,<br>
+          LAPACK Working Note 94.
+        </li>
+        <li>
+          Susan Blackford, Jaeyoung Choi, Andrew Cleary, Eduardo D'Azevedo,
+          James Demmel, Inderjit Dhillon, Jack Dongarra, Sven Hammarling,
+          Greg Henry, Antoine Petitet, Ken Stanley, David Walker,
+          Clinton Whaley,<br>
+          The ScaLAPACK User's Guide,<br>
+          SIAM, 1997,<br>
+          ISBN13: 978-0-898713-97-8.
+        </li>
+        <li>
+          <a href = "http://www.netlib.org/blacs/index.html">
+                     http://www.netlib.org/blacs/index.html </a>
+          the BLACS website on NETLIB.
+        </li>
+        <li>
+          <a href = "http://www.netlib.org/scalapack/index.html">
+                     http://www.netlib.org/scalapack/index.html </a>
+          the ScaLAPACK website on NETLIB.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>BLACS_PRB</b> is a simple test in which a grid is set up, and each
+      process reports in to the master process:
+      <ul>
+        <li>
+          <a href = "blacs_prb.f90">blacs_prb.f90</a>, the sample problem;
+        </li>
+        <li>
+          <a href = "blacs_prb.sh">blacs_prb.sh</a>,
+          commands to compile, link and run on an MPI distributed memory system
+          that uses MPIRUN for execution;
+        </li>
+        <li>
+          <a href = "blacs_prb_output.txt">blacs_prb_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 04 April 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

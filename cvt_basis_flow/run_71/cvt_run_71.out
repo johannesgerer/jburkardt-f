@@ -1,0 +1,227 @@
+July 18 2003   3:41:37.423 PM
+ 
+CVT_BASIS
+  Arrange a set of PDE solution data into clusters.
+ 
+  Null cluster policy:
+  0, do nothing, accept null clusters;
+  1, reset center to a random data point;
+  2, reset center to random point in hull;
+ 
+  NULL_CLUSTER_POLICY =      1
+ 
+RANDOM_INITIALIZE
+  Initialize RANDOM_NUMBER with user SEED =     12345678
+ 
+What is the run type?
+ 
+  RUN_TYPE =      8
+ 
+  For RUN_TYPE = 8,
+  read in the steady state solution from "STEADY.TXT"
+  and, letting SS be the steady state solution,
+  subtract 5/3 SS from solutions 1 through 250
+  subtract 1/3 SS from solutions 251 through 500.
+  We DROP the odd numbered solutions.
+  We do NOT normalize the result.
+ 
+What is the name of the XY data file?
+ 
+  The file "/a/fs/r1/src-samples/datasets/inout_flow/xy.txt" contains 1681 lines.
+ 
+  X minimum :    0.00000    
+  X maximum :    1.00000    
+  Y minimum :    0.00000    
+  Y maximum :    1.00000    
+ 
+What is the name of the steady state file?
+ 
+  Steady state information was read from
+  the file "/a/fs/r1/src-samples/datasets/inout_flow/steady.txt".
+ 
+  Steady max norm =   0.300000    
+  Steady l2 norm =     3.38866    
+ 
+What is the name of the first solution file?
+ 
+We believe the number of solution files is    500
+ 
+  The data is stored in an M by N matrix.
+ 
+  The "spatial" dimension M is     3362
+  The number of data points N is    500
+ 
+All the data has been read into POINT.
+ 
+  RUN_TYPE = 8:
+  Thin out the input data points.
+ 
+  Thinning increment is            2
+  Original input data size is    500
+  Thinned data size is           250
+ 
+Enter lower and upper number of clusters
+ 
+  The program will try to determine the minimum energy
+  of a clustering, for cluster sizes in the range:
+       8     8
+ 
+Enter the number of different random cluster configurations to check
+ 
+  For each number of clusters, the number of
+  distinct initial random configurations to be checked
+  will be      15
+ 
+Enter the number of energy iterations
+ 
+  For each initial random configuration, the number of
+  times the program will recompute the cluster centers,
+  cluster components, and energy is     30
+ 
+Enter element file for mass matrix preconditioning or "None".
+ 
+  Number of elements =    800
+  Number of nodes per element =      6
+ 
+  The bandwidth of the matrix is     85
+ 
+  Compute the mass matrix.
+ 
+  Cholesky-factor the mass matrix.
+ 
+Enter 0 to use raw data, 1 to use normalized data.
+ 
+NORMAL = 0
+  Data will NOT be normalized.
+ 
+Number of clusters allowed:      8
+ 
+     1
+Initial_RAW    0.161536         0
+HMEANS_RAW     0.110110E-01    15
+KMEANS_RAW     0.108163E-01     3
+ 
+     2
+Initial_RAW    0.160353         0
+HMEANS_RAW     0.140462E-01    20
+KMEANS_RAW     0.137953E-01     5
+ 
+     3
+Initial_RAW    0.152869         0
+HMEANS_RAW     0.110142E-01    22
+KMEANS_RAW     0.108163E-01     3
+ 
+     4
+Initial_RAW    0.156107         0
+HMEANS_RAW     0.120888E-01    13
+KMEANS_RAW     0.119514E-01     3
+ 
+     5
+Initial_RAW    0.158571         0
+HMEANS_RAW     0.109929E-01    16
+KMEANS_RAW     0.108163E-01     3
+ 
+     6
+Initial_RAW    0.154388         0
+HMEANS_RAW     0.109929E-01    13
+KMEANS_RAW     0.108163E-01     3
+ 
+     7
+Initial_RAW    0.152247         0
+HMEANS_RAW     0.111129E-01    18
+KMEANS_RAW     0.108163E-01     4
+ 
+     8
+Initial_RAW    0.156519         0
+HMEANS_RAW     0.111129E-01    18
+KMEANS_RAW     0.108163E-01     4
+ 
+     9
+Initial_RAW    0.159313         0
+HMEANS_RAW     0.111129E-01    18
+KMEANS_RAW     0.108163E-01     4
+ 
+    10
+Initial_RAW    0.162501         0
+HMEANS_RAW     0.111129E-01    11
+KMEANS_RAW     0.108163E-01     4
+ 
+    11
+Initial_RAW    0.159863         0
+HMEANS_RAW     0.111129E-01    11
+KMEANS_RAW     0.108163E-01     4
+ 
+    12
+Initial_RAW    0.160532         0
+HMEANS_RAW     0.109497E-01    18
+KMEANS_RAW     0.108163E-01     4
+ 
+    13
+Initial_RAW    0.155138         0
+HMEANS_RAW     0.111129E-01    17
+KMEANS_RAW     0.108163E-01     4
+ 
+    14
+Initial_RAW    0.156200         0
+HMEANS_RAW     0.133091E-01    17
+KMEANS_RAW     0.108163E-01     9
+ 
+    15
+Initial_RAW    0.157383         0
+HMEANS_RAW     0.122164E-01    17
+KMEANS_RAW     0.119514E-01     3
+ 
+ANALYSIS_RAW:
+  Computed energy range for given cluster size:
+ 
+  (The minimum and maximum should be close if
+  we're taking enough iterations.)
+ 
+  Number
+  of       Minimum      Maximum
+  Clusters Energy       Energy
+ 
+      8        0.0108        0.0138
+ 
+  Energy table:
+ 
+Number
+of                   Energy
+Clusters  Energy     /point      Sqrt(E/Pt)
+ 
+      8        0.0108        0.0000        0.0066
+ 
+CLUSTER_CENSUS
+  Individual cluster population and energy
+ 
+  Index    Population   Percentage   Energy  Percentage  Min  Max
+ 
+      1            26           10   1.75613         10  149  174
+      2            15            6   1.82656         10  134  148
+      3            76           30   1.53894          8  175  250
+      4            14            5   2.54995         14   19   32
+      5             8            3   2.06045         11  126  133
+      6            10            4   2.30091         13    9   18
+      7            93           37   2.03657         11   33  125
+      8             8            3   3.28596         18    1    8
+ 
+               ------          ---  ------------    ---
+ 
+  Total           250          100   17.3555        100    1  250
+ 
+CVT_BASIS:
+  Writing cluster generators to individual files.
+ 
+  Write file gen_001.txt
+  Write file gen_002.txt
+  Write file gen_003.txt
+  Write file gen_004.txt
+  Write file gen_005.txt
+  Write file gen_006.txt
+  Write file gen_007.txt
+  Write file gen_008.txt
+ 
+CVT_BASIS
+  Normal end of execution.
+ 
+July 18 2003   3:42:22.357 PM

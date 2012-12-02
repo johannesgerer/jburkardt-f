@@ -1,0 +1,623 @@
+<html>
+
+  <head>
+    <title>
+      TRIANGULATION_RCM - Reverse Cuthill-McKee Node Reordering
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TRIANGULATION_RCM <br> Reverse Cuthill-McKee Node Reordering
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TRIANGULATION_RCM</b>
+      is a FORTRAN90 program which
+      computes the Reverse Cuthill-McKee (RCM) reordering for nodes in a triangulation composed
+      of 3-node or 6-node triangles.
+    </p>
+
+    <p>
+      The user supplies a node file and a triangle file, containing
+      the coordinates of the nodes, and the indices of the nodes that
+      make up each triangle.  Either 3-node or 6-node triangles may
+      be used.
+    </p>
+
+    <p>
+      The program reads the data, computes the adjacency information,
+      carries out the RCM algorithm to get the permutation, applies
+      the permutation to the nodes and triangles, and writes out
+      new node and triangle files that correspond to the RCM permutation.
+    </p>
+
+    <p>
+      Note that the node file would normally contain exactly 2 values
+      on each line, namely the X and Y coordinates of the nodes.
+      However, this is not necessary.  Extra information can be
+      included on each line, for instance, a "Z" coordinate.  Each
+      line should include the same number of items, but all will be
+      permuted correctly together.  The program does not actually
+      need to know the coordinates of the nodes, so in fact, ANY data
+      (as long as it is real numeric data) associated with the nodes
+      can be listed in the node file, and will be correctly permuted.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>triangulation_rcm</b> <i>prefix</i>
+      </blockquote>
+      where <i>prefix</i> is the common filename prefix:
+      <ul>
+        <li>
+          <i>prefix</i>_nodes.txt contains the node coordinates,
+        </li>
+        <li>
+          <i>prefix</i>_elements.txt contains the element definitions.
+        </li>
+        <li>
+          <i>prefix</i>_rcm_nodes.txt will contain the RCM node coordinates,
+        </li>
+        <li>
+          <i>prefix</i>_rcm_elements.txt will contain the RCM element definitions.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TRIANGULATION_RCM</b> is available in
+      <a href = "../../cpp_src/triangulation_rcm/triangulation_rcm.html">a C++ version</a> and
+      <a href = "../../f_src/triangulation_rcm/triangulation_rcm.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/triangulation_rcm/triangulation_rcm.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/mesh_bandwidth/mesh_bandwidth.html">
+      MESH_BANDWIDTH</a>,
+      a FORTRAN90 program which
+      returns the geometric bandwidth associated with a mesh of
+      elements of any order and in a space of arbitrary dimension.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_mesh_rcm/quad_mesh_rcm.html">
+      QUAD_MESH_RCM</a>,
+      a FORTRAN90 program which
+      computes the reverse Cuthill-McKee (RCM) reordering for nodes in a mesh of 4-node
+      quadrilaterals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/rcm/rcm.html">
+      RCM</a>,
+      a FORTRAN90 library which
+      carries out reverse Cuthill-McKee computations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      triangulates a set of nodes whose coordinates are stored in a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_rcm/tet_mesh_rcm.html">
+      TET_MESH_RCM</a>,
+      a FORTRAN90 library which
+      applies the reverse Cuthill-McKee reordering to a tetrahedral
+      mesh of nodes in 3D.
+    </p>
+
+    <p>
+      <a href = "../../c_src/triangle/triangle.html">
+      TRIANGLE</a>,
+      a C program which
+      computes a triangulation of a geometric region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation/triangulation.html">
+      TRIANGULATION</a>,
+      a FORTRAN90 library which
+      carries out various operations on order 3 ("linear") or order 6
+      ("quadratic") triangulations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_boundary_nodes/triangulation_boundary_nodes.html">
+      TRIANGULATION_BOUNDARY_NODES</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, determines which nodes
+      lie on the boundary, and writes their coordinates to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_corner/triangulation_corner.html">
+      TRIANGULATION_CORNER</a>,
+      a FORTRAN90 program which
+      patches triangulations so that no triangle has two sides on the boundary.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_delaunay_discrepancy/triangulation_delaunay_discrepancy.html">
+      TRIANGULATION_DELAUNAY_DISCREPANCY</a>,
+      a FORTRAN90 program which
+      measures the amount by which a triangulation fails the local Delaunay test;
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/triangulation_display_opengl/triangulation_display_opengl.html">
+      TRIANGULATION_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads files defining a triangulation and displays an image
+      using Open GL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_histogram/triangulation_histogram.html">
+      TRIANGULATION_HISTOGRAM</a>,
+      a FORTRAN90 program which
+      computes histograms of data over a triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_l2q/triangulation_l2q.html">
+      TRIANGULATION_L2Q</a>,
+      a FORTRAN90 program which
+      reads data defining a 3-node triangulation and generates
+      midside nodes and writes out the corresponding 6-node triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_mask/triangulation_mask.html">
+      TRIANGULATION_MASK</a>,
+      a FORTRAN90 program which
+      takes an existing triangulation and deletes triangles and
+      their corresponding nodes as requested by the user.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order3/triangulation_order3.html">
+      TRIANGULATION_ORDER3</a>,
+      a data directory which
+      contains a description and
+      examples of order 3 triangulations.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order6/triangulation_order6.html">
+      TRIANGULATION_ORDER6</a>,
+      a data directory which
+      contains a description and
+      examples of order 6 triangulations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_orient/triangulation_orient.html">
+      TRIANGULATION_ORIENT</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, makes sure that
+      every triangle has positive orientation, and if not, writes a
+      corrected triangle file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_plot/triangulation_plot.html">
+      TRIANGULATION_PLOT</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation and creates a
+      PostScript image of the nodes and triangles.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_q2l/triangulation_q2l.html">
+      TRIANGULATION_Q2L</a>,
+      a FORTRAN90 program which
+      reads data defining a 6-node triangulation, and subdivides
+      each triangle into 4 3-node triangles, writing the resulting
+      triangulation to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_quad/triangulation_quad.html">
+      TRIANGULATION_QUAD</a>,
+      a FORTRAN90 program which
+      estimates the integral of a function over a triangulated region.
+    </p>
+
+
+    <p>
+      <a href = "../../f_src/triangulation_quality/triangulation_quality.html">
+      TRIANGULATION_QUALITY</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation and computes a number
+      of quality measures.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_refine/triangulation_refine.html">
+      TRIANGULATION_REFINE</a>,
+      a FORTRAN90 program which
+      can be used to refine a triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_triangle_neighbors/triangulation_triangle_neighbors.html">
+      TRIANGULATION_TRIANGLE_NEIGHBORS</a>,
+      a FORTRAN90 program which
+      reads data defining a triangulation, determines the neighboring
+      triangles of each triangle, and writes that information to a file.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          HL Crane, Norman Gibbs, William Poole, Paul Stockmeyer,<br>
+          Algorithm 508:
+          Matrix Bandwidth and Profile Reduction,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 2, Number 4, December 1976, pages 375-377.
+        </li>
+        <li>
+          Marc deBerg, Marc Krevald, Mark Overmars,
+          Otfried Schwarzkopf,<br>
+          Computational Geometry,<br>
+          Springer, 2000,<br>
+          ISBN: 3-540-65620-0.
+        </li>
+        <li>
+          Alan George, Joseph Liu,<br>
+          Computer Solution of Large Sparse Positive Definite Matrices,<br>
+          Prentice Hall, 1981,<br>
+          ISBN: 0131652745,<br>
+          LC: QA188.G46
+        </li>
+        <li>
+          Norman Gibbs,<br>
+          Algorithm 509:
+          A Hybrid Profile Reduction Algorithm,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 2, Number 4, December 1976, pages 378-387.
+        </li>
+        <li>
+          Norman Gibbs, William Poole, Paul Stockmeyer,<br>
+          An Algorithm for Reducing the Bandwidth
+          and Profile of a Sparse Matrix,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 13, 1976, pages 236-250.
+        </li>
+        <li>
+          Joseph ORourke,<br>
+          Computational Geometry,<br>
+          Second Edition,<br>
+          Cambridge, 1998,<br>
+          ISBN: 0521649765,<br>
+          LC: QA448.D38.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "triangulation_rcm.f90">triangulation_rcm.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "triangulation_rcm.sh">triangulation_rcm.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>TEST3</b> works with a 3-node triangulation:
+      <ul>
+        <li>
+          <a href = "test3_output.txt">test3_output.txt</a>,
+          the printed output from the command <br>
+          "triangulation_rcm test3"
+        </li>
+        <li>
+          <a href = "test3_nodes.txt">test3_nodes.txt</a>,
+          the node file.
+        </li>
+        <li>
+          <a href = "test3_nodes.png">test3_nodes.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the nodes created by TRIANGULATION_PLOT.
+        </li>
+        <li>
+          <a href = "test3_elements.txt">test3_elements.txt</a>,
+          the triangle file.
+        </li>
+        <li>
+          <a href = "test3_elements.png">test3_elements.png</a>,
+          an image of the triangles before the reordering.
+        </li>
+        <li>
+          <a href = "test3_rcm_nodes.txt">test3_rcm_nodes.txt</a>,
+          the RCM reordered node file.
+        </li>
+        <li>
+          <a href = "test3_rcm_nodes.png">test3_rcm_nodes.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the reordered nodes created by TRIANGULATION_PLOT.
+        </li>
+        <li>
+          <a href = "test3_rcm_elements.txt">test3_rcm_elements.txt</a>,
+          the RCM reordered triangle file.
+        </li>
+        <li>
+          <a href = "test3_rcm_elements.png">test3_rcm_elements.png</a>,
+          an image of the triangles after the reordering.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TEST6</b> works with a 6-node triangulation:
+      <ul>
+        <li>
+          <a href = "test6_output.txt">test6_output.txt</a>,
+          the printed output from the command <br>
+          "triangulation_rcm test6"
+        </li>
+        <li>
+          <a href = "test6_nodes.txt">test6_nodes.txt</a>,
+          the node file.
+        </li>
+        <li>
+          <a href = "test6_nodes.png">test6_nodes.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the nodes created by TRIANGULATION_PLOT.
+        </li>
+        <li>
+          <a href = "test6_elements.txt">test6_elements.txt</a>,
+          the triangle file.
+        </li>
+        <li>
+          <a href = "test6_elements.png">test6_elements.png</a>,
+          an image of the triangles before the reordering.
+        </li>
+        <li>
+          <a href = "test6_rcm_nodes.txt">test6_rcm_nodes.txt</a>,
+          the RCM reordered node file.
+        </li>
+        <li>
+          <a href = "test6_rcm_nodes.png">test6_rcm_nodes.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the reordered nodes created by TRIANGULATION_PLOT.
+        </li>
+        <li>
+          <a href = "test6_rcm_elements.txt">test6_rcm_elements.txt</a>,
+          the RCM reordered triangle file.
+        </li>
+        <li>
+          <a href = "test6_rcm_elements.png">test6_rcm_elements.png</a>,
+          an image of the triangles after the reordering.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TRIANGULATION_RCM.
+        </li>
+        <li>
+          <b>ADJ_BANDWIDTH</b> computes the bandwidth of an adjacency matrix.
+        </li>
+        <li>
+          <b>ADJ_PERM_BANDWIDTH</b> computes the bandwidth of a permuted adjacency matrix.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DEGREE</b> computes the degrees of the nodes in the connected component.
+        </li>
+        <li>
+          <b>DTABLE_DATA_READ</b> reads data from a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_DATA_WRITE</b> writes data to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_READ</b> reads the header from a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_WRITE</b> writes the header to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_WRITE</b> writes a double precision table file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GENRCM</b> finds the reverse Cuthill-Mckee ordering for a general graph.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4ROW_COMPARE</b> compares two rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SORT_A</b> ascending sorts the rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SWAP</b> swaps two rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an integer vector.
+        </li>
+        <li>
+          <b>ITABLE_DATA_READ</b> reads data from an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_DATA_WRITE</b> writes data to an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_HEADER_READ</b> reads the header from an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_HEADER_WRITE</b> writes the header to an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_WRITE</b> writes an integer table file.
+        </li>
+        <li>
+          <b>LEVEL_SET</b> generates the connected level structure rooted at a given node.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PERM_INVERSE</b> produces the inverse of a given permutation.
+        </li>
+        <li>
+          <b>R8COL_PERMUTE</b> permutes an R8COL in place.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>RCM</b> renumbers a connected component by the reverse Cuthill McKee algorithm.
+        </li>
+        <li>
+          <b>ROOT_FIND</b> finds a pseudo-peripheral node.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_INDEX_LAST_C</b> finds the LAST occurrence of a given character.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_ADJ_COUNT</b> counts adjacencies in a triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_ADJ_SET</b> sets adjacencies in a triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_NEIGHBOR_TRIANGLES</b> determines triangle neighbors.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER6_ADJ_COUNT</b> counts adjacencies in a triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER6_ADJ_SET</b> sets adjacencies in a triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER6_NEIGHBOR_TRIANGLES</b> determines triangle neighbors.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 08 January 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

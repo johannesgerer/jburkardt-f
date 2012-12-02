@@ -1,0 +1,396 @@
+ 
+HELMHOLTZ
+  FORTRAN90/OpenMP version
+ 
+  A program which solves the 2D Helmholtz equation.
+ 
+  This program is being run in parallel.
+ 
+  The number of processors available =        8
+  The number of threads available    =        1
+ 
+  The region is [-1,1] x [-1,1].
+  The number of nodes in the X direction is M =      500
+  The number of nodes in the Y direction is N =      500
+  Number of variables in linear system M * N  =   250000
+  The scalar coefficient in the Helmholtz equation is ALPHA =   0.250000    
+  The relaxation value is OMEGA =    1.10000    
+  The error tolerance is TOL =   0.100000E-07
+  The maximum number of Jacobi iterations is IT_MAX =      100
+ 
+  Right hand side l2 norm =    1458.46    
+     1  Residual RMS   0.234289E-07
+     2  Residual RMS   0.234173E-07
+     3  Residual RMS   0.234096E-07
+     4  Residual RMS   0.234033E-07
+     5  Residual RMS   0.233978E-07
+     6  Residual RMS   0.233929E-07
+     7  Residual RMS   0.233884E-07
+     8  Residual RMS   0.233842E-07
+     9  Residual RMS   0.233802E-07
+    10  Residual RMS   0.233764E-07
+    11  Residual RMS   0.233729E-07
+    12  Residual RMS   0.233694E-07
+    13  Residual RMS   0.233661E-07
+    14  Residual RMS   0.233629E-07
+    15  Residual RMS   0.233598E-07
+    16  Residual RMS   0.233568E-07
+    17  Residual RMS   0.233538E-07
+    18  Residual RMS   0.233510E-07
+    19  Residual RMS   0.233482E-07
+    20  Residual RMS   0.233455E-07
+    21  Residual RMS   0.233428E-07
+    22  Residual RMS   0.233402E-07
+    23  Residual RMS   0.233376E-07
+    24  Residual RMS   0.233351E-07
+    25  Residual RMS   0.233326E-07
+    26  Residual RMS   0.233302E-07
+    27  Residual RMS   0.233278E-07
+    28  Residual RMS   0.233255E-07
+    29  Residual RMS   0.233231E-07
+    30  Residual RMS   0.233209E-07
+    31  Residual RMS   0.233186E-07
+    32  Residual RMS   0.233164E-07
+    33  Residual RMS   0.233142E-07
+    34  Residual RMS   0.233120E-07
+    35  Residual RMS   0.233098E-07
+    36  Residual RMS   0.233077E-07
+    37  Residual RMS   0.233056E-07
+    38  Residual RMS   0.233035E-07
+    39  Residual RMS   0.233015E-07
+    40  Residual RMS   0.232994E-07
+    41  Residual RMS   0.232974E-07
+    42  Residual RMS   0.232954E-07
+    43  Residual RMS   0.232934E-07
+    44  Residual RMS   0.232915E-07
+    45  Residual RMS   0.232895E-07
+    46  Residual RMS   0.232876E-07
+    47  Residual RMS   0.232857E-07
+    48  Residual RMS   0.232838E-07
+    49  Residual RMS   0.232819E-07
+    50  Residual RMS   0.232801E-07
+    51  Residual RMS   0.232782E-07
+    52  Residual RMS   0.232764E-07
+    53  Residual RMS   0.232746E-07
+    54  Residual RMS   0.232727E-07
+    55  Residual RMS   0.232709E-07
+    56  Residual RMS   0.232692E-07
+    57  Residual RMS   0.232674E-07
+    58  Residual RMS   0.232656E-07
+    59  Residual RMS   0.232639E-07
+    60  Residual RMS   0.232621E-07
+    61  Residual RMS   0.232604E-07
+    62  Residual RMS   0.232587E-07
+    63  Residual RMS   0.232570E-07
+    64  Residual RMS   0.232553E-07
+    65  Residual RMS   0.232536E-07
+    66  Residual RMS   0.232519E-07
+    67  Residual RMS   0.232502E-07
+    68  Residual RMS   0.232486E-07
+    69  Residual RMS   0.232469E-07
+    70  Residual RMS   0.232453E-07
+    71  Residual RMS   0.232437E-07
+    72  Residual RMS   0.232420E-07
+    73  Residual RMS   0.232404E-07
+    74  Residual RMS   0.232388E-07
+    75  Residual RMS   0.232372E-07
+    76  Residual RMS   0.232356E-07
+    77  Residual RMS   0.232340E-07
+    78  Residual RMS   0.232324E-07
+    79  Residual RMS   0.232309E-07
+    80  Residual RMS   0.232293E-07
+    81  Residual RMS   0.232277E-07
+    82  Residual RMS   0.232262E-07
+    83  Residual RMS   0.232247E-07
+    84  Residual RMS   0.232231E-07
+    85  Residual RMS   0.232216E-07
+    86  Residual RMS   0.232201E-07
+    87  Residual RMS   0.232185E-07
+    88  Residual RMS   0.232170E-07
+    89  Residual RMS   0.232155E-07
+    90  Residual RMS   0.232140E-07
+    91  Residual RMS   0.232125E-07
+    92  Residual RMS   0.232110E-07
+    93  Residual RMS   0.232096E-07
+    94  Residual RMS   0.232081E-07
+    95  Residual RMS   0.232066E-07
+    96  Residual RMS   0.232051E-07
+    97  Residual RMS   0.232037E-07
+    98  Residual RMS   0.232022E-07
+    99  Residual RMS   0.232008E-07
+   100  Residual RMS   0.231993E-07
+ 
+Total number of iterations      101
+ 
+  Computed U l2 norm :         0.640273    
+  Computed U_EXACT l2 norm :    266.133    
+  Error l2 norm:                265.517    
+ 
+  Elapsed wall clock time =    1.01651    
+ 
+HELMHOLTZ
+  Normal end of execution.
+ 
+HELMHOLTZ
+  FORTRAN90/OpenMP version
+ 
+  A program which solves the 2D Helmholtz equation.
+ 
+  This program is being run in parallel.
+ 
+  The number of processors available =        8
+  The number of threads available    =        2
+ 
+  The region is [-1,1] x [-1,1].
+  The number of nodes in the X direction is M =      500
+  The number of nodes in the Y direction is N =      500
+  Number of variables in linear system M * N  =   250000
+  The scalar coefficient in the Helmholtz equation is ALPHA =   0.250000    
+  The relaxation value is OMEGA =    1.10000    
+  The error tolerance is TOL =   0.100000E-07
+  The maximum number of Jacobi iterations is IT_MAX =      100
+ 
+  Right hand side l2 norm =    1458.46    
+     1  Residual RMS   0.234289E-07
+     2  Residual RMS   0.234173E-07
+     3  Residual RMS   0.234096E-07
+     4  Residual RMS   0.234033E-07
+     5  Residual RMS   0.233978E-07
+     6  Residual RMS   0.233929E-07
+     7  Residual RMS   0.233884E-07
+     8  Residual RMS   0.233842E-07
+     9  Residual RMS   0.233802E-07
+    10  Residual RMS   0.233764E-07
+    11  Residual RMS   0.233729E-07
+    12  Residual RMS   0.233694E-07
+    13  Residual RMS   0.233661E-07
+    14  Residual RMS   0.233629E-07
+    15  Residual RMS   0.233598E-07
+    16  Residual RMS   0.233568E-07
+    17  Residual RMS   0.233538E-07
+    18  Residual RMS   0.233510E-07
+    19  Residual RMS   0.233482E-07
+    20  Residual RMS   0.233455E-07
+    21  Residual RMS   0.233428E-07
+    22  Residual RMS   0.233402E-07
+    23  Residual RMS   0.233376E-07
+    24  Residual RMS   0.233351E-07
+    25  Residual RMS   0.233326E-07
+    26  Residual RMS   0.233302E-07
+    27  Residual RMS   0.233278E-07
+    28  Residual RMS   0.233255E-07
+    29  Residual RMS   0.233231E-07
+    30  Residual RMS   0.233209E-07
+    31  Residual RMS   0.233186E-07
+    32  Residual RMS   0.233164E-07
+    33  Residual RMS   0.233142E-07
+    34  Residual RMS   0.233120E-07
+    35  Residual RMS   0.233098E-07
+    36  Residual RMS   0.233077E-07
+    37  Residual RMS   0.233056E-07
+    38  Residual RMS   0.233035E-07
+    39  Residual RMS   0.233015E-07
+    40  Residual RMS   0.232994E-07
+    41  Residual RMS   0.232974E-07
+    42  Residual RMS   0.232954E-07
+    43  Residual RMS   0.232934E-07
+    44  Residual RMS   0.232915E-07
+    45  Residual RMS   0.232895E-07
+    46  Residual RMS   0.232876E-07
+    47  Residual RMS   0.232857E-07
+    48  Residual RMS   0.232838E-07
+    49  Residual RMS   0.232819E-07
+    50  Residual RMS   0.232801E-07
+    51  Residual RMS   0.232782E-07
+    52  Residual RMS   0.232764E-07
+    53  Residual RMS   0.232746E-07
+    54  Residual RMS   0.232727E-07
+    55  Residual RMS   0.232709E-07
+    56  Residual RMS   0.232692E-07
+    57  Residual RMS   0.232674E-07
+    58  Residual RMS   0.232656E-07
+    59  Residual RMS   0.232639E-07
+    60  Residual RMS   0.232621E-07
+    61  Residual RMS   0.232604E-07
+    62  Residual RMS   0.232587E-07
+    63  Residual RMS   0.232570E-07
+    64  Residual RMS   0.232553E-07
+    65  Residual RMS   0.232536E-07
+    66  Residual RMS   0.232519E-07
+    67  Residual RMS   0.232502E-07
+    68  Residual RMS   0.232486E-07
+    69  Residual RMS   0.232469E-07
+    70  Residual RMS   0.232453E-07
+    71  Residual RMS   0.232437E-07
+    72  Residual RMS   0.232420E-07
+    73  Residual RMS   0.232404E-07
+    74  Residual RMS   0.232388E-07
+    75  Residual RMS   0.232372E-07
+    76  Residual RMS   0.232356E-07
+    77  Residual RMS   0.232340E-07
+    78  Residual RMS   0.232324E-07
+    79  Residual RMS   0.232309E-07
+    80  Residual RMS   0.232293E-07
+    81  Residual RMS   0.232277E-07
+    82  Residual RMS   0.232262E-07
+    83  Residual RMS   0.232247E-07
+    84  Residual RMS   0.232231E-07
+    85  Residual RMS   0.232216E-07
+    86  Residual RMS   0.232201E-07
+    87  Residual RMS   0.232185E-07
+    88  Residual RMS   0.232170E-07
+    89  Residual RMS   0.232155E-07
+    90  Residual RMS   0.232140E-07
+    91  Residual RMS   0.232125E-07
+    92  Residual RMS   0.232110E-07
+    93  Residual RMS   0.232096E-07
+    94  Residual RMS   0.232081E-07
+    95  Residual RMS   0.232066E-07
+    96  Residual RMS   0.232051E-07
+    97  Residual RMS   0.232037E-07
+    98  Residual RMS   0.232022E-07
+    99  Residual RMS   0.232008E-07
+   100  Residual RMS   0.231993E-07
+ 
+Total number of iterations      101
+ 
+  Computed U l2 norm :         0.640273    
+  Computed U_EXACT l2 norm :    266.133    
+  Error l2 norm:                265.517    
+ 
+  Elapsed wall clock time =   0.534958    
+ 
+HELMHOLTZ
+  Normal end of execution.
+ 
+HELMHOLTZ
+  FORTRAN90/OpenMP version
+ 
+  A program which solves the 2D Helmholtz equation.
+ 
+  This program is being run in parallel.
+ 
+  The number of processors available =        8
+  The number of threads available    =        4
+ 
+  The region is [-1,1] x [-1,1].
+  The number of nodes in the X direction is M =      500
+  The number of nodes in the Y direction is N =      500
+  Number of variables in linear system M * N  =   250000
+  The scalar coefficient in the Helmholtz equation is ALPHA =   0.250000    
+  The relaxation value is OMEGA =    1.10000    
+  The error tolerance is TOL =   0.100000E-07
+  The maximum number of Jacobi iterations is IT_MAX =      100
+ 
+  Right hand side l2 norm =    1458.46    
+     1  Residual RMS   0.234289E-07
+     2  Residual RMS   0.234173E-07
+     3  Residual RMS   0.234096E-07
+     4  Residual RMS   0.234033E-07
+     5  Residual RMS   0.233978E-07
+     6  Residual RMS   0.233929E-07
+     7  Residual RMS   0.233884E-07
+     8  Residual RMS   0.233842E-07
+     9  Residual RMS   0.233802E-07
+    10  Residual RMS   0.233764E-07
+    11  Residual RMS   0.233729E-07
+    12  Residual RMS   0.233694E-07
+    13  Residual RMS   0.233661E-07
+    14  Residual RMS   0.233629E-07
+    15  Residual RMS   0.233598E-07
+    16  Residual RMS   0.233568E-07
+    17  Residual RMS   0.233538E-07
+    18  Residual RMS   0.233510E-07
+    19  Residual RMS   0.233482E-07
+    20  Residual RMS   0.233455E-07
+    21  Residual RMS   0.233428E-07
+    22  Residual RMS   0.233402E-07
+    23  Residual RMS   0.233376E-07
+    24  Residual RMS   0.233351E-07
+    25  Residual RMS   0.233326E-07
+    26  Residual RMS   0.233302E-07
+    27  Residual RMS   0.233278E-07
+    28  Residual RMS   0.233255E-07
+    29  Residual RMS   0.233231E-07
+    30  Residual RMS   0.233209E-07
+    31  Residual RMS   0.233186E-07
+    32  Residual RMS   0.233164E-07
+    33  Residual RMS   0.233142E-07
+    34  Residual RMS   0.233120E-07
+    35  Residual RMS   0.233098E-07
+    36  Residual RMS   0.233077E-07
+    37  Residual RMS   0.233056E-07
+    38  Residual RMS   0.233035E-07
+    39  Residual RMS   0.233015E-07
+    40  Residual RMS   0.232994E-07
+    41  Residual RMS   0.232974E-07
+    42  Residual RMS   0.232954E-07
+    43  Residual RMS   0.232934E-07
+    44  Residual RMS   0.232915E-07
+    45  Residual RMS   0.232895E-07
+    46  Residual RMS   0.232876E-07
+    47  Residual RMS   0.232857E-07
+    48  Residual RMS   0.232838E-07
+    49  Residual RMS   0.232819E-07
+    50  Residual RMS   0.232801E-07
+    51  Residual RMS   0.232782E-07
+    52  Residual RMS   0.232764E-07
+    53  Residual RMS   0.232746E-07
+    54  Residual RMS   0.232727E-07
+    55  Residual RMS   0.232709E-07
+    56  Residual RMS   0.232692E-07
+    57  Residual RMS   0.232674E-07
+    58  Residual RMS   0.232656E-07
+    59  Residual RMS   0.232639E-07
+    60  Residual RMS   0.232621E-07
+    61  Residual RMS   0.232604E-07
+    62  Residual RMS   0.232587E-07
+    63  Residual RMS   0.232570E-07
+    64  Residual RMS   0.232553E-07
+    65  Residual RMS   0.232536E-07
+    66  Residual RMS   0.232519E-07
+    67  Residual RMS   0.232502E-07
+    68  Residual RMS   0.232486E-07
+    69  Residual RMS   0.232469E-07
+    70  Residual RMS   0.232453E-07
+    71  Residual RMS   0.232437E-07
+    72  Residual RMS   0.232420E-07
+    73  Residual RMS   0.232404E-07
+    74  Residual RMS   0.232388E-07
+    75  Residual RMS   0.232372E-07
+    76  Residual RMS   0.232356E-07
+    77  Residual RMS   0.232340E-07
+    78  Residual RMS   0.232324E-07
+    79  Residual RMS   0.232309E-07
+    80  Residual RMS   0.232293E-07
+    81  Residual RMS   0.232277E-07
+    82  Residual RMS   0.232262E-07
+    83  Residual RMS   0.232247E-07
+    84  Residual RMS   0.232231E-07
+    85  Residual RMS   0.232216E-07
+    86  Residual RMS   0.232201E-07
+    87  Residual RMS   0.232185E-07
+    88  Residual RMS   0.232170E-07
+    89  Residual RMS   0.232155E-07
+    90  Residual RMS   0.232140E-07
+    91  Residual RMS   0.232125E-07
+    92  Residual RMS   0.232110E-07
+    93  Residual RMS   0.232096E-07
+    94  Residual RMS   0.232081E-07
+    95  Residual RMS   0.232066E-07
+    96  Residual RMS   0.232051E-07
+    97  Residual RMS   0.232037E-07
+    98  Residual RMS   0.232022E-07
+    99  Residual RMS   0.232008E-07
+   100  Residual RMS   0.231993E-07
+ 
+Total number of iterations      101
+ 
+  Computed U l2 norm :         0.640273    
+  Computed U_EXACT l2 norm :    266.133    
+  Error l2 norm:                265.517    
+ 
+  Elapsed wall clock time =   0.298485    
+ 
+HELMHOLTZ
+  Normal end of execution.

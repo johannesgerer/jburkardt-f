@@ -1,0 +1,215 @@
+<html>
+
+  <head>
+    <title>
+      HAAR - The Haar Transform
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      HAAR <br> The Haar Transform
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>HAAR</b>
+      is a FORTRAN90 library which
+      computes the Haar transform of data.
+    </p>
+
+    <p>
+      In the simplest case, one is given a vector X whose length N is a power of 2.
+      We now consider consecutive pairs of entries of X, and for I from 0 to (N/2)-1
+      we define:
+      <pre>
+        S[I] = ( X[2*I] + X[2*I+1] ) / sqrt ( 2 )
+        D[I] = ( X[2*I] - X[2*I+1] ) / sqrt ( 2 )
+      </pre>
+      We now replace X by the vector S concatenated with D.  Assuming that (N/2)
+      is greater than 1, we repeat the operation on the (N/2) entries of S, and
+      so on, until we have reached a stage where our resultant S and D each contain
+      one entry. 
+    </p>
+
+    <p>
+      For data in the form of a 2D array, the transform is applied to the columns
+      and then the rows.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>HAAR</b> is available in
+      <a href = "../../c_src/haar/haar.html">a C version</a> and
+      <a href = "../../cpp_src/haar/haar.html">a C++ version</a> and
+      <a href = "../../f77_src/haar/haar.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/haar/haar.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/haar/haar.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fftpack5/fftpack5.html">
+      FFTPACK5</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      <a href = "../../f_src/sftpack/sftpack.html">
+      SFTPACK</a>,
+      a FORTRAN90 library which
+      implements the "slow" Fourier transform, intended as a teaching
+      tool and comparison with the fast Fourier transform.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sine_transform/sine_transform.html">
+      SINE_TRANSFORM</a>,
+      a FORTRAN90 library which
+      demonstrates some simple properties of the discrete sine transform.
+    </p>
+
+    <p>
+      <a href = "../../f_src/walsh/walsh.html">
+      WALSH</a>,
+      a FORTRAN90 library which
+      implements versions of the Walsh and Haar transforms.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wavelet/wavelet.html">
+      WAVELET</a>,
+      a FORTRAN90 library which
+      does some simple wavelet calculations;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Ken Beauchamp,<br>
+          Walsh functions and their applications,<br>
+          Academic Press, 1975,<br>
+          ISBN: 0-12-084050-2,<br>
+          LC: QA404.5.B33.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "haar.f90">haar.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "haar.sh">haar.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "haar_prb.f90">haar_prb.f90</a>
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "haar_prb.sh">haar_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "haar_prb_output.txt">haar_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>HAAR_1D</b> computes the Haar transform of a vector.
+        </li>
+        <li>
+          <b>HAAR_1D_INVERSE</b> computes the inverse Haar transform of a vector.
+        </li>
+        <li>
+          <b>HAAR_2D</b> computes the Haar transform of an array.
+        </li>
+        <li>
+          <b>HAAR_2D_INVERSE</b> inverts the Haar transform of an array.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM_01</b> fills an R8MAT with unit pseudorandom numbers.
+        </li>
+        <li>
+          <b>R8VEC_LINSPACE</b> returns a vector of linearly spaced values.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 14 March 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,237 @@
+<html>
+
+  <head>
+    <title>
+      XYZ_TO_PDB - Write PDB Atom Coordinates to XYZ File
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      XYZ_TO_PDB <br> Write PDB Atom Coordinates to XYZ File
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>XYZ_TO_PDB</b>
+      is a FORTRAN90 program which
+      reads an XYZ file
+      containing a list of spatial coordinates, and writes a
+      PDB file containing ATOM records with the given coordinates.
+    </p>
+
+    <p>
+      The PDB file has many fields that must be filled in.  This
+      program attempts to fill in these fields with plausible values,
+      but really only the atomic coordinates will have any meaning.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>xyz_to_pdb</b>
+      </blockquote>
+      starts the program, and prompts for the file names.
+    </p>
+
+    <p>
+      <blockquote>
+        <b>xyz_to_pdb</b> <i>file.xyz</i>  <i>file.pdb</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>file.xyz</i> is the input coordinate data;
+        </li>
+        <li>
+          <i>file.pdb</i> is the PDB file created.
+        </li>
+      </ul>
+      illustrates how the filenames can be specified on the command line.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/pdb/pdb.html">
+      PDB</a>,
+      a data directory which
+      contains a description and examples of the PDB format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pdb_extract/pdb_extract.html">
+      PDB_EXTRACT</a>,
+      a FORTRAN90 program which
+      can extract certain records from a PDB file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pdb_read/pdb_read.html">
+      PDB_READ</a>,
+      a FORTRAN90 program which
+      can read the information
+      in a PDB file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pdb_to_xyz/pdb_to_xyz.html">
+      PDB_TO_XYZ</a>,
+      a FORTRAN90 program which
+      reads the ATOM records
+      from a PDB file, and writes the atomic coordinates to an XYZ file.
+    </p>
+
+    <p>
+      <a href = "../../data/xyz/xyz.html">
+      XYZ</a>,
+      a data directory which
+      contains a description and examples of the XYZ format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xyz_io/xyz_io.html">
+      XYZ_IO</a>,
+      a FORTRAN90 library which
+      reads and writes XYZ files.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          <a href = "../../txt/pdb_format.txt">
+          The PDB format</a>
+        </li>
+        <li>
+          <a href = "http://www.rcsb.org/pdb/">
+                     http://www.rcsb.org/pdb/</a> <br>
+          The Protein Data Bank Home Page.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "xyz_to_pdb.f90">xyz_to_pdb.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "xyz_to_pdb.sh">xyz_to_pdb.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>TINY</b> is a sample XYZ file with 12 sets of 3D coordinates.
+      <ul>
+        <li>
+          <a href = "tiny.xyz">tiny.xyz</a>, a sample XYZ file;
+        </li>
+        <li>
+          <a href = "tiny.pdb">tiny.pdb</a>,
+          the corresponding PDB file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MOMOMER</b> is a sample XYZ file with 888 sets of 3D coordinates.
+      <ul>
+        <li>
+          <a href = "monomer.xyz">monomer.xyz</a>, a sample XYZ file;
+        </li>
+        <li>
+          <a href = "monomer.pdb">monomer.pdb</a>,
+          the corresponding PDB file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for XYZ_TO_PDB.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>XYZ_TO_PDB_ATOM_TO_XYZ</b> writes XYZ data as ATOM records in a PDB file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 09 January 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,291 @@
+<html>
+
+  <head>
+    <title>
+      CRYSTAL_PLOT - Plot CRYSTAL Output
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CRYSTAL_PLOT <br> Plot CRYSTAL Output
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CRYSTAL_PLOT</b>
+      is a FORTRAN90 program which
+       reads in the
+      data from a run of <b>CRYSTAL_QED</b>, and allows the user to select
+      the physical quantities to plot.  Options include the ability
+      to zoom in, to set the colors of various objects, and to make a
+      reflected copy of the data when symmetry means that only half
+      the data was computed.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/crystal/crystal.html">
+      CRYSTAL</a>,
+      a FORTRAN90 program which
+      simulates axisymmetric silicon crystal growth under the Czochralski process.
+    </p>
+
+    <p>
+      <a href = "../../f_src/crystal_qed/crystal_qed.html">
+      CRYSTAL_QED</a>,
+      a FORTRAN90 program which
+      simulates axisymmetric silicon crystal growth under the Czochralski process,
+      and optimizes an objective function.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <ol>
+      <li>
+        Suhas Patankar,<br>
+        Numerical Heat Transfer and Fluid Flow,<br>
+        Taylor and Francis, 1980,<br>
+        ISBN: 0891165223,<br>
+        LC: QC320.P37
+      </li>
+      <li>
+        Fumio Shimura,<br>
+        Semiconductor Silicon Crystal Technology,<br>
+        Academic Press, 1989,<br>
+        LC: TK7871.85 S523.
+      </li>
+    </ol>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "crystal_plot.f90">crystal_plot.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "crystal_plot.sh">crystal_plot.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+        <li>
+          <a href = "crystal_plot.txt">crystal_plot.txt</a>, development notes.
+        </li>
+        <li>
+          <a href = "crystal_plot2.txt">crystal_plot2.txt</a>, data dictionary.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "crystal_rs.txt">crystal_rs.txt</a>, an output file from
+          CRYSTAL_QED containing data which can be plotted immediately
+          by CRYSTAL_PLOT, or written out in a form suitable for input
+          to TECPLOT.
+        </li>
+        <li>
+          <a href = "crystal_plot.tec">crystal_plot.tec</a>, a file
+          created from the data, and suitable for input to TECPLOT.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CRYSTAL_PLOT</b> creats plots from the output of the CRYSTAL program.
+        </li>
+        <li>
+          <b>ARROW</b> can be used to draw an arrow at any point on a graph.
+        </li>
+        <li>
+          <b>BOX</b> draws a rectangle whose corners are specified by the user.
+        </li>
+        <li>
+          <b>BUZZ</b> forces the graphical system to slow down a bit.
+        </li>
+        <li>
+          <b>CBAR</b> draws a color bar.
+        </li>
+        <li>
+          <b>CBOX</b> draws a 16 by 16 color box.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CHRREL</b> accepts a real number in RVAL and returns in CHRREL a
+        </li>
+        <li>
+          <b>COLCON</b> supervises the creation of a color contour plot.
+        </li>
+        <li>
+          <b>CROSS</b> finds two places where a given value occurs on a triangle.
+        </li>
+        <li>
+          <b>DELETE</b> deletes a file.
+        </li>
+        <li>
+          <b>DIAMND</b> may be used to draw an open or filled diamond of a given size.
+        </li>
+        <li>
+          <b>DOUBLE</b> "reflects" the data around the Y axis.
+        </li>
+        <li>
+          <b>DSHLIN</b> draws a dashed line connecting a series of points.
+        </li>
+        <li>
+          <b>FLUSHL</b> flushes a string left.
+        </li>
+        <li>
+          <b>FSIZE</b> computes the range of a real array defined at primary nodes.
+        </li>
+        <li>
+          <b>GETTAB</b> gets the color table choice from the user.
+        </li>
+        <li>
+          <b>GETWIN</b> responds to the "W" command by telling the user
+        </li>
+        <li>
+          <b>GRAPH</b> draws the graph, after the user has specified what is to be shown.
+        </li>
+        <li>
+          <b>HALF</b> removes the reflected data.
+        </li>
+        <li>
+          <b>HELLO</b> prints out the program name, date, and purpose.
+        </li>
+        <li>
+          <b>HELP</b> prints out a list of commands.
+        </li>
+        <li>
+          <b>IDUBLE</b> shifts and copies integer data when the region is "doubled".
+        </li>
+        <li>
+          <b>IHALF</b> adjusts an integer array when the region is cut in half.
+        </li>
+        <li>
+          <b>INIT</b> initializes the values of data.
+        </li>
+        <li>
+          <b>INSIDE</b> reports whether XMID is, or is not, between X1 and X2.
+        </li>
+        <li>
+          <b>LDUBLE</b> shifts and copies logical data when the region is "doubled".
+        </li>
+        <li>
+          <b>LHALF</b> adjusts a logical array when the region is cut in half.
+        </li>
+        <li>
+          <b>LINCON</b> supervises the creation of a line contour plot.
+        </li>
+        <li>
+          <b>LNEI</b> compares two strings for non-equality, ignoring case.
+        </li>
+        <li>
+          <b>PLTBOX</b> computes a square box containing the data.
+        </li>
+        <li>
+          <b>PREPLT</b> should be called before doing each plot.
+        </li>
+        <li>
+          <b>RDUBLE</b> shifts and copies real data when the region is doubled.
+        </li>
+        <li>
+          <b>RHALF</b> shifts the information in a real array when the region is halved.
+        </li>
+        <li>
+          <b>RSDIFF</b> reads in restart information and computes differences.
+        </li>
+        <li>
+          <b>RSIZE</b> computes the size of the region.
+        </li>
+        <li>
+          <b>RSREAD</b> reads in restart information.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_PLOT</b> plots a character string onto a graphics image.
+        </li>
+        <li>
+          <b>SETSIZ</b> allows the user to adjust the range of a contour plot.
+        </li>
+        <li>
+          <b>SETTAB</b> replaces SETCTB, the DRAWCGM routine for setting up
+        </li>
+        <li>
+          <b>SHOWCV</b> shows the control volumes.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRICHK</b> is given a triangle, formed by nodes (I1,J1), (I2,J2), and
+        </li>
+        <li>
+          <b>TRICOL</b> uses color to indicate all the points which have a
+        </li>
+        <li>
+          <b>TRICON</b> draws a single contour line in a linear finite element.
+        </li>
+        <li>
+          <b>TRILHK</b> is given a triangle, formed by nodes (I1,J1), (I2,J2), and
+        </li>
+        <li>
+          <b>VECTOR</b> draws a vector field.
+        </li>
+        <li>
+          <b>VIZPN</b> sets the visibility of primary nodes.
+        </li>
+        <li>
+          <b>VSIZE</b> computes the maximum visible velocity magnitude.
+        </li>
+      </ul>
+    </p>
+
+    <hr>
+
+    <I>
+      Last revised on 16 February 2008.
+    </I>
+
+  </body>
+
+</html>

@@ -1,0 +1,302 @@
+<html>
+
+  <head>
+    <title>
+      CHANNEL - Finite Element Model of 2D Channel Flow
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CHANNEL <br> Finite Element Model of 2D Channel Flow
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CHANNEL</b>
+      is a FORTRAN90 program which
+      computes the time-independent flow
+      of a viscous incompressible fluid in a 2D channel.
+    </p>
+
+    <p>
+      The strength
+      of the flow at the inlet is determined by a parameter.
+      The desired flow profile along a line downstream is given.  The task is
+      to determine the inflow parameter that generates a flow that minimizes
+      the difference with the given profile data.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CHANNEL</b> is available in
+      <a href = "../../f77_src/channel/channel.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/channel/channel.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bump/bump.html">
+      BUMP</a>,
+      a FORTRAN90 program which
+      solves a fluid flow problem
+      in a channel including a bump which obstructs and redirects the flow.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows_grid/direction_arrows_grid.html">
+      DIRECTION_ARROWS_GRID</a>,
+      a MATLAB program which
+      reads files of
+      node and velocity data, and, using interpolation, creates a
+      velocity direction plot with arrows
+      place on a uniform grid of the user's specification.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_navier_stokes/fem2d_navier_stokes.html">
+      FEM2D_NAVIER_STOKES</a>,
+      a FORTRAN90 program which
+      solves the 2D incompressible Navier Stokes equations in an arbitrary
+      triangulated region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_stokes/fem2d_stokes.html">
+      FEM2D_STOKES</a>,
+      a FORTRAN90 program which
+      solves the steady
+      Stokes flow equations on a triangulated 2D region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nast2d_f90/nast2d_f90.html">
+      NAST2D_F90</a>,
+      a FORTRAN90 program which
+      uses the finite volume method to set up and solve
+      the 2D incompressible Navier Stokes equations with heat.
+    </p>
+
+    <p>
+      <a href = "../../c_src/nsasm/nsasm.html">
+      NSASM</a>,
+      a C library which
+      is intended to be used with a MATLAB
+      calling program to set up the sparse matrix needed for
+      a Newton iteration to solve a finite element formulation of
+      the steady incompressible 2D Navier Stokes equations.
+    </p>
+
+    <p>
+      <a href = "../../m_src/toms866/toms866.html">
+      TOMS866</a>,
+      a MATLAB library which
+      is the Incompressible Flow Iterative Solution Software;<br>
+      this library is commonly called <b>IFISS</b>;<br>
+      this is ACM TOMS algorithm 866.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Max Gunzburger,<br>
+          Finite Element Methods for Viscous Incompressible Flows,<br>
+          A Guide to Theory, Practice, and Algorithms,<br>
+          Academic Press, 1989,<br>
+          ISBN: 0-12-307350-2,<br>
+          LC: TA357.G86.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "channel.f90">channel.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "channel.sh">channel.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      The program writes out "XY" (node coordinate) and "UV" (velocity
+      component) data files for the optimized solution.
+      <ul>
+        <li>
+          <a href = "channel_output.txt">channel_output.txt</a>,
+          printed output from a run of the program.
+        </li>
+        <li>
+          <a href = "xy.txt">xy.txt</a>,
+          grid information.
+        </li>
+        <li>
+          <a href = "uv.txt">uv.txt</a>,
+          velocity information.
+        </li>
+        <li>
+          <a href = "uv_dir.png">uv_dir.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the velocity direction field.
+        </li>
+        <li>
+          <a href = "uv_vec.png">uv_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the velocity field.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for CHANNEL.
+        </li>
+        <li>
+          <b>BSP</b> evaluates the linear basis functions associated with pressure.
+        </li>
+        <li>
+          <b>DAXPY</b> computes constant times a vector plus a vector.
+        </li>
+        <li>
+          <b>DCOPY</b> copies a vector, x, to a vector, y.
+        </li>
+        <li>
+          <b>DDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>DELETE</b> deletes a file.
+        </li>
+        <li>
+          <b>DGBFA</b> factors a double precision band matrix by elimination.
+        </li>
+        <li>
+          <b>DGBSL</b> solves a double precision banded system factored by DGBFA.
+        </li>
+        <li>
+          <b>DSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>GDUMP</b> writes information to a file.
+        </li>
+        <li>
+          <b>GETG</b> outputs field values along the profile line X = XZERO.
+        </li>
+        <li>
+          <b>GRAM</b> computes the Gram matrix, GR(I,J) = INTEGRAL PHI(I)*PHI(J).
+        </li>
+        <li>
+          <b>IDAMAX</b> finds the index of element having max. absolute value.
+        </li>
+        <li>
+          <b>IGETL</b> gets the local unknown number along the profile line.
+        </li>
+        <li>
+          <b>LINSYS</b> sets up and solves the linear system.
+        </li>
+        <li>
+          <b>NSTOKE</b> solves the Navier Stokes equation using Taylor-Hood elements.
+        </li>
+        <li>
+          <b>PVAL</b> computes a table of pressures.
+        </li>
+        <li>
+          <b>QBF</b> evaluates a quadratic basis function in a triangle.
+        </li>
+        <li>
+          <b>RESID</b> computes the residual.
+        </li>
+        <li>
+          <b>SETBAN</b> computes the half band width.
+        </li>
+        <li>
+          <b>SETBAS</b> computes the basis functions at each integration point.
+        </li>
+        <li>
+          <b>SETGRD</b> sets up the grid for the problem..
+        </li>
+        <li>
+          <b>SETLIN</b> gets the unknown indices along the profile line.
+        </li>
+        <li>
+          <b>SETQUD</b> sets midpoint quadrature rule information.
+        </li>
+        <li>
+          <b>SETXY</b> sets the X, Y coordinates of grid points.
+        </li>
+        <li>
+          <b>UBDRY</b> sets the parabolic inflow in terms of the value of the parameter.
+        </li>
+        <li>
+          <b>UVAL</b> evaluates the velocities at a given point in a particular triangle.
+        </li>
+        <li>
+          <b>UV_PLOT3D</b> creates a velocity file for use by PLOT3D.
+        </li>
+        <li>
+          <b>UV_TABLE</b> creates a velocity table file.
+        </li>
+        <li>
+          <b>XY_PLOT3D</b> creates a grid file for use by PLOT3D.
+        </li>
+        <li>
+          <b>XY_TABLE</b> creates an XY table file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

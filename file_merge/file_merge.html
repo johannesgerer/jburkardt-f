@@ -1,0 +1,162 @@
+<html>
+
+  <head>
+    <title>
+      FILE_MERGE - Merge Two Sorted Files
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FILE_MERGE <br> Merge Two Sorted Files
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FILE_MERGE</b>
+      is a FORTRAN90 program which
+      merges two sorted files.
+    </p>
+
+    <p>
+      Note that on Unix systems, the command <b>merge</b> is faster,
+      more flexible and efficient.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <b>file_merge</b> <i>input1</i> <i>input2</i> <i>output</i>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/chrpak/chrpak.html">
+      CHRPAK</a>,
+      a FORTRAN90 library which
+      can work with characters and strings.
+    </p>
+
+    <p>
+      <a href = "../../f_src/file_row_reverse/file_row_reverse.html">
+      FILE_ROW_REVERSE</a>,
+      a FORTRAN90 program which
+      makes a copy of a file with the lines ("rows") in reverse order.
+    </p>
+
+    <p>
+      <a href = "../../f_src/file_transpose/file_transpose.html">
+      FILE_TRANSPOSE</a>,
+      a FORTRAN90 program which
+      makes a "transposed" copy of a file, in which the I-th "word" of the J-th line
+      becomes the J-th word of the I-th line.
+    </p>
+
+    <p>
+      <a href = "../../f_src/filum/filum.html">
+      FILUM</a>,
+      a FORTRAN90 library which
+      can work with information in text files.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "file_merge.f90">file_merge.f90</a> the source code.
+        </li>
+        <li>
+          <a href = "file_merge.sh">file_merge.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "file1.txt">file1.txt</a>,
+          a file of 26 lines, sorted alphabetically.
+        </li>
+        <li>
+          <a href = "file2.txt">file2.txt</a>,
+          a file of 19 lines, sorted alphabetically, with 5 words that duplicate
+          words in the first file.
+        </li>
+        <li>
+          <a href = "file3.txt">file3.txt</a>,
+          a file of 40 lines, sorted alphabetically, created by the command
+         <blockquote><b>
+           file_merge file1.txt file2.txt file3.txt
+         </b></blockquote>
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FILE_MERGE.
+        </li>
+        <li>
+          <b>CH_LOW</b> lowercases a single character.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>MERGE_SORTED_FILES</b> merges two sorted files into a third.
+        </li>
+        <li>
+          <b>S_LOW</b> replaces all uppercase letters by lowercase ones.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 22 April 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

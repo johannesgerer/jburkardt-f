@@ -1,0 +1,268 @@
+<html>
+
+  <head>
+    <title>
+      FRIEZE: 2D Transfinite Interpolation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FRIEZE <br> 2D Transfinite Interpolation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FRIEZE</b>
+      is a FORTRAN90 program which
+      demonstrates how to "tile" a 2D region with a given pattern.
+    </p>
+
+    <p>
+      We assume that the 2D region has already been subdivided into
+      subregions, not necessarily rectilinear or equal in size or shape.
+      Thus, we need to twist and squash and stretch the pattern tile
+      to fit each of the subregions.
+    </p>
+
+    <p>
+      We used this program as a first mockup of
+      a 3D brain simulation.  We wanted to see if we could make a pattern
+      repeat throughout a region, and match up at the boundaries of the
+      (curving) sub-cells.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blend/blend.html">
+      BLEND</a>,
+      a FORTRAN90 library which
+      implements blended mapping or transfinite interpolation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ps_write/ps_write.html">
+      PS_WRITE</a>,
+      a FORTRAN90 library which
+      can create PostScript images.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tiler_2d/tiler_2d.html">
+      TILER_2D</a>,
+      a FORTRAN90 program which
+      demonstrates a 2D example of transfinite interpolation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tiler_3d/tiler_3d.html">
+      TILER_3D</a>,
+      a FORTRAN90 program which
+      demonstrates a 3D example of transfinite interpolation.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          William Gordon, Charles Hall,<br>
+          Construction of Curvilinear Coordinate Systems and Application to
+          Mesh Generation,<br>
+          International Journal of Numerical Methods in Engineering,<br>
+          Volume 7, pages 461-477, 1973.
+        </li>
+        <li>
+          Joe Thompson, Bharat Soni, Nigel Weatherill,<br>
+          Handbook of Grid Generation,<br>
+          CRC Press, 1999.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "frieze.f90">frieze.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "frieze.sh">frieze.sh</a>,
+          commands to compile, link, load and run the source code;
+        </li>
+        <li>
+          <a href = "frieze_output.txt">frieze_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "region.png">region.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the region;
+        </li>
+        <li>
+          <a href = "cells.png">cells.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the region divided into cells;
+        </li>
+        <li>
+          <a href = "pattern.png">pattern.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the wallpaper pattern.
+          Each cell of the region is to be covered by a copy of this
+          pattern;
+        </li>
+        <li>
+          <a href = "frieze.png">frieze.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the "wallpapered" region;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FRIEZE.
+        </li>
+        <li>
+          <b>BLEND1D2D</b> uses transfinite interpolation on a 2D cell.
+        </li>
+        <li>
+          <b>BOUNDARY_2D</b> returns (X,Y) points on a side of the boundary.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>DRAW_CELL</b> draws the borders of a given cell.
+        </li>
+        <li>
+          <b>DRAW_CELLS</b> makes an image of the cells that make up the region.
+        </li>
+        <li>
+          <b>DRAW_DIAGONALS</b> draws the diagonals of the entire region.
+        </li>
+        <li>
+          <b>DRAW_FRIEZE</b> draws the frieze.
+        </li>
+        <li>
+          <b>DRAW_PATTERN</b> draws the pattern that will be repeated in the frieze.
+        </li>
+        <li>
+          <b>DRAW_REGION</b> makes an image of the region.
+        </li>
+        <li>
+          <b>DRAW_PAT</b> draws a copy of the pattern.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>PATTERN</b> defines the tiling pattern.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE</b> handles the line color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE_SET</b> sets the line color.
+        </li>
+        <li>
+          <b>PS_COMMENT</b> inserts a comment into the PostScript file.
+        </li>
+        <li>
+          <b>PS_DEFAULT</b> sets the internal settings to their default values
+        </li>
+        <li>
+          <b>PS_FILE_CLOSE</b> closes a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_HEAD</b> writes header information to a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_OPEN</b> opens a new version of a PostScript file with a given name.
+        </li>
+        <li>
+          <b>PS_FILE_TAIL</b> writes trailer information to a PostScript file.
+        </li>
+        <li>
+          <b>PS_LINE_CLOSED</b> adds the graph of a closed line to a PostScript file.
+        </li>
+        <li>
+          <b>PS_LINE_OPEN</b> adds the graph of a line to a PostScript file.
+        </li>
+        <li>
+          <b>PS_PAGE_HEAD</b> writes header information on a new page.
+        </li>
+        <li>
+          <b>PS_PAGE_TAIL</b> writes tail information at the end of a page.
+        </li>
+        <li>
+          <b>PS_SETTING_INT</b> sets, gets, or prints integer internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>PS_SETTING_REAL</b> sets, gets, or prints real internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two real values.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

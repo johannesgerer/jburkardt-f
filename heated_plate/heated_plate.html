@@ -1,0 +1,338 @@
+<html>
+
+  <head>
+    <title>
+      HEATED_PLATE - 2D Steady State Heat Equation in a Rectangle
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      HEATED_PLATE <br> 2D Steady State Heat Equation in a Rectangle
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>HEATED_PLATE</b>
+      is a FORTRAN90 program which
+      solves the steady state heat equation in a 2D
+      rectangular region, and is intended as
+      a starting point for implementing an OpenMP parallel version.
+    </p>
+
+    <p>
+      The final estimate of the solution is written to a file in a format
+      suitable for display by <b>GRID_TO_BMP</b>.
+    </p>
+
+    <p>
+      The sequential version of this program needs approximately
+      18/epsilon iterations to complete.
+    </p>
+
+    <p>
+      The physical region, and the boundary conditions, are suggested
+      by this diagram:
+      <pre>
+                   W = 0
+             +------------------+
+             |                  |
+    W = 100  |                  | W = 100
+             |                  |
+             +------------------+
+                   W = 100
+      </pre>
+    </p>
+
+    <p>
+      The region is covered with a grid of M by N nodes, and an N by N
+      array W is used to record the temperature.  The correspondence between
+      array indices and locations in the region is suggested by giving the
+      indices of the four corners:
+      <pre>
+                  I = 0
+          [0][0]-------------[0][N-1]
+             |                  |
+      J = 0  |                  |  J = N-1
+             |                  |
+        [M-1][0]-----------[M-1][N-1]
+                  I = M-1
+      </pre>
+    </p>
+
+    <p>
+      The steady state solution to the discrete heat equation satisfies the
+      following condition at an interior grid point:
+      <blockquote>
+        W[Central] = (1/4) * ( W[North] + W[South] + W[East] + W[West] )
+      </blockquote>
+      where "Central" is the index of the grid point, "North" is the index
+      of its immediate neighbor to the "north", and so on.
+    </p>
+
+    <p>
+      Given an approximate solution of the steady state heat equation, a
+      "better" solution is given by replacing each interior point by the
+      average of its 4 neighbors - in other words, by using the condition
+      as an ASSIGNMENT statement:
+      <blockquote>
+        W[Central]  &lt;=  (1/4) * ( W[North] + W[South] + W[East] + W[West] )
+      </blockquote>
+    </p>
+
+    <p>
+      If this process is repeated often enough, the difference between successive
+      estimates of the solution will go to zero.
+    </p>
+
+    <p>
+      This program carries out such an iteration, using a tolerance specified by
+      the user, and writes the final estimate of the solution to a file that can
+      be used for graphic processing.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>heated_plate</b> <i>epsilon</i> <i>output_file</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>epsilon</i> is the error tolerance used to halt the iteration.  This
+          is an absolute error tolerance, and is applied pointwise.  A value of
+          0.1 might be reasonable for the built in problem.
+        </li>
+        <li>
+          <i>output_filename</i> is the name of the file into which the final
+          estimate of the solution will be written, for possible display by
+          <b>GRID_TO_BMP</b>.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>HEATED_PLATE</b> is available in
+      <a href = "../../c_src/heated_plate/heated_plate.html">a C version</a> and
+      <a href = "../../cpp_src/heated_plate/heated_plate.html">a C++ version</a> and
+      <a href = "../../f77_src/heated_plate/heated_plate.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/heated_plate/heated_plate.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/heated_plate/heated_plate.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fd1d_heat_steady/fd1d_heat_steady.html">
+      FD1D_HEAT_STEADY</a>,
+      a FORTRAN90 program which
+      uses the finite difference method to solve the 1D Time Dependent
+      Heat Equations.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fem_50_heat/fem_50_heat.html">
+      FEM_50_HEAT</a>,
+      a MATLAB program which
+      implements a finite element calculation specifically for the heat equation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_heat/fem2d_heat.html">
+      FEM2D_HEAT</a>,
+      a FORTRAN90 program which
+      solves the 2D time dependent heat equation on the unit square.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/grid_to_bmp/grid_to_bmp.html">
+      GRID_TO_BMP</a>,
+      a C++ program which
+      reads a text file of data on a rectangular grid
+      and creates a BMP file containing a color image of the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/heat_mpi/heat_mpi.html">
+      HEAT_MPI</a>,
+      a FORTRAN90 program which
+      solves the 1D Time Dependent Heat Equation using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/heated_plate_openmp/heated_plate_openmp.html">
+      HEATED_PLATE_OPENMP</a>,
+      a FORTRAN90 program which
+      solves the steady (time independent) heat equation in a 2D
+      rectangular region, using OpenMP to run in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/heated_plate_workshare/heated_plate_workshare.html">
+      HEATED_PLATE_WORKSHARE</a>,
+      a FORTRAN90 program which
+      solves the steady (time independent) heat equation in a 2D
+      rectangular region, using OpenMP's WORKSHARE directive to run in parallel
+      (however, the results suggest that WORKSHARE is not supported by the
+      GFORTRAN and IFORT compilers!)
+    </p>
+
+    <p>
+      <a href = "../../f_src/md/md.html">
+      MD</a>,
+      a FORTRAN90 program which
+      carries out a molecular dynamics simulation, and is intended as
+      a starting point for implementing an OpenMP parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxm_serial/mxm_serial.html">
+      MXM_SERIAL</a>,
+      a FORTRAN90 program which
+      sets up a matrix multiplication problem A=B*C,
+      intended as a starting point for implementing a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/poisson_serial/poisson_serial.html">
+      POISSON_SERIAL</a>,
+      a FORTRAN90 program which
+      computes an approximate solution to the Poisson equation in a rectangle,
+      and is intended as the starting point for the creation of a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_serial/prime_serial.html">
+      PRIME_SERIAL</a>,
+      a FORTRAN90 program which
+      counts the number of primes between 1 and N,
+      intended as a starting point for the creation of a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_serial/quad_serial.html">
+      QUAD_SERIAL</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule,
+      and is intended as a starting point for parallelization exercises.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Michael Quinn,<br>
+          Parallel Programming in C with MPI and OpenMP,<br>
+          McGraw-Hill, 2004,<br>
+          ISBN13: 978-0071232654,<br>
+          LC: QA76.73.C15.Q55.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "heated_plate.f90">heated_plate.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "heated_plate.sh">heated_plate.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      The program has a built in grid of M = 500, N = 500.  It is only necessary to
+      alter these definitions and recompile in order to run the problem on a different
+      grid.  Here are the output files and solution files from two runs.
+      <ul>
+        <li>
+          <a href = "output_100x500.txt">output_100x500.txt</a>
+          the output from a run on a 100x500 grid.
+        </li>
+        <li>
+          <a href = "sol_100x500.txt">sol_100x500.txt</a>
+          the solution on a 100x500 grid.
+        </li>
+        <li>
+          <a href = "../../cpp_src/grid_to_bmp/sol_100x500.bmp">sol_100x500.bmp</a>
+          a BMP image of the solution on a 100x500 grid.
+        </li>
+        <li>
+          <a href = "output_500x500.txt">output_500x500.txt</a>
+          the output from a run on a 500x500 grid.
+        </li>
+        <li>
+          <a href = "sol_500x500.txt">sol_500x500.txt</a>
+          the solution on a 500x500 grid.
+        </li>
+        <li>
+          <a href = "../../cpp_src/grid_to_bmp/sol_500x500.bmp">sol_500x500.bmp</a>
+          a BMP image of the solution on a 500x500 grid.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for HEATED_PLATE.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 22 July 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

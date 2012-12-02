@@ -1,0 +1,260 @@
+<html>
+
+  <head>
+    <title>
+      CORDIC - Approximation of Elementary Functions
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      CORDIC <br> Approximation of Elementary Functions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CORDIC</b>
+      is a FORTRAN90 library which
+      uses the CORDIC algorithm to evaluate
+      certain functions, in particular the sine and cosine.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CORDIC</b> is available in
+      <a href = "../../c_src/cordic/cordic.html">a C version</a> and
+      <a href = "../../cpp_src/cordic/cordic.html">a C++ version</a> and
+      <a href = "../../f77_src/cordic/cordic.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/cordic/cordic.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/cordic/cordic.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fn/fn.html">
+      FN</a>,
+      a FORTRAN90 library which
+      evaluates elementary and special functions,
+      by Wayne Fullerton.
+    </p>
+
+    <p>
+      <a href = "../../f_src/polpak/polpak.html">
+      POLPAK</a>,
+      a FORTRAN90 library which
+      evaluates recursively defined polynomials and other special functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/specfun/specfun.html">
+      SPECFUN</a>,
+      a FORTRAN90 library which
+      evaluates certain special functions using fitted data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_values/test_values.html">
+      TEST_VALUES</a>,
+      a FORTRAN90 library which
+      returns some tabulated values of various functions.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Pitts Jarvis,<br>
+          Implementing CORDIC Algorithms,<br>
+          Dr. Dobb's Journal,<br>
+          October 1990.
+        </li>
+        <li>
+          Jean-Michel Muller,<br>
+          Elementary Functions: Algorithms and Implementation,<br>
+          Second Edition,<br>
+          Birkhaeuser, 2006,<br>
+          ISBN13: 978-0-8176-4372-0,<br>
+          LC: QA331.M866.
+        </li>
+        <li>
+          Frederick Ruckdeschel,<br>
+          BASIC Scientific Subroutines,<br>
+          Volume II,<br>
+          McGraw-Hill, 1980,<br>
+          ISBN: 0-07-054202-3,<br>
+          LC: QA76.95.R82.
+        </li>
+        <li>
+          Allan Sultan,<br>
+          CORDIC: How Hand Calculators Calculate,<br>
+          The College Mathematics Journal,<br>
+          Volume 40, Number 2, March 2009, pages 87-92.
+        </li>
+        <li>
+          Jack Volder,<br>
+          The CORDIC Computing Technique,<br>
+          IRE Transactions on Electronic Computers,<br>
+          Volume 8, Number 3, pages 330-334, 1959.
+        </li>
+        <li>
+          Jack Volder,<br>
+          The Birth of CORDIC,<br>
+          Journal of VLSI Signal Processing Systems,<br>
+          Volume 25, Number 2, pages 101-105, June 2000.
+        </li>
+        <li>
+          Anthony Williams,<br>
+          Optimizing Math-Intensive Applications with Fixed-Point Arithmetic,<br>
+          Dr Dobb's Journal,<br>
+          Volume 33, Number 4, April 2008, pages 38-43.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cordic.f90">cordic.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "cordic.sh">cordic.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cordic_prb.f90">cordic_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "cordic_prb.sh">cordic_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "cordic_prb_output.txt">cordic_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE_SHIFT</b> shifts angle ALPHA to lie between BETA and BETA+2PI.
+        </li>
+        <li>
+          <b>ARCCOS_CORDIC</b> returns the arccosine of an angle using the CORDIC method.
+        </li>
+        <li>
+          <b>ARCCOS_VALUES</b> returns some values of the arc cosine function.
+        </li>
+        <li>
+          <b>ARCSIN_CORDIC</b> returns the arcsine of an angle using the CORDIC method.
+        </li>
+        <li>
+          <b>ARCSIN_VALUES</b> returns some values of the arc sine function.
+        </li>
+        <li>
+          <b>ARCTAN_CORDIC</b> returns the arctangent of an angle using the CORDIC method.
+        </li>
+        <li>
+          <b>ARCTAN_VALUES</b> returns some values of the arc tangent function.
+        </li>
+        <li>
+          <b>COS_VALUES</b> returns some values of the cosine function.
+        </li>
+        <li>
+          <b>COSSIN_CORDIC</b> returns the sine and cosine using the CORDIC method.
+        </li>
+        <li>
+          <b>EXP_CORDIC</b> evaluates the exponential function using the CORDIC method.
+        </li>
+        <li>
+          <b>EXP_VALUES</b> returns some values of the exponential function.
+        </li>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>LN_CORDIC</b> evaluates the natural logarithm using the CORDIC method.
+        </li>
+        <li>
+          <b>LN_VALUES</b> returns some values of the natural logarithm function.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>SIN_VALUES</b> returns some values of the sine function.
+        </li>
+        <li>
+          <b>SQRT_CORDIC</b> returns the square root of a value using the CORDIC method.
+        </li>
+        <li>
+          <b>SQRT_VALUES</b> returns some values of the square root function.
+        </li>
+        <li>
+          <b>TAN_CORDIC</b> returns the tangent of an angle using the CORDIC method.
+        </li>
+        <li>
+          <b>TAN_VALUES</b> returns some values of the tangent function.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last modified on 21 June 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

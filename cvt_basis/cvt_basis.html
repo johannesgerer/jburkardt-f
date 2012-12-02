@@ -1,0 +1,401 @@
+<html>
+
+  <head>
+    <title>
+      CVT_BASIS - Data Clustering by K-Means Techniques
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CVT_BASIS <br> Data Clustering by K-Means Techniques
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CVT_BASIS</b>
+      is a FORTRAN90 program which
+      computes good cluster centers
+      for a set of data.
+    </p>
+
+    <p>
+      The clustering process uses the K-Means algorithm, which can be
+      considered to be a discrete version of the CVT algorithm (Centroidal
+      Voronoi Tessellation).
+    </p>
+
+    <p>
+      The data is a collection of vectors, with each vector stored in
+      a separate file.  The files are presumed to have "sequential" names,
+      such as "fred01.txt", "fred02.txt", and so on.  Each file must be a
+      TABLE file, that is
+      a series of N lines, with M values on every line (although
+      comment lines may be inserted as well.)
+    </p>
+
+    <p>
+      The program is given the name of the first file in the sequence.
+      It reads the data from each file in the sequence, and carries out
+      the K Means clustering process to determine K cluster centers.
+      It writes each of these cluster centers out to a separate file.
+    </p>
+
+    <p>
+      The cluster centers will generally be "well spread out" in the space
+      spanned by the set of data.  Such a set might be useful, for instance,
+      in determining a basis for a low-dimensional approximation of the
+      data.
+    </p>
+
+    <p>
+      <b>INPUT</b>: at run time, the user specifies:
+      <ul>
+        <li>
+          <i>uv0_file</i>, the name of the first data file (the program
+          will assume all the files are numbered consecutively).
+          Note that you may now specify more than one set of solution families.
+          Enter "none" if there are no more families, or else the name of the
+          first file in the next family.  Up to 10 separate families of
+          files are allowed.
+        </li>
+        <li>
+          <i>cluster_lo, cluster_hi</i>, the range of cluster sizes to check.
+          In most cases, you simply want to specify the <b>same number</b>
+          for both these values, namely, the requested basis size.
+        </li>
+        <li>
+          <i>cluster_it_max</i>, the number of different times you want to
+          try to cluster the data; I often use 15.
+        </li>
+        <li>
+          <i>energy_it_max</i>, the number of times you want to try to improve
+          a given clustering by swapping points from one cluster to another;
+          I often use 50 or 100.
+        </li>
+        <li>
+          <i>comment</i>, "Y" if initial comments may be included in the
+          beginning of the output files.  These comments always start with
+          a "#" character in column 1.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/brain_sensor_pod/brain_sensor_pod.html">
+      BRAIN_SENSOR_POD</a>,
+      a MATLAB program which
+      applies the method of Proper Orthogonal Decomposition
+      to seek underlying patterns in sets of 40 sensor readings of
+      brain activity.
+    </p>
+
+    <p>
+      <a href = "../../datasets/burgers/burgers.html">
+      BURGERS</a>,
+      a data set directory which
+      contains solutions of the 1 dimensional Burgers equation;
+    </p>
+
+    <p>
+      <a href = "../../datasets/cavity_flow/cavity_flow.html">
+      CAVITY_FLOW</a>,
+      a dataset directory which
+      contains solutions of a driven cavity flow in 2D;
+    </p>
+
+    <p>
+      <a href = "../../f_src/cvt_basis_flow/cvt_basis_flow.html">
+      CVT_BASIS_FLOW</a>,
+      a FORTRAN90 program which
+      is similar to <b>CVT_BASIS</b>, but is specialized to handle
+      a particular family of fluid flow solutions.
+    </p>
+
+    <p>
+      <a href = "../../datasets/inout_flow/inout_flow.html">
+      INOUT_FLOW</a>,
+      a dataset directory which
+      contains solutions for flow in and out of a chamber in 2D;
+    </p>
+
+    <p>
+      <a href = "../../datasets/inout_flow2/inout_flow2.html">
+      INOUT_FLOW2</a>,
+      a dataset directory which
+      contains solutions for flow in and out of a chamber in 2D,
+      using a finer grid and more timesteps;
+    </p>
+
+    <p>
+      <a href = "../../f_src/svd_basis/svd_basis.html">
+      SVD_BASIS</a>,
+      a FORTRAN90 program which
+      uses the singular value decomposition to extract representative
+      modes from a set of data vectors.
+    </p>
+
+    <p>
+      <a href = "../../datasets/tcell_flow/tcell_flow.html">
+      TCELL_FLOW</a>,
+      a dataset directory which
+      contains solutions for flow through a T-cell in 2D;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, Number 3, pages 345-405, September 1991.
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Hyung-Chun Lee,<br>
+          Centroidal Voronoi Tessellation-Based Reduced-Order
+          Modelling of Complex Systems,<br>
+          SIAM Journal on Scientific Computing,<br>
+          Volume 28, Number 2, 2006, pages 459-484.
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Janet Peterson, Rebecca Brannon,<br>
+          User Manual and Supporting Information for Library of Codes
+          for Centroidal Voronoi Placement and Associated Zeroth,
+          First, and Second Moment Determination,<br>
+          Sandia National Laboratories Technical Report SAND2002-0099,<br>
+          February 2002.
+        </li>
+        <li>
+          Qiang Du, Vance Faber, Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review, Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Lili Ju, Qiang Du, Max Gunzburger,<br>
+          Probabilistic methods for centroidal Voronoi tessellations
+          and their parallel implementations,<br>
+          Parallel Computing,<br>
+          Volume 28, 2002, pages 1477-1500.
+        </li>
+        <li>
+          Wendy Martinez, Angel Martinez,<br>
+          Computational Statistics Handbook with MATLAB,<br>
+          Chapman and Hall / CRC, 2002.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_basis.f90">cvt_basis.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "cvt_basis.sh">cvt_basis.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "run_01/run_01.html">run 01</a>, example seeking 2 clusters;
+        </li>
+        <li>
+          <a href = "run_02/run_02.html">run 02</a>, example seeking 4 clusters;
+        </li>
+        <li>
+          <a href = "run_03/run_03.html">run 03</a>, example seeking 8 clusters;
+        </li>
+        <li>
+          <a href = "run_04/run_04.html">run 04</a>, compute clusterings
+          of sizes 1 through 16, determine energies, and output size
+          versus energy data;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main routine for the CVT_BASIS program.
+        </li>
+        <li>
+          <b>ANALYSIS_RAW</b> computes the energy for a range of number of clusters.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CLUSTER_CENSUS</b> computes and prints the population of each cluster.
+        </li>
+        <li>
+          <b>CLUSTER_INITIALIZE_RAW</b> initializes the cluster centers to random values.
+        </li>
+        <li>
+          <b>CLUSTER_LIST</b> prints out the assignments.
+        </li>
+        <li>
+          <b>DATA_TO_GNUPLOT</b> writes data to a file suitable for processing by GNUPLOT.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>ENERGY_RAW</b> computes the total energy of a given clustering.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_EXIST</b> reports whether a file exists.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HMEANS_RAW</b> seeks the minimal energy of a cluster of a given size.
+        </li>
+        <li>
+          <b>I4_INPUT</b> prints a prompt string and reads an integer from the user.
+        </li>
+        <li>
+          <b>I4_RANGE_INPUT</b> reads a pair of integers from the user, representing a range.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an integer vector.
+        </li>
+        <li>
+          <b>KMEANS_RAW</b> tries to improve a partition of points.
+        </li>
+        <li>
+          <b>NEAREST_CLUSTER_RAW</b> finds the cluster nearest to a data point.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8VEC_NORM2</b> returns the 2-norm of a vector.
+        </li>
+        <li>
+          <b>R8VEC_RANGE_INPUT</b> reads two DP vectors from the user, representing a range.
+        </li>
+        <li>
+          <b>R8VEC_UNIT_EUCLIDEAN</b> normalizes a N-vector in the Euclidean norm.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INPUT</b> prints a prompt string and reads a string from the user.
+        </li>
+        <li>
+          <b>S_REP_CH</b> replaces all occurrences of one character by another.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 November 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

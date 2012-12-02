@@ -1,0 +1,319 @@
+<html>
+
+  <head>
+    <title>
+      LATINIZE - Force a Dataset to be a Latin Hypercube
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      LATINIZE <br> Force a Dataset to be a Latin Hypercube
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>LATINIZE</b>
+      is a FORTRAN90 library which
+      adjusts an M dimensional dataset of N points
+      so that it forms a Latin hypercube.
+    </p>
+
+    <p>
+     On output, each row of the table will have the properties that:
+     <ol>
+        <li>
+          the minimum and maximum row values are the same as on input;
+        </li>
+        <li>
+          the row contains N evenly spaced values between the
+          minimum and maximum.
+        </li>
+        <li>
+          in each row, the elements retain their ordering.
+        </li>        
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages
+    </h3>
+
+    <p>
+      <b>LATINIZE</b> is available in
+      <a href = "../../c_src/latinize/latinize.html">a C version</a> and
+      <a href = "../../cpp_src/latinize/latinize.html">a C++ version</a> and
+      <a href = "../../f77_src/latinize/latinize.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/latinize/latinize.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/latinize/latinize.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/latin_center/latin_center.html">
+      LATIN_CENTER</a>,
+      a FORTRAN90 library which
+      computes a Latin Square by choosing the center of each square.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_cover/latin_cover.html">
+      LATIN_COVER</a>,
+      a FORTRAN90 library which
+      produces N Latin squares which cover an NxN square.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_edge/latin_edge.html">
+      LATIN_EDGE</a>,
+      a FORTRAN90 library which
+      computes a Latin Square by choosing the edge of each square.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_random/latin_random.html">
+      LATIN_RANDOM</a>,
+      a FORTRAN90 library which
+      computes a Latin Square by choosing a random point of each square.
+    </p>
+
+    <p>
+      <a href = "../table_latinize/table_latinize.html">
+      TABLE_LATINIZE</a>,
+      a FORTRAN90 program which
+      allows the user to name the input data file on the command line.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Michael McKay, William Conover, Richard Beckman,<br>
+          A Comparison of Three Methods for Selecting Values of Input
+          Variables in the Analysis of Output From a Computer Code,<br>
+          Technometrics,<br>
+          Volume 21, pages 239-245, 1979.
+        </li>
+        <li>
+          Yuki Saka, Max Gunzburger, John Burkardt,<br>
+          Latinized, Improved LHS, and CVT Point Sets in Hypercubes, <br>
+          International Journal of Numerical Analysis and Modeling,<br>
+          Volume 4, Number 3-4, 2007, pages 729-743,
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "latinize.f90">latinize.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "latinize.sh">latinize.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "latinize_prb.f90">latinize_prb.f90</a>,
+          the test code.
+        </li>
+        <li>
+          <a href = "latinize_prb.sh">latinize_prb.sh</a>,
+          commands to compile, link, load and run the test code.
+        </li>
+        <li>
+          <a href = "latinize_prb_output.txt">latinize_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CVT_02_00010</b> is a set of 10 CVT points in 2D:
+      <ul>
+        <li>
+          <a href = "cvt_02_00010.txt">cvt_02_00010.txt</a>,
+          the original set of 10 points in 2D.
+        </li>
+        <li>
+          <a href = "cvt_02_00010.png">cvt_02_00010.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the points.
+        </li>
+        <li>
+          <a href = "cvt_02_00010.latin.txt">cvt_02_00010.latin.txt</a>,
+          the latinized version of the dataset.
+        </li>
+        <li>
+          <a href = "cvt_02_00010.latin.png">cvt_02_00010.latin.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the latinized points.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CVT_03_00007</b> is a set of 7 CVT points in 3D:
+      <ul>
+        <li>
+          <a href = "cvt_03_00007.txt">cvt_03_00007.txt</a>,
+          7 points in 3D.
+        </li>
+        <li>
+          <a href = "cvt_03_00007.latin.txt">cvt_03_00007.latin.txt</a>,
+          the latinized version of the dataset.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CVT_03_00056</b> is a set of 56 CVT points in 3D:
+      <ul>
+        <li>
+          <a href = "cvt_03_00056.txt">cvt_03_00056.txt</a>,
+          56 points in 3D.
+        </li>
+        <li>
+          <a href = "cvt_03_00056.latin.txt">cvt_03_00056.latin.txt</a>,
+          the latinized version of the dataset.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CVT_07_00100</b> is a set of 100 CVT points in 7D:
+      <ul>
+        <li>
+          <a href = "cvt_07_00100.txt">cvt_07_00100.txt</a>,
+          100 points in 7D.
+        </li>
+        <li>
+          <a href = "cvt_07_00100.latin.txt">cvt_07_00100.latin.txt</a>,
+          the latinized version of the dataset.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer ( kind = 4 ) value of a base 10 digit.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_LATINIZE</b> "Latinizes" a real table dataset.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of a DMAT.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints a real matrix, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of a real matrix, transposed.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of a real vector.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 04 February 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

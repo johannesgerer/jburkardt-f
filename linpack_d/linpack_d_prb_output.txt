@@ -1,0 +1,808 @@
+January  3 2011   8:56:00.207 AM
+ 
+LINPACK_D_PRB
+  FORTRAN90 version
+  Test the LINPACK_D library.
+ 
+TEST01
+  For double precision, general storage,
+  DCHDC computes the Cholesky decomposition.
+ 
+  The number of equations is N =        4
+ 
+  The matrix A:
+ 
+     2.00000      -1.00000       0.00000       0.00000    
+     0.00000       2.00000      -1.00000       0.00000    
+     0.00000       0.00000       2.00000      -1.00000    
+     0.00000       0.00000       0.00000       2.00000    
+ 
+  Decompose the matrix.
+ 
+  The Cholesky factor U:
+ 
+     1.41421     -0.707107       0.00000       0.00000    
+     0.00000       1.22474     -0.816497       0.00000    
+     0.00000       0.00000       1.15470     -0.866025    
+     0.00000       0.00000       0.00000       1.11803    
+ 
+  The product U' * U: 
+ 
+     2.00000      -1.00000       0.00000       0.00000    
+    -1.00000       2.00000      -1.00000       0.00000    
+     0.00000      -1.00000       2.00000      -1.00000    
+     0.00000       0.00000      -1.00000       2.00000    
+ 
+TEST02
+  For double precision, general storage,
+  DCHEX can shift columns in a Cholesky factorization.
+ 
+  The number of equations is N =        5
+ 
+  The matrix A:
+ 
+     2.00000      -1.00000       0.00000       0.00000       0.00000    
+     0.00000       2.00000      -1.00000       0.00000       0.00000    
+     0.00000       0.00000       2.00000      -1.00000       0.00000    
+     0.00000       0.00000       0.00000       2.00000      -1.00000    
+     0.00000       0.00000       0.00000       0.00000       2.00000    
+ 
+  The vector Z:
+ 
+     1.00000    
+     2.00000    
+     3.00000    
+     4.00000    
+     5.00000    
+ 
+  Decompose the matrix.
+ 
+  The Cholesky factor U:
+ 
+     1.41421     -0.707107       0.00000       0.00000       0.00000    
+     0.00000       1.22474     -0.816497       0.00000       0.00000    
+     0.00000       0.00000       1.15470     -0.866025       0.00000    
+     0.00000       0.00000       0.00000       1.11803     -0.894427    
+     0.00000       0.00000       0.00000       0.00000       1.09545    
+ 
+  Right circular shift columns K  =        1 through L =        3
+ 
+  Left circular shift columns K+1 =        2 through L =        3
+ 
+  The shifted Cholesky factor U:
+ 
+     1.41421     -0.707107       0.00000     -0.707107       0.00000    
+     0.00000      -1.22474      0.816497      0.408248      -0.00000    
+     0.00000       0.00000       1.15470     -0.288675       0.00000    
+     0.00000       0.00000       0.00000       1.11803     -0.894427    
+     0.00000       0.00000       0.00000       0.00000       1.09545    
+ 
+  The shifted vector Z:
+ 
+     1.29479    
+    -2.17020    
+     2.75931    
+     4.00000    
+     5.00000    
+ 
+  The shifted product U' * U: 
+ 
+     2.00000      -1.00000       0.00000      -1.00000       0.00000    
+    -1.00000       2.00000      -1.00000       0.00000       0.00000    
+     0.00000      -1.00000       2.00000      0.555112E-16   0.00000    
+    -1.00000       0.00000      0.555112E-16   2.00000      -1.00000    
+     0.00000       0.00000       0.00000      -1.00000       2.00000    
+ 
+TEST03
+  For double precision, general storage,
+  DCHUD updates a Cholesky decomposition.
+  DTRSL can solve a triangular linear system.
+ 
+  In this example, we use DCHUD to solve a
+  least squares problem R * b = z.
+ 
+  The number of equations is P =       20
+ 
+  Solution vector #        1
+  (Should be (1,2,3...,n))
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+  ......  ..............
+        16     16.0000    
+        17     17.0000    
+        18     18.0000    
+        19     19.0000    
+        20     20.0000    
+ 
+TEST04
+  For a banded matrix in general format,
+  DGBCO estimates the reciprocal condition number.
+  The matrix size is N =       10
+  The bandwidth of the matrix is        3
+ 
+  Estimate the condition.
+ 
+  Estimated reciprocal condition =   0.233017E-01
+ 
+TEST05
+  For a banded matrix in general format,
+  DGBFA factors the matrix,
+  DGBSL solves a factored linear system.
+  The matrix size is N =       10
+  The bandwidth of the matrix is        3
+ 
+  Factor the matrix.
+ 
+  Solve the linear system.
+ 
+  The first and last 5 solution entries:
+  (All should be 1):
+ 
+         1     1.00000    
+         2     1.00000    
+         3     1.00000    
+         4     1.00000    
+         5     1.00000    
+  ......  ..............
+         6     1.00000    
+         7     1.00000    
+         8     1.00000    
+         9     1.00000    
+        10     1.00000    
+ 
+TEST06
+  For a banded matrix in general format,
+  DGBFA factors the matrix,
+  DGBDI computes the determinant as
+    det = MANTISSA * 10**EXPONENT
+ 
+  Find the determinant of the -1,2,-1 matrix
+  for N = 2, 4, 8, 16, 32, 64, 128.
+ 
+  (For this matrix, det ( A ) = N + 1.)
+  The bandwidth of the matrix is        3
+ 
+       N    Mantissa       Exponent
+ 
+         2     3.00000         0.00000    
+         4     5.00000         0.00000    
+         8     9.00000         0.00000    
+        16     1.70000         1.00000    
+        32     3.30000         1.00000    
+        64     6.50000         1.00000    
+       128     1.29000         2.00000    
+ 
+TEST07
+  For a banded matrix in general format,
+  DGBFA factors the matrix,
+  DGBSL solves a factored linear system.
+  The matrix size is N =      100
+  The bandwidth of the matrix is       51
+ 
+  Factor the matrix.
+ 
+  Solve the linear system.
+ 
+  The first and last 5 solution entries:
+  (All should be 1):
+ 
+         1     1.00000    
+         2     1.00000    
+         3     1.00000    
+         4     1.00000    
+         5     1.00000    
+  ......  ..............
+        96     1.00000    
+        97     1.00000    
+        98     1.00000    
+        99     1.00000    
+       100     1.00000    
+ 
+TEST08
+  DGECO factors a general matrix and computes
+  its reciprocal condition number;
+  DGESL solves a factored linear system.
+  The matrix size is N =        3
+ 
+  Factor the matrix.
+  The reciprocal matrix condition number =   0.246445E-01
+ 
+  Solve the linear system.
+ 
+  Solution returned by DGESL
+  (Should be (1,2,3))
+ 
+     1.00000    
+     2.00000    
+     3.00000    
+ 
+  Call DGESL for a new right hand 
+  side for the same, factored matrix.
+ 
+  Solve a linear system.
+ 
+  Solution returned by DGESL
+  (should be (1,0,0))
+ 
+     1.00000    
+     0.00000    
+     0.00000    
+ 
+  Call DGESL for transposed problem.
+ 
+  Call DGESL to solve a transposed linear system.
+ 
+  Solution returned by DGESL
+  (should be (-1,0,1))
+ 
+    -1.00000    
+   -0.394746E-15
+     1.00000    
+ 
+TEST09
+  DGEFA factors a general matrix;
+  DGEDI computes the inverse and determinant
+  of a factored matrix.
+  The matrix size is N =        3
+ 
+  Factor the matrix
+ 
+  Get the inverse and determinant
+ 
+  The determinant =    2.70000     * 10 **    1.00000    
+ 
+  The inverse matrix:
+ 
+    -1.77778      0.888889     -0.111111    
+     1.55556     -0.777778      0.222222    
+   -0.111111      0.222222     -0.111111    
+ 
+TEST10
+  DGEFA factors a general matrix;
+  DGESL solves a factored linear system;
+ 
+  The number of equations is N =        3
+ 
+  The matrix A:
+ 
+     1.00000       2.00000       3.00000    
+     4.00000       5.00000       6.00000    
+     7.00000       8.00000       0.00000    
+ 
+  The right hand side B is 
+ 
+     14.0000    
+     32.0000    
+     23.0000    
+ 
+  Factor the matrix
+ 
+  Solve the linear system.
+ 
+  DGESL returns the solution:
+  (Should be (1,2,3))
+ 
+     1.00000    
+     2.00000    
+     3.00000    
+ 
+TEST11
+  DGEFA factors a general matrix;
+  DGESL solves a factored linear system;
+  The matrix size is N =      100
+ 
+  Factor the matrix.
+ 
+  Solve the linear system.
+ 
+  The first and last five solution entries:
+  (All of them should be 1.)
+ 
+         1     1.00000    
+         2     1.00000    
+         3     1.00000    
+         4     1.00000    
+         5     1.00000    
+  ......  ..............
+        96     1.00000    
+        97     1.00000    
+        98     1.00000    
+        99     1.00000    
+       100     1.00000    
+ 
+TEST12
+  For a general tridiagonal matrix,
+  DGTSL factors and solves a linear system.
+  The matrix size is N =      100
+ 
+ 
+  Factor the matrix and solve the system.
+ 
+  The first and last 5 solution entries:
+  (Should be (1,2,3,4,5,...,n-1,n))
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+  ......  ..............
+        96     96.0000    
+        97     97.0000    
+        98     98.0000    
+        99     99.0000    
+       100     100.000    
+ 
+TEST13
+  For a positive definite symmetric band matrix,
+  DPBCO estimates the reciprocal condition number.
+  The matrix size is N =       10
+ 
+  Estimate the condition.
+ 
+  Reciprocal condition  =   0.204918E-01
+ 
+TEST14
+  For a positive definite symmetric band matrix,
+  DPBDI computes the determinant as
+    det = MANTISSA * 10**EXPONENT
+ 
+  Find the determinant of the -1,2,-1 matrix
+  for N = 2, 4, 8, 16, 32, 64, 128.
+ 
+  (For this matrix, det ( A ) = N + 1.)
+ 
+  The bandwidth of the matrix is        3
+ 
+       N    Mantissa       Exponent
+ 
+         2     3.00000         0.00000    
+         4     5.00000         0.00000    
+         8     9.00000         0.00000    
+        16     1.70000         1.00000    
+        32     3.30000         1.00000    
+        64     6.50000         1.00000    
+       128     1.29000         2.00000    
+ 
+TEST15
+  For a positive definite symmetric band matrix,
+  DPBFA computes the LU factors.
+  DPBSL solves a factored linear system.
+  The matrix size is N =       10
+ 
+  Factor the matrix.
+ 
+  Solve the linear system.
+ 
+  The first and last 5 solution entries:
+  (All should be 1):
+ 
+         1     1.00000    
+         2     1.00000    
+         3     1.00000    
+         4     1.00000    
+         5     1.00000    
+  ......  ..............
+         6     1.00000    
+         7     1.00000    
+         8     1.00000    
+         9     1.00000    
+        10     1.00000    
+ 
+TEST16
+  For a positive definite symmetric matrix,
+  DPOCO estimates the reciprocal condition number.
+  The matrix size is N =        5
+ 
+  Estimate the condition.
+ 
+  Reciprocal condition  =   0.675676E-01
+ 
+TEST17
+  For a positive definite symmetric matrix,
+  DPOFA computes the LU factors,
+  DPODI computes the inverse or determinant.
+  The matrix size is N =        5
+ 
+  Factor the matrix.
+ 
+  Get the determinant and inverse.
+ 
+  Determinant  =    6.00000     * 10 **    0.00000    
+ 
+  First row of inverse:
+ 
+    0.833333      0.666667      0.500000      0.333333      0.166667    
+ 
+TEST18
+  For a positive definite symmetric matrix,
+  DPOFA computes the LU factors.
+  DPOSL solves a factored linear system.
+  The matrix size is N =       20
+ 
+  Factor the matrix.
+ 
+  Solve the linear system.
+ 
+  The first and last 5 solution entries:
+  (Should be 1,2,3,4,5,...,n-1,n):
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+  ......  ..............
+        16     16.0000    
+        17     17.0000    
+        18     18.0000    
+        19     19.0000    
+        20     20.0000    
+ 
+TEST19
+  For a positive definite symmetric packed matrix,
+  DPPCO estimates the reciprocal condition number.
+  The matrix size is N =        5
+ 
+  Estimate the condition number.
+ 
+  Reciprocal condition number =   0.675676E-01
+ 
+TEST20
+  For a positive definite symmetric packed matrix,
+  DPPFA factors the matrix.
+  DPPDI computes the inverse or determinant.
+  The matrix size is N =        5
+ 
+  Factor the matrix.
+ 
+  Get the determinant and inverse.
+ 
+  Determinant  =    6.00000     * 10 **    0.00000    
+ 
+  Inverse:
+ 
+    0.833333      0.666667      0.500000      0.333333      0.166667    
+    0.666667       1.33333       1.00000      0.666667      0.333333    
+    0.500000       1.00000       1.50000       1.00000      0.500000    
+    0.333333      0.666667       1.00000       1.33333      0.666667    
+    0.166667      0.333333      0.500000      0.666667      0.833333    
+ 
+TEST21
+  For a positive definite symmetric packed matrix,
+  DPPFA factors the matrix.
+  DPPSL solves a factored linear system.
+  The matrix size is N =       20
+ 
+  Factor the matrix.
+ 
+  Solve the linear system.
+ 
+  The first and last 5 solution entries:
+  (Should be 1,2,3,4,5,...,n-1,n):
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+  ......  ..............
+        16     16.0000    
+        17     17.0000    
+        18     18.0000    
+        19     19.0000    
+        20     20.0000    
+ 
+TEST22
+  For a positive definite symmetric tridiagonal matrix,
+  DPTSL factors and solves a linear system.
+  The matrix size is N =       20
+ 
+  Factor the matrix and solve the system.
+ 
+  The first and last 5 solution entries:
+  (Should be 1,2,3,4,5,...,n-1,n):
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+  ......  ..............
+        16     16.0000    
+        17     17.0000    
+        18     18.0000    
+        19     19.0000    
+        20     20.0000    
+ 
+TEST23
+  For a general matrix,
+  DQRDC computes the QR decomposition of a 
+  matrix, but does not return Q and R explicitly.
+ 
+  Show how Q and R can be recovered using DQRSL.
+ 
+  The original matrix A:
+ 
+     1.00000       1.00000       0.00000    
+     1.00000       0.00000       1.00000    
+     0.00000       1.00000       1.00000    
+ 
+  Decompose the matrix.
+ 
+  The packed matrix A which describes Q and R:
+ 
+    -1.41421     -0.707107     -0.707107    
+    0.707107       1.22474      0.408248    
+     0.00000     -0.816497       1.15470    
+ 
+  The QRAUX vector, containing some additional
+  information defining Q:
+ 
+     1.70711       1.57735       0.00000    
+ 
+  The R factor:
+ 
+    -1.41421     -0.707107     -0.707107    
+     0.00000       1.22474      0.408248    
+     0.00000       0.00000       1.15470    
+ 
+  The Q factor:
+ 
+   -0.707107      0.408248     -0.577350    
+   -0.707107     -0.408248      0.577350    
+     0.00000      0.816497      0.577350    
+ 
+  The product Q * R:
+ 
+     1.00000       1.00000     -0.222045E-15
+     1.00000     -0.555112E-16   1.00000    
+     0.00000       1.00000       1.00000    
+ 
+TEST24
+  For a symmetric indefinite matrix,
+  DSICO estimates the reciprocal condition number.
+  The matrix size is N =      100
+ 
+  Estimate the condition.
+ 
+  Estimated reciprocal condition =   0.245050E-03
+ 
+TEST25
+  For a symmetric indefinite matrix,
+  DSIFA factors the matrix,
+  DSISL solves a factored linear system,
+  The matrix size is N =      100
+ 
+  Factor the matrix.
+ 
+  Solve the linear system.
+ 
+  The first and last 5 solution entries:
+  (Should be (1,2,3,4,5,...,n-1,n))
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+  ......  ..............
+        96     96.0000    
+        97     97.0000    
+        98     98.0000    
+        99     99.0000    
+       100     100.000    
+ 
+TEST26
+  For a symmetric indefinite packed matrix,
+  DSPCO estimates the reciprocal condition number.
+  The matrix size is N =      100
+ 
+  Estimate the condition.
+ 
+  Estimated reciprocal condition =   0.245050E-03
+ 
+TEST27
+  For a symmetric indefinite packed matrix,
+  DSPFA factors the matrix,
+  DSPSL solves a factored linear system.
+  The matrix size is N =      100
+ 
+  Factor the matrix.
+ 
+  Solve the linear system.
+ 
+  The first and last 5 solution entries:
+  (Should be (1,2,3,4,5,...,n-1,n))
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+  ......  ..............
+        96     96.0000    
+        97     97.0000    
+        98     98.0000    
+        99     99.0000    
+       100     100.000    
+ 
+TEST28
+  For an MxN matrix A in general storage,
+  DSVDC computes the singular value decomposition:
+    A = U * S * V'
+ 
+  Matrix rows M =           6
+  Matrix columns N =        4
+ 
+  The matrix A:
+ 
+      0.2184    0.2576    0.4013    0.0945
+      0.9563    0.1100    0.7547    0.0136
+      0.8295    0.0438    0.7973    0.8591
+      0.5617    0.6340    0.0018    0.8408
+      0.4153    0.0617    0.8975    0.1231
+      0.0661    0.4495    0.3508    0.0075
+ 
+  Decompose the matrix.
+ 
+  Singular values:
+ 
+     1     2.22898    
+     2     1.03175    
+     3    0.606304    
+     4    0.441098    
+ 
+  Left Singular Vector Matrix U:
+ 
+     -0.2149    0.0703    0.3516    0.1415   -0.5697   -0.6933
+     -0.4939    0.3994    0.0408   -0.7659   -0.0327    0.0848
+     -0.6210   -0.1220   -0.5412    0.3511   -0.3416    0.2581
+     -0.3787   -0.8039    0.2117   -0.1950    0.3196   -0.1592
+     -0.3942    0.4170    0.1135    0.4246    0.6525   -0.2275
+     -0.1594    0.0218    0.7240    0.2274   -0.1725    0.6071
+ 
+  Right Singular Vector Matrix V:
+ 
+     -0.6377    0.0186   -0.1965   -0.7446
+     -0.2122   -0.4046    0.8873   -0.0625
+     -0.6122    0.5940    0.1595    0.4970
+     -0.4167   -0.6951   -0.3855    0.4412
+ 
+  The product U * S * V' (should equal A):
+ 
+      0.2184    0.2576    0.4013    0.0945
+      0.9563    0.1100    0.7547    0.0136
+      0.8295    0.0438    0.7973    0.8591
+      0.5617    0.6340    0.0018    0.8408
+      0.4153    0.0617    0.8975    0.1231
+      0.0661    0.4495    0.3508    0.0075
+ 
+TEST29
+  For a triangular matrix,
+  DTRCO computes the LU factors and
+  computes its reciprocal condition number.
+  The matrix size is N =        5
+ 
+  Lower triangular matrix A:
+ 
+    0.218418       0.00000       0.00000       0.00000       0.00000    
+    0.956318      0.257578       0.00000       0.00000       0.00000    
+    0.829509      0.109957      0.401306       0.00000       0.00000    
+    0.561695      0.438290E-01  0.754673      0.945448E-01   0.00000    
+    0.415307      0.633966      0.797287      0.136169E-01  0.260303    
+ 
+  Estimate the condition:
+ 
+  The reciprocal condition number =   0.481996E-02
+ 
+  Upper triangular matrix A:
+ 
+    0.912484      0.692066      0.597917      0.574366      0.714471    
+     0.00000      0.561662      0.188955      0.367027      0.117707    
+     0.00000       0.00000      0.761492      0.617205      0.299329    
+     0.00000       0.00000       0.00000      0.361529      0.825003    
+     0.00000       0.00000       0.00000       0.00000      0.824660    
+ 
+  Estimate the condition:
+ 
+  The reciprocal condition number =   0.614011E-01
+ 
+TEST30
+  For a triangular matrix,
+  DTRDI computes the determinant or inverse.
+  The matrix size is N =        5
+ 
+  Lower triangular matrix A:
+ 
+    0.218418       0.00000       0.00000       0.00000       0.00000    
+    0.956318      0.257578       0.00000       0.00000       0.00000    
+    0.829509      0.109957      0.401306       0.00000       0.00000    
+    0.561695      0.438290E-01  0.754673      0.945448E-01   0.00000    
+    0.415307      0.633966      0.797287      0.136169E-01  0.260303    
+ 
+  The determinant =    5.55635     * 10 **   -4.00000    
+ 
+  The inverse matrix:
+ 
+     4.57837       0.00000       0.00000       0.00000       0.00000    
+    -16.9983       3.88232       0.00000       0.00000       0.00000    
+    -4.80612      -1.06375       2.49186       0.00000       0.00000    
+     19.0430       6.69125      -19.8905       10.5770       0.00000    
+     47.8190      -6.54723      -6.59187     -0.553301       3.84168    
+ 
+  Upper triangular matrix A:
+ 
+    0.912484      0.692066      0.597917      0.574366      0.714471    
+     0.00000      0.561662      0.188955      0.367027      0.117707    
+     0.00000       0.00000      0.761492      0.617205      0.299329    
+     0.00000       0.00000       0.00000      0.361529      0.825003    
+     0.00000       0.00000       0.00000       0.00000      0.824660    
+ 
+  The determinant =    1.16355     * 10 **   -1.00000    
+ 
+  The inverse matrix:
+ 
+     1.09591      -1.35035     -0.525426      0.526812      -1.09305    
+     0.00000       1.78043     -0.441791      -1.05328      0.959944    
+     0.00000       0.00000       1.31321      -2.24193       1.76620    
+     0.00000       0.00000       0.00000       2.76603      -2.76718    
+     0.00000       0.00000       0.00000       0.00000       1.21262    
+ 
+TEST31
+  For a triangular matrix,
+  DTRSL solves a linear system.
+  The matrix size is N =        5
+ 
+  For a lower triangular matrix A,
+  solve A * x = b
+ 
+  The solution (should be 1,2,3,4,5):
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+ 
+  For a lower triangular matrix A,
+  solve A' * x = b
+ 
+  The solution (should be 1,2,3,4,5):
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+ 
+  For an upper triangular matrix A,
+  solve A * x = b
+ 
+  The solution (should be 1,2,3,4,5):
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+ 
+  For an upper triangular matrix A,
+  solve A' * x = b
+ 
+  The solution (should be 1,2,3,4,5):
+ 
+         1     1.00000    
+         2     2.00000    
+         3     3.00000    
+         4     4.00000    
+         5     5.00000    
+ 
+LINPACK_D_PRB
+  Normal end of execution.
+ 
+January  3 2011   8:56:00.220 AM

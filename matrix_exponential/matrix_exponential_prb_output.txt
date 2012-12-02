@@ -1,0 +1,686 @@
+17 October 2012  12:40:39.461 PM
+ 
+MATRIX_EXPONENTIAL_TEST:
+  FORTRAN90 version
+  Test the MATRIX_EXPONENTIAL library.
+  The R8LIB library is needed.
+  This test needs the TEST_MATRIX_EXPONENTIAL library.
+ 
+MATRIX_EXPONENTIAL_TEST01:
+  EXPM is MATLAB's matrix exponential function
+  EXPM1 is an M-file equivalent to EXPM
+  EXPM2 uses a Taylor series approach
+  EXPM3 relies on an eigenvalue calculation.
+ 
+  Test #   1
+ 
+  This matrix is diagonal.
+  The calculation of the matrix exponential is simple.
+  Matrix order N =    2
+ 
+  Matrix:
+ 
+  Col          1             2      
+  Row
+ 
+    1:      1.            0.      
+    2:      0.            2.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1:   2.71828          0.      
+    2:      0.         7.38906    
+ 
+  EXPM2(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1:   2.71828          0.      
+    2:      0.         7.38906    
+ 
+  Exact Exponential:
+ 
+  Col          1             2      
+  Row
+ 
+    1:   2.71828          0.      
+    2:      0.         7.38906    
+ 
+  Test #   2
+ 
+  This matrix is symmetric.
+  The calculation of the matrix exponential is straightforward.
+  Matrix order N =    2
+ 
+  Matrix:
+ 
+  Col          1             2      
+  Row
+ 
+    1:      1.            3.      
+    2:      3.            2.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1:   39.3228       46.1663    
+    2:   46.1663       54.7116    
+ 
+  EXPM2(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1:   39.3228       46.1663    
+    2:   46.1663       54.7116    
+ 
+  Exact Exponential:
+ 
+  Col          1             2      
+  Row
+ 
+    1:   39.3228       46.1663    
+    2:   46.1663       54.7116    
+ 
+  Test #   3
+ 
+  This example is due to Laub.
+  This matrix is ill-suited for the Taylor series approach.
+  As powers of A are computed, the entries blow up too quickly.
+  Matrix order N =    2
+ 
+  Matrix:
+ 
+  Col          1             2      
+  Row
+ 
+    1:      0.            1.      
+    2:    -39.          -40.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1:  0.377560      0.968104E-02
+    2: -0.377560     -0.968104E-02
+ 
+  EXPM2(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1:  0.335217     -0.241580E-01
+    2: -0.971551      0.284493E-01
+ 
+  Exact Exponential:
+ 
+  Col          1             2      
+  Row
+ 
+    1:  0.377560     -0.377560    
+    2:  0.968104E-02 -0.968104E-02
+ 
+  Test #   4
+ 
+  This example is due to Moler and Van Loan.
+  The example will cause problems for the series summation approach,
+  as well as for diagonal Pade approximations.
+  Matrix order N =    2
+ 
+  Matrix:
+ 
+  Col          1             2      
+  Row
+ 
+    1:    -49.           24.      
+    2:    -64.           31.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1: -0.735759      0.551819    
+    2:  -1.47152       1.10364    
+ 
+  EXPM2(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1: -0.735759      0.551819    
+    2:  -1.47152       1.10364    
+ 
+  Exact Exponential:
+ 
+  Col          1             2      
+  Row
+ 
+    1: -0.735759      0.551819    
+    2:  -1.47152       1.10364    
+ 
+  Test #   5
+ 
+  This example is due to Moler and Van Loan.
+  This matrix is strictly upper triangular
+  All powers of A are zero beyond some (low) limit.
+  This example will cause problems for Pade approximations.
+  Matrix order N =    4
+ 
+  Matrix:
+ 
+  Col          1             2             3             4      
+  Row
+ 
+    1:      0.            6.            0.            0.      
+    2:      0.            0.            6.            0.      
+    3:      0.            0.            0.            6.      
+    4:      0.            0.            0.            0.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2             3             4      
+  Row
+ 
+    1:      1.            6.           18.           36.      
+    2:      0.            1.            6.           18.      
+    3:      0.            0.            1.            6.      
+    4:      0.            0.            0.            1.      
+ 
+  EXPM2(A):
+ 
+  Col          1             2             3             4      
+  Row
+ 
+    1:      1.            6.           18.           36.      
+    2:      0.            1.            6.           18.      
+    3:      0.            0.            1.            6.      
+    4:      0.            0.            0.            1.      
+ 
+  Exact Exponential:
+ 
+  Col          1             2             3             4      
+  Row
+ 
+    1:      1.            6.           18.           36.      
+    2:      0.            1.            6.           18.      
+    3:      0.            0.            1.            6.      
+    4:      0.            0.            0.            1.      
+ 
+  Test #   6
+ 
+  This example is due to Moler and Van Loan.
+  This matrix does not have a complete set of eigenvectors.
+  That means the eigenvector approach will fail.
+  Matrix order N =    2
+ 
+  Matrix:
+ 
+  Col          1             2      
+  Row
+ 
+    1:      1.            1.      
+    2:      0.            1.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1:   2.71828       2.71828    
+    2:      0.         2.71828    
+ 
+  EXPM2(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1:   2.71828       2.71828    
+    2:      0.         2.71828    
+ 
+  Exact Exponential:
+ 
+  Col          1             2      
+  Row
+ 
+    1:   2.71828       2.71828    
+    2:      0.         2.71828    
+ 
+  Test #   7
+ 
+  This example is due to Moler and Van Loan.
+  This matrix is very close to example 5.
+  Mathematically, it has a complete set of eigenvectors.
+  Numerically, however, the calculation will be suspect.
+  Matrix order N =    2
+ 
+  Matrix:
+ 
+  Col          1             2      
+  Row
+ 
+    1:   1.00000          1.      
+    2:      0.         1.00000    
+ 
+  EXPM1(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1:   2.71828       2.71828    
+    2:      0.         2.71828    
+ 
+  EXPM2(A):
+ 
+  Col          1             2      
+  Row
+ 
+    1:   2.71828       2.71828    
+    2:      0.         2.71828    
+ 
+  Exact Exponential:
+ 
+  Col          1             2      
+  Row
+ 
+    1:   2.71831       2.71828    
+    2:      0.         2.71826    
+ 
+  Test #   8
+ 
+  This matrix was an example in Wikipedia.
+  Matrix order N =    3
+ 
+  Matrix:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:     21.           17.            6.      
+    2:     -5.           -1.           -6.      
+    3:      4.            4.           16.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  0.288798E+08  0.288798E+08  0.444303E+07
+    2: -0.199937E+08 -0.199937E+08 -0.444303E+07
+    3:  0.355444E+08  0.355444E+08  0.888611E+07
+ 
+  EXPM2(A):
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  0.288798E+08  0.288798E+08  0.444303E+07
+    2: -0.199937E+08 -0.199937E+08 -0.444303E+07
+    3:  0.355444E+08  0.355444E+08  0.888611E+07
+ 
+  Exact Exponential:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  0.288798E+08  0.288798E+08  0.444303E+07
+    2: -0.199937E+08 -0.199937E+08 -0.444303E+07
+    3:  0.355444E+08  0.355444E+08  0.888611E+07
+ 
+  Test #   9
+ 
+  This matrix is due to the NAG Library.
+  It is an example for function F01ECF.
+  Matrix order N =    4
+ 
+  Matrix:
+ 
+  Col          1             2             3             4      
+  Row
+ 
+    1:      1.            2.            2.            2.      
+    2:      3.            1.            1.            2.      
+    3:      3.            2.            1.            2.      
+    4:      3.            3.            3.            1.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2             3             4      
+  Row
+ 
+    1:   740.704       610.850       542.274       549.175    
+    2:   731.251       603.552       535.088       542.274    
+    3:   823.763       679.426       603.552       610.850    
+    4:   998.435       823.763       731.251       740.704    
+ 
+  EXPM2(A):
+ 
+  Col          1             2             3             4      
+  Row
+ 
+    1:   740.704       610.850       542.274       549.175    
+    2:   731.251       603.552       535.088       542.274    
+    3:   823.763       679.426       603.552       610.850    
+    4:   998.435       823.763       731.251       740.704    
+ 
+  Exact Exponential:
+ 
+  Col          1             2             3             4      
+  Row
+ 
+    1:   740.704       610.850       542.274       549.175    
+    2:   731.251       603.552       535.088       542.274    
+    3:   823.763       679.426       603.552       610.850    
+    4:   998.436       823.763       731.251       740.704    
+ 
+  Test #  10
+ 
+  This is Ward's example #1.
+  It is defective and nonderogatory.
+  The eigenvalues are 3, 3 and 6.
+  Matrix order N =    3
+ 
+  Matrix:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:      4.            2.            0.      
+    2:      1.            4.            1.      
+    3:      1.            1.            4.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:   147.867       183.765       71.7970    
+    2:   127.781       183.765       91.8826    
+    3:   127.781       163.680       111.968    
+ 
+  EXPM2(A):
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:   147.867       183.765       71.7970    
+    2:   127.781       183.765       91.8826    
+    3:   127.781       163.680       111.968    
+ 
+  Exact Exponential:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:   147.867       183.765       71.7970    
+    2:   127.781       183.765       91.8826    
+    3:   127.781       163.680       111.968    
+ 
+  Test #  11
+ 
+  This is Ward's example #2.
+  It is a symmetric matrix.
+  The eigenvalues are 20, 30, 40.
+  Matrix order N =    3
+ 
+  Matrix:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:   29.8794      0.781575      -2.28952    
+    2:  0.781575       25.7266       8.68074    
+    3:  -2.28952       8.68074       34.3940    
+ 
+  EXPM1(A):
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  0.549631E+16 -0.182319E+17 -0.304758E+17
+    2: -0.182319E+17  0.606052E+17  0.101292E+18
+    3: -0.304758E+17  0.101292E+18  0.169294E+18
+ 
+  EXPM2(A):
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  0.549631E+16 -0.182319E+17 -0.304758E+17
+    2: -0.182319E+17  0.606052E+17  0.101292E+18
+    3: -0.304758E+17  0.101292E+18  0.169294E+18
+ 
+  Exact Exponential:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  0.549631E+16 -0.182319E+17 -0.304758E+17
+    2: -0.182319E+17  0.606052E+17  0.101292E+18
+    3: -0.304758E+17  0.101292E+18  0.169294E+18
+ 
+  Test #  12
+ 
+  This is Ward's example #3.
+  Ward's algorithm has difficulty estimating the accuracy
+  of its results.  The eigenvalues are -1, -2, -20.
+  Matrix order N =    3
+ 
+  Matrix:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:   -131.           19.           18.      
+    2:   -390.           56.           54.      
+    3:   -387.           57.           52.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  -1.50964      0.367879      0.135335    
+    2:  -5.63257       1.47152      0.406006    
+    3:  -4.93494       1.10364      0.541341    
+ 
+  EXPM2(A):
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  -1.50965      0.367879      0.135335    
+    2:  -5.63257       1.47152      0.406006    
+    3:  -4.93494       1.10364      0.541341    
+ 
+  Exact Exponential:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  -1.50964      0.367879      0.135335    
+    2:  -5.63257       1.47152      0.406006    
+    3:  -4.93494       1.10364      0.541341    
+ 
+  Test #  13
+ 
+  This is Ward's example #4.
+  This is a version of the Forsythe matrix.
+  The eigenvector problem is badly conditioned.
+  Ward's algorithm has difficulty estimating the accuracy
+  of its results for this problem.
+  Matrix order N =   10
+ 
+  Matrix:
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1:      0.            1.            0.            0.            0.      
+    2:      0.            0.            1.            0.            0.      
+    3:      0.            0.            0.            1.            0.      
+    4:      0.            0.            0.            0.            1.      
+    5:      0.            0.            0.            0.            0.      
+    6:      0.            0.            0.            0.            0.      
+    7:      0.            0.            0.            0.            0.      
+    8:      0.            0.            0.            0.            0.      
+    9:      0.            0.            0.            0.            0.      
+   10:  0.100000E-09      0.            0.            0.            0.      
+ 
+  Col          6             7             8             9            10      
+  Row
+ 
+    1:      0.            0.            0.            0.            0.      
+    2:      0.            0.            0.            0.            0.      
+    3:      0.            0.            0.            0.            0.      
+    4:      0.            0.            0.            0.            0.      
+    5:      1.            0.            0.            0.            0.      
+    6:      0.            1.            0.            0.            0.      
+    7:      0.            0.            1.            0.            0.      
+    8:      0.            0.            0.            1.            0.      
+    9:      0.            0.            0.            0.            1.      
+   10:      0.            0.            0.            0.            0.      
+ 
+  EXPM1(A):
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1:      1.            1.        0.500000      0.166667      0.416667E-01
+    2:  0.275573E-15      1.            1.        0.500000      0.166667    
+    3:  0.248016E-14  0.275573E-15      1.            1.        0.500000    
+    4:  0.198413E-13  0.248016E-14  0.275573E-15      1.            1.      
+    5:  0.138889E-12  0.198413E-13  0.248016E-14  0.275573E-15      1.      
+    6:  0.833333E-12  0.138889E-12  0.198413E-13  0.248016E-14  0.275573E-15
+    7:  0.416667E-11  0.833333E-12  0.138889E-12  0.198413E-13  0.248016E-14
+    8:  0.166667E-10  0.416667E-11  0.833333E-12  0.138889E-12  0.198413E-13
+    9:  0.500000E-10  0.166667E-10  0.416667E-11  0.833333E-12  0.138889E-12
+   10:  0.100000E-09  0.500000E-10  0.166667E-10  0.416667E-11  0.833333E-12
+ 
+  Col          6             7             8             9            10      
+  Row
+ 
+    1:  0.833333E-02  0.138889E-02  0.198413E-03  0.248016E-04  0.275573E-05
+    2:  0.416667E-01  0.833333E-02  0.138889E-02  0.198413E-03  0.248016E-04
+    3:  0.166667      0.416667E-01  0.833333E-02  0.138889E-02  0.198413E-03
+    4:  0.500000      0.166667      0.416667E-01  0.833333E-02  0.138889E-02
+    5:      1.        0.500000      0.166667      0.416667E-01  0.833333E-02
+    6:      1.            1.        0.500000      0.166667      0.416667E-01
+    7:  0.275573E-15      1.            1.        0.500000      0.166667    
+    8:  0.248016E-14  0.275573E-15      1.            1.        0.500000    
+    9:  0.198413E-13  0.248016E-14  0.275573E-15      1.            1.      
+   10:  0.138889E-12  0.198413E-13  0.248016E-14  0.275573E-15      1.      
+ 
+  EXPM2(A):
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1:      1.            1.        0.500000      0.166667      0.416667E-01
+    2:  0.275573E-15      1.            1.        0.500000      0.166667    
+    3:  0.248016E-14  0.275573E-15      1.            1.        0.500000    
+    4:  0.198413E-13  0.248016E-14  0.275573E-15      1.            1.      
+    5:  0.138889E-12  0.198413E-13  0.248016E-14  0.275573E-15      1.      
+    6:  0.833333E-12  0.138889E-12  0.198413E-13  0.248016E-14  0.275573E-15
+    7:  0.416667E-11  0.833333E-12  0.138889E-12  0.198413E-13  0.248016E-14
+    8:  0.166667E-10  0.416667E-11  0.833333E-12  0.138889E-12  0.198413E-13
+    9:  0.500000E-10  0.166667E-10  0.416667E-11  0.833333E-12  0.138889E-12
+   10:  0.100000E-09  0.500000E-10  0.166667E-10  0.416667E-11  0.833333E-12
+ 
+  Col          6             7             8             9            10      
+  Row
+ 
+    1:  0.833333E-02  0.138889E-02  0.198413E-03  0.248016E-04  0.275573E-05
+    2:  0.416667E-01  0.833333E-02  0.138889E-02  0.198413E-03  0.248016E-04
+    3:  0.166667      0.416667E-01  0.833333E-02  0.138889E-02  0.198413E-03
+    4:  0.500000      0.166667      0.416667E-01  0.833333E-02  0.138889E-02
+    5:      1.        0.500000      0.166667      0.416667E-01  0.833333E-02
+    6:      1.            1.        0.500000      0.166667      0.416667E-01
+    7:  0.275573E-15      1.            1.        0.500000      0.166667    
+    8:  0.248016E-14  0.275573E-15      1.            1.        0.500000    
+    9:  0.198413E-13  0.248016E-14  0.275573E-15      1.            1.      
+   10:  0.138889E-12  0.198413E-13  0.248016E-14  0.275573E-15      1.      
+ 
+  Exact Exponential:
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1:      0.            0.            0.            0.            0.      
+    2:      0.            0.            0.            0.            0.      
+    3:      0.            0.            0.            0.            0.      
+    4:      0.            0.            0.            0.            0.      
+    5:      0.            0.            0.            0.            0.      
+    6:      0.            0.            0.            0.            0.      
+    7:      0.            0.            0.            0.            0.      
+    8:      0.            0.            0.            0.            0.      
+    9:      0.            0.            0.            0.            0.      
+   10:      0.            0.            0.            0.            0.      
+ 
+  Col          6             7             8             9            10      
+  Row
+ 
+    1:      0.            0.            0.            0.            0.      
+    2:      0.            0.            0.            0.            0.      
+    3:      0.            0.            0.            0.            0.      
+    4:      0.            0.            0.            0.            0.      
+    5:      0.            0.            0.            0.            0.      
+    6:      0.            0.            0.            0.            0.      
+    7:      0.            0.            0.            0.            0.      
+    8:      0.            0.            0.            0.            0.      
+    9:      0.            0.            0.            0.            0.      
+   10:      0.            0.            0.            0.            0.      
+ 
+  Test #  14
+ 
+  This is Moler's example.
+  This badly scaled matrix caused problems for MATLAB's expm().
+  Matrix order N =    3
+ 
+  Matrix:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:      0.        0.100000E-07      0.      
+    2: -0.200667E+11     -3.        0.200000E+11
+    3:   66.6667          0.        -66.6667    
+ 
+  EXPM1(A):
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  0.446848      0.154044E-08  0.462811    
+    2: -0.574318E+07 -0.152834E-01 -0.452666E+07
+    3:  0.447722      0.154270E-08  0.463480    
+ 
+  EXPM2(A):
+ 
+  Col          1             2             3      
+  Row
+ 
+    1: -0.362797E+10  0.502452     -0.306266E+10
+    2: -0.167974E+20  0.349821E+10 -0.227507E+20
+    3:  0.155810E+11   7.53394      0.498763E+10
+ 
+  Exact Exponential:
+ 
+  Col          1             2             3      
+  Row
+ 
+    1:  0.446849      0.154044E-08  0.462811    
+    2: -0.574307E+07 -0.152830E-01 -0.452654E+07
+    3:  0.447723      0.154270E-08  0.463481    
+ 
+MATRIX_EXPONENTIAL_TEST:
+  Normal end of execution.
+ 
+17 October 2012  12:40:39.466 PM

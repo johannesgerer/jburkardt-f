@@ -1,0 +1,276 @@
+<html>
+
+  <head>
+    <title>
+      CVT_REFINE - Refine a Centroidal Voronoi Tessellation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CVT_REFINE <br> Refine a Centroidal Voronoi Tessellation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CVT_REFINE</b>
+      is a FORTRAN90 library which
+      attempts to "refine"
+      a centroidal Voronoi tessellation (CVT).
+    </p>
+
+    <p>
+      <b>CVT_REFINE</b> considers the following problem.  We suppose
+      that we have computed a centroidal Voronoi tessellation
+      associated with N1 cell generators.  We now wish to
+      "refine" this tessellation, by increasing the number of generators
+      by N2.  The stipulations are that the old generators will be
+      fixed in place, and that the new generators will be placed
+      initially at random in the region, and then allowed to adjust
+      themselves using the usual CVT iteration.
+    </p>
+
+    <p>
+      However, without some care, this process will not produce
+      very good results, since the old fixed generators will "block"
+      the motion of the new generators seeking areas of "lower
+      pressure".  To enable the system to reach a lower energy
+      equilibrium, we use a weight vector to initially reduce
+      the influence of the old generators, and then to gradually
+      "turn them on" until they are equal in influence to the
+      new generators (though still constrained not to move).
+    </p>
+
+    <p>
+      The code includes the weight vector that was developed in the
+      <a href = "../../f_src/cvt_size/cvt_size.html">CVT_SIZE</a> program
+      and the idea of fixing points that was developed in the
+      <a href = "../../f_src/cvt_fixed/cvt_fixed.html">CVT_FIXED</a> program.
+    </p>
+
+    <p>
+      A new idea was to include a maximum influence distance
+      <b>cvt_cutoff</b>.  The idea was that spatial points that
+      were further than this cutoff distance to a generator were
+      not assigned any generator at all.  This was another mechanism
+      that would allow us to control the sizes of the Voronoi cells,
+      and allow new generators to move more freely around old,
+      fixed generators.
+    </p>
+
+    <h3 align = "center">
+      Animations:
+    </h3>
+
+    <p>
+      Just to check out the use of the cutoff value, we set
+      10 points going with a fixed cutoff value.
+      <a href = "../../data/mp4/cvt_cutoff_movie.html">
+      Click HERE to see the CVT_CUTOFF movie</a>.
+    </p>
+
+    <p>
+      For our second movie, we follow 10 generators for 100 iterations,
+      then fix them in place.  Our goal is to refine the current placement
+      of points by adding some new points and driving them to a CVT
+      equilibrium.  We add 10 new generators.  By a programming mistake,
+      these points all started out at (0,0), but that just makes the point
+      more dramatically.  We make room for the new points to move about
+      by using weights.  These start out giving the new points an advantage,
+      but at certain time steps we cut this back until at the end we
+      are back to an unweighted scheme.
+      <a href = "../../data/mp4/cvt_10plus10_movie.html">
+      Click HERE to see the CVT_10PLUS10 movie</a>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/pbmlib/pbmlib.html">
+      PBMLIB</a>,
+      a FORTRAN90 library which
+      supplies some routines to create crisp and relatively small
+      binary PPM images of the CVT regions.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, Number 3, pages 345-405, September 1991.
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Janet Peterson, Rebecca Brannon,<br>
+          User Manual and Supporting Information for Library of Codes
+          for Centroidal Voronoi Placement and Associated Zeroth,
+          First, and Second Moment Determination,<br>
+          Sandia National Laboratories Technical Report SAND2002-0099,<br>
+          February 2002.
+        </li>
+        <li>
+          Qiang Du, Vance Faber, Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review, Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Lili Ju, Qiang Du, Max Gunzburger,<br>
+          Probabilistic methods for centroidal Voronoi tessellations
+          and their parallel implementations,<br>
+          Parallel Computing,<br>
+          Volume 28, 2002, pages 1477-1500.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_refine.f90">cvt_refine.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "cvt_refine.sh">cvt_refine.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_refine_prb.f90">cvt_refine_prb.f90</a>,
+          a sample problem.
+        </li>
+        <li>
+          <a href = "cvt_refine_prb.sh">cvt_refine_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "cvt_refine_prb_output.txt">cvt_refine_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE_TO_RGB</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CVT_ITERATION_WEIGHT</b> takes one step of the weighted CVT iteration.
+        </li>
+        <li>
+          <b>CVT_SIZE_TO_WEIGHT</b> computes appropriate CVT weights from desired volumes.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>FIND_CLOSEST_WEIGHT</b> finds the generator with least weighted distance to X.
+        </li>
+        <li>
+          <b>GENERATOR_INIT</b> initializes the Voronoi cell generators.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_LOG_2</b> returns the integer part of the logarithm base 2 of |I|.
+        </li>
+        <li>
+          <b>I4_TO_ANGLE</b> maps integers to points on a circle.
+        </li>
+        <li>
+          <b>I4_TO_RGB</b> maps integers to RGB colors.
+        </li>
+        <li>
+          <b>PPM_CHECK_DATA</b> checks pixel data.
+        </li>
+        <li>
+          <b>PPMB_WRITE</b> writes a binary portable pixel map file.
+        </li>
+        <li>
+          <b>R8VEC_DIST_L2</b> returns the L2 distance between a pair of real vectors.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints a real vector.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>REGION_PLOT_PPMB</b> makes a binary PPM plot of the CVT regions.
+        </li>
+        <li>
+          <b>REGION_SAMPLER</b> returns a sample point in the physical region.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> converts an string of characters into an I4VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

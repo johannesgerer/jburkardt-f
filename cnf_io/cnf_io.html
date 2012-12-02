@@ -1,0 +1,215 @@
+<html>
+
+  <head>
+    <title>
+      CNF_IO - Read or Write a CNF File
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CNF_IO <br>  Read or Write a CNF File
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CNF_IO</b>
+      is a FORTRAN90 library which
+      reads or writes a file, in the DIMACS CNF format, containing
+      information about a boolean formula written in conjunctive normal form.
+    </p>
+
+    <p>
+      Boolean expressions, written in conjunctive normal form, may be used
+      as test cases for the satisfiability problem.  That problem seeks to
+      determine all possible combinations of variable values that result in
+      the formula being evaluated as TRUE.
+    </p>
+
+    <p>
+      The routines in <b>CNF_IO</b> are intended to make it possible to
+      transfer information between a CNF file and a computer program.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CNF_IO</b> is available in
+      <a href = "../../cpp_src/cnf_io/cnf_io.html">a C++ version</a> and
+      <a href = "../../f77_src/cnf_io/cnf_io.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/cnf_io/cnf_io.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/cnf/cnf.html">
+      CNF</a>,
+      a data directory which
+      describes the DIMACS CNF file format for specifying instances of the
+      satisfiability problem for boolean formulas in conjunctive normal form.
+    </p>
+
+    <p>
+      <a href = "../../f_src/satisfy/satisfy.html">
+      SATISFY</a>,
+      a FORTRAN90 program which
+      demonstrates, for a particular circuit, an exhaustive search
+      for solutions of the circuit satisfiability problem.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Rina Dechter,<br>
+          Enhancement Schemes for constraint processing:
+          Backjumping, learning, and cutset decomposition,<br>
+          Artificial Intelligence,<br>
+          Volume 41, Number 3, January 1990, pages 273-312.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cnf_io.f90">cnf_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "cnf_io.sh">cnf_io.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cnf_io_prb.f90">cnf_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "cnf_io_prb.sh">cnf_io_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "cnf_io_prb_output.txt">cnf_io_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "test01_v3_c2.cnf">test01_v3_c2.cnf</a>,
+          a CNF file, for 3 variables and 2 clauses, written by the sample program.
+        </li>
+        <li>
+          <a href = "test02_v6_c18.cnf">test02_v16_c18.cnf</a>,
+          a CNF file, for 16 variables and 18 clauses, written by the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_SPACE</b> is TRUE if a character is a whitespace character.
+        </li>
+        <li>
+          <b>CNF_EVALUATE</b> evaluates a formula in CNF form.
+        </li>
+        <li>
+          <b>CNF_DATA_READ</b> reads the data of a CNF file.
+        </li>
+        <li>
+          <b>CNF_DATA_WRITE</b> writes data to a CNF file.
+        </li>
+        <li>
+          <b>CNF_HEADER_READ</b> reads the header of a CNF file.
+        </li>
+        <li>
+          <b>CNF_HEADER_WRITE</b> writes the header for a CNF file.
+        </li>
+        <li>
+          <b>CNF_PRINT</b> prints CNF information.
+        </li>
+        <li>
+          <b>CNF_WRITE</b> writes the header and data of a CNF file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>LVEC_NEXT</b> generates the next logical vector.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_WORD_EXTRACT_FIRST</b> extracts the first word from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 31 May 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

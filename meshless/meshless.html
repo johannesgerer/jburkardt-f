@@ -1,0 +1,357 @@
+<html>
+
+  <head>
+    <title>
+      MESHLESS - Meshless Voronoi Basis Functions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MESHLESS <br> Meshless Voronoi Basis Functions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MESHLESS</b>
+      is a FORTRAN90 program which
+      generates a set of local basis functions, without the use of a mesh,
+      by Lili Ju.
+    </p>
+
+    <p>
+      If <b>N</b> basis functions are desired
+      in an arbitrary region, then <b>N</b> basis points are chosen at random
+      in the region.  Each point in the region is assigned to the nearest
+      basis point.  The basis points are then adjusted by taking the
+      average of the associated points.  If this process is repeated, the
+      basis points will arrange themselves into generators of a centroidal
+      Voronoi tessellation of the region.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt/cvt.html">
+      CVT</a>,
+      a FORTRAN90 library which
+      computes points that
+      form a Centroidal Voronoi Tessellation, which can be used by
+      <b>MESHLESS</b> to assign node locations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/halton/halton.html">
+      HALTON</a>,
+      a FORTRAN90 library which
+      computes quasirandom
+      Halton points, which can be used by <b>MESHLESS</b> to
+      assign node locations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ps_write/ps_write.html">
+      PS_WRITE</a>,
+      a FORTRAN90 library which
+      implements some PostScript graphics commands.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Lili Ju
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Qiang Du, Vance Faber, Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review, Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Qiang Du, Max Gunzburger, Lili Ju,<br>
+          Meshfree, Probabilistic Determination of Point Sets and Support
+          Regions for Meshfree Computing,<br>
+          Computer Methods in Applied Mechanics in Engineering,<br>
+          Volume 191, 2002, pages 1349-1366;
+        </li>
+        <li>
+          Lili Ju, Qiang Du, Max Gunzburger,<br>
+          Probabilistic Methods for Centroidal Voronoi Tessellations and
+          their Parallel Implementations,<br>
+          Parallel Computing, Volume 28, 2002, pages 1477-1500.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "meshless.f90">meshless.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "meshless.sh">meshless.sh</a>, commands
+          to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "meshless_input.txt">meshless_input.txt</a>,
+          a set of sample input commands.
+        </li>
+        <li>
+          <a href = "meshless_output.txt">meshless_output.txt</a>,
+          the printed responses.
+        </li>
+        <li>
+          <a href = "basis.dat">basis.dat</a>,
+          a file of basis points written by the program.
+        </li>
+        <li>
+          <a href = "basis.png">basis.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the basis points.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for the meshless basis function routines.
+        </li>
+        <li>
+          <b>BASIS_BOX</b> finds a box that contains all the basis functions.
+        </li>
+        <li>
+          <b>BASIS_OVERLAP</b> counts the number of basis functions with overlapping support.
+        </li>
+        <li>
+          <b>BASIS_PLOT</b> plots the basis functions in the region.
+        </li>
+        <li>
+          <b>BASIS_READ</b> reads basis data from a file.
+        </li>
+        <li>
+          <b>BASIS_WRITE</b> writes the basis data to a file.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CENTER_PLOT</b> plots the center in the region.
+        </li>
+        <li>
+          <b>CVT_MAKE</b> computes centroidal Voronoi tessellation generators.
+        </li>
+        <li>
+          <b>CVT_READ</b> reads the CVT data from a file.
+        </li>
+        <li>
+          <b>CVT_WRITE</b> writes the CVT data to a file.
+        </li>
+        <li>
+          <b>DENSITY</b> evaluates the density function.
+        </li>
+        <li>
+          <b>EPS_FILE_HEAD</b> writes header information to an encapsulated PostScript file.
+        </li>
+        <li>
+          <b>EPS_FILE_TAIL</b> writes trailer information to an encapsulated PostScript file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_LINE_COUNT</b> counts the number of lines in a file.
+        </li>
+        <li>
+          <b>FIND_CLOSEST</b> finds the center point CENTER(1:M,IC) closest to Y(1:M).
+        </li>
+        <li>
+          <b>FIND_RE</b> finds the number of center points near a given point.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HALTON_GENERATE</b> generates a Halton dataset.
+        </li>
+        <li>
+          <b>HALTON_READ</b> reads Halton data from a file.
+        </li>
+        <li>
+          <b>HALTON_WRITE</b> writes a Halton dataset to a file.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>I4_TO_HALTON</b> computes an element of a Halton sequence.
+        </li>
+        <li>
+          <b>POINT_INSIDE_BOX_2D</b> determines if a point is inside a box in 2D.
+        </li>
+        <li>
+          <b>PRIME</b> returns any of the first PRIME_MAX prime numbers.
+        </li>
+        <li>
+          <b>PS_CIRCLE</b> draws a circle.
+        </li>
+        <li>
+          <b>PS_COLOR_FILL_SET</b> sets the fill color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE</b> handles the line color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE_SET</b> sets the line color.
+        </li>
+        <li>
+          <b>PS_COMMENT</b> inserts a comment into the PostScript file.
+        </li>
+        <li>
+          <b>PS_DEFAULT</b> sets the internal settings to their default values
+        </li>
+        <li>
+          <b>PS_FILE_CLOSE</b> closes a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_HEAD</b> writes header information to a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_OPEN</b> opens a new version of a PostScript file with a given name.
+        </li>
+        <li>
+          <b>PS_FILE_TAIL</b> writes trailer information to a PostScript file.
+        </li>
+        <li>
+          <b>PS_GRID_CARTESIAN</b> draws a cartesian grid.
+        </li>
+        <li>
+          <b>PS_LINE_CLOSED</b> adds the graph of a closed line to a PostScript file.
+        </li>
+        <li>
+          <b>PS_LINETO</b> draws a line from the current point to the given point.
+        </li>
+        <li>
+          <b>PS_MARK_CIRCLES</b> marks points with a small open circle.
+        </li>
+        <li>
+          <b>PS_MARK_DISK</b> marks a point with a small filled disk.
+        </li>
+        <li>
+          <b>PS_MARKER_SIZE</b> sets the marker size.
+        </li>
+        <li>
+          <b>PS_MOVETO</b> "moves to" a new point, which becomes the current point.
+        </li>
+        <li>
+          <b>PS_PAGE_HEAD</b> writes header information on a new page.
+        </li>
+        <li>
+          <b>PS_PAGE_TAIL</b> writes tail information at the end of a page.
+        </li>
+        <li>
+          <b>PS_SETTING_INT</b> sets, gets, or prints integer internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>PS_SETTING_REAL</b> sets, gets, or prints real internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two real values.
+        </li>
+        <li>
+          <b>RADIUS_MAKE_1</b> uses algorithm 1 to determine a suitable radius for each center.
+        </li>
+        <li>
+          <b>RADIUS_MAKE_2</b> uses algorithm 2 to determine a suitable radius for each center.
+        </li>
+        <li>
+          <b>RANDOM_GENERATOR</b> returns a random point Z(1:M) in [A(1:M),B(1:M)].
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SET_RANDOM_SEED</b> initializes the FORTRAN 90 random number generator.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>UNIFORM_MAKE</b> sets up the uniform random data points.
+        </li>
+        <li>
+          <b>UNIFORM_READ</b> reads uniform random data from a file.
+        </li>
+        <li>
+          <b>UNIFORM_WRITE</b> writes the uniform random data to a file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

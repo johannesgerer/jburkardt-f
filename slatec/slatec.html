@@ -1,0 +1,4802 @@
+<html>
+
+  <head>
+    <title>
+      SLATEC - A Mathematical Library
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SLATEC <br> A Mathematical Library
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SLATEC</b>
+      is a FORTRAN90 library which
+      contains a large amount of numerical software.
+    </p>
+
+    <p>
+      The orignal, correct version of SLATEC is as
+      a FORTRAN77 library.  This library is available through NETLIB:
+      <a href = "http://www.netlib.org/slatec/index.html">
+      http://www.netlib.org/slatec/index.html</a>.
+    </p>
+
+    <p>
+      What you are seeing here is a version of the library that I
+      have lightly edited; a few changes have been made so that it
+      will compile as a FORTRAN90 program.  However, this version is
+      not an official version, it is not supported by anybody, and
+      if you have any doubts about its accuracy, you should refer
+      to the original, correct FORTRAN77 version!
+    </p>
+
+    <p>
+      The huge size of the SLATEC library is both a plus (it has
+      everything) and a minus (there's so much here I can't find
+      what I'm looking for!)  Since SLATEC is built, in large part,
+      from a number of smaller, specialized libraries, I would
+      strongly recommend that if your interests lie entirely within
+      one of those libraries, you try to find a copy of that library!
+    </p>
+
+    <p>
+      Another issue to keep in mind is the extraordinary complexity
+      of some of the routines.  It is not unusual for a single routine
+      in the SLATEC library to call, directly or indirectly, thirty
+      or forty routines.  In part, this is a testimony to the modularity
+      of the routines; however, it can make debugging a nightmare.
+    </p>
+
+    <p>
+      <b>SLATEC</b> includes
+      all or some of the following libraries:
+      <ul>
+        <li>
+          BLAS, basic linear algebra subprograms;
+        </li>
+        <li>
+          BVSUP, two point boundary value problems solved by superposition;
+        </li>
+        <li>
+          DASSL, for the solution of differential/algebraic systems;
+        </li>
+        <li>
+          DDRIVE/SDRIVE, for the solution of double precision or
+          single precision systems of ordinary differential equations;
+        </li>
+        <li>
+          DEPAC, for the solution of systems of differential equations;
+        </li>
+        <li>
+          DLAP/SLAP, for the solution of double precision or single
+          precision sparse systems of linear equations;
+        </li>
+        <li>
+          EISPACK, for the computation of eigenvalues and eigenvectors;
+        </li>
+        <li>
+          FFTPACK, for fast Fourier transforms;
+        </li>
+        <li>
+          FISHPACK, for solution of the Poisson equation;
+        </li>
+        <li>
+          FNLIB, the Fullerton special function library;
+        </li>
+        <li>
+          LINPACK, for solving systems of linear equations;
+        </li>
+        <li>
+          MACHINE, for "looking up" machine arithmetic constants;
+        </li>
+        <li>
+          MINPACK, for minimization (SNLS1, SNSQ);
+        </li>
+        <li>
+          MP, for Brent's multiple-precision arithmetic package;
+        </li>
+        <li>
+          PCHIP, for piecewise cubic Hermite interpolation;
+        </li>
+        <li>
+          PPPACK, for piecewise cubic polynomial interpolation;
+        </li>
+        <li>
+          QUADPACK, for quadrature over finite or infinite 1D intervals;
+        </li>
+        <li>
+          SOS, for square systems of nonlinear equations;
+        </li>
+        <li>
+          SPLP, for linear programming problems;
+        </li>
+        <li>
+          XERROR, for error handling.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Some more information about the SLATEC library is available in
+      <ul>
+        <li>
+          <a href = "../../pdf/slatec_contents.pdf">
+          slatec_contents.pdf</a>
+          the contents of the SLATEC Library;
+        </li>
+        <li>
+          <a href = "../../pdf/slatec_guide.pdf">
+          slatec_guide.pdf</a>
+          A guide to the structure and format of the SLATEC library;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blas/blas.html">
+      BLAS</a>,
+      a FORTRAN90 library which
+      contains the Basic Linear Algebra Subprograms (BLAS)
+      for level 1, 2 and 3, for single and double precision,
+      and for real and complex arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dlap/dlap.html">
+      DLAP</a>,
+      a FORTRAN90 library which
+      carries out the iterative solution of  sparse linear systems,
+      by Anne Greenbaum and Mark Seager.
+    </p>
+
+    <p>
+      <a href = "../../f_src/eispack/eispack.html">
+      EISPACK</a>,
+      a FORTRAN90 library which
+      carries out eigenvalue computations;
+      superseded by LAPACK;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fftpack5/fftpack5.html">
+      FFTPACK5</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform (FFT)
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack/linpack.html">
+      LINPACK</a>,
+      a FORTRAN90 library which
+      contains linear algebra routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/machine/machine.html">
+      MACHINE</a>,
+      a FORTRAN90 library which
+      contains integer,
+      single precision real
+      and double precision real machine constants, and is included
+      in <b>SLATEC</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/minpack/minpack.html">
+      MINPACK</a>,
+      a FORTRAN90 library which
+      solves systems of nonlinear equations, or the least squares minimization of the
+      residual of a set of linear or nonlinear equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes a wide variety of numerical software, including
+      solvers for linear systems of equations, interpolation of data,
+      numerical quadrature, linear least squares data fitting,
+      the solution of nonlinear equations, ordinary differential equations,
+      optimization and nonlinear least squares, simulation and random numbers,
+      trigonometric approximation and Fast Fourier Transforms.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pppack/pppack.html">
+      PPPACK</a>,
+      a FORTRAN90 library which
+      contains cubic spline and general
+      piecewise polynomial interpolation routines,
+      included in <b>SLATEC</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadpack/quadpack.html">
+      QUADPACK</a>,
+      a FORTRAN90 library which
+      approximates integrals by numerical quadrature,
+      included in <b>SLATEC</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xerror/xerror.html">
+      XERROR</a>,
+      a FORTRAN90 library which
+      is designed to report and handle errors detected during program execution.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Richard Brent,<br>
+          A FORTRAN Multiple-Precision Arithmetic Package,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 4, Number 1, March 1978, pages 71-81.
+        </li>
+        <li>
+          Richard Brent,<br>
+          Algorithm 524:
+          MP: A FORTRAN Multiple-Precision Arithmetic Package,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 4, Number 1, March 1978, pages 57-70.
+        </li>
+        <li>
+          Bill Buzbee,<br>
+          The SLATEC Common Math Library,<br>
+          in Sources and Development of Mathematical Software,<br>
+          edited by Wayne Cowell,<br>
+          Prentice-Hall, 1984,<br>
+          ISBN: 0-13-823501-5,<br>
+          LC: QA76.95.S68.
+        </li>
+        <li>
+          Carl deBoor,<br>
+          A Practical Guide to Splines,<br>
+          Springer, 2001,<br>
+          ISBN: 0387953663,<br>
+          LC: QA1.A647.v27.
+        </li>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1.
+        </li>
+        <li>
+          Kirby Fong, Thomas Jefferson, Tokihiko Suyehiro, Lee Walton, <br>
+          Guide to the SLATEC Common Mathematical Library, <br>
+          April 10, 1990.
+        </li>
+        <li>
+          Phyllis Fox, Andrew Hall, Norman Schryer,<br>
+          Algorithm 528:</br>
+          Framework for a Portable Library,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 4, Number 2, June 1978, page 176-188.
+        </li>
+        <li>
+          Fred Fritsch, Ralph Carlson,<br>
+          Monotone Piecewise Cubic Interpolation,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 17, Number 2, April 1980, pages 238-246.
+        </li>
+        <li>
+          Charles Gear,<br>
+          Numerical Initial Value Problems in Ordinary Differential
+          Equations,<br>
+          Prentice-Hall, 1971,<br>
+          ISBN: 0136266061,<br>
+          LC: QA372.G4.
+        </li>
+        <li>
+          Ron Jones, David Kahaner,<br>
+          XERROR, The SLATEC Error Handling Package,<br>
+          Technical Report SAND82-0800,<br>
+          Sandia Laboratories, 1982.
+        </li>
+        <li>
+          David Kahaner, Cleve Moler, Steven Nash,<br>
+          Numerical Methods and Software,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0-13-627258-4,<br>
+          LC: TA345.K34.
+        </li>
+        <li>
+          Charles Lawson, Richard Hanson, David Kincaid, Fred Krogh,<br>
+          Algorithm 539:
+          Basic Linear Algebra Subprograms for Fortran Usage,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 5, Number 3, September 1979, pages 308-323.
+        </li>
+        <li>
+          Jorge More, Burton Garbow, Kenneth Hillstrom,<br>
+          User Guide for MINPACK-1,<br>
+          Technical Report ANL-80-74,<br>
+          Argonne National Laboratory, 1980.
+        </li>
+        <li>
+          Robert Piessens, Elise deDoncker-Kapenga,
+          Christian Ueberhuber, David Kahaner,<br>
+          QUADPACK: A Subroutine Package for Automatic Integration,<br>
+          Springer, 1983,<br>
+          ISBN: 3540125531,<br>
+          LC: QA299.3.Q36.
+        </li>
+        <li>
+          Mark Seager,<br>
+          A SLAP for the Masses,<br>
+          Technical Report UCRL-100267,<br>
+          Lawrence Livermore National Laboratory, December 1988.
+        </li>
+        <li>
+          Paul Swarztrauber,<br>
+          Vectorizing the FFT's,<br>
+          in Parallel Computations,<br>
+          edited by Garry Rodrigue,<br>
+          Academic Press, 1982,<br>
+          ISBN: 0125921012,<br>
+          LC: QA76.6.P348.
+        </li>
+        <li>
+          James Wilkinson, Christian Reinsch,<br>
+          Handbook for Automatic Computation,<br>
+          Volume II, Linear Algebra, Part 2,<br>
+          Springer, 1971,<br>
+          ISBN: 0387054146,<br>
+          LC: QA251.W67.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "slatec.f90">slatec.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "slatec.sh">slatec.sh</a>, commands to compile
+          the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>AIRY_PRB</b> just calls some routines that evaluate the Airy function.
+      <ul>
+        <li>
+          <a href = "airy_prb.f90">airy_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "airy_prb.sh">airy_prb.sh</a>, commands to
+          compile, load and run the sample problem.
+        </li>
+        <li>
+          <a href = "airy_prb_output.txt">airy_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SLATEC_PRB</b> is a large program that performs a lot
+      of tests on the routines.
+      <ul>
+        <li>
+          <a href = "slatec_prb.f90">slatec_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "slatec_prb.sh">slatec_prb.sh</a>, commands to
+          compile, load and run the sample problem.
+        </li>
+        <li>
+          <a href = "slatec_prb_output.txt">slatec_prb_output.txt</a>
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MACHINE_PRB</b> just calls the routines from the MACHINE library.
+      <ul>
+        <li>
+          <a href = "machine_prb.f90">machine_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "machine_prb.sh">machine_prb.sh</a>, commands to
+          compile, load and run the sample problem.
+        </li>
+        <li>
+          <a href = "machine_prb_output.txt">machine_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>AAAAAA</b> is the SLATEC Common Mathematical Library disclaimer and version.
+        </li>
+        <li>
+          <b>ACOSH</b> computes the arc hyperbolic cosine.
+        </li>
+        <li>
+          <b>AI</b> evaluates the Airy function.
+        </li>
+        <li>
+          <b>AIE</b> calculates the Airy function for a negative argument...
+        </li>
+        <li>
+          <b>ALBETA</b> computes the natural logarithm of the complete Beta function.
+        </li>
+        <li>
+          <b>ALGAMS</b> computes the logarithm of the absolute value of the Gamma function.
+        </li>
+        <li>
+          <b>ALI</b> computes the logarithmic integral.
+        </li>
+        <li>
+          <b>ALNGAM</b> computes the logarithm of the absolute value of the Gamma function.
+        </li>
+        <li>
+          <b>ALNREL</b> evaluates ln(1+X) accurate in the sense of relative error.
+        </li>
+        <li>
+          <b>ASINH</b> computes the arc hyperbolic sine.
+        </li>
+        <li>
+          <b>ASYIK</b> is subsidiary to BESI and BESK.
+        </li>
+        <li>
+          <b>ASYJY</b> is subsidiary to BESJ and BESY.
+        </li>
+        <li>
+          <b>ATANH</b> computes the arc hyperbolic tangent.
+        </li>
+        <li>
+          <b>AVINT</b> integrates a function tabulated at arbitrarily spaced abscissas...
+        </li>
+        <li>
+          <b>BAKVEC</b> forms the eigenvectors of a certain real non-symmetric tridiagonal
+        </li>
+        <li>
+          <b>BALANC</b> balances a real general matrix and isolates eigenvalues when possible.
+        </li>
+        <li>
+          <b>BALBAK</b> forms the eigenvectors of a real general matrix from the ...
+        </li>
+        <li>
+          <b>BANDR</b> reduces a real symmetric band matrix to symmetric tridiagonal ...
+        </li>
+        <li>
+          <b>BANDV</b> forms the eigenvectors of a real symmetric band matrix ...
+        </li>
+        <li>
+          <b>BCRH</b> is subsidiary to CBLKTR
+        </li>
+        <li>
+          <b>BDIFF</b> is subsidiary to BSKIN
+        </li>
+        <li>
+          <b>BESI</b> computes an N member sequence of I Bessel functions
+        </li>
+        <li>
+          <b>BESI0</b> computes the hyperbolic Bessel function of the first kind ...
+        </li>
+        <li>
+          <b>BESI0E</b> computes the exponentially scaled modified (hyperbolic) ...
+        </li>
+        <li>
+          <b>BESI1</b> computes the modified (hyperbolic) Bessel function of the ...
+        </li>
+        <li>
+          <b>BESI1E</b> computes the exponentially scaled modified (hyperbolic) ...
+        </li>
+        <li>
+          <b>BESJ</b> computes an N member sequence of J Bessel functions ...
+        </li>
+        <li>
+          <b>BESJ0</b> computes the Bessel function of the first kind of order zero.
+        </li>
+        <li>
+          <b>BESJ1</b> computes the Bessel function of the first kind of order one.
+        </li>
+        <li>
+          <b>BESK</b> implements forward recursion on the three term recursion ...
+        </li>
+        <li>
+          <b>BESK0</b> computes the modified (hyperbolic) Bessel function of the
+        </li>
+        <li>
+          <b>BESK0E</b> computes the exponentially scaled modified (hyperbolic)
+        </li>
+        <li>
+          <b>BESK1</b> computes the modified (hyperbolic) Bessel function of the
+        </li>
+        <li>
+          <b>BESK1E</b> computes the exponentially scaled modified (hyperbolic)
+        </li>
+        <li>
+          <b>BESKES</b> computes a sequence of exponentially scaled modified Bessel
+        </li>
+        <li>
+          <b>BESKNU</b> is subsidiary to BESK.
+        </li>
+        <li>
+          <b>BESKS</b> computes a sequence of modified Bessel functions of the
+        </li>
+        <li>
+          <b>BESY</b> implements forward recursion on the three term recursion ...
+        </li>
+        <li>
+          <b>BESY0</b> computes the Bessel function of the second kind of order zero.
+        </li>
+        <li>
+          <b>BESY1</b> computes the Bessel function of the second kind of order one.
+        </li>
+        <li>
+          <b>BESYNU</b> is subsidiary to BESY.
+        </li>
+        <li>
+          <b>BETA</b> computes the complete Beta function.
+        </li>
+        <li>
+          <b>BETAI</b> calculates the incomplete Beta function.
+        </li>
+        <li>
+          <b>BFQAD</b> computes the integral of a product of a function and a ...
+        </li>
+        <li>
+          <b>BI</b> evaluates the Bairy function (the Airy function of the second kind).
+        </li>
+        <li>
+          <b>BIE</b> calculates the Bairy function for a negative argument and an
+        </li>
+        <li>
+          <b>BINOM</b> computes the binomial coefficients.
+        </li>
+        <li>
+          <b>BINT4</b> computes the B-representation of a cubic spline ...
+        </li>
+        <li>
+          <b>BINTK</b> computes the B-representation of a spline which interpolates ...
+        </li>
+        <li>
+          <b>BISECT</b> computes the eigenvalues of a symmetric tridiagonal matrix ...
+        </li>
+        <li>
+          <b>BKIAS</b> is subsidiary to BSKIN.
+        </li>
+        <li>
+          <b>BKISR</b> is subsidiary to BSKIN.
+        </li>
+        <li>
+          <b>BKSOL</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>BLKTR1</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>BLKTRI</b> solves a block tridiagonal system of linear equations ...
+        </li>
+        <li>
+          <b>BNDACC</b> computes the LU factorization of a banded matrices using ...
+        </li>
+        <li>
+          <b>BNDSOL</b> solves the least squares problem for a banded matrix using ...
+        </li>
+        <li>
+          <b>BNFAC</b> is subsidiary to BINT4 and BINTK.
+        </li>
+        <li>
+          <b>BNSLV</b> is subsidiary to BINT4 and BINTK.
+        </li>
+        <li>
+          <b>BQR</b> computes some of the eigenvalues of a real symmetric ...
+        </li>
+        <li>
+          <b>BSGQ8</b> is subsidiary to BFQAD.
+        </li>
+        <li>
+          <b>BSKIN</b> computes repeated integrals of the K-zero Bessel function.
+        </li>
+        <li>
+          <b>BSPDOC</b> is documentation for BSPLINE, a package of subprograms for ...
+        </li>
+        <li>
+          <b>BSPDR</b> uses the B-representation to construct a divided difference
+        </li>
+        <li>
+          <b>BSPEV</b> calculates the value of the spline and its derivatives from
+        </li>
+        <li>
+          <b>BSPLVD</b> is subsidiary to FC.
+        </li>
+        <li>
+          <b>BSPLVN</b> is subsidiary to FC.
+        </li>
+        <li>
+          <b>BSPPP</b> converts the B-representation of a B-spline to the piecewise ...
+        </li>
+        <li>
+          <b>BSPVD</b> calculates the value and all derivatives of order less than ...
+        </li>
+        <li>
+          <b>BSPVN</b> calculates the value of all (possibly) nonzero basis ...
+        </li>
+        <li>
+          <b>BSQAD</b> computes the integral of a K-th order B-spline using the ...
+        </li>
+        <li>
+          <b>BSRH</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>BVALU</b> evaluates the B-representation of a B-spline at X for the
+        </li>
+        <li>
+          <b>BVDER</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>BVPOR</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>BVSUP</b> solves a linear two-point boundary value problem using ...
+        </li>
+        <li>
+          <b>C0LGMC</b> evaluates (Z+0.5)*LOG((Z+1.)/Z) - 1.0 with relative accuracy.
+        </li>
+        <li>
+          <b>C1MERG</b> merges two strings of complex numbers.  Each string is ...
+        </li>
+        <li>
+          <b>C9LGMC</b> computes the log gamma correction factor so that ...
+        </li>
+        <li>
+          <b>C9LN2R</b> evaluates LOG(1+Z) from second order relative accuracy so ...
+        </li>
+        <li>
+          <b>CACAI</b> is subsidiary to CAIRY.
+        </li>
+        <li>
+          <b>CACON</b> is subsidiary to CBESH and CBESK.
+        </li>
+        <li>
+          <b>CACOS</b> computes the complex arc cosine.
+        </li>
+        <li>
+          <b>CACOSH</b> computes the arc hyperbolic cosine.
+        </li>
+        <li>
+          <b>CAIRY</b> computes the Airy function Ai(z) or its derivative dAi/dz ...
+        </li>
+        <li>
+          <b>CARG</b> computes the argument of a complex number.
+        </li>
+        <li>
+          <b>CASIN</b> computes the complex arc sine.
+        </li>
+        <li>
+          <b>CASINH</b> computes the arc hyperbolic sine.
+        </li>
+        <li>
+          <b>CASYI</b> is subsidiary to CBESI and CBESK.
+        </li>
+        <li>
+          <b>CATAN</b> computes the complex arc tangent.
+        </li>
+        <li>
+          <b>CATAN2</b> computes the complex arc tangent in the proper quadrant.
+        </li>
+        <li>
+          <b>CATANH</b> computes the arc hyperbolic tangent.
+        </li>
+        <li>
+          <b>CAXPY</b> computes a constant times a vector plus a vector.
+        </li>
+        <li>
+          <b>CBABK2</b> forms the eigenvectors of a complex general matrix from the ...
+        </li>
+        <li>
+          <b>CBAL</b> balances a complex general matrix and isolates eigenvalues ...
+        </li>
+        <li>
+          <b>CBESH</b> computes a sequence of the Hankel functions H(m,a,z) ...
+        </li>
+        <li>
+          <b>CBESI</b> computes a sequence of the Bessel functions I(a,z) for ...
+        </li>
+        <li>
+          <b>CBESJ</b> computes a sequence of the Bessel functions J(a,z) for ...
+        </li>
+        <li>
+          <b>CBESK</b> computes a sequence of the Bessel functions K(a,z) for ...
+        </li>
+        <li>
+          <b>CBESY</b> computes a sequence of the Bessel functions Y(a,z) for ...
+        </li>
+        <li>
+          <b>CBETA</b> computes the complete Beta function.
+        </li>
+        <li>
+          <b>CBINU</b> is subsidiary to CAIRY, CBESH, CBESI, CBESJ, CBESK and CBIRY.
+        </li>
+        <li>
+          <b>CBIRY</b> computes the Airy function Bi(z) or its derivative dBi/dz ...
+        </li>
+        <li>
+          <b>CBKNU</b> is subsidiary to CAIRY, CBESH, CBESI and CBESK.
+        </li>
+        <li>
+          <b>CBLKT1</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>CBLKTR</b> solves a block tridiagonal system of linear equations ...
+        </li>
+        <li>
+          <b>CBRT</b> computes the cube root.
+        </li>
+        <li>
+          <b>CBUNI</b> is subsidiary to CBESI and CBESK.
+        </li>
+        <li>
+          <b>CBUNK</b> is subsidiary to CBESH and CBESK.
+        </li>
+        <li>
+          <b>CCBRT</b> computes the cube root.
+        </li>
+        <li>
+          <b>CCHDC</b> computes the Cholesky decomposition of a positive definite ...
+        </li>
+        <li>
+          <b>CCHDD</b> downdates an augmented Cholesky decomposition or the ...
+        </li>
+        <li>
+          <b>CCHEX</b> updates the Cholesky factorization  A=TRANS(R)*R  of a ...
+        </li>
+        <li>
+          <b>CCHUD</b> updates an augmented Cholesky decomposition of the ...
+        </li>
+        <li>
+          <b>CCMPB</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>CCOPY</b> copies a vector.
+        </li>
+        <li>
+          <b>CCOSH</b> computes the complex hyperbolic cosine.
+        </li>
+        <li>
+          <b>CCOT</b> computes the cotangent.
+        </li>
+        <li>
+          <b>CDCDOT</b> computes the inner product of two vectors with extended ...
+        </li>
+        <li>
+          <b>CDCOR</b> computes corrections to the Y array.
+        </li>
+        <li>
+          <b>CDCST</b> sets coefficients used by the core integrator CDSTP.
+        </li>
+        <li>
+          <b>CDIV</b> computes the complex quotient of two complex numbers.
+        </li>
+        <li>
+          <b>CDNTL</b> sets parameters on the first call to CDSTP, on an internal ...
+        </li>
+        <li>
+          <b>CDNTP</b> interpolates the K-th derivative of Y at TOUT, using the data ...
+        </li>
+        <li>
+          <b>CDOTC</b> computes the dot product of two complex vectors using the complex ...
+        </li>
+        <li>
+          <b>CDOTU</b> computes the inner product of two vectors.
+        </li>
+        <li>
+          <b>CDPSC</b> computes the predicted YH values by effectively multiplying ...
+        </li>
+        <li>
+          <b>CDPST</b> evaluates the Jacobian matrix of the right hand side ...
+        </li>
+        <li>
+          <b>CDRIV1</b> solves N (200 or fewer) ordinary differential equations ...
+        </li>
+        <li>
+          <b>CDRIV2</b> solves N ordinary differential equations of the form ...
+        </li>
+        <li>
+          <b>CDRIV3</b> solves N ordinary differential equations of the form ...
+        </li>
+        <li>
+          <b>CDSCL</b> rescales the YH array whenever the step size is changed.
+        </li>
+        <li>
+          <b>CDSTP</b> performs one step of the integration of an initial value problem ...
+        </li>
+        <li>
+          <b>CDZRO</b> searches for a zero of a function F(N, T, Y, IROOT) ...
+        </li>
+        <li>
+          <b>CEXPRL</b> calculates the relative error exponential (EXP(X)-1)/X.
+        </li>
+        <li>
+          <b>CFFTB</b> computes the unnormalized inverse of CFFTF.
+        </li>
+        <li>
+          <b>CFFTB1</b> computes the unnormalized inverse of CFFTF1.
+        </li>
+        <li>
+          <b>CFFTF</b> computes the forward transform of a complex, periodic sequence.
+        </li>
+        <li>
+          <b>CFFTF1</b> computes the forward transform of a complex, periodic sequence.
+        </li>
+        <li>
+          <b>CFFTI</b> initializes a work array for CFFTF and CFFTB.
+        </li>
+        <li>
+          <b>CFFTI1</b> initializes a real and an integer work array for CFFTF1 and CFFTB1.
+        </li>
+        <li>
+          <b>CFOD</b> is subsidiary to DEBDF.
+        </li>
+        <li>
+          <b>CG</b> computes the eigenvalues and, optionally, the eigenvectors ...
+        </li>
+        <li>
+          <b>CGAMMA</b> computes the complete Gamma function.
+        </li>
+        <li>
+          <b>CGAMR</b> computes the reciprocal of the Gamma function.
+        </li>
+        <li>
+          <b>CGBCO</b> factors a band matrix by Gaussian elimination and ...
+        </li>
+        <li>
+          <b>CGBDI</b> computes the determinant of a complex band matrix using the ...
+        </li>
+        <li>
+          <b>CGBFA</b> factors a band matrix using Gaussian elimination.
+        </li>
+        <li>
+          <b>CGBMV</b> multiplies a complex vector by a complex general band matrix.
+        </li>
+        <li>
+          <b>CGBSL</b> solves the complex band system A*X=B or CTRANS(A)*X=B using ...
+        </li>
+        <li>
+          <b>CGECO</b> factors a matrix using Gaussian elimination and estimates ...
+        </li>
+        <li>
+          <b>CGEDI</b> computes the determinant and inverse of a matrix using the ...
+        </li>
+        <li>
+          <b>CGEEV</b> computes the eigenvalues and, optionally, the eigenvectors ...
+        </li>
+        <li>
+          <b>CGEFA</b> factors a matrix using Gaussian elimination.
+        </li>
+        <li>
+          <b>CGEFS</b> solves a general system of linear equations.
+        </li>
+        <li>
+          <b>CGEIR</b> solves a general system of linear equations.  Iterative ...
+        </li>
+        <li>
+          <b>CGEMM</b> multiplies a complex general matrix by a complex general matrix.
+        </li>
+        <li>
+          <b>CGEMV</b> multiplies a complex vector by a complex general matrix.
+        </li>
+        <li>
+          <b>CGERC</b> performs conjugated rank 1 update of a complex general matrix.
+        </li>
+        <li>
+          <b>CGERU</b> performs unconjugated rank 1 update of a complex general matrix.
+        </li>
+        <li>
+          <b>CGESL</b> solves the complex system A*X=B or CTRANS(A)*X=B using the ...
+        </li>
+        <li>
+          <b>CGTSL</b> solves a tridiagonal linear system.
+        </li>
+        <li>
+          <b>CH</b> computes the eigenvalues and, optionally, the eigenvectors ...
+        </li>
+        <li>
+          <b>CHBMV</b> multiplies a complex vector by a complex Hermitian band matrix.
+        </li>
+        <li>
+          <b>CHEMM</b> multiplies a complex general matrix by a complex Hermitian matrix.
+        </li>
+        <li>
+          <b>CHEMV</b> multiplies a complex vector by a complex Hermitian matrix.
+        </li>
+        <li>
+          <b>CHER</b> performs Hermitian rank 1 update of a complex Hermitian matrix.
+        </li>
+        <li>
+          <b>CHER2</b> performs Hermitian rank 2 update of a complex Hermitian matrix.
+        </li>
+        <li>
+          <b>CHER2K</b> performs Hermitian rank 2k update of a complex Hermitian matrix.
+        </li>
+        <li>
+          <b>CHERK</b> performs Hermitian rank k update of a complex Hermitian matrix.
+        </li>
+        <li>
+          <b>CHFCM</b> checks a single cubic for monotonicity.
+        </li>
+        <li>
+          <b>CHFDV</b> evaluates a cubic polynomial given in Hermite form and its ...
+        </li>
+        <li>
+          <b>CHFEV</b> evaluates a cubic polynomial given in Hermite form at an ...
+        </li>
+        <li>
+          <b>CHFIE</b> evaluates the integral of a single cubic for PCHIA.
+        </li>
+        <li>
+          <b>CHICO</b> factors a complex Hermitian matrix by elimination with symmetric ...
+        </li>
+        <li>
+          <b>CHIDI</b> computes the determinant, inertia and inverse of a complex ...
+        </li>
+        <li>
+          <b>CHIEV</b> computes the eigenvalues and, optionally, the eigenvectors ...
+        </li>
+        <li>
+          <b>CHIFA</b> factors a complex Hermitian matrix by elimination (symmetric pivoting).
+        </li>
+        <li>
+          <b>CHISL</b> solves the complex Hermitian system using factors obtained from CHIFA.
+        </li>
+        <li>
+          <b>CHKDER</b> checks the gradients of M nonlinear functions in N variables, ...
+        </li>
+        <li>
+          <b>CHKPR4</b> subsidiary to SEPX4.
+        </li>
+        <li>
+          <b>CHKPRM</b> is subsidiary to SEPELI.
+        </li>
+        <li>
+          <b>CHKSN4</b> is subsidiary to SEPX4.
+        </li>
+        <li>
+          <b>CHKSNG</b> is subsidiary to SEPELI.
+        </li>
+        <li>
+          <b>CHPCO</b> factors a complex Hermitian matrix stored in packed form by ...
+        </li>
+        <li>
+          <b>CHPDI</b> computes the determinant, inertia and inverse of a complex ...
+        </li>
+        <li>
+          <b>CHPFA</b> factors a complex Hermitian matrix stored in packed form by ...
+        </li>
+        <li>
+          <b>CHPMV</b> performs the matrix-vector operation y := alpha*A*x + beta*y.
+        </li>
+        <li>
+          <b>CHPR</b> performs a hermitian rank 1 operation.
+        </li>
+        <li>
+          <b>CHPR2</b> performs a hermitian rank 2 operation.
+        </li>
+        <li>
+          <b>CHPSL</b> solves a complex Hermitian system using factors from CHPFA.
+        </li>
+        <li>
+          <b>CHU</b> computes the logarithmic confluent hypergeometric function.
+        </li>
+        <li>
+          <b>CINVIT</b> computes the eigenvectors of a complex upper Hessenberg matrix ...
+        </li>
+        <li>
+          <b>CKSCL</b> is subsidiary to CBKNU, CUNK1 and CUNK2.
+        </li>
+        <li>
+          <b>CLBETA</b> computes the natural logarithm of the complete Beta function.
+        </li>
+        <li>
+          <b>CLNGAM</b> computes the logarithm of the absolute value of the Gamma function.
+        </li>
+        <li>
+          <b>CLNREL</b> evaluates ln(1+X) accurate in the sense of relative error.
+        </li>
+        <li>
+          <b>CLOG10</b> computes the principal value of the complex base 10 logarithm.
+        </li>
+        <li>
+          <b>CMGNBN</b> solves a complex block tridiagonal linear system of ...
+        </li>
+        <li>
+          <b>CMLRI</b> is subsidiary to CBESI and CBESK.
+        </li>
+        <li>
+          <b>CMPCSG</b> is subsidiary to CMGNBN.
+        </li>
+        <li>
+          <b>CMPOSD</b> is subsidiary to CMGNBN.
+        </li>
+        <li>
+          <b>CMPOSN</b> is subsidiary to CMGNBN.
+        </li>
+        <li>
+          <b>CMPOSP</b> is subsidiary to CMGNBN.
+        </li>
+        <li>
+          <b>CMPTR3</b> is subsidiary to CMGNBN.
+        </li>
+        <li>
+          <b>CMPTRX</b> is subsidiary to CMGNBN.
+        </li>
+        <li>
+          <b>CNBCO</b> factors a band matrix using Gaussian elimination and
+        </li>
+        <li>
+          <b>CNBDI</b> computes the determinant of a band matrix using the factors
+        </li>
+        <li>
+          <b>CNBFA</b> factors a band matrix by elimination.
+        </li>
+        <li>
+          <b>CNBFS</b> solves a general nonsymmetric banded system of linear equations.
+        </li>
+        <li>
+          <b>CNBIR</b> solves a general nonsymmetric banded system of linear equations. ...
+        </li>
+        <li>
+          <b>CNBSL</b> solves a complex band system with factors computed by CNBCO or CNBFA.
+        </li>
+        <li>
+          <b>COMBAK</b> forms the eigenvectors of a complex general matrix from the ...
+        </li>
+        <li>
+          <b>COMHES</b> reduces a complex general matrix to complex upper Hessenberg ...
+        </li>
+        <li>
+          <b>COMLR</b> computes the eigenvalues of a complex upper Hessenberg ...
+        </li>
+        <li>
+          <b>COMLR2</b> domputes the eigenvalues and eigenvectors of a complex upper ...
+        </li>
+        <li>
+          <b>COMPB</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>COMQR</b> computes the eigenvalues of complex upper Hessenberg matrix ...
+        </li>
+        <li>
+          <b>COMQR2</b> computes the eigenvalues and eigenvectors of a complex upper ...
+        </li>
+        <li>
+          <b>CORTB</b> forms the eigenvectors of a complex general matrix from ...
+        </li>
+        <li>
+          <b>CORTH</b> reduces a complex general matrix to complex upper Hessenberg ...
+        </li>
+        <li>
+          <b>COSDG</b> computes the cosine of an argument in degrees.
+        </li>
+        <li>
+          <b>COSGEN</b> is subsidiary to GENBUN.
+        </li>
+        <li>
+          <b>COSQB</b> computes the unnormalized inverse cosine transform.
+        </li>
+        <li>
+          <b>COSQB1</b> computes the unnormalized inverse of COSQF1.
+        </li>
+        <li>
+          <b>COSQF</b> computes the forward cosine transform with odd wave numbers.
+        </li>
+        <li>
+          <b>COSQF1</b> computes the forward cosine transform with odd wave numbers.
+        </li>
+        <li>
+          <b>COSQI</b> initializes a work array for COSQF and COSQB.
+        </li>
+        <li>
+          <b>COST</b> computes the cosine transform of a real, even sequence.
+        </li>
+        <li>
+          <b>COSTI</b> initializes a work array for COST.
+        </li>
+        <li>
+          <b>COT</b> computes the cotangent.
+        </li>
+        <li>
+          <b>CPADD</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>CPBCO</b> factors a complex Hermitian positive definite matrix stored ...
+        </li>
+        <li>
+          <b>CPBDI</b> computes the determinant of a complex Hermitian positive
+        </li>
+        <li>
+          <b>CPBFA</b> factors a complex Hermitian positive definite band matrix.
+        </li>
+        <li>
+          <b>CPBSL</b> solves the complex Hermitian positive definite band system ...
+        </li>
+        <li>
+          <b>CPEVL</b> is subsidiary to CPZERO.
+        </li>
+        <li>
+          <b>CPEVLR</b> is subsidiary to CPZERO.
+        </li>
+        <li>
+          <b>CPOCO</b> factors a complex Hermitian positive definite matrix ...
+        </li>
+        <li>
+          <b>CPODI</b> computes the determinant and inverse of a certain complex ...
+        </li>
+        <li>
+          <b>CPOFA</b> factors a complex Hermitian positive definite matrix.
+        </li>
+        <li>
+          <b>CPOFS</b> solves a positive definite symmetric complex linear system.
+        </li>
+        <li>
+          <b>CPOIR</b> solves a positive definite Hermitian system of linear equations. ...
+        </li>
+        <li>
+          <b>CPOSL</b> solves the complex Hermitian positive definite linear system ...
+        </li>
+        <li>
+          <b>CPPCO</b> factors a complex Hermitian positive definite matrix stored ...
+        </li>
+        <li>
+          <b>CPPDI</b> computes the determinant and inverse of a complex Hermitian ...
+        </li>
+        <li>
+          <b>CPPFA</b> factors a complex Hermitian positive definite matrix in packed form.
+        </li>
+        <li>
+          <b>CPPSL</b> solves the complex Hermitian positive definite system using ...
+        </li>
+        <li>
+          <b>CPQR79</b> finds the zeros of a polynomial with complex coefficients.
+        </li>
+        <li>
+          <b>CPROC</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>CPROCP</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>CPROD</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>CPRODP</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>CPSI</b> computes the Psi (or Digamma) function.
+        </li>
+        <li>
+          <b>CPTSL</b> solves a positive definite tridiagonal linear system.
+        </li>
+        <li>
+          <b>CPZERO</b> finds the zeros of a polynomial with complex coefficients.
+        </li>
+        <li>
+          <b>CQRDC</b> uses Householder transformations to compute the QR factorization ...
+        </li>
+        <li>
+          <b>CQRSL</b> applies the output of CQRDC to compute coordinate transformations, ...
+        </li>
+        <li>
+          <b>CRATI</b> is subsidiary to CBESH, CBESI and CBESK.
+        </li>
+        <li>
+          <b>CROTG</b> constructs a Givens transformation.
+        </li>
+        <li>
+          <b>CS1S2</b> is subsidiary to CAIRY and CBESK.
+        </li>
+        <li>
+          <b>CSCAL</b> multiplies a vector by a constant.
+        </li>
+        <li>
+          <b>CSCALE</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>CSERI</b> is subsidiary to CBESI and CBESK.
+        </li>
+        <li>
+          <b>CSEVL</b> evaluates a Chebyshev series.
+        </li>
+        <li>
+          <b>CSHCH</b> is subsidiary to CBESH and CBESK.
+        </li>
+        <li>
+          <b>CSICO</b> factors a complex symmetric matrix by elimination with ...
+        </li>
+        <li>
+          <b>CSIDI</b> computes the determinant and inverse of a complex symmetric ...
+        </li>
+        <li>
+          <b>CSIFA</b> factors a complex symmetric matrix with symmetric pivoting.
+        </li>
+        <li>
+          <b>CSINH</b> computes the complex hyperbolic sine.
+        </li>
+        <li>
+          <b>CSISL</b> solves a complex symmetric system factored by CSIFA.
+        </li>
+        <li>
+          <b>CSPCO</b> factors a complex symmetric matrix stored in packed form ...
+        </li>
+        <li>
+          <b>CSPDI</b> computes the determinant and inverse of a complex symmetric ...
+        </li>
+        <li>
+          <b>CSPFA</b> factors a complex symmetric matrix stored in packed form by ...
+        </li>
+        <li>
+          <b>CSPSL</b> solves a complex symmetric system factored by CSPFA.
+        </li>
+        <li>
+          <b>CSROOT</b> computes the complex square root of a complex number.
+        </li>
+        <li>
+          <b>CSROT</b> applies a plane Givens rotation.
+        </li>
+        <li>
+          <b>CSSCAL</b> scales a complex vector.
+        </li>
+        <li>
+          <b>CSVDC</b> performs the singular value decomposition of a rectangular matrix.
+        </li>
+        <li>
+          <b>CSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>CSYMM</b> multiplies a complex general matrix by a complex symmetric matrix.
+        </li>
+        <li>
+          <b>CSYR2K</b> performs symmetric rank 2k update of a complex symmetric matrix.
+        </li>
+        <li>
+          <b>CSYRK</b> performs symmetric rank k update of a complex symmetric matrix.
+        </li>
+        <li>
+          <b>CTAN</b> computes the complex tangent.
+        </li>
+        <li>
+          <b>CTANH</b> computes the complex hyperbolic tangent.
+        </li>
+        <li>
+          <b>CTBMV</b> multiplies a complex vector by a complex triangular band matrix.
+        </li>
+        <li>
+          <b>CTBSV</b> solves a complex triangular banded system of equations.
+        </li>
+        <li>
+          <b>CTPMV</b> performs one of the matrix-vector operations.
+        </li>
+        <li>
+          <b>CTPSV</b> solves a triangular system of linear equations.
+        </li>
+        <li>
+          <b>CTRCO</b> estimates the condition number of a triangular matrix.
+        </li>
+        <li>
+          <b>CTRDI</b> computes the determinant and inverse of a triangular matrix.
+        </li>
+        <li>
+          <b>CTRMM</b> multiplies a complex general matrix by a complex triangular matrix.
+        </li>
+        <li>
+          <b>CTRMV</b> multiplies a complex vector by a complex triangular matrix.
+        </li>
+        <li>
+          <b>CTRSL</b> solves a system of the form  T*X=B or CTRANS(T)*X=B, where ...
+        </li>
+        <li>
+          <b>CTRSM</b> solves a complex triangular system of equations with ...
+        </li>
+        <li>
+          <b>CTRSV</b> solves a complex triangular system of equations.
+        </li>
+        <li>
+          <b>CUCHK</b> is subsidiary to SERI, CUOIK, CUNK1, CUNK2, CUNI1, CUNI2 and CKSCL.
+        </li>
+        <li>
+          <b>CUNHJ</b> is subsidiary to CBESI and CBESK
+        </li>
+        <li>
+          <b>CUNI1</b> is subsidiary to CBESI and CBESK.
+        </li>
+        <li>
+          <b>CUNI2</b> is subsidiary to CBESI and CBESK.
+        </li>
+        <li>
+          <b>CUNIK</b> is subsidiary to CBESI and CBESK.
+        </li>
+        <li>
+          <b>CUNK1</b> is subsidiary to CBESK.
+        </li>
+        <li>
+          <b>CUNK2</b> is subsidiary to CBESK.
+        </li>
+        <li>
+          <b>CUOIK</b> is subsidiary to CBESH, CBESI and CBESK.
+        </li>
+        <li>
+          <b>CV</b> evaluates the variance function of the curve obtained by FC.
+        </li>
+        <li>
+          <b>CWRSK</b> is subsidiary to CBESI and CBESK.
+        </li>
+        <li>
+          <b>D1MACH</b> returns floating point machine dependent constants.
+        </li>
+        <li>
+          <b>D1MERG</b> merges two strings of ascending double precision numbers.
+        </li>
+        <li>
+          <b>D1MPYQ</b> is subsidiary to DNSQ and DNSQE.
+        </li>
+        <li>
+          <b>D1UPDT</b> is subsidiary to DNSQ and DNSQE.
+        </li>
+        <li>
+          <b>D9AIMP</b> evaluates the Airy modulus and phase.
+        </li>
+        <li>
+          <b>D9ATN1</b> evaluates DATAN(X) from first order relative accuracy ...
+        </li>
+        <li>
+          <b>D9B0MP</b> evaluates the modulus and phase for the J0 and Y0 Bessel functions.
+        </li>
+        <li>
+          <b>D9B1MP</b> evaluates the modulus and phase for the J1 and Y1 Bessel functions.
+        </li>
+        <li>
+          <b>D9CHU</b> evaluates, for large Z, Z**A * U(A,B,Z), where U is the ...
+        </li>
+        <li>
+          <b>D9GMIC</b> computes the complementary incomplete Gamma function ...
+        </li>
+        <li>
+          <b>D9GMIT</b> computes Tricomi's incomplete Gamma function for small arguments.
+        </li>
+        <li>
+          <b>D9KNUS</b> computes Bessel functions EXP(X)*K-SUB-XNU(X) and ...
+        </li>
+        <li>
+          <b>D9LGIC</b> computes the log complementary incomplete Gamma function ...
+        </li>
+        <li>
+          <b>D9LGIT</b> computes the logarithm of Tricomi's incomplete Gamma function ...
+        </li>
+        <li>
+          <b>D9LGMC</b> computes the log Gamma correction factor so that ...
+        </li>
+        <li>
+          <b>D9LN2R</b> evaluates LOG(1+X) from second order relative accuracy ...
+        </li>
+        <li>
+          <b>D9PAK</b> packs a base 2 exponent into a floating point number.
+        </li>
+        <li>
+          <b>D9UPAK</b> unpacks a floating point number X so that X = Y*2**N.
+        </li>
+        <li>
+          <b>DACOSH</b> computes the arc hyperbolic cosine.
+        </li>
+        <li>
+          <b>DAI</b> evaluates the Airy function.
+        </li>
+        <li>
+          <b>DAIE</b> calculates the Airy function for a negative argument ...
+        </li>
+        <li>
+          <b>DASINH</b> computes the arc hyperbolic sine.
+        </li>
+        <li>
+          <b>DASUM</b> sums the magnitudes of the elements of a vector.
+        </li>
+        <li>
+          <b>DASYIK</b> is subsidiary to DBESI and DBESK.
+        </li>
+        <li>
+          <b>DASYJY</b> is subsidiary to DBESJ and DBESY.
+        </li>
+        <li>
+          <b>DATANH</b> computes the arc hyperbolic tangent.
+        </li>
+        <li>
+          <b>DAVINT</b> integrates a function tabulated at arbitrarily spaced abscissas...
+        </li>
+        <li>
+          <b>DAWS</b> computes Dawson's function.
+        </li>
+        <li>
+          <b>DAXPY</b> computes a constant times a vector plus a vector.
+        </li>
+        <li>
+          <b>DBCG:</b> Preconditioned BiConjugate Gradient Sparse Ax = b Solver.
+        </li>
+        <li>
+          <b>DBDIFF</b> is subsidiary to DBSKIN.
+        </li>
+        <li>
+          <b>DBESI</b> computes an N member sequence of I Bessel functions ...
+        </li>
+        <li>
+          <b>DBESI0</b> computes the hyperbolic Bessel function of the first kind of order zero.
+        </li>
+        <li>
+          <b>DBESI1</b> computes the modified (hyperbolic) Bessel function of the first ...
+        </li>
+        <li>
+          <b>DBESJ</b> computes an N member sequence of J Bessel functions ...
+        </li>
+        <li>
+          <b>DBESJ0</b> computes the Bessel function of the first kind of order zero.
+        </li>
+        <li>
+          <b>DBESJ1</b> computes the Bessel function of the first kind of order one.
+        </li>
+        <li>
+          <b>DBESK</b> implements forward recursion on the three term recursion ...
+        </li>
+        <li>
+          <b>DBESK0</b> computes the modified (hyperbolic) Bessel function of the ...
+        </li>
+        <li>
+          <b>DBESK1</b> computes the modified (hyperbolic) Bessel function of the ...
+        </li>
+        <li>
+          <b>DBESKS</b> computes a sequence of modified Bessel functions of the ...
+        </li>
+        <li>
+          <b>DBESY</b> implements forward recursion on the three term recursion ...
+        </li>
+        <li>
+          <b>DBESY0</b> computes the Bessel function of the second kind of order zero.
+        </li>
+        <li>
+          <b>DBESY1</b> computes the Bessel function of the second kind of order one.
+        </li>
+        <li>
+          <b>DBETA</b> computes the complete Beta function.
+        </li>
+        <li>
+          <b>DBETAI</b> calculates the incomplete Beta function.
+        </li>
+        <li>
+          <b>DBFQAD</b> computes the integral of a product of a function and a...
+        </li>
+        <li>
+          <b>DBHIN</b> reads a Sparse Linear System in the Boeing/Harwell Format.
+        </li>
+        <li>
+          <b>DBI</b> evaluates the Bairy function (the Airy function of the second kind).
+        </li>
+        <li>
+          <b>DBIE</b> calculates the Bairy function for a negative argument and an ...
+        </li>
+        <li>
+          <b>DBINOM</b> computes the binomial coefficients.
+        </li>
+        <li>
+          <b>DBINT4</b> computes the B-representation of a cubic spline ...
+        </li>
+        <li>
+          <b>DBINTK</b> computes the B-representation of a spline which interpolates ...
+        </li>
+        <li>
+          <b>DBKIAS</b> is subsidiary to DBSKIN.
+        </li>
+        <li>
+          <b>DBKISR</b> is subsidiary to DBSKIN.
+        </li>
+        <li>
+          <b>DBKSOL</b> is subsidiary to DBVSUP.
+        </li>
+        <li>
+          <b>DBNDAC</b> computes the LU factorization of banded matrices using ...
+        </li>
+        <li>
+          <b>DBNDSL</b> solves the least squares problem for a banded matrix using ...
+        </li>
+        <li>
+          <b>DBNFAC</b> is subsidiary to DBINT4 and DBINTK.
+        </li>
+        <li>
+          <b>DBNSLV</b> is subsidiary to DBINT4 and DBINTK.
+        </li>
+        <li>
+          <b>DBOCLS</b> solves the bounded and constrained least squares problem ...
+        </li>
+        <li>
+          <b>DBOLS</b> solves the problem E*X = F (in the least squares sense) ...
+        </li>
+        <li>
+          <b>DBOLSM</b> is subsidiary to DBOCLS and DBOLS.
+        </li>
+        <li>
+          <b>DBSGQ8</b> is subsidiary to DBFQAD.
+        </li>
+        <li>
+          <b>DBSI0E</b> computes the exponentially scaled modified (hyperbolic) Bessel...
+        </li>
+        <li>
+          <b>DBSI1E</b> computes the exponentially scaled modified (hyperbolic) Bessel...
+        </li>
+        <li>
+          <b>DBSK0E</b> computes the exponentially scaled modified (hyperbolic) Bessel ...
+        </li>
+        <li>
+          <b>DBSK1E</b> computes the exponentially scaled modified (hyperbolic) Bessel ...
+        </li>
+        <li>
+          <b>DBSKES</b> computes a sequence of exponentially scaled modified Bessel ...
+        </li>
+        <li>
+          <b>DBSKIN</b> computes repeated integrals of the K-zero Bessel function.
+        </li>
+        <li>
+          <b>DBSKNU</b> is subsidiary to DBESK.
+        </li>
+        <li>
+          <b>DBSPDR</b> uses the B-representation to construct a divided difference table...
+        </li>
+        <li>
+          <b>DBSPEV</b> calculates the value of the spline and its derivatives from...
+        </li>
+        <li>
+          <b>DBSPPP</b> converts the B-representation of a B-spline to the piecewise ...
+        </li>
+        <li>
+          <b>DBSPVD</b> calculates the value and all derivatives of order less than ...
+        </li>
+        <li>
+          <b>DBSPVN</b> calculates the value of all (possibly) nonzero basis functions at X.
+        </li>
+        <li>
+          <b>DBSQAD</b> computes the integral of a K-th order B-spline using the ...
+        </li>
+        <li>
+          <b>DBSYNU</b> is subsidiary to DBESY.
+        </li>
+        <li>
+          <b>DBVALU</b> evaluates the B-representation of a B-spline at X for the ...
+        </li>
+        <li>
+          <b>DBVDER</b> is subsidiary to DBVSUP.
+        </li>
+        <li>
+          <b>DBVPOR</b> is subsidiary to DBVSUP.
+        </li>
+        <li>
+          <b>DBVSUP</b> solves a linear two-point boundary value problem using ...
+        </li>
+        <li>
+          <b>DCBRT</b> computes the cube root.
+        </li>
+        <li>
+          <b>DCDOT</b> computes the inner product of two vectors with extended ...
+        </li>
+        <li>
+          <b>DCFOD</b> is subsidiary to DDEBDF.
+        </li>
+        <li>
+          <b>DCG</b> is a Preconditioned Conjugate Gradient Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>DCGN</b> is a Preconditioned CG Sparse Ax=b Solver for Normal Equations.
+        </li>
+        <li>
+          <b>DCGS</b> is the Preconditioned BiConjugate Gradient Squared Ax=b Solver.
+        </li>
+        <li>
+          <b>DCHDC</b> computes the Cholesky decomposition of a positive definite matrix.
+        </li>
+        <li>
+          <b>DCHDD</b> downdates an augmented Cholesky decomposition or the ...
+        </li>
+        <li>
+          <b>DCHEX</b> updates the Cholesky factorization  A=TRANS(R)*R  of a ...
+        </li>
+        <li>
+          <b>DCHFCM</b> checks a single cubic for monotonicity.
+        </li>
+        <li>
+          <b>DCHFDV</b> evaluates a cubic polynomial given in Hermite form and its ...
+        </li>
+        <li>
+          <b>DCHFEV</b> evaluates a cubic polynomial in Hermite form at an array of points.
+        </li>
+        <li>
+          <b>DCHFIE</b> evaluates the integral of a single cubic for DPCHIA.
+        </li>
+        <li>
+          <b>DCHKW</b> is the SLAP WORK/IWORK Array Bounds Checker.
+        </li>
+        <li>
+          <b>DCHU</b> computes the logarithmic confluent hypergeometric function.
+        </li>
+        <li>
+          <b>DCHUD</b> updates an augmented Cholesky decomposition...
+        </li>
+        <li>
+          <b>DCKDER</b> checks the gradients of M nonlinear functions in N variables...
+        </li>
+        <li>
+          <b>DCOEF</b> is subsidiary to DBVSUP.
+        </li>
+        <li>
+          <b>DCOPY</b> copies a vector.
+        </li>
+        <li>
+          <b>DCOPYM</b> copies the negative of a vector to a vector.
+        </li>
+        <li>
+          <b>DCOSDG</b> computes the cosine of an argument in degrees.
+        </li>
+        <li>
+          <b>DCOT</b> computes the cotangent.
+        </li>
+        <li>
+          <b>DCOV</b> calculates the covariance matrix for a nonlinear data fitting problem.
+        </li>
+        <li>
+          <b>DCPPLT</b> makes a Printer Plot of a SLAP Column Format Matrix.
+        </li>
+        <li>
+          <b>DCSCAL</b> is subsidiary to DBVSUP and DSUDS.
+        </li>
+        <li>
+          <b>DCSEVL</b> evaluates a Chebyshev series.
+        </li>
+        <li>
+          <b>DCV</b> evaluates the variance function of the curve obtained ...
+        </li>
+        <li>
+          <b>DDAINI</b> is the initialization routine for DDASSL.
+        </li>
+        <li>
+          <b>DDAJAC</b> computes the DDASSL iteration matrix and forms the LU-decomposition.
+        </li>
+        <li>
+          <b>DDANRM</b> computes vector norms for DDASSL.
+        </li>
+        <li>
+          <b>DDASLV</b> is a linear system solver for DDASSL.
+        </li>
+        <li>
+          <b>DDASSL</b> solves a system of differential/algebraic equations...
+        </li>
+        <li>
+          <b>DDASTP</b> performs one step of the DDASSL integration.
+        </li>
+        <li>
+          <b>DDATRP</b> is an interpolation routine for DDASSL.
+        </li>
+        <li>
+          <b>DDAWS</b> computes Dawson's function.
+        </li>
+        <li>
+          <b>DDAWTS</b> sets the error weight vector for DDASSL.
+        </li>
+        <li>
+          <b>DDCOR</b> computes corrections to the Y array for DDRIVE.
+        </li>
+        <li>
+          <b>DDCST</b> sets coefficients used by the core integrator DDSTP.
+        </li>
+        <li>
+          <b>DDEABM</b> solves an initial value problem in ordinary differential ...
+        </li>
+        <li>
+          <b>DDEBDF</b> solves an initial value problem in ordinary differential ...
+        </li>
+        <li>
+          <b>DDERKF</b> solves an initial value problem in ordinary differential ...
+        </li>
+        <li>
+          <b>DDES</b> is subsidiary to DDEABM.
+        </li>
+        <li>
+          <b>DDNTL</b> sets parameters on the first call to DDSTP, on an internal restart, ...
+        </li>
+        <li>
+          <b>DDNTP</b> interpolates the K-th derivative of Y at TOUT, using the data ...
+        </li>
+        <li>
+          <b>DDOGLG</b> is subsidiary to DNSQ and DNSQE.
+        </li>
+        <li>
+          <b>DDOT</b> computes the inner product of two vectors.
+        </li>
+        <li>
+          <b>DDPSC</b> computes the predicted YH values by effectively multiplying ...
+        </li>
+        <li>
+          <b>DDPST</b> evaluates the Jacobian matrix of the right hand side of the ...
+        </li>
+        <li>
+          <b>DDRIV1</b> solves N (200 or fewer) ordinary differential equations ...
+        </li>
+        <li>
+          <b>DDRIV2</b> solves N ordinary differential equations of the form ...
+        </li>
+        <li>
+          <b>DDRIV3</b> solves N ordinary differential equations of the form ...
+        </li>
+        <li>
+          <b>DDSCL</b> rescales the YH array whenever the step size is changed.
+        </li>
+        <li>
+          <b>DDSTP</b> performs one step of the integration of an initial value problem ...
+        </li>
+        <li>
+          <b>DDZRO</b> searches for a zero of a function F(N, T, Y, IROOT) ...
+        </li>
+        <li>
+          <b>DE1</b> computes the exponential integral E1(X).
+        </li>
+        <li>
+          <b>DEABM</b> solves an initial value problem in ordinary differential ...
+        </li>
+        <li>
+          <b>DEBDF</b> solves an initial value problem in ordinary differential ...
+        </li>
+        <li>
+          <b>DEFC</b> fits a piecewise polynomial curve to discrete data.
+        </li>
+        <li>
+          <b>DEFCMN</b> is subsidiary to DEFC.
+        </li>
+        <li>
+          <b>DEFE4</b> is subsidiary to SEPX4.
+        </li>
+        <li>
+          <b>DEFEHL</b> is subsidiary to DERKF.
+        </li>
+        <li>
+          <b>DEFER</b> is subsidiary to SEPELI.
+        </li>
+        <li>
+          <b>DEI</b> computes the exponential integral Ei(X).
+        </li>
+        <li>
+          <b>DENORM</b> is subsidiary to DNSQ and DNSQE.
+        </li>
+        <li>
+          <b>DERF</b> computes the error function.
+        </li>
+        <li>
+          <b>DERFC</b> computes the complementary error function.
+        </li>
+        <li>
+          <b>DERKF</b> solves an initial value problem in ordinary differential ...
+        </li>
+        <li>
+          <b>DERKFS</b> is subsidiary to DERKF.
+        </li>
+        <li>
+          <b>DES</b> is subsidiary to DEABM.
+        </li>
+        <li>
+          <b>DEXBVP</b> is subsidiary to DBVSUP.
+        </li>
+        <li>
+          <b>DEXINT</b> computes an M member sequence of exponential integrals ...
+        </li>
+        <li>
+          <b>DEXPRL</b> calculates the relative error exponential (EXP(X)-1)/X.
+        </li>
+        <li>
+          <b>DFAC</b> computes the factorial function.
+        </li>
+        <li>
+          <b>DFC</b> fits a piecewise polynomial curve to discrete data.
+        </li>
+        <li>
+          <b>DFCMN</b> is subsidiary to FC.
+        </li>
+        <li>
+          <b>DFDJC1</b> computes a forward difference approximation to an N by N Jacobian.
+        </li>
+        <li>
+          <b>DFDJC3</b> computes an M by N forward difference approximation to a Jacobian.
+        </li>
+        <li>
+          <b>DFEHL</b> implements a (4,5) order Runge-Kutta-Fehlberg ODE method.
+        </li>
+        <li>
+          <b>DFSPVD</b> evaluates all nonzero B splines and derivatives at X.
+        </li>
+        <li>
+          <b>DFSPVN</b> evaluates all nonzero B-splines of given order at X.
+        </li>
+        <li>
+          <b>DFULMT</b> decodes a standard 2D Fortran array passed as a vector.
+        </li>
+        <li>
+          <b>DFZERO</b> finds a zero of a function in a given interval.
+        </li>
+        <li>
+          <b>DGAMI</b> evaluates the incomplete Gamma function.
+        </li>
+        <li>
+          <b>DGAMIC</b> calculates the complementary incomplete Gamma function.
+        </li>
+        <li>
+          <b>DGAMIT</b> calculates Tricomi's form of the incomplete Gamma function.
+        </li>
+        <li>
+          <b>DGAMLM</b> computes bounds for the argument in the Gamma function.
+        </li>
+        <li>
+          <b>DGAMLN</b> computes the logarithm of the Gamma function.
+        </li>
+        <li>
+          <b>DGAMMA</b> computes the complete Gamma function.
+        </li>
+        <li>
+          <b>DGAMR</b> computes the reciprocal of the Gamma function.
+        </li>
+        <li>
+          <b>DGAMRN</b> computes a Gamma function ratio.
+        </li>
+        <li>
+          <b>DGAUS8</b> integrates a real function of one variable over a finite interval ...
+        </li>
+        <li>
+          <b>DGBCO</b> factors a band matrix by Gaussian elimination and estimates ...
+        </li>
+        <li>
+          <b>DGBDI</b> computes the determinant of a band matrix using the factors ...
+        </li>
+        <li>
+          <b>DGBFA</b> factors a band matrix using Gaussian elimination.
+        </li>
+        <li>
+          <b>DGBMV</b> performs y = alpha*A*x+beta*y or y = alpha*A'*x+beta*y.
+        </li>
+        <li>
+          <b>DGBSL</b> solves the real band system A*X=B or TRANS(A)*X=B using ...
+        </li>
+        <li>
+          <b>DGECO</b> factors a matrix using Gaussian elimination and estimate ...
+        </li>
+        <li>
+          <b>DGEDI</b> computes the determinant and inverse of a matrix using the ...
+        </li>
+        <li>
+          <b>DGEFA</b> factors a matrix using Gaussian elimination.
+        </li>
+        <li>
+          <b>DGEFS</b> solves a general system of linear equations.
+        </li>
+        <li>
+          <b>DGEMM</b> performs the operation C = alpha op(A) op(B) +  beta * C.
+        </li>
+        <li>
+          <b>DGEMV</b> performs y = alpha*A*x+beta*y or y = alpha*A'*x+beta*y.
+        </li>
+        <li>
+          <b>DGER</b> performs A = A + alpha*x*y'.
+        </li>
+        <li>
+          <b>DGESL</b> solves the real system A*X=B or TRANS(A)*X=B using the ...
+        </li>
+        <li>
+          <b>DGLSS</b> solves a linear least squares problems by performing a QR ...
+        </li>
+        <li>
+          <b>DGMRES</b> is the Preconditioned GMRES iterative sparse Ax=b solver.
+        </li>
+        <li>
+          <b>DGTSL</b> solves a tridiagonal linear system.
+        </li>
+        <li>
+          <b>DH12</b> constructs or applies a Householder transformation.
+        </li>
+        <li>
+          <b>DHELS</b> is an internal routine for DGMRES.
+        </li>
+        <li>
+          <b>DHEQR</b> is an internal routine for DGMRES.
+        </li>
+        <li>
+          <b>DHFTI</b> solves a least squares problem for banded matrices using ...
+        </li>
+        <li>
+          <b>DHKSEQ</b> is subsidiary to DBSKIN.
+        </li>
+        <li>
+          <b>DHSTRT</b> computes a starting step for DDEABM, DDEBDF or DDERKF.
+        </li>
+        <li>
+          <b>DHVNRM</b> computes the maximum norm of a vector.
+        </li>
+        <li>
+          <b>DINIT</b> initializes a double precision vector to a constant.
+        </li>
+        <li>
+          <b>DINTP</b> approximates the solution at XOUT by evaluating the polynomial ...
+        </li>
+        <li>
+          <b>DINTRV</b> computes the largest integer ILEFT in 1 <= ILEFT <= LXT ...
+        </li>
+        <li>
+          <b>DINTYD</b> approximates the ODE solution at T by polynomial interpolation.
+        </li>
+        <li>
+          <b>DIR</b> is the Preconditioned Iterative Refinement Sparse Ax = b Solver.
+        </li>
+        <li>
+          <b>DJAIRY</b> is subsidiary to DBESJ and DBESY.
+        </li>
+        <li>
+          <b>DLBETA</b> computes the natural logarithm of the complete Beta function.
+        </li>
+        <li>
+          <b>DLGAMS</b> computes the logarithm of the absolute value of the Gamma function.
+        </li>
+        <li>
+          <b>DLI</b> computes the logarithmic integral.
+        </li>
+        <li>
+          <b>DLLSIA</b> solves linear least squares problems by performing a QR ...
+        </li>
+        <li>
+          <b>DLLTI2</b> is the SLAP Backsolve routine for LDL' Factorization.
+        </li>
+        <li>
+          <b>DLNGAM</b> computes the logarithm of the absolute value of the Gamma function.
+        </li>
+        <li>
+          <b>DLNREL</b> evaluates ln(1+X) accurate in the sense of relative error.
+        </li>
+        <li>
+          <b>DLPDOC</b> is the Sparse Linear Algebra Package Version 2.0.2 Documentation.
+        </li>
+        <li>
+          <b>DLPDP</b> is subsidiary to DLSEI.
+        </li>
+        <li>
+          <b>DLSEI</b> solves a linearly constrained least squares problem with ...
+        </li>
+        <li>
+          <b>DLSI</b> is subsidiary to DLSEI.
+        </li>
+        <li>
+          <b>DLSOD</b> is subsidiary to DDEBDF.
+        </li>
+        <li>
+          <b>DLSSUD</b> is subsidiary to DBVSUP and DSUDS.
+        </li>
+        <li>
+          <b>DMACON</b> is subsidiary to DBVSUP.
+        </li>
+        <li>
+          <b>DMGSBV</b> orthogonalizes a set of vectors and determines their rank.
+        </li>
+        <li>
+          <b>DMOUT</b> prints a double precision matrix.
+        </li>
+        <li>
+          <b>DMPAR</b> is subsidiary to DNLS1 and DNLS1E.
+        </li>
+        <li>
+          <b>DNBCO</b> factors a band matrix using Gaussian elimination and ...
+        </li>
+        <li>
+          <b>DNBDI</b> computes the determinant of a band matrix using the factors ...
+        </li>
+        <li>
+          <b>DNBFA</b> factors a band matrix by elimination.
+        </li>
+        <li>
+          <b>DNBFS</b> solves a general nonsymmetric banded system of linear equations.
+        </li>
+        <li>
+          <b>DNBSL</b> solves a real band system using the factors computed by DNBCO or DNBFA.
+        </li>
+        <li>
+          <b>DNLS1</b> minimizes the sum of the squares of M nonlinear functions ...
+        </li>
+        <li>
+          <b>DNLS1E</b> is an easy-to-use code which minimizes the sum of the squares ...
+        </li>
+        <li>
+          <b>DNRM2</b> computes the Euclidean length (L2 norm) of a vector.
+        </li>
+        <li>
+          <b>DNSQ</b> finds a zero of a system of a N nonlinear functions in N variables ...
+        </li>
+        <li>
+          <b>DNSQE</b> is an easy-to-use code to find a zero of a system of N nonlinear ...
+        </li>
+        <li>
+          <b>DOGLEG</b> is subsidiary to SNSQ and SNSQE.
+        </li>
+        <li>
+          <b>DOHTRL</b> is subsidiary to DBVSUP and DSUDS.
+        </li>
+        <li>
+          <b>DOMN</b> is a Preconditioned Orthomin Sparse Iterative Ax=b Solver.
+        </li>
+        <li>
+          <b>DORTH</b> is an internal routine for DGMRES.
+        </li>
+        <li>
+          <b>DORTHR</b> is subsidiary to DBVSUP and DSUDS.
+        </li>
+        <li>
+          <b>DP1VLU</b> uses the coefficients generated by DPOLFT to evaluate the ...
+        </li>
+        <li>
+          <b>DPBCO</b> factors a real symmetric positive definite matrix stored in
+        </li>
+        <li>
+          <b>DPBDI</b> computes the determinant of a symmetric positive definite
+        </li>
+        <li>
+          <b>DPBFA</b> factors a real symmetric positive definite matrix stored in
+        </li>
+        <li>
+          <b>DPBSL</b> solves a real symmetric positive definite band system
+        </li>
+        <li>
+          <b>DPCHBS</b> is a piecewise Cubic Hermite to B-Spline converter.
+        </li>
+        <li>
+          <b>DPCHCE</b> sets boundary conditions for DPCHIC.
+        </li>
+        <li>
+          <b>DPCHCI</b> sets interior derivatives for DPCHIC.
+        </li>
+        <li>
+          <b>DPCHCM</b> checks a cubic Hermite function for monotonicity.
+        </li>
+        <li>
+          <b>DPCHCS</b> adjusts derivative values for DPCHIC.
+        </li>
+        <li>
+          <b>DPCHDF</b> computes divided differences for DPCHCE and DPCHSP.
+        </li>
+        <li>
+          <b>DPCHFD</b> evaluates a piecewise cubic Hermite function and its first ...
+        </li>
+        <li>
+          <b>DPCHFE</b> evaluate a piecewise cubic Hermite function at an array of points.
+        </li>
+        <li>
+          <b>DPCHIA</b> evaluates the definite integral of a piecewise cubic Hermite ...
+        </li>
+        <li>
+          <b>DPCHIC</b> sets derivatives needed to determine a piecewise monotone ...
+        </li>
+        <li>
+          <b>DPCHID</b> evaluates the definite integral of a piecewise cubic Hermite ...
+        </li>
+        <li>
+          <b>DPCHIM</b> sets derivatives needed to determine a monotone piecewise ...
+        </li>
+        <li>
+          <b>DPCHKT</b> computes B-spline knot sequence for DPCHBS.
+        </li>
+        <li>
+          <b>DPCHNG</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPCHSP</b> sets derivatives needed to determine the Hermite representation ...
+        </li>
+        <li>
+          <b>DPCHST</b> is the DPCHIP Sign-Testing Routine.
+        </li>
+        <li>
+          <b>DPCHSW</b> limits excursion from data for DPCHCS.
+        </li>
+        <li>
+          <b>DPCOEF</b> converts the DPOLFT coefficients to Taylor series form.
+        </li>
+        <li>
+          <b>DPFQAD</b> computes the integral on (X1,X2) of a product of a ...
+        </li>
+        <li>
+          <b>DPIGMR</b> is an internal routine for DGMRES.
+        </li>
+        <li>
+          <b>DPINCW</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPINIT</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPINTM</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPJAC</b> is subsidiary to DDEBDF.
+        </li>
+        <li>
+          <b>DPLINT</b> produces the polynomial which interpolates a set of discrete ...
+        </li>
+        <li>
+          <b>DPLPCE</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPLPDM</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPLPFE</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPLPFL</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPLPMN</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPLPMU</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPLPUP</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPNNZR</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPOCH</b> evaluates a generalization of Pochhammer's symbol.
+        </li>
+        <li>
+          <b>DPOCH1</b> calculates a generalization of Pochhammer's symbol starting ...
+        </li>
+        <li>
+          <b>DPOCO</b> factors a real symmetric positive definite matrix
+        </li>
+        <li>
+          <b>DPODI</b> computes the determinant and inverse of a certain real symmetric ...
+        </li>
+        <li>
+          <b>DPOFA</b> factors a real symmetric positive definite matrix.
+        </li>
+        <li>
+          <b>DPOFS</b> solves a positive definite symmetric system of linear equations.
+        </li>
+        <li>
+          <b>DPOLCF</b> computes the coefficients of the polynomial fit (including ...
+        </li>
+        <li>
+          <b>DPOLFT</b> fits discrete data in a least squares sense by polynomials ...
+        </li>
+        <li>
+          <b>DPOLVL</b> evaluates a polynomial and its first NDER derivatives where ...
+        </li>
+        <li>
+          <b>DPOPT</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPOSL</b> solves the real symmetric positive definite linear system ...
+        </li>
+        <li>
+          <b>DPPCO</b> factors a symmetric positive definite matrix stored in
+        </li>
+        <li>
+          <b>DPPDI</b> computes the determinant and inverse of a real symmetric ...
+        </li>
+        <li>
+          <b>DPPERM</b> rearranges an array according to a prescribed permutation.
+        </li>
+        <li>
+          <b>DPPFA</b> factors a real symmetric positive definite matrix in packed form.
+        </li>
+        <li>
+          <b>DPPGQ8</b> is subsidiary to DPFQAD.
+        </li>
+        <li>
+          <b>DPPQAD</b> computes the integral on (X1,X2) of a K-th order B-spline ...
+        </li>
+        <li>
+          <b>DPPSL</b> solves the real symmetric positive definite system using ...
+        </li>
+        <li>
+          <b>DPPVAL</b> calculates the value of the IDERIV-th derivative of the
+        </li>
+        <li>
+          <b>DPRVEC</b> is subsidiary to DBVSUP.
+        </li>
+        <li>
+          <b>DPRWPG</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPRWVR</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DPSI</b> computes the Psi (or Digamma) function.
+        </li>
+        <li>
+          <b>DPSIFN</b> computes derivatives of the Psi function.
+        </li>
+        <li>
+          <b>DPSIXN</b> is subsidiary to DEXINT.
+        </li>
+        <li>
+          <b>DPSORT</b> sorts a double precision array.
+        </li>
+        <li>
+          <b>DPTSL</b> solves a positive definite tridiagonal linear system.
+        </li>
+        <li>
+          <b>DQAG</b> approximates the definite integral of F(X) over (A,B), ...
+        </li>
+        <li>
+          <b>DQAGE</b> approximates the definite integral of F(X) over (A,B), ...
+        </li>
+        <li>
+          <b>DQAGI</b> approximates the integral of F(X) over an infinite interval.
+        </li>
+        <li>
+          <b>DQAGIE</b> approximates the integral of F(X) over an infinite interval.
+        </li>
+        <li>
+          <b>DQAGP</b> approximates the integral of a function with singularities.
+        </li>
+        <li>
+          <b>DQAGPE</b> approximates the integral of a function with singularities.
+        </li>
+        <li>
+          <b>DQAGS</b> approximates the integral of a function with singularities.
+        </li>
+        <li>
+          <b>DQAGSE</b> approximates the integral of a function with singularities.
+        </li>
+        <li>
+          <b>DQAWC</b> approximates the Cauchy principal value of the integral of F(X)/(X-C).
+        </li>
+        <li>
+          <b>DQAWCE</b> approximates the Cauchy principal value of the integral of F(X)/(X-C).
+        </li>
+        <li>
+          <b>DQAWF</b> approximates a given Fourier integral.
+        </li>
+        <li>
+          <b>DQAWFE</b> approximates a given Fourier integral.
+        </li>
+        <li>
+          <b>DQAWO</b> approximates a Fourier integral over a finite interval.
+        </li>
+        <li>
+          <b>DQAWOE</b> approximates a Fourier integral over a finite interval.
+        </li>
+        <li>
+          <b>DQAWS</b> approximates the integral of F(X)*W(X);  W has endpoint singularities.
+        </li>
+        <li>
+          <b>DQAWSE</b> approimates the integral F(X)*W(X); W(X) has endpoint singularities.
+        </li>
+        <li>
+          <b>DQC25C</b> computes I = Integral of F/(X-C) over (A,B) with error estimate.
+        </li>
+        <li>
+          <b>DQC25F</b> integrates F(X)*SIN(OMEGA*X) or F(X)*COS(OMEGA*X).
+        </li>
+        <li>
+          <b>DQC25S</b> estimates integral F(X)*W(X) for algebraic or logarithmic singularity.
+        </li>
+        <li>
+          <b>DQCHEB</b> computes Chebyshev series expansions of a function.
+        </li>
+        <li>
+          <b>DQDOTA</b> computes the inner product of two vectors with extended ...
+        </li>
+        <li>
+          <b>DQDOTI</b> computes the inner product of two vectors with extended precision.
+        </li>
+        <li>
+          <b>DQELG</b> applies the Epsilon algorithm.
+        </li>
+        <li>
+          <b>DQFORM</b> explicitly forms the Q matrix of an implicit QR factorization.
+        </li>
+        <li>
+          <b>DQK15</b> computes Integral of F over (A,B), with error estimate.
+        </li>
+        <li>
+          <b>DQK15I</b> computes an integral over an infinite range.
+        </li>
+        <li>
+          <b>DQK15W</b> computes Integral of F*W over (A,B), with error estimate.
+        </li>
+        <li>
+          <b>DQK21</b> computes Integral of F over (A,B), with error estimate.
+        </li>
+        <li>
+          <b>DQK31</b> computes Integral of F over (A,B) with error estimate.
+        </li>
+        <li>
+          <b>DQK41</b> computes Integral of F over (A,B), with error estimate.
+        </li>
+        <li>
+          <b>DQK51</b> computes Integral of F over (A,B) with error estimate.
+        </li>
+        <li>
+          <b>DQK61</b> computes Integral of F over (A,B) with error estimate.
+        </li>
+        <li>
+          <b>DQMOMO</b> computes modified Chebyshev moments.
+        </li>
+        <li>
+          <b>DQNC79</b> integrates a function using a 7-point adaptive Newton-Cotes rule.
+        </li>
+        <li>
+          <b>DQNG</b> approximates the integral of a function over a finite interval.
+        </li>
+        <li>
+          <b>DQPSRT</b> sorts the local error estimates for a quadrature routine.
+        </li>
+        <li>
+          <b>DQRDC</b> computes the QR factorization of a rectangular matrix.
+        </li>
+        <li>
+          <b>DQRFAC</b> computes the QR factorization of a rectangulr matrix.
+        </li>
+        <li>
+          <b>DQRSL</b> applies the output of DQRDC to compute coordinate transformations, ...
+        </li>
+        <li>
+          <b>DQRSLV</b> solves a least squares problem.
+        </li>
+        <li>
+          <b>DQWGTC</b> defines the weight function for DQAWC.
+        </li>
+        <li>
+          <b>DQWGTF</b> defines the weight function for DQAWF.
+        </li>
+        <li>
+          <b>DQWGTS</b> defines the weight function for DQAWS.
+        </li>
+        <li>
+          <b>DRC</b> approximates the elliptic integral RC.
+        </li>
+        <li>
+          <b>DRC3JJ</b> evaluates the 3J symbol f(L1) for all allowed values of L1.
+        </li>
+        <li>
+          <b>DRC3JM</b> evaluates the 3j symbol g(M2) for all allowed values of M2.
+        </li>
+        <li>
+          <b>DRC6J</b> evaluates the 6j symbol h(L1) for all allowed values of L1.
+        </li>
+        <li>
+          <b>DRD</b> computes the incomplete or complete elliptic integral of 2nd kind.
+        </li>
+        <li>
+          <b>DREADP</b> reads a record from a file, for DSPLP.
+        </li>
+        <li>
+          <b>DREORT</b> orthonormalizes the solution vector of a homogeneous system.
+        </li>
+        <li>
+          <b>DRF</b> computes the incomplete or complete elliptic integral of 1st kind.
+        </li>
+        <li>
+          <b>DRJ</b> computes the incomplete or complete elliptic integral of 3rd kind.
+        </li>
+        <li>
+          <b>DRKFAB</b> integrates an initial value problem for DBVSUP.
+        </li>
+        <li>
+          <b>DRKFS</b> integrates a system of ODE's for DDERKF.
+        </li>
+        <li>
+          <b>DRLCAL</b> calculates the scaled residual for DGMRES.
+        </li>
+        <li>
+          <b>DROT</b> applies a plane Givens rotation.
+        </li>
+        <li>
+          <b>DROTG</b> constructs a plane Givens rotation.
+        </li>
+        <li>
+          <b>DROTM</b> applies a modified Givens rotation.
+        </li>
+        <li>
+          <b>DROTMG</b> constructs a modified Givens rotation.
+        </li>
+        <li>
+          <b>DRSCO</b> transfers data from arrays to common blocks for DDEBDF.
+        </li>
+        <li>
+          <b>DS2LT</b> is the Lower Triangle Preconditioner SLAP Set Up.
+        </li>
+        <li>
+          <b>DS2Y</b> is the SLAP Triad to SLAP Column Format Converter.
+        </li>
+        <li>
+          <b>DSBMV</b> performs the matrix-vector operation y := alpha*A*x + beta*y.
+        </li>
+        <li>
+          <b>DSCAL</b> multiplies a vector by a constant.
+        </li>
+        <li>
+          <b>DSD2S</b> is the Diagonal Scaling Preconditioner SLAP Normal Eqns Set Up.
+        </li>
+        <li>
+          <b>DSDBCG</b> is the Diagonally Scaled BiConjugate Gradient Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>DSDCG</b> is the Diagonally Scaled Conjugate Gradient Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>DSDCGN</b> is the Diagonally Scaled CG Sparse Ax=b Solver for Normal Eqn's.
+        </li>
+        <li>
+          <b>DSDCGS</b> is the Diagonally Scaled CGS Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>DSDGMR</b> is the Diagonally scaled GMRES iterative sparse Ax=b solver.
+        </li>
+        <li>
+          <b>DSDI</b> is a Diagonal Matrix Vector Multiply.
+        </li>
+        <li>
+          <b>DSDOMN</b> is a Diagonally Scaled Orthomin Sparse Iterative Ax=b Solver.
+        </li>
+        <li>
+          <b>DSDOT</b> computes the inner product of two vectors with extended ...
+        </li>
+        <li>
+          <b>DSDS</b> is the Diagonal Scaling Preconditioner SLAP Set Up.
+        </li>
+        <li>
+          <b>DSDSCL</b> carries out Diagonal Scaling of system Ax = b.
+        </li>
+        <li>
+          <b>DSGS</b> is the Gauss-Seidel Method Iterative Sparse Ax = b Solver.
+        </li>
+        <li>
+          <b>DSICCG</b> is the Incomplete Cholesky Conjugate Gradient Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>DSICO</b> factors a symmetric matrix by elimination with symmetric ...
+        </li>
+        <li>
+          <b>DSICS</b> is the Incompl. Cholesky Decomposition Preconditioner SLAP Set Up.
+        </li>
+        <li>
+          <b>DSIDI</b> computes the determinant, inertia and inverse of a real symmetric ...
+        </li>
+        <li>
+          <b>DSIFA</b> factors a real symmetric matrix by elimination with symmetric pivoting.
+        </li>
+        <li>
+          <b>DSILUR</b> is the incomplete LU Iterative Refinement Sparse Ax = b Solver.
+        </li>
+        <li>
+          <b>DSILUS</b> is the incomplete LU Decomposition Preconditioner SLAP Set Up.
+        </li>
+        <li>
+          <b>DSINDG</b> computes the sine of an argument in degrees.
+        </li>
+        <li>
+          <b>DSISL</b> solves a real symmetric system using the factors obtained from SSIFA.
+        </li>
+        <li>
+          <b>DSJAC</b> is the Jacobi's Method Iterative Sparse Ax = b Solver.
+        </li>
+        <li>
+          <b>DSLI</b> is the SLAP MSOLVE for Lower Triangle Matrix.
+        </li>
+        <li>
+          <b>DSLI2</b> is the SLAP Lower Triangle Matrix Backsolve.
+        </li>
+        <li>
+          <b>DSLLTI</b> is the SLAP MSOLVE for LDL' (IC) Factorization.
+        </li>
+        <li>
+          <b>DSLUBC</b> is the incomplete LU BiConjugate Gradient Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>DSLUCN</b> is the ncomplete LU CG Sparse Ax=b Solver for Normal Equations.
+        </li>
+        <li>
+          <b>DSLUCS</b> is the incomplete LU BiConjugate Gradient Squared Ax=b Solver.
+        </li>
+        <li>
+          <b>DSLUGM</b> is the incomplete LU GMRES iterative sparse Ax=b solver.
+        </li>
+        <li>
+          <b>DSLUI</b> is the SLAP MSOLVE for LDU Factorization.
+        </li>
+        <li>
+          <b>DSLUI2</b> is the SLAP Backsolve for LDU Factorization.
+        </li>
+        <li>
+          <b>DSLUI4</b> is the SLAP Backsolve for LDU Factorization.
+        </li>
+        <li>
+          <b>DSLUOM</b> is the Incomplete LU Orthomin Sparse Iterative Ax=b Solver.
+        </li>
+        <li>
+          <b>DSLUTI</b> is the SLAP MTSOLV for LDU Factorization.
+        </li>
+        <li>
+          <b>DSLVS</b> is subsidiary to DDEBDF.
+        </li>
+        <li>
+          <b>DSMMI2</b> is the SLAP Backsolve for LDU Factorization of Normal Equations.
+        </li>
+        <li>
+          <b>DSMMTI</b> is the SLAP MSOLVE for LDU Factorization of Normal Equations.
+        </li>
+        <li>
+          <b>DSMTV</b> is the SLAP Column Format Sparse Matrix Transpose Vector Product.
+        </li>
+        <li>
+          <b>DSMV</b> is the SLAP Column Format Sparse Matrix Vector Product.
+        </li>
+        <li>
+          <b>DSORT</b> sorts an array and optionally make the same interchanges in ...
+        </li>
+        <li>
+          <b>DSOS</b> solves a square system of nonlinear equations.
+        </li>
+        <li>
+          <b>DSOSEQ</b> is subsidiary to DSOS
+        </li>
+        <li>
+          <b>DSOSSL</b> is subsidiary to DSOS.
+        </li>
+        <li>
+          <b>DSPCO</b> factors a real symmetric matrix stored in packed form ...
+        </li>
+        <li>
+          <b>DSPDI</b> computes the determinant, inertia, inverse of a real symmetric ...
+        </li>
+        <li>
+          <b>DSPENC</b> computes a form of Spence's integral due to K. Mitchell.
+        </li>
+        <li>
+          <b>DSPFA</b> factors a real symmetric matrix stored in packed form by ...
+        </li>
+        <li>
+          <b>DSPLP</b> solves linear programming problems involving at most a few thousand ...
+        </li>
+        <li>
+          <b>DSPMV</b> performs the matrix-vector operation y := alpha*A*x + beta*y.
+        </li>
+        <li>
+          <b>DSPR</b> performs a symmetric rank 1 operation.
+        </li>
+        <li>
+          <b>DSPR2</b> performs a symmetric rank 2 operation.
+        </li>
+        <li>
+          <b>DSPSL</b> solves a real symmetric system using the factors obtained from DSPFA.
+        </li>
+        <li>
+          <b>DSTEPS</b> integrates a system of first order ODE's one step.
+        </li>
+        <li>
+          <b>DSTOD</b> is subsidiary to DDEBDF.
+        </li>
+        <li>
+          <b>DSTOR1</b> is subsidiary to DBVSUP.
+        </li>
+        <li>
+          <b>DSTWAY</b> is subsidiary to DBVSUP.
+        </li>
+        <li>
+          <b>DSUDS</b> solves an underdetermined system for DBVSUP.
+        </li>
+        <li>
+          <b>DSVCO</b> transfers data from a common block to arrays for DDEBDF.
+        </li>
+        <li>
+          <b>DSVDC</b> performs the singular value decomposition of a rectangular matrix.
+        </li>
+        <li>
+          <b>DSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>DSYMM</b> performs C = alpha*A*B + beta*C or C = alpha*B*A + beta*C.
+        </li>
+        <li>
+          <b>DSYMV</b> performs y = alpha*A*x + beta*y.
+        </li>
+        <li>
+          <b>DSYR</b> performs A = alpha*x*x' + A.
+        </li>
+        <li>
+          <b>DSYR2</b> performs A = alpha*x*y' + alpha*y*x' + A.
+        </li>
+        <li>
+          <b>DSYR2K</b> performs a symmetric rank 2k update operation.
+        </li>
+        <li>
+          <b>DSYRK</b> performs a symmetric rank k update operation.
+        </li>
+        <li>
+          <b>DTBMV</b> computes x = A*x or x = A'*x when A is a triangular band matrix.
+        </li>
+        <li>
+          <b>DTBSV</b> solves a triangular band linear system.
+        </li>
+        <li>
+          <b>DTIN</b> reads in SLAP Triad Format Linear System.
+        </li>
+        <li>
+          <b>DTOUT</b> writes out SLAP Triad Format Linear System.
+        </li>
+        <li>
+          <b>DTPMV</b> computes x = A*x or x = A'*x where A is a packed triangular matrix.
+        </li>
+        <li>
+          <b>DTPSV</b> solves A*x=b or A'*x=b where A is a packed triangular matrix.
+        </li>
+        <li>
+          <b>DTRCO</b> estimates the condition number of a triangular matrix.
+        </li>
+        <li>
+          <b>DTRDI</b> computes the determinant and inverse of a triangular matrix.
+        </li>
+        <li>
+          <b>DTRMM</b> performs B = alpha*op(A)*B or B = alpha*B*op(A), A triangular.
+        </li>
+        <li>
+          <b>DTRMV</b> computes x=A*x or x=A'*x where A is triangular.
+        </li>
+        <li>
+          <b>DTRSL</b> solves a triangular system of linear equations.
+        </li>
+        <li>
+          <b>DTRSM</b> solves a matrix equation op(A)*X=alpha*B or X*op(A)=alpha*B.
+        </li>
+        <li>
+          <b>DTRSV</b> solves A*x=b or A'*x=b where A is triangular.
+        </li>
+        <li>
+          <b>DU11LS</b> performs QR factorization for DLLSIA.
+        </li>
+        <li>
+          <b>DU11US</b> performs LQ factorization for DULSIA.
+        </li>
+        <li>
+          <b>DU12LS</b> solves a QR factored linear system for DLLSIA.
+        </li>
+        <li>
+          <b>DU12US</b> solves a QR factored system for DULSIA.
+        </li>
+        <li>
+          <b>DULSIA</b> solves an underdetermined linear system of equations by ...
+        </li>
+        <li>
+          <b>DUSRMT</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DVECS</b> is subsidiary to DBVSUP.
+        </li>
+        <li>
+          <b>DVNRMS</b> computes a weighted root-mean-square vector norm for DDEBDF.
+        </li>
+        <li>
+          <b>DVOUT</b> prints a double precision vector.
+        </li>
+        <li>
+          <b>DWNLIT</b> is subsidiary to DWNNLS.
+        </li>
+        <li>
+          <b>DWNLSM</b> is subsidiary to DWNNLS.
+        </li>
+        <li>
+          <b>DWNLT1</b> is subsidiary to WNLIT.
+        </li>
+        <li>
+          <b>DWNLT2</b> is subsidiary to WNLIT.
+        </li>
+        <li>
+          <b>DWNLT3</b> is subsidiary to WNLIT.
+        </li>
+        <li>
+          <b>DWNNLS</b> solves a linearly constrained least squares problem with ...
+        </li>
+        <li>
+          <b>DWRITP</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>DWUPDT</b> is subsidiary to DNLS1 and DNLS1E.
+        </li>
+        <li>
+          <b>DX</b> is subsidiary to SEPELI.
+        </li>
+        <li>
+          <b>DX4</b> is subsidiary to SEPX4.
+        </li>
+        <li>
+          <b>DXADD</b> provides double-precision floating-point arithmetic ...
+        </li>
+        <li>
+          <b>DXADJ</b> provides double-precision floating-point arithmetic ...
+        </li>
+        <li>
+          <b>DXC210</b> provides double-precision floating-point arithmetic ...
+        </li>
+        <li>
+          <b>DXCON</b> provides double-precision floating-point arithmetic ...
+        </li>
+        <li>
+          <b>DXLCAL</b> is an internal routine for DGMRES.
+        </li>
+        <li>
+          <b>DXLEGF</b> computes normalized Legendre polynomials and associated Legendre ...
+        </li>
+        <li>
+          <b>DXNRMP</b> computes normalized Legendre polynomials.
+        </li>
+        <li>
+          <b>DXPMU</b> computes the values of Legendre functions for DXLEGF. ...
+        </li>
+        <li>
+          <b>DXPMUP</b> computes the values of Legendre functions for DXLEGF. ...
+        </li>
+        <li>
+          <b>DXPNRM</b> computes the values of Legendre functions for DXLEGF.
+        </li>
+        <li>
+          <b>DXPQNU</b> computes the values of Legendre functions for DXLEGF.
+        </li>
+        <li>
+          <b>DXPSI</b> computes values of the Psi function for DXLEGF.
+        </li>
+        <li>
+          <b>DXQMU</b> computes the values of Legendre functions for DXLEGF.
+        </li>
+        <li>
+          <b>DXQNU</b> computes the values of Legendre functions for DXLEGF.
+        </li>
+        <li>
+          <b>DXRED</b> provides double-precision floating-point arithmetic ...
+        </li>
+        <li>
+          <b>DXSET</b> provides double-precision floating-point arithmetic ...
+        </li>
+        <li>
+          <b>DY</b> is subsidiary to SEPELI.
+        </li>
+        <li>
+          <b>DY4</b> is subsidiary to SEPX4.
+        </li>
+        <li>
+          <b>DYAIRY</b> is subsidiary to DBESJ and DBESY.
+        </li>
+        <li>
+          <b>E1</b> computes the exponential integral E1(X).
+        </li>
+        <li>
+          <b>EFC</b> fits a piecewise polynomial curve to discrete data.
+        </li>
+        <li>
+          <b>EFCMN</b> is subsidiary to EFC.
+        </li>
+        <li>
+          <b>EI</b> computes the exponential integral Ei(X).
+        </li>
+        <li>
+          <b>EISDOC</b> contains documentation for EISPACK, a collection of subprograms ...
+        </li>
+        <li>
+          <b>ELMBAK</b> forms the eigenvectors of a real general matrix from the ...
+        </li>
+        <li>
+          <b>ELMHES</b> reduces a real general matrix to upper Hessenberg form ...
+        </li>
+        <li>
+          <b>ELTRAN</b> accumulates the stabilized elementary similarity ...
+        </li>
+        <li>
+          <b>ENORM</b> is subsidiary to SNLS1, SNLS1E, SNSQ and SNSQE.
+        </li>
+        <li>
+          <b>ERF</b> computes the error function.
+        </li>
+        <li>
+          <b>ERFC</b> computes the complementary error function.
+        </li>
+        <li>
+          <b>EXBVP</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>EXINT</b> computes an M member sequence of exponential integrals ...
+        </li>
+        <li>
+          <b>EXPREL</b> calculates the relative error exponential (EXP(X)-1)/X.
+        </li>
+        <li>
+          <b>EZFFT1</b> calls EZFFT1 with appropriate work array partitioning.
+        </li>
+        <li>
+          <b>EZFFTB</b> is a simplified real, periodic, backward fast Fourier transform.
+        </li>
+        <li>
+          <b>EZFFTF</b> computes a simplified real, periodic, fast Fourier forward transform.
+        </li>
+        <li>
+          <b>EZFFTI</b> initializes a work array for EZFFTF and EZFFTB.
+        </li>
+        <li>
+          <b>FAC</b> computes the factorial function.
+        </li>
+        <li>
+          <b>FC</b> fits a piecewise polynomial curve to discrete data.
+        </li>
+        <li>
+          <b>FCMN</b> is subsidiary to FC.
+        </li>
+        <li>
+          <b>FDJAC1</b> is subsidiary to SNSQ and SNSQE.
+        </li>
+        <li>
+          <b>FDJAC3</b> is subsidiary to SNLS1 and SNLS1E.
+        </li>
+        <li>
+          <b>FDUMP</b> makes a symbolic dump (should be locally written).
+        </li>
+        <li>
+          <b>FFTDOC</b> is documentation for FFTPACK, a collection of Fast Fourier ...
+        </li>
+        <li>
+          <b>FIGI</b> transforms certain real non-symmetric tridiagonal matrix ...
+        </li>
+        <li>
+          <b>FIGI2</b> transforms certain real non-symmetric tridiagonal matrix ...
+        </li>
+        <li>
+          <b>FULMAT</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>FUNDOC</b> is documentation for FNLIB, a collection of routines for ...
+        </li>
+        <li>
+          <b>FZERO</b> searches for a zero of a function F(X) in a given interval ...
+        </li>
+        <li>
+          <b>GAMI</b> evaluates the incomplete Gamma function.
+        </li>
+        <li>
+          <b>GAMIC</b> calculates the complementary incomplete Gamma function.
+        </li>
+        <li>
+          <b>GAMIT</b> calculates Tricomi's form of the incomplete Gamma function.
+        </li>
+        <li>
+          <b>GAMLIM</b> computes minimum and maximum argument bounds for the Gamma function.
+        </li>
+        <li>
+          <b>GAMLN</b> computes the logarithm of the Gamma function.
+        </li>
+        <li>
+          <b>GAMMA</b> computes the complete Gamma function.
+        </li>
+        <li>
+          <b>GAMR</b> computes the reciprocal of the Gamma function.
+        </li>
+        <li>
+          <b>GAMRN</b> is subsidiary to BSKIN.
+        </li>
+        <li>
+          <b>GAUS8</b> integrates a real function of one variable over a finite interval ...
+        </li>
+        <li>
+          <b>GENBUN</b> solves by a cyclic reduction algorithm the linear system ...
+        </li>
+        <li>
+          <b>H12</b> is subsidiary to HFTI, LSEI and WNNLS.
+        </li>
+        <li>
+          <b>HFTI</b> solves a linear least squares problems by performing a QR ...
+        </li>
+        <li>
+          <b>HKSEQ</b> is subsidiary to BSKIN.
+        </li>
+        <li>
+          <b>HPPERM</b> rearranges an array according to a permutation vector.
+        </li>
+        <li>
+          <b>HPSORT</b> returns the permutation vector generated by sorting a ...
+        </li>
+        <li>
+          <b>HQR</b> computes the eigenvalues of a real upper Hessenberg matrix ...
+        </li>
+        <li>
+          <b>HQR2</b> computes the eigenvalues and eigenvectors of a real upper ...
+        </li>
+        <li>
+          <b>HSTART</b> is subsidiary to DEABM, DEBDF and DERKF.
+        </li>
+        <li>
+          <b>HSTCRT</b> solves the standard five-point finite difference ...
+        </li>
+        <li>
+          <b>HSTCS1</b> is subsidiary to HSTCSP.
+        </li>
+        <li>
+          <b>HSTCSP</b> solves the standard five-point finite difference ...
+        </li>
+        <li>
+          <b>HSTCYL</b> solves the standard five-point finite difference ...
+        </li>
+        <li>
+          <b>HSTPLR</b> solves the standard five-point finite difference ...
+        </li>
+        <li>
+          <b>HSTSSP</b> solves the standard five-point finite difference approximation ...
+        </li>
+        <li>
+          <b>HTRIB3</b> computes the eigenvectors of a complex Hermitian matrix from ...
+        </li>
+        <li>
+          <b>HTRIBK</b> forms the eigenvectors of a complex Hermitian matrix from ...
+        </li>
+        <li>
+          <b>HTRID3</b> reduces a complex Hermitian (packed) matrix to a real ...
+        </li>
+        <li>
+          <b>HTRIDI</b> reduces a complex Hermitian matrix to a real symmetric ...
+        </li>
+        <li>
+          <b>HVNRM</b> is subsidiary to DEABM, DEBDF and DERKF.
+        </li>
+        <li>
+          <b>HW3CRT</b> solves the standard seven-point finite difference ...
+        </li>
+        <li>
+          <b>HWSCRT</b> solves the standard five-point finite difference ...
+        </li>
+        <li>
+          <b>HWSCS1</b> is subsidiary to HWSCSP.
+        </li>
+        <li>
+          <b>HWSCSP</b> solves a finite difference approximation to the modified ...
+        </li>
+        <li>
+          <b>HWSCYL</b> solves a standard finite difference approximation ...
+        </li>
+        <li>
+          <b>HWSPLR</b> solves a finite difference approximation to the Helmholtz ...
+        </li>
+        <li>
+          <b>HWSSS1</b> is subsidiary to HWSSSP.
+        </li>
+        <li>
+          <b>HWSSSP</b> solves a finite difference approximation to the Helmholtz ...
+        </li>
+        <li>
+          <b>I1MACH</b> returns integer machine dependent constants.
+        </li>
+        <li>
+          <b>I1MERG</b> merges two strings of ascending integers.
+        </li>
+        <li>
+          <b>ICAMAX</b> finds the smallest index of the component of a complex ...
+        </li>
+        <li>
+          <b>ICOPY</b> copies a vector.
+        </li>
+        <li>
+          <b>IDAMAX</b> finds the smallest index of that component of a vector ...
+        </li>
+        <li>
+          <b>IDLOC</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>IMTQL1</b> computes the eigenvalues of a symmetric tridiagonal matrix
+        </li>
+        <li>
+          <b>IMTQL2</b> computes eigenvalues and eigenvectors of a symmetric tridiagonal ...
+        </li>
+        <li>
+          <b>IMTQLV</b> computes the eigenvalues of a symmetric tridiagonal matrix ...
+        </li>
+        <li>
+          <b>INDXA</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>INDXB</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>INDXC</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>INITDS</b> determines the number of terms needed in an orthogonal ...
+        </li>
+        <li>
+          <b>INITS</b> determines the number of terms needed in an orthogonal ...
+        </li>
+        <li>
+          <b>INTRV</b> computes the largest integer ILEFT in 1  <=  ILEFT  <=  LXT ...
+        </li>
+        <li>
+          <b>INTYD</b> is subsidiary to DEBDF.
+        </li>
+        <li>
+          <b>INVIT</b> computes the eigenvectors of a real upper Hessenberg ...
+        </li>
+        <li>
+          <b>INXCA</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>INXCB</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>INXCC</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>IPLOC</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>IPPERM</b> rearranges a given array according to a prescribed ...
+        </li>
+        <li>
+          <b>IPSORT</b> returns the permutation vector generated by sorting a given ...
+        </li>
+        <li>
+          <b>ISAMAX</b> finds the smallest index of that component of a vector
+        </li>
+        <li>
+          <b>ISDBCG</b> is the Preconditioned BiConjugate Gradient Stop Test.
+        </li>
+        <li>
+          <b>ISDCG</b> is the Preconditioned Conjugate Gradient Stop Test.
+        </li>
+        <li>
+          <b>ISDCGN</b> is the Preconditioned CG on Normal Equations Stop Test.
+        </li>
+        <li>
+          <b>ISDCGS</b> is the Preconditioned BiConjugate Gradient Squared Stop Test.
+        </li>
+        <li>
+          <b>ISDGMR</b> is the Generalized Minimum Residual Stop Test.
+        </li>
+        <li>
+          <b>ISDIR</b> is the Preconditioned Iterative Refinement Stop Test.
+        </li>
+        <li>
+          <b>ISDOMN</b> is the Preconditioned Orthomin Stop Test.
+        </li>
+        <li>
+          <b>ISORT</b> sorts an array and optionally make the same interchanges in ...
+        </li>
+        <li>
+          <b>ISSBCG</b> is the Preconditioned BiConjugate Gradient Stop Test.
+        </li>
+        <li>
+          <b>ISSCG</b> is the Preconditioned Conjugate Gradient Stop Test.
+        </li>
+        <li>
+          <b>ISSCGN</b> is the Preconditioned CG on Normal Equations Stop Test.
+        </li>
+        <li>
+          <b>ISSCGS</b> is the Preconditioned BiConjugate Gradient Squared Stop Test.
+        </li>
+        <li>
+          <b>ISSGMR</b> is the Generalized Minimum Residual Stop Test.
+        </li>
+        <li>
+          <b>ISSIR</b> is the Preconditioned Iterative Refinement Stop Test.
+        </li>
+        <li>
+          <b>ISSOMN</b> is the Preconditioned Orthomin Stop Test.
+        </li>
+        <li>
+          <b>ISWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>IVOUT</b> prints an integer vector.
+        </li>
+        <li>
+          <b>J4SAVE</b> saves or recalls global variables needed by error handling routines.
+        </li>
+        <li>
+          <b>JAIRY</b> is subsidiary to BESJ and BESY.
+        </li>
+        <li>
+          <b>LA05AD</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>LA05AS</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>LA05BD</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>LA05BS</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>LA05CD</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>LA05CS</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>LA05ED</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>LA05ES</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>LLSIA</b> solves a linear least squares problems by performing a QR ...
+        </li>
+        <li>
+          <b>LMPAR</b> is subsidiary to SNLS1 and SNLS1E.
+        </li>
+        <li>
+          <b>LPDP</b> is subsidiary to LSEI.
+        </li>
+        <li>
+          <b>LSAME</b> tests two characters to determine if they are the same ...
+        </li>
+        <li>
+          <b>LSEI</b> solves a linearly constrained least squares problem with ...
+        </li>
+        <li>
+          <b>LSI</b> is subsidiary to LSEI.
+        </li>
+        <li>
+          <b>LSOD</b> is subsidiary to DEBDF.
+        </li>
+        <li>
+          <b>LSSODS</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>LSSUDS</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>MACON</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>MC20AD</b> is subsidiary to DSPLP.
+        </li>
+        <li>
+          <b>MC20AS</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>MGSBV</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>MINFIT</b> computes the singular value decomposition of a rectangular ...
+        </li>
+        <li>
+          <b>MINSO4</b> is subsidiary to SEPX4.
+        </li>
+        <li>
+          <b>MINSOL</b> is subsidiary to SEPELI.
+        </li>
+        <li>
+          <b>MPADD</b> is subsidiary to DQDOTA and DQDOTI.
+        </li>
+        <li>
+          <b>MPADD2</b> is subsidiary to DQDOTA and DQDOTI.
+        </li>
+        <li>
+          <b>MPADD3</b> is subsidiary to DQDOTA and DQDOTI.
+        </li>
+        <li>
+          <b>MPBLAS</b> is subsidiary to DQDOTA and DQDOTI.
+        </li>
+        <li>
+          <b>MPCDM</b> is subsidiary to DQDOTA and DQDOTI.
+        </li>
+        <li>
+          <b>MPCHK</b> is subsidiary to DQDOTA and DQDOTI.
+        </li>
+        <li>
+          <b>MPCMD</b> is subsidiary to DQDOTA and DQDOTI.
+        </li>
+        <li>
+          <b>MPDIVI</b> is subsidiary to DQDOTA and DQDOTI.
+        </li>
+        <li>
+          <b>MPERR</b> is subsidiary to DQDOTA and DQDOTI.
+        </li>
+        <li>
+          <b>MPMAXR</b> sets X to the largest possible 'mp' number.
+        </li>
+        <li>
+          <b>MPMLP</b> performs the inner multiplication loop for MPMUL.
+        </li>
+        <li>
+          <b>MPMUL</b> multiples two 'mp' numbers.
+        </li>
+        <li>
+          <b>MPMUL2</b> multiplies an 'mp' number by a single precision integer.
+        </li>
+        <li>
+          <b>MPMULI</b> multiplies 'mp' X by a single precision integer.
+        </li>
+        <li>
+          <b>MPNZR</b> is subsidiary to DQDOTA and DQDOTI.
+        </li>
+        <li>
+          <b>MPOVFL</b> is called on multiple precision overflow.
+        </li>
+        <li>
+          <b>MPSTR</b> copies Y = X for multiple precision arguments.
+        </li>
+        <li>
+          <b>MPUNFL</b> is called to handle multiple precision underflow.
+        </li>
+        <li>
+          <b>NUMXER</b> returns the most recent error number.
+        </li>
+        <li>
+          <b>OHTROL</b>
+        </li>
+        <li>
+          <b>OHTROR</b> further reduces a triangular form after ORTHOL has been applied.
+        </li>
+        <li>
+          <b>ORTBAK</b> forms the eigenvectors of a general real matrix from the ...
+        </li>
+        <li>
+          <b>ORTHES</b> reduces a real general matrix to upper Hessenberg form ...
+        </li>
+        <li>
+          <b>ORTHO4</b> is subsidiary to SEPX4.
+        </li>
+        <li>
+          <b>ORTHOG</b> is subsidiary to SEPELI.
+        </li>
+        <li>
+          <b>ORTHOL</b> reduces a matrix to upper triangular form by Householder.
+        </li>
+        <li>
+          <b>ORTHOR</b> reduces a matrix to lower triangular form by Householder.
+        </li>
+        <li>
+          <b>ORTRAN</b> accumulates orthogonal similarity transformations in the ...
+        </li>
+        <li>
+          <b>PASSB</b> calculates fast Fourier transforms of subvectors of arbitrary length.
+        </li>
+        <li>
+          <b>PASSB2</b> calculates the fast Fourier transform of subvectors of length two.
+        </li>
+        <li>
+          <b>PASSB3</b> calculates the fast Fourier transform of subvectors of length three.
+        </li>
+        <li>
+          <b>PASSB4</b> calculates the fast Fourier transform of subvectors of length four.
+        </li>
+        <li>
+          <b>PASSB5</b> calculates the fast Fourier transform of subvectors of length five.
+        </li>
+        <li>
+          <b>PASSF</b> calculates fast Fourier transforms of subvectors of arbitrary length.
+        </li>
+        <li>
+          <b>PASSF2</b> calculates the fast Fourier transform of subvectors of length two.
+        </li>
+        <li>
+          <b>PASSF3</b> calculates the fast Fourier transform of subvectors of length three.
+        </li>
+        <li>
+          <b>PASSF4</b> calculates the fast Fourier transform of subvectors of length four.
+        </li>
+        <li>
+          <b>PASSF5</b> calculates the fast Fourier transform of subvectors of length five.
+        </li>
+        <li>
+          <b>PCHBS</b> is a Piecewise Cubic Hermite to B-Spline converter.
+        </li>
+        <li>
+          <b>PCHCE</b> sets boundary conditions for PCHIC.
+        </li>
+        <li>
+          <b>PCHCI</b> sets interior derivatives for PCHIC.
+        </li>
+        <li>
+          <b>PCHCM</b> checks a cubic Hermite function for monotonicity.
+        </li>
+        <li>
+          <b>PCHCS</b> adjusts derivative values for PCHIC.
+        </li>
+        <li>
+          <b>PCHDF</b> computes divided differences for PCHCE and PCHSP.
+        </li>
+        <li>
+          <b>PCHDOC</b> is documentation for PCHIP, for piecewise cubic Hermite interpolation.
+        </li>
+        <li>
+          <b>PCHFD</b> evaluates a piecewise cubic Hermite function and its first ...
+        </li>
+        <li>
+          <b>PCHFE</b> evaluates a piecewise cubic Hermite function at an array of points. ...
+        </li>
+        <li>
+          <b>PCHIA</b> evaluates the definite integral of a piecewise cubic Hermite ...
+        </li>
+        <li>
+          <b>PCHIC</b> sets derivatives needed to determine a piecewise monotone ...
+        </li>
+        <li>
+          <b>PCHID</b> evaluates the definite integral of a piecewise cubic Hermite ...
+        </li>
+        <li>
+          <b>PCHIM</b> sets derivatives needed to determine a monotone piecewise ...
+        </li>
+        <li>
+          <b>PCHKT</b> computes B-spline knot sequence for PCHBS.
+        </li>
+        <li>
+          <b>PCHNGS</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>PCHSP</b> sets derivatives needed to determine the Hermite representation ...
+        </li>
+        <li>
+          <b>PCHST</b> is the PCHIP Sign-Testing Routine
+        </li>
+        <li>
+          <b>PCHSW</b> limits excursion from data for PCHCS.
+        </li>
+        <li>
+          <b>PCOEF</b> converts the POLFIT coefficients to Taylor series form.
+        </li>
+        <li>
+          <b>PFQAD</b> computes the integral on (X1,X2) of a product of a function F and ...
+        </li>
+        <li>
+          <b>PGSF</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>PIMACH</b> supplies the value of PI.
+        </li>
+        <li>
+          <b>PINITM</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>PJAC</b> is subsidiary to DEBDF.
+        </li>
+        <li>
+          <b>PNNZRS</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>POCH</b> evaluates a generalization of Pochhammer's symbol.
+        </li>
+        <li>
+          <b>POCH1</b> calculates a generalization of Pochhammer's symbol starting
+        </li>
+        <li>
+          <b>POIS3D</b> solves a three-dimensional block tridiagonal linear system ...
+        </li>
+        <li>
+          <b>POISD2</b> is subsidiary to GENBUN.
+        </li>
+        <li>
+          <b>POISN2</b> is subsidiary to GENBUN.
+        </li>
+        <li>
+          <b>POISP2</b> is subsidiary to GENBUN.
+        </li>
+        <li>
+          <b>POISTG</b> solves a block tridiagonal system of linear equations ...
+        </li>
+        <li>
+          <b>POLCOF</b> computes the coefficients of the polynomial fit (including ...
+        </li>
+        <li>
+          <b>POLFIT</b> fits discrete data in a least squares sense by polynomials ...
+        </li>
+        <li>
+          <b>POLINT</b> produces the polynomial which interpolates a set of discrete data.
+        </li>
+        <li>
+          <b>POLYVL</b> calculates the value of a polynomial and its first NDER ...
+        </li>
+        <li>
+          <b>POS3D1</b> is subsidiary to POIS3D.
+        </li>
+        <li>
+          <b>POSTG2</b> is subsidiary to POISTG.
+        </li>
+        <li>
+          <b>PPADD</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>PPGQ8</b> is subsidiary to PFQAD.
+        </li>
+        <li>
+          <b>PPGSF</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>PPPSF</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>PPQAD</b> computes the integral on (X1,X2) of a K-th order B-spline ...
+        </li>
+        <li>
+          <b>PPSGF</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>PPSPF</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>PPVAL</b> calculates the value of the IDERIV-th derivative of the B-spline ...
+        </li>
+        <li>
+          <b>PROC</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>PROCP</b> is subsidiary to CBLKTR.
+        </li>
+        <li>
+          <b>PROD</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>PRODP</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>PRVEC</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>PRWPGE</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>PRWVIR</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>PSGF</b> is subsidiary to BLKTRI.
+        </li>
+        <li>
+          <b>PSI</b> computes the Psi (or Digamma) function.
+        </li>
+        <li>
+          <b>PSIFN</b> computes derivatives of the Psi function.
+        </li>
+        <li>
+          <b>PSIXN</b> is subsidiary to EXINT.
+        </li>
+        <li>
+          <b>PVALUE</b> uses the coefficients generated by POLFIT to evaluate the ...
+        </li>
+        <li>
+          <b>PYTHAG</b> computes the complex square root of a complex number without ...
+        </li>
+        <li>
+          <b>QAG</b> calculates an approximation RESULT to a given ...
+        </li>
+        <li>
+          <b>QAGE</b> calculates an approximation RESULT to a given definite integral
+        </li>
+        <li>
+          <b>QAGI</b> calculates an approximation RESULT to a given integral ...
+        </li>
+        <li>
+          <b>QAGIE</b> calculates an approximation RESULT to a given integral ...
+        </li>
+        <li>
+          <b>QAGP</b> calculates an approximation RESULT to a given integral ...
+        </li>
+        <li>
+          <b>QAGPE</b> approximates a given integral I = Integral of F over (A,B), ...
+        </li>
+        <li>
+          <b>QAGS</b> approximates the definite integral of F(X) over (A,B).
+        </li>
+        <li>
+          <b>QAGSE</b> calculates an approximation RESULT to a given integral ...
+        </li>
+        <li>
+          <b>QAWC</b> calculates an approximation RESULT to a Cauchy principal value ...
+        </li>
+        <li>
+          <b>QAWCE</b> calculates an approximation RESULT to a CAUCHY PRINCIPAL VALUE ...
+        </li>
+        <li>
+          <b>QAWF</b> calculates an approximation RESULT to a given Fourier integral ...
+        </li>
+        <li>
+          <b>QAWFE</b> calculates an approximation result to a given Fourier integral ...
+        </li>
+        <li>
+          <b>QAWO</b> calculates an approximation to a given definite integral ...
+        </li>
+        <li>
+          <b>QAWOE</b> calculates an approximation to a given definite integral
+        </li>
+        <li>
+          <b>QAWS</b> calculates an approximation RESULT to a given integral ...
+        </li>
+        <li>
+          <b>QAWSE</b> calculates an approximation RESULT to a given integral ...
+        </li>
+        <li>
+          <b>QC25C</b> computes I = Integral of F*W over (A,B) with error estimate, ...
+        </li>
+        <li>
+          <b>QC25F</b> computes the integral I=Integral of F(X) over (A,B) ...
+        </li>
+        <li>
+          <b>QC25S</b> computes I = Integral of F*W over (BL,BR), with error estimate, ...
+        </li>
+        <li>
+          <b>QCHEB</b> computes the CHEBYSHEV series expansion of degrees 12 and 24 ...
+        </li>
+        <li>
+          <b>QELG</b> determines the limit of a given sequence of approximations, ...
+        </li>
+        <li>
+          <b>QFORM</b> is subsidiary to SNSQ and SNSQE.
+        </li>
+        <li>
+          <b>QK15</b> computes I = Integral of F over (A,B), with error estimate...
+        </li>
+        <li>
+          <b>QK15I</b> estimates an integral over an infinite or semi-infinite domain.
+        </li>
+        <li>
+          <b>QK15W</b> estimates an integral with a weight function W(X).
+        </li>
+        <li>
+          <b>QK21</b> estimates an integral with a 21 point Gauss Kronrod rule.
+        </li>
+        <li>
+          <b>QK31</b> estimates an integral with a 31 point Gauss-Kronrod rule.
+        </li>
+        <li>
+          <b>QK41</b> estimates an integral with a 41 point Gauss Kronrod rule.
+        </li>
+        <li>
+          <b>QK51</b> estimates an integral with a 51 point Gauss-Kronrod rule.
+        </li>
+        <li>
+          <b>QK61</b> estimates an integral with a 61 point Gauss-Kronrod rule.
+        </li>
+        <li>
+          <b>QMOMO</b> computes modified Chebyshev moments.  ...
+        </li>
+        <li>
+          <b>QNC79</b> integrates a function using 7-point adaptive Newton-Cotes quadrature.
+        </li>
+        <li>
+          <b>QNG</b> calculates an approximation RESULT to an integral
+        </li>
+        <li>
+          <b>QPDOC</b> contains documentation for QUADPACK, ...
+        </li>
+        <li>
+          <b>QPSRT</b> is subsidiary to QAGE, QAGIE, QAGPE, QAGSE, QAWCE, QAWOE and QAWSE.
+        </li>
+        <li>
+          <b>QRFAC</b> computes the QR factorization of an M by N matrix.
+        </li>
+        <li>
+          <b>QRSOLV</b> solves a linear system in the least squares sense.
+        </li>
+        <li>
+          <b>QS2I1D</b> sorts an integer array, and adjusts two companion arrays.
+        </li>
+        <li>
+          <b>QS2I1R</b> sorts an integer array, and adjusts two companion arrays.
+        </li>
+        <li>
+          <b>QWGTC</b> defines the WEIGHT function for QAWC.
+        </li>
+        <li>
+          <b>QWGTF</b> defines the weight function for QAWF.
+        </li>
+        <li>
+          <b>QWGTS</b> defines the weight function for QAWS.
+        </li>
+        <li>
+          <b>QZHES</b> is the first step of the QZ algorithm for generalized eigenproblems.
+        </li>
+        <li>
+          <b>QZIT</b> is the second step of the QZ algorithm for generalized eigenproblems.
+        </li>
+        <li>
+          <b>QZVAL</b> is the third step of the QZ algorithm for generalized eigenproblems.
+        </li>
+        <li>
+          <b>QZVEC</b> is the fourth step of the QZ algorithm for generalized eigenproblems.
+        </li>
+        <li>
+          <b>R1MACH</b> returns floating point machine dependent constants.
+        </li>
+        <li>
+          <b>R1MPYQ</b> is subsidiary to SNSQ and SNSQE.
+        </li>
+        <li>
+          <b>R1UPDT</b> is subsidiary to SNSQ and SNSQE.
+        </li>
+        <li>
+          <b>R9AIMP</b> evaluates the Airy modulus and phase.
+        </li>
+        <li>
+          <b>R9ATN1</b> evaluates ATAN(X) from first order relative accuracy so that ...
+        </li>
+        <li>
+          <b>R9CHU</b> evaluates for large Z  Z**A * U(A,B,Z) where U is the logarithmic ...
+        </li>
+        <li>
+          <b>R9GMIC</b> computes the complementary incomplete Gamma function for A ...
+        </li>
+        <li>
+          <b>R9GMIT</b> computes Tricomi's incomplete Gamma function for small arguments.
+        </li>
+        <li>
+          <b>R9KNUS:</b> Bessel functions EXP(X)*K-SUB-XNU(X) and EXP(X)*K-SUB-XNU+1(X) ...
+        </li>
+        <li>
+          <b>R9LGIC</b> computes the log complementary incomplete Gamma function ...
+        </li>
+        <li>
+          <b>R9LGIT</b> computes the logarithm of Tricomi's incomplete Gamma ...
+        </li>
+        <li>
+          <b>R9LGMC</b> computes the log Gamma correction factor so that ...
+        </li>
+        <li>
+          <b>R9LN2R</b> evaluates LOG(1+X) from second order relative accuracy so ...
+        </li>
+        <li>
+          <b>R9PAK</b> packs a base 2 exponent into a floating point number.
+        </li>
+        <li>
+          <b>R9UPAK</b> unpacks a floating point number X so that X = Y*2**N.
+        </li>
+        <li>
+          <b>RADB2</b> calculates the fast Fourier transform of subvectors of length two.
+        </li>
+        <li>
+          <b>RADB3</b> calculates the fast Fourier transform of subvectors of length three.
+        </li>
+        <li>
+          <b>RADB4</b> calculates the fast Fourier transform of subvectors of length four.
+        </li>
+        <li>
+          <b>RADB5</b> calculates the fast Fourier transform of subvectors of length five.
+        </li>
+        <li>
+          <b>RADBG</b> calculates fast Fourier transforms of subvectors of arbitrary length.
+        </li>
+        <li>
+          <b>RADF2</b> calculates the fast Fourier transform of subvectors of length two.
+        </li>
+        <li>
+          <b>RADF3</b> calculates the fast Fourier transform of subvectors of length three.
+        </li>
+        <li>
+          <b>RADF4</b> calculates the fast Fourier transform of subvectors of length four.
+        </li>
+        <li>
+          <b>RADF5</b> calculates the fast Fourier transform of subvectors of length five.
+        </li>
+        <li>
+          <b>RADFG</b> calculates fast Fourier transform of subvectors of arbitrary length.
+        </li>
+        <li>
+          <b>RAND</b> generates a uniformly distributed random number.
+        </li>
+        <li>
+          <b>RATQR</b> computes the largest or smallest eigenvalues of a symmetric...
+        </li>
+        <li>
+          <b>RC</b> approximates the elliptic integral RC(X,Y).
+        </li>
+        <li>
+          <b>RC3JJ</b> evaluates the 3j symbol f(L1) = (  L1   L2 L3) ...
+        </li>
+        <li>
+          <b>RC3JM</b> evaluates the 3j symbol g(M2) = (L1 L2   L3  ) ...
+        </li>
+        <li>
+          <b>RC6J</b> evaluates the 6j symbol h(L1) = {L1 L2 L3} ...
+        </li>
+        <li>
+          <b>RD</b> computes the incomplete or complete elliptic integral of the 2nd kind.
+        </li>
+        <li>
+          <b>REBAK</b> forms the eigenvectors of a generalized symmetric ...
+        </li>
+        <li>
+          <b>REBAKB</b> forms the eigenvectors of a generalized symmetric ...
+        </li>
+        <li>
+          <b>REDUC</b> reduces a generalized symmetric eigenproblem to a standard ...
+        </li>
+        <li>
+          <b>REDUC2</b> reduces a certain generalized symmetric eigenproblem to a ...
+        </li>
+        <li>
+          <b>REORT</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>RF</b> computes the incomplete or complete elliptic integral of the 1st kind.
+        </li>
+        <li>
+          <b>RFFTB</b> computes the backward fast Fourier transform of a real array.
+        </li>
+        <li>
+          <b>RFFTB1</b> computes the backward fast Fourier transform of a real array.
+        </li>
+        <li>
+          <b>RFFTF</b> computes the forward transform of a real, periodic sequence.
+        </li>
+        <li>
+          <b>RFFTF1</b> computes the forward transform of a real, periodic sequence.
+        </li>
+        <li>
+          <b>RFFTI</b> initializes a work array for RFFTF and RFFTB.
+        </li>
+        <li>
+          <b>RFFTI1</b> initializes a real and an integer work array for RFFTF1 and RFFTB1.
+        </li>
+        <li>
+          <b>RG</b> computes the eigenvalues and eigenvectors of a real general matrix.
+        </li>
+        <li>
+          <b>RG</b> computes the eigenvalues and eigenvectors of a real general matrix.
+        </li>
+        <li>
+          <b>RGAUSS</b> generate a normally distributed (Gaussian) random number.
+        </li>
+        <li>
+          <b>RGG</b> computes eigenvalues and eigenvectors for real generalized eigenproblem.
+        </li>
+        <li>
+          <b>RJ:</b> incomplete or complete (X, Y, or Z = 0) elliptic integral of 3rd kind.
+        </li>
+        <li>
+          <b>RKFAB</b> integrates an initial value problem for BVSUP.
+        </li>
+        <li>
+          <b>RPQR79</b> finds the zeros of a polynomial with real coefficients.
+        </li>
+        <li>
+          <b>RPZERO</b> finds the zeros of a polynomial with real coefficients.
+        </li>
+        <li>
+          <b>RS</b> computes the eigenvalues and the eigenvectors of a real symmetric matrix.
+        </li>
+        <li>
+          <b>RSB</b> computes eigenvalues and eigenvectors of a symmetric band matrix.
+        </li>
+        <li>
+          <b>RSCO</b> is subsidiary to DEBDF.
+        </li>
+        <li>
+          <b>RSG</b> computes eigenvalues, eigenvectors of symmetric generalized eigenproblem.
+        </li>
+        <li>
+          <b>RSGAB:</b> eigenvalues and eigenvectors of a symmetric generalized eigenproblem.
+        </li>
+        <li>
+          <b>RSGBA:</b> eigenvalues and eigenvectors of a symmetric generalized eigenproblem.
+        </li>
+        <li>
+          <b>RSP</b> eigenvalues and eigenvectors of real symmetric packed matrix.
+        </li>
+        <li>
+          <b>RST</b> eigenvalues and eigenvectors of a real symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>RT</b> computes eigenvalues/vectors of a special real tridiagonal matrix.
+        </li>
+        <li>
+          <b>RUNIF</b> generates a uniformly distributed random number.
+        </li>
+        <li>
+          <b>RWUPDT</b> is subsidiary to SNLS1 and SNLS1E.
+        </li>
+        <li>
+          <b>S1MERG</b> merges two strings of ascending real numbers.
+        </li>
+        <li>
+          <b>SASUM</b> compute the sum of the magnitudes of the elements of a vector.
+        </li>
+        <li>
+          <b>SAXPY</b> computes a constant times a vector plus a vector.
+        </li>
+        <li>
+          <b>SBCG</b> is the Preconditioned BiConjugate Gradient Sparse Ax = b Solver.
+        </li>
+        <li>
+          <b>SBHIN</b> reads a Sparse Linear System in the Boeing/Harwell Format.
+        </li>
+        <li>
+          <b>SBOCLS</b> solves the bounded and constrained least squares problem ...
+        </li>
+        <li>
+          <b>SBOLS</b> solves the problem E*X = F (in the least squares sense) ...
+        </li>
+        <li>
+          <b>SBOLSM</b> is subsidiary to SBOCLS and SBOLS.
+        </li>
+        <li>
+          <b>SCASUM</b> computes the sum of the magnitudes of the real and ...
+        </li>
+        <li>
+          <b>SCG</b> is the Preconditioned Conjugate Gradient Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>SCGN</b> is the Preconditioned CG Sparse Ax=b Solver for Normal Equations.
+        </li>
+        <li>
+          <b>SCGS</b> is the Preconditioned BiConjugate Gradient Squared Ax=b Solver.
+        </li>
+        <li>
+          <b>SCHDC</b> computes the Cholesky decomposition of a positive definite matrix.
+        </li>
+        <li>
+          <b>SCHDD</b> downdates an augmented Cholesky decomposition or the ...
+        </li>
+        <li>
+          <b>SCHEX</b> updates the Cholesky factorization  A=TRANS(R)*R  of a positive ...
+        </li>
+        <li>
+          <b>SCHKW</b> is the SLAP WORK/IWORK Array Bounds Checker.
+        </li>
+        <li>
+          <b>SCHUD</b> updates an augmented Cholesky decomposition of the triangular part ...
+        </li>
+        <li>
+          <b>SCLOSM</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SCNRM2</b> computes the unitary norm of a complex vector.
+        </li>
+        <li>
+          <b>SCOEF</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>SCOPY</b> copies a vector.
+        </li>
+        <li>
+          <b>SCOPYM</b> copies the negative of a vector to a vector.
+        </li>
+        <li>
+          <b>SCOV</b> calculates the covariance matrix for a nonlinear data fitting problem.
+        </li>
+        <li>
+          <b>SCPPLT</b> does a Printer Plot of SLAP Column Format Matrix.
+        </li>
+        <li>
+          <b>SDAINI</b> is the initialization routine for SDASSL.
+        </li>
+        <li>
+          <b>SDAJAC</b> computes and LU factors the iteration matrix for SDASSL.
+        </li>
+        <li>
+          <b>SDANRM</b> computes vector norms for SDASSL.
+        </li>
+        <li>
+          <b>SDASLV</b> is the linear system solver for SDASSL.
+        </li>
+        <li>
+          <b>SDASSL</b> solves a system of differential/algebraic equations ...
+        </li>
+        <li>
+          <b>SDASTP</b> performs one step of the SDASSL integration.
+        </li>
+        <li>
+          <b>SDATRP</b> is the interpolation routine for SDASSL.
+        </li>
+        <li>
+          <b>SDAWTS</b> sets the Gerror weight vector for SDASSL.
+        </li>
+        <li>
+          <b>SDCOR</b> computes corrections to the Y array for SDRIVE.
+        </li>
+        <li>
+          <b>SDCST</b> sets coefficients used by the core integrator SDSTP.
+        </li>
+        <li>
+          <b>SDNTL</b> sets parameters on the first call to SDSTP, on an internal restart, ...
+        </li>
+        <li>
+          <b>SDNTP</b> interpolates the K-th derivative of Y at TOUT, using the data ...
+        </li>
+        <li>
+          <b>SDOT</b> computes the inner product of two vectors.
+        </li>
+        <li>
+          <b>SDPSC</b> computes the predicted YH values by effectively multiplying ...
+        </li>
+        <li>
+          <b>SDPST</b> evaluates the Jacobian matrix of the right hand side of the ...
+        </li>
+        <li>
+          <b>SDRIV1</b> solves N ordinary differential equations of the form ...
+        </li>
+        <li>
+          <b>SDRIV2</b> solves N ordinary differential equations of the form ...
+        </li>
+        <li>
+          <b>SDRIV3</b> solves N ordinary differential equations of the form ...
+        </li>
+        <li>
+          <b>SDSCL</b> rescales the YH array whenever the step size is changed.
+        </li>
+        <li>
+          <b>SDSCL</b> rescales the YH array whenever the step size is changed.
+        </li>
+        <li>
+          <b>SDSDOT</b> computes the inner product of two vectors with extended precision.
+        </li>
+        <li>
+          <b>SDSTP</b> performs one step of the integration of an initial value problem ...
+        </li>
+        <li>
+          <b>SDZRO</b> searches for a zero of a function F(N, T, Y, IROOT) ...
+        </li>
+        <li>
+          <b>SEPELI</b> discretizes and solves a second and, optionally, a fourth order ...
+        </li>
+        <li>
+          <b>SEPX4</b> solves for either the second or fourth order finite difference ...
+        </li>
+        <li>
+          <b>SGBCO</b> factors a band matrix by Gaussian elimination and estimates ...
+        </li>
+        <li>
+          <b>SGBDI</b> computes the determinant of a band matrix using the factors ...
+        </li>
+        <li>
+          <b>SGBFA</b> factors a band matrix using Gaussian elimination.
+        </li>
+        <li>
+          <b>SGBMV</b> multiplies a real vector by a real general band matrix.
+        </li>
+        <li>
+          <b>SGBSL</b> solves the real band system A*X=B or TRANS(A)*X=B using ...
+        </li>
+        <li>
+          <b>SGECO</b> factors a matrix using Gaussian elimination and estimates ...
+        </li>
+        <li>
+          <b>SGEDI</b> computes the determinant and inverse of a matrix using the ...
+        </li>
+        <li>
+          <b>SGEEV</b> computes the eigenvalues and, optionally, the eigenvectors ...
+        </li>
+        <li>
+          <b>SGEFA</b> factors a matrix using Gaussian elimination.
+        </li>
+        <li>
+          <b>SGEFS</b> solves a general system of linear equations.
+        </li>
+        <li>
+          <b>SGEIR</b> solves a general system of linear equations.  Iterative refinement ...
+        </li>
+        <li>
+          <b>SGEMM</b> multiplies a real general matrix by a real general matrix.
+        </li>
+        <li>
+          <b>SGEMV</b> multiplies a real vector by a real general matrix.
+        </li>
+        <li>
+          <b>SGER</b> performs a rank 1 update of a real general matrix.
+        </li>
+        <li>
+          <b>SGESL</b> solves the real system A*X=B or TRANS(A)*X=B using the ...
+        </li>
+        <li>
+          <b>SGLSS</b> solves a linear least squares problems by performing a QR ...
+        </li>
+        <li>
+          <b>SGMRES</b> is a Preconditioned GMRES Iterative Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>SGTSL</b> solves a tridiagonal linear system.
+        </li>
+        <li>
+          <b>SHELS</b> is an internal routine for SGMRES.
+        </li>
+        <li>
+          <b>SHEQR</b> is an internal routine for SGMRES.
+        </li>
+        <li>
+          <b>SINDG</b> computes the sine of an argument in degrees.
+        </li>
+        <li>
+          <b>SINIT</b> initializes a real vector to a constant.
+        </li>
+        <li>
+          <b>SINQB</b> computes the unnormalized inverse of SINQF.
+        </li>
+        <li>
+          <b>SINQF</b> computes the forward sine transform with odd wave numbers.
+        </li>
+        <li>
+          <b>SINQI</b> initializes a work array for SINQF and SINQB.
+        </li>
+        <li>
+          <b>SINT</b> computes the sine transform of a real, odd sequence.
+        </li>
+        <li>
+          <b>SINTI</b> initializes a work array for SINT.
+        </li>
+        <li>
+          <b>SINTRP</b> approximates the solution at XOUT by evaluating the polynomial ...
+        </li>
+        <li>
+          <b>SIR</b> is the Preconditioned Iterative Refinement Sparse Ax = b Solver.
+        </li>
+        <li>
+          <b>SLLTI2</b> is the SLAP Backsolve routine for LDL' Factorization.
+        </li>
+        <li>
+          <b>SLPDOC</b> is the Sparse Linear Algebra Package Version 2.0.2 Documentation.
+        </li>
+        <li>
+          <b>SLVS</b> solves the linear system for the integrator package DEBDF.
+        </li>
+        <li>
+          <b>SMOUT</b> prints a single precision matrix.
+        </li>
+        <li>
+          <b>SNBCO</b> factors a band matrix using Gaussian elimination and estimates ...
+        </li>
+        <li>
+          <b>SNBDI</b> computes the determinant of a band matrix using the factors ...
+        </li>
+        <li>
+          <b>SNBFA</b> factors a real band matrix by elimination.
+        </li>
+        <li>
+          <b>SNBFS</b> solves a general nonsymmetric banded system of linear equations.
+        </li>
+        <li>
+          <b>SNBIR</b> solves a general nonsymmetric banded system of linear equations.
+        </li>
+        <li>
+          <b>SNBSL</b> solves a real band system using the factors computed by SNBCO or SNBFA.
+        </li>
+        <li>
+          <b>SNLS1</b> minimizes the sum of the squares of M nonlinear functions ...
+        </li>
+        <li>
+          <b>SNLS1E</b> is the easy-to-use version of SNLS1.
+        </li>
+        <li>
+          <b>SNRM2</b> computes the Euclidean length (L2 norm) of a vector.
+        </li>
+        <li>
+          <b>SNSQ</b> finds a zero of a system of a N nonlinear functions in N variables ...
+        </li>
+        <li>
+          <b>SNSQE</b> is an easy-to-use version of SNSQ.
+        </li>
+        <li>
+          <b>SODS</b> solves an overdetermined linear system for BVSUP.
+        </li>
+        <li>
+          <b>SOMN</b> is the Preconditioned Orthomin Sparse Iterative Ax=b Solver.
+        </li>
+        <li>
+          <b>SOPENM</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SORTH</b> is an internal routine for SGMRES.
+        </li>
+        <li>
+          <b>SOS</b> solves a square system of nonlinear equations.
+        </li>
+        <li>
+          <b>SOSEQS</b> is subsidiary to SOS.
+        </li>
+        <li>
+          <b>SOSSOL</b> is subsidiary to SOS.
+        </li>
+        <li>
+          <b>SPBCO</b> factors a real symmetric positive definite matrix stored in ...
+        </li>
+        <li>
+          <b>SPBDI</b> computes the determinant of a symmetric positive definite ...
+        </li>
+        <li>
+          <b>SPBFA</b> factors a real symmetric positive definite matrix stored in band form.
+        </li>
+        <li>
+          <b>SPBSL</b> solves a real symmetric positive definite band system using the ...
+        </li>
+        <li>
+          <b>SPELI4</b> is subsidiary to SEPX4.
+        </li>
+        <li>
+          <b>SPELIP</b> is subsidiary to SEPELI.
+        </li>
+        <li>
+          <b>SPENC</b> computes a form of Spence's integral due to K. Mitchell.
+        </li>
+        <li>
+          <b>SPIGMR</b> is an internal routine for SGMRES.
+        </li>
+        <li>
+          <b>SPINCW</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SPINIT</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SPLP</b> solves linear programming problems involving at most a few thousand ...
+        </li>
+        <li>
+          <b>SPLPCE</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SPLPDM</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SPLPFE</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SPLPFL</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SPLPMN</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SPLPMU</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SPLPUP</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SPOCO</b> factors a real symmetric positive definite matrix ...
+        </li>
+        <li>
+          <b>SPODI</b> computes the determinant and inverse of a certain real symmetric ...
+        </li>
+        <li>
+          <b>SPOFA</b> factors a real symmetric positive definite matrix.
+        </li>
+        <li>
+          <b>SPOFS</b> solves a positive definite symmetric system of linear equations.
+        </li>
+        <li>
+          <b>SPOIR</b> solves a positive definite symmetric system of linear equations.
+        </li>
+        <li>
+          <b>SPOPT</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>SPOSL</b> solves the real symmetric positive definite linear system ...
+        </li>
+        <li>
+          <b>SPPCO</b> factors a symmetric positive definite matrix stored in packed form ...
+        </li>
+        <li>
+          <b>SPPDI</b> computes the determinant and inverse of a real symmetric ...
+        </li>
+        <li>
+          <b>SPPERM</b> rearranges a given array according to a prescribed permutation vector.
+        </li>
+        <li>
+          <b>SPPFA</b> factors a real symmetric positive definite matrix in packed form.
+        </li>
+        <li>
+          <b>SPPSL</b> solves the real symmetric positive definite system using factors ...
+        </li>
+        <li>
+          <b>SPSORT</b> returns the permutation vector generated by sorting a given array ...
+        </li>
+        <li>
+          <b>SPTSL</b> solves a positive definite tridiagonal linear system.
+        </li>
+        <li>
+          <b>SQRDC</b> computes the QR factorization of an N by P matrix.
+        </li>
+        <li>
+          <b>SQRSL</b> applies the output of SQRDC to compute coordinate transformations, ...
+        </li>
+        <li>
+          <b>SREADP</b> reads a record for a file for SPLP.
+        </li>
+        <li>
+          <b>SRLCAL</b> is an internal routine for SGMRES.
+        </li>
+        <li>
+          <b>SROT</b> applies a plane Givens rotation.
+        </li>
+        <li>
+          <b>SROTG</b> constructs a plane Givens rotation.
+        </li>
+        <li>
+          <b>SROTM</b> applies a modified Givens transformation.
+        </li>
+        <li>
+          <b>SROTMG</b> constructs a modified Givens transformation.
+        </li>
+        <li>
+          <b>SS2LT</b> is the Lower Triangle Preconditioner SLAP Set Up.
+        </li>
+        <li>
+          <b>SS2Y</b> is the SLAP Triad to SLAP Column Format Converter.
+        </li>
+        <li>
+          <b>SSBMV</b> multiplies a real vector by a real symmetric band matrix.
+        </li>
+        <li>
+          <b>SSCAL</b> multiplies a vector by a constant.
+        </li>
+        <li>
+          <b>SSD2S</b> is the Diagonal Scaling Preconditioner SLAP Normal Eqns Set Up.
+        </li>
+        <li>
+          <b>SSDBCG</b> is the Diagonally Scaled BiConjugate Gradient Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>SSDCG</b> is the Diagonally Scaled Conjugate Gradient Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>SSDCGN</b> is the Diagonally Scaled CG Sparse Ax=b Solver for Normal Eqn's.
+        </li>
+        <li>
+          <b>SSDCGS</b> is the Diagonally Scaled CGS Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>SSDGMR</b> is the Diagonally Scaled GMRES Iterative Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>SSDI</b> is the Diagonal Matrix Vector Multiply.
+        </li>
+        <li>
+          <b>SSDOMN</b> is the Diagonally Scaled Orthomin Sparse Iterative Ax=b Solver.
+        </li>
+        <li>
+          <b>SSDS</b> is the Diagonal Scaling Preconditioner SLAP Set Up.
+        </li>
+        <li>
+          <b>SSDSCL</b> is the Diagonal Scaling of system Ax = b.
+        </li>
+        <li>
+          <b>SSGS</b> is the Gauss-Seidel Method Iterative Sparse Ax = b Solver.
+        </li>
+        <li>
+          <b>SSICCG</b> is the Incomplete Cholesky Conjugate Gradient Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>SSICO</b> factors a symmetric matrix by elimination with symmetric pivoting ...
+        </li>
+        <li>
+          <b>SSICS</b> is the Incomplete Cholesky Decomposition Preconditioner SLAP Set Up.
+        </li>
+        <li>
+          <b>SSIDI</b> computes the determinant, inertia and inverse of a real symmetric ...
+        </li>
+        <li>
+          <b>SSIEV</b> computes the eigenvalues and eigenvectors of a real symmetric matrix.
+        </li>
+        <li>
+          <b>SSIFA</b> factors a real symmetric matrix by elimination with symmetric pivoting.
+        </li>
+        <li>
+          <b>SSILUR</b> is the Incomplete LU Iterative Refinement Sparse Ax = b Solver.
+        </li>
+        <li>
+          <b>SSILUS</b> is the Incomplete LU Decomposition Preconditioner SLAP Set Up.
+        </li>
+        <li>
+          <b>SSISL</b> solves a real symmetric system using the factors obtained from SSIFA.
+        </li>
+        <li>
+          <b>SSJAC</b> is a Jacobi's Method Iterative Sparse Ax = b Solver.
+        </li>
+        <li>
+          <b>SSLI</b> is the SLAP MSOLVE for Lower Triangle Matrix.
+        </li>
+        <li>
+          <b>SSLI2</b> is the SLAP Lower Triangle Matrix Backsolve.
+        </li>
+        <li>
+          <b>SSLLTI</b> is the SLAP MSOLVE for LDL' (IC) Factorization.
+        </li>
+        <li>
+          <b>SSLUBC</b> is the Incomplete LU BiConjugate Gradient Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>SSLUCN</b> is the Incomplete LU CG Sparse Ax=b Solver for Normal Equations.
+        </li>
+        <li>
+          <b>SSLUCS</b> is the Incomplete LU BiConjugate Gradient Squared Ax=b Solver.
+        </li>
+        <li>
+          <b>SSLUGM</b> is the Incomplete LU GMRES Iterative Sparse Ax=b Solver.
+        </li>
+        <li>
+          <b>SSLUI</b> is the SLAP MSOLVE for LDU Factorization.
+        </li>
+        <li>
+          <b>SSLUI2</b> is the SLAP Backsolve for LDU Factorization.
+        </li>
+        <li>
+          <b>SSLUI4</b> is the SLAP Backsolve for LDU Factorization.
+        </li>
+        <li>
+          <b>SSLUOM</b> is the Incomplete LU Orthomin Sparse Iterative Ax=b Solver.
+        </li>
+        <li>
+          <b>SSLUTI</b> is the SLAP MTSOLV for LDU Factorization.
+        </li>
+        <li>
+          <b>SSMMI2</b> is the SLAP Backsolve for LDU Factorization of Normal Equations.
+        </li>
+        <li>
+          <b>SSMMTI</b> is the SLAP MSOLVE for LDU Factorization of Normal Equations.
+        </li>
+        <li>
+          <b>SSMTV</b> is the SLAP Column Format Sparse Matrix Transpose Vector Product.
+        </li>
+        <li>
+          <b>SSMV</b> is the SLAP Column Format Sparse Matrix Vector Product.
+        </li>
+        <li>
+          <b>SSORT</b> sorts an array and optionally make the same interchanges in ...
+        </li>
+        <li>
+          <b>SSPCO</b> factors a real symmetric matrix stored in packed form ...
+        </li>
+        <li>
+          <b>SSPDI</b> computes the determinant, inertia, inverse of a real symmetric ...
+        </li>
+        <li>
+          <b>SSPEV</b> computes eigenvalues and eigenvectors of a real symmetric matrix ...
+        </li>
+        <li>
+          <b>SSPFA</b> factors a real symmetric matrix stored in packed form by ...
+        </li>
+        <li>
+          <b>SSPMV</b> performs the matrix-vector operation y = alpha*A*x + beta*y.
+        </li>
+        <li>
+          <b>SSPR</b> performs the symmetric rank 1 operation A = A + alpha*x*x'.
+        </li>
+        <li>
+          <b>SSPR2</b> performs the symmetric rank 2 operation A = A + alpha*(x*y'+y*x')
+        </li>
+        <li>
+          <b>SSPSL</b> solves a real symmetric system using the factors obtained from SSPFA.
+        </li>
+        <li>
+          <b>SSVDC</b> performs the singular value decomposition of a rectangular matrix.
+        </li>
+        <li>
+          <b>SSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>SSYMM</b> multiplies a real general matrix by a real symmetric matrix.
+        </li>
+        <li>
+          <b>SSYMV</b> multiplies a real vector by a real symmetric matrix.
+        </li>
+        <li>
+          <b>SSYR</b> performs symmetric rank 1 update of a real symmetric matrix.
+        </li>
+        <li>
+          <b>SSYR2</b> performs symmetric rank 2 update of a real symmetric matrix.
+        </li>
+        <li>
+          <b>SSYR2K</b> performs symmetric rank 2k update of a real symmetric matrix
+        </li>
+        <li>
+          <b>SSYRK</b> performs symmetric rank k update of a real symmetric matrix.
+        </li>
+        <li>
+          <b>STBMV</b> multiplies a real vector by a real triangular band matrix.
+        </li>
+        <li>
+          <b>STBSV</b> solves a real triangular banded system of linear equations.
+        </li>
+        <li>
+          <b>STEPS</b> integrates a system of ordinary differential equations one step.
+        </li>
+        <li>
+          <b>STIN</b> reads in SLAP Triad Format Linear System.
+        </li>
+        <li>
+          <b>STOD</b> integrates a system of first order ODE's over one step for DEBDF.
+        </li>
+        <li>
+          <b>STOR1</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>STOUT</b> writes out SLAP Triad Format Linear System.
+        </li>
+        <li>
+          <b>STPMV</b> performs x = A*x or x = A'*x for triangular A.
+        </li>
+        <li>
+          <b>STPSV</b> solves a triangular system of linear equations.
+        </li>
+        <li>
+          <b>STRCO</b> estimates the condition number of a triangular matrix.
+        </li>
+        <li>
+          <b>STRDI</b> computes the determinant and inverse of a triangular matrix.
+        </li>
+        <li>
+          <b>STRMM</b> multiplies a real general matrix by a real triangular matrix.
+        </li>
+        <li>
+          <b>STRMV</b> multiplies a real vector by a real triangular matrix.
+        </li>
+        <li>
+          <b>STRSL</b> solves a triangular system of linear equations.]
+        </li>
+        <li>
+          <b>STRSM</b> solves a triangular system of linear equations with multiple RHS.
+        </li>
+        <li>
+          <b>STRSV</b> solves a real triangular system of linear equations.
+        </li>
+        <li>
+          <b>STWAY</b> stores or recalls integration data for a restart of BVSUP.
+        </li>
+        <li>
+          <b>SUDS</b> solves an undetermined linear system for BVSUP.
+        </li>
+        <li>
+          <b>SVCO</b> transfers data from a common block to arrays for DEBDF.
+        </li>
+        <li>
+          <b>SVD</b> performs the singular value decomposition of a rectangular matrix.
+        </li>
+        <li>
+          <b>SVECS</b> is subsidiary to BVSUP.
+        </li>
+        <li>
+          <b>SVOUT</b> prints out a single precision array.
+        </li>
+        <li>
+          <b>SWRITP</b> writes a record out to a file for SPLP.
+        </li>
+        <li>
+          <b>SXLCAL</b> is an internal routine for SGMRES.
+        </li>
+        <li>
+          <b>TEVLC</b> finds eigenvalues of a symmetric tridiagonal matrix by rational QL.
+        </li>
+        <li>
+          <b>TEVLS</b> finds eigenvalues of a symmetric tridiagonal matrix by rational QL.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TINVIT</b> computes eigenvectors of symmetric tridiagonal matrix ...
+        </li>
+        <li>
+          <b>TQL1</b> computes eigenvalues of symmetric tridiagonal matrix by the QL method.
+        </li>
+        <li>
+          <b>TQL2</b> computes eigenvalues and eigenvectors of symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>TQLRAT</b> computes the eigenvalues of symmetric tridiagonal matrix ...
+        </li>
+        <li>
+          <b>TRBAK1</b> forms the eigenvectors of real symmetric matrix ...
+        </li>
+        <li>
+          <b>TRBAK3</b> forms the eigenvectors of a real symmetric matrix from the ...
+        </li>
+        <li>
+          <b>TRED1</b> reduces a real symmetric matrix to symmetric tridiagonal ...
+        </li>
+        <li>
+          <b>TRED2</b> reduces a real symmetric matrix to a symmetric tridiagonal ...
+        </li>
+        <li>
+          <b>TRED3</b> reduces a real symmetric matrix stored in packed form to
+        </li>
+        <li>
+          <b>TRI3</b> solves three tridiagonal systems for GENBUN.
+        </li>
+        <li>
+          <b>TRIDIB</b> computes the eigenvalues of a symmetric tridiagonal matrix ...
+        </li>
+        <li>
+          <b>TRIDQ</b> is subsidiary to POIS3D.
+        </li>
+        <li>
+          <b>TRIS4</b> is subsidiary to SEPX4.
+        </li>
+        <li>
+          <b>TRISP</b> is subsidiary to SEPELI.
+        </li>
+        <li>
+          <b>TRIX</b> is subsidiary to GENBUN.
+        </li>
+        <li>
+          <b>TSTURM</b> finds those eigenvalues of a symmetric tridiagonal matrix ...
+        </li>
+        <li>
+          <b>U11LS</b> is subsidiary to LLSIA.
+        </li>
+        <li>
+          <b>U11US</b> is subsidiary to ULSIA.
+        </li>
+        <li>
+          <b>U12LS</b> is subsidiary to LLSIA.
+        </li>
+        <li>
+          <b>U12US</b> is subsidiary to ULSIA.
+        </li>
+        <li>
+          <b>ULSIA</b> solves an underdetermined linear system of equations ...
+        </li>
+        <li>
+          <b>USRMAT</b> is subsidiary to SPLP.
+        </li>
+        <li>
+          <b>VNWRMS</b> is subsidiary to DEBDF.
+        </li>
+        <li>
+          <b>WNLIT</b> is subsidiary to WNNLS.
+        </li>
+        <li>
+          <b>WNLSM</b> is subsidiary to WNNLS
+        </li>
+        <li>
+          <b>WNLT1</b> is subsidiary to WNLIT.
+        </li>
+        <li>
+          <b>WNLT2</b> is subsidiary to WNLIT.
+        </li>
+        <li>
+          <b>WNLT3</b> is subsidiary to WNLIT.
+        </li>
+        <li>
+          <b>WNNLS</b> solves a linearly constrained least squares problem with ...
+        </li>
+        <li>
+          <b>XADD</b> provides single-precision floating-point arithmetic ...
+        </li>
+        <li>
+          <b>XADJ</b> transforms X*RADIX**IX so RADIX**(-L) <= ABS(X) < RADIX(L).
+        </li>
+        <li>
+          <b>XC210</b> determines J and Z so that RADIX**K = Z * 10**J.
+        </li>
+        <li>
+          <b>XCON</b> converts (X,IX) = X * RADIX**IX to decimal form.
+        </li>
+        <li>
+          <b>XERBLA</b> is the error handler for the Level 2 and Level 3 BLAS Routines.
+        </li>
+        <li>
+          <b>XERCLR</b> resets the XERROR current error number to zero.
+        </li>
+        <li>
+          <b>XERCNT</b> allows user control over handling of XERROR errors.
+        </li>
+        <li>
+          <b>XERDMP</b> prints the XERROR error tables and then clears them.
+        </li>
+        <li>
+          <b>XERHLT</b> aborts program execution after printing XERROR error message.
+        </li>
+        <li>
+          <b>XERMAX</b> sets maximum number of times any XERROR message is to be printed.
+        </li>
+        <li>
+          <b>XERMSG</b> processes XERROR messages.
+        </li>
+        <li>
+          <b>XERPRN</b> prints XERROR error messages processed by XERMSG.
+        </li>
+        <li>
+          <b>XERSVE</b> records that an XERROR error has occurred.
+        </li>
+        <li>
+          <b>XGETF</b> returns the current value of the XERROR error control flag.
+        </li>
+        <li>
+          <b>XGETUA</b> returns unit numbers to which XERROR messages are sent.
+        </li>
+        <li>
+          <b>XGETUN</b> returns the (first) output file to which XERROR messages are sent.
+        </li>
+        <li>
+          <b>XLEGF</b> computes normalized Legendre polynomials and associated ...
+        </li>
+        <li>
+          <b>XNRMP</b> computes normalized Legendre polynomials.
+        </li>
+        <li>
+          <b>XPMU</b> computes the values of Legendre functions for XLEGF.
+        </li>
+        <li>
+          <b>XPMUP</b> computes the values of Legendre functions for XLEGF.
+        </li>
+        <li>
+          <b>XPNRM</b> computes the values of Legendre functions for XLEGF.
+        </li>
+        <li>
+          <b>XPQNU</b> computes the values of Legendre functions for XLEGF.
+        </li>
+        <li>
+          <b>XPSI</b> computes values of the Psi function for XLEGF.
+        </li>
+        <li>
+          <b>XQMU</b> computes the values of Legendre functions for XLEGF.
+        </li>
+        <li>
+          <b>XQNU</b> computes the values of Legendre functions for XLEGF.
+        </li>
+        <li>
+          <b>XRED</b> transforms X*RADIX**IX so that IX = 0.
+        </li>
+        <li>
+          <b>XSET</b> sets up extended exponent range arithmetic.
+        </li>
+        <li>
+          <b>XSETF</b> sets the XERROR control flag.
+        </li>
+        <li>
+          <b>XSETUA</b> sets logical unit numbers to which error messages are to be sent.
+        </li>
+        <li>
+          <b>XSETUN</b> sets output file to which XERROR messages are to be sent.
+        </li>
+        <li>
+          <b>YAIRY</b> is subsidiary to BESJ and BESY
+        </li>
+        <li>
+          <b>ZABS</b> is subsidiary to ZBESH, ZBESI, ZBESJ, ZBESK, ZBESY, ZAIRY and ZBIRY.
+        </li>
+        <li>
+          <b>ZACAI</b> is subsidiary to ZAIRY
+        </li>
+        <li>
+          <b>ZACON</b> is subsidiary to ZBESH and ZBESK
+        </li>
+        <li>
+          <b>ZAIRY</b> computes the Airy function Ai(z) or its derivative dAi/dz ...
+        </li>
+        <li>
+          <b>ZASYI</b> is subsidiary to ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZBESH</b> computes a sequence of the Hankel functions H(m,a,z) ...
+        </li>
+        <li>
+          <b>ZBESI</b> computes a sequence of the Bessel functions I(a,z) for ...
+        </li>
+        <li>
+          <b>ZBESJ</b> computes a sequence of the Bessel functions J(a,z) for ...
+        </li>
+        <li>
+          <b>ZBESK</b> computes a sequence of the Bessel functions K(a,z) for ...
+        </li>
+        <li>
+          <b>ZBESY</b> computes a sequence of the Bessel functions Y(a,z) for ...
+        </li>
+        <li>
+          <b>ZBINU</b> is subsidiary to ZAIRY, ZBESH, ZBESI, ZBESJ, ZBESK and ZBIRY.
+        </li>
+        <li>
+          <b>ZBIRY</b> computes the Airy function Bi(z) or its derivative dBi/dz ...
+        </li>
+        <li>
+          <b>ZBKNU</b> is subsidiary to ZAIRY, ZBESH, ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZBUNI</b> is subsidiary to ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZBUNK</b> is subsidiary to ZBESH and ZBESK.
+        </li>
+        <li>
+          <b>ZDIV</b> is subsidiary to ZBESH, ZBESI, ZBESJ, ZBESK, ZBESY, ZAIRY and ZBIRY.
+        </li>
+        <li>
+          <b>ZEXP</b> is subsidiary to ZBESH, ZBESI, ZBESJ, ZBESK, ZBESY, ZAIRY and ZBIRY.
+        </li>
+        <li>
+          <b>ZKSCL</b> is subsidiary to ZBESK.
+        </li>
+        <li>
+          <b>ZLOG</b> is subsidiary to ZBESH, ZBESI, ZBESJ, ZBESK, ZBESY, ZAIRY and ZBIRY.
+        </li>
+        <li>
+          <b>ZMLRI</b> is subsidiary to ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZMLT</b> is subsidiary to ZBESH, ZBESI, ZBESJ, ZBESK, ZBESY, ZAIRY and ZBIRY.
+        </li>
+        <li>
+          <b>ZRATI</b> is subsidiary to ZBESH, ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZS1S2</b> is subsidiary to ZAIRY and ZBESK.
+        </li>
+        <li>
+          <b>ZSERI</b> is subsidiary to ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZSHCH</b> is subsidiary to ZBESH and ZBESK.
+        </li>
+        <li>
+          <b>ZSQRT</b> is subsidiary to ZBESH, ZBESI, ZBESJ, ZBESK, ZBESY, ZAIRY and ZBIRY.
+        </li>
+        <li>
+          <b>ZUCHK</b> is subsidiary to SERI, ZUOIK, ZUNK1, ZUNK2, ZUNI1, ZUNI2 and ZKSCL.
+        </li>
+        <li>
+          <b>ZUNHJ</b> is subsidiary to ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZUNI1</b> is subsidiary to ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZUNI2</b> is subsidiary to ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZUNIK</b> is subsidiary to ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZUNK1</b> is subsidiary to ZBESK.
+        </li>
+        <li>
+          <b>ZUNK2</b> is subsidiary to ZBESK.
+        </li>
+        <li>
+          <b>ZUOIK</b> is subsidiary to ZBESH, ZBESI and ZBESK.
+        </li>
+        <li>
+          <b>ZWRSK</b> is subsidiary to ZBESI and ZBESK.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 29 March 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

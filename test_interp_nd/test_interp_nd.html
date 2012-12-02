@@ -1,0 +1,413 @@
+<html>
+
+  <head>
+    <title>
+      TEST_INTERP_ND - Test Functions for Multidimensional Interpolation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_INTERP_ND <br> Test Functions for Multidimensional Interpolation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_INTERP_ND</b>
+      is a FORTRAN90 library which
+      provides test functions for multidimensional interpolation.
+    </p>
+
+    <p>
+      All the functions are defined over the unit hypercube [0,1]^M, for arbitrary
+      spatial dimension M.  They include:
+      <ol>
+        <li>
+          Oscillatory;
+        </li>
+        <li>
+          Product Peak;
+        </li>
+        <li>
+          Corner Peak;
+        </li>
+        <li>
+          Gaussian;
+        </li>
+        <li>
+          Continuous;
+        </li>
+        <li>
+          Discontinuous;
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      For each function, methods are provided to evaluate:
+      <ul>
+        <li>
+          the function, f(x);
+        </li>
+        <li>
+          the derivative with respect to any coordinate, dfdx(i);
+        </li>
+        <li>
+          the integral of f(x) over the unit hypercube;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Most of the functions include a shift vector w whose entries can be
+      chosen randomly in the unit hypercube, and a coefficient vector c
+      whose entries should be positive, and for which the integration problem
+      becomes harder as the sum of the entries increases.
+    </p>
+
+    <p>
+      <b>TEST_INTERP_ND</b> requires access to the R8LIB library.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_INTERP_ND</b> is available in
+      <a href = "../../c_src/test_interp_nd/test_interp_nd.html">a C version</a> and
+      <a href = "../../cpp_src/test_interp_nd/test_interp_nd.html">a C++ version</a> and
+      <a href = "../../f77_src/test_interp_nd/test_interp_nd.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_interp_nd/test_interp_nd.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_interp_nd/test_interp_nd.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/lagrange_interp_nd/lagrange_interp_nd.html">
+      LAGRANGE_INTERP_ND</a>,
+      a FORTRAN90 library which
+      defines and evaluates the Lagrange polynomial p(x) 
+      which interpolates a set of data depending on a multidimensional argument x
+      that was evaluated on a product grid, so that p(x(i)) = z(i).
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>,
+      a FORTRAN90 library which
+      contains many utility routines using double precision real (R8) arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/rbf_interp_nd/rbf_interp_nd.html">
+      RBF_INTERP_ND</a>,
+      a FORTRAN90 library which
+      defines and evaluates radial basis function (RBF) interpolants to multidimensional data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/shepard_interp_nd/shepard_interp_nd.html">
+      SHEPARD_INTERP_ND</a>,
+      a FORTRAN90 library which
+      defines and evaluates Shepard interpolants to multidimensional data,
+      based on inverse distance weighting.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_interp_nd/sparse_interp_nd.html">
+      SPARSE_INTERP_ND</a>
+      a FORTRAN90 library which
+      can be used to define a sparse interpolant to a function f(x) of a 
+      multidimensional argument.
+    </p>
+
+    <p>
+      <a href = "../../m_src/spinterp/spinterp.html">
+      SPINTERP</a>,
+      a MATLAB library which
+      carries out piecewise multilinear hierarchical sparse grid interpolation;
+      an earlier version of this software is ACM TOMS Algorithm 847,
+      by Andreas Klimke;
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_interp_1d/test_interp_1d.html">
+      TEST_INTERP_1D</a>,
+      a FORTRAN90 library which
+      defines test problems for interpolation of data y(x),
+      depending on a 1D argument.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_interp_2d/test_interp_2d.html">
+      TEST_INTERP_2D</a>,
+      a FORTRAN90 library which
+      defines test problems for interpolation of data z(x,y)),
+      depending on a 2D argument.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms526/toms526.html">
+      TOMS526</a>,
+      a FORTRAN90 library which
+      interpolates scattered bivariate data.
+      This is a FORTRAN90 version of ACM TOMS algorithm 526,
+      by Hiroshi Akima;
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms660/toms660.html">
+      TOMS660</a>,
+      a FORTRAN90 library which
+      takes scattered 2D data and produces an interpolating function F(X,Y).
+      This is a FORTRAN90 version of ACM TOMS algorithm 660,
+      called qshep2d,
+      by Robert Renka.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms661/toms661.html">
+      TOMS661</a>,
+      a FORTRAN90 library which
+      takes scattered 3D data and produces an interpolating function F(X,Y,Z).
+      This is a FORTRAN90 version of ACM TOMS algorithm 661,
+      called qshep3d,
+      by Robert Renka.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms790/toms790.html">
+      TOMS790</a>,
+      a FORTRAN90 library which
+      computes an interpolating function to a set of scattered data in the plane,
+      by Robert Renka;
+      this library is commonly called cshep2d;
+      this is a FORTRAN90 version of ACM TOMS algorithm 790.
+    </p>
+
+    <p>
+      <a href = "../../m_src/vandermonde_interp_2d/vandermonde_interp_2d.html">
+      VANDERMONDE_INTERP_2D</a>,
+      a MATLAB library which
+      finds a polynomial interpolant to data z(x,y) of a 2D argument
+      by setting up and solving a linear system for the polynomial coefficients,
+      involving the Vandermonde matrix.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Alan Genz,<br>
+          Testing Multidimensional Integration Routines,<br>
+          in Tools, Methods, and Languages for Scientific and
+          Engineering Computation,<br>
+          edited by B Ford, JC Rault, F Thomasset,<br>
+          North-Holland, 1984, pages 81-94,<br>
+          ISBN: 0444875700,<br>
+          LC: Q183.9.I53.
+        </li>
+        <li>
+          Alan Genz,<br>
+          A Package for Testing Multiple Integration Subroutines,<br>
+          in Numerical Integration:
+          Recent Developments, Software and Applications,<br>
+          edited by Patrick Keast, Graeme Fairweather,<br>
+          Reidel, 1987, pages 337-340,<br>
+          ISBN: 9027725144,<br>
+          LC: QA299.3.N38.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_interp_nd.f90">test_interp_nd.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "test_interp_nd.sh">test_interp_nd.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_interp_nd_prb.f90">test_interp_nd_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "test_interp_nd_prb.sh">test_interp_nd_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "test_interp_nd_prb_output.txt">test_interp_nd_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CSEVL</b> evaluates an N term Chebyshev series.
+        </li>
+        <li>
+          <b>INITS</b> estimates the order of an orthogonal series for a given accuracy.
+        </li>
+        <li>
+          <b>P00_CW</b> computes a random C parameter vector for any problem.
+        </li>
+        <li>
+          <b>P00_D</b> returns a derivative component of any function.
+        </li>
+        <li>
+          <b>P00_F</b> returns the value of any function.
+        </li>
+        <li>
+          <b>P00_PROB_NUM</b> returns the number of test functions available.
+        </li>
+        <li>
+          <b>P00_Q</b> returns the integral of any function.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns the title for any function.
+        </li>
+        <li>
+          <b>P00_W</b> computes a random W parameter vector for any problem.
+        </li>
+        <li>
+          <b>P01_D</b> evaluates any derivative component for problem p01.
+        </li>
+        <li>
+          <b>P01_F</b> evaluates the function for problem p01.
+        </li>
+        <li>
+          <b>P01_Q</b> evaluates the integral for problem p01.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns the name of problem p01.
+        </li>
+        <li>
+          <b>P02_D</b> evaluates an derivative component for problem p02.
+        </li>
+        <li>
+          <b>P02_F</b> evaluates the function for problem p02.
+        </li>
+        <li>
+          <b>P02_Q</b> evaluates the integral for problem p02.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns the title of problem p02.
+        </li>
+        <li>
+          <b>P03_D</b> evaluates any derivative component for problem p03.
+        </li>
+        <li>
+          <b>P03_F</b> evaluates the function for problem p03.
+        </li>
+        <li>
+          <b>P03_Q</b> evaluates the integral for problem p03.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns the title of problem p03.
+        </li>
+        <li>
+          <b>P04_D</b> evaluates any derivative component for problem p04.
+        </li>
+        <li>
+          <b>P04_F</b> evaluates the function for problem p04.
+        </li>
+        <li>
+          <b>P04_Q</b> evaluates the integral for problem p04.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns the title of problem p04.
+        </li>
+        <li>
+          <b>P05_D</b> evaluates any derivative component for problem p05.
+        </li>
+        <li>
+          <b>P05_F</b> evaluates the function for problem p05.
+        </li>
+        <li>
+          <b>P05_Q</b> evaluates the integral for problem p05.
+        </li>
+        <li>
+          <b>P05_TITLE</b> returns the title of problem p05.
+        </li>
+        <li>
+          <b>P06_D</b> evaluates any derivative component for problem p06.
+        </li>
+        <li>
+          <b>P06_F</b> evaluates the function for problem p06.
+        </li>
+        <li>
+          <b>P06_Q</b> evaluates the integral for problem p06.
+        </li>
+        <li>
+          <b>P06_TITLE</b> returns the title of problem p06.
+        </li>
+        <li>
+          <b>R8_ERROR</b> computes the error function.
+        </li>
+        <li>
+          <b>R8_ERRORC</b> computes the complementary error function.
+        </li>
+        <li>
+          <b>TUPLE_NEXT</b> computes the next element of a tuple space.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 August 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

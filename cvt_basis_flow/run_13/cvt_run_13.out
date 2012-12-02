@@ -1,0 +1,198 @@
+June 20 2002  11:16:13.653 AM
+ 
+CVT_BASIS
+  Arrange a set of PDE solution data into clusters.
+ 
+  Null cluster policy:
+  0, do nothing, accept null clusters;
+  1, reset center to a random data point;
+  2, reset center to random point in hull;
+ 
+  NULL_CLUSTER_POLICY =      0
+ 
+RANDOM_INITIALIZE
+  Initialize RANDOM_NUMBER with user SEED =     12345678
+ 
+What is the run type?
+ 
+  RUN_TYPE =      6
+ 
+  For RUN_TYPE = 6, T-Cell data.
+  read in the steady state solution from "STEADY.TXT"
+  and, letting SS be the steady state solution,
+  subtract 5/3 SS from solutions 1 through 250
+  subtract 1/3 SS from solutions 251 through 500.
+  We do NOT normalize the result.
+ 
+What is the name of the XY data file?
+ 
+  The file "/math/WWW/f_src/cvt_basis_tcell/xy.txt" contains 4961 lines.
+ 
+  X minimum :    0.00000    
+  X maximum :    1.00000    
+  Y minimum :    0.00000    
+  Y maximum :    1.00000    
+ 
+What is the name of the steady state file?
+ 
+  Steady state information was read from
+  the file "/math/WWW/f_src/cvt_basis_tcell/steady.txt".
+ 
+  Steady max norm =    3.00284    
+  Steady l2 norm =     121.425    
+ 
+What is the name of the first solution file?
+ 
+We believe the number of solution files is    500
+ 
+  The data is stored in an M by N matrix.
+ 
+  The "spatial" dimension M is     9922
+  The number of data points N is    500
+ 
+All the data has been read into POINT.
+ 
+Enter lower and upper number of clusters
+ 
+  The program will try to determine the minimum energy
+  of a clustering, for cluster sizes in the range:
+       4     4
+ 
+Enter the number of different random cluster configurations to check
+ 
+  For each number of clusters, the number of
+  distinct initial random configurations to be checked
+  will be      15
+ 
+Enter the number of energy iterations
+ 
+  For each initial random configuration, the number of
+  times the program will recompute the cluster centers,
+  cluster components, and energy is     30
+ 
+Enter 0 to use raw data, 1 to use normalized data.
+ 
+NORMAL = 0
+  Data will NOT be normalized.
+ 
+Number of clusters allowed:      4
+ 
+     1
+Initial_RAW     50144.7         0
+HMEANS_RAW      9851.83        15
+KMEANS_RAW      9837.13         3
+ 
+     2
+Initial_RAW     50219.8         0
+HMEANS_RAW      9870.05        21
+KMEANS_RAW      9854.81         3
+ 
+     3
+Initial_RAW     50648.8         0
+HMEANS_RAW      11956.1         9
+KMEANS_RAW      9837.13        13
+ 
+     4
+Initial_RAW     50706.3         0
+HMEANS_RAW      9874.61         9
+KMEANS_RAW      9854.81         2
+ 
+     5
+Initial_RAW     49621.7         0
+HMEANS_RAW      9851.83        19
+KMEANS_RAW      9837.13         3
+ 
+     6
+Initial_RAW     50228.3         0
+HMEANS_RAW      9870.05        15
+KMEANS_RAW      9854.81         3
+ 
+     7
+Initial_RAW     49470.0         0
+HMEANS_RAW      9870.05        15
+KMEANS_RAW      9854.81         3
+ 
+     8
+Initial_RAW     49909.2         0
+HMEANS_RAW      9851.83        15
+KMEANS_RAW      9837.13         3
+ 
+     9
+Initial_RAW     51081.3         0
+HMEANS_RAW      9841.18         8
+KMEANS_RAW      9837.13         2
+ 
+    10
+Initial_RAW     50219.9         0
+HMEANS_RAW      9870.05        18
+KMEANS_RAW      9854.81         3
+ 
+    11
+Initial_RAW     50413.1         0
+HMEANS_RAW      9870.05        17
+KMEANS_RAW      9854.81         3
+ 
+    12
+Initial_RAW     50554.7         0
+HMEANS_RAW      9851.83        19
+KMEANS_RAW      9837.13         3
+ 
+    13
+Initial_RAW     50109.0         0
+HMEANS_RAW      9851.83        16
+KMEANS_RAW      9837.13         3
+ 
+    14
+Initial_RAW     50313.6         0
+HMEANS_RAW      9870.05        14
+KMEANS_RAW      9854.81         3
+ 
+    15
+Initial_RAW     50510.0         0
+HMEANS_RAW      9851.83        15
+KMEANS_RAW      9837.13         3
+ 
+ANALYSIS_RAW:
+  Computed energy range for given cluster size:
+ 
+  (The minimum and maximum should be close if
+  we're taking enough iterations.)
+ 
+  Cluster  Minimum      Maximum
+  Size     Energy       Energy
+ 
+        4     9837.1260     9854.8057
+ 
+  Energy table:
+ 
+Cluster              Energy
+Size      Energy     /point      Sqrt(E/Pt)
+ 
+        4     9837.1260       19.6743        4.4356
+ 
+CLUSTER_CENSUS
+  Individual cluster population and energy
+ 
+  Index    Population   Percentage   Energy  Percentage  Min  Max
+ 
+      1            34            6   1095.18         11   13   46
+      2            24            4   3658.11         37  251  274
+      3           430           86   3786.41         38   47  500
+      4            12            2   1306.37         13    1   12
+ 
+               ------          ---  ------------    ---
+ 
+  Total           500          100   9846.08        100    1  500
+ 
+CVT_BASIS:
+  Writing cluster generators to individual files.
+ 
+  Write file gen_001.txt
+  Write file gen_002.txt
+  Write file gen_003.txt
+  Write file gen_004.txt
+ 
+CVT_BASIS
+  Normal end of execution.
+ 
+June 20 2002  11:28:39.680 AM

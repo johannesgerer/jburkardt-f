@@ -1,0 +1,327 @@
+<html>
+
+  <head>
+    <title>
+      SPHERE_TRIANGLE_QUAD - Estimate Integrals over Spherical Triangles
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPHERE_TRIANGLE_QUAD <br> Estimate Integrals over Spherical Triangles
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPHERE_TRIANGLE_QUAD</b> 
+      is a FORTRAN90 library which 
+      estimates the integral of a scalar function 
+      F(X,Y,Z) over a spherical triangle on the unit sphere.
+    </p>
+
+    <p>
+      Three methods of estimation are very crude and cannot be improved:
+      <ul>
+        <li>
+          the centroid rule, based on a single function value.
+        </li>
+        <li>
+          the vertex rule, which averages the vertex values.
+        </li>
+        <li>
+          the midside rule, which averages the midside values.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      One method of estimation uses random sampling, the Monte Carlo method, 
+      whose accuracy can be improved by increasing the number of sample points.
+    </p>
+
+    <p>
+      Another method is based on the centroid rule, but allows the
+      user to decompose the original spherical triangle into collection
+      of smaller triangles.  The accuracy of the estimate should improve
+      as the size of these triangles decreases.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SPHERE_TRIANGLE_QUAD</b> is available in
+      <a href = "../../cpp_src/sphere_triangle_quad/sphere_triangle_quad.html">a C++ version</a> and
+      <a href = "../../f_src/sphere_triangle_quad/sphere_triangle_quad.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/random_data/random_data.html">
+      RANDOM_DATA</a>,
+      a FORTRAN90 library which
+      generates sample points for 
+      various probability distributions, spatial dimensions, and geometries;
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_cvt/sphere_cvt.html">
+      SPHERE_CVT</a>,
+      a FORTRAN90 library which 
+      creates a mesh of well-separated points on a unit sphere using Centroidal Voronoi
+      Tessellations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_delaunay/sphere_delaunay.html">
+      SPHERE_DELAUNAY</a>,
+      a FORTRAN90 program which 
+      computes and plots the Delaunay triangulation of points on the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_design_rule/sphere_design_rule.html">
+      SPHERE_DESIGN_RULE</a>,
+      a FORTRAN90 library which 
+      returns point sets on the surface of the unit sphere, known as "designs",
+      which can be useful for estimating integrals on the surface, among other uses.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_exactness/sphere_exactness.html">
+      SPHERE_EXACTNESS</a>, 
+      a FORTRAN90 program which 
+      tests the polynomial exactness of a quadrature rule for the unit sphere; 
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_grid/sphere_grid.html">
+      SPHERE_GRID</a>, 
+      a FORTRAN90 library which 
+      provides a number of ways of generating grids of points, or of
+      points and lines, or of points and lines and faces, over the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_lebedev_rule/sphere_lebedev_rule.html">
+      SPHERE_LEBEDEV_RULE</a>, 
+      a FORTRAN90 library which 
+      computes Lebedev quadrature rules for the unit sphere;
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_monte_carlo/sphere_monte_carlo.html">
+      SPHERE_MONTE_CARLO</a>, 
+      a FORTRAN90 library which
+      applies a Monte Carlo method to estimate the integral of a function
+      over the surface of the sphere in 3D;
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_quad/sphere_quad.html">
+      SPHERE_QUAD</a>,
+      a FORTRAN90 library which 
+      approximates an integral over the surface of the unit sphere 
+      by applying a triangulation to the surface;
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_triangle_monte_carlo/sphere_triangle_monte_carlo.html">
+      SPHERE_TRIANGLE_MONTE_CARLO</a>,
+      a FORTRAN90 library which
+      estimates the integral of a function over a spherical triangle using the Monte Carlo method.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_voronoi/sphere_voronoi.html">
+      SPHERE_VORONOI</a>, 
+      a FORTRAN90 program which
+      computes the Voronoi diagram of points on a sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stripack/stripack.html">
+      STRIPACK</a>,
+      a FORTRAN90 library which 
+      computes the Voronoi diagram or Delaunay
+      triangulation of pointsets on a sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which 
+      approximates the integral of a function on the surface or in the interior
+      of a variety of geometric shapes.
+    </p>
+
+    <p> 
+      <a href = "../../m_src/xyz_display/xyz_display.html">
+      XYZ_DISPLAY</a>, 
+      a MATLAB program which
+      reads XYZ information defining points in 3D, 
+      and displays an image in the MATLAB graphics window.
+    </p>
+
+    <p> 
+      <a href = "../../cpp_src/xyz_display_opengl/xyz_display_opengl.html">
+      XYZ_DISPLAY_OPENGL</a>, 
+      a C++ program which
+      reads XYZ information defining points in 3D, 
+      and displays an image using OpenGL.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          Jacob Goodman, Joseph ORourke, editors,<br>
+          Handbook of Discrete and Computational Geometry,<br>
+          Second Edition,<br>
+          CRC/Chapman and Hall, 2004,<br>
+          ISBN: 1-58488-301-4,<br>
+          LC: QA167.H36.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sphere_triangle_quad.f90">sphere_triangle_quad.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "sphere_triangle_quad.sh">sphere_triangle_quad.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sphere_triangle_quad_prb.f90">sphere_triangle_quad_prb.f90</a>,
+          a sample problem.
+        </li>
+        <li>
+          <a href = "sphere_triangle_quad_prb.sh">sphere_triangle_quad_prb.sh</a>,
+          commands to compile and run the problem.
+        </li>
+        <li>
+          <a href = "sphere_triangle_quad_prb_output.txt">sphere_triangle_quad_prb_output.txt</a>, 
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ARC_COSINE</b> computes the arc cosine function, with argument truncation.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8VEC_NORM</b> returns the L2 norm of an R8VEC.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>SPHERE01_SAMPLE</b> picks random points on the unit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_ANGLES_TO_AREA:</b> area of a triangle on the unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_PROJECT</b> projects from plane to spherical triangle.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_QUAD_00:</b> quadrature over a triangle on the unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_QUAD_01:</b> quadrature over a triangle on the unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_QUAD_02:</b> quadrature over a triangle on the unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_QUAD_03:</b> quadrature over a triangle on the unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_QUAD_ICOS1C:</b> centroid rule, subdivide then project.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_SAMPLE:</b> sample spherical triangle on unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_SIDES_TO_ANGLES:</b> angles of triangle on unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_VERTICES_TO_AREA:</b> area of triangle on unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_VERTICES_TO_CENTROID:</b> centroid of triangle on unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_VERTICES_TO_MIDPOINTS:</b> midsides of triangle on unit sphere.
+        </li>
+        <li>
+          <b>SPHERE01_TRIANGLE_VERTICES_TO_SIDES_3D:</b> sides of triangle on unit sphere.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 September 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial html skeleton created by HTMLINDEX. -->
+
+</html>

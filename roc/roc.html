@@ -1,0 +1,451 @@
+<html>
+
+  <head>
+    <title>
+      ROC - Receiver Operator Characteristic
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ROC <br> Receiver Operator Characteristic
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ROC</b>
+      is a FORTRAN90 program which 
+      computes the Receiver 
+      Operator Characteristic ("ROC") for a sequence analsysis program.  
+    </p>
+
+    <p>
+      The program can also produce generic plot files of the percentages 
+      of the negative and positive results as the score threshhold is varied.
+      These files can be converted into PostScript files by calling
+      <a href = "../../f_src/plot_to_ps/plot_to_ps.html">PLOT_TO_PS</a>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+       <li>
+          <a href = "roc.f90">roc.f90</a>, the source code;
+        </li>
+       <li>
+          <a href = "roc.csh">roc.csh</a>, commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>ROC</b> needs a search result file to analyze.  Four "generic" files
+      are included, which are tiny examples of "fake data" that make it
+      easier to understand.  Four other search result files of real data 
+      will show you how complicated it can be to extract the information 
+      we need.  Search result files you may copy include:
+      <ul>
+        <li>
+          <a href = "generic_01.txt">generic_01.txt</a>, generic file #1;
+        </li>
+        <li>
+          <a href = "generic_02.txt">generic_02.txt</a>, generic file #2;
+        </li>
+        <li>
+          <a href = "generic_03.txt">generic_03.txt</a>, generic file #3;
+        </li>
+        <li>
+          <a href = "generic_04.txt">generic_04.txt</a>, generic file #4;
+        </li>
+        <li>
+          <a href = "blast_pa2.txt">blast_pa2.txt</a>, results of a BLAST 
+           search on PA2;
+        </li>
+        <li>
+          <a href = "fasta_pa2.txt">fasta_pa2.txt</a>, results of a FASTA 
+          search on PA2;
+        </li>
+        <li>
+          <a href = "maxsegs_pa2.txt">maxsegs_pa2.txt</a>, results of a 
+          MAXSEGS search on PA2;
+        </li>
+        <li>
+          <a href = "pearson_pa2.txt">pearson_pa2.txt</a>, results of a 
+          PEARSON search on PA2;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Along with a search result file, ROC needs a file that lists the "good"
+      items, that is, the items that do belong to the class of interest.
+      (This file may include many extra names that don't show up in the
+      search list.)  "Good" files you may copy include:
+      <ul>
+        <li>
+          <a href = "good_01.txt">good_01.txt</a>, for generic search #1;
+        </li>
+        <li>
+          <a href = "good_02.txt">good_02.txt</a>, for generic search #2;
+        </li>
+        <li>
+          <a href = "good_03.txt">good_03.txt</a>, for generic search #3;
+        </li>
+        <li>
+          <a href = "good_04.txt">good_04.txt</a>, for generic search #4;
+        </li>
+        <li>
+          <a href = "good_pa2.txt">good_pa2.txt</a>, for searches on PA2;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Sample run #1:
+      <ul>
+        <li>
+          <a href = "roc_01_input.txt">roc_01_input.txt</a>, input to ROC.
+        </li>
+        <li>
+          <a href = "roc_01_output.txt">roc_01_output.txt</a>, output from ROC.
+        </li>
+        <li>
+          <a href = "roc_01.plot">roc_01.plot</a>, "PLOT" file output.
+        </li>
+        <li>
+          <a href = "roc_01-0.png">roc_01-0.png</a>, 
+          a <a href = "../../data/png/png.html">PNG</a> image of the plot.
+        </li>
+        <li>
+          <a href = "roc_01-1.png">roc_01-1.png</a>, 
+          a <a href = "../../data/png/png.html">PNG</a> image of the plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Sample run #2:
+      <ul>
+        <li>
+          <a href = "roc_02_input.txt">roc_02_input.txt</a>, input to ROC.
+        </li>
+        <li>
+          <a href = "roc_02_output.txt">roc_02_output.txt</a>, output from ROC.
+        </li>
+        <li>
+          <a href = "roc_02.plot">roc_02.plot</a>, "PLOT" file output.
+        </li>
+        <li>
+          <a href = "roc_02-0.png">roc_02-0.png</a>, 
+          a <a href = "../../data/png/png.html">PNG</a> image of the plot.
+        </li>
+        <li>
+          <a href = "roc_02-1.png">roc_02-1.png</a>, 
+          a <a href = "../../data/png/png.html">PNG</a> image of the plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Sample run #3:
+      <ul>
+        <li>
+          <a href = "roc_03_input.txt">roc_03_input.txt</a>, input to ROC.
+        </li>
+        <li>
+          <a href = "roc_03_output.txt">roc_03_output.txt</a>, output from ROC.
+        </li>
+        <li>
+          <a href = "roc_03.plot">roc_03.plot</a>, "PLOT" file output.
+        </li>
+        <li>
+          <a href = "roc_03-0.png">roc_03-0.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of the plot.
+        </li>
+        <li>
+          <a href = "roc_03-1.png">roc_03-1.png</a>, 
+          a <a href = "../../data/png/png.html">PNG</a> image of the plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Sample run #4:
+      <ul>
+        <li>
+          <a href = "roc_04_input.txt">roc_04_input.txt</a>, input to ROC.
+        </li>
+        <li>
+          <a href = "roc_04_output.txt">roc_04_output.txt</a>, output from ROC.
+        </li>
+        <li>
+          <a href = "roc_04.plot">roc_04.plot</a>, "PLOT" file output.
+        </li>
+        <li>
+          <a href = "roc_04-0.png">roc_04-0.png</a>, 
+          a <a href = "../../data/png/png.html">PNG</a> image of the plot.
+        </li>
+        <li>
+          <a href = "roc_04-1.png">roc_04-1.png</a>, 
+          a <a href = "../../data/png/png.html">PNG</a> image of the plot.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for ROC.
+        </li>
+        <li>
+          <b>ANALYSIS</b> carries out the ROC analysis.
+        </li>
+        <li>
+          <b>ANALYSIS_PARAMS_GET</b> gets the ROC analysis parameters.
+        </li>
+        <li>
+          <b>ANALYSIS_PARAMS_PRINT</b> prints the analysis parameters.
+        </li>
+        <li>
+          <b>ANALYSIS_POST</b> does some post-analysis tasks.
+        </li>
+        <li>
+          <b>ANALYSIS_PRE</b> carries out some pre-analysis tasks.
+        </li>
+        <li>
+          <b>ANALYSIS_PRINT</b> prints the analysis.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.  
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CHVEC_PERMUTE</b> permutes a character vector in place.
+        </li>
+        <li>
+          <b>CHVEC_REVERSE</b> reverses the elements of a character vector.
+        </li>
+        <li>
+          <b>DATA_COUNT</b> counts the positive and negative data.
+        </li>
+        <li>
+          <b>DATA_COUNT_PRINT</b> prints the data counts.
+        </li>
+        <li>
+          <b>DATA_GET</b> retrieves the identifiers, scores, and good identifiers.
+        </li>
+        <li>
+          <b>DATA_PARAMS_GET</b> gets the data parameters.
+        </li>
+        <li>
+          <b>DATA_PARAMS_PRINT</b> prints the data parameters.
+        </li>
+        <li>
+          <b>DATA_PRINT</b> prints the data.
+        </li>
+        <li>
+          <b>DATA_SELECT</b> selects the data to be analyzed.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>FILE_ADVANCE_TO_STRING</b> searches ahead in a text file for a string. 
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GOOD_FILE_READ</b> reads a  "good" ID file.
+        </li>
+        <li>
+          <b>GOOD_GET</b> retrieves the good identifiers.
+        </li>
+        <li>
+          <b>GOOD_PRINT</b> prints the good identifiers.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>I4_TO_S_LEFT</b> converts an I4 to a left-justified string.
+        </li>
+        <li>
+          <b>I4VEC_CUM</b> computes the cumulutive sum of the entries of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_PERMUTE</b> permutes an I4VEC in place.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_NEGATIVE_INDEX</b> indexes negative integer vector entries.
+        </li>
+        <li>
+          <b>I4VEC_POSITIVE_INDEX</b> indexes positive integer vector entries.
+        </li>
+        <li>
+          <b>LGTI</b> = STRNG1 is lexically greater than STRNG2.
+        </li>
+        <li>
+          <b>LLEI</b> = STRNG1 is lexically less than or equal to STRNG2.
+        </li>
+        <li>
+          <b>LLTI</b> = STRNG1 is lexically less than STRNG2.
+        </li>
+        <li>
+          <b>PARAMS_DEFAULT</b> sets the parameters to default values.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PN_GRAPH_FILE_WRITE</b> creates a positive/negative graphics file of the results.
+        </li>
+        <li>
+          <b>PN_ROC_INT</b> computes the ROC integral.
+        </li>
+        <li>
+          <b>PNS_DATA_SET</b> sets the data for a positive/negative/score graph.
+        </li>
+        <li>
+          <b>PNS_GRAPH_FILE_WRITE</b> creates a positive/negative/score graphics file of the r
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>R8_TO_S_LEFT</b> writes an R8 into a left justified string.
+        </li>
+        <li>
+          <b>R8VEC_BIN</b> computes bins based on a given real vector.
+        </li>
+        <li>
+          <b>R8VEC_MINMAX</b> returns the minimum and maximum values in a real vector.
+        </li>
+        <li>
+          <b>R8VEC_ORDER_TYPE</b> determines if an R8VEC is (non)strictly ascending/descending.
+        </li>
+        <li>
+          <b>R8VEC_PERMUTE</b> permutes an R8VEC in place.
+        </li>
+        <li>
+          <b>R8VEC_REVERSE</b> reverses the elements of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R8VEC.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.  
+        </li>
+        <li>
+          <b>S_GEI</b> = ( S1 is lexically greater than or equal to S2 ).
+        </li>
+        <li>
+          <b>S_GTI</b> = S1 is lexically greater than S2.
+        </li>
+        <li>
+          <b>S_LTI</b> = ( S1 is lexically less than S2 ).
+        </li>
+        <li>
+          <b>S_SWAP</b> swaps two strings.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 value from a string.
+        </li>
+        <li>
+          <b>S_WORD_FIND</b> finds the word of a given index in a string.
+        </li>
+        <li>
+          <b>SCORE_BLAST_FILE_READ</b> extracts information from a BLAST search file.
+        </li>
+        <li>
+          <b>SCORE_FASTA_FILE_READ</b> extracts information from a FASTA search file.
+        </li>
+        <li>
+          <b>SCORE_GENERIC_FILE_READ</b> reads a "name, score" file.
+        </li>
+        <li>
+          <b>SCORE_MAXSEGS_FILE_READ</b> extracts information from a MAXSEGS search file.
+        </li>
+        <li>
+          <b>SCORE_PEARSON_FILE_READ</b> extracts information from a PEARSON search file.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into linear order.
+        </li>
+        <li>
+          <b>SVEC_PERMUTE</b> permutes a string vector in place.
+        </li>
+        <li>
+          <b>SVEC_REVERSE</b> reverses the elements of a string vector.
+        </li>
+        <li>
+          <b>SVECI_SEARCH_BINARY_A</b> searches an ascending sorted vector of implicitly capitalized strings.
+        </li>
+        <li>
+          <b>SVECI_SORT_HEAP_A</b> heap sorts a vector of implicitly capitalized strings.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 May 2007.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

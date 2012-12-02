@@ -1,0 +1,80 @@
+-----------------------------------------------------------------------
+
+  Include the stat.h file to get timing statistics for the different parts
+  of the Arnoldi update iteration.  An easy way to initialize all the
+  timing information to zero at the beginning is by:
+
+     call sstats  <-- symmetric code
+     call sstatn  <-- nonsymmetric code
+     call cstatn  <-- complex code
+
+-----------------------------------------------------------------------
+
+  nopx   = total number of user OP*x operations.
+  nbx    = total number of user B*x operations (same as copy when B = I).
+  nrorth = total number of reorthogonalization steps taken.
+  nitref = total number of it. refinement steps in reorthogonalization.
+  nrstrt = total number of restart steps.
+
+-----------------------------------------------------------------------
+
+========================================================
+===  Common to both symmetric and nonsymmetric code  ===
+========================================================
+
+  tgetv0 = total time spent in generating starting vector and 
+           restarted vector for the Arnoldi sequence.
+  titref = total time spent in iterative refinement phase in SSAITR.
+  trvec  = total time spent in computing the Ritz vectors before exit.
+
+====================================
+===  Specific to symmetric code  ===
+====================================
+
+  tsaupd = total time spent in SSAUPD.
+  tsaup2 = total time spent in SSAUP2.
+  tsaitr = total time spent in the basic Arnoldi iteration loop,
+           including iterative refinement in SSAITR.
+  tseigt = total time spent in computing the tridiagonal eigenvalue
+           subproblem at each iteration.
+  tsgets = total time spent in getting the shifts at each iteration.
+  tsapps = total time spent in applying the shifts at each iteration.
+  tsconv = total time spent in convergence test at each iteration.
+
+=======================================
+===  Specific to nonsymmetric code  ===
+=======================================
+
+  tnaupd = total time spent in SNAUPD.
+  tnaup2 = total time spent in SNAUP2.
+  tnaitr = total time spent in the basic Arnoldi iteration loop,
+           including iterative refinement in SNAITR.
+  tneigh = total time spent in computing the Hessenberg eigenvalue
+           subproblem at each iteration.
+  tngets = total time spent in getting the shifts at each iteration.
+  tnapps = total time spent in applying the shifts at each iteration.
+  tnconv = total time spent in convergence test at each iteration.
+
+==================================
+===  Specific to complex code  ===
+==================================
+
+  tcaupd = total time spent in CNAUPD.
+  tcaup2 = total time spent in CNAUP2.
+  tcaitr = total time spent in the basic Arnoldi iteration loop,
+           including iterative refinement in CNAITR.
+  tceigh = total time spent in computing the Hessenberg eigenvalue
+           subproblem at each iteration.
+  tcgets = total time spent in getting the shifts at each iteration.
+  tcapps = total time spent in applying the shifts at each iteration.
+  tcconv = total time spent in convergence test at each iteration.
+
+==================
+=== User time  ===
+==================
+
+  tmvopx = total time spent in computing Y = OP * X.
+  tmvbx  = total time spent in computing Y = B * X.
+
+=======================================================================
+

@@ -1,0 +1,300 @@
+<html>
+
+  <head>
+    <title>
+      APPORTIONMENT - Apportioning the House of Representatives.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      APPORTIONMENT <br> Apportioning the House of Representatives.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>APPORTIONMENT</b> 
+      is a FORTRAN90 program which 
+      demonstrates some of the methods used to apportion seats
+      in the United States House of Representatives.
+    </p>
+
+    <p>
+      Methods that have been proposed include:
+      <ol>
+        <li>
+          Alexander Hamilton's method;
+        </li>
+        <li>
+          Thomas Jefferson's method;
+        </li>
+        <li>
+          John Adam's method;
+        </li>
+        <li>
+          Daniel Webster's method;
+        </li>
+        <li>
+          The Huntington-Hill method (the method used since 1940);
+        </li>
+      </ol>
+    </p>
+
+    <h2 align = "center">
+      Article I, Section 2 of the US Constitution:
+    </h2>
+
+    <p>
+      <i>
+        The House of Representatives shall be composed of Members chosen 
+        every second Year by the People of the several States, and the 
+        Electors in each State shall have the Qualifications requisite
+        for Electors of the most numerous Branch of the State Legislature.
+      </i>
+    </p>
+
+    <p>
+      <i>
+        No Person shall be a Representative who shall not have attained
+        to the Age of twenty five Years, and been seven Years a Citizen
+        of the United States, and who shall not, when elected, be an 
+        Inhabitant of that State in which he shall be chosen.
+      </i>
+    </p>
+
+    <p>
+      <i>
+        Representatives and direct Taxes shall be apportioned among the
+        several States which may be included within this Union, according
+        to their respective Numbers, which shall be determined by adding
+        to the whole Number of free Persons, including those bound to
+        Service for a Term of Years, and excluding Indians not taxed,
+        three fifths of all other Persons. The actual Enumeration shall 
+        be made within three Years after the first Meeting of the Congress
+        of the United States, and within every subsequent Term of ten Years,
+        in such Manner as they shall by Law direct. The Number of 
+        Representatives shall not exceed one for every thirty Thousand,
+        but each State shall have at Least one Representative; and until
+        such enumeration shall be made, the State of New Hampshire shall
+        be entitled to chuse three, Massachusetts eight, Rhode-Island and
+        Providence Plantations one, Connecticut five, New-York six, New
+        Jersey four, Pennsylvania eight, Delaware one, Maryland six, 
+        Virginia ten, North Carolina five, South Carolina five, and 
+        Georgia three.
+      </i>
+    </p>
+
+    <p>
+      <i>
+        When vacancies happen in the Representation from any State, the 
+        Executive Authority thereof shall issue Writs of Election to fill
+        such Vacancies.
+      </i>
+    </p>
+
+    <p>
+      <i>
+        The House of Representatives shall chuse their Speaker and other 
+        Officers; and shall have the sole Power of Impeachment.
+      </i>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../datasets/census/census.html">
+      CENSUS</a>,
+      a dataset directory which
+      contains some US census data for state populations.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/knapsack/knapsack.html">
+      KNAPSACK</a>,
+      a FORTRAN77 library which
+      solves a variety of knapsack problems.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Michael Balinski, Hobart Young,<br>
+          The Quota Method of Apportionment,<br>
+          The American Mathematical Monthly,<br>
+          Volume 82, Number 7, August-September 1975, pages 701-730.
+        </li>
+        <li>
+          Barry Cipra,<br>
+          E Pluribus Confusion,<br>
+          American Scientist,<br>
+          Volume 98, Number 4, July-August 2010, pages 276-279.
+        </li>
+        <li>
+          Donald Saari,<br>
+          Apportionment Methods and the House of Representatives,<br>
+          The American Mathematical Monthly,<br>
+          Volume 85, Number 10, December 1978, pages 792-802.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "apportionment.f90">apportionment.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "apportionment.sh">apportionment.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "apportionment_prb.f90">apportionment_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "apportionment_prb.sh">apportionment_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "apportionment_prb_output.txt">apportionment_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>APPORTION_ADAMS</b> apportions using Adams's method.
+        </li>
+        <li>
+          <b>APPORTION_HAMILTON</b> apportions using Hamilton's method.
+        </li>
+        <li>
+          <b>APPORTION_HUNTINGTON_HILL</b> uses the Huntington-Hill apportionment.
+        </li>
+        <li>
+          <b>APPORTION_JEFFERSON</b> apportions using Jefferson's method.
+        </li>
+        <li>
+          <b>APPORTION_WEBSTER</b> apportions using Webster's method.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>I4_TO_MONTH_NAME</b> returns the name of a given month.
+        </li>
+        <li>
+          <b>I4_TO_S_RIGHT_COMMA</b> converts an I4 to a right justified string with commas.
+        </li>
+        <li>
+          <b>I4VEC_NONZERO_FIRST</b> left-shifts all nonzeros in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>R8_DIV_I4</b> returns an I4 fraction as an R8.
+        </li>
+        <li>
+          <b>R8_SQRT_I4</b> returns the square root of an I4 as an R8.
+        </li>
+        <li>
+          <b>R8VEC_CEILING</b> rounds "up" (towards +infinity) entries of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_FLOOR</b> rounds "down" (towards -infinity) entries of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_FRACTION</b> returns the fraction parts of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_ROUND</b> rounds entries of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_INDEX_D</b> does an indexed heap descending sort of an R8VEC.
+        </li>
+        <li>
+          <b>REP_NUM_YEAR</b> returns the size of the House of Representatives.
+        </li>
+        <li>
+          <b>STATE_ID</b> returns the 2 letter Postal Code for one of the 50 states and DC.
+        </li>
+        <li>
+          <b>STATE_NAME</b> returns the name of one of the 50 states plus DC.
+        </li>
+        <li>
+          <b>STATE_NUM_YEAR</b> returns the number of states for a given year.
+        </li>
+        <li>
+          <b>STATE_POP_YEAR</b> returns the state populations for a given census year.
+        </li>
+        <li>
+          <b>STATE_REP_YEAR</b> returns the state representatives for a given census year.
+        </li>
+        <li>
+          <b>STATE_STATEHOOD</b> returns the statehood year for each state.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 04 June 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

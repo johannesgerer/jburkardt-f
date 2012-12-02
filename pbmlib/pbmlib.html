@@ -1,0 +1,299 @@
+<html>
+
+  <head>
+    <title>
+      PBMLIB - Portable Bit Maps
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PBMLIB <br> Portable Bit Maps
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PBMLIB</b>
+      is a FORTRAN90 library which
+      creates and reads Portable Bit Map files (PBM).
+    </p>
+
+    <p>
+      Both ASCII
+      PBMA and binary PBMB formats are supported.  The library can also handle
+      the related Portable Gray Map (PGMA and PGMB) and Portable Pixel Map
+      (PPMA and PPMB) formats.
+    </p>
+
+    <p>
+      There are many graphics programs, such as XV and GIMP, that can
+      display images in these formats, or translate them to other formats
+      such as BMP, GIF, JPEG, MacPaint, X Window, and so on.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>PBMLIB</b> is available in
+      <a href = "../../c_src/pbmlib/pbmlib.html">a C version</a> and
+      <a href = "../../f_src/pbmlib/pbmlib.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/pbma/pbma.html">
+      PBMA</a>,
+      a data directory which
+      contains examples and a description
+      of the ASCII Portable Bit Map graphics file format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pbma_io/pbma_io.html">
+      PBMA_IO</a>,
+      a FORTRAN90 library which
+      can read or write ASCII PBM (black/white) graphics files.
+    </p>
+
+    <p>
+      <a href = "../../data/pgma/pgma.html">
+      PGMA</a>,
+      a data directory which
+      contains examples and a description
+      of the ASCII Portable Grayscale Map graphics file format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pgma_io/pgma_io.html">
+      PGMA_IO</a>,
+      a FORTRAN90 library which
+      can read or write ASCII PGM (grayscale) graphics files.
+    </p>
+
+    <p>
+      <a href = "../../data/ppma/ppma.html">
+      PPMA</a>,
+      a data directory which
+      contains examples and a description
+      of the ASCII Portable Pixel Map graphics file format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ppma_io/ppma_io.html">
+      PPMA_IO</a>,
+      a FORTRAN90 library which
+      can read or write ASCII PPM (RGB color) graphics files.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          <a href = "http://netpbm.sourceforge.net/">the NETPBM homepage</a>.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "pbmlib.f90">pbmlib.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "pbmlib.sh">pbmlib.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "pbmlib_prb.f90">pbmlib_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "pbmlib_prb.sh">pbmlib_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "pbmlib_prb_output.txt">pbmlib_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "alphabits.txt">alphabits.txt</a>, a simple font file
+          used by the calling program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BITCHR75</b> returns a 7 by 5 bit pattern for a given character.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>FONT_DATA</b> prints out a FORTRAN DATA version of a simple bit map font.
+        </li>
+        <li>
+          <b>FONT_PRINT</b> prints out a text version of a simple bit map font.
+        </li>
+        <li>
+          <b>FONT_READ</b> reads simple ASCII data defining a bit map font.
+        </li>
+        <li>
+          <b>GETINT</b> reads an integer from a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HEXCOL</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>I4VEC_TO_S</b> converts an array of integers into a string.
+        </li>
+        <li>
+          <b>PBM_CHECK_DATA</b> checks bit data.
+        </li>
+        <li>
+          <b>PBM_EXAMPLE</b> sets up data for a PBM file.
+        </li>
+        <li>
+          <b>PBMA_READ</b> reads an ASCII portable bit map file.
+        </li>
+        <li>
+          <b>PBMA_READ_DATA</b> reads the data from an ASCII PBM file.
+        </li>
+        <li>
+          <b>PBMA_READ_HEADER</b> reads the header of an ASCII PBM file.
+        </li>
+        <li>
+          <b>PBMA_WRITE</b> writes an ASCII portable bit map file.
+        </li>
+        <li>
+          <b>PBMB_READ</b> reads a binary portable bit map file.
+        </li>
+        <li>
+          <b>PBMB_WRITE</b> writes a binary portable bit map file.
+        </li>
+        <li>
+          <b>PGM_CHECK_DATA</b> checks gray data.
+        </li>
+        <li>
+          <b>PGM_EXAMPLE</b> sets up sample PGM data.
+        </li>
+        <li>
+          <b>PGMA_READ</b> reads an ASCII portable gray map file.
+        </li>
+        <li>
+          <b>PGMA_READ_DATA</b> reads the data in an ASCII portable gray map file.
+        </li>
+        <li>
+          <b>PGMA_READ_HEADER</b> reads the header of an ASCII portable gray map file.
+        </li>
+        <li>
+          <b>PGMA_WRITE</b> writes an ASCII portable gray map file.
+        </li>
+        <li>
+          <b>PGMB_READ</b> reads a binary portable gray map file.
+        </li>
+        <li>
+          <b>PGMB_WRITE</b> writes a binary portable gray map file.
+        </li>
+        <li>
+          <b>PPM_CHECK_DATA</b> checks pixel data.
+        </li>
+        <li>
+          <b>PPM_EXAMPLE</b> sets up sample PPM data.
+        </li>
+        <li>
+          <b>PPMA_READ</b> reads an ASCII portable pixel map file.
+        </li>
+        <li>
+          <b>PPMA_WRITE</b> writes an ASCII portable pixel map file.
+        </li>
+        <li>
+          <b>PPMB_READ</b> reads a binary portable pixel map file.
+        </li>
+        <li>
+          <b>PPMB_WRITE</b> writes a binary portable pixel map file.
+        </li>
+        <li>
+          <b>RT_TO_XY</b> converts polar coordinates to XY coordinates.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_CHOP</b> "chops out" a portion of a string, and closes up the hole.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> converts an string of characters into an I4VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WORD_NEXT_RD</b> "reads" words from a string, one at a time.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 September 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

@@ -1,0 +1,239 @@
+<html>
+
+  <head>
+    <title>
+      TOMS446 - Ten Subroutines for the Manipulation of Chebyshev Series
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOMS446 <br> Ten Subroutines for the Manipulation of Chebyshev Series
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS446</b>
+      is a FORTRAN90 library which
+      implements ACM TOMS algorithm 446, for the manipulation
+      of Chebyshev series,
+      by Roger Broucke.
+    </p>
+
+    <p>
+      While the text of many ACM TOMS algorithms is available online
+      through ACM:
+              <a href = "http://www.acm.org/pubs/calgo/">
+                         http://www.acm.org/pubs/calgo</a>
+      or NETLIB:
+      <a href = "http://www.netlib.org/toms/index.html">
+      http://www.netlib.org/toms/index.html</a>, most of the early
+      algorithms are not available.  This is one of them.  I typed it
+      in.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TOMS446</b> is available in
+      <a href = "../../c_src/toms446/toms446.html">a C version</a> and
+      <a href = "../../cpp_src/toms446/toms446.html">a C++ version</a> and
+      <a href = "../../f77_src/toms446/toms446.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms446/toms446.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/toms446/toms446.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bernstein/bernstein.html">
+      BERNSTEIN</a>,
+      a FORTRAN90 library which
+      evaluates the Bernstein polynomials, 
+      useful for uniform approximation of functions;
+    </p>
+
+    <p>
+      <a href = "../../f_src/chebyshev/chebyshev.html">
+      CHEBYSHEV</a>,
+      a FORTRAN90 library which
+      computes the Chebyshev interpolant/approximant to a given function
+      over an interval.
+    </p>
+
+    <p>
+      <a href = "../../f_src/divdif/divdif.html">
+      DIVDIF</a>,
+      a FORTRAN90 library which
+      computes interpolants by divided differences.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite/hermite.html">
+      HERMITE</a>,
+      a FORTRAN90 library which
+      computes the Hermite interpolant, a polynomial that matches function values
+      and derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pppack/pppack.html">
+      PPPACK</a>,
+      a FORTRAN90 library which
+      computes piecewise polynomial functions, including cubic splines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spline/spline.html">
+      SPLINE</a>,
+      a FORTRAN90 library which
+      can construct and evaluate spline interpolants and approximants.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_approx/test_approx.html">
+      TEST_APPROX</a>,
+      a FORTRAN90 library which
+      defines test functions for approximation and interpolation.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Original FORTRAN77 version by Roger Broucke;
+      FORTRAN90 version by John Burkardt.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Roger Broucke,<br>
+          Algorithm 446:
+          Ten Subroutines for the Manipulation of Chebyshev Series,<br>
+          Communications of the ACM,<br>
+          October 1973, Volume 16, Number 4, pages 254-256.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms446.f90">toms446.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "toms446.sh">toms446.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms446_prb.f90">toms446_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "toms446_prb.sh">toms446_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "toms446_prb_output.txt">toms446_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CHEBY</b> carries out the Chebyshev analysis of one or
+          more functions.
+        </li>
+        <li>
+          <b>MLTPLY</b> multiplies two Chebyshev series.
+        </li>
+        <li>
+          <b>ECHEB</b> evaluates a Chebyshev series at a point.
+        </li>
+        <li>
+          <b>EDCHEB</b> evaluates the derivative of a Chebyshev
+          series at a point.
+        </li>
+        <li>
+          <b>DFRNT</b> determines the derivative of a Chebyshev series.
+        </li>
+        <li>
+          <b>NTGRT</b> determines the integral of a Chebyshev series.
+        </li>
+        <li>
+          <b>INVERT</b> computes the inverse Chebyshev series.
+        </li>
+        <li>
+          <b>BINOM</b> calculates the binomial expansion series for
+          the (-1/M) power of a Chebyshev series.
+        </li>
+        <li>
+          <b>XALFA2</b> computes a Chebyshev series raised to the
+          (-1/M) power.
+        </li>
+        <li>
+          <b>XALFA3</b> computes a Chebyshev series raised to the
+          (-1/M) power.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 14 September 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

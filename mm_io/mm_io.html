@@ -1,0 +1,275 @@
+<html>
+
+  <head>
+    <title>
+      MM_IO - Matrix Market - Read and Write Utilities
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MM_IO <br> Matrix Market <br> Read and Write Utilities
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MM_IO</b>
+      is a FORTRAN90 library which
+      reads and writes files in the Matrix Market format.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MM_IO</b> is available in
+      <a href = "../../c_src/mm_io/mm_io.html">a C version</a> and
+      <a href = "../../f_src/mm_io/mm_io.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/mm_io/mm_io.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dlap_io/dlap_io.html">
+      DLAP_IO</a>,
+      a FORTRAN90 library which
+      reads and writes files
+      describing sparse matrices used by DLAP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hb_io/hb_io.html">
+      HB_IO</a>,
+      a FORTRAN90 library which
+      reads and writes sparse matrices stored in the Harwell-Boeing format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hb_to_st/hb_to_st.html">
+      HB_TO_ST</a>,
+      a FORTRAN90 program which
+      converts the sparse matrix information stored in a Harwell-Boeing
+      file into a sparse triplet file.
+    </p>
+
+    <p>
+      <a href = "../../data/mm/mm.html">
+      MM</a>,
+      a data directory which
+      contains a description and
+      examples of the Matrix Market format for storing matrices.
+    </p>
+
+    <p>
+      <a href = "../../m_src/mm_to_msm/mm_to_msm.html">
+      MM_TO_MSM</a>,
+      a MATLAB program which
+      reads a Matrix Market file defining a sparse matrix, and creates
+      a corresponding MATLAB sparse matrix data structure.
+    </p>
+
+    <p>
+      <a href = "../../m_src/templates/templates.html">
+      TEMPLATES</a>,
+      a MATLAB library which
+      performs the iterative solution of large sparse linear systems.
+      It includes a routine <b>mm_to_msm</b> which
+      can read a Matrix Market file and store it as a MATLAB sparse
+      matrix.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_mat/test_mat.html">
+      TEST_MAT</a>,
+      a FORTRAN90 library which
+      defines various test matrices.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Ronald Boisvert, Roldan Pozo, Karin Remington,<br>
+          The Matrix Market Exchange Formats: Initial Design,<br>
+          National Institute of Standards and Technology,<br>
+          NISTIR 5935, December 1996.
+        </li>
+        <li>
+          <a href = "http://math.nist.gov/MatrixMarket/">
+                     http://math.nist.gov/MatrixMarket/</a>,
+          the Matrix Market web site.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "mm_io.f90">mm_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "mm_io.sh">mm_io.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "mm_io_prb.f90">mm_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "mm_io_prb.sh">mm_io_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "mm_io_prb_output.txt">mm_io_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "matrix_05_05_crg.txt">matrix_05_05_crg.txt</a>,
+          a 5 by 5 matrix in COORDINATE REAL GENERAL form read
+          by some routines, and written by others.
+        </li>
+        <li>
+          <a href = "wathen_29_29_adg.txt">wathen_29_28_adg.txt</a>,
+          a 29 by 29 matrix in ARRAY DOUBLE GENERAL form written by
+          one of the test routines.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>MM_COMMENT_PRINT</b> prints a comment from a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_COMMENT_READ</b> reads a comment from a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_COMMENT_WRITE</b> writes a comment to a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_FILE_READ</b> reads data from a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_FILE_WRITE</b> writes data to a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_HEADER_CHECK</b> checks the header strings for a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_HEADER_PRINT</b> prints header information from a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_HEADER_READ</b> reads the header line from a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_HEADER_WRITE</b> prints header information to a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_NNZ_SET</b> sets the value of NNZ for the ARRAY representation.
+        </li>
+        <li>
+          <b>MM_SIZE_PRINT</b> prints size information from a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_SIZE_READ_FILE</b> reads size information from a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_SIZE_READ_STRING</b> reads size information from a string.
+        </li>
+        <li>
+          <b>MM_SIZE_WRITE</b> writes size information to a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_VALUES_PRINT</b> prints the matrix values of a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_VALUES_PRINT_SOME</b> prints some matrix values of a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_VALUES_READ</b> reads matrix values from a Matrix Market file.
+        </li>
+        <li>
+          <b>MM_VALUES_WRITE</b> writes matrix values to a Matrix Market file.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_NEQI</b> compares two strings for non-equality, ignoring case.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_W_NEXT</b> "reads" words from a string, one at a time.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

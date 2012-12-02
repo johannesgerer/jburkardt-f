@@ -1,0 +1,448 @@
+<html>
+
+  <head>
+    <title>
+      TET_MESH_REFINE - Simple Refinement of a Tet Mesh
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TET_MESH_REFINE <br> Simple Refinement of a Tet Mesh
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TET_MESH_REFINE</b>
+      is a FORTRAN90 program which
+      refines every tetrahedron
+      in a tet mesh, replacing each tetrahedron by 8 subtetrahedrons.
+    </p>
+
+    <p>
+      In particular, <b>TET_MESH_REFINE</b> reads two files,
+      one listing the coordinates of nodes, the other the indices
+      of nodes forming tetrahedrons.  From this information, it
+      determines a refinement of the mesh, and writes out new
+      node and tetrahedron files corresponding to this refinement.
+    </p>
+
+    <p>
+      The refinement of a single tetrahedron is easy.  Every pair
+      of nodes generates a new node whose location is the average of
+      the locations of the original two nodes.  The problem is that
+      many tetrahedrons may share the same edge.  The new node needs
+      to be generated exactly once, and assigned a unique index, which
+      all the tetrahedrons will share.  The tricky part of this calculation
+      is thus figuring out whether it is time to generate a new node, or
+      whether the node has already been generated, in which case the
+      appropriate index must be retrieved.
+    </p>
+
+    <p>
+      The current version of the code can only refine a tet mesh
+      of order 4.  There's no real reason why it could not also
+      handle meshes of order 10, except that the programming is
+      a bit more complex.  For the moment, a mesh of order 10
+      could be handled by using the sequence of programs:
+      <pre><b>
+        TET_MESH_Q2L --&gt; TET_MESH_REFINE --&gt; TET_MESH_L2Q
+      </b></pre>
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>tet_mesh_refine</b> <i>prefix</i>
+      </blockquote>
+      where <i>prefix</i> is the common file prefix:
+      <ul>
+        <li>
+          <i>prefix</i><b>_nodes.txt</b>,    the node coordinates;
+        </li>
+        <li>
+          <i>prefix</i><b>_elements.txt</b>,    the element definitions.
+        </li>
+        <li>
+          <i>prefix</i><b>_ref_nodes.txt</b>,    the refined node coordinates;
+        </li>
+        <li>
+          <i>prefix</i><b>_ref_elements.txt</b>,    the refined element definitions.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The input and output files use the simple
+      <a href = "../../data/table/table.html">TABLE format</a>;
+      comment lines begin with a "#" character.  Otherwise, each line
+      of the file contains one set of information, either the coordinates
+      of a node (for a node file), or the indices of nodes that make up
+      a tetrahedron, (for a tetrahedron file).
+    </p>
+
+    <p>
+      The input file <i>nodes.txt</i> contains the coordinate information
+      for the tet mesh.  Each data line contains the X and
+      Y coordinates of a single node.
+    </p>
+
+    <p>
+      The input file <i>tetras.txt</i> contains the tetrahedron information
+      for the tet mesh.  Each data line contains the indices
+      of the nodes that form a tetrahedron.
+    </p>
+
+    <p>
+      The output files have the same format.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TET_MESH_REFINE</b> is available in
+      <a href = "../../cpp_src/tet_mesh_refine/tet_mesh_refine.html">a C++ version</a> and
+      <a href = "../../f_src/tet_mesh_refine/tet_mesh_refine.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/tet_mesh_refine/tet_mesh_refine.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt_tet_mesh/cvt_tet_mesh.html">
+      CVT_TET_MESH</a>,
+      a FORTRAN90 library which
+      uses CVT methods to compute a tet mesh in a region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_tet_mesh/table_tet_mesh.html">
+      TABLE_TET_MESH</a>,
+      a FORTRAN90 program which
+      can compute the tet mesh
+      for a given set of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_tet_mesh/test_tet_mesh.html">
+      TEST_TET_MESH</a>,
+      a FORTRAN90 library which
+      defines a few test regions for the generation
+      of a tet mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh/tet_mesh.html">
+      TET_MESH</a>,
+      a FORTRAN90 library which
+      includes a variety of routines for working
+      with tetrahedral meshes.
+    </p>
+
+    <p>
+      <a href = "../../m_src/tet_mesh_display/tet_mesh_display.html">
+      TET_MESH_DISPLAY</a>,
+      a MATLAB program which
+      can read in the
+      node and tetra files defining a tet mesh and display a wireframe
+      image.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/tet_mesh_display_opengl/tet_mesh_display_opengl.html">
+      TET_MESH_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads a tet mesh and displays the
+      nodes and edges using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_l2q/tet_mesh_l2q.html">
+      TET_MESH_L2Q</a>,
+      a FORTRAN90 program which
+      takes a 4-node tet mesh
+      and makes a 10-node tet mesh by adding nodes.
+    </p>
+
+    <p>
+      <a href = "../../data/tet_mesh_order4/tet_mesh_order4.html">
+      TET_MESH_ORDER4</a>,
+      a directory which
+      contains a description and
+      examples of a tet mesh using order 4 elements.
+    </p>
+
+    <p>
+      <a href = "../../data/tet_mesh_order10/tet_mesh_order10.html">
+      TET_MESH_ORDER10</a>,
+      a directory which
+      contains a description and
+      examples of a tet mesh using order 10 elements.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_q2l/tet_mesh_q2l.html">
+      TET_MESH_Q2L</a>,
+      a FORTRAN90 program which
+      takes a 10-node tet mesh and makes a 4-node tet mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_quality/tet_mesh_quality.html">
+      TET_MESH_QUALITY</a>,
+      a FORTRAN90 program which
+      takes a 4-node tet mesh and computes
+      the "quality" of the mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_rcm/tet_mesh_rcm.html">
+      TET_MESH_RCM</a>,
+      a FORTRAN90 program which
+      takes a tet mesh and
+      relabels the nodes to reduce the bandwidth of the
+      corresponding adjacency matrix.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_tet_neighbors/tet_mesh_tet_neighbors.html">
+      TET_MESH_TET_NEIGHBORS</a>,
+      a FORTRAN90 program which
+      computes the tetrahedral adjacency information.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_volumes/tet_mesh_volumes.html">
+      TET_MESH_VOLUMES</a>,
+      a FORTRAN90 program which
+      computes the volume of each tetrahedron in a tet mesh;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Herbert Edelsbrunner,<br>
+          Geometry and Topology for Mesh Generation,<br>
+          Cambridge, 2001,<br>
+          ISBN: 0-521-79309-2,<br>
+          LC: QA377.E36.
+        </li>
+        <li>
+          Barry Joe,<br>
+          GEOMPACK - a software package for the generation of meshes
+          using geometric algorithms,<br>
+          Advances in Engineering Software,<br>
+          Volume 13, Number 5, 1991, pages 325-331.
+        </li>
+        <li>
+          Anwei Liu, Barry Joe,<br>
+          Quality Local Refinement of Tetrahedral Meshes Based
+          on 8-Subtetrahedron Subdivision,<br>
+          Mathematics of Computation,<br>
+          Volume 65, Number 215, July 1996, pages 1183-1200.
+        </li>
+        <li>
+          Per-Olof Persson, Gilbert Strang,<br>
+          A Simple Mesh Generator in MATLAB,<br>
+          SIAM Review,<br>
+          Volume 46, Number 2, June 2004, pages 329-345.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "tet_mesh_refine.f90">tet_mesh_refine.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "tet_mesh_refine.sh">tet_mesh_refine.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>CUBE</b> defines an order 4 test mesh on a cube:
+      <ul>
+        <li>
+          <a href = "cube_nodes.txt">cube_nodes.txt</a>,
+          the nodes for the 4-node tet mesh.
+        </li>
+        <li>
+          <a href = "cube_elements.txt">cube_elements.txt</a>,
+          the elements for the 4-node tet mesh.
+        </li>
+        <li>
+          <a href = "cube_ref_nodes.txt">cube_ref_nodes.txt</a>,
+          the nodes for the refined tet mesh.
+        </li>
+        <li>
+          <a href = "cube_ref_elements.txt">cube_ref_elements.txt</a>,
+          the elements for the refined tet mesh.
+        </li>
+        <li>
+          <a href = "cube_output.txt">cube_output.txt</a>,
+          printed output from the program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TET_MESH_REFINE.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>I4COL_COMPARE</b> compares columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORT_A</b> ascending sorts an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORT2_A</b> ascending sorts the elements of each column of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORTED_UNIQUE_COUNT</b> counts unique elements in an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SWAP</b> swaps columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4I4_SORT_A</b> ascending sorts a pair of I4's.
+        </li>
+        <li>
+          <b>I4MAT_DATA_READ</b> reads data from an I4MAT file.
+        </li>
+        <li>
+          <b>I4MAT_HEADER_READ</b> reads the header from an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_WRITE</b> writes an I4MAT file.
+        </li>
+        <li>
+          <b>MESH_BASE_ONE</b> ensures that the element definition is one-based.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TET_MESH_ORDER4_REFINE_COMPUTE</b> computes a refined order 4 tet mesh.
+        </li>
+        <li>
+          <b>TET_MESH_ORDER4_REFINE_SIZE</b> sizes a refined order 4 tet mesh.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 September 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

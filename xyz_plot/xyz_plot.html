@@ -1,0 +1,426 @@
+<html>
+
+  <head>
+    <title>
+      XYZ_PLOT - Interactive Graphics
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      XYZ_PLOT <br> Interactive Graphics
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>XYZ_PLOT</b>
+      is a FORTRAN90 program which
+      tries to take simple input
+      from the user and display some interesting data on the screen.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/anyplt/anyplt.html">
+      ANYPLT</a>,
+      a FORTRAN90 library which
+      served as a generic interface between FORTRAN90 programs and various
+      graphics output devices and files.
+    </p>
+
+    <p>
+      <a href = "../../data/xyz/xyz.html">
+      XYZ</a>,
+      a data directory which
+      contains examples of XYZ files,
+      a simple 3D graphics point and line format;
+    </p>
+
+    <p>
+      <a href = "../../m_src/xyz_display/xyz_display.html">
+      XYZ_DISPLAY</a>,
+      a MATLAB program which
+      reads XYZ information defining points in 3D, and displays
+      an image in the MATLAB graphics window.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xyz_display_opengl/xyz_display_opengl.html">
+      XYZ_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads an XYZ file of 3D point coordinates, and displays
+      an image of those points using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xyz_to_pdb/xyz_to_pdb.html">
+      XYZ_TO_PDB</a>,
+      a FORTRAN90 program which
+      reads a set of XYZ spatial coordinates, and
+      rewrites them as ATOM records in a PDB file.
+    </p>
+
+    <p>
+      <a href = "../../data/xyzf/xyzf.html">
+      XYZF</a>,
+      a data directory which
+      contains examples of XYZF files,
+      a simple 3D graphics point and face format;
+    </p>
+
+    <p>
+      <a href = "../../m_src/xyzf_display/xyzf_display.html">
+      XYZF_DISPLAY</a>,
+      a MATLAB program which
+      reads XYZF information defining points and faces in 3D,
+      and displays an image in a MATLAB graphics window.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xyzf_display_opengl/xyzf_display_opengl.html">
+      XYZF_DISPLAY_OPEN_GL</a>,
+      a C++ program which
+      reads XYZL information defining points and faces in 3D, and displays
+      an image using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../data/xyzl/xyzl.html">
+      XYZL</a>,
+      a data directory which
+      contains examples of XYZL files,
+      a simple 3D graphics point and line format;
+    </p>
+
+    <p>
+      <a href = "../../m_src/xyzl_display/xyzl_display.html">
+      XYZL_DISPLAY</a>,
+      a MATLAB program which
+      reads XYZL information defining points and lines in 3D,
+      and displays an image in a MATLAB graphics window.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xyzl_display_opengl/xyzl_display_opengl.html">
+      XYZL_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads XYZL information defining points and lines in 3D, and displays
+      an image using OpenGL.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "xyz_plot.f90">xyz_plot.f90</A>, the source code.
+        </li>
+        <li>
+          <a href = "xyz_plot_nul.sh">xyz_plot_nul.sh</A>,
+          commands to compile the source code and link it with the
+          "anynul" (no graphics) graphics package.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>XYZ_PLT</b> is the main program.
+        </li>
+        <li>
+          <b>ANGLE_RAD_3D</b> returns the angle in radians between two rays in 3D.
+        </li>
+        <li>
+          <b>ARROW</b> returns points that specify an arrow from one point to another.
+        </li>
+        <li>
+          <b>C_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>C_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>C_IS_ALPHA</b> returns TRUE if C is an alphabetic character.
+        </li>
+        <li>
+          <b>C_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CAU</b> draws a caustic plot.
+        </li>
+        <li>
+          <b>CHKDAT</b> prints out the value of the data.
+        </li>
+        <li>
+          <b>CHKVAL</b> prints out the value of the plot points.
+        </li>
+        <li>
+          <b>COMRPN</b> can translate formulas you type in and evaluate them.
+        </li>
+        <li>
+          <b>CONV3D</b> converts 3D data to a 2D projection.
+        </li>
+        <li>
+          <b>DATA_TO_DIF</b> sets up a divided difference table from raw data.
+        </li>
+        <li>
+          <b>DHPSRT</b> sorts points into lexicographic order.
+        </li>
+        <li>
+          <b>DIAEDG</b> chooses a diagonal edge.
+        </li>
+        <li>
+          <b>DIF_VAL</b> evaluates a divided difference polynomial at a point.
+        </li>
+        <li>
+          <b>DIGIT_TO_C</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>DLESS</b> determines whether P is lexicographically less than Q.
+        </li>
+        <li>
+          <b>DOT0_3D</b> computes the dot product of (P1-P0) and (P2-P0) in 3D.
+        </li>
+        <li>
+          <b>DRWPLT</b> displays the graph.
+        </li>
+        <li>
+          <b>DSFTDW</b> shifts A(*,MAP(L)) down a heap of size U.
+        </li>
+        <li>
+          <b>DTRIS2</b> constructs a Delaunay triangulation of 2-D vertices.
+        </li>
+        <li>
+          <b>ENORM0_3D</b> computes the Euclidean norm of (P1-P0) in 3D.
+        </li>
+        <li>
+          <b>ENORM_ND</b> computes the Euclidean norm of a vector in ND.
+        </li>
+        <li>
+          <b>EVALF</b> gets a formula from the user and evaluates it.
+        </li>
+        <li>
+          <b>FFXY</b> sets up data for F(X,Y)=0 plots.
+        </li>
+        <li>
+          <b>FILE_DELETE</b> deletes a named file if it exists.
+        </li>
+        <li>
+          <b>FUNSCL</b> evaluates a scalar function of one or more scalar arguments.
+        </li>
+        <li>
+          <b>FUNVAL</b> evaluates a scalar, vector or matrix valued function.
+        </li>
+        <li>
+          <b>FXY</b> computes points on a implicit curve defined by F(X,Y) = 0.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GETDAT</b> gets information from the user defining the data vectors.
+        </li>
+        <li>
+          <b>HELLO</b> reports the program name, and other information.
+        </li>
+        <li>
+          <b>I_GCD</b> finds the greatest common divisor of I and J.
+        </li>
+        <li>
+          <b>I_LCM</b> computes the least common multiple of two integers.
+        </li>
+        <li>
+          <b>I_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>I_TO_S_ZERO</b> converts an integer to a string, with zero padding.
+        </li>
+        <li>
+          <b>INICOM</b> initializes data for COMRPN.
+        </li>
+        <li>
+          <b>LEAST_SET</b> constructs the least squares polynomial approximation to data.
+        </li>
+        <li>
+          <b>LEAST_VAL</b> evaluates a least squares polynomial defined by LEAST_SET.
+        </li>
+        <li>
+          <b>LINE_SEG_CONTAINS_POINT_1D</b> reports if a line segment contains a point in 1D.
+        </li>
+        <li>
+          <b>LRLINE</b> determines where a point lies in relation to a directed line.
+        </li>
+        <li>
+          <b>LSQTXY</b> sets up a parameterized least squares polynomial plot.
+        </li>
+        <li>
+          <b>LSQXY</b> sets up the data defining a least squares polynomial plot.
+        </li>
+        <li>
+          <b>NEWTON</b> applies Newton's method to solve F(X,Y)=0, with X or Y fixed.
+        </li>
+        <li>
+          <b>OPTION</b> ...
+        </li>
+        <li>
+          <b>PI</b> returns the value of pi.
+        </li>
+        <li>
+          <b>PLANE_EXP2IMP_3D</b> converts an explicit plane to implicit form in 3D.
+        </li>
+        <li>
+          <b>PLANE_EXP_PROJECT_3D</b> projects points through a point onto a plane in 3D.
+        </li>
+        <li>
+          <b>PLANE_IMP_POINT_NEAR_3D:</b> nearest point on a implicit plane to a point in 3D.
+        </li>
+        <li>
+          <b>POINTS_DIST_3D</b> finds the distance between two points in 3D.
+        </li>
+        <li>
+          <b>PROPLANE2</b> produces 2D coordinates of points that lie in a plane, in 3D.
+        </li>
+        <li>
+          <b>PROPLANE3</b> projects points orthographically onto a plane, in 3D.
+        </li>
+        <li>
+          <b>PWP</b> sets up the data defining a piecewise polynomial plot.
+        </li>
+        <li>
+          <b>R2_CHEBY</b> sets up the Chebyshev abscissas in a real interval.
+        </li>
+        <li>
+          <b>R_NEXT</b> "reads" real numbers from a string, one at a time.
+        </li>
+        <li>
+          <b>R_TO_S_LEFT</b> writes a real into a left justified character string.
+        </li>
+        <li>
+          <b>RPNCHK</b> examines an RPN formula, looking for a complete RPN expression.
+        </li>
+        <li>
+          <b>RPNSET</b> converts the infix formula into an RPN formula.
+        </li>
+        <li>
+          <b>RPNVAL</b> evaluates the symbolic functions in an RPN formula.
+        </li>
+        <li>
+          <b>RVEC_BRACKET</b> searches a sorted array for successive brackets of a value.
+        </li>
+        <li>
+          <b>RVEC_DISTINCT</b> is true if the entries in a real vector are distinct.
+        </li>
+        <li>
+          <b>RVEC_EVEN</b> returns N real values, evenly spaced between ALO and AHI.
+        </li>
+        <li>
+          <b>RVEC_EVEN_SELECT</b> returns the I-th of N evenly spaced values in [ XLO, XHI ].
+        </li>
+        <li>
+          <b>RVEC_UNIT_EUCLIDEAN</b> Euclidean normalizes a vector in ND.
+        </li>
+        <li>
+          <b>S3_FS</b> factors and solves a tridiagonal linear system.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_IS_ALPHA</b> returns .TRUE. if the string contains only alphabetic characters.
+        </li>
+        <li>
+          <b>S_PAREN_CHECK</b> checks the parentheses in a string.
+        </li>
+        <li>
+          <b>S_TO_R</b> reads a real number from a string.
+        </li>
+        <li>
+          <b>SPLINE_CUBIC_SET</b> computes the second derivatives of a cubic spline.
+        </li>
+        <li>
+          <b>SPLINE_CUBIC_VAL</b> evaluates a cubic spline at a specific point.
+        </li>
+        <li>
+          <b>STAR</b> draws a star.
+        </li>
+        <li>
+          <b>SWAPEC</b> swaps diagonal edges in a 2-D triangulation.
+        </li>
+        <li>
+          <b>SXY</b> sets up a cubic spline ( X, S(X) ), interpolating given data.
+        </li>
+        <li>
+          <b>SYMADD</b> adds a symbol name to the list of symbolic names.
+        </li>
+        <li>
+          <b>SYMVAL</b> sets, evaluates, or deletes a variable.
+        </li>
+        <li>
+          <b>TOKENS</b> parses a character string into recognized symbols and constants.
+        </li>
+        <li>
+          <b>TRICON</b> draws a contour line of a scalar quantity.
+        </li>
+        <li>
+          <b>VBEDG</b> determines which boundary edges are visible to a point.
+        </li>
+        <li>
+          <b>VECTOR_UNIT_ND</b> normalizes a vector in ND.
+        </li>
+        <li>
+          <b>XYS</b> computes splines through X and Y data.
+        </li>
+        <li>
+          <b>XYZ_WRITE</b> writes graphics data to an XYZ file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 December 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

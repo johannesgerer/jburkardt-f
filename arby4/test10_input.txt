@@ -1,0 +1,54 @@
+echo
+#  test10.in  15 September 1996
+#
+#  This is just a test of the full driven cavity code, for Mr Lee.
+#  There is no optimization.
+#
+#  Set the defaults for the driven cavity.
+#
+region=cavity
+#
+#  Set certain values, and change defaults.
+#
+gridx=cos
+gridy=cos
+ijac=3
+iwrite=0
+maxsim=4
+nparb=0
+nparf=1
+nx=21
+ny=21
+par(1)=-1.0
+par(2)=100.0
+#
+#  Set up the problem logically and geometrically.
+#
+setlog
+setgeo
+#
+#  Print out the problem data.
+#
+prpar
+prdat
+#
+#  Starting from zero, carry out Picard and then Newton iterations
+#  to find the flow solution.
+#
+gfl=0
+picfl
+newtfl
+#
+#  Print out the solution along the top.
+#
+xmin=0.0
+xmax=1.0
+ymin=1.0
+ymax=1.0
+pruvpgfl
+#
+#  Make a graphics output file.
+#
+displot
+#
+stop

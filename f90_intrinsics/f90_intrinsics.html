@@ -1,0 +1,609 @@
+<html>
+
+  <head>
+    <title>
+      F90_INTRINSICS - Examples of FORTRAN90 Intrinsic Functions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      F90_INTRINSICS <br> Examples of FORTRAN90 Intrinsic Functions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>F90_INTRINSICS</b>
+      is a FORTRAN90 program which
+      demonstrates the use and features of the many FORTRAN90 intrinsic functions and
+      subroutines.
+    </p>
+
+    <p>
+      These functions may be broadly divided into groups of
+      <ul>
+        <li>
+          <i>arithmetic functions</i>
+        </li>
+        <li>
+          <i>vector and matrix functions</i>
+        </li>
+        <li>
+          <i>logic and bit manipulation</i>
+        </li>
+        <li>
+          <i>character manipulation</i>
+        </li>
+        <li>
+          <i>data type conversion</i>
+        </li>
+        <li>
+          <i>arithmetic model inquiry</i>
+        </li>
+        <li>
+          <i>data type inquiry</i>
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../c_src/c_intrinsics/c_intrinsics.html">
+      C_INTRINSICS</a>,
+      a C program which
+      illustrates the use of intrinsic functions supplied by the C language.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/cpp_intrinsics/cpp_intrinsics.html">
+      CPP_INTRINSICS</a>,
+      a C++ program which
+      illustrates the use of intrinsic functions supplied by the C++ language.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/f77_intrinsics/f77_intrinsics.html">
+      F77_INTRINSICS</a>,
+      a FORTRAN77 program which
+      illustrates the use of intrinsic functions
+      included with the FORTRAN77 language.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/g++_intrinsics/g++_intrinsics.html">
+      G++_INTRINSICS</a>,
+      a C++ program which
+      demonstrates some of the intrinsic functions provided by the G++ compiler.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/g77_intrinsics/g77_intrinsics.html">
+      G77_INTRINSICS</a>,
+      FORTRAN77 programs which
+      includes some examples of the use of intrinsic functions
+      included with the G77 compiler.
+    </p>
+
+    <p>
+      <a href = "../../f_src/g95_intrinsics/g95_intrinsics.html">
+      G95_INTRINSICS</a>,
+      FORTRAN90 programs which
+      includes some examples of the use of intrinsic functions peculiar
+      to the GNU G95 FORTRAN compiler.
+    </p>
+
+    <p>
+      <a href = "../../c_src/gcc_intrinsics/gcc_intrinsics.html">
+      GCC_INTRINSICS</a>,
+      a C program which
+      tests or demonstrates intrinsic routines provided by the GCC compiler.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gfortran_intrinsics/gfortran_intrinsics.html">
+      GFORTRAN_INTRINSICS</a>,
+      a FORTRAN90 program which
+      demonstrates the use of some of the intrinsic functions
+      included with the GFORTRAN compiler.
+    </p>
+
+    <p>
+      <a href = "../../java_src/math_intrinsics/math_intrinsics.html">
+      MATH_INTRINSICS</a>,
+      a JAVA program which
+      illustrates the use of the intrinsic functions in the Java Math package.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xlf_intrinsics/xlf_intrinsics.html">
+      XLF_INTRINSICS</a>,
+      a FORTRAN90 program which
+      includes some examples of the use of intrinsic functions peculiar
+      to the IBM XLF FORTRAN compiler.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Jeanne Adams, Walter Brainerd, Jeanne Martin, Brian Smith,
+          Jerrold Wagener,<br>
+          Fortran90 Handbook,<br>
+          Complete ANSI/ISO Reference,<br>
+          McGraw Hill, 1992,<br>
+          ISBN: 0-07-000406-4.
+        </li>
+        <li>
+          Miles Ellis, Ivor Philips, Thomas Lahey,<br>
+          Fortran90 Programming,<br>
+          Addison-Wesley, 1994,<br>
+          LC: QA76.73.F25E435,<br>
+          ISBN: 0-201-54446-6.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "f90_intrinsics.f90">f90_intrinsics.f90</a>,
+          a single program that calls many tests; eact test is devoted to
+          a particular FORTRAN90 intrinsic function.
+        </li>
+        <li>
+          <a href = "f90_intrinsics.sh">f90_intrinsics.sh</a>,
+          commands that compile and run the test;
+        </li>
+        <li>
+          <a href = "f90_intrinsics_output.txt">f90_intrinsics_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for F90_INTRINSICS.
+        </li>
+        <li>
+          <b>TEST_ABS</b> tests ABS.
+        </li>
+        <li>
+          <b>TEST_ACHAR</b> tests ACHAR
+        </li>
+        <li>
+          <b>TEST_ACOS</b> tests ACOS.
+        </li>
+        <li>
+          <b>TEST_ADJUSTL</b> tests ADJUSTL.
+        </li>
+        <li>
+          <b>TEST_ADJUSTR</b> tests ADJUSTR.
+        </li>
+        <li>
+          <b>TEST_AIMAG</b> tests AIMAG.
+        </li>
+        <li>
+          <b>TEST_AINT</b> tests AINT.
+        </li>
+        <li>
+          <b>TEST_ALL</b> tests ALL
+        </li>
+        <li>
+          <b>TEST_ALLOCATED</b> tests ALLOCATED
+        </li>
+        <li>
+          <b>TEST_ANINT</b> tests ANINT.
+        </li>
+        <li>
+          <b>TEST_ANY</b> tests ANY
+        </li>
+        <li>
+          <b>TEST_ASIN</b> tests ASIN.
+        </li>
+        <li>
+          <b>TEST_ASSOCIATED</b> tests ASSOCIATED
+        </li>
+        <li>
+          <b>TEST_ATAN</b> tests ATAN.
+        </li>
+        <li>
+          <b>TEST_ATAN2</b> tests ATAN2.
+        </li>
+        <li>
+          <b>TEST_BIT_SIZE</b> tests BIT_SIZE.
+        </li>
+        <li>
+          <b>TEST_BTEST</b> tests BTEST.
+        </li>
+        <li>
+          <b>TEST_CEILING</b> tests CEILING.
+        </li>
+        <li>
+          <b>TEST_CHAR</b> tests CHAR
+        </li>
+        <li>
+          <b>TEST_CMPLX</b> tests CMPLX.
+        </li>
+        <li>
+          <b>TEST_CONJG</b> tests CONJG.
+        </li>
+        <li>
+          <b>TEST_COS_C4</b> tests COS on complex ( kind = 4 ) arguments.
+        </li>
+        <li>
+          <b>TEST_COS_R8</b> tests COS on real ( kind = 8 ) arguments.
+        </li>
+        <li>
+          <b>TEST_COSH</b> tests COSH.
+        </li>
+        <li>
+          <b>TEST_COUNT</b> tests COUNT
+        </li>
+        <li>
+          <b>TEST_CSHIFT</b> tests CSHIFT.
+        </li>
+        <li>
+          <b>TEST_DATE_AND_TIME</b> tests DATE_AND_TIME.
+        </li>
+        <li>
+          <b>TEST_DBLE</b> tests DBLE.
+        </li>
+        <li>
+          <b>TEST_DIGITS</b> tests DIGITS.
+        </li>
+        <li>
+          <b>TEST_DIM</b> tests DIM
+        </li>
+        <li>
+          <b>TEST_DOT_PRODUCT</b> tests DOT_PRODUCT.
+        </li>
+        <li>
+          <b>TEST_DPROD</b> tests DPROD
+        </li>
+        <li>
+          <b>TEST_EOSHIFT</b> tests EOSHIFT.
+        </li>
+        <li>
+          <b>TEST_EPSILON</b> tests EPSILON.
+        </li>
+        <li>
+          <b>TEST_EXP</b> tests EXP.
+        </li>
+        <li>
+          <b>TEST_EXPONENT</b> tests EXPONENT.
+        </li>
+        <li>
+          <b>TEST_FLOOR</b> tests FLOOR.
+        </li>
+        <li>
+          <b>TEST_FRACTION</b> tests FRACTION.
+        </li>
+        <li>
+          <b>TEST_HUGE</b> tests HUGE.
+        </li>
+        <li>
+          <b>TEST_IACHAR</b> tests IACHAR
+        </li>
+        <li>
+          <b>TEST_IAND_I4</b> tests IAND on integer ( kind = 4 ) arguments.
+        </li>
+        <li>
+          <b>TEST_IAND_I8</b> tests IAND on integer ( kind = 8 ) arguments.
+        </li>
+        <li>
+          <b>TEST_IBCLR</b> tests IBCLR.
+        </li>
+        <li>
+          <b>TEST_IBITS</b> tests IBITS.
+        </li>
+        <li>
+          <b>TEST_IBSET</b> tests IBSET.
+        </li>
+        <li>
+          <b>TEST_ICHAR</b> tests ICHAR
+        </li>
+        <li>
+          <b>TEST_IEOR_I4</b> tests IEOR on integer ( kind = 4 ) arguments.
+        </li>
+        <li>
+          <b>TEST_IEOR_I8</b> tests IEOR on integer ( kind = 8 ) arguments.
+        </li>
+        <li>
+          <b>TEST_INDEX</b> tests INDEX.
+        </li>
+        <li>
+          <b>TEST_INT</b> tests INT.
+        </li>
+        <li>
+          <b>TEST_IOR_I4</b> tests IOR on integer ( kind = 4 ) arguments.
+        </li>
+        <li>
+          <b>TEST_IOR_I8</b> tests IOR on integer ( kind = 8 ) arguments.
+        </li>
+        <li>
+          <b>TEST_ISHFT</b> tests ISHFT.
+        </li>
+        <li>
+          <b>TEST_ISHFTC</b> tests ISHFTC.
+        </li>
+        <li>
+          <b>TEST_KIND</b> tests KIND.
+        </li>
+        <li>
+          <b>TEST_LBOUND</b> tests LBOUND.
+        </li>
+        <li>
+          <b>TEST_LEN</b> tests LEN.
+        </li>
+        <li>
+          <b>TEST_LEN_TRIM</b> tests LEN_TRIM.
+        </li>
+        <li>
+          <b>TEST_LGE</b> tests LGE.
+        </li>
+        <li>
+          <b>TEST_LGT</b> tests LGT.
+        </li>
+        <li>
+          <b>TEST_LLE</b> tests LLE.
+        </li>
+        <li>
+          <b>TEST_LLT</b> tests LLT.
+        </li>
+        <li>
+          <b>TEST_LOG</b> tests LOG.
+        </li>
+        <li>
+          <b>TEST_LOG10</b> tests LOG10.
+        </li>
+        <li>
+          <b>TEST_LOGICAL</b> tests LOGICAL.
+        </li>
+        <li>
+          <b>TEST_MATMUL</b> tests MATMUL.
+        </li>
+        <li>
+          <b>TEST_MAX</b> tests MAX.
+        </li>
+        <li>
+          <b>TEST_MAX_VECTOR</b> tests MAX applied to a vector.
+        </li>
+        <li>
+          <b>TEST_MAXEXPONENT</b> tests MAXEXPONENT.
+        </li>
+        <li>
+          <b>TEST_MAXLOC</b> tests MAXLOC.
+        </li>
+        <li>
+          <b>TEST_MAXVAL</b> tests MAXVAL.
+        </li>
+        <li>
+          <b>TEST_MERGE</b> tests MERGE.
+        </li>
+        <li>
+          <b>TEST_MIN</b> tests MIN.
+        </li>
+        <li>
+          <b>TEST_MINEXPONENT</b> tests MINEXPONENT.
+        </li>
+        <li>
+          <b>TEST_MINLOC</b> tests MINLOC.
+        </li>
+        <li>
+          <b>TEST_MINVAL</b> tests MINVAL.
+        </li>
+        <li>
+          <b>TEST_MOD_I4</b> tests MOD on integers.
+        </li>
+        <li>
+          <b>TEST_MOD_R4</b> tests MOD on reals.
+        </li>
+        <li>
+          <b>TEST_MODULO_I4</b> tests MODULO on integers.
+        </li>
+        <li>
+          <b>TEST_MODULO_R4</b> tests MODULO on reals.
+        </li>
+        <li>
+          <b>TEST_MVBITS</b> tests MVBITS.
+        </li>
+        <li>
+          <b>TEST_NEAREST</b> tests NEAREST.
+        </li>
+        <li>
+          <b>TEST_NINT</b> tests NINT.
+        </li>
+        <li>
+          <b>TEST_NOT_I4</b> tests NOT on integer ( kind = 4 ) arguments.
+        </li>
+        <li>
+          <b>TEST_NOT_I8</b> tests NOT on integer ( kind = 8 ) arguments.
+        </li>
+        <li>
+          <b>TEST_PACK</b> tests PACK.
+        </li>
+        <li>
+          <b>TEST_PRECISION</b> tests PRECISION.
+        </li>
+        <li>
+          <b>TEST_PRESENT</b> tests PRESENT.
+        </li>
+        <li>
+          <b>TEST_PRODUCT</b> tests PRODUCT.
+        </li>
+        <li>
+          <b>TEST_RADIX</b> tests RADIX.
+        </li>
+        <li>
+          <b>TEST_RANDOM_NUMBER</b> tests RANDOM_NUMBER.
+        </li>
+        <li>
+          <b>TEST_RANDOM_SEED</b> tests RANDOM_SEED.
+        </li>
+        <li>
+          <b>TEST_RANGE</b> tests RANGE.
+        </li>
+        <li>
+          <b>TEST_REAL_C4</b> tests REAL as applied to complex numbers.
+        </li>
+        <li>
+          <b>TEST_REPEAT</b> tests REPEAT.
+        </li>
+        <li>
+          <b>TEST_RESHAPE</b> tests RESHAPE.
+        </li>
+        <li>
+          <b>TEST_RRSPACING</b> tests RRSPACING.
+        </li>
+        <li>
+          <b>TEST_SCAN</b> tests SCAN.
+        </li>
+        <li>
+          <b>TEST_SET_EXPONENT</b> tests SET_EXPONENT.
+        </li>
+        <li>
+          <b>TEST_SCALE</b> tests SCALE.
+        </li>
+        <li>
+          <b>TEST_SELECTED_INT_KIND</b> tests SELECTED_INT_KIND.
+        </li>
+        <li>
+          <b>TEST_SELECTED_REAL_KIND</b> tests SELECTED_REAL_KIND.
+        </li>
+        <li>
+          <b>TEST_SHAPE</b> tests SHAPE.
+        </li>
+        <li>
+          <b>TEST_SIGN</b> tests SIGN.
+        </li>
+        <li>
+          <b>TEST_SIN_R8</b> tests SIN on real ( kind = 8 ) arguments.
+        </li>
+        <li>
+          <b>TEST_SINH</b> tests SINH.
+        </li>
+        <li>
+          <b>TEST_SIZE</b> tests SIZE.
+        </li>
+        <li>
+          <b>TEST_SPACING</b> tests SPACING.
+        </li>
+        <li>
+          <b>TEST_SPREAD</b> tests SPREAD.
+        </li>
+        <li>
+          <b>TEST_SQRT</b> tests SQRT.
+        </li>
+        <li>
+          <b>TEST_SUM</b> tests SUM.
+        </li>
+        <li>
+          <b>TEST_SUM_DIM</b> tests SUM specifying a dimension.
+        </li>
+        <li>
+          <b>TEST_SYSTEM_CLOCK</b> tests SYSTEM_CLOCK.
+        </li>
+        <li>
+          <b>TEST_TAN</b> tests TAN.
+        </li>
+        <li>
+          <b>TEST_TANH</b> tests TANH.
+        </li>
+        <li>
+          <b>TEST_TINY</b> tests TINY.
+        </li>
+        <li>
+          <b>TEST_TRANSFER</b> tests TRANSFER.
+        </li>
+        <li>
+          <b>TEST_TRANSPOSE</b> tests TRANSPOSE.
+        </li>
+        <li>
+          <b>TEST_TRIM</b> tests TRIM.
+        </li>
+        <li>
+          <b>TEST_UBOUND</b> tests UBOUND.
+        </li>
+        <li>
+          <b>TEST_UNPACK</b> tests UNPACK.
+        </li>
+        <li>
+          <b>TEST_VERIFY</b> tests VERIFY.
+        </li>
+        <li>
+          <b>C4_UNIFORM_01</b> returns a unit complex pseudorandom number.
+        </li>
+        <li>
+          <b>CH_IS_PRINTABLE</b> is TRUE if C is printable.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a pseudorandom integer of KIND = 4.
+        </li>
+        <li>
+          <b>I4VEC_UNIFORM</b> returns a scaled pseudorandom I4VEC.
+        </li>
+        <li>
+          <b>I8_UNIFORM</b> returns a pseudorandom integer of KIND = 8.
+        </li>
+        <li>
+          <b>R4_UNIFORM</b> returns a scaled real ( kind = 4 ) pseudorandom number.
+        </li>
+        <li>
+          <b>R4_UNIFORM_01</b> returns a unit real ( kind = 4 ) pseudorandom number.
+        </li>
+        <li>
+          <b>R8_UNIFORM</b> returns a scaled real  ( kind = 8 ) pseudorandom number.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit real  ( kind = 8 ) pseudorandom number.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 July 2012
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

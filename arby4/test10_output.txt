@@ -1,0 +1,319 @@
+March 10 2003   9:01:20.552 AM
+ 
+ARBY4
+  A reduced basis flow analysis code.
+  Last modified on 04 December 2000.
+ 
+  The maximum problem size is
+    MAXNX =     21
+    MAXNY =     21
+ 
+ARBY4 - Init: Initialize all data.
+ 
+Enter command:
+ 
+echo                                                                            
+User commands will be echoed.
+ 
+Enter command:
+#  test10.in  15 September 1996
+#
+#  This is just a test of the full driven cavity code, for Mr Lee.
+#  There is no optimization.
+#
+#  Set the defaults for the driven cavity.
+#
+region=cavity
+ 
+ ARBY4 - Cavity:
+   Set user input values to cavity defaults.
+ 
+Enter command:
+#
+#  Set certain values, and change defaults.
+#
+gridx=cos
+ 
+ The GRIDX option set to cos                 
+ Remember to use the SETGEO command
+ before trying to solve your system!
+ 
+Enter command:
+gridy=cos
+ 
+ 
+The GRIDY option set to cos
+Remember to use the SETGEO command
+before trying to solve your system!
+ 
+Enter command:
+ijac=3
+ 
+ IJAC set to            3
+ 
+Enter command:
+iwrite=0
+ 
+ IWRITE set to            0
+ 
+Enter command:
+maxsim=4
+ 
+ MAXSIM set to            4
+ 
+Enter command:
+nparb=0
+ 
+ NPARB set to            0
+ 
+Enter command:
+nparf=1
+ 
+ NPARF set to            1
+ 
+Enter command:
+nx=21
+ 
+ NX set to           21
+ Remember to use the SETLOG and SETGEO commands
+ before trying to solve your systems!
+ 
+Enter command:
+ny=21
+ 
+ NY set to           21
+ Remember to use the SETLOG and SETGEO commands
+ before trying to solve your system!
+ 
+Enter command:
+par(1)=-1.0
+ 
+ PAR(           1 ) set to   -1.00000000000000     
+ 
+Enter command:
+par(2)=100.0
+ 
+ PAR(           2 ) set to    100.000000000000     
+ 
+Enter command:
+#
+#  Set up the problem logically and geometrically.
+#
+setlog
+ 
+ ARBY4 - SetLog: Set problem logical data.
+  
+ SetLog - Note:
+   Number of elements, NELEM =          800
+   Number of nodes, NP =         1681
+   X nodal spacing is HX =   2.500000000000000E-002
+   Y nodal spacing is HY =   2.500000000000000E-002
+   The number of unknowns is NEQNFL =         3803
+  
+   Profile nodes extend from          821
+   to          861
+  
+   Maximum full matrix rows LDAFL =          609
+   Lower bandwidth NLBAND =              192
+   Required matrix rows 3*NLBAND+1 =           577
+ 
+Enter command:
+setgeo
+ 
+ ARBY4 - SetGeo: Set problem geometry.
+ 
+Enter command:
+#
+#  Print out the problem data.
+#
+prpar
+ 
+ ARBY4 - Pr PAR: Print current parameters PAR.
+  
+ 1  Inflow  Fixed    -1.00000    
+ 2  Reynld  Free      100.000    
+ 
+Enter command:
+prdat
+ 
+ ARBY4 - Pr Dat
+   Print current problem data.
+  
+   DISPLAY graphics file is DISFIL =              display.dat
+   REYNLD increment for finite differences DREY =   1.000000000000000E-002
+   Finite difference perturbation EPSDIF =          1.000000000000000E-006
+   X grid generation option GRIDX = cos                 
+   Y grid generation option GRIDY = cos                 
+   X spacing, HX =     2.500000000000000E-002
+   Y spacing, HY =     2.500000000000000E-002
+   Bump piecewise polynomial order IBS =            0
+   Bump option IBUMP =                              0
+   Flow piecewise polynomial order IFS =            0
+   Jacobian option IJAC =                           3
+  
+   Variable  Type  Free to Vary?
+  
+          1  Inflow  No 
+          2  Reynld  Yes
+  
+   Maximum Newton iterations MAXNEW =              10
+   Maximum optimization steps MAXOPT =             15
+   Maximum Newton iterations MAXSIM =               4
+   # of RB boundary conditions NBCRB =              1
+   Number of reduced equations, NCOFRB =            0
+   Number of elements, NELEM =                    800
+   Number of full equations, NEQNFL =            3803
+   # of FE reduced basis cofs, NFERB =              0
+   Number of nodes, NP =                         1681
+   Number of parameters NPAR =                      2
+   Number of inflow parameters NPARF =              1
+   Number of Taylor vectors NTAY =                  0
+   Number of bump parameters NPARB =                0
+   Number of X elements, NX =                      21
+   Number of Y elements, NY =                      21
+   The flow region is REGION = cavity
+   REYNLD value for Taylor, REYTAY =        1.00000000000000     
+   TECPLOT graphics file is TECFIL =              tecplot.dat
+   Newton convergence tolerance TOLNEW =   1.000000000000000E-010
+   Optimization tolerance TOLOPT =         1.000000000000000E-009
+   Picard convergence tolerance TOLSIM =   1.000000000000000E-010
+   Bump control cost,   WATEB =            0.000000000000000E+000
+   Pressure discrepancy, WATEP =           0.000000000000000E+000
+   U discrepancy, WATEU =                   1.00000000000000     
+   V discrepancy, WATEV =                   1.00000000000000     
+   Left X of bump, XBL =                   0.000000000000000E+000
+   Right X of bump, XBR =                  0.000000000000000E+000
+   Flow profile measured at XPROF =        0.500000000000000     
+   X range, XRANGE =                        1.00000000000000     
+   Left Y of bump, YBL =                   0.000000000000000E+000
+   Right Y of bump, YBR =                  0.000000000000000E+000
+   Y range, YRANGE =                        1.00000000000000     
+ 
+Enter command:
+#
+#  Starting from zero, carry out Picard and then Newton iterations
+#  to find the flow solution.
+#
+gfl=0
+ 
+ ARBY4 - GFL = 0
+   Set full solution estimate GFL to zero.
+ 
+Enter command:
+picfl
+ 
+ ARBY4 - PicFL:
+   Apply Picard to full solution estimate GFL.
+   Picard step            5  residual norm  =   4.062912377735867E-003
+ 
+Enter command:
+newtfl
+ 
+ ARBY4 - NewtFL
+   Apply Newton to full solution estimate GFL.
+   Newton step            5  residual norm  =   8.878314750049299E-015
+ 
+Enter command:
+#
+#  Print out the solution along the top.
+#
+xmin=0.0
+ 
+ XMIN set to   0.000000000000000E+000
+ 
+Enter command:
+xmax=1.0
+ 
+ XMAX set to    1.00000000000000     
+ 
+Enter command:
+ymin=1.0
+ 
+ YMIN set to    1.00000000000000     
+ 
+Enter command:
+ymax=1.0
+ 
+ YMAX set to    1.00000000000000     
+ 
+Enter command:
+pruvpgfl
+ 
+ 
+PRUVPFL - Print selected flow data
+  0.000000000000000E+000  = XMIN <= X <= XMAX =    1.00000000000000     
+   1.00000000000000       = YMIN <= Y <= YMAX =    1.00000000000000     
+ 
+  Node     X           Y            U             V             P
+ 
+   41   0.000       1.000      -1.00000       0.00000       19.8049    
+   82  0.3078E-02   1.000      -1.00000       0.00000    
+  123  0.6156E-02   1.000      -1.00000       0.00000       12.0605    
+  164  0.1531E-01   1.000      -1.00000       0.00000    
+  205  0.2447E-01   1.000      -1.00000       0.00000       10.0353    
+  246  0.3948E-01   1.000      -1.00000       0.00000    
+  287  0.5450E-01   1.000      -1.00000       0.00000       9.87863    
+  328  0.7499E-01   1.000      -1.00000       0.00000    
+  369  0.9549E-01   1.000      -1.00000       0.00000       9.66899    
+  410  0.1210       1.000      -1.00000       0.00000    
+  451  0.1464       1.000      -1.00000       0.00000       9.52563    
+  492  0.1763       1.000      -1.00000       0.00000    
+  533  0.2061       1.000      -1.00000       0.00000       9.43001    
+  574  0.2396       1.000      -1.00000       0.00000    
+  615  0.2730       1.000      -1.00000       0.00000       9.36860    
+  656  0.3092       1.000      -1.00000       0.00000    
+  697  0.3455       1.000      -1.00000       0.00000       9.33816    
+  738  0.3836       1.000      -1.00000       0.00000    
+  779  0.4218       1.000      -1.00000       0.00000       9.33260    
+  820  0.4609       1.000      -1.00000       0.00000    
+  861  0.5000       1.000      -1.00000       0.00000       9.34326    
+  902  0.5391       1.000      -1.00000       0.00000    
+  943  0.5782       1.000      -1.00000       0.00000       9.36097    
+  984  0.6164       1.000      -1.00000       0.00000    
+ 1025  0.6545       1.000      -1.00000       0.00000       9.37803    
+ 1066  0.6908       1.000      -1.00000       0.00000    
+ 1107  0.7270       1.000      -1.00000       0.00000       9.38936    
+ 1148  0.7604       1.000      -1.00000       0.00000    
+ 1189  0.7939       1.000      -1.00000       0.00000       9.39129    
+ 1230  0.8237       1.000      -1.00000       0.00000    
+ 1271  0.8536       1.000      -1.00000       0.00000       9.38318    
+ 1312  0.8790       1.000      -1.00000       0.00000    
+ 1353  0.9045       1.000      -1.00000       0.00000       9.35706    
+ 1394  0.9250       1.000      -1.00000       0.00000    
+ 1435  0.9455       1.000      -1.00000       0.00000       9.30693    
+ 1476  0.9605       1.000      -1.00000       0.00000    
+ 1517  0.9755       1.000      -1.00000       0.00000       9.09638    
+ 1558  0.9847       1.000      -1.00000       0.00000    
+ 1599  0.9938       1.000      -1.00000       0.00000       8.22141    
+ 1640  0.9969       1.000      -1.00000       0.00000    
+ 1681   1.000       1.000      -1.00000       0.00000       0.00000    
+ 
+Enter command:
+#
+#  Make a graphics output file.
+#
+displot
+ 
+ARBY4 - DisPlot: Write data to DISPLAY plot file.
+ 
+Enter command:
+#
+stop
+ 
+  
+ ARBY4 - STOP command:
+   Halt the program!
+  
+   Closing the user input file ARBY.IN.
+  
+   The (real) start time was    090120.590
+   The (real) stopping time was 090131.631
+   The (real) elapsed time in seconds is            0
+   The real elapsed time in minutes is   0.000000000000000E+000
+  
+   CPU in seconds =    10.72363    
+   CPU in minutes =   0.178727229436239     
+  
+   Normal end of execution.
+ 
+March 10 2003   9:01:31.631 AM

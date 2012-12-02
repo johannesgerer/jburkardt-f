@@ -1,0 +1,204 @@
+<html>
+
+  <head>
+    <title>
+      TOMS661 - Interpolation of Scattered Data in 3D
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOMS661 <br> Interpolation of Scattered Data in 3D
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS661</b>
+      is a FORTRAN90 library which
+      interpolates scattered 3D data,
+      also known as "qshep3d",
+      by Robert Renka.
+    </p>
+
+    <p>
+      <b>TOMS661</b> takes a set of data values WDAT(XDAT,YDAT,ZDAT), where
+      the points (XDAT,YDAT,ZDAT) are "scattered" in 3D, and constructs an
+      interpolating function W(X,Y,Z) which matches the given data
+      and extends smoothly through 3D space.
+    </p>
+
+    <p>
+      <b>TOMS661</b> is primarily a FORTRAN90 "translation" of a
+      FORTRAN77 program which was written by Robert Renka and published
+      in the ACM Transactions on Mathematical Software.
+    </p>
+
+    <p>
+      <b>TOMS661</b> is ACM Transactions on Mathematical Software Algorithm
+      number 661.  The original text of any ACM TOMS algorithm is available
+      through ACM:
+              <a href = "http://www.acm.org/pubs/calgo/">
+                         http://www.acm.org/pubs/calgo</a>
+      or NETLIB:
+      <a href = "http://www.netlib.org/toms/index.html">
+      http://www.netlib.org/toms/index.html</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TOMS661</b> is available in
+      <a href = "../../f77_src/toms661/toms661.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms661/toms661.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/rbf_interp/rbf_interp.html">
+      RBF_INTERP</a>,
+      a FORTRAN90 library which
+      defines and evaluates radial basis interpolants to multidimensional data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms526/toms526.html">
+      TOMS526</a>,
+      a FORTRAN90 library which
+      interpolates scattered bivariate data,
+      This is a FORTRAN90 version of ACM TOMS algorithm 526,
+      by Hiroshi Akima;
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms660/toms660.html">
+      TOMS660</a>,
+      a FORTRAN90 library which
+      takes scattered 2D data and produces an interpolating function F(X,Y),
+      this is a FORTRAN90 version of ACM TOMS algorithm 660,
+      called <b>qshep2d</b>,
+      by Robert Renka.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Robert Renka
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Richard Franke,<br>
+          Scattered Data Interpolation: Tests of Some Methods,<br>
+          Mathematics of Computation,<br>
+          Volume 38, Number 157, January 1982, pages 181-200.
+        </li>
+        <li>
+          Robert Renka,<br>
+          Algorithm 661:
+          QSHEP3D, Quadratic Shepard method for trivariate interpolation
+          of scattered data,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 14, 1988, pages 151-152.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms661.f90">toms661.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "toms661.sh">toms661.sh</a>, commands to
+          compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms661_prb.f90">toms661_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "toms661_prb.sh">toms661_prb.sh</a>,
+          commands to compile, load and run the sample problem.
+        </li>
+        <li>
+          <a href = "toms661_prb_output.txt">toms661_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>QSHEP3</b> defines a smooth trivariate interpolant of scattered 3D data.
+        </li>
+        <li>
+          <b>QS3VAL</b> evaluates the interpolant function Q(X,Y,Z) created by QSHEP3.
+        </li>
+        <li>
+          <b>QS3GRD</b> computes the value and gradient of the interpolant function.
+        </li>
+        <li>
+          <b>GETNP3</b> finds the closest node to a given point.
+        </li>
+        <li>
+          <b>GIVENS</b> constructs a Givens plane rotation.
+        </li>
+        <li>
+          <b>ROTATE</b> applies a Givens rotation to two vectors.
+        </li>
+        <li>
+          <b>SETUP3</b> sets up the weighted least-squares fit of the data.
+        </li>
+        <li>
+          <b>STORE3</b> sets up a data structure for N scattered nodes in 3D.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 21 February 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

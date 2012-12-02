@@ -1,0 +1,269 @@
+<html>
+
+  <head>
+    <title>
+      PWL_INTERP_2D_SCATTERED - Piecewise Linear Interpolant to 2D Scattered Data
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PWL_INTERP_2D_SCATTERED <br> Piecewise Linear Interpolant to 2D Scattered Data
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PWL_INTERP_2D_SCATTERED</b>
+      is a FORTRAN90 library which
+      produces a piecewise linear interpolant to 2D scattered data,
+      that is, data that is not guaranteed to lie on a regular grid.
+    </p>
+
+    <p>
+      This program computes a Delaunay triangulation of the data points,
+      and then constructs an interpolant triangle by triangle.  Over a given
+      triangle, the interpolant is the linear function which matches the
+      data already given at the vertices of the triangle.
+    </p>
+
+    <p>
+      <b>PWL_INTERP_2D</b> requires the R8LIB library.  The test code
+      requires the TEST_INTERP_2D library.
+    </p>
+
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>PWL_INTERP_2D_SCATTERED</b> is available in
+      <a href = "../../c_src/pwl_interp_2d_scattered/pwl_interp_2d_scattered.html">a C version</a> and
+      <a href = "../../cpp_src/pwl_interp_2d_scattered/pwl_interp_2d_scattered.html">a C++ version</a> and
+      <a href = "../../f77_src/pwl_interp_2d_scattered/pwl_interp_2d_scattered.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/pwl_interp_2d_scattered/pwl_interp_2d_scattered.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/pwl_interp_2d_scattered/pwl_interp_2d_scattered.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/lagrange_interp_2d/lagrange_interp_2d.html">
+      LAGRANGE_INTERP_2D</a>,
+      a FORTRAN90 library which
+      defines and evaluates the Lagrange polynomial p(x,y) 
+      which interpolates a set of data depending on a 2D argument
+      that was evaluated on a product grid,
+      so that p(x(i),y(j)) = z(i,j).
+    </p>
+
+    <p>
+      <a href = "../../f_src/pwl_interp_2d/pwl_interp_2d.html">
+      PWL_INTERP_2D</a>,
+      a FORTRAN90 library which
+      evaluates a piecewise linear interpolant to data defined on
+      a regular 2D grid.
+    </p>
+
+    <p>
+      <a href = "../../f_src/rbf_interp_2d/rbf_interp_2d.html">
+      RBF_INTERP_2D</a>,
+      a FORTRAN90 library which
+      defines and evaluates radial basis function (RBF) interpolants to 
+      scattered 2D data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/shepard_interp_2d/shepard_interp_2d.html">
+      SHEPARD_INTERP_2D</a>,
+      a FORTRAN90 library which
+      defines and evaluates Shepard interpolants to scattered 2D data,
+      based on inverse distance weighting.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_interp_2d/test_interp_2d.html">
+      TEST_INTERP_2D</a>,
+      a FORTRAN90 library which
+      defines test problems for interpolation of regular or scattered data z(x,y),
+      depending on a 2D argument.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation/triangulation.html">
+      TRIANGULATION</a>,
+      a FORTRAN90 library which
+      performs various operations on order 3 (linear) or order 6 (quadratic) triangulations.
+    </p>
+
+    <p>
+      <a href = "../../m_src/triangulation_order3_contour/triangulation_order3_contour.html">
+      TRIANGULATION_ORDER3_CONTOUR</a>,
+      a MATLAB program which
+      makes contour plot of scattered data, or of data defined on an order 3 triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/vandermonde_interp_2d/vandermonde_interp_2d.html">
+      VANDERMONDE_INTERP_2D</a>,
+      a FORTRAN90 library which
+      finds a polynomial interpolant to data z(x,y) of a 2D argument
+      by setting up and solving a linear system for the polynomial coefficients,
+      involving the Vandermonde matrix.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Press, Brian Flannery, Saul Teukolsky, William Vetterling,<br>
+          Numerical Recipes in FORTRAN: The Art of Scientific Computing,<br>
+          Third Edition,<br>
+          Cambridge University Press, 2007,<br>
+          ISBN13: 978-0-521-88068-8,<br>
+          LC: QA297.N866.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "pwl_interp_2d_scattered.f90">pwl_interp_2d_scattered.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "pwl_interp_2d_scattered.sh">pwl_interp_2d_scattered.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "pwl_interp_2d_scattered_prb.f90">pwl_interp_2d_scattered_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "pwl_interp_2d_scattered_prb.sh">pwl_interp_2d_scattered_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "pwl_interp_2d_scattered_prb_output.txt">pwl_interp_2d_scattered_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DIAEDG</b> chooses a diagonal edge.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of I4 division.
+        </li>
+        <li>
+          <b>I4_SIGN</b> evaluates the sign of an I4.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two I4's.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D</b> reorders an I4VEC into a descending heap.
+        </li>
+        <li>
+          <b>I4VEC_MIN</b> computes the minimum element of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_A</b> ascending sorts an I4VEC using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SORTED_UNIQUE</b> gets the unique elements in a sorted I4VEC.
+        </li>
+        <li>
+          <b>LRLINE</b> determines if a point is left of, right or, or on a directed line.
+        </li>
+        <li>
+          <b>PERM_CHECK2</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PERM_INVERSE</b> inverts a permutation "in place".
+        </li>
+        <li>
+          <b>PWL_INTERP_2D_SCATTERED_VALUE</b> evaluates a 2d interpolant of scattered data
+        </li>
+        <li>
+          <b>R8TRIS2</b> constructs a Delaunay triangulation of 2D vertices.
+        </li>
+        <li>
+          <b>SWAPEC</b> swaps diagonal edges until all triangles are Delaunay.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_PRINT</b> prints information about a triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_SEARCH_DELAUNAY</b> searches a Delaunay triangulation for a point.
+        </li>
+        <li>
+          <b>VBEDG</b> determines which boundary edges are visible to a point.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 25 October 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,279 @@
+<html>
+
+  <head>
+    <title>
+      CONDITION - Matrix Condition Number Estimation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CONDITION <br> Matrix Condition Number Estimation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CONDITION</b>
+      is a FORTRAN90 library which
+      implements methods for computing or estimating the condition number of a matrix.
+    </p>
+
+    <p>
+      Let ||*|| be a matrix norm, let A be an invertible matrix, and inv(A) the inverse of A.
+      The condition number of A with respect to the norm ||*|| is defined to be
+      <pre>
+        kappa(A) = ||A|| * ||inv(A)||
+      </pre>
+    </p>
+
+    <p>
+      If A is not invertible, the condition number is taken to be infinity.
+    </p>
+
+    <p>
+      Facts about the condition number include:
+      <ul>
+        <li>
+          1 <= kappa(A) for all matrices A.
+        </li>
+        <li>
+          1 = kappa(I), where I is the identity matrix.
+        </li>
+        <li>
+          for the L2 matrix norm, the condition number of any orthogonal matrix is 1.
+        </li>
+        <li>
+          for the L2 matrix norm, the condition number is the ratio of the maximum
+          to minimum singular values;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The <b>CONDITION</b> library needs access to a copy of the R8LIB library.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CONDITION</b> is available in
+      <a href = "../../c_src/condition/condition.html">a C version</a> and
+      <a href = "../../cpp_src/condition/condition.html">a C++ version</a> and
+      <a href = "../../f77_src/condition/condition.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/condition/condition.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/condition/condition.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/linpack_d/linpack_d.html">
+      LINPACK_D</a>,
+      a FORTRAN90 library which
+      solves linear systems using double precision real arithmetic;
+    </p>
+
+    <p>
+      <a href = "../../f77_src/napack/napack.html">
+      NAPACK</a>,
+      a FORTRAN77 library which
+      includes many routines for applied numerical linear algebra tasks,
+      including the matrix condition number,
+      by William Hager.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>,
+      a FORTRAN90 library which
+      contains many utility routines using double precision real (R8) arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_mat/test_mat.html">
+      TEST_MAT</a>,
+      a FORTRAN90 library which
+      defines test matrices for which some of the determinant, eigenvalues, inverse,
+      null vectors, P*L*U factorization or linear system solution are already known.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Alan Cline, Cleve Moler, Pete Stewart, James Wilkinson,<br>
+          An estimate for the Condition Number of a Matrix,<br>
+          Technical Report TM-310,<br>
+          Argonne National Laboratory, 1977.
+        </li>
+        <li>
+          Alan Cline, Russell Rew,<br>
+          A set of counterexamples to three condition number estimators,<br>
+          SIAM Journal on Scientific and Statistical Computing,<br>
+          Volume 4, Number 4, December 1983, pages 602-611.
+        </li>
+        <li>
+          William Hager,<br>
+          Condition Estimates,<br>
+          SIAM Journal on Scientific and Statistical Computing,<br>
+          Volume 5, Number 2, June 1984, pages 311-316.
+        </li>
+        <li>
+          Nicholas Higham,<br>
+          A survey of condition number estimation for triangular matrices,<br>
+          SIAM Review,<br>
+          Volume 9, Number 4, December 1987, pages 575-596.
+        </li>
+        <li>
+          Diane OLeary,<br>
+          Estimating matrix condition numbers,<br>
+          SIAM Journal on Scientific and Statistical Computing,<br>
+          Volume 1, Number 2, June 1980, pages 205-209.
+        </li>
+        <li>
+          Pete Stewart,<br>
+          Efficient Generation of Random Orthogonal Matrices With an Application
+          to Condition Estimators,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 17, Number 3, June 1980, pages 403-409.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "condition.f90">condition.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "condition.sh">condition.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "condition_prb.f90">condition_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "condition_prb.sh">condition_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "condition_prb_output.txt">condition_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>COMBIN</b> returns the COMBIN matrix.
+        </li>
+        <li>
+          <b>COMBIN_INVERSE</b> returns the inverse of the COMBIN matrix.
+        </li>
+        <li>
+          <b>CONDITION_HAGER</b> estimates the L1 condition number of a matrix.
+        </li>
+        <li>
+          <b>CONDITION_LINPACK</b> estimates the L1 condition number of a matrix.
+        </li>
+        <li>
+          <b>CONDITION_SAMPLE1</b> estimates the L1 condition number of a matrix.
+        </li>
+        <li>
+          <b>CONEX1</b> returns the CONEX1 matrix.
+        </li>
+        <li>
+          <b>CONEX1_INVERSE</b> returns the inverse of the CONEX1 matrix.
+        </li>
+        <li>
+          <b>CONEX2</b> returns the CONEX2 matrix.
+        </li>
+        <li>
+          <b>CONEX2_INVERSE</b> returns the inverse of the CONEX2 matrix.
+        </li>
+        <li>
+          <b>CONEX3</b> returns the CONEX3 matrix.
+        </li>
+        <li>
+          <b>CONEX3_INVERSE</b> returns the inverse of the CONEX3 matrix.
+        </li>
+        <li>
+          <b>CONEX4</b> returns the CONEX4 matrix.
+        </li>
+        <li>
+          <b>CONEX4_INVERSE</b> returns the inverse CONEX4 matrix.
+        </li>
+        <li>
+          <b>KAHAN</b> returns the KAHAN matrix.
+        </li>
+        <li>
+          <b>KAHAN_INVERSE</b> returns the inverse of the KAHAN matrix.
+        </li>
+        <li>
+          <b>R8GE_FA</b> performs a LINPACK style PLU factorization of an R8GE matrix.
+        </li>
+        <li>
+          <b>R8GE_INVERSE</b> computes the inverse of a matrix factored by R8GE_FA.
+        </li>
+        <li>
+          <b>R8GE_SL</b> solves a system factored by R8GE_FA.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 05 October 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

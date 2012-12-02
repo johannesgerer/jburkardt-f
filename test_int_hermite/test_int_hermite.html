@@ -1,0 +1,541 @@
+<html>
+
+  <head>
+    <title>
+      TEST_INT_HERMITE - Quadrature Tests for Infinite Intervals
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_INT_HERMITE <br> Quadrature Tests for Infinite Intervals
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_INT_HERMITE</b>
+      is a FORTRAN90 library which
+      defines integration problems over infinite intervals of the form (-oo,+oo).
+    </p>
+
+    <p>
+      The test integrands would normally be used to testing one
+      dimensional quadrature software.  It is possible to invoke a
+      particular function by index, or to try out all available functions,
+      as demonstrated in the sample calling program.
+    </p>
+
+    <p>
+      For a given integrand function f(x), the problem is to estimate
+      <pre>
+        I(f) = integral ( -oo < x < +oo ) w(x) * f(x) dx
+      </pre>
+    </p>
+
+    <p>
+      We consider three variations of the problem, depending on the
+      form of the weight factor w(x):
+      <ul>
+        <li>
+          <b>option</b> = 0, the unweighted integral:
+          <pre>
+            Integral ( -oo &lt; x &lt; +oo ) f(x) dx
+          </pre>
+        </li>
+        <li>
+          <b>option</b> = 1, the physicist weighted integral:
+          <pre>
+            Integral ( -oo &lt; x &lt; +oo ) exp(-x*x) f(x) dx
+          </pre>
+        <li>
+          <b>option</b> = 2, the probabilist weighted integral:
+          <pre>
+            Integral ( -oo &lt; x &lt; +oo ) exp(-x*x/2) f(x) dx
+          </pre>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      For option 0, the test integrands have the form:
+      <ol>
+        <li>
+          f1(x) = exp(-x*x) * cos(2*omega*x);
+        </li>
+        <li>
+          f2(x) = exp(-x*x);
+        </li>
+        <li>
+          f3(x) = exp(-px)/(1+exp(-qx));
+        </li>
+        <li>
+          f4(x) = sin ( x^2 );
+        </li>
+        <li>
+          f5(x) = 1 / (1+x^2) sqrt (4+3x^2) );
+        </li>
+        <li>
+          f6(x) = exp(-x*x) * x^m;
+        </li>
+        <li>
+          f7(x) = x^2 cos(x) exp(-x*x);
+        </li>
+        <li>
+          f8(x) = sqrt ( 1 + x * x / 2 ) * exp(-x*x/2);
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      For option 1, the test integrands have the form:
+      <ol>
+        <li>
+          f1(x) = cos(2*omega*x);
+        </li>
+        <li>
+          f2(x) = 1
+        </li>
+        <li>
+          f3(x) = exp(x*x) * exp(-px)/(1+exp(-qx));
+        </li>
+        <li>
+          f4(x) = exp(x*x) * sin ( x^2 );
+        </li>
+        <li>
+          f5(x) = exp(x*x) * 1 / (1+x^2) sqrt (4+3x^2) );
+        </li>
+        <li>
+          f6(x) = x^m;
+        </li>
+        <li>
+          f7(x) = x^2 cos(x);
+        </li>
+        <li>
+          f8(x) = sqrt ( 1 + x * x / 2 ) * exp(+x*x/2);
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      For option 2, the test integrands have the form:
+      <ol>
+        <li>
+          f1(x) = exp(-x*x/2) * cos(2*omega*x);
+        </li>
+        <li>
+          f2(x) = exp(-x*x/2);
+        </li>
+        <li>
+          f3(x) = exp(+x*x/2) * exp(-px)/(1+exp(-qx));
+        </li>
+        <li>
+          f4(x) = exp(+x*x/2) * sin ( x^2 );
+        </li>
+        <li>
+          f5(x) = exp(+x*x/2) * 1 / (1+x^2) sqrt (4+3x^2) );
+        </li>
+        <li>
+          f6(x) = exp(-x*x/2) * x^m;
+        </li>
+        <li>
+          f7(x) = x^2 cos(x) exp(-x*x/2);
+        </li>
+        <li>
+          f8(x) = sqrt ( 1 + x * x / 2 );
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      The library includes not just the integrand, but also the exact value
+      of the integral (or, typically, an estimate of this value), and
+      a title for the problem.
+      Thus, for each integrand function, several routines are supplied.  For
+      instance, for function #1, we have the routines:
+      <ul>
+        <li>
+          <b>P01_FUN</b> evaluates the integrand for problem 1.
+        </li>
+        <li>
+          <b>P01_EXACT</b> returns the estimated integral for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns a title for problem 1.
+        </li>
+      </ul>
+      So once you have the calling sequences for these routines, you
+      can easily evaluate the function, or integrate it on the
+      appropriate interval, or compare your estimate of the integral
+      to the exact value.
+    </p>
+
+    <p>
+      Moreover, since the same interface is used for each function,
+      if you wish to work with problem 5 instead, you simply change
+      the "01" to "05" in your routine calls.
+    </p>
+
+    <p>
+      If you wish to call <i>all</i> of the functions, then you
+      simply use the generic interface, which requires you to specify
+      the problem number as an extra input argument:
+      <ul>
+        <li>
+          <b>P00_FUN</b> evaluates the integrand for any problem.
+        </li>
+        <li>
+          <b>P00_EXACT</b> returns the exact integral for any problem.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns a title for any problem.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_INT_HERMITE</b> is available in
+      <a href = "../../c_src/test_int_hermite/test_int_hermite.html">a C version</a> and
+      <a href = "../../cpp_src/test_int_hermite/test_int_hermite.html">a C++ version</a> and
+      <a href = "../../f77_src/test_int_hermite/test_int_hermite.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_int_hermite/test_int_hermite.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_int_hermite/test_int_hermite.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/hermite_rule/hermite_rule.html">
+      HERMITE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Hermite quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/int_exactness_hermite/int_exactness_hermite.html">
+      INT_EXACTNESS_HERMITE</a>,
+      a FORTRAN90 program which
+      tests the polynomial exactness of Gauss-Hermite quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrule/quadrule.html">
+      QUADRULE</a>,
+      a FORTRAN90 library which
+      defines various quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_hermite_physicist/quadrature_rules_hermite_physicist.html">
+      QUADRATURE_RULES_HERMITE_PHYSICIST</a>,
+      a dataset directory which
+      contains Gauss-Hermite quadrature rules, for integration
+      on the interval (-oo,+oo), with weight function exp(-x^2).
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_hermite_probabilist/quadrature_rules_hermite_probabilist.html">
+      QUADRATURE_RULES_HERMITE_PROBABILIST</a>,
+      a dataset directory which
+      contains Gauss-Hermite quadrature rules, for integration
+      on the interval (-oo,+oo), with weight function exp(-x^2/2).
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_hermite_unweighted/quadrature_rules_hermite_unweighted.html">
+      QUADRATURE_RULES_HERMITE_UNWEIGHTED</a>,
+      a dataset directory which
+      contains Gauss-Hermite quadrature rules, for integration
+      on the interval (-oo,+oo), with weight function 1.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r16_hermite_rule/r16_hermite_rule.html">
+      R16_HERMITE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Hermite quadrature rule, using
+      "quadruple precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int/test_int.html">
+      TEST_INT</a>,
+      a FORTRAN90 library which
+      defines some test integration problems over finite intervals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_2d/test_int_2d.html">
+      TEST_INT_2D</a>,
+      a FORTRAN90 library which
+      defines test integrands for 2D quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_laguerre/test_int_laguerre.html">
+      TEST_INT_LAGUERRE</a>,
+      a FORTRAN90 library which
+      defines test integrands for integration over [-ALPHA,+oo).
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+        <li>
+          Prem Kythe, Michael Schaeferkotter,<br>
+          Handbook of Computational Methods for Integration,<br>
+          Chapman and Hall, 2004,<br>
+          ISBN: 1-58488-428-2,<br>
+          LC: QA299.3.K98.
+        </li>
+        <li>
+          Robert Piessens, Elise deDoncker-Kapenga,
+          Christian Ueberhuber, David Kahaner,<br>
+          QUADPACK: A Subroutine Package for Automatic Integration,<br>
+          Springer, 1983,<br>
+          ISBN: 3540125531,<br>
+          LC: QA299.3.Q36.
+        </li>
+        <li>
+          William Squire,<br>
+          Comparison of Gauss-Hermite and Midpoint Quadrature with Application
+          to the Voigt Function,<br>
+          in Numerical Integration:
+          Recent Developments, Software and Applications,<br>
+          edited by Patrick Keast, Graeme Fairweather,<br>
+          Reidel, 1987, pages 337-340,<br>
+          ISBN: 9027725144,<br>
+          LC: QA299.3.N38.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+        <li>
+          Alan Turing,<br>
+          A Method for the Calculation of the Zeta Function,<br>
+          Proceedings of the London Mathematical Society,<br>
+          Volume 48, 1943, pages 180-197.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_int_hermite.f90">test_int_hermite.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "test_int_hermite.sh">test_int_hermite.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_int_hermite_prb.f90">test_int_hermite_prb.f90</a>,
+          the calling program;
+        </li>
+        <li>
+          <a href = "test_int_hermite_prb.sh">test_int_hermite_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "test_int_hermite_prb_output.txt">test_int_hermite_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>HERMITE_COMPUTE</b> computes a Gauss-Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_INTEGRAL</b> returns the value of a Hermite polynomial integral.
+        </li>
+        <li>
+          <b>HERMITE_RECUR</b> finds the value and derivative of a Hermite polynomial.
+        </li>
+        <li>
+          <b>HERMITE_ROOT</b> improves an approximate root of a Hermite polynomial.
+        </li>
+        <li>
+          <b>I4_FACTORIAL2</b> computes the double factorial function.
+        </li>
+        <li>
+          <b>P00_EXACT</b> returns the exact integral for any problem.
+        </li>
+        <li>
+          <b>P00_FUN</b> evaluates the integrand for any problem.
+        </li>
+        <li>
+          <b>P00_GAUSS_HERMITE</b> applies a Gauss-Hermite quadrature rule.
+        </li>
+        <li>
+          <b>P00_MONTE_CARLO</b> applies a Monte Carlo procedure to Hermite integrals.
+        </li>
+        <li>
+          <b>P00_PROBLEM_NUM</b> returns the number of test integration problems.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns the title for any problem.
+        </li>
+        <li>
+          <b>P00_TURING</b> applies the Turing quadrature rule.
+        </li>
+        <li>
+          <b>P01_EXACT</b> returns the exact integral for problem 1.
+        </li>
+        <li>
+          <b>P01_FUN</b> evaluates the integrand for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns the title for problem 1.
+        </li>
+        <li>
+          <b>P02_EXACT</b> returns the exact integral for problem 2.
+        </li>
+        <li>
+          <b>P02_FUN</b> evaluates the integrand for problem 2.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns the title for problem 2.
+        </li>
+        <li>
+          <b>P03_EXACT</b> returns the exact integral for problem 3.
+        </li>
+        <li>
+          <b>P03_FUN</b> evaluates the integrand for problem 3.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns the title for problem 3.
+        </li>
+        <li>
+          <b>P04_EXACT</b> returns the exact integral for problem 4.
+        </li>
+        <li>
+          <b>P04_FUN</b> evaluates the integrand for problem 4.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns the title for problem 4.
+        </li>
+        <li>
+          <b>P05_EXACT</b> returns the exact integral for problem 5.
+        </li>
+        <li>
+          <b>P05_FUN</b> evaluates the integrand for problem 5.
+        </li>
+        <li>
+          <b>P05_TITLE</b> returns the title for problem 5.
+        </li>
+        <li>
+          <b>P06_EXACT</b> returns the exact integral for problem 6.
+        </li>
+        <li>
+          <b>P06_FUN</b> evaluates the integrand for problem 6.
+        </li>
+        <li>
+          <b>P06_PARAM</b> gets or sets parameters for problem 6.
+        </li>
+        <li>
+          <b>P06_TITLE</b> returns the title for problem 6.
+        </li>
+        <li>
+          <b>P07_EXACT</b> returns the exact integral for problem 7.
+        </li>
+        <li>
+          <b>P07_FUN</b> evaluates the integrand for problem 7.
+        </li>
+        <li>
+          <b>P07_TITLE</b> returns the title for problem 7.
+        </li>
+        <li>
+          <b>P08_EXACT</b> returns the exact integral for problem 8.
+        </li>
+        <li>
+          <b>P08_FUN</b> evaluates the integrand for problem 8.
+        </li>
+        <li>
+          <b>P08_TITLE</b> returns the title for problem 8.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates Gamma(X) for a real argument.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8VEC_NORMAL_01</b> returns a unit pseudonormal R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 July 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

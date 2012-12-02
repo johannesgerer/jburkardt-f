@@ -1,0 +1,406 @@
+<html>
+
+  <head>
+    <title>
+      FEM2D_SAMPLE - Evaluate a Finite Element Function of a 2D Argument
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FEM2D_SAMPLE <br>  Evaluate a Finite Element Function of a 2D Argument
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FEM2D_SAMPLE</b>
+      is a FORTRAN90 program which
+      can evaluate a finite element function of a 2D argument.
+    </p>
+
+    <p>
+      The current version of the program can only handle finite element
+      meshes which are made of piecewise linear triangles of order 3 or 6.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>fem2d_sample</b> <i>fem_prefix</i> <i>sample_prefix</i>
+      </blockquote>
+      where <i>fem_prefix</i> is the common prefix for the FEM files:
+      <ul>
+        <li>
+          <i>fem_prefix</i><b>_nodes.txt</b>,    the node coordinates.
+        </li>
+        <li>
+          <i>fem_prefix</i><b>_elements.txt</b>, the nodes that make up each element;
+        </li>
+        <li>
+          <i>fem_prefix</i><b>_values.txt</b>,   the values defined at each node.
+        </li>
+      </ul>
+      and <i>sample_prefix</i> is the common prefix for the SAMPLE files,
+      for which the node file is input, and the values file is created by the program:
+      <ul>
+        <li>
+          <i>sample_prefix</i><b>_nodes.txt</b>,  the node coordinates where samples are desired.
+        </li>
+        <li>
+          <i>sample_prefix</i><b>_values.txt</b>, the values computed at each sample node.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FEM2D_SAMPLE</b> is available in
+      <a href = "../../cpp_src/fem2d_sample/fem2d_sample.html">a C++ version</a> and
+      <a href = "../../f77_src/fem2d_sample/fem2d_sample.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fem2d_sample/fem2d_sample.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fem2d_sample/fem2d_sample.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/discrete_pdf_sample/discrete_pdf_sample.html">
+      DISCRETE_PDF_SAMPLE</a>,
+      a FORTRAN90 program which
+      demonstrates how to construct a Probability Density Function (PDF)
+      from a table of sample data, and then to use that PDF to create new samples.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fem_basis_t3_display/fem_basis_t3_display.html">
+      FEM_BASIS_T3_DISPLAY</a>,
+      a MATLAB program which
+      displays a basis function associated with a linear triangle ("T3") mesh.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fem_basis_t6_display/fem_basis_t6_display.html">
+      FEM_BASIS_T6_DISPLAY</a>,
+      a MATLAB program which
+      displays a basis function associated with a quadratic triangle ("T6") mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem_io/fem_io.html">
+      FEM_IO</a>,
+      a FORTRAN90 library which
+      reads or writes node, element and data files defining a finite element model.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fem_to_tec/fem_to_tec.html">
+      FEM_TO_TEC</a>,
+      a MATLAB program which
+      converts FEM models into TEC graphics files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_sample/fem1d_sample.html">
+      FEM1D_SAMPLE</a>,
+      a FORTRAN90 program which
+      samples a scalar or vector finite element function of one variable,
+      defined by <b>FEM</b> files,
+      returning interpolated values at the sample points.
+    </p>
+
+    <p>
+      <a href = "../../data/fem2d/fem2d.html">
+      FEM2D</a>,
+      a data directory which
+      contains examples of 2D FEM files,
+      text files that describe a 2D finite element geometry
+      and associated nodal values;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_heat/fem2d_heat.html">
+      FEM2D_HEAT</a>,
+      a FORTRAN90 program which
+      solves the 2D time dependent heat equation on the unit square.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_pack/fem2d_pack.html">
+      FEM2D_PACK</a>,
+      a FORTRAN90 library which
+      contains utilities for 2D finite element calculations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_poisson/fem2d_poisson.html">
+      FEM2D_POISSON</a>,
+      a FORTRAN90 program which
+      solves the 2D Poisson equation on a square, using the finite element method.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_project/fem2d_project.html">
+      FEM2D_PROJECT</a>,
+      a FORTRAN90 program which
+      projects a function F(X,Y) into a given finite element space
+      of piecewise linear triangular elements.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem3d_sample/fem3d_sample.html">
+      FEM3D_SAMPLE</a>,
+      a FORTRAN90 program which
+      samples a finite element function of three variables,
+      returning interpolated values at the sample points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mesh_bandwidth/mesh_bandwidth.html">
+      MESH_BANDWIDTH</a>,
+      a FORTRAN90 program which
+      returns the geometric bandwidth associated with a mesh of
+      elements of any order and in a space of arbitrary dimension.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order3/triangulation_order3.html">
+      TRIANGULATION_ORDER3</a>,
+      a data directory which
+      contains a description and
+      examples of how an order 3 (linear) triangulation is defined by a node
+      and element file.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order6/triangulation_order6.html">
+      TRIANGULATION_ORDER6</a>,
+      a data directory which
+      contains a description and
+      examples of how an order 6 (quadratic) triangulation is defined by a node
+      and element file.
+    </p>
+
+    <p>
+      <a href = "../../m_src/triangulation_order6_contour/triangulation_order6_contour.html">
+      TRIANGULATION_ORDER6_CONTOUR</a>,
+      a MATLAB program which
+      makes contours of a scalar quantity defined on the nodes of an order 6
+      triangulation.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Finite Element Methods,<br>
+          Academic Press, 1988,<br>
+          ISBN: 0126330107,<br>
+          LC: TA347.F5.S3313.
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200,<br>
+          LC: TA640.2.Z54.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fem2d_sample.f90">fem2d_sample.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "fem2d_sample.sh">fem2d_sample.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>SQ</b> is FEM data for the function f(x,y)=x^2+y^2, on a 5x5 grid
+      of nodes, organized into linear triangles.  The sample data seeks the values
+      of this function on a 4x4 evenly spaced grid.
+      <ul>
+        <li>
+          <a href = "fem_sq_nodes.txt">fem_sq_nodes.txt</a>,
+          defines the FEM nodes.
+        </li>
+        <li>
+          <a href = "fem_sq_elements.txt">fem_sq_elements.txt</a>,
+          defines the FEM elements.
+        </li>
+        <li>
+          <a href = "fem_sq_values.txt">fem_sq_values.txt</a>,
+          defines the FEM nodal values.
+        </li>
+        <li>
+          <a href = "sample_sq_nodes.txt">sample_sq_nodes.txt</a>,
+          defines the sample nodes.
+        </li>
+        <li>
+          <a href = "sample_sq_values.txt">sample_sq_values.txt</a>,
+          defines the sample nodal values.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FEM2D_SAMPLE.
+        </li>
+        <li>
+          <b>BASIS_MN_T3:</b> all bases at N points for a T3 element.
+        </li>
+        <li>
+          <b>BASIS_MN_T6:</b> all bases at N points for a T6 element.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer ( kind = 4 ) value of a base 10 digit.
+        </li>
+        <li>
+          <b>FEM2D_EVALUATE</b> samples an FEM function on a T3 or T6 triangulation.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_SEED</b> returns a seed for the random number generator.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4COL_COMPARE</b> compares columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORT_A</b> ascending sorts an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SWAP</b> swaps columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4MAT_DATA_READ</b> reads data from an I4MAT file.
+        </li>
+        <li>
+          <b>I4MAT_HEADER_READ</b> reads the header from an I4MAT.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer ( kind = 4 ) value from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an integer ( kind = 4 ) vector from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_NEIGHBOR_TRIANGLES</b> determines triangle neighbors.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER6_NEIGHBOR_TRIANGLES</b> determines triangle neighbors.
+        </li>
+        <li>
+          <b>TRIANGULATION_SEARCH_DELAUNAY</b> searches a Delaunay triangulation for a point.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 January 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

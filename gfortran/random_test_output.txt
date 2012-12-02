@@ -1,0 +1,141 @@
+February  5 2008   2:50:43.355 PM
+ 
+RANDOM_TEST
+  FORTRAN90 version.
+ 
+  Examine the RANDOM_NUMBER routine
+  for the generation or random numbers.
+ 
+TEST01:
+  To generate 10 random numbers, you could
+  call RANDOM_NUMBER ( X )...
+ 
+  10 times, with a scalar X:
+ 
+ 
+ 0.99756
+ 
+ 0.56682
+ 
+ 0.96592
+ 
+ 0.74793
+ 
+ 0.36739
+ 
+ 0.48064
+ 
+ 0.07375
+ 
+ 0.00536
+ 
+ 0.34708
+ 
+ 0.34224
+ 
+  5 times with a vector X of length 2:
+ 
+ 
+ 0.21795 0.13316
+ 
+ 0.90052 0.38677
+ 
+ 0.44548 0.66193
+ 
+ 0.01611 0.65085
+ 
+ 0.64641 0.32299
+ 
+  or once with a 5 by 2 X array:
+ 
+ 0.85569 0.67298
+ 0.40129 0.45688
+ 0.20687 0.33002
+ 0.96854 0.10038
+ 0.59840 0.75545
+ 
+TEST02:
+  The RANDOM_SEED routine can be used to restart
+  the random number generator.  We will repeat
+  the previous test, and manipulate the seed so
+  that we compute the same 10 numbers each time.
+ 
+  The size of the seed array is N =     12
+ 
+  The current seed is 
+   123456789   362436069   521288629   316191069   987654321
+   458629013   582859209   438195021   573658661   185639104
+   582619469   296736107
+  We're going to save this seed and reuse it.
+ 
+  10 times, with a scalar X:
+ 
+ 
+ 0.99756
+ 
+ 0.56682
+ 
+ 0.96592
+ 
+ 0.74793
+ 
+ 0.36739
+ 
+ 0.48064
+ 
+ 0.07375
+ 
+ 0.00536
+ 
+ 0.34708
+ 
+ 0.34224
+ 
+  The current seed is 
+ -1837510773   485921715  1077562452  1540941615   987654321
+   458629013   582859209   438195021   573658661   185639104
+   582619469   296736107
+  We reset the seed to 
+   123456789   362436069   521288629   316191069   987654321
+   458629013   582859209   438195021   573658661   185639104
+   582619469   296736107
+ 
+  five times with a vector X of length 2:
+ 
+ 
+ 0.99756 0.56682
+ 
+ 0.96592 0.74793
+ 
+ 0.36739 0.48064
+ 
+ 0.07375 0.00536
+ 
+ 0.34708 0.34224
+ 
+  The current seed is 
+ -1837510773   485921715  1077562452  1540941615   987654321
+   458629013   582859209   438195021   573658661   185639104
+   582619469   296736107
+  We reset the seed to 
+   123456789   362436069   521288629   316191069   987654321
+   458629013   582859209   438195021   573658661   185639104
+   582619469   296736107
+ 
+  or once with a 5 by 2 X array:
+ 
+ 0.99756 0.48064
+ 0.56682 0.07375
+ 0.96592 0.00536
+ 0.74793 0.34708
+ 0.36739 0.34224
+ 
+  The current seed is 
+ -1837510773   485921715  1077562452  1540941615   987654321
+   458629013   582859209   438195021   573658661   185639104
+   582619469   296736107
+ 
+RANDOM_TEST
+  Normal end of execution.
+ 
+February  5 2008   2:50:43.358 PM

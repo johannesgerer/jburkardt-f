@@ -1,0 +1,1034 @@
+<html>
+
+  <head>
+    <title>
+      TEST_INT - Quadrature Tests
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_INT <br> Quadrature Tests
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_INT</b>
+      is a FORTRAN90 library which
+      evaluates test integrands.
+    </p>
+
+    <p>
+      The test integrands would normally be used to testing one
+      dimensional quadrature software.  It is possible to invoke a
+      particular function by number, or to try out all available functions,
+      as demonstrated in the sample calling program.
+    </p>
+
+    <p>
+      The library includes not just the integrand, but also the interval
+      of integration, and the exact value of the integral.
+      Thus, for each integrand function, three subroutines are supplied.  For
+      instance, for function #9, we have the routines:
+      <ul>
+        <li>
+          <b>P09_FUN</b> evaluates the integrand for problem 9.
+        </li>
+        <li>
+          <b>P09_LIM</b> returns the integration limits for problem 9.
+        </li>
+        <li>
+          <b>P09_EXACT</b> returns the exact integral for problem 9.
+        </li>
+      </ul>
+      So once you have the calling sequences for these routines, you
+      can easily evaluate the function, or integrate it between the
+      appropriate limits, or compare your estimate of the integral
+      to the exact value.
+    </p>
+
+    <p>
+      Moreover, since the same interface is used for each function,
+      if you wish to work with problem 16 instead, you simply change
+      the "09" to "16" in your routine calls.
+    </p>
+
+    <p>
+      If you wish to call <i>all</i> of the functions, then you
+      simply use the generic interface, which again has three
+      subroutines, but which requires you to specify the problem
+      number as an extra input argument:
+      <ul>
+        <li>
+          <b>P00_FUN</b> evaluates the integrand for any problem.
+        </li>
+        <li>
+          <b>P00_LIM</b> returns the integration limits for any problem.
+        </li>
+        <li>
+          <b>P00_EXACT</b> returns the exact integral for any problem.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Finally, some demonstration routines are built in for
+      simple quadrature methods.  These routines include
+      <ul>
+        <li>
+          <b>P00_GAUSS_LEGENDRE</b>
+        </li>
+        <li>
+          <b>P00_EVEN</b>
+        </li>
+        <li>
+          <b>P00_HALTON</b>
+        </li>
+        <li>
+          <b>P00_MIDPOINT</b>
+        </li>
+        <li>
+          <b>P00_MONTECARLO</b>
+        </li>
+        <li>
+          <b>P00_SIMPSON</b>
+        </li>
+        <li>
+          <b>P00_TRAPEZOID</b>
+        </li>
+      </ul>
+      and can be used with any of the sample integrands.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_INT</b> is available in
+      <a href = "../../c_src/test_int/test_int.html">a C version</a> and
+      <a href = "../../cpp_src/test_int/test_int.html">a C++ version</a> and
+      <a href = "../../f77_src/test_int/test_int.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_int/test_int.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_int/test_int.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/test_int_2d/test_int_2d.html">
+      TEST_INT_2D</a>,
+      a FORTRAN90 library which
+      defines test integrands for 2D quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_hermite/test_int_hermite.html">
+      TEST_INT_HERMITE</a>,
+      a FORTRAN90 library which
+      defines some test integration problems over infinite intervals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_laguerre/test_int_laguerre.html">
+      TEST_INT_LAGUERRE</a>,
+      a FORTRAN90 library which
+      defines test integrands for integration over [ALPHA,+Infinity).
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Kendall Atkinson,<br>
+          An Introduction to Numerical Analysis,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0471624896,<br>
+          LC: QA297.A94.1989.
+        </li>
+        <li>
+          Roger Broucke,<br>
+          Algorithm 446:
+          Ten Subroutines for the Manipulation of Chebyshev Series,<br>
+          Communications of the ACM,<br>
+          Volume 16, 1973, pages 254-256.
+        </li>
+        <li>
+          Charles Clenshaw, Alan Curtis,<br>
+          A Method for Numerical Integration on an Automatic Computer,<br>
+          Numerische Mathematik,<br>
+          Volume 2, Number 1, December 1960, pages 197-205.
+        </li>
+        <li>
+          Richard Crandall,<br>
+          Projects in Scientific Computing,<br>
+          Springer, 2005,<br>
+          ISBN: 0387950095,<br>
+          LC: Q183.9.C733.
+        </li>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+        <li>
+          Hermann Engels,<br>
+          Numerical Quadrature and Cubature,<br>
+          Academic Press, 1980,<br>
+          ISBN: 012238850X,<br>
+          LC: QA299.3E5.
+        </li>
+        <li>
+          Leslie Fox, Ian Parker,<br>
+          Chebyshev Polynomials in Numerical Analysis,<br>
+          Oxford Press, 1968,<br>
+          LC: QA297.F65.
+        </li>
+        <li>
+          John Halton,<br>
+          On the efficiency of certain quasi-random sequences of points
+          in evaluating multi-dimensional integrals,<br>
+          Numerische Mathematik,<br>
+          Volume 2, Number 1, December 1960, pages 84-90.
+        </li>
+        <li>
+          John Hart, Ward Cheney, Charles Lawson, Hans Maehly,
+          Charles Mesztenyi, John Rice, Henry Thacher,
+          Christoph Witzgall,<br>
+          Computer Approximations,<br>
+          Wiley, 1968,<br>
+          LC: QA297.C64.
+        </li>
+        <li>
+          David Kahaner,<br>
+          Comparison of Numerical Quadrature Formulas,<br>
+          in Mathematical Software,<br>
+          edited by John Rice,<br>
+          Academic Press, 1971,<br>
+          ISBN: 012587250X,<br>
+          LC: QA1.M766.
+        </li>
+        <li>
+          Prem Kythe, Pratap Puri,<br>
+          Computational Methods for Linear Integral Equations,<br>
+          Birkhaeuser, 2002,<br>
+          ISBN: 0817641920,<br>
+          LC: QA431.K97.
+        </li>
+        <li>
+          Robert Piessens, Elise deDoncker-Kapenga,
+          Christian Ueberhuber, David Kahaner,<br>
+          QUADPACK: A Subroutine Package for Automatic Integration,<br>
+          Springer, 1983,<br>
+          ISBN: 3540125531,<br>
+          LC: QA299.3.Q36.
+        </li>
+        <li>
+          Herbert Salzer, Norman Levine,<br>
+          Table of a Weierstrass Continuous Nondifferentiable Function,<br>
+          Mathematics of Computation,<br>
+          Volume 15, Number 74, April 1961, pages 120-130.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_int.f90">test_int.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "test_int.sh">test_int.sh</a>, commands to compile
+          the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_int_prb.f90">test_int_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "test_int_prb.sh">test_int_prb.sh</a>, commands
+          to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "test_int_prb_output.txt">test_int_prb_output.txt</a>, the sample output.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BESJ0</b> computes J Bessel functions of order 0.
+        </li>
+        <li>
+          <b>BESY0</b> computes Y Bessel functions of order 0.
+        </li>
+        <li>
+          <b>CALJY0</b> calculates J and Y Bessel functions of zero order.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CSEVL</b> evaluates a Chebyshev series.
+        </li>
+        <li>
+          <b>ERROR_F</b> computes the error function.
+        </li>
+        <li>
+          <b>ERROR_FC</b> computes the complementary error function.
+        </li>
+        <li>
+          <b>EULER_CONSTANT</b> returns the value of the Euler-Mascheroni constant.
+        </li>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>I4_TO_HALTON_NUMBER_SEQUENCE:</b> next N elements of a scalar Halton sequence.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector A(I)=I.
+        </li>
+        <li>
+          <b>INITS</b> finds the number of Chebyshev terms needed to achieve a given accuracy.
+        </li>
+        <li>
+          <b>P00_EVEN</b> uses evenly spaced points to integrate a function.
+        </li>
+        <li>
+          <b>P00_EXACT</b> returns the exact integral for any problem.
+        </li>
+        <li>
+          <b>P00_FUN</b> evaluates the integrand for any problem.
+        </li>
+        <li>
+          <b>P00_GAUSS_LEGENDRE</b> applies a composite Gauss-Legendre rule.
+        </li>
+        <li>
+          <b>P00_HALTON</b> applies a Halton sequence rule to integrate a function.
+        </li>
+        <li>
+          <b>P00_LIM</b> returns the integration limits for any problem.
+        </li>
+        <li>
+          <b>P00_MIDPOINT</b> applies the composite midpoint rule to integrate a function.
+        </li>
+        <li>
+          <b>P00_MONTECARLO</b> applies the Monte Carlo rule to integrate a function.
+        </li>
+        <li>
+          <b>P00_PROB_NUM</b> returns the number of test integration problems.
+        </li>
+        <li>
+          <b>P00_SIMPSON</b> applies the composite Simpson rule to integrate a function.
+        </li>
+        <li>
+          <b>P00_TRAPEZOID</b> applies the composite trapezoid rule to integrate a function.
+        </li>
+        <li>
+          <b>P01_EXACT</b> returns the exact integral for problem 1.
+        </li>
+        <li>
+          <b>P01_FUN</b> evaluates the integrand for problem 1.
+        </li>
+        <li>
+          <b>P01_LIM</b> returns the integration limits for problem 1.
+        </li>
+        <li>
+          <b>P02_EXACT</b> returns the exact integral for problem 2.
+        </li>
+        <li>
+          <b>P02_FUN</b> evaluates the integrand for problem 2.
+        </li>
+        <li>
+          <b>P02_LIM</b> returns the integration limits for problem 2.
+        </li>
+        <li>
+          <b>P03_EXACT</b> returns the exact integral for problem 3.
+        </li>
+        <li>
+          <b>P03_FUN</b> evaluates the integrand for problem 3.
+        </li>
+        <li>
+          <b>P03_LIM</b> returns the integration limits for problem 3.
+        </li>
+        <li>
+          <b>P04_EXACT</b> returns the estimated integral for problem 4.
+        </li>
+        <li>
+          <b>P04_FUN</b> evaluates the integrand for problem 4.
+        </li>
+        <li>
+          <b>P04_LIM</b> returns the integration limits for problem 4.
+        </li>
+        <li>
+          <b>P05_EXACT</b> returns the estimated integral for problem 5.
+        </li>
+        <li>
+          <b>P05_FUN</b> evaluates the integrand for problem 5.
+        </li>
+        <li>
+          <b>P05_LIM</b> returns the integration limits for problem 5.
+        </li>
+        <li>
+          <b>P06_EXACT</b> returns the exact integral for problem 6.
+        </li>
+        <li>
+          <b>P06_FUN</b> evaluates the integrand for problem 6.
+        </li>
+        <li>
+          <b>P06_LIM</b> returns the integration limits for problem 6.
+        </li>
+        <li>
+          <b>P07_EXACT</b> returns the exact integral for problem 7.
+        </li>
+        <li>
+          <b>P07_FUN</b> evaluates the integrand for problem 7.
+        </li>
+        <li>
+          <b>P07_LIM</b> returns the integration limits for problem 7.
+        </li>
+        <li>
+          <b>P08_EXACT</b> returns the estimated integral for problem 8.
+        </li>
+        <li>
+          <b>P08_FUN</b> evaluates the integrand for problem 8.
+        </li>
+        <li>
+          <b>P08_LIM</b> returns the integration limits for problem 8.
+        </li>
+        <li>
+          <b>P09_EXACT</b> returns the estimated integral for problem 9.
+        </li>
+        <li>
+          <b>P09_FUN</b> evaluates the integrand for problem 9.
+        </li>
+        <li>
+          <b>P09_LIM</b> returns the integration limits for problem 9.
+        </li>
+        <li>
+          <b>P10_EXACT</b> returns the estimated integral for problem 10.
+        </li>
+        <li>
+          <b>P10_FUN</b> evaluates the integrand for problem 10.
+        </li>
+        <li>
+          <b>P10_LIM</b> returns the integration limits for problem 10.
+        </li>
+        <li>
+          <b>P11_EXACT</b> returns the estimated integral for problem 11.
+        </li>
+        <li>
+          <b>P11_FUN</b> evaluates the integrand for problem 11.
+        </li>
+        <li>
+          <b>P11_LIM</b> returns the integration limits for problem 11.
+        </li>
+        <li>
+          <b>P12_EXACT</b> returns the estimated integral for problem 12.
+        </li>
+        <li>
+          <b>P12_FUN</b> evaluates the integrand for problem 12.
+        </li>
+        <li>
+          <b>P12_LIM</b> returns the integration limits for problem 12.
+        </li>
+        <li>
+          <b>P13_EXACT</b> returns the estimated integral for problem 13.
+        </li>
+        <li>
+          <b>P13_FUN</b> evaluates the integrand for problem 13.
+        </li>
+        <li>
+          <b>P13_LIM</b> returns the integration limits for problem 13.
+        </li>
+        <li>
+          <b>P14_EXACT</b> returns the estimated integral for problem 14.
+        </li>
+        <li>
+          <b>P14_FUN</b> evaluates the integrand for problem 14.
+        </li>
+        <li>
+          <b>P14_LIM</b> returns the integration limits for problem 14.
+        </li>
+        <li>
+          <b>P15_EXACT</b> returns the exact integral for problem 15.
+        </li>
+        <li>
+          <b>P15_FUN</b> evaluates the integrand for problem 15.
+        </li>
+        <li>
+          <b>P15_LIM</b> returns the integration limits for problem 15.
+        </li>
+        <li>
+          <b>P16_EXACT</b> returns the exact integral for problem 16.
+        </li>
+        <li>
+          <b>P16_FUN</b> evaluates the integrand for problem 16.
+        </li>
+        <li>
+          <b>P16_LIM</b> returns the integration limits for problem 16.
+        </li>
+        <li>
+          <b>P17_EXACT</b> returns the estimated integral for problem 17.
+        </li>
+        <li>
+          <b>P17_FUN</b> evaluates the integrand for problem 17.
+        </li>
+        <li>
+          <b>P17_LIM</b> returns the integration limits for problem 17.
+        </li>
+        <li>
+          <b>P18_EXACT</b> returns the estimated integral for problem 18.
+        </li>
+        <li>
+          <b>P18_FUN</b> evaluates the integrand for problem 18.
+        </li>
+        <li>
+          <b>P18_LIM</b> returns the integration limits for problem 18.
+        </li>
+        <li>
+          <b>P19_EXACT</b> returns the exact integral for problem 19.
+        </li>
+        <li>
+          <b>P19_FUN</b> evaluates the integrand for problem 19.
+        </li>
+        <li>
+          <b>P19_LIM</b> returns the integration limits for problem 19.
+        </li>
+        <li>
+          <b>P20_EXACT</b> returns the estimated integral for problem 20.
+        </li>
+        <li>
+          <b>P20_FUN</b> evaluates the integrand for problem 20.
+        </li>
+        <li>
+          <b>P20_LIM</b> returns the integration limits for problem 20.
+        </li>
+        <li>
+          <b>P21_EXACT</b> returns the estimated integral for problem 21.
+        </li>
+        <li>
+          <b>P21_FUN</b> evaluates the integrand for problem 21.
+        </li>
+        <li>
+          <b>P21_LIM</b> returns the integration limits for problem 21.
+        </li>
+        <li>
+          <b>P22_EXACT</b> returns the estimated integral for problem 22.
+        </li>
+        <li>
+          <b>P22_FUN</b> evaluates the integrand for problem 22.
+        </li>
+        <li>
+          <b>P22_LIM</b> returns the integration limits for problem 22.
+        </li>
+        <li>
+          <b>P23_EXACT</b> returns the estimated integral for problem 23.
+        </li>
+        <li>
+          <b>P23_FUN</b> evaluates the integrand for problem 23.
+        </li>
+        <li>
+          <b>P23_LIM</b> returns the integration limits for problem 23.
+        </li>
+        <li>
+          <b>P24_EXACT</b> returns the estimated integral for problem 24.
+        </li>
+        <li>
+          <b>P24_FUN</b> evaluates the integrand for problem 24.
+        </li>
+        <li>
+          <b>P24_LIM</b> returns the integration limits for problem 24.
+        </li>
+        <li>
+          <b>P25_EXACT</b> returns the estimated integral for problem 25.
+        </li>
+        <li>
+          <b>P25_FUN</b> evaluates the integrand for problem 25.
+        </li>
+        <li>
+          <b>P25_LIM</b> returns the integration limits for problem 25.
+        </li>
+        <li>
+          <b>P26_EXACT</b> returns the exact integral for problem 26.
+        </li>
+        <li>
+          <b>P26_FUN</b> evaluates the integrand for problem 26.
+        </li>
+        <li>
+          <b>P26_LIM</b> returns the integration limits for problem 26.
+        </li>
+        <li>
+          <b>P27_EXACT</b> returns the exact integral for problem 27.
+        </li>
+        <li>
+          <b>P27_FUN</b> evaluates the integrand for problem 27.
+        </li>
+        <li>
+          <b>P27_LIM</b> returns the integration limits for problem 27.
+        </li>
+        <li>
+          <b>P28_EXACT</b> returns the exact integral for problem 28.
+        </li>
+        <li>
+          <b>P28_FUN</b> evaluates the integrand for problem 28.
+        </li>
+        <li>
+          <b>P28_LIM</b> returns the integration limits for problem 28.
+        </li>
+        <li>
+          <b>P29_EXACT</b> returns the exact integral for problem 29.
+        </li>
+        <li>
+          <b>P29_FUN</b> evaluates the integrand for problem 29.
+        </li>
+        <li>
+          <b>P29_LIM</b> returns the integration limits for problem 29.
+        </li>
+        <li>
+          <b>P30_EXACT</b> returns the exact integral for problem 30.
+        </li>
+        <li>
+          <b>P30_FUN</b> evaluates the integrand for problem 30.
+        </li>
+        <li>
+          <b>P30_LIM</b> returns the integration limits for problem 30.
+        </li>
+        <li>
+          <b>P31_EXACT</b> returns the exact integral for problem 31.
+        </li>
+        <li>
+          <b>P31_FUN</b> evaluates the integrand for problem 31.
+        </li>
+        <li>
+          <b>P31_LIM</b> returns the integration limits for problem 31.
+        </li>
+        <li>
+          <b>P32_EXACT</b> returns the exact integral for problem 32.
+        </li>
+        <li>
+          <b>P32_FUN</b> evaluates the integrand for problem 32.
+        </li>
+        <li>
+          <b>P32_LIM</b> returns the integration limits for problem 32.
+        </li>
+        <li>
+          <b>P33_EXACT</b> returns the exact integral for problem 33.
+        </li>
+        <li>
+          <b>P33_FUN</b> evaluates the integrand for problem 33.
+        </li>
+        <li>
+          <b>P33_LIM</b> returns the integration limits for problem 33.
+        </li>
+        <li>
+          <b>P34_EXACT</b> returns the exact integral for problem 34.
+        </li>
+        <li>
+          <b>P34_FUN</b> evaluates the integrand for problem 34.
+        </li>
+        <li>
+          <b>P34_LIM</b> returns the integration limits for problem 34.
+        </li>
+        <li>
+          <b>P35_EXACT</b> returns the exact integral for problem 35.
+        </li>
+        <li>
+          <b>P35_FUN</b> evaluates the integrand for problem 35.
+        </li>
+        <li>
+          <b>P35_LIM</b> returns the integration limits for problem 35.
+        </li>
+        <li>
+          <b>P36_EXACT</b> returns the exact integral for problem 36.
+        </li>
+        <li>
+          <b>P36_FUN</b> evaluates the integrand for problem 36.
+        </li>
+        <li>
+          <b>P36_LIM</b> returns the integration limits for problem 36.
+        </li>
+        <li>
+          <b>P36_PARAM</b> gets or sets the parameter values for problem 36.
+        </li>
+        <li>
+          <b>P36_PARAM_GET</b> returns the parameter values for problem 36.
+        </li>
+        <li>
+          <b>P36_PARAM_SET</b> sets the parameter values for problem 36.
+        </li>
+        <li>
+          <b>P37_EXACT</b> returns the exact integral for problem 37.
+        </li>
+        <li>
+          <b>P37_FUN</b> evaluates the integrand for problem 37.
+        </li>
+        <li>
+          <b>P37_LIM</b> returns the integration limits for problem 37.
+        </li>
+        <li>
+          <b>P37_PARAM</b> gets or sets the parameter values for problem 37.
+        </li>
+        <li>
+          <b>P37_PARAM_GET</b> returns the parameter values for problem 37.
+        </li>
+        <li>
+          <b>P37_PARAM_SET</b> sets the parameter values for problem 37.
+        </li>
+        <li>
+          <b>P38_EXACT</b> returns the exact integral for problem 38.
+        </li>
+        <li>
+          <b>P38_FUN</b> evaluates the integrand for problem 38.
+        </li>
+        <li>
+          <b>P38_LIM</b> returns the integration limits for problem 38.
+        </li>
+        <li>
+          <b>P38_PARAM</b> gets or sets the parameter values for problem 38.
+        </li>
+        <li>
+          <b>P38_PARAM_GET</b> returns the parameter values for problem 38.
+        </li>
+        <li>
+          <b>P38_PARAM_SET</b> sets the parameter values for problem 38.
+        </li>
+        <li>
+          <b>P39_EXACT</b> returns the exact integral for problem 39.
+        </li>
+        <li>
+          <b>P39_FUN</b> evaluates the integrand for problem 39.
+        </li>
+        <li>
+          <b>P39_LIM</b> returns the integration limits for problem 39.
+        </li>
+        <li>
+          <b>P39_PARAM</b> gets or sets the parameter values for problem 39.
+        </li>
+        <li>
+          <b>P39_PARAM_GET</b> returns the parameter values for problem 39.
+        </li>
+        <li>
+          <b>P39_PARAM_SET</b> sets the parameter values for problem 39.
+        </li>
+        <li>
+          <b>P40_EXACT</b> returns the exact integral for problem 40.
+        </li>
+        <li>
+          <b>P40_FUN</b> evaluates the integrand for problem 40.
+        </li>
+        <li>
+          <b>P40_LIM</b> returns the integration limits for problem 40.
+        </li>
+        <li>
+          <b>P40_PARAM</b> gets or sets the parameter values for problem 40.
+        </li>
+        <li>
+          <b>P40_PARAM_GET</b> returns the parameter values for problem 40.
+        </li>
+        <li>
+          <b>P40_PARAM_SET</b> sets the parameter values for problem 40.
+        </li>
+        <li>
+          <b>P41_EXACT</b> returns the exact integral for problem 41.
+        </li>
+        <li>
+          <b>P41_FUN</b> evaluates the integrand for problem 41.
+        </li>
+        <li>
+          <b>P41_LIM</b> returns the integration limits for problem 41.
+        </li>
+        <li>
+          <b>P41_PARAM</b> gets or sets the parameter values for problem 41.
+        </li>
+        <li>
+          <b>P41_PARAM_GET</b> returns the parameter values for problem 41.
+        </li>
+        <li>
+          <b>P41_PARAM_SET</b> sets the parameter values for problem 41.
+        </li>
+        <li>
+          <b>P42_EXACT</b> returns the exact integral for problem 42.
+        </li>
+        <li>
+          <b>P42_FUN</b> evaluates the integrand for problem 42.
+        </li>
+        <li>
+          <b>P42_LIM</b> returns the integration limits for problem 42.
+        </li>
+        <li>
+          <b>P42_PARAM</b> gets or sets the parameter values for problem 42.
+        </li>
+        <li>
+          <b>P42_PARAM_GET</b> returns the parameter values for problem 42.
+        </li>
+        <li>
+          <b>P42_PARAM_SET</b> sets the parameter values for problem 42.
+        </li>
+        <li>
+          <b>P43_EXACT</b> returns the exact integral for problem 43.
+        </li>
+        <li>
+          <b>P43_FUN</b> evaluates the integrand for problem 43.
+        </li>
+        <li>
+          <b>P43_LIM</b> returns the integration limits for problem 43.
+        </li>
+        <li>
+          <b>P43_PARAM</b> gets or sets the parameter values for problem 43.
+        </li>
+        <li>
+          <b>P43_PARAM_GET</b> returns the parameter values for problem 43.
+        </li>
+        <li>
+          <b>P43_PARAM_SET</b> sets the parameter values for problem 43.
+        </li>
+        <li>
+          <b>P44_EXACT</b> returns the exact integral for problem 44.
+        </li>
+        <li>
+          <b>P44_FUN</b> evaluates the integrand for problem 44.
+        </li>
+        <li>
+          <b>P44_LIM</b> returns the integration limits for problem 44.
+        </li>
+        <li>
+          <b>P44_PARAM</b> gets or sets the parameter values for problem 44.
+        </li>
+        <li>
+          <b>P44_PARAM_GET</b> returns the parameter values for problem 44.
+        </li>
+        <li>
+          <b>P44_PARAM_SET</b> sets the parameter values for problem 44.
+        </li>
+        <li>
+          <b>P45_EXACT</b> returns the exact integral for problem 45.
+        </li>
+        <li>
+          <b>P45_FUN</b> evaluates the integrand for problem 45.
+        </li>
+        <li>
+          <b>P45_LIM</b> returns the integration limits for problem 45.
+        </li>
+        <li>
+          <b>P45_PARAM</b> gets or sets the parameter values for problem 45.
+        </li>
+        <li>
+          <b>P45_PARAM_GET</b> returns the parameter values for problem 45.
+        </li>
+        <li>
+          <b>P45_PARAM_SET</b> sets the parameter values for problem 45.
+        </li>
+        <li>
+          <b>P46_EXACT</b> returns the exact integral for problem 46.
+        </li>
+        <li>
+          <b>P46_FUN</b> evaluates the integrand for problem 46.
+        </li>
+        <li>
+          <b>P46_LIM</b> returns the integration limits for problem 46.
+        </li>
+        <li>
+          <b>P46_PARAM</b> gets or sets the parameter values for problem 46.
+        </li>
+        <li>
+          <b>P46_PARAM_GET</b> returns the parameter values for problem 46.
+        </li>
+        <li>
+          <b>P46_PARAM_SET</b> sets the parameter values for problem 46.
+        </li>
+        <li>
+          <b>P47_EXACT</b> returns the exact integral for problem 47.
+        </li>
+        <li>
+          <b>P47_FUN</b> evaluates the integrand for problem 47.
+        </li>
+        <li>
+          <b>P47_LIM</b> returns the integration limits for problem 47.
+        </li>
+        <li>
+          <b>P48_EXACT</b> returns the exact integral for problem 48.
+        </li>
+        <li>
+          <b>P48_FUN</b> evaluates the integrand for problem 48.
+        </li>
+        <li>
+          <b>P48_LIM</b> returns the integration limits for problem 48.
+        </li>
+        <li>
+          <b>P49_EXACT</b> returns the exact integral for problem 49.
+        </li>
+        <li>
+          <b>P49_FUN</b> evaluates the integrand for problem 49.
+        </li>
+        <li>
+          <b>P49_LIM</b> returns the integration limits for problem 49.
+        </li>
+        <li>
+          <b>P50_EXACT</b> returns the exact integral for problem 50.
+        </li>
+        <li>
+          <b>P50_FUN</b> evaluates the integrand for problem 50.
+        </li>
+        <li>
+          <b>P50_LIM</b> returns the integration limits for problem 50.
+        </li>
+        <li>
+          <b>P51_EXACT</b> returns the exact integral for problem 51.
+        </li>
+        <li>
+          <b>P51_FUN</b> evaluates the integrand for problem 51.
+        </li>
+        <li>
+          <b>P51_LIM</b> returns the integration limits for problem 51.
+        </li>
+        <li>
+          <b>P52_EXACT</b> returns the exact integral for problem 52.
+        </li>
+        <li>
+          <b>P52_FUN</b> evaluates the integrand for problem 52.
+        </li>
+        <li>
+          <b>P52_LIM</b> returns the integration limits for problem 52.
+        </li>
+        <li>
+          <b>P53_EXACT</b> returns the exact integral for problem 53.
+        </li>
+        <li>
+          <b>P53_FUN</b> evaluates the integrand for problem 53.
+        </li>
+        <li>
+          <b>P53_LIM</b> returns the integration limits for problem 53.
+        </li>
+        <li>
+          <b>P54_EXACT</b> returns the exact integral for problem 54.
+        </li>
+        <li>
+          <b>P54_FUN</b> evaluates the integrand for problem 54.
+        </li>
+        <li>
+          <b>P54_LIM</b> returns the integration limits for problem 54.
+        </li>
+        <li>
+          <b>P55_EXACT</b> returns the exact integral for problem 55.
+        </li>
+        <li>
+          <b>P55_FUN</b> evaluates the integrand for problem 55.
+        </li>
+        <li>
+          <b>P55_LIM</b> returns the integration limits for problem 55.
+        </li>
+        <li>
+          <b>P55_PARAM</b> sets or gets real scalar parameters for problem 55.
+        </li>
+        <li>
+          <b>P56_EXACT</b> returns the estimated integral for problem 56.
+        </li>
+        <li>
+          <b>P56_FUN</b> evaluates the integrand for problem 56.
+        </li>
+        <li>
+          <b>P56_LIM</b> returns the integration limits for problem 56.
+        </li>
+        <li>
+          <b>P57_EXACT</b> returns the exact integral for problem 57.
+        </li>
+        <li>
+          <b>P57_FUN</b> evaluates the integrand for problem 57.
+        </li>
+        <li>
+          <b>P57_LIM</b> returns the integration limits for problem 57.
+        </li>
+        <li>
+          <b>R89SIFG</b> evaluate terms needed in an approximation to SI(X) for 4 <= |X|.
+        </li>
+        <li>
+          <b>R89UPAK</b> rewrites a real value X as Y * 2**N where 0.5 <= |Y| < 1.
+        </li>
+        <li>
+          <b>R8_CI</b> computes an approximation to the value of the cosine integral.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> returns the value of the Gamma function at X.
+        </li>
+        <li>
+          <b>R8_GAMMA_LOG</b> calculates the natural logarithm of GAMMA ( X ) for positive X.
+        </li>
+        <li>
+          <b>R8_HUGE</b> returns a large R8.
+        </li>
+        <li>
+          <b>R8_SECH</b> evaluates the hyperbolic secant, while avoiding COSH overflow.
+        </li>
+        <li>
+          <b>R8_SI</b> computes an approximation to the value of the sine integral.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 December 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,266 @@
+<html>
+
+  <head>
+    <title>
+      BALL_VOLUME_QUAD - Multidimensional Ball Volume by Quadrature
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BALL_VOLUME_QUAD <br> Multidimensional Ball Volume by Quadrature
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BALL_VOLUME_QUAD</b>
+      is a FORTRAN90 program which 
+      investigates the behavior of a quadrature rule when it is applied
+      to the characteristic function of the unit M-dimensional
+      hyperball, which is a discontinuous function.  
+    </p>
+
+    <p>
+      The program integrates the function over the unit hypercube [-1,+1]^M,
+      where the spatial dimension M is arbitrary.  The value of M is inferred
+      from the user input quadrature rule information.
+    </p>
+
+    <p>
+      The problem used as example input to the program works in M = 6 dimensions.
+      In that case, the volume of the hypercube is 64; the volume of the 
+      hyperball is pi^3/6, or about 5.16771.
+    </p>
+
+    <p>
+      Because the integrand is discontinuous, any quadrature rule based on
+      the idea of interpolation will probably be unable to do a good job.
+      A family of quadrature rules, which rely on increasing the order of
+      interpolation to improve accuracy, will probably get increasingly
+      bad answers.
+    </p>
+
+    <p>
+      By contrast, a basic Monte Carlo rule, which assumes nothing about
+      the function, integrates this function just as well as it integrates
+      most any other square-integrable function.  (That's both the strength
+      and weakness of the blunt instrument we call Monte Carlo integration.)
+    </p>
+
+    <p>
+      The program assumes that the quadrature rule is defined by three text files.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>ball_volume_quad</b> <i>prefix</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>prefix</i>_r.txt contains the coordinates of two points that
+          define the quadrature region.
+        </li>
+        <li>
+          <i>prefix</i>_w.txt contains the weights;
+        </li>
+        <li>
+          <i>prefix</i>_x.txt contains the points;
+        </li>
+      </ul>
+      For information on the form of these files, see the 
+      <b>QUADRATURE_RULES</b> directory listed below.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+ 
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/ball_volume_monte_carlo/ball_volume_monte_carlo.html">
+      BALL_VOLUME_MONTE_CARLO</a>, 
+      a FORTRAN90 program which
+      applies a Monte Carlo method to estimate the volume of the unit 6D sphere;
+    </p>
+
+    <p>
+      <a href = "../../f_src/nintlib/nintlib.html">
+      NINTLIB</a>,
+      a FORTRAN90 library which
+      numerically estimates integrals in multiple dimensions.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules/quadrature_rules.html">
+      QUADRATURE_RULES</a>, 
+      a dataset directory which
+      contains sets of files that define quadrature
+      rules over various 1D intervals or multidimensional hypercubes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>, 
+      a FORTRAN90 library which
+      defines quadrature rules for a variety of unusual areas, surfaces 
+      and volumes in 2D, 3D and multiple dimensions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_nint/test_nint.html">
+      TEST_NINT</a>, 
+      a FORTRAN90 library which
+      defines integrand functions for testing
+      multidimensional quadrature routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/testpack/testpack.html">
+      TESTPACK</a>,
+      a FORTRAN90 library which
+      defines a set of integrands used to test multidimensional quadrature.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ball_volume_quad.f90">ball_volume_quad.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "ball_volume_quad.sh">ball_volume_quad.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ball_volume_quad_test.sh">ball_volume_quad_test.sh</a>,
+          runs BALL_VOLUME_QUAD on 6 sparse grid Clenshaw Curtis rules, and then
+          on six Monte Carlo "rules" that match the number of points used by the 
+          Clenshaw Curtis rules.
+        </li>
+        <li>
+          <a href = "ball_volume_quad_output.txt">ball_volume_quad_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for BALL_VOLUME_QUAD.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SPHERE_INDICATOR</b> evaluates the unit sphere indicator function.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_VOLUME_ND</b> computes the volume of a unit sphere in multi-dimensions.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 August 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

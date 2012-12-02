@@ -1,0 +1,457 @@
+<html>
+
+  <head>
+    <title>
+      LAU_NP - Heuristics for NP problems
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      LAU_NP <br> Heuristics for NP problems
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>LAU_NP</b>
+      is a FORTRAN90 library which
+      implements heuristic algorithms for certain "hard" problems,
+      by Hang Tong Lau.
+    </p>
+
+    <p>
+      These problems are hard in the sense that, as the problem size N
+      increases, the amount of work required to compute a solution grows
+      exponentially.
+    </p>
+
+    <p>
+      The classic example of this is the "traveling salesman problem",
+      which seeks the shortest roundtrip that visits each location exactly
+      once.  The obvious method of solution, to compute the length of every
+      possible path, is not much worse than the best known method of
+      solution, in terms of the amount of computing required to find the
+      exact answer.  However, there are heuristic methods that can find a
+      "reasonable" approximation to the answer for most problems, in a
+      much shorter amount of time.
+    </p>
+
+    <p>
+      The problems considered include:
+      <ul>
+        <li>
+          the integer linear programming problem;
+        </li>
+        <li>
+          the K-center problem;
+        </li>
+        <li>
+          the K-median problem;
+        </li>
+        <li>
+          the 0-1 knapsack problem;
+        </li>
+        <li>
+          the multiple knapsack problem;
+        </li>
+        <li>
+          the graph matching problem;
+        </li>
+        <li>
+          the graph partitioning problem;
+        </li>
+        <li>
+          the minimal Steiner tree problem;
+        </li>
+        <li>
+          the traveling salesman problem;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f77_src/asa058/asa058.html">
+      ASA058</a>,
+      a FORTRAN77 library which
+      contains the original text of the Sparks
+      clustering algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/asa136/asa136.html">
+      ASA136</a>,
+      a FORTRAN77 library which
+      contains the original text of the Hartigan
+      and Wong clustering algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cities/cities.html">
+      CITIES</a>,
+      a FORTRAN90 library which
+      handles various problems associated with a set of "cities" on a map.
+    </p>
+
+    <p>
+      <a href = "../../datasets/cities/cities.html">
+      CITIES</a>,
+      a dataset directory which
+      contains a number of city distance datasets.
+    </p>
+
+    <p>
+      <a href = "../../f_src/floyd/floyd.html">
+      FLOYD</a>,
+      a FORTRAN90 library which
+      implements Floyd's algorithm for finding the shortest distance between pairs of
+      nodes on a directed graph.
+    </p>
+
+    <p>
+      <a href = "../../f_src/kmeans/kmeans.html">
+      KMEANS</a>,
+      a FORTRAN90 library which
+      contains several implementations of
+      the K-Means algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/knapsack/knapsack.html">
+      KNAPSACK</a>,
+      a FORTRAN77 library which
+      solves a variety of knapsack problems.
+    </p>
+
+    <p>
+      <a href = "../../datasets/knapsack_01/knapsack_01.html">
+      KNAPSACK_01</a>,
+      a dataset directory which
+      contains test data for the 0/1 knapsack problem;
+    </p>
+
+    <p>
+      <a href = "../../datasets/knapsack_multiple/knapsack_multiple.html">
+      KNAPSACK_MULTIPLE</a>,
+      a dataset directory which
+      contains test data for the multiple knapsack problem;
+    </p>
+
+    <p>
+      <a href = "../../f77_src/lamp/lamp.html">
+      LAMP</a>,
+      a FORTRAN77 library which
+      solves linear assignment and matching problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/partition_problem/partition_problem.html">
+      PARTITION_PROBLEM</a>,
+      a FORTRAN90 library which
+      seeks solutions of the partition problem, splitting a set of integers into
+      two subsets with equal sum.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spaeth/spaeth.html">
+      SPAETH</a>,
+      a FORTRAN90 library which
+      can cluster data according to various principles.
+    </p>
+
+    <p>
+      <a href = "../../datasets/spaeth/spaeth.html">
+      SPAETH</a>,
+      a dataset collection which
+      contains a set of test data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spaeth2/spaeth2.html">
+      SPAETH2</a>,
+      a FORTRAN90 library which
+      can cluster data according to various
+      principles.
+    </p>
+
+    <p>
+      <a href = "../../datasets/spaeth2/spaeth2.html">
+      SPAETH2</a>,
+      a dataset collection which
+      contains a set of test data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset_sum/subset_sum.html">
+      SUBSET_SUM</a>,
+      a FORTRAN90 library which
+      seeks solutions of the subset sum problem.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms456/toms456.html">
+      TOMS456</a>,
+      a FORTRAN77 library which
+      handles the routing problem, connecting some nodes in a network.
+    </p>
+
+    <p>
+      <a href = "../../datasets/tsp/tsp.html">
+      TSP</a>,
+      a dataset directory which
+      contains test data for the traveling salesperson problem;
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Hang Tong Lau
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Rainer Burkard, Ulrich Derigs,<br>
+          Assignment and Matching Problems: Solution methods with
+          FORTRAN programs,<br>
+          Lecture Notes in Economics and Mathematical Systems,<br>
+          Volume 184, <br>
+          Springer Verlag, 1980.
+        </li>
+        <li>
+          Nicos Christofides,<br>
+          Worst-case analysis of a new heuristic for the traveling salesman
+          problem,<br>
+          Management Science Research Report Number 388,<br>
+          Carnegie-Mellon University, 1976.
+        </li>
+        <li>
+          Frederick Hillier,<br>
+          Efficient heuristic procedure for integer linear programming
+          with an interior,<br>
+          Operations Research,<br>
+          Volume 17, pages 600-637, 1969.
+        </li>
+        <li>
+          Dorit Hochbaum, David Shmoys,<br>
+          A best possible heuristic for the K-center problem,<br>
+          Mathematics of Operations Research,<br>
+          Volume 10, pages 180-184, 1985.
+        </li>
+        <li>
+          Oscar Ibarra, Chul Kim,<br>
+          Fast approximation algorithms for the knapsack and sum of
+          subset problems,<br>
+          Journal of the Association for Computing Machinery,<br>
+          Volume 22, pages 463-468, 1975.
+        </li>
+        <li>
+          Brian Kernighan, Shen Lin,<br>
+          An efficient heuristic procedure for partitioning graphs,<br>
+          Bell System Technical Journal,<br>
+          Volume 49, pages 291-307, 1970.
+        </li>
+        <li>
+          Brian Kernighan, Shen Lin,<br>
+          Heuristic solution of a signal design optimization problem,<br>
+          Bell System Technical Journal,<br>
+          Volume 52, pages 1145-1159, 1973.
+        </li>
+        <li>
+          Lawrence Kou, George Markowsky, Leonard Berman,<br>
+          A fast algorithm for Steiner trees,<br>
+          Research report RC 7390,<br>
+          IBM Thomas J Watson Research Center,<br>
+          Yorktown Heights, New York, 1978.
+        </li>
+        <li>
+          Hang Tong Lau,<br>
+          Combinatorial Heuristic Algorithms in FORTRAN,<br>
+          Springer Verlag, 1986,<br>
+          ISBN: 3540171614,<br>
+          LC: QA402.5 L37.
+        </li>
+        <li>
+          Yoshiaki Toyoda,<br>
+          A simplified algorithm for obtaining approximate solutions
+          to zero-one programming problems,<br>
+          Management Science,<br>
+          Volume 21, pages 1417-1427, 1975.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "lau_np.f90">lau_np.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "lau_np.sh">lau_np.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "lau_np_prb.f90">lau_np_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "lau_np_prb.sh">lau_np_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "lau_np_prb_output.txt">lau_np_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GRAPH_ARC_EULER_CIRC</b> finds an Euler circuit in an Eulerian graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_MIN_PATH</b> finds the shortest path between two nodes.
+        </li>
+        <li>
+          <b>GRAPH_ARC_MIN_SPAN_TREE</b> finds a minimum spanning tree of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_PRINT</b> prints out a graph from an edge list.
+        </li>
+        <li>
+          <b>GRAPH_ARC_WEIGHT_PRINT</b> prints out a weighted graph from an edge list.
+        </li>
+        <li>
+          <b>GRAPH_DIST_MIN_SPAN_TREE3</b> finds a minimum spanning tree.
+        </li>
+        <li>
+          <b>GRAPH_DIST_PRINT</b> prints a distance matrix.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two I4's.
+        </li>
+        <li>
+          <b>INT_LP</b> is a heuristic algorithm for the integer linear programming problem.
+        </li>
+        <li>
+          <b>K_CENTER</b> is a heuristic algorithm for the K-center problem.
+        </li>
+        <li>
+          <b>K_MEDIAN</b> is a heuristic algorithm for the K-median problem.
+        </li>
+        <li>
+          <b>KNAPSACK</b> is a heuristic algorithm for the zero-one knapsack problem.
+        </li>
+        <li>
+          <b>MULTI_KNAP</b> is a heuristic algorithm for the multi-dimensional 0/1 knapsack problem.
+        </li>
+        <li>
+          <b>PARSE1</b> is used by INT_LP.
+        </li>
+        <li>
+          <b>PARSE2</b> is used by INT_LP.
+        </li>
+        <li>
+          <b>PARSE3</b> is used by INT_LP.
+        </li>
+        <li>
+          <b>PARSE4</b> is used by INT_LP.
+        </li>
+        <li>
+          <b>PARSE5</b> is used by INT_LP.
+        </li>
+        <li>
+          <b>PARSE6</b> is used by INT_LP.
+        </li>
+        <li>
+          <b>PARSE7</b> is used by INT_LP.
+        </li>
+        <li>
+          <b>PARSE8</b> is used by INT_LP.
+        </li>
+        <li>
+          <b>PARTITION</b> is a heuristic algorithm for the graph partitioning problem.
+        </li>
+        <li>
+          <b>PMATCH</b> finds a minimum weight perfect matching in a graph.
+        </li>
+        <li>
+          <b>PMATCH_SUB_A</b> is used by PMATCH.
+        </li>
+        <li>
+          <b>PMATCH_SUB_B</b> is used by PMATCH.
+        </li>
+        <li>
+          <b>R8_SWAP</b> switches two R8's.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_INDEX_A</b> does an indexed heap ascending sort of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_INDEX_D</b> does an indexed heap descending sort of an R8VEC.
+        </li>
+        <li>
+          <b>SIMPLEX</b> is used by INT_LP.
+        </li>
+        <li>
+          <b>STEINER</b> is a heuristic algorithm for the minimal Steiner tree problem.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TSP</b> is a heuristic algorithm for the traveling salesman problem.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

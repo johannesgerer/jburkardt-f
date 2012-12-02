@@ -1,0 +1,220 @@
+<html>
+
+  <head>
+    <title>
+      GDB - Using the GNU Debugger on a FORTRAN90 Program
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GDB <br> Using the GNU Debugger <br> on a FORTRAN90 Program
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GDB</b>
+      is a directory of FORTRAN90 programs which
+      illustrate the use of GDB, the GNU debugger program, intended to help programmers
+      find the location and nature of run time errors.
+    </p>
+
+    <p>
+      <b>GDB</b> works with programs written in C, C++, FORTRAN77,
+      FORTRAN90, Java, and assembly language.
+    </p>
+
+    <p>
+      The most common case in which you'll use <b>GDB</b> occurs when
+      a program you've written crashes, leaving a core file.  You may
+      really have no idea where the error occurred, in which case you
+      could waste much time inserting output statements, or tinkering
+      with various routines that turn out not to contain the error.
+      But <b>GDB</b> can help you find the error much more quickly.
+    </p>
+
+    <p>
+      In order for <b>GDB</b> to do its best work, it needs a
+      <i>symbol table</i>, which helps it translate the computer
+      addresses of variables to the names you used when setting them up.
+      This symbol table is created at compile time, usually with the
+      <b>-g</b> compile option, as in one of the following:
+      <pre>
+        gcc -g myprog.c
+        g++ -g myprog.C
+        f77 -g myprog.f
+        f90 -g myprog.f90
+      </pre>
+      If your program has several parts, you will really need to compile
+      each part with the symbol table option, as in
+      <pre>
+        gcc -g part1.c part2.c part3.c
+      </pre>
+      or
+      <pre>
+        gcc -c -g part2.c
+        gcc -c -g part3.c
+        gcc -g part1.c part2.o part3.o
+      </pre>
+    </p>
+
+    <p>
+      Of course, your program that crashed probably was <i>not</i> compiled
+      with the symbol table option, so the first step is to recompile the
+      program, rerun it, and presumably, recrash it!   If you really had
+      a nice crash, you will now have a <b>core</b> file in your directory,
+      which <b>GDB</b> will also need to examine as it helps you.
+    </p>
+
+    <p>
+      If your executable is called <b>a.out</b>, then if you simply type
+      <pre>
+        <b>gdb</b> a.out core
+      </pre>
+      then <b>GDB</b> will usually be able to report the line of your
+      program on which the fatal error occurred.
+      This assumes, of course, that the <b>core</b> file and original
+      source code files are in the current directory and correspond
+      to the executable program.
+    </p>
+
+    <p>
+      In other cases, you may want to run your program from the beginning,
+      with the option to pause execution at certain places, so that you
+      can query the values of certain variables.  This entails an interactive
+      session, which might begin like this:
+      <pre>
+        <b>gdb</b> a.out
+        run
+        <i>
+          Program received signal SIGSEGV, Segmentation fault.
+          0x12000162c in test02 () at bounder.f90:119
+          119    b(j) = j + 1
+          Current language:  auto; currently fortran
+        </i>
+        </i>
+        print i
+        $ 1   1000000
+        quit
+      </pre>
+    </p>
+
+    <p>
+      Suppose that your program generally expects command line arguments,
+      so that a typical execution might be
+      <pre>
+         myprog arg1 arg2 arg3
+      </pre>
+      Then the only thing you have to do is include those same arguments
+      on the <b>run</b> command line:
+      <pre>
+        <b>gdb</b> <i>myprog</i>
+        run arg1 arg2 arg3
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>gdb</b> <i>executable</i>
+        </dt>
+        <dd>
+          Loads your executable into <b>gdb</b>.  Type "run" to make
+          your program execute.
+        </dd>
+        <dt>
+          <b>gdb</b> <i>executable</i> <b>core</b>
+        </dt>
+        <dd>
+          Loads your program into <b>gbd</b> along with the <b>core</b>
+          file created when your program crashed.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Richard Stallman, Roland Pesch, Stan Shebs,<br>
+          Debugging with GDB: the GNU Source-Level Debugger,<br>
+          GNU Press, 2002.
+        </li>
+        <li>
+          The GDB Home Page,<br>
+          <a href = "http://www.gnu.org/software/gdb/">
+                     http://www.gnu.org/software/gdb/ </a>
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>BOUNDER</b> is an example in which an array index exceeds the
+      array bounds, generating a runtime error.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "bounder.f90">bounder.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "bounder.sh">bounder.sh</a>, commands that
+          compile and run the source code;
+        </li>
+        <li>
+          <a href = "bounder_output.txt">bounder_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>BOUNDER_GDB</b> shows the steps involved in using GDB to track
+      down the problem in BOUNDER.  Note that GDB needs access to the executable
+      program that failed.  Normally, the GDB is run interactively,
+      and the commands in the input file are entered one at a time by the
+      user.
+      <ul>
+        <li>
+          <a href = "bounder_gdb.sh">bounder_gdb.sh</a>,
+          commands that run BOUNDER with the debugger, and then
+          discard the executable.
+        </li>
+        <li>
+          <a href = "bounder_gdb_input.txt">bounder_gdb_input.txt</a>,
+          input commands to GDB, normally typed interactively.
+          We are most curious to see the value of J.
+        </li>
+        <li>
+          <a href = "bounder_gdb_output.txt">bounder_gdb_output.txt</a>,
+          the output from GDB, which normally goes to your screen.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 18 May 2005.
+    </i>
+
+  </body>
+
+</html>

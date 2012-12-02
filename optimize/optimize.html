@@ -1,0 +1,152 @@
+<html>
+
+  <head>
+    <title>
+      OPTIMIZE - Taking Advantage of the Compiler's Optimization Ability
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      OPTIMIZE <br> Taking Advantage of the Compiler's Optimization Ability
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>OPTIMIZE</b>
+      is a directory of FORTRAN90 programs which
+      demonstrate the use and benefits of the compiler's automatic optimization
+      ability.
+    </p>
+
+    <p>
+      Most compilers have an option to "optimize" your code; that is, to spend
+      some extra compilation time looking for ways to adjust your program so that
+      it runs faster, while getting the same results.
+    </p>
+
+    <p>
+      By default, compiler optimization is not accessed.  In GFORTRAN, you
+      can request optimization by including the "-O#' option where '#' is
+      a value between 0 (no optimization) and 3 (high optimization).  Asking
+      for a higher level of optimization may increase the compilation time
+      somewhat, and occasionally, an optimization performed by the compiler
+      might not be suitable for your program (in other words, it might make
+      your program return different or incorrect results.)  Thus, it's important
+      to time your code before and after optimization, to see if it helps,
+      and to check your results, to see if it hurts!
+    </p>
+
+    <p>
+      The molecular dynamics example program given here runs in about 40 seconds.  
+      After optimization at level 1, it runs in 30 seconds.  Optimization level 2 brings the
+      run time down to 13 seconds and level 3 to 10 seconds.  These improvements come with 
+      not a single change to the source code.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>OPTIMIZE</b> is available in
+      <a href = "../../c_src/optimize/optimize.html">a C version</a> and
+      <a href = "../../cpp_src/optimize/optimize.html">a C++ version</a> and
+      <a href = "../../f77_src/optimize/optimize.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/optimize/optimize.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/gprof/gprof.html">
+      GPROF</a>,
+      FORTRAN90 programs which
+      illustrate the use of the GPROF program performance monitor;
+    </p>
+
+    <p>
+      <a href = "../../f_src/md/md.html">
+      MD</a>,
+      a FORTRAN90 program which
+      carries out a molecular dynamics simulation,
+      intended as a starting point for implementing a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/timer/timer.html">
+      TIMER</a>,
+      FORTRAN90 programs which
+      demonstrate how to compute CPU time or elapsed time.
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>MD</b> is a molecular dynamics program.
+      <ul>
+        <li>
+          <a href = "md.f90">md.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "md.sh">md.sh</a>, commands that compile and run the program.
+        </li>
+        <li>
+          <a href = "md_output.txt">md_output.txt</a>, the output file;
+        </li>
+        <li>
+          <a href = "md_O1.sh">md_O1.sh</a>, commands that compile the program
+          with optimization level 1 and run it.
+        </li>
+        <li>
+          <a href = "md_O1_output.txt">md_O1_output.txt</a>, the output file;
+        </li>
+        <li>
+          <a href = "md_O2.sh">md_O2.sh</a>, commands that compile the program
+          with optimization level 2 and run it.
+        </li>
+        <li>
+          <a href = "md_O2_output.txt">md_O2_output.txt</a>, the output file;
+        </li>
+        <li>
+          <a href = "md_O3.sh">md_O3.sh</a>, commands that compile the program
+          with optimization level 3 and run it.
+        </li>
+        <li>
+          <a href = "md_O3_output.txt">md_O3_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 March 2012
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

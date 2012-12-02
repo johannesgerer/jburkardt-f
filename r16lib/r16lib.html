@@ -1,0 +1,660 @@
+<html>
+
+  <head>
+    <title>
+      R16LIB - A Quadruple Precision Real Arithmetic Utility Library
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      R16LIB <br> A Quadruple Precision Real Arithmetic Utility Library
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>R16LIB</b> 
+      is a FORTRAN90 library which
+      contains a number of utility routines using "R16" or
+      "quadruple precision real" arithmetic.
+    </p>
+
+    <p>
+      At the moment, the status of quadruple precision real data in FORTRAN is
+      somewhat vague.  This library is very small, and right now is simply
+      a bag containing the occasional results of forays into the world
+      of quadruple real precision.
+    </p>
+
+    <p>
+      Issues include:
+      <ul>
+        <li>
+          <i>compiler support</i>: does the compiler allow quadruple
+          real precision at all?
+        </li>
+        <li>
+          <i>declarations</i>: how do you declare that a given value
+          has type "quadruple real precision"?  My choice has been
+          "real ( kind = 16 )".
+        </li>
+        <li>
+          <i>conversion</i>: how do you convert, for example, an integer
+          value to quadruple real? My choice has been
+          "x = real ( n, kind = 16 )".
+        </li>
+        <li>
+          <i>constants</i>: how do you specify a literal decimal constant?
+          If you are not careful, FORTRAN will treat a literal decimal
+          constant as a single precision value, dropping all those extra
+          digits you so carefully typed in.  (Check this sometime!)
+          My choice has been to follow the numeric value by the suffix "_16"?
+        </li>
+        <li>
+          <i>intrinsics</i>: how do you call for the square root, cosine
+          and so on.  I assume that the generic intrinsic functions are
+          available, so "y = sqrt ( x )" is presumed to carry out a
+          quadruple precision real calculation if that is the type of x.
+        </li>
+        <li>
+          <i>non-intrinsics</i>: Some FORTRAN non-intrinsic functions
+          may be common enough that the user expects them to be available,
+          even in oddball precisions.  The GAMMA function, for instance,
+          is not part of the standard, but is often supplied for real
+          and double precision arguments.  Is it available for quadruple
+          precision?
+        </li>
+        <li>
+          <i>efficiency</i>: R16 arithmetic is often done slowly, through
+          software rather than in hardware.  This can result in an enormous
+          increase in computation time;
+        </li>
+        <li>
+          <i>complex values</i>: many of the above questions must be
+          repeated if the user is interested in quadruple precision complex
+          arithmetic.  It would seem natural to assume, for instance, that
+          the corresponding declaration might be "complex ( kind = 16 )"
+          but I have seen one or two cases in which it was asserted that
+          the correct declaration would be "complex ( kind = 32 )" because
+          one needs to count the storage for the real and imaginary parts.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/c4lib/c4lib.html">
+      C4LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for "C4" or
+      single precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/c8lib/c8lib.html">
+      C8LIB</a>, 
+      a FORTRAN90 library which
+      implements certain elementary functions for "C8" or
+      double precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/i4lib/i4lib.html">
+      I4LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "I4" or "single precision integer"
+      arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/i8lib/i8lib.html">
+      I8LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "I8" or "double precision integer"
+      arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r16_hermite_rule/r16_hermite_rule.html">
+      R16_HERMITE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Hermite quadrature rule, using
+      "quadruple precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r16_int_exactness_gen_hermite/r16_int_exactness_gen_hermite.html">
+      R16_INT_EXACTNESS_GEN_HERMITE</a>,
+      a FORTRAN90 program which 
+      tests the polynomial exactness of generalized Gauss-Hermite quadrature rules,
+      using "quadruple precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r4lib/r4lib.html">
+      R4LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R4" or "single precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>, 
+      a FORTRAN90 library which
+      contains many utility routines, using "R8" or 
+      "double precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subpak/subpak.html">
+      SUBPAK</a>, 
+      a FORTRAN90 library which
+      contains many utility routines;
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "r16lib.f90">r16lib.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "r16lib.sh">r16lib.sh</a>, 
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "r16lib_prb.f90">r16lib_prb.f90</a>, a sample calling
+          program;
+        </li>
+        <li>
+          <a href = "r16lib_prb.sh">r16lib_prb.sh</a>, commands to 
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "r16lib_prb_output.txt">r16lib_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>I4_LOG_10</b> returns the integer part of the logarithm base 10 of an I4.
+        </li>
+        <li>
+          <b>R16_ABS</b> returns the absolute value of an R16.
+        </li>
+        <li>
+          <b>R16_ATAN</b> computes the inverse tangent of the ratio Y / X.
+        </li>
+        <li>
+          <b>R16_CAS</b> returns the "casine" of an R16.
+        </li>
+        <li>
+          <b>R16_CEILING</b> rounds an R16 "up" (towards +oo) to the next I4.
+        </li>
+        <li>
+          <b>R16_CHOOSE</b> computes the binomial coefficient C(N,K) as an R16.
+        </li>
+        <li>
+          <b>R16_CHOP</b> chops an R16 to a given number of binary places.
+        </li>
+        <li>
+          <b>R16_CSQRT</b> returns the complex square root of an R16.
+        </li>
+        <li>
+          <b>R16_CUBE_ROOT</b> returns the cube root of an R16.
+        </li>
+        <li>
+          <b>R16_DIFF</b> computes the difference of two R16's to a specified accuracy.
+        </li>
+        <li>
+          <b>R16_DIGIT</b> returns a particular decimal digit of an R16.
+        </li>
+        <li>
+          <b>R16_EPSILON</b> returns the R16 roundoff unit.
+        </li>
+        <li>
+          <b>R16_EXP</b> computes the exponential of an R16, avoiding overflow and underflow.
+        </li>
+        <li>
+          <b>R16_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>R16_FACTORIAL2</b> computes the double factorial function.
+        </li>
+        <li>
+          <b>R16_FLOOR</b> rounds an R16 "down" (towards -oo) to the next integer.
+        </li>
+        <li>
+          <b>R16_FRACTION</b> returns the fraction part of an R16.
+        </li>
+        <li>
+          <b>R16_HUGE</b> returns a very large R16.
+        </li>
+        <li>
+          <b>R16_IN_01</b> is TRUE if an R16 is in the range [0,1].
+        </li>
+        <li>
+          <b>R16_IS_INT</b> determines if an R16 represents an integer value.
+        </li>
+        <li>
+          <b>R16_LOG_2</b> returns the logarithm base 2 of an R16.
+        </li>
+        <li>
+          <b>R16_LOG_10</b> returns the logarithm base 10 of an R16.
+        </li>
+        <li>
+          <b>R16_LOG_B</b> returns the logarithm base B of an R8.
+        </li>
+        <li>
+          <b>R16_MANT</b> computes the "mantissa" or "fraction part" of an R16.
+        </li>
+        <li>
+          <b>R16_MOD</b> returns the remainder of R16 division.
+        </li>
+        <li>
+          <b>R16_MODP</b> returns the nonnegative remainder of R16 division.
+        </li>
+        <li>
+          <b>R16_MOP</b> returns the I-th power of -1 as an R16 value.
+        </li>
+        <li>
+          <b>R16_NINT</b> returns the nearest integer to an R16.
+        </li>
+        <li>
+          <b>R16_NORMAL</b> returns a scaled pseudonormal R16.
+        </li>
+        <li>
+          <b>R16_NORMAL_01</b> returns a unit pseudonormal R16.
+        </li>
+        <li>
+          <b>R16_PI</b> returns the value of pi as an R16.
+        </li>
+        <li>
+          <b>R16_POWER</b> computes the P-th power of an R16.
+        </li>
+        <li>
+          <b>R16_POWER_FAST</b> computes an integer power of an R16.
+        </li>
+        <li>
+          <b>R16_PYTHAG</b> computes sqrt ( A * A + B * B ), avoiding overflow and underflow.
+        </li>
+        <li>
+          <b>R16_ROUND2</b> rounds an R16 to a specified number of binary digits.
+        </li>
+        <li>
+          <b>R16_ROUNDB</b> rounds an R16 to a given number of digits in a given base.
+        </li>
+        <li>
+          <b>R16_ROUNDX</b> rounds an R16.
+        </li>
+        <li>
+          <b>R16_SIGN</b> returns the sign of an R16.
+        </li>
+        <li>
+          <b>R16_SIGN_OPPOSITE</b> is TRUE if two R16's are not of the same sign.
+        </li>
+        <li>
+          <b>R16_SIGN_OPPOSITE_STRICT</b> is TRUE if two R16's are strictly of opposite sign.
+        </li>
+        <li>
+          <b>R16_SWAP</b> swaps two R16's.
+        </li>
+        <li>
+          <b>R16_SWAP3</b> swaps three R16's.
+        </li>
+        <li>
+          <b>R16_TINY</b> returns a very small but positive R16.
+        </li>
+        <li>
+          <b>R16_TO_R16_DISCRETE</b> maps R to RD in [RMIN, RMAX] with NR possible values.
+        </li>
+        <li>
+          <b>R16_TO_DHMS</b> converts decimal days into days, hours, minutes, seconds.
+        </li>
+        <li>
+          <b>R16_TO_I4</b> maps X in [XMIN, XMAX] to integer IX in [IXMIN, IXMAX].
+        </li>
+        <li>
+          <b>R16_UNIFORM</b> returns a scaled pseudorandom R16.
+        </li>
+        <li>
+          <b>R16_UNIFORM_01</b> returns a unit pseudorandom R16.
+        </li>
+        <li>
+          <b>R16_UNSWAP3</b> unswaps three R16's.
+        </li>
+        <li>
+          <b>R16_WALSH_1D</b> evaluates the Walsh function.
+        </li>
+        <li>
+          <b>R16MAT_BORDER_ADD</b> adds a "border" to an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_BORDER_CUT</b> cuts the "border" of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_CHOLESKY_FACTOR</b> computes the Cholesky factor of a symmetric matrix.
+        </li>
+        <li>
+          <b>R16MAT_CHOLESKY_SOLVE</b> solves a Cholesky factored linear system A * x = b.
+        </li>
+        <li>
+          <b>R16MAT_CHORESKY_FACTOR</b> computes the "Choresky" factor of a symmetric matrix.
+        </li>
+        <li>
+          <b>R16MAT_COPY</b> copies an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_DET</b> computes the determinant of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_DET_2D</b> computes the determinant of a 2 by 2 R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_DET_3D</b> computes the determinant of a 3 by 3 R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_DET_4D</b> computes the determinant of a 4 by 4 R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_DET_5D</b> computes the determinant of a 5 by 5 R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_DIAG_ADD_SCALAR</b> adds a scalar to the diagonal of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_DIAG_ADD_VECTOR</b> adds a vector to the diagonal of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_DIAG_GET_VECTOR</b> gets the value of the diagonal of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_DIAG_SET_SCALAR</b> sets the diagonal of an R16MAT to a scalar value.
+        </li>
+        <li>
+          <b>R16MAT_DIAG_SET_VECTOR</b> sets the diagonal of an R16MAT to a vector.
+        </li>
+        <li>
+          <b>R16MAT_EXPAND_LINEAR</b> linearly interpolates new data into an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_EXPAND_LINEAR2</b> expands an R16MAT by linear interpolation.
+        </li>
+        <li>
+          <b>R16MAT_GIVENS_POST</b> computes the Givens postmultiplier rotation matrix.
+        </li>
+        <li>
+          <b>R16MAT_GIVENS_PRE</b> computes the Givens premultiplier rotation matrix.
+        </li>
+        <li>
+          <b>R16MAT_HESS</b> approximates a Hessian matrix via finite differences.
+        </li>
+        <li>
+          <b>R16MAT_HOUSE_AXH</b> computes A*H where H is a compact Householder matrix.
+        </li>
+        <li>
+          <b>R16MAT_HOUSE_FORM</b> constructs a Householder matrix from its compact form.
+        </li>
+        <li>
+          <b>R16MAT_HOUSE_HXA</b> computes H*A where H is a compact Householder matrix.
+        </li>
+        <li>
+          <b>R16MAT_HOUSE_POST</b> computes a Householder post-multiplier matrix.
+        </li>
+        <li>
+          <b>R16MAT_HOUSE_PRE</b> computes a Householder pre-multiplier matrix.
+        </li>
+        <li>
+          <b>R16MAT_IDENTITY</b> stores the identity matrix in an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_IN_01</b> is TRUE if the entries of an R16MAT are in the range [0,1].
+        </li>
+        <li>
+          <b>R16MAT_INDICATOR</b> sets up an "indicator" R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_INVERSE_2D</b> inverts a 2 by 2 R16MAT using Cramer's rule.
+        </li>
+        <li>
+          <b>R16MAT_INVERSE_3D</b> inverts a 3 by 3 R16MAT using Cramer's rule.
+        </li>
+        <li>
+          <b>R16MAT_INVERSE_4D</b> inverts a 4 by 4 R16MAT using Cramer's rule.
+        </li>
+        <li>
+          <b>R16MAT_JAC</b> estimates a dense jacobian matrix of the function FX.
+        </li>
+        <li>
+          <b>R16MAT_L_INVERSE</b> inverts a lower triangular R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_L_PRINT</b> prints a lower triangular R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_L_SOLVE</b> solves a lower triangular linear system.
+        </li>
+        <li>
+          <b>R16MAT_L1_INVERSE</b> inverts a unit lower triangular R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_LT_SOLVE</b> solves a transposed lower triangular linear system.
+        </li>
+        <li>
+          <b>R16MAT_LU</b> computes the LU factorization of a rectangular R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_MAX</b> returns the maximum entry of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_MAX_INDEX</b> returns the location of the maximum entry of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_MAXCOL_MINROW</b> gets the maximum column minimum row of an M by N R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_MAXROW_MINCOL</b> gets the maximum row minimum column of an M by N R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_MIN</b> returns the minimum entry of an M by N R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_MIN_INDEX</b> returns the location of the minimum entry of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_MINCOL_MAXROW</b> gets the minimum column maximum row of an M by N R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_MINROW_MAXCOL</b> gets the minimum row maximum column of an M by N R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_MM</b> multiplies two R16MAT's.
+        </li>
+        <li>
+          <b>R16MAT_MTV</b> multiplies a transposed matrix times a vector
+        </li>
+        <li>
+          <b>R16MAT_MV</b> multiplies a matrix times a vector.
+        </li>
+        <li>
+          <b>R16MAT_NINT</b> rounds the entries of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_NORM_EIS</b> returns the EISPACK norm of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_NORM_FRO</b> returns the Frobenius norm of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_NORM_L1</b> returns the matrix L1 norm of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_NORM_L2</b> returns the matrix L2 norm of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_NORM_LI</b> returns the matrix L-oo norm of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_NULLSPACE</b> computes the nullspace of a matrix.
+        </li>
+        <li>
+          <b>R16MAT_NULLSPACE_SIZE</b> computes the size of the nullspace of a matrix.
+        </li>
+        <li>
+          <b>R16MAT_ORTH_UNIFORM</b> returns a random orthogonal R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_PLOT</b> "plots" an R16MAT, with an optional title.
+        </li>
+        <li>
+          <b>R16MAT_PLOT_SYMBOL</b> returns a symbol for an element of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_POLY_CHAR</b> computes the characteristic polynomial of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_POWER</b> computes a nonnegative power of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_POWER_METHOD</b> applies the power method to an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_PRINT</b> prints an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_PRINT_SOME</b> prints some of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_PRINT2</b> prints an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_REF</b> computes the row echelon form of a matrix.
+        </li>
+        <li>
+          <b>R16MAT_RREF</b> computes the reduced row echelon form of a matrix.
+        </li>
+        <li>
+          <b>R16MAT_SOLVE</b> uses Gauss-Jordan elimination to solve an N by N linear system.
+        </li>
+        <li>
+          <b>R16MAT_SOLVE_2D</b> solves a 2 by 2 linear system using Cramer's rule.
+        </li>
+        <li>
+          <b>R16MAT_SOLVE_3D</b> solves a 3 by 3 linear system using Cramer's rule.
+        </li>
+        <li>
+          <b>R16MAT_SOLVE2</b> computes the solution of an N by N linear system.
+        </li>
+        <li>
+          <b>R16MAT_SYMM_EIGEN</b> returns a symmetric matrix with given eigensystem.
+        </li>
+        <li>
+          <b>R16MAT_SYMM_JACOBI</b> applies Jacobi eigenvalue iteration to a symmetric matrix.
+        </li>
+        <li>
+          <b>R16MAT_TO_R16PLU</b> factors a general R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_TRACE</b> computes the trace of an R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_TRANSPOSE_IN_PLACE</b> transposes a square matrix in place.
+        </li>
+        <li>
+          <b>R16MAT_TRANSPOSE_PRINT</b> prints an R16MAT, transposed.
+        </li>
+        <li>
+          <b>R16MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R16MAT, transposed.
+        </li>
+        <li>
+          <b>R16MAT_U_INVERSE</b> inverts an upper triangular R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_U1_INVERSE</b> inverts a unit upper triangular R16MAT.
+        </li>
+        <li>
+          <b>R16MAT_UNIFORM</b> fills an R16MAT with scaled pseudorandom numbers.
+        </li>
+        <li>
+          <b>R16MAT_UNIFORM_01</b> fills an R16MAT with unit pseudorandom numbers.
+        </li>
+        <li>
+          <b>R16MAT_VAND2</b> returns the N by N row Vandermonde matrix A.
+        </li>
+        <li>
+          <b>R16MAT_ZERO</b> zeroes an R16MAT.
+        </li>
+        <li>
+          <b>R16VEC_HEAP_A</b> reorders an R16VEC into an ascending heap.
+        </li>
+        <li>
+          <b>R16VEC_HEAP_D</b> reorders an R16VEC into an descending heap.
+        </li>
+        <li>
+          <b>R16VEC_PRINT</b> prints an R16VEC.
+        </li>
+        <li>
+          <b>R16VEC_PRINT_PART</b> prints "part" of an R16VEC.
+        </li>
+        <li>
+          <b>R16VEC_PRINT_SOME</b> prints "some" of an R16VEC.
+        </li>
+        <li>
+          <b>R16VEC_UNIFORM_01</b> returns a unit pseudorandom R16VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 08 August 2010.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

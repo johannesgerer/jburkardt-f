@@ -1,0 +1,276 @@
+<html>
+
+  <head>
+    <title>
+      CHEBYSHEV - Interpolation Using Chebyshev Polynomials
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CHEBYSHEV <br> Interpolation Using Chebyshev Polynomials
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CHEBYSHEV</b>
+      is a FORTRAN90 library which
+      constructs the Chebyshev interpolant to a function.
+    </p>
+
+    <p>
+      Note that the user is not free to choose the interpolation points.
+      Instead, the function f(x) will be evaluated at points chosen by the algorithm.
+      In the standard case, in which the interpolation interval is [-1,+1], 
+      these points will be the zeros of the Chebyshev polynomial of order N.
+      However, the algorithm can also be applied to an interval of the form [a,b],
+      in which case the evaluation points are linearly mapped from [-1,+1].
+    </p>
+
+    <p>
+      The resulting interpolant is defined by a set of N coefficients c(),
+      and has the form:
+      <pre>
+        C(f)(x) = sum ( 1 <= i <= n ) c(i) T(i-1,x) - 0.5 * c(1)
+      </pre>
+      where T(i-1,x) is the (i-1)-th Chebyshev polynomial.
+    </p>
+
+    <p>
+      Within the interval [-1,+1], or the generalized interval [a,b], the
+      interpolant actually remains bounded by the sum of the absolute values
+      of the coefficients c().  It is therefore common to use Chebyshev
+      interpolants as approximating functions over a given interval.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CHEBYSHEV</b> is available in
+      <a href = "../../c_src/chebyshev/chebyshev.html">a C version</a> and
+      <a href = "../../cpp_src/chebyshev/chebyshev.html">a C++ version</a> and
+      <a href = "../../f77_src/chebyshev/chebyshev.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/chebyshev/chebyshev.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/chebyshev/chebyshev.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bernstein/bernstein.html">
+      BERNSTEIN</a>,
+      a FORTRAN90 library which
+      evaluates the Bernstein polynomials, 
+      useful for uniform approximation of functions;
+    </p>
+
+    <p>
+      <a href = "../../f_src/chebyshev_polynomial/chebyshev_polynomial.html">
+      CHEBYSHEV_POLYNOMIAL</a>,
+      a FORTRAN90 library which
+      evaluates the Chebyshev polynomial and associated functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/divdif/divdif.html">
+      DIVDIF</a>,
+      a FORTRAN90 library which
+      computes interpolants by divided differences.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite/hermite.html">
+      HERMITE</a>,
+      a FORTRAN90 library which
+      computes the Hermite interpolant, a polynomial that matches function values
+      and derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite_cubic/hermite_cubic.html">
+      HERMITE_CUBIC</a>,
+      a FORTRAN90 library which
+      can compute the value, derivatives or integral of a Hermite cubic polynomial,
+      or manipulate an interpolating function made up of piecewise Hermite cubic
+      polynomials.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lagrange_interp_1d/lagrange_interp_1d.html">
+      LAGRANGE_INTERP_1D</a>,
+      a FORTRAN90 library which
+      defines and evaluates the Lagrange polynomial p(x) 
+      which interpolates a set of data, so that p(x(i)) = y(i).
+    </p>
+
+    <p>
+      <a href = "../../f_src/rbf_interp/rbf_interp.html">
+      RBF_INTERP</a>,
+      a FORTRAN90 library which
+      defines and evaluates radial basis interpolants to multidimensional data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spline/spline.html">
+      SPLINE</a>,
+      a FORTRAN90 library which
+      includes many routines to construct
+      and evaluate spline interpolants and approximants.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_approx/test_approx.html">
+      TEST_APPROX</a>,
+      a FORTRAN90 library which
+      defines test problems for approximation,
+      provided as a set of (x,y) data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_interp_1d/test_interp_1d.html">
+      TEST_INTERP_1D</a>,
+      a FORTRAN90 library which
+      defines test problems for interpolation of data y(x),
+      depending on a 1D argument.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms446/toms446.html">
+      TOMS446</a>,
+      a FORTRAN90 library which
+      manipulates Chebyshev series for interpolation and approximation;<br>
+      this is a version of ACM TOMS algorithm 446,
+      by Roger Broucke.
+    </p>
+
+    <p>
+      <a href = "../../f_src/vandermonde_interp_1d/vandermonde_interp_1d.html">
+      VANDERMONDE_INTERP_1D</a>,
+      a FORTRAN90 library which
+      finds a polynomial interpolant to data y(x) of a 1D argument,
+      by setting up and solving a linear system for the polynomial coefficients,
+      involving the Vandermonde matrix.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Roger Broucke,<br>
+          Algorithm 446:
+          Ten Subroutines for the Manipulation of Chebyshev Series,<br>
+          Communications of the ACM,<br>
+          Volume 16, Number 4, April 1973, pages 254-256.
+        </li>
+        <li>
+          Philip Davis,<br>
+          Interpolation and Approximation,<br>
+          Dover, 1975,<br>
+          ISBN: 0-486-62495-1,<br>
+          LC: QA221.D33
+        </li>
+        <li>
+          William Press, Brian Flannery, Saul Teukolsky, William Vetterling,<br>
+          Numerical Recipes in C: The Art of Scientific Computing,<br>
+          Cambridge University Press, 1988,<br>
+          ISBN: 0-521-35465-X,<br>
+          LC: QA76.73.C15N865.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "chebyshev.f90">chebyshev.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "chebyshev.sh">chebyshev.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "chebyshev_prb.f90">chebyshev_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "chebyshev_prb.sh">chebyshev_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "chebyshev_prb_output.txt">chebyshev_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CHEBYSHEV_COEFFICIENTS</b> determines Chebyshev interpolation coefficients.
+        </li>
+        <li>
+          <b>CHEBYSHEV_INTERPOLANT</b> evaluates a Chebyshev interpolant.
+        </li>
+        <li>
+          <b>CHEBYSHEV_ZEROS</b> returns zeroes of the Chebyshev polynomial T(N,X).
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 14 September 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

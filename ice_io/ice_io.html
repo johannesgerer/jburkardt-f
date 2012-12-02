@@ -1,0 +1,244 @@
+<html>
+
+  <head>
+    <title>
+      ICE_IO - Reading and Writing ICE Datasets in NETCDF Files
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ICE_IO <br> Reading and Writing ICE Datasets in NETCDF Files
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ICE_IO</b>
+      is a FORTRAN90 library which can
+      read or write an ICE dataset, which defines a 3D grid,
+      using the NETCDF file format.
+    </p>
+
+    <p>
+      I will remark that the FORTRAN90 version of NETCDF was very difficult
+      to install...correctly.  I have deleted eleven further sentences from
+      this remark.
+    </p>
+
+    <p>
+      The flakiness of the NETCDF library required me to end up
+      abandoning the GFORTRAN compiler and switching to the G95 compiler,
+      which was able, for some reason, to get NETCDF to behave.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>ICE_IO</b> is available in
+      <a href = "../../c_src/ice_io/ice_io.html">a C version</a> and
+      <a href = "../../cpp_src/ice_io/ice_io.html">a C++ version</a> and
+      <a href = "../../f77_src/ice_io/ice_io.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/ice_io/ice_io.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/ice_io/ice_io.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/ice/ice.html">
+      ICE</a>,
+      a data directory which
+      contains examples of ICE files,
+      which store icesheet grid datasets in the NETCDF format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ice_to_mesh/ice_to_mesh.html">
+      ICE_TO_MESH</a>,
+      a FORTRAN90 program which
+      reads a NETCDF file containing an ICE dataset and rewrites the
+      information as a MESH file.
+    </p>
+
+    <p>
+      <a href = "../../data/mesh/mesh.html">
+      MESH</a>,
+      a data directory which
+      contains examples of MESH files, which can be used to define the geometry
+      of a finite element mesh in 2D or 3D, using triangles, quadrilaterals,
+      tetrahedrons or hexahedrons.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mesh_to_ice/mesh_to_ice.html">
+      MESH_TO_ICE</a>,
+      a FORTRAN90 program which
+      reads the ICE dataset information from a MESH files and rewrites
+      it to a NETCDF file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/netcdf/netcdf.html">
+      NETCDF</a>,
+      FORTRAN90 programs which
+      read and write NETCDF files.
+    </p>
+
+    <p>
+      <a href = "../../data/netcdf_mpas/netcdf_mpas.html">
+      NETCDF_MPAS</a>,
+      MATLAB programs which
+      read and write MPAS grid data stored as NETCDF files.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Pascal Frey,<br>
+          MEDIT: An interactive mesh visualization software,<br>
+          Technical Report RT-0253,<br>
+          Institut National de Recherche en Informatique et en Automatique,<br>
+          03 December 2001.
+        </li>
+        <li>
+          Russ Rew, Glenn Davis, Steve Emmerson, Harvey Davies, Ed Hartne,<br>
+          The NetCDF User's Guide,<br>
+          Unidata Program Center, March 2009.
+        </li>
+        <li>
+          Robert Pincus, Russ Rew,<br>
+          The NetCDF Fortran90 Interface Guide,<br>
+          Unidata Program Center, March 2010.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ice_io.f90">ice_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "ice_io.sh">ice_io.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ice_io_prb.f90">ice_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "ice_io_prb.sh">ice_io_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "ice_io_prb_output.txt">ice_io_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CYL248_DATA</b> defines the data for a 3D tetrahedral mesh.
+        </li>
+        <li>
+          <b>CYL248_SIZE</b> defines the sizes for a 3D tetrahedral mesh.
+        </li>
+        <li>
+          <b>DATA_PRINT</b> prints the data of an ICE grid dataset.
+        </li>
+        <li>
+          <b>DATA_READ</b> reads ICE data from a NETCDF file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HEXAHEXA_2X2X2_DATA</b> defines the data for a 3D hexahedral mesh.
+        </li>
+        <li>
+          <b>HEXAHEXA_2x2x2_SIZE</b> defines the sizes for a 3D hexahedral mesh.
+        </li>
+        <li>
+          <b>I4MAT_COPY</b> copies an I4MAT.
+        </li>
+        <li>
+          <b>I4VEC_COPY</b> copies an I4VEC.
+        </li>
+        <li>
+          <b>ICE_WRITE</b> writes 3D ICE sizes and data to a NETCDF file.
+        </li>
+        <li>
+          <b>R8MAT_COPY</b> copies an R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_COPY</b> copies an R8VEC.
+        </li>
+        <li>
+          <b>SIZE_PRINT</b> prints the sizes of an ICE grid dataset.
+        </li>
+        <li>
+          <b>SIZE_READ</b> reads ICE sizes from a NETCDF file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 19 November 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

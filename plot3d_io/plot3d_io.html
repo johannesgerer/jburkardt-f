@@ -1,0 +1,465 @@
+<html>
+
+  <head>
+    <title>
+      PLOT3D_IO - PLOT3D - Read and Write Utilities.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PLOT3D_IO <br> PLOT3D <br> Read and Write Utilities
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PLOT3D_IO</b>
+      is a FORTRAN90 library which
+      reads and writes
+      <a href = "../../data/plot3d/plot3d.html">PLOT3D files</a>.
+    </p>
+
+    <p>
+      <b>PLOT3D</b> is a program developed by Pieter Buning at the NASA
+      Ames laboratory, that performs fluid flow calculations
+      in one, two or three dimensions.  The program is able to save the
+      results of its calculations in data files that may then be processed
+      by the FAST graphics program, or converted for use by other graphics
+      processors.  There are a variety of file formats available:
+      <ul>
+        <li>
+          formatted or binary data;
+        </li>
+        <li>
+          the spatial dimension (1D, 2D or 3D);
+        </li>
+        <li>
+          the number of user-defined auxiliary variables;
+        </li>
+        <li>
+          the use of blanking to delete portions of the grid;
+        </li>
+        <li>
+          the storage of 3D data as a whole, or by planes.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>PLOT3D_IO</b> is a simple package of utility routines for working with
+      the PLOT3D graphics files.  The current set is restricted to
+      reading data from most binary formats.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/plot3d/plot3d.html">
+      PLOT3D</a>,
+      a data directory which
+      contains a description and examples of PLOT3D data files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/plot3d_to_avs/plot3d_to_avs.html">
+      PLOT3D_TO_AVS</a>,
+      a FORTRAN90 program which
+      reads flow data from
+      PLOT3D files and rewrites it into files suitable for input to
+      the AVS graphics system.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Pamela Walatka, Pieter Buning, Larry Pierce, Patricia Elson,<br>
+          PLOT3D User's Guide,<br>
+          NASA TM 101067,<br>
+          March 1990.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "plot3d_io.f90">plot3d_io.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "plot3d_io.sh">plot3d_io.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>Q_DEMO</b> shows how to read a Q file.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "q_demo.f90">q_demo.f90</a>, reads a Q file;
+        </li>
+        <li>
+          <a href = "q_demo.sh">q_demo.sh</a>,
+          commands to compile, link and run the demo;
+        </li>
+        <li>
+          <a href = "q_demo_output.txt">q_demo_output.txt</a>, output from the demo;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>XYZ_DEMO</b> shows how to read an XYZ file.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "xyz_demo.f90">xyz_demo.f90</a>, reads an XYZ file;
+        </li>
+        <li>
+          <a href = "xyz_demo.sh">xyz_demo.sh</a>,
+          commands to compile, link and run the demo;
+        </li>
+        <li>
+          <a href = "xyz_demo_output.txt">xyz_demo_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      In the following list of routines,
+      <ul>
+        <li>
+          A routine name beginning with "R4" is for single precision real data;
+          a routine name beginning with "R8" is for double precision real data.
+        </li>
+        <li>
+          An X, XY, or XYZ file contains 1D, 2D or 3D coordinate data.
+        </li>
+        <li>
+          An XYZB file contains 3D coordinate data and blanking.
+        </li>
+        <li>
+          A Q file contains density, the momentum vector, and stagnation
+          energy at each point.
+        </li>
+        <li>
+          An F file contains a scalar value defined at each point.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>R4_B_1D_DIM</b> reads a binary 1D file for the dimension.
+        </li>
+        <li>
+          <b>R4_B_1D_DIMN</b> reads a binary 1D file for the dimension and NVAR.
+        </li>
+        <li>
+          <b>R4_B_1D_F</b> reads a binary 1D file for the F data.
+        </li>
+        <li>
+          <b>R4_B_1D_FFILE</b> reads a binary 1D F file.
+        </li>
+        <li>
+          <b>R4_B_1D_Q</b> reads a binary 1D Q file for the Q data.
+        </li>
+        <li>
+          <b>R4_B_1D_QFILE</b> reads a binary 1D Q file.
+        </li>
+        <li>
+          <b>R4_B_1D_X</b> reads a binary 1D X file for the X data.
+        </li>
+        <li>
+          <b>R4_B_1D_XYFILE</b> reads a binary 1D X file.
+        </li>
+        <li>
+          <b>R4_B_2D_DIM</b> reads a binary 2D file for the dimensions.
+        </li>
+        <li>
+          <b>R4_B_2D_DIMN</b> reads a binary 2D file for the dimensions and NVAR.
+        </li>
+        <li>
+          <b>R4_B_2D_F</b> reads a binary 2D F file for the F data.
+        </li>
+        <li>
+          <b>R4_B_2D_FFILE</b> reads a binary 2D F file.
+        </li>
+        <li>
+          <b>R4_B_2D_Q</b> reads a binary 2D Q file for the Q data.
+        </li>
+        <li>
+          <b>R4_B_2D_QFILE</b> reads a binary 2D Q file.
+        </li>
+        <li>
+          <b>R4_B_2D_XY</b> reads a binary 2D XY file for the XY data.
+        </li>
+        <li>
+          <b>R4_B_2D_XYFILE</b> reads a binary 2D XY file.
+        </li>
+        <li>
+          <b>R4_B_3D_DIM</b> reads a binary 3D file for the dimensions.
+        </li>
+        <li>
+          <b>R4_B_3D_DIMN</b> reads a binary 3D file the dimensions and NVAR.
+        </li>
+        <li>
+          <b>R4_B_3D_F</b> reads a binary 3D F file for the F data.
+        </li>
+        <li>
+          <b>R4_B_3D_FFILE</b> reads a binary 3D F file.
+        </li>
+        <li>
+          <b>R4_B_3D_Q</b> reads a binary 3D Q file for the Q data.
+        </li>
+        <li>
+          <b>R4_B_3D_QFILE</b> reads a binary 3D Q file.
+        </li>
+        <li>
+          <b>R4_B_3D_XYZ</b> reads a binary 3D XYZ file for the XYZ data.
+        </li>
+        <li>
+          <b>R4_B_3D_XYZB</b> reads a binary 3D XYZB file for the XYZB data.
+        </li>
+        <li>
+          <b>R4_B_3D_XYZBFILE</b> reads a binary 3D XYZB file.
+        </li>
+        <li>
+          <b>R4_B_3D_XYZFILE</b> reads a binary 3D XYZ file.
+        </li>
+        <li>
+          <b>R4_B_3DM_DIM</b> reads a binary 3D multiple grid file for the dimensions.
+        </li>
+        <li>
+          <b>R4_B_3DM_NGRID</b> reads a binary 3D multiple grid file for the number of grids.
+        </li>
+        <li>
+          <b>R4_B_3DM_Q</b> reads a binary 3D multiple grid Q file for the parameters and Q data.
+        </li>
+        <li>
+          <b>R4_B_3DM_XYZ</b> reads a binary 3D multiple grid XYZ file for the XYZ data.
+        </li>
+        <li>
+          <b>R4_B_3DM_XYZB</b> reads a binary 3D multiple grid XYZB file for the XYZB data.
+        </li>
+        <li>
+          <b>R4_B_3DM_QFILE</b> reads a binary 3D multiple grid Q file.
+        </li>
+        <li>
+          <b>R4_B_3DM_XYZFILE</b> reads a binary 3D multiple grid XYZ file.
+        </li>
+        <li>
+          <b>R4_B_3DM_XYZBFILE</b> reads a binary 3D multiple grid XYZB file.
+        </li>
+        <li>
+          <b>R4_B_3DP_F</b> reads a binary 3D plane F file for the F data.
+        </li>
+        <li>
+          <b>R4_B_3DP_FFILE</b> reads a binary 3D plane F file.
+        </li>
+        <li>
+          <b>R4_B_3DP_Q</b> reads a binary 3D plane Q file for the Q data.
+        </li>
+        <li>
+          <b>R4_B_3DP_QFILE</b> reads a binary 3D plane Q file.
+        </li>
+        <li>
+          <b>R4_B_3DP_XYZ</b> reads a binary 3D plane XYZ file for the XYZ data.
+        </li>
+        <li>
+          <b>R4_B_3DP_XYZB</b> reads a binary 3D plane XYZB file for the XYZB data.
+        </li>
+        <li>
+          <b>R4_B_3DP_XYZBFILE</b> reads a binary 3D plane XYZB file.
+        </li>
+        <li>
+          <b>R4_B_3DP_XYZFILE</b> reads a binary 3D plane XYZ file.
+        </li>
+        <li>
+          <b>R4_B_PARAM</b> reads a binary Q file for the flow parameters.
+        </li>
+        <li>
+          <b>R8_B_1D_DIM</b> reads a binary 1D file for the dimension.
+        </li>
+        <li>
+          <b>R8_B_1D_DIMN</b> reads a binary 1D file for the dimension and NVAR.
+        </li>
+        <li>
+          <b>R8_B_1D_F</b> reads a binary 1D file for the F data.
+        </li>
+        <li>
+          <b>R8_B_1D_FFILE</b> reads a binary 1D F file.
+        </li>
+        <li>
+          <b>R8_B_1D_Q</b> reads a binary 1D Q file for the Q data.
+        </li>
+        <li>
+          <b>R8_B_1D_QFILE</b> reads a binary 1D Q file.
+        </li>
+        <li>
+          <b>R8_B_1D_X</b> reads a binary 1D X file for the X data.
+        </li>
+        <li>
+          <b>R8_B_1D_XYFILE</b> reads a binary 1D X file.
+        </li>
+        <li>
+          <b>R8_B_2D_DIM</b> reads a binary 2D file for the dimensions.
+        </li>
+        <li>
+          <b>R8_B_2D_DIMN</b> reads a binary 2D file for the dimensions and NVAR.
+        </li>
+        <li>
+          <b>R8_B_2D_F</b> reads a binary 2D F file for the F data.
+        </li>
+        <li>
+          <b>R8_B_2D_FFILE</b> reads a binary 2D F file.
+        </li>
+        <li>
+          <b>R8_B_2D_Q</b> reads a binary 2D Q file for the Q data.
+        </li>
+        <li>
+          <b>R8_B_2D_QFILE</b> reads a binary 2D Q file.
+        </li>
+        <li>
+          <b>R8_B_2D_XY</b> reads a binary 2D XY file for the XY data.
+        </li>
+        <li>
+          <b>R8_B_2D_XYFILE</b> reads a binary 2D XY file.
+        </li>
+        <li>
+          <b>R8_B_3D_DIM</b> reads a binary 3D file for the dimensions.
+        </li>
+        <li>
+          <b>R8_B_3D_DIMN</b> reads a binary 3D file the dimensions and NVAR.
+        </li>
+        <li>
+          <b>R8_B_3D_F</b> reads a binary 3D F file for the F data.
+        </li>
+        <li>
+          <b>R8_B_3D_FFILE</b> reads a binary 3D F file.
+        </li>
+        <li>
+          <b>R8_B_3D_Q</b> reads a binary 3D Q file for the Q data.
+        </li>
+        <li>
+          <b>R8_B_3D_QFILE</b> reads a binary 3D Q file.
+        </li>
+        <li>
+          <b>R8_B_3D_XYZ</b> reads a binary 3D XYZ file for the XYZ data.
+        </li>
+        <li>
+          <b>R8_B_3D_XYZB</b> reads a binary 3D XYZB file for the XYZB data.
+        </li>
+        <li>
+          <b>R8_B_3D_XYZBFILE</b> reads a binary 3D XYZB file.
+        </li>
+        <li>
+          <b>R8_B_3D_XYZFILE</b> reads a binary 3D XYZ file.
+        </li>
+        <li>
+          <b>R8_B_3DM_DIM</b> reads a binary 3D multiple grid file for the dimensions.
+        </li>
+        <li>
+          <b>R8_B_3DM_NGRID</b> reads a binary 3D multiple grid file for the number of grids.
+        </li>
+        <li>
+          <b>R8_B_3DM_Q</b> reads a binary 3D multiple grid Q file for the parameters and Q data.
+        </li>
+        <li>
+          <b>R8_B_3DM_XYZ</b> reads a binary 3D multiple grid XYZ file for the XYZ data.
+        </li>
+        <li>
+          <b>R8_B_3DM_XYZB</b> reads a binary 3D multiple grid XYZB file for the XYZB data.
+        </li>
+        <li>
+          <b>R8_B_3DM_QFILE</b> reads a binary 3D multiple grid Q file.
+        </li>
+        <li>
+          <b>R8_B_3DM_XYZFILE</b> reads a binary 3D multiple grid XYZ file.
+        </li>
+        <li>
+          <b>R8_B_3DM_XYZBFILE</b> reads a binary 3D multiple grid XYZB file.
+        </li>
+        <li>
+          <b>R8_B_3DP_F</b> reads a binary 3D plane F file for the F data.
+        </li>
+        <li>
+          <b>R8_B_3DP_FFILE</b> reads a binary 3D plane F file.
+        </li>
+        <li>
+          <b>R8_B_3DP_Q</b> reads a binary 3D plane Q file for the Q data.
+        </li>
+        <li>
+          <b>R8_B_3DP_QFILE</b> reads a binary 3D plane Q file.
+        </li>
+        <li>
+          <b>R8_B_3DP_XYZ</b> reads a binary 3D plane XYZ file for the XYZ data.
+        </li>
+        <li>
+          <b>R8_B_3DP_XYZB</b> reads a binary 3D plane XYZB file for the XYZB data.
+        </li>
+        <li>
+          <b>R8_B_3DP_XYZBFILE</b> reads a binary 3D plane XYZB file.
+        </li>
+        <li>
+          <b>R8_B_3DP_XYZFILE</b> reads a binary 3D plane XYZ file.
+        </li>
+        <li>
+          <b>R8_B_PARAM</b> reads a binary Q file for the flow parameters.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../g_src.html">
+      the graphics source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 October 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

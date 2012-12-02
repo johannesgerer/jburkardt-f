@@ -1,0 +1,284 @@
+<html>
+
+  <head>
+    <title>
+      PARTIAL_DIGEST - Recursive Solutions of the Partial Digest Problem
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PARTIAL_DIGEST <br> Recursive Solutions of the Partial Digest Problem
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PARTIAL_DIGEST</b>
+      is a FORTRAN90 program which
+      seeks solutions of the partial digest problem.
+    </p>
+
+    <p>
+      In the partial digest problem, we assume that there are <b>N</b>
+      objects arranged along a line.  We denote the position of object <b>I</b>
+      by <b>X(I)</b>.  The positions of the objects are unknown.  Instead,
+      we have a list of the distances between every distinct pair of objects.
+      Note that the distances are not "tagged"; that is, if there is a 175
+      on the list of distances, we don't know which two objects are separated
+      by that distance.  In the partial digest problem, we start with the
+      <b>(N*(N-1))/2</b> distances, and must come up with at least one
+      linear arrangement of <b>N</b> objects that corresponds to the distances.
+    </p>
+
+    <p>
+      In the algorithm used here, we begin by arbitrarily setting <b>X(1)</b>
+      to zero.
+    </p>
+
+    <p>
+      For our second step, we find the largest entry in the distance table, and
+      set <b>X(2)</b> to that value.
+    </p>
+
+    <p>
+      On each recursive step thereafter, we find the largest unused distance,
+      <b>D</b>, and note that this must represent the distance of the next
+      object from either <b>X(1)</b> or <b>X(2)</b>.
+    </p>
+
+    <p>
+      Starting with the first possibility,
+      we consider placing this next object at <b>X(K)=D</b>.  We now must
+      search the distance table, and ensure that the distances
+      <b>|X(1)-X(K)|</b>
+      through <b>|X(K-1)-X(K)|</b> all show up.  If so, then our tentative placement
+      of the object is "plausible", and we can proceed to the next step of recursion,
+      seeking the location of <b>X(K+1)</b>.
+    </p>
+
+    <p>
+      The second possibility to check on this recursive step is that we should
+      set <b>X(K)=X(2)-D</b>, since this would also explain the occurrence of
+      the distance <b>D</b>.  The analysis of this case is otherwise the same
+      as for the first one.
+    </p>
+
+    <p>
+      This recursion is guaranteed to "encounter" every solution.  (Of course,
+      there might be no solutions whatever.)
+    </p>
+
+    <p>
+      This approach has the advantage that recursion is relatively clean
+      and neat to program.  Disadvantages include the fact that the amount
+      of memory required to store partial results will grow explosively
+      as the size of the problem increases.  Also, it is difficult to intervene
+      or interrupt the recursive process.  For instance, the calling program
+      never receives the computed solutions directly.  Instead, the recursive
+      routine "realizes" that it has computed a solution, and can print it out.
+    </p>
+
+    <p>
+      For these reasons, it would be worth developing an equivalent version
+      of the routines that uses backtracking instead.
+    </p>
+
+    <p>
+      Note that this program used <b>integers</b> for the distances.  While
+      this is somewhat unnatural, it is convenient when programming, since
+      we are searching the list of distances for values that we arrive at
+      by subtraction, and the slightest roundoff would mean that the algorithm
+      would fail.  An alternative would be to allow floating point distances,
+      but to allow a very slight margin of error when looking for a distance
+      in the table that is equal to a difference calculated between two positions.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cities/cities.html">
+      CITIES</a>,
+      a FORTRAN90 library which
+      carries out various
+      computations involving the locations or relative distances
+      of cities on a map.
+    </p>
+
+    <p>
+      <a href = "../../datasets/cities/cities.html">
+      CITIES</a>,
+      a dataset directory which
+      defines the locations or relative distances
+      of cities on a map.
+    </p>
+
+    <p>
+      <a href = "../../f_src/combo/combo.html">
+      COMBO</a>,
+      a FORTRAN90 library which
+      carries out various combinatorial computations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/distance_to_position/distance_to_position.html">
+      DISTANCE_TO_POSITION</a>,
+      a FORTRAN90 program which
+      estimates the positions of cities based on a city-to-city distance table.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geometry/geometry.html">
+      GEOMETRY</a>,
+      a FORTRAN90 library which
+      computes various geometric
+      quantities.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grafpack/grafpack.html">
+      GRAFPACK</a>,
+      a FORTRAN90 library which
+      manipulates abstract
+      graphs.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/knapsack/knapsack.html">
+      KNAPSACK</a>,
+      a FORTRAN77 library which
+      solves a variety of knapsack problems.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/lamp/lamp.html">
+      LAMP</a>,
+      a FORTRAN77 library which
+      solves linear assignment and matching problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset/subset.html">
+      SUBSET</a>,
+      a FORTRAN90 library which
+      carries out various combinatorial computations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset_sum/subset_sum.html">
+      SUBSET_SUM</a>,
+      a FORTRAN90 library which
+      seeks solutions of the subset sum problem.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Pavel Pevzner,<br>
+          Computational Molecular Biology,<br>
+          MIT Press, 2000,<br>
+          ISBN: 0-262-16197-4,<br>
+          LC: QH506.P47.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "partial_digest.f90">partial_digest.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "partial_digest.sh">partial_digest.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "partial_digest_prb.f90">partial_digest_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "partial_digest_prb.sh">partial_digest_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "partial_digest_prb_output.txt">partial_digest_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DELETE_MAX</b> extracts the maximum entry from an I4VEC.
+        </li>
+        <li>
+          <b>FIND_DISTANCES</b> determines if the "free" distances include every ||X(I)-Y||.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>PLACE</b> tries to place the next point for the partial digest problem.
+        </li>
+        <li>
+          <b>PARTIAL_DIGEST</b> searches for solutions to the partial digest problem.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,2823 @@
+ 1 July 2012   8:58:44.220 PM
+ 
+F90_INTRINSICS
+  FORTRAN90 version
+  Test the FORTRAN90 intrinsic library.
+ 
+TEST_ABS
+  ABS is a FORTRAN90 function which returns the
+  absolute value of a numeric quantity
+ 
+      Type      VALUE                ABS(VALUE)
+ 
+  Integer ( kind = 4 )          -88                      88
+  Integer ( kind = 8 )          -88                      88
+  Real    ( kind = 4 )      45.7800                 45.7800
+  Real    ( kind = 8 )      45.7800                 45.7800
+  Complex ( kind = 4 )       1.0000     -2.0000      2.2361
+  Complex ( kind = 8 )       1.0000     -2.0000      2.2361
+ 
+TEST_ACHAR
+  ACHAR is a FORTRAN90 function which returns the
+  character of given ASCII index.
+ 
+         I     ACHAR(I)
+ 
+        32         
+        33        !
+        34        "
+        35        #
+        36        $
+        37        %
+        38        &
+        39        '
+        40        (
+        41        )
+        42        *
+        43        +
+        44        ,
+        45        -
+        46        .
+        47        /
+        48        0
+        49        1
+        50        2
+        51        3
+        52        4
+        53        5
+        54        6
+        55        7
+        56        8
+        57        9
+        58        :
+        59        ;
+        60        <
+        61        =
+        62        >
+        63        ?
+        64        @
+        65        A
+        66        B
+        67        C
+        68        D
+        69        E
+        70        F
+        71        G
+        72        H
+        73        I
+        74        J
+        75        K
+        76        L
+        77        M
+        78        N
+        79        O
+        80        P
+        81        Q
+        82        R
+        83        S
+        84        T
+        85        U
+        86        V
+        87        W
+        88        X
+        89        Y
+        90        Z
+        91        [
+        92        \
+        93        ]
+        94        ^
+        95        _
+        96        `
+        97        a
+        98        b
+        99        c
+       100        d
+       101        e
+       102        f
+       103        g
+       104        h
+       105        i
+       106        j
+       107        k
+       108        l
+       109        m
+       110        n
+       111        o
+       112        p
+       113        q
+       114        r
+       115        s
+       116        t
+       117        u
+       118        v
+       119        w
+       120        x
+       121        y
+       122        z
+       123        {
+       124        |
+       125        }
+       126        ~
+ 
+TEST_ACOS
+  ACOS is a FORTRAN90 function which returns the
+  inverse cosine of a value between -1 and 1
+ 
+      X               ACOS(X)     COS(ACOS(X))
+ 
+   -0.563163         2.16901       -0.563163    
+    0.912635        0.421111        0.912635    
+    0.659018        0.851283        0.659018    
+    0.123391         1.44709        0.123391    
+   -0.169386         1.74100       -0.169386    
+   -0.867763         2.62148       -0.867763    
+   -0.484844         2.07698       -0.484844    
+   -0.780086         2.46560       -0.780086    
+   -0.912342         2.71976       -0.912342    
+    0.267931         1.29955        0.267931    
+ 
+TEST_ADJUSTL
+  ADJUSTL is a FORTRAN90 function which returns the
+  left-adjusted copy of a string.
+ 
+      S       ADJUSTL(S)
+  ----------  ----------
+ 
+  1234567890  1234567890
+  12345       12345     
+       67890  67890     
+    34 678    34 678    
+      5       5         
+ 
+TEST_ADJUSTR
+  ADJUSTR is a FORTRAN90 function which returns the
+  right-adjusted copy of a string.
+ 
+      S       ADJUSTR(S)
+  ----------  ----------
+ 
+  1234567890  1234567890
+  12345            12345
+       67890       67890
+    34 678        34 678
+      5                5
+ 
+TEST_AIMAG
+  AIMAG is a FORTRAN90 function which returns the
+  imaginary part of a complex number.
+ 
+                  X                      AIMAG(X)
+ 
+        0.449860     -0.126667           -0.126667
+       -0.843197     -0.344280           -0.344280
+        0.589627      0.260090            0.260090
+        0.391140      0.323400            0.323400
+       -0.139466     -0.156136           -0.156136
+       -0.236066      0.077459            0.077459
+        0.018599     -0.633214           -0.633214
+        0.892850      0.010314            0.010314
+       -0.560465      0.763795            0.763795
+        0.306357      0.026275            0.026275
+ 
+TEST_AINT
+  AINT is a FORTRAN90 function which returns the
+  value of a real number rounded towards zero.
+ 
+       X              AINT(X)
+ 
+    -5.63163        -5.00000    
+     9.12635         9.00000    
+     6.59018         6.00000    
+     1.23391         1.00000    
+    -1.69386        -1.00000    
+    -8.67763        -8.00000    
+    -4.84844        -4.00000    
+    -7.80086        -7.00000    
+    -9.12342        -9.00000    
+     2.67931         2.00000    
+ 
+TEST_ALL
+  ALL(MASK) is a FORTRAN90 function which returns
+  TRUE if every entry of MASK is true.
+  ALL(MASK,DIM) is a FORTRAN90 function which returns
+  an array of values which are TRUE where every entry
+  in dimension DIM is true.
+ 
+  integer a_i4(4,5)
+ 
+    99    56    96    74    36
+    48     7     0    34    34
+    21    13    90    38    44
+    66     1    65    64    32
+ 
+  ALL ( A_I4 < 100 )      T
+  ALL ( A_I4 <  90 )      F
+  ALL ( A_I4 <  90,    1 )  F  T  F  T  T
+  ALL ( A_I4 <  90,    2 )  F  T  F  T
+  ALL ( MOD(A_I4,2)==0,1 )  F  F  F  T  T
+  ALL ( MOD(A_I4,2)==0,2 )  F  F  F  F
+ 
+TEST_ALLOCATED
+  ALLOCATED(ARRAY) is a FORTRAN90 function which is
+  TRUE if the allocatable array ARRAY has actually
+  been allocated.
+ 
+  Initial status:
+ 
+    A_C4 <- Not allocated.
+    A_I4 <- Not allocated.
+    A_R8 <- Not allocated.
+ 
+  Call ALLOCATED:
+ 
+    ALLOCATED(A_C4) = F
+    ALLOCATED(A_I4) = F
+    ALLOCATED(A_R8) = F
+ 
+  Allocate A_C4 and A_I4:
+ 
+    ALLOCATED(A_C4) = T
+    ALLOCATED(A_I4) = T
+    ALLOCATED(A_R8) = F
+ 
+  Deallocate A_C4, allocate A_R8:
+ 
+    ALLOCATED(A_C4) = F
+    ALLOCATED(A_I4) = T
+    ALLOCATED(A_R8) = T
+ 
+TEST_ANINT
+  ANINT is a FORTRAN90 function which returns,
+  as a real value, the nearest integer to a 
+  given real number.
+ 
+       X             ANINT(X)
+ 
+    -5.63163        -6.00000    
+     9.12635         9.00000    
+     6.59018         7.00000    
+     1.23391         1.00000    
+    -1.69386        -2.00000    
+    -8.67763        -9.00000    
+    -4.84844        -5.00000    
+    -7.80086        -8.00000    
+    -9.12342        -9.00000    
+     2.67931         3.00000    
+ 
+TEST_ANY
+  ANY(MASK) is a FORTRAN90 function which returns
+  TRUE if any entry of MASK is true.
+  ANY(MASK,DIM) is a FORTRAN90 function which returns
+  an array of values which are TRUE where any entry
+  in dimension DIM is true.
+ 
+  integer a_i4(4,5)
+ 
+    85    40    20    96
+    59
+    67    45    33    10
+    75
+    60    71    89    65
+    15
+    61    97    99    25
+    55
+ 
+  ANY ( A_I4 < 10 )      F
+  ANY ( A_I4 <  0 )      F
+  ANY ( A_I4 <  10,    1 )  F  F  F  F  F
+  ANY ( A_I4 <  10,    2 )  F  F  F  F
+  ANY ( MOD(A_I4,5)==0,1 )  T  T  T  T  T
+  ANY ( MOD(A_I4,5)==0,2 )  T  T  T  T
+ 
+TEST_ASIN
+  ASIN is a FORTRAN90 function which returns the
+  inverse sine of a value between -1 and 1
+ 
+      X               ASIN(X)     SIN(ASIN(X))
+ 
+   -0.563163       -0.598209       -0.563163    
+    0.912635         1.14968        0.912635    
+    0.659018        0.719513        0.659018    
+    0.123391        0.123706        0.123391    
+   -0.169386       -0.170206       -0.169386    
+   -0.867763        -1.05068       -0.867763    
+   -0.484844       -0.506185       -0.484844    
+   -0.780086       -0.894804       -0.780086    
+   -0.912342        -1.14897       -0.912342    
+    0.267931        0.271245        0.267931    
+ 
+TEST_ASSOCIATED
+  ASSOCIATED(POINTER,TARGET) is a FORTRAN90 function
+  returns the association status of a pointer, or
+  indicates the pointer is associated with the target.
+ 
+  Initial status:
+ 
+    P_C4 <- Not associated.
+    P_I4 <- Not associated.
+    P_R8 <- Not associated.
+ 
+  Call ASSOCIATED:
+ 
+    ASSOCIATED(P_C4,A_C4) = F
+    ASSOCIATED(P_I4,A_I4) = F
+    ASSOCIATED(P_R8,A_R8) = F
+ 
+  Point to A_C4 and A_I4:
+ 
+    ASSOCIATED(P_C4,A_C4) = T
+    ASSOCIATED(P_I4,A_I4) = T
+    ASSOCIATED(P_R8,A_R8) = F
+ 
+  Nullify A_C4, point to A_R8:
+ 
+    ASSOCIATED(P_C4,A_C4) = F
+    ASSOCIATED(P_I4,A_I4) = T
+    ASSOCIATED(P_R8,A_R8) = T
+ 
+TEST_ATAN
+  ATAN is a FORTRAN90 function which returns the
+  inverse tangent of a value
+ 
+      X               ATAN(X)     TAN(ATAN(X))
+ 
+    -5.63163        -1.39506        -5.63163    
+     9.12635         1.46166         9.12635    
+     6.59018         1.42020         6.59018    
+     1.23391        0.889726         1.23391    
+    -1.69386        -1.03749        -1.69386    
+    -8.67763        -1.45606        -8.67763    
+    -4.84844        -1.36740        -4.84844    
+    -7.80086        -1.44330        -7.80086    
+    -9.12342        -1.46162        -9.12342    
+     2.67931         1.21358         2.67931    
+ 
+TEST_ATAN2
+  ATAN2 is a FORTRAN90 function which returns the
+  inverse tangent of a value
+ 
+       X               Y           ATAN2(Y,X)  TAN(ATAN2(Y,X))
+ 
+    -5.63163         9.12635         2.12368        -1.62055    
+     6.59018         1.23391        0.185091        0.187234    
+    -1.69386        -8.67763        -1.76357         5.12299    
+    -4.84844        -7.80086        -2.12689         1.60894    
+    -9.12342         2.67931         2.85595       -0.293674    
+    -8.76546        -1.00922        -3.02696        0.115136    
+    -1.97387         5.09347         1.94051        -2.58044    
+     5.94574        -9.96323        -1.03276        -1.67569    
+     7.95008        -2.98495       -0.359176       -0.375462    
+    -8.10910        -9.72766        -2.26570         1.19960    
+ 
+TEST_BIT_SIZE
+  BIT_SIZE is a FORTRAN90 function which returns the
+  size of an integer in bits.
+ 
+       Type(X)             BIT_SIZE(X)
+ 
+  INTEGER                    32
+  INTEGER ( KIND = 4 )       32
+  INTEGER ( KIND = 8 )       64
+ 
+TEST_BTEST
+  BTEST(I,POS) is a FORTRAN90 function which is TRUE
+  if bit POS of I is 1.
+ 
+  Here, we are only going to check the lowest 32 bits.
+ 
+         I       POS    BTEST(I,POS)
+ 
+    213456         0          F
+    213456         1          F
+    213456         2          F
+    213456         3          F
+    213456         4          T
+    213456         5          F
+    213456         6          T
+    213456         7          T
+    213456         8          T
+    213456         9          F
+    213456        10          F
+    213456        11          F
+    213456        12          F
+    213456        13          F
+    213456        14          T
+    213456        15          F
+    213456        16          T
+    213456        17          T
+    213456        18          F
+    213456        19          F
+    213456        20          F
+    213456        21          F
+    213456        22          F
+    213456        23          F
+    213456        24          F
+    213456        25          F
+    213456        26          F
+    213456        27          F
+    213456        28          F
+    213456        29          F
+    213456        30          F
+    213456        31          F
+ 
+  The binary representation of       213456 is:
+  "00000000000000110100000111010000".
+ 
+         I       POS    BTEST(I,POS)
+ 
+       -28         0          F
+       -28         1          F
+       -28         2          T
+       -28         3          F
+       -28         4          F
+       -28         5          T
+       -28         6          T
+       -28         7          T
+       -28         8          T
+       -28         9          T
+       -28        10          T
+       -28        11          T
+       -28        12          T
+       -28        13          T
+       -28        14          T
+       -28        15          T
+       -28        16          T
+       -28        17          T
+       -28        18          T
+       -28        19          T
+       -28        20          T
+       -28        21          T
+       -28        22          T
+       -28        23          T
+       -28        24          T
+       -28        25          T
+       -28        26          T
+       -28        27          T
+       -28        28          T
+       -28        29          T
+       -28        30          T
+       -28        31          T
+ 
+  The binary representation of          -28 is:
+  "11111111111111111111111111100100".
+ 
+TEST_CEILING
+  CEILING is a FORTRAN90 function which rounds a
+  real number up "towards infinity".
+ 
+       X              CEILING(X)
+ 
+    -5.63163            -5
+     9.12635            10
+     6.59018             7
+     1.23391             2
+    -1.69386            -1
+    -8.67763            -8
+    -4.84844            -4
+    -7.80086            -7
+    -9.12342            -9
+     2.67931             3
+ 
+TEST_CHAR
+  CHAR is a FORTRAN90 function which returns the
+  character of given character index.
+ 
+         I     CHAR(I)
+ 
+        32         
+        33        !
+        34        "
+        35        #
+        36        $
+        37        %
+        38        &
+        39        '
+        40        (
+        41        )
+        42        *
+        43        +
+        44        ,
+        45        -
+        46        .
+        47        /
+        48        0
+        49        1
+        50        2
+        51        3
+        52        4
+        53        5
+        54        6
+        55        7
+        56        8
+        57        9
+        58        :
+        59        ;
+        60        <
+        61        =
+        62        >
+        63        ?
+        64        @
+        65        A
+        66        B
+        67        C
+        68        D
+        69        E
+        70        F
+        71        G
+        72        H
+        73        I
+        74        J
+        75        K
+        76        L
+        77        M
+        78        N
+        79        O
+        80        P
+        81        Q
+        82        R
+        83        S
+        84        T
+        85        U
+        86        V
+        87        W
+        88        X
+        89        Y
+        90        Z
+        91        [
+        92        \
+        93        ]
+        94        ^
+        95        _
+        96        `
+        97        a
+        98        b
+        99        c
+       100        d
+       101        e
+       102        f
+       103        g
+       104        h
+       105        i
+       106        j
+       107        k
+       108        l
+       109        m
+       110        n
+       111        o
+       112        p
+       113        q
+       114        r
+       115        s
+       116        t
+       117        u
+       118        v
+       119        w
+       120        x
+       121        y
+       122        z
+       123        {
+       124        |
+       125        }
+       126        ~
+ 
+TEST_CMPLX
+  CMPLX is a FORTRAN90 function which returns the
+  complex number formed by real and imaginary parts.
+ 
+  CMPLX(1)              1.000000      0.000000
+  CMPLX(2,3)            2.000000      3.000000
+  CMPLX(4.5)            4.500000      0.000000
+  CMPLX(6.7, 8.9 )      6.700000      8.900000
+ 
+TEST_CONJG
+  CONJG is a FORTRAN90 function which returns the
+  conjugate of a complex number.
+ 
+                  X                             CONJG(X)
+     --------------------------      ----------------------------
+ 
+        0.449860     -0.126667            0.449860      0.126667
+       -0.843197     -0.344280           -0.843197      0.344280
+        0.589627      0.260090            0.589627     -0.260090
+        0.391140      0.323400            0.391140     -0.323400
+       -0.139466     -0.156136           -0.139466      0.156136
+       -0.236066      0.077459           -0.236066     -0.077459
+        0.018599     -0.633214            0.018599      0.633214
+        0.892850      0.010314            0.892850     -0.010314
+       -0.560465      0.763795           -0.560465     -0.763795
+        0.306357      0.026275            0.306357     -0.026275
+ 
+TEST_COS_C4
+  COS is a FORTRAN90 function which returns the
+  cosine of a real or complex number.
+ 
+  Here we use complex ( kind = 4 ) arguments.
+ 
+              X                          COS(X)
+    --------------------------  ----------------------------
+ 
+    0.449860     -0.126667        0.907742      0.552274E-01
+   -0.843197     -0.344280        0.704885     -0.262208    
+    0.589627      0.260090        0.859419     -0.146260    
+    0.391140      0.323400        0.973242     -0.125454    
+   -0.139466     -0.156136         1.00239     -0.217933E-01
+   -0.236066      0.774594E-01    0.975184      0.181343E-01
+    0.185991E-01 -0.633214         1.20706      0.125795E-01
+    0.892850      0.103136E-01    0.627228     -0.803302E-02
+   -0.560465      0.763795         1.10632      0.446663    
+    0.306357      0.262752E-01    0.953768     -0.792518E-02
+ 
+TEST_COS_R8
+  COS is a FORTRAN90 function which returns the
+  cosine of a real or complex number.
+ 
+  Here we use real ( kind = 8 ) arguments.
+ 
+       X              COS(X)
+ 
+    -5.63163        0.795144    
+     9.12635       -0.955800    
+     6.59018        0.953245    
+     1.23391        0.330551    
+    -1.69386       -0.122752    
+    -8.67763       -0.733627    
+    -4.84844        0.135636    
+    -7.80086        0.530925E-01
+    -9.12342       -0.954934    
+     2.67931       -0.895039    
+ 
+TEST_COSH
+  COSH is a FORTRAN90 function which returns the
+  hyperbolic cosine of a real number.
+ 
+       X              COSH(X)
+ 
+    -5.63163         139.561    
+     9.12635         4597.21    
+     6.59018         363.958    
+     1.23391         1.86289    
+    -1.69386         2.81212    
+    -8.67763         2935.05    
+    -4.84844         63.7748    
+    -7.80086         1221.36    
+    -9.12342         4583.75    
+     2.67931         7.32185    
+ 
+TEST_COUNT
+  COUNT(MASK) is a FORTRAN90 function which returns
+  the number of TRUE entries in MASK.
+ 
+  COUNT(MASK,DIM) is a FORTRAN90 function which returns
+  an array of values which are count the number of TRUE
+  entries in MASK in dimension DIM.
+ 
+  integer ( kind = 4 ) a_i4(4,5)
+ 
+    65    55    97    90    65
+    72    40    92    14    67
+    76    33    11    61    82
+    94    73    49    37    42
+ 
+  COUNT ( A_I4 < 100 )        20
+  COUNT ( A_I4 <  90 )        16
+  COUNT ( A_I4 <  90,    1 )     3     4     2     3     4
+  COUNT ( A_I4 <  90,    2 )     3     4     5     4
+  COUNT ( MOD(A_I4,2)==0,1 )     3     1     1     2     2
+  COUNT ( MOD(A_I4,2)==0,2 )     1     4     2     2
+ 
+TEST_CSHIFT
+  CSHIFT is a FORTRAN90 function which applies a
+  circular shift to a vector or array.
+ 
+  integer ( kind = 4 ) v1_i4(10):
+ 
+     1   2   3   4   5   6   7   8   9  10
+ 
+  v2_i4 = cshift ( v1_i4, 3 ):
+ 
+     4   5   6   7   8   9  10   1   2   3
+ 
+  v2_i4 = cshift ( v1_i4, -2 ):
+ 
+     9  10   1   2   3   4   5   6   7   8
+ 
+  integer ( kind = 4 ) a1_i4(4,5):
+ 
+    11  12  13  14  15
+    21  22  23  24  25
+    31  32  33  34  35
+    41  42  43  44  45
+ 
+  a2_i4 = cshift ( a1_i4, (/ 1, 2, 3, 4 /), dim = 2 ):
+ 
+    12  13  14  15  11
+    23  24  25  21  22
+    34  35  31  32  33
+    45  41  42  43  44
+ 
+  a2_i4 = cshift ( a1_i4, 2, 1 ):
+ 
+    31  32  33  34  35
+    41  42  43  44  45
+    11  12  13  14  15
+    21  22  23  24  25
+ 
+TEST_DATE_AND_TIME
+  DATE_AND_TIME is a FORTRAN90 subroutine which returns
+  date and time information.
+ 
+  call date_and_time ( date, time, zone, values )
+ 
+  DATE = "20120701".
+  TIME = "205844.244".
+  ZONE = "-0400".
+ 
+  VALUES(1) = year =              2012
+  VALUES(2) = month =                7
+  VALUES(3) = day =                  1
+  VALUES(4) = UTC minute diff =   -240
+  VALUES(5) = hour =                20
+  VALUES(6) = minute =              58
+  VALUES(7) = second =              44
+  VALUES(8) = milliseconds =       244
+ 
+TEST_DBLE
+  DBLE is a FORTRAN90 function which converts
+  a complex, integer or real value to double precision
+  real
+ 
+  Type                   X             DBLE(X)
+ 
+  complex ( kind = 4 ) 1.1000  2.2000  1.1000
+  complex ( kind = 8 ) 3.3000  4.4000  3.3000
+  integer ( kind = 4 )      5          5.0000
+  integer ( kind = 8 )      6          6.0000
+  real ( kind = 4 )    7.7000          7.7000
+  real ( kind = 8 )    8.8000          8.8000
+ 
+TEST_DIGITS
+  DIGITS is a FORTRAN90 function which returns
+  the number of significant digits for numbers
+  of the same kind as X.
+ 
+  Type         DIGITS(X)
+ 
+  integer                    31
+  integer ( kind = 4 )       31
+  integer ( kind = 8 )       63
+ 
+  real                       24
+  real ( kind = 4 )          24
+  real ( kind = 8 )          53
+ 
+TEST_DIM
+  DIM is a FORTRAN90 function which returns
+  the maximum of X-Y or 0.
+ 
+  Arithmetic type: integer X, Y
+ 
+       X       Y  DIM(X,Y)
+ 
+      55      99       0
+      99      74      25
+      95       9      86
+      73      75       0
+      94      70      24
+ 
+TEST_DOT_PRODUCT
+  DOT_PRODUCT is a FORTRAN90 function which returns the
+  dot product of two vectors.
+ 
+  If the arguments are COMPLEX, then the first vector
+  will be conjugated to produce the result.
+ 
+  Two complex ( kind = 4 ) vectors:
+ 
+                 X                              Y
+ 
+        0.813810      0.137532        0.669657      0.101250
+        0.558594      0.587395        0.664940      0.549266
+        0.061706      0.519968        0.503677      0.375585
+        0.480381      0.885878        0.261575      0.015149
+        0.597690      0.303810        0.076559      0.792915
+ 
+  DOT_PRODUCT(X,Y) =       1.905069     -0.105976
+ 
+  Two real ( kind = 4 ) vectors:
+ 
+          X               Y
+ 
+        0.620878        0.596820
+        0.773604        0.048153
+        0.953581        0.114206
+        0.114244        0.215965
+        0.318463        0.100573
+ 
+  DOT_PRODUCT(X,Y) =       0.573409
+ 
+  Two integer ( kind = 4 ) vectors:
+ 
+               X               Y
+ 
+               6               5
+               7               0
+               9               1
+               1               2
+               3               1
+ 
+  DOT_PRODUCT(X,Y) =             44
+ 
+  Two logical ( kind = 4 ) vectors:
+ 
+               X               Y
+ 
+               T               F
+               T               F
+               T               F
+               F               F
+               F               F
+ 
+  DOT_PRODUCT(X,Y) = F
+ 
+TEST_DPROD
+  DPROD is a FORTRAN90 function which returns
+  the product of real values X and Y, using
+  double precision.
+ 
+  real ( kind = 4 ) x, y
+ 
+       X       Y  DPROD(X,Y)
+ 
+      7.334179     24.686169    181.052778
+     44.338425     20.836752    923.868756
+     56.699829      2.431238    137.850762
+     42.029053     39.785301   1672.138523
+     97.658539     69.260498   6763.879037
+ 
+TEST_EOSHIFT
+  EOSHIFT is a FORTRAN90 function which applies an
+  "end off" shift to a vector or array.
+ 
+  integer v1_i4(10):
+ 
+     1   2   3   4   5   6   7   8   9  10
+ 
+  v2_i4 = eoshift ( v1_i4, 3, 99 ):
+ 
+     4   5   6   7   8   9  10  99  99  99
+ 
+  v2_i4 = eoshift ( v1_i4, -2, 88 ):
+ 
+    88  88   1   2   3   4   5   6   7   8
+ 
+  integer a1_i4(4,5):
+ 
+    11  12  13  14  15
+    21  22  23  24  25
+    31  32  33  34  35
+    41  42  43  44  45
+ 
+  a2_i4 = eoshift ( a1_i4, (/ 1, 2, 3, 4 /), 77, dim = 2 ):
+ 
+    12  13  14  15  77
+    23  24  25  77  77
+    34  35  77  77  77
+    45  77  77  77  77
+ 
+  a2_i4 = eoshift ( a1_i4, 2, 66, 1 ):
+ 
+    31  32  33  34  35
+    41  42  43  44  45
+    66  66  66  66  66
+    66  66  66  66  66
+ 
+TEST_EPSILON
+  EPSILON is a FORTRAN90 function which returns the
+  "machine epsilon" associated with a real number.
+ 
+  First, some "default precision" reals:
+ 
+       X              EPSILON(X)
+ 
+     1.00000        0.119209E-06
+     0.00000        0.119209E-06
+    0.100000E+07    0.119209E-06
+ 
+  Now, some "double precision" reals:
+ 
+       X              EPSILON(X)
+ 
+     1.00000        0.222045E-15
+     0.00000        0.222045E-15
+    0.100000E+07    0.222045E-15
+ 
+TEST_EXP
+  EXP is a FORTRAN90 function which returns the
+  exponential of a real number.
+ 
+       X              EXP(X)
+ 
+    -5.63163        0.358272E-02
+     9.12635         9194.42    
+     6.59018         727.915    
+     1.23391         3.43463    
+    -1.69386        0.183809    
+    -8.67763        0.170355E-03
+    -4.84844        0.784057E-02
+    -7.80086        0.409381E-03
+    -9.12342        0.109081E-03
+     2.67931         14.5751    
+ 
+TEST_EXPONENT
+  EXPONENT is a FORTRAN90 function which returns
+  the exponent part of a real number.
+ 
+       X             EXPONENT(X)
+ 
+    -5.63163             3
+     9.12635             4
+     6.59019             3
+     1.23391             1
+    -1.69386             1
+    -8.67763             4
+    -4.84844             3
+    -7.80086             3
+    -9.12342             4
+     2.67931             2
+ 
+TEST_FLOOR
+  FLOOR is a FORTRAN90 function which rounds a
+  real number down "towards -infinity".
+ 
+       X              FLOOR(X)
+ 
+    -9.90113           -10
+    -7.40158            -8
+    -9.06445           -10
+     6.79555             6
+     3.56978             3
+     1.63902             1
+     4.67052             4
+    -7.67915            -8
+     6.80599             6
+     6.69992             6
+ 
+TEST_FRACTION
+  FRACTION is a FORTRAN90 function which returns
+  the fractional part of a real number.
+ 
+       X             FRACTION(X)
+ 
+     4.93073        0.616341    
+     6.86402        0.858002    
+    0.576780        0.576780    
+     3.30969        0.827423    
+     4.61473        0.576841    
+    -1.78792       -0.893958    
+    -2.88557       -0.721392    
+     4.70754        0.588443    
+   -0.573647       -0.573647    
+   -0.747492       -0.747492    
+ 
+TEST_HUGE
+  HUGE is a FORTRAN90 function which returns a
+  "huge value" associated with a real or integer.
+ 
+  First, some "default precision" reals:
+ 
+       X              HUGE(X)
+ 
+     1.00000        0.340282E+39
+     0.00000        0.340282E+39
+    0.100000E+07    0.340282E+39
+ 
+  Now, some "double precision" reals:
+ 
+       X              HUGE(X)
+ 
+     1.00000        0.179769+309
+     0.00000        0.179769+309
+    0.100000E+07    0.179769+309
+ 
+  Now, some integers:
+ 
+       X              HUGE(X)
+ 
+             1    2147483647
+             0    2147483647
+       1000000    2147483647
+ 
+TEST_IACHAR
+  IACHAR is a FORTRAN90 function which returns the
+  ASCII index of a given character
+ 
+  C        IACHAR(C)    ACHAR(IACHAR(C))
+ 
+  T              84        T
+  h             104        h
+  i             105        i
+  s             115        s
+                 32         
+  i             105        i
+  s             115        s
+                 32         
+  a              97        a
+                 32         
+  s             115        s
+  t             116        t
+  r             114        r
+  i             105        i
+  n             110        n
+  g             103        g
+                 32         
+  o             111        o
+  f             102        f
+                 32         
+  t             116        t
+  e             101        e
+  x             120        x
+  t             116        t
+  !              33        !
+ 
+TEST_IAND_I4
+  IAND is a FORTRAN90 function which returns the
+  bitwise AND of two integers.
+ 
+  Here, I and J are integers of KIND = 4.
+ 
+         I         J    IAND(I,J)
+ 
+        22        96         0
+        83        56        16
+        42         7         2
+        26        11        10
+         4        63         4
+         6        45         4
+        40        75         8
+        80         0         0
+        90        35         2
+         9         1         1
+ 
+TEST_IAND_I8
+  IAND is a FORTRAN90 function which returns the
+  bitwise AND of two integers.
+ 
+  Here, I and J are integers of KIND = 8.
+ 
+         I         J    IAND(I,J)
+ 
+        22        96         0
+        83        56        16
+        42         7         2
+        26        11        10
+         4        63         4
+         6        45         4
+        40        75         8
+        80         0         0
+        90        35         2
+         9         1         1
+ 
+TEST_IBCLR
+  IBCLR is a FORTRAN90 function which sets a given
+  bit to zero in an integer word.
+ 
+         I       POS    IBCLR(I,POS)
+ 
+      2047         0      2046
+      2047         1      2045
+      2047         2      2043
+      2047         3      2039
+      2047         4      2031
+      2047         5      2015
+      2047         6      1983
+      2047         7      1919
+      2047         8      1791
+      2047         9      1535
+      2047        10      1023
+ 
+TEST_IBITS
+  IBITS is a FORTRAN90 function which extracts
+  LEN bits from word I start at position POS.
+ 
+         I       POS    LEN    IBITS(I,POS,LEN)
+ 
+      1396         0         3         4
+      1396         1         3         2
+      1396         2         3         5
+      1396         3         3         6
+      1396         4         3         7
+      1396         5         3         3
+      1396         6         3         5
+      1396         7         3         2
+      1396         8         3         5
+      1396         9         3         2
+      1396        10         3         1
+ 
+      1396         2         1         1
+      1396         2         2         1
+      1396         2         3         5
+      1396         2         4        13
+      1396         2         5        29
+      1396         2         6        29
+      1396         2         7        93
+      1396         2         8        93
+      1396         2         9       349
+      1396         2        10       349
+ 
+  Use IBITS to extract the 4 bytes that make up
+  an integer ( kind = 4 ) word.
+ 
+  I4 =   1040503311
+ 
+  Byte        0 =       15
+  Byte        1 =      210
+  Byte        2 =        4
+  Byte        3 =       62
+ 
+TEST_IBSET
+  IBSET is a FORTRAN90 function which sets a given
+  bit to one in an integer word.
+ 
+         I       POS    IBSET(I,POS)
+ 
+         0         0         1
+         1         1         3
+         3         2         7
+         7         3        15
+        15         4        31
+        31         5        63
+        63         6       127
+       127         7       255
+       255         8       511
+       511         9      1023
+      1023        10      2047
+ 
+TEST_ICHAR
+  ICHAR is a FORTRAN90 function which returns the
+  character index of a given character
+ 
+  C        ICHAR(C)    CHAR(ICHAR(C))
+ 
+  T              84        T
+  h             104        h
+  i             105        i
+  s             115        s
+                 32         
+  i             105        i
+  s             115        s
+                 32         
+  a              97        a
+                 32         
+  s             115        s
+  t             116        t
+  r             114        r
+  i             105        i
+  n             110        n
+  g             103        g
+                 32         
+  o             111        o
+  f             102        f
+                 32         
+  t             116        t
+  e             101        e
+  x             120        x
+  t             116        t
+  !              33        !
+ 
+TEST_IEOR_I4
+  IEOR is a FORTRAN90 function which returns the
+  bitwise exclusive OR of two integers.
+ 
+  Here, I and J are integers of KIND = 4.
+ 
+         I         J    IEOR(I,J)
+ 
+        75        70        13
+        25        93        68
+        45        80       125
+        90        69        31
+        21        85        64
+        74        30        84
+        67        61       126
+        96        99         3
+        33        92       125
+        33        93       124
+ 
+TEST_IEOR_I8
+  IEOR is a FORTRAN90 function which returns the
+  bitwise exclusive OR of two integers.
+ 
+  Here, I and J are integers of KIND = 8.
+ 
+         I         J    IEOR(I,J)
+ 
+        54        46        24
+        17        37        52
+        17        35        50
+        66        61       127
+        46        31        49
+        26        19         9
+        41        97        72
+        54        12        58
+        80        84         4
+        70        52       114
+ 
+TEST_INDEX
+  INDEX(S,SUB) is a FORTRAN90 function which returns
+  the location of the first occurrence of 
+  substring SUB in string S.
+  INDEX(S,SUB,.TRUE.) returns the location of the
+  LAST occurrence.
+ 
+  index ( 'THE CATATONIC CAT', 'CAT' )       5
+  index ( 'THE CATATONIC CAT', 'cat' )       0
+  index ( 'THE CATATONIC CAT', 'CAT', .TRUE. )      15
+ 
+TEST_INT
+  INT is a FORTRAN90 function which converts
+  a complex, integer or real value to integer.
+ 
+  Type                   X             INT(X)
+ 
+  complex ( kind = 4 ) 1.1000  2.2000       1
+  complex ( kind = 8 ) 3.3000  4.4000       3
+  integer ( kind = 4 )      5               5
+  integer ( kind = 8 )      6               6
+  real ( kind = 4 )    7.7000               7
+  real ( kind = 8 )    8.8000               8
+ 
+TEST_IOR_I4
+  IOR is a FORTRAN90 function which returns the
+  bitwise inclusive OR of two integers.
+ 
+  Here, I and J are integers of KIND = 4.
+ 
+         I         J     IOR(I,J)
+ 
+        22        96       118
+        83        56       123
+        42         7        47
+        26        11        27
+         4        63        63
+         6        45        47
+        40        75       107
+        80         0        80
+        90        35       123
+         9         1         9
+ 
+TEST_IOR_I8
+  IOR is a FORTRAN90 function which returns the
+  bitwise inclusive OR of two integers.
+ 
+  Here, I and J are integers of KIND = 8.
+ 
+         I         J     IOR(I,J)
+ 
+        22        96       118
+        83        56       123
+        42         7        47
+        26        11        27
+         4        63        63
+         6        45        47
+        40        75       107
+        80         0        80
+        90        35       123
+         9         1         9
+ 
+TEST_ISHFT
+  ISHFT is a FORTRAN90 function which shifts
+  the bits in an integer word.
+ 
+         I       SHIFT    ISHFT(I,SHIFT)
+ 
+        89        -5         2
+        89        -4         5
+        89        -3        11
+        89        -2        22
+        89        -1        44
+        89         0        89
+        89         1       178
+        89         2       356
+        89         3       712
+        89         4      1424
+        89         5      2848
+ 
+TEST_ISHFTC
+  ISHFTC is a FORTRAN90 function which circular-shifts
+  the bits in an integer word.
+ 
+         I       SHIFT    ISHFTC(I,SHIFT)
+ 
+        89        -5    -939524094
+        89        -4   -1879048187
+        89        -3     536870923
+        89        -2    1073741846
+        89        -1   -2147483604
+        89         0            89
+        89         1           178
+        89         2           356
+        89         3           712
+        89         4          1424
+        89         5          2848
+ 
+TEST_KIND
+  KIND is a FORTRAN90 function which returns
+  the kind associated with a given variable
+ 
+  Declaration              KIND(X)
+ 
+  character                     1
+  complex                       4
+  complex ( kind = 4 )          4
+  complex ( kind = 8 )          8
+  integer                       4
+  integer ( kind = 4 )          4
+  integer ( kind = 8 )          8
+  logical                       4
+  real                          4
+  real ( kind = 4 )             4
+  real ( kind = 8 )             8
+ 
+TEST_LBOUND
+  LBOUND(ARRAY) is a FORTRAN90 function which returns the
+  lower array bounds in all dimensions;
+  LBOUND(ARRAY,DIM) returns the lower bound in dimension
+  DIM.
+ 
+  real a(5,10,17)
+  lbound(a)   =      1     1     1
+  lbound(a,1) =      1
+  lbound(a,2) =      1
+  lbound(a,3) =      1
+ 
+  integer b(4:6,-5:-1,10:20)
+  lbound(b)   =      4    -5    10
+  lbound(b,1) =      4
+  lbound(b,2) =     -5
+  lbound(b,3) =     10
+ 
+TEST_LEN
+  LEN is a FORTRAN90 function which returns the
+  declared length of a string variable, or the length of
+  a string constant
+ 
+      S                     LEN(S)
+   ----------               -----
+ 
+  character ( len =  1 )        1
+  character ( len =  2 )        2
+  character ( len =  4 )        4
+  character ( len =  8 )        8
+  character ( len = 16 )       16
+ "A STRING"                     8
+ 
+TEST_LEN_TRIM
+  LEN_TRIM is a FORTRAN90 function which returns the
+  "used" length of a string variable up to the last
+  nonblank.
+ 
+      S          LEN_TRIM(S)
+   ----------    ----------
+ 
+  "1234567890"      10
+  "12345     "       5
+  "     67890"      10
+  "    5     "       5
+  "1 3 5 7 9 "       9
+ 
+TEST_LGE
+  LGE is a FORTRAN90 function which returns the value
+  of "S1 >= S2" where S1 and S2 are strings.
+ 
+    S1    S2   LGE(S1,S2)
+   ---   ---   ----------
+ 
+  "boy"  "boy"          T
+  "boy"  "cat"          F
+  "cat"  "boy"          T
+  "cat"  "dog"          F
+  "cat"  "CAT"          T
+  "cat"  "cats"         F
+ 
+TEST_LGT
+  LGT is a FORTRAN90 function which returns the value
+  of "S1 > S2" where S1 and S2 are strings.
+ 
+    S1    S2   LGT(S1,S2)
+   ---   ---   ----------
+ 
+  "boy"  "boy"          F
+  "boy"  "cat"          F
+  "cat"  "boy"          T
+  "cat"  "dog"          F
+  "cat"  "CAT"          T
+  "cat"  "cats"         F
+ 
+TEST_LLE
+  LLE is a FORTRAN90 function which returns the value
+  of "S1 <= S2" where S1 and S2 are strings.
+ 
+    S1    S2   LLE(S1,S2)
+   ---   ---   ----------
+ 
+  "boy"  "boy"          T
+  "boy"  "cat"          T
+  "cat"  "boy"          F
+  "cat"  "dog"          T
+  "cat"  "CAT"          F
+  "cat"  "cats"         T
+ 
+TEST_LGT
+  LLT is a FORTRAN90 function which returns the value
+  of "S1 < S2" where S1 and S2 are strings.
+ 
+    S1    S2   LLT(S1,S2)
+   ---   ---   ----------
+ 
+  "boy"  "boy"          F
+  "boy"  "cat"          T
+  "cat"  "boy"          F
+  "cat"  "dog"          T
+  "cat"  "CAT"          F
+  "cat"  "cats"         T
+ 
+TEST_LOG
+  LOG is a FORTRAN90 function which returns the
+  natural logarithm of a real number.
+ 
+       X              LOG(X)     EXP(LOG(X))
+ 
+     2.18418        0.781242         2.18418    
+     9.56318         2.25792         9.56318    
+     8.29509         2.11566         8.29509    
+     5.61695         1.72579         5.61695    
+     4.15307         1.42385         4.15307    
+    0.661187       -0.413718        0.661187    
+     2.57578        0.946152         2.57578    
+     1.09957        0.949173E-01     1.09957    
+    0.438290       -0.824875        0.438290    
+     6.33966         1.84682         6.33966    
+ 
+TEST_LOG10
+  LOG10 is a FORTRAN90 function which returns the
+  base 10 logarithm of a real number.
+ 
+       X              LOG10(X)     10**(LOG(X))
+ 
+     2.18418        0.339289         2.18418    
+     9.56318        0.980602         9.56318    
+     8.29509        0.918821         8.29509    
+     5.61695        0.749501         5.61695    
+     4.15307        0.618369         4.15307    
+    0.661187       -0.179675        0.661187    
+     2.57578        0.410908         2.57578    
+     1.09957        0.412221E-01     1.09957    
+    0.438290       -0.358238        0.438290    
+     6.33966        0.802066         6.33966    
+ 
+TEST_LOGICAL
+  LOGICAL is a FORTRAN90 function which can convert
+  between logical kinds
+ 
+  logical ( kind = 4 ) x_l4 = T
+ 
+  logical ( kind = 1 ) x_lb
+  x_lb = logical ( x_l4, kind = 1 ) = T
+ 
+  x_lb = .not. x_lb = F
+  x_l4 = logical ( x_lb, kind = 4 ) = F
+ 
+TEST_MATMUL
+  MATMUL is a FORTRAN90 function which returns
+  the product of two matrices or a matrix and vector.
+ 
+  Matrix A:
+ 
+     1     5     4     3     2
+     0     1     1     0     3
+     0     2     2     4     4
+     0     4     2     0     0
+ 
+  Matrix B:
+ 
+     1     5     4
+     0     1     1
+     0     2     2
+     0     4     2
+     5     4     3
+ 
+  Vector C:
+ 
+     3     1     4     2     1
+ 
+  Matrix AB = matmul ( A, B ):
+ 
+    19    30    61
+    13     9    24
+    22    26    50
+     2     8    28
+ 
+  Vector AC = matmul ( A, C ):
+ 
+    32     8    22    12
+ 
+  Vector CB = matmul ( C, B ):
+ 
+    22    29    35
+ 
+TEST_MAX
+  MAX is a FORTRAN90 function which returns
+  the maximum value in a list.
+ 
+  max(2,1) =            2
+  max(1,3,2) =          3
+  max(3,2,4,1) =        4
+ 
+  max(2.1, 1.2) =            2.1
+  max(1.1, 3.2, 2.3) =       3.2
+  max(3.1, 2.2, 4.3, 1.4) =  4.3
+ 
+TEST_MAX_VECTOR
+  MAX is a FORTRAN90 function which returns
+  the maximum value in a list.
+ 
+  We consider a vector version:
+ 
+ 
+         I      X(I)      Y(I)      Z(I)
+ 
+         1         2         0         2
+         2        10         4        10
+         3         9         4         9
+         4         6         8         8
+         5         4         8         8
+         6         0         0         0
+         7         2         9         9
+         8         1         3         3
+         9         0         1         1
+        10         6         0         6
+ 
+  Now try Z(1:N) = max ( 5, Y(1:N) )
+ 
+         I      X(I)      Y(I)      Z(I)
+ 
+         1         5         0         5
+         2         5         4         5
+         3         5         4         5
+         4         5         8         8
+         5         5         8         8
+         6         5         0         5
+         7         5         9         9
+         8         5         3         5
+         9         5         1         5
+        10         5         0         5
+ 
+TEST_MAXEXPONENT
+  MAXEXPONENT is a FORTRAN90 function which returns
+  the maximum exponent associated with real numbers
+  of the same kind as X.
+ 
+  Type         MAXEXPONENT(X)
+ 
+  real                   128
+  real ( kind = 4 )      128
+  real ( kind = 8 )     1024
+ 
+TEST_MAXLOC
+  MAXLOC is a FORTRAN90 function which returns the
+  index of the maximum value of the entries of a vector.
+ 
+  A real ( kind = 4 ) vector:
+ 
+          X
+ 
+        0.663841
+        0.900739
+        0.941164
+        0.114420
+        0.866668
+ 
+  MAXLOC(X) =              3
+ 
+  An integer ( kind = 4 ) vector:
+ 
+               X
+ 
+               6
+               9
+               9
+               1
+               8
+ 
+  MAXLOC(X) =              2
+ 
+TEST_MAXVAL
+  MAXVAL is a FORTRAN90 function which returns the
+  maximum value of the entries of a vector.
+ 
+  A real ( kind = 4 ) vector:
+ 
+          X
+ 
+        0.632368
+        0.242788
+        0.160396
+        0.021236
+        0.190254
+ 
+  MAXVAL(X) =       0.632368
+ 
+  An integer ( kind = 4 ) vector:
+ 
+               X
+ 
+               6
+               2
+               1
+               0
+               1
+ 
+  MAXVAL(X) =              6
+ 
+TEST_MERGE
+  MERGE is a FORTRAN90 function which copies
+  entries from one array or the other depending
+  on a logical array.
+ 
+  Array A:
+ 
+    22    96    83    56    42
+     7    26    11     4    63
+     6    45    40    75    80
+     0    90    35     9     1
+ 
+  Array B:
+ 
+    86    84    12     1    26
+    91    11    35    82    27
+    69    56    86    45    91
+    60    19    76    40    19
+ 
+  Array C:
+ 
+     F     F     T     F     F
+     T     T     T     T     T
+     F     F     T     F     F
+     T     T     T     T     T
+ 
+  Array D = MERGE(A,B,C):
+ 
+    86    84    83     1    26
+     7    26    11     4    63
+    69    56    40    45    91
+     0    90    35     9     1
+ 
+TEST_MIN
+  MIN is a FORTRAN90 function which returns
+  the minimum value in a list.
+ 
+  min(3, 4) =              3
+  min(4, 2, 3) =           2
+  min(2, 3, 1, 4) =        1
+ 
+  min(3.1, 4.2) =            3.1
+  min(4.1. 2.2, 3.3) =       2.2
+  min(2.1, 3.2, 1.3, 4.4) =  1.3
+ 
+TEST_MINEXPONENT
+  MINEXPONENT is a FORTRAN90 function which returns
+  the minimum exponent associated with real numbers
+  of the same kind as X.
+ 
+  Type         MINEXPONENT(X)
+ 
+  real                  -125
+  real ( kind = 4 )     -125
+  real ( kind = 8 )    -1021
+ 
+TEST_MINLOC
+  MINLOC is a FORTRAN90 function which returns the
+  index of the minimum value of the entries of a vector.
+ 
+  A real ( kind = 4 ) vector:
+ 
+          X
+ 
+        0.312340
+        0.809648
+        0.573718
+        0.826261
+        0.286455
+ 
+  MINLOC(X) =              5
+ 
+  An integer ( kind = 4 ) vector:
+ 
+               X
+ 
+               3
+               8
+               5
+               8
+               2
+ 
+  MINLOC(X) =              5
+ 
+TEST_MINVAL
+  MINVAL is a FORTRAN90 function which returns the
+  minimum value of the entries of a vector.
+ 
+  A real ( kind = 4 ) vector:
+ 
+          X
+ 
+        0.160515
+        0.330924
+        0.265853
+        0.544781
+        0.553520
+ 
+  MINVAL(X) =       0.160515
+ 
+  An integer ( kind = 4 ) vector:
+ 
+               X
+ 
+               1
+               3
+               2
+               5
+               5
+ 
+  MINVAL(X) =              1
+ 
+TEST_MOD_I4
+  MOD is a FORTRAN90 function which returns the
+  remainder after division.
+ 
+  Here, the arguments are integers.
+ 
+         I         J       MOD(I,J)
+ 
+        -3        19        -3
+        15         7         1
+         2        -8         2
+        -2        -7        -2
+        -9         9         0
+        -8         3        -2
+         2        13         2
+        14       -10         4
+        17         1         0
+        -7       -10        -7
+ 
+TEST_MOD_R4
+  MOD is a FORTRAN90 function which returns the
+  remainder after division.
+ 
+  Here, the arguments are reals.
+ 
+          X               Y              MOD(X,Y)
+ 
+       -3.447451       18.689528       -3.447451
+       14.885277        6.850864        1.183548
+        2.459212       -8.016438        2.459212
+       -2.272666       -6.701296       -2.272666
+       -8.685130        9.018972       -8.685130
+       -8.148183        3.486168       -1.175847
+        2.039188       12.640205        2.039188
+       13.918608       -9.944849        3.973759
+       16.925121        0.522570        0.202892
+       -7.163657       -9.591494       -7.163657
+ 
+TEST_MODULO_I4
+  MODULO is a FORTRAN90 function which returns the
+  remainder after division.
+ 
+  Here, the arguments are integers.
+ 
+         I         J    MODULO(I,J)
+ 
+        -3        19        16
+        15         7         1
+         2        -8        -6
+        -2        -7        -2
+        -9         9         0
+        -8         3         1
+         2        13         2
+        14       -10        -6
+        17         1         0
+        -7       -10        -7
+ 
+TEST_MODULO_R4
+  MODULO is a FORTRAN90 function which returns the
+  remainder after division.
+ 
+  Here, the arguments are reals.
+ 
+          X               Y           MODULO(X,Y)
+ 
+       -3.447451       18.689528       15.242077
+       14.885277        6.850864        1.183548
+        2.459212       -8.016438       -5.557225
+       -2.272666       -6.701296       -2.272666
+       -8.685130        9.018972        0.333842
+       -8.148183        3.486168        2.310321
+        2.039188       12.640205        2.039188
+       13.918608       -9.944849       -5.971090
+       16.925121        0.522570        0.202892
+       -7.163657       -9.591494       -7.163657
+ 
+TEST_MVBITS
+  MVBITS is a FORTRAN90 function which extracts
+  bits from one place and copies them elsewhere.
+ 
+  CALL MVBITS(FROM,FROMPOS,LEN,TO,TOPOS)
+ 
+  We will always use I1 =            1396
+  We will always start with I2 =        0
+ 
+  CALL MVBITS(I1,0, 5,I2,0): I2 =           20
+  CALL MVBITS(I1,0,32,I2,0): I2 =         1396
+  CALL MVBITS(I1,5, 5,I2,0): I2 =           11
+  CALL MVBITS(I1,5, 5,I2,5): I2 =          352
+ 
+TEST_NEAREST
+  NEAREST is a FORTRAN90 function which returns
+  the nearest real number to a given real number, 
+  in a given direction.
+ 
+          X              NEAREST(X,+1.0)   NEAREST(X,-1.0)
+ 
+        1.00000000        1.00000012        0.99999994
+ 
+TEST_NINT
+  NINT is a FORTRAN90 function which returns,
+  as an integer, the nearest integer to a 
+  given real number.
+ 
+       X             NINT(X)
+ 
+    -5.63163            -6
+     9.12635             9
+     6.59018             7
+     1.23391             1
+    -1.69386            -2
+    -8.67763            -9
+    -4.84844            -5
+    -7.80086            -8
+    -9.12342            -9
+     2.67931             3
+ 
+TEST_NOT_I4
+  NOT is a FORTRAN90 function which returns the
+  bitwise NOT of an integer.
+ 
+  Here, I is an integer of KIND = 4.
+ 
+             I         NOT(I)
+ 
+            22           -23
+            96           -97
+            83           -84
+            56           -57
+            42           -43
+             7            -8
+            26           -27
+            11           -12
+             4            -5
+            63           -64
+ 
+TEST_NOT_I8
+  NOT is a FORTRAN90 function which returns the
+  bitwise NOT of an integer.
+ 
+  Here, I is an integer of KIND = 8.
+ 
+         I                  NOT(I)
+ 
+                    22                   -23
+                    96                   -97
+                    83                   -84
+                    56                   -57
+                    42                   -43
+                     7                    -8
+                    26                   -27
+                    11                   -12
+                     4                    -5
+                    63                   -64
+ 
+TEST_PACK
+  PACK is a FORTRAN90 function which packs the
+  entries of an array into a vector subject to
+  a logical mask.
+ 
+ 
+  Here is integer array a(5,4)
+ 
+    22    96    83    56
+    42     7    26    11
+     4    63     6    45
+    40    75    80     0
+    90    35     9     1
+ 
+  Here is the logical array mask(5,4), which
+  we will use to choose our entries of A:
+ 
+  T  F  F  T
+  T  T  T  T
+  T  T  T  T
+  T  T  F  T
+  F  T  T  T
+ 
+  We can count the number of entries to be
+  copied into V by:
+ 
+    N = COUNT ( MASK )
+ 
+  Now set V = pack ( a, mask )
+ 
+ 
+  Here are the entries copied into vector V:
+ 
+    22    42     4    40     7    63    75    35    26     6
+     9    56    11    45     0     1
+ 
+TEST_PRECISION
+  PRECISION is a FORTRAN90 function which returns the
+  number of decimal places available for real numbers.
+ 
+  Declaration      PRECISION(X)
+ 
+  real                    6
+  double precision       15
+  real ( kind = 4 )       6
+  real ( kind = 8 )      15
+ 
+TEST_PRESENT
+  PRESENT is a FORTRAN90 function which  reports
+  whether optional arguments have been supplied.
+ 
+  This routine has optional arguments ETHEL, FRED, GEORGE.
+ 
+  present ( ethel ) =  F
+  present ( fred ) =   F
+  present ( george ) = F
+ 
+TEST_PRESENT
+  PRESENT is a FORTRAN90 function which  reports
+  whether optional arguments have been supplied.
+ 
+  This routine has optional arguments ETHEL, FRED, GEORGE.
+ 
+  present ( ethel ) =  F
+  present ( fred ) =   T
+  present ( george ) = F
+ 
+TEST_PRESENT
+  PRESENT is a FORTRAN90 function which  reports
+  whether optional arguments have been supplied.
+ 
+  This routine has optional arguments ETHEL, FRED, GEORGE.
+ 
+  present ( ethel ) =  F
+  present ( fred ) =   T
+  present ( george ) = T
+ 
+TEST_PRESENT
+  PRESENT is a FORTRAN90 function which  reports
+  whether optional arguments have been supplied.
+ 
+  This routine has optional arguments ETHEL, FRED, GEORGE.
+ 
+  present ( ethel ) =  T
+  present ( fred ) =   T
+  present ( george ) = T
+ 
+TEST_PRODUCT
+  PRODUCT is a FORTRAN90 function which returns the
+  product of the entries of a vector.
+ 
+  A complex ( kind = 4 ) vector:
+ 
+                 X
+ 
+        0.449860     -0.126667
+       -0.843197     -0.344280
+        0.589627      0.260090
+        0.391140      0.323400
+       -0.139466     -0.156136
+ 
+  PRODUCT(X) =      -0.013728      0.025710
+ 
+  A real ( kind = 4 ) vector:
+ 
+          X
+ 
+        0.449860
+       -0.843197
+        0.589627
+        0.391140
+       -0.139466
+ 
+  PRODUCT(X) =       0.012201
+ 
+  An integer ( kind = 4 ) vector:
+ 
+               X
+ 
+               4
+              -8
+               5
+               3
+              -1
+ 
+  PRODUCT(X,Y) =            480
+ 
+TEST_RADIX
+  RADIX is a FORTRAN90 function which returns the
+  radix or base exponent associated with the
+  representation of numbers of a given type and kind.
+ 
+  integer                    2
+  integer ( kind = 4 )       2
+  integer ( kind = 8 )       2
+ 
+  real                       2
+  real ( kind = 4 )          2
+  real ( kind = 8 )          2
+ 
+TEST_RANDOM_NUMBER
+  RANDOM_NUMBER is a FORTRAN90 function which returns
+  uniformly distributed pseudorandom values.
+ 
+  Call RANDOM_NUMBER 5 times in a row:
+ 
+    0.216148E-01
+    0.148748    
+    0.104903    
+    0.614214    
+    0.406291    
+ 
+  Call RANDOM_NUMBER once, with a vector argument
+ 
+    0.901528    
+    0.942838    
+    0.156620    
+    0.936959    
+    0.135473    
+ 
+  Call RANDOM_NUMBER with an array argument
+ 
+    0.371282      0.729708      0.953664    
+    0.321511      0.378593      0.308419    
+    0.714964      0.828934      0.579741    
+ 
+TEST_RANDOM_SEED
+  RANDOM_SEED is a FORTRAN90 function which allows
+  the user to read or set the random number seed.
+ 
+  CALL RANDOM_SEED ( SIZE = seed_size ) returns the
+  dimension of the random number seed.
+ 
+  SIZE =       12
+ 
+  Call RANDOM_SEED ( GET = SEED )
+  to get current contents of the SEED array:
+ 
+   288862144
+  -712611040
+   574011904
+   290147591
+   189206585
+ -1597521851
+   574697789
+  1454843314
+  1278628381
+  2022111222
+   459223648
+ -1869385634
+ 
+  Set the SEED array to a simple value.
+ 
+           1
+           2
+           3
+           4
+           5
+           6
+           7
+           8
+           9
+          10
+          11
+          12
+ 
+  Call RANDOM_SEED ( PUT = SEED )
+  to reset current contents of the SEED array:
+ 
+ 
+  Call RANDOM_NUMBER 5 times.
+ 
+    0.228570    
+    0.352733    
+    0.167898    
+    0.883237    
+    0.968189    
+ 
+  Call RANDOM_SEED ( GET = SEED )
+  to get current contents of the SEED array.
+  Notice that the seed has changed!
+ 
+           1
+           2
+           3
+           4
+     5111982
+      524537
+      720997
+     7143676
+     3604567
+     3211453
+      196826
+      196773
+ 
+  Call RANDOM_SEED ( PUT = SEED )
+  to reset the SEED array:
+ 
+ 
+  Call RANDOM_NUMBER 5 times.
+  Because the SEED array is the same,
+  the values should be repeated.
+ 
+    0.228570    
+    0.352733    
+    0.167898    
+    0.883237    
+    0.968189    
+ 
+TEST_RANGE
+  RANGE is a FORTRAN90 function which returns the
+  base 10 logarithm of the largest magnitude objects
+  of a given type and kind.
+ 
+  Integer ( kind = 4 )         9
+  Integer ( kind = 8 )        18
+  Real ( kind = 4 )           37
+  Real ( kind = 8 )          307
+  Complex ( kind = 4 )        37
+  Complex ( kind = 8 )       307
+ 
+TEST_REAL_C4
+  REAL is a FORTRAN90 function which can return the
+  real part of a complex number.
+ 
+                  X                         REAL(X)
+       ------------------------    ----------------
+ 
+        0.449860     -0.126667            0.449860
+       -0.843197     -0.344280           -0.843197
+        0.589627      0.260090            0.589627
+        0.391140      0.323400            0.391140
+       -0.139466     -0.156136           -0.139466
+       -0.236066      0.077459           -0.236066
+        0.018599     -0.633214            0.018599
+        0.892850      0.010314            0.892850
+       -0.560465      0.763795           -0.560465
+        0.306357      0.026275            0.306357
+ 
+TEST_REPEAT
+  REPEAT(S,N) creates a new character string by repeating
+  a given string S N times.
+ 
+  S                    N  REPEAT(S,N)
+ 
+  "a"                  5  "aaaaa"
+  "Ab"                 4  "AbAbAbAb"
+  "Abc "               3  "Abc Abc Abc "
+ 
+TEST_RESHAPE
+  RESHAPE can "reshape" an array.
+ 
+  A is a 3 x 4 matrix, and we reshape it to a vector:
+ 
+    11    12    13    14
+    21    22    23    24
+    31    32    33    34
+ 
+  We reshape A to a vector:
+ 
+  B = RESHAPE ( A, (/ 12 /) )
+ 
+    11    21    31    12    22    32    13    23    33    14    24    34
+ 
+  We reshape B to a matrix C:
+ 
+  C = RESHAPE ( B, (/ 2, 6 /) )
+ 
+    11    31    22    13    33    24
+    21    12    32    23    14    34
+ 
+  We reshape B to a 3D matrix D:
+ 
+  D = RESHAPE ( B, (/ 2, 3, 2 /) )
+ 
+    11    13
+    31    33
+    22    24
+ 
+    21    23
+    12    14
+    32    34
+ 
+ 
+TEST_RRSPACING
+  RRSPACING is a FORTRAN90 function which returns the
+  reciprocal relative spacing associated 
+  with a real number.
+ 
+  First, some "default precision" reals:
+ 
+       X              RRSPACING(X)
+ 
+     1.00000        0.838861E+07
+     0.00000         0.00000    
+    0.100000E+07    0.160000E+08
+ 
+  Now, some "double precision" reals:
+ 
+       X              RRSPACING(X)
+ 
+     1.00000        0.450360E+16
+     0.00000         0.00000    
+    0.100000E+07    0.858993E+16
+ 
+TEST_SCALE
+  SCALE(X,I) is a FORTRAN90 function which returns the
+  value of X * RADIX**I, where RADIX is the base
+  for real number arithmetic.
+ 
+       X             I      SCALE(X,I)
+ 
+     5.00000        -5    0.156250    
+     5.00000        -4    0.312500    
+     5.00000        -3    0.625000    
+     5.00000        -2     1.25000    
+     5.00000        -1     2.50000    
+     5.00000         0     5.00000    
+     5.00000         1     10.0000    
+     5.00000         2     20.0000    
+     5.00000         3     40.0000    
+     5.00000         4     80.0000    
+     5.00000         5     160.000    
+ 
+TEST_SCAN
+  SCAN(S,SET) is a FORTRAN90 function which returns
+  the location of the first occurrence of 
+  any character from SET in string S.
+  SCAN(S,SET,.TRUE.) returns the location of the
+  LAST occurrence.
+ 
+  scan ( 'THE CATATONIC CAT', 'CAT' )       1
+  scan ( 'THE CATATONIC CAT', 'DOG' )      10
+  scan ( 'THE CATATONIC CAT', 'cat' )       0
+  scan ( 'THE CATATONIC CAT', 'ABC' )       5
+  scan ( 'THE CATATONIC CAT', 'ABC', .TRUE. )      16
+ 
+TEST_SELECTED_INT_KIND
+  SELECTED_INT_KIND(R) is a FORTRAN90 function which
+  returns a value of the KIND parameter for integers
+  up to 10**R.
+ 
+         R    SELECTED_INT_KIND(R)
+ 
+         1         1
+         2         1
+         3         2
+         4         2
+         5         4
+         6         4
+         7         4
+         8         4
+         9         4
+        10         8
+        11         8
+        12         8
+        13         8
+        14         8
+        15         8
+        16         8
+        17         8
+        18         8
+        19        16
+        20        16
+ 
+TEST_SELECTED_REAL_KIND
+  SELECTED_INT_KIND(R) is a FORTRAN90 function which
+  returns a value of the KIND parameter for integers
+  up to 10**R.
+ 
+         P         R    SELECTED_REAL_KIND(P,R)
+ 
+         5         1         4
+         5         2         4
+         5         3         4
+         5         4         4
+         5         5         4
+         5         6         4
+         5         7         4
+         5         8         4
+         5         9         4
+         5        10         4
+         5        11         4
+         5        12         4
+         5        13         4
+         5        14         4
+         5        15         4
+         5        16         4
+         5        17         4
+         5        18         4
+         5        19         4
+         5        20         4
+ 
+         1        10         4
+         2        10         4
+         3        10         4
+         4        10         4
+         5        10         4
+         6        10         4
+         7        10         8
+         8        10         8
+         9        10         8
+        10        10         8
+        11        10         8
+        12        10         8
+        13        10         8
+        14        10         8
+        15        10         8
+        16        10        10
+        17        10        10
+        18        10        10
+        19        10        16
+        20        10        16
+ 
+TEST_SET_EXPONENT
+  SET_EXPONENT(X,I) is a FORTRAN90 function which returns the
+  FRACTION(X)*RADIX**I, where FRACTION(X) is the 
+  fractional part of X, and RADIX is the base
+  for real number arithmetic.
+ 
+       X             I      SET_EXPONENT(X,I)
+ 
+     100.000        -5    0.244141E-01
+     100.000        -4    0.488281E-01
+     100.000        -3    0.976563E-01
+     100.000        -2    0.195313    
+     100.000        -1    0.390625    
+     100.000         0    0.781250    
+     100.000         1     1.56250    
+     100.000         2     3.12500    
+     100.000         3     6.25000    
+     100.000         4     12.5000    
+     100.000         5     25.0000    
+ 
+TEST_SHAPE
+  SHAPE(ARRAY) is a FORTRAN90 function which returns the
+  "shape" of the array.
+ 
+  real a(5,10,17)
+  shape(a)   =      5    10    17
+ 
+  integer b(4:6,-5:-1,10:20)
+  shape(b)   =      3     5    11
+ 
+TEST_SIGN
+  SIGN is a FORTRAN90 function which returns the
+  sign of Y times the magnitude of X.
+ 
+       X               Y           SIGN(X,Y)
+ 
+    -5.63163         9.12635         5.63163    
+     6.59018         1.23391         6.59018    
+    -1.69386        -8.67763        -1.69386    
+    -4.84844        -7.80086        -4.84844    
+    -9.12342         2.67931         9.12342    
+    -8.76546        -1.00922        -8.76546    
+    -1.97387         5.09347         1.97387    
+     5.94574        -9.96323        -5.94574    
+     7.95008        -2.98495        -7.95008    
+    -8.10910        -9.72766        -8.10910    
+ 
+TEST_SIN_R8
+  SIN is a FORTRAN90 function which returns the
+  sine of a real or complex number.
+ 
+  Here we use real ( kind = 8 ) arguments.
+ 
+       X              SIN(X)
+ 
+    -5.63163        0.606421    
+     9.12635        0.294017    
+     6.59018        0.302200    
+     1.23391        0.943788    
+    -1.69386       -0.992437    
+    -8.67763       -0.679553    
+    -4.84844        0.990759    
+    -7.80086       -0.998590    
+    -9.12342       -0.296817    
+     2.67931        0.445989    
+ 
+TEST_SINH
+  SINH is a FORTRAN90 function which returns the
+  hyperbolic sine of a real number.
+ 
+       X              SINH(X)
+ 
+    -5.63163        -139.557    
+     9.12635         4597.21    
+     6.59018         363.957    
+     1.23391         1.57174    
+    -1.69386        -2.62831    
+    -8.67763        -2935.05    
+    -4.84844        -63.7670    
+    -7.80086        -1221.36    
+    -9.12342        -4583.75    
+     2.67931         7.25324    
+ 
+TEST_SIZE
+  SIZE(ARRAY) is a FORTRAN90 function which returns the
+  size in all dimensions;
+  SIZE(ARRAY,DIM) returns the size in dimension
+  DIM.
+ 
+  real a(5,10,17)
+  size(a)   =    850
+  size(a,1) =      5
+  size(a,2) =     10
+  size(a,3) =     17
+ 
+  integer b(4:6,-5:-1,10:20)
+  size(b)   =    165
+  size(b,1) =      3
+  size(b,2) =      5
+  size(b,3) =     11
+ 
+TEST_SPACING
+  SPACING is a FORTRAN90 function which returns the
+  absolute spacing associated with a real number.
+ 
+  First, some "default precision" reals:
+ 
+       X              SPACING(X)
+ 
+     1.00000        0.119209E-06
+     0.00000        0.117549E-37
+    0.100000E+07    0.625000E-01
+ 
+  Now, some "double precision" reals:
+ 
+       X              SPACING(X)
+ 
+     1.00000        0.222045E-15
+     0.00000        0.222507-307
+    0.100000E+07    0.116415E-09
+ 
+TEST_SPREAD
+  SPREAD is a FORTRAN90 function which replicates
+  an array by adding a dimension.
+ 
+  Suppose we have a scalar S =     99
+ 
+  V = spread ( s, 1, 4 )
+ 
+  adds a new dimension (1) of extent 4
+ 
+    99    99    99    99
+ 
+  Now first reset V to (1,2,3,4)
+ 
+  A1 = spread ( v, 2, 3 )
+ 
+  adds a new dimension (2) of extent 3
+ 
+     1     1     1
+     2     2     2
+     3     3     3
+     4     4     4
+ 
+  A2 = spread ( v, 1, 3 )
+ 
+  adds a new dimension (1) of extent 3
+ 
+     1     2     3     4
+     1     2     3     4
+     1     2     3     4
+ 
+TEST_SQRT
+  SQRT is a FORTRAN90 function which returns the
+  square root of a real number.
+ 
+       X              SQRT(X)        (SQRT(X))**2
+ 
+     2.18418         1.47790         2.18418    
+     9.56318         3.09244         9.56318    
+     8.29509         2.88012         8.29509    
+     5.61695         2.37001         5.61695    
+     4.15307         2.03791         4.15307    
+    0.661187        0.813134        0.661187    
+     2.57578         1.60492         2.57578    
+     1.09957         1.04860         1.09957    
+    0.438290        0.662035        0.438290    
+     6.33966         2.51787         6.33966    
+ 
+TEST_SUM
+  SUM is a FORTRAN90 function which returns the
+  sum of the entries of a vector.
+ 
+  A complex ( kind = 4 ) vector:
+ 
+                 X
+ 
+        0.449860     -0.126667
+       -0.843197     -0.344280
+        0.589627      0.260090
+        0.391140      0.323400
+       -0.139466     -0.156136
+ 
+  SUM(X) =       0.447964     -0.043593
+ 
+  A real ( kind = 4 ) vector:
+ 
+          X
+ 
+        0.449860
+       -0.843197
+        0.589627
+        0.391140
+       -0.139466
+ 
+  SUM(X) =       0.447964
+ 
+  An integer ( kind = 4 ) vector:
+ 
+               X
+ 
+               4
+              -8
+               5
+               3
+              -1
+ 
+  SUM(X) =              3
+ 
+  A 4 x 5 integer array A containing 1 through 20
+ 
+     1   2   3   4   5
+     6   7   8   9  10
+    11  12  13  14  15
+    16  17  18  19  20
+ 
+  SUM(A) =            210
+ 
+TEST_SUM_ARAY
+  SUM(A) is a FORTRAN90 function which returns the
+  sum of the entries of a vector or array.
+  SUM(A,1) or SUM(A,DIM=1) returns an array of one lower 
+  rank containing sums over index 1, and so on.
+ 
+  A 4 x 5 integer array A containing 1 through 20
+ 
+     1   2   3   4   5
+     6   7   8   9  10
+    11  12  13  14  15
+    16  17  18  19  20
+ 
+  SUM(A) =            210
+ 
+  SUM(A,1):
+ 
+  34
+  38
+  42
+  46
+  50
+ 
+  SUM(A,DIM=2):
+ 
+  15
+  40
+  65
+  90
+ 
+TEST_SYSTEM_CLOCK
+  SYSTEM_CLOCK is a FORTRAN90 subroutine which returns
+  information from a system clock.
+ 
+  COUNT =        1160927913
+  COUNT_RATE =         1000
+  COUNT_MAX =    2147483647
+ 
+  The current value of COUNT corresponds to a 
+  a time interval of COUNT / COUNT_RATE   0.116093E+07 seconds,
+ 
+TEST_TAN
+  TAN is a FORTRAN90 function which returns the
+  tangent of a real number.
+ 
+       X              TAN(X)
+ 
+    -5.63163        0.762655    
+     9.12635       -0.307613    
+     6.59018        0.317022    
+     1.23391         2.85520    
+    -1.69386         8.08492    
+    -8.67763        0.926292    
+    -4.84844         7.30455    
+    -7.80086        -18.8085    
+    -9.12342        0.310825    
+     2.67931       -0.498290    
+ 
+TEST_TANH
+  TANH is a FORTRAN90 function which returns the
+  hyperbolic tangent of a real number.
+ 
+       X              TANH(X)
+ 
+    -5.63163       -0.999974    
+     9.12635         1.00000    
+     6.59018        0.999996    
+     1.23391        0.843709    
+    -1.69386       -0.934637    
+    -8.67763        -1.00000    
+    -4.84844       -0.999877    
+    -7.80086        -1.00000    
+    -9.12342        -1.00000    
+     2.67931        0.990629    
+ 
+TEST_TINY
+  TINY is a FORTRAN90 function which returns the
+  "tiniest number" associated with a real number.
+ 
+  First, some "default precision" reals:
+ 
+       X              TINY(X)
+ 
+     1.00000        0.117549E-37
+     0.00000        0.117549E-37
+    0.100000E+07    0.117549E-37
+ 
+  Now, some "double precision" reals:
+ 
+       X              TINY(X)
+ 
+     1.00000        0.222507-307
+     0.00000        0.222507-307
+    0.100000E+07    0.222507-307
+ 
+TEST_TRANSFER
+  TRANSFER is a FORTRAN90 function which allows
+  the "physical" data of a variable to be interpreted
+  as though it were another type or kind of variable.
+ 
+  Examine REAL data as though it were an INTEGER.
+ 
+  I = TRANSFER ( R, I )
+ 
+  R =    1.00000    
+  I =   1065353216
+ 
+  Examine COMPLEX data as though it were two REALS.
+ 
+  R2 = TRANSFER ( C, R2 )
+ 
+  C =     1.20000       3.40000    
+  R2 =    1.20000       3.40000    
+ 
+  Examine LOGICAL data as though it were an INTEGER.
+ 
+  I = TRANSFER ( L, I )
+ 
+  L = T
+  I =            1
+ 
+  Examine CHARACTER data as though it were an INTEGER.
+ 
+  I = TRANSFER ( CH, I )
+ 
+  CH = "a"
+  I =   1067030938
+ 
+TEST_TRANSPOSE
+  TRANSPOSE is a FORTRAN90 function which returns
+  the transpose of a complex, integer or real 
+  two dimensional array.
+ 
+  integer ( kind = 4 ) x_i4(4,4)
+ 
+    22    96    83    56
+    42     7    26    11
+     4    63     6    45
+    40    75    80     0
+ 
+  y_i4 = transpose ( x_i4 )
+ 
+    22    42     4    40
+    96     7    63    75
+    83    26     6    80
+    56    11    45     0
+ 
+  real ( kind = 4 ) x_r4(2,3)
+ 
+        0.806234        0.487401        0.611807
+        0.117714        0.087829        0.356780
+ 
+  y_r4 = transpose ( x_r4 )
+ 
+        0.806234        0.117714
+        0.487401        0.087829
+        0.611807        0.356780
+ 
+TEST_TRIM
+  TRIM is a FORTRAN90 function which returns a copy
+  of a string from which the trailing blanks have been
+  dropped.
+ 
+      S          TRIM(S)
+   ----------    ----------
+ 
+  "1234567890"  "1234567890"
+  "12345     "  "12345"
+  "     67890"  "     67890"
+  "  34 678  "  "  34 678"
+  "    5     "  "    5"
+  "          "  ""
+ 
+TEST_UBOUND
+  UBOUND(ARRAY) is a FORTRAN90 function which returns the
+  upper array bounds in all dimensions;
+  UBOUND(ARRAY,DIM) returns the upper bound in dimension
+  DIM.
+ 
+  real a(5,10,17)
+  ubound(a)   =      5    10    17
+  ubound(a,1) =      5
+  ubound(a,2) =     10
+  ubound(a,3) =     17
+ 
+  integer b(4:6,-5:-1,10:20)
+  ubound(b)   =      6    -1    20
+  ubound(b,1) =      6
+  ubound(b,2) =     -1
+  ubound(b,3) =     20
+ 
+TEST_UNPACK
+  UNPACK is a FORTRAN90 function which unpacks the
+  entries of a vector into an array subject to
+  a logical mask.
+ 
+ 
+  integer v(20)
+ 
+     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20
+ 
+  logical mask(5,4)
+ 
+  F  T  F  T
+  T  F  T  F
+  F  T  F  T
+  T  F  T  F
+  F  T  F  T
+ 
+  integer a(5,4) = unpack ( v, mask, field )
+ 
+   -99     3   -99     8
+     1   -99     6   -99
+   -99     4   -99     9
+     2   -99     7   -99
+   -99     5   -99    10
+ 
+TEST_VERIFY
+  VERIFY(S1,S2) is a FORTRAN90 function which returns the
+  location of the first character in S1 not in S2,
+  or else 0.
+ 
+            S1          S2  VERIFY(S1,S2)
+ 
+      1001010001          01   0
+      1002010091          01   4
+      CAPS lower  CAPS LOWER   6
+  Blanks count!   aBcklnstu!   7
+ 
+  The optional parameter BACK, set to TRUE, makes
+  the check start at the END of S1.
+ 
+            S1          S2  VERIFY(S1,S2,BACK)
+ 
+      1001010001          01   0
+      1002010091          01   9
+      CAPS lower  CAPS LOWER  10
+  Blanks count!   aBcklnstu!  14
+ 
+F90_INTRINSICS
+  Normal end of execution.
+ 
+ 1 July 2012   8:58:44.265 PM

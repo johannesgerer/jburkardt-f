@@ -1,0 +1,92 @@
+ 1 May 2009   2:02:06.513 PM
+ 
+PIECEWISE_LINEAR_PRODUCT_INTEGRAL_PRB
+  FORTRAN90 version
+ 
+TEST01
+  Test PIECEWISE_LINEAR_PRODUCT_INTEGRAL on a very simple problem.
+  F and G are both defined over a single common
+  interval, so that F(X) = G(X) = X.
+ 
+           A           B      Integral        Exact
+ 
+      1.0000      1.0000     0.00000         0.00000    
+      1.0000      2.0000     2.33333         2.33333    
+      1.0000      3.0000     8.66667         8.66667    
+      1.0000      4.0000     21.0000         21.0000    
+      1.0000      5.0000     41.3333         41.3333    
+ 
+TEST02
+  Test PIECEWISE_LINEAR_PRODUCT_INTEGRAL on a simple problem.
+  F and G are both defined over separate, multiple
+  intervals, but still true that F(X) = G(X) = X.
+ 
+           A           B      Integral        Exact
+ 
+      1.0000      1.0000     0.00000         0.00000    
+      1.0000      2.0000     2.33333         2.33333    
+      1.0000      3.0000     8.66667         8.66667    
+      1.0000      4.0000     21.0000         21.0000    
+      1.0000      5.0000     41.3333         41.3333    
+ 
+TEST03
+  Test PIECEWISE_LINEAR_PRODUCT_INTEGRAL on a simple problem.
+  F and G are defined over separate, multiple
+  intervals.
+ 
+  F(X) interpolates SIN(X),
+  G(X) interpolates 2*COS(X).
+ 
+  We compare:
+ 
+  INTEGRAL, our value for the integral,
+  QUAD, a quadrature estimate for the integral, and
+  CLOSE, the value of the integral of 2*COS(X)*SIN(X)
+ 
+           A           B      Integral        Quad            Close
+ 
+      0.0000      0.0000     0.00000         0.00000        -0.00000    
+      0.0000      0.5236    0.247447        0.247447        0.250000    
+      0.0000      1.0472    0.743259        0.743259        0.750000    
+      0.0000      1.5708    0.990786        0.990786         1.00000    
+      0.0000      2.0944    0.743259        0.743259        0.750000    
+      0.0000      2.6180    0.247447        0.247447        0.250000    
+      0.0000      3.1416   -0.256739E-14    0.362637E-15    -0.00000    
+ 
+TEST04
+  Test PIECEWISE_LINEAR_PRODUCT_INTEGRAL.
+  The nodes are at 0, 1, and 2.
+  F(X) = ( 0, 1, 0 ).
+  G(X) = ( 1, 0, 0 ).
+ 
+  Integral F(X) * F(X) dx =   0.666667    
+  Integral F(X) * G(X) dx =   0.166667    
+  Integral G(X) * G(X) dx =   0.333333    
+ 
+TEST04
+  Test PIECEWISE_LINEAR_PRODUCT_INTEGRAL.
+  F_X = ( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ).
+  F_V = F_X^2
+  G_X = ( 0,    2,    4,    6,    8,    10 ).
+  Compute projections of F onto G with 
+  G_V = ( 0,    0,    0,    0,    0,     0 )
+  except that the I-th value is 1.
+ 
+         1    0.833333    
+         2     9.66667    
+         3     33.6667    
+         4     73.6667    
+         5     129.667    
+         6     87.5000 
+   
+         1    0.833333    
+         2     9.66667    
+         3     33.6667    
+         4     73.6667    
+         5     129.667    
+         6     87.5000    
+ 
+PIECEWISE_LINEAR_PRODUCT_INTEGRAL_PRB
+  Normal end of execution.
+ 
+ 1 May 2009   2:02:06.518 PM

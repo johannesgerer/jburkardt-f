@@ -1,0 +1,364 @@
+<html>
+
+  <head>
+    <title>
+      HB_IO - Read and Write HB Matrix Files
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      HB_IO<br>
+      Harwell Boeing Matrix File<br>
+      Read and Write Utilities
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>HB_IO</b>
+      is a FORTRAN90 library which
+      reads and writes files in the Harwell Boeing sparse matrix format.
+    </p>
+
+    <p>
+      A special feature of <b>HB_IO</b> is the routine <i>HB_FILE_READ</i>,
+      which can read all the information from an HBSMC file of arbitrary
+      size.  The data can then be accessed by the user by "using"
+      the module <i>HB_FILE_MODULE</i>.  Suggestions on how to compile,
+      store and access the module are sketched out in the sample problem
+      source code and in the command files.
+    </p>
+
+    <p>
+      Note that the most common "flavor" of HBSMC file is an assembled
+      sparse matrix, but that there are some lesser used options,
+      including storage of the matrix as unassembled finite element
+      matrices, and corresponding storage of vectors.  These secondary
+      options are less well documented, and are only marginally supported
+      in this package.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>HB_IO</b> is available in
+      <a href = "../../cpp_src/hb_io/hb_io.html">a C++ version</a> and
+      <a href = "../../f_src/hb_io/hb_io.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/hb_io/hb_io.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dlap_io/dlap_io.html">
+      DLAP_IO</a>,
+      a FORTRAN90 library which
+      reads and writes matrices in a variety of formats, and includes a routine for reading
+      matrices in HB format.
+    </p>
+
+    <p>
+      <a href = "../../data/hb/hb.html">
+      HB</a>,
+      a dataset directory which
+      contains a collection of sparse matrices in the HB format.
+    </p>
+
+    <p>
+      <a href = "../../m_src/hb_to_msm/hb_to_msm.html">
+      HB_TO_MSM</a>,
+      a MATLAB program which
+      reads an HB file and converts the matrix to MATLAB's sparse matrix format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hb_to_st/hb_to_st.html">
+      HB_TO_ST</a>,
+      a FORTRAN90 program which
+      converts the sparse matrix information stored in a Harwell-Boeing
+      file into a sparse triplet file.
+    </p>
+
+    <p>
+      <a href = "../../datasets/hbsmc/hbsmc.html">
+      HBSMC</a>,
+      a dataset directory which
+      contains the Harwell Boeing Sparse Matrix Collection;
+    </p>
+
+    <p>
+      <a href = "../../f_src/linplus/linplus.html">
+      LINPLUS</a>,
+      a FORTRAN90 library which
+      contains some routines to manipulate matrices stored in the HB sparse matrix
+      format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mm_io/mm_io.html">
+      MM_IO</a>,
+      a FORTRAN90 library which
+      reads and writes matrices in the Matrix Market format.
+    </p>
+
+    <p>
+      <a href = "../../m_src/msm_to_hb/msm_to_hb.html">
+      MSM_TO_HB</a>,
+      a MATLAB program which
+      takes a matrix in MATLAB's sparse
+      matrix format and writes it out in the HB format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/st_to_hb/st_to_hb.html">
+      ST_TO_HB</a>,
+      a FORTRAN90 program which
+      converts a sparse matrix file from
+      <a href = "../../data/st/st.html">ST format</a> to
+      <a href = "../../data/hb/hb.html">HB format</a> (Harwell Boeing format);
+    </p>
+
+    <p>
+      <a href = "../../c_src/super_lu/super_lu.html">
+      SUPER_LU</a>,
+      a C library which
+      includes routines which can read and write matrices in the HB format.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Iain Duff, Roger Grimes, John Lewis,<br>
+          User's Guide for the Harwell-Boeing Sparse Matrix Collection,<br>
+          Technical Report TR/PA/92/86, CERFACS,<br>
+          October 1992,<br>
+          Available online at
+          <a href = "../../pdf/hbsmc.pdf">
+                     ../../pdf/hbsmc.pdf</a>.
+        </li>
+        <li>
+          Iain Duff, Roger Grimes, John Lewis,<br>
+          The Rutherford-Boeing Sparse Matrix Collection,<br>
+          Technical Report RAL-TR-97-031,<br>
+          Rutherford Appleton Laboratory, 1997.
+        </li>
+        <li>
+          Iain Duff, Roger Grimes, John Lewis,<br>
+          Sparse Matrix Test Problems,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 15, pages 1-14, March 1989.
+        </li>
+        <li>
+          <a href = "http://math.nist.gov/MatrixMarket/data/Harwell-Boeing/">
+                     http://math.nist.gov/MatrixMarket/data/Harwell-Boeing/</a>
+          the Harwell-Boeing area of the MatrixMarket web site.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "hb_io.f90">hb_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "hb_io.sh">hb_io.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "hb_io_prb.f90">hb_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "hb_io_prb.sh">hb_io_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "hb_io_prb_output.txt">hb_io_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+        <li>
+          <a href = "rse_5.txt">rse_5.txt</a>,
+          a sample HBSMC symmetric unassembled "element" matrix file.
+        </li>
+        <li>
+          <a href = "rua_32.txt">rua_32.txt</a>,
+          a sample HBSMC unsymmetric assembled sparse matrix file.
+        </li>
+        <li>
+          <a href = "rua_32_file.txt">rua_32_file.txt</a>,
+          a full version of "rua_32.txt" written by HB_FILE_WRITE.
+        </li>
+        <li>
+          <a href = "rua_32_header.txt">rua_32_header.txt</a>,
+          the header of "rua_32.txt" written by HB_HEADER_WRITE.
+        </li>
+        <li>
+          <a href = "rua_32_rhs.txt">rua_32_rhs.txt</a>,
+          the headers, structure, values and right hand side of
+          "rua_32.txt".
+        </li>
+        <li>
+          <a href = "rua_32_structure.txt">rua_32_structure.txt</a>,
+          the headers and structure of "rua_32.txt".
+        </li>
+        <li>
+          <a href = "rua_32_values.txt">rua_32_values.txt</a>,
+          the headers, structure, and values of "rua_32.txt".
+        </li>
+        <li>
+          <a href = "rua_32_ax.txt">rua_32_ax.txt</a>,
+          a sample HBSMC unsymmetric assembled sparse matrix file,
+          with exact solutions, and two right hand side vectors
+          computed from the exact solutions by calling HB_MATVEC_A_MEM.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>HB_FILE_MODULE</b> is a module which can store data from an HB file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HB_EXACT_READ</b> reads the exact solution vectors in an HB file.
+        </li>
+        <li>
+          <b>HB_EXACT_WRITE</b> writes the exact solution vectors to an HB file.
+        </li>
+        <li>
+          <b>HB_FILE_READ</b> reads an HB file.
+        </li>
+        <li>
+          <b>HB_FILE_WRITE</b> writes an HB file.
+        </li>
+        <li>
+          <b>HB_GUESS_READ</b> reads the starting guess vectors in an HB file.
+        </li>
+        <li>
+          <b>HB_GUESS_WRITE</b> writes the starting guess vectors to an HB file.
+        </li>
+        <li>
+          <b>HB_HEADER_PRINT</b> prints the header of an HB file.
+        </li>
+        <li>
+          <b>HB_HEADER_READ</b> reads the header of an HB file.
+        </li>
+        <li>
+          <b>HB_HEADER_WRITE</b> writes the header of an HB file.
+        </li>
+        <li>
+          <b>HB_MATVEC_A_MEM</b> multiplies an assembled Harwell Boeing matrix times a vector.
+        </li>
+        <li>
+          <b>HB_RHS_READ</b> reads the right hand side information in an HB file.
+        </li>
+        <li>
+          <b>HB_RHS_WRITE</b> writes the right hand side information to an HB file.
+        </li>
+        <li>
+          <b>HB_STRUCTURE_PRINT</b> prints the structure of an HB matrix.
+        </li>
+        <li>
+          <b>HB_STRUCTURE_READ</b> reads the structure of an HB matrix.
+        </li>
+        <li>
+          <b>HB_STRUCTURE_WRITE</b> writes the structure of an HB matrix.
+        </li>
+        <li>
+          <b>HB_UA_COLUMN_INDEX</b> creates a column index for an unsymmetric assembled matrix.
+        </li>
+        <li>
+          <b>HB_VALUES_PRINT</b> prints the values of an HB matrix.
+        </li>
+        <li>
+          <b>HB_VALUES_READ</b> reads the values of an HB matrix.
+        </li>
+        <li>
+          <b>HB_VALUES_WRITE</b> writes the values of an HB matrix.
+        </li>
+        <li>
+          <b>HB_VECMAT_A_MEM</b> multiplies a vector times an assembled Harwell Boeing matrix.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_PRINT_SOME</b> prints "some" of an I4VEC.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT_SOME</b> prints "some" of an R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

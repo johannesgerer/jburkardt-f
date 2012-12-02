@@ -1,0 +1,162 @@
+<html>
+
+  <head>
+    <title>
+      DISTANCES - Convert multiple alignment data to distance matrix
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      DISTANCES <br> Convert multiple alignment data to distance matrix
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DISTANCES</b>
+      is a FORTRAN90 program which
+      reads a multiple alignment file in PIR or FASTA format, computes the distance
+      matrix determined by the alignment, and writes that matrix
+      to a file.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>DISTANCES</b> is available in
+      <a href = "../../f77_src/distances/distances.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/distances/distances.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/read_align/read_align.html">
+      READ_ALIGN</a>,
+      a FORTRAN90 program which
+      can reformat an alignment file so that it can be examined by DISTANCES.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spacer/spacer.html">
+      SPACER</a>,
+      a FORTRAN90 program which
+      can read the distance matrix created by DISTANCES and perform a
+      principal component analysis.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spacer_data_convert/spacer_data_convert.html">
+      SPACER_DATA_CONVERT</a>,
+      a FORTRAN90 program which
+      can read a multiple sequence alignment file and write out the
+      relevant information into a file in PIR format.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Des Higgins, <br>
+      EMBL Data Library
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "distances.f90">distances.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "distances.sh">distances.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "distances_input.txt">distances_input.txt</a>,
+          an input file;
+        </li>
+        <li>
+          <a href = "distances_output.txt">distances_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "alignment.txt">alignment.txt</a>,
+          a multiple alignment file to be read by DISTANCES;
+        </li>
+        <li>
+          <a href = "alignment.dist">alignment.dist</a>,
+          the distance matrix created by DISTANCES;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DISTANCES</b> reads a multiple alignment file and outputs a distance matrix.
+        </li>
+        <li>
+          <b>DIST_MAT_SET</b> calculates a matrix of distances between pairs of sequences.
+        </li>
+        <li>
+          <b>DIST_MAT_WRITE</b> writes the distance matrix to a file.
+        </li>
+        <li>
+          <b>READ_SEQUENCE</b> reads a FASTA or PIR format multiple alignment file.
+        </li>
+        <li>
+          <b>SET_AAMAT</b> sets up the amino acid distance matrix.
+        </li>
+        <li>
+          <b>SET_AASCORE</b> updates a match matrix with a group of matching data.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TOSS_GAPS</b> obliterates information in a position where any sequence has a gap.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 20 October 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+
+</html>

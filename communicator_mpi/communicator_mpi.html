@@ -1,0 +1,268 @@
+<html>
+
+  <head>
+    <title>
+      COMMUNICATOR_MPI - Creating New Communicators in MPI
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      COMMUNICATOR_MPI <br> Creating New Communicators in MPI
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>COMMUNICATOR_MPI</b> 
+      is a FORTRAN90 program which 
+      creates new communicators involving a subset of initial
+      set of MPI processes in the default communicator MPI_COMM_WORLD.
+    </p>
+
+    <p>
+      To understand this program, let's assume we run it under MPI with
+      4 processes.  Within the default communicator, the processes will
+      have ID's of 0, 1, 2 and 3.
+    </p>
+
+    <p>
+      We can call MPI_Comm_group() to request that a "group id" be 
+      created from MPI_COMM_WORLD.  Then we call MPI_Group_incl(),
+      passing a list of a subset of the legal process ID's in MPI_COMM_WORLD,
+      to be identified as a new group.  In particular, we'll pass the even
+      ID's, creating an even group, and later create an odd group in the same
+      way.
+    </p>
+
+    <p>
+      A group ID can be used to create a new communicator, calling
+      MPI_Comm_create().  Once we have this new communicator, we
+      can use functions like MPI_Comm_Rank() and MPI_Comm_Size(),
+      specifying the name of the new communicator.  We then can use
+      a function like MPI_Reduce() to sum up data associated exclusively
+      with the processes in that communicator.
+    </p>
+
+    <p>
+      One complicating factor is that a process that is not part of
+      the new communicator cannot make an MPI call that invokes that
+      communicator.  For instance, an odd process could not call
+      MPI_Comm_rank() asking for its rank in the even communicator.
+      If you look at the program, you will see that we have to be 
+      careful to determine what group we are in before we make
+      calls to the MPI routines.
+    </p>
+
+    <p>
+      Thus, in the example, we could begin with 4 processes, whose
+      global ID's are 0, 1, 2 and 3.  We create an even communicator
+      containing processes 0 and 2, and an odd communicator with 1 and 3.
+      Notice that, within the even communicator, the processes with
+      global ID's 0 and 2 have even communicator ID's of 0 and 1.
+    </p>
+
+    <p>
+      We can call MPI_Reduce() to sum the global ID's of the processes
+      in the even communicator, getting a result of 2; the same sum,
+      over the odd communicator, results in 4.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>COMMUNICATOR_MPI</b> is available in
+      <a href = "../../c_src/communicator_mpi/communicator_mpi.html">a C version</a> and
+      <a href = "../../cpp_src/communicator_mpi/communicator_mpi.html">a C++ version</a> and
+      <a href = "../../f77_src/communicator_mpi/communicator_mpi.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/communicator_mpi/communicator_mpi.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/heat_mpi/heat_mpi.html">
+      HEAT_MPI</a>,
+      a FORTRAN90 program which 
+      solves the 1D Time Dependent Heat Equation using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hello_mpi/hello_mpi.html">
+      HELLO_MPI</a>,
+      a FORTRAN90 program which 
+      prints out "Hello, world!", using MPI for parallel execution. 
+    </p>
+
+    <p>
+      <a href = "../../c_src/laplace_mpi/laplace_mpi.html">
+      LAPLACE_MPI</a>,
+      a C program which
+      solves Laplace's equation on a rectangle,
+      using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../examples/moab/moab.html">
+      MOAB</a>,
+      examples which
+      illustrate the use of the MOAB job scheduler for a computer cluster.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi/mpi.html">
+      MPI</a>,
+      FORTRAN90 examples which
+      illustrate the use of the MPI application program interface
+      for carrying out parallel computatioins in a distributed memory environment.
+    </p>
+
+    <p>
+      <a href = "../../f_src/multitask_mpi/multitask_mpi.html">
+      MULTITASK_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates how to "multitask", that is, to execute several unrelated
+      and distinct tasks simultaneously, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_mpi/prime_mpi.html">
+      PRIME_MPI</a>,
+      a FORTRAN90 program which 
+      counts the number of primes between 1 and N, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_mpi/quad_mpi.html">
+      QUAD_MPI</a>, 
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule, and carries out the
+      computation in parallel using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/random_mpi/random_mpi.html">
+      RANDOM_MPI</a>, 
+      a FORTRAN90 program which
+      demonstrates one way to generate the same sequence of random numbers
+      for both sequential execution and parallel execution under MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ring_mpi/ring_mpi.html">
+      RING_MPI</a>,
+      a FORTRAN90 program which
+      uses the MPI parallel programming environment, and measures the time
+      necessary to copy a set of data around a ring of processes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/satisfy_mpi/satisfy_mpi.html">
+      SATISFY_MPI</a>, 
+      a FORTRAN90 program which 
+      demonstrates, for a particular circuit, an exhaustive search
+      for solutions of the circuit satisfiability problem, using MPI to
+      carry out the calculation in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/search_mpi/search_mpi.html">
+      SEARCH_MPI</a>,
+      a FORTRAN90 program which
+      searches integers between A and B for a value J such that F(J) = C,
+      using MPI for parallel execution.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Michael Quinn,<br>
+          Parallel Programming in C with MPI and OpenMP,<br>
+          McGraw-Hill, 2004,<br>
+          ISBN13: 978-0071232654,<br>
+          LC: QA76.73.C15.Q55.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "communicator_mpi.f90">communicator_mpi.f90</a>, the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>COMMUNICATOR_LOCAL</b> compiles and runs the program on a local machine.
+      <ul>
+        <li>
+          <a href = "communicator_local.sh">communicator_local.sh</a>,
+          a script to compile and run the program.
+        </li>
+        <li>
+          <a href = "communicator_local_output.txt">communicator_local_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>COMMUNICATOR_FSU</b> compiles and runs the program on the FSU HPC cluster.
+      <ul>
+        <li>
+          <a href = "communicator_fsu.sh">communicator_fsu.sh</a>,
+          the MOAB script.
+        </li>
+        <li>
+          <a href = "communicator_fsu_output.txt">communicator_fsu_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 January 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

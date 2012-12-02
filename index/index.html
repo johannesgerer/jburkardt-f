@@ -1,0 +1,227 @@
+<html>
+
+  <head>
+    <title>
+      INDEX - Indexing Multidimensional Arrays
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      INDEX <br> Indexing Multidimensional Arrays
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>INDEX</b>
+      is a FORTRAN90 library which
+      can convert the index of a multidimensional array entry into
+      the corresponding index of a one dimensional vector, using either
+      row or column major indexing, with zero or unit base.
+    </p>
+
+    <h3 align = "center">
+      2D Array Example:
+    </h3>
+
+    <p>
+      Consider, for example, the following 3x4 array A:
+      <pre>
+        11 12 13 14
+        21 22 23 24
+        31 32 33 34
+      </pre>
+    </p>
+
+    <p>
+      Indexing by columns, the array would be stored in a 1D vector as
+      <pre>
+        11 21 31 | 12 22 32 | 13 23 33 | 14 24 34
+      </pre>
+      and the indexing of the elements would be
+      <pre>
+        11 21 31 | 12 22 32 | 13 23 33 | 14 24 34
+         0  1  2    3  4  5    6  7  8    9 10 11  <- zero based
+         1  2  3    4  5  6    7  8  9   10 11 12  <- one based
+      </pre>
+    </p>
+
+    <p>
+      Indexing by rows, the array would be stored in a 1D vector as
+      <pre>
+        11 12 13 14 | 21 22 23 24 | 31 32 33 34
+      </pre>
+      and the indexing of the elements would be
+      <pre>
+        11 12 13 14 | 21 22 23 24 | 31 32 33 34
+         0  1  2  3    4  5  6  7   8   9 10 11  <- zero based
+         1  2  3  4    5  6  7  8   9  10 11 12  <- one based
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>INDEX</b> is available in
+      <a href = "../../c_src/index/index.html">a C version</a> and
+      <a href = "../../cpp_src/index/index.html">a C++ version</a> and
+      <a href = "../../f77_src/index/index.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/index/index.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/index/index.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cell/cell.html">
+      CELL</a>,
+      a FORTRAN90 library which
+      defines a cell array, a generalization of an array which
+      can compactly store and retrieve vector or matrix data of 
+      varying size, such as the rows of a triangular matrix.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subpak/subpak.html">
+      SUBPAK</a>,
+      a FORTRAN90 library which
+      contains many utility routines;
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "index.f90">index.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "index.sh">index.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "index_prb.f90">index_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "index_prb.sh">index_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "index_prb_output.txt">index_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>INDEX0</b> indexes a 1D vector using a zero base.
+        </li>
+        <li>
+          <b>INDEX01</b> indexes a 2D array by columns, with a zero base.
+        </li>
+        <li>
+          <b>INDEX012</b> indexes a 3D array by columns with zero base.
+        </li>
+        <li>
+          <b>INDEX0123</b> indexes a 4D array by columns, with a zero base.
+        </li>
+        <li>
+          <b>INDEX0N</b> indexes an N-dimensional array by columns, with zero base.
+        </li>
+        <li>
+          <b>INDEX1</b> indexes a 1D vector using a unit base.
+        </li>
+        <li>
+          <b>INDEX10</b> indexes a 2D array by rows, with a zero base.
+        </li>
+        <li>
+          <b>INDEX12</b> indexes a 2D array by columns, with a unit base.
+        </li>
+        <li>
+          <b>INDEX123</b> indexes a 3D array by columns with unit base.
+        </li>
+        <li>
+          <b>INDEX1234</b> indexes a 4D array by columns, with a unit base.
+        </li>
+        <li>
+          <b>INDEX1N</b> indexes an N-dimensional array by columns, with unit base.
+        </li>
+        <li>
+          <b>INDEX21</b> indexes a 2D array by rows, with a unit base.
+        </li>
+        <li>
+          <b>INDEX210</b> indexes a 3D array by rows, with zero base.
+        </li>
+        <li>
+          <b>INDEX321</b> indexes a 3D array by rows, with zero base.
+        </li>
+        <li>
+          <b>INDEX3210</b> indexes a 4D array by rows, with zero base.
+        </li>
+        <li>
+          <b>INDEX4321</b> indexes a 4D array by rows, with unit base.
+        </li>
+        <li>
+          <b>INDEXN0</b> indexes an N-dimensional array by rows, with zero base.
+        </li>
+        <li>
+          <b>INDEXN1</b> indexes an N-dimensional array by rows, with unit base.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 16 November 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

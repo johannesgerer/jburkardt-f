@@ -1,0 +1,156 @@
+June 26 2005  12:30:02.238 PM
+ 
+POD_BASIS_FLOW
+  Given a PDE for which:
+    M is the dimension of each solution vector,
+    N is the number of solution vectors,
+ 
+  Set up A, the M by N matrix of solution vectors,
+ 
+  Get A = U * S * V', the singular value decomposition.
+ 
+ 
+  The variable RUN_TYPE determines preprocessing:
+* 1, NO steady state file, no preprocessing;
+* 2, NO steady state file, no preprocessing;
+* 3,    steady state file;
+    subtract 1/3 SS from solution  1
+    subtract 5/3 SS from solutions 2 through 201
+    subtract 1/3 SS from solutions 202 through 401.
+* 4,    steady state file;
+    subtract 1/3 SS from solution  1
+    subtract 5/3 SS from solutions 2 through 201
+    subtract 1/3 SS from solutions 202 through 401.
+    discard the EVEN numbered data files.
+* 5,    steady state file;
+    subtract 1/3 SS from solution  1
+    subtract 5/3 SS from solutions 2 through 201
+    subtract 1/3 SS from solutions 202 through 401.
+    normalize the data.
+* 6,    steady state file;
+    subtract 5/3 SS from solutions 1 through 250
+    subtract 1/3 SS from solutions 251 through 500.
+    do NOT normalize the result.
+* 7,    steady state file;
+    subtract 5/3 SS from solutions 1 through 250
+    subtract 1/3 SS from solutions 251 through 500.
+    NORMALIZE the result.
+    discard the ODD numbered data files.
+* 8,    steady state file;
+    subtract 5/3 SS from solutions 1 through 250
+    subtract 1/3 SS from solutions 251 through 500.
+    do NOT normalize the result.
+ 
+What is the run type (1-8)?
+ 
+  RUN_TYPE =      1
+ 
+What is the requested basis size?
+ 
+  BASIS_NUM =     16
+ 
+  What is the XY data file name?
+ 
+  The file "/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/xy.dat" contains 3721 lines.
+ 
+  X minimum :    0.00000    
+  X maximum :    1.00000    
+  Y minimum :    0.00000    
+  Y maximum :    1.00000    
+ 
+What is the name of the steady state file or "none"?
+ 
+  Steady state information was read from
+  the file "/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/steady.dat".
+ 
+  Steady max norm =   0.300000    
+  Steady l2 norm =     5.05292    
+ 
+  It is time to read sets of solution files.
+ 
+  We assume that a series of solution files exists,
+  with "consecutive" names, like
+    fred001.txt, fred002,txt, ...
+  Just specify the FIRST name in the series, and
+  the program will read them all.
+ 
+  The program can read another series of data if
+  you specify yet another first name, or you can
+  type "none" when there are no more file series.
+ 
+ 
+What is the first solution file (in the first series)?
+ 
+What is the first solution file (in the NEXT series) or "none"?
+ 
+  The number of initial solution files is      1
+  The total number of solution files is    800
+ 
+  The data is stored in an M by N matrix.
+ 
+  The "spatial" dimension M is     7442
+  The number of data points N is    800
+ 
+ 
+  Processing files starting with "/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up001.txt".
+  Reading file      1  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up001.txt
+  Reading file    800  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up800.txt
+ 
+  All the data has been read into POINT.
+ 
+  Enter element file for mass matrix preconditioning or "None".
+ 
+  Number of elements =   1800
+  Number of nodes per element =      6
+ 
+  The bandwidth of the matrix is    125
+ 
+  Compute the mass matrix.
+ 
+  Cholesky-factor the mass matrix.
+ 
+SINGULAR_VECTORS
+  For an MxN matrix A in general storage,
+  SGESVD computes the singular value decomposition:
+    A = U * S * V'
+ 
+ 
+  Singular values:
+ 
+   1    3.0684
+   2    0.5952
+   3    0.2353
+   4    0.1511
+   5    0.0834
+   6    0.0545
+   7    0.0379
+   8    0.0331
+   9    0.0258
+  10    0.0163
+  11    0.0132
+  12    0.0103
+  13    0.0100
+  14    0.0069
+  15    0.0056
+  16    0.0042
+ 
+POD_BASIS_FLOW:
+  Ready to write the left singular vectors to files.
+ 
+  Do you want comments in the header of the file?
+  (These begin with the "#" character.) (Y/N)
+ 
+  Enter Y or N:
+ 
+  Writing first file pod_001.txt
+  Writing last file  pod_016.txt
+ 
+  CPU time in seconds:
+    For Mass matrix:    9.87500    
+    For SVD:            227.350    
+    Total:              237.225    
+ 
+POD_BASIS_FLOW
+  Normal end of execution.
+ 
+June 26 2005  12:35:03.634 PM

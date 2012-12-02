@@ -1,0 +1,919 @@
+<html>
+
+  <head>
+    <title>
+      FN - The Fullerton Function Library
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FN <br> The Fullerton Function Library.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FN</b>
+      is a FORTRAN90 library which
+      contains a selection of routines for the evaluation of certain
+      elementary and special functions,
+      by Wayne Fullerton.
+    </p>
+
+    <p>
+      The original version of the library provided routines for
+      single precision complex, single precision real, and
+      double precision real arguments and used the prefixes
+      "C" and "D" to indicate the complex and double precision versions.
+    </p>
+
+    <p>
+      This scheme has been modified for consistency, and also
+      to avoid conflict with the names of functions commonly
+      provided by various compilers.  The prefixes "C4_", "R4_"
+      and "R8_" are used to indicate functions for single precision complex,
+      single precision real, and double precision real arguments.
+      For example, the sine function can be calculated by the functions
+      <b>C4_SIN</b>, <b>R4_SIN</b> or <b>R8_SIN</b>.
+    </p>
+
+    <p>
+      The original, true, correct version of FN
+      is available through NETLIB:
+              <a href = "http://www.netlib.org/fn/index.html">
+                         http://www.netlib.org/fn/index.html</a>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FN</b> is available in
+      <a href = "../../c_src/fn/fn.html">a C version</a> and
+      <a href = "../../cpp_src/fn/fn.html">a C++ version</a> and
+      <a href = "../../f77_src/fn/fn.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fn/fn.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fn/fn.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/c4lib/c4lib.html">
+      C4LIB</a>,
+      a FORTRAN90 library which
+      implements certain elementary functions for single precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f_src/c8lib/c8lib.html">
+      C8LIB</a>,
+      a FORTRAN90 library which
+      implements certain elementary functions for double precision complex variables;
+    </p>
+
+    <p>
+      <a href = "../../f90_src/f90_intrinsics/f90_intrinsics.html">
+      F90_INTRINSICS</a>,
+      a FORTRAN90 program which
+      illustrates the use of FORTRAN90 intrinsic functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/g95_intrinsics/g95_intrinsics.html">
+      G95_INTRINSICS</a>,
+      a FORTRAN90 program which
+      illustrates the use of intrinsic functions provided by the Gnu G95 compiler.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gfortran_intrinsics/gfortran_intrinsics.html">
+      GFORTRAN_INTRINSICS</a>,
+      a FORTRAN90 program which
+      illustrates the use of intrinsic functions provided by the Gnu GFORTRAN compiler.
+    </p>
+
+    <p>
+      <a href = "../../f_src/machar/machar.html">
+      MACHAR</a>,
+      a FORTRAN90 library which
+      computes the appropriate values of machine constants for a given machine.
+    </p>
+
+    <p>
+      <a href = "../../f_src/machine/machine.html">
+      MACHINE</a>,
+      a FORTRAN90 library which
+      stores the appropriate values of machine constants for a given machine.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r4lib/r4lib.html">
+      R4LIB</a>,
+      a FORTRAN90 library which
+      contains many utility routines, using "R4" or
+      "single precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r8lib/r8lib.html">
+      R8LIB</a>,
+      a FORTRAN90 library which
+      contains many utility routines, using "R8" or
+      "double precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/specfun/specfun.html">
+      SPECFUN</a>,
+      a FORTRAN90 library which
+      computes special functions, including Bessel I, J, K and Y functions,
+      and the Dawson, E1, EI, Erf, Gamma, Psi/Digamma functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/special_functions/special_functions.html">
+      SPECIAL_FUNCTIONS</a>,
+      a FORTRAN90 library which
+      computes the Beta, Error, Gamma, Lambda, Psi functions,
+      the Airy, Bessel I, J, K and Y, Hankel, Jacobian elliptic, Kelvin, Mathieu, 
+      Struve functions,
+      spheroidal angular functions, parabolic cylinder functions,
+      hypergeometric functions,
+      the Bernoulli and Euler numbers,
+      the Hermite, Laguerre and Legendre polynomials, 
+      the cosine, elliptic, exponential, Fresnel and sine integrals,
+      by Shanjie Zhang, Jianming Jin;
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_values/test_values.html">
+      TEST_VALUES</a>,
+      a FORTRAN90 library which
+      supplies test values of various mathematical functions.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Carter Bays, Stephen Durham,<br>
+          Improving a Poor Random Number Generator,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 2, Number 1, March 1976, pages 59-64.
+        </li>
+        <li>
+          Nancy Bosten, EL Battiste,<br>
+          Remark on Algorithm 179:
+          Incomplete Beta Ratio,<br>
+          Communications of the ACM,<br>
+          Volume 17, Number 3, March 1974, pages 156-157.
+        </li>
+        <li>
+          Roger Broucke,<br>
+          Algorithm 446:
+          Ten Subroutines for the Manipulation of Chebyshev Series,<br>
+          Communications of the ACM,<br>
+          Volume 16, Number 4, April 1973, pages 254-256.
+        </li>
+        <li>
+          William Cody,<br>
+          ACM Algorithm 665, MACHAR, a subroutine to dynamically determine
+          machine parameters,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 14, Number 4, pages 303-311, 1988.
+        </li>
+        <li>
+          William Cody, William Waite,<br>
+          Software Manual for the Elementary Functions,<br>
+          Prentice Hall, 1980.
+        <li>
+          Phyllis Fox, Andrew Hall, Norman Schryer,<br>
+          Algorithm 528,
+          Framework for a Portable Library,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 4, Number 2, June 1978, page 176-188.
+        </li>
+        <li>
+          Wayne Fullerton,<br>
+          Portable Special Function Routines,<br>
+          in Portability of Numerical Software,<br>
+          edited by Wayne Cowell,<br>
+          Lecture Notes in Computer Science, Volume 57,<br>
+          Springer 1977,<br>
+          ISBN: 978-3-540-08446-4,<br>
+          LC: QA297.W65.
+        </li>
+        <li>
+          Walter Gautschi,<br>
+          A Computational Procedure for Incomplete Gamma Functions,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 5, Number 4, December 1979, pages 466-481.
+        </li>
+        <li>
+          Richard Hamming,<br>
+          Numerical Methods for Scientists and Engineers,<br>
+          Dover, 1986,<br>
+          ISBN: 0486652416,<br>
+          LC: QA297.H28.
+        </li>
+        <li>
+          K Mitchell,<br>
+          Tables of the function Integral ( 0 < y < x ) - log | 1 - y | dy / y
+          with an account of some properties of this and related functions,<br>
+          Philosophical Magazine,<br>
+          Volume 40, pages 351-368, 1949.
+        </li>
+        <li>
+          Malcolm Pike, David Hill,<br>
+          Algorithm 266:
+          Pseudo-Random Numbers,<br>
+          Communications of the ACM,<br>
+          Volume 8, Number 10, October 1965, page 605.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fn.f90">fn.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "fn.sh">fn.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fn_prb.f90">fn_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "fn_prb.sh">fn_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "fn_prb_output.txt">fn_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>C4_COS</b> evaluates the cosine of a C4 argument.
+        </li>
+        <li>
+          <b>C4_SIN</b> evaluates the sine of a C4 argument.
+        </li>
+        <li>
+          <b>I4_MACH</b> returns integer machine dependent constants.
+        </li>
+        <li>
+          <b>R4_ACOS</b> evaluates the arc-cosine of an R4 argument.
+        </li>
+        <li>
+          <b>R4_ACOSH</b> evaluates the arc-hyperbolic cosine of an R4 argument.
+        </li>
+        <li>
+          <b>R4_ADMP:</b> modulus and phase of the derivative of the Airy function.
+        </li>
+        <li>
+          <b>R4_AI</b> evaluates the Airy function Ai of an R4 argument.
+        </li>
+        <li>
+          <b>R4_AID</b> evaluates the derivative of the Airy function Ai of an R4 argument.
+        </li>
+        <li>
+          <b>R4_AIDE:</b> exponentially scaled derivative, Airy function Ai of an R4 argument.
+        </li>
+        <li>
+          <b>R4_AIE</b> evaluates the exponential scaled Airy function Ai of an R4 argument.
+        </li>
+        <li>
+          <b>R4_AIMP</b> evaluates the modulus and phase of the Airy function.
+        </li>
+        <li>
+          <b>R4_AINT</b> truncates an R4 argument to an integer.
+        </li>
+        <li>
+          <b>R4_ASIN</b> evaluates the arc-sine of an R4 argument.
+        </li>
+        <li>
+          <b>R4_ASINH</b> evaluates the arc-sine of an R4 argument.
+        </li>
+        <li>
+          <b>R4_ATAN</b> evaluates the arc-tangent of an R4 argument.
+        </li>
+        <li>
+          <b>R4_ATAN2</b> evaluates the arc-tangent of two R4 arguments.
+        </li>
+        <li>
+          <b>R4_ATANH</b> evaluates the arc-hyperbolic tangent of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BESI0</b> evaluates the Bessel function I of order 0 of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BESI0E</b> evaluates the exponentially scaled Bessel function I0(X).
+        </li>
+        <li>
+          <b>R4_BESI1</b> evaluates the Bessel function I of order 1 of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BESI1E:</b> exponentially scaled Bessel function I of order 1 of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BESJ0</b> evaluates the Bessel function J of order 0 of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BESJ1</b> evaluates the Bessel function J of order 1 of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BESK0</b> evaluates the Bessel function K of order 0 of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BESK0E</b> evaluates the exponentially scaled Bessel function K0(X).
+        </li>
+        <li>
+          <b>R4_BESK1</b> evaluates the Bessel function K of order 1 of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BESK1E</b> evaluates the exponentially scaled Bessel function K1(X).
+        </li>
+        <li>
+          <b>R4_BESKES</b> evaluates a sequence of exponentially scaled K Bessel functions at X.
+        </li>
+        <li>
+          <b>R4_BESKS</b> evaluates a sequence of K Bessel functions at X.
+        </li>
+        <li>
+          <b>R4_BESY0</b> evaluates the Bessel function Y of order 0 of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BESY1</b> evaluates the Bessel function Y of order 1 of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BETA</b> evaluates the beta function of R4 arguments.
+        </li>
+        <li>
+          <b>R4_BETAI</b> evaluates the incomplete beta ratio of R4 arguments.
+        </li>
+        <li>
+          <b>R4_BI</b> evaluates the Airy function Bi of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BID</b> evaluates the derivative of the Airy function Bi of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BIDE:</b> exponentially scaled derivative, Airy function Bi of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BIE</b> evaluates the exponentially scaled Airy function Bi of an R4 argument.
+        </li>
+        <li>
+          <b>R4_BINOM</b> evaluates the binomial coefficient using R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_CBRT</b> computes the cube root of an R4.
+        </li>
+        <li>
+          <b>R4_CHI</b> evaluates the hyperbolic cosine integral of an R4 argument.
+        </li>
+        <li>
+          <b>R4_CHU</b> evaluates the confluent hypergeometric function of R4 arguments.
+        </li>
+        <li>
+          <b>R4_CHU_SCALED:</b> scaled confluent hypergeometric function of R4 arguments.
+        </li>
+        <li>
+          <b>R4_CI</b> evaluates the cosine integral Ci of an R4 argument.
+        </li>
+        <li>
+          <b>R4_CIN</b> evaluates the alternate cosine integral Cin of an R4 argument.
+        </li>
+        <li>
+          <b>R4_CINH</b> evaluates the alternate hyperbolic cosine integral Cinh of an R4 argument.
+        </li>
+        <li>
+          <b>R4_COS</b> evaluates the cosine of an R4 argument.
+        </li>
+        <li>
+          <b>R4_COS_DEG</b> evaluates the cosine of an R4 argument in degrees.
+        </li>
+        <li>
+          <b>R4_COSH</b> evaluates the hyperbolic cosine of an R4 argument.
+        </li>
+        <li>
+          <b>R4_COT</b> evaluates the cotangent of an R4 argument.
+        </li>
+        <li>
+          <b>R4_CSEVL</b> evaluates a Chebyshev series.
+        </li>
+        <li>
+          <b>R4_DAWSON</b> evaluates Dawson's integral of an R4 argument.
+        </li>
+        <li>
+          <b>R4_E1</b> evaluates the exponential integral E1 for an R4 argument.
+        </li>
+        <li>
+          <b>R4_EI</b> evaluates the exponential integral Ei for an R4 argument.
+        </li>
+        <li>
+          <b>R4_ERF</b> evaluates the error function of an R4 argument.
+        </li>
+        <li>
+          <b>R4_ERFC</b> evaluates the co-error function of an R4 argument.
+        </li>
+        <li>
+          <b>R4_EXP</b> evaluates the exponential of an R4 argument.
+        </li>
+        <li>
+          <b>R4_EXPREL</b> evaluates the exponential relative error term of an R4 argument.
+        </li>
+        <li>
+          <b>R4_FAC</b> evaluates the factorial of an I4 argument.
+        </li>
+        <li>
+          <b>R4_GAMI</b> evaluates the incomplete gamma function for an R4 argument.
+        </li>
+        <li>
+          <b>R4_GAMIC</b> evaluates the complementary incomplete gamma function.
+        </li>
+        <li>
+          <b>R4_GAMIT</b> evaluates Tricomi's incomplete gamma function for an R4 argument.
+        </li>
+        <li>
+          <b>R4_GAML</b> evaluates bounds for an R4 argument of the gamma function.
+        </li>
+        <li>
+          <b>R4_GAMMA</b> evaluates the gamma function of an R4 argument.
+        </li>
+        <li>
+          <b>R4_GAMR</b> evaluates the reciprocal gamma function of an R4 argument.
+        </li>
+        <li>
+          <b>R4_GMIC:</b> complementary incomplete gamma, small X, A near negative integer.
+        </li>
+        <li>
+          <b>R4_GMIT:</b> Tricomi's incomplete gamma function for small X.
+        </li>
+        <li>
+          <b>R4_INITS</b> initializes a Chebyshev series.
+        </li>
+        <li>
+          <b>R4_INT</b> returns the integer part of an R4 argument.
+        </li>
+        <li>
+          <b>R4_KNUS</b> computes a sequence of K Bessel functions.
+        </li>
+        <li>
+          <b>R4_LBETA</b> evaluates the logarithm of the beta function of R4 arguments.
+        </li>
+        <li>
+          <b>R4_LGAMS</b> evaluates the log of |gamma(x)| and sign, for an R4 argument.
+        </li>
+        <li>
+          <b>R4_LGIC</b> evaluates the log complementary incomplete gamma function for large X.
+        </li>
+        <li>
+          <b>R4_LGIT</b> evaluates the log of Tricomi's incomplete gamma function.
+        </li>
+        <li>
+          <b>R4_LGMC</b> evaluates the log gamma correction factor for an R4 argument.
+        </li>
+        <li>
+          <b>R4_LI</b> evaluates the logarithmic integral for an R4 argument.
+        </li>
+        <li>
+          <b>R4_LNGAM</b> evaluates the log of the absolute value of gamma of an R4 argument.
+        </li>
+        <li>
+          <b>R4_LNREL</b> evaluates log ( 1 + X ) for an R4 argument.
+        </li>
+        <li>
+          <b>R4_LOG</b> evaluates the logarithm of an R4.
+        </li>
+        <li>
+          <b>R4_LOG10</b> evaluates the logarithm, base 10, of an R4.
+        </li>
+        <li>
+          <b>R4_MACH</b> returns single precision real machine constants.
+        </li>
+        <li>
+          <b>R4_MACHAR</b> determines single precision machine constants.
+        </li>
+        <li>
+          <b>R4_PAK</b> packs a base 2 exponent into an R4.
+        </li>
+        <li>
+          <b>R4_POCH</b> evaluates Pochhammer's function of R4 arguments.
+        </li>
+        <li>
+          <b>R4_POCH1</b> evaluates a quantity related to Pochhammer's symbol.
+        </li>
+        <li>
+          <b>R4_PSI</b> evaluates the psi function of an R4 argument.
+        </li>
+        <li>
+          <b>R4_RAND</b> is a portable pseudorandom number generator.
+        </li>
+        <li>
+          <b>R4_RANDGS</b> generates a normally distributed random number.
+        </li>
+        <li>
+          <b>R4_RANDOM</b> is a portable pseudorandom number generator.
+        </li>
+        <li>
+          <b>R4_RANF</b> is a driver for R4_RANDOM.
+        </li>
+        <li>
+          <b>R4_REN</b> is a simple random number generator.
+        </li>
+        <li>
+          <b>R4_SHI</b> evaluates the hyperbolic sine integral Shi of an R4 argument.
+        </li>
+        <li>
+          <b>R4_SI</b> evaluates the sine integral Si of an R4 argument.
+        </li>
+        <li>
+          <b>R4_SIFG</b> is a utility routine.
+        </li>
+        <li>
+          <b>R4_SIN</b> evaluates the sine of an R4 argument.
+        </li>
+        <li>
+          <b>R4_SIN_DEG</b> evaluates the sine of an R4 argument in degrees.
+        </li>
+        <li>
+          <b>R4_SINH</b> evaluates the hyperbolic sine of an R4 argument.
+        </li>
+        <li>
+          <b>R4_SPENCE</b> evaluates a form of Spence's function for an R4 argument.
+        </li>
+        <li>
+          <b>R4_SQRT</b> computes the square root of an R4.
+        </li>
+        <li>
+          <b>R4_TAN</b> evaluates the tangent of an R4 argument.
+        </li>
+        <li>
+          <b>R4_TANH</b> evaluates the hyperbolic tangent of an R4 argument.
+        </li>
+        <li>
+          <b>R4_UPAK</b> unpacks an R4 into a mantissa and exponent.
+        </li>
+        <li>
+          <b>R8_ACOS</b> evaluates the arc-cosine of an R8 argument.
+        </li>
+        <li>
+          <b>R8_ACOSH</b> evaluates the arc-hyperbolic cosine of an R8 argument.
+        </li>
+        <li>
+          <b>R8_ADMP:</b> modulus and phase of the derivative of the Airy function.
+        </li>
+        <li>
+          <b>R8_AI</b> evaluates the Airy function Ai of an R8 argument.
+        </li>
+        <li>
+          <b>R8_AID</b> evaluates the derivative of the Airy function Ai of an R8 argument.
+        </li>
+        <li>
+          <b>R8_AIDE:</b> exponentially scaled derivative, Airy function Ai of an R8 argument.
+        </li>
+        <li>
+          <b>R8_AIE</b> evaluates the exponentially scaled Airy function Ai of an R8 argument.
+        </li>
+        <li>
+          <b>R8_AIMP</b> evaluates the modulus and phase of the Airy function.
+        </li>
+        <li>
+          <b>R8_AINT</b> truncates an R8 argument to an integer.
+        </li>
+        <li>
+          <b>R8_ASIN</b> evaluates the arc-sine of an R8 argument.
+        </li>
+        <li>
+          <b>R8_ASINH</b> evaluates the arc-sine of an R8 argument.
+        </li>
+        <li>
+          <b>R8_ATAN</b> evaluates the arc-tangent of an R8 argument.
+        </li>
+        <li>
+          <b>R8_ATAN2</b> evaluates the arc-tangent of two R8 arguments.
+        </li>
+        <li>
+          <b>R8_ATANH</b> evaluates the arc-hyperbolic tangent of an R8 argument.
+        </li>
+        <li>
+          <b>R8_B0MP</b> evaluates the modulus and phase for the Bessel J0 and Y0 functions.
+        </li>
+        <li>
+          <b>R8_B1MP</b> evaluates the modulus and phase for the Bessel J1 and Y1 functions.
+        </li>
+        <li>
+          <b>R8_BESI0</b> evaluates the Bessel function I of order 0 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESI0E</b> evaluates the exponentially scaled Bessel function I0(X).
+        </li>
+        <li>
+          <b>R8_BESI1</b> evaluates the Bessel function I of order 1 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESI1E</b> evaluates the exponentially scaled Bessel function I1(X).
+        </li>
+        <li>
+          <b>R8_BESJ0</b> evaluates the Bessel function J of order 0 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESJ1</b> evaluates the Bessel function J of order 1 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESK0</b> evaluates the Bessel function K of order 0 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESK0E</b> evaluates the exponentially scaled Bessel function K0(X).
+        </li>
+        <li>
+          <b>R8_BESK1</b> evaluates the Bessel function K of order 1 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESK1E</b> evaluates the exponentially scaled Bessel function K1(X).
+        </li>
+        <li>
+          <b>R8_BESKES</b> evaluates a sequence of exponentially scaled K Bessel functions at X.
+        </li>
+        <li>
+          <b>R8_BESKS</b> evaluates a sequence of K Bessel functions at X.
+        </li>
+        <li>
+          <b>R8_BESY0</b> evaluates the Bessel function Y of order 0 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESY1</b> evaluates the Bessel function Y of order 1 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BETA</b> evaluates the beta function of R8 arguments.
+        </li>
+        <li>
+          <b>R8_BETAI</b> evaluates the incomplete beta ratio of R8 arguments.
+        </li>
+        <li>
+          <b>R8_BI</b> evaluates the Airy function Bi of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BID</b> evaluates the derivative of the Airy function Bi of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BIDE:</b> exponentially scaled derivative, Airy function Bi of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BIE</b> evaluates the exponentially scaled Airy function Bi of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BINOM</b> evaluates the binomial coefficient using R8 arithmetic.
+        </li>
+        <li>
+          <b>R8_CBRT</b> computes the cube root of an R8.
+        </li>
+        <li>
+          <b>R8_CHI</b> evaluates the hyperbolic cosine integral of an R8 argument.
+        </li>
+        <li>
+          <b>R8_CHU</b> evaluates the confluent hypergeometric function of R8 arguments.
+        </li>
+        <li>
+          <b>R8_CHU_SCALED:</b> scaled confluent hypergeometric function of R8 arguments.
+        </li>
+        <li>
+          <b>R8_CI</b> evaluates the cosine integral Ci of an R8 argument.
+        </li>
+        <li>
+          <b>R8_CIN</b> evaluates the alternate cosine integral Cin of an R8 argument.
+        </li>
+        <li>
+          <b>R8_CINH</b> evaluates the alternate hyperbolic cosine integral Cinh of an R8 argument.
+        </li>
+        <li>
+          <b>R8_COS</b> evaluates the cosine of an R8 argument.
+        </li>
+        <li>
+          <b>R8_COS_DEG</b> evaluates the cosine of an R8 argument in degrees.
+        </li>
+        <li>
+          <b>R8_COSH</b> evaluates the hyperbolic cosine of an R8 argument.
+        </li>
+        <li>
+          <b>R8_COT</b> evaluates the cotangent of an R8 argument.
+        </li>
+        <li>
+          <b>R8_CSEVL</b> evaluates a Chebyshev series.
+        </li>
+        <li>
+          <b>R8_DAWSON</b> evaluates Dawson's integral of an R8 argument.
+        </li>
+        <li>
+          <b>R8_E1</b> evaluates the exponential integral E1 for an R8 argument.
+        </li>
+        <li>
+          <b>R8_EI</b> evaluates the exponential integral Ei for an R8 argument.
+        </li>
+        <li>
+          <b>R8_ERF</b> evaluates the error function of an R8 argument.
+        </li>
+        <li>
+          <b>R8_ERFC</b> evaluates the co-error function of an R8 argument.
+        </li>
+        <li>
+          <b>R8_EXP</b> evaluates the exponential of an R8 argument.
+        </li>
+        <li>
+          <b>R8_EXPREL</b> evaluates the exponential relative error term of an R8 argument.
+        </li>
+        <li>
+          <b>R8_FAC</b> evaluates the factorial of an I4 argument.
+        </li>
+        <li>
+          <b>R8_GAMI</b> evaluates the incomplete gamma function for an R8 argument.
+        </li>
+        <li>
+          <b>R8_GAMIC</b> evaluates the complementary incomplete gamma function.
+        </li>
+        <li>
+          <b>R8_GAMIT</b> evaluates Tricomi's incomplete gamma function for an R8 argument.
+        </li>
+        <li>
+          <b>R8_GAML</b> evaluates bounds for an R8 argument of the gamma function.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates the gamma function of an R8 argument.
+        </li>
+        <li>
+          <b>R8_GAMR</b> evaluates the reciprocal gamma function of an R8 argument.
+        </li>
+        <li>
+          <b>R8_GMIC:</b> complementary incomplete gamma, small X, A near negative integer.
+        </li>
+        <li>
+          <b>R8_GMIT:</b> Tricomi's incomplete gamma function for small X.
+        </li>
+        <li>
+          <b>R8_INITS</b> initializes a Chebyshev series.
+        </li>
+        <li>
+          <b>R8_INT</b> returns the integer part of an R8 argument.
+        </li>
+        <li>
+          <b>R8_KNUS</b> computes a sequence of K Bessel functions.
+        </li>
+        <li>
+          <b>R8_LBETA</b> evaluates the logarithm of the beta function of R8 arguments.
+        </li>
+        <li>
+          <b>R8_LGAMS</b> evaluates the log of |gamma(x)| and sign, for an R8 argument.
+        </li>
+        <li>
+          <b>R8_LGIC</b> evaluates the log complementary incomplete gamma function for large X.
+        </li>
+        <li>
+          <b>R8_LGIT</b> evaluates the log of Tricomi's incomplete gamma function.
+        </li>
+        <li>
+          <b>R8_LGMC</b> evaluates the log gamma correction factor for an R8 argument.
+        </li>
+        <li>
+          <b>R8_LI</b> evaluates the logarithmic integral for an R8 argument.
+        </li>
+        <li>
+          <b>R8_LNGAM</b> evaluates the log of the absolute value of gamma of an R8 argument.
+        </li>
+        <li>
+          <b>R8_LNREL</b> evaluates log ( 1 + X ) for an R8 argument.
+        </li>
+        <li>
+          <b>R8_LOG</b> evaluates the logarithm of an R8.
+        </li>
+        <li>
+          <b>R8_LOG10</b> evaluates the logarithm, base 10, of an R8.
+        </li>
+        <li>
+          <b>R8_MACH</b> returns double precision real machine-dependent constants.
+        </li>
+        <li>
+          <b>R8_MACHAR</b> determines double precision machine constants.
+        </li>
+        <li>
+          <b>R8_PAK</b> packs a base 2 exponent into an R8.
+        </li>
+        <li>
+          <b>R8_POCH</b> evaluates Pochhammer's function of R8 arguments.
+        </li>
+        <li>
+          <b>R8_POCH1</b> evaluates a quantity related to Pochhammer's symbol.
+        </li>
+        <li>
+          <b>R8_PSI</b> evaluates the psi function of an R8 argument.
+        </li>
+        <li>
+          <b>R8_REN</b> is a simple random number generator.
+        </li>
+        <li>
+          <b>R8_SHI</b> evaluates the hyperbolic sine integral Shi of an R8 argument.
+        </li>
+        <li>
+          <b>R8_SI</b> evaluates the sine integral Si of an R8 argument.
+        </li>
+        <li>
+          <b>R8_SIFG</b> is a utility routine.
+        </li>
+        <li>
+          <b>R8_SIN</b> evaluates the sine of an R8 argument.
+        </li>
+        <li>
+          <b>R8_SIN_DEG</b> evaluates the sine of an R8 argument in degrees.
+        </li>
+        <li>
+          <b>R8_SINH</b> evaluates the hyperbolic sine of an R8 argument.
+        </li>
+        <li>
+          <b>R8_SPENCE</b> evaluates a form of Spence's function for an R8 argument.
+        </li>
+        <li>
+          <b>R8_SQRT</b> computes the square root of an R8.
+        </li>
+        <li>
+          <b>R8_TAN</b> evaluates the tangent of an R8 argument.
+        </li>
+        <li>
+          <b>R8_TANH</b> evaluates the hyperbolic tangent of an R8 argument.
+        </li>
+        <li>
+          <b>R8_UPAK</b> unpacks an R8 into a mantissa and exponent.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints out the current YMDHMS date as a timestamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 September 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

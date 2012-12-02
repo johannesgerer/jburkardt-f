@@ -1,0 +1,1626 @@
+<html>
+
+  <head>
+    <title>
+      SUBSET - Combinatorial Routines
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SUBSET <br> Combinatorial Routines
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SUBSET</b>
+      is a FORTRAN90 library which
+      performs various combinatorial operations.
+    </p>
+
+    <p>
+      These include the enumeration, generation, random
+      selection, ranking and unranking of
+      <ul>
+        <li>
+          <b>COMP</b>, compositions of an integer N into K parts;
+        </li>
+        <li>
+          <b>COMPNZ</b>, compositions of an integer N into K parts,
+          with no zero parts;
+        </li>
+        <li>
+          <b>EQUIV</b>'s, partitions of a set of N objects;
+        </li>
+        <li>
+          <b>I4_PARTITION</b>'s, partitions of an integer;
+        </li>
+        <li>
+          <b>I4POLY</b>'s, integer polynomials in factorial, Newton,
+          power sum, or Taylor form;
+        </li>
+        <li>
+          <b>I4VEC</b>'s, integer vectors;
+        </li>
+        <li>
+          <b>KSUB</b>'s, subsets of size K, from a set of N objects;
+        </li>
+        <li>
+          <b>MULTIPERM</b>'s, permutations of the N objects, some of which
+          are indistinguishable.
+        </li>
+        <li>
+          <b>PERM</b>'s, permutations of the first N integers;
+        </li>
+        <li>
+          <b>R8POLY</b>'s, real polynomials in factorial, Newton,
+          power sum, or Taylor form;
+        </li>
+        <li>
+          <b>KSUB</b>'s, subsets of a set of N objects;
+        </li>
+        <li>
+          vectors whose entries range from 1 to N;
+        </li>
+        <li>
+          <b>YTB</b>'s, Young tables;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Other objects considered include
+      <ul>
+        <li>
+          the Bell numbers,
+        </li>
+        <li>
+          <b>BVEC</b>'s, binary numbers represented as a vector of 0's and 1's;
+        </li>
+        <li>
+          Catalan numbers,
+        </li>
+        <li>
+          congruence equations.
+        </li>
+        <li>
+          continued fractions,
+        </li>
+        <li>
+          <b>DEC</b>'s, decimal numbers represented as a mantissa and a power of 10;
+        </li>
+        <li>
+          <b>DERANGE</b>'s, derangements (permutations that leave no element in place),
+        </li>
+        <li>
+          <b>DVEC</b>'s, decimal numbers represented as a vector of digits;
+        </li>
+        <li>
+          falling factorials (20*19*18...),
+        </li>
+        <li>
+          <b>GRAY</b>, Gray codes,
+        </li>
+        <li>
+          matrix permanents (similar to determinants, but harder to compute,
+          if you can believe that),
+        </li>
+        <li>
+          Morse-Thue numbers,
+        </li>
+        <li>
+          pentagonal numbers,
+        </li>
+        <li>
+          Pythagorean triples,
+        </li>
+        <li>
+          <b>RAT</b>'s, rational numbers represented as a pair of integers;
+        </li>
+        <li>
+          rising factorials (7*8*9...).
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Fortran77 source code for some of the algorithms is
+      available in the
+      <a href = "http://www.cs.sunysb.edu/~algorith/">
+      The Stony Brook Algorithm Archive</a>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SUBSET</b> is available in
+      <a href = "../../c_src/subset/subset.html">a C version</a> and
+      <a href = "../../cpp_src/subset/subset.html">a C++ version</a> and
+      <a href = "../../f77_src/subset/subset.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/subset/subset.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/subset/subset.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/combination_lock/combination_lock.html">
+      COMBINATION_LOCK</a>,
+      a FORTRAN90 program which
+      simulates the process of determining the secret combination of a lock.
+    </p>
+
+    <p>
+      <a href = "../../f_src/combo/combo.html">
+      COMBO</a>,
+      a FORTRAN90 library which
+      includes many combinatorial routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/floyd/floyd.html">
+      FLOYD</a>,
+      a FORTRAN90 library which
+      implements Floyd's algorithm for finding the shortest distance between pairs of
+      nodes on a directed graph.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grafpack/grafpack.html">
+      GRAFPACK</a>,
+      a FORTRAN90 library which
+      carries out operations on abstract graphs.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/knapsack/knapsack.html">
+      KNAPSACK</a>,
+      a FORTRAN77 library which
+      solves a variety of knapsack problems.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/lamp/lamp.html">
+      LAMP</a>,
+      a FORTRAN77 library which
+      solves linear assignment and matching problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/partial_digest/partial_digest.html">
+      PARTIAL_DIGEST</a>,
+      a FORTRAN90 library which
+      solves the partial digest problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/partition_problem/partition_problem.html">
+      PARTITION_PROBLEM</a>,
+      a FORTRAN90 library which
+      seeks solutions of the partition problem, splitting a set of integers into
+      two subsets with equal sum.
+    </p>
+
+    <p>
+      <a href = "../../f_src/set_theory/set_theory.html">
+      SET_THEORY</a>,
+      a FORTRAN90 library which
+      demonstrates various set theoretic operations using several models of a set.
+    </p>
+
+    <p>
+      <a href = "../../f_src/select/select.html">
+      SELECT</a>,
+      a FORTRAN90 library which
+      generates various combinatorial objects.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset_sum/subset_sum.html">
+      SUBSET_SUM</a>,
+      a FORTRAN90 library which
+      seeks solutions of the subset sum problem.
+    </p>
+
+    <p>
+      <a href = "../../f_src/unicycle/unicycle.html">
+      UNICYCLE</a>,
+      a FORTRAN90 library which
+      considers permutations containing a single cycle, sometimes called cyclic permutations.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Walter Ball,<br>
+          Mathematical Recreations and Essays,<br>
+          Macmillan, 1962,<br>
+          ISBN: 1417921269,<br>
+          LC: QA95.B2.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox, Linus Schrage,<br>
+          A Guide to Simulation,<br>
+          Second Edition,<br>
+          Springer, 1987,<br>
+          ISBN: 0387964673,<br>
+          LC: QA76.9.C65.B73.
+        </li>
+        <li>
+          Bill Buckles, Matthew Lybanon,<br>
+          Algorithm 515:
+          Generation of a Vector from the Lexicographical Index,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 3, Number 2, June 1977, pages 180-182.
+        </li>
+        <li>
+          Tom Christiansen, Nathan Torkington,<br>
+          Perl Cookbook,<br>
+          O'Reilly, 2003,<br>
+          ISBN: 0596003137,<br>
+          LC: QA76.73.P22.C38.
+        </li>
+        <li>
+          William Cody, Kenneth Hillstrom,<br>
+          Chebyshev Approximations for the Natural Logarithm of the
+          Gamma Function,
+          Mathematics of Computation,<br>
+          Volume 21, Number 98, April 1967, pages 198-203.
+        </li>
+        <li>
+          John Conway, Richard Guy,<br>
+          The Book of Numbers,<br>
+          Springer, 1998,<br>
+          ISBN: 038797993X,<br>
+          LC: QA241.C6897.
+        </li>
+        <li>
+          David Crouse,<br>
+          Remark on Algorithm 515,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 33, Number 2, Article 15, June 2007.
+        </li>
+        <li>
+          Bennett Fox,<br>
+          Algorithm 647:
+          Implementation and Relative Efficiency of Quasirandom
+          Sequence Generators,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 12, Number 4, December 1986, pages 362-376.
+        </li>
+        <li>
+          Laurent Habsieger, Maxim Kazarian, Sergei Lando,<br>
+          On the Second Number of Plutarch,<br>
+          American Mathematical Monthly,<br>
+          Volume 105, Number 5, May 1998, page 446.
+        </li>
+        <li>
+          John Halton,<br>
+          On the efficiency of certain quasi-random sequences of points
+          in evaluating multi-dimensional integrals,<br>
+          Numerische Mathematik,<br>
+          Volume 2, Number 1, December 1960, pages 84-90.
+        </li>
+        <li>
+          John Hammersley,<br>
+          Monte Carlo methods for solving multivariable problems,<br>
+          Proceedings of the New York Academy of Science,<br>
+          Volume 86, 1960, pages 844-874.
+        </li>
+        <li>
+          John Hart, Ward Cheney, Charles Lawson, Hans Maehly,
+          Charles Mesztenyi, John Rice, Henry Thacher,
+          Christoph Witzgall,<br>
+          Computer Approximations,<br>
+          Wiley, 1968,<br>
+          LC: QA297.C64.
+        </li>
+        <li>
+          Brian Hayes,<br>
+          Third Base,<br>
+          American Scientist,<br>
+          Volume 89, Number 6, November-December 2001, pages 490-494.
+        </li>
+        <li>
+          Mark Herkommer,<br>
+          Number Theory, A Programmer's Guide,<br>
+          McGraw Hill, 1999,<br>
+          ISBN: 0-07-913074-7.
+        </li>
+        <li>
+          Karla Hoffman, Douglas Shier,<br>
+          Algorithm 564:
+          A Test Problem Generator for Discrete Linear L1
+          Approximation Problems,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 6, Number 4, December 1980, pages 615-617.
+        </li>
+        <li>
+          Donald Knuth,<br>
+          The Art of Computer Programming,<br>
+          Volume 3, Sorting and Searching,<br>
+          Second Edition,<br>
+          Addison Wesley, 1998,<br>
+          ISBN: 0201896850,<br>
+          LC: QA76.6.K64.
+        </li>
+        <li>
+          Hang Tong Lau,<br>
+          Algorithms on Graphs,<br>
+          Tab Books, 1989,<br>
+          ISBN: 0830634290,<br>
+          LC: QA166.L38
+        </li>
+        <li>
+          Pierre LEcuyer,<br>
+          Random Number Generation,<br>
+          in Handbook of Simulation,<br>
+          edited by Jerry Banks,<br>
+          Wiley, 1998,<br>
+          ISBN: 0471134031,<br>
+          LC: T57.62.H37.
+        </li>
+        <li>
+          Peter Lewis, Allen Goodman, James Miller,<br>
+          A Pseudo-Random Number Generator for the System/360,<br>
+          IBM Systems Journal,<br>
+          Volume 8, 1969, pages 136-143.
+        </li>
+        <li>
+          Charles Mifsud,<br>
+          Algorithm 154,
+          Combination in Lexicographic Order,<br>
+          Communications of the ACM,<br>
+          Volume 6, Number 3, March 1963, page 103.
+        </li>
+        <li>
+          mil_std_1753,<br>
+          Military Standard 1753,<br>
+          FORTRAN, DoD Supplement To American National Standard X3.9-1978,<br>
+          9 November 1978.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms for Computers and Calculators,<br>
+          Second Edition,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0-12-519260-6,<br>
+          LC: QA164.N54.
+        </li>
+        <li>
+          Robert Owens,<br>
+          Sums of Powers of Integers,<br>
+          Mathematics Magazine,<br>
+          Volume 65, Number 1, February 1992, pages 38-40.
+        </li>
+        <li>
+          Norman Richert,<br>
+          Strang's Strange Figures,<br>
+          American Mathematical Monthly,<br>
+          Volume 99, Number 2, February 1992, pages 101-107.
+        </li>
+        <li>
+          James Sandeson,<br>
+          Testing Ecological Patterns,<br>
+          American Scientist,<br>
+          Volume 88, Number 4, July-August 2000, pages 332-339.
+        </li>
+        <li>
+          Ian Saunders,<br>
+          Algorithm AS 205,<br>
+          Enumeration of R x C Tables with Repeated Row Totals,<br>
+          Applied Statistics,<br>
+          Volume 33, Number 3, 1984, pages 340-352.
+        </li>
+        <li>
+          Robert Sedgewick,<br>
+          Algorithms in C,<br>
+          Addison-Wesley, 1990,<br>
+          ISBN: 0-201-51425-7,<br>
+          LC: QA76.73.C15S43.
+        </li>
+        <li>
+          Raymond Seroul,<br>
+          Programming for Mathematicians,<br>
+          Springer, 2000,<br>
+          ISBN: 3-540-66422-X,<br>
+          LC: QA76.6.S465.
+        </li>
+        <li>
+          Mok-Kong Shen,<br>
+          Algorithm 202:
+          Generation of Permutations in Lexicographical Order,<br>
+          Communications of the ACM,<br>
+          Volume 6, Number 9, September 1963, page 517.
+        </li>
+        <li>
+          Richard Stanley,<br>
+          Hipparchus, Plutarch, Schroeder, and Hough,<br>
+          American Mathematical Monthly,<br>
+          Volume 104, Number 4, April 1997, pages 344-350.
+        </li>
+        <li>
+          Dennis Stanton, Dennis White,<br>
+          Constructive Combinatorics,<br>
+          Springer, 1986,<br>
+          ISBN: 0387963472,<br>
+          LC: QA164.S79.
+        </li>
+        <li>
+          Ian Stewart,<br>
+          A Neglected Number,<br>
+          Scientific American, <br>
+          Volume 274, pages 102-102, June 1996.
+        </li>
+        <li>
+          Ian Stewart,<br>
+          Math Hysteria,<br>
+          Oxford, 2004,<br>
+          ISBN: 0198613369,<br>
+          LC: QA95.S7255.
+        </li>
+        <li>
+          James Sylvester,<br>
+          Question 7382,
+          Mathematical Questions with their Solutions,<br>
+          Educational Times,<br>
+          Volume 41, page 21, 1884.
+        </li>
+        <li>
+          Hale Trotter,<br>
+          Algorithm 115:
+          PERM,<br>
+          Communications of the Association for Computing Machinery,<br>
+          Volume 5, Number 8, August 1962, pages 434-435.
+        </li>
+        <li>
+          Johannes vanderCorput,<br>
+          Verteilungsfunktionen I & II,<br>
+          Proceedings of the Koninklijke Nederlandsche Akademie
+          van Wetenschappen,<br>
+          Volume 38, 1935, pages 813-820, pages 1058-1066.
+        </li>
+        <li>
+          Jack vanLint, Richard Wilson,<br>
+          A Course in Combinatorics,<br>
+          Cambridge, 1992,<br>
+          ISBN: 0-521-42260-4,<br>
+          LC: QA164.L56.
+        </li>
+        <li>
+          Eric Weisstein,<br>
+          CRC Concise Encyclopedia of Mathematics,<br>
+          CRC Press, 2002,<br>
+          Second edition,<br>
+          ISBN: 1584883472,<br>
+          LC: QA5.W45
+        </li>
+        <li>
+          Stephen Wolfram,<br>
+          The Mathematica Book,<br>
+          Fourth Edition,<br>
+          Cambridge University Press, 1999,<br>
+          ISBN: 0-521-64314-7,<br>
+          LC: QA76.95.W65.
+        </li>
+        <li>
+          ML Wolfson, HV Wright,<br>
+          ACM Algorithm 160:
+          Combinatorial of M Things Taken N at a Time,<br>
+          Communications of the ACM,<br>
+          Volume 6, Number 4, April 1963, page 161.
+        </li>
+        <li>
+          Daniel Zwillinger, editor,<br>
+          CRC Standard Mathematical Tables and Formulae,<br>
+          30th Edition,<br>
+          CRC Press, 1996,<br>
+          ISBN: 0-8493-2479-3,<br>
+          LC: QA47.M315.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "subset.f90">subset.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "subset.sh">subset.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "subset_prb.f90">subset_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "subset_prb.sh">subset_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "subset_prb_output.txt">subset_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ASM_ENUM</b> returns the number of alternating sign matrices of a given order.
+        </li>
+        <li>
+          <b>ASM_TRIANGLE</b> returns a row of the alternating sign matrix triangle.
+        </li>
+        <li>
+          <b>BELL</b> returns the Bell numbers from 0 to N.
+        </li>
+        <li>
+          <b>BELL_VALUES</b> returns some values of the Bell numbers for testing.
+        </li>
+        <li>
+          <b>BINARY_VECTOR_NEXT</b> generates the next binary vector.
+        </li>
+        <li>
+          <b>BVEC_ADD</b> adds two (signed) binary vectors.
+        </li>
+        <li>
+          <b>BVEC_AND</b> computes the AND of two binary vectors.
+        </li>
+        <li>
+          <b>BVEC_CHECK</b> checks a binary vector.
+        </li>
+        <li>
+          <b>BVEC_COMPLEMENT2</b> computes the two's complement of a binary vector.
+        </li>
+        <li>
+          <b>BVEC_MUL</b> computes the product of two binary vectors.
+        </li>
+        <li>
+          <b>BVEC_NEXT</b> generates the next BVEC.
+        </li>
+        <li>
+          <b>BVEC_NOT</b> "negates" or takes the 1's complement of a binary vector.
+        </li>
+        <li>
+          <b>BVEC_OR</b> computes the inclusive OR of two binary vectors.
+        </li>
+        <li>
+          <b>BVEC_PRINT</b> prints a BVEC, with an optional title.
+        </li>
+        <li>
+          <b>BVEC_REVERSE</b> reverses a binary vector.
+        </li>
+        <li>
+          <b>BVEC_SUB</b> subtracts two binary vectors.
+        </li>
+        <li>
+          <b>BVEC_TO_I4</b> makes an integer from a (signed) binary vector.
+        </li>
+        <li>
+          <b>BVEC_XOR</b> computes the exclusive OR of two binary vectors.
+        </li>
+        <li>
+          <b>CATALAN</b> computes the Catalan numbers, from C(0) to C(N).
+        </li>
+        <li>
+          <b>CATALAN_ROW_NEXT</b> computes row N of Catalan's triangle.
+        </li>
+        <li>
+          <b>CATALAN_VALUES</b> returns some values of the Catalan numbers for testing.
+        </li>
+        <li>
+          <b>CBT_TRAVERSE</b> traverses a complete binary tree of given depth.
+        </li>
+        <li>
+          <b>CFRAC_TO_RAT</b> converts a monic continued fraction to an ordinary fraction.
+        </li>
+        <li>
+          <b>CFRAC_TO_RFRAC</b> converts polynomial fractions from continued to rational form.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CHANGE_GREEDY</b> makes change for a given total using the biggest coins first.
+        </li>
+        <li>
+          <b>CHANGE_NEXT</b> computes the next set of change for a given sum.
+        </li>
+        <li>
+          <b>CHINESE_CHECK</b> checks the Chinese remainder moduluses.
+        </li>
+        <li>
+          <b>CHINESE_TO_I4</b> converts a set of Chinese remainders to an equivalent integer.
+        </li>
+        <li>
+          <b>COMB_NEXT</b> computes combinations of K things out of N.
+        </li>
+        <li>
+          <b>COMB_ROW</b> computes row N of Pascal's triangle.
+        </li>
+        <li>
+          <b>COMB_UNRANK</b> returns the RANK-th combination of N things out of M.
+        </li>
+        <li>
+          <b>COMP_ENUM</b> returns the number of compositions of the integer N into K parts.
+        </li>
+        <li>
+          <b>COMP_NEXT</b> computes the compositions of the integer N into K parts.
+        </li>
+        <li>
+          <b>COMP_RANDOM</b> selects a random composition of the integer N into K parts.
+        </li>
+        <li>
+          <b>COMPNZ_ENUM</b> returns the number of nonzero compositions of the N into K parts.
+        </li>
+        <li>
+          <b>COMPNZ_NEXT</b> computes the compositions of the integer N into K nonzero parts.
+        </li>
+        <li>
+          <b>COMPNZ_RANDOM</b> selects a random composition of N into K nonzero parts.
+        </li>
+        <li>
+          <b>CONGRUENCE</b> solves a congruence of the form A * X = C ( mod B ).
+        </li>
+        <li>
+          <b>COUNT_POSE_RANDOM</b> poses a problem for the game "The Count is Good"
+        </li>
+        <li>
+          <b>DEBRUIJN</b> constructs a de Bruijn sequence.
+        </li>
+        <li>
+          <b>DEC_ADD</b> adds two decimal quantities.
+        </li>
+        <li>
+          <b>DEC_DIV</b> divides two decimal values.
+        </li>
+        <li>
+          <b>DEC_MUL</b> multiplies two decimals.
+        </li>
+        <li>
+          <b>DEC_ROUND</b> rounds a decimal fraction to a given number of digits.
+        </li>
+        <li>
+          <b>DEC_TO_R8</b> converts a decimal to an R8.
+        </li>
+        <li>
+          <b>DEC_TO_RAT</b> converts a decimal to a rational representation.
+        </li>
+        <li>
+          <b>DEC_TO_S</b> returns a string representation of a decimal.
+        </li>
+        <li>
+          <b>DEC_WIDTH</b> returns the "width" of a decimal number.
+        </li>
+        <li>
+          <b>DECMAT_DET</b> finds the determinant of an N by N matrix of decimal entries.
+        </li>
+        <li>
+          <b>DECMAT_PRINT</b> prints out decimal vectors and matrices.
+        </li>
+        <li>
+          <b>DERANGE_BACK_CANDIDATE</b> finds values for the K-th entry of a derangement.
+        </li>
+        <li>
+          <b>DERANGE_BACK_NEXT</b> returns the next derangement of N items.
+        </li>
+        <li>
+          <b>DERANGE_CHECK</b> determines whether a permutation is a derangement.
+        </li>
+        <li>
+          <b>DERANGE_ENUM</b> returns the number of derangements of N objects.
+        </li>
+        <li>
+          <b>DERANGE_ENUM2</b> returns the number of derangements of 0 through N objects.
+        </li>
+        <li>
+          <b>DERANGE_ENUM3</b> returns the number of derangements of 0 through N objects.
+        </li>
+        <li>
+          <b>DERANGE_WEED_NEXT</b> computes all derangements of N objects, one at a time.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_EULER</b> returns an Euler circuit in a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_PRINT</b> prints out a digraph from an edge list.
+        </li>
+        <li>
+          <b>DIOPHANTINE</b> solves a Diophantine equation A * X + B * Y = C.
+        </li>
+        <li>
+          <b>DIOPHANTINE_SOLUTION_MINIMIZE:</b> minimal solution of a Diophantine equation.
+        </li>
+        <li>
+          <b>DVEC_ADD</b> adds two (signed) DVEC's.
+        </li>
+        <li>
+          <b>DVEC_COMPLEMENTX</b> computes the ten's complement of a DVEC.
+        </li>
+        <li>
+          <b>DVEC_MUL</b> computes the product of two DVEC's.
+        </li>
+        <li>
+          <b>DVEC_PRINT</b> prints a DVEC, with an optional title.
+        </li>
+        <li>
+          <b>DVEC_SUB</b> subtracts two DVEC's.
+        </li>
+        <li>
+          <b>DVEC_TO_I4</b> makes an integer from a (signed) DVEC.
+        </li>
+        <li>
+          <b>EQUIV_NEXT</b> computes the partitions of a set one at a time.
+        </li>
+        <li>
+          <b>EQUIV_NEXT2</b> computes, one at a time, the partitions of a set.
+        </li>
+        <li>
+          <b>EQUIV_PRINT</b> prints a partition of a set.
+        </li>
+        <li>
+          <b>EQUIV_PRINT2</b> prints a partition of a set.
+        </li>
+        <li>
+          <b>EQUIV_RANDOM</b> selects a random partition of a set.
+        </li>
+        <li>
+          <b>EULER</b> returns the N-th row of Euler's triangle.
+        </li>
+        <li>
+          <b>FROBENIUS_NUMBER_ORDER2</b> returns the Frobenius number for order 2.
+        </li>
+        <li>
+          <b>FROBENIUS_NUMBER_ORDER2_VALUES:</b> values of the order 2 Frobenius number.
+        </li>
+        <li>
+          <b>GAMMA_LOG_VALUES</b> returns some values of the Log Gamma function.
+        </li>
+        <li>
+          <b>GET_SEED</b> returns a seed for the random number generator.
+        </li>
+        <li>
+          <b>GRAY_NEXT</b> generates the next Gray code by switching one item at a time.
+        </li>
+        <li>
+          <b>GRAY_RANK</b> ranks a Gray code.
+        </li>
+        <li>
+          <b>GRAY_RANK2</b> ranks a Gray code.
+        </li>
+        <li>
+          <b>GRAY_UNRANK</b> unranks a Gray code.
+        </li>
+        <li>
+          <b>GRAY_UNRANK2</b> unranks a Gray code.
+        </li>
+        <li>
+          <b>I4_BCLR</b> returns a copy of an I4 in which the POS-th bit is set to 0.
+        </li>
+        <li>
+          <b>I4_BSET</b> returns a copy of an I4 in which the POS-th bit is set to 1.
+        </li>
+        <li>
+          <b>I4_BTEST</b> returns TRUE if the POS-th bit of an I4 is 1.
+        </li>
+        <li>
+          <b>I4_CHOOSE</b> computes the binomial coefficient C(N,K).
+        </li>
+        <li>
+          <b>I4_FACTOR</b> factors an I4 into prime factors.
+        </li>
+        <li>
+          <b>I4_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>I4_FALL</b> computes the falling factorial function [X]_N.
+        </li>
+        <li>
+          <b>I4_GCD</b> finds the greatest common divisor of two I4's.
+        </li>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>I4_LOG_10</b> returns the integer part of the logarithm base 10 of an I4.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of I4 division.
+        </li>
+        <li>
+          <b>I4_MOEBIUS</b> returns the value of MU(N), the Moebius function of N.
+        </li>
+        <li>
+          <b>I4_PARTITION_CONJ</b> computes the conjugate of a partition.
+        </li>
+        <li>
+          <b>I4_PARTITION_COUNT</b> computes the number of partitions of an I4.
+        </li>
+        <li>
+          <b>I4_PARTITION_COUNT2</b> computes the number of partitions of an I4.
+        </li>
+        <li>
+          <b>I4_PARTITION_COUNT_VALUES</b> returns some values of the integer partition count.
+        </li>
+        <li>
+          <b>I4_PARTITION_NEXT</b> generates the partitions of an I4, one at a time.
+        </li>
+        <li>
+          <b>I4_PARTITION_NEXT2</b> computes the partitions of the integer N one at a time.
+        </li>
+        <li>
+          <b>I4_PARTITION_PRINT</b> prints a partition of an I4.
+        </li>
+        <li>
+          <b>I4_PARTITION_RANDOM</b> selects a random partition of the integer N.
+        </li>
+        <li>
+          <b>I4_PARTITIONS_NEXT:</b> next partition into S parts.
+        </li>
+        <li>
+          <b>I4_RISE</b> computes the rising factorial function [X]^N.
+        </li>
+        <li>
+          <b>I4_SQRT</b> finds the integer square root of N by solving N = Q**2 + R.
+        </li>
+        <li>
+          <b>I4_SQRT_CF:</b> continued fraction representation of a square root of an integer.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two I4's.
+        </li>
+        <li>
+          <b>I4_TO_BVEC</b> makes a signed binary vector from an I4.
+        </li>
+        <li>
+          <b>I4_TO_CHINESE</b> converts an I4 to its Chinese remainder form.
+        </li>
+        <li>
+          <b>I4_TO_DVEC</b> makes a signed DVEC from an I4.
+        </li>
+        <li>
+          <b>I4_TO_I4POLY</b> converts an I4 to an I4POLY in a given base.
+        </li>
+        <li>
+          <b>I4_TO_S_LEFT</b> converts an I4 to a left-justified string.
+        </li>
+        <li>
+          <b>I4_TO_VAN_DER_CORPUT</b> computes an element of a van der Corput sequence.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4MAT_01_ROWCOLSUM</b> creates a 0/1 I4MAT with given row and column sums.
+        </li>
+        <li>
+          <b>I4MAT_01_ROWCOLSUM2</b> creates a 0/1 I4MAT with given row and column sums.
+        </li>
+        <li>
+          <b>I4MAT_PERM</b> permutes the rows and columns of a square I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PERM2</b> permutes the rows and columns of a rectangular I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT_SOME</b> prints some of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_U1_INVERSE</b> inverts a unit upper triangular I4MAT.
+        </li>
+        <li>
+          <b>I4POLY</b> performs operations on I4POLY's in power or factorial form.
+        </li>
+        <li>
+          <b>I4POLY_CYCLO</b> computes a cyclotomic polynomial.
+        </li>
+        <li>
+          <b>I4POLY_DEGREE</b> returns the degree of an I4POLY.
+        </li>
+        <li>
+          <b>I4POLY_DIV</b> computes the quotient and remainder of two I4POLY's.
+        </li>
+        <li>
+          <b>I4POLY_MUL</b> computes the product of two I4POLY's.
+        </li>
+        <li>
+          <b>I4POLY_PRINT</b> prints an I4POLY.
+        </li>
+        <li>
+          <b>I4POLY_TO_I4</b> evaluates an I4POLY.
+        </li>
+        <li>
+          <b>I4VEC_ASCENDS</b> determines if an I4VEC is (weakly) ascending.
+        </li>
+        <li>
+          <b>I4VEC_BACKTRACK</b> supervises a backtrack search for an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_DESCENDS</b> determines if an I4VEC is decreasing.
+        </li>
+        <li>
+          <b>I4VEC_FRAC</b> searches for the K-th smallest element in an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D</b> reorders an I4VEC into an descending heap.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_INDEX</b> returns the location of the first occurrence of a given value.
+        </li>
+        <li>
+          <b>I4VEC_MAXLOC_LAST</b> returns the index of the last maximal I4VEC entry.
+        </li>
+        <li>
+          <b>I4VEC_PAIRWISE_PRIME</b> checks whether an I4VEC is pairwise prime.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC, with an optional title.
+        </li>
+        <li>
+          <b>I4VEC_PRINT_SOME</b> prints "some" of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORT_BUBBLE_A</b> ascending sorts an I4VEC using bubble sort.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_A</b> ascending sorts an I4VEC using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_INDEX_D</b> does an indexed heap descending sort of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_TRANSPOSE_PRINT</b> prints an I4VEC "transposed".
+        </li>
+        <li>
+          <b>I4VEC_UNIFORM</b> returns a scaled pseudorandom I4VEC.
+        </li>
+        <li>
+          <b>INDEX_BOX2_NEXT_2D</b> produces index vectors on the surface of a box in 2D.
+        </li>
+        <li>
+          <b>INDEX_BOX2_NEXT_3D</b> produces index vectors on the surface of a box in 3D.
+        </li>
+        <li>
+          <b>INDEX_BOX_NEXT_2D</b> produces index vectors on the surface of a box in 2D.
+        </li>
+        <li>
+          <b>INDEX_BOX_NEXT_3D</b> produces index vectors on the surface of a box in 3D.
+        </li>
+        <li>
+          <b>INDEX_NEXT0</b> generates all index vectors within given upper limits.
+        </li>
+        <li>
+          <b>INDEX_NEXT1</b> generates all index vectors within given upper limits.
+        </li>
+        <li>
+          <b>INDEX_NEXT2</b> generates all index vectors within given lower and upper limits.
+        </li>
+        <li>
+          <b>INDEX_RANK0</b> ranks an index vector within given upper limits.
+        </li>
+        <li>
+          <b>INDEX_RANK1</b> ranks an index vector within given upper limits.
+        </li>
+        <li>
+          <b>INDEX_RANK2</b> ranks an index vector within given lower and upper limits.
+        </li>
+        <li>
+          <b>INDEX_UNRANK0</b> unranks an index vector within given upper limits.
+        </li>
+        <li>
+          <b>INDEX_UNRANK1</b> unranks an index vector within given upper limits.
+        </li>
+        <li>
+          <b>INDEX_UNRANK2</b> unranks an index vector within given lower and upper limits.
+        </li>
+        <li>
+          <b>INS_PERM</b> computes a permutation from its inversion sequence.
+        </li>
+        <li>
+          <b>INVERSE_MOD_N</b> computes the inverse of B mod N.
+        </li>
+        <li>
+          <b>INVOLUTE_ENUM</b> enumerates the involutions of N objects.
+        </li>
+        <li>
+          <b>JFRAC_TO_RFRAC</b> converts a J-fraction into a rational polynomial fraction.
+        </li>
+        <li>
+          <b>JOSEPHUS</b> returns the position X of the K-th man to be executed.
+        </li>
+        <li>
+          <b>KSUB_NEXT</b> generates the subsets of size K from a set of size N.
+        </li>
+        <li>
+          <b>KSUB_NEXT2</b> generates the subsets of size K from a set of size N.
+        </li>
+        <li>
+          <b>KSUB_NEXT3</b> generates the subsets of size K from a set of size N.
+        </li>
+        <li>
+          <b>KSUB_NEXT4</b> generates the subsets of size K from a set of size N.
+        </li>
+        <li>
+          <b>KSUB_RANDOM</b> selects a random subset of size K from a set of size N.
+        </li>
+        <li>
+          <b>KSUB_RANDOM2</b> selects a random subset of size K from a set of size N.
+        </li>
+        <li>
+          <b>KSUB_RANDOM3</b> selects a random subset of size K from a set of size N.
+        </li>
+        <li>
+          <b>KSUB_RANDOM4</b> selects a random subset of size K from a set of size N.
+        </li>
+        <li>
+          <b>KSUB_RANK</b> computes the rank of a K subset of an N set.
+        </li>
+        <li>
+          <b>KSUB_UNRANK</b> returns the subset of a given rank.
+        </li>
+        <li>
+          <b>LVEC_NEXT</b> generates the next logical vector.
+        </li>
+        <li>
+          <b>MATRIX_PRODUCT_OPT</b> determines the optimal cost of a matrix product.
+        </li>
+        <li>
+          <b>MOEBIUS_MATRIX</b> finds the Moebius matrix from a covering relation.
+        </li>
+        <li>
+          <b>MONOMIAL_COUNT</b> counts the number of monomials up to a given degree.
+        </li>
+        <li>
+          <b>MONOMIAL_COUNTS</b> counts the number of monomials up to a given degree.
+        </li>
+        <li>
+          <b>MORSE_THUE</b> generates a Morse_Thue number.
+        </li>
+        <li>
+          <b>MULTINOMIAL_COEF1</b> computes a multinomial coefficient.
+        </li>
+        <li>
+          <b>MULTINOMIAL_COEF2</b> computes a multinomial coefficient.
+        </li>
+        <li>
+          <b>MULTIPERM_ENUM</b> enumerates multipermutations.
+        </li>
+        <li>
+          <b>MULTIPERM_NEXT</b> returns the next multipermutation.
+        </li>
+        <li>
+          <b>NETWORK_FLOW_MAX</b> finds the maximal flow and a minimal cut in a network.
+        </li>
+        <li>
+          <b>NIM_SUM</b> computes the Nim sum of two integers.
+        </li>
+        <li>
+          <b>PADOVAN</b> returns the first N values of the Padovan sequence.
+        </li>
+        <li>
+          <b>PELL_BASIC</b> returns the fundamental solution for Pell's basic equation.
+        </li>
+        <li>
+          <b>PELL_NEXT</b> returns the next solution of Pell's equation.
+        </li>
+        <li>
+          <b>PENT_ENUM</b> computes the N-th pentagonal number.
+        </li>
+        <li>
+          <b>PERM_ASCEND</b> computes the longest ascending subsequence of a permutation.
+        </li>
+        <li>
+          <b>PERM_BREAK_COUNT</b> counts the number of "breaks" in a permutation.
+        </li>
+        <li>
+          <b>PERM_CANON_TO_CYCLE</b> converts a permutation from canonical to cycle form.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PERM_CYCLE</b> analyzes a permutation.
+        </li>
+        <li>
+          <b>PERM_CYCLE_TO_CANON</b> converts a permutation from cycle to canonical form.
+        </li>
+        <li>
+          <b>PERM_CYCLE_TO_INDEX</b> converts a permutation from cycle to standard index form.
+        </li>
+        <li>
+          <b>PERM_DISTANCE</b> computes the Ulam metric distance of two permutations.
+        </li>
+        <li>
+          <b>PERM_FIXED_ENUM</b> enumerates the permutations of N objects with M fixed.
+        </li>
+        <li>
+          <b>PERM_FREE</b> reports the unused items in a partial permutation.
+        </li>
+        <li>
+          <b>PERM_INDEX_TO_CYCLE</b> converts a permutation from standard index to cycle form.
+        </li>
+        <li>
+          <b>PERM_INS</b> computes the inversion sequence of a permutation.
+        </li>
+        <li>
+          <b>PERM_INVERSE</b> inverts a permutation "in place".
+        </li>
+        <li>
+          <b>PERM_INVERSE2</b> inverts a permutation "in place".
+        </li>
+        <li>
+          <b>PERM_INVERSE3</b> produces the inverse of a given permutation.
+        </li>
+        <li>
+          <b>PERM_LEX_NEXT</b> generates permutations in lexical order, one at a time.
+        </li>
+        <li>
+          <b>PERM_MUL</b> "multiplies" two permutations.
+        </li>
+        <li>
+          <b>PERM_NEXT</b> computes all of the permutations of N objects, one at a time.
+        </li>
+        <li>
+          <b>PERM_NEXT2</b> generates all the permutations of N objects.
+        </li>
+        <li>
+          <b>PERM_NEXT3</b> computes all of the permutations of N objects, one at a time.
+        </li>
+        <li>
+          <b>PERM_PRINT</b> prints a permutation.
+        </li>
+        <li>
+          <b>PERM_RANDOM</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>PERM_RANDOM2</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>PERM_RANDOM3</b> selects a random permutation of N elements.
+        </li>
+        <li>
+          <b>PERM_RANK</b> computes the rank of a given permutation.
+        </li>
+        <li>
+          <b>PERM_SIGN</b> returns the sign of a permutation.
+        </li>
+        <li>
+          <b>PERM_TO_EQUIV</b> computes the partition induced by a permutation.
+        </li>
+        <li>
+          <b>PERM_TO_YTB</b> converts a permutation to a Young table.
+        </li>
+        <li>
+          <b>PERM_UNRANK</b> "unranks" a permutation.
+        </li>
+        <li>
+          <b>PERRIN</b> returns the first N values of the Perrin sequence.
+        </li>
+        <li>
+          <b>PORD_CHECK</b> checks a matrix representing a partial ordering.
+        </li>
+        <li>
+          <b>POWER_MOD</b> computes mod ( A^N, M ).
+        </li>
+        <li>
+          <b>POWER_SERIES1</b> computes the power series for G(Z) = (1+F(Z))**ALPHA.
+        </li>
+        <li>
+          <b>POWER_SERIES2</b> computes the power series for G(Z) = exp(F(Z)) - 1.
+        </li>
+        <li>
+          <b>POWER_SERIES3</b> computes the power series for H(Z) = G(F(Z)).
+        </li>
+        <li>
+          <b>POWER_SERIES4</b> computes the power series for H(Z) = G ( 1/F(Z) ).
+        </li>
+        <li>
+          <b>PRIME</b> returns any of the first PRIME_MAX prime numbers.
+        </li>
+        <li>
+          <b>PYTHAG_TRIPLE_NEXT</b> computes the next Pythagorean triple.
+        </li>
+        <li>
+          <b>R8_AGM</b> finds the arithmetic-geometric mean of two numbers.
+        </li>
+        <li>
+          <b>R8_CHOOSE</b> computes the combinatorial coefficient C(N,K).
+        </li>
+        <li>
+          <b>R8_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>R8_FALL</b> computes the falling factorial function [X]_N.
+        </li>
+        <li>
+          <b>R8_GAMMA_LOG</b> calculates the natural logarithm of GAMMA ( X ) for positive X.
+        </li>
+        <li>
+          <b>R8_IS_INT</b> determines if a real number represents an integer value.
+        </li>
+        <li>
+          <b>R8_PI</b> returns the value of pi.
+        </li>
+        <li>
+          <b>R8_RISE</b> computes the rising factorial function [X]^N.
+        </li>
+        <li>
+          <b>R8_SWAP</b> switches two real values.
+        </li>
+        <li>
+          <b>R8_TO_CFRAC</b> converts a real value to a continued fraction.
+        </li>
+        <li>
+          <b>R8_TO_DEC</b> converts a real quantity to a decimal representation.
+        </li>
+        <li>
+          <b>R8_TO_RAT</b> converts a real value to a rational value.
+        </li>
+        <li>
+          <b>R8_TO_S_LEFT</b> represents a real using 14 left_justified characters.
+        </li>
+        <li>
+          <b>R8_UNIFORM</b> returns a scaled pseudorandom R8.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8MAT_DET</b> finds the determinant of an N by N R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PERM</b> permutes the rows and columns of a square R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PERM2</b> permutes rows and columns of a rectangular R8MAT, in place.
+        </li>
+        <li>
+          <b>R8MAT_PERMANENT</b> computes the permanent of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8POLY</b> performs operations on real polynomials in power or factorial form.
+        </li>
+        <li>
+          <b>R8POLY_DEGREE</b> returns the degree of a polynomial in power sum form.
+        </li>
+        <li>
+          <b>R8POLY_DIV</b> computes the quotient and remainder of two polynomials.
+        </li>
+        <li>
+          <b>R8POLY_F2P</b> converts a real polynomial from factorial form to power sum form.
+        </li>
+        <li>
+          <b>R8POLY_FVAL</b> evaluates a real polynomial in factorial form.
+        </li>
+        <li>
+          <b>R8POLY_MUL</b> computes the product of two real polynomials A and B.
+        </li>
+        <li>
+          <b>R8POLY_N2P</b> converts a real polynomial from Newton form to power sum form.
+        </li>
+        <li>
+          <b>R8POLY_NVAL</b> evaluates a real polynomial in Newton form.
+        </li>
+        <li>
+          <b>R8POLY_NX</b> replaces one of the base points in a polynomial in Newton form.
+        </li>
+        <li>
+          <b>R8POLY_P2F</b> converts a real polynomial from power sum form to factorial form.
+        </li>
+        <li>
+          <b>R8POLY_P2N</b> converts a real polynomial from power sum form to Newton form.
+        </li>
+        <li>
+          <b>R8POLY_P2T</b> converts a real polynomial from power sum form to Taylor form.
+        </li>
+        <li>
+          <b>R8POLY_POWER</b> computes a positive integer power of a polynomial.
+        </li>
+        <li>
+          <b>R8POLY_PRINT</b> prints out a polynomial.
+        </li>
+        <li>
+          <b>R8POLY_PVAL</b> evaluates a real polynomial in power sum form.
+        </li>
+        <li>
+          <b>R8POLY_T2P</b> converts a real polynomial from Taylor form to power sum form.
+        </li>
+        <li>
+          <b>R8VEC_BACKTRACK</b> supervises a backtrack search for an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_FRAC</b> searches for the K-th smallest entry in an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_INDICATOR</b> sets an R8VEC to the indicator vector.
+        </li>
+        <li>
+          <b>R8VEC_MIRROR_NEXT</b> steps through all sign variations of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM</b> returns a scaled pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>RAT_ADD</b> adds two rational values.
+        </li>
+        <li>
+          <b>RAT_DIV</b> divides one rational value by another.
+        </li>
+        <li>
+          <b>RAT_FAREY</b> computes the N-th row of the Farey fraction table.
+        </li>
+        <li>
+          <b>RAT_FAREY2</b> computes the next row of the Farey fraction table.
+        </li>
+        <li>
+          <b>RAT_MUL</b> multiplies two fractions.
+        </li>
+        <li>
+          <b>RAT_NORMALIZE</b> normalizes a rational number.
+        </li>
+        <li>
+          <b>RAT_SUM_FORMULA</b> computes the formulas for sums of powers of integers.
+        </li>
+        <li>
+          <b>RAT_TO_CFRAC</b> converts a rational value to a continued fraction.
+        </li>
+        <li>
+          <b>RAT_TO_DEC</b> converts a rational to a decimal representation.
+        </li>
+        <li>
+          <b>RAT_TO_R8</b> converts rational values to real values.
+        </li>
+        <li>
+          <b>RAT_TO_S_LEFT</b> returns a left-justified representation of A/B.
+        </li>
+        <li>
+          <b>RAT_WIDTH</b> returns the "width" of a rational number.
+        </li>
+        <li>
+          <b>RATMAT_DET</b> finds the determinant of an N by N matrix of rational entries.
+        </li>
+        <li>
+          <b>RATMAT_PRINT</b> prints out rational vectors or matrices.
+        </li>
+        <li>
+          <b>REGRO_NEXT</b> computes restricted growth functions one at a time.
+        </li>
+        <li>
+          <b>RFRAC_TO_CFRAC</b> converts rational polynomial fractions to continued fractions.
+        </li>
+        <li>
+          <b>RFRAC_TO_JFRAC</b> converts a rational polynomial fraction to a J fraction.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>SCHROEDER</b> generates the Schroeder numbers.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>SUBCOMP_NEXT</b> computes the next subcomposition of N into K parts.
+        </li>
+        <li>
+          <b>SUBCOMPNZ_NEXT</b> computes the next subcomposition of N into K nonzero parts.
+        </li>
+        <li>
+          <b>SUBCOMPNZ2_NEXT</b> computes the next subcomposition of N into K nonzero parts.
+        </li>
+        <li>
+          <b>SUBSET_BY_SIZE_NEXT</b> returns all subsets of an N set, in order of size.
+        </li>
+        <li>
+          <b>SUBSET_GRAY_NEXT</b> generates all subsets of a set of order N, one at a time.
+        </li>
+        <li>
+          <b>SUBSET_GRAY_RANK</b> ranks a subset of an N set, using the Gray code ordering.
+        </li>
+        <li>
+          <b>SUBSET_GRAY_UNRANK</b> produces a subset of an N set of the given Gray code rank.
+        </li>
+        <li>
+          <b>SUBSET_LEX_NEXT</b> generates the subsets of a set of N elements, one at a time.
+        </li>
+        <li>
+          <b>SUBSET_RANDOM</b> selects a random subset of an N-set.
+        </li>
+        <li>
+          <b>SUBTRIANGLE_NEXT</b> computes the next subtriangle of a triangle.
+        </li>
+        <li>
+          <b>THUE_BINARY_NEXT</b> returns the next element in a binary Thue sequence.
+        </li>
+        <li>
+          <b>THUE_TERNARY_NEXT</b> returns the next element in a ternary Thue sequence.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TRIANG</b> renumbers elements in accordance with a partial ordering.
+        </li>
+        <li>
+          <b>TUPLE_NEXT</b> computes the next element of a tuple space.
+        </li>
+        <li>
+          <b>TUPLE_NEXT_FAST</b> computes the next element of a tuple space, "fast".
+        </li>
+        <li>
+          <b>TUPLE_NEXT_GE</b> computes the next "nondecreasing" element of a tuple space.
+        </li>
+        <li>
+          <b>TUPLE_NEXT2</b> computes the next element of an integer tuple space.
+        </li>
+        <li>
+          <b>UBVEC_ADD</b> adds two unsigned binary vectors.
+        </li>
+        <li>
+          <b>UBVEC_TO_UI4</b> makes an unsigned integer from an unsigned binary vector.
+        </li>
+        <li>
+          <b>UI4_TO_UBVEC</b> makes an unsigned binary vector from an unsigned integer.
+        </li>
+        <li>
+          <b>VEC_COLEX_NEXT</b> generates vectors in colex order.
+        </li>
+        <li>
+          <b>VEC_COLEX_NEXT2</b> generates vectors in colex order.
+        </li>
+        <li>
+          <b>VEC_COLEX_NEXT3</b> generates vectors in colex order.
+        </li>
+        <li>
+          <b>VEC_GRAY_RANK</b> computes the rank of a product space element.
+        </li>
+        <li>
+          <b>VEC_GRAY_UNRANK</b> computes the product space element of a given rank.
+        </li>
+        <li>
+          <b>VEC_GRAY_NEXT</b> computes the elements of a product space.
+        </li>
+        <li>
+          <b>VEC_LEX_NEXT</b> generates vectors in lex order.
+        </li>
+        <li>
+          <b>VEC_RANDOM</b> selects a random N-vector of integers modulo a given base.
+        </li>
+        <li>
+          <b>VECTOR_CONSTRAINED_NEXT</b> returns the "next" constrained vector.
+        </li>
+        <li>
+          <b>VECTOR_CONSTRAINED_NEXT2</b> returns the "next" constrained vector.
+        </li>
+        <li>
+          <b>VECTOR_CONSTRAINED_NEXT3</b> returns the "next" constrained vector.
+        </li>
+        <li>
+          <b>VECTOR_CONSTRAINED_NEXT4</b> returns the "next" constrained vector.
+        </li>
+        <li>
+          <b>VECTOR_CONSTRAINED_NEXT5</b> returns the "next" constrained vector.
+        </li>
+        <li>
+          <b>VECTOR_CONSTRAINED_NEXT6</b> returns the "next" constrained vector.
+        </li>
+        <li>
+          <b>VECTOR_CONSTRAINED_NEXT7</b> returns the "next" constrained vector.
+        </li>
+        <li>
+          <b>VECTOR_NEXT</b> returns the "next" integer vector between two ranges.
+        </li>
+        <li>
+          <b>YTB_ENUM</b> enumerates the Young tables of size N.
+        </li>
+        <li>
+          <b>YTB_NEXT</b> computes the next Young table for a given shape.
+        </li>
+        <li>
+          <b>YTB_PRINT</b> prints a Young table.
+        </li>
+        <li>
+          <b>YTB_RANDOM</b> selects a random Young table of a given shape.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 August 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

@@ -1,0 +1,241 @@
+<html>
+
+  <head>
+    <title>
+      FILE_ROW_REVERSE - Reversed Copy of a File
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FILE_ROW_REVERSE <br> Reversed Copy of a File
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FILE_ROW_REVERSE</b>
+      is a FORTRAN90 program which
+      makes a reversed copy of a text file.
+    </p>
+
+    <p>
+      For instance, the file
+      <pre>
+        I got up,
+        I ate breakfast,
+        Then I went to work.
+      </pre>
+      would become
+      <pre>
+        Then I went to work.
+        I ate breakfast,
+        I got up.
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <b>file_row_reverse</b> <i>input_filename</i> <i>output_filename</i>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/chrpak/chrpak.html">
+      CHRPAK</a>,
+      a FORTRAN90 library which
+      can work with characters and strings.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/cr2lf/cr2lf.html">
+      CR2LF</a>,
+      a C++ program which
+      reads a text file and replaces carriage returns by line feeds.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/crrm/crrm.html">
+      CRRM</a>,
+      a C++ program which
+      reads a text file and removes the carriage return character.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/deblank/deblank.html">
+      DEBLANK</a>,
+      a C++ program which
+      reads a text file and writes a copy which has no blank lines.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/decomment/decomment.html">
+      DECOMMENT</a>,
+      a C++ program which
+      makes a copy of a text file which contains no "comment" lines
+      (that begin with "#").
+    </p>
+
+    <p>
+      <a href = "../../f_src/file_merge/file_merge.html">
+      FILE_MERGE</a>,
+      a FORTRAN90 program which
+      merges two sorted files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/file_transpose/file_transpose.html">
+      FILE_TRANSPOSE</a>,
+      a FORTRAN90 program which
+      makes a "transposed" copy of a file, in which the I-th "word" of the J-th line
+      becomes the J-th word of the I-th line.
+    </p>
+
+    <p>
+      <a href = "../../f_src/filum/filum.html">
+      FILUM</a>,
+      a FORTRAN90 library which
+      can work with information in text files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/reformat/reformat.html">
+      REFORMAT</a>,
+      a FORTRAN90 program which
+      makes a copy of a file with a given number of "words" per line.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/reword/reword.html">
+      REWORD</a>,
+      a C++ program which
+      reads a text file and writes a copy which has a fixed number
+      of "words" per line.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns/table_columns.html">
+      TABLE_COLUMNS</a>,
+      a FORTRAN90 program which
+      reads a TABLE file of N points
+      in M dimensions and creates a new file by copying various
+      columns, with repetition and shuffling;
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns_permute/table_columns_permute.html">
+      TABLE_COLUMNS_PERMUTE</a>,
+      a FORTRAN90 program which
+      reads a TABLE file where each line has COL_NUM values, and permutes the columns
+      according to the user's prescription;
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/uncontrol/uncontrol.html">
+      UNCONTROL</a>,
+      a C++ program which
+      makes a copy of a text file which contains no control characters.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/wrap/wrap.html">
+      WRAP</a>,
+      a C++ program which
+      makes a copy of a text file
+      in which no line is longer than a user-specified wrap length.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/wrap2/wrap2.html">
+      WRAP2</a>,
+      a C++ program which
+      wraps long lines in a text file, but which
+      wraps some lines "early", so as to avoid breaking words.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "file_row_reverse.f90">file_row_reverse.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "file_row_reverse.sh">file_row_reverse.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "story.txt">story_text</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "story_reversed.txt">story_reversed.txt</a>,
+          the result of the command <b>"file_row_reverse story.txt story_reversed.txt"</b>.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FILE_ROW_REVERSE.
+        </li>
+        <li>
+          <b>FILE_REVERSE_ROWS</b> makes a copy of a file with the lines in reverse order.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 December 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

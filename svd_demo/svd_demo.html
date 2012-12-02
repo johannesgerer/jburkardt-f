@@ -1,0 +1,327 @@
+<html>
+
+  <head>
+    <title>
+      SVD_DEMO - Demonstration of the Singular Value Decomposition
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SVD_DEMO <br> Demonstration of the Singular Value Decomposition
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SVD_DEMO</b>
+      is a FORTRAN90 program which
+      demonstrates the computation of the singular value decomposition
+      and a few of its properties.
+    </p>
+
+    <p>
+      The singular value decomposition has uses in solving
+      overdetermined or underdetermined linear systems,
+      linear least squares problems, data compression,
+      the pseudoinverse matrix,
+      reduced order modeling, and
+      the accurate computation of matrix rank and null space.
+    </p>
+
+    <p>
+      The singular value decomposition of an M by N rectangular matrix A has
+      the form
+      <pre>
+        A(mxn) = U(mxm) * S(mxn) * V'(nxn)
+      </pre>
+      where
+      <ul>
+        <li>
+          U is an orthogonal matrix, whose columns are the left singular vectors;
+        </li>
+        <li>
+          S is a diagonal matrix, whose min(m,n) diagonal entries are the singular values;
+        </li>
+        <li>
+          V is an orthogonal matrix, whose columns are the right singular vectors;
+        </li>
+      </ul>
+      Note that the transpose of V is used in the decomposition, and that the diagonal matrix
+      S is typically stored as a vector.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>svd_demo</b> <i>m</i> <i>n</i> <i>seed</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>m</i> is the number of rows in the random matrix;
+        </li>
+        <li>
+          <i>n</i> is the number of columns in the random matrix;
+        </li>
+        <li>
+          <i>seed</i> an optional seed for the random number generator;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SVD_DEMO</b> is available in
+      <a href = "../../c_src/svd_demo/svd_demo.html">a C version</a> and
+      <a href = "../../cpp_src/svd_demo/svd_demo.html">a C++ version</a> and
+      <a href = "../../f77_src/svd_demo/svd_demo.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/svd_demo/svd_demo.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/svd_demo/svd_demo.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../datasets/fingerprints/fingerprints.html">
+      FINGERPRINTS</a>,
+      a dataset directory which
+      contains a few images of fingerprints.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lapack_examples/lapack_examples.html">
+      LAPACK_EXAMPLES</a>,
+      a FORTRAN90 program which
+      demonstrates the use of the LAPACK linear algebra library.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack/linpack.html">
+      LINPACK</a>,
+      a FORTRAN90 library which
+      includes routines to carry out the singular value
+      decomposition.
+    </p>
+
+    <p>
+      <a href = "../../f_src/svd_basis/svd_basis.html">
+      SVD_BASIS</a>,
+      a FORTRAN90 program which
+      computes a reduced basis for a collection of data vectors using the SVD.
+    </p>
+
+    <p>
+      <a href = "../../f_src/svd_truncated/svd_truncated.html">
+      SVD_TRUNCATED</a>,
+      a FORTRAN90 program which
+      demonstrates the computation of the reduced or truncated 
+      Singular Value Decomposition (SVD) that is useful for cases when
+      one dimension of the matrix is much smaller than the other.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms358/toms358.html">
+      TOMS358</a>,
+      a FORTRAN77 routine which
+      computes the singular value decomposition
+      for a complex matrix.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Edward Anderson, Zhaojun Bai, Christian Bischof, Susan Blackford,
+          James Demmel, Jack Dongarra, Jeremy Du Croz, Anne Greenbaum,
+          Sven Hammarling, Alan McKenney, Danny Sorensen,<br>
+          LAPACK User's Guide,<br>
+          Third Edition,<br>
+          SIAM, 1999,<br>
+          ISBN: 0898714478,<br>
+          LC: QA76.73.F25L36
+        </li>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1,<br>
+          LC: QA214.L56.
+        </li>
+        <li>
+          Gene Golub, Charles VanLoan,<br>
+          Matrix Computations,
+          Third Edition,<br>
+          Johns Hopkins, 1996,<br>
+          ISBN: 0-8018-4513-X,<br>
+          LC: QA188.G65.
+        </li>
+        <li>
+          David Kahaner, Cleve Moler, Steven Nash,<br>
+          Numerical Methods and Software,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0-13-627258-4,<br>
+          LC: TA345.K34.
+        </li>
+        <li>
+          Lloyd Trefethen, David Bau,<br>
+          Numerical Linear Algebra,<br>
+          SIAM, 1997,<br>
+          ISBN: 0-89871-361-7,<br>
+          LC: QA184.T74.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "svd_demo.f90">svd_demo.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "svd_demo.sh">svd_demo.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "svd_demo_5_3_output.txt">svd_demo_5_3_output.txt</a>,
+          the output from the command "svd_demo 5 3 123456789".
+        </li>
+        <li>
+          <a href = "svd_demo_5_5_output.txt">svd_demo_5_5_output.txt</a>,
+          the output from the command "svd_demo 5 5 123456789".
+        </li>
+        <li>
+          <a href = "svd_demo_5_8_output.txt">svd_demo_5_8_output.txt</a>,
+          the output from the command "svd_demo 5 8 123456789".
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for SVD_DEMO.
+        </li>
+        <li>
+          <b>COMPARE_LINPACK_LAPACK</b> compares the SVD's from LINPACK and LAPACK.
+        </li>
+        <li>
+          <b>GET_SEED</b> returns a seed for the random number generator.
+        </li>
+        <li>
+          <b>GET_SVD_LAPACK</b> gets the SVD of a matrix using a call to LAPACK.
+        </li>
+        <li>
+          <b>GET_SVD_LINPACK</b> gets the SVD of a matrix using a call to LINPACK.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a pseudorandom I4.
+        </li>
+        <li>
+          <b>PSEUDO_INVERSE</b> computes the pseudoinverse.
+        </li>
+        <li>
+          <b>PSEUDO_LINEAR_SOLVE_TEST</b> uses the pseudoinverse for linear systems.
+        </li>
+        <li>
+          <b>PSEUDO_PRODUCT_TEST</b> examines the products A*A+ and A+*A.
+        </li>
+        <li>
+          <b>R4_UNIFORM_01</b> returns a unit pseudorandom R4.
+        </li>
+        <li>
+          <b>R8MAT_DIF_FRO</b> returns the Frobenius norm of the difference of two R8MAT's.
+        </li>
+        <li>
+          <b>R8MAT_NORM_FRO</b> returns the Frobenius norm of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM_01</b> returns a unit pseudorandom R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_NORM_L2</b> returns the L2 norm of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01:</b> real ( kind = 8 ) vector of unit pseudorandom values.
+        </li>
+        <li>
+          <b>RANK_ONE_PRINT_TEST</b> prints the sums of rank one matrices.
+        </li>
+        <li>
+          <b>RANK_ONE_TEST</b> compares A to the sum of rank one matrices.
+        </li>
+        <li>
+          <b>S_TO_I</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>SVD_PRODUCT_TEST</b> tests that A = U * S * V.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 September 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

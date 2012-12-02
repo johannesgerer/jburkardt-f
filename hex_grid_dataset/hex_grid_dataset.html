@@ -1,0 +1,270 @@
+<html>
+
+  <head>
+    <title>
+      HEX_GRID_DATASET - Interactive Creation of Hexagonal Grid Datasets
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      HEX_GRID_DATASET <br> Interactive Creation of Hexagonal Grid Datasets
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>HEX_GRID_DATASET</b>
+      is a FORTRAN90 program which
+      allows the user to interactively
+      create a dataset of points on a hexagonal grid.
+    </p>
+
+    <p>
+      The user specifies just a few quantities:
+      <ul>
+        <li>
+          <b>(X1,Y1)</b>, the lower left coordinate of a box.
+        </li>
+        <li>
+          <b>(X2,Y2)</b>, the upper right coordinate of a box.
+        </li>
+        <li>
+          <b>NODES_PER_LAYER</b>, the number of nodes to use on the
+          first line, from <b>(X1,Y1)</b> to <b>(X2,Y1)</b>.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      This is all it takes to define the grid.  Note that the points
+      <b>(X1,Y1)</b> and <b>(X2,Y1)</b> will be grid points, but generally
+      the grid will not quite reach <b>(X1,Y2)</b> and <b>(X2,Y2)</b>.
+    </p>
+
+    <p>
+      Once the dataset is defined and computed, it is written to a file.
+      The user may then construct another dataset, or terminate the program.
+    </p>
+
+    <p>
+      Here is some more information on the construction of the grid:
+    </p>
+
+    <p>
+      The hexagonal grid is defined on a coordinate box whose lower left
+      corner is (X1,Y1) and whose upper right corner is (X2,Y2).
+    </p>
+
+    <p>
+      All nodes of the grid lie on one of <b>LAYERS</b> horizontal lines.
+      The first of these lines is the line from (X1,Y1) to (X2,Y1).
+      Each successive line is a distance <b>HY</b> units higher.
+    </p>
+
+    <p>
+      On all the odd numbered lines, there are <b>NODES_PER_LAYER</b> points,
+      equally spaced from X1 to X2, with a spacing of <b>HX</b>.
+    </p>
+
+    <p>
+      On the even numbered lines, there are <b>NODES_PER_LAYER</b>-1 points,
+      whose values are the midpoints of successive intervals on
+      an odd numbered line.  (The grid is staggered).
+    </p>
+
+    <p>
+      In order to maintain the hexagonal structure, the following relationship
+      is required between <b>HX</b> and <b>HY</b>:
+      <pre>
+        <b>HY</b> = <b>HX</b> * sqrt ( 3 ) / 2.
+      </pre>
+    </p>
+
+    <p>
+      Here is an image of a hexagonal grid with <b>NODES_PER_ROW</b> = 21
+      and <b>LAYERS</b> = 24, and a total of <b>N</b> = 492 nodes.
+      <img src = "../../datasets/hex_grid/hex_grid_01_21_24_492.png"
+           height = "400"
+           width = "400">
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>HEX_GRID_DATASET</b> is available in
+      <a href = "../../cpp_src/hex_grid_dataset/hex_grid_dataset.html">a C++ version</a> and
+      <a href = "../../f_src/hex_grid_dataset/hex_grid_dataset.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/hex_grid_dataset/hex_grid_dataset.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/faure_dataset/faure_dataset.html">
+      FAURE_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Faure quasirandom dataset;
+    </p>
+
+    <p>
+      <a href = "../../f_src/grid_dataset/grid_dataset.html">
+      GRID_DATASET</a>,
+      a FORTRAN90 program which
+      creates a grid sequence and writes it to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid/hex_grid.html">
+      HEX_GRID</a>,
+      a FORTRAN90 library which
+      computes elements of a hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid_angle/hex_grid_angle.html">
+      HEX_GRID_ANGLE</a>,
+      a FORTRAN90 library which
+      computes elements of an angled hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_center_dataset/latin_center_dataset.html">
+      LATIN_CENTER_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Latin Center Hypercube dataset;
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_edge_dataset/latin_edge_dataset.html">
+      LATIN_EDGE_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Latin Edge Hypercube dataset;
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_random_dataset/latin_random_dataset.html">
+      LATIN_RANDOM_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Latin Random Hypercube dataset;
+    </p>
+
+    <p>
+      <a href = "../../f_src/niederreiter2_dataset/niederreiter2_dataset.html">
+      NIEDERREITER2_DATASET</a>,
+      a FORTRAN90 program which
+      creates a Niederreiter quasirandom dataset with base 2;
+    </p>
+
+    <p>
+      <a href = "../../f_src/normal_dataset/normal_dataset.html">
+      NORMAL_DATASET</a>,
+      a FORTRAN90 program which
+      generates a dataset of multivariate normal pseudorandom values and writes them to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sobol_dataset/sobol_dataset.html">
+      SOBOL_DATASET</a>,
+      a FORTRAN90 program which
+      computes a Sobol quasirandom sequence and writes it to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform_dataset/uniform_dataset.html">
+      UNIFORM_DATASET</a>,
+      a FORTRAN90 program which
+      generates a dataset of multivariate uniform pseudorandom values and writes them to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/van_der_corput_dataset/van_der_corput_dataset.html">
+      VAN_DER_CORPUT_DATASET</a>,
+      a FORTRAN90 program which
+      creates a van der Corput quasirandom sequence and writes it to a file.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "hex_grid_dataset.f90">hex_grid_dataset.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "hex_grid_dataset.sh">hex_grid_dataset.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "hex_grid_dataset_input.txt">hex_grid_dataset_input.txt</a>,
+          sample interactive input.
+        </li>
+        <li>
+          <a href = "hex_grid_dataset_output.txt">hex_grid_dataset_output.txt</a>,
+          output from the interactive run.
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/hex_grid_10_18_171.txt">
+          hex_grid_10_18_171.txt</a>,
+          a sample hex grid dataset, with 10 nodes per layer, 18 layers,
+          and 171 points.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for HEX_GRID_DATASET.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 August 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

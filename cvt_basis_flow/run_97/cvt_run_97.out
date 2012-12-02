@@ -1,0 +1,1086 @@
+June 28 2005   8:42:25.165 AM
+ 
+CVT_BASIS_FLOW
+  Arrange a set of PDE solution data into clusters.
+ 
+  This NEW version of the code handles up to
+    10 families of data.
+ 
+  Null cluster policy:
+  0, do nothing, accept null clusters;
+  1, reset center to a random data point;
+  2, reset center to random point in hull;
+ 
+  NULL_CLUSTER_POLICY =      1
+ 
+RANDOM_INITIALIZE
+  Initialize RANDOM_NUMBER with user SEED =    123456789
+ 
+  The variable RUN_TYPE determines preprocessing:
+ 
+* 1, NO steady state file, no preprocessing;
+ 
+* 2, NO steady state file, no preprocessing;
+ 
+* 3,    steady state file;
+    subtract 1/3 SS from solution  1
+    subtract 5/3 SS from solutions 2 through 201
+    subtract 1/3 SS from solutions 202 through 401.
+    do NOT normalize the data.
+    use all the data.
+ 
+* 4,    steady state file;
+    subtract 1/3 SS from solution  1
+    subtract 5/3 SS from solutions 2 through 201
+    subtract 1/3 SS from solutions 202 through 401.
+    do NOT normalize the data;
+    then discard the EVEN numbered data files.
+ 
+* 5,    steady state file;
+    subtract 1/3 SS from solution  1
+    subtract 5/3 SS from solutions 2 through 201
+    subtract 1/3 SS from solutions 202 through 401.
+    then NORMALIZE the data;
+    use all the data.
+ 
+* 6,    steady state file;
+    subtract 5/3 SS from solutions 1 through 250
+    subtract 1/3 SS from solutions 251 through 500.
+    do NOT normalize the data.
+    use all the data.
+ 
+* 7,    steady state file;
+    subtract 5/3 SS from solutions 1 through 250
+    subtract 1/3 SS from solutions 251 through 500.
+    then NORMALIZE the data;
+    use all the data.
+ 
+* 8,    steady state file;
+    subtract 5/3 SS from solutions 1 through 250
+    subtract 1/3 SS from solutions 251 through 500.
+    do NOT normalize the data.
+    then discard the ODD numbered data files.
+ 
+* 9,    steady state file;
+    subtract 5/3 SS from solutions 1 through 400
+    subtract 1/3 SS from solutions 401 through 800.
+    do NOT normalize the data.
+    use all the data.
+ 
+What is the run type (1 through 9)?
+ 
+  RUN_TYPE =      9
+ 
+  What is the XY data file name?
+ 
+  The file "/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/xy.dat" contains 3721 lines.
+ 
+  X minimum :    0.00000    
+  X maximum :    1.00000    
+  Y minimum :    0.00000    
+  Y maximum :    1.00000    
+ 
+What is the name of the steady state file or "none"?
+ 
+  Steady state information was read from
+  the file "/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/steady.dat".
+ 
+  Steady max norm =   0.300000    
+  Steady l2 norm =     5.05292    
+ 
+  It is time to read sets of solution files.
+ 
+  We assume that a series of solution files exists,
+  with "consecutive" names, like
+    fred001.txt, fred002,txt, ...
+  Just specify the FIRST name in the series, and
+  the program will read them all.
+ 
+  The program can read another series of data if
+  you specify yet another first name, or you can
+  type "none" when there are no more file series.
+ 
+ 
+What is the first solution file (in the first series)?
+ 
+What is the first solution file (in the NEXT series) or "none"?
+ 
+  The number of initial solution files is      1
+  The total number of solution files is    800
+ 
+  The data is stored in an M by N matrix.
+ 
+  The "spatial" dimension M is     7442
+  The number of data points N is    800
+ 
+ 
+  Processing files starting with "/a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up001.txt".
+       1  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up001.txt
+       2  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up002.txt
+       3  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up003.txt
+       4  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up004.txt
+       5  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up005.txt
+       6  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up006.txt
+       7  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up007.txt
+       8  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up008.txt
+       9  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up009.txt
+      10  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up010.txt
+      11  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up011.txt
+      12  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up012.txt
+      13  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up013.txt
+      14  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up014.txt
+      15  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up015.txt
+      16  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up016.txt
+      17  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up017.txt
+      18  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up018.txt
+      19  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up019.txt
+      20  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up020.txt
+      21  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up021.txt
+      22  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up022.txt
+      23  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up023.txt
+      24  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up024.txt
+      25  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up025.txt
+      26  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up026.txt
+      27  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up027.txt
+      28  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up028.txt
+      29  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up029.txt
+      30  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up030.txt
+      31  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up031.txt
+      32  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up032.txt
+      33  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up033.txt
+      34  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up034.txt
+      35  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up035.txt
+      36  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up036.txt
+      37  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up037.txt
+      38  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up038.txt
+      39  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up039.txt
+      40  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up040.txt
+      41  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up041.txt
+      42  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up042.txt
+      43  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up043.txt
+      44  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up044.txt
+      45  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up045.txt
+      46  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up046.txt
+      47  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up047.txt
+      48  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up048.txt
+      49  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up049.txt
+      50  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up050.txt
+      51  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up051.txt
+      52  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up052.txt
+      53  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up053.txt
+      54  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up054.txt
+      55  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up055.txt
+      56  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up056.txt
+      57  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up057.txt
+      58  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up058.txt
+      59  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up059.txt
+      60  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up060.txt
+      61  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up061.txt
+      62  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up062.txt
+      63  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up063.txt
+      64  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up064.txt
+      65  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up065.txt
+      66  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up066.txt
+      67  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up067.txt
+      68  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up068.txt
+      69  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up069.txt
+      70  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up070.txt
+      71  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up071.txt
+      72  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up072.txt
+      73  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up073.txt
+      74  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up074.txt
+      75  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up075.txt
+      76  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up076.txt
+      77  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up077.txt
+      78  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up078.txt
+      79  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up079.txt
+      80  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up080.txt
+      81  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up081.txt
+      82  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up082.txt
+      83  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up083.txt
+      84  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up084.txt
+      85  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up085.txt
+      86  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up086.txt
+      87  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up087.txt
+      88  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up088.txt
+      89  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up089.txt
+      90  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up090.txt
+      91  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up091.txt
+      92  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up092.txt
+      93  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up093.txt
+      94  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up094.txt
+      95  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up095.txt
+      96  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up096.txt
+      97  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up097.txt
+      98  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up098.txt
+      99  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up099.txt
+     100  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up100.txt
+     101  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up101.txt
+     102  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up102.txt
+     103  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up103.txt
+     104  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up104.txt
+     105  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up105.txt
+     106  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up106.txt
+     107  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up107.txt
+     108  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up108.txt
+     109  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up109.txt
+     110  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up110.txt
+     111  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up111.txt
+     112  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up112.txt
+     113  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up113.txt
+     114  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up114.txt
+     115  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up115.txt
+     116  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up116.txt
+     117  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up117.txt
+     118  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up118.txt
+     119  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up119.txt
+     120  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up120.txt
+     121  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up121.txt
+     122  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up122.txt
+     123  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up123.txt
+     124  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up124.txt
+     125  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up125.txt
+     126  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up126.txt
+     127  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up127.txt
+     128  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up128.txt
+     129  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up129.txt
+     130  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up130.txt
+     131  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up131.txt
+     132  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up132.txt
+     133  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up133.txt
+     134  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up134.txt
+     135  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up135.txt
+     136  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up136.txt
+     137  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up137.txt
+     138  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up138.txt
+     139  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up139.txt
+     140  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up140.txt
+     141  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up141.txt
+     142  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up142.txt
+     143  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up143.txt
+     144  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up144.txt
+     145  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up145.txt
+     146  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up146.txt
+     147  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up147.txt
+     148  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up148.txt
+     149  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up149.txt
+     150  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up150.txt
+     151  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up151.txt
+     152  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up152.txt
+     153  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up153.txt
+     154  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up154.txt
+     155  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up155.txt
+     156  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up156.txt
+     157  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up157.txt
+     158  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up158.txt
+     159  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up159.txt
+     160  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up160.txt
+     161  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up161.txt
+     162  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up162.txt
+     163  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up163.txt
+     164  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up164.txt
+     165  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up165.txt
+     166  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up166.txt
+     167  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up167.txt
+     168  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up168.txt
+     169  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up169.txt
+     170  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up170.txt
+     171  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up171.txt
+     172  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up172.txt
+     173  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up173.txt
+     174  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up174.txt
+     175  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up175.txt
+     176  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up176.txt
+     177  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up177.txt
+     178  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up178.txt
+     179  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up179.txt
+     180  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up180.txt
+     181  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up181.txt
+     182  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up182.txt
+     183  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up183.txt
+     184  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up184.txt
+     185  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up185.txt
+     186  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up186.txt
+     187  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up187.txt
+     188  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up188.txt
+     189  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up189.txt
+     190  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up190.txt
+     191  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up191.txt
+     192  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up192.txt
+     193  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up193.txt
+     194  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up194.txt
+     195  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up195.txt
+     196  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up196.txt
+     197  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up197.txt
+     198  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up198.txt
+     199  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up199.txt
+     200  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up200.txt
+     201  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up201.txt
+     202  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up202.txt
+     203  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up203.txt
+     204  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up204.txt
+     205  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up205.txt
+     206  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up206.txt
+     207  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up207.txt
+     208  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up208.txt
+     209  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up209.txt
+     210  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up210.txt
+     211  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up211.txt
+     212  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up212.txt
+     213  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up213.txt
+     214  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up214.txt
+     215  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up215.txt
+     216  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up216.txt
+     217  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up217.txt
+     218  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up218.txt
+     219  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up219.txt
+     220  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up220.txt
+     221  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up221.txt
+     222  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up222.txt
+     223  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up223.txt
+     224  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up224.txt
+     225  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up225.txt
+     226  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up226.txt
+     227  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up227.txt
+     228  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up228.txt
+     229  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up229.txt
+     230  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up230.txt
+     231  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up231.txt
+     232  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up232.txt
+     233  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up233.txt
+     234  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up234.txt
+     235  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up235.txt
+     236  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up236.txt
+     237  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up237.txt
+     238  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up238.txt
+     239  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up239.txt
+     240  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up240.txt
+     241  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up241.txt
+     242  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up242.txt
+     243  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up243.txt
+     244  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up244.txt
+     245  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up245.txt
+     246  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up246.txt
+     247  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up247.txt
+     248  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up248.txt
+     249  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up249.txt
+     250  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up250.txt
+     251  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up251.txt
+     252  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up252.txt
+     253  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up253.txt
+     254  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up254.txt
+     255  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up255.txt
+     256  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up256.txt
+     257  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up257.txt
+     258  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up258.txt
+     259  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up259.txt
+     260  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up260.txt
+     261  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up261.txt
+     262  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up262.txt
+     263  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up263.txt
+     264  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up264.txt
+     265  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up265.txt
+     266  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up266.txt
+     267  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up267.txt
+     268  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up268.txt
+     269  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up269.txt
+     270  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up270.txt
+     271  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up271.txt
+     272  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up272.txt
+     273  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up273.txt
+     274  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up274.txt
+     275  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up275.txt
+     276  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up276.txt
+     277  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up277.txt
+     278  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up278.txt
+     279  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up279.txt
+     280  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up280.txt
+     281  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up281.txt
+     282  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up282.txt
+     283  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up283.txt
+     284  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up284.txt
+     285  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up285.txt
+     286  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up286.txt
+     287  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up287.txt
+     288  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up288.txt
+     289  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up289.txt
+     290  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up290.txt
+     291  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up291.txt
+     292  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up292.txt
+     293  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up293.txt
+     294  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up294.txt
+     295  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up295.txt
+     296  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up296.txt
+     297  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up297.txt
+     298  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up298.txt
+     299  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up299.txt
+     300  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up300.txt
+     301  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up301.txt
+     302  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up302.txt
+     303  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up303.txt
+     304  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up304.txt
+     305  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up305.txt
+     306  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up306.txt
+     307  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up307.txt
+     308  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up308.txt
+     309  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up309.txt
+     310  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up310.txt
+     311  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up311.txt
+     312  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up312.txt
+     313  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up313.txt
+     314  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up314.txt
+     315  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up315.txt
+     316  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up316.txt
+     317  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up317.txt
+     318  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up318.txt
+     319  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up319.txt
+     320  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up320.txt
+     321  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up321.txt
+     322  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up322.txt
+     323  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up323.txt
+     324  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up324.txt
+     325  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up325.txt
+     326  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up326.txt
+     327  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up327.txt
+     328  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up328.txt
+     329  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up329.txt
+     330  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up330.txt
+     331  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up331.txt
+     332  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up332.txt
+     333  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up333.txt
+     334  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up334.txt
+     335  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up335.txt
+     336  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up336.txt
+     337  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up337.txt
+     338  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up338.txt
+     339  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up339.txt
+     340  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up340.txt
+     341  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up341.txt
+     342  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up342.txt
+     343  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up343.txt
+     344  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up344.txt
+     345  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up345.txt
+     346  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up346.txt
+     347  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up347.txt
+     348  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up348.txt
+     349  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up349.txt
+     350  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up350.txt
+     351  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up351.txt
+     352  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up352.txt
+     353  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up353.txt
+     354  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up354.txt
+     355  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up355.txt
+     356  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up356.txt
+     357  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up357.txt
+     358  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up358.txt
+     359  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up359.txt
+     360  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up360.txt
+     361  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up361.txt
+     362  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up362.txt
+     363  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up363.txt
+     364  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up364.txt
+     365  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up365.txt
+     366  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up366.txt
+     367  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up367.txt
+     368  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up368.txt
+     369  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up369.txt
+     370  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up370.txt
+     371  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up371.txt
+     372  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up372.txt
+     373  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up373.txt
+     374  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up374.txt
+     375  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up375.txt
+     376  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up376.txt
+     377  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up377.txt
+     378  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up378.txt
+     379  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up379.txt
+     380  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up380.txt
+     381  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up381.txt
+     382  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up382.txt
+     383  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up383.txt
+     384  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up384.txt
+     385  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up385.txt
+     386  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up386.txt
+     387  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up387.txt
+     388  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up388.txt
+     389  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up389.txt
+     390  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up390.txt
+     391  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up391.txt
+     392  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up392.txt
+     393  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up393.txt
+     394  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up394.txt
+     395  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up395.txt
+     396  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up396.txt
+     397  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up397.txt
+     398  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up398.txt
+     399  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up399.txt
+     400  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up400.txt
+     401  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up401.txt
+     402  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up402.txt
+     403  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up403.txt
+     404  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up404.txt
+     405  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up405.txt
+     406  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up406.txt
+     407  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up407.txt
+     408  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up408.txt
+     409  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up409.txt
+     410  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up410.txt
+     411  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up411.txt
+     412  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up412.txt
+     413  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up413.txt
+     414  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up414.txt
+     415  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up415.txt
+     416  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up416.txt
+     417  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up417.txt
+     418  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up418.txt
+     419  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up419.txt
+     420  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up420.txt
+     421  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up421.txt
+     422  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up422.txt
+     423  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up423.txt
+     424  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up424.txt
+     425  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up425.txt
+     426  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up426.txt
+     427  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up427.txt
+     428  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up428.txt
+     429  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up429.txt
+     430  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up430.txt
+     431  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up431.txt
+     432  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up432.txt
+     433  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up433.txt
+     434  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up434.txt
+     435  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up435.txt
+     436  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up436.txt
+     437  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up437.txt
+     438  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up438.txt
+     439  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up439.txt
+     440  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up440.txt
+     441  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up441.txt
+     442  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up442.txt
+     443  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up443.txt
+     444  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up444.txt
+     445  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up445.txt
+     446  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up446.txt
+     447  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up447.txt
+     448  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up448.txt
+     449  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up449.txt
+     450  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up450.txt
+     451  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up451.txt
+     452  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up452.txt
+     453  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up453.txt
+     454  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up454.txt
+     455  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up455.txt
+     456  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up456.txt
+     457  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up457.txt
+     458  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up458.txt
+     459  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up459.txt
+     460  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up460.txt
+     461  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up461.txt
+     462  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up462.txt
+     463  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up463.txt
+     464  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up464.txt
+     465  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up465.txt
+     466  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up466.txt
+     467  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up467.txt
+     468  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up468.txt
+     469  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up469.txt
+     470  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up470.txt
+     471  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up471.txt
+     472  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up472.txt
+     473  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up473.txt
+     474  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up474.txt
+     475  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up475.txt
+     476  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up476.txt
+     477  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up477.txt
+     478  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up478.txt
+     479  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up479.txt
+     480  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up480.txt
+     481  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up481.txt
+     482  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up482.txt
+     483  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up483.txt
+     484  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up484.txt
+     485  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up485.txt
+     486  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up486.txt
+     487  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up487.txt
+     488  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up488.txt
+     489  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up489.txt
+     490  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up490.txt
+     491  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up491.txt
+     492  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up492.txt
+     493  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up493.txt
+     494  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up494.txt
+     495  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up495.txt
+     496  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up496.txt
+     497  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up497.txt
+     498  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up498.txt
+     499  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up499.txt
+     500  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up500.txt
+     501  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up501.txt
+     502  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up502.txt
+     503  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up503.txt
+     504  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up504.txt
+     505  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up505.txt
+     506  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up506.txt
+     507  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up507.txt
+     508  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up508.txt
+     509  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up509.txt
+     510  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up510.txt
+     511  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up511.txt
+     512  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up512.txt
+     513  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up513.txt
+     514  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up514.txt
+     515  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up515.txt
+     516  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up516.txt
+     517  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up517.txt
+     518  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up518.txt
+     519  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up519.txt
+     520  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up520.txt
+     521  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up521.txt
+     522  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up522.txt
+     523  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up523.txt
+     524  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up524.txt
+     525  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up525.txt
+     526  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up526.txt
+     527  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up527.txt
+     528  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up528.txt
+     529  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up529.txt
+     530  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up530.txt
+     531  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up531.txt
+     532  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up532.txt
+     533  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up533.txt
+     534  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up534.txt
+     535  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up535.txt
+     536  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up536.txt
+     537  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up537.txt
+     538  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up538.txt
+     539  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up539.txt
+     540  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up540.txt
+     541  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up541.txt
+     542  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up542.txt
+     543  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up543.txt
+     544  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up544.txt
+     545  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up545.txt
+     546  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up546.txt
+     547  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up547.txt
+     548  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up548.txt
+     549  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up549.txt
+     550  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up550.txt
+     551  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up551.txt
+     552  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up552.txt
+     553  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up553.txt
+     554  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up554.txt
+     555  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up555.txt
+     556  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up556.txt
+     557  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up557.txt
+     558  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up558.txt
+     559  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up559.txt
+     560  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up560.txt
+     561  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up561.txt
+     562  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up562.txt
+     563  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up563.txt
+     564  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up564.txt
+     565  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up565.txt
+     566  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up566.txt
+     567  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up567.txt
+     568  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up568.txt
+     569  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up569.txt
+     570  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up570.txt
+     571  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up571.txt
+     572  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up572.txt
+     573  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up573.txt
+     574  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up574.txt
+     575  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up575.txt
+     576  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up576.txt
+     577  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up577.txt
+     578  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up578.txt
+     579  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up579.txt
+     580  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up580.txt
+     581  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up581.txt
+     582  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up582.txt
+     583  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up583.txt
+     584  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up584.txt
+     585  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up585.txt
+     586  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up586.txt
+     587  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up587.txt
+     588  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up588.txt
+     589  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up589.txt
+     590  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up590.txt
+     591  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up591.txt
+     592  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up592.txt
+     593  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up593.txt
+     594  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up594.txt
+     595  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up595.txt
+     596  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up596.txt
+     597  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up597.txt
+     598  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up598.txt
+     599  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up599.txt
+     600  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up600.txt
+     601  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up601.txt
+     602  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up602.txt
+     603  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up603.txt
+     604  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up604.txt
+     605  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up605.txt
+     606  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up606.txt
+     607  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up607.txt
+     608  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up608.txt
+     609  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up609.txt
+     610  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up610.txt
+     611  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up611.txt
+     612  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up612.txt
+     613  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up613.txt
+     614  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up614.txt
+     615  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up615.txt
+     616  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up616.txt
+     617  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up617.txt
+     618  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up618.txt
+     619  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up619.txt
+     620  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up620.txt
+     621  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up621.txt
+     622  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up622.txt
+     623  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up623.txt
+     624  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up624.txt
+     625  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up625.txt
+     626  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up626.txt
+     627  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up627.txt
+     628  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up628.txt
+     629  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up629.txt
+     630  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up630.txt
+     631  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up631.txt
+     632  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up632.txt
+     633  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up633.txt
+     634  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up634.txt
+     635  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up635.txt
+     636  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up636.txt
+     637  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up637.txt
+     638  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up638.txt
+     639  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up639.txt
+     640  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up640.txt
+     641  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up641.txt
+     642  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up642.txt
+     643  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up643.txt
+     644  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up644.txt
+     645  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up645.txt
+     646  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up646.txt
+     647  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up647.txt
+     648  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up648.txt
+     649  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up649.txt
+     650  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up650.txt
+     651  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up651.txt
+     652  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up652.txt
+     653  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up653.txt
+     654  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up654.txt
+     655  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up655.txt
+     656  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up656.txt
+     657  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up657.txt
+     658  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up658.txt
+     659  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up659.txt
+     660  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up660.txt
+     661  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up661.txt
+     662  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up662.txt
+     663  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up663.txt
+     664  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up664.txt
+     665  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up665.txt
+     666  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up666.txt
+     667  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up667.txt
+     668  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up668.txt
+     669  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up669.txt
+     670  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up670.txt
+     671  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up671.txt
+     672  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up672.txt
+     673  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up673.txt
+     674  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up674.txt
+     675  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up675.txt
+     676  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up676.txt
+     677  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up677.txt
+     678  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up678.txt
+     679  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up679.txt
+     680  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up680.txt
+     681  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up681.txt
+     682  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up682.txt
+     683  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up683.txt
+     684  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up684.txt
+     685  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up685.txt
+     686  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up686.txt
+     687  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up687.txt
+     688  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up688.txt
+     689  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up689.txt
+     690  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up690.txt
+     691  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up691.txt
+     692  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up692.txt
+     693  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up693.txt
+     694  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up694.txt
+     695  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up695.txt
+     696  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up696.txt
+     697  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up697.txt
+     698  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up698.txt
+     699  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up699.txt
+     700  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up700.txt
+     701  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up701.txt
+     702  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up702.txt
+     703  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up703.txt
+     704  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up704.txt
+     705  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up705.txt
+     706  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up706.txt
+     707  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up707.txt
+     708  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up708.txt
+     709  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up709.txt
+     710  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up710.txt
+     711  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up711.txt
+     712  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up712.txt
+     713  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up713.txt
+     714  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up714.txt
+     715  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up715.txt
+     716  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up716.txt
+     717  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up717.txt
+     718  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up718.txt
+     719  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up719.txt
+     720  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up720.txt
+     721  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up721.txt
+     722  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up722.txt
+     723  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up723.txt
+     724  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up724.txt
+     725  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up725.txt
+     726  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up726.txt
+     727  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up727.txt
+     728  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up728.txt
+     729  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up729.txt
+     730  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up730.txt
+     731  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up731.txt
+     732  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up732.txt
+     733  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up733.txt
+     734  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up734.txt
+     735  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up735.txt
+     736  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up736.txt
+     737  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up737.txt
+     738  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up738.txt
+     739  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up739.txt
+     740  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up740.txt
+     741  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up741.txt
+     742  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up742.txt
+     743  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up743.txt
+     744  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up744.txt
+     745  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up745.txt
+     746  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up746.txt
+     747  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up747.txt
+     748  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up748.txt
+     749  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up749.txt
+     750  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up750.txt
+     751  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up751.txt
+     752  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up752.txt
+     753  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up753.txt
+     754  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up754.txt
+     755  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up755.txt
+     756  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up756.txt
+     757  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up757.txt
+     758  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up758.txt
+     759  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up759.txt
+     760  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up760.txt
+     761  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up761.txt
+     762  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up762.txt
+     763  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up763.txt
+     764  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up764.txt
+     765  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up765.txt
+     766  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up766.txt
+     767  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up767.txt
+     768  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up768.txt
+     769  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up769.txt
+     770  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up770.txt
+     771  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up771.txt
+     772  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up772.txt
+     773  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up773.txt
+     774  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up774.txt
+     775  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up775.txt
+     776  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up776.txt
+     777  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up777.txt
+     778  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up778.txt
+     779  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up779.txt
+     780  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up780.txt
+     781  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up781.txt
+     782  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up782.txt
+     783  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up783.txt
+     784  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up784.txt
+     785  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up785.txt
+     786  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up786.txt
+     787  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up787.txt
+     788  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up788.txt
+     789  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up789.txt
+     790  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up790.txt
+     791  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up791.txt
+     792  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up792.txt
+     793  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up793.txt
+     794  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up794.txt
+     795  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up795.txt
+     796  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up796.txt
+     797  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up797.txt
+     798  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up798.txt
+     799  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up799.txt
+     800  /a/fs.csit.fsu.edu/u8/users/burkardt/public_html/datasets/inout_flow2/up800.txt
+ 
+  All the data has been read into POINT.
+ 
+Enter lower and upper number of clusters
+ DEBUG: CLUSTER_LO =            4  cluster_hi =            4
+ 
+  The program will try to determine the minimum energy
+  of a clustering, for cluster sizes in the range:
+       4     4
+ 
+Enter the number of different random cluster configurations to check
+ 
+  For each number of clusters, the number of
+  distinct initial random configurations to be checked
+  will be      15
+ 
+Enter the number of energy iterations
+ 
+  For each initial random configuration, the number of
+  times the program will recompute the cluster centers,
+  cluster components, and energy is     30
+ 
+Enter element file for mass matrix preconditioning or "none".
+ 
+  Number of elements =   1800
+  Number of nodes per element =      6
+ 
+  The bandwidth of the matrix is    125
+ 
+  Compute the mass matrix.
+ 
+  Cholesky-factor the mass matrix.
+ 
+Enter 0 to use raw data, 1 to use normalized data.
+ 
+NORMAL = 0
+  Data will NOT be normalized.
+ 
+Number of clusters allowed:      4
+ 
+     1
+Initial_RAW    0.557684         0
+HMEANS_RAW     0.138738        31
+KMEANS_RAW     0.138489         4
+ 
+     2
+Initial_RAW    0.576977         0
+HMEANS_RAW     0.167206        31
+KMEANS_RAW     0.138489         7
+ 
+     3
+Initial_RAW    0.583013         0
+HMEANS_RAW     0.161533        31
+KMEANS_RAW     0.138489         6
+ 
+     4
+Initial_RAW    0.572625         0
+HMEANS_RAW     0.139282        31
+KMEANS_RAW     0.138489         5
+ 
+     5
+Initial_RAW    0.582351         0
+HMEANS_RAW     0.135918        20
+KMEANS_RAW     0.135914         2
+ 
+     6
+Initial_RAW    0.588012         0
+HMEANS_RAW     0.138516        24
+KMEANS_RAW     0.138489         2
+ 
+     7
+Initial_RAW    0.588905         0
+HMEANS_RAW     0.147610        12
+KMEANS_RAW     0.147593         2
+ 
+     8
+Initial_RAW    0.588545         0
+HMEANS_RAW     0.161265        31
+KMEANS_RAW     0.135914         8
+ 
+     9
+Initial_RAW    0.589273         0
+HMEANS_RAW     0.161361        31
+KMEANS_RAW     0.135914         8
+ 
+    10
+Initial_RAW    0.581292         0
+HMEANS_RAW     0.138516        14
+KMEANS_RAW     0.138489         2
+ 
+    11
+Initial_RAW    0.582268         0
+HMEANS_RAW     0.139282        31
+KMEANS_RAW     0.138489         5
+ 
+    12
+Initial_RAW    0.587419         0
+HMEANS_RAW     0.167342        31
+KMEANS_RAW     0.138489         7
+ 
+    13
+Initial_RAW    0.583705         0
+HMEANS_RAW     0.144200        13
+KMEANS_RAW     0.144179         2
+ 
+    14
+Initial_RAW    0.593203         0
+HMEANS_RAW     0.138738        31
+KMEANS_RAW     0.138489         4
+ 
+    15
+Initial_RAW    0.578265         0
+HMEANS_RAW     0.138901        31
+KMEANS_RAW     0.138489         4
+ 
+ANALYSIS_RAW:
+  Computed energy range for given cluster size:
+ 
+  (The minimum and maximum should be close if
+  we're taking enough iterations.)
+ 
+  Number
+  of       Minimum      Maximum
+  Clusters Energy       Energy
+ 
+      4        0.1359        0.1476
+ 
+  Energy table:
+ 
+Number
+of                   Energy
+Clusters  Energy     /point      Sqrt(E/Pt)
+ 
+      4        0.1359        0.0002        0.0130
+ 
+CLUSTER_CENSUS
+  Individual cluster population and energy
+ 
+  Index    Population   Percentage   Energy  Percentage  Min  Max
+ 
+      1            43            5   37.9756          7  401  443
+      2            51            6   85.3251         17    1   51
+      3           371           46   163.681         33   99  512
+      4           335           41   203.725         41   52  800
+ 
+               ------          ---  ------------    ---
+ 
+  Total           800          100   490.707        100    1  800
+ 
+CVT_BASIS_FLOW:
+  Ready to write the cluster generators to files.
+ 
+  Do you want comments in the header of the file?
+  (These begin with the "#" character.) (Y/N)
+ 
+  Enter Y or N:
+ 
+  Writing first file gen_001.txt
+  Writing last file  gen_004.txt
+ 
+CPU_TIME (seconds):
+  Mass matrix:    11.6924    
+  CVT:            263.229    
+  Total:          274.921    
+ 
+CVT_BASIS_FLOW
+  Normal end of execution.
+ 
+June 28 2005   8:47:41.536 AM

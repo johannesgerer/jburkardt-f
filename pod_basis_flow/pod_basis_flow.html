@@ -1,0 +1,576 @@
+<html>
+
+  <head>
+    <title>
+      POD_BASIS_FLOW - PDE Model Reduction
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      POD_BASIS_FLOW <br> PDE Model Reduction
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>POD_BASIS_FLOW</b>
+      is a FORTRAN90 program which
+      applies the principal
+      orthogonal direction (POD) analysis to a set of solutions of a
+      PDE that models two dimensional time dependent fluid flow.
+    </p>
+
+    <p>
+      This procedure, originally devised by Karl Pearson, has arisen
+      repeatedly in a variety of fields, and hence is known under
+      various names, including:
+      <ul>
+        <li>
+          the Hotelling transform;
+        </li>
+        <li>
+          the discrete Karhunen-Loeve transform (KLT)
+        </li>
+        <li>
+          Principal Component Analysis (PCA)
+        </li>
+        <li>
+          Principal Orthogonal Direction (POD)
+        </li>
+        <li>
+          Proper Orthogonal Decomposition (POD)
+        </li>
+        <li>
+          Singular Value Decomposition (SVD)
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <i>
+        You almost certainly should rather use the simpler program
+        called
+        <a href = "../../f_src/svd_basis/svd_basis.html">SVD_BASIS</a>,
+        which does not assume that the data comes from a particular
+        fluid flow problem!
+      </i>
+    </p>
+
+    <p>
+      The purpose of the algorithm is to extract the dominant modes
+      of behavior of the system; these modes could then be used, for
+      instance, in a reduced order model of the physical system.
+    </p>
+
+    <p>
+      For the computations considered here, a partial differential
+      equation (PDE) has been defined, specifying the time-dependent
+      flow of a fluid through a region.  The PDE specification includes
+      a parameter <b>alpha</b> whose value strongly affects the behavior of
+      the flow.  The steady state solution X0 is computed for a particular
+      value of <b>alpha</b>.  Then the time-dependent problem is solved over a
+      fixed time interval, with <b>alpha</b> varying from time to time.
+      A set of several hundred solutions X(T(I),<b>alpha</b>(I)) are saved.
+    </p>
+
+    <p>
+      The need is to try to extract from this solution data the
+      typical modes of behavior of the solution, that is, a small set
+      of orthogonal vectors <b>V</b> such that "most" of the solution
+      vectors <b>X</b> can be well represented by a linear combination
+      of elements of <b>V</b>.  Such a set of modes may then be used as
+      a finite element basis that is highly tuned to the physics of the
+      problem, so that a very small set of basis functions can be used
+      to closely approximate the behavior of the solution over a range
+      of values of <b>alpha</b>.
+    </p>
+
+    <p>
+      The method of extracting information from the solution data
+      begins by constructing an <b>M</b> by <b>N</b> matrix <b>A</b>, each
+      of whose columns is one of the solution vectors <b>X</b>.  Thus,
+      <blockquote><b>
+        A = [ X1 | X2 | ... | XN ]
+      </b></blockquote>
+    </p>
+
+    <p>
+      Then the singular value decomposition of <b>A</b>:
+      <blockquote><b>
+        A = U * S * V'
+      </b></blockquote>
+      is determined using the DGESVD routine from the linear algebra package
+      <a href = "../lapack/lapack.html">LAPACK</a>.
+      A subset of the columns of the orthogonal <b>M</b> by <b>M</b>
+      matrix <b>U</b>, associated with the largest singular values <b>S</b>,
+      is chosen to form the POD basis.
+    </p>
+
+    <p>
+      Because the data comes from a finite element computation, and
+      the results may be used as a new reduced basis, it may be
+      desirable to carry out mass matrix preconditioning of the data,
+      so that output POD vectors are orthogonal
+      in the L2 inner product (integration of the product of the finite
+      element functions over the domain).
+    </p>
+
+    <p>
+      The current version of the program assumes that a steady state
+      solution <b>SS</b> of the PDE is known, and that a multiple
+      of SS is to be subtracted from each solution vector before processing.
+    </p>
+
+    <p>
+      <b>FILES</b>: the program assumes the existence of the following files:
+      (the actual names of the files are specified by the user at run time.
+      The names used here are just suggestions.)
+      <ul>
+        <li>
+          <i>xy.txt</i>, contains the (x,y) coordinates of each node, with
+          one pair of coordinates per line of the file;
+        </li>
+        <li>
+          <i>ss.txt</i>, contains the (u,v) values at each node for the
+          steady state solution, with one pair of values per line of the file;
+        </li>
+        <li>
+          <i>uv01.txt</i>, <i>uv02.txt</i>, ..., contains the (u,v) values
+          at each node for solution 1, 2, and so on;
+        </li>
+        <li>
+          <i>element.txt</i>, contains the indices of the six nodes that
+          make up each element, with one set of six indices per line of
+          the file <i>(only needed if mass matrix
+          preconditioning is used)</i>;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>INPUT</b>: at run time, the user specifies:
+      <ul>
+        <li>
+          <i>run_type</i> describes how we subtract off the steady state,
+          whether we drop some data, and other options.  The current
+          values range from 1 to 8.  The most common value is 6, used
+          with the TCELL data:
+          <ol>
+            <li>
+              no steady state file, no preprocessing;
+            </li>
+            <li>
+              no steady state file, no preprocessing;
+            </li>
+            <li>
+              subtract 1/3 SS from solution 1, 5/3 SS from solutions
+              2 to 201, and 1/3 SS from solutions 202 through 401.
+            </li>
+            <li>
+              subtract 1/3 SS from solution 1, 5/3 SS from solutions
+              2 to 201, and 1/3 SS from solutions 202 through 401,
+              and drop the even-numbered data.
+            </li>
+            <li>
+              subtract 1/3 SS from solution 1, 5/3 SS from solutions
+              2 to 201, and 1/3 SS from solutions 202 through 401,
+              and skip half the data and normalize it.
+            </li>
+            <li>
+              subtract 5/3 SS from solutions
+              1 to 250, and 1/3 SS from solutions 251 through 500, do not
+              normalize.
+            </li>
+            <li>
+              subtract 5/3 SS from solutions
+              1 to 250, and 1/3 SS from solutions 251 through 500,
+              normalize the data.
+            </li>
+            <li>
+              subtract 5/3 SS from solutions
+              1 to 250, and 1/3 SS from solutions 251 through 500, then
+              drop the odd-numbered data, do not
+              normalize.
+            </li>
+          </ol>
+        </li>
+        <li>
+          <i>basis_num</i>, the requested basis size.
+        </li>
+        <li>
+          <i>xy_file</i>, the name of the xy file.
+        </li>
+        <li>
+          <i>steady_file</i>, the name of the steady state solution file
+          (only if <b>run_type</b> is 1 or 2).
+        </li>
+        <li>
+          <i>uv0_file</i>, the name of the first solution file (the program
+          will assume all the files are numbered consecutively).
+        </li>
+        <li>
+          <i>element_file</i>, the name of the element file, if mass matrix
+          preconditioning is desired, or else "none".
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>OUTPUT</b>: the program computes <b>basis_num</b> basis vectors.
+      The first vector is written to the file <i>pod_001.txt</i>; again,
+      the output vectors are written with two values per line, since
+      this represents the two components of velocity at a particular
+      node.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/brain_sensor_pod/brain_sensor_pod.html">
+      BRAIN_SENSOR_POD</a>,
+      a MATLAB program which
+      applies the method of Proper Orthogonal Decomposition
+      to seek underlying patterns in sets of 40 sensor readings of
+      brain activity.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cvt_basis_flow/cvt_basis_flow.html">
+      CVT_BASIS_FLOW</a>,
+      a FORTRAN90 program which
+      is similar to POD_BASIS_FLOW but uses CVT techniques to
+      do the analysis of the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lapack_examples/lapack_examples.html">
+      LAPACK_EXAMPLES</a>,
+      a FORTRAN90 program which
+      demonstrates the use of the LAPACK linear algebra library.
+    </p>
+
+    <p>
+      <a href = "../../f_src/svd_basis/svd_basis.html">
+      SVD_BASIS</a>,
+      a FORTRAN90 program which
+      is a simpler version of this program; it does not assume that
+      the underlying data represents solutions of a fluid flow problem.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Edward Anderson, Zhaojun Bai, Christian Bischof, Susan Blackford,
+          James Demmel, Jack Dongarra, Jeremy Du Croz, Anne Greenbaum,
+          Sven Hammarling, Alan McKenney, Danny Sorensen,<br>
+          LAPACK User's Guide,<br>
+          Third Edition,<br>
+          SIAM, 1999,<br>
+          LC: QA76.73.F25L36
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Hyung-Chun Lee,<br>
+          Centroidal Voronoi Tessellation-Based Reduced-Order
+          Modelling of Complex Systems,<br>
+          SIAM Journal on Scientific Computing,<br>
+          Volume 28, Number 2, 2006, pages 459-484.
+        </li>
+        <li>
+          Gal Berkooz, Philip Holmes, John Lumley,<br>
+          The proper orthogonal decomposition in the analysis
+          of turbulent flows,<br>
+          Annual Review of Fluid Mechanics,<br>
+          Volume 25, 1993, pages 539-575.
+        </li>
+        <li>
+          Lawrence Sirovitch,<br>
+          Turbulence and the dynamics of coherent structures, Parts I-III,<br>
+          Quarterly of Applied Mathematics,<br>
+          Volume XLV, Number 3, 1987, pages 561-590.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "pod_basis_flow.f90">pod_basis_flow.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "pod_basis_flow.sh">pod_basis_flow.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      PDE solution datasets you may copy include:
+      <ul>
+        <li>
+          <a href = "../../datasets/cavity_flow/cavity_flow.html">
+          CAVITY_FLOW</a>, the driven cavity;
+        </li>
+        <li>
+          <a href = "../../datasets/inout_flow/inout_flow.html">
+          INOUT_FLOW</a>, flow in and out of a chamber;
+        </li>
+        <li>
+          <a href = "../../datasets/tcell_flow/tcell_flow.html">
+          TCELL_FLOW</a>, flow through a T-cell;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Once the reduced basis set is computed, it is possible to
+      set up new finite element problems in which the reduced basis
+      set is used as the finite element basis.  To see an example
+      of such a calculation, refer to
+      <ul>
+        <li>
+          <a href = "../../f77_src/tcell/tcell.html">
+          TCELL</a>, the program which generated the TCELL data;
+        </li>
+        <li>
+          <a href = "../../f77_src/tcell_mass/tcell_mass.html">
+          TCELL_MASS</a>, used to calculate the mass matrix;
+        </li>
+        <li>
+          <a href = "../../m_src/tcell_rom/tcell_rom.html">
+          TCELL_ROM</a>, the TCELL reduced order modeling program;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      This program has been run with a number of different datasets,
+      and with various requirements as to normalization and so on.
+      The purpose of most of the runs is to find a generator set of
+      given size.  The input and output of each run is stored in
+      a separate subdirectory.
+    </p>
+
+    <p>
+      Each run of the code is stored in a separate subdirectory.
+      Available runs include:
+      <ul>
+        <li>
+          <a href = "run_01/run_01.html">run_01</a>,
+          getting 16 POD vectors from the CAVITY_FLOW data.
+        </li>
+        <li>
+          <a href = "run_02/run_02.html">run_02</a>,
+          getting 16 POD vectors from the INOUT_FLOW data.
+        </li>
+        <li>
+          <a href = "run_03/run_03.html">run_03</a>,
+          getting 16 POD vectors from the TCELL_FLOW data.
+        </li>
+        <li>
+          <a href = "run_04/run_04.html">run_04</a>,
+          getting 16 POD vectors from the CAVITY_FLOW data,
+          with mass matrix preconditioning.
+        </li>
+        <li>
+          <a href = "run_05/run_05.html">run_05</a>,
+          getting 16 POD vectors from the INOUT_FLOW data,
+          with mass matrix preconditioning.
+        </li>
+        <li>
+          <a href = "run_06/run_06.html">run_06</a>,
+          getting 16 POD vectors from the TCELL_FLOW data,
+          with mass matrix preconditioning.
+        </li>
+        <li>
+          <a href = "run_07/run_07.html">run_07</a>,
+          getting 16 POD vectors from the CAVITY_FLOW data,
+          with mass matrix preconditioning.  We drop the odd
+          numbered data vectors.
+        </li>
+        <li>
+          <a href = "run_08/run_08.html">run_08</a>,
+          getting 16 POD vectors from the INOUT_FLOW data,
+          with mass matrix preconditioning.  We drop the odd
+          numbered data vectors.
+        </li>
+        <li>
+          <a href = "run_09/run_09.html">run_09</a>,
+          getting 16 POD vectors from the TCELL_FLOW data,
+          with mass matrix preconditioning.  We drop the odd
+          numbered data vectors.
+        </li>
+        <li>
+          <a href = "run_10/run_10.html">run_10</a>,
+          getting 16 POD vectors from the INOUT_FLOW2 data.
+        </li>
+        <li>
+          <a href = "run_11/run_11.html">run_11</a>,
+          getting 16 POD vectors from the INOUT_FLOW2 data,
+          with mass matrix preconditioning.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for POD_BASIS_FLOW.
+        </li>
+        <li>
+          <b>BANDWIDTH_DETERMINE</b> computes the lower bandwidth of a finite element matrix.
+        </li>
+        <li>
+          <b>BASIS_WRITE</b> writes a basis vector to a file.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> is TRUE if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DATA_IVEC_READ</b> reads an dataset of integer vectors stored in a file.
+        </li>
+        <li>
+          <b>DATA_D2_READ</b> reads pairs of double precision numbers stored in a file.
+        </li>
+        <li>
+          <b>DATA_SIZE</b> counts the size of a data set stored in a file.
+        </li>
+        <li>
+          <b>DBLT_CHECK</b> checks the dimensions of a banded lower triangular matrix.
+        </li>
+        <li>
+          <b>DBLT_PRINT</b> prints a band lower triangular matrix.
+        </li>
+        <li>
+          <b>DBLT_PRINT_SOME</b> prints some of a band lower triangular matrix.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>DPBL_CHECK</b> checks the dimensions of a positive definite symmetric band matrix.
+        </li>
+        <li>
+          <b>DPBL_PRINT</b> prints a symmetric banded matrix.
+        </li>
+        <li>
+          <b>DPBL_PRINT_SOME</b> prints some of a symmetric banded matrix.
+        </li>
+        <li>
+          <b>FILE_EXIST</b> reports whether a file exists.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_INPUT</b> prints a prompt string and reads an integer from the user.
+        </li>
+        <li>
+          <b>I4_RANGE_INPUT</b> reads a pair of integers from the user, representing a range.
+        </li>
+        <li>
+          <b>MASS_MATRIX</b> computes the mass matrix.
+        </li>
+        <li>
+          <b>NODE_T6</b> returns the basis nodes for a 6 node triangle.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints a double precision vector.
+        </li>
+        <li>
+          <b>REFQBF</b> evaluates a reference element quadratic basis function.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INPUT</b> prints a prompt string and reads a string from the user.
+        </li>
+        <li>
+          <b>S_OF_I4</b> converts an integer to a left-justified string.
+        </li>
+        <li>
+          <b>S_REP_CH</b> replaces all occurrences of one character by another.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SINGULAR_VECTORS</b> computes the desired singular values.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_SET</b> sets weights and abscissas for quadrature in a unit triangle.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 July 2004.
+    </i>
+
+  </body>
+
+</html>

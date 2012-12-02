@@ -1,0 +1,14 @@
+# poisson_events_commands.txt
+#
+# Usage:
+#  gnuplot < poisson_events_commands.txt
+#
+set term png
+set output "poisson_events.png"
+set xlabel "Number of Events"
+set ylabel "Frequency"
+set title "Number of Poisson Events Over Fixed Time
+set grid
+set style fill solid
+plot "poisson_events_data.txt" using 1:2:(    5.04) with boxes
+quit

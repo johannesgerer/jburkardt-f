@@ -1,0 +1,957 @@
+<html>
+
+  <head>
+    <title>
+      SPARSEPAK - (Obsolete) Waterloo Sparse Matrix Package
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+     SPARSEPAK <br> (Obsolete) Waterloo Sparse Matrix Package
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPARSEPAK</b>
+      is a FORTRAN90 library which
+      solves large sparse systems of linear equations.
+    </p>
+
+    <p>
+      <b>SPARSEPAK</b> is an old version of the Waterloo Sparse Matrix Package.
+      <b>SPARSEPAK</b> can carry out direct solution of large sparse linear
+      systems.  Only positive definite matrices should be used with this
+      program.  Three different storage methods, and five solution
+      algorithms are supported.
+    </p>
+
+    <p>
+      The methods available are:
+      <ul>
+        <li>
+          <b>1WD</b>: One way dissection, partitioned tree storage.
+        </li>
+        <li>
+          <b>ND</b>: Nested dissection, compressed storage.
+        </li>
+        <li>
+          <b>QMD</b>: Quotient minimum degree, compressed storage.
+        </li>
+        <li>
+          <b>RCM</b>: Reverse Cuthill-McKee with envelope storage.
+        </li>
+        <li>
+          <b>RQT</b>: Refined quotient tree, partitioned tree storage.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      This version is not the most recent one.  The most recent version
+      requires a license from the University of Waterloo, and includes
+      support for large sparse linear least squares problems and other features.
+    </p>
+
+    <p>
+      SPARSPAK offers five different methods for the direct solution of
+      a symmetric positive definite sparse linear system.  Subroutines are
+      provided which try to reorder the matrix before factorization so that
+      as little storage as possible is required.
+    </p>
+
+    <p>
+      The five algorithms all follow the same steps:
+      <ol>
+        <li>
+          Determine the structure of the matrix.
+        </li>
+        <li>
+          Reorder rows and columns for efficiency.
+        </li>
+        <li>
+          Store numerical values in matrix and right hand side.
+        </li>
+        <li>
+          Factor the matrix.
+        </li>
+        <li>
+          Solve the system (may be repeated for multiple right hand sides).
+        </li>
+        <li>
+          Unpermute the solution.
+        </li>
+      </ol>
+      Each step requires calls to one or more subroutines in the group
+      associated with a particular method.
+    </p>
+
+    <p>
+      Methods available are:
+      <table>
+        <tr>
+          <th>Symbol</th><th>Description</th>
+        </tr>
+        <tr>
+          <td>1WD</td><td>One way dissection, partitioned tree storage.</td>
+        </tr>
+        <tr>
+          <td>ND</td><td>Nested dissection, compressed storage.</td>
+        </tr>
+        <tr>
+          <td>QMD</td><td>Quotient minimum degree, compressed storage.</td>
+        </tr>
+        <tr>
+          <td>RCM</td><td>Reverse Cuthill-McKee with envelope storage.</td>
+        </tr>
+        <tr>
+          <td>RQT</td><td>Refined quotient tree, partitioned tree storage.</td>
+        </tr>
+      </table>
+    </p>
+
+    <h2>
+      Data Structures
+    </h2>
+
+    <p>
+      The following is a list of the vectors required for the various methods,
+      including their type, size, and whether they are set by the user or not.
+      Unfortunately, for most of the arrays, although their values are
+      determined by the package, their minimum size is not known beforehand,
+      and is often hard to estimate.  You must examine the reference to get
+      a better idea of how large to dimension arrays like XBLK and NZSUB,
+      for example.
+    </p>
+
+    <pre>
+
+          Values                             Used by:
+Name      Set by    Size      Type      1WD  RCM  RQT  ND   QMD
+
+IADJ      User      varies    I         X    X    X    X    X
+BNUM                N         I         X         X
+DEG                 N         I                             X
+DIAG      User      N         R         X    X    X    X    X
+ENV       User      varies    R         X    X    X
+FATHER              NBLKS     I         X         X
+FIRST               N         I         X         X    X    X
+INVPRM              N         I         X    X    X    X    X
+IXLNZ               N+1
+LINK                N         I                        X    X
+LNZ                           R                        X    X
+LS                  N         I         X         X    X
+MARKER              N         I         X              X    X
+MRGLNK              N         I                        X    X
+NBRHD                         I                             X
+NODLVL              N         I                   X
+NONZ                          R         X         X
+NZSUB                         I                        X    X
+NZSUBS                        I         X         X
+OVRLP                                                       X
+PERM                N         I         X    X    X    X    X
+QLINK               N         I                             X
+QSIZE               N         I                             X
+RCHLNK              N         I                        X    X
+RCHSET              N         I         X                   X
+RHS       User      N         R         X    X    X    X    X
+SEP                           I                        X
+SUBG                N         I         X         X
+TEMP                N         R         X         X    X    X
+XADJ      User      N+1       I         X    X    X    X    X
+XBLK                NBLKS+1   I         X         X
+XENV      User      N+1       I         X    X    X
+XLNZ                N         I                        X    X
+XLS                 N+1       I         X         X    X
+XNONZ               N+1       I         X         X
+XNZSUB                        I                        X    X
+</pre>
+
+    <h2>
+      Adjacency Information
+    </h2>
+
+    <p>
+      You are responsible for defining the adjacency or nonzero structure of the
+      original matrix.  This information is required by the routines to
+      efficiently reorder the system.
+    </p>
+
+    <p>
+      Suppose our linear system is a 6 by 6 matrix, where the entries
+      marked 'X' are nonzero:
+      <pre>
+        XX000X
+        XXXX00
+        0XX0X0
+        0X0X00
+        00X0XX
+        X000XX
+      </pre>
+    </p>
+
+    <p>
+      The adjacency information records, for each row I,  which columns
+      (besides column I) contain a nonzero entry, and, for each column I,
+      which rows besides row I are nonzero.
+    </p>
+
+    <p>
+      In the example, the nonzero list for row I=1 is 2 and 6.  This is because
+      A(1,2) and A(1,6) are nonzero.  The whole list is
+      <table>
+        <tr>
+          <th>Row</th><th>Nonzero columns</th>
+        </tr>
+        <tr>
+          <td>1</td><td>2, 6</td>
+        </tr>
+        <tr>
+          <td>2</td><td>1, 3, 4</td>
+        </tr>
+        <tr>
+          <td>3</td><td>2, 5</td>
+        </tr>
+        <tr>
+          <td>4</td><td>2</td>
+        </tr>
+        <tr>
+          <td>5</td><td>3, 6</td>
+        </tr>
+        <tr>
+          <td>6</td><td>1, 5</td>
+        </tr>
+      </table>
+      Note that in the list of nonzeroes for row I, we never include I
+      itself.  It is assumed that I is nonzero, or will become so during
+      the factorization.
+    </p>
+
+    <p>
+      The adjacency information consists of two vectors, IADJ and XADJ.  The
+      vector IADJ contains the concatenated list of nonzeroes.  The auxilliary
+      vector XADJ holds the location of the start of each row list in IADJ.
+      Thus, XADJ(1) should  always be 1.  XADJ(2) should be the location in
+      IADJ where the nonzero information for row 2 begins.  Finally, XADJ(N+1)
+      points to the first unused entry in IADJ.  For the example,
+      <table>
+        <tr>
+          <td>Index</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+          <td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+        </tr>
+        <tr>
+          <td>IADJ</td><td>2</td><td>6</td><td>1</td><td>3</td><td>4</td>
+          <td>2</td><td>5</td><td>2</td><td>3</td><td>6</td><td>1</td><td>3</td>
+        </tr>
+        <tr>
+          <td>XADJ</td><td>1</td><td>3</td><td>6</td><td>8</td><td>9</td><td>11</td>
+          <td>13</td>
+        </tr>
+      </table>
+    </p>
+
+    <p>
+      You can see that to retrieve information about row 3, you would first
+      check XADJ(3) and XADJ(3+1), which have the values 6 and 8.  This tells
+      us that the list for row 3 begins at IADJ(6) and stops at IADJ(8-1).
+      So the nonzeroes in row 3 occur in columns IADJ(6)=2 and IADJ(7)=5.
+      This seems a lot of work, but this construction can be automated, and
+      the storage savings can be enormous.
+    </p>
+
+    <h2>
+      Envelope Information
+    </h2>
+
+    <p>
+      Assume, as usual, that we are working with a symmetric matrix.  The
+      lower row bandwidth of row I, denoted by BETA(I), is defined in the
+      obvious way to mean the distance between the diagonal entry in column I
+      and the first nonzero entry in row I.
+    </p>
+
+    <p>
+      The envelope of a matrix is then the collection of all subdiagonal
+      matrix positions (I,J) which lie within the lower row bandwidth of
+      their given row.  This concept is sometimes also called profile
+      or skyline storage, particularly when columns are considered rather
+      than rows.
+    </p>
+
+    <p>
+      To store a matrix in envelope format, we require two objects,
+      an array ENV to hold the actual numbers, and a pointer array
+      XENV to tell us where each row starts and ends.
+    </p>
+
+    <p>
+      Let us return to our earlier example:
+      <pre>
+        XX000X
+        XXXX00
+        0XX0X0
+        0X0X00
+        00X0XX
+        X000XX
+      </pre>
+    </p>
+
+    <p>
+      We can analyze this matrix as follows:
+      <table>
+        <tr>
+          <th>Row</th><th>Bandwidth</th>
+        </tr>
+        <tr>
+          <td>1</td><td>0</td>
+        </tr>
+        <tr>
+          <td>2</td><td>1</td>
+        </tr>
+        <tr>
+          <td>3</td><td>1</td>
+        </tr>
+        <tr>
+          <td>4</td><td>2</td>
+        </tr>
+        <tr>
+          <td>5</td><td>2</td>
+        </tr>
+        <tr>
+          <td>6</td><td>5</td>
+        </tr>
+      </table>
+    </p>
+
+    <p>
+      This tells us that there are a total of 11 entries in the lower envelope.
+      XENV(I) tells us where the first entry of row I is stored, and XENV(I+1)-1
+      tells us where the last one is.  For our example, then
+      <table>
+        <tr>
+          <th>Index</th><th>XENV</th>
+        </tr>
+        <tr>
+          <td>1</td><td>1</td>
+        </tr>
+        <tr>
+          <td>2</td><td>1</td>
+        </tr>
+        <tr>
+          <td>3</td><td>2</td>
+        </tr>
+        <tr>
+          <td>4</td><td>3</td>
+        </tr>
+        <tr>
+          <td>5</td><td>5</td>
+        </tr>
+        <tr>
+          <td>6</td><td>7</td>
+        </tr>
+        <tr>
+          <td>7</td><td>12</td>
+        </tr>
+      </table>
+    </p>
+
+    <p>
+      Note that the "extra" entry in XENV allows us to treat the last row in
+      the same way as the other ones.  Now the ENV array will require 11
+      entries, and they can be stored and accessed using the XENV array.
+    </p>
+
+    <h2>
+      Setting Matrix Values
+    </h2>
+
+    <p>
+      Once you have defined the adjacency structure, you have set up empty slots
+      for your matrix.  Into each position which you have set up, you can
+      store a numerical value A(I,J).  You can use the user utility routines
+      ADDRCM, ADDRQT and ADDCOM to store values in A for you.
+    </p>
+
+    <p>
+      Alternatively,  if you want to do this on your own, you must be
+      familiar with the storage method used.  For example, in the envelope
+      storage scheme you must know, given I and J, in what entry of DIAG and
+      ENV you should store the value.  Interested readers are referred to
+      the reference for more information on this.
+    </p>
+
+    <h2>
+      Example of 1WD Method
+    </h2>
+
+    <p>
+      <i>
+        Create the adjacency structure XADJ, IADJ, and reorder the variables
+        and equations.
+      </i>
+      <pre>
+        call gen1wd ( n, xadj, iadj, nblks, xblk, perm, xls, ls )
+
+        call perm_inverse ( n, perm, invprm )
+
+        call fnbenv ( xadj, iadj, perm, invprm, nblks, xblk, xenv, ienv,
+          marker, rchset, n )
+      </pre>
+      <i>
+        After zeroing out NONZ, DIAG and ENV, store the numerical values
+        of the matrix and the right hand side.  You can use the user
+        routines as shown below.
+      </i>
+      <pre>
+        call addrqt ( isub, jsub, value, invprm, diag, xenv, env, xnonz, nonz,
+          nzsubs, n )
+
+        call addrhs ( invprm, isub, n, rhs, value )
+      </pre>
+      <i>
+        Factor and solve the system.
+      </i>
+      <pre>
+        call ts_factor ( nblks, xblk, father, diag, xenv, env, xnonz, nonz,
+          nzsubs, temp, first, n )
+
+        call ts_solve ( nblks, xblk, diag, xenv, env, xnonz, nonz, nzsubs,
+          rhs, temp, n )
+      </pre>
+      <i>
+        Unpermute the solution stored in RHS.
+      </i>
+      <pre>
+        call perm_rv ( n, rhs, perm )
+      </pre>
+    </p>
+
+    <h2>
+      Example of ND Method
+    </h2>
+
+    <p>
+      <i>
+        Create the adjacency structure XADJ, IADJ.  Then reorder the variables and
+        equations.
+      </i>
+      <pre>
+        call gennd ( n, xadj, iadj, perm, xls, ls )
+
+        call perm_inverse ( n, perm, invprm )
+
+        call smb_factor ( n, xadj, iadj, perm, invprm, xlnz, nofnz, xnzsub,
+          nzsub, nofsub, rchlnk, mrglnk )
+      </pre>
+      <i>
+        Zero out the matrix and right hand side storage in DIAG, LNZ, and RHS,
+        then store numerical values.  You can build up the values by calling
+        the following routines repeatedly.
+      </i>
+      <pre>
+        call addcom ( isub, jsub, value, invprm, diag, lnz, xlnz, nzsub,
+          xnzsub, n )
+
+        call addrhs ( invprm, isub, n, rhs, value )
+      </pre>
+      <i>
+        Factor and solve the system.
+      </i>
+      <pre>
+        call gs_factor ( n, xlnz, lnz, xnzsub, nzsub, diag, link, first )
+
+        call gs_solve ( n, xlnz, lnz, xnzsub, nzsub, diag, rhs )
+      </pre>
+      <i>
+        Unpermute the solution stored in RHS.
+       </i>
+      <pre>
+        call perm_rv ( n, rhs, perm )
+      </pre>
+    </p>
+
+    <h2>
+      Example of QMD Method
+    </h2>
+
+    <p>
+      <i>
+        Create the adjacency structure in XADJ, IADJ.  Reorder the variables and
+        equations.
+      </i>
+      <pre>
+        call genqmd ( n, xadj, adjnc2, perm, invprm, marker, rchset,
+          nbrhd, qsize, qlink, nofsub )
+
+        call perm_inverse ( n, perm, invprm )
+
+        call smb_factor ( n, xadj, iadj, perm, invprm, xlnz, nofnz, xnzsub,
+          nzsub, nofsub, rchlnk, mrglnk )
+      </pre>
+      <i>
+        Zero out the matrix and right hand side storage in DIAG, LNZ and RHS.
+        Store numerical values, perhaps using the following routines repeatedly.
+       </i>
+      <pre>
+        call addcom ( isub, jsub, value, invprm, diag, lnz, xlnz, nzsub, xnzsub )
+
+        call addrhs ( invprm, isub, n, rhs, value )
+      </pre>
+      <i>
+        Factor and solve.
+      </i>
+      <pre>
+        call gs_factor ( n, xlnz, lnz, xnzsub, nzsub, diag, link, first )
+
+        call gs_solve ( n, xlnz, lnz, xnzsub, nzsub, diag, rhs )
+      </pre>
+      <i>
+       Unpermute the solution stored in RHS.
+      </i>
+      <pre>
+        call perm_rv ( n, rhs, perm )
+      </pre>
+    </p>
+
+    <h2>
+      Example of RCM Method
+    </h2>
+
+    <p>
+      <i>
+        Create the adjacency structure XADJ, IADJ.  Then call the following
+        routines to reorder the system.
+      </i>
+      <pre>
+        call genrcm ( n, xadj, iadj, perm, xls )
+
+        call perm_inverse ( n, perm, invprm )
+
+        call fnenv ( n, xadj, iadj, perm, invprm, xenv, ienv, bandw )
+      </pre>
+      <i>
+        Now store actual matrix values in DIAG, ENV and RHS, calling the
+        following two routines as often as necessary.   Be sure to first zero
+        out the storage for DIAG, ENV and RHS.  Only call ADDRCM for A(I,J)
+        with I  greater than or equal to J, since only the lower half of
+        the matrix is stored.
+       </i>
+      <pre>
+        call addrcm ( isub, jsub, value, invprm, diag, xenv, env, n )
+
+        call addrhs ( invprm, isub, n, rhs, value )
+      </pre>
+      <i>
+        Now factor and solve the system.
+      </i>
+      <pre>
+        call es_factor ( n, xenv, env, diag )
+
+        call el_solve ( n, xenv, env, diag, rhs )
+
+        call eu_solve ( n, xenv, env, diag, rhs )
+      </pre>
+      <i>
+        Unpermute the solution stored in RHS.
+      </i>
+      <pre>
+        call perm_rv ( n, rhs, perm )
+      </pre>
+    </p>
+
+    <h2>
+      Example of RQT Method
+    </h2>
+
+    <p>
+      <i>
+        Create the adjacency structure XADJ, IADJ.   Reorder the variables and
+        equations.
+      </i>
+      <pre>
+        call genrqt ( n, xadj, iadj, nblks, xblk, perm, xls, ls, nodlvl )
+
+        call block_shuffle ( xadj, iadj, perm, nblks, xblk, xls, n )
+
+        call perm_inverse ( n, perm, invprm )
+
+        call fntadj ( xadj, iadj, perm, nblks, xblk, father, n )
+
+        call fntenv ( xadj, iadj, perm, invprm, nblks, xblk, xenv, ienv, n )
+
+        call fnofnz ( xadj, iadj, perm, invprm, nblks, xblk, xnonz, nzsubs,
+          nofnz, n )
+      </pre>
+      <i>
+        After zeroing out NONZ, DIAG and ENV, store the values of the matrix
+        and the right hand side.  You can use the user utility routines as
+        shown below.
+      </i>
+      <pre>
+        call addrqt ( isub, jsub, value, invprm, diag, xenv, env, xnonz, nonz,
+          nzsubs, n )
+
+        call addrhs ( invprm, isub, n, rhs, value )
+      </pre>
+      <i>
+        Factor and solve the system.
+      </i>
+      <pre>
+        call ts_factor ( nblks, xblk, father, diag, xenv, env, xnonz, nonz,
+          nzsubs, temp, first, n )
+
+        call ts_solve ( nblks, xblk, diag, xenv, env, xnonz, nonz, nzsubs,
+          rhs, temp, n )
+      </pre>
+      <i>
+        Unpermute the solution stored in RHS.
+      </i>
+      <pre>
+        call perm_rv ( n, rhs, perm )
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SPARSEPAK</b> is available in
+      <a href = "../../f77_src/sparsepak/sparsepak.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/sparsepak/sparsepak.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../c_src/csparse/csparse.html">
+      CSPARSE</a>,
+      a C library which
+      carries out direct sparse matrix operations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dlap/dlap.html">
+      DLAP</a>,
+      a FORTRAN90 library which
+      solves sparse linear systems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hb_io/hb_io.html">
+      HB_IO</a>,
+      a FORTRAN90 library which
+      reads and writes sparse linear
+      systems stored in the Harwell-Boeing Sparse Matrix format.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/hb_to_st/hb_to_st.html">
+      HB_TO_ST</a>,
+      a FORTRAN77 program which
+      converts the sparse matrix information stored in a Harwell-Boeing
+      file into a sparse triplet file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mgmres/mgmres.html">
+      MGMRES</a>,
+      a FORTRAN90 library which 
+      applies the restarted GMRES
+      algorithm to solve a sparse linear system.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mm_io/mm_io.html">
+      MM_IO</a>,
+      a FORTRAN90 library which
+      reads and writes sparse linear
+      systems stored in the Matrix Market format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/rcm/rcm.html">
+      RCM</a>,
+      a FORTRAN90 library which
+      implements the reverse Cuthill-McKee
+      reordering.
+    </p>
+
+    <p>
+      <a href = "../../data/sparse_cc/sparse_cc.html">
+      SPARSE_CC</a>,
+      a data directory which
+      contains a description and examples of the CC format,
+      ("compressed column") for storing a sparse matrix,
+      including a way to write the matrix as a set of three files.
+    </p>
+
+    <p>
+      <a href = "../../data/sparse_cr/sparse_cr.html">
+      SPARSE_CR</a>,
+      a data directory which
+      contains a description and examples of the CR format,
+      ("compressed row") for storing a sparse matrix,
+      including a way to write the matrix as a set of three files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparsekit/sparsekit.html">
+      SPARSEKIT</a>,
+      a FORTRAN90 library which
+      carries out various
+      operations on sparse matrices.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Alan George, Joseph Liu,<br>
+          Computer Solution of Large Sparse Positive Definite Matrices,<br>
+          Prentice Hall, 1981,<br>
+          ISBN: 0131652745,<br>
+          LC: QA188.G46.
+        </li>
+        <li>
+          Norman Gibbs, William Poole, Paul Stockmeyer,<br>
+          An Algorithm for Reducing the Bandwidth
+          and Profile of a Sparse Matrix,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 13, Number 2, April 1976, pages 236-250.
+        </li>
+        <li>
+          Norman Gibbs,<br>
+          Algorithm 509:
+          A Hybrid Profile Reduction Algorithm,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 2, Number 4, December 1976, pages 378-387.
+        </li>
+        <li>
+          Donald Kreher, Douglas Simpson,<br>
+          Combinatorial Algorithms,<br>
+          CRC Press, 1998,<br>
+          ISBN: 0-8493-3988-X,<br>
+          LC: QA164.K73.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sparsepak.f90">sparsepak.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "sparsepak.sh">sparsepak.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sparsepak_prb.f90">sparsepak_prb.f90</a>, a sample problem;
+        </li>
+        <li>
+          <a href = "sparsepak_prb.sh">sparsepak_prb.sh</a>,
+          commands to compile, link and run the sample problem;
+        </li>
+        <li>
+          <a href = "sparsepak_prb_output.txt">sparsepak_prb_output.txt</a>,
+          output from the sample problem;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ADDCOM</b> adds values to a matrix stored in compressed storage scheme.
+        </li>
+        <li>
+          <b>ADDRCM</b> adds values to a matrix stored in the RCM scheme.
+        </li>
+        <li>
+          <b>ADDRHS</b> adds a quantity to a specific entry of the right hand side.
+        </li>
+        <li>
+          <b>ADDRQT</b> adds values to a matrix stored in the implicit block storage scheme.
+        </li>
+        <li>
+          <b>ADJ_ENV_SIZE</b> computes the envelope size for an adjacency structure.
+        </li>
+        <li>
+          <b>ADJ_PRINT</b> prints the adjacency information stored in ADJ_ROW and ADJ.
+        </li>
+        <li>
+          <b>ADJ_SET</b> sets up the adjacency information ADJ_ROW and ADJ.
+        </li>
+        <li>
+          <b>ADJ_SHOW</b> displays a symbolic picture of a matrix.
+        </li>
+        <li>
+          <b>BLOCK_SHUFFLE</b> renumbers the nodes of each block to reduce its envelope.
+        </li>
+        <li>
+          <b>DEGREE</b> computes node degrees in a connected component, for the RCM method.
+        </li>
+        <li>
+          <b>EL_SOLVE</b> solves a lower triangular system stored in the envelope format.
+        </li>
+        <li>
+          <b>ES_FACTOR</b> factors a positive definite envelope matrix into L * L'.
+        </li>
+        <li>
+          <b>EU_SOLVE</b> solves an upper triangular system stored in the envelope format.
+        </li>
+        <li>
+          <b>FNBENV</b> finds the envelope of the diagonal blocks of a Cholesky factor.
+        </li>
+        <li>
+          <b>FNDSEP</b> finds a small separator for a connected component in a graph.
+        </li>
+        <li>
+          <b>FNENV</b> finds the envelope structure of a permuted matrix.
+        </li>
+        <li>
+          <b>FNLVLS</b> generates a rooted level structure, as part of the RQT method.
+        </li>
+        <li>
+          <b>FNOFNZ</b> finds columns of off-block-diagonal nonzeros.
+        </li>
+        <li>
+          <b>FNSPAN</b> finds the span of a level subgraph subset, as part of the RQT method.
+        </li>
+        <li>
+          <b>FNTADJ</b> determines the quotient tree adjacency structure for a graph.
+        </li>
+        <li>
+          <b>FNTENV</b> determines the envelope index vector.
+        </li>
+        <li>
+          <b>FN1WD</b> finds one-way dissectors of a connected component for the 1WD method.
+        </li>
+        <li>
+          <b>GENND</b> finds a nested dissection ordering for a general graph.
+        </li>
+        <li>
+          <b>GENQMD</b> implements the quotient minimum degree algorithm.
+        </li>
+        <li>
+          <b>GENRCM</b> finds the reverse Cuthill-Mckee ordering for a general graph.
+        </li>
+        <li>
+          <b>GENRQT</b> determines a partitioned ordering using refined quotient trees.
+        </li>
+        <li>
+          <b>GEN1WD</b> partitions a general graph, for the 1WD method.
+        </li>
+        <li>
+          <b>GS_FACTOR:</b> symmetric factorization for a general sparse system.
+        </li>
+        <li>
+          <b>GS_SOLVE</b> solves a factored general sparse system.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two integer values.
+        </li>
+        <li>
+          <b>I4VEC_COPY</b> copies one integer vector into another.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an integer vector to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an integer vector.
+        </li>
+        <li>
+          <b>I4VEC_SORT_INSERT_A</b> uses an ascending insertion sort on an integer vector.
+        </li>
+        <li>
+          <b>LEVEL_SET</b> generates the connected level structure rooted at a given node.
+        </li>
+        <li>
+          <b>PERM_INVERSE</b> produces the inverse of a given permutation.
+        </li>
+        <li>
+          <b>PERM_RV</b> undoes the permutation of the right hand side.
+        </li>
+        <li>
+          <b>QMDMRG</b> merges indistinguishable nodes for the QMD method.
+        </li>
+        <li>
+          <b>QMDQT</b> performs the quotient graph transformation.
+        </li>
+        <li>
+          <b>QMDRCH</b> determines the reachable set of a node, for the QMD method.
+        </li>
+        <li>
+          <b>QMDUPD</b> updates the node degrees, for the QMD method.
+        </li>
+        <li>
+          <b>RCM</b> renumbers a connected component by the reverse Cuthill McKee algorithm.
+        </li>
+        <li>
+          <b>RCM_SUB</b> finds the reverse Cuthill McKee ordering for a given subgraph.
+        </li>
+        <li>
+          <b>REACH</b> determines the reachable set of a node through a subset in a subgraph.
+        </li>
+        <li>
+          <b>ROOT_FIND</b> finds pseudo-peripheral nodes.
+        </li>
+        <li>
+          <b>RQTREE</b> finds a quotient tree ordering for a component, in the RQT method.
+        </li>
+        <li>
+          <b>SMB_FACTOR</b> performs symbolic factorization on a permuted linear system.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TS_FACTOR</b> performs the symmetric factorization of a tree-partitioned system.
+        </li>
+        <li>
+          <b>TS_SOLVE</b> solves a tree-partitioned factored system.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 24 February 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

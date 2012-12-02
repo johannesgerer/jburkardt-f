@@ -1,0 +1,220 @@
+<html>
+
+  <head>
+    <title>
+      STLA_IO - Read and Write Routines for ASCII STL 3D Graphics Files
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      STLA_IO <br> Read and Write Routines <br> ASCII STL 3D Graphics Files
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>STLA_IO</b>
+      is a FORTRAN90 library which
+      reads or writes the 3D graphics information
+      stored in an ASCII STL (stereolithography) file.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>STLA_IO</b> is available in
+      <a href = "../../cpp_src/stla_io/stla_io.html">a C++ version</a> and
+      <a href = "../../f_src/stla_io/stla_io.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/stla_io/stla_io.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/ivcon/ivcon.html">
+      IVCON</a>,
+      a C++ program which
+      can convert graphics information between ASCII STL and other formats.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ivread/ivread.html">
+      IVREAD</a>,
+      a FORTRAN90 program which
+      can convert graphics information between ASCII STL and other formats.
+    </p>
+
+    <p>
+      <a href = "../../data/stla/stla.html">
+      STLA</a>,
+      a data directory which
+      contains some examples of STLA 3D graphics files.
+    </p>
+
+    <p>
+      <a href = "../../m_src/stla_display/stla_display.html">
+      STLA_DISPLAY</a>,
+      a MATLAB program which
+      can read an ASCII STL file and display it on the screen.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          3D Systems, Inc,<br>
+          Stereolithography Interface Specification,<br>
+          October 1989.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "stla_io.f90">stla_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "stla_io.csh">stla_io.csh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "stla_io_prb.f90">stla_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "stla_io_prb.csh">stla_io_prb.csh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "../../data/stla/cube.stla">cube.stla</a>,
+          a simple STLA file that describes a cube.
+        </li>
+        <li>
+          <a href = "cube_new.stla">cube_new.stla</a>,
+          an STLA file describing a cube, written by STLA_WRITE.
+        </li>
+        <li>
+          <a href = "stla_io_prb_output.txt">stla_io_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>R8VEC_CROSS_3D</b> computes the cross product of two vectors in 3D.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>STLA_CHECK</b> checks an ASCII StereoLithography file.
+        </li>
+        <li>
+          <b>STLA_FACE_NODE_PRINT</b> prints the node indices for each face.
+        </li>
+        <li>
+          <b>STLA_FACE_NORMAL_COMPUTE</b> computes normal vectors for an ASCII StereoLithography file.
+        </li>
+        <li>
+          <b>STLA_FACE_NORMAL_PRINT</b> prints the normal vectors.
+        </li>
+        <li>
+          <b>STLA_NODE_XYZ_PRINT</b> prints the node coordinates.
+        </li>
+        <li>
+          <b>STLA_READ</b> reads graphics information from an ASCII StereoLithography file.
+        </li>
+        <li>
+          <b>STLA_SIZE</b> determines sizes associated with an STLA file.
+        </li>
+        <li>
+          <b>STLA_SIZE_PRINT</b> prints sizes associated with an STLA file.
+        </li>
+        <li>
+          <b>STLA_WRITE</b> writes graphics information to an ASCII StereoLithography file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 February 2007.
+
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

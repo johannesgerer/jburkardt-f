@@ -1,0 +1,522 @@
+ 3 February 2011  10:50:09.205 AM
+ 
+VAN_DER_CORPUT_PRB
+  FORTRAN90 version
+  Test the VAN_DER_CORPUT library.
+ 
+TEST01
+  VAN_DER_CORPUT computes the elements of a
+  van der Corput sequence.
+  Each call produces the next value.  By default,
+  the base is 2, and the sequence starts at element 1.
+ 
+  In this test, we call VAN_DER_CORPUT several times.
+  We also get and print the seed, although this is
+  generally of little interest.
+ 
+  Seed   van der Corput
+ 
+     0   0.0000000    
+     1  0.50000000    
+     2  0.25000000    
+     3  0.75000000    
+     4  0.12500000    
+     5  0.62500000    
+     6  0.37500000    
+     7  0.87500000    
+     8  0.62500000E-01
+     9  0.56250000    
+    10  0.31250000    
+ 
+TEST02
+  VAN_DER_CORPUT_SEQUENCE computes several elements of 
+  a van der Corput sequence on a single call.
+ 
+  By default, the base is 2.
+ 
+  In this test, we call VAN_DER_CORPUT_SEQUENCE once.
+ 
+  Element   van der Corput
+ 
+     0   0.0000000    
+     1  0.50000000    
+     2  0.25000000    
+     3  0.75000000    
+     4  0.12500000    
+     5  0.62500000    
+     6  0.37500000    
+     7  0.87500000    
+     8  0.62500000E-01
+     9  0.56250000    
+ 
+TEST03
+  VAN_DER_CORPUT_SEED_SET specifies the next element of
+    the van der Corput sequence to compute.
+  VAN_DER_CORPUT_SEED_GET reports the next element of the
+    van der Corput sequence that will be computed.
+ 
+  By default, the sequence starts at element 1.
+ 
+  In this test, we demonstrate computing elements
+  affects the seed, and how resetting the seed determines
+  the next element computed.
+ 
+  We compute 11 elements.
+ 
+     0   0.0000000    
+     1  0.50000000    
+     2  0.25000000    
+     3  0.75000000    
+     4  0.12500000    
+     5  0.62500000    
+     6  0.37500000    
+     7  0.87500000    
+     8  0.62500000E-01
+     9  0.56250000    
+    10  0.31250000    
+ 
+  VAN_DER_CORPUT_SEED_GET: current seed is           11
+ 
+  We jump back to element 6 and compute 10 elements.
+ 
+     6  0.37500000    
+     7  0.87500000    
+     8  0.62500000E-01
+     9  0.56250000    
+    10  0.31250000    
+    11  0.81250000    
+    12  0.18750000    
+    13  0.68750000    
+    14  0.43750000    
+    15  0.93750000    
+ 
+  VAN_DER_CORPUT_SEED_GET: the current seed is           16
+ 
+  We restart at element 0 and compute 6 elements.
+ 
+     0   0.0000000    
+     1  0.50000000    
+     2  0.25000000    
+     3  0.75000000    
+     4  0.12500000    
+     5  0.62500000    
+ 
+  VAN_DER_CORPUT_SEED_GET: the current seed is            6
+ 
+  We jump to element 100 and compute 5 elements.
+ 
+   100  0.14843750    
+   101  0.64843750    
+   102  0.39843750    
+   103  0.89843750    
+   104  0.85937500E-01
+ 
+  VAN_DER_CORPUT_SEED_GET: the current seed is          105
+ 
+TEST04
+  VAN_DER_CORPUT_BASE_GET gets the current base.
+  VAN_DER_CORPUT_BASE_SET sets the current base.
+ 
+  The van der Corput base is usually prime, but this is
+  not required.
+ 
+  In this test, we compute a van der Corput sequence
+  with the default base, then change the base,
+  reset the seed, and recompute the sequence.
+ 
+  VAN_DER_CORPUT_BASE_GET: Current base is      2
+ 
+  Seed   van der Corput
+ 
+     0   0.0000000    
+     1  0.50000000    
+     2  0.25000000    
+     3  0.75000000    
+     4  0.12500000    
+     5  0.62500000    
+     6  0.37500000    
+     7  0.87500000    
+     8  0.62500000E-01
+     9  0.56250000    
+ 
+  Reset base to      3
+  Reset seed to            0
+ 
+  Seed   van der Corput 
+ 
+     0   0.0000000    
+     1  0.33333333    
+     2  0.66666667    
+     3  0.11111111    
+     4  0.44444444    
+     5  0.77777778    
+     6  0.22222222    
+     7  0.55555556    
+     8  0.88888889    
+     9  0.37037037E-01
+ 
+  Reset base to      4
+  Reset seed to            0
+ 
+  Seed   van der Corput
+ 
+     0   0.0000000    
+     1  0.25000000    
+     2  0.50000000    
+     3  0.75000000    
+     4  0.62500000E-01
+     5  0.31250000    
+     6  0.56250000    
+     7  0.81250000    
+     8  0.12500000    
+     9  0.37500000    
+ 
+TEST045
+  VAN_DER_CORPUT_SEED_GET gets the current seed.
+  VAN_DER_CORPUT_SEED_SET sets the current seed.
+ 
+  In this test, we compute a van der Corput sequence
+  with the default seed, then reset the seed,
+  and recompute the sequence.
+ 
+  VAN_DER_CORPUT_BASE_GET: Current base is      2
+ 
+  Seed   van der Corput
+ 
+     0   0.0000000    
+     1  0.50000000    
+     2  0.25000000    
+     3  0.75000000    
+     4  0.12500000    
+     5  0.62500000    
+     6  0.37500000    
+     7  0.87500000    
+     8  0.62500000E-01
+     9  0.56250000    
+ 
+  Reset seed to          100
+ 
+  Seed   van der Corput 
+ 
+   100  0.14843750    
+   101  0.64843750    
+   102  0.39843750    
+   103  0.89843750    
+   104  0.85937500E-01
+   105  0.58593750    
+   106  0.33593750    
+   107  0.83593750    
+   108  0.21093750    
+   109  0.71093750    
+ 
+  Reset seed to            3
+ 
+  Seed   van der Corput
+ 
+     3  0.75000000    
+     4  0.12500000    
+     5  0.62500000    
+     6  0.37500000    
+     7  0.87500000    
+     8  0.62500000E-01
+     9  0.56250000    
+    10  0.31250000    
+    11  0.81250000    
+    12  0.18750000    
+ 
+TEST05
+  I4_TO_VAN_DER_CORPUT returns the I-th element
+  of a van der Corput sequence to a given base.
+ 
+  Base    Seed   R
+ 
+ 
+     2
+             0   0.0000000    
+             1  0.50000000    
+             2  0.25000000    
+             3  0.75000000    
+             4  0.12500000    
+             5  0.62500000    
+             6  0.37500000    
+             7  0.87500000    
+             8  0.62500000E-01
+             9  0.56250000    
+            10  0.31250000    
+ 
+     3
+             0   0.0000000    
+             1  0.33333333    
+             2  0.66666667    
+             3  0.11111111    
+             4  0.44444444    
+             5  0.77777778    
+             6  0.22222222    
+             7  0.55555556    
+             8  0.88888889    
+             9  0.37037037E-01
+            10  0.37037037    
+ 
+     4
+             0   0.0000000    
+             1  0.25000000    
+             2  0.50000000    
+             3  0.75000000    
+             4  0.62500000E-01
+             5  0.31250000    
+             6  0.56250000    
+             7  0.81250000    
+             8  0.12500000    
+             9  0.37500000    
+            10  0.62500000    
+ 
+     5
+             0   0.0000000    
+             1  0.20000000    
+             2  0.40000000    
+             3  0.60000000    
+             4  0.80000000    
+             5  0.40000000E-01
+             6  0.24000000    
+             7  0.44000000    
+             8  0.64000000    
+             9  0.84000000    
+            10  0.80000000E-01
+ 
+TEST06
+  I4_TO_VAN_DER_CORPUT_SEQUENCE returns N elements
+  of a van der Corput sequence to a given base.
+ 
+ 
+  Base    Seed   R
+ 
+ 
+     2
+             0   0.0000000    
+             1  0.50000000    
+             2  0.25000000    
+             3  0.75000000    
+             4  0.12500000    
+             5  0.62500000    
+             6  0.37500000    
+             7  0.87500000    
+             8  0.62500000E-01
+             9  0.56250000    
+ 
+     3
+             0   0.0000000    
+             1  0.33333333    
+             2  0.66666667    
+             3  0.11111111    
+             4  0.44444444    
+             5  0.77777778    
+             6  0.22222222    
+             7  0.55555556    
+             8  0.88888889    
+             9  0.37037037E-01
+ 
+     4
+             0   0.0000000    
+             1  0.25000000    
+             2  0.50000000    
+             3  0.75000000    
+             4  0.62500000E-01
+             5  0.31250000    
+             6  0.56250000    
+             7  0.81250000    
+             8  0.12500000    
+             9  0.37500000    
+ 
+     5
+             0   0.0000000    
+             1  0.20000000    
+             2  0.40000000    
+             3  0.60000000    
+             4  0.80000000    
+             5  0.40000000E-01
+             6  0.24000000    
+             7  0.44000000    
+             8  0.64000000    
+             9  0.84000000    
+ 
+TEST07
+  For the unit circle:
+  CIRCLE_UNIT_VAN_DER_CORPUT samples;
+ 
+ 
+  A few sample values:
+ 
+     0  1.000000  0.000000
+     1 -1.000000  0.000000
+     2  0.000000  1.000000
+     3 -0.000000 -1.000000
+     4  0.707107  0.707107
+     5 -0.707107 -0.707107
+     6 -0.707107  0.707107
+     7  0.707107 -0.707107
+     8  0.923880  0.382683
+     9 -0.923880 -0.382683
+    10 -0.382683  0.923880
+    11  0.382683 -0.923880
+    12  0.382683  0.923880
+ 
+  Number of sample points =   1000
+ 
+  Average the points, which should get a value
+  close to zero, and closer as N increases.
+ 
+  Average:         -0.000000 -0.000000
+ 
+  Now choose a random direction, sample the same
+  number of points, and compute the dot product with
+  the direction.
+  Take the absolute value of each dot product 
+  and sum and average.
+ 
+  We expect a value near 2 / PI = 0.6366...
+ 
+  V:                 -0.722138  0.691749
+  Average |(XdotV)|   0.636642
+ 
+  V:                 -0.722138  0.691749
+  Average |(XdotV)|   0.636642
+ 
+  V:                  0.732562 -0.680700
+  Average |(XdotV)|   0.636601
+ 
+  V:                  0.732562 -0.680700
+  Average |(XdotV)|   0.636601
+ 
+  V:                  0.732562 -0.680700
+  Average |(XdotV)|   0.636601
+ 
+TEST08
+  I4_TO_VAN_DER_CORPUT computes the I-th element
+  of a van der Corput sequence.
+ 
+  In this test, we try a variety of seeds and bases.
+ 
+* First, we look at the initial sequence of values
+  for bases 2, 3, and 4.  Look at how the values 
+  vary for a fixed base, and then compare the variation
+  for corresponding seeds and different bases.
+ 
+* Second, we look at what happens for larger seeds.
+  We compare seeds 10, 100, 1000 and 10000 for a variety 
+  of small bases.
+ 
+* Third, we take relatively large primes (the 10th,
+  20th, 40th and 80th) and look at the values of the
+  1000, 1001, 1002, 1003, and 1004th values.  As the
+  prime base increases, successive values tend to be
+  close, which can cause undesirable correlations.
+ 
+      Base      Seed  VDC(Base,Seed)
+ 
+         2         0   0.000000000000000    
+         2         1  0.5000000000000000    
+         2         2  0.2500000000000000    
+         2         3  0.7500000000000000    
+         2         4  0.1250000000000000    
+         2         5  0.6250000000000000    
+         2         6  0.3750000000000000    
+         2         7  0.8750000000000000    
+         2         8  0.6250000000000000E-01
+         3         0   0.000000000000000    
+         3         1  0.3333333333333333    
+         3         2  0.6666666666666666    
+         3         3  0.1111111111111111    
+         3         4  0.4444444444444444    
+         3         5  0.7777777777777777    
+         3         6  0.2222222222222222    
+         3         7  0.5555555555555556    
+         3         8  0.8888888888888888    
+         4         0   0.000000000000000    
+         4         1  0.2500000000000000    
+         4         2  0.5000000000000000    
+         4         3  0.7500000000000000    
+         4         4  0.6250000000000000E-01
+         4         5  0.3125000000000000    
+         4         6  0.5625000000000000    
+         4         7  0.8125000000000000    
+         4         8  0.1250000000000000    
+         2        10  0.3125000000000000    
+         3        10  0.3703703703703703    
+         4        10  0.6250000000000000    
+         5        10  0.8000000000000000E-01
+         7        10  0.4489795918367347    
+        11        10  0.9090909090909092    
+        13        10  0.7692307692307693    
+         2       100  0.1484375000000000    
+         3       100  0.4115226337448559    
+         4       100  0.9765625000000000E-01
+         5       100  0.3200000000000000E-01
+         7       100  0.2915451895043731    
+        11       100  0.1652892561983471    
+        13       100  0.7337278106508875    
+         2      1000  0.9277343750000000E-01
+         3      1000  0.3475080018289895    
+         4      1000  0.1708984375000000    
+         5      1000  0.5120000000000000E-02
+         7      1000  0.9162848812994586    
+        11      1000  0.9316303531179565    
+        13      1000  0.9904415111515704    
+         2     10000  0.3472900390625000E-01
+         3     10000  0.3861200020322105    
+         4     10000  0.1892089843750000E-01
+         5     10000  0.5120000000000001E-03
+         7     10000  0.5749985125245433    
+        11     10000  0.1529950140017758    
+        13     10000  0.2459297643639929    
+        29      1000  0.4887449259912255    
+        29      1001  0.5232276846119153    
+        29      1002  0.5577104432326049    
+        29      1003  0.5921932018532945    
+        29      1004  0.6266759604739842    
+        71      1000  0.8728426899424717E-01
+        71      1001  0.1013687760365007    
+        71      1002  0.1154532830787542    
+        71      1003  0.1295377901210077    
+        71      1004  0.1436222971632613    
+       173      1000  0.7805138828560928    
+       173      1001  0.7862942296769020    
+       173      1002  0.7920745764977113    
+       173      1003  0.7978549233185205    
+       173      1004  0.8036352701393298    
+       409      1000  0.4449997309915651    
+       409      1001  0.4474447187666262    
+       409      1002  0.4498897065416874    
+       409      1003  0.4523346943167484    
+       409      1004  0.4547796820918096    
+ 
+TEST09
+  VDC_NUMERATOR_SEQUENCE returns N elements
+  of a van der Corput numerator sequence in base 2.
+ 
+   N:  Sequence
+ 
+   1:   1
+   2:   2   1
+   3:   2   1   3
+   4:   4   2   6   1
+   5:   4   2   6   1   5
+   6:   4   2   6   1   5   3
+   7:   4   2   6   1   5   3   7
+   8:   8   4  12   2  10   6  14   1
+   9:   8   4  12   2  10   6  14   1   9
+  10:   8   4  12   2  10   6  14   1   9   5
+  11:   8   4  12   2  10   6  14   1   9   5  13
+  12:   8   4  12   2  10   6  14   1   9   5  13   3
+  13:   8   4  12   2  10   6  14   1   9   5  13   3  11
+  14:   8   4  12   2  10   6  14   1   9   5  13   3  11   7
+  15:   8   4  12   2  10   6  14   1   9   5  13   3  11   7  15
+  16:  16   8  24   4  20  12  28   2  18  10  26   6  22  14  30   1
+  17:  16   8  24   4  20  12  28   2  18  10  26   6  22  14  30   1  17
+  18:  16   8  24   4  20  12  28   2  18  10  26   6  22  14  30   1  17   9
+  19:  16   8  24   4  20  12  28   2  18  10  26   6  22  14  30   1  17   9  25
+  20:  16   8  24   4  20  12  28   2  18  10  26   6  22  14  30   1  17   9  25   5
+ 
+VAN_DER_CORPUT_PRB
+  Normal end of execution.
+ 
+ 3 February 2011  10:50:09.209 AM

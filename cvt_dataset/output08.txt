@@ -1,0 +1,174 @@
+December  7 2004   9:53:28.113 AM
+ 
+CVT_DATASET (FORTRAN90 version)
+  Generate a CVT dataset.
+ 
+  This program is meant to be used interactively.
+  It is also possible to prepare a simple input 
+  file beforehand and use it in batch mode.
+ 
+  The program requests input values from the user:
+ 
+  * NDIM, the spatial dimension,
+  * N, the number of points to generate,
+  * SEED, a seed to use for random number generation,
+  * INIT, initialize the points:
+    ** file, read data from a file;
+    ** GRID, by picking points from a grid;
+    ** HALTON, from a Halton sequence;
+    ** RANDOM, using FORTRAN RANDOM function;
+    ** UNIFORM, using a simple uniform RNG;
+  * IT_MAX, the maximum number of iterations.
+  * IT_FIXED, the number of iterative steps to take
+    using a fixed set of sampling points.
+  * SAMPLE, how to conduct the sampling.
+    ** GRID, by picking points from a grid;
+    ** HALTON, from a Halton sequence;
+    ** RANDOM, using FORTRAN RANDOM function;
+    ** UNIFORM, using a simple uniform RNG;
+  * SAMPLE_NUM, the number of sample points.
+  * BATCH, number of sample points to create at one time.
+  * OUTPUT, a file in which to store the data.
+ 
+  To indicate that no further computations are 
+  desired, it is enough to input a nonsensical value, 
+  such as -1.
+  *
+ *
+*  Ready to generate a new dataset:
+ *
+  *
+  Enter NDIM, the spatial dimension:
+  (Try '2' if you do not have a preference.)
+  (0 or any negative value terminates execution).
+  User input NDIM =            2
+ 
+  Enter N, the number of points to generate:
+  (Try '25' if you do not have a preference.)
+  (0 or any negative value terminates execution).
+  User input N =           85
+ 
+  Enter SEED, a seed for the random number generator:
+  (Try '123456789' if you do not have a preference.)
+  (Any negative value terminates execution).
+  User input SEED =    123456789
+ 
+  INIT is the method of initializing the data:
+ 
+  file     read data from a file;
+  GRID     by picking points from a grid;
+  HALTON   from a Halton sequence;
+  RANDOM   using FORTRAN RANDOM function;
+  UNIFORM  using a simple uniform RNG;
+ 
+  (Try 'RANDOM' if you do not have a preference.)
+  (A blank value terminates execution).
+ 
+  Enter INIT:
+  User input INIT = "uniform".
+ 
+  IT_MAX is the maximum number of iterations.
+ 
+  An iteration carries out the following steps:
+  * the Voronoi region associated with each
+    generator is estimated by sampling;
+  * the centroid of each Voronoi region is estimated.
+  * the generator is replaced by the centroid.
+ 
+  If "enough" sampling points are used,
+  and "enough" iterations are taken, this process
+  will converge.
+ 
+  (Try '50' if you do not have a preference.)
+  (A negative value terminates execution).
+ 
+  Enter IT_MAX:
+  User input IT_MAX =     40
+ 
+  IT_FIXED is the number of consecutive iterations
+  to take with a fixed set of sample points.
+ 
+  Setting IT_FIXED to 1 means a new set of sample
+  points is generated on every iterative step;
+  Setting IT_FIXED equal to IT_MAX means a single set
+  of sample points is used for the entire iteration.
+ 
+  Any value between 1 and IT_MAX is reasonable.
+ 
+  (Try     40 if you do not have a preference.)
+  (A 0 or negative value terminates execution).
+ 
+  Enter IT_FIXED:
+  User input IT_FIXED =      1
+ 
+  SAMPLE is the method of sampling the region:
+ 
+  GRID     by picking points from a grid;
+  HALTON   from a Halton sequence;
+  RANDOM   using FORTRAN RANDOM function;
+  UNIFORM  using a simple uniform RNG;
+ 
+  (Try 'RANDOM' if you do not have a preference.)
+  (A blank value terminates execution).
+ 
+  Enter SAMPLE:
+  User input SAMPLE = "uniform".
+ 
+  SAMPLE_NUM is the number of sample points.
+ 
+  The Voronoi regions will be explored by generating
+  SAMPLE_NUM points.  For each sample point, the
+  nearest generator is found.  Using more points
+  gives a better estimate of these regions.
+ 
+  SAMPLE_NUM should be much larger than N, the
+  number of generators.
+ 
+  (Try '10000' if you do not have a preference.)
+  (A zero or negative value terminates execution.)
+ 
+  Enter SAMPLE_NUM:
+  User input SAMPLE_NUM =        10000
+ 
+  BATCH is the number of sample points to create
+  at one time.
+ 
+  BATCH should be between 1 and SAMPLE_NUM.
+ 
+  It is FASTER to set BATCH to SAMPLE_NUM;
+  setting BATCH to 1 requires the least memory.
+ 
+  (Try         1000 if you do not have a preference.)
+  (A zero or negative value terminates execution.)
+ 
+  Enter BATCH:
+  User input BATCH =            5
+ 
+  OUTPUT is the name of a file into which
+  the computed data may be stored.
+ 
+  (Try 'cvt.txt' if you do not have a preference.)
+  (A blank value terminates execution).
+ 
+  Enter OUTPUT:
+  User input OUTPUT = "cvt08.txt".
+ 
+  The data was written to the file "cvt08.txt".
+  *
+ *
+*  Ready to generate a new dataset:
+ *
+  *
+  Enter NDIM, the spatial dimension:
+  (Try '2' if you do not have a preference.)
+  (0 or any negative value terminates execution).
+  User input NDIM =           -1
+ 
+CVT_DATASET
+  The input value of NDIM =           -1
+  is interpreted as a request for termination.
+  Normal end of execution.
+ 
+  Final value of SEED =   1118006509
+ 
+December  7 2004   9:53:30.946 AM

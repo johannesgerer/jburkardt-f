@@ -1,0 +1,366 @@
+<html>
+
+  <head>
+    <TITLE>
+      ANYPLT - Simple Graphics Interface
+    </TITLE>
+  </HEAD>
+
+  <BODY bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <H1 align = "center">
+      ANYPLT <br> Simple Graphics Interface
+    </H1>
+
+    <hr>
+
+    <P>
+      <b>ANYPLT</b>
+      is a FORTRAN90 library which
+      provides an interface between a FORTRAN90 program and
+      a variety of graphics packages.
+    </p>
+    <p>
+      The idea is outdated now, but at the time, I was trying to make
+      it possible to define a simple graphic interface routine that
+      would allow me to run the same program on a variety of machines
+      and environments without having to worry about the details of
+      the particular graphics package that was available.
+    </p>
+
+    <p>
+      The interface consisted of a single subroutine, with a single
+      argument, whose value indicated the graphics action desired.
+      Any data required to carry out the indicated command was supplied
+      indirectly, by setting certain variables in a COMMON block.
+    </p>
+
+    <p>
+      This idea was helpful for me for a time.  Once I stopped needing
+      to do graphics in so many environments, I quit developing the
+      package, and it has started to suffer 'data rot'.  Nonetheless,
+      I keep it around in fond memory of the time when it was so helpful.
+    </p>
+
+    <p>
+      At one time or another, I had developed the following interfaces:
+      <ul>
+        <li>
+          <b>ANYATT</b>, a version which uses the high resolution mode of the AT&T
+          PC6300.  (400 pixels high, 640 wide).  Characters and symbols
+          are drawn.
+        </li>
+        <li>
+          <b>ANYBUG</b>, merely a debugging tool, this package records all the calls
+          to ANYPLT in a file.  (Nominally 1 high by 1 wide).
+        </li>
+        <li>
+          <b>ANYCAL</b>, a flavor of CALCOMP as implemented at the University of
+          Pittsburgh, producing a plotfile which may then be output
+          on a plotter.  (Nominally 11 high by 8.5 wide).
+        </li>
+        <li>
+          <b>ANYCGM</b>, CGM output, (Computer Graphics Metafile), as implemented
+          in the Pittsburgh Supercomputing Center's DRAWCGM package.
+        </li>
+        <li>
+          <b>ANYIBM</b>, interactive IBM graphics (200 high, 640 wide)
+        </li>
+        <li>
+          <b>ANYMAC</b>, Apple Macintosh graphics.  Requires TOOLBX.PAR file.
+          (342 high, 512 wide).  FORTRAN can't seem to access the
+          entire screen, however.
+        </li>
+        <li>
+          <b>ANYNCR</b>, NCAR GKS graphics output to a CGM metafile.  'Meta-screen'
+          is 1 high, 1 wide, but output size depends on output
+          device.
+        </li>
+        <li>
+          <b>ANYNUL</b>, a null device.  This allowed you to compile a program
+          with graphics calls, but without supplying any graphics library.
+        </li>
+        <li>
+          <b>ANYP10</b>, output to interactive PLOT10 graphics (768 high, 1024 wide)
+          A local modification to the package allows the program
+          to open a PLOT10 file in which a copy of the graphics
+          may be stored, to be viewed later by typing it out.
+        </li>
+        <li>
+          <b>ANYPS</b>, output to a PostScript file.
+        </li>
+        <li>
+          <b>ANYTTY</b>, output to a crude terminal plotting package, which uses '*' and
+          blank to produce a plot.  (24 pixels high, 80 wide).
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>ANYPLT</b> is available in
+      <a href = "../../f77_src/anyplt/anyplt.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/anyplt/anyplt.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../c_src/dislin/dislin.html">
+      DISLIN</a>,
+      C programs which
+      illustrate the use of DISLIN, a scientific graphics package.
+    </p>
+
+    <p>
+      <a href = "../../c_src/drawcgm/drawcgm.html">
+      DRAWCGM</a>,
+      a C library which
+      can create graphics output in CGM, PostScript or X11 format;
+    </p>
+
+    <p>
+      <a href = "../../f_src/ps_write/ps_write.html">
+      PS_WRITE</a>,
+      a FORTRAN90 library which
+      can be used to create PostScript image files.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/ttyplt/ttyplt.html">
+      TTYPLT</a>,
+      a FORTRAN77 library which
+      creates simple typewriter graphics images of mathematical data.
+    </p>
+
+    <h3 align = "center">
+      The NUL Interface
+    </h3>
+
+    <p>
+      The <b>NUL</b> interface was the easiest to design.  The idea
+      was that the <b>NUL</b> device was a fake device that did nothing,
+      and the interface was a dummy routine with the right name that would
+      keep the compiler happy.  The purpose of the <b>NUL</b> device was to
+      allow me to compile and load a graphics program when I didn't actually
+      want any graphics.  So the program could merrily call the ANYPLT
+      routine all it wanted, but the graphics information was never sent anywhere.
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "anynul.f90">anynul.f90</a>,
+          the source code for the interface.
+        </li>
+        <li>
+          <a href = "anynul.sh">anynul.sh</a>,
+          commands to compile the source code.
+        </li>
+        <li>
+          <a href = "anynul_prb.sh">anynul_prb.sh</a>,
+          commands to compile and run the test code with the <b>NUL</b> interface.
+        </li>
+        <li>
+          <a href = "anynul_prb_output.txt">anynul_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      The BUG Interface
+    </h3>
+
+    <p>
+      The <b>BUG</b> interface was the second easiest to design.  The idea
+      was that the <b>BUG</b> device was a fake device that simply recorded
+      all the calls to the graphics interface routine by writing the data to
+      a file.  This would allow me to debug a malfunctioning program by
+      intercepting the graphics calls.
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "anybug.f90">anybug.f90</a>,
+          the source code for the interface.
+        </li>
+        <li>
+          <a href = "anybug.sh">anybug.sh</a>,
+          commands to compile the source code.
+        </li>
+        <li>
+          <a href = "anybug_prb.sh">anybug_prb.sh</a>,
+          commands to compile and run the test code with the <b>BUG</b> interface.
+        </li>
+        <li>
+          <a href = "anybug_prb_output.txt">anybug_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "anybug_prb.bug">anybug_prb.bug</a>,
+          the <b>BUG</b> file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      The CGM Interface
+    </h3>
+
+    <p>
+      The <b>CGM</b> interface was designed to interact with the <b>DRAWCGM</b>
+      package, a graphics package developed at the Pittsburgh Supercomputing Center,
+      which could output graphics in CGM format, but also in PostScript or X Windows
+      as well.
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "anycgm.f90">anycgm.f90</a>,
+          the source code for the interface.
+        </li>
+        <li>
+          <a href = "anycgm.sh">anycgm.sh</a>,
+          commands to compile the source code.
+        </li>
+        <li>
+          <a href = "anycgm_prb.sh">anycgm_prb.sh</a>,
+          commands to compile and run the test code with the <b>CGM</b> interface.
+        </li>
+        <li>
+          <a href = "anycgm_prb_output.txt">anycgm_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      The MAC Interface
+    </h3>
+
+    <p>
+      The <b>MAC</b> interface was designed to interact with (a very early model)
+      of the Macintosh computer, using the Absoft Fortran compiler, and an
+      assembly language package called TOOLBOX.SUB, which I couldn't find if I
+      wanted to now.
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "anymac.f90">anymac.f90</a>,
+          the source code for the interface.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      The PS Interface
+    </h3>
+
+    <p>
+      The <b>PS</b> interface was designed to output a PostScript image.
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "anyps.f90">anyps.f90</a>,
+          the source code for the interface.
+        </li>
+        <li>
+          <a href = "anyps.sh">anyps.sh</a>,
+          commands to compile the source code.
+        </li>
+        <li>
+          <a href = "anyps_prb.sh">anyps_prb.sh</a>,
+          commands to compile and run the test code with the <b>PS</b> interface.
+        </li>
+        <li>
+          <a href = "anyps_prb_output.txt">anyps_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      The TTY Interface
+    </h3>
+
+    <p>
+      The <b>TTY</b> interface was designed to output ridiculously crude
+      "teletype" or "typewrite" graphics.
+    </p>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "anytty.f90">anytty.f90</a>,
+          the source code for the interface.
+        </li>
+        <li>
+          <a href = "anytty.sh">anytty.sh</a>,
+          commands to compile the source code.
+        </li>
+        <li>
+          <a href = "anytty_prb.sh">anytty_prb.sh</a>,
+          commands to compile and run the test code with the <b>TTY</b> interface.
+        </li>
+        <li>
+          <a href = "anytty_prb_output.txt">anytty_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "anyplt_prb.f90">anyplt_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "anyplt_prb_output.txt">anyplt_prb_output.txt</a>, sample problem
+          output.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 29 December 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

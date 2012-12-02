@@ -1,0 +1,1434 @@
+<html>
+
+  <head>
+    <title>
+      STROUD - Numerical Integration in M Dimensions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      STROUD <br> Numerical Integration<br> in M Dimensions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>STROUD</b> 
+      is a FORTRAN90 library which 
+      implements multidimensional quadrature rules of Arthur Stroud.
+    </p>
+
+    <p>
+      A few other rules have been collected as well, 
+      particularly for quadrature over the interior of a triangle, which is 
+      useful in finite element calculations.
+    </p>
+
+    <p>
+      Arthur Stroud published his vast collection of quadrature formulas
+      for multidimensional regions in 1971.  In a few cases, he printed 
+      sample FORTRAN77 programs to compute these integrals.  Integration 
+      regions included:
+      <ul>
+        <li>
+          <b>C2</b>, the interior of the square;
+        </li>
+        <li>
+          <b>C3</b>, the interior of the cube;
+        </li>
+        <li>
+          <b>CN</b>, the interior of the N-dimensional hypercube; 
+        </li>
+        <li>
+          <b>CN:C2</b>, a 3-dimensional pyramid;
+        </li>
+        <li>
+          <b>CN:S2</b>, a 3-dimensional cone;
+        </li>
+        <li>
+          <b>CN_SHELL</b>, the region contained between two concentric 
+          N-dimensional hypercubes;
+        </li>
+        <li>
+          <b>ELP</b>, the interior of the 2-dimensional ellipse with
+          weight function 1/sqrt((x-c)^2+y^2)/(sqrt((x+c)^2+y^2);
+        </li>
+        <li>
+          <b>EN_R</b>, all of N-dimensional space, with the weight function:<br>
+          w(x) = exp ( - sqrt ( sum ( 1 <= i < n ) x(i)^2 ) );
+        </li>
+        <li>
+          <b>EN_R2</b>, all of N-dimensional space, with the Hermite weight function:
+          w(x) = product ( 1 <= i <= n ) exp ( - x(i)^2 );
+        </li>
+        <li>
+          <b>GN</b>, the interior of the N-dimensional octahedron;
+        </li>
+        <li>
+          <b>H2</b>, the interior of the 2-dimensional hexagon;
+        </li>
+        <li>
+          <b>PAR</b>, the first parabolic region;
+        </li>
+        <li>
+          <b>PAR2</b>, the second parabolic region;
+        </li>
+        <li>
+          <b>PAR3</b>, the third parabolic region;
+        </li>
+        <li>
+          <b>S2</b>, the interior of the circle;
+        </li>
+        <li>
+          <b>S3</b>, the interior of the sphere;
+        </li>
+        <li>
+          <b>SN</b>, the interior of the N-dimensional hypersphere;
+        </li>
+        <li>
+          <b>SN_SHELL</b>, the region contained between two concentric N-dimensional hyperspheres;
+        </li>
+        <li>
+          <b>T2</b>, the interior of the triangle;
+        </li>
+        <li>
+          <b>T3</b>, the interior of the tetrahedron;
+        </li>
+        <li>
+          <b>TN</b>, the interior of the N-dimensional simplex;
+        </li>
+        <li>
+          <b>TOR3:S2</b>, the interior of a 3-dimensional torus with circular cross-section;
+        </li>
+        <li>
+          <b>TOR3:C2</b>, the interior of a 3-dimensional torus with square cross-section;
+        </li>
+        <li>
+          <b>U2</b>, the "surface" of the circle;
+        </li>
+        <li>
+          <b>U3</b>, the surface of the sphere;
+        </li>
+        <li>
+          <b>UN</b>, the surface of the N-dimensional sphere;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      We have added a few new terms for regions:
+      <ul>
+        <li>
+          <b>CN_GEG</b>, the N dimensional hypercube [-1,+1]^N, with the Gegenbauer
+          weight function:<br>
+          w(alpha;x) = product ( 1 <= i <= n ) ( 1 - x(i)^2 )^alpha;
+        </li>
+        <li>
+          <b>CN_JAC</b>, the N dimensional hypercube [-1,+1]^N, with the Beta or
+          Jacobi weight function:<br>
+          w(alpha,beta;x) = product ( 1 <= i <= n ) ( 1 - x(i) )^alpha * ( 1 + x(i) )^beta;
+        </li>
+        <li>
+          <b>CN_LEG</b>, the N dimensional hypercube [-1,+1]^N, with the Legendre
+          weight function:<br>
+          w(x) = 1;
+        </li>
+        <li>
+          <b>EPN_GLG</b>, the positive space [0,+oo)^N, with the generalized
+          Laguerre weight function:<br>
+          w(alpha;x) = product ( 1 <= i <= n ) x(i)^alpha exp ( - x(i) );
+        </li>
+        <li>
+          <b>EPN_LAG</b>, the positive space [0,+oo)^N, with the exponential or 
+          Laguerre weight function:<br>
+          w(x) = product ( 1 <= i <= n ) exp ( - x(i) );
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+ 
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>STROUD</b> is available in
+      <a href = "../../c_src/stroud/stroud.html">a C version</a> and
+      <a href = "../../cpp_src/stroud/stroud.html">a C++ version</a> and
+      <a href = "../../f77_src/stroud/stroud.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/stroud/stroud.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/stroud/stroud.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dunavant/dunavant.html">
+      DUNAVANT</a>,
+      a FORTRAN90 library which
+      defines Dunavant rules for quadrature on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fekete/fekete.html">
+      FEKETE</a>, 
+      a FORTRAN90 library which
+      defines a Fekete rule for quadrature or interpolation over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/felippa/felippa.html">
+      FELIPPA</a>,
+      a FORTRAN90 library which 
+      defines quadrature rules for lines, triangles, quadrilaterals,
+      pyramids, wedges, tetrahedrons and hexahedrons.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gm_rule/gm_rule.html">
+      GM_RULE</a>,
+      a FORTRAN90 library which
+      defines a Grundmann-Moeller rule for quadrature over a triangle, tetrahedron, or general
+      M-dimensional simplex.
+    </p>
+
+    <p>
+      <a href = "../../f_src/keast/keast.html">
+      KEAST</a>, 
+      a FORTRAN90 library which 
+      defines a number of quadrature rules for a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ncc_tetrahedron/ncc_tetrahedron.html">
+      NCC_TETRAHEDRON</a>, 
+      a FORTRAN90 library which
+      defines Newton-Cotes closed quadrature rules on a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ncc_triangle/ncc_triangle.html">
+      NCC_TRIANGLE</a>, 
+      a FORTRAN90 library which
+      defines Newton-Cotes closed quadrature rules on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nco_tetrahedron/nco_tetrahedron.html">
+      NCO_TETRAHEDRON</a>, 
+      a FORTRAN90 library which
+      defines Newton-Cotes open quadrature rules on a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nco_triangle/nco_triangle.html">
+      NCO_TRIANGLE</a>, 
+      a FORTRAN90 library which
+      defines Newton-Cotes open quadrature rules on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/product_rule/product_rule.html">
+      PRODUCT_RULE</a>,
+      a FORTRAN90 program which
+      constructs a product rule
+      from 1D factor rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pyramid_rule/pyramid_rule.html">
+      PYRAMID_RULE</a>,
+      a FORTRAN90 program which 
+      computes a quadrature rule for a pyramid.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules/quadrature_rules.html">
+      QUADRATURE_RULES</a>,
+      a dataset directory which
+      contains sets of files that define quadrature
+      rules over various 1D intervals or multidimensional hypercubes.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_tet/quadrature_rules_tet.html">
+      QUADRATURE_RULES_TET</a>,
+      a dataset directory which
+      contains triples of files defining various quadrature
+      rules on tetrahedrons.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_tri/quadrature_rules_tri.html">
+      QUADRATURE_RULES_TRI</a>, 
+      a collection of quadrature rules which
+      can be applied to triangular
+      regions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrule/quadrule.html">
+      QUADRULE</a>, 
+      a FORTRAN90 library which
+      defines quadrature rules on a
+      variety of intervals with different weight functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_design_rule/sphere_design_rule.html">
+      SPHERE_DESIGN_RULE</a>,
+      a FORTRAN90 library which 
+      returns point sets on the surface of the unit sphere, known as "designs",
+      which can be useful for estimating integrals on the surface.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_lebedev_rule/sphere_lebedev_rule.html">
+      SPHERE_LEBEDEV_RULE</a>, 
+      a FORTRAN90 library which 
+      computes Lebedev quadrature rules for the unit sphere;
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_triangle_quad/sphere_triangle_quad.html">
+      SPHERE_TRIANGLE_QUAD</a>,
+      a FORTRAN90 library which 
+      estimates the integral of a function over a spherical triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_nint/test_nint.html">
+      TEST_NINT</a>,
+      a FORTRAN90 library which
+      tests N-dimensional
+      quadrature routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_tri_int/test_tri_int.html">
+      TEST_TRI_INT</a>,
+      a FORTRAN90 library which
+      tests algorithms
+      for quadrature over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/testpack/testpack.html">
+      TESTPACK</a>,
+      a FORTRAN90 library which
+      tests multidimensional quadrature.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wandzura/wandzura.html">
+      WANDZURA</a>,
+      a FORTRAN90 library which
+      defines Wandzura rules for quadrature on a triangle.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Jarle Berntsen, Terje Espelid,<br>
+          Algorithm 706:
+          DCUTRI: an algorithm for adaptive cubature 
+          over a collection of triangles,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 18, Number 3, September 1992, pages 329-342.
+        </li>
+        <li>      
+          SF Bockman,<br>
+          Generalizing the Formula for Areas of Polygons to Moments,<br>
+          American Mathematical Society Monthly,<br>
+          Volume 96, Number 2, February 1989, pages 131-132.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox, Linus Schrage,<br>
+          A Guide to Simulation,<br>
+          Second Edition,<br>
+          Springer, 1987,<br>
+          ISBN: 0387964673,<br>
+          LC: QA76.9.C65.B73.
+        </li>
+        <li>
+          William Cody, Kenneth Hillstrom,<br>
+          Chebyshev Approximations for the Natural Logarithm of the 
+          Gamma Function,
+          Mathematics of Computation,<br>
+          Volume 21, Number 98, April 1967, pages 198-203.
+        </li>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+        <li>
+          Elise deDoncker, Ian Robinson,<br>
+          Algorithm 612:
+          Integration over a Triangle Using Nonlinear Extrapolation,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 10, Number 1, March 1984, pages 17-22.
+        </li>
+        <li>
+          Hermann Engels,<br>
+          Numerical Quadrature and Cubature,<br>
+          Academic Press, 1980,<br>
+          ISBN: 012238850X,<br>
+          LC: QA299.3E5.
+        </li>
+        <li>
+          Thomas Ericson, Victor Zinoviev,<br>
+          Codes on Euclidean Spheres,<br>
+          Elsevier, 2001,<br>
+          ISBN: 0444503293,<br>
+          LC: QA166.7E75
+        </li>
+        <li>
+          Carlos Felippa,<br>
+          A compendium of FEM integration formulas for symbolic work,<br>
+          Engineering Computation,<br>
+          Volume 21, Number 8, 2004, pages 867-890.
+        </li>
+        <li>
+          Gerald Folland,<br>
+          How to Integrate a Polynomial Over a Sphere,<br>
+          American Mathematical Monthly,<br>
+          Volume 108, Number 5, May 2001, pages 446-448.
+        </li>
+        <li>
+          Bennett Fox,<br>
+          Algorithm 647:
+          Implementation and Relative Efficiency of Quasirandom
+          Sequence Generators,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 12, Number 4, December 1986, pages 362-376.
+        </li>
+        <li>
+          Axel Grundmann, Michael Moeller,<br>
+          Invariant Integration Formulas for the N-Simplex 
+          by Combinatorial Methods,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 15, Number 2, April 1978, pages 282-290.
+        </li>
+        <li>
+          John Harris, Horst Stocker,<br>
+          Handbook of Mathematics and Computational Science,<br>
+          Springer, 1998,<br>
+          ISBN: 0-387-94746-9,<br>
+          LC: QA40.S76.
+        </li>
+        <li>
+          Patrick Keast,<br>
+          Moderate Degree Tetrahedral Quadrature Formulas,<br>
+          Computer Methods in Applied Mechanics and Engineering,<br>
+          Volume 55, Number 3, May 1986, pages 339-348.
+        </li>
+        <li>
+          Vladimir Krylov,<br>
+          Approximate Calculation of Integrals,<br>
+          Dover, 2006,<br>
+          ISBN: 0486445798,<br>
+          LC: QA311.K713.
+        </li>
+        <li>
+          Dirk Laurie,<br>
+          Algorithm 584:
+          CUBTRI, Automatic Cubature Over a Triangle,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 8, Number 2, 1982, pages 210-218.
+        </li>
+        <li>
+          Frank Lether,<br>
+          A Generalized Product Rule for the Circle,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 8, Number 2, June 1971, pages 249-253.
+        </li>
+        <li>
+          James Lyness, Dennis Jespersen,<br>
+          Moderate Degree Symmetric Quadrature Rules for the Triangle,<br>
+          Journal of the Institute of Mathematics and its Applications,<br>
+          Volume 15, Number 1, February 1975, pages 19-32.
+        </li>
+        <li>
+          James Lyness, BJJ McHugh,<br>
+          Integration Over Multidimensional Hypercubes, 
+          A Progressive Procedure,<br>
+          The Computer Journal,<br>
+          Volume 6, 1963, pages 264-270.
+        </li>
+        <li>
+          AD McLaren,<br>
+          Optimal Numerical Integration on a Sphere,<br>
+          Mathematics of Computation,<br>
+          Volume 17, Number 84, October 1963, pages 361-383.
+        </li> 
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms for Computers and Calculators,<br>
+          Second Edition,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0-12-519260-6,<br>
+          LC: QA164.N54.
+        </li>
+        <li>
+          William Peirce,<br>
+          Numerical Integration Over the Planar Annulus,<br>
+          Journal of the Society for Industrial and Applied Mathematics,<br>
+          Volume 5, Number 2, June 1957, pages 66-73.
+        </li>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Finite Element Methods,<br>
+          Academic Press, 1988,<br>
+          ISBN: 0126330107,<br>
+          LC: TA347.F5.S3313.
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Arthur Stroud,<br>
+          Approximate Calculation of Multiple Integrals,<br>
+          Prentice Hall, 1971,<br>
+          ISBN: 0130438936,<br>
+          LC: QA311.S85.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+        <li>
+          Stephen Wandzura, Hong Xiao,<br>
+          Symmetric Quadrature Rules on a Triangle,<br>
+          Computers and Mathematics with Applications,<br>
+          Volume 45, 2003, pages 1829-1840.
+        </li>
+        <li>
+          Stephen Wolfram,<br>
+          The Mathematica Book,<br>
+          Fourth Edition,<br>
+          Cambridge University Press, 1999,<br>
+          ISBN: 0-521-64314-7,<br>
+          LC: QA76.95.W65.
+        </li>
+        <li>
+          Dongbin Xiu,<br>
+          Numerical integration formulas of degree two,<br>
+          Applied Numerical Mathematics,<br>
+          Volume 58, 2008, pages 1515-1520.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200,<br>
+          LC: TA640.2.Z54
+        </li>
+        <li>
+          Daniel Zwillinger, editor,<br>
+          CRC Standard Mathematical Tables and Formulae,<br>
+          30th Edition,<br>
+          CRC Press, 1996,<br>
+          ISBN: 0-8493-2479-3,<br>
+          LC: QA47.M315.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "stroud.f90">stroud.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "stroud.sh">stroud.sh</a>, 
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "stroud_prb.f90">stroud_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "stroud_prb.sh">stroud_prb.sh</a>, 
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "stroud_prb_output.txt">stroud_prb_output.txt</a>, 
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ARC_SINE</b> computes the arc sine function, with argument truncation.
+        </li>
+        <li>
+          <b>BALL_F1_ND</b> approximates an integral inside a ball in ND.
+        </li>
+        <li>
+          <b>BALL_F3_ND</b> approximates an integral inside a ball in ND.
+        </li>
+        <li>
+          <b>BALL_MONOMIAL_ND</b> integrates a monomial on a ball in ND.
+        </li>
+        <li>
+          <b>BALL_UNIT_07_3D</b> approximates an integral inside the unit ball in 3D.
+        </li>
+        <li>
+          <b>BALL_UNIT_14_3D</b> approximates an integral inside the unit ball in 3D.
+        </li>
+        <li>
+          <b>BALL_UNIT_15_3D</b> approximates an integral inside the unit ball in 3D.
+        </li>
+        <li>
+          <b>BALL_UNIT_F1_ND</b> approximates an integral inside the unit ball in ND.
+        </li>
+        <li>
+          <b>BALL_UNIT_F3_ND</b> approximates an integral inside the unit ball in ND.
+        </li>
+        <li>
+          <b>BALL_UNIT_VOLUME_3D</b> computes the volume of the unit ball in 3D.
+        </li>
+        <li>
+          <b>BALL_UNIT_VOLUME_ND</b> computes the volume of the unit ball in ND.
+        </li>
+        <li>
+          <b>BALL_VOLUME_3D</b> computes the volume of a ball in 3D.
+        </li>
+        <li>
+          <b>BALL_VOLUME_ND</b> computes the volume of a ball in ND.
+        </li>
+        <li>
+          <b>C1_GEG_MONOMIAL_INTEGRAL:</b> integral of monomial with Gegenbauer weight on C1.
+        </li>
+        <li>
+          <b>C1_JAC_MONOMIAL_INTEGRAL:</b> integral of a monomial with Jacobi weight over C1.
+        </li>
+        <li>
+          <b>C1_LEG_MONOMIAL_INTEGRAL:</b> integral of monomial with Legendre weight on C1.
+        </li>
+        <li>
+          <b>CIRCLE_ANNULUS</b> approximates an integral in an annulus.
+        </li>
+        <li>
+          <b>CIRCLE_ANNULUS_AREA_2D</b> returns the area of a circular annulus in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_ANNULUS_SECTOR</b> approximates an integral in a circular annulus sector.
+        </li>
+        <li>
+          <b>CIRCLE_ANNULUS_SECTOR_AREA_2D:</b> area of a circular annulus sector in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_AREA_2D</b> returns the area of a circle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_CAP_AREA_2D</b> computes the area of a circle cap in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_CUM</b> approximates an integral on the circumference of a circle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_RT_SET</b> sets an R, THETA product quadrature rule in the unit circle.
+        </li>
+        <li>
+          <b>CIRCLE_RT_SIZE</b> sizes an R, THETA product quadrature rule in the unit circle.
+        </li>
+        <li>
+          <b>CIRCLE_RT_SUM</b> applies an R, THETA product quadrature rule inside a circle.
+        </li>
+        <li>
+          <b>CIRCLE_SECTOR</b> approximates an integral in a circular sector.
+        </li>
+        <li>
+          <b>CIRCLE_SECTOR_AREA_2D</b> returns the area of a circular sector in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_TRIANGLE_AREA_2D</b> returns the area of a circle triangle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_XY_SET</b> sets an XY quadrature rule inside the unit circle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_XY_SIZE</b> sizes an XY quadrature rule inside the unit circle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_XY_SUM</b> applies an XY quadrature rule inside a circle in 2D.
+        </li>
+        <li>
+          <b>CN_GEG_00_1</b> implements the midpoint rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_00_1_SIZE</b> sizes the midpoint rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_01_1</b> implements a precision 1 rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_01_1_SIZE</b> sizes a precision 1 rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_02_XIU</b> implements the Xiu rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_02_XIU_SIZE</b> sizes the Xiu rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_03_XIU</b> implements the Xiu precision 3 rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_03_XIU_SIZE</b> sizes the Xiu precision 3 rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_MONOMIAL_INTEGRAL:</b> integral of monomial with Gegenbauer weight on CN.
+        </li>
+        <li>
+          <b>CN_JAC_00_1</b> implements the midpoint rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_00_1_SIZE</b> sizes the midpoint rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_01_1</b> implements a precision 1 rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_01_1_SIZE</b> sizes a precision 1 rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_02_XIU</b> implements the Xiu rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_02_XIU_SIZE</b> sizes the Xiu rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_MONOMIAL_INTEGRAL:</b> integral of a monomial with Jacobi weight over CN.
+        </li>
+        <li>
+          <b>CN_LEG_01_1</b> implements the midpoint rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_01_1_SIZE</b> sizes the midpoint rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_02_XIU</b> implements the Xiu rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_02_XIU_SIZE</b> sizes the Xiu rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_03_1</b> implements the Stroud rule CN:3-1 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_03_1_SIZE</b> sizes the Stroud rule CN:3-1 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_03_XIU</b> implements the Xiu precision 3 rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_03_XIU_SIZE</b> sizes the Xiu precision 3 rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_05_1</b> implements the Stroud rule CN:5-1 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_05_1_SIZE</b> sizes the Stroud rule CN:5-1 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_05_2</b> implements the Stroud rule CN:5-2 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_05_2_SIZE</b> sizes the Stroud rule CN:5-2 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_MONOMIAL_INTEGRAL:</b> integral of monomial with Legendre weight on CN.
+        </li>
+        <li>
+          <b>CONE_UNIT_3D</b> approximates an integral inside the unit cone in 3D.
+        </li>
+        <li>
+          <b>CONE_VOLUME_3D</b> returns the volume of a cone in 3D.
+        </li>
+        <li>
+          <b>CUBE_SHELL_ND</b> approximates an integral inside a cubic shell in N dimensions.
+        </li>
+        <li>
+          <b>CUBE_SHELL_VOLUME_ND</b> computes the volume of a cubic shell in ND.
+        </li>
+        <li>
+          <b>CUBE_UNIT_3D</b> approximates an integral inside the unit cube in 3D.
+        </li>
+        <li>
+          <b>CUBE_UNIT_ND</b> approximates an integral inside the unit cube in ND.
+        </li>
+        <li>
+          <b>CUBE_UNIT_VOLUME_ND</b> returns the volume of the unit cube in ND.
+        </li>
+        <li>
+          <b>ELLIPSE_AREA_2D</b> returns the area of an ellipse in 2D.
+        </li>
+        <li>
+          <b>ELLIPSE_CIRCUMFERENCE_2D</b> returns the circumference of an ellipse in 2D.
+        </li>
+        <li>
+          <b>ELLIPSE_ECCENTRICITY_2D</b> returns the eccentricity of an ellipse in 2D.
+        </li>
+        <li>
+          <b>ELLIPSOID_VOLUME_3D</b> returns the volume of an ellipsoid in 3d.
+        </li>
+        <li>
+          <b>EN_R2_01_1</b> implements the Stroud rule 1.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_01_1_SIZE</b> sizes the Stroud rule 1.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_02_XIU</b> implements the Xiu rule for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_02_XIU_SIZE</b> sizes the Xiu rule for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_03_1</b> implements the Stroud rule 3.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_03_1_SIZE</b> sizes the Stroud rule 3.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_03_2</b> implements the Stroud rule 3.2 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_03_2_SIZE</b> sizes the Stroud rule 3.2 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_03_XIU</b> implements the Xiu precision 3 rule for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_03_XIU_SIZE</b> sizes the Xiu precision 3 rule for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_1</b> implements the Stroud rule 5.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_1_SIZE</b> sizes the Stroud rule 5.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_2</b> implements the Stroud rule 5.2 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_2_SIZE</b> sizes the Stroud rule 5.2 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_3</b> implements the Stroud rule 5.3 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_3_SIZE</b> sizes the Stroud rule 5.3 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_4</b> implements the Stroud rule 5.4 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_4_SIZE</b> sizes the Stroud rule 5.4 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_5</b> implements the Stroud rule 5.5 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_5_SIZE</b> sizes the Stroud rule 5.5 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_6</b> implements the Stroud rule 5.6 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_05_6_SIZE</b> sizes the Stroud rule 5.6 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_07_1</b> implements the Stroud rule 7.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_07_1_SIZE</b> sizes the Stroud rule 7.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_07_2</b> implements the Stroud rule 7.2 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_07_2_SIZE</b> sizes the Stroud rule 7.2 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_07_3</b> implements the Stroud rule 7.3 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_07_3_SIZE</b> sizes the Stroud rule 7.3 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_09_1</b> implements the Stroud rule 9.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_09_1_SIZE</b> sizes the Stroud rule 9.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_11_1</b> implements the Stroud rule 11.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_11_1_SIZE</b> sizes the Stroud rule 11.1 for region EN_R2.
+        </li>
+        <li>
+          <b>EN_R2_MONOMIAL_INTEGRAL</b> evaluates monomial integrals in EN_R2.
+        </li>
+        <li>
+          <b>EP1_GLG_MONOMIAL_INTEGRAL:</b> integral of monomial with GLG weight on EP1.
+        </li>
+        <li>
+          <b>EP1_LAG_MONOMIAL_INTEGRAL:</b> integral of monomial with Laguerre weight on EP1.
+        </li>
+        <li>
+          <b>EPN_GLG_00_1</b> implements the "midpoint rule" for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_00_1_SIZE</b> sizes the midpoint rule for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_01_1</b> implements a precision 1 rule for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_01_1_SIZE</b> sizes a precision 1 rule for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_02_XIU</b> implements the Xiu rule for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_02_XIU_SIZE</b> sizes the Xiu rule for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_MONOMIAL_INTEGRAL:</b> integral of monomial with GLG weight on EPN.
+        </li>
+        <li>
+          <b>EPN_LAG_00_1</b> implements the "midpoint rule" for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_00_1_SIZE</b> sizes the midpoint rule for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_01_1</b> implements a precision 1 rule for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_01_1_SIZE</b> sizes a precision 1 rule for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_02_XIU</b> implements the Xiu rule for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_02_XIU_SIZE</b> sizes the Xiu rule for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_MONOMIAL_INTEGRAL:</b> integral of monomial with Laguerre weight on EPN.
+        </li>
+        <li>
+          <b>GW_02_XIU</b> implements the Golub-Welsch version of the Xiu rule.
+        </li>
+        <li>
+          <b>GW_02_XIU_SIZE</b> sizes the Golub Welsch version of the Xiu rule.
+        </li>
+        <li>
+          <b>HEXAGON_AREA_2D</b> returns the area of a regular hexagon in 2D.
+        </li>
+        <li>
+          <b>HEXAGON_SUM</b> applies a quadrature rule inside a hexagon in 2D.
+        </li>
+        <li>
+          <b>HEXAGON_UNIT_AREA_2D</b> returns the area of the unit regular hexagon in 2D.
+        </li>
+        <li>
+          <b>HEXAGON_UNIT_SET</b> sets a quadrature rule inside the unit hexagon in 2D.
+        </li>
+        <li>
+          <b>HEXAGON_UNIT_SIZE</b> sizes a quadrature rule inside the unit hexagon in 2D.
+        </li>
+        <li>
+          <b>I4_FACTORIAL</b> computes N! (for small values of N).
+        </li>
+        <li>
+          <b>I4_FACTORIAL2</b> computes the double factorial function.
+        </li>
+        <li>
+          <b>KSUB_NEXT2</b> computes the next K subset of an N set.
+        </li>
+        <li>
+          <b>LEGENDRE_SET</b> sets abscissas and weights for Gauss-Legendre quadrature.
+        </li>
+        <li>
+          <b>LEGENDRE_SET_X1</b> sets a Gauss-Legendre rule for ( 1 + X ) * F(X) on [-1,1].
+        </li>
+        <li>
+          <b>LEGENDRE_SET_X2</b> sets a Gauss-Legendre rule for ( 1 + X )^2 * F(X) on [-1,1].
+        </li>
+        <li>
+          <b>LENS_HALF_2D</b> approximates an integral in a circular half lens in 2D.
+        </li>
+        <li>
+          <b>LENS_HALF_AREA_2D</b> returns the area of a circular half lens in 2D.
+        </li>
+        <li>
+          <b>LENS_HALF_H_AREA_2D</b> returns the area of a circular half lens in 2D.
+        </li>
+        <li>
+          <b>LENS_HALF_W_AREA_2D</b> returns the area of a circular half lens in 2D.
+        </li>
+        <li>
+          <b>MONOMIAL_VALUE</b> evaluates a monomial.
+        </li>
+        <li>
+          <b>OCTAHEDRON_UNIT_ND</b> approximates integrals in the unit octahedron in ND.
+        </li>
+        <li>
+          <b>OCTAHEDRON_UNIT_VOLUME_ND</b> returns the volume of the unit octahedron in ND.
+        </li>
+        <li>
+          <b>PARALLELIPIPED_VOLUME_3D</b> returns the volume of a parallelipiped in 3D.
+        </li>
+        <li>
+          <b>PARALLELIPIPED_VOLUME_ND</b> returns the volume of a parallelipiped in ND.
+        </li>
+        <li>
+          <b>POLYGON_1_2D</b> integrates the function 1 over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_X_2D</b> integrates the function X over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_XX_2D</b> integrates the function X*X over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_XY_2D</b> integrates the function X*Y over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_Y_2D</b> integrates the function Y over a polygon in 2D.
+        </li>
+        <li>
+          <b>POLYGON_YY_2D</b> integrates the function Y*Y over a polygon in 2D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_O01_3D</b> approximates an integral inside the unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_O05_3D</b> approximates an integral inside the unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_O06_3D</b> approximates an integral inside the unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_O08_3D</b> approximates an integral inside the unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_O08B_3D</b> approximates an integral inside the unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_O09_3D</b> approximates an integral inside the unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_O13_3D</b> approximates an integral inside the unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_O18_3D</b> approximates an integral inside the unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_O27_3D</b> approximates an integral inside the unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_O48_3D</b> approximates an integral inside the unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_MONOMIAL_3D:</b> monomial integral in a unit pyramid in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_UNIT_VOLUME_3D:</b> volume of a unit pyramid with square base in 3D.
+        </li>
+        <li>
+          <b>PYRAMID_VOLUME_3D</b> returns the volume of a pyramid with square base in 3D.
+        </li>
+        <li>
+          <b>QMDPT</b> carries out product midpoint quadrature for the unit cube in ND.
+        </li>
+        <li>
+          <b>QMULT_1D</b> approximates an integral over an interval in 1D.
+        </li>
+        <li>
+          <b>QMULT_2D</b> approximates an integral with varying Y dimension in 2D.
+        </li>
+        <li>
+          <b>QMULT_3D</b> approximates an integral with varying Y and Z dimension in 3D.
+        </li>
+        <li>
+          <b>R8_CHOOSE</b> computes the binomial coefficient C(N,K) as an R8.
+        </li>
+        <li>
+          <b>R8_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates Gamma(X) for a real argument.
+        </li>
+        <li>
+          <b>R8_GAMMA_LOG</b> calculates the natural logarithm of GAMMA ( X ) for positive X.
+        </li>
+        <li>
+          <b>R8_HYPER_2F1</b> evaluates the hypergeometric function F(A,B,C,X).
+        </li>
+        <li>
+          <b>R8_MOP</b> returns the I-th power of -1 as an R8 value.
+        </li>
+        <li>
+          <b>R8_PSI</b> evaluates the function Psi(X).
+        </li>
+        <li>
+          <b>R8_SWAP</b> switches two R8's.
+        </li>
+        <li>
+          <b>R8_SWAP3</b> swaps three R8's.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8GE_DET:</b> determinant of a matrix factored by R8GE_FA or R8GE_TRF.
+        </li>
+        <li>
+          <b>R8GE_FA</b> performs a LINPACK style PLU factorization of a R8GE matrix.
+        </li>
+        <li>
+          <b>R8VEC_EVEN_SELECT</b> returns the I-th of N evenly spaced values in [ XLO, XHI ].
+        </li>
+        <li>
+          <b>R8VEC_MIRROR_NEXT</b> steps through all sign variations of an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>RECTANGLE_3D</b> approximates an integral inside a rectangular block in 3D.
+        </li>
+        <li>
+          <b>RECTANGLE_SUB_2D</b> carries out a composite quadrature over a rectangle in 2D.
+        </li>
+        <li>
+          <b>RULE_ADJUST</b> maps a quadrature rule from [A,B] to [C,D].
+        </li>
+        <li>
+          <b>SIMPLEX_ND</b> approximates an integral inside a simplex in ND.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_01_ND</b> approximates an integral inside the unit simplex in ND.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_03_ND</b> approximates an integral inside the unit simplex in ND.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_05_ND</b> approximates an integral inside the unit simplex in ND.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_05_2_ND</b> approximates an integral inside the unit simplex in ND.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_VOLUME_ND</b> returns the volume of the unit simplex in ND.
+        </li>
+        <li>
+          <b>SIMPLEX_VOLUME_ND</b> returns the volume of a simplex in ND.
+        </li>
+        <li>
+          <b>SIN_POWER_INT</b> evaluates the sine power integral.
+        </li>
+        <li>
+          <b>SPHERE_05_ND</b> approximates an integral on the surface of a sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_07_1_ND</b> approximates an integral on the surface of a sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_AREA_3D</b> computes the area of a sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_AREA_ND</b> computes the area of a sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_CAP_AREA_2D</b> computes the surface area of a spherical cap in 2D.
+        </li>
+        <li>
+          <b>SPHERE_CAP_AREA_3D</b> computes the surface area of a spherical cap in 3D.
+        </li>
+        <li>
+          <b>SPHERE_CAP_AREA_ND</b> computes the area of a spherical cap in ND.
+        </li>
+        <li>
+          <b>SPHERE_CAP_VOLUME_2D</b> computes the volume of a spherical cap in 2D.
+        </li>
+        <li>
+          <b>SPHERE_CAP_VOLUME_3D</b> computes the volume of a spherical cap in 3D.
+        </li>
+        <li>
+          <b>SPHERE_CAP_VOLUME_ND</b> computes the volume of a spherical cap in ND.
+        </li>
+        <li>
+          <b>SPHERE_K</b> computes a factor useful for spherical computations.
+        </li>
+        <li>
+          <b>SPHERE_MONOMIAL_INT_ND</b> integrates a monomial on surface of a sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_SHELL_03_ND</b> approximates an integral inside a spherical shell in ND.
+        </li>
+        <li>
+          <b>SPHERE_SHELL_VOLUME_ND</b> computes the volume of a spherical shell in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_03_ND</b> approximates integral on surface of the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_04_ND</b> approximates integral on surface of the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_05_ND</b> approximates integral on surface of the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_07_3D</b> approximates integral on surface of the unit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_07_1_ND</b> approximates integral on surface of unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_07_2_ND</b> approximates integral on surface of unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_11_3D</b> approximates integral on surface of unit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_11_ND</b> approximates integral on surface of unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_14_3D</b> approximates integral on surface of unit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_15_3D</b> approximates integral on surface of unit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_AREA_3D</b> computes the surface area of the unit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_AREA_ND</b> computes the surface area of the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_AREA_VALUES</b> returns some areas of the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_MONOMIAL_ND</b> integrate monomial on surface of unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_VOLUME_ND</b> computes the volume of a unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_VOLUME_VALUES</b> returns some volumes of the unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_VOLUME_2D</b> computes the volume of an implicit sphere in 2D.
+        </li>
+        <li>
+          <b>SPHERE_VOLUME_3D</b> computes the volume of an implicit sphere in 3D.
+        </li>
+        <li>
+          <b>SPHERE_VOLUME_ND</b> computes the volume of an implicit sphere in ND.
+        </li>
+        <li>
+          <b>SQUARE_SUM</b> carries out a quadrature rule over a square.
+        </li>
+        <li>
+          <b>SQUARE_UNIT_SET</b> sets quadrature weights and abscissas in the unit square.
+        </li>
+        <li>
+          <b>SQUARE_UNIT_SIZE</b> sizes a quadrature rule in the unit square.
+        </li>
+        <li>
+          <b>SQUARE_UNIT_SUM</b> carries out a quadrature rule over the unit square.
+        </li>
+        <li>
+          <b>SUBSET_GRAY_NEXT</b> generates all subsets of a set of order N, one at a time.
+        </li>
+        <li>
+          <b>TETRA_07</b> approximates an integral inside a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRA_SUM</b> carries out a quadrature rule in a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRA_TPRODUCT</b> approximates an integral in a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRA_UNIT_SET</b> sets quadrature weights and abscissas in the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETRA_UNIT_SIZE</b> sizes quadrature rules in the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETRA_UNIT_SUM</b> carries out a quadrature rule in the unit tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRA_UNIT_VOLUME</b> returns the volume of the unit tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TETRA_VOLUME</b> computes the volume of a tetrahedron in 3D.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TORUS_1</b> approximates an integral on the surface of a torus in 3D.
+        </li>
+        <li>
+          <b>TORUS_14S</b> approximates an integral inside a torus in 3D.
+        </li>
+        <li>
+          <b>TORUS_5S2</b> approximates an integral inside a torus in 3D.
+        </li>
+        <li>
+          <b>TORUS_6S2</b> approximates an integral inside a torus in 3D.
+        </li>
+        <li>
+          <b>TORUS_AREA_3D</b> returns the area of a torus in 3D.
+        </li>
+        <li>
+          <b>TORUS_SQUARE_14C</b> approximates an integral in a "square" torus in 3D.
+        </li>
+        <li>
+          <b>TORUS_SQUARE_5C2</b> approximates an integral in a "square" torus in 3D.
+        </li>
+        <li>
+          <b>TORUS_SQUARE_AREA_3D</b> returns the area of a square torus in 3D.
+        </li>
+        <li>
+          <b>TORUS_SQUARE_VOLUME_3D</b> returns the volume of a square torus in 3D.
+        </li>
+        <li>
+          <b>TORUS_VOLUME_3D</b> returns the volume of a torus in 3D.
+        </li>
+        <li>
+          <b>TRIANGLE_RULE_ADJUST</b> adjusts a unit quadrature rule to an arbitrary triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_SUB</b> carries out quadrature over subdivisions of a triangular region.
+        </li>
+        <li>
+          <b>TRIANGLE_SUM</b> carries out a unit quadrature rule in an arbitrary triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_SUM_ADJUSTED</b> carries out an adjusted quadrature rule in a triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_PRODUCT_SET</b> sets a product rule on the unit triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_PRODUCT_SIZE</b> sizes a product rule on the unit triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_SET</b> sets a quadrature rule in the unit triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_SIZE</b> returns the "size" of a unit triangle quadrature rule.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_SUM</b> carries out a quadrature rule in the unit triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_VOLUME</b> returns the "volume" of the unit triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_VOLUME</b> returns the "volume" of a triangle in 2D.
+        </li>
+        <li>
+          <b>TVEC_EVEN</b> computes an evenly spaced set of angles between 0 and 2*PI.
+        </li>
+        <li>
+          <b>TVEC_EVEN2</b> computes evenly spaced angles between 0 and 2*PI.
+        </li>
+        <li>
+          <b>TVEC_EVEN3</b> computes evenly spaced angles between 0 and 2*PI.
+        </li>
+        <li>
+          <b>TVEC_EVEN_BRACKET</b> computes evenly spaced angles between THETA1 and THETA2.
+        </li>
+        <li>
+          <b>TVEC_EVEN_BRACKET2</b> computes evenly spaced angles between THETA1 and THETA2.
+        </li>
+        <li>
+          <b>TVEC_EVEN_BRACKET3</b> computes evenly spaced angles between THETA1 and THETA2.
+        </li>
+        <li>
+          <b>VEC_LEX_NEXT</b> generates vectors in lex order.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 06 March 2010.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>
+

@@ -1,0 +1,278 @@
+<html>
+
+  <head>
+    <title>
+      MACHAR - Dynamic Computation of Machine Constants
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MACHAR <br> Dynamic Computation of Machine Constants
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MACHAR</b> 
+      is a FORTRAN90 library which 
+      dynamically computes constants that 
+      characterize the floating point arithmetic system on a computer,
+      by William Cody.
+    </p>
+
+    <p>
+      The constants include
+      the value of the "machine epsilon", the smallest number that can
+      be added to 1 and make a difference.  However, it includes many
+      other quantities of interest, including the arithmetic base,
+      the largest and smallest magnitudes, and so on.
+    </p>
+
+    <p>
+      The FORTRAN77 version of these routines was supplied as part of ACM 
+      TOMS algorithm 665.
+    </p>
+
+    <p>
+      A C version of these routines was supplied as part of ACM 
+      TOMS algorithm 722.
+    </p>
+
+    <p>
+      Note that "Numerical Recipes" includes a listing and discussion
+      of MACHAR.
+    </p>
+
+    <h3 align = "center">
+      Equivalent FORTRAN90 library functions
+    </h3>
+
+    <p>
+      In FORTRAN90, there are built-in arithmetic functions that can
+      immediately return the values that <b>MACHAR</b> is trying to determine.
+    </p>
+
+    <p>
+      If <b>I</b> is an integer value,then:
+      <ul>
+        <li>
+          <b>
+            ibeta = radix ( i )
+          </b>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      If <b>X</b> is a single precision real value, or a double precision
+      real value, then:
+      <ul>
+        <li>
+          <b>
+            it = digits ( x )
+          </b>
+        </li>
+        <li>
+          <b>
+            maxexp = maxexponent ( x )
+          </b>
+        </li>
+        <li>
+          <b>
+            minexp = minexponent ( x )
+          </b>
+        </li>
+        <li>
+          <b>
+            xmin = tiny ( x )
+          </b>
+        </li>
+        <li>
+          <b>
+            xmax = huge ( x )
+          </b>
+        </li>
+        <li>
+          <b>
+            eps = epsilon ( x )
+          </b>
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MACHAR</b> is available in
+      <a href = "../../c_src/machar/machar.html">a C version</a> and
+      <a href = "../../cpp_src/machar/machar.html">a C++ version</a> and
+      <a href = "../../f77_src/machar/machar.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/machar/machar.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/machar/machar.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/f90/f90.html">
+      F90</a>,
+      FORTRAN90 programs which
+      demonstrate features of the FORTRAN90 language, in particular, epsilon(), huge(), 
+      and tiny() which evaluate some machine 
+      arithmetic quantities directly.
+    </p>
+
+    <p>
+      <a href = "../../f_src/machine/machine.html">
+      MACHINE</a>,
+      a FORTRAN90 library which
+      store the appropriate values of machine constants for a given machine.
+    </p>
+
+    <p>
+      <a href = "../../f_src/paranoia/paranoia.html">
+      PARANOIA</a>, 
+      a FORTRAN90 program which
+      checks the accuracy of floating point arithmetic on a given computer.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Original FORTRAN77 version by William Cody.
+      FORTRAN90 version by John Burkardt.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Cody,<br>
+          Algorithm 665:
+          MACHAR, a subroutine to dynamically determine 
+          machine parameters,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 14, Number 4, December 1988, pages 303-311.
+        </li>
+        <li>
+          William Cody, William Waite,<br>
+          Software Manual for the Elementary Functions,<br>
+          Prentice Hall, 1980,<br>
+          ISBN: 0138220646,<br>
+          LC: QA331.C635.
+        </li>
+        <li>
+          Morven Gentleman, Scott Marovich,<br>
+          More on Algorithms that Reveal Properties of Floating Point
+          Arithmetic Units,<br>
+          Communications of the ACM,<br>
+          Volume 17, Number 5, May 1974, pages 276-277.
+        </li>
+        <li>
+          Michael Malcolm,<br>
+          Algorithms to Reveal Properties of Floating Point Arithmetic,<br>
+          Communications of the ACM,<br>
+          Volume 15, Number 11, November 1972, pages 949-951.
+        </li>
+        <li>
+          William Press, Brian Flannery, Saul Teukolsky, William Vetterling,<br>
+          Numerical Recipes in FORTRAN: The Art of Scientific Computing,<br>
+          Second Edition,<br>
+          Cambridge University Press, 1992,<br>
+          ISBN: 0-521-43064-X,<br>
+          LC: QA297.N866.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "machar.f90">machar.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "machar.sh">machar.sh</a>, commands to
+          compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "machar_prb.f90">machar_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "machar_prb.sh">machar_prb.sh</a>, 
+          comomands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "machar_prb_output.txt">machar_prb_output.txt</a>, 
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>R4_MACHAR</b> determines single precision machine constants.
+        </li>
+        <li>
+          <b>R8_MACHAR</b> determines double precision machine constants.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 11 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

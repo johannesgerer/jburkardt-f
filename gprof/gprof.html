@@ -1,0 +1,131 @@
+<html>
+
+  <head>
+    <title>
+      GPROF - Monitoring Program Performance
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GPROF <br> Monitoring Program Performance
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GPROF</b>
+      is a directory of FORTRAN90 programs which
+      illustrate the use of the GPROF program performance monitoring
+      utility.
+    </p>
+
+    <p>
+      In order to use <b>GPROF</b> with a FORTRAN90 program, the user program
+      must be compiled and linked with the <b>-pg</b> switch.  For example,
+      either
+      <pre><b>
+        gfortran -pg myprog.f90
+      </b></pre>
+      or, in a two step process,
+      <pre><b>
+        gfortran -c -pg myprog.f90
+        gfortran -pg myprog.o
+      </b></pre>
+      When the resulting executable program is run, <b>GPROF</b>
+      will silently monitor the program, and produce a report
+      file called <b>gmon.out</b>.  This report file is not user-readable.
+      To see the information contained in the report, you have to
+      run <b>gprof</b> and tell it the name of the executable program
+      you just ran.  A typical procedure, then, would be to issue the
+      commands
+      <pre><b>
+        a.out            (to run your program)
+        gprof a.out      (to have GPROF make the report)
+      </b></pre>
+    </p>
+
+    <p>
+      <b>GPROF</b> can only report on code which has been compiled
+      with the appropriate options.  If your program calls routines
+      from a precompiled library (which probably was NOT compiled
+      with the -pg option!) then your report information will not
+      include information about the time spent in those routines.
+      <b>GPROF</b>'s report will charge all such time to the higher level
+      routine that called the library routine.  If most of your
+      execution time occurs in various library routines, then this
+      fact may greatly reduce the value of <b>GPROF</b>'s information.
+    </p>
+
+    <p>
+      For more information on how to use <b>GPROF</b>, type
+      <pre><b>
+        man gprof
+      </b></pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>GPROF</b> examples are available in
+      <a href = "../../c_src/gprof/gprof.html">a C version</a> and
+      <a href = "../../cpp_src/gprof/gprof.html">a C++ version</a> and
+      <a href = "../../f77_src/gprof/gprof.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/gprof/gprof.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      The LINPACK BENCHMARK code solves a linear system.
+      This program was compiled, run, and analyzed with <b>GPROF</b>.
+      Files you may copy include:
+      <ul>
+        <li>
+          <a href = "linpack_bench.f90">linpack_bench.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "linpack_bench_gprof.sh">linpack_bench_gprof.sh</a>,
+          commands to compile, load, run and analyze the code.
+        </li>
+        <li>
+          <a href = "linpack_bench_output.txt">linpack_bench_output.txt</a>,
+          the output from the LINPACK_BENCHMARK executable.
+        </li>
+        <li>
+          <a href = "linpack_bench_gprof_output.txt">linpack_bench_gprof_output.txt</a>,
+          the performance report produced by <b>GPROF</b>.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 09 March 2008.
+    </i>
+
+  </body>
+
+</html>

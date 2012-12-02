@@ -1,0 +1,357 @@
+<html>
+
+  <head>
+    <title>
+      NAST2D_F90 - A Finite Volume Code for Fluid Flow
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      NAST2D_F90 <br> A Finite Volume Code for Fluid Flow
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>NAST2D_F90</b>
+      is a FORTRAN90 program which
+      implements the finite volume method to
+      solve for the transient velocity, pressure, and temperature of
+      an incompressible fluid in a variety of 2D flow regions.
+    </p>
+
+    <p>
+      <b>NAST2D_F90</b> is a FORTRAN90 version of the <b>NAST2D</b> program,
+      which was originally written in C.
+    </p>
+
+    <p>
+      <b>NAST2D_F90</b> writes graphics files, in particular, a text
+      file containing the stream function at every gridpoint.  It can
+      also create "streakline" files, containing the position of marker
+      particles over time.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>nast2d_f90</b> &lt; <i>input.par</i> &gt; <i>output</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>input.par</i> is a "parameter file",
+          that specifies the problem to be solved and associated parameter
+          settings;
+        </li>
+        <li>
+          <i>output</i> is the printed output from the program,
+          which you will probably want to have redirected to a file,
+          as illustrated here.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>NAST2D_F90</b> is available in
+      <a href = "../../cpp_src/nast2d/nast2d.html">a C++ version</a> and
+      <a href = "../../f_src/nast2d_f90/nast2d_f90.html"> a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bump/bump.html">
+      BUMP</a>,
+      a FORTRAN90 program which
+      solves a fluid flow problem
+      in a channel including a bump which obstructs and redirects the flow.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/hcell/hcell.html">
+      HCELL</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in an "H"-shaped region.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/inout/inout.html">
+      INOUT</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in a square region with
+      an inlet and an outlet.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_control/mhd_control.html">
+      MHD_CONTROL</a>,
+      a FORTRAN90 program which
+      tries to control the evolution of an MHD system so that a particular
+      state is achieved.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_flow/mhd_flow.html">
+      MHD_FLOW</a>,
+      a FORTRAN90 program which
+      simulates the evolution of an MHD system.
+    </p>
+
+    <p>
+      <a href = "../../m_src/nast2d_streak_movie/nast2d_streak_movie.html">
+      NAST2D_STREAK_MOVIE</a>,
+      a MATLAB program which
+      creates an animation
+      of the streakline data over time.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/tcell/tcell.html">
+      TCELL</a>,
+      a FORTRAN77 program which
+      computes the pressure
+      and velocity for a Navier Stokes flow in a "T"-shaped region.
+    </p>
+
+    <p>
+      <a href = "../../m_src/toms866/toms866.html">
+      TOMS866</a>,
+      a MATLAB library which
+      is the Incompressible Flow Iterative Solution Software;<br>
+      this library is commonly called <b>IFISS</b>;<br>
+      this is ACM TOMS algorithm 866.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Michael Griebel, Thomas Dornseifer, Tilman Neunhoeffer,<br>
+          Numerische Simulation in der Stroemungsmechanik,<br>
+          Vieweg 1995.
+        </li>
+        <li>
+          Michael Griebel, Thomas Dornseifer, Tilman Neunhoeffer,<br>
+          Numerical Simulation in Fluid Dynamics,<br>
+          SIAM, 1998,<br>
+          This book can be ordered directly from
+          <a href = "http://www.siam.org/">the SIAM web site</a>.
+        </li>
+        <li>
+          <a href = "http://www.math.jmu.edu/~dpruett/software/">
+                     http://www.math.jmu.edu/~dpruett/software/</a> <br>
+           The NAST2D_F90 web site.
+        </dd>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "main.f90">main.f90</a>, the main program;
+        </li>
+        <li>
+          <a href = "boundary.f90">boundary.f90</a> handles boundary conditions;
+        </li>
+        <li>
+          <a href = "defs.h">defs.h</a>, an include file that contains
+          the definitions of some constants;
+        </li>
+        <li>
+          <a href = "extras.f90">extras.f90</a>, contains some extra
+          routines to write data to files for visualization by MATLAB;
+        </li>
+        <li>
+          <a href = "init.f90">init.f90</a>, reads the user input file;
+        </li>
+        <li>
+          <a href = "interfaces.h">interfaces.h</a>, an include file that
+          contains the subroutine interface definitions;
+        </li>
+        <li>
+          <a href = "nrtype.f90">nrtype.f90</a>, reads the user input file;
+        </li>
+        <li>
+          <a href = "surface.f90">surface.f90</a> handles free boundaries;
+        </li>
+        <li>
+          <a href = "uvp.f90">uvp.f90</a>, handles the assembly and
+          solution of the equations that define the state variables;
+        </li>
+        <li>
+          <a href = "visual.f90">visual.f90</a>,
+          routines that write out files for visualization;
+        </li>
+        <li>
+          <a href = "nast2d_f90.sh">nast2d_f90.sh</a>,
+          commands to compile, link and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>BACKSTEP</b> is the backward-facing step:
+      <ul>
+        <li>
+          <a href = "backstep.par">backstep.par</a>, the parameter file;
+        </li>
+        <li>
+          <a href = "backstep_output.txt">backstep_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CIRCLE</b> is flow past a circular obstacle:
+      <ul>
+        <li>
+          <a href = "circle.par">circle.par</a>, the parameter file;
+        </li>
+        <li>
+          <a href = "circle_output.txt">circle_output.txt</a>, the output file;
+        </li>
+        <li>
+          <a href = "circle.psi">circle.psi</a>, the PSI file,
+          containing the stream function values, which can be
+          displayed by the NAST2D_CONTOUR MATLAB routine;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>CONVECT</b> is buoyancy flow with heated side walls:
+      <ul>
+        <li>
+          <a href = "convect.par">convect.par</a>, the parameter file;
+        </li>
+        <li>
+          <a href = "convect_output.txt">convect_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>DAM</b> is a free boundary problem with a breaking dam:
+      <ul>
+        <li>
+          <a href = "dam.par">dam.par</a>, the parameter file;
+        </li>
+        <li>
+          <a href = "dam_output.txt">dam_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>DCAVITY</b> is the driven cavity:
+      <ul>
+        <li>
+          <a href = "dcavity.par">dcavity.par</a>, the parameter file;
+        </li>
+        <li>
+          <a href = "dcavity_output.txt">dcavity_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>DROP</b> follows the splash of a drop of liquid:
+      <ul>
+        <li>
+          <a href = "drop.par">drop.par</a>, the parameter file;
+        </li>
+        <li>
+          <a href = "drop_output.txt">drop_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>FLTRAP</b> is a buoyancy flow with obstacles:
+      <ul>
+        <li>
+          <a href = "fltrap.par">fltrap.par</a>, the parameter file;
+        </li>
+        <li>
+          <a href = "fltrap_output.txt">fltrap_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MOLDING</b> is a flow based on injection molding:
+      <ul>
+        <li>
+          <a href = "molding.par">molding.par</a>, the parameter file;
+        </li>
+        <li>
+          <a href = "molding_output.txt">molding_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>RAYLEIGH</b> is a buoyancy flow with heated upper and lower walls:
+      <ul>
+        <li>
+          <a href = "rayleigh.par">rayleigh.par</a>, the parameter file;
+        </li>
+        <li>
+          <a href = "rayleigh_output.txt">rayleigh_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>WAVE</b> is a free surface flow over a step:
+      <ul>
+        <li>
+          <a href = "wave.par">wave.par</a>, the parameter file;
+        </li>
+        <li>
+          <a href = "wave_output.txt">wave_output.txt</a>, the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 December 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

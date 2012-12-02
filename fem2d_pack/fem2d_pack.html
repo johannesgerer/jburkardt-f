@@ -1,0 +1,820 @@
+<html>
+
+  <head>
+    <title>
+      FEM2D_PACK - Finite Element Routines
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FEM2D_PACK <br> Finite Element Routines
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FEM2D_PACK</b>
+      is a FORTRAN90 library which
+      contains utility routines for 2D finite element calculations.
+    </p>
+
+    <p>
+      The emphasis is on simplicity and clarity.
+      Primarily, the 2D planar case is handled, with a choice
+      of low order triangular ("T") and quadrilateral ("Q") elements.
+    </p>
+
+    <p>
+      A few routines are included for computing a "sphere grid",
+      that is, a finite element mesh on the surface of a sphere.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FEM2D_PACK</b> is available in
+      <a href = "../../cpp_src/fem2d_pack/fem2d_pack.html">a C++ version</a> and
+      <a href = "../../f77_src/fem2d_pack/fem2d_pack.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fem2d_pack/fem2d_pack.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fem2d_pack/fem2d_pack.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fem_basis/fem_basis.html">
+      FEM_BASIS</a>,
+      a FORTRAN90 library which
+      can define and evaluate basis functions for any degree
+      in an M-dimensional simplex (1D interval, 2D triangle,
+      3D tetrahedron, and higher dimensional generalizations.)
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem1d_pack/fem1d_pack.html">
+      FEM1D_PACK</a>,
+      a FORTRAN90 library which
+      contains utilities for 1D finite element calculations.
+    </p>
+
+    <p>
+      <a href = "../../data/fem2d/fem2d.html">
+      FEM2D</a>,
+      a data directory which
+      contains examples of 2D FEM files,
+      text files that describe a 2D finite element geometry
+      and associated nodal values;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_heat/fem2d_heat.html">
+      FEM2D_HEAT</a>,
+      a FORTRAN90 program which
+      solves the 2D time dependent heat equation on the unit square.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_poisson/fem2d_poisson.html">
+      FEM2D_POISSON</a>,
+      a FORTRAN90 program which
+      solves the 2D Poisson equation on a square, using the finite element method.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_sample/fem2d_sample.html">
+      FEM2D_SAMPLE</a>,
+      a FORTRAN90 library which
+      evaluates a finite element function defined on an order 3 or order 6 triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem3d_pack/fem3d_pack.html">
+      FEM3D_PACK</a>,
+      a FORTRAN90 library which
+      contains utilities for 3D finite element calculations.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1.
+        </li>
+        <li>
+          Vladimir Krylov,<br>
+          Approximate Calculation of Integrals,<br>
+          Dover, 2006,<br>
+          ISBN: 0486445798.
+        </li>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Finite Element Methods,<br>
+          Academic Press, 1988,<br>
+          ISBN: 0126330107,<br>
+          LC: TA347.F5.S3313.
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Arthur Stroud,<br>
+          Approximate Calculation of Multiple Integrals,<br>
+          Prentice Hall, 1971,<br>
+          ISBN: 0130438936,<br>
+          LC: QA311.S85.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200,<br>
+          TA640.2.Z54.
+        </li>
+        <li>
+          Daniel Zwillinger, editor,<br>
+          CRC Standard Mathematical Tables and Formulae,<br>
+          30th Edition,<br>
+          CRC Press, 1996,<br>
+          ISBN: 0-8493-2479-3.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fem2d_pack.f90">fem2d_pack.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "fem2d_pack.sh">fem2d_pack.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fem2d_pack_prb.f90">fem2d_pack_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "fem2d_pack_prb.sh">fem2d_pack_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "fem2d_pack_prb_output.txt">fem2d_pack_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "fem2d_pack_prb_q4.png">fem2d_pack_prb_q4.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          a Q4 mesh.
+        </li>
+        <li>
+          <a href = "fem2d_pack_prb_t3.png">fem2d_pack_prb_t3.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          a T3 mesh.
+        </li>
+        <li>
+          <a href = "fem2d_pack_prb_t4.png">fem2d_pack_prb_t4.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          a T4 mesh.
+        </li>
+        <li>
+          <a href = "fem2d_pack_prb_t6.png">fem2d_pack_prb_t6.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          a T6 mesh.
+        </li>
+        <li>
+          <a href = "sphere_q4_nodes.txt">sphere_q4_nodes.txt</a>,
+          a node file for a Q4 mesh, which is also a
+          <a href = "../../data/polygonal_surface/polygonal_surface.html">
+          polygonal surface,</a>
+          that approximates a sphere.
+        </li>
+        <li>
+          <a href = "sphere_q4_elements.txt">sphere_q4_elements.txt</a>,
+          an element file for a Q4 mesh, which is also a
+          <a href = "../../data/polygonal_surface/polygonal_surface.html">
+          polygonal surface,</a>
+          that approximates a sphere.
+        </li>
+        <li>
+          <a href = "sphere_q9_nodes.txt">sphere_q9_nodes.txt</a>,
+          a node file for a Q9 mesh
+          that approximates a sphere.
+        </li>
+        <li>
+          <a href = "sphere_q9_elements.txt">sphere_q9_elements.txt</a>,
+          an element file for a Q9 mesh
+          that approximates a sphere.
+        </li>
+        <li>
+          <a href = "sphere_q16_nodes.txt">sphere_q16_nodes.txt</a>,
+          a node file for a Q16 mesh
+          that approximates a sphere.
+        </li>
+        <li>
+          <a href = "sphere_q16_elements.txt">sphere_q16_elements.txt</a>,
+          an element file for a Q16 mesh
+          that approximates a sphere.
+        </li>
+        <li>
+          <a href = "sphere_t3_nodes.txt">sphere_t3_nodes.txt</a>,
+          a node file for a T3 mesh, which is also a
+          <a href = "../../data/polygonal_surface/polygonal_surface.html">
+          polygonal surface,</a>
+          that approximates a sphere.
+        </li>
+        <li>
+          <a href = "sphere_t3_elements.txt">sphere_t3_elements.txt</a>,
+          an element file for a T3 mesh, which is also a
+          <a href = "../../data/polygonal_surface/polygonal_surface.html">
+          polygonal surface,</a>
+          that approximates a sphere.
+        </li>
+        <li>
+          <a href = "sphere_t6_nodes.txt">sphere_t6_nodes.txt</a>,
+          a node file for a T6 mesh
+          that approximates a sphere.
+        </li>
+        <li>
+          <a href = "sphere_t6_elements.txt">sphere_t6_elements.txt</a>,
+          an element file for a T6 mesh
+          that approximates a sphere.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BANDWIDTH_MESH:</b> bandwidth of finite element mesh.
+        </li>
+        <li>
+          <b>BANDWIDTH_VAR</b> determines the bandwidth for finite element variables.
+        </li>
+        <li>
+          <b>BASIS_11_Q4:</b> one basis at one point for a Q4 element.
+        </li>
+        <li>
+          <b>BASIS_11_Q4_TEST</b> verifies BASIS_11_Q4.
+        </li>
+        <li>
+          <b>BASIS_11_T3:</b> one basis at one point for the T3 element.
+        </li>
+        <li>
+          <b>BASIS_11_T3_TEST</b> verifies BASIS_11_T3.
+        </li>
+        <li>
+          <b>BASIS_11_T4:</b> one basis at one point for a T4 element.
+        </li>
+        <li>
+          <b>BASIS_11_T4_TEST</b> verifies BASIS_11_T4.
+        </li>
+        <li>
+          <b>BASIS_11_T6:</b> one basis at one point for the T6 element.
+        </li>
+        <li>
+          <b>BASIS_11_T6_TEST</b> verifies BASIS_11_T6.
+        </li>
+        <li>
+          <b>BASIS_MN_Q4:</b> all bases at N points for a Q4 element.
+        </li>
+        <li>
+          <b>BASIS_MN_Q4_TEST</b> verifies BASIS_MN_Q4.
+        </li>
+        <li>
+          <b>BASIS_MN_T3:</b> all bases at N points for a T3 element.
+        </li>
+        <li>
+          <b>BASIS_MN_T3_TEST</b> verifies BASIS_MN_T3.
+        </li>
+        <li>
+          <b>BASIS_MN_T4:</b> all bases at N points for a T4 element.
+        </li>
+        <li>
+          <b>BASIS_MN_T4_TEST</b> verifies BASIS_MN_T4.
+        </li>
+        <li>
+          <b>BASIS_MN_T6:</b> all bases at N points for a T6 element.
+        </li>
+        <li>
+          <b>BASIS_MN_T6_TEST</b> verifies BASIS_MN_T6.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>DEGREES_TO_RADIANS</b> converts an angle from degrees to radians.
+        </li>
+        <li>
+          <b>DERIVATIVE_AVERAGE_T3</b> averages derivatives at the nodes of a T3 mesh.
+        </li>
+        <li>
+          <b>DERIVATIVE_AVERAGE_T6</b> averages derivatives at the nodes of a T6 mesh.
+        </li>
+        <li>
+          <b>DIV_Q4</b> estimates the divergence and vorticity of a discrete field.
+        </li>
+        <li>
+          <b>DIV_T3</b> estimates the divergence and vorticity of a discrete field.
+        </li>
+        <li>
+          <b>ELEMENT_CODE</b> returns the code for each element.
+        </li>
+        <li>
+          <b>ELEMENTS_EPS</b> creates an EPS file image of the elements of a grid.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GRID_ELEMENT</b> returns the element grid associated with any available element.
+        </li>
+        <li>
+          <b>GRID_ELEMENT_NUM</b> returns the number of elements in a grid.
+        </li>
+        <li>
+          <b>GRID_NODE_NUM</b> returns the number of nodes in a grid.
+        </li>
+        <li>
+          <b>GRID_NODES_01</b> returns an equally spaced rectangular grid in the unit square.
+        </li>
+        <li>
+          <b>GRID_PRINT</b> prints the elements that form a grid.
+        </li>
+        <li>
+          <b>GRID_Q4_ELEMENT</b> produces an element grid of 4 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q4_ELEMENT_NUM</b> counts the elements in a grid of 4 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q4_NODE_NUM</b> counts the nodes in a grid of 4 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q8_ELEMENT</b> produces an element grid of 8 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q8_ELEMENT_NUM</b> counts the elements in a grid of 8 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q8_NODE_NUM</b> counts the nodes in a grid of 8 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q9_ELEMENT</b> produces an element grid of 9 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q9_ELEMENT_NUM</b> counts the elements in a grid of 9 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q9_NODE_NUM</b> counts the nodes in a grid of 9 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q12_ELEMENT</b> produces an element grid of 12 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q12_ELEMENT_NUM</b> counts the elements in a grid of 12 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q12_NODE_NUM</b> counts the nodes in a grid of 12 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q16_ELEMENT</b> produces an element grid of 16 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q16_ELEMENT_NUM</b> counts the elements in a grid of 16 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_Q16_NODE_NUM</b> counts the nodes in a grid of 16 node quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_QL_ELEMENT</b> produces an element grid of 6 node quadratics/linears.
+        </li>
+        <li>
+          <b>GRID_QL_ELEMENT_NUM</b> counts the elements in a grid of QL quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_QL_NODE_NUM</b> counts the nodes in a grid of QL quadrilaterals.
+        </li>
+        <li>
+          <b>GRID_SHAPE_2D</b> guesses the shape N1 by N2 of a vector of data.
+        </li>
+        <li>
+          <b>GRID_T3_ELEMENT</b> produces an element grid of pairs of 3 node triangles.
+        </li>
+        <li>
+          <b>GRID_T3_ELEMENT_NUM</b> counts the elements in a grid of 3 node triangles.
+        </li>
+        <li>
+          <b>GRID_T3_NODE_NUM</b> counts the nodes in a grid of 3 node triangles.
+        </li>
+        <li>
+          <b>GRID_T4_ELEMENT</b> produces an element grid of pairs of 4 node triangles.
+        </li>
+        <li>
+          <b>GRID_T4_ELEMENT_NUM</b> counts the elements in a grid of 4 node triangles.
+        </li>
+        <li>
+          <b>GRID_T4_NODE_NUM</b> counts the nodes in a grid of 4 node triangles.
+        </li>
+        <li>
+          <b>GRID_T6_ELEMENT</b> produces an element grid of pairs of 6 node triangles.
+        </li>
+        <li>
+          <b>GRID_T6_ELEMENT_NUM</b> counts the elements in a grid of 6 node triangles.
+        </li>
+        <li>
+          <b>GRID_T6_NODE_NUM</b> counts the nodes in a grid of 6 node triangles.
+        </li>
+        <li>
+          <b>GRID_T10_ELEMENT</b> produces an element grid of pairs of 10 node triangles.
+        </li>
+        <li>
+          <b>GRID_T10_ELEMENT_NUM</b> counts the elements in a grid of 10 node triangles.
+        </li>
+        <li>
+          <b>GRID_T10_NODE_NUM</b> counts the nodes in a grid of 10 node triangles.
+        </li>
+        <li>
+          <b>GRID_TEST</b> tests the grid element routines.
+        </li>
+        <li>
+          <b>GRID_WIDTH</b> computes the width of a given grid.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4MAT_WRITE</b> writes an I4MAT file.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>INTERP</b> interpolates a quantity in an element from basis node values.
+        </li>
+        <li>
+          <b>INTERP_TEST</b> tests the interpolation property of an element.
+        </li>
+        <li>
+          <b>LEGENDRE_COM</b> computes abscissas and weights for Gauss-Legendre quadrature.
+        </li>
+        <li>
+          <b>LEGENDRE_SET</b> sets abscissas and weights for Gauss-Legendre quadrature.
+        </li>
+        <li>
+          <b>MAP</b> returns the interpolation matrix for any available element.
+        </li>
+        <li>
+          <b>MAP_TEST</b> tests the map routines.
+        </li>
+        <li>
+          <b>MASS_MATRIX_T6</b> computes the mass matrix, using 6-node triangles.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE</b> returns the next boundary node in any element.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE_Q4</b> returns the next boundary node in a Q4 element.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE_Q8</b> returns the next boundary node in a Q8 element.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE_Q9</b> returns the next boundary node in a Q9 element.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE_Q12</b> returns the next boundary node in a Q12 element.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE_Q16</b> returns the next boundary node in a Q16 element.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE_QL</b> returns the next boundary node in a QL element.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE_T3</b> returns the next boundary node in a T3 element.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE_T4</b> returns the next boundary node in a T4 element.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE_T6</b> returns the next boundary node in a T6 element.
+        </li>
+        <li>
+          <b>NEXT_BOUNDARY_NODE_T10</b> returns the next boundary node in a T10 element.
+        </li>
+        <li>
+          <b>NODE_REFERENCE</b> returns the basis nodes for any available element.
+        </li>
+        <li>
+          <b>NODE_REFERENCE_Q4</b> returns the basis nodes for a 4 node quadrilateral.
+        </li>
+        <li>
+          <b>NODE_REFERENCE_Q8</b> returns the basis nodes for an 8 node quadrilateral.
+        </li>
+        <li>
+          <b>NODE_REFERENCE_Q9</b> returns the basis nodes for a 9 node quadrilateral.
+        </li>
+        <li>
+          <b>NODE_REFERENCE_Q12</b> returns the basis nodes for a 12 node quadrilateral.
+        </li>
+        <li>
+          <b>NODE_REFERENCE_Q16</b> returns the basis nodes for a 16 node quadrilateral.
+        </li>
+        <li>
+          <b>NODE_REFERENCE_QL</b> returns the basis nodes for a quadratic/linear.
+        </li>
+        <li>
+          <b>NODE_REFERENCE_T3</b> returns the basis nodes for the 3 node triangle.
+        </li>
+        <li>
+          <b>NODE_REFERENCE_T4</b> returns the basis nodes for the 4 node triangle.
+        </li>
+        <li>
+          <b>NODE_REFERENCE_T6</b> returns the basis nodes for a 6 node triangle.
+        </li>
+        <li>
+          <b>NODE_REFERENCE_T10</b> returns the basis nodes for a 10 node triangle.
+        </li>
+        <li>
+          <b>NS_T6_VAR_COUNT</b> counts the Navier Stokes variables on a T6 grid.
+        </li>
+        <li>
+          <b>NS_T6_VAR_SET</b> sets the Navier Stokes variables on a T6 grid.
+        </li>
+        <li>
+          <b>ORDER_CODE</b> returns the order for each element.
+        </li>
+        <li>
+          <b>PHYSICAL_TO_REFERENCE_T3</b> maps physical points to reference points.
+        </li>
+        <li>
+          <b>POINTS_PLOT</b> plots a pointset.
+        </li>
+        <li>
+          <b>POLY</b> returns the polynomial terms associated with any available element.
+        </li>
+        <li>
+          <b>POLY_Q4</b> returns the monomials associated with a 4 node quadrilateral.
+        </li>
+        <li>
+          <b>POLY_Q8</b> returns the monomials associated with an 8 node quadrilateral.
+        </li>
+        <li>
+          <b>POLY_Q9</b> returns the monomials associated with a 9 node quadrilateral.
+        </li>
+        <li>
+          <b>POLY_Q12</b> returns the monomials associated with a 12 node quadrilateral.
+        </li>
+        <li>
+          <b>POLY_Q16</b> returns the monomials associated with a 16 node quadrilateral.
+        </li>
+        <li>
+          <b>POLY_QL</b> returns the monomials for a quadratic/linear quadrilateral.
+        </li>
+        <li>
+          <b>POLY_T3</b> returns the monomials associated with a 3 node triangle.
+        </li>
+        <li>
+          <b>POLY_T6</b> returns the monomials associated with a 6 node triangle.
+        </li>
+        <li>
+          <b>POLY_T10</b> returns the monomials associated with a 10 node triangle.
+        </li>
+        <li>
+          <b>R8_HUGE</b> returns the largest legal R8.
+        </li>
+        <li>
+          <b>R8_POWER</b> computes the P-th power of R.
+        </li>
+        <li>
+          <b>R8_SWAP</b> switches two R8's.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8GE_FA</b> performs a LINPACK style PLU factorization of an R8GE matrix.
+        </li>
+        <li>
+          <b>R8GE_INVERSE</b> computes the inverse of a matrix factored by R8GE_FA.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>REFERENCE_SAMPLE</b> samples a reference element.
+        </li>
+        <li>
+          <b>REFERENCE_TO_PHYSICAL_Q4</b> maps Q4 reference points to physical points.
+        </li>
+        <li>
+          <b>REFERENCE_TO_PHYSICAL_T3</b> maps T3 reference points to physical points.
+        </li>
+        <li>
+          <b>REFERENCE_TO_PHYSICAL_T6</b> maps T6 reference points to physical points.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_L2NORM</b> computes the "big" L2 norm of a scalar function over a region.
+        </li>
+        <li>
+          <b>SERENE</b> interpolates data using a Q8 element.
+        </li>
+        <li>
+          <b>SHAPE</b> evaluates shape functions for any available reference element.
+        </li>
+        <li>
+          <b>SHAPE_Q4</b> evaluates shape functions for a 4 node reference quadrilateral.
+        </li>
+        <li>
+          <b>SHAPE_Q8</b> evaluates shape functions for an 8 node reference quadrilateral.
+        </li>
+        <li>
+          <b>SHAPE_Q9</b> evaluates shape functions for a 9 node reference quadrilateral.
+        </li>
+        <li>
+          <b>SHAPE_Q12</b> evaluates shape functions for a 12 node reference quadrilateral.
+        </li>
+        <li>
+          <b>SHAPE_Q16</b> evaluates shape functions for a 16 node reference quadrilateral.
+        </li>
+        <li>
+          <b>SHAPE_QL</b> evaluates shape functions for a 6 node quadratic/linear.
+        </li>
+        <li>
+          <b>SHAPE_T3</b> evaluates shape functions for a 3 node reference triangle.
+        </li>
+        <li>
+          <b>SHAPE_T4</b> evaluates shape functions for a 4 node reference triangle.
+        </li>
+        <li>
+          <b>SHAPE_T6</b> evaluates shape functions for a 6 node reference triangle.
+        </li>
+        <li>
+          <b>SHAPE_T10</b> evaluates shape functions for a 10 node reference triangle.
+        </li>
+        <li>
+          <b>SHAPE_TEST</b> verifies the shape function values at the basis nodes.
+        </li>
+        <li>
+          <b>SPHERE_GRID_ELEMENT_NUM</b> returns the number of elements in a sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_NODE_NUM</b> returns the number of nodes in a sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q4_ELEMENT</b> produces a Q4 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q4_ELEMENT_NUM</b> counts the elements in a Q4 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q4_NODE_NUM</b> counts nodes in a Q4 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q4_NODE_XYZ</b> produces node coordinates for a Q4 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q9_ELEMENT</b> produces a Q9 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q9_ELEMENT_NUM</b> counts the elements in a Q9 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q9_NODE_NUM</b> counts nodes in a Q9 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q9_NODE_XYZ</b> produces node coordinates for a Q9 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q16_ELEMENT</b> produces a Q16 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q16_ELEMENT_NUM</b> counts the elements in a Q16 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q16_NODE_NUM</b> counts nodes in a Q16 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_Q16_NODE_XYZ</b> produces node coordinates for a Q16 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_T3_ELEMENT</b> produces a T3 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_T3_ELEMENT_NUM</b> counts the elements in a T3 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_T3_NODE_NUM</b> counts nodes in a T3 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_T3_NODE_XYZ</b> produces node coordinates for a T3 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_T6_ELEMENT</b> produces a T6 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_T6_ELEMENT_NUM</b> counts the elements in a T6 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_T6_NODE_NUM</b> counts nodes in a T6 sphere grid.
+        </li>
+        <li>
+          <b>SPHERE_GRID_T6_NODE_XYZ</b> produces node coordinates for a T6 sphere grid.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_SET</b> sets a quadrature rule in the unit triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_SIZE</b> returns the "size" of a unit triangle quadrature rule.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 16 August 2009.
+    </i>
+
+  </body>
+
+</html>

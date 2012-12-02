@@ -1,0 +1,17 @@
+# emweak0_commands.txt
+# created by sde::emweak_gnuplot.
+#
+# Usage:
+#  gnuplot < emweak0_commands.txt
+#
+set term png
+set output "emweak0.png"
+set xlabel "Log(dt)"
+set ylabel "Log(Averaged Error at final T)"
+set logscale xy 10
+set title "Standard Euler-Maruyama Error as function of DT"
+set grid
+set style data linespoints
+plot "emweak0_data.txt" using 1:2 title "Error", \
+     "emweak0_data.txt" using 1:1 title "Slope = 1"
+quit

@@ -1,0 +1,378 @@
+<html>
+
+  <head>
+    <title>
+      TABLE_COLUMNS - Extract a column from a file.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TABLE_COLUMNS <br> Extract a column from a file.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TABLE_COLUMNS</b> 
+      is a FORTRAN90 program which 
+      extracts specified columns of data from a text file.
+    </p>
+
+    <p>
+      The file is presumed to consist of lines of data.  
+      Blank lines are ok, and are copied to the output file.  Lines beginning
+      with a '#' in column 1 are treated as comments, and are copied
+      to the output file.
+    </p>
+
+    <p>
+      Each line of data contains several words, separated by one or more
+      spaces or TAB characters.  The first word in each line is the first 
+      "column", and so on.  <b>TABLE_COLUMNS</b> is given a specificiation of
+      which columns are to be copied, in what order, and how often,
+      and copies the necessary information from each line of the input
+      file to the output file.
+    </p>
+
+    <p>
+      The specification of columns is simple.  You can simply list
+      every column you want, separated by spaces, or if there are
+      several consecutive columns in a row, you can use a colon
+      to indicate a range.  
+    </p>
+
+    <p>
+      The program can be used in command line form:
+      <blockquote>
+        <b>table_columns</b>  <i>column_spec filein  fileout</i>
+      </blockquote>
+      or can be invoked interactively with no arguments, in which case
+      the program will request information from the user.
+    </p>
+
+    <p>
+      For example, let us suppose that <i>file.txt</i> contains the lines:
+      <pre>
+        CAT RED   APPLE 9.5
+        MOUSE  BLUE   ORANGE 
+        DOG purple  Banana   34.7
+      </pre>
+    </p>
+
+    <p>
+      Then the command 
+      <blockquote>
+        <b>table_columns</b> </i>2 file.txt mydata.txt</i>
+      </blockquote>
+      will copy the following data into <i>mydata.txt</i>:
+      <pre>
+        RED
+        BLUE
+        purple
+      </pre>
+    </p>
+
+    <p>
+      The command 
+      <blockquote>
+        <b>table_columns</b> </i>2 3 2 file.txt mydata.txt</i>
+      </blockquote>
+      will create the file:
+      <pre>
+        RED APPLE RED
+        BLUE ORANGE BLUE
+        purple Banana purple
+      </pre>
+    </p>
+
+    <p>
+      The command 
+      <blockquote>
+        <b>table_columns</b> </i>2:4 2 2 file.txt mydata.txt</i>
+      </blockquote>
+      will create the file:
+      <pre>
+        RED   APPLE 9.5 RED RED
+        BLUE   ORANGE *** BLUE BLUE
+        purple  Banana   34.7 purple purple
+      </pre>
+    </p>
+
+    <p>
+      If some lines of the file do not have the full number of columns,
+      then the program will print a "***" string for that value, which
+      occurred in the last example above.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/file_row_reverse/file_row_reverse.html">
+      FILE_ROW_REVERSE</a>,
+      a FORTRAN90 program which
+      makes a copy of a file with the lines ("rows") in reverse order.
+    </p>
+
+    <p>
+      <a href = "../../f_src/file_transpose/file_transpose.html">
+      FILE_TRANSPOSE</a>,
+      a FORTRAN90 program which
+      makes a "transposed" copy of a file, in which the I-th "word" of the J-th line
+      becomes the J-th word of the I-th line.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_barplot_ppma/table_barplot_ppma.html">
+      TABLE_BARPLOT_PPMA</a>,
+      a FORTRAN90 program which 
+      reads a table file and creates an ASCII PPM bargraph of the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_border/table_border.html">
+      TABLE_BORDER</a>,
+      a FORTRAN90 program which 
+      adds a border (of zero values) to a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns_permute/table_columns_permute.html">
+      TABLE_COLUMNS_PERMUTE</a>,
+      a FORTRAN90 program which 
+      permutes the columns of a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which 
+      computes the Delaunay triangulation of a set of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_histogram/table_histogram.html">
+      TABLE_HISTOGRAM</a>, 
+      a FORTRAN90 program which 
+      makes a histogram of a set of points stored in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_io/table_io.html">
+      TABLE_IO</a>,
+      a FORTRAN90 library which 
+      supplies the routines used to read the TABLE file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_latinize/table_latinize.html">
+      TABLE_LATINIZE</a>, 
+      a FORTRAN90 program which
+      reads a file of
+      points and creates a "latinized" version by adjusting the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_merge/table_merge.html">
+      TABLE_MERGE</a>, 
+      a FORTRAN90 program which
+      reads a file of
+      points, and removes duplicates, and points that are close to each other.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_orthonormalize/table_orthonormalize.html">
+      TABLE_ORTHONORMALIZE</a>, 
+      a FORTRAN90 program which
+      reads a file of
+      points and orthonormalizes the columns.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_quality/table_quality.html">
+      TABLE_QUALITY</a>,
+      a FORTRAN90 program which
+      reads a file of points and computes the quality of dispersion.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_record_match/table_record_match.html">
+      TABLE_RECORD_MATCH</a>, 
+      a FORTRAN90 program which
+      finds close records in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_scale/table_scale.html">
+      TABLE_SCALE</a>, 
+      a FORTRAN90 program which
+      multiplies the entries of a table file by a scale vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_shift/table_shift.html">
+      TABLE_SHIFT</a>, 
+      a FORTRAN90 program which 
+      shifts the entries of a table file by a shift vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_stats/table_stats.html">
+      TABLE_STATS</a>, 
+      a FORTRAN90 program which 
+      reads a table file and compute certain statistics.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_tet_mesh/table_tet_mesh.html">
+      TABLE_TET_MESH</a>, 
+      a FORTRAN90 program which
+      reads a table file of 3D data, and compute a tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_top/table_top.html">
+      TABLE_TOP</a>, 
+      a FORTRAN90 program which
+      reads a table file of M-dimensional data and
+      make a table of plots of all pairs of coordinates.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_unborder/table_unborder.html">
+      TABLE_UNBORDER</a>, 
+      a FORTRAN90 program which
+      removes the border from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_uniform_noise/table_uniform_noise.html">
+      TABLE_UNIFORM_NOISE</a>,
+      a FORTRAN90 program which
+      adds a uniform noise term to the data in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_voronoi/table_voronoi.html">
+      TABLE_VORONOI</a>, 
+      a FORTRAN90 program which 
+      computes information about the Voronoi diagram of points
+      stored in a table file.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "table_columns.f90">table_columns.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "table_columns.sh">table_columns.sh</a>, 
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "input.txt">input.txt</a>, a sample text file of 
+          4 comments, 1 blank line, 4 data lines 
+          each with 4 columns (except that one line has only 3 columns);
+        </li>
+        <li>
+          <a href = "output2122.txt">output2122.txt</a>, results of <br>
+          "column 2 1 2 2 input.txt output2122.txt";
+        </li>
+        <li>
+          <a href = "output3.txt">output3.txt</a>, results of <br>
+          "column 3 input.txt output3.txt";
+        </li>
+        <li>
+          <a href = "output4321.txt">output4321.txt</a>, results of <br>
+          "column 4 3 2 1 input.txt output4321.txt";
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main routine for TABLE_COLUMNS.
+        </li>
+        <li>
+          <b>COPY_COLUMNS</b> copies specified columns from one file to another.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>RANGER</b> "understands" a range defined by a string like '4:8'.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_CAT2</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>S_CH_BLANK</b> replaces each occurrence of a particular character by a blank.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WORD_BOUNDS</b> returns the start and end of each word in a string.
+        </li>
+        <li>
+          <b>WORD_FIND</b> finds the word of a given index in a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 18 August 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

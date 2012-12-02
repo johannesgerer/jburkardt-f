@@ -1,0 +1,212 @@
+<html>
+
+  <head>
+    <title>
+      DLAP_IO - Read and Write DLAP Sparse Matrix Files
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      DLAP_IO<br>
+      DLAP Sparse Matrix Files<br>
+      Read and Write Utilities
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DLAP_IO</b>
+      is a FORTRAN90 library which
+      reads and writes files in the DLAP sparse matrix format, used by
+      DLAP, the Sparse Linear Algebra Package.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dlap/dlap.html">
+      DLAP</a>,
+      a FORTRAN90 library which
+      solves sparse linear systems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hb_io/hb_io.html">
+      HB_IO</a>,
+      a FORTRAN90 library which
+      reads and writes sparse linear
+      systems stored in the Harwell-Boeing Sparse Matrix format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hb_to_st/hb_to_st.html">
+      HB_TO_ST</a>,
+      a FORTRAN90 program which
+      converts the sparse matrix information stored in a Harwell-Boeing
+      file into a sparse triplet file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mm_io/mm_io.html">
+      MM_IO</a>,
+      a FORTRAN90 library which
+      reads and writes sparse linear
+      systems stored in the Matrix Market format.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Iain Duff, Roger Grimes, John Lewis,<br>
+          User's Guide for the Harwell-Boeing Sparse Matrix Collection,<br>
+          October 1992.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "dlap_io.f90">dlap_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "dlap_io.sh">dlap_io.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "dlap_io_prb.f90">dlapb_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "dlap_io_prb.sh">dlapb_io_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = ".dlap_io_prb_output.txt">dlap_io_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "../../data/dlap/a5by5.dlap">../../data/dlap/a5by5.dlap</a>,
+          a 5 by 5 matrix, right hand side, and solution, created by one routine
+         in the calling program and read by another.
+        </li>
+        <li>
+          <a href = "../../data/dlap/a5by5_sym.dlap">../../data/dlap/a5by5_sym.dlap</a>,
+          a 5 by 5 symmetric matrix, right hand side, and solution, created by one routine
+         in the calling program and read by another.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DLAP_FILE_PRINT</b> prints a DLAP linear system that was stored in a file.
+        </li>
+        <li>
+          <b>DLAP_FILE_READ</b> reads in a DLAP matrix contained in a file.
+        </li>
+        <li>
+          <b>DLAP_FILE_WRITE</b> writes out DLAP Triad Format Linear System.
+        </li>
+        <li>
+          <b>DLAP_HEADER_PRINT</b> prints the header line of a DLAP file.
+        </li>
+        <li>
+          <b>DLAP_HEADER_READ</b> reads the header line from a DLAP file.
+        </li>
+        <li>
+          <b>DLAP_HEADER_WRITE</b> writes the header line to a DLAP file.
+        </li>
+        <li>
+          <b>DLAP_RHS_PRINT</b> prints the right hand side vector from a DLAP file.
+        </li>
+        <li>
+          <b>DLAP_RHS_READ</b> reads the right hand side vector from a DLAP file.
+        </li>
+        <li>
+          <b>DLAP_RHS_WRITE</b> writes a right hand side vector to a DLAP file.
+        </li>
+        <li>
+          <b>DLAP_SOLN_PRINT</b> prints the solution vector from a DLAP file.
+        </li>
+        <li>
+          <b>DLAP_SOLN_READ</b> reads the solution vector from a DLAP file.
+        </li>
+        <li>
+          <b>DLAP_SOLN_WRITE</b> writes a solution vector to a DLAP file.
+        </li>
+        <li>
+          <b>DS3_PRINT</b> prints a DS3 matrix.
+        </li>
+        <li>
+          <b>DS3_PRINT_SOME</b> prints some of a DS3 matrix.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT_SOME</b> prints "some" of an R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

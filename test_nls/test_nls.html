@@ -1,0 +1,701 @@
+<html>
+
+  <head>
+    <title>
+      TEST_NLS - Nonlinear least squares test problems
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_NLS <br> Nonlinear least squares test problems
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_NLS</b>
+      is a FORTRAN90 library which
+      defines test problems for
+      least squares minimization.
+    </p>
+
+    <p>
+      The typical problem comprises M functions in N variables,
+      and it is desired to minimize the sum of squares of the values of
+      the functions.  Each problem is specified by a starting point, a
+      function and jacobian routines.
+    </p>
+
+    <p>
+      The problems include:
+      <ol>
+        <li>
+          Linear function, full rank
+        </li>
+        <li>
+          Linear function, rank 1.
+        </li>
+        <li>
+          Linear function, rank 1, zero columns and rows.
+        </li>
+        <li>
+          Rosenbrock function.
+        </li>
+        <li>
+          Helical valley function.
+        </li>
+        <li>
+          Powell singular function.
+        </li>
+        <li>
+          Freudenstein/Roth function.
+        </li>
+        <li>
+          Bard function.
+        </li>
+        <li>
+          Kowalik and Osborne function.
+        </li>
+        <li>
+          Meyer function.
+        </li>
+        <li>
+          Watson function.
+        </li>
+        <li>
+          Box 3-dimensional function.
+        </li>
+        <li>
+          Jennrich and Sampson function.
+        </li>
+        <li>
+          Brown and Dennis function.
+        </li>
+        <li>
+          Chebyquad function.
+        </li>
+        <li>
+          Brown almost-linear function.
+        </li>
+        <li>
+          Osborne function 1.
+        </li>
+        <li>
+          Osborne function 2.
+        </li>
+        <li>
+          Hanson function 1
+        </li>
+        <li>
+          Hanson function 2
+        </li>
+        <li>
+          McKeown function 1
+        </li>
+        <li>
+          McKeown function 2
+        </li>
+        <li>
+          McKeown function 3
+        </li>
+        <li>
+          Devilliers and Glasser function 1
+        </li>
+        <li>
+          Devilliers and Glasser function 2
+        </li>
+        <li>
+          Madsen example
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      seeks the solution of bounded or constrained minimization problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/minpack/minpack.html">
+      MINPACK</a>,
+      a FORTRAN90 library which
+      seeks the solution of nonlinear equations, or the least squares minimization
+      of the residual.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          John Dennis, David Gay, and Phuong Vu, <br>
+          A new nonlinear equations test problem, <br>
+          Technical Report 83-16, <br>
+          Mathematical Sciences Department,<br>
+          Rice University, (1983 - revised 1985).
+        </li>
+        <li>
+          N. de Villiers and D. Glasser, <br>
+          A continuation method for nonlinear regression, <br>
+          SIAM Journal of Numerical Analysis, <br>
+          Volume 18, pages 1139-1154, 1981.
+        </li>
+        <li>
+          C. Fraley, <br>
+          Solution of nonlinear least-squares problems, <br>
+          Technical Report STAN-CS-1165, <br>
+          Computer Science Department, <br>
+          Stanford University, 1987.
+        </li>
+        <li>
+          C. Fraley, <br>
+          Software performance on nonlinear least-squares problems, <br>
+          Technical Report SOL 88-17, <br>
+          Systems Optimization Laboratory, <br>
+          Department of Operations Research, <br>
+          Stanford University, 1988.
+        </li>
+        <li>
+          JJ McKeown, <br>
+          Specialized versus general-purpose algorithms for functions that
+          are sums of squared terms, <br>
+          Math. Prog., <br>
+          Volume 9, pages 57-68, 1975.
+        </li>
+        <li>
+          JJ McKeown, <br>
+          On algorithms for sums of squares problems, <br>
+          in Towards Global Optimization, <br>
+          L. C. W. Dixon and G. Szego (editors), <br>
+          North-Holland, pages 229-257, 1975.
+        </li>
+        <li>
+          Jorge More, Burton Garbow, Kenneth Hillstrom,<br>
+          Testing unconstrained optimization software,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 7, Number 1, March 1981, pages 17-41.
+        </li>
+        <li>
+          Jorge More, Burton Garbow, Kenneth Hillstrom,<br>
+          Algorithm 566:
+          FORTRAN Subroutines for Testing unconstrained optimization software,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 7, Number 1, March 1981, pages 136-140.
+        </li>
+        <li>
+          Douglas Salane, <br>
+          A continuation approach for solving large residual nonlinear
+          least squares problems, <br>
+          SIAM Journal of Scientific and Statistical Computing, <br>
+          Volume 8, pages 655-671, 1987.
+        </lli>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_nls.f90">test_nls.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "test_nls.sh">test_nls.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_nls_prb.f90">test_nls_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "test_nls_prb.sh">test_nls_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = test_nls_prb_output.txt">test_nls_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>P00_F</b> evaluates the M nonlinear functions for any problem.
+        </li>
+        <li>
+          <b>P00_G</b> evaluates the least squares gradient for any problem.
+        </li>
+        <li>
+          <b>P00_J</b> evaluates the jacobian for any problem.
+        </li>
+        <li>
+          <b>P00_MN</b> reports the default sizes M and N for the least squares problems.
+        </li>
+        <li>
+          <b>P00_MPROB</b> returns the number of problems available.
+        </li>
+        <li>
+          <b>P00_SOL</b> returns the solution of the problem, if known.
+        </li>
+        <li>
+          <b>P00_START</b> sets a starting point for any problem.
+        </li>
+        <li>
+          <b>P00_title</b> sets the title of any problem.
+        </li>
+        <li>
+          <b>P01_F</b> evaluates the M nonlinear functions for problem 1.
+        </li>
+        <li>
+          <b>P01_J</b> evaluates the jacobian for problem 1.
+        </li>
+        <li>
+          <b>P01_SOL</b> returns the solution of problem 1.
+        </li>
+        <li>
+          <b>P01_START</b> sets a starting point for problem 1.
+        </li>
+        <li>
+          <b>P01_title</b> specifies the title for problem 1.
+        </li>
+        <li>
+          <b>P02_F</b> evaluates the M nonlinear functions for problem 2.
+        </li>
+        <li>
+          <b>P02_J</b> evaluates the jacobian for problem 2.
+        </li>
+        <li>
+          <b>P02_SOL</b> returns the solution of problem 2.
+        </li>
+        <li>
+          <b>P02_START</b> sets a starting point for problem 2.
+        </li>
+        <li>
+          <b>P02_title</b> specifies the title for problem 2.
+        </li>
+        <li>
+          <b>P03_F</b> evaluates the M nonlinear functions for problem 3.
+        </li>
+        <li>
+          <b>P03_J</b> evaluates the jacobian for problem 3.
+        </li>
+        <li>
+          <b>P03_START</b> sets a starting point for problem 3.
+        </li>
+        <li>
+          <b>P03_SOL</b> returns the solution of problem 3.
+        </li>
+        <li>
+          <b>P03_title</b> specifies the title for problem 3.
+        </li>
+        <li>
+          <b>P04_F</b> evaluates the M nonlinear functions for problem 4.
+        </li>
+        <li>
+          <b>P04_J</b> evaluates the jacobian for problem 4.
+        </li>
+        <li>
+          <b>P04_SOL</b> returns the solution of problem 4.
+        </li>
+        <li>
+          <b>P04_START</b> sets a starting point for problem 4.
+        </li>
+        <li>
+          <b>P04_title</b> specifies the title for problem 4.
+        </li>
+        <li>
+          <b>P05_F</b> evaluates the M nonlinear functions for problem 5.
+        </li>
+        <li>
+          <b>P05_J</b> evaluates the jacobian for problem 5.
+        </li>
+        <li>
+          <b>P05_SOL</b> returns the solution of problem 5.
+        </li>
+        <li>
+          <b>P05_START</b> sets a starting point for problem 5.
+        </li>
+        <li>
+          <b>P05_title</b> specifies the title for problem 5.
+        </li>
+        <li>
+          <b>P06_F</b> evaluates the M nonlinear functions for problem 6.
+        </li>
+        <li>
+          <b>P06_J</b> evaluates the jacobian for problem 6.
+        </li>
+        <li>
+          <b>P06_SOL</b> returns the solution of problem 6.
+        </li>
+        <li>
+          <b>P06_START</b> sets a starting point for problem 6.
+        </li>
+        <li>
+          <b>P06_title</b> specifies the title for problem 6.
+        </li>
+        <li>
+          <b>P07_F</b> evaluates the M nonlinear functions for problem 7.
+        </li>
+        <li>
+          <b>P07_J</b> evaluates the jacobian for problem 7.
+        </li>
+        <li>
+          <b>P07_SOL</b> returns the solution of problem 7.
+        </li>
+        <li>
+          <b>P07_START</b> sets a starting point for problem 7.
+        </li>
+        <li>
+          <b>P07_title</b> specifies the title for problem 7.
+        </li>
+        <li>
+          <b>P08_F</b> evaluates the M nonlinear functions for problem 8.
+        </li>
+        <li>
+          <b>P08_J</b> evaluates the jacobian for problem 8.
+        </li>
+        <li>
+          <b>P08_SOL</b> returns the solution of problem 8.
+        </li>
+        <li>
+          <b>P08_START</b> sets a starting point for problem 8.
+        </li>
+        <li>
+          <b>P08_title</b> specifies the title for problem 8.
+        </li>
+        <li>
+          <b>P09_F</b> evaluates the M nonlinear functions for problem 9.
+        </li>
+        <li>
+          <b>P09_J</b> evaluates the jacobian for problem 9.
+        </li>
+        <li>
+          <b>P09_SOL</b> returns the solution of problem 9.
+        </li>
+        <li>
+          <b>P09_START</b> sets a starting point for problem 9.
+        </li>
+        <li>
+          <b>P09_title</b> specifies the title for problem 9.
+        </li>
+        <li>
+          <b>P10_F</b> evaluates the M nonlinear functions for problem 10.
+        </li>
+        <li>
+          <b>P09_J</b> evaluates the jacobian for problem 9.
+        </li>
+        <li>
+          <b>P10_SOL</b> returns the solution of problem 10.
+        </li>
+        <li>
+          <b>P10_START</b> sets a starting point for problem 10.
+        </li>
+        <li>
+          <b>P10_title</b> specifies the title for problem 10.
+        </li>
+        <li>
+          <b>P11_F</b> evaluates the M nonlinear functions for problem 11.
+        </li>
+        <li>
+          <b>P11_J</b> evaluates the jacobian for problem 11.
+        </li>
+        <li>
+          <b>P11_SOL</b> returns the solution of problem 11.
+        </li>
+        <li>
+          <b>P11_START</b> sets a starting point for problem 11.
+        </li>
+        <li>
+          <b>P11_title</b> specifies the title for problem 11.
+        </li>
+        <li>
+          <b>P12_F</b> evaluates the M nonlinear functions for problem 12.
+        </li>
+        <li>
+          <b>P12_J</b> evaluates the jacobian for problem 12.
+        </li>
+        <li>
+          <b>P12_SOL</b> returns the solution of problem 12.
+        </li>
+        <li>
+          <b>P12_START</b> sets a starting point for problem 12.
+        </li>
+        <li>
+          <b>P12_title</b> specifies the title for problem 12.
+        </li>
+        <li>
+          <b>P13_F</b> evaluates the M nonlinear functions for problem 13.
+        </li>
+        <li>
+          <b>P13_J</b> evaluates the jacobian for problem 13.
+        </li>
+        <li>
+          <b>P13_SOL</b> returns the solution of problem 13.
+        </li>
+        <li>
+          <b>P13_START</b> sets a starting point for problem 13.
+        </li>
+        <li>
+          <b>P13_title</b> specifies the title for problem 13.
+        </li>
+        <li>
+          <b>P14_F</b> evaluates the M nonlinear functions for problem 14.
+        </li>
+        <li>
+          <b>P14_J</b> evaluates the jacobian for problem 14.
+        </li>
+        <li>
+          <b>P14_SOL</b> returns the solution of problem 14.
+        </li>
+        <li>
+          <b>P14_START</b> sets a starting point for problem 14.
+        </li>
+        <li>
+          <b>P14_title</b> specifies the title for problem 14.
+        </li>
+        <li>
+          <b>P15_F</b> evaluates the M nonlinear functions for problem 15.
+        </li>
+        <li>
+          <b>P15_J</b> evaluates the jacobian for problem 15.
+        </li>
+        <li>
+          <b>P15_SOL</b> returns the solution of problem 15.
+        </li>
+        <li>
+          <b>P15_START</b> sets a starting point for problem 15.
+        </li>
+        <li>
+          <b>P15_title</b> specifies the title for problem 15.
+        </li>
+        <li>
+          <b>P16_F</b> evaluates the M nonlinear functions for problem 16.
+        </li>
+        <li>
+          <b>P16_J</b> evaluates the jacobian for problem 16.
+        </li>
+        <li>
+          <b>P16_SOL</b> returns the solution of problem 16.
+        </li>
+        <li>
+          <b>P16_START</b> sets a starting point for problem 16.
+        </li>
+        <li>
+          <b>P16_title</b> specifies the title for problem 16.
+        </li>
+        <li>
+          <b>P17_F</b> evaluates the M nonlinear functions for problem 17.
+        </li>
+        <li>
+          <b>P17_J</b> evaluates the jacobian for problem 17.
+        </li>
+        <li>
+          <b>P17_SOL</b> returns the solution of problem 17.
+        </li>
+        <li>
+          <b>P17_START</b> sets a starting point for problem 17.
+        </li>
+        <li>
+          <b>P17_title</b> specifies the title for problem 17.
+        </li>
+        <li>
+          <b>P18_F</b> evaluates the M nonlinear functions for problem 18.
+        </li>
+        <li>
+          <b>P18_J</b> evaluates the jacobian for problem 18.
+        </li>
+        <li>
+          <b>P18_SOL</b> returns the solution of problem 18.
+        </li>
+        <li>
+          <b>P18_START</b> sets a starting point for problem 18.
+        </li>
+        <li>
+          <b>P18_title</b> specifies the title for problem 18.
+        </li>
+        <li>
+          <b>P19_F</b> evaluates the M nonlinear functions for problem 19.
+        </li>
+        <li>
+          <b>P19_J</b> evaluates the jacobian for problem 19.
+        </li>
+        <li>
+          <b>P19_SOL</b> returns the solution of problem 19.
+        </li>
+        <li>
+          <b>P19_START</b> sets a starting point for problem 19.
+        </li>
+        <li>
+          <b>P19_title</b> specifies the title for problem 19.
+        </li>
+        <li>
+          <b>P20_F</b> evaluates the M nonlinear functions for problem 20.
+        </li>
+        <li>
+          <b>P20_J</b> evaluates the jacobian for problem 20.
+        </li>
+        <li>
+          <b>P20_SOL</b> returns the solution of problem 20.
+        </li>
+        <li>
+          <b>P20_START</b> sets a starting point for problem 20.
+        </li>
+        <li>
+          <b>P20_title</b> specifies the title for problem 20.
+        </li>
+        <li>
+          <b>P21_F</b> evaluates the M nonlinear functions for problem 21.
+        </li>
+        <li>
+          <b>P21_J</b> evaluates the jacobian for problem 21.
+        </li>
+        <li>
+          <b>P21_SOL</b> returns the solution of problem 21.
+        </li>
+        <li>
+          <b>P21_START</b> sets a starting point for problem 21.
+        </li>
+        <li>
+          <b>P21_title</b> specifies the title for problem 21.
+        </li>
+        <li>
+          <b>P22_F</b> evaluates the M nonlinear functions for problem 22.
+        </li>
+        <li>
+          <b>P22_J</b> evaluates the jacobian for problem 22.
+        </li>
+        <li>
+          <b>P22_SOL</b> returns the solution of problem 22.
+        </li>
+        <li>
+          <b>P22_START</b> sets a starting point for problem 22.
+        </li>
+        <li>
+          <b>P22_title</b> specifies the title for problem 22.
+        </li>
+        <li>
+          <b>P23_F</b> evaluates the M nonlinear functions for problem 23.
+        </li>
+        <li>
+          <b>P23_J</b> evaluates the jacobian for problem 23.
+        </li>
+        <li>
+          <b>P23_SOL</b> returns the solution of problem 23.
+        </li>
+        <li>
+          <b>P23_START</b> sets a starting point for problem 23.
+        </li>
+        <li>
+          <b>P23_title</b> specifies the title for problem 23.
+        </li>
+        <li>
+          <b>P24_F</b> evaluates the M nonlinear functions for problem 24.
+        </li>
+        <li>
+          <b>P24_J</b> evaluates the jacobian for problem 24.
+        </li>
+        <li>
+          <b>P24_SOL</b> returns the solution of problem 24.
+        </li>
+        <li>
+          <b>P24_START</b> sets a starting point for problem 24.
+        </li>
+        <li>
+          <b>P24_title</b> specifies the title for problem 24.
+        </li>
+        <li>
+          <b>P25_F</b> evaluates the M nonlinear functions for problem 25.
+        </li>
+        <li>
+          <b>P25_J</b> evaluates the jacobian for problem 25.
+        </li>
+        <li>
+          <b>P25_SOL</b> returns the solution of problem 25.
+        </li>
+        <li>
+          <b>P25_START</b> sets a starting point for problem 25.
+        </li>
+        <li>
+          <b>P25_title</b> specifies the title for problem 25.
+        </li>
+        <li>
+          <b>P26_F</b> evaluates the M nonlinear functions for problem 26.
+        </li>
+        <li>
+          <b>P26_J</b> evaluates the jacobian for problem 26.
+        </li>
+        <li>
+          <b>P26_SOL</b> returns the solution of problem 26.
+        </li>
+        <li>
+          <b>P26_START</b> sets a starting point for problem 26.
+        </li>
+        <li>
+          <b>P26_title</b> specifies the title for problem 26.
+        </li>
+        <li>
+          <b>R_PI</b> returns the value of pi.
+        </li>
+        <li>
+          <b>RMAT_PRINT</b> prints a real matrix.
+        </li>
+        <li>
+          <b>RVEC_PRINT</b> prints a real vector.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 August 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

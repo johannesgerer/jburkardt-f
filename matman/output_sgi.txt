@@ -1,0 +1,2588 @@
+Opening the transcript file "output".
+ 
+MATMAN, version 1.61
+Last modified on 25 January 2000.
+ 
+An interactive program which carries out
+elementary row operations on a matrix, or
+the simplex method of linear programming.
+ 
+Developed by Charles Cullen and John Burkardt.
+All rights reserved by the authors.  This program may
+not be reproduced in any form without written permission.
+ 
+Send comments to burkardt@psc.edu.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Turn off paging.
+#
+$
+Paging turned OFF.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get a brief list of legal commands.
+#
+h
+A(I,J)=S  Set matrix entry to S.
+CHECK checks if the matrix is row reduced.
+E     enters a matrix to work on.
+HELP  for full help.
+L     switches to linear programming.
+Q     quits.
+Z     automatic row reduction (requires password).
+?     for interactive help.
+ 
+R1 <=> R2  interchanges two rows
+R1 <= S R1 multiplies a row by S.
+R1 <= R1 + S R2 adds a multiple of another row.
+ 
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get the full list of legal commands.
+#
+help
+ 
+Here is a list of all MATMAN commands:
+ 
+A(I,J)=S  Set matrix entry to S.
+ADD    Add S times row I to row J.
+B      Set up sample problem.
+BASIC I, J changes basic variable I to J.
+CHECK  Check matrix for reduced row echelon form.
+CHECK  Check linear program table for optimality.
+D/M    Divide/Multiply row I by S.
+DEC    Use decimal arithmetic.
+DEC_DIGIT Set the number of decimal digits.
+DET    Print the determinant of the matrix.
+E      Enter matrix with I rows and J columns.
+E      Enter a linear programming problem, I constraints, J variables.
+EDET   Print ERO determinant.
+F      Choose arithmetic (Real, Fraction, or Decimal).
+G      Add/delete a row or column of the matrix.
+H      for quick help.
+HELP   for full help (this list).
+I      Interchange rows I and J.
+I_BIG  Set size of largest integer for fractions.
+INIT   Initialize data.
+J      Jacobi rotation in (I,J) plane.
+K      Open/close the transcript file.
+L      To switch between linear algebra and linear programming.
+P      Pivot linear program, entering I, departing J.
+Q      Quit.
+RES    Restore a saved matrix or table
+RAT    Use rational arithmetic.
+REAL   Use real arithmetic.
+S      Store the current matrix or table.
+T      Type out the matrix
+TR     Transpose the matrix.
+TS     Type linear programming solution.
+U      Undo last operation.
+V      Remove LP artificial variables.
+W/X    Write/read example to/from file.
+Y      Turn automatic printing ON or OFF.
+Z      Automatic operation (requires password).
+#      Begins a comment line.
+<      Get input from a file.
+%/$    Turn paging on/off.
+ 
+R1 <=> R2  interchanges two rows
+R1 <= S R1 multiplies a row by S.
+R1 <= R1 + S R2 adds a multiple of another row.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Work in fractional arithmetic.
+#
+rational
+You are already using the arithmetic type that
+you have requested.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Enter a 3 by 3 matrix.
+#
+e
+Enter number of rows, number of columns.
+3,3
+Enter entries 1 to 3 of row 1
+1,2,3
+Enter entries 1 to 3 of row 2
+4,5,6
+Enter entries 1 to 3 of row 3
+7,8,11
+A copy of this matrix is being saved.
+ 
+  The current matrix:
+ 
+    1    2    3
+ 
+    4    5    6
+ 
+    7    8   11
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Interchange rows 1 and 3
+#
+r1 <=> r3
+  ERO: Row 1 <=> Row 3
+ 
+  The current matrix:
+ 
+    7    8   11
+ 
+    4    5    6
+ 
+    1    2    3
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Divide row 1 by 7
+#
+r1 <= r1/7
+  ERO: Row 1 <=  Row 1 / 7
+ 
+  The current matrix:
+ 
+    1    8   11
+         7    7
+ 
+    4    5    6
+ 
+    1    2    3
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Add -4 times row 1 to row 2,
+# Add -1 times row 1 to row 3.
+#
+r2 <= r2 - 4 r1
+  ERO: Row 2 <=  Row 2 - 4 Row 1
+ 
+  The current matrix:
+ 
+    1    8   11
+         7    7
+ 
+    0    3   -2
+         7    7
+ 
+    1    2    3
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r3 <= r3 - 1 r1
+  ERO: Row 3 <=  Row 3 - Row 1
+ 
+  The current matrix:
+ 
+    1    8   11
+         7    7
+ 
+    0    3   -2
+         7    7
+ 
+    0    6   10
+         7    7
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Interchange rows 2 and 3
+# and divide row 2 by 6/7.
+#
+r2 <=> r3
+  ERO: Row 2 <=> Row 3
+ 
+  The current matrix:
+ 
+    1    8   11
+         7    7
+ 
+    0    6   10
+         7    7
+ 
+    0    3   -2
+         7    7
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r2 <= r2 / 6/7
+  ERO: Row 2 <=  Row 2 * 7/6
+ 
+  The current matrix:
+ 
+    1    8   11
+         7    7
+ 
+    0    1    5
+              3
+ 
+    0    3   -2
+         7    7
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Add -8/7 times row 2 to row 1,
+# Add -3/7 times row 2 to row 3.
+#
+r1 <= r1 - 8/7 r2
+  ERO: Row 1 <=  Row 1 - 8/7 Row 2
+ 
+  The current matrix:
+ 
+   1   0  -1
+           3
+ 
+   0   1   5
+           3
+ 
+   0   3  -2
+       7   7
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r3 <= r3 - 3/7 r2
+  ERO: Row 3 <=  Row 3 - 3/7 Row 2
+ 
+  The current matrix:
+ 
+   1   0  -1
+           3
+ 
+   0   1   5
+           3
+ 
+   0   0  -1
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Check for row reduced echelon form.
+#
+check
+ 
+Checking the matrix for row echelon form...
+ 
+  The matrix is NOT in row echelon form.
+  The first nonzero entry in row 3
+  which occurs in column 3
+  is -1 rather than 1.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Divide row 3 by -1
+#
+r3 <= - r3
+  ERO: Row 3 <= - Row 3
+ 
+  The current matrix:
+ 
+   1   0  -1
+           3
+ 
+   0   1   5
+           3
+ 
+   0   0   1
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Add 1/3 row 3 to row 1
+# Add -5/3 row 3 to row 2
+#
+r1 <= r1 + 1/3 r3
+  ERO: Row 1 <=  Row 1 + 1/3 Row 3
+ 
+  The current matrix:
+ 
+   1   0   0
+ 
+   0   1   5
+           3
+ 
+   0   0   1
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r2 <= r2 -5/3 r3
+  ERO: Row 2 <=  Row 2 - 5/3 Row 3
+ 
+  The current matrix:
+ 
+   1   0   0
+ 
+   0   1   0
+ 
+   0   0   1
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Consider another matrix
+#
+e
+Enter number of rows, number of columns.
+3,3
+Enter entries 1 to 3 of row 1
+1,2,3
+Enter entries 1 to 3 of row 2
+4,5,6
+Enter entries 1 to 3 of row 3
+7,8,9
+A copy of this matrix is being saved.
+ 
+  The current matrix:
+ 
+   1   2   3
+ 
+   4   5   6
+ 
+   7   8   9
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Request automatic conversion to row reduced echelon form.
+#
+z 31984
+ 
+  ERO: Row 3 <=> Row 1
+  ERO: Row 1 <=  Row 1 / 7
+  ERO: Row 2 <=  Row 2 - 4 Row 1
+  ERO: Row 3 <=  Row 3 - Row 1
+ 
+  ERO: Row 3 <=> Row 2
+  ERO: Row 2 <=  Row 2 * 7/6
+  ERO: Row 1 <=  Row 1 - 8/7 Row 2
+  ERO: Row 3 <=  Row 3 - 3/7 Row 2
+ 
+  The current matrix:
+ 
+   1   0  -1
+ 
+   0   1   2
+ 
+   0   0   0
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Restore the original matrix.
+#
+restore
+The saved matrix has been restored.
+ 
+  The current matrix:
+ 
+   1   2   3
+ 
+   4   5   6
+ 
+   7   8   9
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Insert a new row at row position 3.
+#
+g +r3
+Enter entries 1 to 3 of row 3
+6.1, 6.2, 6.3
+ 
+  The current matrix:
+ 
+    1    2    3
+ 
+    4    5    6
+ 
+   61   31   63
+   10    5   10
+ 
+    7    8    9
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Change entry 3,2 to 77
+#
+a(3,2) = 77
+ 
+  A(3,2) = 77
+ 
+  The current matrix:
+ 
+    1    2    3
+ 
+    4    5    6
+ 
+   61   77   63
+   10        10
+ 
+    7    8    9
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Remove column 2.
+#
+g -c2
+The column has been deleted!
+ 
+  The current matrix:
+ 
+    1    3
+ 
+    4    6
+ 
+   61   63
+   10   10
+ 
+    7    9
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get a determinant test matrix of order 4.
+#
+b d 4
+ 
+The following examples are available:
+  "D" for determinant;
+  "E" for eigenvalues;
+  "I" for inverse;
+  "S" for linear solve.
+ 
+  "C" to cancel.
+ 
+ 
+  The current matrix:
+ 
+    0    6   -4   -8
+ 
+   -3  -10   -4   -5
+ 
+    9   -5   -1   -8
+ 
+   -1    5    1    9
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+det
+ 
+The determinant is -4350
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Repeat work in real arithmetic.
+#
+real
+ 
+  Switching to REAL arithmetic.
+ 
+  A note about REAL arithmetic:
+ 
+  The representation is approximate;
+  Arithmetic operations are approximate.
+ 
+  In particular, a singular matrix may be
+  incorrectly found to be nonsingular.
+ 
+  The current matrix:
+ 
+    0.    6.   -4.   -8.
+   -3.  -10.   -4.   -5.
+    9.   -5.   -1.   -8.
+   -1.    5.    1.    9.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+e
+Enter number of rows, number of columns.
+3,3
+Enter entries 1 to 3 of row 1
+1,2,3
+Enter entries 1 to 3 of row 2
+4,5,6
+Enter entries 1 to 3 of row 3
+7,8,11
+A copy of this matrix is being saved.
+ 
+  The current matrix:
+ 
+    1.    2.    3.
+    4.    5.    6.
+    7.    8.   11.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+r1 <=> r3
+  ERO: Row 1 <=> Row 3
+ 
+  The current matrix:
+ 
+    7.    8.   11.
+    4.    5.    6.
+    1.    2.    3.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r1 <= r1/7
+  ERO: Row 1 <=  Row 1 / 7
+ 
+  The current matrix:
+ 
+   1.0000000   1.1428572   1.5714285
+   4.0000000   5.0000000   6.0000000
+   1.0000000   2.0000000   3.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r2 <= r2 -4 r1
+  ERO: Row 2 <=  Row 2 - 4 Row 1
+ 
+  The current matrix:
+ 
+   1.0000000   1.1428572   1.5714285
+   0.0000000   0.4285712  -0.2857141
+   1.0000000   2.0000000   3.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r3 <= r3 - r1
+  ERO: Row 3 <=  Row 3 - Row 1
+ 
+  The current matrix:
+ 
+   1.0000000   1.1428572   1.5714285
+   0.0000000   0.4285712  -0.2857141
+   0.0000000   0.8571428   1.4285715
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+ 
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r2 <=> r3
+  ERO: Row 2 <=> Row 3
+ 
+  The current matrix:
+ 
+   1.0000000   1.1428572   1.5714285
+   0.0000000   0.8571428   1.4285715
+   0.0000000   0.4285712  -0.2857141
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r2 <= r2 / 0.8571428
+  ERO: Row 2 <=  Row 2 / 0.857143
+ 
+  The current matrix:
+ 
+   1.0000000   1.1428572   1.5714285
+   0.0000000   1.0000000   1.6666669
+   0.0000000   0.4285712  -0.2857141
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r3 <= r3 - 0.4285712 r2
+  ERO: Row 3 <=  Row 3 - 0.428571 Row 2
+ 
+  The current matrix:
+ 
+   1.0000000   1.1428572   1.5714285
+   0.0000000   1.0000000   1.6666669
+   0.0000000   0.0000000  -0.9999996
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+ 
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r3 <= r3 / -0.9999996
+  ERO: Row 3 <=  Row 3 / -1.00000
+ 
+  The current matrix:
+ 
+   1.0000000   1.1428572   1.5714285
+   0.0000000   1.0000000   1.6666669
+   0.0000000   0.0000000   1.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+check
+ 
+Checking the matrix for row echelon form...
+ 
+  The matrix is NOT in row echelon form.
+  The first nonzero entry in row 3
+  which occurs in column 2
+  is -0.298023E-07 rather than 1.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# OK, cheat and force the entry to be zero.
+#
+a(3,2) = 0.0
+ 
+  A(3,2) = 0
+ 
+  The current matrix:
+ 
+   1.0000000   1.1428572   1.5714285
+   0.0000000   1.0000000   1.6666669
+   0.0000000   0.0000000   1.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+check
+ 
+Checking the matrix for row echelon form...
+ 
+  The matrix is in row echelon form.
+ 
+Checking the matrix for row reduced echelon form...
+ 
+  The matrix is NOT in reduced row echelon form.
+  Row 2 has its leading 1 in column 2.
+  This means that all other entries of that column should be zero.
+  But the entry in row 1 is 1.14286
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+e
+Enter number of rows, number of columns.
+3,3
+Enter entries 1 to 3 of row 1
+1,2,3
+Enter entries 1 to 3 of row 2
+4,5,6
+Enter entries 1 to 3 of row 3
+7,8,9
+A copy of this matrix is being saved.
+ 
+  The current matrix:
+ 
+   1.   2.   3.
+   4.   5.   6.
+   7.   8.   9.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+z
+ 
+  ERO: Row 3 <=> Row 1
+  ERO: Row 1 <=  Row 1 / 7
+  ERO: Row 2 <=  Row 2 - 4 Row 1
+  ERO: Row 3 <=  Row 3 - Row 1
+ 
+  ERO: Row 3 <=> Row 2
+  ERO: Row 2 <=  Row 2 / 0.857143
+  ERO: Row 1 <=  Row 1 - 1.14286 Row 2
+  ERO: Row 3 <=  Row 3 - 0.428571 Row 2
+ 
+  ERO: Row 3 <=  Row 3 / 0.357628E-06
+  ERO: Row 1 <=  Row 1 + 1.00000 Row 3
+  ERO: Row 2 <=  Row 2 - 2.00000 Row 3
+ 
+  The current matrix:
+ 
+   1.   0.   0.
+   0.   1.   0.
+   0.   0.   1.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+r
+#
+# Insert a row.
+#
+g +r3
+Enter entries 1 to 3 of row 3
+6.1, 6.2, 6.3
+ 
+  The current matrix:
+ 
+   1.0000000   0.0000000   0.0000000
+   0.0000000   1.0000000   0.0000000
+   6.0999999   6.1999998   6.3000002
+   0.0000000   0.0000000   1.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Change A(3,2) to 77.
+#
+a(3,2) = 77
+ 
+  A(3,2) = 77
+ 
+  The current matrix:
+ 
+    1.0000000    0.0000000    0.0000000
+    0.0000000    1.0000000    0.0000000
+    6.0999999   77.0000000    6.3000002
+    0.0000000    0.0000000    1.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Delete column 2.
+#
+g -c2
+The column has been deleted!
+ 
+  The current matrix:
+ 
+   1.0000000   0.0000000
+   0.0000000   0.0000000
+   6.0999999   6.3000002
+   0.0000000   1.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get a determinant test matrix of order 4.
+#
+b d 4
+ 
+The following examples are available:
+  "D" for determinant;
+  "E" for eigenvalues;
+  "I" for inverse;
+  "S" for linear solve.
+ 
+  "C" to cancel.
+ 
+ 
+  The current matrix:
+ 
+  -2.   7.  -2.  -8.
+  -5.   8.  -2.  -5.
+   3.  -6.  -3.   3.
+   2.  -2.   8.  -7.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+det
+ 
+The determinant is 891
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Repeat work in decimal arithmetic.
+#
+#
+# Set number of decimal digits to 5
+#
+dec_digit 5
+How many decimal places should be used in
+converting real results to a decimal?
+ 
+ 1 means 123.45 becomes 1 * 10**2
+ 2 means 123.45 becomes 12 * 10**1
+ 3 means 123.45 becomes 123
+and so on.
+ 
+The number of decimal digits will now be 5
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Change to decimal arithmetic.
+#
+decimal
+ 
+  Switching to DECIMAL arithmetic.
+  The current number of decimal places is 5
+ 
+  A note about DECIMAL arithmetic:
+ 
+  The representation of decimals is exact.
+  The arithmetic of decimals is approximate,
+  because only a certain number of decimal
+  places are stored.
+  Also, the representation can break down
+  if any exponent becomes too large or small.
+ 
+  The current matrix:
+ 
+       -2    7   -2   -8
+       -5    8   -2   -5
+        3   -6   -3    3
+        2   -2    8   -7
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Enter the test matrix.
+#
+e
+Enter number of rows, number of columns.
+3,3
+Enter entries 1 to 3 of row 1
+1,2,3
+Enter entries 1 to 3 of row 2
+4,5,6
+Enter entries 1 to 3 of row 3
+7,8,11
+A copy of this matrix is being saved.
+ 
+  The current matrix:
+ 
+        1    2    3
+        4    5    6
+        7    8   11
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r1 <= r3
+  ERO: Row 1 <=> Row 3
+ 
+  The current matrix:
+ 
+        7    8   11
+        4    5    6
+        1    2    3
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r1 <= r1/7
+  ERO: Row 1 <=  Row 1 / 7
+ 
+  The current matrix:
+ 
+            1   1.1429   1.5714
+            4        5        6
+            1        2        3
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r2 <= r2 - 4 r1
+  ERO: Row 2 <=  Row 2 - 4 Row 1
+ 
+  The current matrix:
+ 
+             1    1.1429    1.5714
+             0    0.4284   -0.2856
+             1         2         3
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r3 <= r3 - r1
+  ERO: Row 3 <=  Row 3 - Row 1
+ 
+  The current matrix:
+ 
+             1    1.1429    1.5714
+             0    0.4284   -0.2856
+             0    0.8571    1.4286
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+ 
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r2 <=> r3
+  ERO: Row 2 <=> Row 3
+ 
+  The current matrix:
+ 
+             1    1.1429    1.5714
+             0    0.8571    1.4286
+             0    0.4284   -0.2856
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r2 <= r2 / 0.8571
+  ERO: Row 2 <=  Row 2 / 0.8571
+ 
+  The current matrix:
+ 
+             1    1.1429    1.5714
+             0         1    1.6668
+             0    0.4284   -0.2856
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r3 <= r3 - 0.4284 r2
+  ERO: Row 3 <=  Row 3 - 0.4284 Row 2
+ 
+  The current matrix:
+ 
+              1     1.1429     1.5714
+              0          1     1.6668
+              0          0   -0.99965
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+ 
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r3 <= r3 / -0.99965
+  ERO: Row 3 <=  Row 3 / -0.99965
+ 
+  The current matrix:
+ 
+            1   1.1429   1.5714
+            0        1   1.6668
+            0        0        1
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+ 
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+check
+ 
+Checking the matrix for row echelon form...
+ 
+  The matrix is in row echelon form.
+ 
+Checking the matrix for row reduced echelon form...
+ 
+  The matrix is NOT in reduced row echelon form.
+  Row 2 has its leading 1 in column 2.
+  This means that all other entries of that column should be zero.
+  But the entry in row 1 is 1.1429
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Enter a new matrix.
+#
+e
+Enter number of rows, number of columns.
+3,3
+Enter entries 1 to 3 of row 1
+1,2,3
+Enter entries 1 to 3 of row 2
+4,5,6
+Enter entries 1 to 3 of row 3
+7,8,9
+A copy of this matrix is being saved.
+ 
+  The current matrix:
+ 
+       1   2   3
+       4   5   6
+       7   8   9
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Automatically process it.
+#
+z
+ 
+  ERO: Row 3 <=> Row 1
+  ERO: Row 1 <=  Row 1 / 7
+  ERO: Row 2 <=  Row 2 - 4 Row 1
+  ERO: Row 3 <=  Row 3 - Row 1
+ 
+  ERO: Row 3 <=> Row 2
+  ERO: Row 2 <=  Row 2 / 0.8571
+  ERO: Row 1 <=  Row 1 - 1.1429 Row 2
+  ERO: Row 3 <=  Row 3 - 0.4284 Row 2
+ 
+  ERO: Row 3 <=  Row 3 / 0.00036
+  ERO: Row 1 <=  Row 1 + 1.0002 Row 3
+  ERO: Row 2 <=  Row 2 - 2.0001 Row 3
+ 
+  The current matrix:
+ 
+       1   0   0
+       0   1   0
+       0   0   1
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Restore the original matrix.
+#
+r
+#
+# Insert a row.
+#
+g +r3
+Enter entries 1 to 3 of row 3
+6.1, 6.2, 6.3
+ 
+  The current matrix:
+ 
+         1     0     0
+         0     1     0
+       6.1   6.2   6.3
+         0     0     1
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Change entry (3,2) to 77.
+#
+a(3,2) = 77
+ 
+  A(3,2) = 77
+ 
+  The current matrix:
+ 
+         1     0     0
+         0     1     0
+       6.1    77   6.3
+         0     0     1
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Remove column 2.
+#
+g -c2
+The column has been deleted!
+ 
+  The current matrix:
+ 
+         1     0
+         0     0
+       6.1   6.3
+         0     1
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get a determinant test matrix of order 4.
+#
+b d 4
+ 
+The following examples are available:
+  "D" for determinant;
+  "E" for eigenvalues;
+  "I" for inverse;
+  "S" for linear solve.
+ 
+  "C" to cancel.
+ 
+ 
+  The current matrix:
+ 
+         7     5    -8   -10
+         5     4     0   -10
+        -5    -4    -1     2
+        -9    -4    -7    -1
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+det
+ 
+The determinant is -1199
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Work in real arithmetic
+#
+real
+ 
+  Switching to REAL arithmetic.
+ 
+  The current matrix:
+ 
+    7.    5.   -8.  -10.
+    5.    4.    0.  -10.
+   -5.   -4.   -1.    2.
+   -9.   -4.   -7.   -1.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get a sample matrix for the Jacobi method.
+#
+b e 4
+ 
+The following examples are available:
+  "D" for determinant;
+  "E" for eigenvalues;
+  "I" for inverse;
+  "S" for linear solve.
+ 
+  "C" to cancel.
+ 
+We have a symmetric matrix, whose eigenvalues
+can be found with the "J" command.
+ 
+  The current matrix:
+ 
+  -7.5036054   0.5010364  -0.3891510   1.7822232
+   0.5010364  -4.6027484   0.4247353  -2.7617321
+  -0.3891510   0.4247353  -3.5915809  -2.0459721
+   1.7822232  -2.7617321  -2.0459721   5.6979346
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Use Jacobi rotations.
+#
+j 1,2
+ 
+The current matrix
+ 
+  -7.5036054   0.5010364  -0.3891510   1.7822232
+   0.5010364  -4.6027484   0.4247353  -2.7617321
+  -0.3891510   0.4247353  -3.5915809  -2.0459721
+   1.7822232  -2.7617321  -2.0459721   5.6979346
+ 
+ 
+The single step Q transformation matrix
+ 
+   0.9862034   0.1655380   0.0000000   0.0000000
+  -0.1655380   0.9862034   0.0000000   0.0000000
+   0.0000000   0.0000000   1.0000000   0.0000000
+   0.0000000   0.0000000   0.0000000   1.0000000
+ 
+The approximate eigenvector matrix (Q-Transpose)
+ 
+   0.9862034   0.1655380   0.0000000   0.0000000
+  -0.1655380   0.9862034   0.0000000   0.0000000
+   0.0000000   0.0000000   1.0000000   0.0000000
+   0.0000000   0.0000000   0.0000000   1.0000000
+ 
+The current matrix
+ 
+  -7.5877061   0.0000001  -0.4540919   2.2148061
+   0.0000000  -4.5186472   0.3544562  -2.4286041
+  -0.4540919   0.3544562  -3.5915809  -2.0459721
+   2.2148061  -2.4286041  -2.0459721   5.6979346
+ 
+Enter row I, column J, or "Q" to quit.
+3,2
+ 
+The single step Q transformation matrix
+ 
+   1.0000000   0.0000000   0.0000000   0.0000000
+   0.0000000   0.9471976   0.3206506   0.0000000
+   0.0000000  -0.3206506   0.9471976   0.0000000
+   0.0000000   0.0000000   0.0000000   1.0000000
+ 
+The approximate eigenvector matrix (Q-Transpose)
+ 
+   0.9862034   0.1567971   0.0530798   0.0000000
+  -0.1655380   0.9341295   0.3162267   0.0000000
+   0.0000000  -0.3206506   0.9471976   0.0000000
+   0.0000000   0.0000000   0.0000000   1.0000000
+ 
+The current matrix
+ 
+  -7.5877061   0.1456050  -0.4301147   2.2148061
+   0.1456048  -4.6386399   0.0000000  -1.6443256
+  -0.4301147  -0.0000001  -3.4715884  -2.7166731
+   2.2148061  -1.6443256  -2.7166731   5.6979346
+ 
+Enter row I, column J, or "Q" to quit.
+4,2
+ 
+The single step Q transformation matrix
+ 
+   1.0000000   0.0000000   0.0000000   0.0000000
+   0.0000000   0.9881632   0.0000000  -0.1534069
+   0.0000000   0.0000000   1.0000000   0.0000000
+   0.0000000   0.1534069   0.0000000   0.9881632
+ 
+The approximate eigenvector matrix (Q-Transpose)
+ 
+  0.9862034  0.1549412  0.0530798 -0.0240538
+ -0.1655380  0.9230723  0.3162267 -0.1433019
+  0.0000000 -0.3168551  0.9471976  0.0491900
+  0.0000000  0.1534069  0.0000000  0.9881632
+ 
+The current matrix
+ 
+  -7.5877061   0.4836479  -0.4301147   2.1662531
+   0.4836478  -4.8939128  -0.4167563  -0.0000001
+  -0.4301147  -0.4167564  -3.4715884  -2.6845164
+   2.1662531  -0.0000001  -2.6845164   5.9532080
+ 
+Enter row I, column J, or "Q" to quit.
+4,3
+ 
+The single step Q transformation matrix
+ 
+   1.0000000   0.0000000   0.0000000   0.0000000
+   0.0000000   1.0000000   0.0000000   0.0000000
+   0.0000000   0.0000000   0.9666696  -0.2560271
+   0.0000000   0.0000000   0.2560271   0.9666696
+ 
+The approximate eigenvector matrix (Q-Transpose)
+ 
+  0.9862034  0.1549412  0.0451523 -0.0368419
+ -0.1655380  0.9230723  0.2689976 -0.2194882
+  0.0000000 -0.3168551  0.9282211 -0.1949578
+  0.0000000  0.1534069  0.2529966  0.9552273
+ 
+The current matrix
+ 
+  -7.5877061   0.4836479   0.1388407   2.2041721
+   0.4836478  -4.8939128  -0.4028657   0.1067008
+   0.1388406  -0.4028658  -4.1825957  -0.0000001
+   2.2041721   0.1067008  -0.0000004   6.6642151
+ 
+Enter row I, column J, or "Q" to quit.
+3,2
+ 
+The single step Q transformation matrix
+ 
+   1.0000000   0.0000000   0.0000000   0.0000000
+   0.0000000   0.9115425  -0.4112061   0.0000000
+   0.0000000   0.4112061   0.9115425   0.0000000
+   0.0000000   0.0000000   0.0000000   1.0000000
+ 
+The approximate eigenvector matrix (Q-Transpose)
+ 
+  0.9862034  0.1598023 -0.0225546 -0.0368419
+ -0.1655380  0.9520331 -0.1343702 -0.2194882
+  0.0000000  0.0928633  0.9764057 -0.1949578
+  0.0000000  0.2438706  0.1675353  0.9552273
+ 
+The current matrix
+ 
+  -7.5877061   0.4979577  -0.0723198   2.2041721
+   0.4979576  -5.0756507   0.0000001   0.0972623
+  -0.0723198  -0.0000001  -4.0008597  -0.0438761
+   2.2041721   0.0972622  -0.0438764   6.6642151
+ 
+Enter row I, column J, or "Q" to quit.
+4,2
+ 
+The single step Q transformation matrix
+ 
+   1.0000000   0.0000000   0.0000000   0.0000000
+   0.0000000   0.9999657   0.0000000   0.0082839
+   0.0000000   0.0000000   1.0000000   0.0000000
+   0.0000000  -0.0082839   0.0000000   0.9999657
+ 
+The approximate eigenvector matrix (Q-Transpose)
+ 
+  0.9862034  0.1601020 -0.0225546 -0.0355169
+ -0.1655380  0.9538187 -0.1343702 -0.2115941
+  0.0000000  0.0944751  0.9764057 -0.1941818
+  0.0000000  0.2359492  0.1675353  0.9572147
+ 
+The current matrix
+ 
+  -7.5877061   0.4796814  -0.0723198   2.2082217
+   0.4796813  -5.0764570   0.0003636   0.0000000
+  -0.0723198   0.0003633  -4.0008597  -0.0438746
+   2.2082217   0.0000000  -0.0438749   6.6650205
+ 
+Enter row I, column J, or "Q" to quit.
+4,3
+ 
+The single step Q transformation matrix
+ 
+   1.0000000   0.0000000   0.0000000   0.0000000
+   0.0000000   1.0000000   0.0000000   0.0000000
+   0.0000000   0.0000000   0.9999915  -0.0041135
+   0.0000000   0.0000000   0.0041135   0.9999915
+ 
+The approximate eigenvector matrix (Q-Transpose)
+ 
+  0.9862034  0.1601020 -0.0227005 -0.0354238
+ -0.1655380  0.9538187 -0.1352395 -0.2110396
+  0.0000000  0.0944751  0.9755987 -0.1981966
+  0.0000000  0.2359492  0.1714713  0.9565175
+ 
+The current matrix
+ 
+  -7.5877061   0.4796814  -0.0632358   2.2085006
+   0.4796813  -5.0764570   0.0003636  -0.0000015
+  -0.0632358   0.0003633  -4.0010400   0.0000001
+   2.2085006  -0.0000015  -0.0000001   6.6652012
+ 
+Enter row I, column J, or "Q" to quit.
+3,2
+ 
+The single step Q transformation matrix
+ 
+   1.0000000   0.0000000   0.0000000   0.0000000
+   0.0000000   1.0000000   0.0003380   0.0000000
+   0.0000000  -0.0003380   1.0000000   0.0000000
+   0.0000000   0.0000000   0.0000000   1.0000000
+ 
+The approximate eigenvector matrix (Q-Transpose)
+ 
+  0.9862034  0.1601097 -0.0226463 -0.0354238
+ -0.1655380  0.9538644 -0.1349171 -0.2110396
+  0.0000000  0.0941454  0.9756306 -0.1981966
+  0.0000000  0.2358912  0.1715511  0.9565175
+ 
+The current matrix
+ 
+  -7.5877061   0.4797028  -0.0630737   2.2085006
+   0.4797027  -5.0764575   0.0000001  -0.0000015
+  -0.0630736  -0.0000001  -4.0010405   0.0000001
+   2.2085006  -0.0000015  -0.0000001   6.6652012
+ 
+Enter row I, column J, or "Q" to quit.
+q
+ 
+I_READ - Fatal error!
+  S_TO_I returned error flag!
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Switch to Linear Programming mode,
+# and don't save the current matrix.
+#
+l
+Switching to linear programming mode.
+Enter "Y" to use current matrix in linear programming.
+no
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get a brief list of linear programming commands.
+#
+h
+ 
+A(I,J)=S  Set table entry to S.
+CHECK checks if the solution is optimal.
+E     Enters a table to work on.
+HELP  for full help.
+L     switches to linear algebra.
+P     I, J performs a pivot operation.
+Q     quits.
+TS    types the linear programming solution.
+V     removes artificial variables.
+Z     automatic solution (requires password).
+?     interactive help.
+ 
+R1 <=> R2  interchanges two rows
+R1 <= S R1 multiplies a row by S.
+R1 <= R1 + S R2 adds a multiple of another row.
+ 
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Work in fractional arithmetic
+#
+rational
+ 
+  Switching to RATIONAL arithmetic.
+  with maximum integer = 2147483647
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get the "simple" linear programming example.
+#
+b s
+ 
+The following examples are available:
+  "S" a simple linear programming problem;
+  "A" an advanced linear programming problem.
+ 
+  "C" to cancel.
+ 
+ 
+Simple linear programming problem:
+ 
+Maximize:
+  Z = 120 X + 100 Y + 70
+subject to
+  2 X + 2 Y < 8
+  5 X + 3 Y < 15
+ 
+ 
+  The linear programming table:
+ 
+         1     2     3     4     P     C
+ 
+X3       2     2     1     0     0     8
+ 
+X4       5     3     0     1     0    15
+ 
+Obj   -120  -100     0     0     1    70
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Pivot on the first variable and second row.
+#
+p 1,2
+ 
+Objective row
+ 
+         1     2     3     4     P     C
+ 
+Obj   -120  -100     0     0     1    70
+ 
+Variable with most negative objective coefficient?
+ 
+The entering variable is 1
+ 
+Variable with smallest nonnegative feasibility ratio?
+ 
+Nonnegative feasibility ratios:
+ 
+Row 1, variable 3, ratio = 4.00000
+Row 2, variable 4, ratio = 3.00000
+ 
+ 
+The departing variable is 4 with feasibility ratio 3
+ 
+  ERO: Row 2 <=  Row 2 / 5
+  ERO: Row 1 <=  Row 1 - 2 Row 2
+  ERO: Row 3 <=  Row 3 + 120 Row 2
+ 
+The objective changed from 70
+to 430
+ 
+  The linear programming table:
+ 
+         1     2     3     4     P     C
+ 
+X3       0     4     1    -2     0     2
+               5           5
+ 
+X1       1     3     0     1     0     3
+               5           5
+ 
+Obj      0   -28     0    24     1   430
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Pivot on the second variable, first row.
+#
+p 2,1
+ 
+Objective row
+ 
+         1     2     3     4     P     C
+ 
+Obj      0   -28     0    24     1   430
+ 
+Variable with most negative objective coefficient?
+ 
+The entering variable is 2
+ 
+Variable with smallest nonnegative feasibility ratio?
+ 
+Nonnegative feasibility ratios:
+ 
+Row 1, variable 3, ratio = 2.50000 = 5/2
+Row 2, variable 1, ratio = 5.00000
+ 
+ 
+The departing variable is 3 with feasibility ratio 2.50000
+ 
+  ERO: Row 1 <=  Row 1 * 5/4
+  ERO: Row 2 <=  Row 2 - 3/5 Row 1
+  ERO: Row 3 <=  Row 3 + 28 Row 1
+ 
+The objective changed from 430
+to 500
+ 
+  The linear programming table:
+ 
+         1     2     3     4     P     C
+ 
+X2       0     1     5    -1     0     5
+                     4     2           2
+ 
+X1       1     0    -3     1     0     3
+                     4     2           2
+ 
+Obj      0     0    35    10     1   500
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Check for optimality.
+#
+check
+ 
+Optimality test
+ 
+ 
+Are all objective entries nonnegative?
+ 
+Yes.  The current solution is optimal.
+ 
+The linear programming solution:
+ 
+       1   2   3   4
+ 
+       3   5   0   0
+       2   2
+ 
+Objective = 500
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Repeat work in real arithmetic
+#
+real
+ 
+  Switching to REAL arithmetic.
+ 
+  The linear programming table:
+ 
+                 1             2             3             4             P
+ 
+X2       0.0000000     1.0000000     1.2500000    -0.5000000     0.0000000
+X1       1.0000000     0.0000000    -0.7500000     0.5000000     0.0000000
+Obj      0.0000000     0.0000000    35.0000000    10.0000000     1.0000000
+ 
+                 C
+ 
+X2       2.5000000
+X1       1.5000000
+Obj    500.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get the "simple" linear programming example.
+#
+b s
+ 
+The following examples are available:
+  "S" a simple linear programming problem;
+  "A" an advanced linear programming problem.
+ 
+  "C" to cancel.
+ 
+ 
+Simple linear programming problem:
+ 
+Maximize:
+  Z = 120 X + 100 Y + 70
+subject to
+  2 X + 2 Y < 8
+  5 X + 3 Y < 15
+ 
+ 
+  The linear programming table:
+ 
+          1      2      3      4      P      C
+ 
+X3       2.     2.     1.     0.     0.     8.
+X4       5.     3.     0.     1.     0.    15.
+Obj   -120.  -100.     0.     0.     1.    70.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+p 1,2
+ 
+Objective row
+ 
+          1      2      3      4      P      C
+ 
+Obj   -120.  -100.     0.     0.     1.    70.
+ 
+Variable with most negative objective coefficient?
+ 
+The entering variable is 1
+ 
+Variable with smallest nonnegative feasibility ratio?
+ 
+Nonnegative feasibility ratios:
+ 
+Row 1, variable 3, ratio = 4.00000
+Row 2, variable 4, ratio = 3.00000
+ 
+ 
+The departing variable is 4 with feasibility ratio 3
+ 
+  ERO: Row 2 <=  Row 2 / 5
+  ERO: Row 1 <=  Row 1 - 2 Row 2
+  ERO: Row 3 <=  Row 3 + 120 Row 2
+ 
+The objective changed from 70 to 430
+ 
+  The linear programming table:
+ 
+                 1             2             3             4             P
+ 
+X3       0.0000000     0.8000000     1.0000000    -0.4000000     0.0000000
+X1       1.0000000     0.6000000     0.0000000     0.2000000     0.0000000
+Obj      0.0000000   -28.0000000     0.0000000    24.0000000     1.0000000
+ 
+                 C
+ 
+X3       2.0000000
+X1       3.0000000
+Obj    430.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+p 2,1
+ 
+Objective row
+ 
+          1      2      3      4      P      C
+ 
+Obj      0.   -28.     0.    24.     1.   430.
+ 
+Variable with most negative objective coefficient?
+ 
+The entering variable is 2
+ 
+Variable with smallest nonnegative feasibility ratio?
+ 
+Nonnegative feasibility ratios:
+ 
+Row 1, variable 3, ratio = 2.50000
+Row 2, variable 1, ratio = 5.00000
+ 
+ 
+The departing variable is 3 with feasibility ratio 2.50000
+ 
+  ERO: Row 1 <=  Row 1 / 0.800000
+  ERO: Row 2 <=  Row 2 - 0.600000 Row 1
+  ERO: Row 3 <=  Row 3 + 28 Row 1
+ 
+The objective changed from 430 to 500
+ 
+  The linear programming table:
+ 
+                 1             2             3             4             P
+ 
+X2       0.0000000     1.0000000     1.2500001    -0.5000001     0.0000000
+X1       1.0000000     0.0000000    -0.7500001     0.5000001     0.0000000
+Obj      0.0000000     0.0000000    35.0000038     9.9999981     1.0000000
+ 
+                 C
+ 
+X2       2.5000002
+X1       1.4999998
+Obj    500.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+check
+ 
+Optimality test
+ 
+ 
+Are all objective entries nonnegative?
+ 
+Yes.  The current solution is optimal.
+ 
+The linear programming solution:
+ 
+               1           2           3           4
+ 
+       1.4999998   2.5000002   0.0000000   0.0000000
+ 
+Objective = 500
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Repeat work in decimal arithmetic
+#
+decimal
+ 
+  Switching to DECIMAL arithmetic.
+  The current number of decimal places is 5
+ 
+  The linear programming table:
+ 
+           1       2       3       4       P       C
+ 
+X2         0       1    1.25    -0.5       0     2.5
+X1         1       0   -0.75     0.5       0     1.5
+Obj        0       0      35      10       1     500
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get the "simple" linear programming example.
+#
+b s
+ 
+The following examples are available:
+  "S" a simple linear programming problem;
+  "A" an advanced linear programming problem.
+ 
+  "C" to cancel.
+ 
+ 
+Simple linear programming problem:
+ 
+Maximize:
+  Z = 120 X + 100 Y + 70
+subject to
+  2 X + 2 Y < 8
+  5 X + 3 Y < 15
+ 
+ 
+  The linear programming table:
+ 
+          1      2      3      4      P      C
+ 
+X3        2      2      1      0      0      8
+X4        5      3      0      1      0     15
+Obj    -120   -100      0      0      1     70
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+p 1,2
+ 
+Objective row
+ 
+          1      2      3      4      P      C
+ 
+Obj    -120   -100      0      0      1     70
+ 
+Variable with most negative objective coefficient?
+ 
+The entering variable is 1
+ 
+Variable with smallest nonnegative feasibility ratio?
+ 
+Nonnegative feasibility ratios:
+ 
+Row 1, variable 3, ratio = 4.00000
+Row 2, variable 4, ratio = 3.00000
+ 
+ 
+The departing variable is 4 with feasibility ratio 3
+ 
+  ERO: Row 2 <=  Row 2 / 5
+  ERO: Row 1 <=  Row 1 - 2 Row 2
+  ERO: Row 3 <=  Row 3 + 120 Row 2
+ 
+The objective changed from 70 to 430
+ 
+  The linear programming table:
+ 
+          1      2      3      4      P      C
+ 
+X3        0    0.8      1   -0.4      0      2
+X1        1    0.6      0    0.2      0      3
+Obj       0    -28      0     24      1    430
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+p 2,1
+ 
+Objective row
+ 
+         1     2     3     4     P     C
+ 
+Obj      0   -28     0    24     1   430
+ 
+Variable with most negative objective coefficient?
+ 
+The entering variable is 2
+ 
+Variable with smallest nonnegative feasibility ratio?
+ 
+Nonnegative feasibility ratios:
+ 
+Row 1, variable 3, ratio = 2.50000
+Row 2, variable 1, ratio = 5.00000
+ 
+ 
+The departing variable is 3 with feasibility ratio 2.50000
+ 
+  ERO: Row 1 <=  Row 1 / 0.8
+  ERO: Row 2 <=  Row 2 - 0.6 Row 1
+  ERO: Row 3 <=  Row 3 + 28 Row 1
+ 
+The objective changed from 430 to 500
+ 
+  The linear programming table:
+ 
+           1       2       3       4       P       C
+ 
+X2         0       1    1.25    -0.5       0     2.5
+X1         1       0   -0.75     0.5       0     1.5
+Obj        0       0      35      10       1     500
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+check
+ 
+Optimality test
+ 
+ 
+Are all objective entries nonnegative?
+ 
+Yes.  The current solution is optimal.
+ 
+The linear programming solution:
+ 
+         1     2     3     4
+ 
+       1.5   2.5     0     0
+ 
+Objective = 500
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Work in fractional arithmetic
+#
+rational
+ 
+  Switching to RATIONAL arithmetic.
+  with maximum integer = 2147483647
+ 
+  The linear programming table:
+ 
+         1     2     3     4     P     C
+ 
+X2       0     1     5    -1     0     5
+                     4     2           2
+ 
+X1       1     0    -3     1     0     3
+                     4     2           2
+ 
+Obj      0     0    35    10     1   500
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get the "advanced" linear programming example.
+#
+b a
+ 
+The following examples are available:
+  "S" a simple linear programming problem;
+  "A" an advanced linear programming problem.
+ 
+  "C" to cancel.
+ 
+ 
+Advanced linear programming problem:
+ 
+Maximize
+  Z=40 X + 30 Y
+subject to
+  X + 2 Y > 6
+2 X +   Y > 4
+  X +   Y < 5
+2 X +   Y < 8
+ 
+ 
+  The linear programming table:
+ 
+        1    2    3    4    5    6    7    8    P    C
+ 
+X7      1    2   -1    0    0    0    1    0    0    6
+ 
+X8      2    1    0   -1    0    0    0    1    0    4
+ 
+X5      1    1    0    0    1    0    0    0    0    5
+ 
+X6      2    1    0    0    0    1    0    0    0    8
+ 
+Obj2    0    0    0    0    0    0    1    1    1    0
+ 
+Obj   -40  -30    0    0    0    0    0    0    1    0
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Automatically handle it.
+#
+z
+ 
+The objective entry in column 7 is not zero,
+but this corresponds to a basic variable.
+ 
+  ERO: Row 5 <=  Row 5 - Row 1
+ 
+The objective entry in column 8 is not zero,
+but this corresponds to a basic variable.
+ 
+  ERO: Row 5 <=  Row 5 - Row 2
+ 
+The entering variable is 2
+ 
+The departing variable is 7 with feasibility ratio 3
+ 
+  ERO: Row 1 <=  Row 1 / 2
+  ERO: Row 2 <=  Row 2 - Row 1
+  ERO: Row 3 <=  Row 3 - Row 1
+  ERO: Row 4 <=  Row 4 - Row 1
+  ERO: Row 5 <=  Row 5 + 3 Row 1
+ 
+The objective changed from -10
+to -1
+ 
+The entering variable is 1
+ 
+The departing variable is 8 with feasibility ratio 0.666667
+ 
+  ERO: Row 2 <=  Row 2 * 2/3
+  ERO: Row 1 <=  Row 1 - 1/2 Row 2
+  ERO: Row 3 <=  Row 3 - 1/2 Row 2
+  ERO: Row 4 <=  Row 4 - 3/2 Row 2
+  ERO: Row 5 <=  Row 5 + 3/2 Row 2
+ 
+The objective changed from -1
+to 0
+ 
+Optimality test
+ 
+ 
+Are all objective entries nonnegative?
+ 
+Yes.  The current solution is optimal.
+ 
+The linear programming solution:
+ 
+       1   2   3   4   5   6   7   8
+ 
+       2   8   0   0   5   4   0   0
+       3   3           3
+ 
+Objective = 0
+ 
+This problem has artificial variables.
+Use the "V" command to remove them.
+ 
+  The linear programming table:
+ 
+        1    2    3    4    5    6    7    8    P    C
+ 
+X2      0    1   -2    1    0    0    2   -1    0    8
+                  3    3              3    3         3
+ 
+X1      1    0    1   -2    0    0   -1    2    0    2
+                  3    3              3    3         3
+ 
+X5      0    0    1    1    1    0   -1   -1    0    5
+                  3    3              3    3         3
+ 
+X6      0    0    0    1    0    1    0   -1    0    4
+ 
+Obj2    0    0    0    0    0    0    1    1    1    0
+ 
+Obj   -40  -30    0    0    0    0    0    0    1    0
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Remove artificial variables.
+#
+v
+ 
+All the artificial variables were deleted.
+The original objective function is restored.
+ 
+You must now use the "A" command to zero out
+objective row entries for all basic variables.
+ 
+  The linear programming table:
+ 
+        1    2    3    4    5    6    P    C
+ 
+X2      0    1   -2    1    0    0    0    8
+                  3    3                   3
+ 
+X1      1    0    1   -2    0    0    0    2
+                  3    3                   3
+ 
+X5      0    0    1    1    1    0    0    5
+                  3    3                   3
+ 
+X6      0    0    0    1    0    1    0    4
+ 
+Obj   -40  -30    0    0    0    0    1    0
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Eliminate the nonzero objective row entries associated with
+# the basic variables, X1 and X2.
+#
+r5 <= r5 + 40 r2
+  ERO: Row 5 <=  Row 5 + 40 Row 2
+ 
+  The linear programming table:
+ 
+        1    2    3    4    5    6    P    C
+ 
+X2      0    1   -2    1    0    0    0    8
+                  3    3                   3
+ 
+X1      1    0    1   -2    0    0    0    2
+                  3    3                   3
+ 
+X5      0    0    1    1    1    0    0    5
+                  3    3                   3
+ 
+X6      0    0    0    1    0    1    0    4
+ 
+Obj     0  -30   40  -80    0    0    1   80
+                  3    3                   3
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r5 <= r5 + 30 r1
+  ERO: Row 5 <=  Row 5 + 30 Row 1
+ 
+  The linear programming table:
+ 
+         1     2     3     4     5     6     P     C
+ 
+X2       0     1    -2     1     0     0     0     8
+                     3     3                       3
+ 
+X1       1     0     1    -2     0     0     0     2
+                     3     3                       3
+ 
+X5       0     0     1     1     1     0     0     5
+                     3     3                       3
+ 
+X6       0     0     0     1     0     1     0     4
+ 
+Obj      0     0   -20   -50     0     0     1   320
+                     3     3                       3
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Reapply the simplex method to the new tableau.
+#
+z
+ 
+The entering variable is 4
+ 
+The departing variable is 6 with feasibility ratio 4
+ 
+  ERO: Row 1 <=  Row 1 - 1/3 Row 4
+  ERO: Row 2 <=  Row 2 + 2/3 Row 4
+  ERO: Row 3 <=  Row 3 - 1/3 Row 4
+  ERO: Row 5 <=  Row 5 + 50/3 Row 4
+ 
+The objective changed from 320/3 = 106.667
+to 520/3 = 173.333
+ 
+The entering variable is 3
+ 
+The departing variable is 5 with feasibility ratio 1
+ 
+  ERO: Row 3 <=  Row 3 * 3
+  ERO: Row 1 <=  Row 1 + 2/3 Row 3
+  ERO: Row 2 <=  Row 2 - 1/3 Row 3
+  ERO: Row 5 <=  Row 5 + 20/3 Row 3
+ 
+The objective changed from 520/3 = 173.333
+to 180
+ 
+Optimality test
+ 
+ 
+Are all objective entries nonnegative?
+ 
+Yes.  The current solution is optimal.
+ 
+The linear programming solution:
+ 
+       1   2   3   4   5   6
+ 
+       3   2   1   4   0   0
+ 
+Objective = 180
+ 
+  The linear programming table:
+ 
+         1     2     3     4     5     6     P     C
+ 
+X2       0     1     0     0     2    -1     0     2
+ 
+X1       1     0     0     0    -1     1     0     3
+ 
+X3       0     0     1     0     3    -1     0     1
+ 
+X4       0     0     0     1     0     1     0     4
+ 
+Obj      0     0     0     0    20    10     1   180
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Repeat work in real arithmetic
+#
+real
+ 
+  Switching to REAL arithmetic.
+ 
+  The linear programming table:
+ 
+          1      2      3      4      5      6      P      C
+ 
+X2       0.     1.     0.     0.     2.    -1.     0.     2.
+X1       1.     0.     0.     0.    -1.     1.     0.     3.
+X3       0.     0.     1.     0.     3.    -1.     0.     1.
+X4       0.     0.     0.     1.     0.     1.     0.     4.
+Obj      0.     0.     0.     0.    20.    10.     1.   180.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+b a
+ 
+The following examples are available:
+  "S" a simple linear programming problem;
+  "A" an advanced linear programming problem.
+ 
+  "C" to cancel.
+ 
+ 
+Advanced linear programming problem:
+ 
+Maximize
+  Z=40 X + 30 Y
+subject to
+  X + 2 Y > 6
+2 X +   Y > 4
+  X +   Y < 5
+2 X +   Y < 8
+ 
+ 
+  The linear programming table:
+ 
+         1     2     3     4     5     6     7     8     P     C
+ 
+X7      1.    2.   -1.    0.    0.    0.    1.    0.    0.    6.
+X8      2.    1.    0.   -1.    0.    0.    0.    1.    0.    4.
+X5      1.    1.    0.    0.    1.    0.    0.    0.    0.    5.
+X6      2.    1.    0.    0.    0.    1.    0.    0.    0.    8.
+Obj2    0.    0.    0.    0.    0.    0.    1.    1.    1.    0.
+Obj   -40.  -30.    0.    0.    0.    0.    0.    0.    1.    0.
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+z
+ 
+The objective entry in column 7 is not zero,
+but this corresponds to a basic variable.
+ 
+  ERO: Row 5 <=  Row 5 - Row 1
+ 
+The objective entry in column 8 is not zero,
+but this corresponds to a basic variable.
+ 
+  ERO: Row 5 <=  Row 5 - Row 2
+ 
+The entering variable is 2
+ 
+The departing variable is 7 with feasibility ratio 3
+ 
+  ERO: Row 1 <=  Row 1 / 2
+  ERO: Row 2 <=  Row 2 - Row 1
+  ERO: Row 3 <=  Row 3 - Row 1
+  ERO: Row 4 <=  Row 4 - Row 1
+  ERO: Row 5 <=  Row 5 + 3 Row 1
+ 
+The objective changed from -10 to -1
+ 
+The entering variable is 1
+ 
+The departing variable is 8 with feasibility ratio 0.666667
+ 
+  ERO: Row 2 <=  Row 2 / 1.50000
+  ERO: Row 1 <=  Row 1 - 0.500000 Row 2
+  ERO: Row 3 <=  Row 3 - 0.500000 Row 2
+  ERO: Row 4 <=  Row 4 - 1.50000 Row 2
+  ERO: Row 5 <=  Row 5 + 1.50000 Row 2
+ 
+The objective changed from -1 to 0
+ 
+Optimality test
+ 
+ 
+Are all objective entries nonnegative?
+ 
+Yes.  The current solution is optimal.
+ 
+The linear programming solution:
+ 
+               1           2           3           4           5           6
+ 
+       0.6666667   2.6666667   0.0000000   0.0000000   1.6666666   4.0000000
+ 
+               7           8
+ 
+       0.0000000   0.0000000
+ 
+Objective = 0
+ 
+This problem has artificial variables.
+Use the "V" command to remove them.
+ 
+  The linear programming table:
+ 
+                1            2            3            4            5
+ 
+X2      0.0000000    1.0000000   -0.6666667    0.3333333    0.0000000
+X1      1.0000000    0.0000000    0.3333333   -0.6666667    0.0000000
+X5      0.0000000    0.0000000    0.3333333    0.3333333    1.0000000
+X6      0.0000000    0.0000000    0.0000000    1.0000000    0.0000000
+Obj2    0.0000000    0.0000000    0.0000000    0.0000000    0.0000000
+Obj   -40.0000000  -30.0000000    0.0000000    0.0000000    0.0000000
+ 
+                6            7            8            P            C
+ 
+X2      0.0000000    0.6666667   -0.3333333    0.0000000    2.6666667
+X1      0.0000000   -0.3333333    0.6666667    0.0000000    0.6666667
+X5      0.0000000   -0.3333333   -0.3333333    0.0000000    1.6666666
+X6      1.0000000    0.0000000   -1.0000000    0.0000000    4.0000000
+Obj2    0.0000000    1.0000000    1.0000000    1.0000000    0.0000000
+Obj     0.0000000    0.0000000    0.0000000    1.0000000    0.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+v
+ 
+All the artificial variables were deleted.
+The original objective function is restored.
+ 
+You must now use the "A" command to zero out
+objective row entries for all basic variables.
+ 
+  The linear programming table:
+ 
+                1            2            3            4            5
+ 
+X2      0.0000000    1.0000000   -0.6666667    0.3333333    0.0000000
+X1      1.0000000    0.0000000    0.3333333   -0.6666667    0.0000000
+X5      0.0000000    0.0000000    0.3333333    0.3333333    1.0000000
+X6      0.0000000    0.0000000    0.0000000    1.0000000    0.0000000
+Obj   -40.0000000  -30.0000000    0.0000000    0.0000000    0.0000000
+ 
+                6            P            C
+ 
+X2      0.0000000    0.0000000    2.6666667
+X1      0.0000000    0.0000000    0.6666667
+X5      0.0000000    0.0000000    1.6666666
+X6      1.0000000    0.0000000    4.0000000
+Obj     0.0000000    1.0000000    0.0000000
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r5 <= r5 + 40 r2
+  ERO: Row 5 <=  Row 5 + 40 Row 2
+ 
+  The linear programming table:
+ 
+                1            2            3            4            5
+ 
+X2      0.0000000    1.0000000   -0.6666667    0.3333333    0.0000000
+X1      1.0000000    0.0000000    0.3333333   -0.6666667    0.0000000
+X5      0.0000000    0.0000000    0.3333333    0.3333333    1.0000000
+X6      0.0000000    0.0000000    0.0000000    1.0000000    0.0000000
+Obj     0.0000000  -30.0000000   13.3333340  -26.6666679    0.0000000
+ 
+                6            P            C
+ 
+X2      0.0000000    0.0000000    2.6666667
+X1      0.0000000    0.0000000    0.6666667
+X5      0.0000000    0.0000000    1.6666666
+X6      1.0000000    0.0000000    4.0000000
+Obj     0.0000000    1.0000000   26.6666679
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r5 <= r5 + 30 r1
+  ERO: Row 5 <=  Row 5 + 30 Row 1
+ 
+  The linear programming table:
+ 
+                 1             2             3             4             5
+ 
+X2       0.0000000     1.0000000    -0.6666667     0.3333333     0.0000000
+X1       1.0000000     0.0000000     0.3333333    -0.6666667     0.0000000
+X5       0.0000000     0.0000000     0.3333333     0.3333333     1.0000000
+X6       0.0000000     0.0000000     0.0000000     1.0000000     0.0000000
+Obj      0.0000000     0.0000000    -6.6666660   -16.6666679     0.0000000
+ 
+                 6             P             C
+ 
+X2       0.0000000     0.0000000     2.6666667
+X1       0.0000000     0.0000000     0.6666667
+X5       0.0000000     0.0000000     1.6666666
+X6       1.0000000     0.0000000     4.0000000
+Obj      0.0000000     1.0000000   106.6666718
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+z
+ 
+The entering variable is 4
+ 
+The departing variable is 6 with feasibility ratio 4
+ 
+  ERO: Row 1 <=  Row 1 - 0.333333 Row 4
+  ERO: Row 2 <=  Row 2 + 0.666667 Row 4
+  ERO: Row 3 <=  Row 3 - 0.333333 Row 4
+  ERO: Row 5 <=  Row 5 + 16.6667 Row 4
+ 
+The objective changed from 106.667 to 173.333
+ 
+The entering variable is 3
+ 
+The departing variable is 5 with feasibility ratio 1.00000
+ 
+  ERO: Row 3 <=  Row 3 / 0.333333
+  ERO: Row 1 <=  Row 1 + 0.666667 Row 3
+  ERO: Row 2 <=  Row 2 - 0.333333 Row 3
+  ERO: Row 5 <=  Row 5 + 6.66667 Row 3
+ 
+The objective changed from 173.333 to 180.000
+ 
+Optimality test
+ 
+ 
+Are all objective entries nonnegative?
+ 
+Yes.  The current solution is optimal.
+ 
+The linear programming solution:
+ 
+               1           2           3           4           5           6
+ 
+       3.0000002   2.0000000   0.9999998   4.0000000   0.0000000   0.0000000
+ 
+Objective = 180.000
+ 
+  The linear programming table:
+ 
+                 1             2             3             4             5
+ 
+X2       0.0000000     1.0000000     0.0000000     0.0000000     2.0000002
+X1       1.0000000     0.0000000     0.0000000     0.0000000    -1.0000001
+X3       0.0000000     0.0000000     1.0000000     0.0000000     3.0000002
+X4       0.0000000     0.0000000     0.0000000     1.0000000     0.0000000
+Obj      0.0000000     0.0000000     0.0000000     0.0000000    20.0000000
+ 
+                 6             P             C
+ 
+X2      -1.0000001     0.0000000     2.0000000
+X1       1.0000000     0.0000000     3.0000002
+X3      -1.0000001     0.0000000     0.9999998
+X4       1.0000000     0.0000000     4.0000000
+Obj     10.0000010     1.0000000   180.0000153
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Repeat work in decimal arithmetic
+#
+decimal
+ 
+  Switching to DECIMAL arithmetic.
+  The current number of decimal places is 5
+ 
+  The linear programming table:
+ 
+         1     2     3     4     5     6     P     C
+ 
+X2       0     1     0     0     2    -1     0     2
+X1       1     0     0     0    -1     1     0     3
+X3       0     0     1     0     3    -1     0     1
+X4       0     0     0     1     0     1     0     4
+Obj      0     0     0     0    20    10     1   180
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Get the advanced linear programming example.
+#
+b a
+ 
+The following examples are available:
+  "S" a simple linear programming problem;
+  "A" an advanced linear programming problem.
+ 
+  "C" to cancel.
+ 
+ 
+Advanced linear programming problem:
+ 
+Maximize
+  Z=40 X + 30 Y
+subject to
+  X + 2 Y > 6
+2 X +   Y > 4
+  X +   Y < 5
+2 X +   Y < 8
+ 
+ 
+  The linear programming table:
+ 
+         1     2     3     4     5     6     7     8     P     C
+ 
+X7       1     2    -1     0     0     0     1     0     0     6
+X8       2     1     0    -1     0     0     0     1     0     4
+X5       1     1     0     0     1     0     0     0     0     5
+X6       2     1     0     0     0     1     0     0     0     8
+Obj2     0     0     0     0     0     0     1     1     1     0
+Obj    -40   -30     0     0     0     0     0     0     1     0
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+z
+ 
+The objective entry in column 7 is not zero,
+but this corresponds to a basic variable.
+ 
+  ERO: Row 5 <=  Row 5 - Row 1
+ 
+The objective entry in column 8 is not zero,
+but this corresponds to a basic variable.
+ 
+  ERO: Row 5 <=  Row 5 - Row 2
+ 
+The entering variable is 2
+ 
+The departing variable is 7 with feasibility ratio 3
+ 
+  ERO: Row 1 <=  Row 1 / 2
+  ERO: Row 2 <=  Row 2 - Row 1
+  ERO: Row 3 <=  Row 3 - Row 1
+  ERO: Row 4 <=  Row 4 - Row 1
+  ERO: Row 5 <=  Row 5 + 3 Row 1
+ 
+The objective changed from -10 to -1
+ 
+The entering variable is 1
+ 
+The departing variable is 8 with feasibility ratio 0.666667
+ 
+  ERO: Row 2 <=  Row 2 / 1.5
+  ERO: Row 1 <=  Row 1 - 0.5 Row 2
+  ERO: Row 3 <=  Row 3 - 0.5 Row 2
+  ERO: Row 4 <=  Row 4 - 1.5 Row 2
+  ERO: Row 5 <=  Row 5 + 1.5 Row 2
+ 
+The objective changed from -1 to 0
+ 
+The entering variable is 3
+ 
+The departing variable is 1 with feasibility ratio 2.00003
+ 
+  ERO: Row 2 <=  Row 2 / 0.33333
+  ERO: Row 1 <=  Row 1 + 0.66666 Row 2
+  ERO: Row 3 <=  Row 3 - 0.33334 Row 2
+  ERO: Row 4 <=  Row 4 - 0.00001 Row 2
+  ERO: Row 5 <=  Row 5 + 0.00001 Row 2
+ 
+The objective changed from 0 to 0.00002
+ 
+The entering variable is 4
+ 
+The departing variable is 5 with feasibility ratio 0.999920
+ 
+  ERO: Row 1 <=  Row 1 + 0.99997 Row 3
+  ERO: Row 2 <=  Row 2 + 2 Row 3
+  ERO: Row 4 <=  Row 4 - Row 3
+  ERO: Row 5 <=  Row 5 + 0.00002 Row 3
+ 
+The objective changed from 0.00002 to 0.000039998
+ 
+Optimality test
+ 
+ 
+Are all objective entries nonnegative?
+ 
+Yes.  The current solution is optimal.
+ 
+The linear programming solution:
+ 
+             1         2         3         4         5         6         7
+ 
+             0    4.9997    3.9998   0.99992         0    2.9999         0
+ 
+             8
+ 
+             0
+ 
+Objective = 0.000039998
+ 
+This problem has artificial variables.
+Use the "V" command to remove them.
+ 
+  The linear programming table:
+ 
+                 1             2             3             4             5
+ 
+X2         0.99993             1             0             0       0.99997
+X3               1             0             1             0             2
+X4              -1             0             0             1             1
+X6         0.99997             0             0             0            -1
+Obj2       0.00001             0             0             0       0.00002
+Obj            -40           -30             0             0             0
+ 
+                 6             7             8             P             C
+ 
+X2               0             0             0             0        4.9997
+X3               0            -1             0             0        3.9998
+X4               0             0            -1             0       0.99992
+X6               1             0             0             0        2.9999
+Obj2             0       0.99999       0.99998             1   0.000039998
+Obj              0             0             0             1             0
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+v
+The phase 1 objective function is nonzero.
+Hence, this problem may have no solution.
+ 
+All the artificial variables were deleted.
+The original objective function is restored.
+ 
+You must now use the "A" command to zero out
+objective row entries for all basic variables.
+ 
+  The linear programming table:
+ 
+             1         2         3         4         5         6         P
+ 
+X2     0.99993         1         0         0   0.99997         0         0
+X3           1         0         1         0         2         0         0
+X4          -1         0         0         1         1         0         0
+X6     0.99997         0         0         0        -1         1         0
+Obj        -40       -30         0         0         0         0         1
+ 
+             C
+ 
+X2      4.9997
+X3      3.9998
+X4     0.99992
+X6      2.9999
+Obj          0
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r5 <= r5 + 40 r2
+  ERO: Row 5 <=  Row 5 + 40 Row 2
+ 
+  The linear programming table:
+ 
+             1         2         3         4         5         6         P
+ 
+X2     0.99993         1         0         0   0.99997         0         0
+X3           1         0         1         0         2         0         0
+X4          -1         0         0         1         1         0         0
+X6     0.99997         0         0         0        -1         1         0
+Obj          0       -30        40         0        80         0         1
+ 
+             C
+ 
+X2      4.9997
+X3      3.9998
+X4     0.99992
+X6      2.9999
+Obj     159.99
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+r5 <= r5 + 30 r1
+  ERO: Row 5 <=  Row 5 + 30 Row 1
+ 
+  The linear programming table:
+ 
+             1         2         3         4         5         6         P
+ 
+X2     0.99993         1         0         0   0.99997         0         0
+X3           1         0         1         0         2         0         0
+X4          -1         0         0         1         1         0         0
+X6     0.99997         0         0         0        -1         1         0
+Obj     29.997         0        40         0    109.99         0         1
+ 
+             C
+ 
+X2      4.9997
+X3      3.9998
+X4     0.99992
+X6      2.9999
+Obj     309.98
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+z
+ 
+The objective entry in column 3 is not zero,
+but this corresponds to a basic variable.
+ 
+  ERO: Row 5 <=  Row 5 - 40 Row 2
+ 
+The entering variable is 1
+ 
+The departing variable is 6 with feasibility ratio 2.99999
+ 
+  ERO: Row 4 <=  Row 4 / 0.99997
+  ERO: Row 1 <=  Row 1 - 0.99993 Row 4
+  ERO: Row 2 <=  Row 2 - Row 4
+  ERO: Row 3 <=  Row 3 + Row 4
+  ERO: Row 5 <=  Row 5 + 10.003 Row 4
+ 
+The objective changed from 149.99 to 179.99
+ 
+Optimality test
+ 
+ 
+Are all objective entries nonnegative?
+ 
+Yes.  The current solution is optimal.
+ 
+The linear programming solution:
+ 
+            1        2        3        4        5        6
+ 
+            3        2   0.9998   3.9999        0        0
+ 
+Objective = 179.99
+ 
+  The linear programming table:
+ 
+              1          2          3          4          5          6
+ 
+X2            0          1          0          0     1.9999   -0.99993
+X3            0          0          1          0          3         -1
+X4            0          0          0          1          0          1
+X1            1          0          0          0         -1          1
+Obj           0          0          0          0     19.987     10.003
+ 
+              P          C
+ 
+X2            0          2
+X3            0     0.9998
+X4            0     3.9999
+X1            0          3
+Obj           1     179.99
+ 
+Enter command? ("H" for short menu, "HELP" for full menu, ? for full help)
+#
+# Close the disk file.
+#
+k
+Closing the transcript file "output".

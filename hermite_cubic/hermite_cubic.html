@@ -1,0 +1,288 @@
+<html>
+
+  <head>
+    <title>
+      HERMITE_CUBIC - Hermite Cubic Polynomial Evaluation, Interpolation, Integration, Splines
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      HERMITE_CUBIC <br> Hermite Cubic Polynomial Evaluation, Interpolation, Integration, Splines
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>HERMITE_CUBIC</b>
+      is a FORTRAN90 library which
+      demonstrates the use of cubic polynomials in the Hermite form.
+    </p>
+
+    <h3 align = "center">
+      The Hermite Cubic
+    </h3>
+
+    <p>
+      The Hermite form of a cubic polynomial defines the polynomial <b>p(x)</b>
+      by specifying two distinct points <b>x1</b> and <b>x2</b>, and
+      providing values for the following four items:
+      <pre>
+        f1 = p(x1)
+        d1 = p'(x1)
+        f2 = p(x2)
+        d2 = p'(x2)
+      </pre>
+      The locations of the abscissas and the four data values are enough
+      to uniquely define a cubic polynomial, known as the Hermite cubic.
+    </p>
+
+    <p>
+      From the Hermite cubic representation, it is possible to determine
+      the standard power series form:
+      <pre>
+        p(x) = c<sub>0</sub> + c<sub>1</sub> * x + c<sub>2</sub> * x<sup>2</sup> + c<sub>3</sub> * x<sup>3</sup>
+      </pre>
+    </p>
+
+    <p>
+      It is possible, given any value of the argument <b>x</b> and the
+      data values that define the Hermite cubic polynomial, to determine the
+      value of <b>p(x)</b>, as well as the values of the first, second and third
+      derivatives.
+    </p>
+
+    <p>
+      It is possible, given two values of the argument <b>x3</b> and
+      <b>x4</b>, and the data values that define the Hermite cubic polynomial,
+      to determine the value of the integral of <b>p(x)</b> over the interval
+      [x3,x4].
+    </p>
+
+    <h3 align = "center">
+      Hermite Cubic Splines:
+    </h3>
+
+    <p>
+      A sequence of Hermite cubic polynomials can be used to produce a
+      piecewise cubic Hermite interpolant, if we are given a strictly
+      increasing sequence of <b>n</b> nodes <b>x(1:n)</b>, and corresponding
+      data vectors <b>f(1:n)</b> and <b>d(1:n)</b>.  This is done by
+      defining <b>n-1</b> cubic Hermite polynomials, with the <b>i</b>-th
+      polynomial defined using the data at nodes <b>x(i)</b> and <b>x(i+1)</b>.
+      The resulting function interpolates the value and derivative data,
+      and is continuous and continuously differentiable everywhere,
+      and in particular, at the nodes.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>HERMITE_CUBIC</b> is available in
+      <a href = "../../c_src/hermite_cubic/hermite_cubic.html">a C version</a> and
+      <a href = "../../cpp_src/hermite_cubic/hermite_cubic.html">a C++ version</a> and
+      <a href = "../../f77_src/hermite_cubic/hermite_cubic.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/hermite_cubic/hermite_cubic.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/hermite_cubic/hermite_cubic.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bernstein/bernstein.html">
+      BERNSTEIN</a>,
+      a FORTRAN90 library which
+      evaluates the Bernstein polynomials, 
+      useful for uniform approximation of functions;
+    </p>
+
+    <p>
+      <a href = "../../f_src/chebyshev/chebyshev.html">
+      CHEBYSHEV</a>,
+      a FORTRAN90 library which
+      computes the Chebyshev interpolant/approximant to a given function
+      over an interval.
+    </p>
+
+    <p>
+      <a href = "../../f_src/divdif/divdif.html">
+      DIVDIF</a>,
+      a FORTRAN90 library which
+      computes divided difference polynomials from data;
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite/hermite.html">
+      HERMITE</a>,
+      a FORTRAN90 library which
+      computes the Hermite interpolant, a polynomial that matches function values
+      and derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes a wide variety of numerical software, including
+      solvers for linear systems of equations, interpolation of data,
+      numerical quadrature, linear least squares data fitting,
+      the solution of nonlinear equations, ordinary differential equations,
+      optimization and nonlinear least squares, simulation and random numbers,
+      trigonometric approximation and Fast Fourier Transforms.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spline/spline.html">
+      SPLINE</a>,
+      a FORTRAN90 library which
+      includes many routines to construct
+      and evaluate spline interpolants and approximants.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms446/toms446.html">
+      TOMS446</a>,
+      a FORTRAN90 library which
+      manipulates Chebyshev series for interpolation and approximation;<br>
+      this is a version of ACM TOMS algorithm 446,
+      by Roger Broucke.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Fred Fritsch, Ralph Carlson,<br>
+          Monotone Piecewise Cubic Interpolation,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 17, Number 2, April 1980, pages 238-246.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "hermite_cubic.f90">hermite_cubic.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "hermite_cubic.sh">hermite_cubic.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "hermite_cubic_prb.f90">hermite_cubic_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "hermite_cubic_prb.sh">hermite_cubic_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "hermite_cubic_prb_output.txt">hermite_cubic_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>HERMITE_CUBIC_INTEGRAL</b> returns the integral of a Hermite cubic polynomial.
+        </li>
+        <li>
+          <b>HERMITE_CUBIC_INTEGRATE</b> integrates a Hermite cubic polynomial from A to B.
+        </li>
+        <li>
+          <b>HERMITE_CUBIC_LAGRANGE_INTEGRAL:</b> Hermite cubic Lagrange integrals.
+        </li>
+        <li>
+          <b>HERMITE_CUBIC_LAGRANGE_INTEGRATE</b> integrates Hermite cubic Lagrange polynomials.
+        </li>
+        <li>
+          <b>HERMITE_CUBIC_LAGRANGE_VALUE</b> evaluates the Hermite cubic Lagrange polynomials.
+        </li>
+        <li>
+          <b>HERMITE_CUBIC_SPLINE_INTEGRAL:</b> Hermite cubic spline integral.
+        </li>
+        <li>
+          <b>HERMITE_CUBIC_SPLINE_INTEGRATE</b> integrates a Hermite cubic spline over [A,B].
+        </li>
+        <li>
+          <b>HERMITE_CUBIC_SPLINE_VALUE</b> evaluates a Hermite cubic spline.
+        </li>
+        <li>
+          <b>HERMITE_CUBIC_TO_POWER_CUBIC</b> converts a Hermite cubic to power form.
+        </li>
+        <li>
+          <b>HERMITE_CUBIC_VALUE</b> evaluates a Hermite cubic polynomial.
+        </li>
+        <li>
+          <b>POWER_CUBIC_TO_HERMITE_CUBIC</b> converts a power cubic to Hermite form.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET3</b> finds the interval containing or nearest a given value.
+        </li>
+        <li>
+          <b>R8VEC_EVEN</b> returns an R8VEC of evenly spaced values.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last modified on 10 February 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

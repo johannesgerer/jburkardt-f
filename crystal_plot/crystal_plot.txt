@@ -1,0 +1,266 @@
+CPLOT.DOC  
+
+13 May 1996
+
+  So, did the original version of CPLOT write out a TECPLOT file?
+  If so, I should dig it out so I can try a TECPLOT data file...
+
+06 May 1996
+
+  I added the ability to shade in the crystal, melt, or void.
+
+  Still a slight defect in plots of the crystal region, because
+  ICRYS2 and JCRYS2 (one of them, anyway), measures the rightmost
+  left corner node, or the rightmost right corner node, I forget which.
+  The mistake shows on plots.
+
+
+02 May 1996
+
+  Replaced "REFLECT" by "DOUBLE" and "HALF".  I don't like those
+  "switch" commands so much anymore.
+
+  Now working on the problem of the offset left hand side in the
+  doubling scheme.  FIXED.
+
+  Now working on problem of color contours not matching up with
+  control volume sides.
+
+  There seems to be a confusion between the primary and corner nodes
+  again, in this problem of color contours.  As part of my effort
+  to avoid this in the future, I am renaming "X" to "XP".
+
+  Fixed a flaw which meant before that the crystal boundary was
+  ALWAYS drawn.
+
+17 April 1996
+
+  Two problems:
+
+  1) If you type the command "dat=file" and "file" doesn't exist, you can
+     never get out of the error condition.
+
+  2) If you REFLECT the data, do a zoom, and then type FULL, you go
+     back to the HALF region limits, in which only a bit of the
+     reflected data shows up.
+
+  I fixed those, and noted two new problems!
+
+  1) Unless you choose a color table, the first plot has an ugly
+     color table, mostly black, and GRFINI whines that no color table
+     has been set.
+
+  2) When you reflect data, the crystal/void boundary on the 
+     new, reflected left hand side is slightly further to the
+     left than the colored data, suggesting a discrepancy.
+
+
+12 April 1996
+
+  I modified the way the color bar is set up, making the default be
+  ITABLE=9, and excluding the lowest and highest colors.
+
+  I renamed the VSCALE command to SCALEV.
+ 
+08 April 1996
+
+  Added SCALENB, SCALENC, and SCALENP commands for scale factors for
+  bottom, corner, and primary nodes.
+
+  Replaced ICRYS, JCRYS by ICRYS1, ICRYS2, JCRYS1, JCRYS2, so that I
+  can list the left and right, top and bottom of the crystal, whether
+  I reflect the region or not.
+
+
+05 April 1996
+
+  I improved the method of displaying the control volumes, so that
+  the blanking or display of corner nodes, control volumes, and primary
+  nodes should be more consistent.
+
+
+31 March 1996  
+
+  Compiled a "dictionary" file CPLOT.DICT of all the variable names.
+
+  I updated the definitions of KMELT and KVOID to add the changes
+  I already made to KCRYS.
+
+
+28 March 1996
+
+  I added "CVN", to display the control volume numbers, but I haven't
+  tested it yet.
+
+  I got the vorticity plots to work in DISPLAY, so now I've come back
+  to CPLOT to see what I can make of them.
+
+
+26 March 1996
+
+  I ran CRYSTAL to get some vorticity data, but CPLOT fails when it
+  tries to read the file.  I tracked down the problem, finally:
+  In CRYSTAL, the HKSI and HETA variables are not set for the void
+  volumes.  So when I call GRADNT to get the derivatives of velocity,
+  I was dividing by zero, but getting a NAN result instead of a
+  warning, and the problem only showed up when CPLOT tried to read 
+  the data.
+
+  I got my first contour plots of vorticity, and didn't like them
+  much.  
+
+  I corrected the graphing of the crystal boundary by refining the
+  definition of KCRYS, which I now interpret to apply to the
+  control volume or cell, rather than to the primary node.  
+  I should similarly refine KMELT and KVOID.
+
+    KCRYS(I,J)=0, cell is exterior to the crystal.
+               1, cell is outside the crystal, but touching boundary.
+               2, cell is inside the crystal, but touching boundary.
+               3, cell is interior to the crystal.
+
+
+25 March 1996
+
+  I added the capability to draw vorticity contours and colors, given
+  that CRYSTAL writes that stuff out to the plot file now.  But I haven't
+  tried it out yet.
+
+
+23 February 1996
+
+  I changed LVOID(I,J) (and LCRYS and LMELT).  Instead of being
+  LOGICAL, it is an INTEGER, having the values:
+
+    KVOID(I,J)=0, node is not in or on the void.
+               1, node is on void boundary.
+               2, node is in void interior.
+
+  That way, I can blank out all the nodes in the void, or just the nodes 
+  in the interior, and so on, without the painful test 
+
+    IF(LVOID(I,J).and..not.(LMELT(i,j).or.LCRYS(i,j)))then
+
+  replacing it by
+
+    if(kvoid(i,j).eq.2)then...
+
+  Also, I added CRYS, MELT and VOID commands, to switch display of
+  data inside the crystal, melt and void regions.  Unhappily, CRYS
+  conflicts with the CRY command for showing the crystal side...
+
+  I took a look at the resulting YCC plots, and it looked almost
+  OK, although there were some funky lines around the crystal...
+  I have to decide whether the boundary between melt and crystal
+  is through primary or corner nodes...
+
+
+26 January 1996
+
+  Added "stream colors" and velocity magnitudes.
+
+  Added low white to high black color table.
+
+22 January 1996
+
+  Mainly for debugging, I added commands to plot the X and Y coordinates
+  as line or color contours.
+
+18 December 1995
+
+  Added the REFLECT command, to reflect around the Y axis.  It seems
+  to be working.
+
+  Added the usual "echo" file to keep a copy of the input.
+
+
+15 December 1995
+
+  After a confusing error this morning, I decided to dimension all
+  arrays MAXL, MAXM rather than L, M.
+
+
+14 December 1995
+
+  Added the DIFF command to read two restart files and compute their 
+  difference, for display.
+
+  Added the DXCDP command to display (dXCdP,dYCdP) vector plots.
+
+  Unfortunately, my first DXCDP plot is not very believable...
+
+
+13 December 1995
+
+  Replaced "GETDAT" by "RSREAD", which reads more data from CRYSTAL.
+  
+  Corrected a tiny error in TRILHK that caused occasional gaps in
+  color contour plots, which I had already experienced and corrected
+  in DISPLAY.
+
+
+16 September 1995
+
+  Added corrected pressure, P+PC, but PC seems to be zero or very small.
+
+  Try to "mask" out areas where plots are meaningless.  In particular,
+  turn off nodes in the interior of the crystal, or in the "void", for
+  drawing pressure.
+
+13 September 1995
+
+  Angular momenta are all zero.
+
+  I fixed the computation of contour lines so that the "ragged" boundary 
+  line doesn't occur.  
+
+  I fixed the computation of color contours so that each patch of space
+  is only drawn once, drastically cutting down on the size of the file.
+  This is an improvement I should transfer to DISPLAY.
+
+  I still need to 
+
+    * find out why the color tables don't correspond to their descriptions.
+
+    * find out how to shift the image so I can put in the color bar.
+
+12 September 1995
+
+  Max figured out that X and Y were interchanged in the plot.
+
+  I figured out where the crystal side was, and the free surface.
+
+  We are wondering if there is anything computed in the "void" area.
+
+  I am trying to fix the color bars (which don't show up if the
+  picture fills the page), and the color plots, and to get the
+  control volumes to be plotted.
+
+  Got the unit velocities to show up, and pressures, and control volumes.
+
+  I tried to graph the turbulent K, turbulent Epsilon, and the viscosity,
+  but they all seem to be zero.
+
+11 September 1995
+
+  Trying to figure out what XIN, YIN are doing.  They are the crucible
+  boundary.  Now need to show the flow surface and crystal interface.
+
+  Today, the following showed up:
+    Temperature contour lines.
+    Streamlines.
+    Velocity vectors.
+
+  Are the velocities actually node centered?
+
+  Have no idea how to draw the control volumes.
+
+  Temperature colors exhibit an error.
+
+  Pressures?
+ 
+10 September 1995
+  
+  Got the boundary to show up.
+
+  Got the nodes to show up.

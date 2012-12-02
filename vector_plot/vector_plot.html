@@ -1,0 +1,516 @@
+<html>
+
+  <head>
+    <title>
+      VECTOR_PLOT - Plot a 2D Vector Field
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      VECTOR_PLOT <br> Plot a 2D Vector Field
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>VECTOR_PLOT</b>
+      is a FORTRAN90 program which
+      plots a 2D vector field at scattered points.
+    </p>
+
+    <p>
+      <b>VECTOR_PLOT</b> reads a file of (X,Y) locations, and a file of
+      (U,V) vector values, and draws
+      a plot of the corresponding vector field (U(X,Y), V(X,Y)),
+      and of the normalized direction field.
+    </p>
+
+    <p>
+      <b>VECTOR_PLOT</b> requires the user to specify a "scale factor"
+      for the size of the vectors.  A factor of 1.0 is normal, and
+      corresponds to drawing the trail of particles that have traveled
+      for one time unit under the influence of the given velocity.
+      A factor of 0.5 or 2.0 might be used to shorten or lengthen the vectors.
+    </p>
+
+    <p>
+      <b>VECTOR_PLOT</b> requires the user to specify a "thinning factor"
+      to discard some of the data.  A factor of 1 keeps all the data.
+      A factor of 2 should throw away about every other column and every
+      other row of data (if the (X,Y) coordinates fall on a regular grid.)
+      Thinning the data is a crude but useful tool, because most data files
+      contain far too many vectors to plot.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>vector_plot</b> <i>xy_file</i> <i>uv_file</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>xy_file</i> is a list of the XY coordinates of nodes;
+        </li>
+        <li>
+         <i>uv_file</i> is a corresponding list of UV velocity components.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bump/bump.html">
+      BUMP</a>,
+      a FORTRAN90 program which
+      uses the finite element method
+      to study the influence of an obstacle in channel flow.  The velocity
+      field can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../datasets/case1_flow/case1_flow.html">
+      CASE1_FLOW</a>,
+      a dataset directory which
+      contains a sequence of
+      velocity vector fields that can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../datasets/cavity_flow/cavity_flow.html">
+      CAVITY_FLOW</a>,
+      a dataset directory which
+      contains a sequence of
+      velocity vector fields that can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/channel/channel.html">
+      CHANNEL</a>,
+      a FORTRAN90 program which
+      uses the finite element method
+      to study flow in a channel.  The velocity field can be plotted by
+      <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows/direction_arrows.html">
+      DIRECTION_ARROWS</a>,
+      a MATLAB program which
+      can plot direction
+      fields.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows_grid/direction_arrows_grid.html">
+      DIRECTION_ARROWS_GRID</a>,
+      a MATLAB program which
+      reads files of
+      node and velocity data, and, using interpolation, creates a
+      velocity direction plot with arrows
+      place on a uniform grid of the user's specification.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows_sequence/direction_arrows_sequence.html">
+      DIRECTION_ARROWS_SEQUENCE</a>,
+      a MATLAB program which
+      can plot
+      a sequence of direction fields for an animation.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows_sequence2/direction_arrows_sequence2.html">
+      DIRECTION_ARROWS_SEQUENCE2</a>,
+      a MATLAB program which
+      can plot
+      a sequence of direction fields for an animation.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows2/direction_arrows2.html">
+      DIRECTION_ARROWS2</a>,
+      a MATLAB program which
+      can plot direction
+      fields.
+    </p>
+
+    <p>
+      <a href = "../../datasets/inout_flow/inout_flow.html">
+      INOUT_FLOW</a>,
+      a dataset directory which
+      contains a sequence of
+      velocity vector fields that can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../datasets/inout_flow2/inout_flow2.html">
+      INOUT_FLOW2</a>,
+      a dataset directory which
+      contains a sequence of
+      velocity vector fields that can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_flow/mhd_flow.html">
+      MHD_FLOW</a>,
+      a FORTRAN90 program which
+      computes velocity fields
+      which can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../datasets/tcell_flow/tcell_flow.html">
+      TCELL_FLOW</a>,
+      a dataset directory which
+      contains a sequence of
+      velocity vector fields that can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../m_src/vector_magnitude_grid/vector_magnitude_grid.html">
+      VECTOR_MAGNITUDE_GRID</a>,
+      a MATLAB program which
+      reads
+      node and vector data from a file, computes an interpolatory function,
+      evaluates on a uniform grid of points specified by the user,
+      and displays a contour plot of the vector magnitude.
+    </p>
+
+    <p>
+      <a href = "../../m_src/vector_stream_grid/vector_stream_grid.html">
+      VECTOR_STREAM_GRID</a>,
+      a MATLAB program which
+      reads
+      node and vector data from a file, computes an interpolatory function,
+      evaluates on a uniform grid of points specified by the user,
+      and displays a streamline plot of the vector field.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows/velocity_arrows.html">
+      VELOCITY_ARROWS</a>,
+      a MATLAB program which
+      can plot velocity
+      fields.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows_grid/velocity_arrows_grid.html">
+      VELOCITY_ARROWS_GRID</a>,
+      a MATLAB program which
+      reads files of
+      node and velocity data, and, using interpolation, creates a
+      vector plot with arrows
+      place on a uniform grid of the user's specification.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows_grid2/velocity_arrows_grid2.html">
+      VELOCITY_ARROWS_GRID2</a>,
+      a MATLAB program which
+      reads a single file of
+      node and velocity data, and using interpolation is
+      able to display a velocity vector field along any uniform grid
+      of points specified by the user.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows_sequence/velocity_arrows_sequence.html">
+      VELOCITY_ARROWS_SEQUENCE</a>,
+      a MATLAB program which
+      can plot
+      a sequence of velocity fields for an animation.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows_sequence2/velocity_arrows_sequence2.html">
+      VELOCITY_ARROWS_SEQUENCE2</a>,
+      a MATLAB program which
+      can plot
+      a sequence of velocity fields for an animation.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows2/velocity_arrows2.html">
+      VELOCITY_ARROWS2</a>,
+      a MATLAB program which
+      can plot velocity fields.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "vector_plot.f90">vector_plot.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "vector_plot.sh">vector_plot.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      Here is some data from a
+      <a href = "../../datasets/tcell_flow/tcell_flow.html">
+      tcell_flow</a> calculation:
+      <ul>
+        <li>
+          <a href = "tcell_xy.txt">tcell_xy.txt</a>,
+          the X, Y locations.
+        </li>
+        <li>
+          <a href = "tcell_uv.txt">tcell_uv.txt</a>,
+          the U, V velocity component values.
+        </li>
+        <li>
+          <a href = "tcell_dir.png">
+          tcell_dir.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a>
+          image of the velocity direction field,
+          with a thinning factor of 3.
+        </li>
+        <li>
+          <a href = "tcell_vec.png">
+          tcell_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a>
+          image of the vector field,
+          with a thinning factor of 3.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Here is some test data from the
+      <a href = "../../f_src/mhd_flow/mhd_flow.html">MHD_FLOW</a> program.
+      Test files you may copy include:
+      <ul>
+        <li>
+          <a href = "mhd_xy.txt">mhd_xy.txt</a>,
+          the X, Y locations.
+        </li>
+        <li>
+          <a href = "mhd_uv.txt">mhd_uv.txt</a>,
+          the U, V velocity component values.
+        </li>
+        <li>
+          <a href = "mhd_dir.png">
+          mhd_dir.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a>
+          image of the velocity direction field,
+          with a thinning factor of 3.
+        </li>
+        <li>
+          <a href = "mhd_vec.png">
+          mhd_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a>
+          image of the vector field,
+          with a thinning factor of 3.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Here is some spiral test data.
+      Test files you may copy include:
+      <ul>
+        <li>
+          <a href = "spiral_xy.txt">spiral_xy.txt</a>,
+          the X, Y locations.
+        </li>
+        <li>
+          <a href = "spiral_uv.txt">spiral_uv.txt</a>,
+          the U, V velocity component values.
+        </li>
+        <li>
+          <a href = "spiral_dir.png">
+          spiral_dir.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a>
+          image of the velocity direction field.
+        </li>
+        <li>
+          <a href = "spiral_vec.png">
+          spiral_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a>
+          image of the vector field.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for VECTOR_PLOT.
+        </li>
+        <li>
+          <b>BOX_SEGMENT_CLIP_2D</b> uses a box to clip a line segment in 2D.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DATA_D2_READ</b> reads a data set of double precision pairs stored in a file.
+        </li>
+        <li>
+          <b>DATA_SIZE</b> counts the size of a data set stored in a file.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>DIRECTION_FIELD</b> plots a vector field.
+        </li>
+        <li>
+          <b>EPS_FILE_HEAD</b> writes header information to an encapsulated PostScript file.
+        </li>
+        <li>
+          <b>EPS_FILE_TAIL</b> writes trailer information to an encapsulated PostScript file.
+        </li>
+        <li>
+          <b>FILE_NAME_APPEND</b> appends a string to a filename, before the extension.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>PS_ARROW</b> draws an arrow from (X1,Y1) to (X2,Y2).
+        </li>
+        <li>
+          <b>PS_COLOR_LINE</b> handles the line color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE_SET</b> sets the line color.
+        </li>
+        <li>
+          <b>PS_COMMENT</b> inserts a comment into the PostScript file.
+        </li>
+        <li>
+          <b>PS_DEFAULT</b> sets the internal settings to their default values
+        </li>
+        <li>
+          <b>PS_FILE_CLOSE</b> closes a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_HEAD</b> writes header information to a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_OPEN</b> opens a new version of a PostScript file with a given name.
+        </li>
+        <li>
+          <b>PS_FILE_TAIL</b> writes trailer information to a PostScript file.
+        </li>
+        <li>
+          <b>PS_LINE_CLOSED</b> adds the graph of a closed line to a PostScript file.
+        </li>
+        <li>
+          <b>PS_PAGE_HEAD</b> writes header information on a new page.
+        </li>
+        <li>
+          <b>PS_PAGE_TAIL</b> writes tail information at the end of a page.
+        </li>
+        <li>
+          <b>PS_SETTING_INT</b> sets, gets, or prints integer internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>PS_SETTING_REAL</b> sets, gets, or prints real internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>R8VEC_SORT_BUBBLE_A</b> ascending bubble sorts an R8VEC.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_OF_I4</b> converts an integer to a left-justified string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>THIN_INDEX</b> determines thinning indices for a X, Y data.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>VECTOR_FIELD</b> plots a vector field.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

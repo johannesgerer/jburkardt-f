@@ -1,0 +1,1088 @@
+FLOW3.DICT  04 July 1995
+ 
+********************************************************************
+ 
+The FLOW3 program works on an underlying fluid flow problem, whose
+behavior is determined by a particular version of the Navier Stokes
+equations.
+ 
+The fluid flow in the region is described by three functions of position,
+the horizontal velocity U(x,y),  vertical velocity V(x,y), and pressure 
+P(x,y).  In theory, these functions may be determined once we know the
+partial differential equations that govern them within the region, and
+the value of the functions or certain derivatives of them along the boundary 
+of the region.
+
+For our work, we assume that at every point within the flow region, the flow 
+functions obey the Navier Stokes equations for stationary, incompressible, 
+viscous flow:
+ 
+  - nu*(ddU/dxdx + ddU/dydy) + U dU/dx + V dU/dy + dP/dx  = 0
+ 
+  - nu*(ddV/dxdx + ddV/dydy) + U dV/dx + V dV/dy + dP/dy  = 0
+ 
+  dU/dx + dV/dy = 0
+ 
+Here, nu is a physical parameter called the "dynamic viscosity," 
+
+We prefer the equivalent formulation (when nu is nonzero):
+
+  - (ddU/dxdx + ddU/dydy) + Re*(U dU/dx + V dU/dy + dP/dx)  = 0
+ 
+  - (ddV/dxdx + ddV/dydy) + Re*(U dV/dx + V dV/dy + dP/dy)  = 0
+ 
+  dU/dx + dV/dy = 0
+
+where Re is taken to be the Reynolds number.  
+
+If Re=0, the problem is linear, and is called a Stokes flow.
+
+To complete the specification of the problem, we specify boundary conditions
+for the flow functions as follows:
+
+  The values of U and V are specified along the inflow boundary;
+  U and V must be zero along the upper and lower walls, and on the surface
+    of the bump;
+  dU/dn must be zero, and V must be zero, at the outflow;
+  P must be zero at a single point on the boundary.
+ 
+
+DERIVATION OF FINITE ELEMENT EQUATIONS
+
+Except for special cases, such as the Poiseuille flow solution discussed
+elsewhere, there are no methods of producing the exact solution functions
+U, V and P for a general Navier Stokes problem.  In order to get any
+insight into flow problems, we must replace the original problem by one
+that is much weaker.  It's important that the weaker problem be possible
+to solve, and that the solutions produced are in general close to solutions
+of the original problem, and that these solutions can be made even closer,
+if desired.
+
+A standard method of doing this is to use the method of finite elements.
+
+To do so, we assume that instead of being smooth but otherwise completely 
+arbitrary functions, that U, V and P are representable as linear
+combinations of a finite set of basis functions.
+
+We multiply the first two equations by an arbitrary velocity basis 
+function Wi, and the third equation by an arbitrary pressure basis
+function Qi, and integrate over the region.  The integrand of the 
+resulting finite element equations is then transformed, using 
+integration by parts, into:
+ 
+ 
+  nu*(dU/dx*dWi/dx + dU/dy*dWi/dy) + (U*dU/dx + V*dU/dy + dP/dx ) * Wi
+ 
+  nu*(dV/dx*dWi/dx + dV/dy*dWi/dy) + (U*dV/dx + V*dV/dy + dP/dy ) * Wi
+ 
+  (dU/dx + dV/dy) * Qi
+ 
+
+These integrands may be rewritten using the program's variable names:
+ 
+
+  dUdx*dwidx + dUdy*dwidy + reynld*(U*dUdx+V*dUdy+dPdx)*wi
+ 
+  dVdx*dwidx + dVdy*dwidy + reynld*(U*dVdx+V*dVdy+dPdy)*wi
+ 
+  (dUdx + dVdy) * qi
+ 
+
+This system of nonlinear equations is then solved by Newton's method.
+That means that we have to differentiate each nonlinear equation
+with respect to the unknowns, getting the Jacobian matrix, and
+solving DF(X) * DEL(X) = -F(X).  If we abuse notation, we can
+consider the linear system DF(X) * DEL(X):
+
+Here, variables in capital letters are to be solved for, but
+the same variable names in lowercase represent the current
+values of those same variables.
+ 
+ 
+d Horizontal Equation/d U coefficient * U coefficient:
+ 
+  dUdx*dwidx + dUdy*dwidy + reynld*(U*dudx+u*dUdx+v*dUdy)*wi
+ 
+d Horizontal Equation/d V coefficient * V coefficient:
+ 
+                            reynld*V*dudy*wi
+ 
+d Horizontal Equation/d P coefficient * P coefficient:
+ 
+                            reynld*dPdx*wi
+ 
+d Vertical Equation/d U coefficient * U coefficient:
+ 
+                            reynld*U*dvdx*wi
+ 
+d Vertical Equation/d V coefficient * V coefficient:
+ 
+  dVdx*dwidx + dVdy*dwidy + reynld*(u*dVdx+v*dVdy+V*dvdy)*wi
+ 
+d Vertical Equation/d P coefficient * P coefficient:
+ 
+                            reynld*dPdy*wi
+ 
+d Pressure Equation/d U coefficient * U coefficient:
+ 
+  dUdx * qi
+ 
+d Pressure Equation/d V coefficient * V coefficient:
+ 
+  dVdx * qi 
+ 
+ 
+Now let us assume that U, V and P depend in some way on a parameter
+Z, and let us consider differentiating each of the three above
+equations with respect to Z.  Then we interchange differentiation
+where desired, and come up with equations for the SENSITIVITIES.
+ 
+Now the sensitivities should be written as (dU/dZ, dV/dZ, dP/dZ).
+In the ensuing equations, we will write them as (U, V, P), but
+now the lower case letters (u, v, p) represent the current values
+of the original fluid flow quantities.
+
+
+Sensitivity equations for the inflow parameters:
+ 
+  dUdx*dwidx + dUdy*dwidy 
+    + reynld*(U*dudx+u*dUdx+V*dudy+v*dUdy+dPdx)*wi = 0
+ 
+  dVdx*dwidx + dVdy*dwidy 
+    + reynld*(U*dvdx+u*dVdx+V*dvdy+v*dVdy+dPdy)*wi = 0
+ 
+  (dUdx + dVdy) * qi = 0
+ 
+  Boundary conditions:
+
+  0 at walls and at the outflow.
+
+  Spline(I,Y) at the point (0,Y) of the inflow.  Here, Spline(I,Y) is
+  the value of the spline associated with the I-th inflow parameter,
+  at the point Y.
+ 
+ 
+Sensitivity equations for the bump parameters:
+ 
+  dUdx*dwidx + dUdy*dwidy 
+    + reynld*(U*dudx+u*dUdx+V*dudy+v*dUdy+dPdx)*wi = 0
+ 
+  dVdx*dwidx + dVdy*dwidy 
+    + reynld*(U*dvdx+u*dVdx+V*dvdy+v*dVdy+dPdy)*wi = 0
+ 
+  (dUdx + dVdy) * qi = 0
+ 
+  Boundary conditions:
+
+  0 everywhere except on the bump.
+
+  ? on the bump.
+ 
+ 
+Sensitivity equations for the REYNLD parameter:
+
+  dUdx*dwidx + dUdy*dwidy 
+    + reynld*(U*dudx+u*dUdx+V*dudy+v*dUdy+dPdx)*wi
+    +        (u*dudx+v*dudy+dpdx)*wi = 0
+ 
+  dVdx*dwidx + dVdy*dwidy 
+    + reynld*(U*dvdx+u*dVdx+V*dvdy+v*dVdy+dPdy)*wi
+    +        (u*dvdx+v*dvdy+dpdy)*wi = 0
+ 
+  (dUdx + dVdy) * qi = 0
+ 
+  Boundary conditions:
+
+  0 everywhere.
+ 
+In the case of the REYNLD parameter, we carry the "extra" terms
+
+  (u*dvdx+v*dvdy+dpdy)*wi
+
+to the right hand side, and treat it as a source term.  In that case,
+all these sensitivity equations have the same form as the original
+equations for (U, V, P).
+ 
+ 
+********************************************************************
+ 
+Poiseuille flow
+
+
+Consider a horizontal channel of constant height h, and of length l.
+
+Suppose a parabolic inflow is specified at the left hand opening,
+of the form
+
+  u(y) = s * y * (h-y)
+  v(y) = 0
+  p(y) = 0
+
+where S is any value.
+
+Then the following functions (U,V,P) solve the Navier Stokes
+equations in the region:
+
+  u(x,y) = s * y * (h-y)
+  v(x,y) = 0
+  p(x,y) = -2*s*x*nu
+ 
+The standard problem we use has h=3, l=10, and chooses a parameter Lambda
+so that the maximum value of the parabolic inflow is Lambda.  Then our
+formula becomes:
+
+  u(x,y) = Lambda * (4/9) * y * (3-y)
+  v(x,y) = 0
+  p(x,y) = -2 * Lambda * (4/9) * x * Re
+ 
+********************************************************************
+
+The following technical information describes various geometric facts
+about the program.
+ 
+ 
+1) The finite element nodes
+
+If the region is rectangular, then FLOW3 places the nodes in such a way
+that they are evenly spaced in the X direction, and in the Y direction,
+although these two spacings may be different.
+
+The first node is in the lower left corner.  The second node is the one
+immediately above the first, and then numbering proceeds upwards, and then
+over to the next column.  For instance:
+
+Y=3.00       13          26          39          42          65
+Y=2.75       12          25          38          41          64
+Y=2.50       11          24          37          50          63
+Y=2.25       10          23          36          49          62
+Y=2.00        9          22          35          48          61
+Y=1.75        8          21          34          47          60
+Y=1.50        7          20          33          46          59
+Y=1.25        6          19          32          45          58
+Y=1.00        5          18          31          44          57
+Y=0.75        4          17          30          43          56
+Y=0.50        3          16          29          42          55
+Y=0.25        2          15          28          41          54
+Y=0.00        1          14          27          40          53
+
+          X=0.00      X=0.25      X=0.50      X=0.75      X=1.00
+
+ 
+2) The basic elements
+
+
+ 2--5--3          2
+ |    /          /|
+ |   /          / |
+ 4  6          4  5
+ | /          /   |
+ |/          /    |
+ 1          1--6--3
+
+
+3) The quadrature points
+
+A) 3 point quadrature
+ 
+ .--2--.          .
+ |    /          /|
+ |   /          / |
+ 1  3          1  2
+ | /          /   |
+ |/          /    |
+ .          .--3--.
+
+B) 4 point quadrature
+
+ .-----.          .
+ |3  4/          /|
+ | 1 /          /2|
+ |  /          /  |
+ |2/          / 1 |
+ |/          /3  4|
+ .          .-----.
+
+C) 7 point quadrature
+
+ 2--5--3          2
+ |    /          /|
+ | 7 /          / |
+ 4  6          4  5
+ | /          / 7 |
+ |/          /    |
+ 1          1--6--3
+
+
+4) The elements in the grid
+
+Here is a schematic of the 24 elements defined by the nodes shown
+in the earlier diagram:
+
+
+           13--26--39--42--65
+            | 11  / | 23  / |
+            |    /  |    /  |
+           12  25  38  41  64
+            | /     | /     |
+            |/   12 |/   24 |
+           11--24--37--50--63
+            |  9  / | 21  / |
+            |    /  |    /  |
+           10  23  36  49  62
+            | /     | /     |
+            |/   10 |/   22 |
+            9--22--35--48--61
+            |  7  / | 19  / |
+            |    /  |    /  |
+            8  21  34  47  60
+            | /     | /     |
+            |/    8 |/   20 |
+            7--20--33--46--59
+            |  5  / | 17  / |
+            |    /  |    /  |
+            6  19  32  45  58
+            | /     | /     |
+            |/    6 |/   18 |
+            5--18--31--44--57
+            |  3  / | 15  / |
+            |    /  |    /  |
+            4  17  30  43  56
+            | /     | /     |
+            |/    4 |/   16 |
+            3--16--29--42--55
+            |  1  / | 13  / |
+            |    /  |    /  |
+            2  15  28  41  54
+            | /     | /     |
+            |/    2 |/   14 |
+            1--14--27--40--53
+
+
+5) The unknowns
+
+
+6) Numbering for a sample problem.
+
+
+Y=3.00    P7         .           P58          .          P109
+Y=2.75    .          U28 V29     U56 V57      U79 V80    U107 V108
+Y=2.50    P6         U26 V27     U53 V54 P55  U77 V78    U104 V105 P106
+Y=2.25    .          U24 V25     U51 V52      U75 V76    U102 V103
+Y=2.00    P5         U22 V23     U48 V49 P50  U73 V74    U99  V100 P101
+Y=1.75    .          U20 V21     U46 V47      U71 V72    U97  V98
+Y=1.50    P4         U18 V19     U43 V44 P45  U69 V70    U94  V95  P96
+Y=1.25    .          U16 V17     U41 V42      U67 V68    U92  V93
+Y=1.00    P3         U14 V15     U38 V39 P40  U65 V66    U89  V90  P91
+Y=0.75    .          U12 V13     U36 V37      U63 V64    U87  V88
+Y=0.50    P2         U10 V11     U33 V34 P35  U61 V62    U84  V85  P86
+Y=0.25    .          U8  V9      U31 V32      U59 V60    U82  V83
+Y=0.00    P1         .           P30          .          P81
+
+          X=0.00     X=0.25      X=0.50       X=0.75     X=1.00
+ 
+
+********************************************************************
+
+
+To run this program on a Cray YMP,
+ 
+1: Replace the line "CALL ETIME(TARRAY)" by the line
+   "TARRAY(1)=SECOND()".
+ 
+2: Replace "real ( kind = 8 )" by "real", or else compile
+   with the "-dp" switch, as in
+
+     cf77 -Wf"-dp" myprog.f
+ 
+3. Replace the calls to:
+ 
+     Double  Single
+     ------  ------
+
+     DAXPY   SAXPY
+     DBLE    REAL
+     DCOPY   SCOPY
+     DGBTRF  SGBTRF
+     DGBTRS  SGBTRS
+     IDAMAX  ISAMAX
+
+4.  
+
+To run this program on the Cray, you will need four source code 
+files:
+
+  flow.f
+  flowsub.f
+  machine_cray.f
+  611s.f
+
+Compile them with the command:
+
+  cf77 -O1 -c flow.f flowsub.f 611s.f machine_cray.f
+
+Load them with the command:
+
+  cf77 -o flow flow.o flowsub.o 611s.o machine_cray.o
+
+Run the program with the command:
+
+  flow < input.01 > flow01.out
+ 
+********************************************************************
+
+
+List of variables
+
+
+A      real ( kind = 8 ) A(MAXROW,MAXEQN).
+       A contains a matrix in LINPACK general band storage mode.
+       The two dimensional array is of logical dimensions NROW by 
+       NEQN.
+       A is used in LINSYS.  If LINSYS is called by NSTOKE, then
+       A is an iteration matrix, and play a role similar to that
+       played by the Jacobian in a Newton iteration.
+ 
+AREA   real ( kind = 8 ) AREA(MAXELM,3).
+       AREA contains a common factor multiplying the term associated
+       with a quadrature point in a given element, namely,
+         AREA(IELEM,IQUAD) = Ar(IELEM) * WQUAD(IQUAD)
+       or, if the element is isoperimetric,
+         AREA(IELEM,IQUAD) = DET * Ar(IELEM) * WQUAD(IQUAD)
+       Here Ar(IELEM) represents the area of element IELEM.
+
+COST   real ( kind = 8 ) COST.
+       COST contains the current value of the cost function.  This 
+       is the function which the optimizer is to minimize.
+       COST = WATEP*COSTP + WATEB*COSTB + WATEU*COSTU + WATEV*COSTV 
+
+COSTB  real ( kind = 8 ) COSTB.
+       COSTB is the integral of the difference of the derivatives 
+       of the straight line joining the two straight line 
+       segments of the bottom, and the bump that is actually 
+       drawn there.  
+       This measures the cost of bump control.
+
+COSTP  real ( kind = 8 ) COSTP.
+       The integral of the difference between
+       the computed and target pressure functions along the
+       profile line.
+
+COSTU  real ( kind = 8 ) COSTU.
+       The integral of the difference between
+       the computed and target horizontal velocity functions along 
+       the profile line.
+
+COSTV  real ( kind = 8 ) COSTV.
+       The integral of the difference between
+       the computed and target vertical velocity functions along 
+       the profile line.
+ 
+DOPT   real ( kind = 8 ) DOPT(NPAR).
+       DOPT contains a set of scale factors for the parameters, used
+       by the optimization code.  The suggestion is that DOPT(I) be
+       chosen so that DOPT(I)*PARA(I) is roughly the same order of
+       magnitude for I from 1 to NPAR.
+
+DPARA  real ( kind = 8 ) DPARA(NPAR).
+       DPARA(I) is the partial derivative of the cost function with
+       respect to the I-th parameter.
+
+EPSDIF real ( kind = 8 ) EPSDIF.
+       A small quantity, which is used to compute the perturbations
+       for the finite difference approximations.
+
+EQN    character*2 EQN(MAXEQN).
+       EQN records the "type" of each equation that will be generated, and
+       which is associated with an unknown.  Note that most boundary 
+       conditions do not result in an equation.  The current values are:
+       'U'  The horizontal momentum equation.
+       'UB' The condition U=0 applied at a node on the bump.
+       'UI' The condition U=UInflow(Y,Lambda) at the inflow.
+       'UW' The condition U=0 applied at a node on a fixed wall.
+
+       'V'  The vertical momentum equation.
+       'VB' The condition V=0 applied at a node on the bump.
+       'VI' The condition V=VInflow(Y,Lambda) at the inflow.
+       'VW' The condition V=0 applied at a node on a fixed wall.
+
+       'P'  The continuity equation.
+       'PB' The condition P=0 applied at (XMAX,YMAX).
+
+ETAN   real ( kind = 8 ) ETAN(6).
+       The "Eta" coordinates of the six nodes in the reference element.
+
+ETAQ   real ( kind = 8 ) ETAQ(3).
+       The "Eta" coordinates of the quadrature points.
+
+F      real ( kind = 8 ) F(NEQN).
+       F is used as a right hand side vector in LINSYS, and is 
+       overwritten there by the new solution, which is then copied 
+       into G.
+ 
+FILEG  character FILEG*30.
+       FILEG contains the name of the file into which the DISPLAY 
+       graphics information will be stored.
+ 
+FILET  character FILET*30.
+       FILET is a text file which can be used to store data
+       during a marching run.
+ 
+G      real ( kind = 8 ) G(NEQN).
+       G is the current solution vector, in which are stored 
+       pressures and velocities.
+
+G2     real ( kind = 8 ) G2(NEQN).
+       A temporary vector, used during the Newton iteration.
+       It holds a copy of the first point in the Newton iteration,
+       which allows us to restart the process if necessary.
+
+GOPT   real ( kind = 8 ) GOPT(NOPT).
+
+       GOPT is the partial derivative of the cost function with respect
+       to the I-th free parameter.  Thus, GOPT contains some of the
+       values computed in DPARA.
+
+GDIF   real ( kind = 8 ) GDIF(MAXEQN,NPAR), the (uncorrected) finite 
+       difference estimate of the sensitivity of the state solution G 
+       with respect to the parameters PARA.
+
+GDIFC  real ( kind = 8 ) GDIFC(NEQN,NPAR), the corrected finite 
+       difference estimate of the sensitivity of the state solution G
+       with respect to the parameters PARA.
+         GDIFC(I,J) = GDIF(I,J) - GRADF(I,J)
+
+GRADF  real ( kind = 8 ) GRADF(MAXEQN,NPAR), the correction to the
+       finite difference estimate of the sensitivities.
+
+GTAR   real ( kind = 8 ) GTAR(NEQN)
+       GTAR is the target solution vector.
+
+IBC    integer IBC.
+       0, estimate bump boundary condition dUdY and dVdY using
+          finite element data.
+       1, estimate bump boundary condition dUdY and dVdY using
+          finite difference estimate.
+
+IBUMP  integer IBUMP.  
+       IBUMP determines where isoparametric elements will be used.
+       0, no isoparametric elements will be used.  
+          Midside nodes of nonisoparametric elements above the
+          bump will be recomputed so that the sides are straight.
+       1, isoparametric elements will be used only for the
+          elements which directly impinge on the bump.
+          Midside nodes of nonisoparametric elements above the
+          bump will be recomputed so that the sides are straight.
+       2, isoparametric elements will be used for all elements 
+          which are above the bump.  All nodes above the bump
+          will be equally spaced in the Y direction.
+       3, isoparametric elements will be used for all elements.
+          All nodes above the bump will be equally spaced in 
+          the Y direction.
+
+IDFD   integer IDFD
+       0, do not compute the direct finite difference estimate of the
+          cost gradient.
+       1, compute it.
+
+IDS    integer IDS
+       0, do not compute the discretized sensitivities.
+       1, compute them.
+
+IERROR integer IERROR.
+       An error flag.
+       0, no error occurred in this routine.
+       nonzero, an error occurred.
+
+IFDS   integer IFDS.
+       0, do not compute the finite difference sensitivities.
+       1, compute them.
+
+IGRAD  integer IGRAD.
+       IGRAD determines how the cost gradients will be computed if
+       an optimization is carried out:
+       0, no cost gradient estimate is made.  
+       1, chain rule on the sensitivities.
+       2, chain rule on the finite difference sensitivities.
+       3, chain rule on the corrected finite difference sensitivities.
+       4, direct finite difference estimate.
+
+IGUNIT integer IGUNIT.
+       The FORTRAN unit used for writing data to the plotfile FILEG.
+
+IJAC   integer IJAC.
+       IJAC determines the frequency for evaluating and factoring
+       the Jacobian matrix during any particular Newton process.
+       1, evaluate the Jacobian on every step of the Newton 
+          iteration.
+       n, evaluate the Jacobian only at steps 0, n, 2*n, and so on.
+   
+IKUNIT integer IKUNIT. 
+ 
+       The FORTRAN unit to which cost functional and gradient 
+       information will be written.
+ 
+INDX   integer INDX(NP,3).  
+       INDX contains, for each node I, the index of U, V and P at 
+       that node, or 0 or a negative value.
+       If K=INDX(I,J) is positive, then the value of the degree
+       of freedom is stored in the solution vector entry G(K).
+       If INDX(I,J) is positive, then that means that a degree of
+       freedom for variable J (U, V or P) is associated with node
+       I, and an equation will be generated to determine its value.
+       If INDX(I,J) is zero, then that means the the value of variable
+       J (U, V or P) has been specified at node I.  No equation is
+       generated to determine its value.
+
+IPIVOT integer IPIVOT(NEQN).
+       Pivoting space for the linear system solver.
+ 
+IPLOT  integer IPLOT.  
+       IPLOT controls whether or not graphics files
+       suitable for use with DISPLAY will be created.
+       IPLOT=0 means no such file will be created.
+       IPLOT>0 means plot data will be generated for each step
+       which is evenly divisible by IPLOT, or which is less than
+       or equal to IPLOT. 
+       IPLOT=-1 means plot data will be generated for the target, the
+       first and the last steps only.  
+ 
+IPRED  Input, INTEGER IPRED.
+       Determines how the starting point for the Newton iteration
+       is computed:
+       0: G(I) = GOLD(I)
+       1: G(I) = GOLD(I) + SENS(I,J)*(PAR(J)-PAROLD(J))
+       2: G(I) = GOLD(I) + GDIF(I,J)*(PAR(J)-PAROLD(J))  
+       3: G(I) = GOLD(I) + (GDIF(I,J)-GRADF(I,J))*(PAR(J)-PAROLD(J))
+       4: G(I) = GOLD(I) + (SENS(I,J)+GRADF(I,J))*(PAR(J)-PAROLD(J))
+
+ISHAPB integer ISHAPB.
+       1, the bump is modeled by C0 linear splines.
+       2, the bump is modeled by C0 quadratic splines.
+       3, the bump is modeled by C1 cubic splines.
+ 
+ISHAPF integer ISHAPF.
+       1, the inflow is modeled by C0 linear splines.
+       2, the inflow is modeled by C0 quadratic splines.
+       3, the inflow is modeled by C1 cubic splines.
+ 
+ISHIFT integer ISHIFT.
+       0, no effect.
+       1, once the predicted value of G is computed, an attempt is
+       made to allow for the effect of the moving mesh by adjusting G.
+ 
+ISMOOTH
+       integer ISMOOTH.
+       0, approximate DUDY, DVDY, and DPDY at a node by averaging
+       the values in each element that includes the node.
+       1, same as 0, but smooth the data at corner nodes by computing
+       the least squares polynomial that passes through the neighboring
+       quadrature point values of DUDY, DVDY, and DPDY, and replacing
+       the computed nodal value by the value of the polynomial at the node.
+
+ISOTRI integer ISOTRI(NELEM).
+       0, the element is NOT isoparametric, and the nodes never move.
+       That means that the quadrature points are only computed once.
+       1, the element is NOT isoparametric, but the nodes may move.
+       Quadrature point locations must be updated on each step.
+       This could occur for elements above, but not touching, the bump.
+       2, the element is isoparametric.
+ 
+ISTEP1,
+ISTEP2 integer ISTEP1, ISTEP2.
+       These quantities are only used for a marching run.
+       Normally, a march starts with PARA=PARA1 on step 1,
+       and ends with PARA=PARA2 on step MAXSTP.
+       If you would like the march to go on the line between
+       PARA1 and PARA2, but NOT necessarily to start on PARA1
+       nor end on PARA2, simply specify:
+         ISTEP1, the step on which PARA should equal PARA1.
+         ISTEP2, the step on which PARA should equal PARA2.
+       The program will proceed as before, but pass through
+       PARA1 and PARA2 at the specified times (unless ISTEP1
+       or ISTEP2 are out of range, which is legal).
+
+ITYPE  integer ITYPE.
+       Controls the type of run being made.
+       1, a one dimensional "marching run".  The code will 
+       generate a series of points evenly spaced along the line 
+       between the values in PARA1 and PARA2.  The points
+       where PARA1 and PARA2 are computed may be specified by
+       setting ISTEP1 and ISTEP2.  
+       2, a two dimensional "marching run". The code will 
+       generate a series of points on an evenly spaced grid
+       over the parallelogram defined by the points PARA1,
+       PARA2 and PARA3.  The points where PARA1, PARA2 and
+       PARA3 are computed may be specified by setting ISTEP1,
+       ISTEP2, JSTEP1 and JSTEP2.   
+       3, an optimization run.  If IPRED=0 or 1, then sensitivities
+       are used to estimate the cost gradient.  If IPRED=2, then
+       finite differences are used.
+       4, a three dimensional "marching run".  The code will
+       generate a series of points on an evenly spaced grid
+       over the parallelogram defined by the points PARA1,
+       PARA2 and PARA3.  The points where PARA1, PARA2 and
+       PARA3 are computed may be specified by setting ISTEP1,
+       ISTEP2, JSTEP1 and JSTEP2.  
+       The code will carry out this process NSTEP3 times.
+       Each time, the value of WATEB will be recomputed,
+       in equal steps, between WATEB1 and WATEB2.  
+       5, Navier Stokes solution.  The code computes the target 
+       solution for PARTAR and the solution for the values PARA1  
+       and stops.
+       6, a Taylor check.  Compute the target point.  Compute the
+       solution for PARA1.  Then increment each component of
+       PARA1 to the value in PARA2, one component at a time.
+       Compute the changes in the solution, and the effectiveness
+       of Taylor predictions, using finite differences and
+       sensitivities.
+       7, an optimization using function values only.
+ 
+IWRITE integer IWRITE.
+       Controls the amount of output printed.
+       0, print out the least amount.
+       1, print out some.
+       2, print out a lot.
+
+JJAC   integer JJAC.
+       JJAC helps determine how often the jacobian matrix is evaluated
+       and factored.
+       JJAC=0, the expensive but safe choice.
+       The jacobian will be evaluated and factored for every Newton
+       iterate, including gradient points.  The user may, however,
+       specify a "skip" frequency using IJAC.
+       JJAC=1, the moderately priced and sensible choice.
+       The jacobian is evaluated and factored for every Newton iterate,
+       except for gradient points.  The user may specify a "skip"
+       frequency using IJAC.
+       JJAC=2, the cheap but dangerous choice.
+       The jacobian is evaluated once.  Then it is used as long as it
+       can be, until a Newton process fails.  Then it is reevaluated,
+       and we try to stretch the new jacobian as far as it will go.
+       JJAC=3, user controllable cheapness.
+       The user specifies DISJAC, a maximum parameter distance.
+       If the new parameters are less than DISJAC from PARJAC,
+       the parameters at which the jacobian was last evaluated,
+       then the jacobian is not reevaluated.
+
+JSTEP1,
+JSTEP2 integer JSTEP1, JSTEP2.
+       These variables are only used for two dimensional marching,
+       when ITYPE=2.
+       They help determine the (I,J) coordinates of the three 
+       points PARA1, PARA2 and PARA3.  In particular,
+         PARA1: (ISTEP1,JSTEP1)
+         PARA2: (ISTEP2,JSTEP1)
+         PARA3: (ISTEP1,JSTEP2)
+ 
+KJAC   integer KJAC.
+       0, try Newton's method first, use simple/Newton iteration as
+       a fallback only.
+       1, always begin with simple iteration followed by Newton.
+
+KPLOT  integer KPLOT.  
+       KPLOT controls whether or not "function" files suitable for 
+       use with SLICE will be created.
+       KPLOT=0 means no such files will be created.
+       KPLOT=1 means that the program will write the parameter 
+       values and corresponding functional value at every step.
+       KPLOT=N means that the data will be written every N-th step.
+ 
+MAXELM integer MAXELM.
+       The maximum number of elements.  This is actually simply the 
+       first dimension of the array NODE.
+ 
+MAXEQN integer MAXEQN.
+       The maximum number of equations allowed.
+ 
+MAXNEW integer MAXNEW.
+       The maximum number of steps to take in one Newton
+       iteration.  A typical value is 20.
+ 
+MAXPAR integer MAXPAR.
+       The maximum number of parameters allowed.
+       MAXPAR = MAXPARF + MAXPARB + 1.
+ 
+MAXPARB
+       integer MAXPARB.
+       The maximum number of bump parameters allowed.
+ 
+MAXPARF
+       integer MAXPARF.
+       The maximum number of inflow parameters allowed.
+ 
+MAXROW integer MAXROW.
+       The first dimension of the matrix A.
+
+MAXSIM integer MAXSIM.
+       The maximum number of steps to take in one simple
+       iteration.  A typical value is 10.
+ 
+MAXSTP integer MAXSTP.
+       For an optimization run (ITYPE=0 or 3), the maximum number 
+       of optimization steps.
+       For a marching run, (ITYPE=1), the number of evenly 
+       spaced points to be generated between PARA1 and PARA2.
+       For a 2D marching run, ITYPE=2, the number of evenly
+       spaced points to be generated between PARA1 and PARA2,
+       and between PARA1 and PARA3, resulting in MAXSTP*MAXSTP
+       points.
+       For a 3D marching run, ITYPE=3, the same as for ITYPE=2,
+       except that the number of points generated will be
+       MAXSTP*MAXSTP*NSTEP3.
+ 
+NBAND  integer NBAND.
+       The bandwidth of the linear system.
+ 
+NBLEFT integer NBLEFT.  
+       The column of the grid at which the left corner of the
+       bump lies.
+ 
+NBRITE integer NBRITE.
+       The column of the grid at which the right corner of the
+       bump lies.
+ 
+NELEM  integer NELEM.
+       The number of elements.
+ 
+NEQN   integer NEQN, the number of equations, and functions.
+ 
+NLBAND integer NLBAND.
+       The lower bandwidth of the matrix A.
+ 
+NODE   integer NODE(MAXELM,6).
+       NODE contains, for each element, the global node indices of 
+       the element nodes.
+ 
+NODEX0 integer NODEX0.
+       The node whose Y coordinate is zero, and whose X coordinate 
+       is XPROF.  This is the first node along the line where the 
+       velocity profile is measured.
+ 
+NP     integer NP, the number of nodes.  NP=(2*NX-1)*(2*NY-1).
+ 
+NPAR   integer NPAR.
+       The number of parameters.  NPAR = NPARF + NPARB + 1.
+       The parameters control the shape of the inflow,
+       the shape of the bump obstacle, and the strength of the
+       flow.
+ 
+NPARB  integer NPARB.
+       The number of parameters associated with the position and 
+       shape of the bump.
+       Note that if NPARB=0, the bump is replaced by a flat wall.
+ 
+NPARF  integer NPARF.
+       NPARF is the number of parameters associated with the 
+       inflow.  NPARF must be at least 1.  
+
+NPROF  integer NPROF(2*MAXNY-1), the indices of the nodes along the profile
+       line.
+
+NROW   integer NROW.
+       The number of rows need to store the matrix A.
+
+NSTEP3 integer NSTEP3.
+       For a 3D marching run only, NSTEP3 sets the number of steps
+       to take in the WATEB direction.  That is, NSTEP3 2D planes
+       of points will be generated with a fixed value of WATEB,
+       with WATEB varying from WATEB1 to WATEB2.
+
+NUMSTP integer NUMSTP.
+       The number of steps (optimization or marching) taken
+       so far.
+
+NX     integer NX.
+       NX controls the spacing of nodes and elements in
+       the X direction.  There are 2*NX-1 nodes along various
+       lines in the X direction.
+       Roughly speaking, NX is the number of elements along
+       a line in the X direction.
+ 
+NY     integer NY.
+       NY controls the spacing of nodes and elements in
+       the Y direction.  There are 2*NY-1 nodes along various
+       lines in the Y direction.
+       Roughly speaking, NY is the number of elements along
+       a line in the Y direction.
+ 
+PARA   real ( kind = 8 ) PARA(NPAR).
+       PARA is the current estimate for the parameters.
+       For an optimization (ITYPE=0), PARA is started at PARA1,
+       and is then updated by the optimizer.
+       For a march (ITYPE=1), PARA starts at PARA1 and ends at
+       PARA2 (although this can be changed slightly by using
+       ISTEP1 and ISTEP2), taking MAXSTP steps in between.
+       PARA(1:NPARF)             = inflow controls.
+       PARA(NPARF+1:NPARF+NPARB) = bump controls.
+       PARA(NPARF+NPARB+1)       = the REYNLD parameter.
+ 
+PARA1  real ( kind = 8 ) PARA1(NPAR).
+       PARA1 is a user input quantity.
+       For an optimization (ITYPE=0), PARA1 defines the starting
+       estimate for the solution.
+       For a march (ITYPE=1), PARA1 defines the starting point
+       of the march.
+
+PARA2  real ( kind = 8 ) PARA2(NPAR).
+       PARA2 is only used for marching (ITYPE=1 or ITYPE=2) in 
+       which case it defines one end point of the march.
+ 
+PARA3  real ( kind = 8 ) PARA3(NPAR).
+       PARA3 is only used for 2D marching (ITYPE=2) in which case
+       it defines the third corner of the parallelogram to be
+       gridded.
+ 
+PARJAC real ( kind = 8 ) PARJAC(NPAR).
+       The parameters at which the jacobian was last evaluated.
+
+PARTAR real ( kind = 8 ) PARTAR(NPAR).
+       PARTAR contains the target values of the parameters.
+       These values are used to define the cost functional.
+ 
+PHI    real ( kind = 8 ) PHI(NELEM,3,6,12).  
+       PHI contains the value of a basis function, its derivative,
+       or other information, evaluated at a quadrature point.
+       For a particular element I, quadrature point J, and basis
+       function K, we use the following shorthand for the twelve
+       entries of PHI:
+         W, dWdX, dWdY
+         Q, dQdX, dQdY
+         dXsidX, dXsidY, dEtadX, dEtadY
+         dWdXsi, dWdEta
+       W is the quadratic basis function associated with velocity,
+       Q the linear basis function associated with pressure,
+       Xsi and Eta the reference coordinates for the point.
+       In particular, PHI(I,J,K,1) is the value of the quadratic 
+       basis function associated with local node K in element I, 
+       evaluated at quadrature point J.
+       Note that PHI(I,J,K,4)=PHI(I,J,K,5)=PHI(I,J,K,6)=0 for 
+       K=4, 5, or 6, since there are only three linear basis
+       functions.
+
+RES    real ( kind = 8 ) RES(NEQN).
+       RES holds the residual.
+ 
+SENS   real ( kind = 8 ) SENS(MAXEQN,NPAR), the sensitivities.
+       SENS(I,J) contains the sensitivity of the I-th unknown
+       with respect to the J-th parameter.
+ 
+SPLBMP real ( kind = 8 ) SPLBMP(4,NPARB+2,0:NPARB).
+       SPLBMP contains the spline coefficients for the bump
+       in SPLBMP(*,*,0).
+
+SPLFLO real ( kind = 8 ) SPLFLO(4,NPARF+2,0:NPARF).
+       SPLFLO contains the spline coefficients for the inflow
+       in SPLFLO(*,*,0).
+
+STPMAX real ( kind = 8 ) STPMAX.
+       STPMAX is used for continuation work.
+       Say the user wants to compute a flow solution G with 
+       parameters PAR.  Suppose we already have a flow solution 
+       GOLD with flow parameters PAROLD.  Then we will allow the 
+       code to use GOLD as a starting point for Newton iteration 
+       immediately, if the difference between PAR and PAROLD is 
+       less than STPMAX.
+       If the difference is greater, then continutation from 
+       GOLD, PAROLD will be used to reach a solution at G, PAR.
+       The size of the steps used will be controlled by STPMAX.
+ 
+TAUBMP real ( kind = 8 ) TAUBMP(NPARB+2).
+       TAUBMP contains the location of the spline abscissas for
+       the bump.  There are NPARB+2 of them, because the end values
+       of the spline are constrained to have particular values.
+       So there are abscissas there, but not free parameters.
+
+TAUFLO real ( kind = 8 ) TAUFLO(NPARF+2).
+       TAUFLO contains the location of the spline abscissas for
+       the inflow.  There are NPARF+2 of them, because the end 
+       values of the spline are constrained to have particular 
+       values.
+       So there are abscissas there, but not free parameters.
+
+TOLNEW real ( kind = 8 ) TOLNEW.
+       TOLNEW is the convergence tolerance for the Newton
+       iteration.
+ 
+TOLOPT real ( kind = 8 ) TOLOPT.
+       TOLOPT is the convergence tolerance for the optimization.
+       If TOLOPT is zero, then default values are used.
+ 
+TOLSIM real ( kind = 8 ) TOLSIM.
+       TOLSIM is the convergence tolerance for the Newton
+       iteration.
+
+WATEB  real ( kind = 8 ) WATEB.
+       WATEB is the multiplier of the bump control cost used
+       when computing the total cost.
+
+WATEB1,
+WATEB2 real ( kind = 8 ) WATEB1, WATEB2.
+       For 3D marching runs only, NSTEP3 2D planes of points will
+       be computed for a series of values of WATEB, starting
+       at WATEB1 and proceeding to WATEB2.
+
+WATEP,
+WATEU,
+WATEV  real ( kind = 8 ) WATEP, WATEU, WATEV.
+       These are weights used in computing the overall cost 
+       function based on the costs of the flow discrepancy.
+
+WQUAD  real ( kind = 8 ) WQUAD(3), the weights for Gaussian
+       quadrature.
+
+XBLEFT real ( kind = 8 ) XBLEFT.
+       The X coordinate of the left corner of the bump,
+       for each test solution.
+ 
+XBLTAR real ( kind = 8 ) XBLTAR.
+       The X coordinate of the left corner of the bump,
+       for the target solution.
+ 
+XBRITE real ( kind = 8 ) XBRITE.
+       The X coordinate of the right corner of the bump,
+       for each test solution.
+
+XBRTAR real ( kind = 8 ) XBRTAR.
+       The X coordinate of the right corner of the bump,
+       for the target solution.
+ 
+XC     real ( kind = 8 ) XC(NP).
+       XC is the X coordinates of the nodes.
+ 
+XQUAD  real ( kind = 8 ) XQUAD(NELEM,3).
+       The X coordinates of the quadrature points for 
+       each element.
+ 
+XPROF  real ( kind = 8 ) XPROF.
+       The X coordinate at which the profile is measured.  This 
+       value should be a grid value!
+ 
+XSIN   real ( kind = 8 ) XSIN(6).
+       The "Xsi" coordinates of the six nodes in the reference element.
+
+XSIQ   real ( kind = 8 ) XSIQ(3).
+       The "Xsi" coordinates of the quadrature points.
+
+YBLEFT real ( kind = 8 ) YBLEFT.
+       The Y coordinate of the left corner of the bottom bump,
+       for each test solution.
+ 
+YBLTAR real ( kind = 8 ) YBLTAR.
+       The Y coordinate of the left corner of the bottom bump,
+       for the target solution.
+
+YBRITE real ( kind = 8 ) YBRITE.
+       The Y coordinate of the right corner of the bottom bump,
+       for each test solution.
+ 
+YBRTAR real ( kind = 8 ) YBRTAR.
+       The Y coordinate of the right corner of the bottom bump,
+       for the target solution.
+
+YC     real ( kind = 8 ) YC(NP).
+       YC is the Y coordinates of the nodes.
+ 
+YQUAD  real ( kind = 8 ) YQUAD(NELEM,3).
+       The Y coordinates of the quadrature points for
+       each element.
+ 

@@ -1,0 +1,2860 @@
+<html>
+
+  <head>
+    <title>
+      NSWC - Naval Surface Warfare Center Mathematical Library
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      NSWC <br> Naval Surface Warfare Center Mathematical Library
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>NSWC</b> 
+      is a FORTRAN90 library which 
+      contains an extensive collection of mathematical 
+      software.  
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blas1/blas1.html">
+      BLAS1</a>,
+      a FORTRAN90 library which
+      contains basic linear algebra routines for vector-vector operations,
+      combining the single and double precision, real and complex arithmetic
+      libraries.
+    </p>
+
+    <p>
+      <a href = "../../f_src/eispack/eispack.html">
+      EISPACK</a>,
+      a FORTRAN90 library which
+      carries out eigenvalue computations;
+      superseded by LAPACK;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fftpack5.1/fftpack5.1.html">
+      FFTPACK5.1</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform
+      using single precision arithmetic,
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fn/fn.html">
+      FN</a>,
+      a FORTRAN90 library which
+      approximates elementary and special functions using Chebyshev polynomials,
+      by Wayne Fullerton.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack_s/linpack_s.html">
+      LINPACK_S</a>,
+      a FORTRAN90 library which
+      solves linear systems using single precision real arithmetic;
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_values/test_values.html">
+      TEST_VALUES</a>,
+      a FORTRAN90 library which
+      supplies test values of various mathematical functions.
+    </p>
+
+    <h3 align = "center">
+      Software Compiler and Maintainter:
+    </h3>
+
+    <p>
+      Alfred Morris,<br>
+      Engineering and Information Systems Department,<br>
+      Naval Surface Warfare Center,<br>
+      Dahlgren, Virginia, 22448-5000.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "nswc.f90">nswc.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "nswc.sh">nswc.sh</a>, 
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "nswc_prb.f90">nswc_prb.f90</a>, 
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "nswc_prb.sh">nswc_prb.sh</a>, 
+          commands to compile, link and run the sample calling program.
+        </li>
+        <li>
+          <a href = "nswc_prb_output.txt">nswc_prb_output.txt</a>, output from the sample
+          calling program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ABCON</b> calculates the abscissa of convergence of a given function
+        </li>
+        <li>
+          <b>ABCON1</b> calculates the abscissa of convergence of a given function
+        </li>
+        <li>
+          <b>ABSLV</b> solves the real matrix equation A*x + x*B = c.
+        </li>
+        <li>
+          <b>ABSLV1</b> solves the real matrix equation a*x + x*b = c.
+        </li>
+        <li>
+          <b>ACOND</b> tests whether X lies to the right of the abscissa of convergence 
+        </li>
+        <li>
+          <b>ACONDF</b> is the function integrated along the X axis in ACOND.
+        </li>
+        <li>
+          <b>ACONDG</b> is the function integrated along the line X = C in ACOND.
+        </li>
+        <li>
+          <b>ADAPT</b> computes a piecewise polynomial approximation.
+        </li>
+        <li>
+          <b>ADAPT1</b> computes a piecewise polynomial approximation
+        </li>
+        <li>
+          <b>ADCHK</b> checks for discarding interval, applies various tests
+        </li>
+        <li>
+          <b>ADCOMP</b> computes the piecewise polynomial approximation on the current interval.
+        </li>
+        <li>
+          <b>ADPUT</b> puts intervals on the stack or discards them.
+        </li>
+        <li>
+          <b>ADSET</b> checks the input data and initializes the computation.
+        </li>
+        <li>
+          <b>ADTAKE</b> takes an active interval off the top of the stack.
+        </li>
+        <li>
+          <b>ADTRAN</b> converts polynomial representation from divided difference to power form.
+        </li>
+        <li>
+          <b>AI</b> evaluates the Airy function.
+        </li>
+        <li>
+          <b>AIA</b> calculates the Airy function and its derivative.
+        </li>
+        <li>
+          <b>AIE</b> computes the scaled Airy function.
+        </li>
+        <li>
+          <b>AII</b> calculates the Airy function ai and its derivative aip
+        </li>
+        <li>
+          <b>AIMP</b> computes the Airy modulus and phase for x >= 1
+        </li>
+        <li>
+          <b>AIRM</b> calculates the Airy functions ai and bi and their
+        </li>
+        <li>
+          <b>AIRY_VALUES</b> returns some values of the Airy function for testing.
+        </li>
+        <li>
+          <b>ALGDIV</b> computes ln(gamma(b)/gamma(a+b)) when b >= 8
+        </li>
+        <li>
+          <b>ALLOT</b> checks for sufficiency the declared  dimensions  of  the
+        </li>
+        <li>
+          <b>ALNREL</b> evaluates the function ln(1 + a)
+        </li>
+        <li>
+          <b>AORD</b> reorders the elements of a so that abs(a(i)) <= abs(a(i+1))
+        </li>
+        <li>
+          <b>ARCEBE</b> performs the backward elimination step in the solution phase of arceco.
+        </li>
+        <li>
+          <b>ARCEBM</b> performs the backward modification step in the solution phase of arceco.
+        </li>
+        <li>
+          <b>ARCEBS</b> performs the backward solution step in the solution phase of arceco.
+        </li>
+        <li>
+          <b>ARCECO</b> solves the linear system  a*x = b  where  a is
+        </li>
+        <li>
+          <b>ARCEDC</b> supervises the modified alternate row and column decomposition
+        </li>
+        <li>
+          <b>ARCEFE</b> performs the forward elimination step in the solution phase of arceco.
+        </li>
+        <li>
+          <b>ARCEFM</b> performs the forward modification step in the solution phase of arceco.
+        </li>
+        <li>
+          <b>ARCEFS</b> performs the forward solution step in the solution phase of arceco.
+        </li>
+        <li>
+          <b>ARCEPC</b> performs nclpiv column eliminations on the matrices topblk and botblk
+        </li>
+        <li>
+          <b>ARCEPR</b> performs nrwpiv row eliminations on the matrix block
+        </li>
+        <li>
+          <b>ARCESL</b> supervises the solution of the linear system
+        </li>
+        <li>
+          <b>ARTNQ</b> ??? looks like a variation of the arc-tangent function.
+        </li>
+        <li>
+          <b>ASIK</b> computes Bessel functions I and K for positive argument and high order.
+        </li>
+        <li>
+          <b>ASJY</b> computes Bessel functions J and Y for positive argument and high order.
+        </li>
+        <li>
+          <b>ASSGN</b> solves the assignment problem.
+        </li>
+        <li>
+          <b>ASSGN1</b> solves the square assignment problem.
+        </li>
+        <li>
+          <b>ATN</b> calculates complex function atn(z) = z*atan(z) using double precision.
+        </li>
+        <li>
+          <b>BADD</b> adds real banded matrices
+        </li>
+        <li>
+          <b>BALANC</b> balances a real matrix before eigenvalue calculations.
+        </li>
+        <li>
+          <b>BALBAK</b> is a translation of the algol procedure balbak,
+        </li>
+        <li>
+          <b>BALINV</b> inverts the similarity transforms used by BALANC.
+        </li>
+        <li>
+          <b>BANFAC</b> computes the LU factorization of a banded matrix.
+        </li>
+        <li>
+          <b>BANSLV</b> solves a linear system factored by BANFAC.
+        </li>
+        <li>
+          <b>BASIZ</b> finds the size of a basis required for polynomial approximation.
+        </li>
+        <li>
+          <b>BASYM</b> carries out asymptotic expansion for ix(a,b) for large a and b.
+        </li>
+        <li>
+          <b>BCHFAC</b> computes the Cholesky factorization of a banded matrix.
+        </li>
+        <li>
+          <b>BCHSLV</b> solves a linear system factored by BCHFAC.
+        </li>
+        <li>
+          <b>BCORR</b> evaluates a correction term used to approximate log ( gamma ( x ) ).
+        </li>
+        <li>
+          <b>BESI</b> computes a sequence of I Bessel functions.
+        </li>
+        <li>
+          <b>BESI0_VALUES</b> returns some values of the I0 Bessel function for testing.
+        </li>
+        <li>
+          <b>BESI1_VALUES</b> returns some values of the I1 Bessel function for testing.
+        </li>
+        <li>
+          <b>BESIN_VALUES</b> returns some values of the IN Bessel function for testing.
+        </li>
+        <li>
+          <b>BESJ</b> computes a sequence of J Bessel functions.
+        </li>
+        <li>
+          <b>BESJ0_VALUES</b> returns some values of the J0 Bessel function for testing.
+        </li>
+        <li>
+          <b>BESJ1_VALUES</b> returns some values of the J1 Bessel function for testing.
+        </li>
+        <li>
+          <b>BESJN_VALUES</b> returns some values of the JN Bessel function for testing.
+        </li>
+        <li>
+          <b>BETA</b> computes the Beta function.
+        </li>
+        <li>
+          <b>BETA_INC_VALUES</b> returns some values of the incomplete Beta function.
+        </li>
+        <li>
+          <b>BETA_VALUES</b> returns some values of the Beta function for testing.
+        </li>
+        <li>
+          <b>BETALN</b> evaluates the logarithm of the beta function
+        </li>
+        <li>
+          <b>BFRAC</b> continued fraction expansion for ix(a,b) when a,b > 1.
+        </li>
+        <li>
+          <b>BGRAT</b> asymptotic expansion for ix(a,b) when a is larger than b.
+        </li>
+        <li>
+          <b>BI</b> evaluation of the Airy function BI(X).
+        </li>
+        <li>
+          <b>BIA</b> calculates the airy function bi and its derivative bip for
+        </li>
+        <li>
+          <b>BIE</b> computes the scaled Airy function BI(X).
+        </li>
+        <li>
+          <b>BII</b> calculates the airy function bi and its derivative bip
+        </li>
+        <li>
+          <b>BIM</b> calculates the modified Bessel function of the first kind
+        </li>
+        <li>
+          <b>BJM</b> calculates the Bessel function of the first kind
+        </li>
+        <li>
+          <b>BLKORD</b> reorders a sparse matrix into block triangular form.
+        </li>
+        <li>
+          <b>BLKTR1</b> solves a block triangular linear system.
+        </li>
+        <li>
+          <b>BLKTRI</b> ???
+        </li>
+        <li>
+          <b>BLND</b> ???
+        </li>
+        <li>
+          <b>BLSQ</b> solves a linear system using least squares.
+        </li>
+        <li>
+          <b>BPOSE</b> transposes a real banded matrix.
+        </li>
+        <li>
+          <b>BPROD</b> multiplies real banded matrices
+        </li>
+        <li>
+          <b>BPSER</b> power series expansion for evaluating ix(a,b) when b <= 1
+        </li>
+        <li>
+          <b>BRATIO</b> evaluates the incomplete beta function IX(A,B).
+        </li>
+        <li>
+          <b>BRCMP1</b> evaluates  exp(mu) * (x**a*y**b/beta(a,b))
+        </li>
+        <li>
+          <b>BRCOMP</b> evaluates x**a * y**b / beta(a,b).
+        </li>
+        <li>
+          <b>BSL2</b> produces the b-spline coefficients bcoef of the piecewise
+        </li>
+        <li>
+          <b>BSLV</b> employs gauss elimination with row interchanges to solve
+        </li>
+        <li>
+          <b>BSLV1</b> employs gauss elimination with row interchanges to solve
+        </li>
+        <li>
+          <b>BSPEV</b> evaluation of b-splines
+        </li>
+        <li>
+          <b>BSPP</b> converts from b-spline representation to pp representation
+        </li>
+        <li>
+          <b>BSRH</b> ???
+        </li>
+        <li>
+          <b>BSSLI</b> modified Bessel function of integral order
+        </li>
+        <li>
+          <b>BSSLJ</b> ordinary Bessel function of integral order
+        </li>
+        <li>
+          <b>BSSLK</b> modified Bessel function of integral order
+        </li>
+        <li>
+          <b>BSSLY</b> ordinary Bessel function of integral order
+        </li>
+        <li>
+          <b>BSTRP</b> produces the b-spline coeff.s bcoef of the piecewise
+        </li>
+        <li>
+          <b>BSUBT</b> subtraction of real banded matrices
+        </li>
+        <li>
+          <b>BTPRD</b> product of a real vector and a real banded matrix
+        </li>
+        <li>
+          <b>BTPRD1</b> setting y = x*a + y where a is a real banded matrix and
+        </li>
+        <li>
+          <b>BTSLV</b> ???
+        </li>
+        <li>
+          <b>BUP</b> evaluation of ix(a,b) - ix(a+n,b) where n is a positive integer.
+        </li>
+        <li>
+          <b>BUPD</b> backtracking step updating
+        </li>
+        <li>
+          <b>BVIP</b> performs bivariate interpolation when the pro-
+        </li>
+        <li>
+          <b>BVIP2</b> performs smooth surface fitting when the pro-
+        </li>
+        <li>
+          <b>BVPRD</b> product of a real banded matrix and a real vector
+        </li>
+        <li>
+          <b>BVPRD1</b> sets y = a*x + y where a is a banded matrix, x and y are vectors.
+        </li>
+        <li>
+          <b>CAI</b> calculates the airy function ai and its derivative aip
+        </li>
+        <li>
+          <b>CALCSC</b> calculates scalar quantities used to
+        </li>
+        <li>
+          <b>CALCT</b> computes t = -p(s)/h(s)
+        </li>
+        <li>
+          <b>CAUCHY</b> computes a lower bound bnd on the moduli of the zeros
+        </li>
+        <li>
+          <b>CAXPY:</b> constant times a vector plus a vector.
+        </li>
+        <li>
+          <b>CBABK2</b> is a translation of the algol procedure
+        </li>
+        <li>
+          <b>CBADD:</b> addition of complex banded matrices
+        </li>
+        <li>
+          <b>CBAL</b> is a translation of the algol procedure
+        </li>
+        <li>
+          <b>CBCRT</b> computes the roots of the real polynomial
+        </li>
+        <li>
+          <b>CBFA</b> factors a complex band matrix by elimination.
+        </li>
+        <li>
+          <b>CBI</b> calculates the airy function bi and its derivative bip
+        </li>
+        <li>
+          <b>CBPOSE:</b> transposition of complex banded matrices
+        </li>
+        <li>
+          <b>CBPROD:</b> multiplication of complex banded matrices
+        </li>
+        <li>
+          <b>CBRT:</b> cube root of a real number
+        </li>
+        <li>
+          <b>CBSL</b> solves the complex band system a*x = b or trans(a)*x = b
+        </li>
+        <li>
+          <b>CBSLV</b> employs gauss elimination with row interchanges to solve
+        </li>
+        <li>
+          <b>CBSLV1</b> employs gauss elimination with row interchanges to solve
+        </li>
+        <li>
+          <b>CBSPL:</b> cubic spline interpolation
+        </li>
+        <li>
+          <b>CBSSLJ:</b> ordinary Bessel function of first kind
+        </li>
+        <li>
+          <b>CBSSLK:</b> calculation of the modified Bessel function of the
+        </li>
+        <li>
+          <b>CBSUBT:</b> subtraction of complex banded matrices
+        </li>
+        <li>
+          <b>CBTPD:</b> product of a complex vector and a complex banded matrix
+        </li>
+        <li>
+          <b>CBTPD1:</b> setting y = x*a + y where a is a complex banded matrix and
+        </li>
+        <li>
+          <b>CBVPD:</b> product of a complex banded matrix and a complex vector
+        </li>
+        <li>
+          <b>CBVPD1:</b> setting y = a*x + y where a is a complex banded matrix and
+        </li>
+        <li>
+          <b>CCOPY</b> copies a vector, x, to a vector, y.
+        </li>
+        <li>
+          <b>CDET:</b> evaluation of the determinant of a-xi where a is an nxn matrix,
+        </li>
+        <li>
+          <b>CDIVID:</b> double precision complex division c = a/b avoiding overflow
+        </li>
+        <li>
+          <b>CDOTC:</b> forms the dot product of two vectors, conjugating the first vector.
+        </li>
+        <li>
+          <b>CDOTU:</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>CEEZ</b> determines the coefficients c1, c2, and c3
+        </li>
+        <li>
+          <b>CEIG:</b> eigenvalues of complex matrices
+        </li>
+        <li>
+          <b>CEIGV:</b> eigenvalues and eigenvectors of complex matrices
+        </li>
+        <li>
+          <b>CERF:</b> computation of the complex error function
+        </li>
+        <li>
+          <b>CERFC:</b> computation of the complex coerror function
+        </li>
+        <li>
+          <b>CERR:</b> compute the approximation error at point t
+        </li>
+        <li>
+          <b>CEXPLI:</b> evaluation of the complex exponential integral
+        </li>
+        <li>
+          <b>CFLECT:</b> reflects z with respect to the origin if real(z)
+        </li>
+        <li>
+          <b>CFOD</b> defines coefficients needed in the integrator package sfode
+        </li>
+        <li>
+          <b>CFRNLI:</b> computation of the complex Fresnel integral e(z)
+        </li>
+        <li>
+          <b>CGAMMA:</b> evaluation of the complex gamma and loggamma functions
+        </li>
+        <li>
+          <b>CGECO</b> factors a complex matrix by gaussian elimination
+        </li>
+        <li>
+          <b>CGEDI</b> computes the determinant and inverse of a matrix
+        </li>
+        <li>
+          <b>CGEFA</b> factors a complex matrix by gaussian elimination.
+        </li>
+        <li>
+          <b>CGESL</b> solves the complex system
+        </li>
+        <li>
+          <b>CHEBY:</b> rational chebychev approximation of continuous functions
+        </li>
+        <li>
+          <b>CHEBY1</b> ???
+        </li>
+        <li>
+          <b>CHKPRM</b> checks the input parameters for errors
+        </li>
+        <li>
+          <b>CHKSNG</b> checks if the pde sepell must solve is a singular operator
+        </li>
+        <li>
+          <b>CI_VALUES</b> returns some values of the cosine integral function.
+        </li>
+        <li>
+          <b>CIN</b> computes the integral of (1-cos(t))/t on (0,x) 
+        </li>
+        <li>
+          <b>CIN_VALUES</b> returns some values of the cosine integral function.
+        </li>
+        <li>
+          <b>CIRCV:</b> circular coverage and circular error functions
+        </li>
+        <li>
+          <b>CK</b> calculates the complete elliptic integral f(k) for complex modulus K.
+        </li>
+        <li>
+          <b>CKE</b> calculates the complete elliptic integrals f(k) and e(k)
+        </li>
+        <li>
+          <b>CKM</b> calculates the modified Bessel function of the second kind
+        </li>
+        <li>
+          <b>CKML</b> calculates the modified Bessel function of the second
+        </li>
+        <li>
+          <b>CKPROD:</b> kronecker product of complex matrices a and b
+        </li>
+        <li>
+          <b>CL1</b> ???
+        </li>
+        <li>
+          <b>CLE:</b> solution of complex linear equations with reduced storage
+        </li>
+        <li>
+          <b>CLI:</b> computation of the complex logarithmic integral
+        </li>
+        <li>
+          <b>CLOC2</b> determines if two arrays begin at the same spot.
+        </li>
+        <li>
+          <b>CLUIMP</b> tries to improve the solution of a complex linear system.
+        </li>
+        <li>
+          <b>CMADD:</b> addition of complex matrices
+        </li>
+        <li>
+          <b>CMADJ</b> copies the complex conjugate transpose of a matrix.
+        </li>
+        <li>
+          <b>CMCONJ</b> copies the conjugate of a complex matrix.
+        </li>
+        <li>
+          <b>CMCOPY</b> copies a complex matrix.
+        </li>
+        <li>
+          <b>CMCVBS:</b> conversion of complex matrices from banded to sparse form
+        </li>
+        <li>
+          <b>CMCVSB:</b> conversion of complex matrices from sparse to banded form
+        </li>
+        <li>
+          <b>CMIMAG</b> ???
+        </li>
+        <li>
+          <b>CMPROD:</b> product of complex matrices
+        </li>
+        <li>
+          <b>CMREAL</b> ???
+        </li>
+        <li>
+          <b>CMSLV:</b> partial pivot gauss procedure for inverting complex matrices
+        </li>
+        <li>
+          <b>CMSLV1:</b> partial pivot gauss procedure for inverting complex matrices
+        </li>
+        <li>
+          <b>CMSUBT:</b> subtraction of complex matrices
+        </li>
+        <li>
+          <b>CMTMS:</b> product of complex matrices
+        </li>
+        <li>
+          <b>CNSPIV</b> uses sparse gaussian elimination with
+        </li>
+        <li>
+          <b>COMPB</b> computes the roots of the b polynomials using tqlrt0,
+        </li>
+        <li>
+          <b>COMQR</b> is a translation of a unitary analogue of the
+        </li>
+        <li>
+          <b>COMQR2</b> is a translation of a unitary analogue of the
+        </li>
+        <li>
+          <b>CONEW</b> updates the value of the condition number in iegs.
+        </li>
+        <li>
+          <b>CONSTR</b> constructs the elements of a 3 by 3
+        </li>
+        <li>
+          <b>CORTH</b> is a translation of a complex analogue of
+        </li>
+        <li>
+          <b>COS0:</b> computation of cos(x*pi/2) for abs(x) <= 0.5
+        </li>
+        <li>
+          <b>COS1:</b> evaluation  of cos(x*pi)
+        </li>
+        <li>
+          <b>COSQB:</b> ???
+        </li>
+        <li>
+          <b>COSQB1:</b> ???
+        </li>
+        <li>
+          <b>COSQF</b>
+        </li>
+        <li>
+          <b>COSQF1:</b> ???
+        </li>
+        <li>
+          <b>COSQI</b> ???
+        </li>
+        <li>
+          <b>COVAR</b> uses results from the orthogonal decomposition
+        </li>
+        <li>
+          <b>CPABS:</b> evaluation of sqrt(x*x + y*y)
+        </li>
+        <li>
+          <b>CPOSE:</b> transposing a sparse complex matrix
+        </li>
+        <li>
+          <b>CPOSE1:</b> transposing a sparse complex matrix
+        </li>
+        <li>
+          <b>CPROD0</b> applies a sequence of matrix operations to the vector x and
+        </li>
+        <li>
+          <b>CPRODP</b> applies a sequence of matrix operations to the vector x and
+        </li>
+        <li>
+          <b>CPSC:</b> evaluation of complex power series coefficients or derivatives.
+        </li>
+        <li>
+          <b>CPSI:</b> evaluation of the complex digamma function
+        </li>
+        <li>
+          <b>CQEXT:</b> epsilon algorithm
+        </li>
+        <li>
+          <b>CQZHES</b> is a modification of the eispack subroutine
+        </li>
+        <li>
+          <b>CQZIT</b> is a modification of the eispack subroutine qzit.  
+        </li>
+        <li>
+          <b>CREC:</b> complex reciprocal u + i*v = 1/(x + i*y)
+        </li>
+        <li>
+          <b>CROUT:</b> procedure for inverting matrices and solving equations
+        </li>
+        <li>
+          <b>CROUT1:</b> crout procedure for inverting matrices
+        </li>
+        <li>
+          <b>CSADD:</b> addition of sparse complex matrices
+        </li>
+        <li>
+          <b>CSCAL:</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>CSCOPY:</b> copying a sparse complex matrix
+        </li>
+        <li>
+          <b>CSEVL:</b> evaluate the n term chebyshev series a at x.
+        </li>
+        <li>
+          <b>CSIMAG:</b> imaginary part of a sparse complex matrix
+        </li>
+        <li>
+          <b>CSINT:</b> integrating a cubic spline
+        </li>
+        <li>
+          <b>CSINT1:</b> integrating a cubic spline
+        </li>
+        <li>
+          <b>CSINT2:</b> integrating a cubic spline
+        </li>
+        <li>
+          <b>CSLOOP:</b> closed curve cubic spline fitting in n-dimensional space
+        </li>
+        <li>
+          <b>CSLOP1:</b> closed curve cubic spline fitting in n-dimensional space
+        </li>
+        <li>
+          <b>CSLV:</b> solution of complex sparse matrices
+        </li>
+        <li>
+          <b>CSLV1</b> solves a factored system of complex sparse matrices.
+        </li>
+        <li>
+          <b>CSLVMP:</b> solution of complex linear equations with iterative improvement
+        </li>
+        <li>
+          <b>CSPLU</b> employs gaussian elimination with column interchanges
+        </li>
+        <li>
+          <b>CSPROD:</b> multiplication of sparse complex matrices
+        </li>
+        <li>
+          <b>CSPSLV:</b> solution of complex sparse matrices
+        </li>
+        <li>
+          <b>CSREAL:</b> real part of a sparse complex matrix
+        </li>
+        <li>
+          <b>CSROT:</b> applies a plane rotation, where the cos and sin (c and s) are real
+        </li>
+        <li>
+          <b>CSSCAL:</b> scales a complex vector by a real constant.
+        </li>
+        <li>
+          <b>CSSUBT:</b> subtraction of sparse complex matrices
+        </li>
+        <li>
+          <b>CSVDC</b> is a subroutine to reduce a complex nxp matrix x by
+        </li>
+        <li>
+          <b>CSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>CTIP</b> transposes a rectangular matrix in situ.
+        </li>
+        <li>
+          <b>CTPOSE</b> makes a transposed copy of a complex matrix.
+        </li>
+        <li>
+          <b>CTPRD:</b> product of a vector and a sparse matrix
+        </li>
+        <li>
+          <b>CTPRD1:</b> set y = x*a + y where a is a sparse matrix and x,y are vectors
+        </li>
+        <li>
+          <b>CTRANS</b> finds the complex conjugate of an input matrix.
+        </li>
+        <li>
+          <b>CTSLV:</b> solution of complex sparse matrices
+        </li>
+        <li>
+          <b>CTSLV1:</b> ???
+        </li>
+        <li>
+          <b>CUBRUL:</b> basic cubature rule pair over a triangle
+        </li>
+        <li>
+          <b>CUBTRI:</b> adaptive cubature over a triangle
+        </li>
+        <li>
+          <b>CURV1</b> determines the parameters necessary to
+        </li>
+        <li>
+          <b>CURV2</b> interpolates a curve at a given point
+        </li>
+        <li>
+          <b>CURVD</b> differentiates a curve at a given point
+        </li>
+        <li>
+          <b>CURVI</b> integrates a curve specified by a spline
+        </li>
+        <li>
+          <b>CVBC:</b> conversion of complex matrices from banded to standard form
+        </li>
+        <li>
+          <b>CVBR:</b> conversion of real matrices from banded to standard form
+        </li>
+        <li>
+          <b>CVCB:</b> conversion of complex matrices from standard to banded form
+        </li>
+        <li>
+          <b>CVCB1:</b> conversion of complex matrices from standard to banded form
+        </li>
+        <li>
+          <b>CVCS:</b> ???
+        </li>
+        <li>
+          <b>CVDS:</b> ???
+        </li>
+        <li>
+          <b>CVPRD:</b> product of a sparse matrix and a vector
+        </li>
+        <li>
+          <b>CVPRD1:</b> set y = a*x + y where a is a sparse matrix and x,y are vectors
+        </li>
+        <li>
+          <b>CVRB:</b> conversion of real matrices from standard to banded form
+        </li>
+        <li>
+          <b>CVRB1:</b> conversion of real matrices from standard to banded form
+        </li>
+        <li>
+          <b>CVRS:</b> ???
+        </li>
+        <li>
+          <b>CVSC</b> ???
+        </li>
+        <li>
+          <b>CVSD:</b> ???
+        </li>
+        <li>
+          <b>CVSR:</b> ???
+        </li>
+        <li>
+          <b>CXP:</b> computation of exp(-r*(pi/2)*i)
+        </li>
+        <li>
+          <b>CYCHG</b> ???
+        </li>
+        <li>
+          <b>DABSLV</b> solves the real matrix equation ax + xb = c.
+        </li>
+        <li>
+          <b>DABSV1</b> solves the real matrix equation ax + xb = c.
+        </li>
+        <li>
+          <b>DAORD</b> is used to reorder the elements of the double precision array a
+        </li>
+        <li>
+          <b>DARTNQ</b> ???
+        </li>
+        <li>
+          <b>DASUM</b> takes the sum of the absolute values.
+        </li>
+        <li>
+          <b>DAWSON</b> computes single precision values of dawsons integral,
+        </li>
+        <li>
+          <b>DAWSON_VALUES</b> returns some values of Dawson's integral for testing.
+        </li>
+        <li>
+          <b>DAXPY:</b> constant times a vector plus a vector.
+        </li>
+        <li>
+          <b>DBABK</b> forms the eigenvectors of a real general matrix by back transforming
+        </li>
+        <li>
+          <b>DBAL</b> balances a double precision real matrix and isolates eigenvalues.
+        </li>
+        <li>
+          <b>DBALNV</b> ???
+        </li>
+        <li>
+          <b>DBCORR:</b> evaluation of del(a) + del(b0) - del(a) + b0)
+        </li>
+        <li>
+          <b>DBETLN:</b> evaluation of the logarithm of the beta function
+        </li>
+        <li>
+          <b>DCBABK</b> forms the eigenvectors of a double precision complex matrix
+        </li>
+        <li>
+          <b>DCBAL</b> balances a double precision complex matrix and isolates eigenvalues.
+        </li>
+        <li>
+          <b>DCBCRT</b> computes the roots of a real cubic polynomial
+        </li>
+        <li>
+          <b>DCBRT:</b> cube root of a number.
+        </li>
+        <li>
+          <b>DCEIG:</b> eigenvalues of double precision complex matrices
+        </li>
+        <li>
+          <b>DCEIGV:</b> eigenvalues and eigenvectors of double precision complex matrices
+        </li>
+        <li>
+          <b>DCERF:</b> computation of the complex error function
+        </li>
+        <li>
+          <b>DCERFC:</b> computation of the complex coerror function
+        </li>
+        <li>
+          <b>DCFACT</b> decomposes a complex matrix by partial pivot gauss elimination
+        </li>
+        <li>
+          <b>DCGAMA</b> evaluates the complex gamma and loggamma functions
+        </li>
+        <li>
+          <b>DCMINV</b> inverts a matrix using the lu decomposition obtained by dcfact.
+        </li>
+        <li>
+          <b>DCMQR2:</b> eigenvalues/vectors of double precision complex upper hessenberg matrix
+        </li>
+        <li>
+          <b>DCMSLV:</b> partial pivot gauss procedure for double precision complex equations.
+        </li>
+        <li>
+          <b>DCOMQR:</b> eigenvalues of a double precision complex upper hessenberg matrix
+        </li>
+        <li>
+          <b>DCOPY</b> copies a vector, x, to a vector, y.
+        </li>
+        <li>
+          <b>DCORTH</b> reduces a double precision complex matrix to upper hessenberg form.
+        </li>
+        <li>
+          <b>DCPABS:</b> evaluation of sqrt(x*x + y*y)
+        </li>
+        <li>
+          <b>DCPLY1</b> is a utility routine used by dcpoly.
+        </li>
+        <li>
+          <b>DCPOLY</b> finds the zeros of a complex polynomial.
+        </li>
+        <li>
+          <b>DCPSC:</b> evaluation of complex power series coefficients or derivatives.
+        </li>
+        <li>
+          <b>DCPSI:</b> evaluation of the complex digamma function
+        </li>
+        <li>
+          <b>DCREC:</b> complex reciprocal u + i*v = 1/(x + i*y)
+        </li>
+        <li>
+          <b>DCSEVL:</b> evaluate the n term chebyshev series a at x.
+        </li>
+        <li>
+          <b>DCSOL:</b> solution of system of m equations a*x = b factored by dcfact.
+        </li>
+        <li>
+          <b>DCSQRT</b> computes the square root of a double precision complex number.
+        </li>
+        <li>
+          <b>DDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>DDSORT</b> uses the shell sorting procedure to reorder the elements of a
+        </li>
+        <li>
+          <b>DE1</b> solves an ordinary differential equation set up by ode.
+        </li>
+        <li>
+          <b>DE1E</b> evalutes the exponential integral.
+        </li>
+        <li>
+          <b>DEC:</b> matrix triangularization by gaussian elimination.
+        </li>
+        <li>
+          <b>DECBT:</b> block-tridiagonal matrix decomposition routine.
+        </li>
+        <li>
+          <b>DECOM2:</b> ???
+        </li>
+        <li>
+          <b>DEFER:</b> ???
+        </li>
+        <li>
+          <b>DEI</b> evaluates the exponential integral
+        </li>
+        <li>
+          <b>DEI0</b> evaluates ei(x) near a zero.
+        </li>
+        <li>
+          <b>DEI1:</b> double precision evaluation of exp(-x)*ei(x)
+        </li>
+        <li>
+          <b>DEIG:</b> eigenvalues of double precision matrices
+        </li>
+        <li>
+          <b>DEIGV:</b> eigenvalues and eigenvectors of double precision matrices
+        </li>
+        <li>
+          <b>DELLPI:</b> elliptic integrals of the first and second kinds.
+        </li>
+        <li>
+          <b>DEPI:</b> elliptic integral of the third kind
+        </li>
+        <li>
+          <b>DERF:</b> the error function
+        </li>
+        <li>
+          <b>DERFC:</b> the complementary error function
+        </li>
+        <li>
+          <b>DERFC1:</b> evaluation of the complementary error function
+        </li>
+        <li>
+          <b>DESUM:</b> evaluation of exp(mu + x)
+        </li>
+        <li>
+          <b>DET</b> evaluates the determinant of a-xi where a is an nxn matrix,
+        </li>
+        <li>
+          <b>DGAM1</b> evaluates 1/gamma(1 + x) - 1  for -0.5 <= x <= 1.5
+        </li>
+        <li>
+          <b>DGAMLN</b> evaluates ln(gamma(a)) for positive a
+        </li>
+        <li>
+          <b>DGAMMA</b> evaluates the gamma function.
+        </li>
+        <li>
+          <b>DGMLN1:</b> evaluation of ln(gamma(1 + x)) for -0.5 <= x <= 1.5
+        </li>
+        <li>
+          <b>DGNRTP</b> is a utility routine used by dmfit.
+        </li>
+        <li>
+          <b>DGSMLN:</b> evaluation of the function ln(gamma(a + b))
+        </li>
+        <li>
+          <b>DH12</b> contructs or applies a single householder transformation.
+        </li>
+        <li>
+          <b>DHFTI</b> solves a linear least squares problem.
+        </li>
+        <li>
+          <b>DHFTI2</b> solves a linear least squares problem.
+        </li>
+        <li>
+          <b>DHQR</b> finds the eigenvalues of a double precision upper hessenberg matrix
+        </li>
+        <li>
+          <b>DHQR2</b> finds eigenvalues/vectors of a double precision upper hessenberg matrix
+        </li>
+        <li>
+          <b>DILOGARITHM</b> evaluates the dilogarithm function.
+        </li>
+        <li>
+          <b>DILOGARITHM_VALUES</b> returns some values of the dilogarithm function for testing.
+        </li>
+        <li>
+          <b>DINCDG</b> is a utility routine used by dgnrtp.
+        </li>
+        <li>
+          <b>DISORT</b> uses the shell sorting procedure to reorder the elements of a
+        </li>
+        <li>
+          <b>DKPROD:</b> kronecker product of double precision matrices a and b
+        </li>
+        <li>
+          <b>DLGDIV:</b> computation of ln(gamma(b)/gamma(a+b)) for b >= 10
+        </li>
+        <li>
+          <b>DLLSQ:</b> ???
+        </li>
+        <li>
+          <b>DLNREL:</b> evaluation of the function ln(1 + a)
+        </li>
+        <li>
+          <b>DLOC</b> determines if two double precision arrays begin at the same location.
+        </li>
+        <li>
+          <b>DMADD:</b> addition of double precision matrices
+        </li>
+        <li>
+          <b>DMCOPY</b> copies a double precision array.
+        </li>
+        <li>
+          <b>DMCVFS:</b> ???
+        </li>
+        <li>
+          <b>DMCVSF:</b> ???
+        </li>
+        <li>
+          <b>DMEVAL</b> evaluates the least-squares multinomial fit produced by dmfit.
+        </li>
+        <li>
+          <b>DMEVL1</b> performs the main work of evaluating the fitting multinomial
+        </li>
+        <li>
+          <b>DMEXP</b> computes the matrix exponential.
+        </li>
+        <li>
+          <b>DMFIT</b> constructs a least-squares multinomial fit to given data
+        </li>
+        <li>
+          <b>DMPROD:</b> product of double precision matrices
+        </li>
+        <li>
+          <b>DMSUBT:</b> subtraction of double precision matrices
+        </li>
+        <li>
+          <b>DMTMS:</b> product of double precision matrices
+        </li>
+        <li>
+          <b>DNRM2:</b> euclidean norm of the n-vector stored in dx()
+        </li>
+        <li>
+          <b>DNSPIV</b> uses sparse gaussian elimination with column interchanges
+        </li>
+        <li>
+          <b>DOGLEG</b> finds the minimizing combination of Gauss-Newton and gradient steps.
+        </li>
+        <li>
+          <b>DORSOL:</b> least squares solution of a linear system
+        </li>
+        <li>
+          <b>DORTH</b> reduces a matrix to upper hessenberg form.
+        </li>
+        <li>
+          <b>DORTHO:</b> orthogonal transformation of a rectangular matrix to triangular form.
+        </li>
+        <li>
+          <b>DORTRN</b> accumulates the orthogonal similarity transformations
+        </li>
+        <li>
+          <b>DPADD:</b> addition of double precision polynomials
+        </li>
+        <li>
+          <b>DPCHOL:</b> cholesky matrix factorization.
+        </li>
+        <li>
+          <b>DPCOPY:</b> copying double precision polynomials
+        </li>
+        <li>
+          <b>DPDEL:</b> computation of the function del(x) for  x >= 10
+        </li>
+        <li>
+          <b>DPDET:</b> evaluation of the determinant of a-xi
+        </li>
+        <li>
+          <b>DPDIV:</b> division of double precision polynomials
+        </li>
+        <li>
+          <b>DPINV:</b> computation of the inverse of the power series
+        </li>
+        <li>
+          <b>DPLE:</b> solution of linear equations with reduced storage
+        </li>
+        <li>
+          <b>DPLPWR:</b> set b = a**r where a is a double precision polynomial
+        </li>
+        <li>
+          <b>DPMPAR</b> provides the double precision machine constants for the computer
+        </li>
+        <li>
+          <b>DPMULT:</b> multiplication of double precision polynomials
+        </li>
+        <li>
+          <b>DPOSE:</b> transposing a sparse double precision matrix
+        </li>
+        <li>
+          <b>DPOSE1:</b> transposing a sparse double precision matrix
+        </li>
+        <li>
+          <b>DPPDI:</b> determinant and inverse of a symmetric positive definite matrix
+        </li>
+        <li>
+          <b>DPPFA</b> factors a symmetric positive definite matrix stored in packed form.
+        </li>
+        <li>
+          <b>DPPSL</b> solves the double precision symmetric positive definite system a * x = b
+        </li>
+        <li>
+          <b>DPSI:</b> evaluation of the digamma function
+        </li>
+        <li>
+          <b>DPSI0:</b> taylor series expansion of psi(x) around a zero.
+        </li>
+        <li>
+          <b>DPSLV:</b> partial pivot solution of a*x = b
+        </li>
+        <li>
+          <b>DPSUBT:</b> subtraction of double precision polynomials
+        </li>
+        <li>
+          <b>DQAGI:</b> integration over infinite intervals
+        </li>
+        <li>
+          <b>DQAGIE:</b> integration over infinite intervals
+        </li>
+        <li>
+          <b>DQAGS:</b> computation of a definite integral
+        </li>
+        <li>
+          <b>DQAGSE:</b> computation of a definite integral
+        </li>
+        <li>
+          <b>DQDCRT</b> computes the roots of a quadratic polynomial
+        </li>
+        <li>
+          <b>DQELG</b> implements the epsilon algorithm.
+        </li>
+        <li>
+          <b>DQK15I</b> approximates an integral on an infinite interval.
+        </li>
+        <li>
+          <b>DQK21</b> approximates an integral over a finite interval.
+        </li>
+        <li>
+          <b>DQPSRT</b> maintains the sorted order of the local error estimates.
+        </li>
+        <li>
+          <b>DQTCRT</b> computes the roots of a real quartic polynomial
+        </li>
+        <li>
+          <b>DRCVL1</b> evaluates an elliptic integral.
+        </li>
+        <li>
+          <b>DRDVAL</b> computes the incomplete elliptic integral of the second kind
+        </li>
+        <li>
+          <b>DREXP:</b> evaluation of the function exp(x) - 1
+        </li>
+        <li>
+          <b>DRFVAL:</b> computes the incomplete elliptic integral of the first kind
+        </li>
+        <li>
+          <b>DRJVAL</b> computes the incomplete elliptic integral of the third kind
+        </li>
+        <li>
+          <b>DRLOG:</b> evaluation of the function x - 1 - ln(x)
+        </li>
+        <li>
+          <b>DRLOG1:</b> evaluation of the function x - ln(1 + x)
+        </li>
+        <li>
+          <b>DROT</b> applies a plane rotation.
+        </li>
+        <li>
+          <b>DROTG</b> constructs a givens rotation.
+        </li>
+        <li>
+          <b>DRPLY1</b> is called by drpoly.
+        </li>
+        <li>
+          <b>DRPOLY</b> finds the zeros of a real polynomial.
+        </li>
+        <li>
+          <b>DRTRN1</b> accumulates the orthogonal similarity transformations used
+        </li>
+        <li>
+          <b>DSADD:</b> addition of sparse double precision matrices
+        </li>
+        <li>
+          <b>DSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>DSCALD</b> carries out the data-scaling which is defined  by dscalp.
+        </li>
+        <li>
+          <b>DSCALP</b> finds scaling parameter(s) for the problem.
+        </li>
+        <li>
+          <b>DSCHUR</b> transforms a hessenberg matrix into schur form.
+        </li>
+        <li>
+          <b>DSCOPY</b> copies a sparse double precision matrix
+        </li>
+        <li>
+          <b>DSHSLV</b> solves the matrix equation ax + xb = c
+        </li>
+        <li>
+          <b>DSLV:</b> solution of double precision sparse equations
+        </li>
+        <li>
+          <b>DSLV1</b> is called by DSLV.
+        </li>
+        <li>
+          <b>DSMSLV:</b> matrix factorization and computation of rcond
+        </li>
+        <li>
+          <b>DSORT</b> uses the shell sorting procedure to reorder the elements of a
+        </li>
+        <li>
+          <b>DSPCO</b> factors a double precision symmetric matrix stored in packed form
+        </li>
+        <li>
+          <b>DSPDI</b> computes the determinant, inertia and inverse of a symmetric matrix.
+        </li>
+        <li>
+          <b>DSPFA</b> factors a double precision symmetric matrix stored in packed form
+        </li>
+        <li>
+          <b>DSPLU</b> employs gaussian elimination with column interchanges
+        </li>
+        <li>
+          <b>DSPROD:</b> multiplication of sparse double precision matrices
+        </li>
+        <li>
+          <b>DSPSL</b> solves the double precision symmetric system a * x = b
+        </li>
+        <li>
+          <b>DSPSLV:</b> solution of double precision sparse equations
+        </li>
+        <li>
+          <b>DSSUBT:</b> subtraction of sparse double precision matrices
+        </li>
+        <li>
+          <b>DSTOR2:</b> storage of double precision information into memory
+        </li>
+        <li>
+          <b>DSVDC</b> computes the singular value decomposition of a matrix.
+        </li>
+        <li>
+          <b>DSVPRD:</b> ???
+        </li>
+        <li>
+          <b>DSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>DSYMSV</b> solves the matrix equation transpose(a)*x + x*a = c
+        </li>
+        <li>
+          <b>DTASLV</b> solves the real matrix equation transpose(a)*x + x*a = c
+        </li>
+        <li>
+          <b>DTASV1</b> solves the real matrix equation transpose(a)*x + x*a = c
+        </li>
+        <li>
+          <b>DTIP:</b> transposition of a rectangular matrix in situ.
+        </li>
+        <li>
+          <b>DTOPLX:</b> solution of the toeplitz system of equations
+        </li>
+        <li>
+          <b>DTPOSE</b> makes a transposed copy of a double precision matrix.
+        </li>
+        <li>
+          <b>DTPRD:</b> product of a vector and a sparse matrix
+        </li>
+        <li>
+          <b>DTPRD1:</b> set y = x*a + y where a is a sparse matrix and x,y are vectors
+        </li>
+        <li>
+          <b>DTSLV:</b> solution of double precision sparse equations
+        </li>
+        <li>
+          <b>DTSLV1:</b> solve yu = b by forward substitution
+        </li>
+        <li>
+          <b>DVPRD:</b> product of a sparse matrix and a vector
+        </li>
+        <li>
+          <b>DVPRD1:</b> set y = a*x + y where a is a sparse matrix and x,y are vectors
+        </li>
+        <li>
+          <b>DXFN</b> approximates the third and fourth x derivatives of u at a mesh point.
+        </li>
+        <li>
+          <b>DXPARG</b> estimates the largest possible exponent for dexp.
+        </li>
+        <li>
+          <b>DYCHG:</b> ???
+        </li>
+        <li>
+          <b>DYFN</b> approximates the third and fourth y partial derivatives of u
+        </li>
+        <li>
+          <b>E1_VALUES</b> returns some values of the exponential integral function EI(X).
+        </li>
+        <li>
+          <b>EI_VALUES</b> returns some values of the exponential integral function EI(X).
+        </li>
+        <li>
+          <b>EIG</b> computes the eigenvalues of a real matrix.
+        </li>
+        <li>
+          <b>EIG1:</b> eigenvalues of real matrices
+        </li>
+        <li>
+          <b>EIGV:</b> eigenvalues and eigenvectors of real matrices
+        </li>
+        <li>
+          <b>EIGV1:</b> eigenvalues and eigenvectors of real matrices
+        </li>
+        <li>
+          <b>EKL</b> computes the complete elliptic integrals f(k), f(l), e(k), e(l)
+        </li>
+        <li>
+          <b>EKM</b> computes the complete elliptic integrals f(k) and e(k)
+        </li>
+        <li>
+          <b>ELLPF</b> calculates the Jacobi elliptic functions sn(u,k), cn(u,k), and dn(u,k).
+        </li>
+        <li>
+          <b>ELLPI:</b> real elliptic integrals of the first and second kinds
+        </li>
+        <li>
+          <b>ELMHES</b> transforms a real general matrix to upper Hessenberg form.
+        </li>
+        <li>
+          <b>ELMHS0</b> reduces a matrix to upper hessenberg form using stabilized elementary transforms.
+        </li>
+        <li>
+          <b>ELPFC1</b> calculates the elliptic functions sn(u,k), cn(u,k), dn(u,k)
+        </li>
+        <li>
+          <b>ELTRAN</b> accumulates the stabilized elementary similarity transformations used
+        </li>
+        <li>
+          <b>ELTRN0</b> accumulates the stabilized elementary similarity transformations
+        </li>
+        <li>
+          <b>ENORM</b> computes the Euclidean norm of a vector.
+        </li>
+        <li>
+          <b>EPI:</b> real elliptic integral of the third kind
+        </li>
+        <li>
+          <b>ERF:</b> evaluation of the real error function
+        </li>
+        <li>
+          <b>ERF_VALUES</b> returns some values of the ERF or "error" function for testing.
+        </li>
+        <li>
+          <b>ERF0:</b> evaluation of erf(a) for 0 <= a <= 4
+        </li>
+        <li>
+          <b>ERFC:</b> evaluation of the complementary error function
+        </li>
+        <li>
+          <b>ERFC0:</b> evaluation of erfc(a) for 0 <= a <= 4.
+        </li>
+        <li>
+          <b>ERFC1:</b> evaluation of the complementary error function
+        </li>
+        <li>
+          <b>ERFC2:</b> evaluation of erfc(x) for abs(x) <= 4.0
+        </li>
+        <li>
+          <b>ERFCM2:</b> calculation of erfc(z) using the taylor series
+        </li>
+        <li>
+          <b>ERFINV:</b> evaluation of the inverse error function
+        </li>
+        <li>
+          <b>ERREV:</b> bounds the error in evaluating the polynomial by the horner
+        </li>
+        <li>
+          <b>ERRINT</b> does a four point integration rule for the
+        </li>
+        <li>
+          <b>ESUM:</b> evaluation of exp(mu + x)
+        </li>
+        <li>
+          <b>EULER_CONSTANT</b> returns the value of the Euler-Mascheroni constant.
+        </li>
+        <li>
+          <b>EXPARG</b> returns the largest "safe" argument of the exponential function.
+        </li>
+        <li>
+          <b>EXPLI</b> computes the exponential integrals
+        </li>
+        <li>
+          <b>FDJAC1</b> computes a forward-difference approximation
+        </li>
+        <li>
+          <b>FDJAC2</b> computes a forward-difference approximation
+        </li>
+        <li>
+          <b>FEHL:</b> fehlberg fourth-fifth order runge-kutta method
+        </li>
+        <li>
+          <b>FFT</b> ???
+        </li>
+        <li>
+          <b>FFT1:</b> ???
+        </li>
+        <li>
+          <b>FMIN:</b> golden section minimization of a function f(t)
+        </li>
+        <li>
+          <b>FRESNEL</b> evaluates the real Fresnel integrals
+        </li>
+        <li>
+          <b>FRESNEL_COS_VALUES</b> returns some values of the Fresnel cosine integral function.
+        </li>
+        <li>
+          <b>FRESNEL_SIN_VALUES</b> returns some values of the Fresnel sine integral function.
+        </li>
+        <li>
+          <b>FSTOCD:</b> find central difference approximation g to the first derivative
+        </li>
+        <li>
+          <b>FSTOFD:</b> find forward difference approximation g to the first derivative
+        </li>
+        <li>
+          <b>FUPD:</b> forward step updating
+        </li>
+        <li>
+          <b>FXDEC:</b> fixed step coordinate descent procedure / one iteration
+        </li>
+        <li>
+          <b>FXSHFR</b> computes up to  l2  fixed shift k-polynomials,
+        </li>
+        <li>
+          <b>FXSHFT</b> computes l2 fixed-shift h polynomials and tests for convergence.
+        </li>
+        <li>
+          <b>GAM1:</b> computation of 1/gamma(a+1) - 1  for -0.5 <= a <= 1.5
+        </li>
+        <li>
+          <b>GAMINV:</b> inverse incomplete gamma ratio function
+        </li>
+        <li>
+          <b>GAMLN:</b> evaluation of ln(gamma(a)) for positive a
+        </li>
+        <li>
+          <b>GAMLN1:</b> evaluation of ln(gamma(1 + a)) for -0.2 <= a <= 1.25
+        </li>
+        <li>
+          <b>GAMMA</b> evaluates the Gamma function for a real argument.
+        </li>
+        <li>
+          <b>GAMMA_INC_VALUES</b> returns some values of the incomplete Gamma function.
+        </li>
+        <li>
+          <b>GAMMA_VALUES</b> returns some values of the Gamma function for testing.
+        </li>
+        <li>
+          <b>GERK:</b> fehlberg 4,5 order runge-kutta method with global error assessment
+        </li>
+        <li>
+          <b>GERKS:</b> fehlberg 4,5 order runge-kutta method with global error assessment
+        </li>
+        <li>
+          <b>GLOG</b> evaluates of the natural logarithm of X for X >= 15.
+        </li>
+        <li>
+          <b>GNRTP</b> is a utility routine used by MFIT.
+        </li>
+        <li>
+          <b>GRAT1</b> evaluates the incomplete gamma ratio functions p(a,x) and q(a,x).
+        </li>
+        <li>
+          <b>GRATIO:</b> evaluation of the incomplete gamma ratio functions p(a,x) and q(a,x)
+        </li>
+        <li>
+          <b>GSUMLN:</b> evaluation of the function ln(gamma(a + b))
+        </li>
+        <li>
+          <b>H12</b> constructs or applies a householder transformation: q = i + u*(u**t)/b
+        </li>
+        <li>
+          <b>HBRD</b> finds a zero of n nonlinear functions in n variables
+        </li>
+        <li>
+          <b>HC</b> finds one or more hamiltonian circuits in a directed graph
+        </li>
+        <li>
+          <b>HC1</b> is a utility routine used by hc to find hamilton circuits.
+        </li>
+        <li>
+          <b>HFTI</b> solves a linear least squares problem
+        </li>
+        <li>
+          <b>HFTI2</b> solves a linear least squares problem
+        </li>
+        <li>
+          <b>HQR</b> finds the eigenvalues of a real upper hessenberg matrix by the qr method.
+        </li>
+        <li>
+          <b>HQR2</b> finds the eigenvalues and eigenvectors of a real upper hessenberg matrix
+        </li>
+        <li>
+          <b>HSTART</b> computes a starting step size for solving initial value problems
+        </li>
+        <li>
+          <b>HTRP:</b> hermite interpolation
+        </li>
+        <li>
+          <b>HULL</b> computes the convex hull of a finite planar set
+        </li>
+        <li>
+          <b>HYBRD</b> find a zero of n nonlinear functions in n variables
+        </li>
+        <li>
+          <b>I_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>IA</b> calculates the modified Bessel function of the first kind
+        </li>
+        <li>
+          <b>ICAMAX</b> finds the index of element having max. absolute value.
+        </li>
+        <li>
+          <b>IDAMAX</b> finds the index of element having max. absolute value.
+        </li>
+        <li>
+          <b>IDCLDP</b> selects several data points that are closest to each of the data points.
+        </li>
+        <li>
+          <b>IDGRID</b> organizes grid points for surface fitting by sorting them
+        </li>
+        <li>
+          <b>IDLCTN</b> determines what triangle a given point belongs to.
+        </li>
+        <li>
+          <b>IDPDRV</b> estimates first and second partial derivatives at the data points.
+        </li>
+        <li>
+          <b>IDPTIP</b> performs pointwise interpolation or extrapolation.
+        </li>
+        <li>
+          <b>IDTANG</b> performs triangulation.
+        </li>
+        <li>
+          <b>IDXCHG</b> determines whether or not the exchange of two triangles is necessary
+        </li>
+        <li>
+          <b>IEGS</b> controls the solution of the integral equation.
+        </li>
+        <li>
+          <b>IESLV</b> solves an integral equation.
+        </li>
+        <li>
+          <b>IMC</b> calculates the modified Bessel function of the first kind
+        </li>
+        <li>
+          <b>IMTQL1</b> finds the eigenvalues of a symmetric tridiagonal matrix
+        </li>
+        <li>
+          <b>IMTQL2</b> finds the eigenvalues and eigenvectors of a symmetric tridiagonal matrix
+        </li>
+        <li>
+          <b>INCDG</b> is a utility routine for gnrtp, and is not called by the user.
+        </li>
+        <li>
+          <b>INDXA</b> ???
+        </li>
+        <li>
+          <b>INDXB</b> ???
+        </li>
+        <li>
+          <b>INDXC</b> ???
+        </li>
+        <li>
+          <b>INFCTR</b> factors n into its prime powers, npower in number.
+        </li>
+        <li>
+          <b>INTRP</b> is used by step1 to evaluate the interpolating polynomial at a point.
+        </li>
+        <li>
+          <b>INTRVL</b> seeks to bracket a value using an array of increasing values.
+        </li>
+        <li>
+          <b>INTYD</b> approximates the solution and derivatives at t by polynomial interpolation.
+        </li>
+        <li>
+          <b>IPATH</b> finds the start and end vertices of the largest path of implied arcs.
+        </li>
+        <li>
+          <b>IPMPAR</b> provides the integer machine constants for the computer that is used.
+        </li>
+        <li>
+          <b>ISAMAX</b> finds the index of the vector element of maximum absolute value.
+        </li>
+        <li>
+          <b>ISHELL</b> uses the shell sort to reorder the elements of a
+        </li>
+        <li>
+          <b>ISUBX</b> evalues the incomplete Beta function for A and B >= 0.5.
+        </li>
+        <li>
+          <b>ITERT</b> computes the next estimate of the solution of an integral equation.
+        </li>
+        <li>
+          <b>IUPD</b> updates for implied arc
+        </li>
+        <li>
+          <b>JA</b> calculates the Bessel function of the first kind for orders 1/3, 2/3, -1/3, and -2/3
+        </li>
+        <li>
+          <b>JACOBI_SN_VALUES</b> returns some values of the Jacobi SN function.
+        </li>
+        <li>
+          <b>JAIRY</b> computes the airy function and its derivative for jbess
+        </li>
+        <li>
+          <b>JMC</b> calculates the Bessel function of the first kind for orders 1/3, 2/3, -1/3, and -2/3
+        </li>
+        <li>
+          <b>JROT</b> premultiplies an upper hessenberg matrix by a jacobian rotation.
+        </li>
+        <li>
+          <b>KA</b> calculates the modified Bessel function of the second
+        </li>
+        <li>
+          <b>KL</b> computes the complete elliptic integrals f(k) and f(l) for
+        </li>
+        <li>
+          <b>KM</b> computes the complete elliptic integral f(k) for a given
+        </li>
+        <li>
+          <b>KML</b> calculates the modified Bessel function of the second kind for orders
+        </li>
+        <li>
+          <b>KPROD</b> is a kronecker product of real matrices a and b
+        </li>
+        <li>
+          <b>KROUT</b> is a crout procedure for inverting matrices and solving equations
+        </li>
+        <li>
+          <b>KURV1</b> determines the parameters  of a spline under tension
+        </li>
+        <li>
+          <b>KURV2</b> maps the interval (0.,1.) onto a curve in the plane.
+        </li>
+        <li>
+          <b>KURVP1</b> determines the parameters of a spline under tension
+        </li>
+        <li>
+          <b>KURVP2</b> performs the interval (0.,1.) onto a closed plane curve.
+        </li>
+        <li>
+          <b>L2SLV</b> computes least squares solutions to over/under-determined systems.
+        </li>
+        <li>
+          <b>LAINV</b> calculates the inverse Laplace transform of a given function
+        </li>
+        <li>
+          <b>LAINV1</b> is used by lainv.
+        </li>
+        <li>
+          <b>LE:</b> solution of linear equations with reduced storage
+        </li>
+        <li>
+          <b>LEAVE</b> sets all necessary parameters for leaving iegaus.
+        </li>
+        <li>
+          <b>LGRNGN:</b> lagrangian normalization factors
+        </li>
+        <li>
+          <b>LGRNGV:</b> lagrangian function evaluation
+        </li>
+        <li>
+          <b>LGRNGX:</b> lagrangian polynomial expansion
+        </li>
+        <li>
+          <b>LLSQ:</b> ???
+        </li>
+        <li>
+          <b>LLSQMP</b> ???
+        </li>
+        <li>
+          <b>LLTSLV:</b> solution of ax = b where a has the form l(l-transpose)
+        </li>
+        <li>
+          <b>LMDIF</b> minimizes the sum of the squares of m nonlinear functions in n variables
+        </li>
+        <li>
+          <b>LMDIFF</b> minimize the sum of the squares of m functions in n variables
+        </li>
+        <li>
+          <b>LMPAR</b> determines a parameter for a least squares problem.
+        </li>
+        <li>
+          <b>LNSRCH</b> finds a next newton iterate by line search
+        </li>
+        <li>
+          <b>LNSYS</b> solves A*X = B, where A is a matrix of order N.
+        </li>
+        <li>
+          <b>LOCPT</b> locates a point inside, on, or outside a closed polygonal path.
+        </li>
+        <li>
+          <b>LOGAM:</b> computation of ln(gamma(x)) for x = n/2  where n is an integer
+        </li>
+        <li>
+          <b>LOPCMP:</b> evaluation of a cubic spline closed curve in n-space
+        </li>
+        <li>
+          <b>LOPDF:</b> evaluation and differentiation of a cubic spline closed curve in n-space
+        </li>
+        <li>
+          <b>LPDP</b> determines vectors w and z which minimize ||w|| with g*w+h*z >= y.
+        </li>
+        <li>
+          <b>LSEI</b> solves a linearly constrained least squares problem
+        </li>
+        <li>
+          <b>LSI</b> is a companion subprogram to lsei( ).
+        </li>
+        <li>
+          <b>LSOD1</b> is called by stfode to solve ordinary differential equations.
+        </li>
+        <li>
+          <b>LTRP</b> performs Lagrange interpolation.
+        </li>
+        <li>
+          <b>LUIMP</b> improves the solution of a linear system by iterative refinement.
+        </li>
+        <li>
+          <b>MACH</b> computes single and double precision machine constants.
+        </li>
+        <li>
+          <b>MACH1</b> evaluates single precision machine constants.
+        </li>
+        <li>
+          <b>MACH2</b> computes double precision environment constants.
+        </li>
+        <li>
+          <b>MADD</b> computes the sum of two real matrices.
+        </li>
+        <li>
+          <b>MC13D:</b> ???
+        </li>
+        <li>
+          <b>MC31E</b> ???
+        </li>
+        <li>
+          <b>MC21A</b> ???
+        </li>
+        <li>
+          <b>MC21B</b> ???
+        </li>
+        <li>
+          <b>MCOPY</b> copies a real matrix.
+        </li>
+        <li>
+          <b>MCVBS:</b> conversion of real matrices from banded to sparse form
+        </li>
+        <li>
+          <b>MCVDR</b> copies a double precision matrix into a real matrix.
+        </li>
+        <li>
+          <b>MCVFS</b> ???
+        </li>
+        <li>
+          <b>MCVRC</b> copies a real matrix into the real part of a complex matrix.
+        </li>
+        <li>
+          <b>MCVRD</b> copies a real matrix into a double precision matrix.
+        </li>
+        <li>
+          <b>MCVSB:</b> conversion of real matrices from sparse to banded form
+        </li>
+        <li>
+          <b>MCVSF</b> ???
+        </li>
+        <li>
+          <b>MEVAL</b> evaluates the least-squares multinomial fit produced by mfit.
+        </li>
+        <li>
+          <b>MEVAL1</b> performs the main work of evaluating the fitting multinomial
+        </li>
+        <li>
+          <b>MEXP</b> computes the matrix exponential.
+        </li>
+        <li>
+          <b>MFFT:</b> ???
+        </li>
+        <li>
+          <b>MFFT1</b> ???
+        </li>
+        <li>
+          <b>MFIT</b> constructs a least-squares orthogonal multinomial fit to data.
+        </li>
+        <li>
+          <b>MINSOL</b> orthogonalizes the array usol with respect to the constant array in
+        </li>
+        <li>
+          <b>MKP</b> solves a 0-1 multiple knapsack problem of n items and  m  knapsacks.
+        </li>
+        <li>
+          <b>MKP1</b> carries out the solution of a knapsack problem.
+        </li>
+        <li>
+          <b>MPLNMV:</b> multiplex polynomial evaluation
+        </li>
+        <li>
+          <b>MPROD</b> computes the product of real matrices.
+        </li>
+        <li>
+          <b>MSLV</b> factors and solves a system of linear equations.
+        </li>
+        <li>
+          <b>MSUBT:</b> subtraction of real matrices
+        </li>
+        <li>
+          <b>MTABLE</b> tabulates JP and KJ for each J.
+        </li>
+        <li>
+          <b>MTMS:</b> product of real matrices
+        </li>
+        <li>
+          <b>MTPRD:</b> product of a vector and a sparse matrix
+        </li>
+        <li>
+          <b>MTPRD1:</b> set y = x*a + y where a is a sparse matrix and x,y are vectors
+        </li>
+        <li>
+          <b>MVPRD:</b> product of a sparse matrix and a vector
+        </li>
+        <li>
+          <b>MVPRD1</b> set y = a*x + y where a is a sparse matrix and x,y are vectors
+        </li>
+        <li>
+          <b>NEWEST</b> computes new estimates of the quadratic coefficients
+        </li>
+        <li>
+          <b>NEWTON</b> computes the divided differences array as follows
+        </li>
+        <li>
+          <b>NEXTH</b> calculates the next shifted H polynomial.
+        </li>
+        <li>
+          <b>NEXTK</b> computes the next k polynomials using the scalars computed in calcsc.
+        </li>
+        <li>
+          <b>NORMLZ</b> computes the euclidean norm of x.
+        </li>
+        <li>
+          <b>NOSHFT</b> computes the derivative polynomial as the initial h polynomial
+        </li>
+        <li>
+          <b>NPIVOT:</b> matrix inversion/equation solving without pivot search
+        </li>
+        <li>
+          <b>NRNG</b> is a Gaussian random number generator.
+        </li>
+        <li>
+          <b>NSPIV1</b> uses sparse gaussian elimination with
+        </li>
+        <li>
+          <b>NSTERP</b> uses the values of xn(1:n) to calculate the nystrom interpolates
+        </li>
+        <li>
+          <b>NSURF2</b> maps values onto a surface at every point of a grid
+        </li>
+        <li>
+          <b>ODE</b> integrates a system of first order differential equations.
+        </li>
+        <li>
+          <b>OPCHK1</b> checks input for reasonableness
+        </li>
+        <li>
+          <b>OPSTP:</b> unconstrained minimization stopping criteria
+        </li>
+        <li>
+          <b>OPTDRV:</b> driver for non-linear optimization problem
+        </li>
+        <li>
+          <b>OPTF:</b> interface to minimization package
+        </li>
+        <li>
+          <b>ORIMP</b> improves an approximate least squares solution of a linear system.
+        </li>
+        <li>
+          <b>ORSOL</b> computes the least squares solution of a factored linear system.
+        </li>
+        <li>
+          <b>ORTHES</b> reduces a matrix to upper hessenberg form.
+        </li>
+        <li>
+          <b>ORTHG</b> orthogonalizes the array usol with respect to
+        </li>
+        <li>
+          <b>ORTHO</b> orthogonally transforms an m by n matrix to upper triangular form.
+        </li>
+        <li>
+          <b>ORTHOS:</b> orthonormal polynomial synthesis
+        </li>
+        <li>
+          <b>ORTHOV:</b> orthonormal polynomial evaluation
+        </li>
+        <li>
+          <b>ORTHOX:</b> orthonormal polynomial expansion
+        </li>
+        <li>
+          <b>ORTRAN</b> accumulates the orthogonal similarity
+        </li>
+        <li>
+          <b>ORTRN1</b> accumulates the orthogonal similarity
+        </li>
+        <li>
+          <b>PADD:</b> addition of real polynomials
+        </li>
+        <li>
+          <b>PARC:</b> parametric computation of the upper bounds.
+        </li>
+        <li>
+          <b>PAREA</b> computes the area bounded by a closed polygonal curve.
+        </li>
+        <li>
+          <b>PCHOL</b> computes the inverse of a positive definite symmetric matrix in packed form.
+        </li>
+        <li>
+          <b>PCOEFF</b> ???
+        </li>
+        <li>
+          <b>PDEDGE</b> ???
+        </li>
+        <li>
+          <b>PDIV:</b> division of real polynomials
+        </li>
+        <li>
+          <b>PEQ:</b> weierstrass p-function in the equianharmonic case
+        </li>
+        <li>
+          <b>PEQ1:</b> first derivative of weierstrass p-function in the
+        </li>
+        <li>
+          <b>PFIT:</b> unweighted least squares polynomial fit
+        </li>
+        <li>
+          <b>PI</b> returns the value of pi.
+        </li>
+        <li>
+          <b>PI1</b> computes a feasible solution to the current knapsack problem.
+        </li>
+        <li>
+          <b>PINV:</b> computation of the inverse of the power series
+        </li>
+        <li>
+          <b>PJAC</b> sets up the iteration matrix (involving the jacobian) for the
+        </li>
+        <li>
+          <b>PKILL:</b> elliptical coverage function
+        </li>
+        <li>
+          <b>PKILL3:</b> elliptical coverage function
+        </li>
+        <li>
+          <b>PLCOPY:</b> copying real polynomials
+        </li>
+        <li>
+          <b>PLEM:</b> weierstrass p-function in the lemniscatic case
+        </li>
+        <li>
+          <b>PLEM1:</b> first derivative of weierstrass p-function in the
+        </li>
+        <li>
+          <b>PLPWR:</b> set b = a**r where a is a real polynomial
+        </li>
+        <li>
+          <b>PMULT:</b> multiplication of real polynomials
+        </li>
+        <li>
+          <b>PNDF:</b> evaluate the normal probability density function.
+        </li>
+        <li>
+          <b>PNINV:</b> evaluation of the inverse normal distribution function
+        </li>
+        <li>
+          <b>POCA</b> ???
+        </li>
+        <li>
+          <b>POLYDD</b> evaluates the current polynomial piece represented
+        </li>
+        <li>
+          <b>POLYEV</b> evaluates a polynomial p at s by the horner recurrence algo.,
+        </li>
+        <li>
+          <b>PPADD</b> computes the eigenvalues of the periodic tridiagonal matrix
+        </li>
+        <li>
+          <b>PPSGF:</b> ???
+        </li>
+        <li>
+          <b>PPSPF:</b> ???
+        </li>
+        <li>
+          <b>PPVAL</b> evaluates a piecewise polynomial at the
+        </li>
+        <li>
+          <b>PROD0</b> applies a sequence of matrix operations to the vector x and
+        </li>
+        <li>
+          <b>PRODP</b> applies a sequence of matrix operations to the vector x and
+        </li>
+        <li>
+          <b>PSGF</b> ???
+        </li>
+        <li>
+          <b>PSI</b> evalulates the digamma function.
+        </li>
+        <li>
+          <b>PSI_VALUES</b> returns some values of the Psi or Digamma function for testing.
+        </li>
+        <li>
+          <b>PSUBT:</b> subtraction of real polynomials
+        </li>
+        <li>
+          <b>QAGI</b> approximates an integral over an infinite interval.
+        </li>
+        <li>
+          <b>QAGI1</b> approximates an integral over an infinite interval.
+        </li>
+        <li>
+          <b>QAGIE</b> approximates an integral over an infinite interval.
+        </li>
+        <li>
+          <b>QAGIE1</b> approximates an integral over an infinite interval.
+        </li>
+        <li>
+          <b>QAGS</b> approximates an integral.
+        </li>
+        <li>
+          <b>QAGSE</b> approximates an integral.
+        </li>
+        <li>
+          <b>QDCRT</b> computes the roots of a real quadratic polynomial.
+        </li>
+        <li>
+          <b>QELG:</b> epsilon algorithm
+        </li>
+        <li>
+          <b>QFORM</b> produces the explicit QR factorization of a matrix.
+        </li>
+        <li>
+          <b>QK15I:</b> integration rule
+        </li>
+        <li>
+          <b>QK15I1:</b> integration rule
+        </li>
+        <li>
+          <b>QK21F:</b> integration rules
+        </li>
+        <li>
+          <b>QPSRT:</b> ordering routine
+        </li>
+        <li>
+          <b>QRFAC</b> computes a QR factorization using Householder transformations.
+        </li>
+        <li>
+          <b>QRSOLV</b> solves a rectangular linear system A*x=b in the least squares sense.
+        </li>
+        <li>
+          <b>QRUPDT</b> finds an orthogonal matrix (q*) and an upper triangular
+        </li>
+        <li>
+          <b>QSUBA</b> computes the integral of f(x) from a to b where the
+        </li>
+        <li>
+          <b>QTCRT</b> computes the roots of the real polynomial
+        </li>
+        <li>
+          <b>QUAD</b> attempts to calculate the integral of f(x)
+        </li>
+        <li>
+          <b>QUADIT:</b> variable-shift k-polynomial iteration for a
+        </li>
+        <li>
+          <b>QUADPL</b> calculate the zeros of the quadratic a*z**2+b1*z+c.
+        </li>
+        <li>
+          <b>QUADSD</b> divides p by the quadratic  1,u,v  placing the
+        </li>
+        <li>
+          <b>QURV1</b> determines the parameters necessary to
+        </li>
+        <li>
+          <b>QURV2</b> performs the mapping of points in the
+        </li>
+        <li>
+          <b>R1MPYQ</b> multiplies a matrix by a sequence of givens rotations.
+        </li>
+        <li>
+          <b>R1UPDT</b> updates the r factor of a qr factorization, following a rank 1 update.
+        </li>
+        <li>
+          <b>RADB2</b> is a lower level routine used by RFFTB1.
+        </li>
+        <li>
+          <b>RADB3</b> is a lower level routine used by RFFTB1.
+        </li>
+        <li>
+          <b>RADB4</b> is a lower level routine used by RFFTB1.
+        </li>
+        <li>
+          <b>RADB5</b> is a lower level routine used by RFFTB1.
+        </li>
+        <li>
+          <b>RADBG</b> is a lower level routine used by RFFTB1.
+        </li>
+        <li>
+          <b>R_PI</b> returns the value of pi.
+        </li>
+        <li>
+          <b>RADF2</b> is a lower level routine used by RFFTF1.
+        </li>
+        <li>
+          <b>RADF3</b> is a lower level routine used by RFFTF1.
+        </li>
+        <li>
+          <b>RADF4</b> is a lower level routine used by RFFTF1.
+        </li>
+        <li>
+          <b>RADF5</b> is a lower level routine used by RFFTF1.
+        </li>
+        <li>
+          <b>RADFG</b> is a lower level routine used by RFFTF1.
+        </li>
+        <li>
+          <b>RADIX</b> sets ibeta = the radix of the floating point arithmetic
+        </li>
+        <li>
+          <b>RARC</b> removes the arc (ia,ib) from a graph.
+        </li>
+        <li>
+          <b>RBND</b> computes error bounds and cluster counts
+        </li>
+        <li>
+          <b>RCOMP</b> evaluates exp(-x)*x**a/gamma(a)
+        </li>
+        <li>
+          <b>RCVAL1</b> computes the integral
+        </li>
+        <li>
+          <b>RDVAL</b> computes the incomplete elliptic integral of the second kind
+        </li>
+        <li>
+          <b>REALIT:</b> variable-shift h polynomial iteration for a real zero.
+        </li>
+        <li>
+          <b>REXP</b> evaluates exp(x) - 1
+        </li>
+        <li>
+          <b>RFFTB</b> ???
+        </li>
+        <li>
+          <b>RFFTB1</b> ???
+        </li>
+        <li>
+          <b>RFFTF</b> ???
+        </li>
+        <li>
+          <b>RFFTF1</b> ???
+        </li>
+        <li>
+          <b>RFFTI</b> ???
+        </li>
+        <li>
+          <b>RFFTI1</b> ???
+        </li>
+        <li>
+          <b>RFVAL</b> computes the incomplete elliptic integral of the first kind
+        </li>
+        <li>
+          <b>RISORT</b> uses the shell sorting procedure to reorder the elements of a
+        </li>
+        <li>
+          <b>RJVAL</b> computes the incomplete elliptic integral of the third kind
+        </li>
+        <li>
+          <b>RK:</b> fourth order runge-kutta procedure for solving dy=f(t,y)
+        </li>
+        <li>
+          <b>RK8:</b> eighth order runge-kutta procedure for solving dy=f(t,y)
+        </li>
+        <li>
+          <b>RKF45:</b> fehlberg fourth-fifth order runge-kutta method
+        </li>
+        <li>
+          <b>RKFS:</b> fehlberg fourth-fifth order runge-kutta method
+        </li>
+        <li>
+          <b>RLOC</b> determines if two real arrays begin at the same location.
+        </li>
+        <li>
+          <b>RLOG:</b> evaluation of the function x - 1 - ln(x)
+        </li>
+        <li>
+          <b>RLOG1:</b> evaluation of the function x - ln(1 + x)
+        </li>
+        <li>
+          <b>RMAT_PRINT</b> prints a real matrix.
+        </li>
+        <li>
+          <b>RMIN</b> computes the minimum relative error for an integral equation.
+        </li>
+        <li>
+          <b>RNDERR</b> computes the rounding error committed when the sum x+a is formed.
+        </li>
+        <li>
+          <b>RNRM</b> computes the maximum norm of x or x-y.
+        </li>
+        <li>
+          <b>ROT3</b> ???
+        </li>
+        <li>
+          <b>ROTA</b> ???
+        </li>
+        <li>
+          <b>RPOSE</b> transposes a sparse real matrix
+        </li>
+        <li>
+          <b>RPOSE1</b> transposes a sparse real matrix where the rows are interchanged
+        </li>
+        <li>
+          <b>RRSORT</b> uses the shell sorting procedure to reorder the elements of a
+        </li>
+        <li>
+          <b>RSCO</b> restores from rsav and isav the contents of common block debdf1,
+        </li>
+        <li>
+          <b>RSCOPY:</b> copying a sparse real matrix
+        </li>
+        <li>
+          <b>RSLV</b> factors and solves a set of real sparse linear equations.
+        </li>
+        <li>
+          <b>RSLV1</b> solves a factored system of sparse linear equations.
+        </li>
+        <li>
+          <b>RSORT</b> uses the shell sorting procedure to reorder the elements of A.
+        </li>
+        <li>
+          <b>R_SWAP</b> swaps two real values.
+        </li>
+        <li>
+          <b>SADD:</b> addition of sparse real matrices
+        </li>
+        <li>
+          <b>SAMAX</b> returns the maximum absolute value of the entries in a vector.
+        </li>
+        <li>
+          <b>SASUM</b> sums the absolute values of the entries of a vector.
+        </li>
+        <li>
+          <b>SAXPY</b> adds a constant times one vector to another.
+        </li>
+        <li>
+          <b>SCALCP</b> returns a scale factor to multiply the coefficients of the polynomial.
+        </li>
+        <li>
+          <b>SCALDN</b> carries out the data-scaling defined by scalpm.
+        </li>
+        <li>
+          <b>SCALEX</b> rescales the variables
+        </li>
+        <li>
+          <b>SCALPM</b> finds scaling parameter(s) for the problem.
+        </li>
+        <li>
+          <b>SCASUM</b> takes the sum of the absolute values of a complex vector
+        </li>
+        <li>
+          <b>SCD</b> computes the elliptic functions sn(u,k), cn(u,k), and dn(u,k)
+        </li>
+        <li>
+          <b>SCDF</b> computes sn(u,k), cn(u,k), and dn(u,k) for real u and k
+        </li>
+        <li>
+          <b>SCDJ</b> computes sn(u,k), cn(u,k), and dn(u,k) for real u and k
+        </li>
+        <li>
+          <b>SCDM</b> calculates sn(u,k), cn(u,k), and dn(u,k) for "small" u and 0<= k <= 1.
+        </li>
+        <li>
+          <b>SCHUR</b> factors an upper hessenberg matrix into schur form.
+        </li>
+        <li>
+          <b>SCNRM2:</b> unitary norm of a complex n-vector
+        </li>
+        <li>
+          <b>SCOMP</b> evaluates a cubic spline at the abscissas in xi.
+        </li>
+        <li>
+          <b>SCOMP1</b> evaluates a cubic spline at the abscissas in xi.
+        </li>
+        <li>
+          <b>SCOMP2</b> evaluates a cubic spline at the abscissas in xi.
+        </li>
+        <li>
+          <b>SCONJ</b> computates the conjugate of a sparse complex matrix.
+        </li>
+        <li>
+          <b>SCOPY</b> copies one real vector into another.
+        </li>
+        <li>
+          <b>SCVDR</b> ???
+        </li>
+        <li>
+          <b>SCVRC</b> computes a + bi for the sparse real matrices a and b
+        </li>
+        <li>
+          <b>SCVRD</b> ???
+        </li>
+        <li>
+          <b>SDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>SECFAC</b> updates the hessian by the bfgs factored method.
+        </li>
+        <li>
+          <b>SEIG:</b> eigenvalues of a symmetric real matrix.
+        </li>
+        <li>
+          <b>SEIG1:</b> eigenvalues of symmetric real matrices
+        </li>
+        <li>
+          <b>SEIGV:</b> eigenvalues and eigenvectors of symmetric real matrices
+        </li>
+        <li>
+          <b>SEIGV1:</b> eigenvalues and eigenvectors of symmetric real matrices
+        </li>
+        <li>
+          <b>SEPDE:</b> solution of separable elliptic partial differential equations
+        </li>
+        <li>
+          <b>SEPEL1</b> sets up vectors and arrays for input to blktri
+        </li>
+        <li>
+          <b>SEPELL</b> solves a separable elliptic pde on a rectangular domain.
+        </li>
+        <li>
+          <b>SEVAL</b> evaluates a cubic spline and its first and second derivatives
+        </li>
+        <li>
+          <b>SEVAL1</b> evaluates a cubic spline and its first and second derivatives
+        </li>
+        <li>
+          <b>SEVAL2</b> evaluates a cubic spline and its first and second derivatives
+        </li>
+        <li>
+          <b>SFFT:</b> multivariate complex fourier transform, computed in place
+        </li>
+        <li>
+          <b>SFODE</b> ???
+        </li>
+        <li>
+          <b>SFODE1</b> ???
+        </li>
+        <li>
+          <b>SGBFA</b> factors a real band matrix by elimination.
+        </li>
+        <li>
+          <b>SGBSL</b> solves a real banded system factored by SGBCO or SGBFA.
+        </li>
+        <li>
+          <b>SGECO</b> factors a real matrix and estimates its condition number.
+        </li>
+        <li>
+          <b>SGEDI</b> computes the determinant and inverse of a matrix factored by SGECO or SGEFA.
+        </li>
+        <li>
+          <b>SGEFA</b> factors a real matrix.
+        </li>
+        <li>
+          <b>SGESL</b> solves a real general linear system A * X = B.
+        </li>
+        <li>
+          <b>SHELL</b> uses the shell sorting procedure to reorder the elements of a
+        </li>
+        <li>
+          <b>SHELL2</b> uses the shell sorting procedure to reorder the elements of a
+        </li>
+        <li>
+          <b>SHRSLV</b> solves the matrix equation ax + xb = c
+        </li>
+        <li>
+          <b>SI</b> evaluates the sine integral function for a given X.
+        </li>
+        <li>
+          <b>SI_VALUES</b> returns some values of the sine integral function.
+        </li>
+        <li>
+          <b>SIGMA1</b> computes an upper bound ub on the best final solution
+        </li>
+        <li>
+          <b>SIN0:</b> computation of sin(x*pi/2) for abs(x) <= 0.5
+        </li>
+        <li>
+          <b>SIN1:</b> evaluation  of sin(x*pi)
+        </li>
+        <li>
+          <b>SINQB:</b> ???
+        </li>
+        <li>
+          <b>SINQF:</b> ???
+        </li>
+        <li>
+          <b>SKNP</b> solves the 0-1 single knapsack problem
+        </li>
+        <li>
+          <b>SKNP1</b> solves the 0-1 single knapsack problem
+        </li>
+        <li>
+          <b>SLV:</b> partial pivot solution of a*x = b
+        </li>
+        <li>
+          <b>SLVMP:</b> solution of real linear equations with iterative improvement
+        </li>
+        <li>
+          <b>SLVS</b> solves the linear system in the iteration scheme for sfode.
+        </li>
+        <li>
+          <b>SMADD</b> adds two real symmetric storage matrices.
+        </li>
+        <li>
+          <b>SMCOPY</b> copies a real symmetric storage matrix.
+        </li>
+        <li>
+          <b>SMPLX:</b> simplex procedure for solving linear programming problems
+        </li>
+        <li>
+          <b>SMPLX1:</b> utility routine called by smplx.
+        </li>
+        <li>
+          <b>SMPROD</b> ???
+        </li>
+        <li>
+          <b>SMSLV:</b> matrix factorization and computation of rcond
+        </li>
+        <li>
+          <b>SMSUBT:</b> ???
+        </li>
+        <li>
+          <b>SNBFA</b> factors a real band matrix by elimination.
+        </li>
+        <li>
+          <b>SNBSL</b> solves the real band system a*x = b or trans(a)*x = b
+        </li>
+        <li>
+          <b>SNHCSH</b> approximates sinh(x)-x, cosh(x)-1 and cosh(x)-1-x*x/2.
+        </li>
+        <li>
+          <b>SNRM2</b> computes the Euclidean norm of a vector.
+        </li>
+        <li>
+          <b>SOL:</b> solution of linear system, a*x = b.
+        </li>
+        <li>
+          <b>SOLBT:</b> solution of block-tridiagonal linear system.
+        </li>
+        <li>
+          <b>SOLVE2:</b>
+        </li>
+        <li>
+          <b>SOLVE3</b> is called only by solve2.
+        </li>
+        <li>
+          <b>SPFIT:</b> least squares cubic spline fitting
+        </li>
+        <li>
+          <b>SPLIFT</b> fits an interpolating cubic spline to data.
+        </li>
+        <li>
+          <b>SPLSQ</b> finds a solution x to a variety of systems of linear equations.
+        </li>
+        <li>
+          <b>SPLU</b> employs gaussian elimination with column interchanges
+        </li>
+        <li>
+          <b>SPMPAR</b> provides the single precision machine constants for the computer
+        </li>
+        <li>
+          <b>SPORD</b> orders the rows of an mxn sparse matrix a,ia,ja
+        </li>
+        <li>
+          <b>SPPDI:</b> determinant and inverse of a real symmetric positive definite matrix
+        </li>
+        <li>
+          <b>SPPFA</b> factors a real symmetric positive definite matrix stored in packed form.
+        </li>
+        <li>
+          <b>SPPSL</b> solves the real symmetric positive definite system a * x = b
+        </li>
+        <li>
+          <b>SPROD:</b> multiplication of sparse real matrices
+        </li>
+        <li>
+          <b>SPSLV:</b> solution of real sparse equations
+        </li>
+        <li>
+          <b>SQUIN2</b> finds a right solvent of the matrix equation ax**2 + bx + c = 0.
+        </li>
+        <li>
+          <b>SQUINT</b> breaks down the work array into smaller pieces.
+        </li>
+        <li>
+          <b>SRCH</b> calculates an upper bound for the smallest number x such that a
+        </li>
+        <li>
+          <b>SROT</b> applies a plane rotation.
+        </li>
+        <li>
+          <b>SROTG</b> constructs a Givens plane rotation.
+        </li>
+        <li>
+          <b>SROTM</b> applies a modified givens transformation.
+        </li>
+        <li>
+          <b>SROTMG</b> constructs a modified givens transformation.
+        </li>
+        <li>
+          <b>SSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>SSPCO</b> factors a real symmetric matrix stored in packed form
+        </li>
+        <li>
+          <b>SSPDI:</b> determinant, inertia and inverse of a real symmetric matrix
+        </li>
+        <li>
+          <b>SSPFA</b> factors a real symmetric matrix stored in packed form
+        </li>
+        <li>
+          <b>SSPLX:</b> simplex procedure for solving linear programming problems
+        </li>
+        <li>
+          <b>SSPLX1</b> is a utility routine called by ssplx.
+        </li>
+        <li>
+          <b>SSPSL</b> solves the real symmetric system a * x = b
+        </li>
+        <li>
+          <b>SSUBT:</b> subtraction of sparse real matrices
+        </li>
+        <li>
+          <b>SSVDC</b> computes the singular value decomposition of a rectangular matrix.
+        </li>
+        <li>
+          <b>SSWAP</b> interchanges two vectors.
+        </li>
+        <li>
+          <b>STEP1</b> is used by subroutine ode to take an integration step.
+        </li>
+        <li>
+          <b>STFODE</b> solves stiff ode's.
+        </li>
+        <li>
+          <b>STLSQ</b> finds a solution x to a variety of systems of linear equations.
+        </li>
+        <li>
+          <b>STOD</b> performs one step of the integration of an initial value problem
+        </li>
+        <li>
+          <b>STORE2:</b> storage of single precision information into memory
+        </li>
+        <li>
+          <b>SURF</b> determines parameters for an interpolatory surface on a rectangular grid.
+        </li>
+        <li>
+          <b>SURF2</b> evaluates an interpolating surface at a given coordinate pair.
+        </li>
+        <li>
+          <b>SVCO</b> stores in rsav and isav the contents of common block debdf1,
+        </li>
+        <li>
+          <b>SVPRD:</b> ???
+        </li>
+        <li>
+          <b>SYMSLV</b> solves the matrix equation transpose(a)*x + x*a = c
+        </li>
+        <li>
+          <b>TASLV</b> solves the real matrix equation transpose(a)*x + x*a = c
+        </li>
+        <li>
+          <b>TASLV1</b> solves the real matrix equation transpose(a)*x + x*a = c
+        </li>
+        <li>
+          <b>TERMS</b> computes the diagonal and superdiagonal
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIP:</b> transposition of a rectangular matrix in situ.
+        </li>
+        <li>
+          <b>TMPROD</b> ???
+        </li>
+        <li>
+          <b>TOPLX:</b> solution of the toeplitz system of equations
+        </li>
+        <li>
+          <b>TPOSE</b> ???
+        </li>
+        <li>
+          <b>TQL2</b> is a translation of the algol procedure tql2,
+        </li>
+        <li>
+          <b>TQLRAT</b> is a translation of the algol procedure tqlrat,
+        </li>
+        <li>
+          <b>TQLRT0</b> is a modification of the eispack subroutine tqlrat.
+        </li>
+        <li>
+          <b>TRED1</b> is a translation of the algol procedure tred1,
+        </li>
+        <li>
+          <b>TRED2</b> is a translation of the algol procedure tred2,
+        </li>
+        <li>
+          <b>TRED3</b> is a translation of the algol procedure tred3,
+        </li>
+        <li>
+          <b>TRISLV</b> backsolves a system of the form uy + vyl = f,
+        </li>
+        <li>
+          <b>TRISP</b> solves for a non-zero eigenvector corresponding to the zero eigenvalue
+        </li>
+        <li>
+          <b>TRP</b> ???
+        </li>
+        <li>
+          <b>TSLV:</b> solution of real sparse equations
+        </li>
+        <li>
+          <b>TSLV1</b> solves yu = b by forward substitution
+        </li>
+        <li>
+          <b>URNG:</b> uniform random number generator
+        </li>
+        <li>
+          <b>VALR2</b> ???
+        </li>
+        <li>
+          <b>VNORM</b> computes the maximum norm of the vector v(*) of length ncomp and
+        </li>
+        <li>
+          <b>VNWRMS</b> computes the weighted root-mean-square norm
+        </li>
+        <li>
+          <b>VRSHFT</b> carries out the third stage iteration.
+        </li>
+        <li>
+          <b>WANDT</b> returns weights and abscissas for gauss-legendre quadrature.
+        </li>
+        <li>
+          <b>WNLIT</b> is a companion subprogram to wnnls( ).
+        </li>
+        <li>
+          <b>WNLSM</b> is a companion subprogram to wnnls( ).
+        </li>
+        <li>
+          <b>WNNLS</b> solves a linearly constrained least squares problem.
+        </li>
+        <li>
+          <b>WPFIT:</b> weighted least squares polynomial fit
+        </li>
+        <li>
+          <b>XCOND</b> tests whether x lies to the right of all singularities of the complex
+        </li>
+        <li>
+          <b>XCONDX</b> is the real part of the integrand in xcond.
+        </li>
+        <li>
+          <b>XCONDY</b> is the imaginary part of integrand in xcond.
+        </li>
+        <li>
+          <b>XL1</b> uses a modification of the simplex method of linear programming
+        </li>
+        <li>
+          <b>YCHG</b> ???
+        </li>
+        <li>
+          <b>ZEROIN</b> finds a zero of the function f(x) in the interval (ax,bx)
+        </li>
+        <li>
+          <b>ZZZJAC</b> is a dummy jacobian subroutine
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 February 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body
+
+</html>

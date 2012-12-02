@@ -1,0 +1,336 @@
+<html>
+
+  <head>
+    <title>
+      GENE_CLUSTER - Cluster Genetic Expression Data
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GENE_CLUSTER <br> Cluster Genetic Expression Data
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GENE_CLUSTER</b>
+      is a FORTRAN90 program which
+      divides a set of genetic data into clusters.
+    </p>
+
+    <p>
+      The data comes from genetic expression experiments.
+    </p>
+
+    <p>
+      Each cluster will be defined in terms of a representative data
+      vector, and the clustering minimizes the sum of
+      the squares of the "distances" of each data point to its cluster
+      representative.  Here, the "distance" may be either the Euclidean
+      distance or a similarity measure based on angles.
+    </p>
+
+    <p>
+      The data to be examined is assumed to be stored in a file.
+    </p>
+
+    <p>
+      The file is assumed to contain a number of records, with each
+      record stored on its own line.
+    </p>
+
+    <p>
+      Each record, in turn, contains a fixed number of data values
+      that describe a particular gene expression experiment.
+    </p>
+
+    <p>
+      Each record will be regarded as a point in N dimensional space.
+    </p>
+
+    <p>
+      The program will try to cluster the data, that is, to organize
+      the data by defining a number of cluster centers, which are
+      also points in N dimensional space, and assigning each record
+      to the cluster associated with a particular center.
+    </p>
+
+    <p>
+      The method of assigning data aims to minimize the cluster energy,
+      which is taken to be the sum of the squares of the distances of
+      each data point from its cluster center.
+    </p>
+
+    <p>
+      In some contexts, it makes sense to use the usual Euclidean sort
+      of distance.  In others, it may make more sense to replace each
+      data record by a normalized version, and to assign distance
+      by computing angles between the unit vectors.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f77_src/asa136/asa136.html">
+      ASA136</a>,
+      a FORTRAN77 library which
+      is an implementation of the K-Means algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cities/cities.html">
+      CITIES</a>,
+      a FORTRAN90 library which
+      defines various problems associated with a set of
+      "cities" on a map.
+    </p>
+
+    <p>
+      <a href = "../../f_src/kmeans/kmeans.html">
+      KMEANS</a>,
+      a FORTRAN90 library which
+      contains several implementations of
+      the K-Means algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lau_np/lau_np.html">
+      LAU_NP</a>,
+      a FORTRAN90 library which
+      contains heuristic algorithms for the
+      K-center and K-median problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spaeth/spaeth.html">
+      SPAETH</a>,
+      a FORTRAN90 library which
+      can cluster data according to various
+      principles.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spaeth2/spaeth2.html">
+      SPAETH2</a>,
+      a FORTRAN90 library which
+      can cluster data according to various
+      principles.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "gene_cluster.f90">gene_cluster.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "gene_cluster.sh">gene_cluster.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      Genetic expression data files include:
+      <ul>
+        <li>
+          <a href = "i1039.txt">i1039.txt</a>, 1152 lines of data.
+        </li>
+        <li>
+          <a href = "i1650.txt">i1650.txt</a>, 180 lines of data.
+        </li>
+        <li>
+          <a href = "i2032.txt">i2032.txt</a>, 1481 lines of data.
+        </li>
+        <li>
+          <a href = "i2282.txt">i2282.txt</a>, 11016 lines of data.
+        </li>
+        <li>
+          <a href = "i29111.txt">i29111.txt</a>, 1031 lines of data.
+        </li>
+        <li>
+          <a href = "i29486.txt">i29486.txt</a>, 8526 lines of data.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      For data set 1039, there are the following files:
+      <ul>
+        <li>
+          <a href = "gene_cluster_1039_input.txt">gene_cluster_1039_input.txt</a>, an
+          input file describing the run to be made;
+        </li>
+        <li>
+          <a href = "gene_cluster_1039_output.txt">gene_cluster_1039_output.txt</a>, the
+          output file containing the results;
+        </li>
+        <li>
+          <a href = "normal_1039.txt">normal_1039.txt</a>, a table of the
+          energy versus number of clusters, for normalized data;
+        </li>
+        <li>
+          <a href = "normal_1039.png">normal_1039.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          a plot of the
+          energy versus number of clusters, for normalized data;
+        </li>
+        <li>
+          <a href = "normal2_1039.txt">normal2_1039.txt</a>, a table of the
+          energy versus the inverse number of clusters, for normalized data;
+        </li>
+        <li>
+          <a href = "normal2_1039.png">normal2_1039.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          a plot of the
+          energy versus the inverse number of clusters, for normalized data;
+        </li>
+        <li>
+          <a href = "unnormal_1039.txt">unnormal_1039.txt</a>, a table of the
+          energy versus number of clusters, for unnormalized data;
+        </li>
+        <li>
+          <a href = "unnormal_1039.png">unnormal_1039.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          a plot of the
+          energy versus number of clusters, for unnormalized data;
+        </li>
+        <li>
+          <a href = "unnormal2_1039.txt">unnormal2_1039.txt</a>, a table of the
+          energy versus the inverse number of clusters, for unnormalized data;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      For data set 1650, there are the following files:
+      <ul>
+        <li>
+          <a href = "gene_cluster_1650_input.txt">gene_cluster_1650_input.txt</a>, an
+          input file describing the run to be made;
+        </li>
+        <li>
+          <a href = "gene_cluster_1650_output.txt">gene_cluster_1650_output.txt</a>, the
+          output file containing the results;
+        </li>
+        <li>
+          <a href = "normal_1650.txt">normal_1650.txt</a>, a table of the
+          energy versus number of clusters, for normalized data;
+        </li>
+        <li>
+          <a href = "normal2_1650.txt">normal2_1650.txt</a>, a table of the
+          energy versus the inverse number of clusters, for normalized data;
+        </li>
+        <li>
+          <a href = "unnormal_1650.txt">unnormal_1650.txt</a>, a table of the
+          energy versus number of clusters, for unnormalized data;
+        </li>
+        <li>
+          <a href = "unnormal2_1650.txt">unnormal2_1650.txt</a>, a table of the
+          energy versus the inverse number of clusters, for unnormalized data;
+        </li>
+      </ul>
+    </p>
+
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for GENE_CLUSTER.
+        </li>
+        <li>
+          <b>ANALYSIS</b> computes the energy for a range of number of clusters.
+        </li>
+        <li>
+          <b>CLUSTER_ITERATION</b> seeks the minimal energy of a cluster of a given size.
+        </li>
+        <li>
+          <b>DATA_TO_GNUPLOT</b> writes data to a file suitable for processing by GNUPLOT.
+        </li>
+        <li>
+          <b>ENERGY_COMPUTATION</b> computes the total energy of a given clustering.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_LINE_COUNT</b> counts the number of lines in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_INPUT</b> prints a prompt string and reads an integer from the user.
+        </li>
+        <li>
+          <b>I4_RANGE_INPUT</b> reads a pair of integers from the user, representing a range.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>NEAREST_POINT</b> finds the center point nearest a data point.
+        </li>
+        <li>
+          <b>POINT_GENERATE</b> generates data points for the problem.
+        </li>
+        <li>
+          <b>POINT_PRINT</b> prints out the values of the data points.
+        </li>
+        <li>
+          <b>S_INPUT</b> prints a prompt string and reads a string from the user.
+        </li>
+        <li>
+          <b>S_REP_CH</b> replaces all occurrences of one character by another.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+  </body>
+
+</html>

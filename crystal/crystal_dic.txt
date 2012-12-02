@@ -1,0 +1,1158 @@
+crystal_dic.txt  26 August 1996
+
+MASTRAPP2d
+
+Multizone Adaptive Scheme for Transport and Phase-Change Processes
+
+by Hui Zhang
+State University of New York
+Stony Brook, NY 11790
+hzhang@thermb.eng.sunysb.edu
+
+*********************************************************************
+
+References:
+
+Suhas Patankar,
+Numerical Heat Transfer and Fluid Flow,
+Hemisphere Publishing Corporation, 1980,
+LC: QC320.P37
+
+Fumio Shimura,
+Semiconductor Silicon Crystal Technology,
+Academic Press, 1989,
+LC: TK7871.85 S523
+
+Hui Zhang,
+"A Multizone Adaptive Grid Generation Technique for Simulations
+of Moving and Free Boundary Problems"
+PhD Dissertation,
+Polytechnic University at Brooklyn.  (I have a copy)
+
+Hui Zhang, V Prasad, MK Moallemi,
+"Application of MAGG - A Multizone Adaptive Generation Technique -
+for Simulations of Moving and Free Boundary problems,"
+Numerical Heat Transfer, 1995.
+LC: QC319.8 N85
+
+Hui Zhang, V Prasad,
+"A Multizone Adaptive Process Model for Crystal Growth at Low and
+High Pressures,"
+Journal of Crystal Growth (in press), 1995.
+LC: QD921 J6X. ???
+
+Hui Zhang, MK Moallemi,
+"MAGG - A Multizone Adaptive Grid Generation Technique for Simulation
+of Moving and Free Boundary Problems,"
+Numerical Heat Transfer, Part B,
+Volume 27, pages 255-276, 1995.
+LC: QC319 N85  (I have a copy)
+
+Hui Zhang, MK Moallemi,
+"Numerical Simulation of Hot-Dip Metallic Coating Process,"
+International Journal of Heat and Mass Transfer,
+Volume 38, Number 2, pages 241-257, 1995.
+LC: QC320 I55  (I have a copy)
+
+MK Moallemi, Hui Zhang,
+"A General Numerical Procedure for Multilayer Multistep IC Process
+Simulation,"
+IEEE Transactions on Computer-Aided Design of Integrated Circuits
+and Systems,
+Volume 13, Number 11, pages 1379-1390, 1994.
+LC: TK7874 I325
+
+
+*********************************************************************
+
+Subroutine calls:
+
+CRYFUN
+  ADAPT
+    CUBIC
+    FINDP
+  DOAREA
+  GRID
+  INIDAT
+  INIGRD
+    CUBIC
+  INITL
+  MOVGRD
+  OUTPUT
+  PMOD
+  RSREAD
+  RSWRIT
+  SAMPLE
+  SETCST
+  SETGEO
+  SETUP
+    DIFLOW
+    FLUX
+      DIFLOW
+      SOLVE1
+      SOLVE2
+    GAMSOR
+      GRADNT
+    SOLVE1
+    SOLVE2
+  SETX
+
+*********************************************************************
+
+SUBROUTINE PURPOSES:
+
+ADAPT    given an initial set of corner nodes XC and YC, ADAPT
+         adjusts the nodes to better match the location of boundaries
+         and to minimize discrepancies in the mesh.
+
+CRYFUN   given parameter values that define the problem, evaluate
+         the solution over time, and return the value of a related
+         cost function.
+
+CUBIC    evaluate a cubic spline passing through the boundary data,
+         (XBOT,YBOT).
+
+DIFLOW   computes the convection-diffusion coefficient.
+
+DOAREA   computes the area of each control volume, for use in the
+         cost functional.
+
+FINDP
+
+FLUX     solves for the flux of all state variables.
+
+GAMSOR   sets the coefficients for the transport problems for U, V, T,
+         RW, TK and TE.
+
+GRADNT   estimates the gradients of the state variables.
+
+INIDAT   initialize problem data to default values.
+
+INIGRD   set the initial configuration of corner nodes XC, YC
+         before any solution steps have been attempted.
+
+INITL    estimates the pressure and momentum at the interfaces
+         of the control volumes by averaging values associated
+         with primary nodes.
+
+MOVGRD   resets the configuration of corner nodes after one
+         time step, and before the next.
+
+OUTPUT
+
+PMOD     sets the pressure in the four corners, and subtracts off
+         the reference pressure.
+
+RSREAD   reads in the variable values for a restart run.
+
+RSWRIT   writes out data for a restart run or a plot.
+
+SETCST   evaluates the cost functional at each time step.
+
+SETGEO   calculates geometric derivatives, volumes, and other
+         grid based data.
+
+SETUP
+
+SETX     is given the location of the corner nodes (XC,YC), and
+         determines the location of the primary nodes (X,Y).
+
+SOLVE1   modify the coefficients and right hand side of some
+         state equations.
+
+SOLVE2   solve the five-diagonal linear system that defines
+         a particular state variable using an iterative method.
+
+*********************************************************************
+
+GEOMETRY:
+
+
+The easiest way to understand how the geometry is modeled in
+this code is to begin by imagining the physical region that is
+to be modeled, which in our case is a two dimensional slice
+of a crucible.  We assume that the crucible is symmetric
+about an axis of rotation, so that we really only use half of
+the two dimensional slice.  For some reason, the crucible is
+and the X, Y coordinate system are not aligned in the usual way.
+Instead, X represents the axis of rotation, and "up", while
+Y represents what we would usually think of as the horizontal
+direction.  A very rough sketch of the crucible follows:
+
+           B W W W W
+^       B      S
+|     B        S
+Y    B         CCCCCCCCCCC
+|    B         C         C
+     B---------C---------C--
+
+          <-- X -->
+
+The "B's" mark the bottom of the crucible, the "W's" mark the
+side wall of the crucible.  "S" stands for the free surface formed
+by the melted material, and "C" is for the boundary of the crystal
+that is forming.  The line of dashes represents the axis of symmetry.
+
+A more natural way of looking at the problem is to turn it
+so that it is upright:
+
+     |
+     |
+     CCCCC
+     |   C
+     |   C
+     |   C
+     CCCCCSSSSSSSSW
+     |            W
+     |            W
+  ^  |           B
+  |  |         B
+  |  |       B
+  |  BBBBB
+  |
+  +------------->
+
+
+
+Imagine that an array of L * M points
+are identified in this region, and that these points, while
+not necessarily lying along straight lines, are organized into
+rows and columns.  We call these points "nodes", and we call
+their row and column labels the I and J indices.
+
+We now consider an abstract space which is related to the
+physical space in a certain way, and which uses coordinates KSI
+and ETA.  Every point in the physical space will have a corresponding
+point in KSI, ETA space, and vice versa.  In particular, if we
+assume that each of the nodes that we mentioned above has a row and
+column coordinate (I,J), these indices, I and J, may be taken as the
+KSI and ETA coordinates of that node.  Thus, in KSI, ETA space, the
+nodes lie on a strictly rectangular grid, separated by one unit in
+both the KSI and ETA directions.
+
+Now for each node, we may write its coordinates in the physical
+system as (XC(I,J), YC(I,J)).  We may think of this as a mapping
+from abstract KSI, ETA space to physical X, Y space.
+
+
+Only half of the crucible is represented.
+
+*********************************************************************
+
+STATE VARIABLES:
+
+U
+  The horizontal or axial velocity.
+  U is defined only in the liquid region.
+
+V
+ The vertical or radial velocity.
+ V is defined only in the liquid region.
+
+P
+  The pressure.
+  P is defined only in the liquid region.
+
+PC
+  The pressure correction.
+  PC is defined only in the liquid region.
+
+T
+  The temperature.
+  T is defined in the solid and liquid regions.
+
+W
+  The angular velocity or swirl.
+  W is defined only in the liquid region.
+  This calculation is not being done now.
+
+TK
+  The turbulent kinetic energy, K.
+  TK is defined only in the liquid region.
+
+TE
+  The turbulent dissipation, "EPSILON".
+  TE is defined only in the liquid region.
+
+E
+  The electrical stream function.
+  This calculation is not being done now.
+
+PSI
+  The flow stream function.
+  PSI is defined only in the liquid region.
+  PSI does not have to be solved for.  Instead, it is derived
+  from the values of RUETA and RUKSI, the ETA and KSI momenta,
+  and the values of AE1, AE2, AK1 and AK2.
+
+*********************************************************************
+
+DATA DICTIONARY
+
+References are to equations in Hui Zhang's thesis.
+
+
+AE1
+  Double precision AE1(NI,NJ).
+  d ALPHA/d ETA in thesis.
+  AE1(I,J) is a term applying to the interface between primary
+  nodes (I,J-1) and (I,J).
+
+AE2
+  Double precision AE2(NI,NJ).
+  d BETA/d ETA in thesis.
+  AE2(I,J) is a term applying to the interface between primary
+  nodes (I,J-1) and (I,J).
+
+AIM
+  Double precision AIM(NI,NJ).
+  Minus the coefficient in the state equation of A(I-1,J).
+
+AIP
+  Double precision AIP(NI,NJ).
+  Minus the coefficient in the state equation of A(I+1,J).
+
+AJM
+  Double precision AJM(NI,NJ).
+  Minus the coefficient in the state equation of A(I,J-1).
+
+AJP
+  Double precision AJP(NI,NJ).
+  Minus the coefficient in the state equation of A(I,J+1).
+
+AK1
+  Double precision AK1(NI,NJ).
+  d ALPHA/d KSI in thesis.
+  AK1(I,J) is a term applying to the interface between primary
+  nodes (I,J-1) and (I,J).
+
+AK2
+  Double precision AK2(NI,NJ).
+  d BETA/d KSI in thesis.
+  AK2(I,J) is a term applying to the interface between primary
+  nodes (I,J-1) and (I,J).
+
+AP
+  Double precision AP(NI,NJ).
+  The coefficient in the state equation of A(I,J).
+
+AP0
+  Double precision AP0(NI,NJ).
+  A temporary copy of AP.
+
+AREA
+  Double precision AREA(NI,NJ).
+  AREA(I,J) is the area of the control volume (I,J),
+  centered on primary node (I,J), with corner nodes
+  (I,J), (I+1,J), (I,J+1) and (I+1,J+1).
+
+  This quantity was added by me, because the VOL array is only
+  computed for a portion of the region, and is usually modified
+  by a factor for the axisymmetric case.
+
+AREAL
+  Double precision AREAL.
+  The area of the liquid region.
+
+AREAS
+  Double precision AREAS.
+  The area of the solid region.
+
+AREAT
+  Double precision AREAT.
+  The area of the total region,
+    AREAT = AREAL + AREAS + void area.
+
+B
+  Double precision B.
+  The crucible radius.
+
+B1JBL
+  Double precision B1JBL(NJ).
+  Heat flux, used in solidification update.
+  B1JBL is set in routine FLUX, and used in routine MOVGRD.
+
+B2JBL
+  Double precision B2JBL(NJ).
+  Heat flux.
+  B2JBL is set in routine FLUX, and used in routine MOVGRD.
+
+B3JBL
+  Double precision B3JBL(NI).
+  Heat flux.
+  B3JBL is set in routine FLUX, and used in routine MOVGRD.
+
+BIRAD
+  Double precision BIRAD.
+  The thermal coefficient BI_R.
+
+BO
+  Double precision BO.
+  The Bond number.
+    BO = (RHOL*GRAV*B**2)/SIGMA.
+
+CAPPA
+  Double precision CAPPA.
+  A constant in the wall function.  Along the
+  wall, the turbulent dissipation TE is set to:
+
+    TE = CD * TK**1.5 / (CAPPA * (CMU**0.25) * 0.5 * HETA)
+
+CD
+  Double precision CD.
+  A constant in the wall function.  Along the
+  wall, the turbulent dissipation TE is set to:
+
+    TE = CD * TK**1.5 / (CAPPA * (CMU**0.25) * 0.5 * HETA)
+
+CE1,
+CE2
+  Double precision CE1, CE2.
+  Constants in the state equation for turbulent dissipation.
+
+CFO
+  Double precision CFO.
+  CFO is a scale factor which converts the internal
+  dimensionless time into dimensional time.
+    CFO = FNU/(B*B).
+
+CINC
+  Double precision CINC.
+  CINC is the integral of the cost function over the current region.
+
+CL
+  Double precision CL.
+  Heat capacity Cp of the liquid.
+
+CMU
+  Double precision CMU.
+  Constant in K-Epsilon model MU_T=CMU*K^2/E.
+
+CON
+  Double precision CON(NI,NJ).
+  The right hand side in the state equation.
+
+CON0
+  Double precision CON0(NI,NJ).
+  Represents the old CON.
+
+CS
+  Double precision CS.
+  The heat capacity Cp of the solid.
+
+CVN
+  Double precision CVN.
+  Used in ADAPT to control the area of grid cells.
+
+DELT
+  Double precision DELT.
+  The dimensioned time step.
+    DELT = CFO * DTM.
+
+DTM
+  Double precision DTM.
+  The dimensionless time step.
+    DTM = DELT / CFO.
+
+E
+  Double precision E(NI,NJ).
+  The electrical stream function.
+  (The electrical stream function calculation is not
+  working well right now, and is turned off).
+
+EPSAD
+  Double precision EPSAD.
+  A small number used to define convergence in ADAPT.
+
+EPSIL
+  Double precision EPSIL.
+  A small number, 0.0001, used to define convergence in FLUX.
+
+EWALL
+  Double precision EWALL.
+  A constant in the wall function, used to define GAM.
+
+F
+  Double precision F(NI,NJ,NK).
+  An array which stores physical variables.
+
+  F(NI,NJ,1): U, the horizontal or axial momentum;
+  F(NI,NJ,2): V, the vertical or radial momentun;
+  F(NI,NJ,3): P, the pressure;
+  F(NI,NJ,4): PC, the pressure correction;
+  F(NI,NJ,5): T, the temperature;
+  F(NI,NJ,6): W, the angular momentum or swirl;
+  F(NI,NJ,7): TK, the turbulent kinetic energy K;
+  F(NI,NJ,8): TE, the turbulent dissipation EPSILON;
+  F(NI,NJ,9): E, the electrical stream function.
+              (Electrical stream function calculation not
+              working well right now, and turned off).
+  F(NI,NJ,10): PSI, the flow stream function.
+
+FCSL
+  Double precision FCSL.
+  FCSL is the ratio CS/CL: a viscosity parameter.
+
+FJBI1
+  Double precision FJBI1(NJ,NS).
+  The value J = RHO U + GAM * GRAD U in I=1 or bottom boundary.
+
+FJBJ1
+  Double precision FJBJ1(NI,NS).
+  The value J = RHO U + GAM * GRAD U in J=1 or left hand boundary.
+
+FJBL1
+  Double precision FJBL1(NJ,NS).
+  The value J = RHO U + GAM * GRAD U along the I=L1, or top boundary.
+
+FJBM1
+  Double precision FJBM1(NI,NS).
+  The value J = RHO U + GAM * GRAD U along the J=M1 or right boundary.
+
+FJETA
+  Double precision FJETA(NI,NJ).
+  The flux d(RHO U + GAM * GRAD U)/dETA in equation 3.18 (implicit).
+
+  FJETA is also used to store an initial estimate of the
+  pressure along the ETA face of the control volume.
+
+FJKSI
+  Double precision FJKSI(NI,NJ).
+  The flux d(RHO U + GAM * GRAD U)/dKSI in equation 3.18.
+
+  FJKSI is also used to store an initial estimate of the
+  pressure along the KSI face of the control volume.
+
+FKL
+  Double precision FKL.
+  The thermal conductivity of the liquid.
+  Often denoted by KAPPA_L.
+
+FKS
+  Double precision FKS.
+  The thermal conductivity of the solid.
+  Often denoted by KAPPA_S.
+
+FKSL
+  Double precision FKSL.
+  The ratio of the solid and liquid thermal conductivities, FKSL= FKS/FKL.
+  A viscosity parameter.
+
+FMA
+  Double precision FMA.
+  The Marangoni number.
+
+FMAX
+  Double precision FMAX(NS).
+  The maximum absolute value of each component of the solution.
+
+FNU
+  Double precision FNU.
+  Might this be the rotational velocity???
+
+FO
+  Double precision FO(NI,NJ,NK).
+  FO contains the values of the state variables at the previous
+  time step.
+
+FR
+  Double precision FR.
+  The Froude number.  Used in MOVGRD.
+
+FRSL
+  Double precision FRSL.
+  FRSL is the ratio RHOS/RHOL.
+
+GAM
+  Double precision GAM(NI,NJ).
+  GAM(I,J) contains the transport coefficient for the current equation
+  at primary node (I,J).  GAM(I,J) is general the fluid viscosity
+  (equations for variables 1, 2, 3, or 4), or the thermal diffusion
+  coefficient (equations for variable 5).
+
+GAMT
+  Double precision GAMT(NI,NJ).
+  The turbulent viscosity.
+  If INTURB is 0 (laminar flow), then
+    GAMT(I,J)=0.
+  If INTURB is 1 (turbulent flow), then
+    GAMT(I,J) = CMU * RHO(I,J) * TK(I,J)**2 / TE(I,J).
+
+GRASH
+  Double precision GRASH.
+  The Grashof number.
+
+GRAV
+  Double precision GRAV.
+  The gravity coefficient.  It is only used to calculate the
+  Bond number BO.
+
+HAMAG
+  Double precision HAMAG,
+  HAMAG is the Hartmann number for the magnetic field.
+
+HETA
+  Double precision HETA(NI,NJ).
+  HETA(I,J) is the physical (that is, "X,Y") length of the control
+  volume in the ETA direction.
+
+  HETA(I,J) is the length of the line connecting the mid-side
+  nodes that separate primary node (I,J) from primary nodes
+  (I,J-1) and (I,J+1).
+
+  Warning: The code only defines HETA for the solid or liquid
+  region it is working on, and sets it to zero elsewhere!
+
+HF
+  Double precision HF.
+  The latent heat of fusion.
+
+HKSI
+  Double precision HKSI(NI,NJ).
+  HKSI(I,J) is the physical (that is, "X,Y") length of the control
+  volume in the KSI direction.
+
+  HKSI(I,J) is the length of the line connecting the mid-side
+  nodes that separate primary node (I,J) from primary nodes
+  (I-1,J) and (I+1,J).
+
+  Warning: The code only defines HKSI for the solid or liquid
+  region it is working on, and sets it to zero elsewhere!
+
+ICOST
+  Integer ICOST.
+  ICOST chooses the cost functional to be minimized.  The cost
+  functional is an integral over time (from TINIT to TEND) and space
+  (the region Omega).  The integration in space is normally done
+  first, yielding a function F(T) to be integrated over time.
+
+  Depending on the value of ICOST, F(T) is:
+
+    ICOST=1: Velocity magnitude:
+
+      F(T) = SQRT( Integral ( (X,Y) in LIQUID(T))
+        (U(X,Y,T)**2 + V(X,Y,T)**2) dX dY )
+
+    ICOST=2: Temperature deviation from TF:
+
+      F(T) = SQRT( Integral ( (X,Y) in LIQUID(T))
+        (T(X,Y,T)-TF)**2 dX dY )
+
+    ICOST=3: Velocity magnitude deviation from Vave:
+
+      F(T) = SQRT( Integral ( (X,Y) in LIQUID(T))
+        ( Vave - SQRT(U(X,Y,T)**2 + V(X,Y,T)**2)) dX dY )
+
+    ICOST=4: Flow velocity under the crystal:
+
+      F(T) = SQRT( Integral ( (X,Y) in LIQUID(T) and below CRYSTAL(T) )
+        U(X,Y,T)**2 + V(X,Y,T)**2 dX dY) )
+
+      For now, we take "below the crystal" to mean ALL control volumes
+      under the crystal, for I=1 to ICRYS-1.
+
+    ICOST=5: Heat flux through crystal and free surface:
+
+    ICOST=6: Vorticity of the flow field:
+
+      F(T) = SQRT( Integral ( (X,Y) in LIQUID(T))
+        VORT(X,Y,T)**2 dX dY )
+
+  The total cost over the whole time interval is:
+
+    COST = Integral (T=TINIT to TEND) F(T) dT /
+      ( SQRT(Area(LIQUID(T)) * (TEND-TINIT) )
+
+  Currently, a crude approximation is made to the integrals.
+  For instance, the area of the flow region, LIQUID(T), is computed
+  by summing up the estimated areas of each control volume.  These
+  areas, in turn, are estimated by computing the jacobian at the
+  center of the control volume.
+
+  +-----V-----+
+  |           |
+  |           |
+  U     N     U
+  |           |
+  |           |
+  +-----V-----+
+
+
+ICRYS
+  Integer ICRYS.
+  ICRYS specifies the end of the crystal in the I or row or vertical
+  direction.
+
+  Warning: Right now, I don't know exactly where the crystal/melt/void
+  interface is: at primary node (I,J)?  At corner node [I,J]?  Somewhere
+  nearby?  Make I I-1 or J J+1?  Look into this.
+
+INTURB
+  Integer INTURB.
+  INTURB chooses laminar or turbulent flow.
+  0, laminar, variables TE=TK=0;
+  1, turbulent, variables TE and TK will be solved for.
+
+IPLOT
+  Integer IPLOT.
+  0, no plot file should be created.
+  1, a plot file should be created.
+
+IPREF
+  Integer IPREF.
+  The I or row or vertical coordinate for the pressure reference
+  point, where the pressure is specified to be zero.
+
+IPRINT
+  Integer IPRINT.
+  0, print very little.
+  1, print some.
+
+ISHAPE
+  Integer ISHAPE.
+  1, use piecewise linear shape for the bottom boundary.
+  3, use a cubic spline for the bottom boundary.
+
+ITER
+  Integer ITER.
+  The iteration counter.
+
+IZONE
+  Integer IZONE.
+  IZONE is the zone number.  The total region is divided into a solid
+  and a liquid zone, and at each time step, the values of the
+  state variables are solved for in one zone first, and then
+  the other.  IZONE tells us which zone we are working on.
+
+  IZONE=1 for solid,
+  IZONE=2 for liquid.
+
+JCRYS
+  Integer JCRYS.
+  JCRYS specifies the end of the crystal in the J array direction,
+  and in the horizontal coordinate direction.
+
+JPREF
+  Integer JPREF.
+  The J or column or horizontal coordinate for the pressure reference
+  point, where the pressure is specified to be zero.
+
+L0
+  Integer L0.
+  L0 is the extent of the grid in the I or row or vertical coordinate.
+
+L1
+  Integer L1.
+  L1 is some portion of the vertical grid size.
+  L1 could equal L0, or ICRYS, depending on which subproblem is
+  being solved.
+
+LAST
+  Integer LAST.
+  On each time step, there are two calculations to make:
+  the variables in the solid zone, and in the liquid zone.
+  Up to LAST+1 iterations (ITER=0 through LAST) are taken in
+  the solid zone, followed by up to LAST iterations (ITER=1
+  to LAST) in the liquid zone.
+
+LASTT
+  Integer LASTT.
+  The total number of time steps.
+
+LBLK
+  Logical LBLK.
+  Flag for block-correction.
+
+LCONV
+  Logical LCONV.
+  Set .TRUE. if the nonlinear iteration in FLUX is considered
+  to have converged.
+
+LORTHO
+  Logical LORTHO.
+  LORTHO specifies the coordinate system.
+  FALSE = orthogonal;
+  TRUE = curvilinear.
+
+LSOLVE
+  Logical LSOLVE(NS).
+  LSOLVE specifies if SETUP should setup and solve the state equation
+  for the given variable.
+
+M0
+  Integer M0.
+  M0 is the extent of the grid in the J or column or horizontal coordinate.
+
+M1
+  Integer M1.
+  M1 is some portion of the horizontal grid size.
+  M1 could equal M0, or JCRYS, depending on which subproblem is
+  being solved.
+
+MAXBOT
+  Integer MAXBOT.
+  The maximum number of points (XBOT,YBOT) allowed for defining
+  the bottom of the crucible.
+
+MODE
+  Integer MODE.
+  MODE determines the kind of 2D geometry to be used.
+  If MODE=0, rectangular geometry is used;
+  If MODE=1, axisymmetric cylindrical geometry is used.
+
+NBOT
+  Integer NBOT.
+  The number of points (XBOT,YBOT) defining the bottom of the
+  crucible.
+
+NDT
+  Integer NDT.
+  NDT is the current time step, which varies from 0 to LASTT.
+
+NF
+  Integer NF.
+  NF specifies which group of unknowns is being solved for:
+
+    1: U, the horizontal or axial momentum;
+    2: V, the vertical or radial momentun;
+    3: P, the pressure;
+    4: PC, the pressure correction;
+    5: T, the temperature;
+    6: WR, the angular momentum or swirl;
+    7: TK, the turbulent kinetic energy K;
+    8: TE, the turbulent dissipation EPSILON;
+    9: E, the electrical stream function.
+   10: PSI, the flow stream function.
+
+NI
+  Integer NI.
+  NI is the maximum number of grid points in the I or row or vertical
+  or XI direction.
+
+NJ
+  Integer NJ.
+  NJ is the maximum number of grid points in the J or column or
+  horizontal or ETA direction.
+
+NK
+  Integer NK.
+  NK is the maximum number of problems to be solved.  See F(I,J,K).
+
+NMAXIJ
+  Integer NMAXIJ.
+  NMAXIJ = max(NI,NJ).
+  NMAXIJ is the dimension for the PT and QT arrays.
+
+NP
+  Integer NP.
+  NP is the identifier for pressure.  NP=3.
+
+NPC
+  Integer NPC.
+  NPC is the identifier for corrected pressure.  NPC=4.
+
+NS
+  Integer NS.
+  NS is the number of state variables, currently set to 10.
+
+NSOLVE
+  Integer NSOLVE(NS).
+  NSOLVE is the number of iterative steps to be carried out each time
+  SOLVE2 is called to solve the linearized state equation for a
+  particular state variable.
+
+NTIMES
+  Integer NTIMES(NS).
+  NTIMES is the number of iterative steps to be carried out in FLUX,
+  when solving for the current values of each given set of unknowns.
+
+ORTHO
+  Double precision ORTHO.
+  ORTHO is used in ADAPT to control the orthogonality of grid lines.
+
+P
+  Double precision P(NI,NJ).
+  P is the fluid pressure, which is state variable 3.
+
+PC
+  Double precision PC(NI,NJ).
+  PC is the corrected fluid pressure.
+
+PETA
+  Double precision PETA(NI,NJ).
+  PETA is the P gradient in the ETA direction.
+
+PKSI
+  Double precision PKSI(NI,NJ).
+  PKSI is the P gradient in the KSI direction.
+
+PR
+  Double precision PR.
+  PR is the Prandtl number.
+
+PREF
+  Double precision PREF.
+  PREF is the reference pressure.
+
+PSI
+  Double precision PSI(NI,NJ).
+  PSI is the stream function.
+
+PT
+  Double precision PT.
+
+QT
+  Double precision QT.
+
+R
+  Double precision R(NI,NJ).
+  R is used in axisymmetric problems to store the radial distance.
+  For MODE=0, R(I,J) = 1.
+  For MODE=1, R(I,J) = Y(I,J), the radial distance.
+
+RA
+  Double precision RA.
+  RA is the Rayleigh number = GRASH*R.
+
+RBD
+  Double precision RBD.
+  RBD is the ratio FMA/RA.
+
+RDTM
+  Double precision RDTM.
+
+  If INIT is zero, then RDTM is zero.
+
+  Otherwise, RDTM = 1.0/DTM, the reciprocal of the time step DTM.
+
+RE
+  Double precision RE.
+  RE is the Reynolds number.
+
+RECB
+  Double precision RECB.
+  RECB is the crucible Reynolds number.
+
+RECT
+  Double precision RECT.
+  RECT is the crystal Reynolds number.
+
+RELAX
+  Double precision RELAX(14).
+  RELAX is a set of relaxation coefficients.
+
+  RELAX(1) through RELAX(10) are relaxation coefficients for
+  the state variables 1 through 10.
+
+  RELAX(12) - relaxation coefficient for turbulent viscosity GAMT.
+
+RES
+  Double precision RES(NS).
+  For each state variable, the maximum relative change in the
+  state variable for the current iteration.
+
+RHO
+  Double precision RHO(NI,NJ).
+  RHO contains the fluid density at each primary node.
+  In version 1.0 of MASTRAPP, RHO is has a constant uniform
+  value, namely RHOCON.
+
+RHOCON
+  Double precision RHOCON.
+  RHOCON is the reference density.
+  In version 1.0 of MASTRAPP, all fluid densities in the array
+  RHO are set to RHOCON.
+
+RHOL
+  Double precision RHOL.
+  The density of the liquid, only used to define FRSL and BO.
+
+RHOS
+  Double precision RHOS.
+  The density of the solid, only used to define FRSL.
+
+RPR
+  Double precision RPR.
+  The ratio RHOCON/(RE*PR).
+
+RUETA
+  Double precision RUETA(NI,NJ).
+  RUETA is the component of the mass velocity interpolated
+  at the interface between primary nodes (I,J-1) and (I,J),
+  and normal to the cell interface.
+
+RUKSI
+  Double precision RUKSI(NI,NJ).
+  RUKSI is the component of the mass velocity interpolated
+  at the interface between primary nodes (I-1,J) and (I,J),
+  and normal to the cell interface.
+
+SIGE
+  Double precision SIGE.
+  A constant in the turbulence model.
+
+SIGK
+  Double precision SIGK.
+  A constant in the turbulence model.
+
+SIGMA
+  Double precision SIGMA.
+  The surface tension of the melt.
+
+SIGT
+  Double precision SIGT.
+  A constant in the turbulence model.
+
+SMAX
+  Double precision SMAX.
+  The maximum local mass imbalance, as computed in SETUP.
+
+SMOOTH Double precision SMOOTH.
+  Used in ADAPT to control the spacing between grid lines.
+
+SSUM
+  Double precision SSUM.
+  The total mass imbalance, as computed in SETUP.
+
+STEL
+  Double precision STEL.
+  The Stefan number of the liquid.
+  STEL = CL * (TW-TF)/HF.
+
+STES
+  Double precision STES.
+  The Stefan number of the solid.
+  STES = CS * (TF-TIN)/HF
+
+T
+  Double precision T(NI,NJ).
+  The temperature at each primary node (I,J).
+
+TANCA
+  Double precision TANCA.
+  The tangent of the contact angle between one phase and the
+  crystal.
+
+TANCA2 Double precision TANCA2.
+  The tangent of the contact angle between the other phase and
+  the crystal.
+
+TAS
+  Double precision TAS.
+  ???.
+
+TEND
+  Double precision TEND.
+  The dimensionless end time.
+  TNOW varies between TINIT and TEND.
+
+  TEND = TINIT + DTM * LASTT.
+
+TF
+  Double precision TF.
+  The fusion or melting temperature of the crystal.
+
+TIN
+  Double precision TIN.
+  An initial temperature somewhere.  It determines the solid
+  Stefan number STES, and that's all it does.
+
+TINIT
+  Double precision TINIT.
+  The dimensionless initial time.
+
+TITLE
+  Character*25 TITLE(NS).
+  The entries of TITLE contain the names of the state variables.
+
+TNOW
+  Double precision TNOW.
+  The dimensionless current time.
+  TNOW = TINIT + DTM * NDT.
+
+TW
+  Double precision TW.
+  The temperature specified along the crucible wall.
+
+U
+  Double precision U(NI,NJ).
+  U contains the horizontal (in the XY coordinate system) component of
+  velocity at each primary node (I,J).
+
+V
+  Double precision V(NI,NJ).
+  V contains the vertical (in the XY coordinate system) component of
+  velocity at each primary node (I,J).
+
+VAVE
+  Double precision VAVE.
+  For cost function ICOST=3, the desired average velocity magnitude.
+
+VOL
+  Double precision VOL(NI,NJ).
+  VOL contains the volume of each control volume.
+  Unfortunately, this is not completely accurate.
+
+  The code only defines the volume for the control volumes that happen
+  to be in the current subregion of interest.  Outside of that
+  region, the value of VOL cannot be relied on.  The subregion of
+  interest is specified by the values of L1 and M1.
+
+  Also, for an axisymmetric problem (MODE=1), VOL is automatically
+  multiplied by a factor representing the radial distance.
+
+VORT
+  Double precision VORT(NI,NJ).
+  The fluid flow vorticity at each primary node (I,J),
+  which is defined, in the continuous case, as
+  VORT(X,Y) = dV/dX - dU/dY.
+
+W
+  Double precision W(NI,NJ).
+  For axisymmetric flow, W is the velocity in the angular
+  direction.
+
+X
+  Double precision X(NI,NJ).
+  X contains the X coordinates of the primary nodes, which are
+  the centers of the control volumes.
+
+  In most cases, X(I,J) is the average of the four enclosing
+  corner values, XC(I,J), XC(I+1,J), XC(I,J+1), and XC(I+1,J+1).
+
+XBOT
+  Double precision XBOT(NBOT).
+  The X coordinates of a set of points defining the bottom of the
+  crucible.
+
+XC
+  Double precision XC(NI,NJ).
+  XC contains the X coordinate of nodes which are the "corners" of
+  control volumes.
+
+XLEN
+  Double precision XLEN.
+  The width of the computational region.
+
+Y
+  Double precision Y(NI,NJ).
+  Y contains the Y coordinates of primary nodes, which are
+  the centers of the control volumes.
+
+  In most cases, Y(I,J) is the average of the four enclosing
+  corner values, YC(I,J), YC(I+1,J), YC(I,J+1), and YC(I+1,J+1).
+
+YBOT
+  Double precision YBOT(NBOT).
+  The Y coordinates of a set of points defining the bottom of the
+  crucible.
+
+YC
+  Double precision YC(NI,NJ).
+  YC contains the Y coordinate of nodes which are the "corners" of
+  control volumes.
+
+YLEN
+  Double precision YLEN.
+  The height of the computational region.
+

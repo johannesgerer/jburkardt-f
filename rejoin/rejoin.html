@@ -1,0 +1,276 @@
+<html>
+
+  <head>
+    <title>
+      REJOIN - Rejoin or Split Distributed Data
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      REJOIN <br> Rejoin or Split Distributed Data
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>REJOIN</b>
+      is a FORTRAN90 library which
+      demonstrates a way to split or merge data files for parallel computations.
+      In the case considered here, each processor writes data to separate "parallel"
+      files, and after program execution, it is desired that these file
+      be gathered into a single "sequential" file.
+    </p>
+
+    <p>
+      The problem was simple.  Suppose that a logical array
+      of <b>NPX</b> by <b>NPY</b> processors was used, and that the computation
+      was associated with a physical array of <b>NX_GLOBAL</b> by
+      <b>NY_GLOBAL</b> processors.  The original physical array was divided up
+      among the processors, and each handled its own piece.  (There was
+      <i>some</i> communication between pieces, via what amounted to internal
+      boundary conditions).  Once the computation was done, each processor
+      wrote out its information to a file, whose name had the processor ID
+      embedded in it.  In order to conveniently graph or analyze the data,
+      it was desired to rejoin all this data into a single file, as though
+      one processor had handled it.  This is what <b>REJOIN</b> does, for the
+      data from a specific program.
+    </p>
+
+    <p>
+      Of course, no sooner was code written to <i>rejoin</i> data from a
+      logical array of <b>NPX</b> by <b>NPY</b> processors, than a request was
+      made for a new feature, the ability to <i>reshape</i> the data.
+      Reshaping the data means writing a new set of files corresponding
+      to a different processor configuration of, say, <b>MPX</b> by <b>MPY</b>
+      processors.
+    </p>
+
+    <p>
+      Rehaping allows you to run on one configuration on Tuesday, save the
+      data, and resume the calculation on Wednesday on a different processor
+      configuration.  It turns out that the easiest (though not most
+      efficient!) way to do this is simply to add a "split" option to the
+      code, which splits up a sequential data file into an arbitrary set of
+      parallel data files.
+    <p>
+
+    <p>
+      Once we have a split option, the reshape option can be carried out
+      in two steps:
+      <ol>
+        <li>
+          "rejoin" the <b>NPX</b> by <b>NPY</b> data into a single sequential file;
+        </li>
+        <li>
+          "split" the sequential data into <b>MPX</b> by <b>MPY</b> data
+        </li>
+      </ol>
+      See the <b>SPLIT_SAVE</b> routine for details.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "rejoin.f90">rejoin.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "rejoin.sh">rejoin.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>REJOIN_PRB</b> "rejoins" a set of
+      files from a parallel run.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "rejoin_prb.f90">rejoin_prb.f90</a>,
+          the calling program;
+        </li>
+        <li>
+          <a href = "rejoin_prb.sh">rejoin_prb.sh</a>,
+          commands to compile, link and run the calling program
+        </li>
+        <li>
+          <a href = "rejoin_prb_output.txt">rejoin_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SPLIT_PRB</b> splits sequential data
+      into separate files.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "split_prb.f90">split_prb.f90</a>,
+          the calling program;
+        </li>
+        <li>
+          <a href = "split_prb.sh">split_prb.sh</a>,
+          commands to compile, link and run the calling program
+        </li>
+        <li>
+          <a href = "split_prb_output.txt">split_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>U_O_F</b> converts unformatted data to formatted data.
+      Files you may copy include:
+      <ul>
+        <li>
+          <a href = "u_to_f_prb.f90">u_to_f_prb.f90</a>,
+          the calling program;
+        </li>
+        <li>
+          <a href = "u_to_f_prb.sh">u_to_f_prb.sh</a>,
+          commands to compile, link and run the calling program
+        </li>
+        <li>
+          <a href = "u_to_f_prb_output.txt">u_to_f_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You may copy the single "sequential" data file:
+      <ul>
+        <li>
+          <a href = "field_l.txt">field_l.txt</a>;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You may copy the 8 "pieces" into which the file was divided:
+      <ul>
+        <li>
+          <a href = "field_l_0000_.txt">field_l_0000_.txt</a>, file #0;
+        </li>
+        <li>
+          <a href = "field_l_0001_.txt">field_l_0001_.txt</a>, file #1;
+        </li>
+        <li>
+          <a href = "field_l_0002_.txt">field_l_0002_.txt</a>, file #2;
+        </li>
+        <li>
+          <a href = "field_l_0003_.txt">field_l_0003_.txt</a>, file #3;
+        </li>
+        <li>
+          <a href = "field_l_0004_.txt">field_l_0004_.txt</a>, file #4;
+        </li>
+        <li>
+          <a href = "field_l_0005_.txt">field_l_0005_.txt</a>, file #5;
+        </li>
+        <li>
+          <a href = "field_l_0006_.txt">field_l_0006_.txt</a>, file #6;
+        </li>
+        <li>
+          <a href = "field_l_0007_.txt">field_l_0007_.txt</a>, file #7;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>I4_TO_S_ZERO</b> converts an integer to a string, with zero padding.
+        </li>
+        <li>
+          <b>PFILE_CLOSE</b> closes all the "parallel" files.
+        </li>
+        <li>
+          <b>PFILE_NAME_GEN</b> generates a file name that contains a processor ID.
+        </li>
+        <li>
+          <b>PFILE_OPEN_READ</b> opens all the "parallel" files for reading.
+        </li>
+        <li>
+          <b>PFILE_OPEN_WRITE</b> opens all the "parallel" files for writing.
+        </li>
+        <li>
+          <b>PFILE_READ_PDATA</b> reads "parallel" data from the parallel files.
+        </li>
+        <li>
+          <b>PFILE_READ_SDATA</b> reads "scalar data" from a set of parallel files.
+        </li>
+        <li>
+          <b>PFILE_WRITE_PDATA</b> writes "parallel" data to the parallel files.
+        </li>
+        <li>
+          <b>PFILE_WRITE_SDATA</b> writes "scalar data" to a set of parallel files.
+        </li>
+        <li>
+          <b>REJOIN_SAVE</b> "rejoins" a set of parallel DNS SAVE files into one sequential file.
+        </li>
+        <li>
+          <b>SFILE_CLOSE</b> closes a sequential file.
+        </li>
+        <li>
+          <b>SFILE_OPEN_READ</b> opens a sequential file for reading.
+        </li>
+        <li>
+          <b>SFILE_OPEN_WRITE</b> opens a sequential file for writing.
+        </li>
+        <li>
+          <b>SFILE_READ</b> reads data from a sequential file.
+        </li>
+        <li>
+          <b>SFILE_WRITE</b> writes data to the sequential file.
+        </li>
+        <li>
+          <b>SPLIT_SAVE</b> "splits" a single sequential DNS SAVE file into parcels.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>U_TO_F_ALL</b> converts all the files from unformatted to formatted form.
+        </li>
+        <li>
+          <b>U_TO_F_ONE</b> converts one file from unformatted to formatted form.
+        </li>
+      </ul>
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 18 May 2003.
+    </i>
+
+  </body>
+
+</html>

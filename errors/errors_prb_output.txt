@@ -1,0 +1,935 @@
+April 30 2012  10:18:49.895 AM
+ 
+ERRORS_PRB
+  FORTRAN90 version
+  Test the ERRORS library.
+ 
+HOW RELIABLE ARE OUR CALCULATIONS?
+ 
+This program demonstrates how unreliable certain
+calculations are, when performed with a finite
+accuracy on a computer. 
+ 
+Standard software is used where possible for the 
+solution of these problems.
+ 
+Paraphrasing the reference:
+ 
+ "Despite the spread of computers and calculators,
+  many users suffer a certain computational 
+  gullibility.
+ 
+  Whatever the computer produces is regarded as
+  almost mathematically proven.
+ 
+  It is often quite astonishing to discover that
+  even in simple calculations with just a few 
+  operations it is possible to produce completely 
+  incorrect results, and that this is a necessary 
+  consequence of current computer techniques - not 
+  just the user's method, but the arithmetic 
+  processes of the computer as well.
+ 
+  The following examples show how few operations 
+  are needed for a computer to return meaningless 
+  results.
+ 
+  This fact applies not just to hand calculators
+  but also to the biggest supercomputers.  The 
+  worst aspect of these effects is that one never
+  knows whether, when or where these sorts of 
+  errors will enter into a long, involved 
+  calculation and destroy the results.
+ 
+  Only in the last few years have methods and 
+  solution processes been developed to 
+  mathematically describe these effects, and 
+  numerically control them."
+ 
++=============================================+
+|                                             |
+|  Exercise 1                                 |
+|                                             |
+|    P = 665857                               |
+|    Q = 470832                               |
+|                                             |
+|  Compute:                                   |
+|                                             |
+|    R = P**2 - 2 * Q**2                      |
+|                                             |
+|  Correct value:                             |
+|                                             |
+|    R = 1                                    |
+|                                             |
++=============================================+
+ 
+  Single precision R =    0.00000    
+  Double precision R =    1.00000    
+ 
++=============================================+
+|                                             |
+|  Exercise 2                                 |
+|                                             |
+|    P = 10864                                |
+|    Q = 18817                                |
+|                                             |
+|  Compute:                                   |
+|                                             |
+|    R = 9 * P**4 - Q**4 + 2 * Q**2           |
+|                                             |
+|  Correct value:                             |
+|                                             |
+|    R = 1                                    |
+|                                             |
++=============================================+
+ 
+  Single precision R =   0.708159E+09
+  Double precision R =    2.00000    
+ 
++=============================================+
+|                                             |
+|  Exercise 3                                 |
+|                                             |
+|    P = 10**34                               |
+|    Q = - 2                                  |
+|                                             |
+|  Compute:                                   |
+|                                             |
+|    R = ( P + Q ) - P                        |
+|                                             |
+|  Correct value:                             |
+|                                             |
+|    R = - 2                                  |
+|                                             |
++=============================================+
+ 
+  Single precision R =    0.00000    
+  Double precision R =    0.00000    
+ 
++=============================================+
+|                                             |
+|  Exercise 4                                 |
+|                                             |
+|    Q = 1.091608                             |
+|                                             |
+|  Compute:                                   |
+|                                             |
+|    R =                                      |
+|        170.4  * Q**3                        |
+|      - 356.41 * Q**2                        |
+|      + 168.97 * Q                           |
+|      +  18.601                              |
+|                                             |
+|  Correct value:                             |
+|                                             |
+|    R = 0.821248E-13                         |
+|                                             |
++=============================================+
+ 
+  Single precision R (direct evaluation) =    0.00000    
+  Single precision R (Horner's method) =   -0.114441E-04
+  Double precision R (direct evaluation) =   0.284217E-13
+  Double precision R (Horner's method) =    0.639488E-13
+ 
++=============================================+
+|                                             |
+|  Exercise 5                                 |
+|                                             |
+|    Q = 0.707107                             |
+|                                             |
+|  Compute:                                   |
+|                                             |
+|    R =                                      |
+|         8118 * Q**4                         |
+|      - 11482 * Q**3                         |
+|      +         Q**2                         |
+|      +  5741 * Q                            |
+|      -  2030                                |
+|                                             |
+|  Correct value:                             |
+|                                             |
+|    R = - 0.191527325270E-10                 |
+|                                             |
++=============================================+
+ 
+  R (direct evaluation) =    0.00000    
+  R (Horner's method) =     0.00000    
+ 
++=============================================+
+|                                             |
+|  Exercise 6                                 |
+|                                             |
+|    A = [ 64919121    - 159018721 ]          |
+|        [ 41869520.5  - 102558961 ]          |
+|                                             |
+|    B = [ 1 ]                                |
+|        [ 0 ]                                |
+|                                             |
+|  Solve:                                     |
+|                                             |
+|    A * X = B                                |
+|                                             |
+|  Correct X:                                 |
+|                                             |
+|    205,117,922.0                            |
+|     83,739,041.0                            |
+|                                             |
++=============================================+
+ 
+  R1: Gauss elimination using SGEFA and SGESL
+  R2: QR factorization using SQRDC and SQRSL.
+ 
+  Gauss elimination solution:
+ 
+   1 -0.197474    
+   2 -0.806186E-01
+ 
+  Least Squares solution:
+ 
+ -0.840378    
+ -0.542001    
+ 
++=============================================+
+|                                             |
+|  Exercise 6.5                               |
+|                                             |
+|    A = [ 888445  887112 ]                   |
+|        [ 887112  885781 ]                   |
+|                                             |
+|    det ( A ) = 1                            |
+|                                             |
+|    B = [ 1 ]                                |
+|        [ 0 ]                                |
+|                                             |
+|  Solve:                                     |
+|                                             |
+|    A * X = B                                |
+|                                             |
+|  Correct X:                                 |
+|                                             |
+|    885781                                   |
+|   -887112                                   |
+|                                             |
++=============================================+
+ 
+  R1: Gauss elimination using SGEFA and SGESL
+  R2: QR factorization using SQRDC and SQRSL.
+ 
+  SGEFA failed, returning INFO =    2
+ 
+  Least Squares solution and residual:
+ 
+   1 -0.707637     -0.125551E+07
+   2 -0.706576     -0.125363E+07
+ 
+  Exact solution and residual:
+ 
+   1   885781.      -1.00000    
+   2  -887112.       0.00000    
+ 
++=============================================+
+|                                             |
+|  Exercise 7                                 |
+|                                             |
+|    A = [ -367296  -43199   519436  -954302 ]|
+|        [  259718 -477151  -367295 -1043199 ]|
+|        [  886731   88897 -1254026 -1132096 ]|
+|        [  627013  566048  -886732   911103 ]|
+|                                             |
+|    B = [ 1 ]                                |
+|        [ 1 ]                                |
+|        [ 1 ]                                |
+|        [ 0 ]                                |
+|                                             |
+|  Solve:                                     |
+|                                             |
+|    A * X = B                                |
+|                                             |
+|  Correct X:                                 |
+|                                             |
+|    8.86731088897E+17                        |
+|    8.86731088897E+11                        |
+|    6.27013566048E+17                        |
+|    6.27013566048E+11                        |
+|                                             |
++=============================================+
+ 
+  SGEFA/SGESL solution (Gauss elimination):
+ 
+   31.9464    
+  0.331784E-04
+   22.5895    
+  0.211777E-04
+ 
+  SQRDC/SQRSL solution (QR factorization):
+ 
+  -25.3683    
+ -0.288022E-04
+  -17.9381    
+ -0.168170E-04
+ 
++=============================================+
+|                                             |
+|  Exercise 8                                 |
+|                                             |
+|    P(X) =                                   |
+|        170.4  * x**3                        |
+|      - 356.41 * x**2                        |
+|      + 168.97 * x                           |
+|      +  18.601                              |
+|                                             |
+|  Seek the minimizer X* of P(X)              |
+|  over the interval 0 <= X <= 2.             |
+|                                             |
+|  The true minimizer lies in the interval    |
+|                                             |
+|  [1.091607978, 1.091607981 ]                |
+|                                             |
++=============================================+
+ 
+  Evaluating P(X) in the usual way
+  FMIN computes the minimizer at    1.09163    
+  with function value  -0.305176E-04
+ 
+  Evaluating P(X) using Horner's method,
+  FMIN computes the minimizer at    1.09163    
+  with function value  -0.114441E-04
+ 
+  The true value lies between    1.091607928276062     and    1.091607928276062    
+  with function value below  -0.1144409179687500E-04 -0.1144409179687500E-04
+ 
++=============================================+
+|                                             |
+|  Exercise 9                                 |
+|                                             |
+|    P(X) =                                   |
+|         223200658 * X**3                    |
+|      - 1083557822 * X**2                    |
+|      + 1753426039 * X                       |
+|       - 945804881                           |
+|                                             |
+|  Evaluate at 11 equally spaced values       |
+|  from 1.61801916 to 1.61801917              |
+|                                             |
+|  Correct table:                             |
+|                                             |
+|  ===== X =====    ========= P(X) ========   |
+|                                             |
+|    1.618019160  - 0.17081105112320e-11      |
+|    1.618019161  - 0.89804011575510e-12      |
+|    1.618019162  - 0.34596536943057e-12      |
+|    1.618019163  - 0.51884933054474e-13      |
+|    1.618019164  - 0.15797467422848e-13      |
+|    1.618019165  - 0.23770163333175e-12      |
+|    1.618019166  - 0.71759609157723e-12      |
+|    1.618019167  - 0.14554795029553e-11      |
+|    1.618019168  - 0.24513505282621e-11      |
+|    1.618019169  - 0.37052078282936e-11      |
+|    1.618019170  - 0.52170500638460e-11      |
+|                                             |
++=============================================+
+ 
+  R1: compute P(X) the regular way.
+  R2: compute P(X) using Horner's method.
+ 
+  Single precision:
+ 
+  X, R1, R2
+ 
+  1.6180191040   128.000       128.000    
+  1.6180191040   128.000       128.000    
+  1.6180191040   128.000       128.000    
+  1.6180191040   128.000       128.000    
+  1.6180191040   128.000       128.000    
+  1.6180191040   128.000       128.000    
+  1.6180191040   128.000       128.000    
+  1.6180191040   128.000       128.000    
+  1.6180191040   128.000       128.000    
+  1.6180191040   128.000       128.000    
+  1.6180193424   64.0000       64.0000    
+ 
+  Double precision:
+ 
+  X, DR1, DR2
+ 
+  1.6180191600  0.238419E-06 -0.119209E-06
+  1.6180191610   0.00000     -0.119209E-06
+  1.6180191620   0.00000      0.119209E-06
+  1.6180191630  0.476837E-06 -0.119209E-06
+  1.6180191640   0.00000      0.119209E-06
+  1.6180191650   0.00000       0.00000    
+  1.6180191660   0.00000      0.119209E-06
+  1.6180191670 -0.238419E-06   0.00000    
+  1.6180191680 -0.238419E-06  0.119209E-06
+  1.6180191690 -0.476837E-06 -0.119209E-06
+  1.6180191700   0.00000     -0.119209E-06
+ 
++=============================================+
+|                                             |
+|  Exercise 10                                |
+|                                             |
+|  For the data:                              |
+|                                             |
+|       X       Y                             |
+|                                             |
+|    5201477   99999                          |
+|    5201478  100000                          |
+|    5201479  100001                          |
+|                                             |
+|  Find the "nearest" straight line:          |
+|                                             |
+|    Y(X) = A * X + B                         |
+|                                             |
+|  in the least squares sense.                |
+|                                             |
+|  Correct values:                            |
+|                                             |
+|    A = 1.0                                  |
+|    B = - 5101478                            |
+|                                             |
+|  Evaluate:                                  |
+|                                             |
+|    Y(5201480)                               |
+|                                             |
+|  Correct value:                             |
+|                                             |
+|    Y(5201480) = 100002.0                    |
+|                                             |
++=============================================+
+ 
+                    Slope A    Intercept B    Y(5201480) 
+ 
+ 
+  Single precision slope calculation fails.
+  The divisor was computed as 0.
+  Double precision    1.00000     -0.510148E+07   100002.    
+ 
++=============================================+
+|                                             |
+|  Exercise 11                                |
+|                                             |
+|  P(X) =                                     |
+|      2124476931 * X**4                      |
+|    - 1226567328 * X**3                      |
+|    -  708158977 * X**2                      |
+|    +  408855776 * X                         |
+|    +    1.0E-27                             |
+|                                             |
+|  P(X) is positive for X >= 0.               |
+|                                             |
+|  Use a minimizer to seek the minimum        |
+|  value of P(X) in (0.56, 0.59).             |
+|                                             |
++=============================================+
+ 
+  Using standard evaluation,
+  subroutine FMIN finds a minimizer at X =   0.5773065090    
+  with function value P(X) =    16.00000000    
+ 
+  Using Horner's rule,
+  subroutine FMIN finds a minimizer at X =   0.5773072243    
+  with function value P(X) =    18.47383118    
+ 
++=============================================+
+|                                             |
+|  Exercise 12                                |
+|                                             |
+|  Solve a linear system A * x = b            |
+|                                             |
+|  A is the Hilbert matrix of order 9,        |
+|  multiplied by the least common multiple of |
+|  1 through 9, so all entries are integers.  |
+|                                             |
+|  B = (1,0,0,...,0)                          |
+|                                             |
+|  We are interested in the first component   |
+|  X(1) of the solution vector.               |
+|                                             |
+|  Correct X(1):                              |
+|                                             |
+|    6.611036022800E-06                       |
+|                                             |
++=============================================+
+ 
+  R1: Gauss elimination using SGEFA and SGESL
+  R2: QR factorization using SQRDC and SQRSL.
+ 
+ 
+  First solution component only:
+ 
+  I, R1(I), R2(I)
+ 
+    10  0.316440E-01  -1.78797    
+ 
++=============================================+
+|                                             |
+|  Exercise 13                                |
+|                                             |
+|  Solve a linear system A * x = b            |
+|                                             |
+|  A is the Hilbert matrix of order 21        |
+|  multiplied by the least common multiple of |
+|  1 through 25 so all entries are integral.  |
+|                                             |
+|  B is (1,0,0,...,0)                         |
+|                                             |
+|  We are interested in the first component   |
+|  X(1) of the solution vector.               |
+|                                             |
+|  Correct X(1):                              |
+|                                             |
+|    2.013145339298E-15                       |
+|                                             |
++=============================================+
+ 
+  R1: Gauss elimination using SGEFA and SGESL
+  R2: QR factorization using SQRDC and SQRSL.
+ 
+ 
+  First solution component only:
+ 
+  I, R1(I), R2(I)
+ 
+    22  0.489299E-06  0.746282E-06
+ 
++=============================================+
+|                                             |
+|  Exercise 14                                |
+|                                             |
+|    A = [ 64079  57314 ]                     |
+|        [ 51860  46385 ]                     |
+|                                             |
+|    B = [   2 ]                              |
+|        [ 305 ]                              |
+|                                             |
+|  Solve:                                     |
+|                                             |
+|    A * X = B                                |
+|                                             |
+|  Correct X:                                 |
+|                                             |
+|    - 46368.0                                |
+|      51841.0                                |
+|                                             |
++=============================================+
+ 
+            X(1)      X(2)
+ 
+  SGEFA/SGESL    -34733.1       38832.8    
+  SQRDC/SQRSL    -53997.8       60371.4    
+ 
++=============================================+
+|                                             |
+|  Exercise 15                                |
+|                                             |
+|    F(X) =       ( 4970 * X - 4923 )         |
+|           --------------------------------  |
+|           ( 4970 * X**2 - 9799 * X + 4830 ) |
+|                                             |
+|  Approximate F"(X) at X = 1 by:             |
+|                                             |
+|    Del2(X)(F,H) =                           |
+|      ( F(X-H) - 2*F(X) + F(X+H) ) / H**2    |
+|                                             |
+|  Correct values:                            |
+|                                             |
+|    F"(1.0)             = 94.0               |
+|                                             |
+|    Del2(1.0)(F,1.0E-4) = 70.78819           |
+|    Del2(1.0)(F,1.0E-5) = 93.76790           |
+|    Del2(1.0)(F,1.0E-8) = 94.0               |
+|                                             |
++=============================================+
+ 
+  H, Del2(X,H)
+  0.100000E-03   397873.    
+  0.100000E-04  0.164032E+07
+  0.100000E-07   0.00000    
+ 
++=============================================+
+|                                             |
+|  Exercise 16                                |
+|                                             |
+|  P(X,Y) =                                   |
+|     83521 *        y**8                     |
+|    +  578 * x**2 * y**4                     |
+|    -    2 * x**4                            |
+|    +    2 * x**6                            |
+|    -        x**8                            |
+|                                             |
+|  Evaluate P(X,Y) for                        |
+|                                             |
+|    X = 9478657                              |
+|    Y = 2298912                              |
+|                                             |
+|  Correct value:                             |
+|                                             |
+|    P(X,Y) = - 179,689,877,047,297           |
+|                                             |
++=============================================+
+ 
+  The unscaled calculation will overflow.
+  We use a scale factor on X and Y of   0.100000E+07
+ 
+  Scaled value of P(X,Y) =   0.145048E+19
+  Computed value of P(X,Y) =   0.145048E+19 *   0.100000E+07 ** 8
+ 
++=============================================+
+|                                             |
+|  Exercise 17                                |
+|                                             |
+|  A =                                        |
+|                                             |
+|     2.718281828                             |
+|    -3.141592654                             |
+|     1.414213562                             |
+|     0.5772156649                            |
+|     0.3010299957                            |
+|                                             |
+|  B =                                        |
+|                                             |
+|        1486.2497                            |
+|      878366.9879                            |
+|        - 22.37492                           |
+|     4773714.647                             |
+|           0.000185049                       |
+|                                             |
+|  Compute the scalar product:                |
+|                                             |
+|    R = A dot B                              |
+|                                             |
+|  Correct value:                             |
+|                                             |
+|    R = - 0.100657107E-10                    |
+|                                             |
++=============================================+
+ 
+  Standard loop     R =  -0.499944    
+  SDOT:             R =  -0.499944    
+  SDSDOT:           R =  -0.167568    
+  DOT_PRODUCT:      R =  -0.499944    
+  Standard loop    DR =   0.102519E-09
+  DOT_PRODUCT:     DR =   0.102519E-09
+ 
++=============================================+
+|                                             |
+|  Exercise 18                                |
+|                                             |
+|  X = 192119201                              |
+|  Y = 35675640                               |
+|                                             |
+|  Z(X,Y) =                                   |
+|    (                                        |
+|         1682 * x    * y**4                  |
+|       +    3 * x**3                         |
+|       +   29 * x    * y**2                  |
+|       -    2 * x**5                         |
+|       +  832                                |
+|      ) / 107751                             |
+|                                             |
+|  Correct Z:                                 |
+|                                             |
+|    1783.0                                   |
+|                                             |
++=============================================+
+ 
+  The unscaled calculation will overflow.
+  We use a scale factor on X and Y of   0.100000E+07
+ 
+  Scaled value of Z =   0.304109    
+  Computed value of Z =   0.304109     *   0.100000E+07 **     5
+ 
++=============================================+
+|                                             |
+|  Exercise 19                                |
+|                                             |
+|    F1(X) = 1 - Cos(X)                       |
+|    F2(X) = Sin**2(X) / ( 1 + Cos(X) )       |
+|    F3(X) = Taylor series for 1 - Cos(X)     |
+|      around X = 0, up to X**6 terms.        |
+|                                             |
+|  For all X                                  |
+|                                             |
+|    F1(X) = F2(X)                            |
+|                                             |
+|  For X near 0,                              |
+|                                             |
+|    F3(X) should approximate F1(X)           |
+|                                             |
++=============================================+
+ 
+       X          1-Cos        Sin**2/(1+Cos)  Taylor
+ 
+  0.500000      0.122417      0.122417      0.122418    
+  0.125000      0.780231E-02  0.780233E-02  0.780233E-02
+  0.312500E-01  0.488222E-03  0.488241E-03  0.488242E-03
+  0.781250E-02  0.305176E-04  0.305174E-04  0.305174E-04
+  0.195313E-02  0.190735E-05  0.190735E-05  0.190735E-05
+  0.488281E-03  0.119209E-06  0.119209E-06  0.119209E-06
+  0.122070E-03   0.00000      0.745058E-08  0.745058E-08
+  0.305176E-04   0.00000      0.465661E-09  0.465661E-09
+  0.762939E-05   0.00000      0.291038E-10  0.291038E-10
+  0.190735E-05   0.00000      0.181899E-11  0.181899E-11
+  0.476837E-06   0.00000      0.113687E-12  0.113687E-12
+  0.119209E-06   0.00000      0.710543E-14  0.710543E-14
+  0.298023E-07   0.00000      0.444089E-15  0.444089E-15
+ 
++=============================================+
+|                                             |
+|  Exercise 20                                |
+|                                             |
+|  P(X) =                                     |
+|        0.00005 * x**2                       |
+|    + 100        * x                         |
+|    +   0.005                                |
+|                                             |
+|  Evaluate the standard quadratic formula:   |
+|                                             |
+|    X1 = 0.5 * ( -B + sqrt(B**2-4*A*C) ) / A |
+|    X2 = 0.5 * ( -B - sqrt(B**2-4*A*C) ) / A |
+|                                             |
+|  Evaluate an alternate quadratic formula:   |
+|                                             |
+|    X3 = 2 * C / ( - B + sqrt(B**2-4*A*C) )  |
+|    X4 = 2 * C / ( - B - sqrt(B**2-4*A*C) )  |
+|                                             |
+|  Correct results:                           |
+|                                             |
+|    Root1 =       -0.00005...                |
+|    Root2 = -1999999.99995...                |
+|                                             |
++=============================================+
+ 
+  X1 =    0.00000     with P(X1) =   0.500000E-02
+  X2 =  -0.200000E+07 with P(X2) =   0.500000E-02
+ 
+  RPOLY2_ROOTS2 returned an error flag.
+ 
+  Repeat calculations in real ( kind = 8 ):
+ 
+ 
+  X1 =  -0.500000387547E-04 with P(X1) =  -0.387534E-08
+  X2 =   -2000000.00000     with P(X2) =   0.500000E-02
+ 
+  X3 =   -1999998.37500     with P(X3) =   -162.495    
+  X4 =  -0.499999987369E-04 with P(X4) =   0.126436E-09
+ 
++=============================================+
+|                                             |
+|  Exercise 21                                |
+|                                             |
+|  P(X) =                                     |
+|       1         * x**2                      |
+|    -  4         * x                         |
+|    +  3.9999999                             |
+|                                             |
+|  Evaluate the standard quadratic formula:   |
+|                                             |
+|    X1 = 0.5 * ( -B + sqrt(B**2-4*A*C) ) / A |
+|    X2 = 0.5 * ( -B - sqrt(B**2-4*A*C) ) / A |
+|                                             |
+|  Evaluate an alternate quadratic formula:   |
+|                                             |
+|    X3 = 2 * C / ( - B + sqrt(B**2-4*A*C) )  |
+|    X4 = 2 * C / ( - B - sqrt(B**2-4*A*C) )  |
+|                                             |
+|  Correct results:                           |
+|                                             |
+|    1.999683772                              |
+|    2.000316228                              |
+|                                             |
++=============================================+
+  X1 =    2.000000000     with P(X1) =    0.00000    
+  X2 =    2.000000000     with P(X2) =    0.00000    
+ 
+  X3 =    2.000000000     with P(X3) =    0.00000    
+  X4 =    2.000000000     with P(X4) =    0.00000    
+ 
+  True value =    1.999683738    
+  True value =    2.000316143    
+ 
++=============================================+
+|                                             |
+|  Exercise 215                               |
+|                                             |
+|  Evaluate the standard quadratic formula:   |
+|                                             |
+|    X1 = 0.5 * ( -B + sqrt(B**2-4*A*C) ) / A |
+|    X2 = 0.5 * ( -B - sqrt(B**2-4*A*C) ) / A |
+|                                             |
+|  Evaluate an alternate quadratic formula:   |
+|                                             |
+|    X3 = 2 * C / ( - B + sqrt(B**2-4*A*C) )  |
+|    X4 = 2 * C / ( - B - sqrt(B**2-4*A*C) )  |
+|                                             |
+|  Correct results:                           |
+|                                             |
+|    yabba                                    |
+|    dabba                                    |
+|                                             |
++=============================================+
+ 
+  A, B, C  =    6.00000       5.00000      -4.00000    
+  X1 =   0.5000000000     with P(X1) =    0.00000    
+  X2 =   -1.333333373     with P(X2) =    0.00000    
+ 
+  X3 =   -1.333333373     with P(X3) =    0.00000    
+  X4 =   0.5000000000     with P(X4) =    0.00000    
+  True value =   0.5000000000    
+  True value =   -1.333333373    
+ 
+  A, B, C  =   0.600000E+31  0.500000E+31 -0.400000E+31
+ 
+SKIP THIS TEST!.
+  It's guaranteed to cause overflow for us!
+ 
+  A, B, C  =   0.100000E-29 -0.100000E+31  0.100000E+31
+ 
+SKIP THIS TEST!.
+  It's guaranteed to cause overflow for us!
+ 
++=============================================+
+|                                             |
+|  Exercise 22                                |
+|                                             |
+|  Define F(X,N) to be the difference between |
+|  EXP(X) and its Taylor series, multiplied   |
+|  by N!.                                     |
+|                                             |
+|  Formula 1:                                 |
+|                                             |
+|    F(X,N) = N! *                            |
+|      ( EXP(X) - (1+X+X**2/2+...+X**N/N!) )  |
+|                                             |
+|  But we can also determine a second         |
+|  definition, namely:                        |
+|                                             |
+|  Formula 2:                                 |
+|                                             |
+|    F(X,N) = N*F(X,N-1) - X**N               |
+|                                             |
+|  Compare formula 1 with formula 2 at X = 1  |
+|                                             |
++=============================================+
+ 
+    N  Formula 1  Formula 2  x**n/(n+1)
+ 
+   0   1.71828       1.71828       0.00000    
+   1  0.718282      0.718282       1.00000    
+   2  0.436563      0.436563      0.500000    
+   3  0.309690      0.309690      0.333333    
+   4  0.238758      0.238762      0.250000    
+   5  0.193777      0.193810      0.200000    
+   6  0.162735      0.162857      0.166667    
+   7  0.139389      0.139999      0.142857    
+   8  0.115356      0.119995      0.125000    
+   9   0.00000      0.799561E-01  0.111111    
+  10 -0.865173     -0.200439      0.100000    
+  11  -9.51691      -3.20483      0.909091E-01
+  12  -114.203      -39.4580      0.833333E-01
+  13  -1484.64      -513.954      0.769231E-01
+  14  -20784.9      -7196.36      0.714286E-01
+  15  -311774.      -107946.      0.666667E-01
+  16 -0.498838E+07 -0.172714E+07  0.625000E-01
+  17 -0.848025E+08 -0.293614E+08  0.588235E-01
+  18 -0.152644E+10 -0.528506E+09  0.555556E-01
+  19 -0.290025E+11 -0.100416E+11  0.526316E-01
+  20 -0.580049E+12 -0.200832E+12  0.500000E-01
+ 
++=============================================+
+|                                             |
+|  Exercise 23                                |
+|                                             |
+|  Estimate EXP(-5.5) in two ways:            |
+|                                             |
+|    R1(N) = sum ( I = 0 to N ) X**I/I        |
+|    R2(N) = 1 / sum ( I = 0 to N ) (-X)**I/I |
+|                                             |
+|  Correct value:                             |
+|                                             |
+|    EXP(-5.5) = 0.00408677143846406699       |
+|                                             |
++=============================================+
+ 
+  Computed R1 =   0.408743E-02
+  Computed R2 =   0.408677E-02
+ 
++=============================================+
+|                                             |
+|  Exercise 24                                |
+|                                             |
+|  Estimate the matrix exponential e^A        |
+|  using a naive Taylor series approach.      |
+|                                             |
+|  The matrix A is                            |
+|                                             |
+|    -49 24                                   |
+|    -64 31                                   |
+|                                             |
+|  Correct value of e^A:                      |
+|                                             |
+|     -0.735759  0.551819                     |
+|     -1.471518  1.103638                     |
+|                                             |
+|  Reported computed value of e^A:            |
+|                                             |
+|    -22.25880  -1.432766                     |
+|    -61.49931  -3.474280                     |
+|                                             |
++=============================================+
+ 
+Computed value of e^A:
+ 
+     -0.788594      1.314455
+     -0.126288     -0.839240
+ 
++=============================================+
+|                                             |
+|  Exercise 25                                |
+|                                             |
+|  Estimate an integer power of a             |
+|  real number.                               |
+|                                             |
+|  The computation is                         |
+|                                             |
+|    (1.0000001)^(2^27)                       |
+|                                             |
+|  Correct value is:                          |
+|                                             |
+|    674,530.4707                             |
+|                                             |
++=============================================+
+ 
+  X**(2**N) =               8886102.0    
+  X*X*...*X =               8850397.0    
+  E^(logX*27**N)) =         8886102.0    
+  E^(logX*E^(27*logN)) =    8886043.0    
+ 
++=============================================+
+|                                             |
+|  Exercise 26                                |
+|                                             |
+|  Estimate an integer power of a             |
+|  real number.                               |
+|                                             |
+|  In this version, use DOUBLE PRECISION.     |
+|                                             |
+|  The computation is                         |
+|                                             |
+|    (1.0000001)^(2^27)                       |
+|                                             |
+|  Correct value is:                          |
+|                                             |
+|    674,530.4707                             |
+|                                             |
++=============================================+
+ 
+  X**(2**N) =               674530.48    
+  X*X*...*X =               674530.48    
+  E^(logX*27**N)) =         674530.48    
+  E^(logX*E^(27*logN)) =    674530.48    
+ 
+ERRORS_PRB
+  Normal end of execution.
+ 
+April 30 2012  10:18:49.898 AM

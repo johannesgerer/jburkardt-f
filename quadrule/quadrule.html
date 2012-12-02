@@ -1,0 +1,830 @@
+<html>
+
+  <head>
+    <title>
+      QUADRULE - Quadrature Rules
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      QUADRULE <br> Quadrature Rules
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>QUADRULE</b>
+      is a FORTRAN90 library which
+      sets up a variety of
+      quadrature rules, used to approximate the integral of a function
+      over various domains.
+    </p>
+
+    <p>
+      <b>QUADRULE</b> returns the abscissas and weights for a variety of
+      one dimensional quadrature rules for approximating the integral
+      of a function.  The best rule is generally Gauss-Legendre quadrature,
+      but other rules offer special features, including the ability to
+      handle certain weight functions, to approximate an integral
+      on an infinite integration region, or to estimate the approximation
+      error.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>QUADRULE</b> is available in
+      <a href = "../../c_src/quadrule/quadrule.html">a C version</a> and
+      <a href = "../../cpp_src/quadrule/quadrule.html">a C++ version</a> and
+      <a href = "../../f77_src/quadrule/quadrule.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/quadrule/quadrule.html">a FORTRAN90 version</a> and
+      <a href = "../../math_src/quadrule/quadrule.html">a MATHEMATICA version</a> and
+      <a href = "../../m_src/quadrule/quadrule.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/clenshaw_curtis_rule/clenshaw_curtis_rule.html">
+      CLENSHAW_CURTIS_RULE</a>,
+      a FORTRAN90 program which
+      defines a Clenshaw Curtis quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/int_exactness/int_exactness.html">
+      INT_EXACTNESS</a>,
+      a FORTRAN90 program which
+      checks the polynomial exactness
+      of a 1-dimensional quadrature rule for a finite interval.
+    </p>
+
+    <p>
+      <a href = "../../f_src/int_exactness_laguerre/int_exactness_laguerre.html">
+      INT_EXACTNESS_LAGUERRE</a>,
+      a FORTRAN90 program which
+      checks the polynomial exactness
+      of a 1-dimensional quadrature rule for a semi-infinite interval.
+    </p>
+
+    <p>
+      <a href = "../../f_src/int_exactness_legendre/int_exactness_legendre.html">
+      INT_EXACTNESS_LEGENDRE</a>,
+      a FORTRAN90 program which
+      tests the polynomial exactness of Gauss-Legendre quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/intlib/intlib.html">
+      INTLIB</a>,
+      a FORTRAN90 library which
+      contains a variety
+      of routines for numerical estimation of integrals in 1D.
+    </p>
+
+    <p>
+      <a href = "../../f_src/kronrod/kronrod.html">
+      KRONROD</a>,
+      a FORTRAN90 library which
+      can compute a Gauss and Gauss-Kronrod pair of quadrature rules
+      of arbitrary order,
+      by Robert Piessens, Maria Branders.
+    </p>
+
+    <p>
+      <a href = "../../f_src/patterson_rule/patterson_rule.html">
+      PATTERSON_RULE</a>,
+      a FORTRAN90 program which
+      computes a Gauss-Patterson quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadpack/quadpack.html">
+      QUADPACK</a>,
+      a FORTRAN90 library which
+      contains a variety of routines for
+      numerical estimation of integrals in 1D.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules/quadrature_rules.html">
+      QUADRATURE_RULES</a>,
+      a dataset directory which
+      contains sets of files that define quadrature
+      rules over various 1D intervals or multidimensional hypercubes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrature_test/quadrature_test.html">
+      QUADRATURE_TEST</a>,
+      a FORTRAN90 program which
+      reads the definition of a
+      multidimensional quadrature rule from three files, applies
+      the rule to a number of test integrals, and prints the
+      results.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrature_weights/quadrature_weights.html">
+      QUADRATURE_WEIGHTS</a>,
+      a FORTRAN90 library which
+      illustrates techniques for computing the weights of a quadrature
+      rule, assuming that the points have been specified.
+    </p>
+
+    <p>
+      <a href = "../../f_src/r16_hermite_rule/r16_hermite_rule.html">
+      R16_HERMITE_RULE</a>,
+      a FORTRAN90 program which
+      can compute and print a Gauss-Hermite quadrature rule, using
+      "quadruple precision real" arithmetic.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which
+      contains quadrature
+      rules for a variety of unusual areas, surfaces and volumes in 2D,
+      3D and N-dimensions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tanh_quad/tanh_quad.html">
+      TANH_QUAD</a>,
+      a FORTRAN90 library which
+      sets up the tanh quadrature rule;
+    </p>
+
+    <p>
+      <a href = "../../f_src/tanh_sinh_rule/tanh_sinh_rule.html">
+      TANH_SINH_RULE</a>,
+      a FORTRAN90 program which
+      computes and writes out a tanh-sinh quadrature rule of given order.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int/test_int.html">
+      TEST_INT</a>,
+      a FORTRAN90 library which
+      contains a number of functions that may be used as test integrands for
+      quadrature rules in 1D.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_hermite/test_int_hermite.html">
+      TEST_INT_HERMITE</a>,
+      a FORTRAN90 library which
+      defines some test integration problems over infinite intervals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_laguerre/test_int_laguerre.html">
+      TEST_INT_LAGUERRE</a>,
+      a FORTRAN90 library which
+      defines test integrands for integration over [ALPHA,+Infinity).
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms351/toms351.html">
+      TOMS351</a>,
+      a FORTRAN77 library which
+      estimates an integral using Romberg integration.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms379/toms379.html">
+      TOMS379</a>,
+      a FORTRAN77 library which
+      estimates an integral.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms418/toms418.html">
+      TOMS418</a>,
+      a FORTRAN77 library which
+      estimates the integral of a function
+      with a sine or cosine factor.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms424/toms424.html">
+      TOMS424</a>,
+      a FORTRAN77 library which
+      estimates the integral of a function
+      using Clenshaw-Curtis quadrature.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms468/toms468.html">
+      TOMS468</a>,
+      a FORTRAN77 library which
+      carries out the "automatic" integration of a function.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms655/toms655.html">
+      TOMS655</a>,
+      a FORTRAN90 library which
+      computes the weights for interpolatory quadrature rule;<br>
+      this library is commonly called <b>IQPACK</b>;<br>
+      this is a FORTRAN90 version of ACM TOMS algorithm 655.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Donald Anderson,<br>
+          Gaussian Quadrature Formulae for the integral from 0 to 1 of
+          -ln(X) f(X) dx,<br>
+          Mathematics of Computation,<br>
+          Volume 19, Number 91, July 1965, pages 477-481.
+        </li>
+        <li>
+          Claudio Canuto, Yousuff Hussaini, Alfio Quarteroni, Thomas Zang,<br>
+          Spectral Methods in Fluid Dynamics,<br>
+          Springer, 1993,<br>
+          ISNB13: 978-3540522058,<br>
+          LC: QA377.S676.
+        </li>
+        <li>
+          Charles Clenshaw, Alan Curtis,<br>
+          A Method for Numerical Integration on an Automatic Computer,<br>
+          Numerische Mathematik,<br>
+          Volume 2, Number 1, December 1960, pages 197-205.
+        </li>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+        <li>
+          Sylvan Elhay, Jaroslav Kautsky,<br>
+          Algorithm 655: IQPACK, FORTRAN Subroutines for the Weights of 
+          Interpolatory Quadrature,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 13, Number 4, December 1987, pages 399-415.
+        </li>
+        <li>
+          Hermann Engels,<br>
+          Numerical Quadrature and Cubature,<br>
+          Academic Press, 1980,<br>
+          ISBN: 012238850X,<br>
+          LC: QA299.3E5.
+        </li>
+        <li>
+          Gwynne Evans,<br>
+          Practical Numerical Integration,<br>
+          Wiley, 1993,<br>
+          ISBN: 047193898X,<br>
+          LC: QA299.3E93.
+        </li>
+        <li>
+          Simeon Fatunla,<br>
+          Numerical Methods for Initial Value Problems in Ordinary
+          Differential Equations,<br>
+          Academic Press, 1988,<br>
+          ISBN: 0122499301,<br>
+          LC: QA372.F35.
+        </li>
+        <li>
+          Walter Gautschi,<br>
+          Numerical Quadrature in the Presence of a Singularity,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 4, Number 3, September 1967, pages 357-362.
+        </li>
+        <li>
+          Alan Genz, Bradley Keister,<br>
+          Fully symmetric interpolatory rules for multiple integrals
+          over infinite regions with Gaussian weight,<br>
+          Journal of Computational and Applied Mathematics,<br>
+          Volume 71, 1996, pages 299-309.
+        </li>
+        <li>
+          Florian Heiss, Viktor Winschel,<br>
+          Likelihood approximation by numerical integration on sparse grids,<br>
+          Journal of Econometrics,<br>
+          Volume 144, 2008, pages 62-80.
+        </li>
+        <li>
+          Francis Hildebrand, <br>
+          Introduction to Numerical Analysis,<br>
+          Dover, 1987,<br>
+          ISBN13: 978-0486653631,<br>
+          LC: QA300.H5.
+        </li>
+        <li>
+          Zdenek Kopal,<br>
+          Numerical Analysis,<br>
+          John Wiley, 1955,<br>
+          LC: QA297.K6.
+        </li>
+        <li>
+          Vladimir Krylov,<br>
+          Approximate Calculation of Integrals,<br>
+          Dover, 2006,<br>
+          ISBN: 0486445798,<br>
+          LC: QA311.K713.
+        </li>
+        <li>
+          Prem Kythe, Michael Schaeferkotter,<br>
+          Handbook of Computational Methods for Integration,<br>
+          Chapman and Hall, 2004,<br>
+          ISBN: 1-58488-428-2,<br>
+          LC: QA299.3.K98.
+        </li>
+        <li>
+          Leon Lapidus, John Seinfeld,<br>
+          Numerical Solution of Ordinary Differential Equations,<br>
+          Mathematics in Science and Engineering, Volume 74,<br>
+          Academic Press, 1971,<br>
+          ISBN: 0124366503,<br>
+          LC: QA3.M32.v74
+        </li>
+        <li>
+          Federico Paris, Jose Canas,<br>
+          Boundary Element Method: Fundamentals and Applications,<br>
+          Oxford, 1997,<br>
+          ISBN: 0-19-856543-7<br>
+          LC: TA347.B69.P34.
+        </li>
+        <li>
+          Thomas Patterson,<br>
+          The Optimal Addition of Points to Quadrature Formulae,<br>
+          Mathematics of Computation,<br>
+          Volume 22, Number 104, October 1968, pages 847-856.
+        </li>
+        <li>
+          Robert Piessens, Elise deDoncker-Kapenga,
+          Christian Ueberhuber, David Kahaner,<br>
+          QUADPACK: A Subroutine Package for Automatic Integration,<br>
+          Springer, 1983,<br>
+          ISBN: 3540125531,<br>
+          LC: QA299.3.Q36.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+        <li>
+          Lloyd Trefethen,<br>
+          Is Gauss Quadrature Better Than Clenshaw-Curtis?,<br>
+          SIAM Review,<br>
+          Volume 50, Number 1, March 2008, pages 67-87.
+        </li>
+        <li>
+          Joerg Waldvogel,<br>
+          Fast Construction of the Fejer and Clenshaw-Curtis
+          Quadrature Rules,<br>
+          BIT Numerical Mathematics,<br>
+          Volume 43, Number 1, 2003, pages 1-18.
+        </li>
+        <li>
+          Stephen Wolfram,<br>
+          The Mathematica Book,<br>
+          Fourth Edition,<br>
+          Cambridge University Press, 1999,<br>
+          ISBN: 0-521-64314-7,<br>
+          LC: QA76.95.W65.
+        </li>
+        <li>
+          Daniel Zwillinger, editor,<br>
+          CRC Standard Mathematical Tables and Formulae,<br>
+          30th Edition,<br>
+          CRC Press, 1996,<br>
+          ISBN: 0-8493-2479-3,<br>
+          LC: QA47.M315.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "quadrule.f90">quadrule.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "quadrule.sh">quadrule.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "quadrule_prb.f90">quadrule_prb.f90</a>, the calling
+          program;
+        </li>
+        <li>
+          <a href = "quadrule_prb.sh">quadrule_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "quadrule_prb_output.txt">quadrule_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BASHFORTH_SET</b> sets abscissas and weights for Adams-Bashforth quadrature.
+        </li>
+        <li>
+          <b>BDF_SET</b> sets weights for ODE backward differentiation.
+        </li>
+        <li>
+          <b>BDF_SUM:</b> an explicit backward difference quadrature rule for [0,1].
+        </li>
+        <li>
+          <b>BDFC_SET</b> sets weights for backward differentiation corrector quadrature.
+        </li>
+        <li>
+          <b>BDFP_SET</b> sets weights for backward differentiation predictor quadrature.
+        </li>
+        <li>
+          <b>CHEB_SET</b> sets abscissas and weights for Chebyshev quadrature.
+        </li>
+        <li>
+          <b>CHEBYSHEV1_COMPUTE</b> computes a Gauss-Chebyshev type 1 quadrature rule.
+        </li>
+        <li>
+          <b>CHEBYSHEV1_INTEGRAL</b> evaluates a monomial Chebyshev type 1 integral.
+        </li>
+        <li>
+          <b>CHEBYSHEV2_COMPUTE</b> computes a Gauss-Chebyshev type 2 quadrature rule.
+        </li>
+        <li>
+          <b>CHEBYSHEV2_INTEGRAL</b> evaluates a monomial Chebyshev type 2 integral.
+        </li>
+        <li>
+          <b>CHEBYSHEV3_COMPUTE</b> computs a Gauss-Chebyshev type 3 quadrature rule.
+        </li>
+        <li>
+          <b>CLENSHAW_CURTIS_COMPUTE</b> computes a Clenshaw Curtis quadrature rule.
+        </li>
+        <li>
+          <b>CLENSHAW_CURTIS_SET</b> sets a Clenshaw-Curtis quadrature rule.
+        </li>
+        <li>
+          <b>FEJER1_COMPUTE</b> computes a Fejer type 1 quadrature rule.
+        </li>
+        <li>
+          <b>FEJER1_SET</b> sets abscissas and weights for Fejer type 1 quadrature.
+        </li>
+        <li>
+          <b>FEJER2_COMPUTE</b> computes a Fejer type 2 quadrature rule.
+        </li>
+        <li>
+          <b>FEJER2_SET</b> sets abscissas and weights for Fejer type 2 quadrature.
+        </li>
+        <li>
+          <b>GEGENBAUER_COMPUTE</b> computes a Gauss-Gegenbauer quadrature rule.
+        </li>
+        <li>
+          <b>GEGENBAUER_INTEGRAL:</b> integral of a monomial with Gegenbauer weight.
+        </li>
+        <li>
+          <b>GEGENBAUER_RECUR</b> finds the value and derivative of a Gegenbauer polynomial.
+        </li>
+        <li>
+          <b>GEGENBAUER_ROOT</b> improves an approximate root of a Gegenbauer polynomial.
+        </li>
+        <li>
+          <b>GEN_HERMITE_DR_COMPUTE</b> computes a generalized Gauss-Hermite rule.
+        </li>
+        <li>
+          <b>GEN_HERMITE_EK_COMPUTE</b> computes a generalized Gauss-Hermite quadrature rule.
+        </li>
+        <li>
+          <b>GEN_HERMITE_INTEGRAL</b> evaluates a monomial generalized Hermite integral.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_EK_COMPUTE:</b> generalized Gauss-Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_INTEGRAL</b> evaluates a monomial genearlized Laguerre integral.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_SS_COMPUTE:</b> generalized Gauss-Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_SS_RECUR</b> evaluates a generalized Laguerre polynomial.
+        </li>
+        <li>
+          <b>GEN_LAGUERRE_SS_ROOT</b> seeks roots of a generalized Laguerre polynomial.
+        </li>
+        <li>
+          <b>HERMITE_EK_COMPUTE</b> computes a Gauss-Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_GK16_SET</b> sets a Hermite Genz-Keister 16 rule.
+        </li>
+        <li>
+          <b>HERMITE_GK18_SET</b> sets a Hermite Genz-Keister 18 rule.
+        </li>
+        <li>
+          <b>HERMITE_GK22_SET</b> sets a Hermite Genz-Keister 22 rule.
+        </li>
+        <li>
+          <b>HERMITE_GK24_SET</b> sets a Hermite Genz-Keister 24 rule.
+        </li>
+        <li>
+          <b>HERMITE_INTEGRAL</b> evaluates a monomial Hermite integral.
+        </li>
+        <li>
+          <b>HERMITE_SET</b> sets abscissas and weights for Hermite quadrature.
+        </li>
+        <li>
+          <b>HERMITE_SS_COMPUTE</b> computes a Gauss-Hermite quadrature rule.
+        </li>
+        <li>
+          <b>HERMITE_SS_RECUR</b> finds the value and derivative of a Hermite polynomial.
+        </li>
+        <li>
+          <b>HERMITE_SS_ROOT</b> improves an approximate root of a Hermite polynomial.
+        </li>
+        <li>
+          <b>IMTQL2</b> computes all eigenvalues/vectors of a symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>IMTQLX</b> diagonalizes a symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>JACOBI_EK_COMPUTE:</b> Elhay-Kautsky method for Gauss-Jacobi quadrature rule.
+        </li>
+        <li>
+          <b>JACOBI_INTEGRAL</b> evaluates the integral of a monomial with Jacobi weight.
+        </li>
+        <li>
+          <b>JACOBI_SS_COMPUTE</b> computes a Gauss-Jacobi quadrature rule.
+        </li>
+        <li>
+          <b>JACOBI_SS_RECUR</b> finds the value and derivative of a Jacobi polynomial.
+        </li>
+        <li>
+          <b>JACOBI_SS_ROOT</b> improves an approximate root of a Jacobi polynomial.
+        </li>
+        <li>
+          <b>KRONROD_SET</b> sets abscissas and weights for Gauss-Kronrod quadrature.
+        </li>
+        <li>
+          <b>LAGUERRE_EK_COMPUTE:</b> Laguerre quadrature rule by the Elhay-Kautsky method.
+        </li>
+        <li>
+          <b>LAGUERRE_INTEGRAL</b> evaluates a monomial Laguerre integral.
+        </li>
+        <li>
+          <b>LAGUERRE_SET</b> sets abscissas and weights for Laguerre quadrature.
+        </li>
+        <li>
+          <b>LAGUERRE_SS_COMPUTE</b> computes a Gauss-Laguerre quadrature rule.
+        </li>
+        <li>
+          <b>LAGUERRE_SS_RECUR</b> finds the value and derivative of a Laguerre polynomial.
+        </li>
+        <li>
+          <b>LAGUERRE_SS_ROOT</b> improves an approximate root of a Laguerre polynomial.
+        </li>
+        <li>
+          <b>LAGUERRE_SUM</b> carries out Laguerre quadrature over [ A, +oo ).
+        </li>
+        <li>
+          <b>LEGENDRE_COS2_SET</b> sets a Gauss-Legendre rule for COS(X) * F(X) on [0,PI/2].
+        </li>
+        <li>
+          <b>LEGENDRE_COS_SET:</b> Gauss-Legendre rule for COS(X) * F(X) on [-PI/2,PI/2].
+        </li>
+        <li>
+          <b>LEGENDRE_DR_COMPUTE:</b> Gauss-Legendre quadrature by Davis-Rabinowitz method.
+        </li>
+        <li>
+          <b>LEGENDRE_EK_COMPUTE:</b> Legendre quadrature rule by the Elhay-Kautsky method.
+        </li>
+        <li>
+          <b>LEGENDRE_GW_COMPUTE:</b> Legendre quadrature rule by the Golub-Welsch method.
+        </li>
+        <li>
+          <b>LEGENDRE_INTEGRAL</b> evaluates a monomial Legendre integral.
+        </li>
+        <li>
+          <b>LEGENDRE_LOG_COMPUTE:</b> Gauss-Legendre rules for - LOG(X) * F(X) on [0,1].
+        </li>
+        <li>
+          <b>LEGENDRE_LOG_ROOTS</b> is a root finder for LEGENDRE_LOG_COMPUTE.
+        </li>
+        <li>
+          <b>LEGENDRE_LOG_SET</b> sets a Gauss-Legendre rule for - LOG(X) * F(X) on [0,1].
+        </li>
+        <li>
+          <b>LEGENDRE_LOG_VALUE</b> evaluates a polynomial for LEGENDRE_LOG_ROOT.
+        </li>
+        <li>
+          <b>LEGENDRE_POLYNOMIAL_VALUE</b> evaluates a Legendre polynomial.
+        </li>
+        <li>
+          <b>LEGENDRE_RECUR</b> finds the value and derivative of a Legendre polynomial.
+        </li>
+        <li>
+          <b>LEGENDRE_ROOT</b> improves an approximate root of a Legendre polynomial.
+        </li>
+        <li>
+          <b>LEGENDRE_SET</b> sets abscissas and weights for Gauss-Legendre quadrature.
+        </li>
+        <li>
+          <b>LEGENDRE_SQRTX2_01_SET:</b> Gauss-Legendre rule for F(X) / SQRT(X) on [0,1].
+        </li>
+        <li>
+          <b>LEGENDRE_SQRTX_01_SET</b> sets a Gauss-Legendre rule for SQRT(X) * F(X) on [0,1].
+        </li>
+        <li>
+          <b>LEGENDRE_SS_COMPUTE:</b> Gauss-Legendre quadrature by Stroud-Secrest method.
+        </li>
+        <li>
+          <b>LEGENDRE_SS_RECUR:</b> value and derivative of a scaled Legendre polynomial.
+        </li>
+        <li>
+          <b>LEGENDRE_SS_ROOT:</b> improve approximate root of scaled Legendre polynomial.
+        </li>
+        <li>
+          <b>LEGENDRE_X0_01_SET</b> sets a Gauss-Legendre rule for F(X) on [0,1].
+        </li>
+        <li>
+          <b>LEGENDRE_X1_01_SET</b> sets a Gauss-Legendre rule for X * F(X) on [0,1].
+        </li>
+        <li>
+          <b>LEGENDRE_X1_SET</b> sets a Gauss-Legendre rule for ( 1 + X ) * F(X) on [-1,1].
+        </li>
+        <li>
+          <b>LEGENDRE_X2_01_SET</b> sets a Gauss-Legendre rule for X * X * F(X) on [0,1].
+        </li>
+        <li>
+          <b>LEGENDRE_X2_SET</b> sets a Gauss-Legendre rule for ( 1 + X )^2 * F(X) on [-1,1].
+        </li>
+        <li>
+          <b>LOBATTO_COMPUTE</b> computes a Lobatto quadrature rule.
+        </li>
+        <li>
+          <b>LOBATTO_SET</b> sets abscissas and weights for Lobatto quadrature.
+        </li>
+        <li>
+          <b>MOULTON_SET</b> sets weights for Adams-Moulton quadrature.
+        </li>
+        <li>
+          <b>NC_COMPUTE</b> computes a Newton-Cotes quadrature rule.
+        </li>
+        <li>
+          <b>NCC_COMPUTE:</b> Newton-Cotes Closed quadrature rule.
+        </li>
+        <li>
+          <b>NCC_COMPUTE_POINTS:</b> Newton-Cotes Closed points
+        </li>
+        <li>
+          <b>NCC_COMPUTE_WEIGHTS:</b> Newton-Cotes Closed weights.
+        </li>
+        <li>
+          <b>NCC_SET</b> sets abscissas and weights for Newton-Cotes closed quadrature.
+        </li>
+        <li>
+          <b>NCO_COMPUTE</b> computes a Newton-Cotes Open quadrature rule.
+        </li>
+        <li>
+          <b>NCO_COMPUTE_POINTS:</b> points for a Newton-Cotes Open quadrature rule.
+        </li>
+        <li>
+          <b>NCO_COMPUTE_WEIGHTS:</b> weights for a Newton-Cotes Open quadrature rule.
+        </li>
+        <li>
+          <b>NCO_SET</b> sets abscissas and weights for open Newton-Cotes quadrature.
+        </li>
+        <li>
+          <b>NCOH_COMPUTE</b> computes a Newton-Cotes Open Half quadrature rule.
+        </li>
+        <li>
+          <b>NCOH_COMPUTE_POINTS:</b> points for a Newton-Cotes Open Half quadrature rule.
+        </li>
+        <li>
+          <b>NCOH_COMPUTE_WEIGHTS:</b> weights for a Newton-Cotes Open Half quadrature rule.
+        </li>
+        <li>
+          <b>NCOH_SET</b> sets abscissas and weights for Newton-Cotes "open half" quadrature.
+        </li>
+        <li>
+          <b>PATTERSON_SET</b> sets abscissas and weights for Gauss-Patterson quadrature.
+        </li>
+        <li>
+          <b>PYTHAG</b> computes SQRT ( A * A + B * B ) carefully.
+        </li>
+        <li>
+          <b>R8_EPSILON</b> returns the R8 roundoff unit.
+        </li>
+        <li>
+          <b>R8_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>R8_FACTORIAL2</b> computes the double factorial function of N.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates Gamma(X) for a real argument.
+        </li>
+        <li>
+          <b>R8_HYPER_2F1</b> evaluates the hypergeometric function F(A,B,C,X).
+        </li>
+        <li>
+          <b>R8_PSI</b> evaluates the function Psi(X).
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_REVERSE</b> reverses the elements of an R8VEC.
+        </li>
+        <li>
+          <b>RADAU_COMPUTE</b> computes a Radau quadrature rule.
+        </li>
+        <li>
+          <b>RADAU_SET</b> sets abscissas and weights for Radau quadrature.
+        </li>
+        <li>
+          <b>RULE_ADJUST</b> maps a quadrature rule from [A,B] to [C,D].
+        </li>
+        <li>
+          <b>SUM_SUB</b> carries out a composite quadrature rule.
+        </li>
+        <li>
+          <b>SUM_SUB_GK</b> carries out a composite Gauss-Kronrod rule.
+        </li>
+        <li>
+          <b>SUMMER</b> carries out a quadrature rule over a single interval.
+        </li>
+        <li>
+          <b>SUMMER_GK</b> carries out Gauss-Kronrod quadrature over a single interval.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 July 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

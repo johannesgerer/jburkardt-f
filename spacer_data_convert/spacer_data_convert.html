@@ -1,0 +1,241 @@
+<html>
+
+  <head>
+    <title>
+      SPACER_DATA_CONVERT - Write a data file for SPACER
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPACER_DATA_CONVERT <br> Write a data file for SPACER
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPACER_DATA_CONVERT</b>
+      is a FORTRAN90 program which
+      takes a simple
+      file of object names and distances, and writes out a data file
+      suitable for input with <a href = "../../f_src/spacer/spacer.html">SPACER</a>.
+    </p>
+
+    <p>
+      The input file is very simple.  The first line lists <b>N</b>, the number of objects.
+      The next line lists the name of object #1, and the <b>N</b> "distances" to the
+      other objects (including itself).   Similar lines follow for objects 2 through
+      <b>N</b>.  Spaces are used to separate the data.
+    </p>
+
+    <p>
+      Example of a legal input file to <b>SPACER_DATA_CONVERT</b>:
+      <pre>
+       5
+       London            0.0  125.0  250.0   75.0  450.0
+       Manchester      125.0    0.0   83.0  327.0  154.0
+       Dunwich         250.0   83.0    0.0  223.0  243.0
+       East-Grinstead   75.0  327.0  223.0    0.0   93.0
+       Burnt-Norton    450.0  154.0  243.0   93.0    0.0
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote><code>
+        <b>spacer_data_convert</b> <i>input</i> <i>output</i>
+      </code></blockquote>
+      <dl>
+        <dt>
+          <i>input</i>
+        </dt>
+        <dd>
+          the input file to be processed;
+        </dd>
+        <dt>
+          <i>output</i>
+        </dt>
+        <dd>
+          the output file, suitable for use with <b>SPACER</b>;
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SPACER_DATA_CONVERT</b> is available in
+      <a href = "../../f77_src/spacer_data_convert/spacer_data_convert.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/spacer_data_convert/spacer_data_convert.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/distances/distances.html">
+      DISTANCES</a>,
+      a FORTRAN90 program which
+      can read a file in PIR format and create a distance matrix.
+    </p>
+
+    <p>
+      <a href = "../../f_src/read_align/read_align.html">
+      READ_ALIGN</a>,
+      a FORTRAN90 program which
+      can read a multiple sequence alignment file and write out the
+      relevant information into a file in PIR format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spacer/spacer.html">
+      SPACER</a>,
+      a FORTRAN90 program which
+      reads a distance matrix and computes a principal coordinate analysis.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Des Higgins, <br>
+      EMBL Data Library,<br>
+      April 1992
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "spacer_data_convert.f90">spacer_data_convert.f90</a>, the
+          source code;
+        </li>
+        <li>
+          <a href = "spacer_data_convert.sh">spacer_data_convert.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>CITIES</b> is the simple data example discussed above, with
+      distances between 5 cities.
+      <ul>
+        <li>
+          <a href = "cities_convert.txt">cities_convert.txt</a>,
+          output printed by <b>SPACER_DATA_CONVERT</b> during the
+          process of conversion.
+        </li>
+        <li>
+          <a href = "cities_input.txt">cities_input.txt</a>, the input data file;
+        </li>
+        <li>
+          <a href = "cities_output.txt">cities_output.txt</a>, the converted
+          data file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>PROTEIN</b> is a data file involving "distances" between 66 proteins.
+      <ul>
+        <li>
+          <a href = "protein_convert.txt">protein_convert.txt</a>,
+          output printed by <b>SPACER_DATA_CONVERT</b> during the
+          process of conversion.
+        </li>
+        <li>
+          <a href = "protein_input.txt">protein_input.txt</a>, the input data file;
+        </li>
+        <li>
+          <a href = "protein_output.txt">protein_output.txt</a>, the converted
+          data file;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>SPACER_DATA_CONVERT</b> converts a data file to SPACER format.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_EXTRACT</b> "extracts" an integer from the beginning of a string.
+        </li>
+        <li>
+          <b>INPUT_PRINT</b> prints the input data.
+        </li>
+        <li>
+          <b>INPUT_READ</b> reads the distance data from a file.
+        </li>
+        <li>
+          <b>OUTPUT_WRITE</b> writes the distance data to a file in SPACER format.
+        </li>
+        <li>
+          <b>R4_EXTRACT</b> "extracts" a real from the beginning of a string.
+        </li>
+        <li>
+          <b>S_SHIFT_LEFT</b> shifts the characters in a string to the left and blank pads.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_TO_R4</b> reads a real number from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WORD_EXTRACT</b> extracts the next word from a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 December 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

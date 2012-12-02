@@ -1,0 +1,2167 @@
+<html>
+
+  <head>
+    <title>
+      CALPAK - Calendar Calculations
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CALPAK <br> Calendar Calculations
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CALPAK</b>
+      is a FORTRAN90 library which
+      computes various simple calendrical quantities.
+    </p>
+
+    <p>
+      These include converting
+      from day-number/year to day/month/year format, calculating the time
+      difference between two dates, finding the day of the week of a given date,
+      and other feats.
+    </p>
+
+    <p>
+      Some common methods of marking the date include:
+      <ul>
+        <li>
+          <b>JED</b>, the Julian Ephemeris Date, a count of days since
+          a long time ago;
+        </li>
+        <li>
+          <b>YMD</b>, for "year, month, day";
+        </li>
+        <li>
+          <b>YJ</b>, for "year, day number".
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      While there have been many calendars over the years, it
+      is instructive to contemplate just the crazy story of our
+      current "common" calendar.  To this day, people disagree about
+      whether there was a year 0, although the Julian calendar
+      was a Roman invention, and Dionysius Exiguus, who gets the
+      blame for shifting the Julian calendar's starting date to
+      the birth year of Christ four hundred years afterwards, didn't
+      have an accurate idea of when that was.
+    </p>
+
+    <p>
+      There was a
+      controversial shift from the Julian to the Gregorian calendar,
+      which took place <i>piecemeal</i> throughout the Catholic
+      world, with several countries actually switching back and
+      forth more than once, and with England holding out on the
+      old system until after George Washington was born (which
+      means he was born on February 11 AND February 22).
+    </p>
+
+    <p>
+      People didn't agree on when the year started, so that January and
+      February, in particular, were a little murky about which
+      year they belonged to, and the year sometimes started
+      around March 22, near the vernal equinox.
+    </p>
+
+    <p>
+      There are a number of side issues, including
+      <ul>
+        <li>
+          determining the day of the week of a given date;
+        </li>
+        <li>
+          determining the number of days between two dates;
+        </li>
+        <li>
+          the computation of the date of certain holidays;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CALPAK</b> is available in
+      <a href = "../../cpp_src/calpak/calpak.html">a C++ version</a> and
+      <a href = "../../f_src/calpak/calpak.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/calpak/calpak.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/calendar_nyt/calendar_nyt.html">
+      CALENDAR_NYT</a>,
+      a FORTRAN90 library which
+      shows the correspondence between dates and the New York Times volume and
+      issue number;
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/calendar_rd/calendar_rd.html">
+      CALENDAR_RD</a>,
+      a C++ program which
+      computes the representation of a given date in a
+      number of calendrical systems,
+      by Edward Reingold and Nachum Dershowitz
+    </p>
+
+    <p>
+      <a href = "../../datasets/dates/dates.html">
+      DATES</a>,
+      a dataset directory which
+      contains lists of dates in various calendar systems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/doomsday/doomsday.html">
+      DOOMSDAY</a>,
+      a FORTRAN90 library which
+      is given the year, month and day of a date, and uses
+      John Conway's doomsday algorithm to determine the corresponding day of the week.
+    </p>
+
+    <p>
+      <a href = "../../f_src/weekday/weekday.html">
+      WEEKDAY</a>,
+      a FORTRAN90 library which
+      determines the day of the week for a given day.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Anonymous,<br>
+          A Correction; Welcome to 51,254,<br>
+          The New York Times,<br>
+          01 January 2000, Volume 149, Issue 51254.
+        </li>
+        <li>
+          James Barron,<br>
+          What's in a Number? 143 Years of News,<br>
+          The New York Times,<br>
+          14 March 1995, Volume 144, Issue 50000.
+        </li>
+        <li>
+          Bonnie Blackburn, Leofranc Holford-Stevens,<br>
+          The Oxford Companion to the Year,<br>
+          Oxford, 1999,<br>
+          ISBN: 0192142313,<br>
+          LC: CE73.B553.
+        </li>
+        <li>
+          Lewis Carroll (Charles Dodgson),<br>
+          To Find the Day of the Week for Any Given Date,<br>
+          Nature, 31 March 1887.
+        </li>
+        <li>
+          John Conway,<br>
+          Tomorrow is the Day After Doomsday,<br>
+          Eureka,<br>
+          Volume 36, October 1973, pages 28-31.
+        </li>
+        <li>
+          Peter Duffett-Smith,<br>
+          Practical Astronomy With Your Calculator,<br>
+          Third Edition,<br>
+          Cambridge University Press, 1996,<br>
+          ISBN: 0-521-35699-7,<br>
+          LC: QB62.5.D83.
+        </li>
+        <li>
+          Donald Knuth,<br>
+          The Art of Computer Programming,<br>
+          Volume 1, Fundamental Algorithms,<br>
+          Third Edition,<br>
+          Addison-Wesley, 1997,<br>
+          ISBN: 0201896834,<br>
+          LC: QA76.6.K64.
+        </li>
+        <li>
+          Donald Knuth,<br>
+          The Calculation of Easter,<br>
+          Communications of the ACM,<br>
+          Volume 5, Number 4, April 1962, pages 209-210.
+        </li>
+        <li>
+          Gary Meisters,<br>
+          Lewis Carroll's Day-of-the-Week Algorithm,<br>
+          Math Horizons,<br>
+          November 2002, pages 24-25.
+        </li>
+        <li>
+          Lance Latham,<br>
+          Standard C Date/Time Library,<br>
+          Programming the World's Calendars and Clocks,<br>
+          Miller Freeman, 1998,<br>
+          ISBN: 0-87930-496-0.
+        </li>
+        <li>
+          The New York Times,<br>
+          Page One, 1896-1996, A Special Commemorative Edition Celebrating the
+          100th Anniversary of the Purchase of the New York Times by Adolph S Ochs,<br>
+          Galahad Books, 1996,<br>
+          ISBN: 0-88365-961-1,<br>
+          LC: D411.P25.
+        </li>
+        <li>
+          The New York Times,<br>
+          The Complete First Pages, 1851-2008,<br>
+          Black Dog & Leventhal Publishers, 2008,<br>
+          ISBN13: 978-1-57912-749-7,<br>
+          LC: D351.N53.
+        </li>
+        <li>
+          Thomas OBeirne,<br>
+          Puzzles and Paradoxes,<br>
+          Oxford University Press, 1965,<br>
+          LC: QA95.O2.
+        </li>
+        <li>
+          Frank Parise, editor,<br>
+          The Book of Calendars,<br>
+          Gorgias, 2002,<br>
+          ISBN: 1931956766,<br>
+          LC: CE11.K4.
+        </li>
+        <li>
+          William Press, Brian Flannery, Saul Teukolsky, William Vetterling,<br>
+          Numerical Recipes in FORTRAN: The Art of Scientific Computing,<br>
+          Second Edition,<br>
+          Cambridge University Press, 1992,<br>
+          ISBN: 0-521-43064-X,<br>
+          LC: QA297.N866.
+        </li>
+        <li>
+          Edward Reingold, Nachum Dershowitz,<br>
+          Calendrical Calculations: The Millennium Edition,<br>
+          Cambridge University Press, 2001,<br>
+          ISBN: 0-521-77752-6,<br>
+          LC: CE12.R45.
+        </li>
+        <li>
+          Edward Reingold, Nachum Dershowitz,<br>
+          Calendrical Calculations I,<br>
+          Software - Practice and Experience,<br>
+          Volume 20, Number 9, September 1990, pages 899-928.<br>
+        </li>
+        <li>
+          Edward Reingold, Nachum Dershowitz, Stewart Clamen,<br>
+          Calendrical Calculations, II: Three Historical Calendars,<br>
+          Software - Practice and Experience,<br>
+          Volume 23, Number 4, pages 383-404, April 1993.
+        </li>
+        <li>
+          Edward Richards,<br>
+          Mapping Time, The Calendar and Its History,<br>
+          Oxford, 1999,<br>
+          ISBN: 0-19-850413-6,<br>
+          LC: CE11.R5.
+        </li>
+        <li>
+          Ian Stewart,<br>
+          Easter is a Quasicrystal,<br>
+          Scientific American,<br>
+          Volume 284, Number 3, March 2001, pages 80-83.
+        </li>
+        <li>
+          Daniel Zwillinger, editor,<br>
+          CRC Standard Mathematical Tables and Formulae,<br>
+          30th Edition,<br>
+          CRC Press, 1996,<br>
+          ISBN: 0-8493-2479-3,<br>
+          LC: QA47.M315.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "calpak.f90">calpak.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "calpak.sh">calpak.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "calpak_prb.f90">calpak_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "calpak_prb.sh">calpak_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "calpak_prb_output.txt">calpak_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CWS_TO_JED_GPS</b> converts a GPS CWS date to a JED.
+        </li>
+        <li>
+          <b>CWS_TO_S_GPS</b> writes a GPS CWS date into a string.
+        </li>
+        <li>
+          <b>DATENUM_TO_JED</b> converts a MATLAB date number to a JED.
+        </li>
+        <li>
+          <b>DAY_BORROW_ALEXANDRIAN</b> borrows days from months in an Alexandrian date.
+        </li>
+        <li>
+          <b>DAY_BORROW_COMMON</b> borrows days from months in a Common date.
+        </li>
+        <li>
+          <b>DAY_BORROW_EG_CIVIL</b> borrows days from months in an Egyptian Civil date.
+        </li>
+        <li>
+          <b>DAY_BORROW_ENGLISH</b> borrows days from months in an English date.
+        </li>
+        <li>
+          <b>DAY_BORROW_GREGORIAN</b> borrows days from months in a Gregorian date.
+        </li>
+        <li>
+          <b>DAY_BORROW_HEBREW</b> borrows days from months in a Hebrew date.
+        </li>
+        <li>
+          <b>DAY_BORROW_ISLAMIC</b> borrows days from months in an Islamic date.
+        </li>
+        <li>
+          <b>DAY_BORROW_JULIAN</b> borrows days from months in a Julian date.
+        </li>
+        <li>
+          <b>DAY_BORROW_REPUBLICAN</b> borrows days from months in a Republican date.
+        </li>
+        <li>
+          <b>DAY_BORROW_ROMAN</b> borrows days from months in a Roman date.
+        </li>
+        <li>
+          <b>DAY_CARRY_ALEXANDRIAN</b> carries days to months in an Alexandrian date.
+        </li>
+        <li>
+          <b>DAY_CARRY_COMMON</b> carries days to months in a Common date.
+        </li>
+        <li>
+          <b>DAY_CARRY_EG_CIVIL</b> carries days to months in an Egyptian Civil date.
+        </li>
+        <li>
+          <b>DAY_CARRY_ENGLISH</b> carries days to months in an English date.
+        </li>
+        <li>
+          <b>DAY_CARRY_GREGORIAN</b> carries days to months in a Gregorian date.
+        </li>
+        <li>
+          <b>DAY_CARRY_HEBREW</b> carries days to months in a Hebrew date.
+        </li>
+        <li>
+          <b>DAY_CARRY_ISLAMIC</b> carries days to months in an Islamic date.
+        </li>
+        <li>
+          <b>DAY_CARRY_JULIAN</b> carries days to months in a Julian date.
+        </li>
+        <li>
+          <b>DAY_CARRY_REPUBLICAN</b> carries days to months in a Republican date.
+        </li>
+        <li>
+          <b>DAY_CARRY_ROMAN</b> carries days to months in a Roman date.
+        </li>
+        <li>
+          <b>DAY_LIST_COMMON</b> prints a list of days between two dates.
+        </li>
+        <li>
+          <b>DAYS_BEFORE_MONTH_COMMON</b> returns the number of days before a Common month.
+        </li>
+        <li>
+          <b>DAYS_BEFORE_MONTH_GREGORIAN:</b> number of days before a Gregorian month.
+        </li>
+        <li>
+          <b>DAYS_BEFORE_MONTH_JULIAN</b> returns the number of days before a Julian month.
+        </li>
+        <li>
+          <b>DEFLATE_COMMON</b> "deflates" dates in the Common Calendar transition month.
+        </li>
+        <li>
+          <b>DEFLATE_ENGLISH</b> "deflates" dates in the English Calendar transition month.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>EASTER_DS</b> computes the month and day of Easter for a Gregorian year.
+        </li>
+        <li>
+          <b>EASTER_EGR</b> computes the month and day of Easter for a Common year.
+        </li>
+        <li>
+          <b>EASTER_EGR2</b> computes the month and day of Easter for a Common year.
+        </li>
+        <li>
+          <b>EASTER_JULIAN</b> computes the date of Easter in the Julian calendar.
+        </li>
+        <li>
+          <b>EASTER_JULIAN2</b> computes the date of Easter in the Julian calendar.
+        </li>
+        <li>
+          <b>EASTER_KNUTH</b> computes the month and day of Easter for a Gregorian year.
+        </li>
+        <li>
+          <b>EASTER_STEWART</b> computes the month and day of Easter for a Gregorian year.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_AKBAR</b> returns the epoch of the Akbar calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_ALEXANDRIAN:</b> epoch of the Alexandrian calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_ARMENIAN</b> returns the epoch of the Armenian calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_BAHAI</b> returns the epoch of the Bahai calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_BESSEL</b> returns the epoch of the Bessel calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_CHINESE</b> returns the epoch of the Chinese calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_COMMON</b> returns the epoch of the Common calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_COPTIC</b> returns the epoch of the Coptic calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_DECCAN</b> returns the epoch of the Fasli Deccan calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_EG_CIVIL:</b> epoch of the Egyptian Civil calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_EG_LUNAR:</b> epoch of the Egyptian Lunar calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_ENGLISH</b> returns the epoch of the English calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_ETHIOPIAN</b> returns the epoch of the Ethiopian calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_GPS</b> returns the epoch of the GPS calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_GREEK</b> returns the epoch of the Greek calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_GREGORIAN</b> returns the epoch of the Gregorian calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_HEBREW</b> returns the epoch of the Hebrew calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_HINDU_LUNAR:</b> epoch of the Hindu lunar calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_HINDU_SOLAR:</b> epoch of the Hindu solar calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_ISLAMIC_A</b> returns the epoch of the Islamic A calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_ISLAMIC_B</b> returns the epoch of the Islamic B calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_JED</b> returns the epoch of the JED as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_JELALI</b> returns the epoch of the Jelali calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_JULIAN</b> returns the epoch of the Julian calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_KHWARIZMIAN:</b> epoch of the Khwarizmian calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_MACEDONIAN:</b> epoch of the Macedonian calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_MATLAB:</b> epoch of the "MATLAB calendar" as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_MAYAN_LONG:</b> epoch of the Mayan long count calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_MJD</b> returns the epoch of the MJD calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_NYT</b> returns the epoch of the NYT calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_PERSIAN</b> returns the epoch of the Persian calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_PERSIAN_SOLAR:</b> epoch of the Persian solar calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_RD</b> returns the epoch of the RD calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_REPUBLICAN:</b> epoch of the Republican calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_ROMAN</b> returns the epoch of the Roman calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_SAKA</b> returns the epoch of the Saka calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_SOOR_SAN:</b> epoch of the Fasli Soor San calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_SYRIAN</b> returns the epoch of the Syrian calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_UNIX</b> returns the epoch of the UNIX calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_Y2K</b> returns the epoch of the Y2K calendar as a JED.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_ZOROASTRIAN:</b> epoch of the Zoroastrian calendar as a JED.
+        </li>
+        <li>
+          <b>FRAC_BORROW_COMMON</b> borrows fractions from days in a Common YMDF date.
+        </li>
+        <li>
+          <b>FRAC_BORROW_ENGLISH</b> borrows fractions from days in an English YMDF date.
+        </li>
+        <li>
+          <b>FRAC_BORROW_GREGORIAN</b> borrows fractions from days in a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>FRAC_BORROW_HEBREW</b> borrows fractions from days in a Hebrew YMDF date.
+        </li>
+        <li>
+          <b>FRAC_BORROW_ISLAMIC</b> borrows fractions from days in an Islamic YMDF date.
+        </li>
+        <li>
+          <b>FRAC_BORROW_JULIAN</b> borrows fractions from days in a Julian YMDF date.
+        </li>
+        <li>
+          <b>FRAC_BORROW_REPUBLICAN</b> borrows fractions from days in a Republican YMDF date.
+        </li>
+        <li>
+          <b>FRAC_BORROW_ROMAN</b> borrows fractions from days in a Roman YMDF date.
+        </li>
+        <li>
+          <b>FRAC_CARRY_COMMON</b> carries fractions to days in a Common YMDF date.
+        </li>
+        <li>
+          <b>FRAC_CARRY_ENGLISH</b> carries fractions to days in an English YMDF date.
+        </li>
+        <li>
+          <b>FRAC_CARRY_GREGORIAN</b> carries fractions from days in a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>FRAC_CARRY_HEBREW</b> carries fractions from days in a Hebrew YMDF date.
+        </li>
+        <li>
+          <b>FRAC_CARRY_ISLAMIC</b> carries fractions from days in an Islamic YMDF date.
+        </li>
+        <li>
+          <b>FRAC_CARRY_JULIAN</b> carries fractions from days in a Julian YMDF date.
+        </li>
+        <li>
+          <b>FRAC_CARRY_REPUBLICAN</b> carries fractions from days in a Republican YMDF date.
+        </li>
+        <li>
+          <b>FRAC_CARRY_ROMAN</b> carries fractions to days in a Roman YMDF date.
+        </li>
+        <li>
+          <b>FRAC_TO_HMS</b> converts a fractional day into hours, minutes, seconds.
+        </li>
+        <li>
+          <b>FRAC_TO_S</b> writes a positive fraction into a left justified character string.
+        </li>
+        <li>
+          <b>HMS_TO_S</b> "prints" an HMS date into a string.
+        </li>
+        <li>
+          <b>HOUR_BORROW_COMMON</b> "borrows" a day of hours.
+        </li>
+        <li>
+          <b>HOUR_CARRY_COMMON</b> is given a YMDH date, and carries hours to days.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the positive remainder when I is divided by J.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integers.
+        </li>
+        <li>
+          <b>I4_TO_A</b> returns the I-th alphabetic character.
+        </li>
+        <li>
+          <b>I4_TO_ROMAN</b> converts an integer to a string of Roman numerals.
+        </li>
+        <li>
+          <b>I4_TO_S_LEFT</b> converts an integer to a left-justified string.
+        </li>
+        <li>
+          <b>I4_TO_S_ZERO</b> converts an integer to a string, with zero padding.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>INFLATE_COMMON</b> "inflates" dates in the Common Calendar transition month.
+        </li>
+        <li>
+          <b>INFLATE_ENGLISH</b> "inflates" dates in the English Calendar transition month.
+        </li>
+        <li>
+          <b>J_BORROW_COMMON</b> borrows year-days from years in a Common date.
+        </li>
+        <li>
+          <b>J_BORROW_ENGLISH</b> borrows year-days from years in an English date.
+        </li>
+        <li>
+          <b>J_BORROW_GREGORIAN</b> borrows year-days from years in a Gregorian date.
+        </li>
+        <li>
+          <b>J_BORROW_HEBREW</b> borrows year-days from years in a Hebrew date.
+        </li>
+        <li>
+          <b>J_BORROW_ISLAMIC</b> borrows year-days from years in an Islamic date.
+        </li>
+        <li>
+          <b>J_BORROW_JULIAN</b> borrows year-days from years in a Julian date.
+        </li>
+        <li>
+          <b>J_BORROW_REPUBLICAN</b> borrows year-days from years in a Republican date.
+        </li>
+        <li>
+          <b>J_BORROW_ROMAN</b> borrows year-days from years in a Roman date.
+        </li>
+        <li>
+          <b>J_CARRY_COMMON</b> carries year-days to years in a Common date.
+        </li>
+        <li>
+          <b>J_CARRY_ENGLISH</b> carries year-days to years in an English date.
+        </li>
+        <li>
+          <b>J_CARRY_GREGORIAN</b> carries year-days to years in a Gregorian date.
+        </li>
+        <li>
+          <b>J_CARRY_HEBREW</b> carries year-days to years in a Hebrew date.
+        </li>
+        <li>
+          <b>J_CARRY_ISLAMIC</b> carries year-days to years in an Islamic date.
+        </li>
+        <li>
+          <b>J_CARRY_JULIAN</b> carries year-days to years in a Julian date.
+        </li>
+        <li>
+          <b>J_CARRY_REPUBLICAN</b> carries year-days to years in a Republican date.
+        </li>
+        <li>
+          <b>J_CARRY_ROMAN</b> carries year-days to years in a Roman date.
+        </li>
+        <li>
+          <b>JED_CHECK</b> checks a Julian Ephemeris Date.
+        </li>
+        <li>
+          <b>JED_TEST</b> returns some "interesting" JED's.
+        </li>
+        <li>
+          <b>JED_TO_CWS_GPS</b> converts a JED to a GPS CWS date.
+        </li>
+        <li>
+          <b>JED_TO_DATENUM</b> converts a JED to a MATLAB date number.
+        </li>
+        <li>
+          <b>JED_TO_MAYAN_LONG</b> converts a JED to a Mayan long count date.
+        </li>
+        <li>
+          <b>JED_TO_MAYAN_ROUND</b> converts a JED to a Mayan round date.
+        </li>
+        <li>
+          <b>JED_TO_MJD</b> converts a JED to a modified JED.
+        </li>
+        <li>
+          <b>JED_TO_NEAREST_NOON</b> converts a JED to the JED of the nearest noon.
+        </li>
+        <li>
+          <b>JED_TO_NEXT_NOON</b> converts a JED to the JED of the next noon.
+        </li>
+        <li>
+          <b>JED_TO_NYT</b> converts a JED to an NYT date.
+        </li>
+        <li>
+          <b>JED_TO_RD</b> converts a JED to an RD.
+        </li>
+        <li>
+          <b>JED_TO_SS_UNIX</b> converts a JED to a UNIX SS date.
+        </li>
+        <li>
+          <b>JED_TO_WEEKDAY</b> computes the day of the week from a JED.
+        </li>
+        <li>
+          <b>JED_TO_YEAR_HEBREW:</b> the year in the Hebrew calendar when a JED occurred.
+        </li>
+        <li>
+          <b>JED_TO_YEARCOUNT_BESSEL</b> converts a JED to Bessel year count.
+        </li>
+        <li>
+          <b>JED_TO_YEARCOUNT_JULIAN</b> converts a JED to a Julian year count.
+        </li>
+        <li>
+          <b>JED_TO_YJF_COMMON</b> converts a JED to a Common YJF date.
+        </li>
+        <li>
+          <b>JED_TO_YJF_ENGLISH</b> converts a JED to an English YJF date.
+        </li>
+        <li>
+          <b>JED_TO_YJF_GREGORIAN</b> converts a JED to a Gregorian YJF date.
+        </li>
+        <li>
+          <b>JED_TO_YJF_HEBREW</b> converts a JED to a Hebrew YJF date.
+        </li>
+        <li>
+          <b>JED_TO_YJF_ISLAMIC_A</b> converts a JED to an Islamic-A YJF date.
+        </li>
+        <li>
+          <b>JED_TO_YJF_ISLAMIC_B</b> converts a JED to an Islamic-B YJF date.
+        </li>
+        <li>
+          <b>JED_TO_YJF_JULIAN</b> converts a JED to a Julian YJF date.
+        </li>
+        <li>
+          <b>JED_TO_YJF_REPUBLICAN</b> converts a JED to a Republican YJF date.
+        </li>
+        <li>
+          <b>JED_TO_YJF_ROMAN</b> converts a JED to a Roman YJF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_ALEXANDRIAN</b> converts a JED to an Alexandrian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_ARMENIAN</b> converts a JED to an Armenian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_BAHAI</b> converts a JED to a Bahai YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_COMMON</b> converts a JED to a Common YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_COPTIC</b> converts a JED to a Coptic YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_EG_CIVIL</b> converts a JED to an Egyptian Civil YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_EG_LUNAR</b> converts a JED to an Egyptian Lunar YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_ENGLISH</b> converts a JED to an English YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_ETHIOPIAN</b> converts a JED to an Ethiopian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_GREGORIAN</b> converts a JED to a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_GREGORIAN2</b> converts a JED to a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_HEBREW</b> converts a JED to a Hebrew YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_HINDU_SOLAR</b> converts a JED to a Hindu solar YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_ISLAMIC_A</b> converts a JED to an Islamic A YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_ISLAMIC_B</b> converts a JED to an Islamic B YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_JELALI</b> converts a JED to a Jelali YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_JULIAN</b> converts a JED to a Julian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_JULIAN2</b> converts a JED to a Julian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_JULIAN3</b> converts a JED to a Julian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_KHWARIZMIAN</b> converts a JED to a Khwarizmian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_MACEDONIAN</b> converts a JED to a Macedonian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_PERSIAN</b> converts a JED to a Persian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_REPUBLICAN</b> converts a JED to a Republican YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_ROMAN</b> converts a JED to a Roman YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_SAKA</b> converts a JED to a Saka YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_SOOR_SAN</b> converts a JED to a Soor San YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_SYRIAN</b> converts a JED to a Syrian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_ZOROASTRIAN</b> converts a JED to a Zoroastrian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDHMS_COMMON</b> converts a JED to a Common YMDHMS date.
+        </li>
+        <li>
+          <b>LOWER</b> returns a lowercase version of a string.
+        </li>
+        <li>
+          <b>MAYAN_LONG_TO_JED</b> converts a Mayan long date to a JED.
+        </li>
+        <li>
+          <b>MAYAN_ROUND_TO_JED</b> converts a Mayan round date to a JED.
+        </li>
+        <li>
+          <b>MINUTE_BORROW_COMMON</b> "borrows" an hour of minutes in a Common date.
+        </li>
+        <li>
+          <b>MINUTE_CARRY_COMMON:</b> given a Common YMDHMS date, carries minutes to hours.
+        </li>
+        <li>
+          <b>MJD_TO_JED</b> converts a modified JED to a JED.
+        </li>
+        <li>
+          <b>MONTH_BORROW_ALEXANDRIAN</b> borrows a year of months on Alexandrian calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_BAHAI</b> borrows a year of months on the Bahai calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_COMMON</b> borrows a year of months on the Common calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_EG_CIVIL</b> borrows a year of months on Egyptian Civil calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_ENGLISH</b> borrows a year of months on the English calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_GREGORIAN</b> borrows a year of months on the Gregorian calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_HEBREW</b> borrows a year of months on the Hebrew calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_ISLAMIC</b> borrows a year of months on the Islamic calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_JULIAN</b> borrows a year of months on the Julian calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_REPUBLICAN</b> borrows a year of months on the Republican calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_ROMAN</b> borrows a year of months on the Roman calendar.
+        </li>
+        <li>
+          <b>MONTH_CAL_COMMON</b> prints a Common month calendar.
+        </li>
+        <li>
+          <b>MONTH_CAL_ENGLISH</b> prints an English month calendar.
+        </li>
+        <li>
+          <b>MONTH_CAL_GREGORIAN</b> prints a Gregorian month calendar.
+        </li>
+        <li>
+          <b>MONTH_CAL_HEBREW</b> prints a Hebrew month calendar.
+        </li>
+        <li>
+          <b>MONTH_CAL_ISLAMIC_A</b> prints an Islamic-A month calendar.
+        </li>
+        <li>
+          <b>MONTH_CAL_JULIAN</b> prints a Julian month calendar.
+        </li>
+        <li>
+          <b>MONTH_CAL_REPUBLICAN</b> prints a Republican month calendar.
+        </li>
+        <li>
+          <b>MONTH_CAL_ROMAN</b> prints a Roman month calendar.
+        </li>
+        <li>
+          <b>MONTH_CAL_STORE_COMMON</b> stores a Common month calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_ALEXANDRIAN</b> carries a year of months on the Alexandrian calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_BAHAI</b> carries a year of months on the Bahai calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_COMMON</b> carries a year of months on the Common calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_EG_CIVIL</b> carries a year of months on the Egyptian Civil calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_ENGLISH</b> carries a year of months on the English calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_GREGORIAN</b> carries a year of months on the Gregorian calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_HEBREW</b> carries a year of months on the Hebrew calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_ISLAMIC</b> carries a year of months on the Islamic calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_JULIAN</b> carries a year of months on the Julian calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_REPUBLICAN</b> carries a year of months on the Republican calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_ROMAN</b> carries a year of months on the Roman calendar.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_ALEXANDRIAN</b> returns the number of days in an Alexandrian month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_BAHAI</b> returns the number of days in a Bahai month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_COMMON</b> returns the number of days in a Common month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_COPTIC</b> returns the number of days in a Coptic month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_EG_CIVIL</b> returns the number of days in an Egyptian Civil month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_EG_LUNAR</b> returns the number of days in an Egyptian Lunar month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_ENGLISH</b> returns the number of days in an English month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_ETHIOPIAN</b> returns the number of days in an Ethiopian month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_GREEK</b> returns the number of days in a Greek month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_GREGORIAN</b> returns the number of days in a Gregorian month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_HEBREW</b> returns the number of days in a Hebrew month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_HINDU_SOLAR</b> returns the number of days in a Hindu solar month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_IRANIAN</b> returns the number of days in an Iranian month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_ISLAMIC</b> returns the number of days in an Islamic month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_JULIAN</b> returns the number of days in a Julian month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_LUNAR</b> returns the number of days in a lunar month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_PERSIAN</b> returns the number of days in a Persian month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_REPUBLICAN</b> returns the number of days in a Republican month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_ROMAN</b> returns the number of days in a Roman month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_SYNODIC</b> returns the mean synodic month length.
+        </li>
+        <li>
+          <b>MONTH_NAME_TO_MONTH_COMMON</b> returns the month number of a Common month
+        </li>
+        <li>
+          <b>MONTH_TO_IDES_ROMAN</b> returns the day of the ides of a Roman month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_BAHAI</b> returns the name of a Bahai month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_COMMON</b> returns the name of a Common month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_COMMON3</b> returns an abbreviation of a Common month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_COPTIC</b> returns the name of a Coptic month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_EG_CIVIL</b> returns the name of an Egyptian Civil month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_EG_LUNAR</b> returns the name of an Egyptian Lunar month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_ETHIOPIAN</b> returns the name of an Ethiopian month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_GREEK</b> returns the name of a Greek month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_HEBREW</b> returns the name of a Hebrew month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_HINDU_LUNAR</b> returns the name of a Hindu lunar month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_HINDU_SOLAR</b> returns the name of a Hindu solar month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_IRANIAN</b> returns the name of an Iranian month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_ISLAMIC</b> returns the name of an Islamic month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_PERSIAN</b> returns the name of a Persian month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_REPUBLICAN</b> returns the name of a Republican month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_ROMAN</b> returns the name of a Roman month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_SOOR_SAN</b> returns the name of a Soor San month.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME_ZOROASTRIAN</b> returns the name of a Zoroastrian month.
+        </li>
+        <li>
+          <b>MONTH_TO_NONES_ROMAN</b> returns the day of the nones of a Roman month.
+        </li>
+        <li>
+          <b>MOON_PHASE_TO_JED</b> calculates the JED of a moon phase.
+        </li>
+        <li>
+          <b>MOTHERS_DAY</b> computes the date of Mother's Day (US) for a Common year.
+        </li>
+        <li>
+          <b>NEW_YEAR_TO_JED_HEBREW</b> returns the JED of the beginning of a Hebrew year.
+        </li>
+        <li>
+          <b>NOW_TO_JED</b> expresses the current date as JED.
+        </li>
+        <li>
+          <b>NOW_TO_YJF_COMMON</b> expresses the current date as a Common YJF date.
+        </li>
+        <li>
+          <b>NOW_TO_YMDF_COMMON</b> expresses the current date as a Common YMDF date.
+        </li>
+        <li>
+          <b>NOW_TO_YMDHMS_COMMON</b> expresses the current date as a Common YMDHMS date.
+        </li>
+        <li>
+          <b>NYT_TO_JED</b> converts an NYT date to a JED.
+        </li>
+        <li>
+          <b>NYT_TO_YMD</b> converts an NYT date to a YMD date.
+        </li>
+        <li>
+          <b>R8_SWAP</b> switches two R8's.
+        </li>
+        <li>
+          <b>R8_TO_S_LEFT</b> writes an R8 into a left justified string.
+        </li>
+        <li>
+          <b>R8_UNIFORM</b> returns a scaled pseudorandom R8.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>RD_TO_JED</b> converts an RD to a JED.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>S_CAT1</b> concatenates two strings, with a single blank separator.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_HMS</b> converts a string into a H:M:S date.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_YMD_COMMON</b> converts a string into a Common YMD date.
+        </li>
+        <li>
+          <b>S_TO_YMDHMS_COMMON</b> converts a string into a Common YMD H:M:S date.
+        </li>
+        <li>
+          <b>SECOND_BORROW_COMMON</b> "borrows" a minute of seconds in a common date.
+        </li>
+        <li>
+          <b>SECOND_CARRY_COMMON:</b> given a Common YMDHMS date, carries seconds to minutes.
+        </li>
+        <li>
+          <b>SS_TO_JED_UNIX</b> converts a UNIX SS date to a JED.
+        </li>
+        <li>
+          <b>THANKSGIVING_CANADA</b> computes Canadian Thanksgiving for a Common year.
+        </li>
+        <li>
+          <b>THANKSGIVING_US</b> computes the date of Thanksgiving (US) for a Common year.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRANSITION_TO_JED_COMMON</b> returns the Common calendar transition as a JED.
+        </li>
+        <li>
+          <b>TRANSITION_TO_JED_ENGLISH</b> returns the English calendar transition as a JED.
+        </li>
+        <li>
+          <b>TRANSITION_TO_JED_JED</b> returns the JED calendar transition as a JED.
+        </li>
+        <li>
+          <b>TRANSITION_TO_JED_MAYAN_LONG:</b> Mayan long count calendar transition as a JED.
+        </li>
+        <li>
+          <b>WEEKDAY_CHECK_COMMON</b> makes sure the Common weekday number is between 1 and 7.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_BAHAI</b> returns the name of a Bahai weekday.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_COMMON</b> returns the name of a Common weekday.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_COMMON2</b> returns the abbreviated name of a Common weekday.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_COMMON3</b> returns the abbreviated name of a Common weekday.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_FRENCH</b> returns the name of a French weekday.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_GERMAN</b> returns the name of a German weekday.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_HEBREW</b> returns the name of a Hebrew weekday.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_ISLAMIC</b> returns the name of an Islamic weekday.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_ITALIAN</b> returns the name of an Italian weekday.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_REPUBLICAN</b> returns the name of a Republican weekday.
+        </li>
+        <li>
+          <b>WEEKDAY_TO_NAME_ROMAN</b> returns the name of a Roman weekday.
+        </li>
+        <li>
+          <b>Y_ASTRONOMICAL_TO_COMMON</b> converts an Astronomical year to a Common year.
+        </li>
+        <li>
+          <b>Y_CHECK_ALEXANDRIAN</b> checks an Alexandrian year.
+        </li>
+        <li>
+          <b>Y_CHECK_BAHAI</b> checks a Bahai year.
+        </li>
+        <li>
+          <b>Y_CHECK_COMMON</b> checks a Common year.
+        </li>
+        <li>
+          <b>Y_CHECK_EG_CIVIL</b> checks an Egyptian Civil year.
+        </li>
+        <li>
+          <b>Y_CHECK_ENGLISH</b> checks an English year.
+        </li>
+        <li>
+          <b>Y_CHECK_GREEK</b> checks a Greek year.
+        </li>
+        <li>
+          <b>Y_CHECK_GREGORIAN</b> checks a Gregorian year.
+        </li>
+        <li>
+          <b>Y_CHECK_HEBREW</b> checks a Hebrew year.
+        </li>
+        <li>
+          <b>Y_CHECK_ISLAMIC</b> checks an Islamic year.
+        </li>
+        <li>
+          <b>Y_CHECK_JULIAN</b> checks a Julian year.
+        </li>
+        <li>
+          <b>Y_CHECK_REPUBLICAN</b> checks a Republican year.
+        </li>
+        <li>
+          <b>Y_CHECK_ROMAN</b> checks a Roman year.
+        </li>
+        <li>
+          <b>Y_COMMON_TO_ASTRONOMICAL</b> converts a Common year to an Astronomical year.
+        </li>
+        <li>
+          <b>Y_JULIAN_TO_ROMAN</b> converts a Julian year to a Roman year.
+        </li>
+        <li>
+          <b>Y_ROMAN_TO_JULIAN</b> converts a Roman year to a Julian year.
+        </li>
+        <li>
+          <b>Y_TO_S</b> writes a year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_ALEXANDRIAN</b> writes an Alexandrian year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_BAHAI</b> writes a Bahai year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_COMMON</b> writes a Common year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_COPTIC</b> writes a Coptic year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_EG_CIVIL</b> writes an Egyptian Civil year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_EG_LUNAR</b> writes an Egyptian Lunar year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_ENGLISH</b> writes an English year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_ETHIOPIAN</b> writes an Ethiopian year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_GREEK</b> writes a Greek year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_GREGORIAN</b> writes a Gregorian year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_HEBREW</b> writes a Hebrew year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_ISLAMIC</b> writes an Islamic year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_JULIAN</b> writes a Julian year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_PERSIAN</b> writes a Persian year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_REPUBLICAN</b> writes a Republican year into a string.
+        </li>
+        <li>
+          <b>Y_TO_S_ROMAN</b> writes a Roman year into a string.
+        </li>
+        <li>
+          <b>YEAR_CAL_COMMON</b> prints out a calendar for a Common year.
+        </li>
+        <li>
+          <b>YEAR_IS_EMBOLISMIC_EG_LUNAR:</b> TRUE if the Egyptian Lunar year was embolismic.
+        </li>
+        <li>
+          <b>YEAR_IS_EMBOLISMIC_GREEK</b> returns TRUE if the Greek year was embolismic.
+        </li>
+        <li>
+          <b>YEAR_IS_EMBOLISMIC_HEBREW</b> returns TRUE if the Hebrew year was embolismic.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_ALEXANDRIAN:</b> TRUE if the Alexandrian year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_BAHAI</b> returns TRUE if the Bahai year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_COMMON</b> returns TRUE if the Common year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_COPTIC</b> returns TRUE if the Coptic year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_EG_LUNAR:</b> TRUE if the Egyptian Lunar year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_ENGLISH</b> returns TRUE if the English year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_ETHIOPIAN</b> returns TRUE if the Ethiopian year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_GREEK</b> returns TRUE if the Greek year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_GREGORIAN</b> returns TRUE if the Gregorian year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_IRANIAN</b> returns TRUE if the Iranian year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_ISLAMIC</b> returns TRUE if the Islamic year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_JULIAN</b> returns TRUE if the Julian year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_PERSIAN</b> returns TRUE if the Persian year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_REPUBLICAN</b> returns TRUE if the Republican year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_ROMAN</b> returns TRUE if the Roman year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_ALEXANDRIAN</b> returns the number of days in an Alexandrian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_BAHAI</b> returns the number of days in a Bahai year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_COMMON</b> returns the number of days in a Common year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_COPTIC</b> returns the number of days in a Coptic year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_EG_CIVIL</b> returns the number of days in an Egyptian Civil year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_EG_LUNAR</b> returns the number of days in an Egyptian Lunar year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_ENGLISH</b> returns the number of days in an English year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_ETHIOPIAN</b> returns the number of days in an Ethiopian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_GREEK</b> returns the number of days in a Greek year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_GREGORIAN</b> returns the number of days in a Gregorian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_HEBREW</b> returns the number of days in a Hebrew year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_HINDU_SOLAR</b> returns the number of days in a Hindu solar year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_ISLAMIC</b> returns the number of days in an Islamic year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_JULIAN</b> returns the number of days in a Julian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_LUNAR</b> returns the number of days in a "lunar year".
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_ALEXANDRIAN:</b> number of months in an Alexandrian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_BAHAI</b> returns the number of months in a Bahai year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_COMMON</b> returns the number of months in a Common year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_COPTIC</b> returns the number of months in a Coptic year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_EG_CIVIL:</b> number of months in an Egyptian Civil year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_EG_LUNAR:</b> number of months in an Egyptian Lunar year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_ENGLISH</b> returns the number of months in an English year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_ETHIOPIAN:</b> number of months in an Ethiopian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_GREEK</b> returns the number of months in a Greek year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_GREGORIAN:</b> number of months in a Gregorian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_HEBREW</b> returns the number of months in a Hebrew year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_HINDU_LUNAR:</b> number of months in a Hindu lunar year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_HINDU_SOLAR:</b> number of months in a Hindu solar year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_ISLAMIC</b> returns the number of months in an Islamic year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_JULIAN</b> returns the number of months in a Julian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_PERSIAN</b> returns the number of months in a Persian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_REPUBLICAN:</b> number of months in a Republican year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_ROMAN</b> returns the number of months in a Roman year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_PERSIAN</b> returns the number of days in a Persian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_REPUBLICAN</b> returns the number of days in a Republican year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_ROMAN</b> returns the number of days in a Roman year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_SOLAR</b> returns the number of days in a "solar" year.
+        </li>
+        <li>
+          <b>YEAR_TO_DOMINICAL_COMMON:</b> dominical numbers, Common calendar.
+        </li>
+        <li>
+          <b>YEAR_TO_DOMINICAL_GREGORIAN:</b> dominical numbers, Gregorian calendar.
+        </li>
+        <li>
+          <b>YEAR_TO_DOMINICAL_JULIAN:</b> dominical numbers, Julian calendar.
+        </li>
+        <li>
+          <b>YEAR_TO_EPACT_GREGORIAN</b> returns the epact of a Gregorian year.
+        </li>
+        <li>
+          <b>YEAR_TO_EPACT_JULIAN</b> returns the epact of a Julian year.
+        </li>
+        <li>
+          <b>YEAR_TO_GOLDEN_NUMBER</b> returns the golden number of a Common year.
+        </li>
+        <li>
+          <b>YEAR_TO_INDICTION_COMMON</b> returns the indiction number of a Common year.
+        </li>
+        <li>
+          <b>YEAR_TO_SCALIGER_COMMON</b> converts a Common year to its Scaliger indices.
+        </li>
+        <li>
+          <b>YEAR_TO_TYPE_HEBREW</b> returns the type of a Hebrew year.
+        </li>
+        <li>
+          <b>YJ_CHECK_COMMON</b> checks a Common YJ date.
+        </li>
+        <li>
+          <b>YJ_CHECK_ENGLISH</b> checks an English YJ date.
+        </li>
+        <li>
+          <b>YJ_CHECK_GREGORIAN</b> checks a Gregorian YJ date.
+        </li>
+        <li>
+          <b>YJ_CHECK_HEBREW</b> checks a Hebrew YJ date.
+        </li>
+        <li>
+          <b>YJ_CHECK_ISLAMIC</b> checks an Islamic YJ date.
+        </li>
+        <li>
+          <b>YJ_CHECK_JULIAN</b> checks a Julian YJ date.
+        </li>
+        <li>
+          <b>YJ_CHECK_REPUBLICAN</b> checks a Republican YJ date.
+        </li>
+        <li>
+          <b>YJ_CHECK_ROMAN</b> checks a Roman YJ date.
+        </li>
+        <li>
+          <b>YJ_TO_S_COMMON</b> writes a Common YJ date into a string.
+        </li>
+        <li>
+          <b>YJ_TO_S_ENGLISH</b> writes an English YJ date into a string.
+        </li>
+        <li>
+          <b>YJ_TO_S_GREGORIAN</b> writes a Gregorian YJ date into a string.
+        </li>
+        <li>
+          <b>YJ_TO_S_HEBREW</b> writes a Hebrew YJ date into a string.
+        </li>
+        <li>
+          <b>YJ_TO_S_ISLAMIC</b> writes an Islamic YJ date into a string.
+        </li>
+        <li>
+          <b>YJ_TO_S_JULIAN</b> writes a Julian YJ date into a string.
+        </li>
+        <li>
+          <b>YJ_TO_S_NUMERIC</b> "prints" a YJ date into a string.
+        </li>
+        <li>
+          <b>YJ_TO_S_REPUBLICAN</b> writes a Republican YJ date into a string.
+        </li>
+        <li>
+          <b>YJ_TO_S_ROMAN</b> writes a Roman YJ date into a string.
+        </li>
+        <li>
+          <b>YJF_CHECK_COMMON</b> normalizes a Common YJF date.
+        </li>
+        <li>
+          <b>YJF_CHECK_ENGLISH</b> normalizes an English YJF date.
+        </li>
+        <li>
+          <b>YJF_COMPARE</b> compares two YJF dates.
+        </li>
+        <li>
+          <b>YJF_DIF_COMMON</b> computes day difference between two Common YJF dates.
+        </li>
+        <li>
+          <b>YJF_SWAP</b> swaps the data defining two YJF dates.
+        </li>
+        <li>
+          <b>YJF_TO_JED_COMMON</b> converts a Common YJF date to a JED.
+        </li>
+        <li>
+          <b>YJF_TO_JED_ENGLISH</b> converts an English YJF date to a JED.
+        </li>
+        <li>
+          <b>YJF_TO_JED_GREGORIAN</b> converts a Gregorian YJF date to a JED.
+        </li>
+        <li>
+          <b>YJF_TO_JED_HEBREW</b> converts a Hebrew YJF date to a JED.
+        </li>
+        <li>
+          <b>YJF_TO_JED_ISLAMIC_A</b> converts an Islamic-A YJF date to a JED.
+        </li>
+        <li>
+          <b>YJF_TO_JED_ISLAMIC_B</b> converts an Islamic-B YJF date to a JED.
+        </li>
+        <li>
+          <b>YJF_TO_JED_JULIAN</b> converts a Julian YJF date to a JED.
+        </li>
+        <li>
+          <b>YJF_TO_JED_REPUBLICAN</b> converts a Republican YJF date to a JED.
+        </li>
+        <li>
+          <b>YJF_TO_JED_ROMAN</b> converts a Roman YJF date to a JED.
+        </li>
+        <li>
+          <b>YJF_TO_S_COMMON</b> "prints" a Common YJF date into a string.
+        </li>
+        <li>
+          <b>YJF_TO_S_ENGLISH</b> writes an English YJF date into a string.
+        </li>
+        <li>
+          <b>YJF_TO_S_GREGORIAN</b> writes a Gregorian YJF date into a string.
+        </li>
+        <li>
+          <b>YJF_TO_S_HEBREW</b> writes a Hebrew YJF date into a string.
+        </li>
+        <li>
+          <b>YJF_TO_S_ISLAMIC</b> writes an Islamic YJF date into a string.
+        </li>
+        <li>
+          <b>YJF_TO_S_JULIAN</b> writes a Julian YJF date into a string.
+        </li>
+        <li>
+          <b>YJF_TO_S_REPUBLICAN</b> writes a Republican YJF date into a string.
+        </li>
+        <li>
+          <b>YJF_TO_S_ROMAN</b> writes a Roman YJF date into a string.
+        </li>
+        <li>
+          <b>YJF_TO_WEEKDAY_COMMON</b> returns the weekday of a Common YJF date.
+        </li>
+        <li>
+          <b>YJF_TO_YMDF_COMMON</b> converts a Common date from YJF to YMDF format.
+        </li>
+        <li>
+          <b>YJF_TO_YMDF_ENGLISH</b> converts an English date from YJF to YMDF format.
+        </li>
+        <li>
+          <b>YJF_TO_YMDF_GREGORIAN</b> converts a Gregorian date from YJF to YMDF format.
+        </li>
+        <li>
+          <b>YJF_TO_YMDF_HEBREW</b> converts a YJF to YMDF date, both in the Hebrew calendar.
+        </li>
+        <li>
+          <b>YJF_TO_YMDF_ISLAMIC:</b> YJF to YMDF date, both in the Islamic calendar.
+        </li>
+        <li>
+          <b>YJF_TO_YMDF_JULIAN</b> converts a YJF to YMDF date, both in the Julian calendar.
+        </li>
+        <li>
+          <b>YJF_TO_YMDF_REPUBLICAN:</b> YJF to YMDF date in the Republican calendar.
+        </li>
+        <li>
+          <b>YJF_TO_YMDF_ROMAN</b> converts a YJF to YMDF date in the Roman calendar.
+        </li>
+        <li>
+          <b>YJF_TO_YMDHMS_COMMON</b> converts a Common YJF date to a YMDHMS date.
+        </li>
+        <li>
+          <b>YJF_UNIFORM_COMMON</b> picks a random Common YJF date between two given dates.
+        </li>
+        <li>
+          <b>YM_CHECK_ALEXANDRIAN</b> checks an Alexandrian YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_BAHAI</b> checks a Bahai YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_COMMON</b> checks a Common YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_EG_CIVIL</b> checks an Egyptian Civil YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_ENGLISH</b> checks an English YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_GREGORIAN</b> checks a Gregorian YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_HEBREW</b> checks a Hebrew YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_ISLAMIC</b> checks an Islamic YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_JULIAN</b> checks a Julian YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_REPUBLICAN</b> checks a Republican YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_ROMAN</b> checks a Roman YM date.
+        </li>
+        <li>
+          <b>YM_TO_DECIMAL</b> converts a Y/M date to a Decimal Y.F date.
+        </li>
+        <li>
+          <b>YMD_CHECK_ALEXANDRIAN</b> checks an Alexandrian YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_COMMON</b> checks a Common YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_EG_CIVIL</b> checks an Egyptian Civil YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_ENGLISH</b> checks an English YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_GREGORIAN</b> checks a Gregorian YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_HEBREW</b> checks a Hebrew YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_ISLAMIC</b> checks an Islamic YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_JULIAN</b> checks a Julian YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_REPUBLICAN</b> checks a Republican YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_ROMAN</b> checks a Roman YMD date.
+        </li>
+        <li>
+          <b>YMD_COMPARE</b> compares two YMD dates.
+        </li>
+        <li>
+          <b>YMD_DIF_COMMON</b> gets the day difference between two Common YMD dates.
+        </li>
+        <li>
+          <b>YMD_INC_YMD_COMMON</b> increments a Common YMD date by a YMD increment.
+        </li>
+        <li>
+          <b>YMD_TO_DECIMAL</b> converts a Y/M/D date to a Decimal Y.F date.
+        </li>
+        <li>
+          <b>YMD_TO_JED_COMMON</b> converts a Common YMD date to a JED.
+        </li>
+        <li>
+          <b>YMD_TO_JED_GREGORIAN</b> converts a Gregorian YMD date to a JED.
+        </li>
+        <li>
+          <b>YMD_TO_JED_JULIAN</b> converts a Julian YMD date to a JED.
+        </li>
+        <li>
+          <b>YMD_TO_NYT</b> converts a YMD date to an NYT date.
+        </li>
+        <li>
+          <b>YMD_TO_S_ALEXANDRIAN</b> "prints" an Alexandrian YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_COMMON</b> writes a Common YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_EG_CIVIL</b> "prints" an Egyptian Civil YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_EG_LUNAR</b> "prints" an Egyptian Lunar YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_ENGLISH</b> writes an English YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_GREGORIAN</b> writes a Gregorian YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_HEBREW</b> "prints" a Hebrew YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_ISLAMIC</b> writes an Islamic YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_JULIAN</b> writes a Julian YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_NUMERIC</b> writes a YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_REPUBLICAN</b> writes a Republican YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_S_ROMAN</b> writes a Roman YMD date into a string.
+        </li>
+        <li>
+          <b>YMD_TO_WEEKDAY_COMMON</b> returns the weekday of a Common YMD date.
+        </li>
+        <li>
+          <b>YMDF_CHECK_COMMON</b> checks a Common YMDF date.
+        </li>
+        <li>
+          <b>YMDF_CHECK_ENGLISH</b> checks an English YMDF date.
+        </li>
+        <li>
+          <b>YMDF_CHECK_GREGORIAN</b> checks a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>YMDF_CHECK_HEBREW</b> checks a Hebrew YMDF date.
+        </li>
+        <li>
+          <b>YMDF_CHECK_ISLAMIC</b> checks an Islamic YMDF date.
+        </li>
+        <li>
+          <b>YMDF_CHECK_JULIAN</b> checks a Julian YMDF date.
+        </li>
+        <li>
+          <b>YMDF_CHECK_REPUBLICAN</b> checks a Republican YMDF date.
+        </li>
+        <li>
+          <b>YMDF_CHECK_ROMAN</b> checks a Roman YMDF date.
+        </li>
+        <li>
+          <b>YMDF_COMPARE</b> compares two YMDF dates.
+        </li>
+        <li>
+          <b>YMDF_DIF_COMMON</b> gets the day difference between two Common YMDF dates.
+        </li>
+        <li>
+          <b>YMDF_DIF_ENGLISH</b> gets the day difference between two English YMDF dates.
+        </li>
+        <li>
+          <b>YMDF_DIF_YMDF_COMMON</b> gets the YMDF difference between two Common YMDF dates.
+        </li>
+        <li>
+          <b>YMDF_INC_COMMON</b> increments a Common YMDF date by DAYS days.
+        </li>
+        <li>
+          <b>YMDF_INC_ENGLISH</b> increments an English YMDF date by DAYS days.
+        </li>
+        <li>
+          <b>YMDF_INC_GREGORIAN</b> increments a Gregorian YMDF date by DAYS days.
+        </li>
+        <li>
+          <b>YMDF_INC_HEBREW</b> increments a Hebrew YMDF date by DAYS days.
+        </li>
+        <li>
+          <b>YMDF_INC_ISLAMIC</b> increments an Islamic YMDF date by DAYS days.
+        </li>
+        <li>
+          <b>YMDF_INC_JULIAN</b> increments a Julian YMDF date by DAYS days.
+        </li>
+        <li>
+          <b>YMDF_INC_REPUBLICAN</b> increments a Republican YMDF date by DAYS days.
+        </li>
+        <li>
+          <b>YMDF_INC_ROMAN</b> increments a Roman YMDF date by a DAYS days.
+        </li>
+        <li>
+          <b>YMDF_NEXT_COMMON</b> returns the Common YMDF date of the next day.
+        </li>
+        <li>
+          <b>YMDF_NEXT_ENGLISH</b> returns the English YMD date of the next day.
+        </li>
+        <li>
+          <b>YMDF_NEXT_GREGORIAN</b> returns the Gregorian YMDF date of the next day.
+        </li>
+        <li>
+          <b>YMDF_NEXT_HEBREW</b> returns the Hebrew YMDF date of the next day.
+        </li>
+        <li>
+          <b>YMDF_NEXT_ISLAMIC</b> returns the Islamic YMDF date of the next day.
+        </li>
+        <li>
+          <b>YMDF_NEXT_JULIAN</b> returns the Julian YMDF date of the next day.
+        </li>
+        <li>
+          <b>YMDF_NEXT_REPUBLICAN</b> returns the Republican YMD date of the next day.
+        </li>
+        <li>
+          <b>YMDF_NEXT_ROMAN</b> returns the Roman YMDF date of the next day.
+        </li>
+        <li>
+          <b>YMDF_PREV_COMMON</b> returns the Common YMDF date of the previous day.
+        </li>
+        <li>
+          <b>YMDF_PREV_ENGLISH</b> returns the English YMDF date of the previous day.
+        </li>
+        <li>
+          <b>YMDF_PREV_GREGORIAN</b> returns the Gregorian YMDF date of the previous day.
+        </li>
+        <li>
+          <b>YMDF_PREV_HEBREW</b> returns the Hebrew YMDF date of the previous day.
+        </li>
+        <li>
+          <b>YMDF_PREV_ISLAMIC</b> returns the Islamic YMDF date of the previous day.
+        </li>
+        <li>
+          <b>YMDF_PREV_JULIAN</b> returns the Julian YMDF date of the previous day.
+        </li>
+        <li>
+          <b>YMDF_PREV_REPUBLICAN</b> returns the Republican YMDF date of the previous day.
+        </li>
+        <li>
+          <b>YMDF_PREV_ROMAN</b> returns the Roman YMDF date of the previous day.
+        </li>
+        <li>
+          <b>YMDF_SWAP</b> swaps two YMDF dates.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_ALEXANDRIAN</b> converts an Alexandrian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_ARMENIAN</b> converts an Armenian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_BAHAI</b> converts a Bahai YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_COMMON</b> converts a Common YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_COPTIC</b> converts a Coptic YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_EG_CIVIL</b> converts an Egyptian Civil YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_EG_LUNAR</b> converts an Egyptian Lunar YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_ENGLISH</b> converts an English YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_ETHIOPIAN</b> converts an Ethiopian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_GREGORIAN</b> converts a Gregorian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_HEBREW</b> converts a Hebrew YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_HINDU_SOLAR</b> converts a Hindu solar YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_ISLAMIC_A</b> converts an Islamic A YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_ISLAMIC_A2</b> converts an Islamic A YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_ISLAMIC_B</b> converts an Islamic B YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_JELALI</b> converts a Jelali YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_JULIAN</b> converts a Julian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_JULIAN2</b> converts a Julian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_KHWARIZMIAN</b> converts a Khwarizmian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_MACEDONIAN</b> converts a Macedonian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_PERSIAN</b> converts a Persian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_REPUBLICAN</b> converts a Republican YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_ROMAN</b> converts a Roman YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_SAKA</b> converts a Saka YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_SOOR_SAN</b> converts a Soor San YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_SYRIAN</b> converts a Syrian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_ZOROASTRIAN</b> converts a Zoroastrian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_S_COMMON</b> writes a Common YMDF date into a string.
+        </li>
+        <li>
+          <b>YMDF_TO_S_ENGLISH</b> writes an English YMDF date into a string.
+        </li>
+        <li>
+          <b>YMDF_TO_S_GREGORIAN</b> writes a Gregorian YMDF date into a string.
+        </li>
+        <li>
+          <b>YMDF_TO_S_HEBREW</b> "prints" a Hebrew YMDF date into a string.
+        </li>
+        <li>
+          <b>YMDF_TO_S_ISLAMIC</b> writes an Islamic YMDF date into a string.
+        </li>
+        <li>
+          <b>YMDF_TO_S_JULIAN</b> writes a Julian YMDF date into a string.
+        </li>
+        <li>
+          <b>YMDF_TO_S_NUMERIC</b> writes a YMDF date into a string.
+        </li>
+        <li>
+          <b>YMDF_TO_S_REPUBLICAN</b> writes a Republican YMDF date into a string.
+        </li>
+        <li>
+          <b>YMDF_TO_S_ROMAN</b> writes a Roman YMDF date into a string.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEK_COMMON</b> returns the week number for a Common YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_COMMON</b> returns the weekday of a Common YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_ENGLISH</b> returns the weekday of an English YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_ENGLISH2</b> returns the weekday of an English YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_GREGORIAN</b> returns the weekday of a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_GREGORIAN2</b> returns the weekday of a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_GREGORIAN3</b> returns the weekday of a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_GREGORIAN4</b> returns the weekday of a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_GREGORIAN5</b> returns the weekday of a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_HEBREW</b> returns the weekday of a Hebrew YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_ISLAMIC_A</b> returns the weekday of an Islamic A YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_JULIAN</b> computes the weekday of a Julian YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_JULIAN2</b> returns the weekday of a Julian YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_JULIAN3</b> returns the week day of a Julian YMD date.
+        </li>
+        <li>
+          <b>YMDF_TO_WEEKDAY_REPUBLICAN</b> returns the weekday of a Republican YMDF date.
+        </li>
+        <li>
+          <b>YMDF_TO_YJF_COMMON</b> converts from YMDF to YJF form in the Common calendar.
+        </li>
+        <li>
+          <b>YMDF_TO_YJF_ENGLISH</b> converts from YMDF to YJF form in the English calendar.
+        </li>
+        <li>
+          <b>YMDF_TO_YJF_GREGORIAN:</b> YMDF to YJF form in the Gregorian calendar.
+        </li>
+        <li>
+          <b>YMDF_TO_YJF_HEBREW</b> converts from YMDF to YJF form in the Hebrew calendar.
+        </li>
+        <li>
+          <b>YMDF_TO_YJF_ISLAMIC</b> converts from YMDF to YJF form in the Islamic calendar.
+        </li>
+        <li>
+          <b>YMDF_TO_YJF_JULIAN</b> converts from YMDF to YJF form in the Julian calendar.
+        </li>
+        <li>
+          <b>YMDF_TO_YJF_REPUBLICAN:</b> YMDF to YJF form in the Republican calendar.
+        </li>
+        <li>
+          <b>YMDF_TO_YJF_ROMAN</b> converts from YMDF to YJF form in the Roman calendar.
+        </li>
+        <li>
+          <b>YMDF_TO_YMDHMS_COMMON</b> converts from YMDF to YMDHMS in the Common calendar.
+        </li>
+        <li>
+          <b>YMDF_UNIFORM_COMMON</b> picks a random Common YMDF date between two given dates.
+        </li>
+        <li>
+          <b>YMDF_UNIFORM_ENGLISH:</b> random English YMDF date between two given dates.
+        </li>
+        <li>
+          <b>YMDHMS_CHECK_COMMON</b> checks a Common YMDHMS date.
+        </li>
+        <li>
+          <b>YMDHMS_COMPARE</b> compares two YMDHMS dates.
+        </li>
+        <li>
+          <b>YMDHMS_DIF_DHMS</b> computes the DHMS difference between two YMDHMS dates.
+        </li>
+        <li>
+          <b>YMDHMS_SWAP</b> swaps the data defining two YMDHMS dates.
+        </li>
+        <li>
+          <b>YMDHMS_TO_DECIMAL</b> converts a YMDHMS date to a Decimal Y.F date.
+        </li>
+        <li>
+          <b>YMDHMS_TO_JED_COMMON</b> converts a Common YMDHMS date to a JED.
+        </li>
+        <li>
+          <b>YMDHMS_TO_S_COMMON</b> "prints" a Common YMDHMS date into a string.
+        </li>
+        <li>
+          <b>YMDHMS_TO_YJF_COMMON</b> converts a YMDHMS date to a YJF date.
+        </li>
+        <li>
+          <b>YMDHMS_TO_YMDF_COMMON</b> converts a YMDHMS date to a YMDF date.
+        </li>
+        <li>
+          <b>YMDHMS_UNIFORM_COMMON:</b> random Common YMDHMS date between two given dates.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 October 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

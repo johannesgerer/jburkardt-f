@@ -1,0 +1,199 @@
+<html>
+
+  <head>
+    <title>
+      ASA159 - Random generation of a table.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ASA159 <br> Random generation of a table.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ASA159</b>
+      is a FORTRAN90 library which
+      constructs a table having given row and column sums,
+      by Michael Patefield;
+    </p>
+
+    <p>
+      <b>ASA159</b> is Applied Statistics Algorithm 159.  Source code for many
+      Applied Statistics Algorithms is available through
+      <a href = "http://lib.stat.cmu.edu/apstat">STATLIB</a>.
+    </p>
+
+    <p>
+      <b>ASA159</b> accepts a table shape (the number of rows and columns),
+      and two vectors, the lists of row and column sums.  There may be 0, 1, or
+      many tables with nonnegative, integral entries that have the given
+      shape and sums.  The routine will report the case if there are no
+      candidates.  If there is at least one candidate, then the routine
+      will choose one, uniformly over the number of distinct candidates.
+    </p>
+
+    <p>
+      For example, suppose M = 2, N = 3, row sum = (/ 6, 5 /) and
+      column sum = (/ 3, 4, 4 /), then here are two tables that satisfy
+      the constraints:
+      <pre>
+        1  2  3
+        2  2  1
+      </pre>
+      and
+      <pre>
+        3  0  3
+        0  4  1
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>ASA159</b> is available in
+      <a href = "../../c_src/asa159/asa159.html">a C version</a> and
+      <a href = "../../cpp_src/asa159/asa159.html">a C++ version</a> and
+      <a href = "../../f77_src/asa159/asa159.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/asa159/asa159.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/asa159/asa159.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa144/asa144.html">
+      ASA144</a>,
+      a FORTRAN90 library which
+      randomly generates an RxC contingency table.
+    </p>
+
+    <p>
+      <a href = "../../f_src/asa205/asa205.html">
+      ASA205</a>,
+      a FORTRAN90 library which
+      generates all the contingency
+      tables corresponding to a given set of row and column sums.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset/subset.html">
+      SUBSET</a>,
+      a FORTRAN90 library which
+      includes a routine called
+      <b>I4MAT_01_ROWCOLSUM</b> which
+      generates a (0,1) matrix with given row and column sums.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Original FORTRAN77 version by Michael Patefield;
+      Matlab version by John Burkardt.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Michael Patefield,<br>
+          Algorithm AS 159:
+          An Efficient Method of Generating RXC Tables with
+          Given Row and Column Totals,<br>
+          Applied Statistics,<br>
+          Volume 30, Number 1, 1981, pages 91-97.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "asa159.f90">asa159.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "asa159.sh">asa159.sh</a>, commands to
+          compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "asa159_prb.f90">asa159_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "asa159_prb.sh">asa159_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "asa159_prb_output.txt">asa159_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT_SOME</b> prints some of an I4MAT.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>RCONT2</b> constructs a random two-way contingency table with given sums.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 10 March 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

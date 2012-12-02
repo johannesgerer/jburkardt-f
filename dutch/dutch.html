@@ -1,0 +1,373 @@
+<html>
+
+  <head>
+    <title>
+      DUTCH - Computational Geometry
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      DUTCH <br> Computational Geometry
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DUTCH</b>
+      is a FORTRAN90 library which
+      implements some of the computational
+      geometry routines from the reference.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/geometry/geometry.html">
+      GEOMETRY</a>,
+      a FORTRAN90 library which
+      contains many geometrical algorithms.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geompack/geompack.html">
+      GEOMPACK</a>,
+      a FORTRAN90 library which
+      contain routines for Voronoi diagrams and Delaunay triangulations.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Marc de Berg, Marc van Kreveld, Mark Overmars,
+          Otfried Schwarzkopf,<br>
+          Computational Geometry,<br>
+          Springer, 2000.
+        </li>
+        <li>
+          Thomas Cormen, Charles Leiserson, Ronald Rivest,<br>
+          Introduction to Algorithms,<br>
+          MIT Press.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms,<br>
+          Academic Press, 1978, second edition,<br>
+          ISBN 0-12-519260-6.
+        </li>
+        <li>
+          Joseph O'Rourke,<br>
+          Computational Geometry,<br>
+          Cambridge University Press,<br>
+          Second Edition, 1998.
+        </li>
+        <li>
+          <a href = "http://www.cs.uu.nl/geobook/">
+          http://www.cs.uu.nl/geobook/</a>.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "dutch.f90">dutch.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "dutch.sh">dutch.sh</a>, commands to
+          compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "dutch_prb.f90">dutch_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "dutch_prb.sh">dutch_prb.sh</a>, commands to
+          compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "dutch_prb_output.txt">dutch_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE_DEG_2D</b> returns the angle swept out between two rays in 2D.
+        </li>
+        <li>
+          <b>ANGLE_RAD_2D</b> returns the angle in radians swept out between two rays in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_DIA2IMP_2D</b> converts a diameter to an implicit circle in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_EXP2IMP_2D</b> converts a circle from explicit to implicit form in 2D.
+        </li>
+        <li>
+          <b>CIRCLE_IMP_CONTAINS_POINT_2D</b> determines if an implicit circle contains a point in 2D.
+        </li>
+        <li>
+          <b>CROSS0_2D</b> finds the cross product of (P1-P0) and (P2-P0) in 2D.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two integer values.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a pseudorandom I4.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4VEC_FRAC</b> searches for the K-th smallest element in an N-vector.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_A</b> reorders an array of integers into an ascending heap.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D</b> reorders an array of integers into an descending heap.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D_EXTRACT</b> extracts the maximum value from a descending heap.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D_INSERT</b> inserts a new value into a descending heap.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D_MAX</b> returns the maximum value in a descending heap of integers.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an integer vector to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_MEDIAN</b> returns the median of an unsorted integer vector.
+        </li>
+        <li>
+          <b>I4VEC_POP</b> pops an integer vector off of a stack.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an integer vector.
+        </li>
+        <li>
+          <b>I4VEC_PUSH</b> pushes an integer vector onto a stack.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_D</b> descending sorts an integer array using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SPLIT_UNSORT</b> "splits" an unsorted I4VEC based on a splitting value.
+        </li>
+        <li>
+          <b>IJ_NEXT</b> returns the next matrix index.
+        </li>
+        <li>
+          <b>IJ_NEXT_GT</b> returns the next matrix index, with the constraint that I < J.
+        </li>
+        <li>
+          <b>LINE_EXP2IMP_2D</b> converts an explicit line to implicit form in 2D.
+        </li>
+        <li>
+          <b>LINE_EXP_POINT_DIST_2D:</b> distance ( explicit line, point ) in 2D.
+        </li>
+        <li>
+          <b>LINE_EXP_POINT_DIST_SIGNED_2D:</b> signed distance ( explicit line, point ) in 2D.
+        </li>
+        <li>
+          <b>LINE_SEG_CONTAINS_POINT_2D</b> reports if a line segment contains a point in 2D.
+        </li>
+        <li>
+          <b>LINE_SEG_VEC_INT_2D</b> computes intersections of a set of line segments.
+        </li>
+        <li>
+          <b>LINES_EXP_INT_2D</b> determines where two explicit lines intersect in 2D.
+        </li>
+        <li>
+          <b>LINES_IMP_INT_2D</b> determines where two implicit lines intersect in 2D.
+        </li>
+        <li>
+          <b>LINES_SEG_DIST_2D</b> computes the distance of two line segments in 2D.
+        </li>
+        <li>
+          <b>LINES_SEG_INT_1D</b> computes the intersection of two line segments in 1D.
+        </li>
+        <li>
+          <b>LINES_SEG_INT_2D</b> computes the intersection of two line segments in 2D.
+        </li>
+        <li>
+          <b>PERM_PRINT</b> prints a permutation.
+        </li>
+        <li>
+          <b>PERM_RANDOM</b> returns a random permutation.
+        </li>
+        <li>
+          <b>POINTS_CONVEX_HULL_CUBIC_2D</b> computes the convex hull of 2D points.
+        </li>
+        <li>
+          <b>POINTS_CONVEX_HULL_NLOGH_2D</b> computes the convex hull of 2D points.
+        </li>
+        <li>
+          <b>POINTS_CONVEX_HULL_NLOGN_2D</b> computes the convex hull of 2D points.
+        </li>
+        <li>
+          <b>POINTS_MINIDISC1_2D</b> finds the smallest circle through Q containing points P.
+        </li>
+        <li>
+          <b>POINTS_MINIDISC2_2D</b> finds the smallest circle through Q1 and Q2 containing points P.
+        </li>
+        <li>
+          <b>POINTS_MINIDISC_2D</b> finds the smallest circle containing points P.
+        </li>
+        <li>
+          <b>POLY_TRIANGULATE_2D</b> returns a triangulation of a polygon.
+        </li>
+        <li>
+          <b>POLY_REORDER_NODES</b> reorders nodes of a polygon so node 1 is leftest lowest.
+        </li>
+        <li>
+          <b>POLYCON_MINKOWSKI_SUM_LINEAR</b> computes the Minkowski sum of two convex polygons.
+        </li>
+        <li>
+          <b>POLYCON_MINKOWSKI_SUM_N2LOGN2</b> Minkowski sums two convex polygons.
+        </li>
+        <li>
+          <b>R4_UNIFORM_01</b> returns a unit pseudorandom R4.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>R82VEC_PART_QUICK_A</b> reorders a R82VEC as part of a quick sort.
+        </li>
+        <li>
+          <b>R82VEC_SORT_QUICK_A</b> ascending sorts a R82VEC using quick sort.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_SOLVE</b> uses Gauss-Jordan elimination to solve an N by N linear system.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT2_INVERSE</b> inverts a 2 by 2 real matrix using Cramer's rule.
+        </li>
+        <li>
+          <b>R8VEC_EQ</b> is true if two R8VEC's are equal.
+        </li>
+        <li>
+          <b>R8VEC_GT</b> == ( A1 > A2 ) for R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_LT</b> == ( A1 < A2 ) for R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_SWAP</b> swaps the entries of two R8VECs.
+        </li>
+        <li>
+          <b>R8VEC2_COMPARE</b> compares elements of an R8VEC2.
+        </li>
+        <li>
+          <b>R8VEC2_PRINT</b> prints a pair of real vectors.
+        </li>
+        <li>
+          <b>R8VEC2_SORT_A</b> ascending sorts a vector of pairs of integers.
+        </li>
+        <li>
+          <b>RADIANS_TO_DEGREES</b> converts an angle from radians to degrees.
+        </li>
+        <li>
+          <b>RECT_INT_2D</b> computes the intersection of two rectangles in 2D.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRIANGLE_CONTAINS_POINT_2D</b> finds if a point is inside a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGULATE_TRICOLOR</b> three-colors the nodes of a triangulated polygon.
+        </li>
+        <li>
+          <b>TRIANGULATE_COLOR_PUSH</b> pushes a side of a colored triangle onto the stack.
+        </li>
+        <li>
+          <b>TRIANGULATE_COLOR_POP</b> pops a side of a colored triangle from the stack.
+        </li>
+        <li>
+          <b>TRIANGULATE_COMMON_EDGE</b> seeks the other triangle that shares an edge.
+        </li>
+        <li>
+          <b>TRIANGULATION_BOUNDARY_COUNT</b> returns the number of boundary edges.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 02 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

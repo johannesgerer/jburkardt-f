@@ -1,0 +1,252 @@
+May 29 2003   9:14:02.193 AM
+ 
+MATMUL
+  An interactive demonstration of the speed
+  of matrix multiplication.
+ 
+  This is version 1.20
+  Last modified on 16 December 2002.
+ 
+  This is the version for Alpha
+ 
+Command?  (Type H for help)
+ 
+  This is the list of legal commands.
+ 
+  H                 Help. List the legal commands.
+  LDA=value         Set leading dimension of arrays.
+  M                 Multiply two matrices.
+  N=value           Assigns the size of the arrays.
+  N=nlo,nhi,ninc    Sets N=nlo, N=nlo+ninc, ....
+  N=nlo,nhi,*nmult  Sets N=nlo, N=nlo*nmult, ....
+  NREP=nrep         Sets the repetition factor.
+  ORDER=name        Chooses the algorithm.
+  P                 Prints out current results.
+  Q                 Quit.
+  SHOW=name         Include "name" in output.
+  		  "name" = CPU, LANGUAGE, LDA,
+                    MACHINE, MFLOPS, N, NREP, 
+                    OPS, ORDER, or TIME.
+                    "SHOW=ALL" means all items are shown.
+  NOSHOW=name       removes an item from output list.
+ 
+Command?  (Type H for help)
+ 
+  N has been set to    100
+  NLO has been set to    100
+  NHI has been set to    100
+  NINC has been set to      0
+  NMULT has been set to      1
+ 
+  Because N was changed, LDA is automatically
+  increased to LDA =    100
+ 
+Command?  (Type H for help)
+ 
+  The order has been set to ALL
+ 
+Command?  (Type H for help)
+ 
+     Order LDA   N      CPU Secs       Ops    MFLOPS  Machine  Language
+ 
+C_IJK      100 100      0.013672   2000000  146.2844 Alpha      F90    
+C_MATMUL   100 100      0.009766   2000000  204.7922 Alpha      F90    
+D_IJK      100 100      0.006836   2000000  292.5688 Alpha      F90    
+D_MATMUL   100 100      0.004883   2000000  409.5841 Alpha      F90    
+I_IJK      100 100      0.005860   2000000  341.2971 Alpha      F90    
+I_MATMUL   100 100      0.002929   2000000  682.8265 Alpha      F90    
+L_IJK      100 100      0.004883   2000000  409.5841 Alpha      F90    
+R_DOT_PROD 100 100      0.004883   2000000  409.5841 Alpha      F90    
+R_IJ       100 100      0.004882   2000000  409.6681 Alpha      F90    
+R_IJK      100 100      0.003907   2000000  511.9023 Alpha      F90    
+R_IJK_IMPL 100 100      0.003907   2000000  511.9023 Alpha      F90    
+R_IJK_I2   100 100      0.003906   2000000  512.0332 Alpha      F90    
+R_IJK_I4   100 100      0.002930   2000000  682.5938 Alpha      F90    
+R_IJK_I8   100 100      0.001953   2000000 1024.0625 Alpha      F90    
+R_IJK_J4   100 100      0.003907   2000000  511.9023 Alpha      F90    
+R_IJK_K4   100 100      0.003906   2000000  512.0322 Alpha      F90    
+R_IKJ      100 100      0.005859   2000000  341.3555 Alpha      F90    
+R_IKJ_DOT  100 100      0.004883   2000000  409.5837 Alpha      F90    
+R_JIK      100 100      0.004883   2000000  409.5844 Alpha      F90    
+R_JIK_IMPL 100 100      0.004883   2000000  409.5844 Alpha      F90    
+R_JKI      100 100      0.002929   2000000  682.8282 Alpha      F90    
+R_JKI_IMPL 100 100      0.002929   2000000  682.8282 Alpha      F90    
+R_KIJ      100 100      0.005860   2000000  341.2969 Alpha      F90    
+R_KIJ_DOT  100 100      0.004883   2000000  409.5844 Alpha      F90    
+R_KJI      100 100      0.002929   2000000  682.8265 Alpha      F90    
+R_KJI_IMPL 100 100      0.002929   2000000  682.8265 Alpha      F90    
+R_MATMUL   100 100      0.004883   2000000  409.5844 Alpha      F90    
+R_TAXPYC   100 100      0.002930   2000000  682.5938 Alpha      F90    
+R_TAXPYR   100 100      0.004883   2000000  409.5850 Alpha      F90    
+R_TDOT     100 100      0.004882   2000000  409.6675 Alpha      F90    
+R_TGEMM    100 100      0.003907   2000000  511.9023 Alpha      F90    
+ 
+  The matrix multiplication has been carried out.
+ 
+Command?  (Type H for help)
+ 
+  The order you requested was not valid:
+  "R_SDOT"
+ 
+Command?  (Type H for help)
+ 
+  N has been set to    100
+  NLO has been set to    100
+  NHI has been set to    400
+  NINC has been set to      0
+  NMULT has been set to      2
+ 
+Command?  (Type H for help)
+ 
+     Order LDA   N      CPU Secs       Ops    MFLOPS  Machine  Language
+ 
+C_IJK      100 100      0.014648   2000000  136.5374 Alpha      F90    
+C_MATMUL   100 100      0.009766   2000000  204.7922 Alpha      F90    
+D_IJK      100 100      0.006836   2000000  292.5689 Alpha      F90    
+D_MATMUL   100 100      0.004883   2000000  409.5850 Alpha      F90    
+I_IJK      100 100      0.004883   2000000  409.5837 Alpha      F90    
+I_MATMUL   100 100      0.003906   2000000  512.0332 Alpha      F90    
+L_IJK      100 100      0.005860   2000000  341.2969 Alpha      F90    
+R_DOT_PROD 100 100      0.005860   2000000  341.2969 Alpha      F90    
+R_IJ       100 100      0.003906   2000000  512.0332 Alpha      F90    
+R_IJK      100 100      0.004883   2000000  409.5837 Alpha      F90    
+R_IJK_IMPL 100 100      0.004883   2000000  409.5837 Alpha      F90    
+R_IJK_I2   100 100      0.003906   2000000  512.0332 Alpha      F90    
+R_IJK_I4   100 100      0.002930   2000000  682.5938 Alpha      F90    
+R_IJK_I8   100 100      0.002929   2000000  682.8265 Alpha      F90    
+R_IJK_J4   100 100      0.002930   2000000  682.5938 Alpha      F90    
+R_IJK_K4   100 100      0.004883   2000000  409.5850 Alpha      F90    
+R_IKJ      100 100      0.004883   2000000  409.5837 Alpha      F90    
+R_IKJ_DOT  100 100      0.004882   2000000  409.6687 Alpha      F90    
+R_JIK      100 100      0.003906   2000000  512.0332 Alpha      F90    
+R_JIK_IMPL 100 100      0.003906   2000000  512.0332 Alpha      F90    
+R_JKI      100 100      0.002930   2000000  682.5938 Alpha      F90    
+R_JKI_IMPL 100 100      0.002930   2000000  682.5938 Alpha      F90    
+R_KIJ      100 100      0.004883   2000000  409.5850 Alpha      F90    
+R_KIJ_DOT  100 100      0.003906   2000000  512.0332 Alpha      F90    
+R_KJI      100 100      0.002930   2000000  682.5938 Alpha      F90    
+R_KJI_IMPL 100 100      0.002930   2000000  682.5938 Alpha      F90    
+R_MATMUL   100 100      0.004883   2000000  409.5837 Alpha      F90    
+R_TAXPYC   100 100      0.002929   2000000  682.8265 Alpha      F90    
+R_TAXPYR   100 100      0.004883   2000000  409.5850 Alpha      F90    
+R_TDOT     100 100      0.005859   2000000  341.3542 Alpha      F90    
+R_TGEMM    100 100      0.002930   2000000  682.5972 Alpha      F90    
+C_IJK      200 200      0.095703  16000000  167.1839 Alpha      F90    
+C_MATMUL   200 200      0.078125  16000000  204.8000 Alpha      F90    
+D_IJK      200 200      0.046875  16000000  341.3333 Alpha      F90    
+D_MATMUL   200 200      0.049805  16000000  321.2530 Alpha      F90    
+I_IJK      200 200      0.083984  16000000  190.5124 Alpha      F90    
+I_MATMUL   200 200      0.034179  16000000  468.1233 Alpha      F90    
+L_IJK      200 200      0.081055  16000000  197.3969 Alpha      F90    
+R_DOT_PROD 200 200      0.081055  16000000  197.3969 Alpha      F90    
+R_IJ       200 200      0.077149  16000000  207.3910 Alpha      F90    
+R_IJK      200 200      0.079102  16000000  202.2706 Alpha      F90    
+R_IJK_IMPL 200 200      0.079102  16000000  202.2706 Alpha      F90    
+R_IJK_I2   200 200      0.049805  16000000  321.2530 Alpha      F90    
+R_IJK_I4   200 200      0.033203  16000000  481.8841 Alpha      F90    
+R_IJK_I8   200 200      0.026368  16000000  606.7956 Alpha      F90    
+R_IJK_J4   200 200      0.037110  16000000  431.1509 Alpha      F90    
+R_IJK_K4   200 200      0.076172  16000000  210.0506 Alpha      F90    
+R_IKJ      200 200      0.041992  16000000  381.0244 Alpha      F90    
+R_IKJ_DOT  200 200      0.040039  16000000  399.6110 Alpha      F90    
+R_JIK      200 200      0.080078  16000000  199.8052 Alpha      F90    
+R_JIK_IMPL 200 200      0.080078  16000000  199.8052 Alpha      F90    
+R_JKI      200 200      0.025390  16000000  630.1716 Alpha      F90    
+R_JKI_IMPL 200 200      0.025390  16000000  630.1716 Alpha      F90    
+R_KIJ      200 200      0.042969  16000000  372.3605 Alpha      F90    
+R_KIJ_DOT  200 200      0.042969  16000000  372.3616 Alpha      F90    
+R_KJI      200 200      0.025390  16000000  630.1716 Alpha      F90    
+R_KJI_IMPL 200 200      0.025390  16000000  630.1716 Alpha      F90    
+R_MATMUL   200 200      0.042969  16000000  372.3616 Alpha      F90    
+R_TAXPYC   200 200      0.025390  16000000  630.1686 Alpha      F90    
+R_TAXPYR   200 200      0.083008  16000000  192.7527 Alpha      F90    
+R_TDOT     200 200      0.047851  16000000  334.3715 Alpha      F90    
+R_TGEMM    200 200      0.026367  16000000  606.8176 Alpha      F90    
+C_IJK      400 400      5.460937 128000000   23.4392 Alpha      F90    
+C_MATMUL   400 400      2.522461 128000000   50.7441 Alpha      F90    
+D_IJK      400 400      4.854492 128000000   26.3673 Alpha      F90    
+D_MATMUL   400 400      2.189454 128000000   58.4621 Alpha      F90    
+I_IJK      400 400      2.390625 128000000   53.5425 Alpha      F90    
+I_MATMUL   400 400      0.257811 128000000  496.4885 Alpha      F90    
+L_IJK      400 400      2.314453 128000000   55.3046 Alpha      F90    
+R_DOT_PROD 400 400      2.314453 128000000   55.3046 Alpha      F90    
+R_IJ       400 400      2.166016 128000000   59.0947 Alpha      F90    
+R_IJK      400 400      2.276367 128000000   56.2299 Alpha      F90    
+R_IJK_IMPL 400 400      2.276367 128000000   56.2299 Alpha      F90    
+R_IJK_I2   400 400      1.178711 128000000  108.5932 Alpha      F90    
+R_IJK_I4   400 400      0.659178 128000000  194.1813 Alpha      F90    
+R_IJK_I8   400 400      0.387693 128000000  330.1578 Alpha      F90    
+R_IJK_J4   400 400      0.741211 128000000  172.6904 Alpha      F90    
+R_IJK_K4   400 400      2.173828 128000000   58.8823 Alpha      F90    
+R_IKJ      400 400      0.346678 128000000  369.2189 Alpha      F90    
+R_IKJ_DOT  400 400      0.333982 128000000  383.2537 Alpha      F90    
+R_JIK      400 400      2.268557 128000000   56.4235 Alpha      F90    
+R_JIK_IMPL 400 400      2.268557 128000000   56.4235 Alpha      F90    
+R_JKI      400 400      0.241211 128000000  530.6559 Alpha      F90    
+R_JKI_IMPL 400 400      0.241211 128000000  530.6559 Alpha      F90    
+R_KIJ      400 400      0.356445 128000000  359.1014 Alpha      F90    
+R_KIJ_DOT  400 400      0.347656 128000000  368.1798 Alpha      F90    
+R_KJI      400 400      0.209961 128000000  609.6372 Alpha      F90    
+R_KJI_IMPL 400 400      0.209961 128000000  609.6372 Alpha      F90    
+R_MATMUL   400 400      0.358398 128000000  357.1444 Alpha      F90    
+R_TAXPYC   400 400      0.232422 128000000  550.7227 Alpha      F90    
+R_TAXPYR   400 400      2.371094 128000000   53.9835 Alpha      F90    
+R_TDOT     400 400      0.471680 128000000  271.3706 Alpha      F90    
+R_TGEMM    400 400      0.213867 128000000  598.5023 Alpha      F90    
+ 
+  The matrix multiplication has been carried out.
+ 
+Command?  (Type H for help)
+ 
+  The order has been set to I_IJK
+ 
+Command?  (Type H for help)
+ 
+  N has been set to      1
+  NLO has been set to      1
+  NHI has been set to      8
+  NINC has been set to      0
+  NMULT has been set to      2
+ 
+Command?  (Type H for help)
+ 
+     Order LDA   N      CPU Secs       Ops    MFLOPS  Machine  Language
+ 
+I_IJK      400   1      0.000000         2    0.0000 Alpha      F90    
+I_IJK      400   2      0.000000        16    0.0000 Alpha      F90    
+I_IJK      400   4      0.000000       128    0.0000 Alpha      F90    
+I_IJK      400   8      0.000000      1024    0.0000 Alpha      F90    
+ 
+  The matrix multiplication has been carried out.
+ 
+Command?  (Type H for help)
+ 
+  The order has been set to R_KJI
+ 
+Command?  (Type H for help)
+  The repetition factor is now NREP =      5
+ 
+Command?  (Type H for help)
+ 
+  N has been set to    100
+  NLO has been set to    100
+  NHI has been set to    100
+  NINC has been set to      0
+  NMULT has been set to      1
+ 
+Command?  (Type H for help)
+ 
+     Order LDA   N      CPU Secs       Ops NREP    MFLOPS  Machine  Language
+ 
+R_KJI      400 100      0.017578   2000000    5  568.8889 Alpha      F90    
+ 
+  The matrix multiplication has been carried out.
+ 
+Command?  (Type H for help)
+ 
+  Type "Y" to confirm that you want to quit.
+ 
+MATMUL:
+  Normal end of execution.
+ 
+May 29 2003   9:16:48.810 AM

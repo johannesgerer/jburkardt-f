@@ -1,0 +1,240 @@
+<html>
+
+  <head>
+    <title>
+      UNICYCLE - Permutations with a Single Cycle
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      UNICYCLE <br> Permutations with a Single Cycle
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>UNICYCLE</b>
+      is a FORTRAN90 library which
+      carries out some operations on permutations with a single cycle.
+    </p>
+
+    <p>
+      A permutation with a single cycle is a permutation P of N objects
+      with the property that, for every object, it takes exactly N applications
+      of P to restore an object to its original value.
+    </p>
+
+    <p>
+      Another way to think of this is that a permutation with a single cycle
+      can be symbolized by a bracelet with N beads; the action of the permutation
+      is to rotate the bracelet one position.
+    </p>
+
+    <p>
+      A permutation with a single cycle can be written in "sequence" form.
+      Assuming the objects are labeled 1 through N, we start with 1, followed
+      by P(1), followed by P(P(1)), and so on.  Thus, the sequence (1,4,2,5,3)
+      indicates the permutation which maps 1->4, 2->5, 3->1, 4->2, and 5->3.
+    </p>
+
+    <p>
+      A permutation with a single cycle is sometimes called a "cyclic permutation",
+      but this term is also used with other meanings.  Hence, we will affectionately
+      call these objects "unicycles".
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>UNICYCLE</b> is available in
+      <a href = "../../c_src/unicycle/unicycle.html">a C version</a> and
+      <a href = "../../cpp_src/unicycle/unicycle.html">a C++ version</a> and
+      <a href = "../../f77_src/unicycle/unicycle.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/unicycle/unicycle.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/unicycle/unicycle.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/combo/combo.html">
+      COMBO</a>,
+      a FORTRAN90 library which
+      includes many combinatorial routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/select/select.html">
+      SELECT</a>,
+      a FORTRAN90 library which
+      generates various combinatorial objects.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset/subset.html">
+      SUBSET</a>,
+      a FORTRAN90 library which
+      generates, ranks and unranks various combinatorial objects.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "unicycle.f90">unicycle.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "unicycle.sh">unicycle.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "unicycle_prb.f90">unicycle_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "unicycle_prb.sh">unicycle_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "unicycle_prb_output.txt">unicycle_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>I4_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of I4 division.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an I4VEC.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks a representation of a permutation.
+        </li>
+        <li>
+          <b>PERM_ENUM</b> enumerates the permutations on N digits.
+        </li>
+        <li>
+          <b>PERM_INVERSE</b> computes the inverse of a permutation.
+        </li>
+        <li>
+          <b>PERM_IS_UNICYCLE</b> is TRUE if a permutation is a unicycle.
+        </li>
+        <li>
+          <b>PERM_LEX_NEXT</b> computes the lexicographic permutation successor.
+        </li>
+        <li>
+          <b>PERM_LEX_RANK</b> computes the lexicographic rank of a permutation.
+        </li>
+        <li>
+          <b>PERM_LEX_UNRANK</b> computes the permutation of given lexicographic rank.
+        </li>
+        <li>
+          <b>PERM_PRINT</b> prints a permutation.
+        </li>
+        <li>
+          <b>PERM_RANDOM</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UNICYCLE_CHECK</b> checks that a vector represents a unicycle.
+        </li>
+        <li>
+          <b>UNICYCLE_ENUM</b> enumerates the unicycles.
+        </li>
+        <li>
+          <b>UNICYCLE_INDEX</b> returns the index form of a unicycle.
+        </li>
+        <li>
+          <b>UNICYCLE_INDEX_PRINT</b> prints a unicycle given in index form.
+        </li>
+        <li>
+          <b>UNICYCLE_INDEX_TO_SEQUENCE</b> converts a unicycle from index o sequence form.
+        </li>
+        <li>
+          <b>UNICYCLE_INVERSE</b> returns the inverse of a unicycle.
+        </li>
+        <li>
+          <b>UNICYCLE_NEXT</b> generates unicycles in lexical order, one at a time.
+        </li>
+        <li>
+          <b>UNICYCLE_PRINT</b> prints a unicycle given in sequence form.
+        </li>
+        <li>
+          <b>UNICYCLE_RANDOM</b> selects a random unicycle of N objects.
+        </li>
+        <li>
+          <b>UNICYCLE_RANK</b> computes the rank of a unicycle.
+        </li>
+        <li>
+          <b>UNICYCLE_UNRANK</b> "unranks" a unicycle.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 14 June 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

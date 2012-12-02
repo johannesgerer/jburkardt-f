@@ -1,0 +1,1565 @@
+<html>
+
+  <head>
+    <title>
+      TEST_NINT - Multi-dimensional Integration Test Functions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_NINT <br> Multi-dimensional Integration <br> Test Functions.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_NINT</b>
+      is a FORTRAN90 library which
+      defines test problems for the approximate computation of integrals
+      over multi-dimensional regions.
+    </p>
+
+    <p>
+      Routines are available to evaluate the integrand, return the exact
+      value of the integral, report the name of the problem,
+      report the integration limits, get, set or modify a base point.
+    </p>
+
+    <p>
+      The integrands is assigned an index.  The integrands can be invoked
+      by index.  Most integrands may be defined for any value of the
+      spatial dimension, which we denote here by <b>m</b>.  Most integrands
+      are defined on the unit <b>m</b>-dimensional hypercube.  Some
+      integrands include one or more parameters.  These generally have
+      default values, which can be altered by the user.
+    </p>
+
+    <p>
+      For each problem, a set of routines are available with a standard
+      interface, for manipulating and evaluating the problem.  For a
+      problem with index "87", for instance, we might have the following
+      set of routines.  The most important is <b>P87_F</b> which evaluates
+      the integrand.  We probably also need <b>P87_LIM</b> to determine
+      the limits of integration, and <b>P87_EXACT</b> to get the exact
+      value of the integral (if known).  A number of routines are available
+      to set, get, or randomize parameters associated with the problem.
+      <ul>
+        <li>
+          <b>P87_DEFAULT</b> sets default values for problem 87.
+        </li>
+        <li>
+          <b>P87_EXACT</b> returns the exact integral for problem 87.
+        </li>
+        <li>
+          <b>P87_F</b> evaluates the integrand for problem 87.
+        </li>
+        <li>
+          <b>P87_I4</b> sets or gets integer scalar parameters for problem 87.
+        </li>
+        <li>
+          <b>P87_I4VEC</b> sets or gets integer vector parameters for problem 87.
+        </li>
+        <li>
+          <b>P87_LIM</b> returns the integration limits for problem 87.
+        </li>
+        <li>
+          <b>P87_NAME</b> returns the name of problem 87.
+        </li>
+        <li>
+          <b>P87_R8</b> sets or gets real scalar parameters for problem 87.
+        </li>
+        <li>
+          <b>P87_R8VEC</b> sets or gets real vector parameters for problem 87.
+        </li>
+        <li>
+          <b>P87_REGION</b> returns the name of the integration region
+          for problem 87.
+        </li>
+        <li>
+          <b>P87_TITLE</b> prints a title for problem 87.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The list of integrand functions includes:
+      <ol>
+        <li>
+          f(x) = ( sum ( x(1:m) ) )^2;
+        </li>
+        <li>
+          f(x) = ( sum ( 2 * x(1:m) - 1 ) )^4;
+        </li>
+        <li>
+          f(x) = ( sum ( x(1:m) ) )^5;
+        </li>
+        <li>
+          f(x) = ( sum ( 2 * x(1:m) - 1 ) )^6;
+        </li>
+        <li>
+          f(x) = 1 / ( 1 + sum ( 2 * x(1:m) ) );
+        </li>
+        <li>
+          f(x) = product ( 2 * abs ( 2 * x(1:m) - 1 ) );
+        </li>
+        <li>
+          f(x) = product ( pi / 2 ) * sin ( pi * x(1:m) );
+        </li>
+        <li>
+          f(x) = ( sin ( (pi/4) * sum ( x(1:m) ) ) )^2;
+        </li>
+        <li>
+          f(x) = exp ( sum ( c(1:m) * x(1:m) ) );
+        </li>
+        <li>
+          f(x) = sum ( abs ( x(1:m) - 0.5 ) );
+        </li>
+        <li>
+          f(x) = exp ( sum ( abs ( 2 * x(1:m) - 1 ) ) );
+        </li>
+        <li>
+          f(x) = product ( 1 <= i <= m ) ( i * cos ( i * x(i) ) );
+        </li>
+        <li>
+          f(x) = product ( 1 <= i <= m ) t(n(i))(x(i)), t(n(i))
+          is a Chebyshev polynomial;
+        </li>
+        <li>
+          f(x) = sum ( 1 <= i <= m ) (-1)^i * product ( 1 <= j <= i ) x(j);
+        </li>
+        <li>
+          f(x) = product ( 1 <= i <= order ) x(mod(i-1,m)+1);
+        </li>
+        <li>
+          f(x) = sum ( abs ( x(1:m) - x0(1:m) ) );
+        </li>
+        <li>
+          f(x) = sum ( ( x(1:m) - x0(1:m) )^2 );
+        </li>
+        <li>
+          f(x) = 1 inside an m-dimensional sphere around x0(1:m), 0 outside;
+        </li>
+        <li>
+          f(x) = product ( sqrt ( abs ( x(1:m) - x0(1:m) ) ) );
+        </li>
+        <li>
+          f(x) = ( sum ( x(1:m) ) ^power;
+        </li>
+        <li>
+          f(x) = c * product ( x(1:m)^e(1:m) ) on the surface of
+          an m-dimensional unit sphere;
+        </li>
+        <li>
+          f(x) = c * product ( x(1:m)^e(1:m) ) in an m-dimensional ball;
+        </li>
+        <li>
+          f(x) = c * product ( x(1:m)^e(1:m) ) in the unit m-dimensional simplex;
+        </li>
+        <li>
+          f(x) = product ( abs ( 4 * x(1:m) - 2 ) + c(1:m) )
+          / ( 1 + c(1:m) ) );
+        </li>
+        <li>
+          f(x) = exp ( c * product ( x(1:m) ) );
+        </li>
+        <li>
+          f(x) = product ( c(1:m) * exp ( - c(1:m) * x(1:m) ) );
+        </li>
+        <li>
+          f(x) = cos ( 2 * pi * r + sum ( c(1:m) * x(1:m) ) ), <br>
+          Genz "Oscillatory";
+        </li>
+        <li>
+          f(x) = 1 / product ( c(1:m)^2 + (x(1:m) - x0(1:m))^2),<br>
+          Genz "Product Peak";
+        </li>
+        <li>
+          f(x) = 1 / ( 1 + sum ( c(1:m) * x(1:m) ) )^(m+r),<br>
+          Genz "Corner Peak";
+        </li>
+        <li>
+          f(x) = exp(-sum(c(1:m)^2 * ( x(1:m) - x0(1:m))^2 ) ),<br>
+          Genz "Gaussian";
+        </li>
+        <li>
+          f(x) = exp ( - sum ( c(1:m) * abs ( x(1:m) - x0(1:m) ) ) ),
+          Genz "Continuous";
+        </li>
+        <li>
+          f(x) = exp(sum(c(1:m)*x(1:m)) for x(1:m) <= x0(1:m), 0 otherwise,<br>
+          Genz "Discontinuous";
+        </li>
+        <li>
+          f(x) = sum ( x(1:n)^2 )<br>
+          Ball R^2;
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      An Important Quote:
+    </h3>
+
+    <p>
+      <blockquote><i>
+        "When good results are obtained in integrating a high-dimensional
+        function, we should conclude first of all that an especially tractable
+        integrand was tried and not that a generally successful method has
+        been found.  A secondary conclusion is that we might have made a
+        very good choice in selecting an integration method to exploit whatever
+        features of f made it tractable."
+      </i></blockquote>
+      Art Owen,<br>
+      Latin Supercube Sampling for Very High Dimensional Simulation,<br>
+      ACM Transactions on Modeling and Computer Simulations,<br>
+      Volume 8, Number 1, January 1998, pages 71-102.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_NINT</b> is available in
+      <a href = "../../cpp_src/test_nint/test_nint.html">a C++ version</a> and
+      <a href = "../../f_src/test_nint/test_nint.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_nint/test_nint.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/ball_volume_monte_carlo/ball_volume_monte_carlo.html">
+      BALL_VOLUME_MONTE_CARLO</a>,
+      a FORTRAN90 program which
+      applies a Monte Carlo method to estimate the volume of the unit 6D ball;
+    </p>
+
+    <p>
+      <a href = "../../f_src/cubpack/cubpack.html">
+      CUBPACK</a>,
+      a FORTRAN90 library which
+      estimates the integral of a function over a collection of N-dimensional
+      hyperrectangles and simplices.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+      a C++ library which
+      includes routines for estimating multidimensional integrals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/integral_test/integral_test.html">
+      INTEGRAL_TEST</a>,
+      a FORTRAN90 program which
+      tests the suitability of a set of N points for use in an equal-weight quadrature rule over
+      the multi-dimensional unit hypercube.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nint_exactness/nint_exactness.html">
+      NINT_EXACTNESS</a>,
+      a FORTRAN90 program which
+      measures the polynomial exactness of a multidimensional quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nintlib/nintlib.html">
+      NINTLIB</a>,
+      a FORTRAN90 library which
+      estimates integrals over multidimensional regions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/product_rule/product_rule.html">
+      PRODUCT_RULE</a>,
+      a FORTRAN90 program which
+      constructs a product quadrature rule from 1D factor rules.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules/quadrature_rules.html">
+      QUADRATURE_RULES</a>,
+      a dataset directory which
+      contains sets of files that define quadrature
+      rules over various 1D intervals or multidimensional hypercubes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrature_test/quadrature_test.html">
+      QUADRATURE_TEST</a>,
+      a FORTRAN90 program which
+      reads files defining a quadrature rule, and
+      applies them to all the test integrals defined by <b>TEST_NINT</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sandia_sparse/sandia_sparse.html">
+      SANDIA_SPARSE</a>,
+      a FORTRAN90 library which
+      can produce a multidimensional sparse grid, based on a variety of 1D
+      quadrature rules; only isotropic grids are generated, that is, the same
+      rule is used in each dimension, and the same maximum order is used in
+      each dimension.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/simpack/simpack.html">
+      SIMPACK</a>,
+      a FORTRAN77 library which
+      approximates the integral of a function over a multidimensional simplex.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparse_grid_cc/sparse_grid_cc.html">
+      SPARSE_GRID_CC</a>,
+      a FORTRAN90 library which
+      creates sparse grids based on Clenshaw-Curtis rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for a variety of multidimensional reqions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_int_2d/test_int_2d.html">
+      TEST_INT_2D</a>,
+      a FORTRAN90 library which
+      defines test integrands for 2D quadrature rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/testpack/testpack.html">
+      TESTPACK</a>,
+      a FORTRAN90 library which
+      defines a set of integrands used to test multidimensional quadrature.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          JD Beasley, SG Springer,<br>
+          Algorithm AS 111:
+          The Percentage Points of the Normal Distribution,<br>
+          Applied Statistics,<br>
+          Volume 26, 1977, pages 118-121.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox, Harald Niederreiter,<br>
+          Implementation and Tests of Low-Discrepancy Sequences,<br>
+          ACM Transactions on Modeling and Computer Simulation,<br>
+          Volume 2, Number 3, July 1992, pages 195-213.
+        </li>
+        <li>
+          Roger Broucke,<br>
+          Algorithm 446:
+          Ten Subroutines for the Manipulation of Chebyshev Series,<br>
+          Communications of the ACM,<br>
+          Volume 16, 1973, pages 254-256.
+        </li>
+        <li>
+          William Cody, Kenneth Hillstrom,<br>
+          Chebyshev Approximations for the Natural Logarithm of the
+          Gamma Function,
+          Mathematics of Computation,<br>
+          Volume 21, Number 98, April 1967, pages 198-203.
+        </li>
+        <li>
+          Richard Crandall,<br>
+          Projects in Scientific Computing,<br>
+          Springer, 2005,<br>
+          ISBN: 0387950095,<br>
+          LC: Q183.9.C733.
+        </li>
+        <li>
+          Philip Davis, Philip Rabinowitz,<br>
+          Methods of Numerical Integration,<br>
+          Second Edition,<br>
+          Dover, 2007,<br>
+          ISBN: 0486453391,<br>
+          LC: QA299.3.D28.
+        </li>
+        <li>
+          Gerald Folland,<br>
+          How to Integrate a Polynomial Over a Sphere,<br>
+          American Mathematical Monthly,<br>
+          Volume 108, Number 5, May 2001, pages 446-448.
+        </li>
+        <li>
+          Leslie Fox, Ian Parker,<br>
+          Chebyshev Polynomials in Numerical Analysis,<br>
+          Oxford Press, 1968,<br>
+          LC: QA297.F65.
+        </li>
+        <li>
+          Alan Genz,<br>
+          Testing Multidimensional Integration Routines,<br>
+          in Tools, Methods, and Languages for Scientific and
+          Engineering Computation,<br>
+          edited by B Ford, JC Rault, F Thomasset,<br>
+          North-Holland, 1984, pages 81-94,<br>
+          ISBN: 0444875700,<br>
+          LC: Q183.9.I53.
+        </li>
+        <li>
+          Alan Genz,<br>
+          A Package for Testing Multiple Integration Subroutines,<br>
+          in Numerical Integration:
+          Recent Developments, Software and Applications,<br>
+          edited by Patrick Keast, Graeme Fairweather,<br>
+          Reidel, 1987, pages 337-340,<br>
+          ISBN: 9027725144,<br>
+          LC: QA299.3.N38.
+        </li>
+        <li>
+          Kenneth Hanson,<br>
+          Quasi-Monte Carlo: halftoning in high dimensions?<br>
+          in Computatinal Imaging,<br>
+          Edited by CA Bouman, RL Stevenson,<br>
+          Proceedings SPIE,<br>
+          Volume 5016, 2003, pages 161-172.
+        </li>
+        <li>
+          John Hart, Ward Cheney, Charles Lawson, Hans Maehly,
+          Charles Mesztenyi, John Rice, Henry Thatcher,
+          Christoph Witzgall,<br>
+          Computer Approximations,<br>
+          Wiley, 1968,<br>
+          LC: QA297.C64.
+        </li>
+        <li>
+          Claude Itzykson, Jean-Michel Drouffe,<br>
+          Statistical Field Theory,<br>
+          Volume 1,<br>
+          Cambridge, 1991,<br>
+          ISBN: 0-521-40806-7,<br>
+          LC: QC174.8.I89.
+        </li>
+        <li>
+          Stephen Joe, Frances Kuo<br>
+          Remark on Algorithm 659:
+          Implementing Sobol's Quasirandom Sequence Generator,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 29, Number 1, March 2003, pages 49-57.
+        </li>
+        <li>
+          David Kahaner, Cleve Moler, Steven Nash,<br>
+          Numerical Methods and Software,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0-13-627258-4,<br>
+          LC: TA345.K34.
+        </li>
+        <li>
+          Bradley Keister,<br>
+          Multidimensional Quadrature Algorithms,<br>
+          Computers in Physics,<br>
+          Volume 10, Number 2, March/April, 1996, pages 119-122.
+        </li>
+        <li>
+          Arnold Krommer, Christoph Ueberhuber,<br>
+          Numerical Integration on Advanced Computer Systems,<br>
+          Springer, 1994,<br>
+          ISBN: 3540584102,<br>
+          LC: QA299.3.K76.
+        </li>
+        <li>
+          Anargyros Papageorgiou, Joseph Traub,<br>
+          Faster Evaluation of Multidimensional Integrals,<br>
+          Computers in Physics,<br>
+          Volume 11, Number 6, November/December 1997, pages 574-578.
+        </li>
+        <li>
+          Thomas Patterson,<br>
+          On the Construction of a Practical Ermakov-Zolotukhin
+          Multiple Integrator,<br>
+          in Numerical Integration:
+          Recent Developments, Software and Applications,<br>
+          edited by Patrick Keast and Graeme Fairweather,<br>
+          D. Reidel, 1987, pages 269-290,
+          LC: QA299.3.N38.
+        </li>
+        <li>
+          Arthur Stroud,<br>
+          Approximate Calculation of Multiple Integrals,<br>
+          Prentice Hall, 1971,<br>
+          ISBN: 0130438936,<br>
+          LC: QA311.S85.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+        <li>
+          Xiaoqun Wang, Kai-Tai Fang,<br>
+          The Effective Dimension and quasi-Monte Carlo Integration,<br>
+          Journal of Complexity,<br>
+          Volume 19, pages 101-124, 2003.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_nint.f90">test_nint.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "test_nint.sh">test_nint.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_nint_prb.f90">test_nint_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "test_nint_prb.sh">test_nint_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "test_nint_prb_output.txt">
+          test_nint_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CSEVL</b> evaluates an N term Chebyshev series.
+        </li>
+        <li>
+          <b>ERROR_F</b> computes the error function.
+        </li>
+        <li>
+          <b>ERROR_FC</b> computes the complementary error function.
+        </li>
+        <li>
+          <b>GAMMA_LOG</b> calculates the natural logarithm of GAMMA ( X ) for positive X.
+        </li>
+        <li>
+          <b>GET_PROBLEM_NUM</b> returns the number of test integration problems.
+        </li>
+        <li>
+          <b>INITS</b> estimates the order of an orthogonal series for a given accuracy.
+        </li>
+        <li>
+          <b>NORMAL_01_CDF_INV</b> inverts the Normal 01 CDF.
+        </li>
+        <li>
+          <b>P00_BOX_GL05</b> uses Gauss-Legendre quadrature in an N-dimensional box.
+        </li>
+        <li>
+          <b>P00_BOX_MC</b> integrates over an multi-dimensional box using Monte Carlo.
+        </li>
+        <li>
+          <b>P00_DEFAULT</b> sets a problem to a default state.
+        </li>
+        <li>
+          <b>P00_EXACT</b> returns the exact integral for any problem.
+        </li>
+        <li>
+          <b>P00_F</b> evaluates the integrand for any problem.
+        </li>
+        <li>
+          <b>P00_I4</b> sets or gets I4 parameters for any problem.
+        </li>
+        <li>
+          <b>P00_LIM</b> returns the integration limits for any problem.
+        </li>
+        <li>
+          <b>P00_NAME</b> returns the name of the problem.
+        </li>
+        <li>
+          <b>P00_R8VEC</b> sets or gets R8VEC parameters for any problem.
+        </li>
+        <li>
+          <b>P00_REGION</b> returns the name of the integration region for any problem.
+        </li>
+        <li>
+          <b>P00_REMAP01</b> remaps points in [0,1]^DIM_NUM into [A(1:DIM_NUM),B(1:DIM_NUM)].
+        </li>
+        <li>
+          <b>P00_TITLE</b> prints a title for any problem.
+        </li>
+        <li>
+          <b>P00_VOLUME</b> returns the volume of the integration region.
+        </li>
+        <li>
+          <b>P01_DEFAULT</b> sets default values for problem 01.
+        </li>
+        <li>
+          <b>P01_EXACT</b> returns the exact integral for problem 01.
+        </li>
+        <li>
+          <b>P01_F</b> evaluates the integrand for problem 01.
+        </li>
+        <li>
+          <b>P01_I4</b> sets or gets I4 parameters for problem 01.
+        </li>
+        <li>
+          <b>P01_LIM</b> returns the integration limits for problem 01.
+        </li>
+        <li>
+          <b>P01_NAME</b> returns the name of problem 01.
+        </li>
+        <li>
+          <b>P01_REGION</b> returns the name of the integration region for problem 01.
+        </li>
+        <li>
+          <b>P01_TITLE</b> prints a title for problem 01.
+        </li>
+        <li>
+          <b>P02_DEFAULT</b> sets default values for problem 02.
+        </li>
+        <li>
+          <b>P02_EXACT</b> returns the exact integral for problem 02.
+        </li>
+        <li>
+          <b>P02_F</b> evaluates the integrand for problem 02.
+        </li>
+        <li>
+          <b>P02_I4</b> sets or gets I4 parameters for problem 02.
+        </li>
+        <li>
+          <b>P02_LIM</b> returns the integration limits for problem 02.
+        </li>
+        <li>
+          <b>P02_NAME</b> returns the name of problem 02.
+        </li>
+        <li>
+          <b>P02_REGION</b> returns the name of the integration region for problem 02.
+        </li>
+        <li>
+          <b>P02_TITLE</b> prints a title for problem 02.
+        </li>
+        <li>
+          <b>P03_DEFAULT</b> sets default values for problem 03.
+        </li>
+        <li>
+          <b>P03_EXACT</b> returns the exact integral for problem 03.
+        </li>
+        <li>
+          <b>P03_F</b> evaluates the integrand for problem 03.
+        </li>
+        <li>
+          <b>P03_I4</b> sets or gets I4 parameters for problem 03.
+        </li>
+        <li>
+          <b>P03_LIM</b> returns the integration limits for problem 03.
+        </li>
+        <li>
+          <b>P03_NAME</b> returns the name of problem 03.
+        </li>
+        <li>
+          <b>P03_REGION</b> returns the name of the integration region for problem 03.
+        </li>
+        <li>
+          <b>P03_TITLE</b> prints a title for problem 03.
+        </li>
+        <li>
+          <b>P04_DEFAULT</b> sets default values for problem 04.
+        </li>
+        <li>
+          <b>P04_EXACT</b> returns the exact integral for problem 04.
+        </li>
+        <li>
+          <b>P04_F</b> evaluates the integrand for problem 04.
+        </li>
+        <li>
+          <b>P04_I4</b> sets or gets I4 parameters for problem 04.
+        </li>
+        <li>
+          <b>P04_LIM</b> returns the integration limits for problem 04.
+        </li>
+        <li>
+          <b>P04_NAME</b> returns the name of problem 04.
+        </li>
+        <li>
+          <b>P04_REGION</b> returns the name of the integration region for problem 04.
+        </li>
+        <li>
+          <b>P04_TITLE</b> prints a title for problem 04.
+        </li>
+        <li>
+          <b>P05_DEFAULT</b> sets default values for problem 05.
+        </li>
+        <li>
+          <b>P05_EXACT</b> returns the exact integral for problem 05.
+        </li>
+        <li>
+          <b>P05_F</b> evaluates the integrand for problem 05.
+        </li>
+        <li>
+          <b>P05_I4</b> sets or gets I4 parameters for problem 05.
+        </li>
+        <li>
+          <b>P05_LIM</b> returns the integration limits for problem 05.
+        </li>
+        <li>
+          <b>P05_NAME</b> returns the name of problem 05.
+        </li>
+        <li>
+          <b>P05_REGION</b> returns the name of the integration region for problem 05.
+        </li>
+        <li>
+          <b>P05_TITLE</b> prints a title for problem 05.
+        </li>
+        <li>
+          <b>P06_DEFAULT</b> sets default values for problem 06.
+        </li>
+        <li>
+          <b>P06_EXACT</b> returns the exact integral for problem 06.
+        </li>
+        <li>
+          <b>P06_F</b> evaluates the integrand for problem 06.
+        </li>
+        <li>
+          <b>P06_I4</b> sets or gets I4 parameters for problem 06.
+        </li>
+        <li>
+          <b>P06_LIM</b> returns the integration limits for problem 06.
+        </li>
+        <li>
+          <b>P06_NAME</b> returns the name of problem 06.
+        </li>
+        <li>
+          <b>P06_REGION</b> returns the name of the integration region for problem 06.
+        </li>
+        <li>
+          <b>P06_TITLE</b> prints a title for problem 06.
+        </li>
+        <li>
+          <b>P07_DEFAULT</b> sets default values for problem 07.
+        </li>
+        <li>
+          <b>P07_EXACT</b> returns the exact integral for problem 07.
+        </li>
+        <li>
+          <b>P07_F</b> evaluates the integrand for problem 07.
+        </li>
+        <li>
+          <b>P07_I4</b> sets or gets I4 parameters for problem 07.
+        </li>
+        <li>
+          <b>P07_LIM</b> returns the integration limits for problem 07.
+        </li>
+        <li>
+          <b>P07_NAME</b> returns the name of problem 07.
+        </li>
+        <li>
+          <b>P07_REGION</b> returns the name of the integration region for problem 07.
+        </li>
+        <li>
+          <b>P07_TITLE</b> prints a title for problem 07.
+        </li>
+        <li>
+          <b>P08_DEFAULT</b> sets default values for problem 08.
+        </li>
+        <li>
+          <b>P08_EXACT</b> returns the exact integral for problem 08.
+        </li>
+        <li>
+          <b>P08_F</b> evaluates the integrand for problem 08.
+        </li>
+        <li>
+          <b>P08_I4</b> sets or gets I4 parameters for problem 08.
+        </li>
+        <li>
+          <b>P08_LIM</b> returns the integration limits for problem 08.
+        </li>
+        <li>
+          <b>P08_NAME</b> returns the name of problem 08.
+        </li>
+        <li>
+          <b>P08_REGION</b> returns the name of the integration region for problem 08.
+        </li>
+        <li>
+          <b>P08_TITLE</b> prints a title for problem 08.
+        </li>
+        <li>
+          <b>P09_DEFAULT</b> sets default values for problem 09.
+        </li>
+        <li>
+          <b>P09_EXACT</b> returns the exact integral for problem 09.
+        </li>
+        <li>
+          <b>P09_F</b> evaluates the integrand for problem 09.
+        </li>
+        <li>
+          <b>P09_I4</b> sets or gets I4 parameters for problem 09.
+        </li>
+        <li>
+          <b>P09_LIM</b> returns the integration limits for problem 09.
+        </li>
+        <li>
+          <b>P09_NAME</b> returns the name of problem 09.
+        </li>
+        <li>
+          <b>P09_REGION</b> returns the name of the integration region for problem 09.
+        </li>
+        <li>
+          <b>P09_R8VEC</b> sets or gets R8VEC parameters for problem 09.
+        </li>
+        <li>
+          <b>P09_TITLE</b> prints a title for problem 09.
+        </li>
+        <li>
+          <b>P10_DEFAULT</b> sets default values for problem 10.
+        </li>
+        <li>
+          <b>P10_EXACT</b> returns the exact integral for problem 10.
+        </li>
+        <li>
+          <b>P10_F</b> evaluates the integrand for problem 10.
+        </li>
+        <li>
+          <b>P10_I4</b> sets or gets I4 parameters for problem 10.
+        </li>
+        <li>
+          <b>P10_LIM</b> returns the integration limits for problem 10.
+        </li>
+        <li>
+          <b>P10_NAME</b> returns the name of problem 10.
+        </li>
+        <li>
+          <b>P10_REGION</b> returns the name of the integration region for problem 10.
+        </li>
+        <li>
+          <b>P10_TITLE</b> prints a title for problem 10.
+        </li>
+        <li>
+          <b>P11_DEFAULT</b> sets default values for problem 11.
+        </li>
+        <li>
+          <b>P11_EXACT</b> returns the exact integral for problem 11.
+        </li>
+        <li>
+          <b>P11_F</b> evaluates the integrand for problem 11.
+        </li>
+        <li>
+          <b>P11_I4</b> sets or gets I4 parameters for problem 11.
+        </li>
+        <li>
+          <b>P11_LIM</b> returns the integration limits for problem 11.
+        </li>
+        <li>
+          <b>P11_NAME</b> returns the name of problem 11.
+        </li>
+        <li>
+          <b>P11_REGION</b> returns the name of the integration region for problem 11.
+        </li>
+        <li>
+          <b>P11_TITLE</b> prints a title for problem 11.
+        </li>
+        <li>
+          <b>P12_DEFAULT</b> sets default values for problem 12.
+        </li>
+        <li>
+          <b>P12_EXACT</b> returns the exact integral for problem 12.
+        </li>
+        <li>
+          <b>P12_F</b> evaluates the integrand for problem 12.
+        </li>
+        <li>
+          <b>P12_I4</b> sets or gets I4 parameters for problem 12.
+        </li>
+        <li>
+          <b>P12_LIM</b> returns the integration limits for problem 12.
+        </li>
+        <li>
+          <b>P12_NAME</b> returns the name of problem 12.
+        </li>
+        <li>
+          <b>P12_REGION</b> returns the name of the integration region for problem 12.
+        </li>
+        <li>
+          <b>P12_TITLE</b> prints a title for problem 12.
+        </li>
+        <li>
+          <b>P13_DEFAULT</b> sets default values for problem 13.
+        </li>
+        <li>
+          <b>P13_EXACT</b> returns the exact integral for problem 13.
+        </li>
+        <li>
+          <b>P13_F</b> evaluates the integrand for problem 13.
+        </li>
+        <li>
+          <b>P13_I4</b> sets or gets I4 parameters for problem 13.
+        </li>
+        <li>
+          <b>P13_LIM</b> returns the integration limits for problem 13.
+        </li>
+        <li>
+          <b>P13_NAME</b> returns the name of problem 13.
+        </li>
+        <li>
+          <b>P13_REGION</b> returns the name of the integration region for problem 13.
+        </li>
+        <li>
+          <b>P13_TITLE</b> prints a title for problem 13.
+        </li>
+        <li>
+          <b>P14_DEFAULT</b> sets default values for problem 14.
+        </li>
+        <li>
+          <b>P14_EXACT</b> returns the exact integral for problem 14.
+        </li>
+        <li>
+          <b>P14_F</b> evaluates the integrand for problem 14.
+        </li>
+        <li>
+          <b>P14_I4</b> sets or gets I4 parameters for problem 14.
+        </li>
+        <li>
+          <b>P14_LIM</b> returns the integration limits for problem 14.
+        </li>
+        <li>
+          <b>P14_NAME</b> returns the name of problem 14.
+        </li>
+        <li>
+          <b>P14_REGION</b> returns the name of the integration region for problem 14.
+        </li>
+        <li>
+          <b>P14_TITLE</b> prints a title for problem 14.
+        </li>
+        <li>
+          <b>P15_DEFAULT</b> sets default values for problem 15.
+        </li>
+        <li>
+          <b>P15_EXACT</b> returns the exact integral for problem 15.
+        </li>
+        <li>
+          <b>P15_F</b> evaluates the integrand for problem 15.
+        </li>
+        <li>
+          <b>P15_I4</b> sets or gets I4 parameters for problem 15.
+        </li>
+        <li>
+          <b>P15_LIM</b> returns the integration limits for problem 15.
+        </li>
+        <li>
+          <b>P15_NAME</b> returns the name of problem 15.
+        </li>
+        <li>
+          <b>P15_REGION</b> returns the name of the integration region for problem 15.
+        </li>
+        <li>
+          <b>P15_TITLE</b> prints a title for problem 15.
+        </li>
+        <li>
+          <b>P16_DEFAULT</b> sets default values for problem 16.
+        </li>
+        <li>
+          <b>P16_EXACT</b> returns the exact integral for problem 16.
+        </li>
+        <li>
+          <b>P16_F</b> evaluates the integrand for problem 16.
+        </li>
+        <li>
+          <b>P16_I4</b> sets or gets I4 parameters for problem 16.
+        </li>
+        <li>
+          <b>P16_LIM</b> returns the integration limits for problem 16.
+        </li>
+        <li>
+          <b>P16_NAME</b> returns the name of problem 16.
+        </li>
+        <li>
+          <b>P16_REGION</b> returns the name of the integration region for problem 16.
+        </li>
+        <li>
+          <b>P16_R8VEC</b> sets or gets R8VEC parameters for problem 16.
+        </li>
+        <li>
+          <b>P16_TITLE</b> prints a title for problem 16.
+        </li>
+        <li>
+          <b>P17_DEFAULT</b> sets default values for problem 17.
+        </li>
+        <li>
+          <b>P17_EXACT</b> returns the exact integral for problem 17.
+        </li>
+        <li>
+          <b>P17_F</b> evaluates the integrand for problem 17.
+        </li>
+        <li>
+          <b>P17_I4</b> sets or gets I4 parameters for problem 17.
+        </li>
+        <li>
+          <b>P17_LIM</b> returns the integration limits for problem 17.
+        </li>
+        <li>
+          <b>P17_NAME</b> returns the name of problem 17.
+        </li>
+        <li>
+          <b>P17_REGION</b> returns the name of the integration region for problem 17.
+        </li>
+        <li>
+          <b>P17_R8VEC</b> sets or gets R8VEC parameters for problem 17.
+        </li>
+        <li>
+          <b>P17_TITLE</b> prints a title for problem 17.
+        </li>
+        <li>
+          <b>P18_DEFAULT</b> sets default values for problem 18.
+        </li>
+        <li>
+          <b>P18_EXACT</b> returns the exact integral for problem 18.
+        </li>
+        <li>
+          <b>P18_F</b> evaluates the integrand for problem 18.
+        </li>
+        <li>
+          <b>P18_I4</b> sets or gets I4 parameters for problem 18.
+        </li>
+        <li>
+          <b>P18_LIM</b> returns the integration limits for problem 18.
+        </li>
+        <li>
+          <b>P18_NAME</b> returns the name of problem 18.
+        </li>
+        <li>
+          <b>P18_R8</b> sets or gets R8 parameters for problem 18.
+        </li>
+        <li>
+          <b>P18_REGION</b> returns the name of the integration region for problem 18.
+        </li>
+        <li>
+          <b>P18_R8VEC</b> sets or gets R8VEC parameters for problem 18.
+        </li>
+        <li>
+          <b>P18_TITLE</b> prints a title for problem 18.
+        </li>
+        <li>
+          <b>P19_DEFAULT</b> sets default values for problem 19.
+        </li>
+        <li>
+          <b>P19_EXACT</b> returns the exact integral for problem 19.
+        </li>
+        <li>
+          <b>P19_F</b> evaluates the integrand for problem 19.
+        </li>
+        <li>
+          <b>P19_I4</b> sets or gets I4 parameters for problem 19.
+        </li>
+        <li>
+          <b>P19_LIM</b> returns the integration limits for problem 19.
+        </li>
+        <li>
+          <b>P19_NAME</b> returns the name of problem 19.
+        </li>
+        <li>
+          <b>P19_REGION</b> returns the name of the integration region for problem 19.
+        </li>
+        <li>
+          <b>P19_R8VEC</b> sets or gets R8VEC parameters for problem 19.
+        </li>
+        <li>
+          <b>P19_TITLE</b> prints a title for problem 19.
+        </li>
+        <li>
+          <b>P20_DEFAULT</b> sets default values for problem 20.
+        </li>
+        <li>
+          <b>P20_EXACT</b> returns the exact integral for problem 20.
+        </li>
+        <li>
+          <b>P20_F</b> evaluates the integrand for problem 20.
+        </li>
+        <li>
+          <b>P20_I4</b> sets or gets I4 parameters for problem 20.
+        </li>
+        <li>
+          <b>P20_LIM</b> returns the integration limits for problem 20.
+        </li>
+        <li>
+          <b>P20_NAME</b> returns the name of problem 20.
+        </li>
+        <li>
+          <b>P20_R8</b> sets or gets R8 parameters for problem 20.
+        </li>
+        <li>
+          <b>P20_REGION</b> returns the name of the integration region for problem 20.
+        </li>
+        <li>
+          <b>P20_TITLE</b> prints a title for problem 20.
+        </li>
+        <li>
+          <b>P21_DEFAULT</b> sets default values for problem 21.
+        </li>
+        <li>
+          <b>P21_EXACT</b> returns the exact integral for problem 21.
+        </li>
+        <li>
+          <b>P21_F</b> evaluates the integrand for problem 21.
+        </li>
+        <li>
+          <b>P21_I4</b> sets or gets I4 parameters for problem 21.
+        </li>
+        <li>
+          <b>P21_I4VEC</b> sets or gets I4VEC parameters for problem 21.
+        </li>
+        <li>
+          <b>P21_LIM</b> returns the integration limits for problem 21.
+        </li>
+        <li>
+          <b>P21_NAME</b> returns the name of problem 21.
+        </li>
+        <li>
+          <b>P21_R8</b> sets or gets R8 parameters for problem 21.
+        </li>
+        <li>
+          <b>P21_REGION</b> returns the name of the integration region for problem 21.
+        </li>
+        <li>
+          <b>P21_TITLE</b> prints a title for problem 21.
+        </li>
+        <li>
+          <b>P22_DEFAULT</b> sets default values for problem 22.
+        </li>
+        <li>
+          <b>P22_EXACT</b> returns the exact integral for problem 22.
+        </li>
+        <li>
+          <b>P22_F</b> evaluates the integrand for problem 22.
+        </li>
+        <li>
+          <b>P22_I4</b> sets or gets I4 parameters for problem 22.
+        </li>
+        <li>
+          <b>P22_I4VEC</b> sets or gets I4VEC parameters for problem 22.
+        </li>
+        <li>
+          <b>P22_LIM</b> returns the integration limits for problem 22.
+        </li>
+        <li>
+          <b>P22_NAME</b> returns the name of problem 22.
+        </li>
+        <li>
+          <b>P22_R8</b> sets or gets R8 parameters for problem 22.
+        </li>
+        <li>
+          <b>P22_REGION</b> returns the name of the integration region for problem 22.
+        </li>
+        <li>
+          <b>P22_TITLE</b> prints a title for problem 22.
+        </li>
+        <li>
+          <b>P23_DEFAULT</b> sets default values for problem 23.
+        </li>
+        <li>
+          <b>P23_EXACT</b> returns the exact integral for problem 23.
+        </li>
+        <li>
+          <b>P23_F</b> evaluates the integrand for problem 23.
+        </li>
+        <li>
+          <b>P23_I4</b> sets or gets I4 parameters for problem 23.
+        </li>
+        <li>
+          <b>P23_I4VEC</b> sets or gets I4VEC parameters for problem 23.
+        </li>
+        <li>
+          <b>P23_LIM</b> returns the integration limits for problem 23.
+        </li>
+        <li>
+          <b>P23_NAME</b> returns the name of problem 23.
+        </li>
+        <li>
+          <b>P23_R8</b> sets or gets R8 parameters for problem 23.
+        </li>
+        <li>
+          <b>P23_REGION</b> returns the name of the integration region for problem 23.
+        </li>
+        <li>
+          <b>P23_TITLE</b> prints a title for problem 23.
+        </li>
+        <li>
+          <b>P24_DEFAULT</b> sets default values for problem 24.
+        </li>
+        <li>
+          <b>P24_EXACT</b> returns the exact integral for problem 24.
+        </li>
+        <li>
+          <b>P24_F</b> evaluates the integrand for problem 24.
+        </li>
+        <li>
+          <b>P24_I4</b> sets or gets I4 parameters for problem 24.
+        </li>
+        <li>
+          <b>P24_LIM</b> returns the integration limits for problem 24.
+        </li>
+        <li>
+          <b>P24_NAME</b> returns the name of problem 24.
+        </li>
+        <li>
+          <b>P24_REGION</b> returns the name of the integration region for problem 24.
+        </li>
+        <li>
+          <b>P24_R8VEC</b> sets or gets R8VEC parameters for problem 24.
+        </li>
+        <li>
+          <b>P24_TITLE</b> prints a title for problem 24.
+        </li>
+        <li>
+          <b>P25_DEFAULT</b> sets default values for problem 25.
+        </li>
+        <li>
+          <b>P25_EXACT</b> returns the exact integral for problem 25.
+        </li>
+        <li>
+          <b>P25_F</b> evaluates the integrand for problem 25.
+        </li>
+        <li>
+          <b>P25_I4</b> sets or gets I4 parameters for problem 25.
+        </li>
+        <li>
+          <b>P25_LIM</b> returns the integration limits for problem 25.
+        </li>
+        <li>
+          <b>P25_NAME</b> returns the name of problem 25.
+        </li>
+        <li>
+          <b>P25_R8</b> sets or gets R8 parameters for problem 25.
+        </li>
+        <li>
+          <b>P25_REGION</b> returns the name of the integration region for problem 25.
+        </li>
+        <li>
+          <b>P25_TITLE</b> prints a title for problem 10.
+        </li>
+        <li>
+          <b>P26_DEFAULT</b> sets default values for problem 26.
+        </li>
+        <li>
+          <b>P26_EXACT</b> returns the exact integral for problem 26.
+        </li>
+        <li>
+          <b>P26_F</b> evaluates the integrand for problem 26.
+        </li>
+        <li>
+          <b>P26_I4</b> sets or gets I4 parameters for problem 26.
+        </li>
+        <li>
+          <b>P26_LIM</b> returns the integration limits for problem 26.
+        </li>
+        <li>
+          <b>P26_NAME</b> returns the name of problem 26.
+        </li>
+        <li>
+          <b>P26_REGION</b> returns the name of the integration region for problem 26.
+        </li>
+        <li>
+          <b>P26_R8VEC</b> sets or gets R8VEC parameters for problem 26.
+        </li>
+        <li>
+          <b>P26_TITLE</b> prints a title for problem 26.
+        </li>
+        <li>
+          <b>P27_DEFAULT</b> sets default values for problem 27.
+        </li>
+        <li>
+          <b>P27_EXACT</b> returns the exact integral for problem 27.
+        </li>
+        <li>
+          <b>P27_F</b> evaluates the integrand for problem 27.
+        </li>
+        <li>
+          <b>P27_I4</b> sets or gets I4 parameters for problem 27.
+        </li>
+        <li>
+          <b>P27_LIM</b> returns the integration limits for problem 27.
+        </li>
+        <li>
+          <b>P27_NAME</b> returns the name of problem 27.
+        </li>
+        <li>
+          <b>P27_R8</b> sets or gets R8 parameters for problem 27.
+        </li>
+        <li>
+          <b>P27_REGION</b> returns the name of the integration region for problem 27.
+        </li>
+        <li>
+          <b>P27_R8VEC</b> sets or gets R8VEC parameters for problem 27.
+        </li>
+        <li>
+          <b>P27_TITLE</b> prints a title for problem 27.
+        </li>
+        <li>
+          <b>P28_DEFAULT</b> sets default values for problem 28.
+        </li>
+        <li>
+          <b>P28_EXACT</b> returns the exact integral for problem 28.
+        </li>
+        <li>
+          <b>P28_F</b> evaluates the integrand for problem 28.
+        </li>
+        <li>
+          <b>P28_I4</b> sets or gets I4 parameters for problem 28.
+        </li>
+        <li>
+          <b>P28_LIM</b> returns the integration limits for problem 28.
+        </li>
+        <li>
+          <b>P28_NAME</b> returns the name of problem 28.
+        </li>
+        <li>
+          <b>P28_REGION</b> returns the name of the integration region for problem 28.
+        </li>
+        <li>
+          <b>P28_R8VEC</b> sets or gets R8VEC parameters for problem 28.
+        </li>
+        <li>
+          <b>P28_TITLE</b> prints a title for problem 28.
+        </li>
+        <li>
+          <b>P29_DEFAULT</b> sets default values for problem 29.
+        </li>
+        <li>
+          <b>P29_EXACT</b> returns the exact integral for problem 29.
+        </li>
+        <li>
+          <b>P29_F</b> evaluates the integrand for problem 29.
+        </li>
+        <li>
+          <b>P29_I4</b> sets or gets I4 parameters for problem 29.
+        </li>
+        <li>
+          <b>P29_LIM</b> returns the integration limits for problem 29.
+        </li>
+        <li>
+          <b>P29_NAME</b> returns the name of problem 29.
+        </li>
+        <li>
+          <b>P29_R8</b> sets or gets R8 parameters for problem 29.
+        </li>
+        <li>
+          <b>P29_REGION</b> returns the name of the integration region for problem 29.
+        </li>
+        <li>
+          <b>P29_R8VEC</b> sets or gets R8VEC parameters for problem 29.
+        </li>
+        <li>
+          <b>P29_TITLE</b> prints a title for problem 29.
+        </li>
+        <li>
+          <b>P30_DEFAULT</b> sets default values for problem 30.
+        </li>
+        <li>
+          <b>P30_EXACT</b> returns the exact integral for problem 30.
+        </li>
+        <li>
+          <b>P30_F</b> evaluates the integrand for problem 30.
+        </li>
+        <li>
+          <b>P30_I4</b> sets or gets I4 parameters for problem 30.
+        </li>
+        <li>
+          <b>P30_LIM</b> returns the integration limits for problem 30.
+        </li>
+        <li>
+          <b>P30_NAME</b> returns the name of problem 30.
+        </li>
+        <li>
+          <b>P30_REGION</b> returns the name of the integration region for problem 30.
+        </li>
+        <li>
+          <b>P30_R8VEC</b> sets or gets R8VEC parameters for problem 30.
+        </li>
+        <li>
+          <b>P30_TITLE</b> prints a title for problem 30.
+        </li>
+        <li>
+          <b>P31_DEFAULT</b> sets default values for problem 31.
+        </li>
+        <li>
+          <b>P31_EXACT</b> returns the exact integral for problem 31.
+        </li>
+        <li>
+          <b>P31_F</b> evaluates the integrand for problem 31.
+        </li>
+        <li>
+          <b>P31_I4</b> sets or gets I4 parameters for problem 31.
+        </li>
+        <li>
+          <b>P31_LIM</b> returns the integration limits for problem 31.
+        </li>
+        <li>
+          <b>P31_NAME</b> returns the name of problem 31.
+        </li>
+        <li>
+          <b>P31_REGION</b> returns the name of the integration region for problem 31.
+        </li>
+        <li>
+          <b>P31_R8VEC</b> sets or gets R8VEC parameters for problem 31.
+        </li>
+        <li>
+          <b>P31_TITLE</b> prints a title for problem 31.
+        </li>
+        <li>
+          <b>P32_DEFAULT</b> sets default values for problem 32.
+        </li>
+        <li>
+          <b>P32_EXACT</b> returns the exact integral for problem 32.
+        </li>
+        <li>
+          <b>P32_F</b> evaluates the integrand for problem 32.
+        </li>
+        <li>
+          <b>P32_I4</b> sets or gets I4 parameters for problem 32.
+        </li>
+        <li>
+          <b>P32_LIM</b> returns the integration limits for problem 32.
+        </li>
+        <li>
+          <b>P32_NAME</b> returns the name of problem 32.
+        </li>
+        <li>
+          <b>P32_REGION</b> returns the name of the integration region for problem 32.
+        </li>
+        <li>
+          <b>P32_R8VEC</b> sets or gets R8VEC parameters for problem 32.
+        </li>
+        <li>
+          <b>P32_TITLE</b> prints a title for problem 32.
+        </li>
+        <li>
+          <b>P33_DEFAULT</b> sets default values for problem 33.
+        </li>
+        <li>
+          <b>P33_EXACT</b> returns the exact integral for problem 33.
+        </li>
+        <li>
+          <b>P33_F</b> evaluates the integrand for problem 33.
+        </li>
+        <li>
+          <b>P33_I4</b> sets or gets I4 parameters for problem 33.
+        </li>
+        <li>
+          <b>P33_LIM</b> returns the integration limits for problem 33.
+        </li>
+        <li>
+          <b>P33_NAME</b> returns the name of problem 33.
+        </li>
+        <li>
+          <b>P33_REGION</b> returns the name of the integration region for problem 33.
+        </li>
+        <li>
+          <b>P33_TITLE</b> prints a title for problem 33.
+        </li>
+        <li>
+          <b>P34_DEFAULT</b> sets default values for problem 34.
+        </li>
+        <li>
+          <b>P34_EXACT</b> returns the exact integral for problem 34.
+        </li>
+        <li>
+          <b>P34_F</b> evaluates the integrand for problem 34.
+        </li>
+        <li>
+          <b>P34_I4</b> sets or gets I4 parameters for problem 34.
+        </li>
+        <li>
+          <b>P34_LIM</b> returns the integration limits for problem 34.
+        </li>
+        <li>
+          <b>P34_NAME</b> returns the name of problem 34.
+        </li>
+        <li>
+          <b>P34_REGION</b> returns the name of the integration region for problem 34.
+        </li>
+        <li>
+          <b>P34_TITLE</b> prints a title for problem 34.
+        </li>
+        <li>
+          <b>R8_CHOOSE</b> computes the combinatorial coefficient C(N,K).
+        </li>
+        <li>
+          <b>R8_GAMMA</b> returns the value of the Gamma function at X.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN90 random number seed.
+        </li>
+        <li>
+          <b>SIMPLEX_UNIT_VOLUME_ND</b> computes the volume of the unit simplex in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_AREA_ND</b> computes the surface area of a unit sphere in ND.
+        </li>
+        <li>
+          <b>SPHERE_UNIT_VOLUME_ND</b> computes the volume of a unit sphere in multi-dimensions.
+        </li>
+        <li>
+          <b>SPHERE_VOLUME_ND</b> computes the volume of a sphere in multi-dimensions.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TUPLE_NEXT</b> computes the next element of a tuple space.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 August 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

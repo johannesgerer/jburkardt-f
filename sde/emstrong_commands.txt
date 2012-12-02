@@ -1,0 +1,17 @@
+# emstrong_commands.txt
+# created by sde::emstrong_gnuplot.
+#
+# Usage:
+#  gnuplot < emstrong_commands.txt
+#
+set term png
+set output "emstrong.png"
+set xlabel "Log(dt)"
+set ylabel "Log(Averaged Error at final T)"
+set logscale xy 10
+set title "Euler-Maruyama Error as function of DT"
+set grid
+set style data linespoints
+plot "emstrong_data.txt" using 1:2 title "Error", \
+     "emstrong_data.txt" using 1:3 title "Slope = 1/2"
+quit

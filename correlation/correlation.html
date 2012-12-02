@@ -1,0 +1,491 @@
+<html>
+
+  <head>
+    <title>
+      CORRELATION - Examples of Correlation Functions
+    </title>
+  </head>
+
+  <body bgcolor="#eeeeee" link="#cc0000" alink="#ff3300" vlink="#000055">
+
+    <h1 align = "center">
+      CORRELATION <br> Examples of Correlation Functions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CORRELATION</b>
+      is a FORTRAN90 library which
+      contains examples of statistical correlation functions.
+    </p>
+
+    <p>
+      The (nonstationary) correlation function c(s,t) must satisfy the 
+      following properties:
+      <ol>
+        <li>
+           -1 &leq; c(s,t) &leq; +1;
+        </li>
+        <li>
+           c(s,t) = c(t,s);
+        </li>
+        <li>
+           c(s,s) = 1;
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      Most of the correlation functions considered here determine the correlation of two
+      random values y(x1) and y(x2), depending only on distance, that is,
+      on the norm ||x1-x2||, which we will denote by "r".  Such correlation functions
+      are called "stationary".
+    </p>
+
+    <p>
+      The stationary correlation function c(r) must satisfy the following properties:
+      <ol>
+        <li>
+           -1 &leq; c(r) &leq; +1;
+        </li>
+        <li>
+           c(0) = 1;
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      It is often the case that a typical scale length "r0" is specified,
+      called the "correlation length".  In that case, the correlation function
+      may be expressed in terms of the normalized distance r/r0.
+    </p>
+
+    <p>
+      Because correlation functions model physical situations, it is usually the case
+      that the correlation function will smoothly and steadily decrease to 0 with r,
+      or that it will oscillate between positive and negative values, with an 
+      amplitude that is steadily decreasing.  One of the most popular correlation 
+      functions is the gaussian correlation, which has many desirable statistical
+      and mathematical properties.
+    </p>
+
+    <p>
+      Correlation functions available include:
+      <ul>
+        <li>
+          <i>besselj</i>: 
+          <a href = "besselj_plot.png">(plot)</a>,
+          <a href = "besselj_plots.png">(plots)</a>,
+          <a href = "besselj_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>besselk</i>: 
+          <a href = "besselk_plot.png">(plot)</a>,
+          <a href = "besselk_plots.png">(plots)</a>,
+          <a href = "besselk_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>brownian</i> (nonstationary): 
+          <a href = "brownian_plots.png">(plots)</a>,
+          <a href = "brownian_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>circular</i>: 
+          <a href = "circular_plot.png">(plot)</a>,
+          <a href = "circular_plots.png">(plots)</a>,
+          <a href = "circular_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>constant</i>: 
+          <a href = "constant_plot.png">(plot)</a>,
+          <a href = "constant_plots.png">(plots)</a>,
+          <a href = "constant_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>cubic</i>:
+          <a href = "cubic_plot.png">(plot)</a>,
+          <a href = "cubic_plots.png">(plots)</a>,
+          <a href = "cubic_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>damped_cosine</i>:
+          <a href = "damped_cosine_plot.png">(plot)</a>,
+          <a href = "damped_cosine_plots.png">(plots)</a>,
+          <a href = "damped_cosine_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>damped_sine</i>:
+          <a href = "damped_sine_plot.png">(plot)</a>,
+          <a href = "damped_sine_plots.png">(plots)</a>,
+          <a href = "damped_sine_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>exponential</i>:
+          <a href = "exponential_plot.png">(plot)</a>,
+          <a href = "exponential_plots.png">(plots)</a>,
+          <a href = "exponential_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>gaussian</i>:
+          <a href = "gaussian_plot.png">(plot)</a>,
+          <a href = "gaussian_plots.png">(plots)</a>,
+          <a href = "gaussian_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>hole</i>:
+          <a href = "hole_plot.png">(plot)</a>,
+          <a href = "hole_plots.png">(plots)</a>,
+          <a href = "hole_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>linear</i>:
+          <a href = "linear_plot.png">(plot)</a>,
+          <a href = "linear_plots.png">(plots)</a>,
+          <a href = "linear_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>matern (NU=2.5)</i>:
+          <a href = "matern_plot.png">(plot)</a>,
+          <a href = "matern_plots.png">(plots)</a>,
+          <a href = "matern_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>pentaspherical</i>:
+          <a href = "pentaspherical_plot.png">(plot)</a>,
+          <a href = "pentaspherical_plots.png">(plots)</a>,
+          <a href = "pentaspherical_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>power (E=2.0)</i>:
+          <a href = "power_plot.png">(plot)</a>,
+          <a href = "power_plots.png">(plots)</a>,
+          <a href = "power_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>rational_quadratic</i>:
+          <a href = "rational_quadratic_plot.png">(plot)</a>,
+          <a href = "rational_quadratic_plots.png">(plots)</a>,
+          <a href = "rational_quadratic_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>spherical</i>:
+          <a href = "spherical_plot.png">(plot)</a>,
+          <a href = "spherical_plots.png">(plots)</a>,
+          <a href = "spherical_paths.png">(sample paths)</a>
+        </li>
+        <li>
+          <i>white_noise</i>:
+          <a href = "white_noise_plot.png">(plot)</a>,
+          <a href = "white_noise_plots.png">(plots)</a>,
+          <a href = "white_noise_paths.png">(sample paths)</a>
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CORRELATION</b> is available in
+      <a href = "../../c_src/correlation/correlation.html">a C version</a> and
+      <a href = "../../cpp_src/correlation/correlation.html">a C++ version</a> and
+      <a href = "../../f77_src/correlation/correlation.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/correlation/correlation.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/correlation/correlation.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/brownian_motion_simulation/brownian_motion_simulation.html">
+      BROWNIAN_MOTION_SIMULATION</a>,
+      a FORTRAN90 program which
+      simulates Brownian motion in an M-dimensional region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/colored_noise/colored_noise.html">
+      COLORED_NOISE</a>,
+      a FORTRAN90 library which
+      generates samples of noise obeying a 1/f^alpha power law.
+    </p>
+
+    <p>
+      <a href = "../../examples/gnuplot/gnuplot.html">
+      GNUPLOT</a>,
+      examples which
+      illustrate the use of the gnuplot graphics program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pink_noise/pink_noise.html">
+      PINK_NOISE</a>,
+      a FORTRAN90 library which
+      computes a pink noise signal obeying a 1/f power law.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sde/sde.html">
+      SDE</a>,
+      a FORTRAN90 library which
+      illustrates the properties of stochastic differential equations (SDE's), and
+      common algorithms for their analysis,
+      by Desmond Higham;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Petter Abrahamsen,<br>
+          A Review of Gaussian Random Fields and Correlation Functions,<br>
+          Norwegian Computing Center, 1997.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "correlation.f90">correlation.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "correlation.sh">correlation.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "correlation_prb.f90">correlation_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "correlation_prb.sh">correlation_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "correlation_prb_output.txt">correlation_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CORRELATION_BROWNIAN</b> computes the Brownian correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_BESSELJ</b> evaluates the Bessel J correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_BESSELK</b> evaluates the Bessel K correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_BROWNIAN_DISPLAY</b> displays 4 slices of the Brownian Correlation.
+        </li>
+        <li>
+          <b>CORRELATION_CIRCULAR</b> evaluates the circular correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_CONSTANT</b> evaluates the constant correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_COSINE_DAMPED</b> evaluates the damped cosine correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_CUBIC</b> evaluates the cubic correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_DAMPED_COSINE</b> evaluates the damped cosine correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_DAMPED_SINE</b> evaluates the damped sine correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_EXPONENTIAL</b> evaluates the exponential correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_GAUSSIAN</b> evaluates the Gaussian correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_HOLE</b> evaluates the hole correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_LINEAR</b> evaluates the linear correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_MATERN</b> evaluates the Matern correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_PENTASPHERICAL</b> evaluates the pentaspherical correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_POWER</b> evaluates the power correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_RATIONAL_QUADRATIC:</b> rational quadratic correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_SINE_DAMPED</b> evaluates the damped sine correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_SPHERICAL</b> evaluates the spherical correlation function.
+        </li>
+        <li>
+          <b>CORRELATION_TO_COVARIANCE:</b> covariance matrix from a correlation matrix.
+        </li>
+        <li>
+          <b>CORRELATION_WHITE_NOISE</b> evaluates the white noise correlation function.
+        </li>
+        <li>
+          <b>COVARIANCE_TO_CORRELATION:</b> correlation matrix from a covariance matrix.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>MINIJ</b> returns the MINIJ matrix.
+        </li>
+        <li>
+          <b>R8_B0MP</b> evaluates the modulus and phase for the Bessel J0 and Y0 functions.
+        </li>
+        <li>
+          <b>R8_BESI1</b> evaluates the Bessel function I of order 1 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESI1E</b> evaluates the exponentially scaled Bessel function I1(X).
+        </li>
+        <li>
+          <b>R8_BESJ0</b> evaluates the Bessel function J of order 0 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESK</b> evaluates the Bessel function K of order NU of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESK1</b> evaluates the Bessel function K of order 1 of an R8 argument.
+        </li>
+        <li>
+          <b>R8_BESK1E</b> evaluates the exponentially scaled Bessel function K1(X).
+        </li>
+        <li>
+          <b>R8_BESKES:</b> a sequence of exponentially scaled K Bessel functions at X.
+        </li>
+        <li>
+          <b>R8_BESKS</b> evaluates a sequence of K Bessel functions at X.
+        </li>
+        <li>
+          <b>R8_CSEVL</b> evaluates a Chebyshev series.
+        </li>
+        <li>
+          <b>R8_GAML</b> evaluates bounds for an R8 argument of the gamma function.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates the gamma function of an R8 argument.
+        </li>
+        <li>
+          <b>R8_INITS</b> initializes a Chebyshev series.
+        </li>
+        <li>
+          <b>R8_KNUS</b> computes a sequence of K Bessel functions.
+        </li>
+        <li>
+          <b>R8_LGMC</b> evaluates the log gamma correction factor for an R8 argument.
+        </li>
+        <li>
+          <b>R8_MACH</b> returns real ( kind = 8 ) real machine-dependent constants.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8MAT_CHOLESKY_FACTOR</b> computes the Cholesky factor of a symmetric matrix.
+        </li>
+        <li>
+          <b>R8MAT_IS_SYMMETRIC</b> checks an R8MAT for symmetry.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8VEC_LINSPACE</b> creates a vector of linearly spaced values.
+        </li>
+        <li>
+          <b>R8VEC_NORMAL_01</b> returns a unit pseudonormal R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>SAMPLE_PATH_CHOLESKY</b> computes a sample path for a correlation function.
+        </li>
+        <li>
+          <b>SAMPLE_PATH_EIGEN</b> computes a sample path for a correlation function.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TQL2</b> computes all eigenvalues/vectors, real symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>TRED2</b> transforms a real symmetric matrix to symmetric tridiagonal form.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last modified on 06 November 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

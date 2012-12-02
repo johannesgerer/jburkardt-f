@@ -1,0 +1,326 @@
+<html>
+
+  <head>
+    <title>
+      SS_QG_ALIGN - Sequence/sequence Quasiglobal Gap Alignment
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SS_QG_ALIGN <br> Sequence/sequence Quasiglobal Gap Alignment
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SS_QG_ALIGN</b>
+      is a FORTRAN90 library which
+      implements some of the string
+      matching algorithms described in the reference <b>[Chao]</b>.
+    </p>
+
+    <p>
+      These algorithms carry out the computation in <i>linear space</I>, and
+      compute not just the optimal alignment score, but also the corresponding
+      optimal alignment.
+    </p>
+
+    <p>
+      The <i>quasiglobal</i> matching considered here is similar to the
+      global matching scheme, except that no penalty is applied for the
+      very first gap (a deletion or insertion, but not both), and the very
+      last one.  This simple alteration in the global alignment scheme
+      facilitates the search for repeated patterns.
+    </p>
+
+    <p>
+      Routines that use quadratic space are included as well, so the algorithms
+      can be compared for storage, speed, and correctness.
+    </p>
+
+    <p>
+      The names of the scoring and path routines include information
+      about whether they use a forward, backward, or recursive algorithm,
+      whether they compute the score or the path, and whether they use
+      linear or quadratic space.  Thus, the routine
+      <b>SS_QG_FSQ</b> uses the forward algorithm to compute the score,
+      with quadratic space requirements.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/ps_gg_align/ps_gg_align.html">
+      PS_GG_ALIGN</a>,
+      a FORTRAN90 library which
+      implements a profile/sequence global alignment using an affine gap penalty.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ps_lg_align/ps_lg_align.html">
+      PS_LG_ALIGN</a>,
+      a FORTRAN90 library which
+      implements a profile/sequence local alignment using an affine gap penalty.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ps_qg_align/ps_qg_align.html">
+      PS_QG_ALIGN</a>,
+      a FORTRAN90 library which
+      implements a profile/sequence quasiglobal alignment using an affine gap penalty.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ss_gd_align/ss_gd_align.html">
+      SS_GD_ALIGN</a>,
+      a FORTRAN90 library which
+      globally aligns two sequences using a distance matrix.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ss_gg_align/ss_gg_align.html">
+      SS_GG_ALIGN</a>,
+      a FORTRAN90 library which
+      globally aligns two sequences using an affine gap penalty.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ss_lg_align/ss_lg_align.html">
+      SS_LG_ALIGN</a>,
+      a FORTRAN90 library which
+      locally aligns two sequences using an affine gap penalty.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Kun-Mao Chao, Ross Hardison, Webb Miller,<br>
+          Recent Developments in Linear-Space Alignment Methods: A Survey,<br>
+          Journal of Computational Biology, <br>
+          Volume 1, Number 4, 1994, pages 271-291.
+        </li>
+        <li>
+          Eugene Myers, Webb Miller,<br>
+          Optimal Alignments in Linear Space,<br>
+          CABIOS, volume 4, number 1, 1988, pages 11-17.
+        </li>
+        <li>
+          Michael Waterman, <br>
+          Introduction to Computational Biology,<br>
+          Chapman and Hall, 1995.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ss_qg_align.f90">ss_qg_align.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "ss_qg_align.sh">ss_qg_align.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ss_qg_align_prb.f90">ss_qg_align_prb.f90</a>, test
+          routines;
+        </li>
+        <li>
+          <a href = "ss_qg_align_prb.sh">ss_qg_align_prb.sh</a>,
+          commands to compile,link and run the test routines;
+        </li>
+        <li>
+          <a href = "ss_qg_align_prb_output.txt">ss_qg_align_prb_output.txt</a>, the
+          test output.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>A_INDEX</b> sets up a reverse index for the amino acid codes.
+        </li>
+        <li>
+          <b>A_TO_I4</b> returns the index of an alphabetic character.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CHVEC2_PRINT</b> prints two vectors of characters.
+        </li>
+        <li>
+          <b>CHVEC_PRINT</b> prints a vector of characters.
+        </li>
+        <li>
+          <b>GET_SEED</b> returns a seed for the random number generator.
+        </li>
+        <li>
+          <b>I4_RANDOM</b> returns a random integer in a given range.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two integer values.
+        </li>
+        <li>
+          <b>I4_TO_A</b> returns the I-th alphabetic character.
+        </li>
+        <li>
+          <b>I4_TO_AMINO_CODE</b> converts an integer to an amino code.
+        </li>
+        <li>
+          <b>I4VEC2_COMPARE</b> compares pairs of integers stored in two vectors.
+        </li>
+        <li>
+          <b>I4VEC2_PRINT</b> prints a pair of integer vectors, with an optional title.
+        </li>
+        <li>
+          <b>I4VEC2_SORT_A</b> ascending sorts a vector of pairs of integers.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an integer vector.
+        </li>
+        <li>
+          <b>MUTATE</b> applies a few mutations to a sequence.
+        </li>
+        <li>
+          <b>PAM120</b> returns the PAM 120 substitution matrix.
+        </li>
+        <li>
+          <b>PAM120_SCORE</b> computes a single entry sequence/sequence matching score.
+        </li>
+        <li>
+          <b>PAM200</b> returns the PAM 200 substitution matrix.
+        </li>
+        <li>
+          <b>PAM200_SCORE</b> computes a single entry sequence/sequence matching score.
+        </li>
+        <li>
+          <b>R4VEC2_SUM_IMAX</b> returns the index of the maximum sum of two real vectors.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_CHVEC</b> converts a string to a character vector.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>SIMPLE_SCORE</b> computes a single entry sequence/sequence matching score.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into linear order.
+        </li>
+        <li>
+          <b>SS_GG_BSL</b> determines a global gap backward alignment score in linear space.
+        </li>
+        <li>
+          <b>SS_GG_FSL</b> determines a global gap forward alignment score in linear space.
+        </li>
+        <li>
+          <b>SS_QG_BOQ</b> determines the backward endpoint of a quasiglobal optimal local alignment.
+        </li>
+        <li>
+          <b>SS_QG_BPQ</b> determines a quasiglobal gap backward alignment path in quadratic space.
+        </li>
+        <li>
+          <b>SS_QG_BSL</b> determines a quasiglobal gap backward alignment score in linear space.
+        </li>
+        <li>
+          <b>SS_QG_BSQ</b> determines a quasiglobal gap backward alignment score in quadratic space.
+        </li>
+        <li>
+          <b>SS_QG_FOQ</b> determines the forward endpoint of a quasiglobal optimal local alignment.
+        </li>
+        <li>
+          <b>SS_QG_FPQ</b> determines a quasiglobal gap forward alignment path in quadratic space.
+        </li>
+        <li>
+          <b>SS_QG_FSL</b> determines a quasiglobal gap forward alignment score in linear space.
+        </li>
+        <li>
+          <b>SS_QG_FSQ</b> determines a quasiglobal gap forward alignment score in quadratic space.
+        </li>
+        <li>
+          <b>SS_QG_MATCH_PRINT</b> prints a quasiglobal gap alignment.
+        </li>
+        <li>
+          <b>SS_QG_MATCH_SCORE</b> scores a quasiglobal gap alignment.
+        </li>
+        <li>
+          <b>SS_QG_RPL</b> determines a quasiglobal gap recursive alignment path in linear space.
+        </li>
+        <li>
+          <b>SS_QG_RPL_POP</b> pops the data describing a subproblem off of the stack.
+        </li>
+        <li>
+          <b>SS_QG_RPL_PUSH</b> pushes the data describing a subproblem onto the stack.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UNIFORM_01_SAMPLE</b> is a portable random number generator.
+        </li>
+        <li>
+          <b>WORD_LAST_READ</b> returns the last word from a string.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 29 December 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

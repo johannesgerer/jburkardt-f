@@ -1,0 +1,2038 @@
+<html>
+
+  <head>
+    <title>
+      STARPAC - Statistical Data Analysis Library
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      STARPAC <br> Statistical Data Analysis Library
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>STARPAC</b> 
+      is a FORTRAN90 library which
+      contains a number of routines for statistical data analysis.
+    </p>
+
+    <p>
+      <b>STARPAC</b> uses a COMMON block and EQUIVALENCE statements
+      in order to make workspace storage available to its routines.
+      This scheme assumes that an integer is stored in one word.
+      When compiling this program with <b>G95</b>, it may be necessary
+      to include the <b>-i4</b> switch, to guarantee that integers
+      are stored in 4 bytes = one word.  Otherwise, routines that
+      rely on the workspace storage system will fail.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>STARPAC</b> is available in
+      <a href = "../../f77_src/starpac/starpac.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/starpac/starpac.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blas1/blas1.html">
+      BLAS1</a>,
+      a FORTRAN90 library which
+      implements the
+      Basic Linear Algebra Subprograms, Level 1, and which are
+      called by <b>STARPAC</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/machine/machine.html">
+      MACHINE</a>,
+      a FORTRAN90 library which 
+      tabulates the values
+      of certain machine-specific arithmetic quantities, and which are
+      called by <b>STARPAC</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nl2sol/nl2sol.html">
+      NL2SOL</a>, 
+      a FORTRAN90 library which
+      minimizes the
+      sum of squares of a set of nonlinear functions, and which is
+      called by <b>STARPAC</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prob/prob.html">
+      PROB</a>, 
+      a FORTRAN90 library which
+      computes the PDF, CDF, inverse CDF, and sampling various statistical
+      distributions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      carries out uniform sampling of real, complex or integer data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xerror/xerror.html">
+      XERROR</a>,
+      a FORTRAN90 library which
+      carries out error handling.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          LC: QA47.A34,<br>
+          ISBN: 0-486-61272-4.
+        </li>
+        <li>
+          Peter Bloomfield,<br>
+          Fourier Analysis of Time Series - An Introduction,<br>
+          Wiley, 2000,<br>
+          ISBN: 0471889482,<br>
+          LC: QA280.B59.
+        </li>
+        <li>
+          Nancy Bosten, Thomas Aird,<br>
+          Remark on Algorithm 179, <br>
+          Communications of the ACM,<br>
+          Volume 17, page 153, 1974.
+        </li>
+        <li>
+          George Box, Gwilym Jenkins,<br>
+          Time Series Analysis: Forecasting and Control,<br>
+          Prentice Hall, 1991,<br>
+          ISBN: 0139051007,<br>
+          LC: QA280.B67.
+        </li>
+        <li>
+          Kenneth Brown,<br>
+          A Quadratically Convergent Newton-like Method Based upon 
+          Gaussian Elimination,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 6, pages 560-569, 1969.
+        </li>
+        <li>
+          Peter Businger, Gene Golub,<br>
+          Linear Least Squares Solutions by Householder Transformations,<br>
+          Numerische Mathematik,<br>
+          Volume 7, pages 269-276, 1965.
+        </li>
+        <li>
+          Alan Cline, Cleve Moler, Pete Stewart, James Wilkinson,<br>
+          An Estimate of the Condition Number of a Matrix,<br>
+          Technical Report TM-310,<br>
+          Applied Math Division,<br>
+          Argonne National Laboratory, 1977.
+        </li>
+        <li>
+          John Dennis, David Gay, Roy Welsch,<br>
+          Algorithm 573:
+          An Adaptive Nonlinear Least-Squares Algorithm,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 7, Number 3, 1981, pages 367-383.
+        </li>
+        <li>
+          Janet Donaldson, Peter Tryon,<br>
+          User's Guide to STARPAC,<br>
+          The Standards Time Series and Regression Package,<br> 
+          NIST, Boulder, Colorado, 1987.
+        </li>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1,<br>
+          LC: QA214.L56.
+        </li>
+        <li>
+          Norman Draper, Harry Smith,<br>
+          Applied Regression Analysis,<br>
+          Wiley, 1998,<br>
+          ISBN: 978-0471170822,<br>
+          LC: QA278.2.D7.
+        </li>
+        <li>
+          Merran Evans, Nicholas Hastings, Brian Peacock,<br>
+          Statistical Distributions,<br>
+          Wiley, 2000,<br>
+          ISBN: 0471371246,<br>
+          LC: QA273.6E92.
+        </li>
+        <li>
+          Enrico Federghi,<br>
+          Extended Tables of the Percentage Points of Student's
+          T-Distribution,<br>
+          Journal of the American Statistical Association,<br>
+          Volume 54, Number 287, 1959, pages 683-688.
+        </li>
+        <li>
+          Phyllis Fox, Andrew Hall, Norman Schryer,<br>
+          Algorithm 528,
+          A Framework for a Portable Library,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 4, Number 2, June 1978, pages 177-188.
+        </li>
+        <li>
+          Walter Gautschi,<br>
+          Algorithm 542:
+          Incomplete Gamma Functions,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 5, Number 4, December 1979, pages 382-489.
+        </li>
+        <li>
+          David Gay,<br>
+          Computing Optimal Locally Constrained Steps,<br>
+          SIAM Journal on Scientific and Statistical Computing,<br>
+          Volume 2, Number 2, pages 186-197, 1981.
+        </li>
+        <li>
+          Philip Gill, Walter Murray,<br>
+          Algorithms for the Solution of the 
+          Non-linear Least-squares Problem, <br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 15, Number 5, pages 977-991, 1978.
+        </li>
+        <li>
+          Steven Goldfeld, Richard Quandt, Hale Trotter,<br>
+          Maximization by Quadratic Hill-climbing,<br>
+          Econometrica,<br>
+          Volume 34, pages 541-551, 1966.
+        </li>
+        <li>
+          MD Hebden,<br>
+          An Algorithm for Minimization using Exact Second Derivatives,<br>
+          Report TP515,<br>
+          Theoretical Physics Division,<br>
+          AERE, Harwell, Oxon., England, 1973.
+        </li>
+        <li>
+          DC Hoaglin,<br>
+          Theoretical Properties of Congruential Random-Number Generators,
+          An Empirical View,<br>
+          Memorandum NS-340,<br>
+          Department of Statistics,<br>
+          Harvard University, 1976.
+        </li>
+        <li>
+          Gwilym Jenkins, Donald Watts,<br>
+          Spectral Analysis and its Applications,<br>
+          Holden-Day, 1968,<br>
+          ISBN: 1892803038,<br>
+          LC: QA280.J45.
+        </li>
+        <li>
+          Norman Johnson, Samuel Kotz, Narayanaswamy Balakrishnan,<br>
+          Continuous Univariate Distributions,<br>
+          Second edition,<br>
+          Wiley, 1994,<br>
+          ISBN: 0471584940,<br>
+          LC: QA273.6.J6
+        </li>
+        <li>
+          Donald Knuth,<br>
+          The Art of Computer Programming,<br>
+          Volume 2, Seminumerical Algorithms,<br> 
+          Third Edition,<br>
+          Addison Wesley, 1997,<br>
+          ISBN: 0201896842,<br>
+          LC: QA76.6.K64.
+        </li>
+        <li>
+          Charles Lawson, Richard Hanson,<br>
+          Solving Least Squares Problems,<br>
+          SIAM, 1995,<br>
+          ISBN: 0898713560,<br>
+          LC: QA275.L38.
+        </li>
+        <li>
+          Charles Lawson, Richard Hanson, David Kincaid, Fred Krogh,<br>
+          Algorithm 539:
+          Basic Linear Algebra Subprograms for Fortran Usage,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 5, Number 3, September 1979, pages 308-323.
+        </li>
+        <li>
+          George Marsaglia, Wai Wan Tsang,<br>
+          A fast, easily implemented method for sampling from decreasing or
+          symmetric unimodal density functions,<br>
+          SIAM Journal of Scientific and Statistical Computing,<br>
+          Volume 5, 1983, pages 349-359.
+        </li>
+        <li>
+          Jorge More,<br>
+          The Levenberg-Marquardt Algorithm, Implementation and Theory,<br>
+          in Springer Lecture Notes in Mathematics, Number 630,<br>
+          edited by G A Watson,<br>
+          Springer, 1978.
+        </li>
+        <li>
+          Donald Owen, <br>
+          Handbook of Statistical Tables,<br>
+          Addison-Wesley, 1962.
+        </li>
+        <li>
+          Egon Pearson, Herman Hartley, <br>
+          Biometrika Tables for Statisticians, <br>
+          Cambridge, 1970,<br>
+          ISBN: 978-0852647004.
+        </li>
+        <li>
+          Michael Powell,<br>
+          A Fortran Subroutine for Solving Systems of Nonlinear 
+          Algebraic Equations,<br>
+          in Numerical Methods for Nonlinear Algebraic Equations,<br>
+          edited by Philip Rabinowitz,<br>
+          Gordon and Breach, 1970,<br>
+          ISBN13: 978-0677142302,<br>
+          LC: QA218.N85.
+        </li>
+        <li>
+          CS Smith,<br>
+          Multiplicative Pseudo-Random Number Generators with Prime Modulus,<br>
+          Journal of the Association for Computing Machinery,<br>
+          Volume 19, pages 586-593, 1971.
+        </li>
+        <li>
+          Richard Varga,<br>
+          Minimal Gerschgorin Sets,<br>
+          Pacific Journal of Mathematics,<br>
+          Volume 15, pages 719-729, 1965.
+        </li>
+        <li>
+          Max Waldmeier,<br>
+          The Sunspot-Activity in the Years 1610-1960,<br>
+          Shulthess, 1961,<br>
+          LC: QB525.W34.
+        </li>
+        <li>
+          Martin Wilk, Ram Gnanadesikan, Marilyn Huyett,<br>
+          Probability Plots for the Gamma Distribution,<br>
+          Technometrics,<br>
+          Volume 4, Number 1, 1962, pages 1-15,
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "starpac.f90">starpac.f90</a>, 
+          the source code.
+        </li>
+        <li>
+          <a href = "starpac.csh">starpac.csh</a>, 
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "starpac_prb.f90">starpac_prb.f90</a>, 
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "starpac_prb.csh">starpac_prb.csh</a>, 
+          commands to compile, link and run the sample calling program.
+        </li>
+        <li>
+          <a href = "starpac_prb_output.txt">starpac_prb_output.txt</a>, 
+          the output from a run of the sample calling program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ABSCOM</b> counts the entries of | V(1:N) - W(1:N) | greater than ABSTOL.
+        </li>
+        <li>
+          <b>ACCDIG</b> returns the number of accurate digits in an approximation to X.
+        </li>
+        <li>
+          <b>ACFD</b> computes autocorrelations and partial autocorrelations.
+        </li>
+        <li>
+          <b>ACFDTL</b> prints titles for ACORRD.
+        </li>
+        <li>
+          <b>ACFER</b> does error checking for the ACF routines.
+        </li>
+        <li>
+          <b>ACF</b> is the simple interface to the autocorrelations routines.
+        </li>
+        <li>
+          <b>ACFF</b> computes autocorrelations of a time series using an FFT.
+        </li>
+        <li>
+          <b>ACFFS</b> uses an FFT with ACVF estimates for autocorrelations of a time series.
+        </li>
+        <li>
+          <b>ACFLST</b> lists the autocorrelations and other information.
+        </li>
+        <li>
+          <b>ACFM</b> computes autocorrelations of a time series with missing data.
+        </li>
+        <li>
+          <b>ACFMN</b> computes autocorrelations of a time series.
+        </li>
+        <li>
+          <b>ACFMNF</b> computes autocorrelations of a time series.
+        </li>
+        <li>
+          <b>ACFMNM</b> computes autocorrelations of a time series with missing data.
+        </li>
+        <li>
+          <b>ACFMS</b> is the user interface for autocorrelations of a time series with missing data.
+        </li>
+        <li>
+          <b>ACFOUT</b> prints autocorrelations.
+        </li>
+        <li>
+          <b>ACFSD</b> computes the standard error of autocorrelations.
+        </li>
+        <li>
+          <b>ACFSDM</b> computes the standard error of autocorrelations with missing data.
+        </li>
+        <li>
+          <b>ACFS</b> computes autocorrelations with computed ACVF estimates.
+        </li>
+        <li>
+          <b>ACVF</b> computes the autocovariance function of a series.
+        </li>
+        <li>
+          <b>ACVFF</b> computes the ACVF of a series using two FFT passes.
+        </li>
+        <li>
+          <b>ACVFM</b> computes autocovariance when missing data is involved.
+        </li>
+        <li>
+          <b>ADJLMT</b> corrects the plot limits when all observations are equal.
+        </li>
+        <li>
+          <b>AIMEC</b> is the user interface for ARIMA estimation.
+        </li>
+        <li>
+          <b>AIME</b> is the user interface for ARIMA estimation, control call.
+        </li>
+        <li>
+          <b>AIMES</b> is the user interface for ARIMA estimation, long call.
+        </li>
+        <li>
+          <b>AIMF</b> is the user interface for ARIMA estimation, short call.
+        </li>
+        <li>
+          <b>AIMFS</b> is the user interface for ARIMA estimation, control call.
+        </li>
+        <li>
+          <b>AIMX1</b> sets the starting parameter values for AIMX.
+        </li>
+        <li>
+          <b>ALBETA</b> computes the logarithm of the Beta function.
+        </li>
+        <li>
+          <b>ALGAMS</b> evaluates the log of the absolute value of the Gamma function.
+        </li>
+        <li>
+          <b>ALNGAM</b> computes the logarithm of the absolute value of the Gamma function.
+        </li>
+        <li>
+          <b>ALNREL</b> evaluates log ( 1 + X ) with relative error control.
+        </li>
+        <li>
+          <b>AMDRV</b> estimates the jacobian matrix.
+        </li>
+        <li>
+          <b>AMEAN</b> computes the arithmetic mean of a series.
+        </li>
+        <li>
+          <b>AMEANM</b> computes the arithmetic mean of a series with missing data.
+        </li>
+        <li>
+          <b>AMECNT</b> is the control routine for nonlinear least squares regression.
+        </li>
+        <li>
+          <b>AMEDRV</b> is the control routine for nonlinear least squares regression.
+        </li>
+        <li>
+          <b>AMEER</b> checks errors for the nonlinear least squares estimation.
+        </li>
+        <li>
+          <b>AMEFIN</b> analyzes nonlinear least squares estimates after they are computed.
+        </li>
+        <li>
+          <b>AMEHDR</b> prints headings for nonlinear least squares estimation.
+        </li>
+        <li>
+          <b>AMEISM</b> prints an initial summary for nonlinear least squares routines.
+        </li>
+        <li>
+          <b>AMEMN</b> is the control routine for using the NL2 software package.
+        </li>
+        <li>
+          <b>AMEOUT</b> prints the final summary output from ARIMA estimation.
+        </li>
+        <li>
+          <b>AMEPT1</b> prints data summary for nonlinear least squares routines.
+        </li>
+        <li>
+          <b>AMEPT2</b> prints four standardized residual plots.
+        </li>
+        <li>
+          <b>AMESTP</b> controls the step size selection.
+        </li>
+        <li>
+          <b>AMFCNT</b> is the control routine for ARIMA forecasting.
+        </li>
+        <li>
+          <b>AMFER</b> checks errors for nonlinear least squares estimation.
+        </li>
+        <li>
+          <b>AMFHDR</b> prints headers for nonlinear least squares estimation.
+        </li>
+        <li>
+          <b>AMFMN</b> computes and prints ARIMA forecasts.
+        </li>
+        <li>
+          <b>AMFOUT</b> produces ARIMA forecasting output.
+        </li>
+        <li>
+          <b>AMLST1</b> prints parameters for the ARIMA routine.
+        </li>
+        <li>
+          <b>AMLST</b> prints parameter summaries from ARIMA forecasting.
+        </li>
+        <li>
+          <b>AOS</b> computes autoregressive model order selection statistics.
+        </li>
+        <li>
+          <b>AOSLST</b> lists the autoregressive model order selection statistics.
+        </li>
+        <li>
+          <b>AOV1ER</b> does preliminary checks on input to the one-way family.
+        </li>
+        <li>
+          <b>AOV1</b> is a user interface to AOV1MN, one-way analysis of variance.
+        </li>
+        <li>
+          <b>AOV1HD</b> prints headers for the one-way ANOVA family.
+        </li>
+        <li>
+          <b>AOV1MN</b> computes results for analysis of a one-way classification.
+        </li>
+        <li>
+          <b>AOV1S</b> is a user interface for AOV1MN, one-way analysis of variance.
+        </li>
+        <li>
+          <b>AOV1XP</b> prints storage for one-way family exerciser.
+        </li>
+        <li>
+          <b>ARCOEF</b> uses Durbin's method for autoregression coefficients with order lag.
+        </li>
+        <li>
+          <b>ARFLT</b> performs autoregressive filtering.
+        </li>
+        <li>
+          <b>ASSESS</b> assesses a candidate step.
+        </li>
+        <li>
+          <b>AXPBY:</b> SZ(1:N) = SA * SX(1:N) + SB * SY(1:N).
+        </li>
+        <li>
+          <b>BACKOP</b> computes the number of back order terms for an ARIMA model.
+        </li>
+        <li>
+          <b>BETAI</b> computes the incomplete Beta ratio.
+        </li>
+        <li>
+          <b>BFSDRV</b> is the driver for time series Fourier spectrum analysis.
+        </li>
+        <li>
+          <b>BFSER</b> checks errors for time series Fourier univariate spectrum analysis.
+        </li>
+        <li>
+          <b>BFS:</b> short interface for time series Fourier bivariate spectrum analysis.
+        </li>
+        <li>
+          <b>BFSF:</b> short interface for time series Fourier bivariate spectrum analysis.
+        </li>
+        <li>
+          <b>BFSFS:</b> long interface for time series Fourier bivariate spectrum analysis.
+        </li>
+        <li>
+          <b>BFSLAG:</b> lag window truncation points for Fourier bivariate spectral analysis.
+        </li>
+        <li>
+          <b>BFSM:</b> short interface for time series bivariate Fourier spectrum analysis.
+        </li>
+        <li>
+          <b>BFSMN</b> computes square coherency and phase components of a bivariate spectrum.
+        </li>
+        <li>
+          <b>BFSMS:</b> long interface for BFS analysis with missing observations.
+        </li>
+        <li>
+          <b>BFSMV:</b> short interface for BFS analysis, missing observations, covariances.
+        </li>
+        <li>
+          <b>BFSMVS:</b> long interface for BFS analysis, missing observations, covariances.
+        </li>
+        <li>
+          <b>BFSS:</b> long call for time series bivariate Fourier spectrum analysis.
+        </li>
+        <li>
+          <b>BFSV:</b> short call for BFS analysis, with covariance input rather than series.
+        </li>
+        <li>
+          <b>BFSVS:</b> long call for BFS analsys with covariances input rather than series.
+        </li>
+        <li>
+          <b>CCFER</b> does error checking for CCF routines.
+        </li>
+        <li>
+          <b>CCF</b> computes the cross-correlation of two time series.
+        </li>
+        <li>
+          <b>CCFF</b> computes the cross-correlation of two time series by Singleton's FFT.
+        </li>
+        <li>
+          <b>CCFFS</b> computes multivariate cross-correlations and covariances by FFT.
+        </li>
+        <li>
+          <b>CCFLST</b> lists cross-correlations, standard errors, and summary information.
+        </li>
+        <li>
+          <b>CCFM</b> computes cross-correlation of two series with missing data.
+        </li>
+        <li>
+          <b>CCFMN</b> is the main routine for cross-correlations.
+        </li>
+        <li>
+          <b>CCFMNF</b> is the main routine for cross-correlations using an FFT.
+        </li>
+        <li>
+          <b>CCFMNM</b> is the main routine for cross-correlations with missing data.
+        </li>
+        <li>
+          <b>CCFMS</b> is a user routine for multivariate cross-correlations.
+        </li>
+        <li>
+          <b>CCFOUT</b> prints cross-correlations and standard errors.
+        </li>
+        <li>
+          <b>CCFSD</b> is the main routine for computing standard error of cross-correlations.
+        </li>
+        <li>
+          <b>CCFSDM:</b> standard error of cross-correlations with missing data.
+        </li>
+        <li>
+          <b>CCFS</b> is the user routine for multivariate cross-correlations.
+        </li>
+        <li>
+          <b>CCFXP</b> lists results for the time series cross-correlation routines.
+        </li>
+        <li>
+          <b>CCVF</b> computes the cross covariance function between two series.
+        </li>
+        <li>
+          <b>CCVFF</b> computes the cross covariance function between two series.
+        </li>
+        <li>
+          <b>CCVFM</b> computes the cross covariance function of two series with missing data.
+        </li>
+        <li>
+          <b>CDFCHI</b> computes the CDF for the Chi Square distribution.
+        </li>
+        <li>
+          <b>CDFF</b> computes the CDF for the F distribution.
+        </li>
+        <li>
+          <b>CDFNML</b> computes the CDF for the standard normal distribution.
+        </li>
+        <li>
+          <b>CDFT</b> computes the CDF for Student's T distribution.
+        </li>
+        <li>
+          <b>CENTER</b> centers an observed series.
+        </li>
+        <li>
+          <b>CHIRHO</b> computes the Chi Square statistic and its probability.
+        </li>
+        <li>
+          <b>CMPFD</b> computes a finite difference derivative.
+        </li>
+        <li>
+          <b>CNTR</b> centers the input seriers about its mean.
+        </li>
+        <li>
+          <b>CORRER</b> checks for errors in the input parameters.
+        </li>
+        <li>
+          <b>CORR:</b> short call to correlation family of routines.
+        </li>
+        <li>
+          <b>CORRHD</b> prints headers for the correlation family.
+        </li>
+        <li>
+          <b>CORRMN</b> is the main routine in the correlation family.
+        </li>
+        <li>
+          <b>CORRS</b> is the user routine for the correlation, with a long call interface.
+        </li>
+        <li>
+          <b>CORRXP</b> prints stored output returned from CORRS.
+        </li>
+        <li>
+          <b>COVCLC</b> computes the covariance matrix for NL2ITR.
+        </li>
+        <li>
+          <b>CPYASF</b> copies a symmetric matrix stored rowwise into rectangular storage.
+        </li>
+        <li>
+          <b>CPYMSS</b> copies an N by M matrix.
+        </li>
+        <li>
+          <b>CPYVII</b> copies an integer vector.
+        </li>
+        <li>
+          <b>CSEVL</b> evaluates a Chebyshev series.
+        </li>
+        <li>
+          <b>D1MACH</b> returns double precision machine constants.
+        </li>
+        <li>
+          <b>DCKCNT</b> controls the derivative checking process.
+        </li>
+        <li>
+          <b>DCKCRV</b> checks whether high curvature caused poor derivative approximation.
+        </li>
+        <li>
+          <b>DCKDRV</b> is the driver to the derivative checking routines.
+        </li>
+        <li>
+          <b>DCKER</b> does error checking for the derivative checking routines.
+        </li>
+        <li>
+          <b>DCKFPA</b> checks if arithmetic precision causes poor derivative approximation.
+        </li>
+        <li>
+          <b>DCKHDR</b> prints page headers for the derivative checking routines.
+        </li>
+        <li>
+          <b>DCKLS1</b> sets up a problem for testing the step size selection family.
+        </li>
+        <li>
+          <b>DCKLSC</b> is the user routine for comparing analytic and numeric derivatives.
+        </li>
+        <li>
+          <b>DCKLS</b> is the user routine for comparing analytic and numeric derivatives.
+        </li>
+        <li>
+          <b>DCKMN</b> is the main routine for checking analytic versus numeric derivatives.
+        </li>
+        <li>
+          <b>DCKOUT</b> prints results from the derivative checking routine.
+        </li>
+        <li>
+          <b>DCKZRO</b> rechecks derivative errors where the analytic derivative is zero.
+        </li>
+        <li>
+          <b>DCOEF</b> expands a difference filter.
+        </li>
+        <li>
+          <b>DEMDRV</b> is the driver routine to demodulate a series.
+        </li>
+        <li>
+          <b>DEMOD</b> demodulates a series at a given frequency.
+        </li>
+        <li>
+          <b>DEMODS</b> demodulates a series at a given frequency.
+        </li>
+        <li>
+          <b>DEMODU</b> demodulates a series at a given frequency.
+        </li>
+        <li>
+          <b>DEMORD</b> sets up the data for the phase plots.
+        </li>
+        <li>
+          <b>DEMOUT</b> prints output for the time series demodulation routines.
+        </li>
+        <li>
+          <b>DFAULT</b> supplies default values to IV and V.
+        </li>
+        <li>
+          <b>DFBW</b> computes degrees of freedom and bandwidth for a given lag window.
+        </li>
+        <li>
+          <b>DFBWM</b> computes DOF and BW for a given lag window with missing data.
+        </li>
+        <li>
+          <b>DIFC</b> expands a difference filter and performs difference filtering.
+        </li>
+        <li>
+          <b>DIF</b> performs a first difference filtering operation.
+        </li>
+        <li>
+          <b>DIFMC</b> expands a difference filter and performs the difference filter.
+        </li>
+        <li>
+          <b>DIFM</b> performs a first difference filter for a series with missing data.
+        </li>
+        <li>
+          <b>DIFSER</b> performs a differencing operation on a series.
+        </li>
+        <li>
+          <b>DOTC</b> computes the dot product of two series, centered about their means.
+        </li>
+        <li>
+          <b>DOTCM</b> computes the dot product of series with missing data.
+        </li>
+        <li>
+          <b>DOTPRD</b> returns the inner product of two vectors.
+        </li>
+        <li>
+          <b>DRV1A</b> derivative function for NLS family exerciser subroutine MDL1.
+        </li>
+        <li>
+          <b>DRV1B</b> is an INCORRECT derivative function for the NLS exerciser MDL1.
+        </li>
+        <li>
+          <b>DRV2</b> is a derivative function for the NLS exerciser routine MD12.
+        </li>
+        <li>
+          <b>DRV3</b> is the derivative function for NLS family exerciser subroutine MDL3.
+        </li>
+        <li>
+          <b>DRV4A</b> is a (correct) derivative for testing derivative checking routines.
+        </li>
+        <li>
+          <b>DRV4B</b> is an (incorrect) derivative for testing derivative checking routines.
+        </li>
+        <li>
+          <b>DRV</b> is a dummy derivative function for the NLS family.
+        </li>
+        <li>
+          <b>DUPDAT</b> updates the scale vector for NL2ITR.
+        </li>
+        <li>
+          <b>E9RINT</b> stores the current error message or prints the old one.
+        </li>
+        <li>
+          <b>ECVF</b> prints an error message if missing data affects the covariance lags.
+        </li>
+        <li>
+          <b>EHDR</b> prints the heading for the error checking routines.
+        </li>
+        <li>
+          <b>EIAGE</b> ensures that "not too many" vectors are below a given lower bound.
+        </li>
+        <li>
+          <b>EIAGEP</b> prints the error messages for ERAGT and ERAGTM.
+        </li>
+        <li>
+          <b>EISEQ</b> prints an error message if NVAL is not equal to NEQ.
+        </li>
+        <li>
+          <b>EISGE</b> prints a warning if NVAL is less than NMIN.
+        </li>
+        <li>
+          <b>EISII</b> warns if an integer value does not lie within a given range.
+        </li>
+        <li>
+          <b>EISLE</b> warns if an integer is greater than a given maximum.
+        </li>
+        <li>
+          <b>EISRNG</b> warns if ISEED is not a suitable random number seed.
+        </li>
+        <li>
+          <b>EIVEO</b> checks whether all vector entries are even (or odd).
+        </li>
+        <li>
+          <b>EIVEQ</b> warns if the vector does not have at least NEQMN entries equal to IVAL.
+        </li>
+        <li>
+          <b>EIVII</b> warns if too many values are outside given limits.
+        </li>
+        <li>
+          <b>ENFFT</b> checks that NFFT is suitable for the Singleton FFT routine.
+        </li>
+        <li>
+          <b>EPRINT</b> prints the last error message, if any.
+        </li>
+        <li>
+          <b>ERAGT</b> warns if too many values are less than a lower bound.
+        </li>
+        <li>
+          <b>ERAGTM</b> warns if too many values are less than or equal to a lower bound.
+        </li>
+        <li>
+          <b>ERAGTP</b> prints the error messages for ERAGT and ERAGTM.
+        </li>
+        <li>
+          <b>ERDF</b> checks the values that specify differencing on a time series.
+        </li>
+        <li>
+          <b>ERFC</b> evaluates the complementary error function.
+        </li>
+        <li>
+          <b>ERF</b> evaluates the error function.
+        </li>
+        <li>
+          <b>ERIODD</b> warns if the value of NVAL is inconsistent.
+        </li>
+        <li>
+          <b>ERSEI</b> warns if a value is not between given limits.
+        </li>
+        <li>
+          <b>ERSGE</b> warns if a value is not greater than or equal to a minimum value.
+        </li>
+        <li>
+          <b>ERSGT</b> warns if the input value is not greater than a specified minumum.
+        </li>
+        <li>
+          <b>ERSIE</b> warns if a value is not within a specified range.
+        </li>
+        <li>
+          <b>ERSII</b> warns if the input value is not within the given range.
+        </li>
+        <li>
+          <b>ERSLF</b> checks the definition of a symmetric linear filter.
+        </li>
+        <li>
+          <b>ERSLFS</b> checks values specifying a symmetric linear filter for a time series.
+        </li>
+        <li>
+          <b>ERVGT</b> ensures that "most" values are greater than a specified lower bound.
+        </li>
+        <li>
+          <b>ERVGTM</b> ensures that "most" values are greater than a specified lower bound.
+        </li>
+        <li>
+          <b>ERVGTP</b> prints the error messages for ERVGT and ERVGTM.
+        </li>
+        <li>
+          <b>ERVII</b> checks for vector values outside given limits.
+        </li>
+        <li>
+          <b>ERVWT</b> checks user-supplied weights.
+        </li>
+        <li>
+          <b>ETAMDL</b> computes noise and number of good digits in model routine results.
+        </li>
+        <li>
+          <b>EXTEND</b> returns the I-th term in a series.
+        </li>
+        <li>
+          <b>FACTOR</b> factors an integer.
+        </li>
+        <li>
+          <b>FDUMP</b> is a dummy version of the dump routine called by XERRWV.
+        </li>
+        <li>
+          <b>FFTCT</b> does a cosine transform of n=2*n2 symmetric data points.
+        </li>
+        <li>
+          <b>FFT</b> is a multivariate complex Fourier transform.
+        </li>
+        <li>
+          <b>FFTLEN</b> computes the value of NFFT for the Singleton FFT routine.
+        </li>
+        <li>
+          <b>FFTR</b> is the user-callable routine for the Fourier transform of a series.
+        </li>
+        <li>
+          <b>FITEXT</b> checks whether the fit is exact to machine precision.
+        </li>
+        <li>
+          <b>FITPT1</b> prints the data summary for nonlinear least squares routines.
+        </li>
+        <li>
+          <b>FITPT2</b> prints the four standardized residual plots.
+        </li>
+        <li>
+          <b>FITSXP</b> generates reporst for least squares exerciser returned storage.
+        </li>
+        <li>
+          <b>FITXSP</b> generates reports for least squares exerciser returned storage.
+        </li>
+        <li>
+          <b>FIXPRT</b> sets the character array 'FIXED'.
+        </li>
+        <li>
+          <b>FLTAR</b> filters an input series using an autoregressive filter.
+        </li>
+        <li>
+          <b>FLTARM</b> filters a series with missing data, using an autoregressive filter.
+        </li>
+        <li>
+          <b>FLTMA</b> filters a series using a simple moving average filter.
+        </li>
+        <li>
+          <b>FLTMD</b> applies a modified Daniel filter to a symmetric series.
+        </li>
+        <li>
+          <b>FTLSL</b> filters an input series.
+        </li>
+        <li>
+          <b>GAMI</b> evaluates the incomplete Gamma function.
+        </li>
+        <li>
+          <b>GAMIT</b> evaluates Tricomi's incomplete Gamma function.
+        </li>
+        <li>
+          <b>GAMLIM</b> calculates the legal range of input arguments for the Gamma function.
+        </li>
+        <li>
+          <b>GAMMA</b> evaluates the Gamma function.
+        </li>
+        <li>
+          <b>GAMR</b> computes the reciprocal of the Gamma function.
+        </li>
+        <li>
+          <b>GENI</b> assigns an arithmetic sequence of values into an integer vector.
+        </li>
+        <li>
+          <b>GENR</b> puts an arithmetic sequence of values into a real vector.
+        </li>
+        <li>
+          <b>GETPI</b> returns the value of PI.
+        </li>
+        <li>
+          <b>GFAEST</b> computes the gain of an autoregressive linear filter.
+        </li>
+        <li>
+          <b>GFARF:</b> short call to compute gain function of autoregressive filter.
+        </li>
+        <li>
+          <b>GFARFS:</b> short call to compute gain function of autoregressive filter.
+        </li>
+        <li>
+          <b>GFORD</b> produces ordinants for the gain function plots.
+        </li>
+        <li>
+          <b>GFOUT</b> produces the gain function plots.
+        </li>
+        <li>
+          <b>GFSEST:</b> gain function of symmetric linear filter with given frequencies.
+        </li>
+        <li>
+          <b>GFSLF:</b> short call for gain function of symmetric linear filter.
+        </li>
+        <li>
+          <b>GFSLFS:</b> short call for gain function of symmetric linear filter.
+        </li>
+        <li>
+          <b>GMEAN</b> computes the geometric mean of a series.
+        </li>
+        <li>
+          <b>GQTSTP</b> computes the Goldfeld-Quandt-Trotter step by More-Hebden technique.
+        </li>
+        <li>
+          <b>HIPASS</b> carries out a high-pass filtering of a series.
+        </li>
+        <li>
+          <b>HISTC:</b> long call for producing a histogram.
+        </li>
+        <li>
+          <b>HIST:</b> short call for producing a histogram.
+        </li>
+        <li>
+          <b>HPCOEF</b> computes hi-pass filter given K-term low pass filter coefficients.
+        </li>
+        <li>
+          <b>HPFLT</b> compute high pass filter coefficients corresponding to a low pass filter.
+        </li>
+        <li>
+          <b>HSTER</b> does error checking for the HIST family of histogram routines.
+        </li>
+        <li>
+          <b>HSTMN</b> is the main routine for producing histograms.
+        </li>
+        <li>
+          <b>I1MACH</b> returns integer machine constants.
+        </li>
+        <li>
+          <b>I8SAVE</b> returns the current error number or recovery switch.
+        </li>
+        <li>
+          <b>ICNTI</b> counts the number of occurences of a value in an integer vector.
+        </li>
+        <li>
+          <b>ICOPY</b> copies an integer vector.
+        </li>
+        <li>
+          <b>IMDCON</b> returns integer machine-dependent constants.
+        </li>
+        <li>
+          <b>INITS</b> initializes an orthogonal series.
+        </li>
+        <li>
+          <b>INPERL</b> computes the number of elements that can be printed on one line.
+        </li>
+        <li>
+          <b>IPGDV</b> produces coordinates for the spectral plots.
+        </li>
+        <li>
+          <b>IPGM:</b> short call to compute the integrated periodogram of a series.
+        </li>
+        <li>
+          <b>IPGMN</b> computes the integrated periodogram.
+        </li>
+        <li>
+          <b>IPGMP</b> is the user routine for integrated periodograms of a series (short call).
+        </li>
+        <li>
+          <b>IPGMPS</b> is the user routine for the integrated periodogram of a series (long call).
+        </li>
+        <li>
+          <b>IPGMS</b> is the user routine fo the integrated periodogram of a series (long call).
+        </li>
+        <li>
+          <b>IPGORD</b> produces coordinates for the spectral plots.
+        </li>
+        <li>
+          <b>IPGOUT</b> produces the integrated periodogram plots.
+        </li>
+        <li>
+          <b>IPRINT</b> sets the logical unit for printed output.
+        </li>
+        <li>
+          <b>ISAMAX</b> indexes the real array element of maximum absolute value.
+        </li>
+        <li>
+          <b>ITSMRY</b> prints an iteration summary.
+        </li>
+        <li>
+          <b>J4SAVE</b> saves and recalls data needed by the XERROR error library.
+        </li>
+        <li>
+          <b>LDSCMP</b> computes storage needed for arrays.
+        </li>
+        <li>
+          <b>LINVRT</b> computes the inverse of a lower triangular matrix.
+        </li>
+        <li>
+          <b>LITVMU</b> solves L' * X = Y, where L is a lower triangular matrix.
+        </li>
+        <li>
+          <b>LIVMUL</b> solves L * X = Y, where L is a lower triangular matrix.
+        </li>
+        <li>
+          <b>LLCNT</b> is the controlling subroutine for linear least squares.
+        </li>
+        <li>
+          <b>LLCNTG</b> is the controlling subroutine for general linear least squares.
+        </li>
+        <li>
+          <b>LLCNTP</b> is the controlling subroutine for polynomial linear least squares.
+        </li>
+        <li>
+          <b>LLER</b> is the error checking routine for the linear least squares routines.
+        </li>
+        <li>
+          <b>LLHDRG:</b> page headings for the unrestricted linear least squares routines.
+        </li>
+        <li>
+          <b>LLHDRP:</b> page headings for polynomial linear least squares routines.
+        </li>
+        <li>
+          <b>LLS</b> is the general linear model least squares fit routine.
+        </li>
+        <li>
+          <b>LLSMN:</b> main program for the linear least squares fitting.
+        </li>
+        <li>
+          <b>LLSP</b> does an unweighted polynomial model least squares fit.
+        </li>
+        <li>
+          <b>LLSPS</b> does an unweighted polynomial model least squares fit.
+        </li>
+        <li>
+          <b>LLSPW</b> does a weighted polynomial model least squares fit.
+        </li>
+        <li>
+          <b>LLSPWS</b> computes a weighted polynomial model least squares fit.
+        </li>
+        <li>
+          <b>LLSS</b> computes an unweighted linear model least squares fit.
+        </li>
+        <li>
+          <b>LLSW</b> computes a weighted linear model least squares fit.
+        </li>
+        <li>
+          <b>LLSWS</b> performs a general linear model weighted least squares fit.
+        </li>
+        <li>
+          <b>LMSTEP</b> computes a Levenberg-Marquardt step by More-Hebden techniques.
+        </li>
+        <li>
+          <b>LOGLMT</b> adjusts plot limits for log plots, and computes log axis labels.
+        </li>
+        <li>
+          <b>LOPASS</b> carries out a low-pass filtering of a series.
+        </li>
+        <li>
+          <b>LPCOEF</b> computes a least squares approximation to an ideal low pass filter.
+        </li>
+        <li>
+          <b>LPFLT</b> computes the low-pass filter coefficients.
+        </li>
+        <li>
+          <b>LSAME</b> returns TRUE if CA is the same letter as CB regardless of case.
+        </li>
+        <li>
+          <b>LSQRT</b> computes the Cholesky factor of a lower triangular matrix.
+        </li>
+        <li>
+          <b>LSTLAG</b> finds the last computable lag value.
+        </li>
+        <li>
+          <b>LSTVCF</b> prints N elements of a masked array.
+        </li>
+        <li>
+          <b>LSTVEC</b> prints indices and values of a real vector.
+        </li>
+        <li>
+          <b>LSVMIN</b> estimates the smallest singular value of a lower triangular matrix.
+        </li>
+        <li>
+          <b>LTSQAR</b> sets A to the lower triangle of L' * L.
+        </li>
+        <li>
+          <b>MADJ</b> is a sample jacobian routine.
+        </li>
+        <li>
+          <b>MADR</b> is a sample residual routine.
+        </li>
+        <li>
+          <b>MAFLT</b> performs a moving average filtering operation.
+        </li>
+        <li>
+          <b>MATPRF</b> prints a square matrix stored in symmetric form.
+        </li>
+        <li>
+          <b>MATPRT</b> is a matrix printing routine.
+        </li>
+        <li>
+          <b>MDFLT</b> is a user routine for a modified Daniels filter of symmetric series.
+        </li>
+        <li>
+          <b>MDL1</b> is the model function for an NLS exerciser.
+        </li>
+        <li>
+          <b>MDL2</b> is a model function for an NLS exerciser.
+        </li>
+        <li>
+          <b>MDL3</b> is a model function for an NLS exerciser.
+        </li>
+        <li>
+          <b>MDL4</b> is a model routine for step size and derivative checking routines.
+        </li>
+        <li>
+          <b>MDLTS1</b> is the user callable routine for estimating box-jenkins arima models.
+        </li>
+        <li>
+          <b>MDLTS2</b> is the model routine for Pack's specification of box-jenkins models.
+        </li>
+        <li>
+          <b>MDLTS3</b> is the user callable routine for estimating box-jenkins arima models.
+        </li>
+        <li>
+          <b>MGS</b> solves a linear system using modified Gram-Schmidt algorithm.
+        </li>
+        <li>
+          <b>MODSUM</b> prints the model summary for the ARIMA routines.
+        </li>
+        <li>
+          <b>MPPC</b> produces a simple page plot with multiple Y-axis values.
+        </li>
+        <li>
+          <b>MPP</b> produces a simple page plot with multiple Y-axis values.
+        </li>
+        <li>
+          <b>MPPL</b> produces a simple page plot with multiple Y-axis values, and log option.
+        </li>
+        <li>
+          <b>MPPMC:</b> produce a page plot with multiply Y-axis values, and missing data.
+        </li>
+        <li>
+          <b>MPPM:</b> produce a page plot with multiple Y-axis values and missing data.
+        </li>
+        <li>
+          <b>MPPML:</b> plot multiple Y-axis values with missing data, log option.
+        </li>
+        <li>
+          <b>MSGX</b> prints the returned and expected values for the error flag IERR.
+        </li>
+        <li>
+          <b>MULTBP</b> multiplies two difference factors from a Box-Jenkins time series model.
+        </li>
+        <li>
+          <b>MVCHK</b> checks whether the input value equals the flag value for missing data.
+        </li>
+        <li>
+          <b>MVPC</b> produces a vertical plot with multiple Y-axis values.
+        </li>
+        <li>
+          <b>MVP</b> produces a vertical plot with multiple Y-axis values.
+        </li>
+        <li>
+          <b>MVPL</b> produces a vertical plot with multiple y-axis values (log plot option).
+        </li>
+        <li>
+          <b>MVPMC:</b> vertical plot with missing data and multiple y-axis values (long call).
+        </li>
+        <li>
+          <b>MVPM:</b> vertical plot with missing data and multiple y-axis values (short call).
+        </li>
+        <li>
+          <b>MVPML:</b> vertical plot with missing data and multiple y-axis values (log option).
+        </li>
+        <li>
+          <b>NCHOSE</b> combines difference factors from a Box-Jenkins time series model.
+        </li>
+        <li>
+          <b>NL2ITR</b> carries out iterations for NL2SOL.
+        </li>
+        <li>
+          <b>NL2SNO</b> is like NL2SOL, but uses a finite difference jacobian.
+        </li>
+        <li>
+          <b>NL2SOL</b> minimizes a nonlinear sum of squares using an analytic jacobian.
+        </li>
+        <li>
+          <b>NL2X</b> tests nl2sol and nl2sno on madsen example.
+        </li>
+        <li>
+          <b>NLCMP</b> computes statistics for the NLS family when weights are involved.
+        </li>
+        <li>
+          <b>NLCNTA:</b> controlling routine for NLS regression with analytic derivatives.
+        </li>
+        <li>
+          <b>NLCNT</b> controlling subroutine for nonlinear least squares regression.
+        </li>
+        <li>
+          <b>NLCNTN</b> controlling routine for NLS regression with approximate derivatives.
+        </li>
+        <li>
+          <b>NLDRVA</b> computes the analytic derivative matrix from the user DERIV routine.
+        </li>
+        <li>
+          <b>NLDRVN</b> approximates the derivative matrix.
+        </li>
+        <li>
+          <b>NLER</b> does error checking routine for nonlinear least squares estimation.
+        </li>
+        <li>
+          <b>NLERR</b> sets the error flag ierr based on the convergence code returned by NL2.
+        </li>
+        <li>
+          <b>NLFIN</b> completes the NLS analysis once the estimates have been found.
+        </li>
+        <li>
+          <b>NLHDRA</b> prints headings for NLS estimation using analytic derivatives.
+        </li>
+        <li>
+          <b>NLHDRN</b> prints headings for NLS estimation using approximate derivatives.
+        </li>
+        <li>
+          <b>NLINIT</b> initializes the NLS routines.
+        </li>
+        <li>
+          <b>NLISM</b> prints an initial summary for the nonlinear least squares routines.
+        </li>
+        <li>
+          <b>NLITRP</b> prints iteration reports for nonlinear least squares regression.
+        </li>
+        <li>
+          <b>NLMN:</b> controlling routine for nonlinear least squares regression.
+        </li>
+        <li>
+          <b>NLOUT</b> prints the final summary report for nonlinear least squares routines.
+        </li>
+        <li>
+          <b>NLSC:</b> NLS regression, approximate derivatives (control call)
+        </li>
+        <li>
+          <b>NLSDC:</b> NLS regression, analytic derivatives, user parameters.
+        </li>
+        <li>
+          <b>NLSD:</b> nonlinear least squares regression, analytic derivatives (short call).
+        </li>
+        <li>
+          <b>NLSDS:</b> NLS regression, analytic derivatives, user parameters.
+        </li>
+        <li>
+          <b>NLS:</b> NLS regression with numeric derivatives, short call.
+        </li>
+        <li>
+          <b>NLSKL</b> prints warning messages for the nonlinear least squares routines.
+        </li>
+        <li>
+          <b>NLSPK</b> packs the unmasked elements of one vector into another.
+        </li>
+        <li>
+          <b>NLSS:</b> interface for nonlinear least squares reqression, approximate derivatives.
+        </li>
+        <li>
+          <b>NLSUPK</b> unpacks a vector into another, using a mask vector.
+        </li>
+        <li>
+          <b>NLSWC:</b> nonlinear least squares regression with weights and approximate derivatives.
+        </li>
+        <li>
+          <b>NLSWDC:</b> NLS regression, analytic derivatives, weights, user parameters.
+        </li>
+        <li>
+          <b>NLSWD:</b> NLS regression, analytic derivatives, weights (short call).
+        </li>
+        <li>
+          <b>NLSWDS:</b> NLS regression with analytic derivatives, weights, user parameters.
+        </li>
+        <li>
+          <b>NLSW:</b> NLS regression with approximate derivatives and weights.
+        </li>
+        <li>
+          <b>NLSWS:</b> NLS regression with approximate derivatives and weights.
+        </li>
+        <li>
+          <b>NLSX1</b> sets the starting parameter values for NLSX.
+        </li>
+        <li>
+          <b>NLSX2</b> sets a problem for testing the NLS family.
+        </li>
+        <li>
+          <b>NRANDC</b> generates pseudorandom normally distributed values.
+        </li>
+        <li>
+          <b>NRAND</b> generates pseudorandom normally distributed values.
+        </li>
+        <li>
+          <b>OANOVA</b> computes and prints analysis of variance.
+        </li>
+        <li>
+          <b>OBSSM2</b> lists the data summary for the arima estimation routines.
+        </li>
+        <li>
+          <b>OBSSUM</b> lists the data summary for the least squares subroutines.
+        </li>
+        <li>
+          <b>PARCHK</b> checks the NL2SOL parameters.
+        </li>
+        <li>
+          <b>PARZEN</b> computes and stores the Parzen lag window.
+        </li>
+        <li>
+          <b>PGMEST</b> computes the periodogram estimates.
+        </li>
+        <li>
+          <b>PGM</b> is the user callable routine for the raw periodogram of a series.
+        </li>
+        <li>
+          <b>PGMMN</b> is the main routine for computing the raw periodogram.
+        </li>
+        <li>
+          <b>PGMS</b> computes the (raw) periodogram of a series (long call).
+        </li>
+        <li>
+          <b>PGORD</b> produces coordinates for the periodogram plot.
+        </li>
+        <li>
+          <b>PGOUT</b> produces the periodogram plots.
+        </li>
+        <li>
+          <b>PLINE</b> defines one line of a plot string for the vertical plot routines.
+        </li>
+        <li>
+          <b>PLTCHK</b> checks for errors for the multiple plot routines.
+        </li>
+        <li>
+          <b>PLTPLX</b> computes the point location in the plot string.
+        </li>
+        <li>
+          <b>PLTSYM</b> supplies the plot symbol for the plot line.
+        </li>
+        <li>
+          <b>POLAR</b> converts complex numbers from Cartesian to polar representation.
+        </li>
+        <li>
+          <b>PPC</b> produces a simple page plot (long call).
+        </li>
+        <li>
+          <b>PPCNT</b> is the controling routine for user called page plot routines.
+        </li>
+        <li>
+          <b>PP</b> is the user callable routine which produces a simple page plot (short call).
+        </li>
+        <li>
+          <b>PPCHFS</b> computes the percentage points of the Chi Square distribution.
+        </li>
+        <li>
+          <b>PPFF</b> computes the percentage points for the F distribution.
+        </li>
+        <li>
+          <b>PPFNML</b> computes the percentage points of the normal distribution.
+        </li>
+        <li>
+          <b>PPFT</b> computes the percentage points of the Student's T distribution.
+        </li>
+        <li>
+          <b>PPL</b> produces a simple page plot (log option).
+        </li>
+        <li>
+          <b>PPLMT</b> sets the plot limits for page plots with missing values.
+        </li>
+        <li>
+          <b>PPMC</b> produces a simple page plot for data with missing observations (long call).
+        </li>
+        <li>
+          <b>PPM</b> produces a simple page plot for data with missing observations (short call).
+        </li>
+        <li>
+          <b>PPML</b> plots data with missing observations (log option).
+        </li>
+        <li>
+          <b>PPMN</b> is the main routine for page plots.
+        </li>
+        <li>
+          <b>PRTCNT</b> sets up the print control parameters.
+        </li>
+        <li>
+          <b>QAPPLY</b> applies orthogonal transformation to the residual R.
+        </li>
+        <li>
+          <b>QRFACT</b> computes the QR decomposition of a matrix.
+        </li>
+        <li>
+          <b>R1MACH</b> returns single precision machine constants.
+        </li>
+        <li>
+          <b>R9GMIT</b> computes Tricomi's incomplete gamma function for small X.
+        </li>
+        <li>
+          <b>R9LGIC</b> compute the log complementary incomplete gamma function.
+        </li>
+        <li>
+          <b>R9LGIT</b> computes the log of Tricomi's incomplete Gamma function.
+        </li>
+        <li>
+          <b>R9LGMC</b> computes the log Gamma correction factor.
+        </li>
+        <li>
+          <b>RANDN</b> returns normal random numbers.
+        </li>
+        <li>
+          <b>RANDU</b> returns uniform random numbers.
+        </li>
+        <li>
+          <b>RANKO</b> puts the rank of N X's in the vector R.
+        </li>
+        <li>
+          <b>REALTR</b> computes the forward or inverse Fourier transform of real data.
+        </li>
+        <li>
+          <b>RELCOM</b> computes the difference between V(I) and W(I) relative to RELTOL.
+        </li>
+        <li>
+          <b>RELDST</b> computes the relative difference between two real values.
+        </li>
+        <li>
+          <b>REPCK</b> reformats the data in D for the N by NPAR format used by NLCMP.
+        </li>
+        <li>
+          <b>RMDCON</b> returns machine constants.
+        </li>
+        <li>
+          <b>RPTMUL</b> multiplies the R factor times a vector X.
+        </li>
+        <li>
+          <b>S88FMT</b> writes an integer into a string.
+        </li>
+        <li>
+          <b>SAMPLE</b> creates a new series by sampling every K-th item of the input.
+        </li>
+        <li>
+          <b>SASUM</b> takes the sum of the absolute values of a real vector.
+        </li>
+        <li>
+          <b>SAXPY</b> adds a real constant times one vector to another.
+        </li>
+        <li>
+          <b>SCOPY</b> copies one real vector into another.
+        </li>
+        <li>
+          <b>SDOT</b> forms the dot product of two real vectors.
+        </li>
+        <li>
+          <b>SETERR</b> sets the error number and prints the error message.
+        </li>
+        <li>
+          <b>SETESL</b> computes the smallest suitable value of NFFT for given N and Singleton FFT.
+        </li>
+        <li>
+          <b>SETFRQ</b> computes the frequencies at which the spectrum is to be estimated.
+        </li>
+        <li>
+          <b>SETIV</b> sets the entries of an integer vector to a value.
+        </li>
+        <li>
+          <b>SETLAG</b> sets the number of autocorrelations to be computed.
+        </li>
+        <li>
+          <b>SETRA</b> sets the entries of a real array to a given value.
+        </li>
+        <li>
+          <b>SETROW</b> selects the row used by the derivative checking procedure.
+        </li>
+        <li>
+          <b>SETRV</b> sets the elements of a real vector to a value.
+        </li>
+        <li>
+          <b>SLFLT</b> applies a symmetric filter to a series.
+        </li>
+        <li>
+          <b>SLUPDT</b> updates a symmetric matrix A so that A * STEP = Y.
+        </li>
+        <li>
+          <b>SLVMUL</b> sets Y = S * X, where S is a P by P symmetric matrix.
+        </li>
+        <li>
+          <b>SMACH</b> computes machine parameters for single precision arithmetic.
+        </li>
+        <li>
+          <b>SMPLY</b> samples every K-th observation from a series.
+        </li>
+        <li>
+          <b>SNRM2</b> computes the Euclidean norm of a real vector.
+        </li>
+        <li>
+          <b>SPCCK</b> analyzes ordinates for the spectal semi-log plots.
+        </li>
+        <li>
+          <b>SPPC</b> produces a simple page plot with user control of plot symbols (long call).
+        </li>
+        <li>
+          <b>SPP</b> produces a simple page plot with user control of plot symbols (short call).
+        </li>
+        <li>
+          <b>SPPL</b> produces a simple page plot with user control of plot symbols (log option).
+        </li>
+        <li>
+          <b>SPPLTC:</b> confidence interval and bandwidth coordinates for spectrum plots.
+        </li>
+        <li>
+          <b>SPTLTD</b> sets various y axis limits for decibel spectrum plots.
+        </li>
+        <li>
+          <b>SPPLTL</b> sets various y axis limits for decibel spectrum plots.
+        </li>
+        <li>
+          <b>SPPMC:</b> page plot with user plot symbols and missing observations (long call).
+        </li>
+        <li>
+          <b>SPPM</b> page plot with user plot symbols and missing observations (short call).
+        </li>
+        <li>
+          <b>SPPML:</b> page plot with user plot symbols and missing observations (log option).
+        </li>
+        <li>
+          <b>SROT</b> applies a real plane rotation.
+        </li>
+        <li>
+          <b>SROTG</b> constructs a real Givens plane rotation.
+        </li>
+        <li>
+          <b>SRTIR</b> sorts an integer array IR on a key array A.
+        </li>
+        <li>
+          <b>SRTIRR</b> sorts arrays A, IR and RR based on values in A.
+        </li>
+        <li>
+          <b>SRTRI</b> sorts array A on integer array IR.
+        </li>
+        <li>
+          <b>SRTRRI</b> sorts the array IR, A and RR, based on values in IR.
+        </li>
+        <li>
+          <b>SSCAL</b> scales a real vector by a constant.
+        </li>
+        <li>
+          <b>SSIDI</b> computes the determinant, inertia and inverse of a real symmetric matrix.
+        </li>
+        <li>
+          <b>SSIFA</b> factors a real symmetric matrix.
+        </li>
+        <li>
+          <b>SSWAP</b> interchanges two real vectors.
+        </li>
+        <li>
+          <b>STAT1</b> computes statistics for a sorted vector.
+        </li>
+        <li>
+          <b>STAT1W</b> computes statistics for a sorted vector with weights.
+        </li>
+        <li>
+          <b>STAT2</b> computes statistics that do not require sorted data.
+        </li>
+        <li>
+          <b>STAT2W</b> computes statistics on an unsorted, weighted vector.
+        </li>
+        <li>
+          <b>STATER</b> does error checking for the STAT family of routines.
+        </li>
+        <li>
+          <b>STAT</b> computes 53 statistics for an unweighted vector.
+        </li>
+        <li>
+          <b>STATS</b> computes 53 different statistics for an unweighted vector.
+        </li>
+        <li>
+          <b>STATW</b> computes 53 statistics for a weighted vector.
+        </li>
+        <li>
+          <b>STATWS</b> computes 53 statistics for a weighted vector.
+        </li>
+        <li>
+          <b>STKCLR</b> clears the stack for framework area manipulation routines.
+        </li>
+        <li>
+          <b>STKGET</b> allocates space on an integer stack.
+        </li>
+        <li>
+          <b>STKREL</b> de-allocates the last allocations made in the stack.
+        </li>
+        <li>
+          <b>STKSET</b> initializes the stack to NITMES of type ITYPE.
+        </li>
+        <li>
+          <b>STKST</b> returns statistics on the state of the stack.
+        </li>
+        <li>
+          <b>STOPX</b> is called to stop execution.
+        </li>
+        <li>
+          <b>STPADJ</b> adjusts the selected step sizes to optimal values.
+        </li>
+        <li>
+          <b>STPAMO</b> is a dummy routine for the arima estimation routines.
+        </li>
+        <li>
+          <b>STPCNT</b> controls the stepsize selection process.
+        </li>
+        <li>
+          <b>STPDRV</b> is the driver for selecting forward difference step sizes.
+        </li>
+        <li>
+          <b>STPER</b> does error checking for the stepsize selection routines.
+        </li>
+        <li>
+          <b>STPHDR</b> prints page headings for the stepsize selection routines.
+        </li>
+        <li>
+          <b>STPLS1</b> sets a test problem for the step size selection family.
+        </li>
+        <li>
+          <b>STPLS2</b> sets a test problem for the step size selection family.
+        </li>
+        <li>
+          <b>STPLSC</b> selects step sizes for forward difference estimates of derivatives.
+        </li>
+        <li>
+          <b>STPLS</b> selects step sizes for estimating derivatives in NLS routines.
+        </li>
+        <li>
+          <b>STPMN:</b> main routine for numerical derivative step size selection.
+        </li>
+        <li>
+          <b>STPOUT</b> prints results for the step size selection routines.
+        </li>
+        <li>
+          <b>STPSEL</b> selects new step sizes until no further improvement can be made.
+        </li>
+        <li>
+          <b>STRCO</b> estimates the condition of a real triangular matrix.
+        </li>
+        <li>
+          <b>STRDI</b> computes the determinant and inverse of a real triangular matrix.
+        </li>
+        <li>
+          <b>SUMBS</b> finds a zero or value closest to zero in a sorted vector.
+        </li>
+        <li>
+          <b>SUMDS</b> sums unweighted powers of differences from the mean of a sorted vector.
+        </li>
+        <li>
+          <b>SUMID</b> sums I * ( X(I) - XMEAN ).
+        </li>
+        <li>
+          <b>SUMIDW:</b> dot product of I and ( X(I) - XMEANW ).
+        </li>
+        <li>
+          <b>SUMOT</b> reports the computation of 53 selected statistics.
+        </li>
+        <li>
+          <b>SUMSS</b> calculates the sum of powers and mean for a sorted vector.
+        </li>
+        <li>
+          <b>SUMTS</b> calculates unweighted trimmed mean for a sorted vector.
+        </li>
+        <li>
+          <b>SUMWDS</b> calculates sums of powers of differences from the weighted mean.
+        </li>
+        <li>
+          <b>SUMWSS</b> calculates weighted and unweighted sums of powers and the mean.
+        </li>
+        <li>
+          <b>SUMWTS</b> calculates weighted and unweighted means for a sorted vector.
+        </li>
+        <li>
+          <b>SVPC</b> produces a vertical plot with user plot symbols (long call).
+        </li>
+        <li>
+          <b>SVP:</b> vertical plot with user plot symbols (short call).
+        </li>
+        <li>
+          <b>SVPL</b> produces a vertical log plot with user control of the plot symbol.
+        </li>
+        <li>
+          <b>SVPMC:</b> vertical plot with missing data and user plot symbols (long call).
+        </li>
+        <li>
+          <b>SVPM:</b> vertical plot with missing data and user plot symbols (short call).
+        </li>
+        <li>
+          <b>SVPML:</b> vertical plot with missing data and user plot symbols (log plot option).
+        </li>
+        <li>
+          <b>TAPER</b> applies a split-cosine-bell taper to a centered observed series.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UAS</b> is the user callable routine for autoregressive spectrum estimation.
+        </li>
+        <li>
+          <b>UASCFT</b> computes autoregressive coefficients using Durbin's method.
+        </li>
+        <li>
+          <b>UASDV</b> is the driver for computing the autoregressive and Fourier spectrums.
+        </li>
+        <li>
+          <b>UASER:</b> error checks for time series Fourier univariate spectrum analysis.
+        </li>
+        <li>
+          <b>UASET</b> calculates the autoregressive spectrum.
+        </li>
+        <li>
+          <b>UASF</b> is the user callable routine for autoregressive spectrum estimation.
+        </li>
+        <li>
+          <b>UASFS:</b> interface for autoregressive spectrum estimation using the FFT (long call).
+        </li>
+        <li>
+          <b>UASORD</b> produces coordinates for the spectrum plots.
+        </li>
+        <li>
+          <b>UASOUT</b> produces the spectrum plots for the autoregressive spectrum estimates.
+        </li>
+        <li>
+          <b>UASS:</b> user interface for autoregressive spectrum estimation (long call).
+        </li>
+        <li>
+          <b>UASVAR</b> computes the variance for a given series and autoregressive model.
+        </li>
+        <li>
+          <b>UASV</b> is the user routine for autoregressive spectrum estimation.
+        </li>
+        <li>
+          <b>UASVS</b> is a user routine for autoregressive spectrum estimation.
+        </li>
+        <li>
+          <b>UFPARM</b> is a dummy version of the optional user function for NL2SOL.
+        </li>
+        <li>
+          <b>UFSDRV</b> is the controlling routine for time series Fourier spectrum analysis.
+        </li>
+        <li>
+          <b>UFSET</b> checks errors for time series Fourier univariate spectrum analysis.
+        </li>
+        <li>
+          <b>UFSEST</b> computes the spectra and the confidence limits.
+        </li>
+        <li>
+          <b>UFS:</b> user routine for time series Fourier spectrum analysis (short call).
+        </li>
+        <li>
+          <b>UFSF:</b> user routine for Fourier spectrum analysis using fft (short call).
+        </li>
+        <li>
+          <b>UFSFS:</b> user routine for Fourier spectrum analysis using the fft (long call).
+        </li>
+        <li>
+          <b>UFSLAG</b> computes the lag window truncation points for spectrum analysis.
+        </li>
+        <li>
+          <b>UFSM:</b> user routine for Fourier spectrum analysis with missing data (short call).
+        </li>
+        <li>
+          <b>UFSMN</b> computes autocorrelations and partial autocorrelations of a time series.
+        </li>
+        <li>
+          <b>UFSMS:</b> time series Fourier spectrum analysis with missing data (long call).
+        </li>
+        <li>
+          <b>UFSMV:</b> Fourier spectrum analysis, missing data, user ACVF values (short call).
+        </li>
+        <li>
+          <b>UFSMVS:</b> time series Fourier spectrum analysis with missing data (long call).
+        </li>
+        <li>
+          <b>UFSOUT</b> produces the Fourier bivariate spectrum output.
+        </li>
+        <li>
+          <b>UFSPCV</b> produces coordinates for the spectrum plots.
+        </li>
+        <li>
+          <b>UFSS:</b> time series Fourier spectrum analysis (long call).
+        </li>
+        <li>
+          <b>UFSV:</b> Fourier spectrum analysis, user supplied ACVF values (short call).
+        </li>
+        <li>
+          <b>UFSVS:</b> Fourier spectrum analysis and user supplied acvf values (long call).
+        </li>
+        <li>
+          <b>V2NORM</b> computes the L2 norm of a vector.
+        </li>
+        <li>
+          <b>VCOPY</b> copies a vector.
+        </li>
+        <li>
+          <b>VCVOTF</b> prints the variance-covariance matrix.
+        </li>
+        <li>
+          <b>VCVOUT</b> prints the variance-covariance matrix.
+        </li>
+        <li>
+          <b>VERSP</b> prints the version number.
+        </li>
+        <li>
+          <b>VP</b> is the user callable routine which produces a vertical plot (short call).
+        </li>
+        <li>
+          <b>VPC</b> is the user callable routine which produces a vertical plot (long call).
+        </li>
+        <li>
+          <b>VPCNT</b> is the controlling routine for user-called vertical plots
+        </li>
+        <li>
+          <b>VPHEAD</b> prints the heading for the vertical plot output.
+        </li>
+        <li>
+          <b>VPL</b> is the user callable routine which produces a vertical log plot.
+        </li>
+        <li>
+          <b>VPLMT</b> sets the plot limits for vertical plots
+        </li>
+        <li>
+          <b>VPM</b> produces a vertical plot with missing data (short call).
+        </li>
+        <li>
+          <b>VPMC</b> produces a vertical plot with missing data (long call).
+        </li>
+        <li>
+          <b>VPML</b> produces a vertical plot with missing data (log plot option).
+        </li>
+        <li>
+          <b>VPMN</b> produces vertical plots.
+        </li>
+        <li>
+          <b>XERABT</b> aborts execution of the program.
+        </li>
+        <li>
+          <b>XERBLA</b> is an error handler for the LAPACK routines.
+        </li>
+        <li>
+          <b>XERCLR</b> resets the current error number to zero.
+        </li>
+        <li>
+          <b>XERCTL</b> gives the user control over handling individual errors.
+        </li>
+        <li>
+          <b>XERPRT</b> prints an error message.
+        </li>
+        <li>
+          <b>XERROR</b> processes a diagnostic message.
+        </li>
+        <li>
+          <b>XERRWV</b> processes a diagnostic message.
+        </li>
+        <li>
+          <b>XERSAV</b> records that an error has occurred.
+        </li>
+        <li>
+          <b>XGETF</b> returns the current error control flag.
+        </li>
+        <li>
+          <b>XGETUA</b> determines the units to which error messages are being sent.
+        </li>
+        <li>
+          <b>XSETF</b> sets the error control flag.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 19 May 2007.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

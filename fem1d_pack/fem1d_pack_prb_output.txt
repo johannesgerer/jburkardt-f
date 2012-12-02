@@ -1,0 +1,75 @@
+19 March 2011   9:35:05.625 PM
+ 
+FEM1D_PACK_PRB
+  FORTRAN90 version
+  Test the FEM1D_PACK library.
+ 
+TEST01:
+  LOCAL_BASIS_1D evaluates the local basis functions
+  for a 1D element.
+ 
+  Test that the basis functions, evaluated at the nodes,
+  form the identity matrix.
+ 
+  Number of nodes =        4
+ 
+  Node coordinates:
+ 
+         1    1.000
+         2    2.000
+         3    4.000
+         4    4.500
+ 
+  A(I,J) = PHI(I) at node (J):
+ 
+    1.000 -0.000  0.000 -0.000
+    0.000  1.000 -0.000  0.000
+   -0.000  0.000  1.000 -0.000
+    0.000 -0.000  0.000  1.000
+ 
+  The PHI functions should sum to 1 at random X values:
+ 
+       X        Sum ( PHI(:)(X) )
+ 
+     1.76446         1.00000    
+     4.34711         1.00000    
+     3.90328         1.00000    
+     2.96593         1.00000    
+     2.45357         1.00000    
+ 
+TEST02:
+  LOCAL_BASIS_PRIME_1D evaluates the local basis function
+  derivatives for a 1D element.
+ 
+  Number of nodes =        4
+ 
+  Node coordinates:
+ 
+         1    1.000
+         2    2.000
+         3    4.000
+         4    4.500
+ 
+  A(I,J) = dPHIdx(I) at node(J):
+  The diagonal should be 0.
+  Columns should sum to 0.
+ 
+    0.000  0.286  2.571  3.500
+   -0.600  0.000 -2.400 -3.750
+    9.000  4.000  0.000  0.250
+   -8.400 -4.286 -0.171  0.000
+ 
+  The dPHIdx functions should sum to 0 at random X values:
+ 
+       X        Sum ( dPHIdx(:)(X) )
+ 
+     1.76446         0.00000    
+     4.34711       -0.350414E-15
+     3.90328       -0.277556E-16
+     2.96593         0.00000    
+     2.45357         0.00000    
+ 
+FEM1D_PACK_PRB
+  Normal end of execution.
+ 
+19 March 2011   9:35:05.626 PM

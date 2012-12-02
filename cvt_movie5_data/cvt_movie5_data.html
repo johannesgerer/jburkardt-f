@@ -1,0 +1,142 @@
+<html>
+
+  <head>
+    <title>
+      CVT_MOVIE5_DATA - Create Data for CVT_MOVIE5
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CVT_MOVIE5_DATA <br> Create Data for CVT_MOVIE5
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CVT_MOVIE5_DATA</b>
+      is a FORTRAN90 program which
+      creates numeric data used by
+      the <a href = "../../m_src/cvt_movie5/cvt_movie5.html">CVT_MOVIE5</a>
+      program to create an animation of a CVT iteration.
+    </p>
+
+    <p>
+      The computational region is region #8 from
+      <a href = "../test_triangulation/test_triangulation.html">
+      TEST_TRIANGULATION</a>; this region is nicknamed the "holey pie".
+      We initialize with hex grid points.  We include fixed points at
+      the vertices of the region.  We sample on a "fattened" region, but
+      force wayward centroid back to the boundary.
+    </p>
+
+    <p>
+      We perform 100 CVT iterations, and save each set of generators
+      in a file, "p08_hbf_000.txt" contains the initial data, followed
+      by "p08_hbf_001.txt" through "p08_hbf_100.txt".  This data is
+      processed by the CVT_MOVIE5 program into JPEG files.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/test_triangulation/test_triangulation.html">
+      TEST_TRIANGULATION</a>,
+      a FORTRAN90 library which
+      is needed by <b>CVT_MOVIE5_DATA</b>,
+      so a compiled version of that library is necessary to build the program.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_movie5_data.f90">cvt_movie5_data.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "cvt_movie5_data.sh">cvt_movie5_data.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "p08_hbf_000.txt">p08_hbf_000.txt</a>,
+          the first data file created by the program.
+        </li>
+        <li>
+          <a href = "cvt_movie5_000.png">cvt_movie5_000.png</a>,
+          a PNG image of
+          the first data file.
+        </li>
+        <li>
+          <a href = "p08_hbf_100.txt">p08_hbf_100.txt</a>,
+          the last data file created by the program.
+        </li>
+        <li>
+          <a href = "cvt_movie5_100.png">cvt_movie5_100.png</a>,
+          a PNG image of
+          the last data file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> creates data for a CVT "movie".
+        </li>
+        <li>
+          <b>FIND_CLOSEST</b> finds the closest point to each sample.
+        </li>
+        <li>
+          <b>CVT_WRITE</b> writes a CVT dataset to a file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 18 September 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

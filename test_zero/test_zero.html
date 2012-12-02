@@ -1,0 +1,827 @@
+<html>
+
+  <head>
+    <title>
+      TEST_ZERO - Zero Finder Tests
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_ZERO <br> Zero Finder Tests
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_ZERO</b>
+      is a FORTRAN90 library which
+      defines nonlinear functions that may be used to test zero finders.
+    </p>
+
+    <p>
+      Zero finders are programs that seek a (scalar) root of
+      a scalar equation F(X) = 0.  Some zero finders require
+      that an initial "change-of-sign" interval [A,B] be supplied,
+      with the function having opposite sign at the two endpoints,
+      thus guaranteeing that there is some value C between A and
+      B for which F(C) = 0 (assuming that the function F is continuous).
+      In other cases, a particular zero finder may want information
+      about the first or second derivative of the function.  And some
+      zero finders can handle situations where the function has a
+      multiple root, or where the function is a polynomial.
+    </p>
+
+    <p>
+      <b>TEST_ZERO</b> supplies a set of nonlinear functions, along
+      with change of sign interval, first and second derivatives,
+      suggested starting points, so that the behavior of any zero
+      finder can be analyzed.
+    </p>
+
+    <p>
+      <b>TEST_ZERO</b> also includes implementations of some simple
+      zero finders, as a demonstration of how the package might be used.
+    </p>
+
+    <p>
+      The functions, which are accessible by number, are
+      <ol>
+        <li>
+          f(x) = sin ( x ) - x / 2.
+        </li>
+        <li>
+          f(x) = 2 * x - exp ( - x ).
+        </li>
+        <li>
+          f(x) = x * exp ( - x ).
+        </li>
+        <li>
+          f(x) = exp ( x ) - 1 / ( 10 * x )^2.
+        </li>
+        <li>
+          f(x) = ( x + 3 ) * ( x - 1 )^2.
+        </li>
+        <li>
+          f(x) = exp ( x ) - 2 - 1 / ( 10 * x )^2 + 2 / ( 100 * x )^3.
+        </li>
+        <li>
+          f(x) = x^3.
+        </li>
+        <li>
+          f(x) = cos ( x ) - x.
+        </li>
+        <li>
+          the Newton Baffler.
+        </li>
+        <li>
+          the Repeller.
+        </li>
+        <li>
+          the Pinhead.
+        </li>
+        <li>
+          Flat Stanley.
+        </li>
+        <li>
+          Lazy Boy.
+        </li>
+        <li>
+          the Camel.
+        </li>
+        <li>
+          a pathological function for Newton's method.
+        </li>
+        <li>
+          Kepler's Equation.
+        </li>
+        <li>
+          f(x) = x^3 - 2*x - 5, Wallis's function.
+        </li>
+        <li>
+          f(x) = (x-1)^7, written term by term.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_ZERO</b> is available in
+      <a href = "../../c_src/test_zero/test_zero.html">a C version</a> and
+      <a href = "../../cpp_src/test_zero/test_zero.html">a C++ version</a> and
+      <a href = "../../f77_src/test_zero/test_zero.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_zero/test_zero.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_zero/test_zero.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bisection_integer/bisection_integer.html">
+      BISECTION_INTEGER</a>,
+      a FORTRAN90 library which
+      seeks an integer solution to the equation F(X)=0,
+      using bisection within a user-supplied change of sign interval [A,B].
+    </p>
+
+    <p>
+      <a href = "../../f_src/brent/brent.html">
+      BRENT</a>,
+      a FORTRAN90 library which
+      contains Richard Brent's routines for finding the zero, local minimizer,
+      or global minimizer of a scalar function of a scalar argument, without
+      the use of derivative information.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+      a C++ library which
+      includes rootfinding routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes the zero finder FZERO.
+    </p>
+
+    <p>
+      <a href = "../../f_src/slatec/slatec.html">
+      SLATEC</a>,
+      a FORTRAN90 library which
+      includes the zero finder FZERO.
+    </p>
+
+    <p>
+      <a href = "../../f_src/zoomin/zoomin.html">
+      ZOOMIN</a>,
+      a FORTRAN90 library which
+      includes various zero finder routines.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Richard Brent,<br>
+          Algorithms for Minimization without Derivatives,<br>
+          Dover, 2002,<br>
+          ISBN: 0-486-41998-3,<br>
+          LC: QA402.5.B74.
+        </li>
+        <li>
+          Peter Colwell,<br>
+          Solving Kepler's Equation Over Three Centuries,<br>
+          Willmann-Bell, 1993,<br>
+          ISBN: 0943396409,<br>
+          LC: QB355.5.C65.
+        </li>
+        <li>
+          George Donovan, Arnold Miller, Timothy Moreland,<br>
+          Pathological Functions for Newton's Method,<br>
+          American Mathematical Monthly, January 1993, pages 53-58.
+        </li>
+        <li>
+          Arnold Krommer, Christoph Ueberhuber,<br>
+          Numerical Integration on Advanced Computer Systems,<br>
+          Springer, 1994,<br>
+          ISBN: 3540584102,<br>
+          LC: QA299.3.K76.
+        </li>
+        <li>
+          Jean Meeus,<br>
+          Astronomical Algorithms,<br>
+          Second Edition,<br>
+          Willman-Bell, 1998,<br>
+          ISBN: 0943396611,<br>
+          LC: QB51.3.E43M42.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_zero.f90">test_zero.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "test_zero.sh">test_zero.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_zero_prb.f90">test_zero_prb.f90</a>, the calling
+          program;
+        </li>
+        <li>
+          <a href = "test_zero_prb.sh">test_zero_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "test_zero_prb_output.txt">test_zero_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      PNG images of the graphs of some of the functions were made using MATLAB:
+      <ul>
+        <li>
+          <a href = "p01_fx.png">p01_fx.png</a>, 
+          an image of P01_FX(X) over [-4,+4].
+        </li>
+        <li>
+          <a href = "p02_fx.png">p02_fx.png</a>, 
+          an image of P02_FX(X) over [-0.5, +3.0].
+        </li>
+        <li>
+          <a href = "p03_fx.png">p03_fx.png</a>, 
+          an image of P03_FX(X) over [-0.1,+4].
+        </li>
+        <li>
+          <a href = "p04_fx.png">p04_fx.png</a>, 
+          an image of P04_FX(X) over [-4,+2].
+        </li>
+        <li>
+          <a href = "p05_fx.png">p05_fx.png</a>, 
+          an image of P05_FX(X) over [-4,+2].
+        </li>
+        <li>
+          <a href = "p06_fx.png">p06_fx.png</a>, 
+          an image of P06_FX(X) over [-4,+2].
+        </li>
+        <li>
+          <a href = "p07_fx.png">p07_fx.png</a>, 
+          an image of P07_FX(X) over [-1,+1].
+        </li>
+        <li>
+          <a href = "p08_fx.png">p08_fx.png</a>, 
+          an image of P08_FX(X) over [-4,+4].
+        </li>
+        <li>
+          <a href = "p09_fx.png">p09_fx.png</a>, 
+          an image of P09_FX(X) over [5,7].
+        </li>
+        <li>
+          <a href = "p10_fx.png">p10_fx.png</a>, 
+          an image of P10_FX(X) over [-2,+2].
+        </li>
+        <li>
+          <a href = "p11_fx.png">p11_fx.png</a>, 
+          an image of P11_FX(X) over [+1,+10].
+        </li>
+        <li>
+          <a href = "p12_fx.png">p12_fx.png</a>, 
+          an image of P12_FX(X) over [-0.5,+0.5].
+        </li>
+        <li>
+          <a href = "p13_fx.png">p13_fx.png</a>, 
+          an image of P13_FX(X) over [0,100].
+        </li>
+        <li>
+          <a href = "p14_fx.png">p14_fx.png</a>, 
+          an image of P14_FX(X) over [-0.5,+2.0].
+        </li>
+        <li>
+          <a href = "p15_fx.png">p15_fx.png</a>, 
+          an image of P15_FX(X) over [-4,+4].
+        </li>
+        <li>
+          <a href = "p16_fx.png">p16_fx.png</a>, 
+          an image of P16_FX(X) over [0,50].
+        </li>
+        <li>
+          <a href = "p17_fx.png">p17_fx.png</a>, 
+          an image of P17_FX(X) over [-2,+4].
+        </li>
+        <li>
+          <a href = "p18_fx.png">p18_fx.png</a>, 
+          an image of P18_FX(X) over [0.988,1.012].
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BISECTION</b> carries out the bisection method to seek a root of F(X) = 0.
+        </li>
+        <li>
+          <b>BRENT</b> implements the Brent bisection-based zero finder.
+        </li>
+        <li>
+          <b>MULLER</b> carries out Muller's method for seeking a real root of a nonlinear function.
+        </li>
+        <li>
+          <b>NEWTON</b> carries out Newton's method to seek a root of F(X) = 0.
+        </li>
+        <li>
+          <b>P00_FX</b> evaluates a function specified by problem number.
+        </li>
+        <li>
+          <b>P00_FX1</b> evaluates the first derivative of a function specified by problem number.
+        </li>
+        <li>
+          <b>P00_FX2</b> evaluates the second derivative of a function specified by problem number.
+        </li>
+        <li>
+          <b>P00_INTERVAL</b> returns an interval bounding the root for any problem.
+        </li>
+        <li>
+          <b>P00_NPROB</b> returns the number of problems available.
+        </li>
+        <li>
+          <b>P00_ROOT</b> returns a root for any problem.
+        </li>
+        <li>
+          <b>P00_START</b> returns one or more starting points for any problem.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns the title for a given problem.
+        </li>
+        <li>
+          <b>P01_FX</b> evaluates sin ( x ) - x / 2.
+        </li>
+        <li>
+          <b>P01_FX1</b> evaluates the derivative of the function for problem 1.
+        </li>
+        <li>
+          <b>P01_FX2</b> evaluates the second derivative of the function for problem 1.
+        </li>
+        <li>
+          <b>P01_INTERVAL</b> returns an interval bounding the root for problem 1.
+        </li>
+        <li>
+          <b>P01_ROOT</b> returns a root for problem 1.
+        </li>
+        <li>
+          <b>P01_START</b> returns one or more starting points for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns the title of problem 1.
+        </li>
+        <li>
+          <b>P02_FX</b> evaluates 2 * x - exp ( - x ).
+        </li>
+        <li>
+          <b>P02_FX1</b> evaluates the derivative of the function for problem 2.
+        </li>
+        <li>
+          <b>P02_FX2</b> evaluates the second derivative of the function for problem 2.
+        </li>
+        <li>
+          <b>P02_INTERVAL</b> returns an interval bounding the root for problem 2.
+        </li>
+        <li>
+          <b>P02_ROOT</b> returns a root for problem 2.
+        </li>
+        <li>
+          <b>P02_START</b> returns one or more starting points for problem 2.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns the title of problem 2.
+        </li>
+        <li>
+          <b>P03_FX</b> evaluates x * exp ( - x ).
+        </li>
+        <li>
+          <b>P03_FX1</b> evaluates the derivative of the function for problem 3.
+        </li>
+        <li>
+          <b>P03_FX2</b> evaluates the second derivative of the function for problem 3.
+        </li>
+        <li>
+          <b>P03_INTERVAL</b> returns an interval bounding the root for problem 3.
+        </li>
+        <li>
+          <b>P03_ROOT</b> returns a root for problem 3.
+        </li>
+        <li>
+          <b>P03_START</b> returns one or more starting points for problem 3.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns the title of problem 3.
+        </li>
+        <li>
+          <b>P04_FX</b> evaluates exp ( x ) - 1 / ( 10 * x )^2.
+        </li>
+        <li>
+          <b>P04_FX1</b> evaluates the derivative of the function for problem 4.
+        </li>
+        <li>
+          <b>P04_FX2</b> evaluates the second derivative of the function for problem 4.
+        </li>
+        <li>
+          <b>P04_INTERVAL</b> returns an interval bounding the root for problem 4.
+        </li>
+        <li>
+          <b>P04_ROOT</b> returns a root for problem 4.
+        </li>
+        <li>
+          <b>P04_START</b> returns one or more starting points for problem 4.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns the title of problem 4.
+        </li>
+        <li>
+          <b>P05_FX</b> evaluates ( x + 3 ) * ( x - 1 )^2.
+        </li>
+        <li>
+          <b>P05_FX1</b> evaluates the derivative of the function for problem 5.
+        </li>
+        <li>
+          <b>P05_FX2</b> evaluates the second derivative of the function for problem 5.
+        </li>
+        <li>
+          <b>P05_INTERVAL</b> returns an interval bounding the root for problem 5.
+        </li>
+        <li>
+          <b>P05_ROOT</b> returns a root for problem 5.
+        </li>
+        <li>
+          <b>P05_START</b> returns one or more starting points for problem 5.
+        </li>
+        <li>
+          <b>P05_TITLE</b> returns the title of problem 5.
+        </li>
+        <li>
+          <b>P06_FX</b> evaluates exp ( x ) - 2 - 1 / ( 10 * x )^2 + 2 / ( 100 * x )^3.
+        </li>
+        <li>
+          <b>P06_FX1</b> evaluates the derivative of the function for problem 6.
+        </li>
+        <li>
+          <b>P06_FX2</b> evaluates the second derivative of the function for problem 6.
+        </li>
+        <li>
+          <b>P06_INTERVAL</b> returns an interval bounding the root for problem 6.
+        </li>
+        <li>
+          <b>P06_ROOT</b> returns a root for problem 6.
+        </li>
+        <li>
+          <b>P06_START</b> returns one or more starting points for problem 6.
+        </li>
+        <li>
+          <b>P06_TITLE</b> returns the title of problem 6.
+        </li>
+        <li>
+          <b>P07_FX</b> evaluates x^3.
+        </li>
+        <li>
+          <b>P07_FX1</b> evaluates the derivative of the function for problem 7.
+        </li>
+        <li>
+          <b>P07_FX2</b> evaluates the second derivative of the function for problem 7.
+        </li>
+        <li>
+          <b>P07_INTERVAL</b> returns an interval bounding the root for problem 7.
+        </li>
+        <li>
+          <b>P07_ROOT</b> returns a root for problem 7.
+        </li>
+        <li>
+          <b>P07_START</b> returns one or more starting points for problem 7.
+        </li>
+        <li>
+          <b>P07_TITLE</b> returns the title of problem 7.
+        </li>
+        <li>
+          <b>P08_FX</b> evaluates cos ( x ) - x.
+        </li>
+        <li>
+          <b>P08_FX1</b> evaluates the derivative of the function for problem 8.
+        </li>
+        <li>
+          <b>P08_FX2</b> evaluates the second derivative of the function for problem 8.
+        </li>
+        <li>
+          <b>P08_INTERVAL</b> returns an interval bounding the root for problem 8.
+        </li>
+        <li>
+          <b>P08_ROOT</b> returns a root for problem 8.
+        </li>
+        <li>
+          <b>P08_START</b> returns one or more starting points for problem 8.
+        </li>
+        <li>
+          <b>P08_TITLE</b> returns the title of problem 8.
+        </li>
+        <li>
+          <b>P09_FX</b> evaluates the Newton Baffler.
+        </li>
+        <li>
+          <b>P09_FX1</b> evaluates the derivative of the function for problem 9.
+        </li>
+        <li>
+          <b>P09_FX2</b> evaluates the second derivative of the function for problem 9.
+        </li>
+        <li>
+          <b>P09_INTERVAL</b> returns an interval bounding the root for problem 9.
+        </li>
+        <li>
+          <b>P09_ROOT</b> returns a root for problem 9.
+        </li>
+        <li>
+          <b>P09_START</b> returns one or more starting points for problem 9.
+        </li>
+        <li>
+          <b>P09_TITLE</b> returns the title of problem 9.
+        </li>
+        <li>
+          <b>P10_FX</b> evaluates the Repeller.
+        </li>
+        <li>
+          <b>P10_FX1</b> evaluates the derivative of the function for problem 10.
+        </li>
+        <li>
+          <b>P10_FX2</b> evaluates the second derivative of the function for problem 10.
+        </li>
+        <li>
+          <b>P10_INTERVAL</b> returns an interval bounding the root for problem 10.
+        </li>
+        <li>
+          <b>P10_ROOT</b> returns a root for problem 10.
+        </li>
+        <li>
+          <b>P10_START</b> returns one or more starting points for problem 10.
+        </li>
+        <li>
+          <b>P10_TITLE</b> returns the title of problem 10.
+        </li>
+        <li>
+          <b>P11_FX</b> evaluates the Pinhead.
+        </li>
+        <li>
+          <b>P11_FX1</b> evaluates the derivative of the function for problem 11.
+        </li>
+        <li>
+          <b>P11_FX2</b> evaluates the second derivative of the function for problem 11.
+        </li>
+        <li>
+          <b>P11_INTERVAL</b> returns an interval bounding the root for problem 11.
+        </li>
+        <li>
+          <b>P11_ROOT</b> returns a root for problem 11.
+        </li>
+        <li>
+          <b>P11_START</b> returns one or more starting points for problem 11.
+        </li>
+        <li>
+          <b>P11_TITLE</b> returns the title of problem 11.
+        </li>
+        <li>
+          <b>P12_FX</b> evaluates Flat Stanley.
+        </li>
+        <li>
+          <b>P12_FX1</b> evaluates the derivative of the function for problem 12.
+        </li>
+        <li>
+          <b>P12_FX2</b> evaluates the second derivative of the function for problem 12.
+        </li>
+        <li>
+          <b>P12_INTERVAL</b> returns an interval bounding the root for problem 12.
+        </li>
+        <li>
+          <b>P12_ROOT</b> returns a root for problem 12.
+        </li>
+        <li>
+          <b>P12_START</b> returns one or more starting points for problem 12.
+        </li>
+        <li>
+          <b>P12_TITLE</b> returns the title of problem 12.
+        </li>
+        <li>
+          <b>P13_FX</b> evaluates Lazy Boy.
+        </li>
+        <li>
+          <b>P13_FX1</b> evaluates the derivative of the function for problem 13.
+        </li>
+        <li>
+          <b>P13_FX2</b> evaluates the second derivative of the function for problem 13.
+        </li>
+        <li>
+          <b>P13_INTERVAL</b> returns an interval bounding the root for problem 13.
+        </li>
+        <li>
+          <b>P13_ROOT</b> returns a root for problem 13.
+        </li>
+        <li>
+          <b>P13_START</b> returns one or more starting points for problem 13.
+        </li>
+        <li>
+          <b>P13_TITLE</b> returns the title of problem 13.
+        </li>
+        <li>
+          <b>P14_FX</b> evaluates the Camel.
+        </li>
+        <li>
+          <b>P14_FX1</b> evaluates the derivative of the function for problem 14.
+        </li>
+        <li>
+          <b>P14_FX2</b> evaluates the second derivative of the function for problem 14.
+        </li>
+        <li>
+          <b>P14_INTERVAL</b> returns an interval bounding the root for problem 14.
+        </li>
+        <li>
+          <b>P14_ROOT</b> returns a root for problem 14.
+        </li>
+        <li>
+          <b>P14_START</b> returns one or more starting points for problem 14.
+        </li>
+        <li>
+          <b>P14_TITLE</b> returns the title of problem 14.
+        </li>
+        <li>
+          <b>P15_FX</b> evaluates a pathological function for Newton's method.
+        </li>
+        <li>
+          <b>P15_FX1</b> evaluates the derivative of the function for problem 15.
+        </li>
+        <li>
+          <b>P15_FX2</b> evaluates the second derivative of the function for problem 15.
+        </li>
+        <li>
+          <b>P15_INTERVAL</b> returns an interval bounding the root for problem 15.
+        </li>
+        <li>
+          <b>P15_ROOT</b> returns a root for problem 15.
+        </li>
+        <li>
+          <b>P15_START</b> returns one or more starting points for problem 15.
+        </li>
+        <li>
+          <b>P15_TITLE</b> returns the title of problem 15.
+        </li>
+        <li>
+          <b>P16_FX</b> evaluates Kepler's Equation.
+        </li>
+        <li>
+          <b>P16_FX1</b> evaluates the derivative of the function for problem 16.
+        </li>
+        <li>
+          <b>P16_FX2</b> evaluates the second derivative of the function for problem 16.
+        </li>
+        <li>
+          <b>P16_INTERVAL</b> returns an interval bounding the root for problem 16.
+        </li>
+        <li>
+          <b>P16_P</b> sets, gets, or prints the parameter values for problem 16.
+        </li>
+        <li>
+          <b>P16_P_GET</b> gets the parameter values for problem 16.
+        </li>
+        <li>
+          <b>P16_P_PRINT</b> prints the parameter values for problem 16.
+        </li>
+        <li>
+          <b>P16_P_SET</b> sets the parameter values for problem 16.
+        </li>
+        <li>
+          <b>P16_ROOT</b> returns a root for problem 16.
+        </li>
+        <li>
+          <b>P16_START</b> returns one or more starting points for problem 16.
+        </li>
+        <li>
+          <b>P16_TITLE</b> returns the title of problem 16.
+        </li>
+        <li>
+          <b>P17_FX</b> evaluates the bogus function (returns random numbers).
+        </li>
+        <li>
+          <b>P17_FX1</b> evaluates the derivative of the function for problem 17.
+        </li>
+        <li>
+          <b>P17_FX2</b> evaluates the second derivative of the function for problem 17.
+        </li>
+        <li>
+          <b>P17_INTERVAL</b> returns an interval bounding the root for problem 17.
+        </li>
+        <li>
+          <b>P17_ROOT</b> returns a root for problem 17.
+        </li>
+        <li>
+          <b>P17_START</b> returns one or more starting points for problem 17.
+        </li>
+        <li>
+          <b>P17_TITLE</b> returns the title of problem 17.
+        </li>
+        <li>
+          <b>P18_FX</b> evaluates Wallis's function, f(x) = x^3 - 2*x - 5.
+        </li>
+        <li>
+          <b>P18_FX1</b> evaluates the derivative of the function for problem 18.
+        </li>
+        <li>
+          <b>P18_FX2</b> evaluates the second derivative of the function for problem 18.
+        </li>
+        <li>
+          <b>P18_INTERVAL</b> returns an interval bounding the root for problem 18.
+        </li>
+        <li>
+          <b>P18_ROOT</b> returns a root for problem 18.
+        </li>
+        <li>
+          <b>P18_START</b> returns one or more starting points for problem 18.
+        </li>
+        <li>
+          <b>P18_TITLE</b> returns the title of problem 18.
+        </li>
+        <li>
+          <b>P19_FX</b> evaluates the function with a very thin pole.
+        </li>
+        <li>
+          <b>P19_FX1</b> evaluates the derivative of the function for problem 19.
+        </li>
+        <li>
+          <b>P19_FX2</b> evaluates the second derivative of the function for problem 19.
+        </li>
+        <li>
+          <b>P19_INTERVAL</b> returns an interval bounding the root for problem 19.
+        </li>
+        <li>
+          <b>P19_ROOT</b> returns a root for problem 19.
+        </li>
+        <li>
+          <b>P19_START</b> returns one or more starting points for problem 19.
+        </li>
+        <li>
+          <b>P19_TITLE</b> returns the title of problem 19.
+        </li>
+        <li>
+          <b>R8_CUBE_ROOT</b> returns the cube root of a real number.
+        </li>
+        <li>
+          <b>R8_SWAP</b> switches two R8's.
+        </li>
+        <li>
+          <b>R8POLY2_RROOT</b> returns the real parts of the roots of a quadratic polynomial.
+        </li>
+        <li>
+          <b>REGULA_FALSI</b> carries out the Regula Falsi method to seek a root of F(X) = 0.
+        </li>
+        <li>
+          <b>SECANT</b> carries out the secant method to seek a root of F(X) = 0.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 April 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

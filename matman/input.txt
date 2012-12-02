@@ -1,0 +1,345 @@
+#
+#  Turn off paging.
+#
+$
+#
+#  Get a brief list of legal commands.
+#
+h
+#
+#  Get the full list of legal commands.
+#
+help
+#
+#  Work in fractional arithmetic.
+#
+rational
+#
+#  Enter a 3 by 3 matrix.
+#
+e
+3,3
+1,2,3
+4,5,6
+7,8,11
+#
+#  Interchange rows 1 and 3
+#
+r1 <=> r3
+#
+#  Divide row 1 by 7
+#
+r1 <= r1/7
+#
+#  Add -4 times row 1 to row 2,
+#  Add -1 times row 1 to row 3.
+#
+r2 <= r2 - 4 r1
+r3 <= r3 - 1 r1
+#
+#  Interchange rows 2 and 3
+#  and divide row 2 by 6/7.
+#
+r2 <=> r3
+r2 <= r2 / 6/7
+#
+#  Add -8/7 times row 2 to row 1,
+#  Add -3/7 times row 2 to row 3.
+#
+r1 <= r1 - 8/7 r2
+r3 <= r3 - 3/7 r2
+#
+#  Check for row reduced echelon form.
+#
+check
+#
+#  Divide row 3 by -1
+#
+r3 <= - r3
+#
+#  Add 1/3 row 3 to row 1
+#  Add -5/3 row 3 to row 2
+#
+r1 <= r1 + 1/3 r3
+r2 <= r2 -5/3 r3
+#
+#  Consider another matrix
+#
+e
+3,3
+1,2,3
+4,5,6
+7,8,9
+#
+#  Request automatic conversion to row reduced echelon form.
+#
+z 31984
+#
+#  Restore the original matrix.
+#
+restore
+#
+#  Insert a new row at row position 3.
+#
+g +r3
+6.1, 6.2, 6.3
+#
+#  Change entry 3,2 to 77
+#
+a(3,2) = 77
+#
+#  Remove column 2.
+#
+g -c2
+#
+#  Get a determinant test matrix of order 4.
+#
+b d 4
+det
+#
+#  Repeat work in real arithmetic.
+#
+real
+e
+3,3
+1,2,3
+4,5,6
+7,8,11
+#
+r1 <=> r3
+r1 <= r1/7
+r2 <= r2 -4 r1
+r3 <= r3 - r1
+
+r2 <=> r3
+r2 <= r2 / 0.8571428
+r3 <= r3 - 0.4285712 r2
+ 
+r3 <= r3 / -0.9999996
+#
+check
+#
+#  OK, cheat and force the entry to be zero.
+#
+a(3,2) = 0.0
+check
+#
+e
+3,3
+1,2,3
+4,5,6
+7,8,9
+z
+#
+r
+#
+#  Insert a row.
+#
+g +r3
+6.1, 6.2, 6.3
+#
+#  Change A(3,2) to 77.
+#
+a(3,2) = 77
+#
+#  Delete column 2.
+#
+g -c2
+#
+#  Get a determinant test matrix of order 4.
+#
+b d 4
+det
+#
+#  Repeat work in decimal arithmetic.
+#
+#
+#  Set number of decimal digits to 5
+#
+dec_digit 5
+#
+#  Change to decimal arithmetic.
+#
+decimal
+#
+#  Enter the test matrix.
+#
+e
+3,3
+1,2,3
+4,5,6
+7,8,11
+r1 <= r3
+r1 <= r1/7
+r2 <= r2 - 4 r1
+r3 <= r3 - r1
+
+r2 <=> r3
+r2 <= r2 / 0.8571
+r3 <= r3 - 0.4284 r2
+ 
+r3 <= r3 / -0.99965
+ 
+#
+check
+#
+#  Enter a new matrix.
+#
+e
+3,3
+1,2,3
+4,5,6
+7,8,9
+#
+#  Automatically process it.
+#
+z
+#
+#  Restore the original matrix.
+#
+r
+#
+#  Insert a row.
+#
+g +r3
+6.1, 6.2, 6.3
+#
+#  Change entry (3,2) to 77.
+#
+a(3,2) = 77
+#
+#  Remove column 2.
+#
+g -c2
+#
+#  Get a determinant test matrix of order 4.
+#
+b d 4
+det
+#
+#  Work in real arithmetic
+#
+real
+#
+#  Get a sample matrix for the Jacobi method.
+#
+b e 4
+#
+#  Use Jacobi rotations.
+#
+j 1,2
+3,2
+4,2
+4,3
+3,2
+4,2
+4,3
+3,2
+q
+#
+#  Switch to Linear Programming mode, 
+#  and don't save the current matrix.
+#
+l
+no
+#
+#  Get a brief list of linear programming commands.
+#
+h
+#
+#  Work in fractional arithmetic
+#
+rational
+#
+#  Get the "simple" linear programming example.
+#
+b s
+#
+#  Pivot on the first variable and second row.
+#
+p 1,2
+#
+#  Pivot on the second variable, first row.
+#
+p 2,1
+#
+#  Check for optimality.
+#
+check
+#
+#  Repeat work in real arithmetic
+#
+real
+#
+#  Get the "simple" linear programming example.
+#
+b s
+p 1,2
+p 2,1
+check
+#
+#  Repeat work in decimal arithmetic
+#
+decimal
+#
+#  Get the "simple" linear programming example.
+#
+b s
+p 1,2
+p 2,1
+check
+#
+#  Work in fractional arithmetic
+#
+rational
+#
+#  Get the "advanced" linear programming example.
+#
+b a 
+#
+#  Automatically handle it.
+#
+z
+#
+#  Remove artificial variables.
+#
+v
+#
+#  Eliminate the nonzero objective row entries associated with
+#  the basic variables, X1 and X2.
+#
+r5 <= r5 + 40 r2
+r5 <= r5 + 30 r1
+#
+#  Reapply the simplex method to the new tableau.
+#
+z
+#
+#  Repeat work in real arithmetic
+#
+real
+#
+b a 
+z
+v
+r5 <= r5 + 40 r2
+r5 <= r5 + 30 r1
+z
+#
+#  Repeat work in decimal arithmetic
+#
+decimal
+#
+#  Get the advanced linear programming example.
+#
+b a
+z
+v
+r5 <= r5 + 40 r2
+r5 <= r5 + 30 r1
+z
+#
+#  Quit
+#
+quit
+

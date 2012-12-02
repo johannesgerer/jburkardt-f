@@ -1,0 +1,210 @@
+<html>
+
+  <head>
+    <title>
+      GETWGT - Dirichlet Mixture Estimation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GETWGT <br> Dirichlet Mixture Estimation
+    </h1>
+
+    <p>
+      <b>GETWGT</b>
+      is a FORTRAN90 library which
+      handles Dirichlet Mixture estimation.
+    </p>
+
+    <p>
+      The main requirement in the design of this library was that there be
+      a single routine with a simple interface through which the user
+      interacts.  This routine, called <b>getwgt</b>, accepts a set of
+      nucleic acid counts, updates an internal Dirichlet mixture model,
+      and returns its current estimate for the pseudocounts.  All other
+      transactions and information are hidden from the user.
+    </p>
+
+    <p>
+      The program requires a data file, containing the parameters of the
+      Dirichlet density distributions that make up the mixture.
+      This file needs to be named <b>weights.txt</b>.  Two files are
+      provided here as possible sources of this data.  These files
+      were obtained from
+      <a href = "http://www.cse.ucsc.edu/research/compbio/dirichlets/">
+      the UCSC computational biology page</a>,
+      where more information, papers, and data is available.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Cody, Kenneth Hillstrom,<br>
+          Chebyshev Approximations for the Natural Logarithm of the
+          Gamma Function,
+          Mathematics of Computation,<br>
+          Volume 21, Number 98, April 1967, pages 198-203.
+        </li>
+        <li>
+          Brian Everitt, David Hand,<br>
+          Finite Mixture Distributions,<br>
+          Chapman and Hall, 1981.
+        </li>
+        <li>
+          Kenneth Lange,<br>
+          Mathematical and Statistical Methods for Genetic Analysis,<br>
+          Springer, 1997,<br>
+          ISBN: 0387953892,<br>
+          LC: QH438.4.M33.L36.
+        </li>
+        <li>
+          AFM Smith, Udi Makov,<br>
+          A Quasi-Bayes Sequential Procedure for Mixtures,<br>
+          Journal of the Royal Statistical Society,<br>
+          Volume 40, Number 1, B, 1978, pages 106-112.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <A href = "getwgt.f90">getwgt.f90</A>, the source code;
+        </li>
+        <li>
+          <A href = "getwgt.sh">getwgt.sh</A>, the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <A href = "getwgt_prb.f90">getwgt_prb.f90</A>, a sample
+          calling program;
+        </li>
+        <li>
+          <A href = "getwgt_prb.sh">getwgt_prb.sh</A>,
+          commands to compile, link and run the sample calling program;
+        </li>
+        <li>
+          <A href = "getwgt_prb_output.txt">getwgt_prb_output.txt</A>, the output from the
+          sample program;
+        </li>
+        <li>
+          <A href = "byst_weights.txt">byst_weights.txt</A>, the "current best"
+          data defining a Dirichlet mixture.
+        </li>
+        <li>
+          <A href = "blocks_weights.txt">blocks_weights.txt</A>, the BLOCKS
+          data defining a Dirichlet mixture.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GETWGT</b> updates the Dirichlet mixture weights based on a set of counts.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_NEXT</b> "reads" space-separated characters from a string, one at a time.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>COMP_PARAM_PRINT</b> prints the parameters for the mixture components.
+        </li>
+        <li>
+          <b>DIRICHLET_MEAN</b> returns the means of the Dirichlet PDF.
+        </li>
+        <li>
+          <b>DIRICHLET_MULTINOMIAL_PDF</b> evaluates a Dirichlet Multinomial PDF.
+        </li>
+        <li>
+          <b>EVENT_PROCESS</b> updates the mixture weight distribution parameters.
+        </li>
+        <li>
+          <b>GAMMA_LOG</b> calculates the natural logarithm of GAMMA ( X ) for positive X.
+        </li>
+        <li>
+          <b>I4_NEXT</b> "reads" integers from a string, one at a time.
+        </li>
+        <li>
+          <b>MIXTURE_READ</b> reads the Dirichlet mixture parameters from a file.
+        </li>
+        <li>
+          <b>R4_NEXT</b> "reads" real numbers from a string, one at a time.
+        </li>
+        <li>
+          <b>R4VEC_COPY</b> copies a real vector.
+        </li>
+        <li>
+          <b>R4VEC_PRINT</b> prints a real vector, with an optional title.
+        </li>
+        <li>
+          <b>R4VEC_UNIT_SUM</b> normalizes a real vector to have unit sum.
+        </li>
+        <li>
+          <b>S_BEGIN</b> is TRUE if one string matches the beginning of the other.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_TO_R4</b> reads a real number from a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 December 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

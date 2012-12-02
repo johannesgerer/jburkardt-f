@@ -1,0 +1,479 @@
+<html>
+
+  <head>
+    <title>
+      STRIPACK - Delaunay Triangulation on a Sphere
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      STRIPACK <br> Delaunay Triangulation on a Sphere
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>STRIPACK</b> 
+      is a FORTRAN90 library which
+      carries out some computational geometry tasks on the unit sphere in 3D,
+      by Robert Renka.
+    </p>
+
+    <p>
+      <b>STRIPACK</b> can compute the Delaunay triangulation or the
+      Voronoi diagram of a set of points on the unit sphere. 
+    </p>
+
+    <p> 
+      <b>STRIPACK</b> can make a PostScript plot
+      of the Delaunay triangulation or the Voronoi diagram from a given 
+      point of view.
+    </p>
+
+    <p>
+      <b>STRIPACK</b> is a generalization of Robert Renka's code
+      <a href = "../../f_src/tripack/tripack.html">TRIPACK</a>, which computes
+      Delaunay triangulations and Voronoi diagrams for a set of points
+      in the plane.
+    </p>
+
+    <p>
+      <b>STRIPACK</b> is a FORTRAN90 "translation" of the original
+      FORTRAN77 code written by Robert Renka and published in the
+      ACM Transactions on Mathematical Software.
+    </p>
+
+    <p>
+      <b>STRIPACK</b> is ACM TOMS Algorithm 772.  The text of the
+      original FORTRAN77 version is available online
+      through ACM:
+              <a href = "http://www.acm.org/pubs/calgo/">
+                         http://www.acm.org/pubs/calgo</a> 
+      or NETLIB:
+      <a href = "http://www.netlib.org/toms/index.html">
+      http://www.netlib.org/toms/index.html</a>.
+    </p>
+
+    <p>
+      According to Steven Fortune, it is possible to compute the Delaunay triangulation
+      of points on a sphere by computing their convex hull.  If the sphere is the unit 
+      sphere at the origin, the facet normals are the Voronoi vertices.  
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/delaunay_lmap_2d/delaunay_lmap_2d.html">
+      DELAUNAY_LMAP_2D</a>, 
+      a FORTRAN90 program which 
+      can compute the Delaunay triangulation 
+      of points in 
+      the plane subject to a linear mapping.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geometry/geometry.html">
+      GEOMETRY</a>,
+      a FORTRAN90 library which 
+      computes various geometric quantities, including grids on spheres.
+    </p>
+
+    <p>
+      <a href = "../../f_src/geompack/geompack.html">
+      GEOMPACK</a>, 
+      a FORTRAN90 library which
+      includes Delaunay triangulation routines, by Barry Joe.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_cvt/sphere_cvt.html">
+      SPHERE_CVT</a>, 
+      a FORTRAN90 library which 
+      creates a mesh of well-separated points on a unit sphere using Centroidal Voronoi
+      Tessellations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_delaunay/sphere_delaunay.html">
+      SPHERE_DELAUNAY</a>, 
+      a FORTRAN90 program which
+      computes the Delaunay triangulation of points on a sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_design_rule/sphere_design_rule.html">
+      SPHERE_DESIGN_RULE</a>,
+      a FORTRAN90 library which 
+      returns point sets on the surface of the unit sphere, known as "designs",
+      which can be useful for estimating integrals on the surface, among other uses.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_quad/sphere_quad.html">
+      SPHERE_QUAD</a>,
+      a FORTRAN90 library which 
+      estimates the integral of a function defined on the sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_stereograph/sphere_stereograph.html">
+      SPHERE_STEREOGRAPH</a>,
+      a FORTRAN90 library which
+      computes the stereographic mapping between points on the unit sphere
+      and points on the plane Z = 1; a generalized mapping is also available.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_voronoi/sphere_voronoi.html">
+      SPHERE_VORONOI</a>,
+      a FORTRAN90 program which 
+      computes and plots the Voronoi diagram of points on the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/sphere_voronoi_display_opengl/sphere_voronoi_display_opengl.html">
+      SPHERE_VORONOI_DISPLAY_OPENGL</a>,
+      a C++ program which
+      displays a sphere and randomly selected generator points, and then
+      gradually colors in points in the sphere that are closest to each generator.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stripack_interactive/stripack_interactive.html">
+      STRIPACK_INTERACTIVE</a>,
+      a FORTRAN90 program which 
+      reads an XYZ file of 3D points on
+      the unit sphere, computes the Delaunay triangulation, and writes it
+      to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which 
+      reads a file of point coordinates in the TABLE format and writes out
+      the Delaunay triangulation.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms772/toms772.html">
+      TOMS772</a>,
+      a FORTRAN77 library which
+      is the original text of the STRIPACK program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_plot/triangulation_plot.html">
+      TRIANGULATION_PLOT</a>, 
+      a FORTRAN90 program which 
+      may be used to make a PostScript image of
+      a triangulation of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tripack/tripack.html">
+      TRIPACK</a>, 
+      a FORTRAN90 library which 
+      computes the Delaunay triangulation of points in the plane.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Robert Renka
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams - 
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, pages 345-405, September 1991.
+        </li>
+        <li>
+          Thomas Ericson, Victor Zinoviev,<br>
+          Codes on Euclidean Spheres,<br>
+          Elsevier, 2001,<br>
+          ISBN: 0444503293,<br>
+          LC: QA166.7E75
+        </li>
+        <li>
+          Gerald Folland,<br>
+          How to Integrate a Polynomial Over a Sphere,<br>
+          American Mathematical Monthly,<br>
+          Volume 108, Number 5, May 2001, pages 446-448.
+        </li>
+        <li>
+          Jacob Goodman, Joseph ORourke, editors,<br>
+          Handbook of Discrete and Computational Geometry,<br>
+          Second Edition,<br>
+          CRC/Chapman and Hall, 2004,<br>
+          ISBN: 1-58488-301-4,<br>
+          LC: QA167.H36.
+        </li>
+        <li>
+          AD McLaren,<br>
+          Optimal Numerical Integration on a Sphere,<br>
+          Mathematics of Computation,<br>
+          Volume 17, Number 84, October 1963, pages 361-383.
+        </li> 
+        <li>
+          Robert Renka,<br>
+          Algorithm 772: <br>
+          STRIPACK:
+          Delaunay Triangulation and Voronoi Diagram on the Surface 
+          of a Sphere,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 23, Number 3, September 1997, pages 416-434.
+        </li>
+        <li>
+          Edward Saff, Arno Kuijlaars,<br>
+          Distributing Many Points on a Sphere,<br>
+          The Mathematical Intelligencer,<br>
+          Volume 19, Number 1, 1997, pages 5-11.
+        </li>
+        <li>
+          Brian Wichmann, David Hill,<br>
+          An Efficient and Portable Pseudo-random Number Generator,<br>
+          Applied Statistics,<br>
+          Volume 31, Number 2, 1982, pages 188-190.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "stripack.f90">stripack.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "stripack.sh">stripack.sh</a>, 
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>STRIPACK_PRB</b> is a sample problem which tests or demonstrates
+      many of the functions in STRIPACK.
+      <ul>
+        <li>
+          <a href = "stripack_prb.f90">stripack_prb.f90</a>, 
+          the source code.
+        </li>
+        <li>
+          <a href = "stripack_prb.sh">stripack_prb.sh</a>, 
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "stripack_prb_output.txt">stripack_prb_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "stripack_prb_del.png">stripack_prb_del.png</a>, 
+          a PNG image of the Delaunay triangulation.
+        </li>
+        <li>
+          <a href = "stripack_prb_vor.png">stripack_prb_vor.png</a>, 
+          a PNG image of the Voronoi diagram.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>STRIPACK_PRB2</b> is a program which examines the creation
+      of a Voronoi diagram for a given set of data:
+      <ul>
+        <li>
+          <a href = "stripack_prb2.f90">stripack_prb2.f90</a>, 
+          the source code.
+        </li>
+        <li>
+          <a href = "stripack_prb2.sh">stripack_prb2.sh</a>, 
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "stripack_prb2_output.txt">stripack_prb2_output.txt</a>, 
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>STRIPACK_PRB3</b> is a program which examines the creation
+      of a Delaunay triangulation for a given set of data:
+      <ul>
+        <li>
+          <a href = "stripack_prb3.f90">stripack_prb3.f90</a>, 
+          the source code.
+        </li>
+        <li>
+          <a href = "stripack_prb3.sh">stripack_prb3.sh</a>, 
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "stripack_prb3_output.txt">stripack_prb3_output.txt</a>, 
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ADDNOD</b> adds a node to a triangulation.
+        </li>
+        <li>
+          <b>ARC_COSINE</b> computes the arc cosine function, with argument truncation.
+        </li>
+        <li>
+          <b>AREAS</b> computes the area of a spherical triangle on the unit sphere.
+        </li>
+        <li>
+          <b>BDYADD</b> adds a boundary node to a triangulation.
+        </li>
+        <li>
+          <b>BNODES</b> returns the boundary nodes of a triangulation.
+        </li>
+        <li>
+          <b>CIRCUM</b> returns the circumcenter of a spherical triangle.
+        </li>
+        <li>
+          <b>COVSPH</b> connects an exterior node to boundary nodes, covering the sphere.
+        </li>
+        <li>
+          <b>CRLIST</b> returns triangle circumcenters and other information.
+        </li>
+        <li>
+          <b>DELARC</b> deletes a boundary arc from a triangulation.
+        </li>
+        <li>
+          <b>DELNB</b> deletes a neighbor from the adjacency list.
+        </li>
+        <li>
+          <b>DELNOD</b> deletes a node from a triangulation.
+        </li>
+        <li>
+          <b>EDGE</b> swaps arcs to force two nodes to be adjacent.
+        </li>
+        <li>
+          <b>GETNP</b> gets the next nearest node to a given node.
+        </li>
+        <li>
+          <b>INSERT</b> inserts K as a neighbor of N1.
+        </li>
+        <li>
+          <b>INSIDE</b> determines if a point is inside a polygonal region.
+        </li>
+        <li>
+          <b>INTADD</b> adds an interior node to a triangulation.
+        </li>
+        <li>
+          <b>INTSRC</b> finds the intersection of two great circles.
+        </li>
+        <li>
+          <b>JRAND</b> returns a random integer between 1 and N.
+        </li>
+        <li>
+          <b>LEFT</b> determines whether a node is to the left of a plane through the origin.
+        </li>
+        <li>
+          <b>LSTPTR</b> returns the index of NB in the adjacency list.
+        </li>
+        <li>
+          <b>NBCNT</b> returns the number of neighbors of a node.
+        </li>
+        <li>
+          <b>NEARND</b> returns the nearest node to a given point.
+        </li>
+        <li>
+          <b>OPTIM</b> optimizes the quadrilateral portion of a triangulation.
+        </li>
+        <li>
+          <b>R83VEC_NORMALIZE</b> normalizes each R83 in an R83VEC to have unit norm.
+        </li>
+        <li>
+          <b>SCOORD</b> converts from Cartesian to spherical coordinates.
+        </li>
+        <li>
+          <b>STORE</b> forces its argument to be stored.
+        </li>
+        <li>
+          <b>SWAP</b> replaces the diagonal arc of a quadrilateral with the other diagonal.
+        </li>
+        <li>
+          <b>SWPTST</b> decides whether to replace a diagonal arc by the other.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRANS</b> transforms spherical coordinates to Cartesian coordinates.
+        </li>
+        <li>
+          <b>TRFIND</b> locates a point relative to a triangulation.
+        </li>
+        <li>
+          <b>TRLIST</b> converts a triangulation data structure to a triangle list.
+        </li>
+        <li>
+          <b>TRLPRT</b> prints a triangle list.
+        </li>
+        <li>
+          <b>TRMESH</b> creates a Delaunay triangulation on the unit sphere.
+        </li>
+        <li>
+          <b>TRPLOT</b> makes a PostScript image of a triangulation on a unit sphere.
+        </li>
+        <li>
+          <b>TRPRNT</b> prints the triangulation adjacency lists.
+        </li>
+        <li>
+          <b>VORONOI_POLY_COUNT</b> counts the polygons of each size in the Voronoi diagram.
+        </li>
+        <li>
+          <b>VRPLOT</b> makes a PostScript image of a Voronoi diagram on the unit sphere.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 April 2010
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

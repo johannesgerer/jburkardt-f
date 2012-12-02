@@ -1,0 +1,111 @@
+February  5 2008   2:50:17.728 PM
+ 
+EXPONENT_FORMAT_OVERFLOW:
+  FORTRAN90 version.
+ 
+TEST01
+  Real numbers can have exponents greater than 99.
+ 
+  It is unsettling to discover that there is a
+  common FLAW in certain output formats, which means
+  that the printing of real numbers with exponents
+  of magnitude more than 99 is handled poorly.
+ 
+  The "E" marker, used to indicate scientific notation,
+  is simply suppressed, as though to make room for
+  the leading digit of the exponent.
+ 
+  But this inconsistency can be deadly.  In particular,
+  if you write out such data, it CANNOT be read back in
+  properly!  (THAT example is easy to write, but I will
+  do that later.)
+ 
+  Define some big numbers:
+ 
+  X1 = huge ( X1 )
+  X2 = 0.99D+00 * X1
+  X3 = X1 / 100.0D+00
+  X4 = 1.0D+101.
+ 
+  Define some small numbers:
+ 
+  X5 = tiny ( X5 )
+  X6 = 1.01D+00 * X5
+  X7 = X5 * 100.0D+00
+  X8 = 1.0D-101.
+ 
+  Define some comparison numbers:
+ 
+  X9  = 1.0D+98
+  X10 = 1.0D-98
+  X11 = 123456789.0
+  X12 = 0.123456789
+ 
+  Print with a WRITE(*,*) format:
+  This seems to work OK:
+ 
+   X1 =   1.79769313486231571E+308
+   X2 =   1.77971620351369253E+308
+   X3 =   1.79769313486231576E+307
+   X4 =   9.99999999999999977E+100
+   X5 =   2.22507385850720138E-308
+   X6 =   2.24732459709227342E-308
+   X7 =   2.22507385850720138E-306
+   X8 =   1.00000000000000005E-101
+   X9 =   9.99999999999999998E+097
+   X10 =   9.99999999999999939E-099
+   X11 =    123456789.00000000     
+   X12 =   0.12345678900000000     
+ 
+  Print with a WRITE(*,'(G24.10)') format:
+  Notice the disaster:
+ 
+  X1 =         0.1797693135+309
+  X2 =         0.1779716204+309
+  X3 =         0.1797693135+308
+  X4 =         0.1000000000+102
+  X5 =         0.2225073859-307
+  X6 =         0.2247324597-307
+  X7 =         0.2225073859-305
+  X8 =         0.1000000000-100
+  X9 =         0.1000000000E+99
+  X10 =         0.1000000000E-97
+  X11 =          123456789.0    
+  X12 =         0.1234567890    
+ 
+  Print with a WRITE(*,'(D24.10)') format:
+  Same disaster:
+ 
+  X1 =         0.1797693135+309
+  X2 =         0.1779716204+309
+  X3 =         0.1797693135+308
+  X4 =         0.1000000000+102
+  X5 =         0.2225073859-307
+  X6 =         0.2247324597-307
+  X7 =         0.2225073859-305
+  X8 =         0.1000000000-100
+  X9 =         0.1000000000D+99
+  X10 =         0.1000000000D-97
+  X11 =         0.1234567890D+09
+  X12 =         0.1234567890D+00
+ 
+  Print with a WRITE(*,'(E24.10)') format:
+  Same disaster:
+ 
+  X1 =         0.1797693135+309
+  X2 =         0.1779716204+309
+  X3 =         0.1797693135+308
+  X4 =         0.1000000000+102
+  X5 =         0.2225073859-307
+  X6 =         0.2247324597-307
+  X7 =         0.2225073859-305
+  X8 =         0.1000000000-100
+  X9 =         0.1000000000E+99
+  X10 =         0.1000000000E-97
+  X11 =         0.1234567890E+09
+  X12 =         0.1234567890E+00
+ 
+EXPONENT_FORMAT_OVERFLOW:
+  Normal end of execution.
+ 
+February  5 2008   2:50:17.731 PM

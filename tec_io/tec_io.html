@@ -1,0 +1,327 @@
+<html>
+
+  <head>
+    <title>
+      TEC_IO - Read and Write TECPLOT ASCII Files
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEC_IO <br> Read and Write TECPLOT ASCII Files
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEC_IO</b>
+      is a FORTRAN90 library which
+      reads or writes
+      a TECPLOT ASCII file containing a finite element model.
+    </p>
+
+    <p>
+      There are several kinds of TECPLOT ASCII files; the routines given here can only
+      handle the case where a single <b>ZONE</b> record is used to define finite
+      element data, using a <b>DATAPACKING</b> value of "POINT" (not "BLOCK"),
+      and a ZONETYPE of
+      <ul>
+        <li>
+          FETRIANGLE
+        </li>
+        <li>
+          FEQUADRILATERAL
+        </li>
+        <li>
+          FETETRAHEDRON
+        </li>
+        <li>
+          FEBRICK
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The data to be written or read is assumed to have a logical
+      organization into three groups:
+      <ul>
+        <li>
+          Node coordinate data;
+        </li>
+        <li>
+          Element definitions, that is, the sequence of node indices
+          that define each element;
+        </li>
+        <li>
+          Node data, such as finite element coefficients for pressure,
+          velocity, and so on.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <a href = "http://www.tecplot.com/">
+      The TECPLOT home page</a> contains a description of the
+      <b>TECPLOT</b> program.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEC_IO</b> is available in
+      <a href = "../../f_src/tec_io/tec_io.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/tec_io/tec_io.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fem_to_tec/fem_to_tec.html">
+      FEM_TO_TEC</a>,
+      a FORTRAN90 program which
+      reads the three files
+      defining an FEM model and writes an equivalent TEC file.
+    </p>
+
+    <p>
+      <a href = "../../data/tec/tec.html">
+      TEC</a>,
+      a data directory which
+      contains a description and examples
+      of the <b>TEC</b> graphics files used by <b>TECPLOT</b>
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_to_fem/tec_to_fem.html">
+      TEC_TO_FEM</a>,
+      a FORTRAN90 program which
+      reads a TEC file and writes a set of three files defining the
+      equivalent FEM model.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_to_obj/tec_to_obj.html">
+      TEC_TO_OBJ</a>,
+      a FORTRAN90 program which
+      can read a TECPLOT file describing a surface in 3D composed of triangles
+      or quadrilaterals, and write an OBJ file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tec_write/tec_write.html">
+      TEC_WRITE</a>,
+      a FORTRAN90 library which
+      can write TEC files.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          Tecplot, Inc,<br>
+          TECPLOT Reference Manual,<br>
+          Version 10, Release 4,<br>
+          Tecplot, Inc, 2005.
+        </li>
+        <li>
+          Tecplot, Inc,<br>
+          TECPLOT User's Manual,<br>
+          Version 10,<br>
+          Tecplot, Inc, 2005.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "tec_io.f90">tec_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "tec_io.sh">tec_io.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "tec_io_prb.f90">tec_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "tec_io_prb.sh">tec_io_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "tec_io_prb_output.txt">tec_io_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+        <li>
+          <a href = "ell.dat">ell.dat</a>,
+          a TECPLOT ASCII file read by the test program;
+        </li>
+        <li>
+          <a href = "tiny.dat">tiny.dat</a>,
+          a TECPLOT ASCII file created by the test program;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_ALPHA</b> is TRUE if C is an alphabetic character.
+        </li>
+        <li>
+          <b>DTABLE_DATA_WRITE</b> writes data to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_WRITE</b> writes the header to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_WRITE</b> writes a double precision table file.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> increments a partially numeric filename.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>ITABLE_DATA_WRITE</b> writes data to an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_HEADER_WRITE</b> writes the header to an integer table file.
+        </li>
+        <li>
+          <b>ITABLE_WRITE</b> writes an integer table file.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>S_ALPHA_LAST</b> returns the location of the last alphabetic character.
+        </li>
+        <li>
+          <b>S_BEGIN</b> is TRUE if one string matches the beginning of the other.
+        </li>
+        <li>
+          <b>S_BEHEAD_SUBSTRING</b> "beheads" a string, removing a given substring.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INC</b> "increments" a string.
+        </li>
+        <li>
+          <b>S_REPLACE_CH</b> replaces all occurrences of one character by another.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>S_WORD_EXTRACT</b> extracts the next word from a string.
+        </li>
+        <li>
+          <b>TEC_DATA_READ</b> reads the data from a TEC file.
+        </li>
+        <li>
+          <b>TEC_DATA_WRITE</b> writes the data to a TEC file.
+        </li>
+        <li>
+          <b>TEC_HEADER_PRINT</b> prints the header to a TEC file.
+        </li>
+        <li>
+          <b>TEC_HEADER_READ</b> reads the header from a TEC file.
+        </li>
+        <li>
+          <b>TEC_HEADER_WRITE</b> writes the header to a TEC file.
+        </li>
+        <li>
+          <b>TEC_OPEN_READ</b> opens a TEC file for reading.
+        </li>
+        <li>
+          <b>TEC_OPEN_WRITE</b> opens a TEC file for writing.
+        </li>
+        <li>
+          <b>TEC_WRITE</b> writes finite element data to a TEC file.
+        </li>
+        <li>
+          <b>TEC_ZONE_LINE_PARSE</b> parses the "ZONE" line of a TEC file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

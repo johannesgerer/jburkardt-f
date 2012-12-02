@@ -1,0 +1,344 @@
+  
+  
+  
+  
+
+                                                                                                  Yoshio Takane , Forrest W. Young &
+ a l s c a l  pc                            alternating least squares scaling                     Rostyslaw. Lewyckyj.
+ adaptation by b. erichson & a. bischoff                                                          psychometric laboratory
+ final change: febr. 1990                                                                         the university of north carolina
+                                                                                                  chapel hill, n.c.  27514
+
+
+
+
+ Copyright 1977 by  f. w. Young, y. Takane & r. j. Lewyckyj              
+
+
+
+
+
+ job title:  TITLE: 12 CARS, 10 ATTRIBUTES (STANDARDIZED), ARBEITSBUCH MAFO S.61            
+
+ data specifications-
+
+  nrow - number of row stimuli                      10   row stimuli
+  ncol - number of column stimuli                   12   column stimuli
+  ns   - number of matrices                          1   matrix  
+  ndtyp- measurement level                           2 = interval
+  nsim - data type                                   5 = rectangular-similarity   
+  nps  - measurement process                         1 = discrete (tie)      
+  nwc  - measurement conditionality                  1 = matrix-conditional  
+  cut  - data cutoff                               -10.0000000
+
+ analysis specifications-
+
+  nwe  - model type                                  0   Simple Euclidean model (Default)        
+  ndim - number of dimensions (maximum)              2   dimensions (maximum)
+  ndmn - number of dimensions (minimum)              2   dimensions (minimum)
+  nnc  - negative weights permitted                  0 = negative weights not permitted
+
+ i/o options-
+
+  ndt  - print data, distances and disparities       1 = do print       
+  npt  - plot results                                1 = do plot        
+  nph  - punch results                               0 = do not punch                            
+ indata- data input unit number                      1 = read data from cards          
+ initx - initial stimulus coordinates                0 = compute             
+ initxc- initial column stimulus coordinates         0 = compute             
+ initw - initial subject weights                     0 = compute             
+ initws- initial stimulus weights                    0 = compute             
+
+
+
+
+ algorithmic options-
+
+  maxit- maximum number of iterations               99   iterations (maximum)
+  epsi - convergence criterion               0.0003000 = minimum sstress improvement
+  stmin- minimum sstress                     0.0050000 = minimum sstress cutoff
+  noulb- initial missing data estimates              0 = ulbounds
+
+ maximum problem size :   38000 words
+
+ required problem size:    5528
+
+ input data format-
+
+      (30F6.2)                                                                       
+  
+  
+  
+  
+
+
+ input data
+
+ matrix   1
+
+
+                      1         2         3         4         5         6         7         8         9        10
+               1    -1.030     1.400    -0.360    -1.050    -1.290     1.750    -0.290    -0.180     1.170    -0.820
+               2    -0.250    -0.380    -1.490    -0.810    -0.450     1.370     0.750     0.260     0.400    -0.900
+               3     0.000    -1.390    -1.430    -0.600     0.350     2.020     0.860     0.160     0.860    -0.030
+               4    -0.910    -0.500    -1.360    -0.470    -1.000     1.110     0.610     1.720     1.030    -0.220
+               5    -1.280     0.170    -1.100    -0.540    -0.500     1.750     0.060     0.480     1.190    -0.110
+               6    -1.240     2.090    -1.240    -0.240    -1.240     0.700    -0.240    -0.050     1.440    -0.240
+               7    -1.270     1.070    -1.730    -0.250    -1.230     1.070     0.700     0.440     1.090    -0.710
+               8    -1.030     2.080    -1.030     0.270    -1.720     0.270    -0.170    -0.250     1.390    -0.250
+               9     0.750    -1.580     1.880    -0.860     1.710    -0.040     0.240     0.170    -0.890    -0.480
+              10    -0.990    -0.320    -1.550    -0.660    -0.320     1.450     0.450     0.790     0.450    -0.100
+
+                     11        12
+               1    -0.200     0.920
+               2    -0.690     2.190
+               3    -1.300     0.490
+               4    -1.050     1.030
+               5    -1.450     1.330
+               6    -0.240     0.500
+               7    -0.240     1.060
+               8     0.610    -0.170
+               9    -0.790    -0.110
+              10    -1.100     1.900
+  
+  
+  
+  
+ TITLE: 12 CARS, 10 ATTRIBUTES (STANDARDIZED), ARBEITSBUCH MAFO S.61            
+
+ iteration history for the 2  dimensional solution
+ sstress (in squared distances) formula 2 is used.
+
+
+      iteration      sstress      improvement
+
+          1          0.25000
+          2          0.22122        0.02878
+          3          0.20604        0.01518
+          4          0.19803        0.00801
+          5          0.19375        0.00427
+          6          0.19131        0.00245
+          7          0.18984        0.00146
+          8          0.18893        0.00092
+          9          0.18833        0.00059
+         10          0.18793        0.00040
+         11          0.18765        0.00028
+
+ alscal message:  iterations stopped because 
+                  sstress improvement less than 0.000300
+
+
+
+
+
+
+ stress and squared correlation (rsq) in distances
+
+ rsq values are the proportion of variance of the scaled data (disparities) in the partition
+ (row, matrix, or entire data) which is accounted for by their corresponding distances.
+
+ kruskal's stress formula 2 is used.
+
+                             
+ stress = 0.266      rsq = 0.934
+
+
+
+
+ configuration derived in  2  dimensions
+
+
+
+ stimulus coordinates
+                           dimension
+     stimulus  plot     1           2
+      number  symbol
+ 
+      column
+         1       a    1.8734      0.1345
+         2       b   -1.4068      1.1814
+         3       c    1.7810      1.1901
+         4       d    0.4776      1.4949
+         5       e    1.8393     -0.7554
+         6       f   -0.3677     -0.6193
+         7       g    0.6243     -0.4026
+         8       h    0.4874     -0.4552
+         9       i   -0.8419      0.1013
+        10       j    0.9557      0.8872
+        11       k    0.2617      1.8529
+        12       l   -0.2739     -0.6443
+
+        row
+         1       A   -1.1937      0.1188
+         2       B   -0.5312     -1.0307
+         3       C    0.2359     -1.3450
+         4       D   -0.7396     -0.8498
+         5       E   -0.8219     -0.8073
+         6       F   -1.2644      0.4048
+         7       G   -1.2636     -0.1093
+         8       H   -1.1067      1.1042
+         9       I    1.8812     -0.4550
+        10       J   -0.6060     -0.9964
+  
+  
+  
+  
+ TITLE: 12 CARS, 10 ATTRIBUTES (STANDARDIZED), ARBEITSBUCH MAFO S.61            
+      derived stimulus configuration
+      dimension  1 (horizontal)  vs  dimension  2 (vertical)
+  
+  
+  
+    Y        +--------------------------------------------------:--------------------------------------------------+
+         2.5 |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+         2.0 |                                                  |                                                  |
+             |                                                  |    k                                             |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+         1.5 |                                                  |         d                                        |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                      b                           |                                   c              |
+             |                            H                     |                                                  |
+         1.0 |                                                  |                                                  |
+             |                                                  |                  j                               |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+         0.5 |                                                  |                                                  |
+             |                         F                        |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                          A      i                |                                    a             |
+         0.0 0--------------------------------------------------0--------------------------------------------------0
+             |                         G                        |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |           g                                      |
+        -0.5 |                                                  |         h                           I            |
+             |                                           f l    |                                                  |
+             |                                                  |                                                  |
+             |                                  ED              |                                    e             |
+             |                                                  |                                                  |
+        -1.0 |                                      JB          |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |    C                                             |
+             |                                                  |                                                  |
+        -1.5 |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+        -2.0 |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+             |                                                  |                                                  |
+        -2.5 |                                                  |                                                  |
+             +:---------:---------:---------:---------:---------0---------:---------:---------:---------:---------:+
+            -2.5      -2.0      -1.5      -1.0      -0.5       0.0       0.5       1.0       1.5       2.0       2.5
+                                                                                                                  x
+  
+  
+  
+  
+ TITLE: 12 CARS, 10 ATTRIBUTES (STANDARDIZED), ARBEITSBUCH MAFO S.61            
+      optimally scaled data (disparities)     subject   1
+
+                      1         2         3         4         5         6         7         8         9        10
+               1     3.067     1.084     3.162     2.165     3.156     1.108     1.891     1.776     0.352     2.283
+               2     2.672     2.379     3.206     2.720     2.386     0.443     1.315     1.170     1.174     2.427
+               3     2.207     3.014     2.969     2.850     1.708     0.944     1.019     0.925     1.804     2.345
+               4     2.792     2.138     3.243     2.642     2.581     0.438     1.435     1.289     0.957     2.427
+               5     2.855     2.073     3.281     2.644     2.662     0.492     1.502     1.356     0.909     2.456
+               6     3.149     0.790     3.145     2.055     3.313     1.361     2.054     1.951     0.520     2.272
+               7     3.146     1.299     3.310     2.368     3.170     1.031     1.911     1.785     0.471     2.433
+               8     3.134     0.310     2.889     1.632     3.484     1.875     2.295     2.230     1.037     2.074
+               9     0.590     3.673     1.648     2.402     0.303     2.255     1.258     1.394     2.779     1.630
+              10     2.725     2.320     3.237     2.717     2.457     0.446     1.366     1.220     1.123     2.447
+
+                     11        12
+               1     2.264     1.195
+               2     2.991     0.464
+               3     3.198     0.867
+               4     2.882     0.509
+               5     2.872     0.572
+               6     2.104     1.443
+               7     2.485     1.125
+               8     1.560     1.937
+               9     2.819     2.163
+              10     2.978     0.484
+  
+  
+  
+  
+ TITLE: 12 CARS, 10 ATTRIBUTES (STANDARDIZED), ARBEITSBUCH MAFO S.61            
+      scattergram (plot of linear fit)
+      distances (vertical) vs disparities (horizontal)
+  
+  
+  
+    Y        +--------------------------------------------------:--------------------------------------------------+
+         3.7 |                                                                                                x    |
+             |                                                                                                     |
+             |                                                                                                     |
+             |                                                                                                    x|
+             |                                                                                                     |
+         3.3 |                                                                                        x           x|
+             |                                                                                    x      x   x     |
+             |                                                                                       x x    x      |
+             |                                                                 x                x     3x           |
+             |                                                                                  x                  |
+         3.0 |                                                                         x          x      xx        |
+             |                                                                                                     |
+             |                                                                       x          xx     x   x       |
+             |                                                                            x  2                     |
+             |                                                                         x   x   x                   |
+         2.7 |                                                              x     xxx                              |
+             |                                                                                 x                   |
+             |                                                                                                     |
+             |                                                          xx xx x         x    x                     |
+             |                                                              x   xx          x                      |
+         2.3 |                                                         x  x   x                                    |
+             |                                                         x   x2              x                       |
+             |                                                        x  x                       x                 |
+             |                                                              x      x                               |
+             |                                                    x         3                                      |
+         2.0 |                                                                                                     |
+             |                                      x                  x  x  x                                     |
+             |                                                 x                                                   |
+             |                                  x          x              x                                        |
+             |                                               x                                                     |
+         1.7 |        x                                        x                  x                                |
+             |                                        x                                                            |
+             |                                                      x                                              |
+             |                                        x  x                                                         |
+             |                                      x     2       x                                                |
+         1.3 |            x                x       x                                                               |
+             |                                    x             x                                                  |
+             |                                x             x  x                                                   |
+             |           x        x        x              x                                                        |
+             |                    x        x    x                                                                  |
+         1.0 |    x                         x                                                                      |
+             |                          x                         x                                                |
+             |                                           x                                                         |
+             |   x                                                                                                 |
+             |                                                                                                     |
+         0.6 |                                                                                                     |
+             |                      x              x                                                               |
+             |       x   x       x          x                                                                      |
+             |x                  x x      2                                                                        |
+             |                          x                                                                          |
+         0.3 |   x        x                                                                                        |
+             +:---------:---------:---------:---------:---------0---------:---------:---------:---------:---------:+
+             0.1       0.4       0.8       1.1       1.5       1.8       2.1       2.5       2.8       3.1       3.5
+                                                                                                                  x
+  
+ STEP0 - Note:
+   END card encountered in input file.

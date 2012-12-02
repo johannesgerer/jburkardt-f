@@ -1,0 +1,285 @@
+<html>
+
+  <head>
+    <title>
+      CRYSTAL_COORDINATES - Coordinates of a 3D "Slab" of points.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CRYSTAL_COORDINATES <br> Coordinates of a 3D "Slab" of points
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CRYSTAL_COORDINATES</b>
+      is a FORTRAN90 program which
+      generates the coordinates of a set of 4 * NX * NY * NZ
+      points in a rectangular block of NX * NY * NZ cells, with
+      face-centered cubic symmetry.
+    </p>
+
+    <p>
+      The user is allowed to specify the width of a cell, and the
+      maximum magnitude of a random displacement of each point.
+    </p>
+
+    <p>
+      The coordinate data is written to a file that can be used
+      for visualization, or more likely as the initial condition for
+      the coordinates of molecules in a molecular dynamics simulation.
+    </p>
+
+    <p>
+      If the initial line of the output file is removed, the remainder becomes
+      an "XYZ" file which can be plotted by several programs.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>crystal_coordinates</b>
+        </dt>
+        <dd>
+          begins the program.
+        </dd>
+      </dl>
+    </p>
+
+    <p>
+      Inputs:
+      <dl>
+        <dt>
+          <b>a</b>
+        </dt>
+        <dd>
+          the lattice spacing, or cell width, in Angstroms.
+        </dd>
+        <dt>
+          <b>nx</b>
+        </dt>
+        <dd>
+          the number of cells in the X direction.
+        </dd>
+        <dt>
+          <b>ny</b>
+        </dt>
+        <dd>
+          the number of cells in the Y direction.
+        </dd>
+        <dt>
+          <b>nz</b>
+        </dt>
+        <dd>
+          the number of cells in the Z direction.
+        </dd>
+        <dt>
+          <b>displac</b>
+        </dt>
+        <dd>
+          the maximum magnitude of a random displacement applied to
+          every node coordinate.
+        </dd>
+        <dt>
+          <b>file_name</b>
+        </dt>
+        <dd>
+          the name of the file into which the coordinate data is to be stored.
+        </dd>
+      </dl>
+    </p>
+
+    <p>
+      The output file has a single initial line of the form
+      <pre>
+        % F <i>n</i> <i>x-width</i> <i>y-width</i> <i>z-width</i>
+      </pre>
+      where
+      <dl>
+        <dt>
+          <b>n</b>
+        </dt>
+        <dd>
+          is the number of points.
+        </dd>
+        <dt>
+          <b>x-width, y-width, z-width</b>
+        </dt>
+        <dd>
+          are the total widths of the slab in the X, Y and Z directions.
+        </dd>
+       </dl>
+       followed by <i>n</i> lines, each containing the (X,Y,Z) coordinates
+       of a point.
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/md1/md1.html">
+      MD1</a>,
+      a FORTRAN90 program which
+      is a molecular dynamics simulation program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md2/md2.html">
+      MD2</a>,
+      a FORTRAN90 program which
+      is a molecular dynamics simulation program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md3/md3.html">
+      MD3</a>,
+      a FORTRAN90 program which
+      is a molecular dynamics simulation program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md3glue/md3glue.html">
+      MD3GLUE</a>,
+      a FORTRAN90 program which
+      is a molecular dynamics simulation program.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/mdbnch/mdbnch.html">
+      MDBNCH</a>,
+      a FORTRAN77 program which
+      carries out a molecular dynamics benchmark.
+    </p>
+
+    <p>
+      <a href = "../../m_src/xyz_display/xyz_display.html">
+      XYZ_DISPLAY</a>,
+      a MATLAB program which
+      reads XYZ information defining points in 3D, and displays
+      an image in the MATLAB graphics window.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/xyz_display_opengl/xyz_display_opengl.html">
+      XYZ_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads XYZ information defining points in 3D, and displays
+      an image using OpenGL.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Matthew Allen, DJ Tildesley,<br>
+          Computer Simulation of Liquids,<br>
+          Oxford University Press, 1987,<br>
+          ISBN: 0198556454,<br>
+          LC: QC145.2.
+        </li>
+        <li>
+          Furio Ercolessi,<br>
+          A Molecular Dynamics Primer,<br>
+          <a href = "../../pdf/ercolessi.pdf">ercolessi.pdf</a>
+        </li>
+        <li>
+          Dennis Rapaport,<br>
+          The Art of Molecular Dynamics Simulation,<br>
+          Cambridge University Press, 2004,<br>
+          ISBN: 0521825687.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "crystal_coordinates.f90">crystal_coordinates.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "crystal_coordinates.sh">crystal_coordinates.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "crystal_10_10_10_input.txt">crystal_10_10_10_input.txt</a>,
+          input for a 10 x 10 x 10 slab.
+        </li>
+        <li>
+          <a href = "crystal_10_10_10.txt">crystal_10_10_10.txt</a>,
+          the coordinate file.
+        </li>
+        <li>
+          <a href = "crystal_10_10_10_output.txt">crystal_10_10_10_output.txt</a>,
+          the output from a run of the program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for CRYSTAL_COORDINATES.
+        </li>
+        <li>
+          <b>GENERATE_CRYSTAL</b> generates the atomic coordinates.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>READ_PARAMETERS</b> obtains the parameters from the user.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 October 2005.
+
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

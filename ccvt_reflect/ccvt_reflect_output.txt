@@ -1,0 +1,180 @@
+September 15 2005   8:09:24.819 AM
+ 
+CCVT_REFLECT:
+  CVT calculation constrained to a box.
+  Some sample points are "reflected" to try
+  to drive generators to the boundary.
+ 
+  DIM_NUM is the spatial dimension.
+  (Try '2' if you have no preference.)
+  (Any value less than 1 terminates execution.)
+  User input DIM_NUM =            2
+ 
+  N is the number of points to generate.
+  (Try '100' if you have no preference.)
+  (Any value less than 1 terminates execution.)
+  User input N =          100
+ 
+  NPP is the number of sample points used to
+  check the boundary.
+  (Try '1000' if you have no preference.)
+  (Any value less than 1 terminates execution.)
+  User input NPP =         1000
+ 
+  Enter SEED, a seed for the random number generator:
+  (Try '123456789' if you do not have a preference.)
+  (Any negative value terminates execution).
+  User input SEED =    123456789
+ 
+  INIT is the method of initializing the data:
+ 
+  file     read data from a file;
+  GRID     by picking points from a grid;
+  HALTON   from a Halton sequence;
+  RANDOM   using FORTRAN RANDOM function;
+  UNIFORM  using a simple uniform RNG;
+ 
+  (Try 'RANDOM' if you do not have a preference.)
+  (A blank value terminates execution).
+ 
+  Enter INIT:
+  User input INIT = "UNIFORM    #  INIT,       how to choose initial points".
+  User input INIT = "UNIFORM    #  INIT,       how to choose initial points".
+ 
+  IT_MAX is the maximum number of iterations.
+ 
+  An iteration carries out the following steps:
+  * the Voronoi region associated with each
+    generator is estimated by sampling;
+  * the centroid of each Voronoi region is estimated.
+  * the generator is replaced by the centroid.
+ 
+  If "enough" sampling points are used,
+  and "enough" iterations are taken, this process
+  will converge.
+ 
+  (Try '50' if you have no preference.)
+  (A negative value terminates execution).
+ 
+  Enter IT_MAX:  
+  User input IT_MAX =           50
+ 
+  IT_FIXED is the number of consecutive iterations
+  to take with a fixed set of sample points.
+ 
+  Setting IT_FIXED to 1 means a new set of sample
+  points is generated on every iterative step;
+  Setting IT_FIXED equal to IT_MAX means a single set
+  of sample points is used for the entire iteration.
+ 
+  Any value between 1 and IT_MAX is reasonable.
+ 
+  (Try     50 if you do not have a preference.)
+  (A 0 or negative value terminates execution).
+ 
+  Enter IT_FIXED:
+  User input IT_FIXED =      1
+ 
+  SAMPLE is the method of sampling the region:
+ 
+  GRID     by picking points from a grid;
+  HALTON   from a Halton sequence;
+  RANDOM   using FORTRAN RANDOM function;
+  UNIFORM  using a simple uniform RNG;
+ 
+  (Try 'RANDOM' if you do not have a preference.)
+  (A blank value terminates execution).
+ 
+  Enter SAMPLE:
+  User input SAMPLE = "UNIFORM    #  SAMPLE,     how to choose interior sample points".
+ 
+  SAMPLE_NUM is the number of sample points.
+ 
+  The Voronoi regions will be explored by generating
+  SAMPLE_NUM points.  For each sample point, the
+  nearest generator is found.  Using more points
+  gives a better estimate of these regions.
+ 
+  SAMPLE_NUM should be much larger than N, the
+  number of generators. 
+ 
+  (Try '10000' if you have no preference.) 
+  (A zero or negative value terminates execution.)
+ 
+  User input SAMPLE_NUM =       100000
+ 
+  BATCH is the number of sample points to create
+  at one time.
+ 
+  BATCH should be between 1 and SAMPLE_NUM.
+ 
+  It is FASTER to set BATCH to SAMPLE_NUM;
+  setting BATCH to 1 requires the least memory.
+ 
+  (Try         1000 if you do not have a preference.)
+  (A zero or negative value terminates execution.)
+ 
+  Enter BATCH:
+  User input BATCH =         5000
+ 
+                            Energy    Boundary
+  Iteration     Seed        of CVT    Samples
+ 
+       0     123456789    0.405523E-02             0
+       1     123456789    0.258440E-02          5091
+       2     123456789    0.224956E-02          4741
+       3     123456789    0.209881E-02          5222
+       4     123456789    0.200675E-02          5685
+       5     123456789    0.194835E-02          6163
+       6     123456789    0.191206E-02          6542
+       7     123456789    0.188844E-02          6804
+       8     123456789    0.187298E-02          7104
+       9     123456789    0.186161E-02          7378
+      10     123456789    0.185298E-02          7517
+      11     123456789    0.184615E-02          7631
+      12     123456789    0.184058E-02          7750
+      13     123456789    0.183595E-02          7875
+      14     123456789    0.183178E-02          7994
+      15     123456789    0.182793E-02          8085
+      16     123456789    0.182452E-02          8230
+      17     123456789    0.182129E-02          8308
+      18     123456789    0.181792E-02          8388
+      19     123456789    0.181495E-02          8444
+      20     123456789    0.181246E-02          8547
+      21     123456789    0.181020E-02          8608
+      22     123456789    0.180838E-02          8706
+      23     123456789    0.180657E-02          8777
+      24     123456789    0.180497E-02          8882
+      25     123456789    0.180367E-02          8938
+      26     123456789    0.180243E-02          9005
+      27     123456789    0.180114E-02          9076
+      28     123456789    0.179974E-02          9132
+      29     123456789    0.179869E-02          9183
+      30     123456789    0.179779E-02          9244
+      31     123456789    0.179676E-02          9276
+      32     123456789    0.179568E-02          9282
+      33     123456789    0.179471E-02          9300
+      34     123456789    0.179381E-02          9346
+      35     123456789    0.179290E-02          9417
+      36     123456789    0.179187E-02          9447
+      37     123456789    0.179085E-02          9479
+      38     123456789    0.178990E-02          9508
+      39     123456789    0.178916E-02          9541
+      40     123456789    0.178848E-02          9584
+      41     123456789    0.178784E-02          9639
+      42     123456789    0.178724E-02          9684
+      43     123456789    0.178671E-02          9713
+      44     123456789    0.178637E-02          9715
+      45     123456789    0.178630E-02          9737
+      46     123456789    0.178626E-02          9742
+      47     123456789    0.178609E-02          9749
+      48     123456789    0.178599E-02          9759
+      49     123456789    0.178590E-02          9768
+      50     123456789    0.178589E-02          9802
+      51     123456789    0.178585E-02          9831
+      51     123456789    0.204445E-02
+ 
+CCVT_REFLECT:
+  Normal end of execution.
+ 
+September 15 2005   8:10:47.289 AM

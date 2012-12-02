@@ -1,0 +1,300 @@
+<html>
+
+  <head>
+    <title>
+      MINPACK - Least Squares Minimization
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MINPACK <br> Least Squares Minimization
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MINPACK</b> 
+      is a FORTRAN90 library which 
+      solves systems of nonlinear equations, or carries out the
+      least squares minimization of the residual of a set of linear or nonlinear equations.
+    </p>
+
+    <p>
+      <b>MINPACK</b> includes software for solving nonlinear equations and
+      nonlinear least squares problems.  Five algorithmic paths each include
+      a core subroutine and an easy-to-use driver.  The algorithms proceed
+      either from an analytic specification of the Jacobian matrix or
+      directly from the problem functions.  The paths include facilities for
+      systems of equations with a banded Jacobian matrix, for least squares
+      problems with a large amount of data, and for checking the consistency
+      of the Jacobian matrix with the functions.
+    </p>
+
+    <p>
+      Given a set of N nonlinear equations in N unknowns, F(X) = 0, 
+      Powell's method is used to seek a solution X.
+    </p>
+
+    <p>
+      Given a set of M nonlinear functions in N unknowns, F(X),
+      the Levenberg-Marquardt method is used to seek an X which minimizes
+      the L2 norm of the residual ||F(X)||.  
+    </p>
+
+    <p>
+      The user supplies a subroutine to evaluate the nonlinear function;
+      the jacobian matrix dFi(X)/dXj may also be supplied by the user
+      in a subroutine, or approximated by finite differences.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MINPACK</b> is available in
+      <a href = "../../cpp_src/minpack/minpack.html">a C++ version</a> and
+      <a href = "../../f77_src/minpack/minpack.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/minpack/minpack.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bvls/bvls.html">
+      BVLS</a>,
+      a FORTRAN90 library which
+      applies least squares methods to solve a linear system for which
+      lower and upper constraints may have been placed on every variable.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      solves constrained least squares problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nl2sol/nl2sol.html">
+      NL2SOL</a>,
+      a FORTRAN90 library which
+      implements an adaptive nonlinear least-squares algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes a wide variety of numerical software, including 
+      solvers for linear systems of equations, interpolation of data,
+      numerical quadrature, linear least squares data fitting,
+      the solution of nonlinear equations, ordinary differential equations,
+      optimization and nonlinear least squares, simulation and random numbers,
+      trigonometric approximation and Fast Fourier Transforms.
+    </p>
+
+    <p>
+      <a href = "../../f_src/praxis/praxis.html">
+      PRAXIS</a>,
+      a FORTRAN90 library which
+      minimizes a scalar function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/qr_solve/qr_solve.html">
+      QR_SOLVE</a>,
+      a FORTRAN90 library which
+      computes the least squares solution of a linear system A*x=b.
+    </p>
+
+    <p>
+      <a href = "../../f_src/slatec/slatec.html">
+      SLATEC</a> ,
+      a FORTRAN90 library which
+      includes MINPACK.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt/test_opt.html">
+      TEST_OPT</a>,
+      a FORTRAN90 library which 
+      defines test problems for the minimization of a scalar function 
+      of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_optimization/test_optimization.html">
+      TEST_OPTIMIZATION</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables, as described by Molga and Smutnicki.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms611/toms611.html">
+      TOMS611</a>,
+      a FORTRAN90 library which
+      seeks the minimizer of a scalar functional of multiple variables.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Jorge More, Burton Garbow, Kenneth Hillstrom,<br>
+          User Guide for MINPACK-1,<br>
+          Technical Report ANL-80-74,<br>
+          Argonne National Laboratory, 1980.
+        </li>
+        <li>
+          Jorge More, Danny Sorenson, Burton Garbow, Kenneth Hillstrom,<br>
+          The MINPACK Project,<br>
+          in Sources and Development of Mathematical Software,<br>
+          edited by Wayne Cowell,<br>
+          Prentice-Hall, 1984,<br>
+          ISBN: 0-13-823501-5,<br>
+          LC: QA76.95.S68.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "minpack.f90">minpack.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "minpack.csh">minpack.csh</a>, 
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "minpack_prb.f90">minpack_prb.f90</a>, sample calling code;
+        </li>
+        <li>
+          <a href = "minpack_prb.csh">minpack_prb.csh</a>, 
+          commands to compile, link and run the sample calling code;
+        </li>
+        <li>
+          <a href = "minpack_prb_output.txt">minpack_prb_output.txt</a>, sample output;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CHKDER</b> checks the gradients of M functions of N variables.
+        </li>
+        <li>
+          <b>DOGLEG</b> finds the minimizing combination of Gauss-Newton and gradient steps.
+        </li>
+        <li>
+          <b>ENORM</b> computes the Euclidean norm of a vector.
+        </li>
+        <li>
+          <b>ENORM2</b> computes the Euclidean norm of a vector.
+        </li>
+        <li>
+          <b>FDJAC1</b> estimates an N by N jacobian matrix using forward differences.
+        </li>
+        <li>
+          <b>FDJAC2</b> estimates an M by N jacobian matrix using forward differences.
+        </li>
+        <li>
+          <b>HYBRD</b> seeks a zero of N nonlinear equations in N variables.
+        </li>
+        <li>
+          <b>HYBRD1</b> seeks a zero of N nonlinear equations in N variables.
+        </li>
+        <li>
+          <b>HYBRJ</b> seeks a zero of N nonlinear equations in N variables.
+        </li>
+        <li>
+          <b>HYBRJ1</b> seeks a zero of N nonlinear equations in N variables by Powell's method.
+        </li>
+        <li>
+          <b>LMDER</b> minimizes M functions in N variables by the Levenberg-Marquardt method.
+        </li>
+        <li>
+          <b>LMDER1</b> minimizes M functions in N variables by the Levenberg-Marquardt method.
+        </li>
+        <li>
+          <b>LMDIF</b> minimizes M functions in N variables by the Levenberg-Marquardt method.
+        </li>
+        <li>
+          <b>LMDIF1</b> minimizes M functions in N variables using the Levenberg-Marquardt method.
+        </li>
+        <li>
+          <b>LMPAR</b> computes a parameter for the Levenberg-Marquardt method.
+        </li>
+        <li>
+          <b>LMSTR</b> minimizes M functions in N variables using the Levenberg-Marquardt method.
+        </li>
+        <li>
+          <b>LMSTR1</b> minimizes M functions in N variables using the Levenberg-Marquardt method.
+        </li>
+        <li>
+          <b>QFORM</b> produces the explicit QR factorization of a matrix.
+        </li>
+        <li>
+          <b>QRFAC</b> computes a QR factorization using Householder transformations.
+        </li>
+        <li>
+          <b>QRSOLV</b> solves a rectangular linear system A*x=b in the least squares sense.
+        </li>
+        <li>
+          <b>R1MPYQ</b> computes A*Q, where Q is the product of Householder transformations.
+        </li>
+        <li>
+          <b>R1UPDT</b> re-triangularizes a matrix after a rank one update.
+        </li>
+        <li>
+          <b>RWUPDT</b> computes the decomposition of a triangular matrix augmented by one row.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 07 April 2010.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

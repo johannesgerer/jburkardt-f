@@ -1,0 +1,1118 @@
+<html>
+
+  <head>
+    <title>
+      GRAFPACK - Graph Computations
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GRAFPACK <br> Graph Computations
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GRAFPACK</b>
+      is a FORTRAN90 library which
+      performs common calculations involving (abstract mathematical) graphs.
+    </p>
+
+    <p>
+      This includes such tasks as a breadth-first-search, the
+      computation of a minimum spanning tree,
+      an Euler or Hamilton circuit, blocks, chromatic polynomial, or transitive
+      closure.  Some algorithms are general, while others apply only to directed
+      graphs or trees.
+    </p>
+
+    <p>
+      Some of the routine names begin with a prefix that indicates the type
+      of object it is associated with:
+      <ul>
+        <li>
+          <b>COLOR_DIGRAPH_ADJ</b> is a directed graph whose nodes are colored;
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ</b> is an undirected graph whose nodes are colored;
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ</b> is a directed graph described by an adjacency matrix;
+        </li>
+        <li>
+          <b>DIGRAPH_ARC</b> is a directed graph described by an edge list;
+        </li>
+        <li>
+          <b>FACE</b> is a collection of "faces" defined by circuits in a graph;
+        </li>
+        <li>
+          <b>GRAPH_ADJ</b> is an undirected graph described by an adjacency matrix;
+        </li>
+        <li>
+          <b>GRAPH_ARC</b> is an undirected graph described by an edge list;
+        </li>
+        <li>
+          <b>GRAPH_DIST</b> is an undirected graph described by a distance matrix;
+        </li>
+        <li>
+          <b>MAZE</b> is a maze;
+        </li>
+        <li>
+          <b>TREE_ARC</b> is a tree described by an edge list;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cities/cities.html">
+      CITIES</a>,
+      a FORTRAN90 library which
+      handles various problems associated with a set of "cities" on a map.
+    </p>
+
+    <p>
+      <a href = "../../datasets/cities/cities.html">
+      CITIES</a>,
+      a dataset directory which
+      contains a number of city distance datasets.
+    </p>
+
+    <p>
+      <a href = "../../f_src/codepack/codepack.html">
+      CODEPACK</a>,
+      a FORTRAN90 library which
+      computes "codes" that can determine if two graphs are isomorphic.
+    <p>
+
+    <p>
+      <a href = "../../f_src/floyd/floyd.html">
+      FLOYD</a>,
+      a FORTRAN90 library which
+      implements Floyd's algorithm for finding the shortest distance between pairs of
+      nodes on a directed graph.
+    </p>
+
+    <p>
+      <a href = "../../data/graph_representation/graph_representation.html">
+      GRAPH_REPRESENTATION</a>,
+      a data directory which
+      contains examples of ways of representing abstract
+      mathematical graphs
+    </p>
+
+    <p>
+      <a href = "../../data/grf/grf.html">
+      GRF</a>,
+      a data directory which
+      contains a description of the GRF format and some examples.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grf_io/grf_io.html">
+      GRF_IO</a>,
+      a FORTRAN90 library which
+      reads and writes GRF files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grf_to_eps/grf_to_eps.html">
+      GRF_TO_EPS</a>,
+      a FORTRAN90 library which
+      can make an Encapsulated PostScript (EPS) image of a
+      GRF file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset/subset.html">
+      SUBSET</a>,
+      a FORTRAN90 library which
+      generates, ranks and unranks various combinatorial objects.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_graph_code/table_graph_code.html">
+      TABLE_GRAPH_CODE</a>,
+      a FORTRAN90 program which
+      reads a TABLE file describing a graph, and computes its graph code.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Alan Gibbons,<br>
+          Algorithmic Graph Theory,<br>
+          Cambridge University Press, 1985,<br>
+          ISBN: 0-5212-8881-9,<br>
+          LC: QA166.G53.
+        </li>
+        <li>
+          Hang Tong Lau,<br>
+          Combinatorial Heuristic Algorithms with FORTRAN,<br>
+          Springer, 1986,<br>
+          ISBN: 3540171614,<br>
+          LC: QA402.5.L37.
+        </li>
+        <li>
+          Albert Nijenhuis, Herbert Wilf,<br>
+          Combinatorial Algorithms for Computers and Calculators,<br>
+          Second Edition,<br>
+          Academic Press, 1978,<br>
+          ISBN: 0-12-519260-6,<br>
+          LC: QA164.N54.
+        </li>
+        <li>
+          Robert Sedgewick,<br>
+          Algorithms in C,<br>
+          Addison-Wesley, 1990,<br>
+          ISBN: 0-201-51425-7,<br>
+          LC: QA76.73.C15S43.
+        </li>
+        <li>
+          Dennis Stanton, Dennis White,<br>
+          Constructive Combinatorics,<br>
+          Springer, 1986,<br>
+          ISBN: 0387963472,<br>
+          LC: QA164.S79.
+        </li>
+        <li>
+          Krishnaiyan Thulasiraman, M Swamy,<br>
+          Graphs: Theory and Algorithms,<br>
+          John Wiley, 1992,<br>
+          ISBN: 0471513563,<br>
+          LC: QA166.T58.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "grafpack.f90">grafpack.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "grafpack.sh">grafpack.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "grafpack_prb.f90">grafpack_prb.f90</a>, the calling
+          program;
+        </li>
+        <li>
+          <a href = "grafpack_prb.sh">grafpack_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "grafpack_prb_output.txt">grafpack_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "57_city_distances.txt">57_city_distances.txt</a>, a
+          city distance table.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>KNIGHTSTOUR</b> is a GRF file created to illustrate a Knight's tour
+      of the chess board.
+      <ul>
+        <li>
+          <a href = "knightstour.grf">knightstour.grf</a>, a knight's tour
+          graph in GRF format.
+        </li>
+        <li>
+          <a href = "knightstour.png">knightstour.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a>
+          image of the knight's tour graph.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>FISH</b> is a set of data defining a 3D model of fish.  Various routines
+      manipulate this data.
+      <ul>
+        <li>
+          <a href = "fish_faces.iv">fish_faces.iv</a>,
+          an Inventor file that contains the "faces" of the fish, that is,
+          the polygonal surfaces.
+        </li>
+        <li>
+          <a href = "fish_faces.png">fish_faces.png</a>,
+          a PNG image of a "snapshot" of the fish face model.
+        </li>
+        <li>
+          <a href = "fish_lines.vla">fish_lines.vla</a>,
+          a VLA file that records the edges of the polygonal surfaces of the
+          fish model.
+        </li>
+        <li>
+          <a href = "fish_nodes.png">fish_nodes.png</a>,
+          a PNG file that displays a "snapshot" of the nodes of the
+          fish model.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BALANC</b> balances a real matrix before eigenvalue calculations.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CATALAN</b> computes the Catalan numbers, from C(0) to C(N).
+        </li>
+        <li>
+          <b>COLOR_DIGRAPH_ADJ_DEGREE</b> computes the indegree and outdegree of each node.
+        </li>
+        <li>
+          <b>COLOR_DIGRAPH_ADJ_DEGREE_SEQ</b> computes the degree sequence of a color digraph.
+        </li>
+        <li>
+          <b>COLOR_DIGRAPH_ADJ_EDGE_COUNT</b> counts the number of edges in a color digraph.
+        </li>
+        <li>
+          <b>COLOR_DIGRAPH_ADJ_EXAMPLE_CUBE</b> sets up the cube color digraph.
+        </li>
+        <li>
+          <b>COLOR_DIGRAPH_ADJ_EXAMPLE_OCTO</b> sets up an 8 node example color digraph.
+        </li>
+        <li>
+          <b>COLOR_DIGRAPH_ADJ_PRINT</b> prints out the adjacency matrix of a color digraph.
+        </li>
+        <li>
+          <b>COLOR_DIGRAPH_ADJ_RANDOM</b> generates a random color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_COLOR_COUNT</b> counts the number of colors in a color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_COLOR_SEQUENCE</b> computes the color sequence of a color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_CONNECT_RANDOM</b> generates a random connected color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_DEGREE</b> computes the degree of each node.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_DEGREE_SEQ</b> computes the degree sequence of a color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_EDGE_COUNT</b> counts the number of edges in a color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_EXAMPLE_BUSH</b> sets up the bush color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_EXAMPLE_CUBE</b> sets up the cube color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_EXAMPLE_OCTO</b> sets up an 8 node example color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_EXAMPLE_TWIG</b> sets up the twig color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_PRINT</b> prints out the adjacency matrix of a color graph.
+        </li>
+        <li>
+          <b>COLOR_GRAPH_ADJ_RANDOM</b> generates a random color graph.
+        </li>
+        <li>
+          <b>DEGREE_SEQ_IS_GRAPHIC</b> reports whether a degree sequence represents a graph.
+        </li>
+        <li>
+          <b>DEGREE_SEQ_TO_GRAPH_ADJ</b> computes a graph with the given degree sequence.
+        </li>
+        <li>
+          <b>DGE_CHECK</b> checks the dimensions of a general matrix.
+        </li>
+        <li>
+          <b>DGE_DET</b> computes the determinant of a matrix factored by DGE_FA or DGE_TRF.
+        </li>
+        <li>
+          <b>DGE_FA</b> factors a general matrix.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_CLOSURE</b> generates the transitive closure of a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_COMPONENTS</b> finds the strongly connected components of a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_CYCLE</b> searches for cycles in a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_DEGREE</b> computes the indegree and outdegree of each node.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_DEGREE_MAX</b> computes the maximum degrees of a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_DEGREE_SEQ</b> computes the directed degree sequence.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_EDGE_COUNT</b> counts the number of edges in a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_EIGEN</b> computes the eigenvalues of a digraph from its adjacency matrix.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_EXAMPLE_CYCLER</b> sets up the adjacency information for the cycler digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_EXAMPLE_OCTO</b> sets up an 8 node example digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_EXAMPLE_SIXTY</b> sets the adjacency matrix for the sixty digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_HAM_CAND</b> finds candidates for the next node in a Hamiltonian circuit.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_HAM_NEXT</b> returns the next Hamilton circuit for a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_HAM_NEXT_BRUTE</b> finds the next Hamiltonian circuit in a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_HAM_PATH_NEXT_BRUTE</b> finds the next path in a digraph that visits all nodes.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_IS_EDGE_CONNECTED</b> determines if a digraph is edgewise connected.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_IS_EULERIAN</b> determines if a digraph is Eulerian from its adjacency ma
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_IS_STRONG_CONNECTED</b> determines if a digraph is strongly connected.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_IS_TOURNAMENT</b> determines if a digraph is a tournament from its adjacency matrix.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_IS_TRANSITIVE</b> determines if a digraph is transitive.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_IS_WEAK_CONNECTED</b> determines if a digraph is weakly connected.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_PRINT</b> prints out an adjacency matrix for a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_RANDOM</b> generates a random digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_REDUCE</b> generates a transitive reduction of a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_TO_DIGRAPH_ARC</b> converts a digraph from adjacency to arc list form.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_TO_DIGRAPH_INC</b> converts an adjacency digraph to an incidence digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_TOP_SORT</b> finds a reverse topological sorting of a directed acyclic graph.
+        </li>
+        <li>
+          <b>DIGRAPH_ADJ_TOURNAMENT_RANDOM</b> generates a random tournament digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_DEGREE</b> determines the degree of the nodes of a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_EDGE_SORT</b> sorts the edge array of a graph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_EULER_CIRC_CAND</b> finds candidates for the K-th edge of an Euler circuit.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_EULER_CIRC_NEXT</b> returns the next Euler circuit for a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_EXAMPLE_CYCLER</b> sets up the arc list information for the cycler digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_IS_EULERIAN</b> determines if a digraph is Eulerian from its edge list.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_PRINT</b> prints out a digraph from an edge list.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_TO_DIGRAPH_ADJ</b> converts an arc list digraph to an adjacency digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_TO_DIGRAPH_STAR</b> sets up the forward star representation of a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_ARC_WEIGHT_PRINT</b> prints out a weighted digraph from an edge list.
+        </li>
+        <li>
+          <b>DIGRAPH_DIST_PRINT</b> prints the distance matrix defining a digraph.
+        </li>
+        <li>
+          <b>DIGRAPH_INC_PRINT</b> prints the incidence matrix of a digraph.
+        </li>
+        <li>
+          <b>EDGE_ADD_NODES</b> adds the edge defined by two nodes to the edge list.
+        </li>
+        <li>
+          <b>EDGE_BOUND</b> reports the edges which are part of the boundary.
+        </li>
+        <li>
+          <b>EDGE_MATCH_FACE</b> seeks an edge common to a face and the edge list.
+        </li>
+        <li>
+          <b>EDGE_MATCH_NODES</b> seeks an edge of the form (N1,N2) or (N2,N1) in EDGE.
+        </li>
+        <li>
+          <b>EDGES_TO_PS</b> writes subplot edges to a PostScript file.
+        </li>
+        <li>
+          <b>ELMHES</b> transforms a real general matrix to upper Hessenberg form.
+        </li>
+        <li>
+          <b>FACE_CHECK</b> checks and analyzes a set of faces.
+        </li>
+        <li>
+          <b>FACE_EXAMPLE_BOX</b> returns the faces of a simple box.
+        </li>
+        <li>
+          <b>FACE_EXAMPLE_PIECES</b> returns the faces of a set of three objects.
+        </li>
+        <li>
+          <b>FACE_FLIP</b> flips faces to achieve a consistent orientation.
+        </li>
+        <li>
+          <b>FACE_TO_IV</b> writes some simple graphics data to an Inventor file.
+        </li>
+        <li>
+          <b>FACE_SORT</b> renumbers the faces in order of object and tier.
+        </li>
+        <li>
+          <b>FACE_TO_EDGE</b> converts face data to edge data.
+        </li>
+        <li>
+          <b>FACE_TOUCH</b> reports whether two polygonal faces touch.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_BFS</b> carries out a breadth-first traversal of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_BIPARTITE_RANDOM</b> generates a random bipartite graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_BLOCK</b> finds the blocks of an undirected graph from its adjacency list.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_CLOSURE</b> generates the transitive closure of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_COLOR_CAND</b> finds possible colors for a node during a graph coloring.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_COLOR_NEXT</b> returns possible colorings of a graph, one at a time.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_COMPLEMENT</b> returns the adjacency matrix of the complement of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_CONNECT_RANDOM</b> generates a random connected graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_CYCLE</b> searches for cycles in a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_DEGREE</b> computes the degree of each node.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_DEGREE_MAX</b> computes the maximum node degree.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_DEGREE_SEQ</b> computes the degree sequence of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_DFS</b> does a depth first search of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_DFS_2</b> does a depth-first search of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_EDGE_COUNT</b> counts the number of edges in a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_EIGEN</b> computes the eigenvalues of a graph from its adjacency matrix.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_EXAMPLE_BUSH</b> sets up the adjacency information for the bush graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_EXAMPLE_CUBE</b> sets up the adjacency information for the cube graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_EXAMPLE_DODECAHEDRON</b> sets up the adjacency information for the dodecahedron graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_EXAMPLE_OCTO</b> sets up an 8 node example graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_EXAMPLE_TWIG</b> sets up the adjacency information for the twig graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_HAM_CAND</b> finds candidates for the next node in a Hamiltonian circuit.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_HAM_NEXT</b> returns the next Hamilton circuit for a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_HAM_NEXT_BRUTE</b> finds the next Hamiltonian circuit in a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_IS_BIPARTITE</b> determines if a graph is bipartite.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_IS_EDGE_CONNECTED</b> determines if a graph is edgewise connected.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_IS_EULERIAN</b> determines if a graph is Eulerian from its adjacency matrix.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_IS_NODE_CONNECTED</b> determines if a graph is nodewise connected.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_IS_TREE</b> determines whether a graph is a tree.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_PRINT</b> prints out an adjacency matrix for a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_RANDOM</b> generates a random graph on NNODE nodes with NEDGE edges.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_RANDOM2</b> generates a random graph on NNODE nodes with NEDGE edges.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_REDUCE</b> generates a transitive reduction of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_SPAN_TREE</b> finds a spanning tree of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_SPAN_TREE_ENUM</b> enumerates the spanning trees of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_SYMMETRIZE</b> symmetrizes an adjacency matrix.
+        </li>
+        <li>
+          <b>GRAPH_ADJ_TO_GRAPH_ARC</b> converts an adjacency graph to an arc list graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_COMPLEMENT</b> returns the edge list of the complement of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_DEGREE</b> determines the degree of the nodes of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_EDGE_CON2</b> finds the edge-connectivity of a connected graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_EDGE_SORT</b> sorts the edge array of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_EULER_CIRC</b> finds an Euler circuit in an Eulerian graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_EULER_CIRC_CAND</b> finds candidates for the K-th edge of an Euler circuit.
+        </li>
+        <li>
+          <b>GRAPH_ARC_EULER_CIRC_NEXT</b> returns the next Euler circuit for a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_EXAMPLE_DIAMOND</b> returns the graph of a "diamond" 3D shape.
+        </li>
+        <li>
+          <b>GRAPH_ARC_FACE</b> constructs a set of faces for a plane graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_FACE_NEXT</b> tries to complete the next face, given a few starting nod
+        </li>
+        <li>
+          <b>GRAPH_ARC_IS_EULERIAN</b> determines if a graph is Eulerian from its edge list.
+        </li>
+        <li>
+          <b>GRAPH_ARC_MATCH</b> finds a maximum matching in a bipartite graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_MIN_PATH</b> finds the shortest path between two nodes.
+        </li>
+        <li>
+          <b>GRAPH_ARC_MIN_SPAN_TREE</b> finds a minimum spanning tree of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_NCOLOR_PRINT</b> prints out a node-colored graph from an edge list.
+        </li>
+        <li>
+          <b>GRAPH_ARC_NODE_COUNT</b> counts the number of nodes in a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_PRINT</b> prints out a graph from an edge list.
+        </li>
+        <li>
+          <b>GRAPH_ARC_TO_PS</b> writes graph information to a PostScript file.
+        </li>
+        <li>
+          <b>GRAPH_ARC_SPAN_FOREST</b> determines a graph's connectivity and spanning forest.
+        </li>
+        <li>
+          <b>GRAPH_ARC_SPAN_TREE</b> constructs the spanning tree of a graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_TO_DIGRAPH_ARC</b> converts an undirected to a directed graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_TO_GRAPH_ADJ</b> converts an arc list graph to an adjacency graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_TO_GRAPH_STAR</b> sets the forward star form of an undirected graph.
+        </li>
+        <li>
+          <b>GRAPH_ARC_WEIGHT_PRINT</b> prints out a weighted graph from an edge list.
+        </li>
+        <li>
+          <b>GRAPH_CHRO</b> calculates the chromatic polynomial of a connected graph.
+        </li>
+        <li>
+          <b>GRAPH_DIST_ALL</b> finds the distance from every node to every other node.
+        </li>
+        <li>
+          <b>GRAPH_DIST_CHECK</b> checks a distance matrix for consistency.
+        </li>
+        <li>
+          <b>GRAPH_DIST_MIN_SPAN_TREE</b> computes a spanning tree of minimal length.
+        </li>
+        <li>
+          <b>GRAPH_DIST_MIN_SPAN_TREE2</b> computes a spanning tree of minimal length.
+        </li>
+        <li>
+          <b>GRAPH_DIST_MIN_SPAN_TREE3</b> finds a minimum spanning tree.
+        </li>
+        <li>
+          <b>GRAPH_DIST_ONE</b> computes the distance from one node to all others in a graph.
+        </li>
+        <li>
+          <b>GRAPH_DIST_PRINT</b> prints a distance matrix.
+        </li>
+        <li>
+          <b>GREEDY</b> pairs two sets of nodes using the least total distance.
+        </li>
+        <li>
+          <b>GRF_READ</b> reads a GRF file containing a 2D representation of a graph.
+        </li>
+        <li>
+          <b>HQR</b> computes all eigenvalues of a real upper Hessenberg matrix.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two integer values.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4VEC_UNIFORM</b> returns a scaled pseudorandom I4VEC.
+        </li>
+        <li>
+          <b>I4COL_COMPARE</b> compares columns I and J of a integer array.
+        </li>
+        <li>
+          <b>I4COL_SORT_A</b> ascending sorts an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SWAP</b> swaps columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_UNIQ</b> keeps the unique elements in a sorted I4COL.
+        </li>
+        <li>
+          <b>I4MAT_PERM</b> permutes the rows and columns of a square I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PERM_RANDOM</b> selects a random permutation of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_ROW_COMPARE</b> compares two rows of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_ROW_SORT_D</b> sorts the rows of an I4MAT into descending order.
+        </li>
+        <li>
+          <b>I4MAT_ROW_SWAP</b> swaps two rows of an I4MAT.
+        </li>
+        <li>
+          <b>I4ROW_COMPARE</b> compares two rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SORT_D</b> descending sorts the rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SWAP</b> swaps two rows of an I4ROW.
+        </li>
+        <li>
+          <b>ISET2_COMPARE</b> compares two I2 sets.
+        </li>
+        <li>
+          <b>ISET2_INDEX_INSERT_UNIQUE</b> inserts a unique I2 set value in an indexed sorted list.
+        </li>
+        <li>
+          <b>ISET2_INDEX_SEARCH</b> searches for an I2 set value in an indexed sorted list.
+        </li>
+        <li>
+          <b>I4VEC_BACKTRACK</b> supervises a backtrack search for an integer vector.
+        </li>
+        <li>
+          <b>I4VEC_COMPARE</b> compares two integer vectors.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_A</b> reorders an array of integers into an ascending heap.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D</b> reorders an array of integers into an descending heap.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an integer vector to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_NONZERO</b> counts the nonzero entries in an integer vector
+        </li>
+        <li>
+          <b>I4VEC_ORDER_TYPE</b> determines if an integer array is (non)strictly ascending/descending.
+        </li>
+        <li>
+          <b>I4VEC_PERM_RANDOM</b> selects a random permutation of an integer vector.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an integer vector.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an integer vector.
+        </li>
+        <li>
+          <b>I4VEC_ROTATE</b> rotates an object in place.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_A</b> ascending sorts an integer array using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_D</b> descending sorts an integer array using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_INDEX_D</b> does an indexed heap descending sort of an integer vector.
+        </li>
+        <li>
+          <b>I4VEC_UNIQ</b> finds the number of unique elements in a sorted integer array.
+        </li>
+        <li>
+          <b>I4VEC2_COMP</b> compares pairs of integers stored in two vectors.
+        </li>
+        <li>
+          <b>I4VEC2_PRINT</b> prints a pair of integer vectors.
+        </li>
+        <li>
+          <b>I4VEC2_SORT_A</b> ascending sorts a vector of pairs of integers.
+        </li>
+        <li>
+          <b>I4VEC2_SORT_D</b> descending sorts a vector of pairs of integers.
+        </li>
+        <li>
+          <b>I4VEC2_UNIQ</b> keeps the unique elements in a array of pairs of integers.
+        </li>
+        <li>
+          <b>KSUB_RANDOM</b> selects a random subset of size K from a set of size N.
+        </li>
+        <li>
+          <b>M_GRAPH_ADJ_EDGE_SEQ</b> computes the edge sequence of a multigraph.
+        </li>
+        <li>
+          <b>MAZE_DIAM</b> computes the "diameter" of a maze that has no circuits.
+        </li>
+        <li>
+          <b>MAZE_PATH</b> finds a path through a maze.
+        </li>
+        <li>
+          <b>MAZE_PRINT</b> prints out a maze and a path.
+        </li>
+        <li>
+          <b>MAZE_RANDOM</b> generates a random maze in a rectangular region.
+        </li>
+        <li>
+          <b>NETWORK_FLOW_MAX</b> finds the maximal flow and a minimal cut in a network.
+        </li>
+        <li>
+          <b>NODE_ORDER_PRINT</b> prints out a node ordering.
+        </li>
+        <li>
+          <b>NODE_RELAX</b> smooths a shape by an averaging operation on the node positions.
+        </li>
+        <li>
+          <b>NODES_TO_PS</b> writes subplot nodes to a PostScript file.
+        </li>
+        <li>
+          <b>OBJECT_BUILD</b> builds edge-connected "objects" out of polygonal faces.
+        </li>
+        <li>
+          <b>PERM_CYCLE</b> analyzes a permutation.
+        </li>
+        <li>
+          <b>PERM_FREE</b> reports the number of unused items in a partial permutation.
+        </li>
+        <li>
+          <b>PERM_INC</b> "increments" a permutation to get the "next" one.
+        </li>
+        <li>
+          <b>PERM_INV</b> inverts a permutation.
+        </li>
+        <li>
+          <b>PERM_NEXT</b> computes all of the permutations on N objects, one at a time.
+        </li>
+        <li>
+          <b>PERM_RANDOM</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>POLY</b> performs operations on polynomials in power or factorial form.
+        </li>
+        <li>
+          <b>POLY_TO_TRI</b> converts a collection of polygons into a collection of triangles.
+        </li>
+        <li>
+          <b>PRUEFER_TO_TREE_ARC</b> is given a Pruefer code, and computes the tree.
+        </li>
+        <li>
+          <b>PRUEFER_TO_TREE_2</b> produces the edge list of a tree from its Pruefer code.
+        </li>
+        <li>
+          <b>PYTHAG</b> computes SQRT ( A**2 + B**2 ) carefully.
+        </li>
+        <li>
+          <b>R4_UNIFORM_01</b> returns a unit pseudorandom R4.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two double precision values.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8COL_FIND</b> seeks a table column equal to a real vector.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints out a portion of a dense matrix.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM</b> returns a scaled pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>R8VEC2_PRINT</b> prints a pair of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC3_COMPARE</b> compares two R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC3_INDEX_INSERT_UNIQUE</b> inserts a unique D3 value in an indexed sorted list.
+        </li>
+        <li>
+          <b>R8VEC3_INDEX_SEARCH</b> searches for an R3 value in an indexed sorted list.
+        </li>
+        <li>
+          <b>S_BLANKS_DELETE</b> replaces consecutive blanks by one blank.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>SHAPE_2D_EDGES_TO_PS</b> writes 2D shape edges to a PostScript file.
+        </li>
+        <li>
+          <b>SHAPE_2D_FACES_TO_PS</b> writes 2D shape faces to a PostScript file.
+        </li>
+        <li>
+          <b>SHAPE_2D_NODES_TO_PS</b> writes 2D shape nodes to a PostScript file.
+        </li>
+        <li>
+          <b>SHAPE_3D_EDGES_TO_PS</b> writes 3D shape edges to a PostScript file.
+        </li>
+        <li>
+          <b>SHAPE_3D_FACES_TO_PS</b> writes 3D shape faces to a PostScript file.
+        </li>
+        <li>
+          <b>SHAPE_3D_NODES_TO_PS</b> writes 3D shape nodes to a PostScript file.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>SPAN_FOREST</b> determines a graph's connectivity and spanning forest.
+        </li>
+        <li>
+          <b>SPAN_TREE_CAND</b> finds candidates for the K-th edge of a spanning tree of a graph.
+        </li>
+        <li>
+          <b>SPAN_TREE_NEXT</b> uses backtracking to find spanning forests of a graph.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TQLRAT</b> compute all eigenvalues of a real symmetric tridiagonal matrix.
+        </li>
+        <li>
+          <b>TRED1</b> transforms a real symmetric matrix to tridiagonal form.
+        </li>
+        <li>
+          <b>TREE_ARC_CENTER</b> computes the center, eccentricity, and parity of a tree.
+        </li>
+        <li>
+          <b>TREE_ARC_DIAM</b> computes the "diameter" of a tree.
+        </li>
+        <li>
+          <b>TREE_ARC_RANDOM</b> selects a random labeled tree and its Pruefer code.
+        </li>
+        <li>
+          <b>TREE_ARC_TO_PRUEFER</b> is given a labeled tree, and computes its Pruefer code.
+        </li>
+        <li>
+          <b>TREE_ENUM</b> enumerates the labeled trees on NNODE nodes.
+        </li>
+        <li>
+          <b>TREE_PARENT_NEXT</b> generates, one at a time, all labeled trees.
+        </li>
+        <li>
+          <b>TREE_PARENT_TO_ARC</b> converts a tree from parent to arc representation.
+        </li>
+        <li>
+          <b>TREE_RB_ENUM</b> returns the number of rooted binary trees with N nodes.
+        </li>
+        <li>
+          <b>TREE_RB_LEX_NEXT</b> generates rooted binary trees in lexicographic order.
+        </li>
+        <li>
+          <b>TREE_RB_TO_PARENT</b> converts a rooted binary tree to parent node representation.
+        </li>
+        <li>
+          <b>TREE_RB_YULE</b> adds two nodes to a rooted binary tree using the Yule model.
+        </li>
+        <li>
+          <b>TREE_ROOTED_CODE</b> returns the code of a rooted tree.
+        </li>
+        <li>
+          <b>TREE_ROOTED_CODE_COMPARE</b> compares (a portion of) the codes for two rooted trees.
+        </li>
+        <li>
+          <b>TREE_ROOTED_DEPTH</b> returns the depth of a rooted tree.
+        </li>
+        <li>
+          <b>TREE_ROOTED_ENUM</b> counts the number of unlabeled rooted trees.
+        </li>
+        <li>
+          <b>TREE_ROOTED_RANDOM</b> selects a random unlabeled rooted tree.
+        </li>
+        <li>
+          <b>VEC_NEXT</b> generates all N-vectors of integers modulo a given base.
+        </li>
+        <li>
+          <b>VEC_RANDOM</b> selects a random N-vector of integers modulo a given base.
+        </li>
+        <li>
+          <b>VLA_TO_GRAPH_ARC</b> reads graphics information from a VLA file.
+        </li>
+        <li>
+          <b>WORD_NEXT_READ</b> "reads" words from a string, one at a time.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

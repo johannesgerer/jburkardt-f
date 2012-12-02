@@ -1,0 +1,201 @@
+<html>
+
+  <head>
+    <title>
+      BAR_PLOT - Bar Plot Data => RGB Arrays.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BAR_PLOT <br> Bar Plot Data => RGB Arrays.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BAR_PLOT</b>
+      is a FORTRAN90 library which
+      makes simple bar plots from data.
+    </p>
+
+    <p>
+      At the moment, the library contains only one "interesting" routine,
+      <b>BAR_DATA_TO_RGB</b>, which assumes that the user wants to make
+      a sort of bar plot.  At a number of equally spaced <b>X</b> values,
+      a set of <b>Y</b> values have been supplied, which are all nonnegative.
+      Moreover, the <b>Y</b> values have been scaled so that the maximum
+      sum (or height of the bar) over any <b>X</b> is 1 (or less).
+    </p>
+
+    <p>
+      <b>BAR_DATA_TO_RGB</b> sets up RGB color arrays that indicate
+      the appearance of the corresponding bar plot (with gray used for
+      parts of the plot over which bars do not extend).  The arrays
+      can easily be plotted by calling, for example, the routine
+      <b>PPMA_WRITE</b> from the PPMA_IO
+      graphics library.
+    </p>
+
+    <p>
+      In turn, a PPMA file can be turned into a number of other
+      useful formats.  For example, the
+      <a href = "http://www.ijg.org/">CJPEG</a> routine can convert
+      such a file to
+      <a href = "../../data/jpg/jpg.html">JPEG files</a>, and these
+      can be displayed on web pages or turned into an animation using
+      <a href = "http://www.apple.com/quicktime/">QuickTime Pro</a>.
+      (This is exactly the direction in which I intend to go with
+      this software.)
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/box_plot/box_plot.html">
+      BOX_PLOT</a>,
+      a MATLAB program which
+      can color in specified entries of
+      a checkerboard, corresponding to pairs of integer data.
+    </p>
+
+    <p>
+      <a href = "../../m_src/histogram_display/histogram_display.html">
+      HISTOGRAM_DISPLAY</a>,
+      a MATLAB program which
+      can read data and display a histogram of it.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ppma_io/ppma_io.html">
+      PPMA_IO</a>,
+      a FORTRAN90 library which
+      reads or writes ASCII Portable Pixel Map (PPM) files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_histogram/table_histogram.html">
+      TABLE_HISTOGRAM</a>,
+      a FORTRAN90 program which
+      reads a file of data and produces a histogram.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bar_plot.f90">bar_plot.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "bar_plot.sh">bar_plot.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bar_plot_prb.f90">bar_plot_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "bar_plot_prb.sh">bar_plot_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "bar_plot_prb_output.txt">bar_plot_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "../../data/ppma/sines.ppma">sines.ppma</a>, a
+          <a href = "../../data/ppma/ppma.html">ASCII PPM file</a>
+          created by the sample calling program, which used the
+          <a href = "../../f_src/ppma_io/ppma_io.html">PPMA_IO</a>
+          graphics library.
+        </li>
+        <li>
+          <a href = "../../data/png/sines.png">sines.png</a>,
+          a PNG image of the data.
+        </li>
+        <li>
+          <a href = "../../data/jpg/sines.jpg">sines.jpg</a>,
+          a JPEG image of the data.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE_TO_RGB</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>BAR_DATA_EXAMPLE</b> returns some sample bar data.
+        </li>
+        <li>
+          <b>BAR_DATA_TO_RGB</b> makes RGB arrays from bar graph data.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_LOG_2</b> returns the integer part of the logarithm base 2 of |I|.
+        </li>
+        <li>
+          <b>I4_TO_ANGLE</b> maps integers to points on a circle.
+        </li>
+        <li>
+          <b>PPM_CHECK_DATA</b> checks pixel data.
+        </li>
+        <li>
+          <b>PPMA_WRITE</b> writes an ASCII portable pixel map file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 07 December 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

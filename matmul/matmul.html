@@ -1,0 +1,431 @@
+<html>
+
+  <head>
+    <title>
+      MATMUL - A Matrix Multiplication Benchmark
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MATMUL <br> A Matrix Multiplication Benchmark
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MATMUL</b>
+      is a FORTRAN90 program which
+      compares various methods for computing the matrix product
+      <pre><b>
+        A * B = C.
+      </b></pre>
+    </p>
+
+    <p>
+      <b>MATMUL</b> can do this for a variety of matrix sizes, and for different
+      arithmetics (real, complex, double precision, integer, even logical!)
+      There are many algorithms built in, including the
+      simple triple DO loop (actually not so simple; there are 6 ways to
+      set it up), some unrolling techniques, and the level 1 and 2 BLAS
+      routines.
+    </p>
+
+    <p>
+      <b>MATMUL</b> is interactive, so the user can easily pursue any
+      line of inquiry that seems promising.  New algorithms or locally
+      available methods are not to hard to add.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>MATMUL</b> is available in
+      <a href = "../../c_src/matmul/matmul.html">a C version</a> and
+      <a href = "../../f77_src/matmul/matmul.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/matmul/matmul.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/linpack_bench/linpack_bench.html">
+      LINPACK_BENCH</a>,
+      a FORTRAN90 program which
+      measures the time needed to factor and solve a linear system.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/mdbnch/mdbnch.html">
+      MDBNCH</a>,
+      a FORTRAN77 program which
+      is a benchmark code for a molecular dynamics calculation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/memory_test/memory_test.html">
+      MEMORY_TEST</a>,
+      a FORTRAN90 program which
+      declares and uses a sequence of larger
+      and larger vectors, to see how big a vector can be used on a given
+      machine and compiler.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxm/mxm.html">
+      MXM</a>,
+      a FORTRAN90 program which
+      sets up a matrix multiplication problem A=B*C of arbitrary size,
+      and compares the time required for IJK, IKJ, JIK, JKI, KIJ and KJI orderings
+      of the loops.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxv/mxv.html">
+      MXV</a>,
+      a FORTRAN90 program which
+      compares the performance of (DO I, DO J) loops, (DO J, DO I) loops,
+      and MATMUL for computing the product of an MxN matrix A and an N vector X.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nas/nas.html">
+      NAS</a>,
+      a FORTRAN90 program which
+      runs the NASA kernel benchmark.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sum_million/sum_million.html">
+      SUM_MILLION</a>,
+      a FORTRAN90 program which
+      sums the integers from 1 to 1,000,000, as a demonstration of how
+      to rate a computer's speed;
+    </p>
+
+    <p>
+      <a href = "../../f_src/timer/timer.html">
+      TIMER</a>,
+      a FORTRAN90 program which
+      demonstrates how to compute CPU time or elapsed time.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          John Burkardt, Paul Puglielli,<br>
+          Pittsburgh Supercomputing Center,<br>
+          <a href = "../../presentations/matmul.pdf">
+          MATMUL: An Interactive Matrix Multiplication Benchmark
+          </a>
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "matmul.f90">matmul.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "matmul.sh">matmul.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "matmul_input.txt">matmul_input.txt</a>,
+          sample input commands (normally, the program is used interactively);
+        </li>
+        <li>
+          <a href = "matmul_alpha.txt">matmul_alpha.txt</a>,
+          the output file on an Alpha;
+        </li>
+        <li>
+          <a href = "matmul_osx.txt">matmul_osx.txt</a>,
+          the output file on an Apple Macintosh running OSX;
+        </li>
+        <li>
+          <a href = "matmul_sgi.txt">matmul_sgi.txt</a>,
+          the output file on an SGI;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for MATMUL.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>C4_IJK</b> computes A = B*C using index order IJK and complex arithmetic.
+        </li>
+        <li>
+          <b>C4_MATMUL</b> computes A = B*C using FORTRAN90 MATMUL and C4 arithmetic.
+        </li>
+        <li>
+          <b>C4_SET</b> initializes the A, B and C matrices using C4 arithmetic.
+        </li>
+        <li>
+          <b>DOMETHOD</b> calls a specific multiplication routine.
+        </li>
+        <li>
+          <b>GETSHO</b> determines what items the user wishes to print out.
+        </li>
+        <li>
+          <b>HEADER</b> prints out a header for the results.
+        </li>
+        <li>
+          <b>HELLO</b> says hello to the user.
+        </li>
+        <li>
+          <b>HELP</b> prints a list of the available commands.
+        </li>
+        <li>
+          <b>INIT</b> initializes data.
+        </li>
+        <li>
+          <b>I4_MATMUL</b> computes A = B*C using FORTRAN90 MATMUL and I4 arithmetic.
+        </li>
+        <li>
+          <b>I4_IJK</b> multiplies A = B*C using index order IJK, using I4 arithmetic.
+        </li>
+        <li>
+          <b>I46_IJK</b> multiplies A = B*C using index order IJK, and I46 arithmetic.
+        </li>
+        <li>
+          <b>I4_SET</b> initializes the A, B and C matrices using I4 arithmetic.
+        </li>
+        <li>
+          <b>L_IJK</b> "multiplies" A = B*C using index order IJK, using logical data.
+        </li>
+        <li>
+          <b>L_SET</b> initializes the A, B and C matrices using "logical arithmetic".
+        </li>
+        <li>
+          <b>MATMUL_CPU_TIMER</b> computes total CPU seconds.
+        </li>
+        <li>
+          <b>MATMUL_REAL_TIMER</b> returns a reading of the real time clock.
+        </li>
+        <li>
+          <b>MULT</b> carries out the matrix multiplication, using the requested method.
+        </li>
+        <li>
+          <b>N_GET</b> determines the problem sizes desired by the user.
+        </li>
+        <li>
+          <b>N_STEP</b> is used when a set of values of N is being generated.
+        </li>
+        <li>
+          <b>ORDER_GET</b> reads a new value of order from the user.
+        </li>
+        <li>
+          <b>ORDER_LIST_PRINT</b> prints the list of choices for the algorithm.
+        </li>
+        <li>
+          <b>PRINTR</b> prints out those parameters the user wants to see.
+        </li>
+        <li>
+          <b>R4_DOT_PRODUCT</b> multiplies A = B*C using DOT_PRODUCT and R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_MATMUL</b> computes A = B*C using FORTRAN90 MATMUL and R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IJ</b> sets A = B*C using index order IJ with implicit K and R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IJK</b> multiplies A = B*C using index order IJK and R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IJK_IMPLICIT</b> sets A = B*C, index order IJK, implicit loops, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IJK_M</b> multiplies A = B*C using index order IJK and R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IJK_S</b> sets A = B*C, index order IJK, no Cray vectorization, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IJK_I2</b> sets A = B*C, index order IJK, unrolling I 2 times, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IJK_I4</b> sets A = B*C, index order IJK, unrolling I 4 times, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IJK_I8</b> sets A = B*C, index order IJK, unrolling I 8 times, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IJK_J4</b> sets A = B*C, index order IJK, unrolling on J, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IJK_K4</b> sets A = B*C, index order IJK, unrolling on K, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IKJ</b> multiplies A = B*C using index order IKJ, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_IKJ</b> multiplies A = B*C, index order IKJ, DOT_PRODUCT, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_JIK</b> multiplies A = B*C using index order JIK, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_JIK_implicit</b> sets A = B*C, index order JIK, implicit loops, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_JKI</b> multiplies A = B*C using index order JKI, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_JKI_IMPLICIT</b> sets A = B*C, index order JKI, implicit loops, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_KIJ</b> multiplies A = B*C using index order KIJ, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_KIJ_DOT</b> sets A = B*C using index order KIJ and DOT_PRODUCT, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_KJI</b> multiplies A = B*C using index order KJI, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_KJI_IMPLICIT</b> sets A = B*C, index order KJI, implicit loops, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_KJI_M</b> sets A = B*C using index order KJI and multitasking, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_MXMA</b> multiplies A = B*C using optimized MXMA, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_SAXPYC</b> multiplies A = B*C columnwise, using optimized SAXPY, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_SAXPYR</b> multiplies A = B*C "rowwise", using optimized SAXPY, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_SDOT</b> multiplies A = B*C using optimized SDOT, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_SET</b> initializes the A, B and C matrices using R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_SGEMM</b> multiplies A = B*C using optimized SGEMM, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_SGEMMS</b> multiplies A = B*C using optimized SGEMMS, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_TAXPYC</b> sets A = B*C columnwise, using source code SAXPY, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_TAXPYR</b> multiplies A = B*C rowwise using source code SAXPY, R4 arithmetic
+        </li>
+        <li>
+          <b>R4_TDOT</b> multiplies A = B * C using source code SDOT, R4 arithmetic.
+        </li>
+        <li>
+          <b>R4_TGEMM</b> multiplies A = B*C using source code SGEMM, R4 arithmetic.
+        </li>
+        <li>
+          <b>R8_MATMUL</b> computes A = B*C using FORTRAN90 MATMUL and R8 arithmetic.
+        </li>
+        <li>
+          <b>R8_IJK</b> multiplies A = B*C using index order IJK and R8 arithmetic.
+        </li>
+        <li>
+          <b>R8_SET</b> initializes the matrices A, B and C using R8 arithmetic.
+        </li>
+        <li>
+          <b>REPORT</b> reports the results for each multiplication experiment.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>TAXPY</b> is unoptimized standard BLAS routine SAXPY.
+        </li>
+        <li>
+          <b>TDOT</b> computes the inner product of two vectors.
+        </li>
+        <li>
+          <b>TERBLA</b> is the source code for the BLAS error handler.
+        </li>
+        <li>
+          <b>TGEMM</b> is a source code copy of SGEMM, a BLAS matrix * matrix routine.
+        </li>
+        <li>
+          <b>TGEMVF</b> is a source code copy of BLAS SGEMVF, a matrix * vector routine.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TLSAME</b> is a source code copy of BLAS LSAME, testing character equality.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 23 March 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

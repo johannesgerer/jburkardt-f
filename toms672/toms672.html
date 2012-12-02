@@ -1,0 +1,277 @@
+<html>
+
+  <head>
+    <title>
+      TOMS672 - Maximally Accurate Extensions of Quadrature Rules
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOMS672 <br> Maximally Accurate Extensions of Quadrature Rules
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS672</b>
+      is a FORTRAN90 library which
+      computes a quadrature rule which is a maximally accurate extension of a
+      given quadrature rule.
+    </p>
+
+    <p>
+      That is, we suppose we have a quadrature rule that uses N points, and
+      that we wish to compute a new quadrature rule, which uses N+M points.
+      The new rule is required to include the original N points of the old rule.
+    </p>
+
+    <p>
+      This kind of procedure is analogous to the process by which the
+      nested Gauss-Patterson rules were developed.  Thus, one use of the
+      software is to try to develop nested families of rules for other
+      weight functions, or starting from other initial rules.
+    </p>
+
+    <p>
+      In certain cases, this algorithm <i>may</i> be able to extend the given
+      rule in a way which produces a rule with the maximum possible precision.
+      (However, it is also possible that the extension cannot be made.)
+    </p>
+
+    <p>
+      By calling this algorithm repeatedly, it is possible to compute a family
+      of nested quadrature rules of any order.  Nested rules can be efficient when
+      function evaluations are expensive, and a series of integral estimates must
+      be made to estimate accuracy, or to detect convergence.
+    </p>
+
+    <p>
+      The original, true, correct version of ACM TOMS Algorithm 672
+      is available through ACM:
+              <a href = "http://www.acm.org/pubs/calgo/">
+                         http://www.acm.org/pubs/calgo</a>
+      or NETLIB:
+      <a href = "http://www.netlib.org/toms/index.html">
+      http://www.netlib.org/toms/index.html</a>.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TOMS672</b> is available in
+      <a href = "../../f77_src/toms672/toms672.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms672/toms672.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/int_exactness/int_exactness.html">
+      INT_EXACTNESS</a>,
+      a FORTRAN90 program which
+      checks the polynomial exactness
+      of a 1-dimensional quadrature rule for a finite interval.
+    </p>
+
+    <p>
+      <a href = "../../f_src/kronrod/kronrod.html">
+      KRONROD</a>,
+      a FORTRAN90 library which
+      can compute a Gauss and Gauss-Kronrod pair of quadrature rules
+      of arbitrary order,
+      by Robert Piessens, Maria Branders.
+    </p>
+
+    <p>
+      <a href = "../../f_src/patterson_rule/patterson_rule.html">
+      PATTERSON_RULE</a>,
+      a FORTRAN90 program which
+      computes a Gauss-Patterson quadrature rule.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules/quadrature_rules.html">
+      QUADRATURE_RULES</a>
+      a dataset directory which
+      contains sets of files that define quadrature
+      rules over various 1D intervals or multidimensional hypercubes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrule/quadrule.html">
+      QUADRULE</a>
+      a FORTRAN90 library which
+      defines quadrature rules on a
+      variety of intervals with different weight functions.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Gene Golub, Thomas Robertson,<br>
+          A generalized Bairstow Algorithm,<br>
+          Communications of the ACM,<br>
+          Volume 10, Number 6, June 1967, pages 371-373.
+        </li>
+        <li>
+          Thomas Patterson,<br>
+          The Optimal Addition of Points to Quadrature Formulae,<br>
+          Mathematics of Computation,<br>
+          Volume 22, Number 104, October 1968, pages 847-856.
+        </li>
+        <li>
+          Thomas Patterson,<br>
+          An algorithm for generating interpolatory quadrature rules of the highest degree
+          of precision with preassigned nodes for general weight functions,<br>
+          Transactions on Mathematical Software,<br>
+          Volume 15, Number 2, June 1989, pages 123-136.
+        </li>
+        <li>
+          Thomas Patterson,<br>
+          Algorithm 672:
+          EXTEND: generation of interpolatory quadrature rules of the highest degree
+          of precision with preassigned nodes for general weight functions,<br>
+          Transactions on Mathematical Software,<br>
+          Volume 15, Number 2, June 1989, pages 137-143.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms672.f90">toms672.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "toms672.sh">toms672.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms672_prb.f90">toms672_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "toms672_prb.sh">toms672_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "toms672_prb_input.txt">toms672_prb_input.txt</a>,
+          the input file.
+        </li>
+        <li>
+          <a href = "toms672_prb_output.txt">toms672_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ASSIGN</b> generates the polynomial whose roots are the preassigned nodes.
+        </li>
+        <li>
+          <b>BAIR</b> seeks roots of a polynomial.
+        </li>
+        <li>
+          <b>CHECK</b> tests a computed quadrature rule.
+        </li>
+        <li>
+          <b>DAXPY</b> computes constant times a vector plus a vector.
+        </li>
+        <li>
+          <b>DDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>DGEFA</b> factors a real general matrix.
+        </li>
+        <li>
+          <b>DGESL</b> solves a real general linear system A * X = B.
+        </li>
+        <li>
+          <b>DSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>EPROD</b> expands a product of two orthogonal polynomials.
+        </li>
+        <li>
+          <b>EXTEND</b> extends a quadrature rule by adding new nodes.
+        </li>
+        <li>
+          <b>GENER</b> calculates the polynomial defining the optimal new nodes.
+        </li>
+        <li>
+          <b>IDAMAX</b> indexes the array element of maximum absolute value.
+        </li>
+        <li>
+          <b>LFACT</b> removes a linear factor from a polynomial expansion.
+        </li>
+        <li>
+          <b>NEWTON</b> applies Newton's method for a single root of a polynomial.
+        </li>
+        <li>
+          <b>QFACT</b> divides a polynomial by a quadratic factor.
+        </li>
+        <li>
+          <b>ROOTS</b> calculates roots of a quadratic factor.
+        </li>
+        <li>
+          <b>RSORT</b> carries out a simple ripple sort.
+        </li>
+        <li>
+          <b>SOLVE</b> calculates roots of an orthogonal polynomial expansion.
+        </li>
+        <li>
+          <b>TRANSF</b> scales a polynomial expansion with respect to the moments.
+        </li>
+        <li>
+          <b>WEIGHT</b> calculates quadrature weights.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 16 February 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,188 @@
+<html>
+
+  <head>
+    <title>
+      BLAS3 - Level 3 Basic Linear Algebra Subprograms
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BLAS3 <br> Level 3 Basic Linear Algebra Subprograms
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BLAS3</b>
+      is a FORTRAN90 library which
+      implements the Level 3
+      <b>BLAS</b>, or Basic Linear Algebra Subprograms.
+    </p>
+
+    <p>
+      The <b>BLAS</b> are a small core library of linear algebra utilities,
+      which can be highly optimized for various architectures.  Software
+      that relies on the <b>BLAS</b> is thus highly portable, and will typically
+      run very efficiently.
+    </p>
+
+    <p>
+      The Level 3 BLAS are designed to handle matrix-matrix operations.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>BLAS3</b> is available in
+      <a href = "../../f_src/blas3/blas3.html">a FORTRAN90 version</a> and
+      <a href = "../../f77_src/blas3/blas3.html">a FORTRAN77 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blas1/blas1.html">
+      BLAS1</a>,
+      a FORTRAN90 library which
+      handles vector-vector operations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/blas2/blas2.html">
+      BLAS2</a>,
+      a FORTRAN90 library which
+      handles matrix-vector operations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lapack_examples/lapack_examples.html">
+      LAPACK_EXAMPLES</a>,
+      a FORTRAN90 program which
+      demonstrates the use of the LAPACK linear algebra library.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Edward Anderson, Zhaojun Bai, Christian Bischof, Susan Blackford,
+          James Demmel, Jack Dongarra, Jeremy Du Croz, Anne Greenbaum,
+          Sven Hammarling, Alan McKenney, Danny Sorensen,<br>
+          LAPACK User's Guide,<br>
+          Third Edition,<br>
+          SIAM, 1999,<br>
+          ISBN: 0898714478,<br>
+          LC: QA76.73.F25L36.
+        </li>
+        <li>
+          Thomas Coleman, Charles vanLoan,<br>
+          Handbook for Matrix Computations,<br>
+          SIAM, 1988,<br>
+          ISBN13: 978-0-898712-27-8,<br>
+          LC: QA188.C65.
+        </li>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1,<br>
+          LC: QA214.L56.
+        </li>
+        <li>
+          Charles Lawson, Richard Hanson, David Kincaid, Fred Krogh,<br>
+          Algorithm 539:
+          Basic Linear Algebra Subprograms for Fortran Usage,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 5, Number 3, September 1979, pages 308-323.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "blas3.f90">blas3.f90</a>, the matrix-matrix code;
+        </li>
+        <li>
+          <a href = "blas3.sh">blas3.sh</a>, commands to compile
+          the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "blas3_prb.f90">blas3_prb.f90</a>, a calling program;
+        </li>
+        <li>
+          <a href = "blas3_prb.sh">blas3_prb.sh</a>, commands to
+          compile, link, load and run the calling program;
+        </li>
+        <li>
+          <a href = "blas3_prb_output.txt">blas3_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DGEMM</b> C:=alpha*A*B+beta*C, A, B, C rectangular.
+        </li>
+        <li>
+          <b>DSYMM</b> C:=alpha*A*B+beta*C, A symmetric, B and C rectangular.
+        </li>
+        <li>
+          <b>DSYRK</b> C:=alpha*A*TRANSPOSE(A)+beta*C, C symmetric.
+        </li>
+        <li>
+          <b>DSYR2K</b> C:=alpha*A*TRANSPOSE(B)+alpha*B*TRANSPOSE(A)+beta*C, C symmetric.
+        </li>
+        <li>
+          <b>DTRMM</b> B:=A*B or B:=B*A, A triangular, B rectangular.
+        </li>
+        <li>
+          <b>DTRSM</b> B:=INVERSE(A)*C or B:=C*INVERSE(A), B and C rectangular, A triangular.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 August 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

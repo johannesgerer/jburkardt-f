@@ -1,0 +1,331 @@
+<html>
+
+  <head>
+    <title>
+      MASS - Mass Matrix Verification
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MASS <br> Mass Matrix Verification
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MASS</b>
+      is a FORTRAN90 program which
+      checks the mass matrix computation for a finite
+      element fluid flow computation.
+    </p>
+
+    <p>
+      The code was created by starting with routines extracted from the
+      POD_BASIS program.  The new code computes, factors, and uses
+      the mass matrix.
+    </p>
+
+    <p>
+      This was a tricky process, because the original mass matrix
+      is computed in another executable program, not controlled by
+      me but by Professor Hyung-Chun Lee.  Thus, an appalling number
+      of choices must match, including conventions about the ordering of nodes,
+      the quadrature rule, and so on.  (We discovered our disagreements
+      one by one, and decided how to resolve them!)
+    </p>
+
+    <p>
+      After running this program many times, we finally
+      worked out the set of parameters to be used.  We were satisfied
+      with the results in July 2003.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../datasets/case1_flow/case1_flow.html">
+      CASE1_FLOW</a>,
+      a dataset directory which
+      contains solutions to a flow problem.
+    </p>
+
+    <p>
+      <a href = "../../datasets/cavity_flow/cavity_flow.html">
+      CAVITY_FLOW</a>,
+      a dataset directory which
+      contains solutions to flow in a cavity.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cvt_basis_flow/cvt_basis_flow.html">
+      CVT_BASIS_FLOW</a>,
+      a FORTRAN90 program which
+      can be used to analyze this data, and compute
+      a small set of "basis vectors" using CVT techniques.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/hcell/hcell.html">
+      HCELL</a>,
+      a FORTRAN77 program which
+      solves the Navier Stokes equations in the H-Cell region.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/inout/inout.html">
+      INOUT</a>,
+      a FORTRAN77 program which
+      solves the Navier Stokes equations in the "In-Out" region.
+    </p>
+
+    <p>
+      <a href = "../../datasets/inout_flow/inout_flow.html">
+      INOUT_FLOW</a>,
+      a dataset directory which
+      contains solutions to flow in  the "inout" region.
+    </p>
+
+    <p>
+      <a href = "../../datasets/inout_flow2/inout_flow2.html">
+      INOUT_FLOW2</a>,
+      a dataset directory which
+      contains solutions to flow in the "inout" region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pod_basis_flow/pod_basis_flow.html">
+      POD_BASIS_FLOW</a>,
+      a FORTRAN90 program which
+      can be used to analyze flow data, and compute
+      a small set of "basis vectors" using POD techniques.
+    </p>
+
+    <p>
+      <a href = "../../datasets/tcell_flow/tcell_flow.html">
+      TCELL_FLOW</a>,
+      a dataset directory which
+      contains solutions to flow in
+      the T-cell region.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/tcell_mass/tcell_mass.html">
+      TCELL_MASS</a>,
+      a FORTRAN77 program which
+      computes the mass matrix for the T-Cell problem.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Max Gunzburger,<br>
+          Finite Element Methods for Viscous Incompressible Flows,<br>
+          A Guide to Theory, Practice, and Algorithms,<br>
+          Academic Press, 1989,<br>
+          ISBN: 0-12-307350-2,<br>
+          LC: TA357.G86.
+        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Hyung-Chun Lee,<br>
+          Centroidal Voronoi Tessellation-Based Reduced-Order
+          Modelling of Complex Systems,<br>
+          SIAM Journal on Scientific Computing,<br>
+          Volume 28, Number 2, 2006, pages 459-484.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "mass.f90">mass.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "mass.sh">mass.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>MASS_05</b> is a run of the program which uses the 500 solutions
+      associated with the INOUT_FLOW dataset.
+      <ul>
+        <li>
+          <a href = "mass_05_input.txt">mass_05_input.txt</a>,
+          the input file.
+        </li>
+        <li>
+          <a href = "mass_05_output.txt">mass_05_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for MASS.
+        </li>
+        <li>
+          <b>BANDWIDTH_DETERMINE</b> computes the lower bandwidth of a finite element matrix.
+        </li>
+        <li>
+          <b>BASIS_WRITE</b> writes a basis vector to a file.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DATA_I4VEC_READ</b> reads an dataset of integer vectors stored in a file.
+        </li>
+        <li>
+          <b>DATA_R82_READ</b> reads a data set of pairs of R8 numbers stored in a file.
+        </li>
+        <li>
+          <b>DATA_R82_WRITE</b> writes a data set of pairs of real*8 numbers into a file.
+        </li>
+        <li>
+          <b>DATA_SIZE</b> counts the size of a data set stored in a file.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>FILE_EXIST</b> reports whether a file exists.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_INPUT</b> prints a prompt string and reads an integer from the user.
+        </li>
+        <li>
+          <b>I4_RANGE_INPUT</b> reads a pair of integers from the user, representing a range.
+        </li>
+        <li>
+          <b>MASS_MATRIX</b> computes the mass matrix.
+        </li>
+        <li>
+          <b>NODE_T6</b> returns the basis nodes for a 6 node triangle.
+        </li>
+        <li>
+          <b>R8BLT_CHECK</b> checks the dimensions of a banded lower triangular matrix.
+        </li>
+        <li>
+          <b>R8BLT_PRINT</b> prints a band lower triangular matrix.
+        </li>
+        <li>
+          <b>R8BLT_PRINT_SOME</b> prints some of a band lower triangular matrix.
+        </li>
+        <li>
+          <b>REFQBF</b> evaluates a reference element quadratic basis function.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INPUT</b> prints a prompt string and reads a string from the user.
+        </li>
+        <li>
+          <b>S_OF_I4</b> converts an integer to a left-justified string.
+        </li>
+        <li>
+          <b>S_REP_CH</b> replaces all occurrences of one character by another.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 value from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SINGULAR_VECTORS</b> computes the desired singular values.
+        </li>
+        <li>
+          <b>R8PBL_CHECK</b> checks the dimensions of a positive definite symmetric band matrix.
+        </li>
+        <li>
+          <b>R8PBL_WRITE</b> writes a symmetric banded matrix to a file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+        <li>
+          <b>TRIANGLE_UNIT_SET</b> sets a quadrature rule in the unit triangle.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 May 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,365 @@
+<html>
+
+  <head>
+    <title>
+      TOEPLITZ - Solution of Toeplitz linear systems
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOEPLITZ <br> Solution of Toeplitz linear systems
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOEPLITZ</b>
+      is a FORTRAN90 library which
+      solves a variety of Toeplitz and circulant linear systems.
+    </p>
+
+    <p>
+      The package can also handle circulant Toeplitz systems, and
+      some other more complicated but related forms.
+    </p>
+
+    <p>
+      The <b>TOEPLITZ</b> package was written in the early 1980's by
+      a joint working group of American and Soviet mathematicians.
+    </p>
+
+    <p>
+      The original, true, correct version of TOEPLITZ is available
+      in the TOEPLITZ subdirectory of
+      <a href = "http://www.netlib.org/">the NETLIB web site</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blas1/blas1.html">
+      BLAS1</a>,
+      a FORTRAN90 library which
+      contains the level 1 Basic Linear
+      Algebra Subprograms.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack/linpack.html">
+      LINPACK</a>,
+      a FORTRAN90 library which
+      carries out the factorization and solution
+      of linear systems of a variety of types.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linplus/linplus.html">
+      LINPLUS</a>,
+      a FORTRAN90 library which
+      includes some routines for manipulating Toeplitz matrices.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_mat/test_mat.html">
+      TEST_MAT</a>,
+      a FORTRAN90 library which
+      includes some routines which define sample Toeplitz matrices.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toeplitz_cholesky/toeplitz_cholesky.html">
+      TOEPLITZ_CHOLESKY</a>,
+      a FORTRAN90 library which
+      computes the Cholesky factorization of a nonnegative definite symmetric
+      Toeplitz matrix.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Oleg Arushanian, MK Samarin, Valentin Voevodin, Evgeny Tyrtyshnikov,
+          Burton Garbow, James Boyle, Wayne Cowell, Kenneth Dritz,<br>
+          The TOEPLITZ Package User's Guide,<br>
+          Argonne National Laboratory,<br>
+          ANL-83-16, 1983.
+        </li>
+        <li>
+          Jack Dongarra, Jim Bunch, Cleve Moler, Pete Stewart,<br>
+          LINPACK User's Guide,<br>
+          SIAM, 1979,<br>
+          ISBN13: 978-0-898711-72-1.
+        </li>
+        <li>
+          Charles Lawson, Richard Hanson, David Kincaid, Fred Krogh,<br>
+          Basic Linear Algebra Subprograms for Fortran Usage,<br>
+          Algorithm 539,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 5, Number 3, September 1979, pages 308-323.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toeplitz.f90">toeplitz.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "toeplitz.sh">toeplitz.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toeplitz_prb.f90">toeplitz_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "toeplitz_prb.sh">toeplitz_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "toeplitz_prb_output.txt">toeplitz_prb_output.txt</a>, sample problem
+          output.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>C4_ABS1</b> computes the L1 absolute value of a complex number.
+        </li>
+        <li>
+          <b>C4_SWAP</b> swaps two complex values.
+        </li>
+        <li>
+          <b>CAXPY</b> adds a constant times one vector to another.
+        </li>
+        <li>
+          <b>CBTO_SL</b> solves the complex block Toeplitz linear system A * X = B.
+        </li>
+        <li>
+          <b>CCCC_SL</b> solves the complex double column circulant system A * X = B.
+        </li>
+        <li>
+          <b>CCCG_SL</b> solves the complex CCG linear system A * X = B.
+        </li>
+        <li>
+          <b>CCC_SL</b> solves the complex column circulant system A * X = B.
+        </li>
+        <li>
+          <b>CCCT_SL</b> solves the complex CCT linear system A * X = B..
+        </li>
+        <li>
+          <b>CCG_SL</b> solves the complex CG linear system A * X = B.
+        </li>
+        <li>
+          <b>CCI_MXV</b> multiplies a complex circulant matrix times a vector.
+        </li>
+        <li>
+          <b>CCI_PRINT</b> prints a complex circulant matrix.
+        </li>
+        <li>
+          <b>CCI_PRINT_SOME</b> prints some of a complex circulant matrix.
+        </li>
+        <li>
+          <b>CCI_RANDOM</b> randomizes a complex circulant matrix.
+        </li>
+        <li>
+          <b>CCI_SL</b> solves the complex circulant system A * X = B.
+        </li>
+        <li>
+          <b>CCTG_SL</b> solves the complex CTG linear system A * X = B.
+        </li>
+        <li>
+          <b>CCT_SL</b> solves the complex CT linear system A * X = B.
+        </li>
+        <li>
+          <b>CDOTC</b> forms the dot product of two vectors, conjugating the first.
+        </li>
+        <li>
+          <b>CGEFA</b> factors a complex matrix by gaussian elimination.
+        </li>
+        <li>
+          <b>CGESL</b> solves the complex general system A * X = B.
+        </li>
+        <li>
+          <b>CSALW</b> Fourier transforms the rows of a complex rectangular matrix.
+        </li>
+        <li>
+          <b>CSCAL</b> scales a complex vector by a constant.
+        </li>
+        <li>
+          <b>CSSCAL</b> scales a complex vector by a real constant.
+        </li>
+        <li>
+          <b>CTG_SL</b> solves a linear system involving a complex TG matrix.
+        </li>
+        <li>
+          <b>CTG_SL1</b> solves a CTG linear system.
+        </li>
+        <li>
+          <b>CTO_MXV</b> multiplies a complex Toeplitz matrix times a vector.
+        </li>
+        <li>
+          <b>CTO_PRINT</b> prints a complex Toeplitz matrix.
+        </li>
+        <li>
+          <b>CTO_PRINT_SOME</b> prints some of a complex Toeplitz matrix.
+        </li>
+        <li>
+          <b>CTO_RANDOM</b> randomizes a complex Toeplitz matrix.
+        </li>
+        <li>
+          <b>CTO_SL</b> solves the complex Toeplitz system A * X = B.
+        </li>
+        <li>
+          <b>CTO_VXM</b> multiplies a vector times a complex Toeplitz matrix.
+        </li>
+        <li>
+          <b>CTRDI</b> computes the determinant and inverse of a complex triangular matrix.
+        </li>
+        <li>
+          <b>CVEC_INDICATOR</b> sets a complex vector to the indicator vector.
+        </li>
+        <li>
+          <b>CVEC_PRINT</b> prints a complex vector, with an optional title.
+        </li>
+        <li>
+          <b>CVEC_PRINT_SOME</b> prints some of a complex vector.
+        </li>
+        <li>
+          <b>CVEC_RANDOM</b> returns a random complex vector in a given range.
+        </li>
+        <li>
+          <b>ICAMAX</b> finds the index of element having maximum absolute value.
+        </li>
+        <li>
+          <b>ISAMAX</b> finds the index of the vector element of maximum absolute value.
+        </li>
+        <li>
+          <b>R4_RANDOM</b> returns a random real in a given range.
+        </li>
+        <li>
+          <b>R4VEC_INDICATOR</b> sets a real vector to the indicator vector.
+        </li>
+        <li>
+          <b>R4VEC_PRINT</b> prints a real vector.
+        </li>
+        <li>
+          <b>R4VEC_PRINT_SOME</b> prints "some" of a real vector.
+        </li>
+        <li>
+          <b>R4VEC_RANDOM</b> returns a random real vector in a given range.
+        </li>
+        <li>
+          <b>SAMAX</b> returns the maximum absolute value of the entries in a vector.
+        </li>
+        <li>
+          <b>SAXPY</b> adds a constant times one vector to another.
+        </li>
+        <li>
+          <b>SBTO_MXV</b> computes the real block Toeplitz matrix product A * X = B.
+        </li>
+        <li>
+          <b>SBTO_PRINT</b> prints a block Toeplitz matrix.
+        </li>
+        <li>
+          <b>SBTO_PRINT_SOME</b> prints some of a block Toeplitz matrix.
+        </li>
+        <li>
+          <b>SBTO_SL</b> solves the real block Toeplitz linear system A * X = B.
+        </li>
+        <li>
+          <b>SBTO_TO_SGE</b> converts a block Toeplitz matrix to a Linpack General matrix.
+        </li>
+        <li>
+          <b>SBTO_VXM</b> computes the real block Toeplitz matrix product X * A = B.
+        </li>
+        <li>
+          <b>SCC_QR</b> computes the QR factorization of a real M by L column circulant matrix.
+        </li>
+        <li>
+          <b>SCNRM2</b> computes the unitary norm of a complex vector.
+        </li>
+        <li>
+          <b>SDOT</b> forms the dot product of two vectors.
+        </li>
+        <li>
+          <b>SGEFA</b> factors a real matrix.
+        </li>
+        <li>
+          <b>SGESL</b> solves a real general linear system A * X = B.
+        </li>
+        <li>
+          <b>SNRM2</b> computes the Euclidean norm of a vector.
+        </li>
+        <li>
+          <b>SSCAL</b> scales a vector by a constant.
+        </li>
+        <li>
+          <b>STO_MXV</b> multiplies a Toeplitz matrix times a vector.
+        </li>
+        <li>
+          <b>STO_PRINT</b> prints a Toeplitz matrix.
+        </li>
+        <li>
+          <b>STO_PRINT_SOME</b> prints some of a Toeplitz matrix.
+        </li>
+        <li>
+          <b>STO_RANDOM</b> randomizes a Toeplitz matrix.
+        </li>
+        <li>
+          <b>STO_SL</b> solves the real Toeplitz system A * X = B.
+        </li>
+        <li>
+          <b>STO_VXM</b> multiplies a vector times a Toeplitz matrix.
+        </li>
+        <li>
+          <b>STRDI</b> computes the determinant and inverse of a real triangular matrix.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

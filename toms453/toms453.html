@@ -1,0 +1,202 @@
+<html>
+
+  <head>
+    <title>
+      TOMS453 - Gaussian Quadrature Formulas for Bromwich's Integral
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOMS453 <br> Gaussian Quadrature Formulas for Bromwich's Integral
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS453</b>
+      is a FORTRAN90 library which
+      implements ACM TOMS algorithm 453, which computes the abscissas
+      and weights of a Gaussian quadrature formula of given order for
+      Bromwich's integral.
+    </p>
+
+    <p>
+      The Bromwich integral is the inverse of the Laplace transform.
+    </p>
+
+    <p>
+      While the text of many ACM TOMS algorithms is available online
+      through ACM:
+              <a href = "http://www.acm.org/pubs/calgo/">
+                         http://www.acm.org/pubs/calgo</a>
+      or NETLIB:
+      <a href = "http://www.netlib.org/toms/index.html">
+      http://www.netlib.org/toms/index.html</a>, most of the early
+      algorithms are not available.  This is one of them.  I typed it
+      in.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <pre><tt>
+        call bromin ( n, s, tol, xr, xi, wr, wi, eps, ier )
+      </tt></pre>
+      <dl>
+        <dt>
+          <b>N</b
+        </dt>
+        <dd>
+          the order of the rule;
+        </dd>
+        <dt>
+          <b>S</b
+        </dt>
+        <dd>
+          the parameter in the integral;
+        </dd>
+        <dt>
+          <b>TOL</b
+        </dt>
+        <dd>
+          an error tolerance;
+        </dd>
+        <dt>
+          <b>XR, XI</b
+        </dt>
+        <dd>
+          the real and imaginary parts of the abscissas;
+        </dd>
+        <dt>
+          <b>WR, WI</b
+        </dt>
+        <dd>
+          the real and imaginary parts of the weights;
+        </dd>
+        <dt>
+          <b>EPS</b
+        </dt>
+        <dd>
+          the relatve accuracy estimate;
+        </dd>
+        <dt>
+          <b>IER</b
+        </dt>
+        <dd>
+          the error flag.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TOMS453</b> is available in
+      <a href = "../../f77_src/toms453/toms453.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms453/toms453.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Robert Piessens,<br>
+          Some Aspects of Gaussian Quadrature Formulas for
+          the Numerical Inversion of the Laplace Transform,<br>
+          The Computer Journal,<br>
+          November 1971, Volume 14, pages 433-435.
+        </li>
+        <li>
+          Robert Piessens,<br>
+          Algorithm 453: Gaussian Quadrature Formulas for
+          Bromwich's Integral,<br>
+          Communications of the ACM,<br>
+          August 1973, Volume 16, Number 8, pages 486-487.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms453.f90">toms453.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "toms453.sh">toms453.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms453_prb.f90">toms453_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "toms453_prb.sh">toms453_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "toms453_prb_output.txt">toms453_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BROMIN</b> computes the abscissas and weights for
+          a Gaussian quadrature formula for Bromwich's integral.
+        </li>
+        <li>
+          <b>DGAMMA</b> calculates the gamma function for a real argument X.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints out the current YMDHMS date as a timestamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 July 2008.
+
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

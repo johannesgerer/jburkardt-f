@@ -1,0 +1,399 @@
+<html>
+
+  <head>
+    <title>
+      NIEDERREITER - The Niederreiter Quasirandom Sequence [Arbitrary base]
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      NIEDERREITER <br> The Niederreiter Quasirandom Sequence [Arbitrary base]
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>NIEDERREITER</b>
+      is a FORTRAN90 library which
+      implements the Niederreiter
+      quasirandom sequence, using an "arbitrary" base; more correctly,
+      the code is not restricted to using a base of 2, but can instead
+      use a base that is a prime or a power of a prime.
+    </p>
+
+    <p>
+      A quasirandom or low discrepancy sequence, such as the Faure,
+      Halton, Hammersley, Niederreiter or Sobol sequences, is
+      "less random" than a pseudorandom number sequence, but
+      more useful for such tasks as approximation of integrals in
+      higher dimensions, and in global optimization.
+      This is because low discrepancy sequences tend to sample
+      space "more uniformly" than random numbers.  Algorithms
+      that use such sequences may have superior convergence.
+    </p>
+
+    <p>
+      <b>NIEDERREITER</b> is an adaptation of the INLO and GOLO routines
+      in ACM TOMS Algorithm 738.  The original code can only
+      compute the "next" element of the sequence.  The revised code
+      allows the user to specify the index of the desired element.
+    </p>
+
+    <p>
+      The original, true, correct version of ACM TOMS Algorithm 738
+      is available in the TOMS subdirectory of
+      <a href = "http://www.netlib.org/">the NETLIB web site</a>.
+      The version displayed here has been converted to FORTRAN90,
+      and other internal changes have been made to suit me.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>NIEDERREITER</b> is available in
+      <a href = "../../cpp_src/niederreiter/niederreiter.html">a C++ version</a> and
+      <a href = "../../f_src/niederreiter/niederreiter.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt/cvt.html">
+      CVT</a>,
+      a FORTRAN90 library which
+      computes elements of a Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/faure/faure.html">
+      FAURE</a>,
+      a FORTRAN90 library which
+      computes elements of a Faure quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grid/grid.html">
+      GRID</a>,
+      a FORTRAN90 library which
+      computes elements of a grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/halton/halton.html">
+      HALTON</a>,
+      a FORTRAN90 library which
+      computes elements of a Halton quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hammersley/hammersley.html">
+      HAMMERSLEY</a>,
+      a FORTRAN90 library which
+      computes elements of a Hammersley quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid/hex_grid.html">
+      HEX_GRID</a>,
+      a FORTRAN90 library which
+      computes elements of a hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid_angle/hex_grid_angle.html">
+      HEX_GRID_ANGLE</a>,
+      a FORTRAN90 library which
+      computes elements of an angled hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ihs/ihs.html">
+      IHS</a>,
+      a FORTRAN90 library which
+      computes elements of an improved distributed Latin hypercube dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_center/latin_center.html">
+      LATIN_CENTER</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube dataset, choosing center points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_edge/latin_edge.html">
+      LATIN_EDGE</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube dataset, choosing edge points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_random/latin_random.html">
+      LATIN_RANDOM</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube dataset, choosing
+      points at random.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lcvt/lcvt.html">
+      LCVT</a>,
+      a FORTRAN90 library which
+      computes a latinized Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/niederreiter2/niederreiter2.html">
+      NIEDERREITER2</a>,
+      a FORTRAN90 library which
+      computes a Niederreiter sequence for a base of 2.
+    </p>
+
+    <p>
+      <a href = "../../f_src/normal/normal.html">
+      NORMAL</a>,
+      a FORTRAN90 library which
+      computes elements of a
+      sequence of pseudorandom normally distributed values.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sobol/sobol.html">
+      SOBOL</a>,
+      a FORTRAN90 library which
+      computes elements of a Sobol quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms738/toms738.html">
+      TOMS738</a>,
+      a FORTRAN90 library which
+      is a version of ACM TOMS algorithm 738,
+      for evaluating Niederreiter sequences.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      computes elements of a uniform pseudorandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/van_der_corput/van_der_corput.html">
+      VAN_DER_CORPUT</a>,
+      a FORTRAN90 library which
+      computes elements of a van der Corput pseudorandom sequence.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Paul Bratley and Bennett Fox,<br>
+          Algorithm 659:
+          Implementing Sobol's Quasirandom Sequence Generator,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 14, Number 1, pages 88-100, 1988.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox, Harald Niederreiter,<br>
+          Algorithm 738:
+          Programs to Generate Niederreiter's Low-Discrepancy Sequences,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 20, Number 4, pages 494-495, 1994.
+        </li>
+        <li>
+          Paul Bratley, Bennett Fox, Harald Niederreiter,<br>
+          Implementation and Tests of Low Discrepancy Sequences,<br>
+          ACM Transactions on Modeling and Computer Simulation,<br>
+          Volume 2, Number 3, pages 195-213, 1992.
+        </li>
+        <li>
+          Bennett Fox,<br>
+          Algorithm 647:
+          Implementation and Relative Efficiency of Quasirandom
+          Sequence Generators,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 12, Number 4, pages 362-376, 1986.
+        </li>
+        <li>
+          Rudolf Lidl, Harald Niederreiter,<br>
+          Finite Fields,<br>
+          Second Edition,<br>
+          Cambridge University Press, 1997,<br>
+          ISBN: 0521392314,<br>
+          LC: QA247.3.L53
+        </li>
+        <li>
+          Harald Niederreiter,<br>
+          Low-discrepancy and low-dispersion sequences,<br>
+          Journal of Number Theory,<br>
+          Volume 30, 1988, pages 51-70.
+        </li>
+        <li>
+          Harald Niederreiter,<br>
+          Random Number Generation and quasi-Monte Carlo Methods,<br>
+          SIAM, 1992,<br>
+          ISBN13: 978-0-898712-95-7.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <b>GFARIT</b> must be run first, to set up a tables
+      of addition and multiplication.
+      <ul>
+        <li>
+          <a href = "gfarit.f90">gfarit.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "gfarit.sh">gfarit.sh</a>,
+          commands to compile the source code;
+        </li>
+        <li>
+          <a href = "gfarit_output.txt">gfarit_output.txt</a>,
+          output from a run of GFARIT;
+        </li>
+        <li>
+          <a href = "gfarit.txt">gfarit.txt</a>,
+          the data file created by the run;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GFPLYS</b> must be run second, to set up a table
+      of irreducible polynomials.
+      <ul>
+        <li>
+          <a href = "gfplys.f90">gfplys.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "gfplys.sh">gfplys.sh</a>,
+          commands to compile the source code;
+        </li>
+        <li>
+          <a href = "gfplys_output.txt">gfplys_output.txt</a>,
+          output from a run of GFPLYS;
+        </li>
+        <li>
+          <a href = "gfplys.txt">gfplys.txt</a>,
+          the data file created by the run;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Once <b>GFARIT</b> and <b>GFPLYS</b> have been run to set up the tables,
+      the <b>NIEDERREITER</b> routines can be used.
+      <ul>
+        <li>
+          <a href = "niederreiter.f90">niederreiter.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "niederreiter.sh">niederreiter.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "niederreiter_prb.f90">niederreiter_prb.f90</a>,
+          the sample test code;
+        </li>
+        <li>
+          <a href = "niederreiter_prb.sh">niederreiter_prb.sh</a>,
+          commands to compile the test code;
+        </li>
+        <li>
+          <a href = "niederreiter_prb_output.txt">niederreiter_prb_output.txt</a>,
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CALCC</b> computes the constants C(I,J,R).
+        </li>
+        <li>
+          <b>CALCV</b> calculates the constants V(J,R).
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>NIEDERREITER</b> returns an element of the Niederreiter sequence.
+        </li>
+        <li>
+          <b>NIEDERREITER_GENERATE</b> generates a set of Niederreiter values.
+        </li>
+        <li>
+          <b>NIEDERREITER_WRITE</b> writes a set of Niederreiter values to a file.
+        </li>
+        <li>
+          <b>PLYMUL</b> multiplies two polynomials in the field.
+        </li>
+        <li>
+          <b>SETFLD</b> sets up arithmetic tables for the finite field.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 07 June 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,635 @@
+<html>
+
+  <head>
+    <title>
+      TEST_TRI_INT - Triangle Integration Test Functions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_TRI_INT <br> Triangle Integration Test Functions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_TRI_INT</b>
+      is a FORTRAN90 library which
+      defines a number of test functions to be integrated over a triangle.
+    </p>
+
+    <p>
+      It is possible to invoke a particular function by number, or to
+      try out all available functions,
+      as demonstrated in the sample calling program.
+    </p>
+
+    <p>
+      For convenience, all the integrand functions have been
+      scaled by a constant, so that the integral of the function
+      over the specific domain is exactly 1.
+    </p>
+
+    <p>
+      The test functions include <b>F(X,Y)=</b>
+      <ol>
+        <li>
+          <b>1</b> on the unit triangle.
+        </li>
+        <li>
+          <b>x</b> on the unit triangle.
+        </li>
+        <li>
+          <b>y</b> on the unit triangle.
+        </li>
+        <li>
+          <b>x<sup>2</sup></b> on the unit triangle.
+        </li>
+        <li>
+          <b>x*y</b> on the unit triangle.
+        </li>
+        <li>
+          <b>y<sup>2</sup></b> on the unit triangle.
+        </li>
+        <li>
+          <b>x<sup>3</sup></b> on the unit triangle.
+        </li>
+        <li>
+          <b>x<sup>4</sup></b> on the unit triangle.
+        </li>
+        <li>
+          <b>x<sup>5</sup></b> on the unit triangle.
+        </li>
+        <li>
+          <b>x^(-0.2)</b> remapped to (1,0), (5,0), (5,1).
+        </li>
+        <li>
+          <b>(x+y)^(-0.2)</b> on the unit triangle.
+        </li>
+        <li>
+          <b>(1-x-y)^(-0.2)</b> remapped to (-1,-3), (3,-2), (-1,2).
+        </li>
+        <li>
+          <b>(x*y)^(-0.2)</b> remapped to (0,0), (-7,0), (0,-3).
+        </li>
+        <li>
+          <b>1/sqrt(x) + 1/sqrt(y) + 1/sqrt(x+y)</b> on the unit triangle.
+        </li>
+        <li>
+          <b>1/sqrt(1-x-y)</b> on the unit triangle.
+        </li>
+        <li>
+          <b>log(x*y)</b> on the unit triangle.
+        </li>
+        <li>
+          <b>1/sqrt(|x-1/4|) + 1/sqrt(|y-1/2|)</b> on the unit triangle.
+        </li>
+        <li>
+          <b>log ( x + y )</b> on the unit triangle.
+        </li>
+        <li>
+          <b>sin ( x ) cos ( 5 y )</b> on the unit triangle.
+        </li>
+        <li>
+          <b>sin ( 11 x ) cos ( y )</b> on the unit triangle.
+        </li>
+        <li>
+          <b>1 / r</b> on the unit triangle,<br>
+          <b>r = sqrt ( x^2+y^2)</b>.
+        </li>
+        <li>
+          <b>log ( r ) / r</b> on the unit triangle,<br>
+          <b>r = sqrt ( x^2+y^2)</b>.
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      The library includes a routines to define the integrand function,
+      the triangle over which the integral is to be carried out,
+      and a title for the problem.
+      Thus, for each integrand function, four routines are supplied.  For
+      instance, for function #4, we have the routines:
+      <ul>
+        <li>
+          <b>P04_FUN</b> evaluates the integrand for problem 4.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns the title for problem 4.
+        </li>
+        <li>
+          <b>P04_VERTICES</b> returns the integration triangle for problem 4
+        </li>
+      </ul>
+      So once you have the calling sequences for these routines, you
+      can easily evaluate the function, or integrate it between the
+      appropriate limits, or compare your estimate of the integral
+      to the exact value.
+    </p>
+
+    <p>
+      Moreover, since the same interface is used for each function,
+      if you wish to work with problem 16 instead, you simply change
+      the "04" to "07" in your routine calls.
+    </p>
+
+    <p>
+      If you wish to call <i>all</i> of the functions, then you
+      simply use the generic interface, which again has four
+      routines, but which requires you to specify the problem
+      number as an extra input argument:
+      <ul>
+        <li>
+          <b>P00_FUN</b> evaluates the integrand for problem PROB.
+        </li>
+        <li>
+          <b>P00_SINGULARITY</b> warns if the integran for problem PROB
+          has vertex, edge or interior singularities that might cause
+          problems for some integration schemes.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns the title for problem PROB.
+        </li>
+        <li>
+          <b>P00_VERTICES</b> returns the integration triangle for problem PROB.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Finally, some demonstration routines are built in for
+      simple quadrature methods.  These routines include
+      <ul>
+        <li>
+          <b>P00_WANDZURA05_SUB</b> applies an order-5 accurate Wandzura
+          rule, plus subdivision of the triangle.
+        </li>
+        <li>
+          <b>P00_MONTE_CARLO</b> uses Monte Carlo sampling.
+        </li>
+        <li>
+          <b>P00_VERTEX_SUB</b> averages values at vertices, and uses
+          subdivision.
+        </li>
+      </ul>
+      and can be used with any of the sample integrands.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_TRI_INT</b> is available in
+      <a href = "../../cpp_src/test_tri_int/test_tri_int.html">a C++ version</a> and
+      <a href = "../../f_src/test_tri_int/test_tri_int.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_tri_int/test_tri_int.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cubpack/cubpack.html">
+      CUBPACK</a>,
+      a FORTRAN90 library which
+      estimates the integral of a function over a collection of N-dimensional
+      hyperrectangles and simplices.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dunavant/dunavant.html">
+      DUNAVANT</a>,
+      a FORTRAN90 library which
+      defines Dunavant rules for quadrature on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fekete/fekete.html">
+      FEKETE</a>,
+      a FORTRAN90 library which
+      defines Fekete rules for interpolation or quadrature on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/felippa/felippa.html">
+      FELIPPA</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for lines, triangles, quadrilaterals,
+      pyramids, wedges, tetrahedrons and hexahedrons.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gm_rule/gm_rule.html">
+      GM_RULE</a>,
+      a FORTRAN90 library which
+      defines Grundmann-Moeller rules for quadrature over a triangle, tetrahedron,
+      or general M-dimensional simplex.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lyness_rule/lyness_rule.html">
+      LYNESS_RULE</a>,
+      a FORTRAN90 library which
+      returns Lyness-Jespersen quadrature rules for the triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ncc_triangle/ncc_triangle.html">
+      NCC_TRIANGLE</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes Closed quadrature rules on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/nco_triangle/nco_triangle.html">
+      NCO_TRIANGLE</a>,
+      a C++ library which
+      defines Newton-Cotes Open quadrature rules on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for a variety of multidimensional regions.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms612/toms612.html">
+      TOMS612</a>,
+      a FORTRAN77 library which
+      estimates the integral of a function over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangle_exactness/triangle_exactness.html">
+      TRIANGLE_EXACTNESS</a>,
+      a FORTRAN90 program which
+      investigates the polynomial exactness of a quadrature rule for the triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangle_monte_carlo/triangle_monte_carlo.html">
+      TRIANGLE_MONTE_CARLO</a>,
+      a FORTRAN90 program which
+      uses the Monte Carlo method to estimate integrals over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation/triangulation.html">
+      TRIANGULATION</a>,
+      a FORTRAN90 library which
+      performs various operations on order 3 ("linear") or order 6 ("quadratic") triangulations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wandzura/wandzura.html">
+      WANDZURA</a>,
+      a FORTRAN90 library which
+      defines Wandzura rules for quadrature on a triangle.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Elise deDoncker, Ian Robinson,<br>
+          An Algorithm for Automatic Integration Over a Triangle
+          Using Nonlinear Extrapolation,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 10, Number 1, March 1984, pages 1-16.
+        </li>
+        <li>
+          Elise deDoncker, Ian Robinson,<br>
+          Algorithm 612:
+          Integration over a Triangle Using Nonlinear Extrapolation,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 10, Number 1, March 1984, pages 17-22.
+        </li>
+        <li>
+          Stephen Wandzura, Hong Xiao,<br>
+          Symmetric Quadrature Rules on a Triangle,<br>
+          Computers and Mathematics with Applications,<br>
+          Volume 45, pages 1829-1840, 2003.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_tri_int.f90">test_tri_int.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "test_tri_int.sh">test_tri_int.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_tri_int_prb.f90">test_tri_int_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "test_tri_int_prb.sh">test_tri_int_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "test_tri_int_prb_output.txt">test_tri_int_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GET_PROB_NUM</b> returns the number of test integration problems.
+        </li>
+        <li>
+          <b>P00_FUN</b> evaluates the integrand for any problem.
+        </li>
+        <li>
+          <b>P00_MONTE_CARLO</b> applies the Monte Carlo rule to integrate a function.
+        </li>
+        <li>
+          <b>P00_SINGULARITY</b> warns of common singularities for any problem.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns the title for any problem.
+        </li>
+        <li>
+          <b>P00_VERTEX_SUB</b> approximates an integral in a triangle by subdivision.
+        </li>
+        <li>
+          <b>P00_VERTICES</b> returns the vertices for any problem.
+        </li>
+        <li>
+          <b>P00_WANDZURA05_SUB</b> uses subdivision and a Wandzura rule.
+        </li>
+        <li>
+          <b>P01_FUN</b> evaluates the integrand for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns the title of problem 1.
+        </li>
+        <li>
+          <b>P01_VERTICES</b> returns the vertices for problem 1.
+        </li>
+        <li>
+          <b>P02_FUN</b> evaluates the integrand for problem 2.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns the title of problem 2.
+        </li>
+        <li>
+          <b>P02_VERTICES</b> returns the vertices for problem 2.
+        </li>
+        <li>
+          <b>P03_FUN</b> evaluates the integrand for problem 3.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns the title of problem 3.
+        </li>
+        <li>
+          <b>P03_VERTICES</b> returns the vertices for problem 3.
+        </li>
+        <li>
+          <b>P04_FUN</b> evaluates the integrand for problem 4.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns the title of problem 4.
+        </li>
+        <li>
+          <b>P04_VERTICES</b> returns the vertices for problem 4.
+        </li>
+        <li>
+          <b>P05_FUN</b> evaluates the integrand for problem 5.
+        </li>
+        <li>
+          <b>P05_TITLE</b> returns the title of problem 5.
+        </li>
+        <li>
+          <b>P05_VERTICES</b> returns the vertices for problem 5.
+        </li>
+        <li>
+          <b>P06_FUN</b> evaluates the integrand for problem 6.
+        </li>
+        <li>
+          <b>P06_TITLE</b> returns the title of problem 6.
+        </li>
+        <li>
+          <b>P06_VERTICES</b> returns the vertices for problem 6.
+        </li>
+        <li>
+          <b>P07_FUN</b> evaluates the integrand for problem 7.
+        </li>
+        <li>
+          <b>P07_TITLE</b> returns the title of problem 7.
+        </li>
+        <li>
+          <b>P07_VERTICES</b> returns the vertices for problem 7.
+        </li>
+        <li>
+          <b>P08_FUN</b> evaluates the integrand for problem 8.
+        </li>
+        <li>
+          <b>P08_TITLE</b> returns the title of problem 8.
+        </li>
+        <li>
+          <b>P08_VERTICES</b> returns the vertices for problem 8.
+        </li>
+        <li>
+          <b>P09_FUN</b> evaluates the integrand for problem 9.
+        </li>
+        <li>
+          <b>P09_TITLE</b> returns the title of problem 9.
+        </li>
+        <li>
+          <b>P09_VERTICES</b> returns the vertices for problem 9.
+        </li>
+        <li>
+          <b>P10_FUN</b> evaluates the integrand for problem 10.
+        </li>
+        <li>
+          <b>P10_TITLE</b> returns the title of problem 10.
+        </li>
+        <li>
+          <b>P10_VERTICES</b> returns the vertices for problem 10.
+        </li>
+        <li>
+          <b>P11_FUN</b> evaluates the integrand for problem 11.
+        </li>
+        <li>
+          <b>P11_TITLE</b> returns the title of problem 11.
+        </li>
+        <li>
+          <b>P11_VERTICES</b> returns the vertices for problem 11.
+        </li>
+        <li>
+          <b>P12_FUN</b> evaluates the integrand for problem 12.
+        </li>
+        <li>
+          <b>P12_TITLE</b> returns the title of problem 12.
+        </li>
+        <li>
+          <b>P12_VERTICES</b> returns the vertices for problem 12.
+        </li>
+        <li>
+          <b>P13_FUN</b> evaluates the integrand for problem 13.
+        </li>
+        <li>
+          <b>P13_TITLE</b> returns the title of problem 13.
+        </li>
+        <li>
+          <b>P13_VERTICES</b> returns the vertices for problem 13.
+        </li>
+        <li>
+          <b>P14_FUN</b> evaluates the integrand for problem 14.
+        </li>
+        <li>
+          <b>P14_TITLE</b> returns the title of problem 14.
+        </li>
+        <li>
+          <b>P14_VERTICES</b> returns the vertices for problem 14.
+        </li>
+        <li>
+          <b>P15_FUN</b> evaluates the integrand for problem 15.
+        </li>
+        <li>
+          <b>P15_TITLE</b> returns the title of problem 15.
+        </li>
+        <li>
+          <b>P15_VERTICES</b> returns the vertices for problem 15.
+        </li>
+        <li>
+          <b>P16_FUN</b> evaluates the integrand for problem 16.
+        </li>
+        <li>
+          <b>P16_TITLE</b> returns the title of problem 16.
+        </li>
+        <li>
+          <b>P16_VERTICES</b> returns the vertices for problem 16.
+        </li>
+        <li>
+          <b>P17_FUN</b> evaluates the integrand for problem 17.
+        </li>
+        <li>
+          <b>P17_TITLE</b> returns the title of problem 17.
+        </li>
+        <li>
+          <b>P17_VERTICES</b> returns the vertices for problem 17.
+        </li>
+        <li>
+          <b>P18_FUN</b> evaluates the integrand for problem 18.
+        </li>
+        <li>
+          <b>P18_TITLE</b> returns the title of problem 18.
+        </li>
+        <li>
+          <b>P18_VERTICES</b> returns the vertices for problem 18.
+        </li>
+        <li>
+          <b>P19_FUN</b> evaluates the integrand for problem 19.
+        </li>
+        <li>
+          <b>P19_TITLE</b> returns the title of problem 19.
+        </li>
+        <li>
+          <b>P19_VERTICES</b> returns the vertices for problem 19.
+        </li>
+        <li>
+          <b>P20_FUN</b> evaluates the integrand for problem 20.
+        </li>
+        <li>
+          <b>P20_TITLE</b> returns the title of problem 20.
+        </li>
+        <li>
+          <b>P20_VERTICES</b> returns the vertices for problem 20.
+        </li>
+        <li>
+          <b>P21_FUN</b> evaluates the integrand for problem 21.
+        </li>
+        <li>
+          <b>P21_TITLE</b> returns the title of problem 21.
+        </li>
+        <li>
+          <b>P21_VERTICES</b> returns the vertices for problem 21.
+        </li>
+        <li>
+          <b>P22_FUN</b> evaluates the integrand for problem 22.
+        </li>
+        <li>
+          <b>P22_TITLE</b> returns the title of problem 22.
+        </li>
+        <li>
+          <b>P22_VERTICES</b> returns the vertices for problem 22.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>SUBTRIANGLE_NEXT</b> computes the next subtriangle of a triangle.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRIANGLE_AREA</b> computes the area of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGLE_SAMPLE</b> returns random points in a triangle.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 10 April 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

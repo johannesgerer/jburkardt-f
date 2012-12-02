@@ -1,0 +1,4155 @@
+April 13 2009  10:03:32.835 AM
+ 
+GRAFPACK_PRB
+  FORTRAN90 version
+  Tests for the GRAFPACK graph routines.
+ 
+TEST001
+  COLOR_DIGRAPH_ADJ_RANDOM returns a random 
+  color digraph.
+ 
+ 
+  Random object is to have:
+  Number of colors =        3
+  Number of nodes =        6
+  Number of edges =       15
+ 
+  The color digraph:
+ 
+ 1    1  0  1  1  1  0
+ 2    0  1  0  1  1  0
+ 3    1  0  2  0  1  0
+ 4    0  1  0  2  0  0
+ 5    0  1  1  1  3  1
+ 6    1  1  1  0  0  2
+ 
+  Number of edges is       15
+  Number of colors is           3
+  Maximum color index is        3
+ 
+TEST002
+  COLOR_GRAPH_ADJ_CONNECT_RANDOM returns a random connected color graph;
+ 
+ 
+  Random object is to have:
+  Number of colors =        3
+  Number of nodes =        6
+  Number of edges =        8
+ 
+  The graph:
+ 
+    1  000011
+    2  000001
+    3  000010
+    4  000010
+    5  101100
+    6  110000
+ 
+  The graph IS edgewise connected.
+  The graph IS nodewise connected.
+ 
+  Number of edges is        5
+  Number of colors is           1
+  Maximum color index is        0
+ 
+TEST003
+  COLOR_GRAPH_ADJ_RANDOM returns a random color digraph.
+ 
+ 
+  Random object is to have:
+  Number of colors =        3
+  Number of nodes =        6
+  Number of edges =        7
+ 
+  The color graph:
+ 
+ 1    1  1  1  1  0  0
+ 2    1  1  1  0  0  0
+ 3    1  1  2  0  1  1
+ 4    1  0  0  2  0  0
+ 5    0  0  1  0  3  1
+ 6    0  0  1  0  1  2
+ 
+  Number of edges is        7
+  Number of colors is           3
+  Maximum color index is        3
+ 
+TEST004
+  DEGREE_SEQ_IS_GRAPHIC reports whether
+  a given sequence can represent the degree
+  sequence of a graph.
+ 
+ 
+  The degree sequence:
+ 
+       1         5
+       2         5
+       3         3
+       4         3
+       5         2
+       6         1
+ 
+  The sequence is NOT graphic.
+ 
+  The degree sequence:
+ 
+       1         4
+       2         3
+       3         2
+       4         1
+       5         1
+       6         1
+ 
+  The sequence IS graphic.
+ 
+  The degree sequence:
+ 
+       1         5
+       2         4
+       3         4
+       4         3
+       5         2
+       6         1
+ 
+  The sequence is NOT graphic.
+ 
+  The degree sequence:
+ 
+       1         5
+       2         5
+       3         1
+       4         1
+       5         1
+       6         1
+ 
+  The sequence is NOT graphic.
+ 
+  The degree sequence:
+ 
+       1         5
+       2         5
+       3         2
+       4         2
+       5         2
+       6         1
+ 
+  The sequence is NOT graphic.
+ 
+TEST005
+  DEGREE_SEQ_TO_GRAPH_ADJ is given a degree
+    sequence, and constructs the adjancency
+    matrix of a corresponding graph.
+ 
+  The degree sequence:
+ 
+       1         5
+       2         5
+       3         4
+       4         3
+       5         3
+       6         2
+ 
+  The graph:
+ 
+    1  011111
+    2  101111
+    3  110110
+    4  111000
+    5  111000
+    6  110000
+ 
+TEST006
+  DIGRAPH_ADJ_CLOSURE finds the transitive 
+    closure of a digraph;
+  DIGRAPH_ADJ_REDUCE finds the transitive 
+    reduction of a digraph.
+ 
+ 
+  Adjacency matrix for G:
+ 
+ 1  0100011000000
+ 2  0000000000000
+ 3  1000000000000
+ 4  0000010000000
+ 5  0001000000000
+ 6  0000100000000
+ 7  0010100001000
+ 8  0000001010000
+ 9  0000000100000
+10  0000000000111
+11  0000000000000
+12  0000001000001
+13  0000000000010
+ 
+  Adjacency matrix for H, the transitive closure of G:
+ 
+ 1  1111111001111
+ 2  0100000000000
+ 3  1111111001111
+ 4  0001110000000
+ 5  0001110000000
+ 6  0001110000000
+ 7  1111111001111
+ 8  1111111111111
+ 9  1111111111111
+10  1111111001111
+11  0000000000100
+12  1111111001111
+13  1111111001111
+ 
+  Adjacency matrix for G2, the transitive reduction of H:
+ 
+ 1  0111001001111
+ 2  0000000000000
+ 3  1000000000000
+ 4  0000110000000
+ 5  0001000000000
+ 6  0001000000000
+ 7  1000000000000
+ 8  1000000010000
+ 9  0000000100000
+10  1000000000000
+11  0000000000000
+12  1000000000000
+13  1000000000000
+ 
+  Adjacency matrix for H2, the transitive closure of G2:
+ 
+ 1  1111111001111
+ 2  0100000000000
+ 3  1111111001111
+ 4  0001110000000
+ 5  0001110000000
+ 6  0001110000000
+ 7  1111111001111
+ 8  1111111111111
+ 9  1111111111111
+10  1111111001111
+11  0000000000100
+12  1111111001111
+13  1111111001111
+ 
+TEST007
+  DIGRAPH_ADJ_COMPONENTS finds strongly connected
+    components of a directed graph.
+ 
+  The digraph
+ 
+ 1  0100000000100
+ 2  0010010000000
+ 3  0001100000000
+ 4  0010000000000
+ 5  0001000000000
+ 6  0000001100000
+ 7  0000010000000
+ 8  0000000011000
+ 9  0000001000000
+10  0000000010000
+11  0000000000011
+12  1000000000000
+13  1000000000010
+ 
+  Number of components =        4
+ 
+  Node, Dad, Component, Order
+ 
+       1       0       4       1
+       2       1       3       2
+       3       2       1       3
+       4       3       1       4
+       5       3       1       5
+       6       2       2       6
+       7       6       2       7
+       8       6       2       8
+       9       8       2       9
+      10       8       2      10
+      11       1       4      11
+      12      11       4      12
+      13      11       4      13
+ 
+  The correct components are:
+ (1,11,12,13), (2), (3,4,5), (6,7,8,9,10).
+ 
+  I, Component(I), Node(I)
+ 
+       1         1         3
+       2         1         4
+       3         1         5
+       4         2         6
+       5         2         7
+       6         2         8
+       7         2         9
+       8         2        10
+       9         3         2
+      10         4         1
+      11         4        11
+      12         4        12
+      13         4        13
+ 
+  The graph:
+ 
+    1  0100000000100
+    2  0010010000000
+    3  0001100000000
+    4  0010000000000
+    5  0001000000000
+    6  0000001100000
+    7  0000010000000
+    8  0000000011000
+    9  0000001000000
+   10  0000000010000
+   11  0000000000011
+   12  1000000000000
+   13  1000000000010
+ 
+TEST008
+  DIGRAPH_ADJ_CYCLE searches for cycles in a digraph.
+ 
+  The digraph:
+ 
+ 1  001010000
+ 2  000001010
+ 3  000101100
+ 4  001000000
+ 5  010000000
+ 6  000100010
+ 7  000000101
+ 8  100000000
+ 9  000010100
+ 
+  The number of edges is       16
+ 
+  Node, Dad, Order
+ 
+       1         0         1
+       2         5         9
+       3         1         2
+       4         3         3
+       5         9         8
+       6         3         4
+       7         3         6
+       8         6         5
+       9         7         7
+ 
+  Adjacency matrix with cycles marked.
+ 
+  0  0 -2  0  1  0  0  0  0
+  0  0  0  0  0  1  0  1  0
+  0  0  0 -2  0 -2 -2  0  0
+  0  0 -1  0  0  0  0  0  0
+  0 -2  0  0  0  0  0  0  0
+  0  0  0  1  0  0  0 -2  0
+  0  0  0  0  0  0 -1  0 -2
+ -1  0  0  0  0  0  0  0  0
+  0  0  0  0 -2  0 -1  0  0
+ 
+TEST009
+  For a directed graph:
+  DIGRAPH_ADJ_DEGREE computes the degree of the nodes;
+  DIGRAPH_ADJ_DEGREE_MAX computes the maximum
+    degree of the nodes;
+  DIGRAPH_ADJ_DEGREE_SEQ computes the degree
+    sequence;
+ 
+  The digraph:
+ 
+ 1  001010000
+ 2  000001010
+ 3  000101100
+ 4  001000000
+ 5  010000000
+ 6  000100010
+ 7  000000101
+ 8  100000000
+ 9  000010100
+ 
+  Node, In/Outdegree
+ 
+       1         1         2
+       2         1         2
+       3         2         3
+       4         2         1
+       5         2         1
+       6         2         2
+       7         3         2
+       8         2         1
+       9         1         2
+ 
+  Node, In/Outdegree sequence
+ 
+       1         2         3
+       2         3         2
+       3         2         2
+       4         1         2
+       5         1         2
+       6         1         2
+       7         2         1
+       8         2         1
+       9         2         1
+ 
+  Maximum  indegree is        3
+  Maximum outdegree is        3
+  Maximum    degree is        5
+ 
+ 
+TEST0095
+  For a digraph:
+  DIGRAPH_ADJ_EIGEN computes the eigenvalues.
+ 
+  The digraph:
+ 
+ 1  001010000
+ 2  000001010
+ 3  000101100
+ 4  001000000
+ 5  010000000
+ 6  000100010
+ 7  000000101
+ 8  100000000
+ 9  000010100
+ 
+  Real and imaginary parts of eigenvalues:
+ 
+       1  0.355990E-01   1.18547    
+       2  0.355990E-01  -1.18547    
+       3 -0.727831      0.503178    
+       4 -0.727831     -0.503178    
+       5   1.79187       0.00000    
+       6  -1.00000       0.00000    
+       7   1.15595      0.269800    
+       8   1.15595     -0.269800    
+       9 -0.719305       0.00000    
+ 
+TEST010
+  DIGRAPH_ADJ_HAM_NEXT produces Hamilton circuits;
+ 
+ 
+  The digraph:
+ 
+ 1  01000001000000000001
+ 2  10100000000000100000
+ 3  01010010000000000000
+ 4  00101000000001000000
+ 5  00010100000100000000
+ 6  00001010010000000000
+ 7  00100101000000000000
+ 8  10000010100000000000
+ 9  00000001010000000010
+10  00000100101000000000
+11  00000000010100000100
+12  00001000001010000000
+13  00000000000101001000
+14  00010000000010100000
+15  01000000000001010000
+16  00000000000000101001
+17  00000000000010010100
+18  00000000001000001010
+19  00000000100000000101
+20  10000000000000010010
+ 
+  Circuits:
+ 
+  1    1 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2
+  2    1 20 19 18 17 16 15  2  3  7  6  5  4 14 13 12 11 10  9  8
+  3    1 20 19 18 11 12 13 17 16 15 14  4  5  6 10  9  8  7  3  2
+  4    1 20 19 18 11 12  5  6 10  9  8  7  3  4 14 13 17 16 15  2
+  5    1 20 19 18 11 12  5  4 14 13 17 16 15  2  3  7  6 10  9  8
+  6    1 20 19 18 11 10  9  8  7  6  5 12 13 17 16 15 14  4  3  2
+  7    1 20 19  9 10 11 18 17 16 15  2  3  4 14 13 12  5  6  7  8
+  8    1 20 19  9 10  6  5  4 14 13 12 11 18 17 16 15  2  3  7  8
+  9    1 20 19  9  8  7  6 10 11 18 17 16 15 14 13 12  5  4  3  2
+ 10    1 20 19  9  8  7  3  4 14 13 12  5  6 10 11 18 17 16 15  2
+ 11    1 20 16 17 18 19  9 10 11 12 13 14 15  2  3  4  5  6  7  8
+ 12    1 20 16 17 18 19  9  8  7  3  4  5  6 10 11 12 13 14 15  2
+ 13    1 20 16 17 13 14 15  2  3  4  5 12 11 18 19  9 10  6  7  8
+ 14    1 20 16 17 13 12 11 18 19  9 10  6  5  4 14 15  2  3  7  8
+ 15    1 20 16 17 13 12  5  6 10 11 18 19  9  8  7  3  4 14 15  2
+ 16    1 20 16 17 13 12  5  4 14 15  2  3  7  6 10 11 18 19  9  8
+ 17    1 20 16 15 14 13 17 18 19  9  8  7  6 10 11 12  5  4  3  2
+ 18    1 20 16 15 14  4  5  6 10 11 12 13 17 18 19  9  8  7  3  2
+ 19    1 20 16 15  2  3  7  6 10 11 12  5  4 14 13 17 18 19  9  8
+ 20    1 20 16 15  2  3  4 14 13 17 18 19  9 10 11 12  5  6  7  8
+ 21    1  8  9 19 20 16 17 18 11 10  6  7  3  4  5 12 13 14 15  2
+ 22    1  8  9 19 20 16 15 14  4  5 12 13 17 18 11 10  6  7  3  2
+ 23    1  8  9 19 18 17 13 14  4  5 12 11 10  6  7  3  2 15 16 20
+ 24    1  8  9 19 18 11 10  6  7  3  2 15 14  4  5 12 13 17 16 20
+ 25    1  8  9 10 11 18 19 20 16 17 13 12  5  6  7  3  4 14 15  2
+ 26    1  8  9 10 11 12 13 17 18 19 20 16 15 14  4  5  6  7  3  2
+ 27    1  8  9 10 11 12 13 14  4  5  6  7  3  2 15 16 17 18 19 20
+ 28    1  8  9 10 11 12  5  6  7  3  4 14 13 17 18 19 20 16 15  2
+ 29    1  8  9 10  6  7  3  4  5 12 11 18 19 20 16 17 13 14 15  2
+ 30    1  8  9 10  6  7  3  2 15 16 17 13 14  4  5 12 11 18 19 20
+ 31    1  8  7  6 10  9 19 20 16 15 14 13 17 18 11 12  5  4  3  2
+ 32    1  8  7  6 10  9 19 18 11 12  5  4  3  2 15 14 13 17 16 20
+ 33    1  8  7  6  5 12 13 17 18 11 10  9 19 20 16 15 14  4  3  2
+ 34    1  8  7  6  5 12 13 14  4  3  2 15 16 17 18 11 10  9 19 20
+ 35    1  8  7  6  5 12 11 10  9 19 18 17 13 14  4  3  2 15 16 20
+ 36    1  8  7  6  5  4  3  2 15 14 13 12 11 10  9 19 18 17 16 20
+ 37    1  8  7  3  4 14 13 17 18 11 12  5  6 10  9 19 20 16 15  2
+ 38    1  8  7  3  4  5  6 10  9 19 20 16 17 18 11 12 13 14 15  2
+ 39    1  8  7  3  2 15 16 17 18 11 12 13 14  4  5  6 10  9 19 20
+ 40    1  8  7  3  2 15 14  4  5  6 10  9 19 18 11 12 13 17 16 20
+ 41    1  2 15 16 20 19 18 17 13 14  4  3  7  6  5 12 11 10  9  8
+ 42    1  2 15 16 20 19  9 10  6  5 12 11 18 17 13 14  4  3  7  8
+ 43    1  2 15 16 17 18 11 10  6  5 12 13 14  4  3  7  8  9 19 20
+ 44    1  2 15 16 17 13 14  4  3  7  8  9 10  6  5 12 11 18 19 20
+ 45    1  2 15 14 13 17 16 20 19 18 11 12  5  4  3  7  6 10  9  8
+ 46    1  2 15 14 13 12 11 18 17 16 20 19  9 10  6  5  4  3  7  8
+ 47    1  2 15 14 13 12 11 10  6  5  4  3  7  8  9 19 18 17 16 20
+ 48    1  2 15 14 13 12  5  4  3  7  6 10 11 18 17 16 20 19  9  8
+ 49    1  2 15 14  4  3  7  8  9 19 18 11 10  6  5 12 13 17 16 20
+ 50    1  2 15 14  4  3  7  6  5 12 13 17 16 20 19 18 11 10  9  8
+ 51    1  2  3  7  8  9 19 18 17 13 12 11 10  6  5  4 14 15 16 20
+ 52    1  2  3  7  8  9 10  6  5  4 14 15 16 17 13 12 11 18 19 20
+ 53    1  2  3  7  6 10 11 18 17 13 12  5  4 14 15 16 20 19  9  8
+ 54    1  2  3  7  6  5  4 14 15 16 20 19 18 17 13 12 11 10  9  8
+ 55    1  2  3  4 14 15 16 20 19  9 10 11 18 17 13 12  5  6  7  8
+ 56    1  2  3  4 14 15 16 17 13 12  5  6  7  8  9 10 11 18 19 20
+ 57    1  2  3  4  5 12 13 14 15 16 17 18 11 10  6  7  8  9 19 20
+ 58    1  2  3  4  5 12 11 18 17 13 14 15 16 20 19  9 10  6  7  8
+ 59    1  2  3  4  5 12 11 10  6  7  8  9 19 18 17 13 14 15 16 20
+ 60    1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+ 
+TEST0105
+  DIGRAPH_ADJ_HAM_NEXT produces Hamilton circuits;
+ 
+ 
+  The digraph:
+ 
+ 1  010001000
+ 2  001010000
+ 3  000100000
+ 4  100010010
+ 5  111100111
+ 6  001010010
+ 7  010110000
+ 8  000111001
+ 9  000010000
+ 
+  Circuits:
+ 
+  1    1  6  8  9  5  7  2  3  4
+ 
+TEST011
+  DIGRAPH_ADJ_HAM_NEXT_BRUTE seeks circuits
+    in a directed graph which visit every node.
+  A brute force algorithm is used.
+ 
+  The digraph:
+ 
+ 1  010001000
+ 2  001010000
+ 3  000100000
+ 4  100010010
+ 5  111100111
+ 6  001010010
+ 7  010110000
+ 8  000111001
+ 9  000010000
+ 
+  Circuits:
+ 
+  1    1  6  8  9  5  7  2  3  4
+ 
+  No more circuits were found.
+ 
+TEST012
+  DIGRAPH_ADJ_HAM_PATH_NEXT_BRUTE seeks paths in a
+    digraph which visit every node once.
+  A brute force algorithm is used.
+ 
+  The digraph:
+ 
+ 1  1101
+ 2  0101
+ 3  1011
+ 4  0101
+ 
+  Paths:
+ 
+  1    3  1  2  4
+  2    3  1  4  2
+ 
+  No more paths were found.
+ 
+TEST013
+  DIGRAPH_ADJ_IS_EDGE_CONNECTED reports if a
+    digraph is edgewise connected;
+ 
+  The digraph:
+ 
+ 1  0100
+ 2  0000
+ 3  0101
+ 4  1000
+ 
+  The digraph is NOT edgewise connected.
+ 
+TEST014
+  DIGRAPH_ADJ_IS_EULERIAN reports if a digraph is Eulerian;
+ 
+  The digraph:
+ 
+ 1  010000
+ 2  001000
+ 3  000100
+ 4  000010
+ 5  000001
+ 6  010000
+ 
+  The digraph IS path Eulerian.
+ 
+TEST015
+  DIGRAPH_ADJ_IS_STRONG_CONNECTED reports if a
+    digraph is strongly connected;
+ 
+  The digraph:
+ 
+ 1  0100
+ 2  0000
+ 3  0101
+ 4  1000
+ 
+  The digraph is NOT strongly connected.
+ 
+  The digraph:
+ 
+ 1  01000000
+ 2  00100100
+ 3  00010000
+ 4  00000001
+ 5  10000000
+ 6  00001000
+ 7  00100000
+ 8  00000010
+ 
+  The digraph is NOT strongly connected.
+ 
+  The digraph:
+ 
+ 1  01000000
+ 2  00100100
+ 3  00010000
+ 4  00000001
+ 5  10000000
+ 6  00001000
+ 7  00100100
+ 8  00000010
+ 
+  The digraph IS strongly connected.
+ 
+TEST0155
+  DIGRAPH_ADJ_TOURNAMENT_RANDOM returns a random
+    tourname digraph.
+  DIGRAPH_ADJ_IS_TOURNAMENT reports if a
+    digraph is a tournament.
+ 
+  A random tournament digraph:
+ 
+ 1  010001
+ 2  001111
+ 3  100011
+ 4  101010
+ 5  100000
+ 6  000110
+ 
+  The digraph IS a tournament.
+ 
+TEST016
+  DIGRAPH_ADJ_IS_TRANSITIVE reports if a
+    digraph is transitive;
+ 
+  The digraph:
+ 
+ 1  011111111111
+ 2  000101110111
+ 3  000001011011
+ 4  000000010101
+ 5  000000101111
+ 6  000000010011
+ 7  000000000111
+ 8  000000000001
+ 9  000000000011
+10  000000000001
+11  000000000001
+12  000000000000
+ 
+  The digraph IS transitive.
+ 
+TEST017
+  DIGRAPH_ADJ_RANDOM returns a random digraph.
+ 
+  Number of edges requested =       10
+ 
+  The digraph:
+ 
+ 1  011001
+ 2  001010
+ 3  000001
+ 4  001001
+ 5  000000
+ 6  101000
+ 
+  Number of edges is       10
+ 
+TEST018
+  DIGRAPH_ADJ_TO_DIGRAPH_ARC converts a digraph in
+  adjacency form to arc list form;
+ 
+  The digraph in adjacency form:
+ 
+ 1  010000
+ 2  001000
+ 3  000100
+ 4  000010
+ 5  000001
+ 6  010000
+ 
+  The digraph in arc list form:
+ 
+       1           1       2
+       2           6       2
+       3           2       3
+       4           3       4
+       5           4       5
+       6           5       6
+ 
+TEST019
+  DIGRAPH_ADJ_TO_DIGRAPH_INC converts a digraph in
+  adjacency form to incidence matrix form;
+ 
+  The digraph in adjacency form:
+ 
+ 1  010000
+ 2  001000
+ 3  000100
+ 4  000010
+ 5  000001
+ 6  010000
+ 
+  The digraph in incidence form:
+ 
+  1  3  0  4  0  1
+ -1 -1  1  5  0  0
+  6  5 -1  1  0  0
+  6  6  6 -1  1  0
+  2  0  2  0 -1  1
+  2  1  3  0  0 -1
+ 
+TEST020
+  DIGRAPH_ADJ_TOP_SORT does a topological sort
+    of an acyclic digraph.
+ 
+  The digraph:
+ 
+ 1  0110010000000
+ 2  0000000000000
+ 3  0000000000000
+ 4  0000000000000
+ 5  0001000000000
+ 6  0001100000000
+ 7  0010100100000
+ 8  0000000010000
+ 9  0000000000000
+10  0000001000111
+11  0000000000000
+12  0000001000001
+13  0000000000000
+ 
+  Nodes and "Dads":
+ 
+       1         0
+       2         1
+       3         1
+       4         6
+       5         6
+       6         1
+       7         0
+       8         7
+       9         8
+      10         0
+      11        10
+      12        10
+      13        12
+ 
+  Nodes and order of visit:
+ 
+       1         1
+       2         2
+       3         3
+       4         5
+       5         6
+       6         4
+       7         7
+       8         8
+       9         9
+      10        10
+      11        11
+      12        12
+      13        13
+ 
+  Nodes and reverse topological order:
+ 
+       1         2
+       2         3
+       3         4
+       4         5
+       5         6
+       6         1
+       7         9
+       8         8
+       9         7
+      10        11
+      11        13
+      12        12
+      13        10
+ 
+  The reordered digraph:
+ 
+ 1  0110010000000
+ 2  0000000000000
+ 3  0000000000000
+ 4  0000000000000
+ 5  0001000000000
+ 6  0001100000000
+ 7  0010100100000
+ 8  0000000010000
+ 9  0000000000000
+10  0000001000111
+11  0000000000000
+12  0000001000001
+13  0000000000000
+ 
+TEST021
+  For a digraph described by an arc list:
+  DIGRAPH_ARC_DEGREE computes the degree of the nodes;
+ 
+  The graph:
+ 
+       1           1       3
+       2           1       7
+       3           1      10
+       4           2       5
+       5           2      10
+       6           3       6
+       7           3       9
+       8           4       7
+       9           4       8
+      10           6       9
+      11           8      10
+ 
+  Node, Indegree, Outdegree
+ 
+       1         0         3
+       2         0         2
+       3         1         2
+       4         0         2
+       5         1         0
+       6         1         1
+       7         2         0
+       8         1         1
+       9         2         0
+      10         3         0
+ 
+TEST022
+  For a digraph described by an arc list:
+  DIGRAPH_ARC_IS_EULERIAN checks if a graph
+    has an Euler circuit.
+  DIGRAPH_ARC_EULER_CIRC_NEXT finds the next
+    Euler circuit of a graph.
+ 
+ 
+  The digraph:
+ 
+       1           1       2
+       2           3       1
+       3           1       4
+       4           5       1
+       5           2       3
+       6           4       2
+       7           2       5
+       8           4       3
+       9           3       5
+      10           5       4
+ 
+  The digraph has an eulerian circuit.
+ 
+  Circuits:
+ 
+  1    1  7 10  8  9  4  3  6  5  2
+  2    1  7 10  8  2  3  6  5  9  4
+  3    1  7 10  6  5  9  4  3  8  2
+  4    1  7 10  6  5  2  3  8  9  4
+  5    1  7  4  3  8  9 10  6  5  2
+  6    1  7  4  3  6  5  9 10  8  2
+  7    1  5  9 10  8  2  3  6  7  4
+  8    1  5  9 10  6  7  4  3  8  2
+  9    1  5  9  4  3  6  7 10  8  2
+ 10    1  5  2  3  8  9 10  6  7  4
+ 11    1  5  2  3  6  7 10  8  9  4
+ 
+TEST023
+  DIGRAPH_ARC_TO_DIGRAPH_ADJ converts an arclist
+    digraph to an adjacency digraph.
+ 
+ 
+  The graph:
+ 
+       1           1       3
+       2           1       5
+       3           2       6
+       4           2       8
+       5           3       4
+       6           3       6
+       7           3       7
+       8           4       3
+       9           5       2
+      10           6       4
+      11           6       8
+      12           7       7
+      13           7       9
+      14           8       1
+      15           9       5
+      16           9       7
+ 
+  The digraph:
+ 
+ 1  001010000
+ 2  000001010
+ 3  000101100
+ 4  001000000
+ 5  010000000
+ 6  000100010
+ 7  000000101
+ 8  100000000
+ 9  000010100
+ 
+TEST024
+  FACE_CHECK checks faces;
+ 
+  max_face =        10
+  max_order =        4
+ 
+  Get a test example
+ 
+Face, Order, Nodes
+ 
+  1  4  9 10 12 11
+  2  3 14 13 15
+  3  4  1  2  6  5
+  4  4  6  7  3  2
+  5  4  3  4  8  7
+  6  3 13 12 11
+  7  4  1  2  3  4
+  8  4  5  6  7  8
+ 
+Determine edge-connected objects.
+ 
+Number of objects =        3
+ 
+Face, Object, Tier
+ 
+       1       1       1
+       2       2       1
+       3       3       1
+       4       3       2
+       5       3       3
+       6       1       2
+       7       3       2
+       8       3       2
+ 
+Preferred order:
+  Order, Face
+ 
+       1       1
+       2       6
+       3       2
+       4       3
+       5       4
+       6       7
+       7       8
+       8       5
+ 
+Reorder the faces.
+ 
+Face, Label, Object, Tier
+ 
+       1       1       1       1
+       2       6       1       2
+       3       2       2       1
+       4       3       3       1
+       5       4       3       2
+       6       7       3       2
+       7       8       3       2
+       8       5       3       3
+ 
+Construct the edge list.
+(While doing so, check for edges used more
+than twice.)
+ 
+Edge, Node1, Node2, Face1, Face2, Tier, Object
+ 
+ I, node1(i), node2(i), face1(i), face2(i)
+ 
+  1  9 10  1  0
+  2 10 12  1  0
+  3 12 11  1  2
+  4 11  9  1  0
+  5 12 13  2  0
+  6 13 11  2  0
+  7 14 13  3  0
+  8 13 15  3  0
+  9 15 14  3  0
+ 10  1  2  4  5
+ 11  2  6  4  6
+ 12  6  5  4  7
+ 13  5  1  4  0
+ 14  1  4  5  0
+ 15  4  3  5  8
+ 16  3  2  5  6
+ 17  3  7  6  8
+ 18  7  6  6  7
+ 19  7  8  7  8
+ 20  8  5  7  0
+ 21  4  8  8  0
+ 
+Face, Order, Nodes
+ 
+  1  4  9 10 12 11
+  2  3 11 12 13
+  3  3 14 13 15
+  4  4  1  2  6  5
+  5  4  2  1  4  3
+  6  4  2  3  7  6
+  7  4  5  6  7  8
+  8  4  3  4  8  7
+ 
+Force faces to consistent orientation.
+ 
+Face, Order, Nodes
+ 
+  1  4  9 10 12 11
+  2  3 11 12 13
+  3  3 14 13 15
+  4  4  1  2  6  5
+  5  4  2  1  4  3
+  6  4  2  3  7  6
+  7  4  5  6  7  8
+  8  4  3  4  8  7
+ 
+List boundary edges.
+ 
+EDGE_BOUND
+  Number of boundary edges =       12
+ 
+TEST025
+  GRAPH_ADJ_BFS sets up a breadth-first
+    traversal of a graph.
+ 
+ 
+  The graph:
+ 
+    1  0111111100000
+    2  1000110100000
+    3  1001001000000
+    4  1010000000000
+    5  1100000000000
+    6  1100000000000
+    7  1010000000000
+    8  1100000000000
+    9  0000000001001
+   10  0000000010111
+   11  0000000001010
+   12  0000000001100
+   13  0000000011000
+ 
+  I, dad(i), deep(i), order(i)
+ 
+       1       0       1       1
+       2       1       2       2
+       3       1       2       3
+       4       1       2       4
+       5       1       2       5
+       6       1       2       6
+       7       1       2       7
+       8       1       2       8
+       9       0       3       9
+      10       9       4      10
+      11      10       5      12
+      12      10       5      13
+      13       9       4      11
+ 
+TEST026
+  GRAPH_ADJ_BIPARTITE_RANDOM returns a random bipartite graph;
+  GRAPH_ADJ_IS_BIPARTITE reports if a graph is bipartite.
+ 
+  Number of nodes in set 1 is        4
+  Number of nodes in set 2 is        6
+ 
+  The graph:
+ 
+    1  0001110000
+    2  0000000000
+    3  0001010001
+    4  1010000000
+    5  1000000000
+    6  1010000100
+    7  0000000000
+    8  0000010001
+    9  0000000001
+   10  0010000110
+ 
+  The graph IS bipartite.
+  Total number of edges is          9
+  Counted number of edges is        9
+ 
+TEST027
+  GRAPH_ADJ_BLOCK finds the blocks in a graph.
+ 
+ 
+  Number of blocks =        3
+ 
+  I, DAD(I), ORDER(I)
+ 
+       1         0        -1
+       2         1         2
+       3         4         5
+       4         1        -4
+       5         4         6
+       6         2         3
+ 
+  The graph:
+ 
+    1  010331
+    2  100001
+    3  000200
+    4  302030
+    5  300300
+    6  110000
+ 
+TEST028
+  GRAPH_ADJ_CLOSURE finds the transitive closure 
+    of a graph;
+  GRAPH_ADJ_REDUCE finds the transitive reduction
+    of a graph.
+ 
+  The adjacency matrix for G:
+ 
+    1  10011000
+    2  01000000
+    3  00100011
+    4  10011000
+    5  10011100
+    6  00001100
+    7  00100010
+    8  00100001
+ 
+  Adjacency matrix for H, the transitive closure of G:
+ 
+    1  10011100
+    2  01000000
+    3  00100011
+    4  10011100
+    5  10011100
+    6  10011100
+    7  00100011
+    8  00100011
+ 
+  Adjacency matrix for G2, the transitive reduction of H:
+ 
+    1  00011100
+    2  00000000
+    3  00000011
+    4  10000000
+    5  10000000
+    6  10000000
+    7  00100000
+    8  00100000
+ 
+  Adjacency matrix for H2, the transitive closure of G2:
+ 
+    1  10011100
+    2  01000000
+    3  00100011
+    4  10011100
+    5  10011100
+    6  10011100
+    7  00100011
+    8  00100011
+ 
+TEST029
+  GRAPH_ADJ_COLOR_NEXT produces colorings of a graph
+ 
+  The number of colors available is        3
+ 
+  The graph:
+ 
+    1  0101
+    2  1010
+    3  0101
+    4  1010
+ 
+  Possible node colorings:
+ 
+   1   3   2   3
+   1   3   1   3
+   1   3   1   2
+   1   2   3   2
+   1   2   1   3
+   1   2   1   2
+ 
+TEST030
+  GRAPH_ADJ_CONNECT_RANDOM returns a random connected graph;
+  GRAPH_ADJ_IS_EDGE_CONNECTED reports if a
+    graph is edgewise connected;
+  GRAPH_ADJ_IS_NODE_CONNECTED reports if a
+    graph is node connected;
+ 
+  Number of nodes is        6
+  Number of edges is        8
+ 
+  The graph:
+ 
+    1  000100
+    2  001001
+    3  010000
+    4  100010
+    5  000101
+    6  010010
+ 
+  The graph IS edgewise connected.
+  The graph IS nodewise connected.
+ 
+TEST031
+  GRAPH_ADJ_CONNECT_RANDOM returns a random connected graph;
+  GRAPH_ADJ_IS_EDGE_CONNECTED reports if a
+    graph is edgewise connected;
+  GRAPH_ADJ_IS_NODE_CONNECTED reports if a
+    graph is node connected;
+  GRAPH_ADJ_IS_TREE reports if a graph is a tree.
+ 
+  Number of nodes is        6
+  Number of edges is        5
+ 
+  The graph:
+ 
+    1  000100
+    2  001001
+    3  010000
+    4  100010
+    5  000101
+    6  010010
+ 
+  The graph IS edgewise connected.
+  The graph IS nodewise connected.
+  The graph IS a tree.
+ 
+TEST032
+  GRAPH_ADJ_CYCLE searches for cycles in a graph.
+ 
+  The graph:
+ 
+    1  0010001001
+    2  0000100001
+    3  1000010010
+    4  0000001100
+    5  0100000000
+    6  0010000010
+    7  1001000000
+    8  0001000001
+    9  0010010000
+   10  1100000100
+ 
+  Node, Dad, Order
+ 
+       1         0         1
+       2        10         9
+       3         1         2
+       4         7         6
+       5         2        10
+       6         3         3
+       7         1         5
+       8         4         7
+       9         6         4
+      10         8         8
+ 
+  Adjacency matrix with cycles marked.
+ 
+  0  0 -2  0  0  0 -2  0  0 -1
+  0  0  0  0 -2  0  0  0  0 -2
+ -2  0  0  0  0 -2  0  0 -1  0
+  0  0  0  0  0  0 -2 -2  0  0
+  0 -2  0  0  0  0  0  0  0  0
+  0  0 -2  0  0  0  0  0 -2  0
+ -2  0  0 -2  0  0  0  0  0  0
+  0  0  0 -2  0  0  0  0  0 -2
+  0  0 -1  0  0 -2  0  0  0  0
+ -1 -2  0  0  0  0  0 -2  0  0
+ 
+TEST033
+  For a graph:
+  GRAPH_ADJ_DEGREE computes the degree of the nodes;
+  GRAPH_ADJ_DEGREE_MAX computes the maximum
+    degree of the nodes;
+  GRAPH_ADJ_DEGREE_SEQ computes the degree sequence;
+ 
+  The graph:
+ 
+    1  0010001001
+    2  0000100001
+    3  1000010010
+    4  0000001100
+    5  0100000000
+    6  0010000010
+    7  1001000000
+    8  0001000001
+    9  0010010000
+   10  1100000100
+ 
+  Node degrees:
+ 
+       1         3
+       2         2
+       3         3
+       4         2
+       5         1
+       6         2
+       7         2
+       8         2
+       9         2
+      10         3
+ 
+  Degree sequence:
+ 
+       1         3
+       2         3
+       3         3
+       4         2
+       5         2
+       6         2
+       7         2
+       8         2
+       9         2
+      10         1
+ 
+  Maximum node degree is        3
+ 
+ 
+TEST034
+  GRAPH_ADJ_DFS does depth first search of graph.
+ 
+  The graph:
+ 
+    1  0110011000000
+    2  0000000000000
+    3  0000000000000
+    4  0000000000000
+    5  0001001000000
+    6  0000100000000
+    7  0000000000000
+    8  0000000010000
+    9  0000000000000
+   10  0000000000111
+   11  0000000000000
+   12  0000000000001
+   13  0000000000000
+ 
+  Node, Dad, Order
+ 
+       1         0         1
+       2         1         2
+       3         1         3
+       4         5         6
+       5         6         5
+       6         1         4
+       7         5         7
+       8         0         8
+       9         8         9
+      10         0        10
+      11        10        11
+      12        10        12
+      13        12        13
+ 
+TEST035
+  GRAPH_ADJ_DFS_2 sets up depth-first traversal
+    of a graph described by an adjacency matrix.
+ 
+ 
+  The graph:
+ 
+    1  0111111100000
+    2  1000110100000
+    3  1001001000000
+    4  1010000000000
+    5  1100000000000
+    6  1100000000000
+    7  1010000000000
+    8  1100000000000
+    9  0000000001001
+   10  0000000010111
+   11  0000000001010
+   12  0000000001100
+   13  0000000011000
+ 
+  I, DAD(I), ORDER(I)
+ 
+       1         0         1
+       2         1         2
+       3         1         6
+       4         3         7
+       5         2         3
+       6         2         4
+       7         3         8
+       8         2         5
+       9         0         9
+      10         9        10
+      11        10        11
+      12        11        12
+      13        10        13
+ 
+TEST0335
+  For a graph:
+  GRAPH_ADJ_EIGEN computes the eigenvalues.
+ 
+  The graph:
+ 
+    1  0010001001
+    2  0000100001
+    3  1000010010
+    4  0000001100
+    5  0100000000
+    6  0010000010
+    7  1001000000
+    8  0001000001
+    9  0010010000
+   10  1100000100
+ 
+  The eigenvalues:
+ 
+       1  -2.11644    
+       2  -1.72209    
+       3  -1.15483    
+       4  -1.00000    
+       5 -0.702785    
+       6  0.429094    
+       7  0.673286    
+       8   1.26660    
+       9   1.91496    
+      10   2.41221    
+ 
+TEST036
+  GRAPH_ADJ_HAM_NEXT produces Hamilton circuits;
+ 
+ 
+  The graph:
+ 
+    1  01000001000000000001
+    2  10100000000000100000
+    3  01010010000000000000
+    4  00101000000001000000
+    5  00010100000100000000
+    6  00001010010000000000
+    7  00100101000000000000
+    8  10000010100000000000
+    9  00000001010000000010
+   10  00000100101000000000
+   11  00000000010100000100
+   12  00001000001010000000
+   13  00000000000101001000
+   14  00010000000010100000
+   15  01000000000001010000
+   16  00000000000000101001
+   17  00000000000010010100
+   18  00000000001000001010
+   19  00000000100000000101
+   20  10000000000000010010
+ 
+  Circuits:
+ 
+  1    1 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2
+  2    1 20 19 18 17 16 15  2  3  7  6  5  4 14 13 12 11 10  9  8
+  3    1 20 19 18 11 12 13 17 16 15 14  4  5  6 10  9  8  7  3  2
+  4    1 20 19 18 11 12  5  6 10  9  8  7  3  4 14 13 17 16 15  2
+  5    1 20 19 18 11 12  5  4 14 13 17 16 15  2  3  7  6 10  9  8
+  6    1 20 19 18 11 10  9  8  7  6  5 12 13 17 16 15 14  4  3  2
+  7    1 20 19  9 10 11 18 17 16 15  2  3  4 14 13 12  5  6  7  8
+  8    1 20 19  9 10  6  5  4 14 13 12 11 18 17 16 15  2  3  7  8
+  9    1 20 19  9  8  7  6 10 11 18 17 16 15 14 13 12  5  4  3  2
+ 10    1 20 19  9  8  7  3  4 14 13 12  5  6 10 11 18 17 16 15  2
+ 11    1 20 16 17 18 19  9 10 11 12 13 14 15  2  3  4  5  6  7  8
+ 12    1 20 16 17 18 19  9  8  7  3  4  5  6 10 11 12 13 14 15  2
+ 13    1 20 16 17 13 14 15  2  3  4  5 12 11 18 19  9 10  6  7  8
+ 14    1 20 16 17 13 12 11 18 19  9 10  6  5  4 14 15  2  3  7  8
+ 15    1 20 16 17 13 12  5  6 10 11 18 19  9  8  7  3  4 14 15  2
+ 16    1 20 16 17 13 12  5  4 14 15  2  3  7  6 10 11 18 19  9  8
+ 17    1 20 16 15 14 13 17 18 19  9  8  7  6 10 11 12  5  4  3  2
+ 18    1 20 16 15 14  4  5  6 10 11 12 13 17 18 19  9  8  7  3  2
+ 19    1 20 16 15  2  3  7  6 10 11 12  5  4 14 13 17 18 19  9  8
+ 20    1 20 16 15  2  3  4 14 13 17 18 19  9 10 11 12  5  6  7  8
+ 21    1  8  9 19 20 16 17 18 11 10  6  7  3  4  5 12 13 14 15  2
+ 22    1  8  9 19 20 16 15 14  4  5 12 13 17 18 11 10  6  7  3  2
+ 23    1  8  9 10 11 18 19 20 16 17 13 12  5  6  7  3  4 14 15  2
+ 24    1  8  9 10 11 12 13 17 18 19 20 16 15 14  4  5  6  7  3  2
+ 25    1  8  9 10 11 12  5  6  7  3  4 14 13 17 18 19 20 16 15  2
+ 26    1  8  9 10  6  7  3  4  5 12 11 18 19 20 16 17 13 14 15  2
+ 27    1  8  7  6 10  9 19 20 16 15 14 13 17 18 11 12  5  4  3  2
+ 28    1  8  7  6  5 12 13 17 18 11 10  9 19 20 16 15 14  4  3  2
+ 29    1  8  7  3  4 14 13 17 18 11 12  5  6 10  9 19 20 16 15  2
+ 30    1  8  7  3  4  5  6 10  9 19 20 16 17 18 11 12 13 14 15  2
+ 
+TEST0365
+  GRAPH_ADJ_HAM_NEXT produces Hamilton circuits;
+ 
+ 
+  The graph:
+ 
+    1  010101000
+    2  101000100
+    3  010101000
+    4  101000100
+    5  000001101
+    6  101010010
+    7  010110000
+    8  000001001
+    9  000010010
+ 
+  Circuits:
+ 
+    1    1  6  8  9  5  7  4  3  2
+    2    1  6  8  9  5  7  2  3  4
+    3    1  4  7  5  9  8  6  3  2
+    4    1  4  3  6  8  9  5  7  2
+ 
+TEST0366
+  GRAPH_ADJ_HAM_NEXT_BRUTE seeks circuits
+    in a graph which visit every node.
+  A brute force algorithm is used.
+ 
+  The graph:
+ 
+    1  010101000
+    2  101000100
+    3  010101000
+    4  101000100
+    5  000001101
+    6  101010010
+    7  010110000
+    8  000001001
+    9  000010010
+ 
+  Circuits:
+ 
+    1    1  2  3  4  7  5  9  8  6
+    2    1  2  3  6  8  9  5  7  4
+    3    1  2  7  5  9  8  6  3  4
+    4    1  4  3  2  7  5  9  8  6
+ 
+  No more circuits were found.
+ 
+TEST037
+  GRAPH_ADJ_RANDOM returns a random graph;
+ 
+  Number of edges requested =       10
+ 
+  The graph:
+ 
+    1  011010
+    2  100101
+    3  100111
+    4  011011
+    5  101100
+    6  011100
+ 
+TEST0375
+  GRAPH_ADJ_RANDOM2 returns a random graph, for which
+  edges are generated with a given probability.
+ 
+  Here, we show the effect of increasing connectivity
+  on the singularity of the adjacency matrix.
+ 
+ 
+  Probability of edge generation =   0.250000    
+  Number of edges generated =       48
+  Ratio =   0.252632    
+ 
+  The graph:
+ 
+    1  11000010110100001001
+    2  11100110010000000001
+    3  01100100001010001010
+    4  00010000000010100011
+    5  00001110111000100000
+    6  01101100100000100000
+    7  11001010001000000000
+    8  00000001101000000110
+    9  10001101100001010000
+   10  11001000011101010010
+   11  00101011011001001100
+   12  10000000010100000000
+   13  00110000000010000100
+   14  00000000111001001000
+   15  00011100000000100000
+   16  00000000110000010010
+   17  10100000001001001000
+   18  00000001001010000100
+   19  00110001010000010011
+   20  11010000000000000011
+ 
+  The eigenvalues:
+ 
+       1  -2.47411    
+       2  -2.30625    
+       3  -1.34255    
+       4  -1.14293    
+       5 -0.882361    
+       6 -0.720547    
+       7 -0.390072    
+       8  0.329749E-01
+       9  0.300259    
+      10  0.813544    
+      11   1.07700    
+      12   1.60917    
+      13   1.82839    
+      14   1.98237    
+      15   2.18761    
+      16   2.92771    
+      17   3.18732    
+      18   3.42718    
+      19   3.51002    
+      20   6.37528    
+ 
+ 
+  Probability of edge generation =   0.400000    
+  Number of edges generated =       82
+  Ratio =   0.431579    
+ 
+  The graph:
+ 
+    1  10010000101110100110
+    2  01101010000100111000
+    3  01111001100101011100
+    4  10110100111001100100
+    5  01101100001110010000
+    6  00011100000111001001
+    7  01000011000011010100
+    8  00100011010110000111
+    9  10110000100010100010
+   10  00010001010011001110
+   11  10011000001001101011
+   12  11101101000100101011
+   13  10001111110011110001
+   14  00110110011011011101
+   15  11010000101110110001
+   16  01101010000011111000
+   17  01100100011101011001
+   18  10110011010001000100
+   19  10000001111100000011
+   20  00000101001111101011
+ 
+  The eigenvalues:
+ 
+       1  -2.89460    
+       2  -2.63954    
+       3  -2.22762    
+       4  -1.73029    
+       5  -1.26946    
+       6 -0.897724    
+       7 -0.672391    
+       8 -0.336781    
+       9  0.174617    
+      10  0.506211    
+      11  0.877440    
+      12   1.24509    
+      13   1.35835    
+      14   1.89186    
+      15   2.70969    
+      16   3.01446    
+      17   3.30416    
+      18   3.88090    
+      19   4.26886    
+      20   9.43676    
+ 
+ 
+  Probability of edge generation =   0.650000    
+  Number of edges generated =      121
+  Ratio =   0.636842    
+ 
+  The graph:
+ 
+    1  11111001011101011111
+    2  11110011110011111001
+    3  11111000001101010110
+    4  11111111100001101110
+    5  10111010001111101101
+    6  00010101101101000111
+    7  01011010100111011001
+    8  11010101111111101100
+    9  01010111110010100110
+   10  11000001110111110101
+   11  10101101001110100010
+   12  10101111011111000111
+   13  01001011111111111101
+   14  11111111010111111111
+   15  01011001111011100111
+   16  11100010010011011111
+   17  11011011000011011111
+   18  10111101110111111100
+   19  10110100101101111011
+   20  11001110010111111011
+ 
+  The eigenvalues:
+ 
+       1  -2.96026    
+       2  -2.93170    
+       3  -1.99426    
+       4  -1.59087    
+       5  -1.41064    
+       6  -1.31647    
+       7  -1.01770    
+       8 -0.581354    
+       9 -0.100115    
+      10  0.372699    
+      11  0.964911    
+      12   1.19451    
+      13   1.34125    
+      14   1.76064    
+      15   2.23091    
+      16   2.39752    
+      17   2.79098    
+      18   3.64548    
+      19   3.81526    
+      20   13.3892    
+ 
+TEST038
+  GRAPH_ADJ_SPAN_TREE constructs a spanning tree of a graph.
+  GRAPH_ADJ_SPAN_TREE_ENUM enumerates the spanning trees
+     of a graph.
+ 
+  The graph:
+ 
+    1  0111111100000
+    2  1000110100000
+    3  1001001000000
+    4  1010000000000
+    5  1100000000000
+    6  1100000000000
+    7  1010000000000
+    8  1100000010000
+    9  0000000101001
+   10  0000000010111
+   11  0000000001010
+   12  0000000001100
+   13  0000000011000
+ 
+  Total number of spanning trees is     1440
+ 
+  The spanning tree:
+ 
+       1           1       2
+       2           1       3
+       3           1       4
+       4           1       5
+       5           1       6
+       6           1       7
+       7           1       8
+       8           8       9
+       9           9      10
+      10           9      13
+      11          10      11
+      12          10      12
+ 
+TEST039
+  GRAPH_ARC_EDGE_CON2 finds graph edge connectivity.
+ 
+  The arc list of the graph:
+ 
+       1           6       8
+       2           2       5
+       3           3       1
+       4           6       3
+       5           7       2
+       6           1       8
+       7           4       3
+       8           7       5
+       9           3       8
+      10           4       1
+      11           9       2
+      12           6       1
+      13           5       9
+      14           4       8
+      15           2       6
+      16           9       7
+      17           4       2
+ 
+  The computed edge connectivity is        2
+ 
+TEST040
+  GRAPH_ARC_MATCH finds a maximal matching in a graph.
+ 
+  The edge list of the graph:
+ 
+       1           6       2
+       2           9       7
+       3           3       7
+       4           4      10
+       5          11       5
+       6           6       8
+       7           4       6
+       8           5       7
+       9           6      12
+      10          10       2
+      11           3       1
+      12           4       2
+      13           1       5
+      14           3       5
+ 
+  Nodes and their types:
+ 
+       1         1
+       2         1
+       3         2
+       4         1
+       5         2
+       6         2
+       7         1
+       8         2
+       9         2
+      10         2
+      11         1
+      12         1
+ 
+  Node and matching node:
+ 
+       1         3
+       2         6
+       3         1
+       4        10
+       5        11
+       6         2
+       7         9
+       8         0
+       9         7
+      10         4
+      11         5
+      12         0
+ 
+TEST041
+  GRAPH_ARC_MIN_PATH computes the shortest path from one
+  node to another.
+ 
+ 
+  The weighted graph:
+ 
+       1           1       2   1.00000    
+       2           1       3   1.00000    
+       3           2       3   3.00000    
+       4           2       5   2.00000    
+       5           3       4   2.00000    
+       6           3       5   5.00000    
+ 
+  The distance matrix constructed by GRAPH_ARC_MIN_PATH:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          1.00000       1.00000       3.00000       3.00000    
+    2    1.00000        0.0          2.00000       4.00000       2.00000    
+    3    1.00000       2.00000        0.0          2.00000       4.00000    
+    4    3.00000       4.00000       2.00000        0.0          6.00000    
+    5    3.00000       2.00000       4.00000       6.00000        0.0       
+ 
+ 
+  The routine actually also computes the path.
+  For instance, starting at node        4
+  we compute the shortest path to node        5
+ 
+  The path:
+ 
+       1         4
+       2         3
+       3         1
+       4         2
+       5         5
+ 
+TEST042
+  GRAPH_ARC_MIN_SPAN_TREE finds a minimum length
+  spanning tree.
+ 
+ 
+  The weighted graph:
+ 
+       1           1       2   100.000    
+       2           1       3   125.000    
+       3           1       4   120.000    
+       4           1       5   110.000    
+       5           2       3   40.0000    
+       6           2       4   65.0000    
+       7           2       5   60.0000    
+       8           3       4   45.0000    
+       9           3       5   55.0000    
+      10           4       5   50.0000    
+ 
+  The minimal spanning tree:
+ 
+       1           1       2   100.000    
+       2           2       3   40.0000    
+       3           3       4   45.0000    
+       4           4       5   50.0000    
+ 
+  The length of the minimal tree is    235.000    
+ 
+TEST043
+  GRAPH_ARC_SPAN_FOREST
+  computes a spanning forest for a graph
+ 
+  The graph:
+ 
+       1           2       3
+       2           4       7
+       3           1       9
+       4           7      11
+       5           5       8
+       6           2       5
+       7           6      10
+       8           2       8
+       9           3       8
+      10           4      11
+ 
+  The reordered endpoint array:
+ 
+       1           1       9
+       2           2       3
+       3           2       5
+       4           2       8
+       5           4       7
+       6           4      11
+       7           6      10
+       8          11       7
+       9           8       3
+      10           8       5
+ 
+  Number of connected components =        7
+ 
+  Node component membership:
+ 
+       1         1
+       2         2
+       3         2
+       4         3
+       5         2
+       6         4
+       7         3
+       8         2
+       9         1
+      10         4
+      11         3
+      12         5
+      13         6
+      14         7
+ 
+TEST044
+  For a graph described by an arc list:
+  GRAPH_ARC_TO_DIGRAPH_ARC makes a directed graph
+    from an undirected one.
+ 
+  The graph:
+ 
+       1           1       2
+       2           1       1
+       3           1       4
+       4           2       1
+       5           3       2
+       6           4       1
+       7           2       3
+       8           4       2
+ 
+  The digraph:
+ 
+       1           1       1
+       2           1       2
+       3           1       4
+       4           2       1
+       5           2       3
+       6           2       4
+       7           3       2
+       8           4       1
+       9           4       2
+ 
+TEST045
+  For a graph described by an arc list:
+  GRAPH_ARC_TO_GRAPH_ADJ converts an arclist
+    graph to an adjacency graph.
+ 
+ 
+  The graph:
+ 
+       1           1       2
+       2           1       1
+       3           1       4
+       4           2       1
+       5           3       2
+       6           4       1
+       7           2       3
+       8           4       2
+ 
+  The graph:
+ 
+    1  1101
+    2  1011
+    3  0100
+    4  1100
+ 
+TEST046
+  For a graph described by an arc list:
+  GRAPH_ARC_COMPLEMENT computes the complement
+    of a graph described by its edge array;
+  GRAPH_ARC_EDGE_SORT sorts the edge array.
+ 
+  Number of edges in original graph is       20
+  Number of nodes is       10
+ 
+  The graph:
+ 
+       1           1       2
+       2           1       3
+       3           1       4
+       4           1       5
+       5           2       3
+       6           2       5
+       7           2       6
+       8           3       4
+       9           3       7
+      10           4       5
+      11           4       8
+      12           5       9
+      13           6       7
+      14           6       9
+      15           6      10
+      16           7       8
+      17           7      10
+      18           8       9
+      19           8      10
+      20           9      10
+Number of edges in complement is       25
+ 
+  The complement graph:
+ 
+       1           1       2
+       2           1       3
+       3           1       4
+       4           1       5
+       5           2       3
+       6           2       5
+       7           2       6
+       8           3       4
+       9           3       7
+      10           4       5
+      11           4       8
+      12           5       9
+      13           6       7
+      14           6       9
+      15           6      10
+      16           7       8
+      17           7      10
+      18           8       9
+      19           8      10
+      20           9      10
+ 
+TEST047
+  For a graph described by an arc list:
+  GRAPH_ARC_DEGREE computes the degree of the nodes;
+ 
+  The graph:
+ 
+       1           1       3
+       2           1       7
+       3           1      10
+       4           2       5
+       5           2      10
+       6           3       6
+       7           3       9
+       8           4       7
+       9           4       8
+      10           6       9
+      11           8      10
+ 
+  The node degrees:
+ 
+       1         3
+       2         2
+       3         3
+       4         2
+       5         1
+       6         2
+       7         2
+       8         2
+       9         2
+      10         3
+ 
+TEST048
+  For a graph described by an arc list:
+  GRAPH_ARC_NODE_COUNT counts the nodes and
+  finds the highest label.
+ 
+  The graph:
+ 
+       1           1       3
+       2           1       7
+       3           1     100
+       4           2       5
+       5           2     100
+       6           3       0
+       7           3       9
+       8          -4       7
+       9          -4      88
+      10           0       9
+      11          88     100
+  Number of nodes is          10
+  Maximum node label is      100
+ 
+TEST049
+  For a graph described by an arc list:
+  GRAPH_ARC_IS_EULERIAN checks if a graph has an
+    Euler circuit.
+  GRAPH_ARC_EULER_CIRC_NEXT finds the next
+    Euler circuit of a graph.
+ 
+ 
+  The graph:
+ 
+       1           1       2
+       2           1       3
+       3           1       4
+       4           1       5
+       5           2       3
+       6           2       4
+       7           2       5
+       8           3       4
+       9           3       5
+      10           4       5
+ 
+  The graph is eulerian.
+ 
+  Circuits:
+ 
+  1    1  7 10  8  9  4  3  6  5  2
+  2    1  7 10  8  9  4  2  5  6  3
+  3    1  7 10  8  5  6  3  4  9  2
+  4    1  7 10  8  5  6  3  2  9  4
+  5    1  7 10  8  2  4  9  5  6  3
+  6    1  7 10  8  2  3  6  5  9  4
+  7    1  7 10  6  5  9  4  3  8  2
+  8    1  7 10  6  5  9  4  2  8  3
+  9    1  7 10  6  5  8  3  4  9  2
+ 10    1  7 10  6  5  8  3  2  9  4
+ 11    1  7 10  6  5  2  4  9  8  3
+ 12    1  7 10  6  5  2  3  8  9  4
+ 13    1  7 10  3  4  9  8  6  5  2
+ 14    1  7 10  3  4  9  5  6  8  2
+ 15    1  7 10  3  2  8  6  5  9  4
+ 16    1  7 10  3  2  5  6  8  9  4
+ 17    1  7  9  8 10  4  3  6  5  2
+ 18    1  7  9  8 10  4  2  5  6  3
+ 19    1  7  9  8  6  5  2  4 10  3
+ 20    1  7  9  8  6  5  2  3 10  4
+ 21    1  7  9  8  3  4 10  6  5  2
+ 22    1  7  9  8  3  2  5  6 10  4
+ 23    1  7  9  5  6 10  4  3  8  2
+ 24    1  7  9  5  6 10  4  2  8  3
+ 25    1  7  9  5  6  8  2  4 10  3
+ 26    1  7  9  5  6  8  2  3 10  4
+ 27    1  7  9  5  6  3  4 10  8  2
+ 28    1  7  9  5  6  3  2  8 10  4
+ 29    1  7  9  2  4 10  8  5  6  3
+ 30    1  7  9  2  4 10  6  5  8  3
+ 31    1  7  9  2  3  8  5  6 10  4
+ 32    1  7  9  2  3  6  5  8 10  4
+ 33    1  7  4  3 10  9  8  6  5  2
+ 34    1  7  4  3 10  9  5  6  8  2
+ 35    1  7  4  3  8  9 10  6  5  2
+ 36    1  7  4  3  8  5  6 10  9  2
+ 37    1  7  4  3  6  5  9 10  8  2
+ 38    1  7  4  3  6  5  8 10  9  2
+ 39    1  7  4  2  9 10  8  5  6  3
+ 40    1  7  4  2  9 10  6  5  8  3
+ 41    1  7  4  2  8 10  9  5  6  3
+ 42    1  7  4  2  8  6  5  9 10  3
+ 43    1  7  4  2  5  6 10  9  8  3
+ 44    1  7  4  2  5  6  8  9 10  3
+ 45    1  6 10  9  8  3  4  7  5  2
+ 46    1  6 10  9  8  3  2  5  7  4
+ 47    1  6 10  9  5  7  4  3  8  2
+ 48    1  6 10  9  5  7  4  2  8  3
+ 49    1  6 10  9  2  4  7  5  8  3
+ 50    1  6 10  9  2  3  8  5  7  4
+ 51    1  6 10  7  5  9  4  3  8  2
+ 52    1  6 10  7  5  9  4  2  8  3
+ 53    1  6 10  7  5  8  3  4  9  2
+ 54    1  6 10  7  5  8  3  2  9  4
+ 55    1  6 10  7  5  2  4  9  8  3
+ 56    1  6 10  7  5  2  3  8  9  4
+ 57    1  6 10  4  3  8  9  7  5  2
+ 58    1  6 10  4  3  8  5  7  9  2
+ 59    1  6 10  4  2  9  7  5  8  3
+ 60    1  6 10  4  2  5  7  9  8  3
+ 61    1  6  8  9 10  3  4  7  5  2
+ 62    1  6  8  9 10  3  2  5  7  4
+ 63    1  6  8  9  7  5  2  4 10  3
+ 64    1  6  8  9  7  5  2  3 10  4
+ 65    1  6  8  9  4  3 10  7  5  2
+ 66    1  6  8  9  4  2  5  7 10  3
+ 67    1  6  8  5  7 10  3  4  9  2
+ 68    1  6  8  5  7 10  3  2  9  4
+ 69    1  6  8  5  7  9  2  4 10  3
+ 70    1  6  8  5  7  9  2  3 10  4
+ 71    1  6  8  5  7  4  3 10  9  2
+ 72    1  6  8  5  7  4  2  9 10  3
+ 73    1  6  8  2  4  9  5  7 10  3
+ 74    1  6  8  2  4  7  5  9 10  3
+ 75    1  6  8  2  3 10  9  5  7  4
+ 76    1  6  8  2  3 10  7  5  9  4
+ 77    1  6  3  4 10  8  9  7  5  2
+ 78    1  6  3  4 10  8  5  7  9  2
+ 79    1  6  3  4  9  8 10  7  5  2
+ 80    1  6  3  4  9  5  7 10  8  2
+ 81    1  6  3  4  7  5  9 10  8  2
+ 82    1  6  3  4  7  5  8 10  9  2
+ 83    1  6  3  2  9 10  8  5  7  4
+ 84    1  6  3  2  9  7  5  8 10  4
+ 85    1  6  3  2  8 10  9  5  7  4
+ 86    1  6  3  2  8 10  7  5  9  4
+ 87    1  6  3  2  5  7 10  8  9  4
+ 88    1  6  3  2  5  7  9  8 10  4
+ 89    1  5  9 10  8  2  4  7  6  3
+ 90    1  5  9 10  8  2  3  6  7  4
+ 91    1  5  9 10  6  7  4  3  8  2
+ 92    1  5  9 10  6  7  4  2  8  3
+ 93    1  5  9 10  3  4  7  6  8  2
+ 94    1  5  9 10  3  2  8  6  7  4
+ 95    1  5  9  7  6 10  4  3  8  2
+ 96    1  5  9  7  6 10  4  2  8  3
+ 97    1  5  9  7  6  8  2  4 10  3
+ 98    1  5  9  7  6  8  2  3 10  4
+ 99    1  5  9  7  6  3  4 10  8  2
+100    1  5  9  7  6  3  2  8 10  4
+101    1  5  9  4  3 10  7  6  8  2
+102    1  5  9  4  3  6  7 10  8  2
+103    1  5  9  4  2  8 10  7  6  3
+104    1  5  9  4  2  8  6  7 10  3
+105    1  5  8 10  9  2  4  7  6  3
+106    1  5  8 10  9  2  3  6  7  4
+107    1  5  8 10  7  6  3  4  9  2
+108    1  5  8 10  7  6  3  2  9  4
+109    1  5  8 10  4  3  6  7  9  2
+110    1  5  8 10  4  2  9  7  6  3
+111    1  5  8  6  7 10  3  4  9  2
+112    1  5  8  6  7 10  3  2  9  4
+113    1  5  8  6  7  9  2  4 10  3
+114    1  5  8  6  7  9  2  3 10  4
+115    1  5  8  6  7  4  3 10  9  2
+116    1  5  8  6  7  4  2  9 10  3
+117    1  5  8  3  4 10  6  7  9  2
+118    1  5  8  3  4  7  6 10  9  2
+119    1  5  8  3  2  9 10  6  7  4
+120    1  5  8  3  2  9  7  6 10  4
+121    1  5  2  4 10  8  9  7  6  3
+122    1  5  2  4 10  6  7  9  8  3
+123    1  5  2  4  9  8 10  7  6  3
+124    1  5  2  4  9  8  6  7 10  3
+125    1  5  2  4  7  6 10  9  8  3
+126    1  5  2  4  7  6  8  9 10  3
+127    1  5  2  3 10  9  8  6  7  4
+128    1  5  2  3 10  7  6  8  9  4
+129    1  5  2  3  8  9 10  6  7  4
+130    1  5  2  3  8  9  7  6 10  4
+131    1  5  2  3  6  7 10  8  9  4
+132    1  5  2  3  6  7  9  8 10  4
+ 
+TEST050
+  For a graph described by an arc list:
+  GRAPH_ARC_IS_EULERIAN determines if a graph
+    is Eulerian;
+  GRAPH_ARC_EULER_CIRC returns an Euler circuit
+    of a graph.
+ 
+  The graph:
+ 
+       1           1       2
+       2           1       3
+       3           1       4
+       4           1       5
+       5           2       3
+       6           2       4
+       7           2       5
+       8           3       4
+       9           3       5
+      10           4       5
+ 
+  The graph is eulerian.
+ 
+  The nodes in the Euler circuit:
+ 
+       1         1
+       2         2
+       3         3
+       4         4
+       5         5
+       6         3
+       7         1
+       8         4
+       9         2
+      10         5
+ 
+TEST051
+  For a graph described by an arc list:
+  GRAPH_ARC_SPAN_TREE constructs a spanning tree.
+ 
+ 
+  The graph:
+ 
+       1           1       2
+       2           1       3
+       3           1       4
+       4           1       5
+       5           1       6
+       6           1       7
+       7           1       8
+       8           2       5
+       9           2       6
+      10           2       8
+      11           3       4
+      12           3       7
+      13           9      10
+      14           9      13
+      15          10      11
+      16          10      12
+      17          10      13
+      18          11      12
+ 
+  Nodes and Parent Nodes:
+ 
+       1        -1
+       2         1
+       3         1
+       4         1
+       5         1
+       6         1
+       7         1
+       8         1
+       9        -1
+      10         9
+      11        10
+      12        10
+      13         9
+ 
+TEST052
+  GRAPH_CHRO finds the chromatic polynomial of a graph.
+ 
+  The end point array:
+ 
+   1   1   1   1   2   2   2   3   3   4   4   5
+   2   3   4   5   3   4   6   5   6   5   6   6
+ 
+  The chromatic polynomial:
+ 
+  Power sum form:
+  64 154 137  58  12   1
+ 
+  Tutte or tree form:
+   0  11  25  20   7   1
+ 
+  Stirling form:
+   0   0   1   3   3   1
+ 
+TEST053
+  GRAPH_DIST_ALL computes the distance between
+    all pairs of nodes.
+ 
+ 
+  Immediate node distance matrix:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          2.00000       6.00000       1.00000       1000.00    
+    2    2.00000        0.0          3.00000       4.00000       1000.00    
+    3    6.00000       3.00000        0.0          1000.00       1000.00    
+    4    1.00000       4.00000       1000.00        0.0          5.00000    
+    5    1000.00       1000.00       1000.00       5.00000        0.0       
+ 
+ 
+  Total node distance matrix:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          2.00000       5.00000       1.00000       6.00000    
+    2    2.00000        0.0          3.00000       3.00000       8.00000    
+    3    5.00000       3.00000        0.0          6.00000       11.0000    
+    4    1.00000       3.00000       6.00000        0.0          5.00000    
+    5    6.00000       8.00000       11.0000       5.00000        0.0       
+ 
+ 
+  Note that "infinity" is represented by    1000.00    
+ 
+TEST054
+  GRAPH_DIST_CHECK checks a distance matrix.
+ 
+The distance matrix passed all tests.
+ 
+TEST055
+  For a graph defined by a distance matrix,
+  GRAPH_DIST_MIN_SPAN_TREE finds a minimum spanning tree.
+ 
+ 
+  The graph:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          100.000       125.000       120.000       110.000    
+    2    100.000        0.0          40.0000       65.0000       60.0000    
+    3    125.000       40.0000        0.0          45.0000       55.0000    
+    4    120.000       65.0000       45.0000        0.0          50.0000    
+    5    110.000       60.0000       55.0000       50.0000        0.0       
+ 
+ 
+  The minimal spanning tree:
+ 
+       1           1       2   100.000    
+       2           2       3   40.0000    
+       3           3       4   45.0000    
+       4           4       5   50.0000    
+ 
+  The length of the minimal tree is    235.000    
+ 
+TEST056
+  For a graph defined by a distance matrix,
+  GRAPH_DIST_MIN_SPAN_TREE2 finds a minimum spanning tree.
+ 
+ 
+  The graph:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          100.000       125.000       120.000       110.000    
+    2    100.000        0.0          40.0000       65.0000       60.0000    
+    3    125.000       40.0000        0.0          45.0000       55.0000    
+    4    120.000       65.0000       45.0000        0.0          50.0000    
+    5    110.000       60.0000       55.0000       50.0000        0.0       
+ 
+ 
+  The minimal spanning tree:
+ 
+       1           2       3   40.0000    
+       2           3       4   45.0000    
+       3           4       5   50.0000    
+       4           2       1   100.000    
+ 
+  The length of the minimal tree is    235.000    
+ 
+TEST057
+  For a graph defined by a distance matrix,
+  GRAPH_DIST_MIN_SPAN_TREE3 finds a minimum spanning tree.
+ 
+ 
+  The graph:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          100.000       125.000       120.000       110.000    
+    2    100.000        0.0          40.0000       65.0000       60.0000    
+    3    125.000       40.0000        0.0          45.0000       55.0000    
+    4    120.000       65.0000       45.0000        0.0          50.0000    
+    5    110.000       60.0000       55.0000       50.0000        0.0       
+ 
+ 
+  The minimal spanning tree:
+ 
+       1           1       2   100.000    
+       2           2       3   40.0000    
+       3           3       4   45.0000    
+       4           4       5   50.0000    
+ 
+  The length of the minimal tree is    235.000    
+ 
+TEST058
+  GRAPH_DIST_MIN_SPAN_TREE finds a minimum 
+    spanning tree.
+ 
+  Read distance data for 57 cities from file.
+ 
+  The weighted tree:
+ 
+       1           1      11   33.0000    
+       2           2       4   152.000    
+       3           3      19   80.0000    
+       4           4      34   205.000    
+       5           5      41   207.000    
+       6           6      36   216.000    
+       7           7      11   186.000    
+       8           8      41   444.000    
+       9           9      38   155.000    
+      10          10      30   111.000    
+      11          11      53   110.000    
+      12          12      10   106.000    
+      13          13      55   268.000    
+      14          14       8   101.000    
+      15          15      37   135.000    
+      16          16      53   57.0000    
+      17          17      45   170.000    
+      18          18      22   116.000    
+      19          19      42   200.000    
+      20          20      46   498.000    
+      21          21      13   242.000    
+      22          22      10   109.000    
+      23          23      31   213.000    
+      24          24       2   316.000    
+      25          25      26   149.000    
+      26          26      54   63.0000    
+      27          27      16   84.0000    
+      28          28      31   139.000    
+      29          29      47   405.000    
+      30          30      17   125.000    
+      31          31      34   222.000    
+      32          32       9   91.0000    
+      33          33      15   253.000    
+      34          34      17   160.000    
+      35          35      23   187.000    
+      36          36      39   92.0000    
+      37          37      54   167.000    
+      38          38      50   73.0000    
+      39          39       3   97.0000    
+      40          40      29   390.000    
+      41          41      37   390.000    
+      42          42       1   105.000    
+      43          43      48   176.000    
+      44          44      56   263.000    
+      45          45      25   128.000    
+      46          46       8   458.000    
+      47          47      43   669.000    
+      48          48      49   288.000    
+      49          49      20   322.000    
+      50          50      45   101.000    
+      51          51      25   140.000    
+      52          52      24   200.000    
+      53          53      18   110.000    
+      54          54      57   139.000    
+      55          55      51   181.000    
+      56          56       3   38.0000    
+ 
+  The length of the minimal tree is    10835.0    
+ 
+TEST059
+  GRAPH_DIST_ONE computes the distance from one
+    node to all others in a graph.
+ 
+ 
+  Edge Distance Matrix:
+ 
+ 
+ 
+Columns       1             2             3             4             5       
+  Row
+ 
+    1     0.0          1.00000       3.00000       1000.00       1000.00    
+    2    2.00000        0.0          1.00000       1000.00       2.00000    
+    3    1000.00       1000.00        0.0          2.00000       3.00000    
+    4    1000.00       1000.00       1.00000        0.0          1000.00    
+    5    1.00000       3.00000       1000.00       6.00000        0.0       
+ 
+ 
+The starting node is        5
+ 
+ 
+  Node    Distance   Path Idad
+ 
+    1   1.00000        2    5
+    2   2.00000        3    1
+    3   3.00000        4    2
+    4   5.00000        5    3
+    5   0.00000        1    5
+ 
+  Note that "infinity" is represented by    1000.00    
+ 
+  Here are the paths for each node:
+ 
+    1    5
+    2    1    5
+    3    2    1    5
+    4    3    2    1    5
+    5
+ 
+TEST060
+  VLA_TO_GRAPH_ARC converts VLA edge data to a
+    graph defined by arcs;
+  GRAPH_ARC_FACE constructs the faces of an orientable graph.
+  FACE_TO_IV writes face data to an IV file.
+ 
+VLA_TO_GRAPH_ARC - Note:
+  The graph was read properly.
+  Number of nodes =      135
+  Number of edges =      389
+ 
+  Sort the edges:
+  Determine the faces:
+ 
+  Number of faces found was      259
+  Euler predicted      256
+ 
+FACE_TO_IV:
+  The data was written to the file: fish_faces.iv
+ 
+TEST061
+  GRF_READ reads a GRF file,
+  GRAPH_ARC_TO_PS writes a PostScript version of it.
+ 
+GRF_READ - Input file statistics:
+  Text lines:           64
+  Bad text lines:        0
+  Nodes:                64
+  Edges:               336
+ 
+Node, X, Y
+ 
+       1  0.112000      0.940000    
+       2  0.224000      0.948000    
+       3  0.324000      0.952000    
+       4  0.420000      0.946000    
+       5  0.514000      0.952000    
+       6  0.610000      0.950000    
+       7  0.694000      0.950000    
+       8  0.798000      0.946000    
+       9  0.104000      0.878000    
+      10  0.216000      0.874000    
+      11  0.302000      0.866000    
+      12  0.410000      0.870000    
+      13  0.520000      0.868000    
+      14  0.614000      0.860000    
+      15  0.700000      0.864000    
+      16  0.804000      0.866000    
+      17  0.102000      0.802000    
+      18  0.210000      0.790000    
+      19  0.296000      0.792000    
+      20  0.410000      0.786000    
+      21  0.512000      0.782000    
+      22  0.614000      0.776000    
+      23  0.700000      0.772000    
+      24  0.804000      0.774000    
+      25  0.840000E-01  0.718000    
+      26  0.194000      0.698000    
+      27  0.300000      0.696000    
+      28  0.404000      0.700000    
+      29  0.508000      0.698000    
+      30  0.614000      0.696000    
+      31  0.706000      0.692000    
+      32  0.802000      0.688000    
+      33  0.860000E-01  0.620000    
+      34  0.192000      0.622000    
+      35  0.294000      0.624000    
+      36  0.404000      0.616000    
+      37  0.506000      0.610000    
+      38  0.604000      0.606000    
+      39  0.702000      0.590000    
+      40  0.792000      0.588000    
+      41  0.880000E-01  0.508000    
+      42  0.180000      0.528000    
+      43  0.288000      0.522000    
+      44  0.402000      0.518000    
+      45  0.502000      0.510000    
+      46  0.604000      0.512000    
+      47  0.700000      0.490000    
+      48  0.792000      0.484000    
+      49  0.760000E-01  0.430000    
+      50  0.178000      0.422000    
+      51  0.286000      0.414000    
+      52  0.390000      0.414000    
+      53  0.498000      0.402000    
+      54  0.596000      0.404000    
+      55  0.698000      0.392000    
+      56  0.794000      0.394000    
+      57  0.700000E-01  0.330000    
+      58  0.178000      0.322000    
+      59  0.282000      0.304000    
+      60  0.390000      0.308000    
+      61  0.500000      0.298000    
+      62  0.594000      0.294000    
+      63  0.694000      0.286000    
+      64  0.792000      0.292000    
+ 
+  The graph:
+ 
+    1  0000000000100000010000000000000000000000000000000000000000000000
+    2  0000000000010000101000000000000000000000000000000000000000000000
+    3  0000000010001000010100000000000000000000000000000000000000000000
+    4  0000000001000100001010000000000000000000000000000000000000000000
+    5  0000000000100010000101000000000000000000000000000000000000000000
+    6  0000000000010001000010100000000000000000000000000000000000000000
+    7  0000000000001000000001010000000000000000000000000000000000000000
+    8  0000000000000100000000100000000000000000000000000000000000000000
+    9  0010000000000000001000000100000000000000000000000000000000000000
+   10  0001000000000000000100001010000000000000000000000000000000000000
+   11  1000100000000000100010000101000000000000000000000000000000000000
+   12  0100010000000000010001000010100000000000000000000000000000000000
+   13  0010001000000000001000100001010000000000000000000000000000000000
+   14  0001000100000000000100010000101000000000000000000000000000000000
+   15  0000100000000000000010000000010100000000000000000000000000000000
+   16  0000010000000000000001000000001000000000000000000000000000000000
+   17  0100000000100000000000000010000001000000000000000000000000000000
+   18  1010000000010000000000000001000010100000000000000000000000000000
+   19  0101000010001000000000001000100001010000000000000000000000000000
+   20  0010100001000100000000000100010000101000000000000000000000000000
+   21  0001010000100010000000000010001000010100000000000000000000000000
+   22  0000101000010001000000000001000100001010000000000000000000000000
+   23  0000010100001000000000000000100000000101000000000000000000000000
+   24  0000001000000100000000000000010000000010000000000000000000000000
+   25  0000000001000000001000000000000000100000010000000000000000000000
+   26  0000000010100000000100000000000000010000101000000000000000000000
+   27  0000000001010000100010000000000010001000010100000000000000000000
+   28  0000000000101000010001000000000001000100001010000000000000000000
+   29  0000000000010100001000100000000000100010000101000000000000000000
+   30  0000000000001010000100010000000000010001000010100000000000000000
+   31  0000000000000101000010000000000000001000000001010000000000000000
+   32  0000000000000010000001000000000000000100000000100000000000000000
+   33  0000000000000000010000000010000000000000001000000100000000000000
+   34  0000000000000000101000000001000000000000000100001010000000000000
+   35  0000000000000000010100001000100000000000100010000101000000000000
+   36  0000000000000000001010000100010000000000010001000010100000000000
+   37  0000000000000000000101000010001000000000001000100001010000000000
+   38  0000000000000000000010100001000100000000000100010000101000000000
+   39  0000000000000000000001010000100000000000000010000000010100000000
+   40  0000000000000000000000100000010000000000000001000000001000000000
+   41  0000000000000000000000000100000000100000000000000010000001000000
+   42  0000000000000000000000001010000000010000000000000001000010100000
+   43  0000000000000000000000000101000010001000000000001000100001010000
+   44  0000000000000000000000000010100001000100000000000100010000101000
+   45  0000000000000000000000000001010000100010000000000010001000010100
+   46  0000000000000000000000000000101000010001000000000001000100001010
+   47  0000000000000000000000000000010100001000000000000000100000000101
+   48  0000000000000000000000000000001000000100000000000000010000000010
+   49  0000000000000000000000000000000001000000001000000000000000100000
+   50  0000000000000000000000000000000010100000000100000000000000010000
+   51  0000000000000000000000000000000001010000100010000000000010001000
+   52  0000000000000000000000000000000000101000010001000000000001000100
+   53  0000000000000000000000000000000000010100001000100000000000100010
+   54  0000000000000000000000000000000000001010000100010000000000010001
+   55  0000000000000000000000000000000000000101000010000000000000001000
+   56  0000000000000000000000000000000000000010000001000000000000000100
+   57  0000000000000000000000000000000000000000010000000010000000000000
+   58  0000000000000000000000000000000000000000101000000001000000000000
+   59  0000000000000000000000000000000000000000010100001000100000000000
+   60  0000000000000000000000000000000000000000001010000100010000000000
+   61  0000000000000000000000000000000000000000000101000010001000000000
+   62  0000000000000000000000000000000000000000000010100001000100000000
+   63  0000000000000000000000000000000000000000000001010000100000000000
+   64  0000000000000000000000000000000000000000000000100000010000000000
+ 
+GRAPH_ARC_TO_PS
+  The data was written to the file: knightstour.eps
+ 
+TEST062
+  GREEDY tries to minimize the total distance
+    in a pairing of black and red nodes.
+ 
+  Try to find a pairing of two sets of nodes
+  with a low discrepancy.
+ 
+  Relative tolerance for step decrease =   0.500000E-01
+  Maximum number of steps =       10
+  X range is    0.00000     to    10.0000    
+  Y range is    3.00000     to    5.00000    
+ 
+Initial black node coordinates:
+ 
+    I   Black   X             Y
+ 
+       1       1   2.18418       4.38413    
+       2       2   9.56318       4.12332    
+       3       3   8.29509       4.72243    
+       4       4   5.61695       3.90759    
+       5       5   4.15307       4.82395    
+       6       6  0.661187       4.19583    
+       7       7   2.57578       3.37791    
+       8       8   1.09957       4.52298    
+       9       9  0.438290       3.79398    
+      10      10   6.33966       3.37063    
+      11      11  0.617272       4.14873    
+      12      12   4.49539       3.73405    
+      13      13   4.01306       4.23441    
+      14      14   7.54673       3.72306    
+      15      15   7.97287       3.42586    
+ 
+Initial red node coordinates:
+ 
+    I    Red    X             Y
+ 
+       1       1  0.183837E-01   4.42894    
+       2       2   8.97504       3.23541    
+       3       3   3.50752       3.59866    
+       4       4  0.945448       4.65001    
+       5       5  0.136169       4.64932    
+       6       6   8.59097       3.12372    
+       7       7   8.40847       4.42156    
+       8       8   1.23104       3.17657    
+       9       9  0.751236E-01   4.55599    
+      10      10   2.60303       4.49061    
+      11      11   9.12484       3.61735    
+      12      12   1.13664       4.79875    
+      13      13   3.51629       4.52707    
+      14      14   8.22887       4.52346    
+      15      15   2.67132       3.81394    
+ 
+Initial pairing of nodes:
+ 
+    I   Black  Red    Distance
+ 
+       1       1       1   2.16626    
+       2       2       2   1.06503    
+       3       3       3   4.91769    
+       4       4       4   4.73013    
+       5       5       5   4.02070    
+       6       6       6   8.00193    
+       7       7       7   5.92533    
+       8       8       8   1.35282    
+       9       9       9  0.844127    
+      10      10      10   3.90086    
+      11      11      11   8.52414    
+      12      12      12   3.52346    
+      13      13      13  0.576575    
+      14      14      14   1.05165    
+      15      15      15   5.31573    
+ 
+Total discrepancy of initial pairing =    55.9164    
+ 
+  On step        1
+  discrepancy =   21.0636    
+  Swaps made was       37
+  On step        2
+  discrepancy =   17.7406    
+  Swaps made was       14
+  On step        3
+  discrepancy =   16.1724    
+  Swaps made was        6
+  On step        4
+  discrepancy =   16.1724    
+  Swaps made was        0
+ 
+GREEDY - Warning:
+  The relative change in the discrepancy 
+  was only    0.00000    
+  which is less than the tolerance TOL =  0.500000E-01
+  Bailing out of the iteration.
+ 
+ 
+Final black node coordinates:
+ 
+    I   Black   X             Y
+ 
+       1       1   2.18418       4.38413    
+       2       2   9.56318       4.12332    
+       3       3   8.29509       4.72243    
+       4       4   5.61695       3.90759    
+       5       5   4.15307       4.82395    
+       6       6  0.661187       4.19583    
+       7       7   2.57578       3.37791    
+       8       8   1.09957       4.52298    
+       9       9  0.438290       3.79398    
+      10      10   6.33966       3.37063    
+      11      11  0.617272       4.14873    
+      12      12   4.49539       3.73405    
+      13      13   4.01306       4.23441    
+      14      14   7.54673       3.72306    
+      15      15   7.97287       3.42586    
+ 
+Final red node coordinates:
+ 
+    I    Red    X             Y
+ 
+       1      12  0.183837E-01   4.42894    
+       2      11   8.97504       3.23541    
+       3      14   3.50752       3.59866    
+       4      15  0.945448       4.65001    
+       5      13  0.136169       4.64932    
+       6       5   8.59097       3.12372    
+       7       8   8.40847       4.42156    
+       8       4   1.23104       3.17657    
+       9       1  0.751236E-01   4.55599    
+      10       6   2.60303       4.49061    
+      11       9   9.12484       3.61735    
+      12       3   1.13664       4.79875    
+      13      10   3.51629       4.52707    
+      14       7   8.22887       4.52346    
+      15       2   2.67132       3.81394    
+ 
+Final pairing of nodes:
+ 
+    I   Black  Red    Distance
+ 
+       1       1      12   1.12661    
+       2       2      11  0.669441    
+       3       3      14  0.209700    
+       4       4      15   2.94712    
+       5       5      13  0.702590    
+       6       6       5  0.693754    
+       7       7       8   1.35973    
+       8       8       4  0.199719    
+       9       9       1  0.761251    
+      10      10       6   2.26481    
+      11      11       9  0.678073    
+      12      12       3  0.997102    
+      13      13      10   1.43312    
+      14      14       7   1.10928    
+      15      15       2   1.02011    
+ 
+  Total discrepancy of final pairing =    16.1724    
+ 
+  Reversing NODER!
+ 
+Initial black node coordinates:
+ 
+    I   Black   X             Y
+ 
+       1       1   2.18418       4.38413    
+       2       2   9.56318       4.12332    
+       3       3   8.29509       4.72243    
+       4       4   5.61695       3.90759    
+       5       5   4.15307       4.82395    
+       6       6  0.661187       4.19583    
+       7       7   2.57578       3.37791    
+       8       8   1.09957       4.52298    
+       9       9  0.438290       3.79398    
+      10      10   6.33966       3.37063    
+      11      11  0.617272       4.14873    
+      12      12   4.49539       3.73405    
+      13      13   4.01306       4.23441    
+      14      14   7.54673       3.72306    
+      15      15   7.97287       3.42586    
+ 
+Initial red node coordinates:
+ 
+    I    Red    X             Y
+ 
+       1       2  0.183837E-01   4.42894    
+       2       7   8.97504       3.23541    
+       3      10   3.50752       3.59866    
+       4       3  0.945448       4.65001    
+       5       9  0.136169       4.64932    
+       6       6   8.59097       3.12372    
+       7       1   8.40847       4.42156    
+       8       4   1.23104       3.17657    
+       9       8  0.751236E-01   4.55599    
+      10       5   2.60303       4.49061    
+      11      13   9.12484       3.61735    
+      12      15   1.13664       4.79875    
+      13      14   3.51629       4.52707    
+      14      11   8.22887       4.52346    
+      15      12   2.67132       3.81394    
+ 
+Initial pairing of nodes:
+ 
+    I   Black  Red    Distance
+ 
+       1       1       2   6.88733    
+       2       2       7   1.19259    
+       3       3      10   5.69678    
+       4       4       3   2.13193    
+       5       5       9   4.08674    
+       6       6       6   8.00193    
+       7       7       1   2.76495    
+       8       8       4  0.199719    
+       9       9       8   1.00481    
+      10      10       5   6.33390    
+      11      11      13   2.92360    
+      12      12      15   1.82582    
+      13      13      14   4.22571    
+      14      14      11   1.58164    
+      15      15      12   6.97272    
+ 
+Total discrepancy of initial pairing =    55.8302    
+ 
+  On step        1
+  discrepancy =   20.3288    
+  Swaps made was       45
+  On step        2
+  discrepancy =   16.3711    
+  Swaps made was        8
+  On step        3
+  discrepancy =   16.1724    
+  Swaps made was        2
+ 
+GREEDY - Warning:
+  The relative change in the discrepancy 
+  was only   0.121349E-01
+  which is less than the tolerance TOL =  0.500000E-01
+  Bailing out of the iteration.
+ 
+ 
+Final black node coordinates:
+ 
+    I   Black   X             Y
+ 
+       1       1   2.18418       4.38413    
+       2       2   9.56318       4.12332    
+       3       3   8.29509       4.72243    
+       4       4   5.61695       3.90759    
+       5       5   4.15307       4.82395    
+       6       6  0.661187       4.19583    
+       7       7   2.57578       3.37791    
+       8       8   1.09957       4.52298    
+       9       9  0.438290       3.79398    
+      10      10   6.33966       3.37063    
+      11      11  0.617272       4.14873    
+      12      12   4.49539       3.73405    
+      13      13   4.01306       4.23441    
+      14      14   7.54673       3.72306    
+      15      15   7.97287       3.42586    
+ 
+Final red node coordinates:
+ 
+    I    Red    X             Y
+ 
+       1      12  0.183837E-01   4.42894    
+       2      11   8.97504       3.23541    
+       3      14   3.50752       3.59866    
+       4      15  0.945448       4.65001    
+       5      13  0.136169       4.64932    
+       6       5   8.59097       3.12372    
+       7       8   8.40847       4.42156    
+       8       4   1.23104       3.17657    
+       9       1  0.751236E-01   4.55599    
+      10       6   2.60303       4.49061    
+      11       9   9.12484       3.61735    
+      12       3   1.13664       4.79875    
+      13      10   3.51629       4.52707    
+      14       7   8.22887       4.52346    
+      15       2   2.67132       3.81394    
+ 
+Final pairing of nodes:
+ 
+    I   Black  Red    Distance
+ 
+       1       1      12   1.12661    
+       2       2      11  0.669441    
+       3       3      14  0.209700    
+       4       4      15   2.94712    
+       5       5      13  0.702590    
+       6       6       5  0.693754    
+       7       7       8   1.35973    
+       8       8       4  0.199719    
+       9       9       1  0.761251    
+      10      10       6   2.26481    
+      11      11       9  0.678073    
+      12      12       3  0.997102    
+      13      13      10   1.43312    
+      14      14       7   1.10928    
+      15      15       2   1.02011    
+ 
+  Total discrepancy of final pairing =    16.1724    
+ 
+TEST063
+  MAZE_RANDOM: generate a random maze;
+  MAZE_DIAM: find two far apart cells;
+  MAZE_PATH: generate a path.
+  MAZE_PRINT: print a maze.
+ 
+  Cell numbers for the maze:
+ 
+  1  9 17 25 33 41 49 57 65 73
+  2 10 18 26 34 42 50 58 66 74
+  3 11 19 27 35 43 51 59 67 75
+  4 12 20 28 36 44 52 60 68 76
+  5 13 21 29 37 45 53 61 69 77
+  6 14 22 30 38 46 54 62 70 78
+  7 15 23 31 39 47 55 63 71 79
+  8 16 24 32 40 48 56 64 72 80
+ 
+  A random maze:
+    Number of rows =          8
+    Number of columns =       10
+ 
+  The maze:
+ 
++--+--+--+--+--+--+--+--+--+--+
+|  |                       |  |
++  +--+  +  +  +--+  +  +  +  +
+|        |  |  |     |  |  |  |
++--+--+  +  +--+  +  +--+  +  +
+|        |     |  |  |        |
++  +  +  +--+  +  +--+--+  +--+
+|  |  |  |     |  |        |  |
++  +--+--+  +--+  +--+  +--+  +
+|  |     |  |     |           |
++--+  +  +--+--+  +  +  +--+--+
+|     |        |  |  |        |
++--+  +--+  +  +  +--+  +--+  +
+|        |  |        |  |     |
++  +--+  +--+--+  +--+  +  +--+
+|  |     |           |  |     |
++--+--+--+--+--+--+--+--+--+--+
+ 
+  Rooted tree representation:
+  (0 is the root.  All other cells print the
+  cell number of their parent on the tree.)
+ 
+  2 17 25 33 41 49 57 65 66 74
+ 10 18 17 25 33 50 49 57 67  0
+ 11 19 18 26 27 42 50 67 75 74
+  3 11 19 36 35 43 60 68 67 77
+  4 21 22 28 45 44 61 60 61 69
+ 14 13 30 38 39 45 53 61 62 70
+ 15 14 15 30 47 46 47 62 79 78
+  7 24 23 40 48 47 48 63 71 72
+ 
+  Random maze with far apart ends:
+    Diameter =       34
+    Starting cell =        8       2
+    Stopping cell =        8      10
+ 
+  The maze:
+ 
++--+--+--+--+--+--+--+--+--+--+
+|  |                       |  |
++  +--+  +  +  +--+  +  +  +  +
+|        |  |  |     |  |  |  |
++--+--+  +  +--+  +  +--+  +  +
+|        |     |  |  |        |
++  +  +  +--+  +  +--+--+  +--+
+|  |  |  |     |  |        |  |
++  +--+--+  +--+  +--+  +--+  +
+|  |     |  |     |           |
++--+  +  +--+--+  +  +  +--+--+
+|     |        |  |  |        |
++--+  +--+  +  +  +--+  +--+  +
+|        |  |        |  |     |
++  +--+  +--+--+  +--+  +  +--+
+|  |00   |           |  |   $$|
++--+--+--+--+--+--+--+--+--+--+
+ 
+  Random maze with path from start to stop:
+ 
+  The maze
+ 
++--+--+--+--+--+--+--+--+--+--+
+|  |               ********|  |
++  +--+  +  +  +--+**+  +**+  +
+|        |  |  |*****|  |**|  |
++--+--+  +  +--+**+  +--+**+  +
+|        |     |**|  |   **   |
++  +  +  +--+  +**+--+--+**+--+
+|  |  |  |     |**|   *****|  |
++  +--+--+  +--+**+--+**+--+  +
+|  |*****|  |   **|   **      |
++--+**+**+--+--+**+  +**+--+--+
+|   **|********|**|  |********|
++--+**+--+  +**+**+--+  +--+**+
+|   *****|  |*****   |  |*****|
++  +--+**+--+--+  +--+  +**+--+
+|  |00***|           |  |***$$|
++--+--+--+--+--+--+--+--+--+--+
+ 
+TEST064
+  MAZE_PRINT prints a maze with path marked.
+ 
+ 
+  The maze:
+ 
++--+--+   
+|*****|$$ 
++**+**+**+
+|00|*****|
++  +--+--+
+ 
+TEST065
+  NETWORK_FLOW_MAX finds the maximum flow on a network.
+ 
+  The source is node        1
+  The sink is node          6
+ 
+  Endpoint array:
+ 
+  1  2  1  3  2  3  2  4  2  5  3  4  3  5  4  5  4  6  5  6
+  2  1  3  1  3  2  4  2  5  2  4  3  5  3  5  4  6  4  6  5
+ 
+  Input edge capacity array:
+ 
+  3  0  7  0  2  0  5  0  4  0  1  0  4  0  2  0  8  0  3  0
+ 
+  Reordered endpoint array:
+ 
+  1  1  2  2  2  2  3  3  3  3  4  4  4  4  5  5  5  5  6  6
+  2  3  1  3  4  5  1  2  4  5  2  3  5  6  2  3  4  6  4  5
+ 
+  Output edge capacity/flow array:
+ 
+  3  7  0  2  5  4  0  0  1  4  0  0  2  8  0  0  0  3  0  0
+  3  4 -3  0  3  0 -4  0  1  3 -3 -1  0  4  0 -3  0  3 -4 -3
+ 
+  Minimal node cut vector:
+ 
+       1         1
+       2         0
+       3         1
+       4         0
+       5         1
+       6         0
+ 
+  Nodal flow vector:
+ 
+       1         7
+       2         3
+       3         4
+       4         4
+       5         3
+       6         7
+ 
+TEST066
+  NODE_RELAX smooths a surface.
+ 
+  Old coordinates
+ 
+   1   0.00000       0.00000       0.00000    
+   2   1.00000       0.00000       0.00000    
+   3   1.00000       1.00000       0.00000    
+   4   0.00000       1.00000       0.00000    
+   5   0.00000       0.00000       1.00000    
+   6   1.00000       0.00000       1.00000    
+   7   1.00000       1.00000       1.00000    
+   8   0.00000       1.00000       1.00000    
+ 
+  After 1 step
+ 
+   1  0.333333      0.333333      0.333333    
+   2  0.666667      0.333333      0.333333    
+   3  0.666667      0.666667      0.333333    
+   4  0.333333      0.666667      0.333333    
+   5  0.333333      0.333333      0.666667    
+   6  0.666667      0.333333      0.666667    
+   7  0.666667      0.666667      0.666667    
+   8  0.333333      0.666667      0.666667    
+ 
+  After 2 steps
+ 
+   1  0.444444      0.444444      0.444444    
+   2  0.555556      0.444444      0.444444    
+   3  0.555556      0.555556      0.444444    
+   4  0.444444      0.555556      0.444444    
+   5  0.444444      0.444444      0.555556    
+   6  0.555556      0.444444      0.555556    
+   7  0.555556      0.555556      0.555556    
+   8  0.444444      0.555556      0.555556    
+ 
+  After 3 steps
+ 
+   1  0.481481      0.481481      0.481481    
+   2  0.518519      0.481481      0.481481    
+   3  0.518519      0.518519      0.481481    
+   4  0.481481      0.518519      0.481481    
+   5  0.481481      0.481481      0.518519    
+   6  0.518519      0.481481      0.518519    
+   7  0.518519      0.518519      0.518519    
+   8  0.481481      0.518519      0.518519    
+ 
+TEST0665
+  PERM_INC increments a permutation.
+ 
+  1   1 2 3 4
+  2   1 2 4 3
+  3   1 3 2 4
+  4   1 3 4 2
+  5   1 4 2 3
+  6   1 4 3 2
+  7   2 1 3 4
+  8   2 1 4 3
+  9   2 3 1 4
+ 10   2 3 4 1
+ 11   2 4 1 3
+ 12   2 4 3 1
+ 13   3 1 2 4
+ 14   3 1 4 2
+ 15   3 2 1 4
+ 16   3 2 4 1
+ 17   3 4 1 2
+ 18   3 4 2 1
+ 19   4 1 2 3
+ 20   4 1 3 2
+ 21   4 2 1 3
+ 22   4 2 3 1
+ 23   4 3 1 2
+ 24   4 3 2 1
+ 
+TEST067
+  POLY_TO_TRI replaces a polygonal mesh with a
+    triangular one.
+ 
+  Number of faces =        4
+ 
+  Faces and number of vertices:
+ 
+       1         4
+       2         3
+       3         5
+       4         4
+ 
+  Face   Vertices
+ 
+       1       1       3       5       7
+       2       2       3       9
+       3       3       7       8      23       2
+       4       4       7       8      23
+ 
+  Number of faces =        8
+ 
+  Faces and number of vertices:
+ 
+       1         3
+       2         3
+       3         3
+       4         3
+       5         3
+       6         3
+       7         3
+       8         3
+ 
+  Face   Vertices
+ 
+       1       1       3       5
+       2       1       5       7
+       3       2       3       9
+       4       3       7       8
+       5       3       8      23
+       6       3      23       2
+       7       4       7       8
+       8       4       8      23
+ 
+TEST068
+  PRUEFER_TO_TREE_ARC computes a tree from its Pruefer code.
+ 
+  The Pruefer code:
+ 
+       1         1
+       2         3
+       3         8
+       4         8
+       5         3
+       6         6
+       7         8
+ 
+  The graph:
+ 
+       1           9       1
+       2           7       3
+       3           5       8
+       4           4       8
+       5           2       3
+       6           3       6
+       7           6       8
+       8           8       1
+ 
+TEST069
+  PRUEFER_TO_TREE_2 produces a tree from its Pruefer code
+ 
+  The Pruefer code:
+ 
+       1         1
+       2         3
+       3         8
+       4         8
+       5         3
+       6         6
+       7         8
+ 
+  The edge list of the tree:
+ 
+       1         3
+       2         1
+       3         6
+       4         8
+       5         8
+       6         8
+       7         3
+       8         9
+ 
+TEST0695
+  VLA_TO_GRAPH_ARC reads a VLA file and converts it
+    to a graph defined by an arc list.
+  SHAPE_3D_NODES_TO_PS writes the nodes to a PostScript file.
+ 
+VLA_TO_GRAPH_ARC - Note:
+  The graph was read properly.
+  Number of nodes =      135
+  Number of edges =      389
+ 
+SHAPE_3D_NODES_TO_PS
+  The data was written to the file: fish_nodes.ps
+ 
+TEST0696
+  VLA_TO_GRAPH_ARC reads a VLA file and converts it
+    to a graph defined by an arc list.
+  SHAPE_3D_EDGES_TO_PS writes the edges to a PostScript file.
+ 
+VLA_TO_GRAPH_ARC - Note:
+  The graph was read properly.
+  Number of nodes =      135
+  Number of edges =      389
+ 
+  Sort the edges:
+ 
+  Determine the faces:
+ 
+  The faces were determined.
+    Number of faces found was      259
+    Euler predicted      256
+ 
+SHAPE_3D_EDGES_TO_PS
+  The data was written to the file: fish_edges.ps
+ 
+TEST0697
+  VLA_TO_GRAPH_ARC reads a VLA file and converts it
+    to a graph defined by an arc list.
+  SHAPE_3D_FACES_TO_PS writes the faces to a PostScript file.
+ 
+VLA_TO_GRAPH_ARC - Note:
+  The graph was read properly.
+  Number of nodes =      135
+  Number of edges =      389
+ 
+  Number of faces found was      259
+  Euler predicted      256
+ 
+SHAPE_3D_EDGES_TO_PS
+  The data was written to the file: fish_faces.ps
+ 
+TEST070
+  SORT_HEAP_EXTERNAL sorts objects externally.
+ 
+ 
+  Before sorting:
+ 
+       1         5
+       2        20
+       3        17
+       4        12
+       5         9
+       6         2
+       7         6
+       8         3
+       9         1
+      10        13
+      11         2
+      12         9
+      13         9
+      14        16
+      15        16
+      16         1
+      17        18
+      18         8
+      19         2
+      20         1
+ 
+  After sorting:
+ 
+       1         1
+       2         1
+       3         1
+       4         2
+       5         2
+       6         2
+       7         3
+       8         5
+       9         6
+      10         8
+      11         9
+      12         9
+      13         9
+      14        12
+      15        13
+      16        16
+      17        16
+      18        17
+      19        18
+      20        20
+ 
+TEST071
+  SPAN_FOREST: a spanning forest for a graph
+ 
+  Initial end point array:
+ 
+   2   4   1   7   5   2   6   2   3   4
+   3   7   9  11   8   5  10   8   8  11
+ 
+  Reordered endpoint array:
+ 
+   1   2   8   2   4   4   6   2   3   7
+   9   8   5   3  11   7  10   5   8  11
+ 
+  Number of connected components =        7
+ 
+  Node, Component
+ 
+       1         1
+       2         2
+       3         2
+       4         3
+       5         2
+       6         4
+       7         3
+       8         2
+       9         1
+      10         4
+      11         3
+      12         5
+      13         6
+      14         7
+ 
+TEST072
+  SPAN_TREE_NEXT constructs spanning trees
+    of a graph using a backtrack search.
+ 
+   Node1   Node2
+ 
+       1       2
+       1       3
+       1       4
+       1       5
+       2       3
+       2       4
+       2       5
+       3       4
+       3       5
+       4       5
+ 
+  Edges in spanning tree:
+ 
+   1       4   8   9  10
+   2       4   7   9  10
+   3       4   7   8  10
+   4       4   7   8   9
+   5       4   6   9  10
+   6       4   6   8  10
+   7       4   6   8   9
+   8       4   6   7  10
+   9       4   6   7   9
+  10       4   6   7   8
+  11       4   5   9  10
+  12       4   5   8  10
+  13       4   5   8   9
+  14       4   5   7  10
+  15       4   5   7   9
+  16       4   5   7   8
+  17       4   5   6  10
+  18       4   5   6   9
+  19       4   5   6   7
+  20       3   8   9  10
+  21       3   7   9  10
+  22       3   7   8  10
+  23       3   7   8   9
+  24       3   6   9  10
+  25       3   6   8  10
+  26       3   6   8   9
+  27       3   6   7  10
+  28       3   6   7   9
+  29       3   6   7   8
+  30       3   5   9  10
+  31       3   5   8  10
+  32       3   5   8   9
+  33       3   5   7  10
+  34       3   5   7   8
+  35       3   5   6  10
+  36       3   5   6   9
+  37       3   5   6   8
+  38       3   5   6   7
+  39       3   4   7   9
+  40       3   4   7   8
+  41       3   4   6   9
+  42       3   4   6   8
+  43       3   4   5   9
+  44       3   4   5   8
+  45       3   4   5   7
+  46       3   4   5   6
+  47       2   7   9  10
+  48       2   7   8  10
+  49       2   7   8   9
+  50       2   6   9  10
+  51       2   6   8  10
+  52       2   6   8   9
+  53       2   6   7   9
+  54       2   6   7   8
+  55       2   5   9  10
+  56       2   5   8  10
+  57       2   5   8   9
+  58       2   5   7  10
+  59       2   5   7   9
+  60       2   5   7   8
+  61       2   5   6  10
+  62       2   5   6   9
+  63       2   5   6   8
+  64       2   5   6   7
+  65       2   4   7  10
+  66       2   4   7   8
+  67       2   4   6  10
+  68       2   4   6   8
+  69       2   4   6   7
+  70       2   4   5  10
+  71       2   4   5   8
+  72       2   4   5   6
+  73       2   3   7  10
+  74       2   3   7   9
+  75       2   3   6  10
+  76       2   3   6   9
+  77       2   3   6   7
+  78       2   3   5  10
+  79       2   3   5   9
+  80       2   3   5   7
+  81       2   3   4   7
+  82       2   3   4   6
+  83       2   3   4   5
+  84       1   7   9  10
+  85       1   7   8  10
+  86       1   7   8   9
+  87       1   6   9  10
+  88       1   6   8  10
+  89       1   6   7   9
+  90       1   6   7   8
+  91       1   5   8   9
+  92       1   5   7  10
+  93       1   5   7   8
+  94       1   5   6  10
+  95       1   5   6   9
+  96       1   5   6   7
+  97       1   4   9  10
+  98       1   4   8  10
+  99       1   4   8   9
+ 100       1   4   6   9
+ 101       1   4   6   8
+ 102       1   4   5  10
+ 103       1   4   5   8
+ 104       1   4   5   6
+ 105       1   3   9  10
+ 106       1   3   8  10
+ 107       1   3   8   9
+ 108       1   3   7   9
+ 109       1   3   7   8
+ 110       1   3   5  10
+ 111       1   3   5   9
+ 112       1   3   5   7
+ 113       1   3   4   9
+ 114       1   3   4   8
+ 115       1   3   4   5
+ 116       1   2   9  10
+ 117       1   2   8  10
+ 118       1   2   8   9
+ 119       1   2   7  10
+ 120       1   2   7   8
+ 121       1   2   6  10
+ 122       1   2   6   9
+ 123       1   2   6   7
+ 124       1   2   4  10
+ 125       1   2   4   8
+ 126       1   2   4   6
+ 127       1   2   3  10
+ 128       1   2   3   9
+ 129       1   2   3   7
+ 130       1   2   3   4
+ 
+  Number of spanning trees found was      130
+ 
+TEST073
+  TREE_ARC_TO_PRUEFER: Tree => Pruefer code
+ 
+  The graph:
+ 
+       1           2       3
+       2           3       7
+       3           3       6
+       4           6       8
+       5           8       4
+       6           8       5
+       7           8       1
+       8           1       9
+ 
+  The Pruefer code:
+ 
+       1         1
+       2         3
+       3         8
+       4         8
+       5         3
+       6         6
+       7         8
+ 
+TEST074
+  TREE_ARC_CENTER computes the center of a tree.
+ 
+  The edge list of the tree:
+ 
+       1           2       3
+       2           3       7
+       3           3       6
+       4           6       8
+       5           8       4
+       6           8       5
+       7           8       1
+       8           1       9
+ 
+  Parity =        2
+  Eccentricity is        2
+  Center nodes:        6       8
+ 
+TEST075
+  TREE_ARC_DIAM computes the diameter of a tree.
+ 
+  The edge list of the tree:
+ 
+       1           2       3
+       2           3       7
+       3           3       6
+       4           6       8
+       5           8       4
+       6           8       5
+       7           8       1
+       8           1       9
+ 
+  This tree has a diameter of        5
+  between nodes        7 and        9
+ 
+  Nodes and labels:
+ 
+       1         1
+       2         0
+       3         1
+       4         0
+       5         0
+       6         1
+       7         1
+       8         1
+       9         1
+ 
+TEST076
+  TREE_ARC_RANDOM produces a random labeled
+    tree and its Pruefer code.
+ 
+ 
+  The random tree:
+ 
+       1           3       1
+       2           2       4
+       3           4       1
+ 
+  The Pruefer code:
+ 
+       1         1
+       2         4
+ 
+  The random tree:
+ 
+       1           2       4
+       2           4       3
+       3           3       1
+ 
+  The Pruefer code:
+ 
+       1         4
+       2         3
+ 
+  The random tree:
+ 
+       1           4       2
+       2           3       1
+       3           1       2
+ 
+  The Pruefer code:
+ 
+       1         2
+       2         1
+ 
+  The random tree:
+ 
+       1           4       2
+       2           3       1
+       3           1       2
+ 
+  The Pruefer code:
+ 
+       1         2
+       2         1
+ 
+  The random tree:
+ 
+       1           4       1
+       2           2       3
+       3           3       1
+ 
+  The Pruefer code:
+ 
+       1         1
+       2         3
+ 
+TEST077
+  TREE_ENUM enumerates the labeled trees on a given
+  number of nodes.
+ 
+       0         1
+       1         1
+       2         1
+       3         3
+       4        16
+       5       125
+       6      1296
+       7     16807
+       8    262144
+       9   4782969
+      10 100000000
+ 
+TEST078
+  TREE_PARENT_NEXT finds all labeled trees of a given 
+    order, and their Pruefer codes.
+ 
+  Pruefer code     Tree
+ 
+ 1 1               4 1 1
+ 1 2               2 4 1
+ 1 3               3 1 4
+ 1 4               4 1 4
+ 2 1               4 1 2
+ 2 2               2 4 2
+ 2 3               2 3 4
+ 2 4               2 4 4
+ 3 1               4 3 1
+ 3 2               3 4 2
+ 3 3               3 3 4
+ 3 4               3 4 4
+ 4 1               4 4 1
+ 4 2               4 4 2
+ 4 3               4 3 4
+ 4 4               4 4 4
+ 
+TEST079
+  TREE_RB_ENUM enumerates the rooted binary trees on a 
+    given number of nodes.
+ 
+         0         1
+         1         1
+         2         0
+         3         1
+         4         0
+         5         2
+         6         0
+         7         5
+         8         0
+         9        14
+        10         0
+        11        42
+ 
+TEST080
+  TREE_RB_LEX_NEXT produces all rooted binary trees with
+  a given number of nodes, in lexicographic order, using
+  the preorder traversal representation.
+ 
+  The number of nodes N =       11
+ 
+ 1  10101010100
+ 2  10101011000
+ 3  10101100100
+ 4  10101101000
+ 5  10101110000
+ 6  10110010100
+ 7  10110011000
+ 8  10110100100
+ 9  10110101000
+10  10110110000
+11  10111000100
+12  10111001000
+13  10111010000
+14  10111100000
+15  11001010100
+16  11001011000
+17  11001100100
+18  11001101000
+19  11001110000
+20  11010010100
+21  11010011000
+22  11010100100
+23  11010101000
+24  11010110000
+25  11011000100
+26  11011001000
+27  11011010000
+28  11011100000
+29  11100010100
+30  11100011000
+31  11100100100
+32  11100101000
+33  11100110000
+34  11101000100
+35  11101001000
+36  11101010000
+37  11101100000
+38  11110000100
+39  11110001000
+40  11110010000
+41  11110100000
+42  11111000000
+ 
+TEST081
+  TREE_RB_LEX_NEXT produces all rooted binary trees with
+    a given number of nodes, in lexicographic order,
+    using the preorder traversal representation.
+  TREE_RB_TO_PARENT converts the preorder traversal form
+    to the more comprehensible parent node representation.
+ 
+  The number of nodes N =       11
+ 
+ 1    0  1  1  3  3  5  5  7  7  9  9
+ 2    0  1  1  3  3  5  5  7  8  8  7
+ 3    0  1  1  3  3  5  6  6  5  9  9
+ 4    0  1  1  3  3  5  6  6  8  8  5
+ 5    0  1  1  3  3  5  6  7  7  6  5
+ 6    0  1  1  3  4  4  3  7  7  9  9
+ 7    0  1  1  3  4  4  3  7  8  8  7
+ 8    0  1  1  3  4  4  6  6  3  9  9
+ 9    0  1  1  3  4  4  6  6  8  8  3
+10    0  1  1  3  4  4  6  7  7  6  3
+11    0  1  1  3  4  5  5  4  3  9  9
+12    0  1  1  3  4  5  5  4  8  8  3
+13    0  1  1  3  4  5  5  7  7  4  3
+14    0  1  1  3  4  5  6  6  5  4  3
+15    0  1  2  2  1  5  5  7  7  9  9
+16    0  1  2  2  1  5  5  7  8  8  7
+17    0  1  2  2  1  5  6  6  5  9  9
+18    0  1  2  2  1  5  6  6  8  8  5
+19    0  1  2  2  1  5  6  7  7  6  5
+20    0  1  2  2  4  4  1  7  7  9  9
+21    0  1  2  2  4  4  1  7  8  8  7
+22    0  1  2  2  4  4  6  6  1  9  9
+23    0  1  2  2  4  4  6  6  8  8  1
+24    0  1  2  2  4  4  6  7  7  6  1
+25    0  1  2  2  4  5  5  4  1  9  9
+26    0  1  2  2  4  5  5  4  8  8  1
+27    0  1  2  2  4  5  5  7  7  4  1
+28    0  1  2  2  4  5  6  6  5  4  1
+29    0  1  2  3  3  2  1  7  7  9  9
+30    0  1  2  3  3  2  1  7  8  8  7
+31    0  1  2  3  3  2  6  6  1  9  9
+32    0  1  2  3  3  2  6  6  8  8  1
+33    0  1  2  3  3  2  6  7  7  6  1
+34    0  1  2  3  3  5  5  2  1  9  9
+35    0  1  2  3  3  5  5  2  8  8  1
+36    0  1  2  3  3  5  5  7  7  2  1
+37    0  1  2  3  3  5  6  6  5  2  1
+38    0  1  2  3  4  4  3  2  1  9  9
+39    0  1  2  3  4  4  3  2  8  8  1
+40    0  1  2  3  4  4  3  7  7  2  1
+41    0  1  2  3  4  4  6  6  3  2  1
+42    0  1  2  3  4  5  5  4  3  2  1
+ 
+TEST082
+  TREE_RB_YULE carries out one step of the Yule model
+    on a rooted binary tree stored in preorder traversal form.
+ 
+  Each call adds two children to an arbitary leaf.
+ 
+  Simulation        1
+ 
+  Nodes  Preorder code
+ 
+ 1  0
+ 3  100
+ 5  10100
+ 7  1010100
+ 9  101011000
+11  10101110000
+ 
+  Simulation        2
+ 
+  Nodes  Preorder code
+ 
+ 1  0
+ 3  100
+ 5  11000
+ 7  1110000
+ 9  111100000
+11  11110001000
+ 
+  Simulation        3
+ 
+  Nodes  Preorder code
+ 
+ 1  0
+ 3  100
+ 5  11000
+ 7  1101000
+ 9  110100100
+11  11010011000
+ 
+  Simulation        4
+ 
+  Nodes  Preorder code
+ 
+ 1  0
+ 3  100
+ 5  10100
+ 7  1011000
+ 9  110011000
+11  11100011000
+ 
+  Simulation        5
+ 
+  Nodes  Preorder code
+ 
+ 1  0
+ 3  100
+ 5  10100
+ 7  1100100
+ 9  111000100
+11  11101000100
+ 
+TEST083
+  TREE_ROOTED_CODE: code of a rooted tree.
+ 
+ 
+  Parent vector for tree:
+ 
+       1         0
+       2         1
+       3         1
+       4         2
+       5         2
+       6         2
+       7         3
+       8         3
+       9         5
+      10         5
+      11         6
+      12        10
+ 
+  The tree code:
+ 
+       1         1
+       2         1
+       3         1
+       4         0
+       5         1
+       6         1
+       7         0
+       8         1
+       9         1
+      10         0
+      11         0
+      12         0
+      13         1
+      14         1
+      15         0
+      16         0
+      17         0
+      18         1
+      19         1
+      20         0
+      21         1
+      22         0
+      23         0
+      24         0
+ 
+TEST084
+  TREE_ROOTED_DEPTH: depth of a rooted tree.
+ 
+ 
+  Parent vector for tree:
+ 
+       1         0
+       2         1
+       3         1
+       4         2
+       5         2
+       6         2
+       7         3
+       8         3
+       9         5
+      10         5
+      11         6
+      12        10
+ 
+  Individual node depths:
+ 
+       1         0
+       2         1
+       3         1
+       4         2
+       5         2
+       6         2
+       7         2
+       8         2
+       9         3
+      10         3
+      11         3
+      12         4
+ 
+  Overall rooted tree depth:        4
+ 
+TEST085
+  TREE_ROOTED_RANDOM: random unlabeled rooted trees.
+ 
+ 
+  Random trees, rooted at 1
+ 
+  Endpoint array for tree:
+   2   3   4   5
+   1   1   1   1
+ 
+  Endpoint array for tree:
+   2   3   4   5
+   1   2   3   4
+ 
+  Endpoint array for tree:
+   2   3   4   5
+   1   1   3   3
+ 
+  Endpoint array for tree:
+   2   3   4   5
+   1   1   1   4
+ 
+  Endpoint array for tree:
+   2   3   4   5
+   1   2   2   1
+ 
+  Number of trees with given number of nodes:
+ 
+       1         1
+       2         1
+       3         2
+       4         4
+       5         9
+ 
+TEST086
+  TREE_ROOTED_ENUM counts unlabeled rooted trees.
+ 
+  Number of trees with given number of nodes:
+ 
+       1         1
+       2         1
+       3         2
+       4         4
+       5         9
+       6        20
+       7        48
+       8       115
+       9       286
+      10       719
+ 
+GRAFPACK_PRB
+  Normal end of execution.
+ 
+April 13 2009  10:03:33.339 AM

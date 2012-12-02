@@ -1,0 +1,406 @@
+<html>
+
+  <head>
+    <title>
+      FEM2D_POISSON - Finite Element Solution on Arbitrary 2D Region
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FEM2D_POISSON <br>
+      Finite Element Solution of Poisson's Equation <br>
+      on a Triangulated Region
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FEM2D_POISSON</b>
+      is a FORTRAN90 program which
+      applies the finite element method to solve
+      a form of Poisson's equation over an arbitrary triangulated region.
+    </p>
+
+    <p>
+      The computational region is unknown by the program.  The user
+      specifies it by preparing a file containing the coordinates of
+      the nodes, and a file containing the indices of nodes that make
+      up triangles that form a triangulation of the region.
+    </p>
+
+    <p>
+      Normally, the user does not type in this information by hand, but has
+      a program fill in the nodes, and perhaps another program that
+      constructs the triangulation.  However, in the simplest case,
+      the user might construct a very crude triangulation by hand, and
+      have <a href = "../../f_src/triangulation_refine/triangulation_refine.html">
+      TRIANGULATION_REFINE</a> refine it to something more reasonable.
+    </p>
+
+    <p>
+      For the following ridiculously small example:
+      <pre>
+        4----5
+        |\   |\
+        | \  | \
+        |  \ |  \
+        |   \|   \
+        1----2----3
+      </pre>
+      the node file would be:
+      <pre>
+         0.0 0.0
+         1.0 0.0
+         2.0 0.0
+         0.0 1.0
+         1.0 1.0
+      </pre>
+      and the triangle file would be
+      <pre>
+        1 2 4
+        5 4 2
+        2 3 5
+      </pre>
+    </p>
+
+    <p>
+      The program is set up to handle the linear Poisson
+      equation with a right hand side function, and nonhomogeneous
+      Dirichlet boundary conditions.   The state variable
+      U(X,Y) is then constrained by:
+      <pre>
+        - Del H(x,y) Del U(x,y) + K(x,y) * U(x,y) = F(x,y)  inside the region;
+                                           U(x,y) = G(x,y)  on the boundary.
+      </pre>
+    </p>
+
+    <p>
+      An improved version of the program would
+      handle a more interesting nonlinear PDE, and include optional Neumann
+      boundary conditions.
+    </p>
+
+    <p>
+      To specify the boundary condition function G(x,y),
+      the coefficients H(x,y) and K(x,y) and the right hand side function F(x,y),
+      the user has to modify a file containing three subroutines,
+      <ul>
+        <li>
+          <b>SUBROUTINE DIRICHLET_CONDITION ( NODE_NUM, NODE_XY, NODE_BC )</b>
+          evaluates G(X,Y).
+        </li>
+        <li>
+          <b>SUBROUTINE H_COEF ( NODE_NUM, NODE_XY, NODE_H )</b>
+          evaluates H(x,y).
+        </li>
+        <li>
+          <b>SUBROUTINE K_COEF ( NODE_NUM, NODE_XY, NODE_K )</b>
+          evaluates K(x,y).
+        </li>
+        <li>
+          <b>SUBROUTINE RHS ( NODE_NUM, NODE_XY, NODE_F )</b>
+          evaluates F(x,y).
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      To run the program, the user compiles the user routines,
+      links them with <b>FEM2D_POISSON</b>, and runs the executable.
+    </p>
+
+    <p>
+      The program writes out a file containing an Encapsulated
+      PostScript image of the nodes and elements, with numbers.
+      If there are too many nodes, the plot may be too cluttered
+      to read.  For lower values, however, it is
+      a valuable map of what is going on in the geometry.
+    </p>
+
+    <p>
+      The program is also able to write out a file containing the
+      solution value at every node.  This file may be used to create
+      contour plots of the solution.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      The user must create an executable by compiling the user routines
+      and linking them with the main program, perhaps by commands like:
+      <pre>
+        gfortran -c fem2d_poisson.f90
+        gfortran -c user.f90
+        gfortran fem2d_poisson.o user.o
+        mv a.out fem2d_poisson
+      </pre>
+    </p>
+
+    <p>
+      Assuming the executable program is called "fem2d_poisson", then
+      the program is executed by
+      <blockquote>
+        <b>fem2d_poisson</b> <i>prefix</i>
+      </blockquote>
+      where prefix is the common filename prefix, so that
+      <ul>
+        <li>
+          <i>prefix</i><b>_nodes.txt</b>, is a file containing the node coordinates;
+        </li>
+        <li>
+          <i>prefix</i><b>_elements.txt</b>, is a file listing the 3 nodes that
+          make up each element;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      FEM2D_POISSON is available in
+      <a href = "../../cpp_src/fem2d_poisson/fem2d_poisson.html">a C++ version</a> and
+      <a href = "../../f_src/fem2d_poisson/fem2d_poisson.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fem2d_poisson/fem2d_poisson.html">a MATLAB version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fem2d_poisson_ell/fem2d_poisson_ell.html">
+      FEM2D_POISSON_ELL</a>,
+      a FORTRAN90 library which
+      defines the geometry of an L-shaped region, as well as boundary
+      conditions for a given Poisson problem, and is called by FEM2D_POISSON
+      as part of a solution procedure.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_poisson_lake/fem2d_poisson_lake.html">
+      FEM2D_POISSON_LAKE</a>,
+      a FORTRAN90 library which
+      defines the geometry of a lake-shaped region, as well as boundary
+      conditions for a given Poisson problem, and is called by FEM2D_POISSON
+      as part of a solution procedure.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Methode der Finiten Elemente,<br>
+          Teubner Studienbuecher, 1980,<br>
+          ISBN: 3-519-02349-0.
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fem2d_poisson.f90">fem2d_poisson.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "fem2d_poisson.sh">fem2d_poisson.sh</a>,
+          commands to compile the partial program;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program of FEM2D_POISSON.
+        </li>
+        <li>
+          <b>ASSEMBLE_POISSON</b> assembles the system for the Poisson equation.
+        </li>
+        <li>
+          <b>BANDWIDTH</b> determines the bandwidth of the coefficient matrix.
+        </li>
+        <li>
+          <b>BASIS_ONE_T3</b> evaluates a linear basis function.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DGB_FA</b> performs a LINPACK-style PLU factorization of an DGB matrix.
+        </li>
+        <li>
+          <b>DGB_MXV</b> multiplies a DGB matrix times a vector.
+        </li>
+        <li>
+          <b>DGB_PRINT_SOME</b> prints some of a DGB matrix.
+        </li>
+        <li>
+          <b>DGB_SL</b> solves a system factored by DGB_FA.
+        </li>
+        <li>
+          <b>DIRICHLET_APPLY</b> accounts for Dirichlet boundary conditions.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4COL_COMPARE</b> compares columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORT_A</b> ascending sorts an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SWAP</b> swaps columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4mat.
+        </li>
+        <li>
+          <b>I4MAT_DATA_READ</b> reads data from an I4MAT file.
+        </li>
+        <li>
+          <b>I4MAT_HEADER_READ</b> reads the header from an I4MAT.
+        </li>
+        <li>
+          <b>LVEC_PRINT</b> prints a logical vector.
+        </li>
+        <li>
+          <b>POINTS_PLOT</b> plots a pointset.
+        </li>
+        <li>
+          <b>QUAD_RULE</b> sets the quadrature rule for assembly.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8VEC_PRINT_SOME</b> prints "some" of an R8VEC.
+        </li>
+        <li>
+          <b>REFERENCE_TO_PHYSICAL_T3</b> maps reference points to physical points.
+        </li>
+        <li>
+          <b>RESIDUAL_POISSON</b> evaluates the residual for the Poisson equation.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SOLUTION_EVALUATE</b> evaluates the solution at a point in an element.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRIANGLE_AREA_2D</b> computes the area of a triangle in 2D.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_BOUNDARY_NODE</b> indicates which nodes are on the boundary.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_PLOT</b> plots a 3-node triangulation of a pointset.
+        </li>
+      </ul>
+    <p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,533 @@
+<html>
+
+  <head>
+    <title>
+      TEST_MIN - Test problems for minimization
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_MIN <br> Test problems for minimization
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_MIN</b>
+      is a FORTRAN90 library which
+      defines problems involving the minimization
+      of a scalar function of a scalar argument.
+    </p>
+
+    <p>
+      TEST_MIN can be useful for testing algorithms that 
+      attempt to minimize a scalar function of a scalar argument.
+      Each problem has an index number, and there are a corresponding
+      set of routines, with names beginning with the index number, to:
+      <ul>
+        <li>
+          evaluate f(x);
+        </li>
+        <li>
+          evaluate f'(x);
+        </li>
+        <li>
+          evaluate f"(x);
+        </li>
+        <li>
+          return the title of the problem;
+        </li>
+        <li>
+          return a starting point;
+        </li>
+        <li>
+          return a starting search interval;
+        </li>
+        <li>
+          return the exact solution;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      There is also a "generic" problem interface, whose routines all
+      begin with "P00".  This allows the user to call all possible
+      problems in a single simple loop, by passing the desired index
+      number through the generic interface.
+    </p>
+
+    <p>
+      The functions can be invoked by an index number, and include:
+      <ol>
+        <li>
+          f(x) = ( x - 2 )^2 + 1;<br>
+          <a href = "p01_f.png">a PNG image</a>;
+        </li>
+        <li>
+          f(x) = x^2 + exp ( -x );<br>
+          <a href = "p02_f.png">a PNG image</a>;
+        </li>
+        <li>
+          f(x) = x^4 + 2x^2 + x + 3;<br>
+          <a href = "p03_f.png">a PNG image</a>;
+        </li>
+        <li>
+          f(x) = exp ( x ) + 0.01 / x;<br>
+          <a href = "p04_f.png">a PNG image</a>;
+        </li>
+        <li>
+          f(x) = exp ( x ) - 2 * x + 0.01 / x - 0.000001 / x^2;<br>
+          <a href = "p05_f.png">a PNG image</a>;
+        </li>
+        <li>
+          f(x) = 2 - x;<br>
+          <a href = "p06_f.png">a PNG image</a>;
+        </li>
+        <li>
+          f(x) = ( x + sin ( x ) ) * exp ( -x^2 );<br>
+          <a href = "p07_f.png">a PNG image</a>;
+        </li>
+        <li>
+          f(x) = 3 * x^2 + 1 + ( log ( ( x - pi )^2 ) ) / pi^4;<br>
+          <a href = "p08_f.png">a PNG image</a>;
+        </li>
+        <li>
+          f(x) = x^2 - 10 sin ( x^2 - 3x + 2);<br>
+          <a href = "p09_f.png">a PNG image</a>;
+        </li>
+        <li>
+          f(x) = cos(x)+5*cos(1.6*x)-2*cos(2*x)+5*cos(4.5*x)+7*cos(9*x);<br>
+          <a href = "p10_f.png">a PNG image</a>;
+        </li>
+        <li>
+          f(x) = 1+|3x-1|;<br>
+          <a href = "p11_f.png">a PNG image</a>;
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_MIN</b> is available in
+      <a href = "../../c_src/test_min/test_min.html">a C version</a> and
+      <a href = "../../cpp_src/test_min/test_min.html">a C++ version</a> and
+      <a href = "../../f77_src/test_min/test_min.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_min/test_min.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_min/test_min.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/brent/brent.html">
+      BRENT</a>,
+      a FORTRAN90 library which
+      contains Richard Brent's routines for finding the zero, local minimizer,
+      or global minimizer of a scalar function of a scalar argument, without
+      the use of derivative information.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes a routine called <b>fmin()</b> which seeks the minimizer of a scalar function
+      of a scalar argument.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Isabel Beichl, Dianne O'Leary, Francis Sullivan,<br>
+          Monte Carlo Minimization and Counting: One, Two, Too Many,<br>
+          Computing in Science and Engineering,<br>
+          Volume 9, Number 1, January/February 2007.
+        </li>
+        <li>
+          Richard Brent,<br>
+          Algorithms for Minimization without Derivatives,<br>
+          Dover, 2002,<br>
+          ISBN: 0-486-41998-3,<br>
+          LC: QA402.5.B74.
+        </li>
+        <li>
+          David Kahaner, Cleve Moler, Steven Nash,<br>
+          Numerical Methods and Software,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0-13-627258-4,<br>
+          LC: TA345.K34.
+        </li>
+        <li>
+          Arnold Krommer, Christoph Ueberhuber,<br>
+          Numerical Integration on Advanced Computer Systems,<br>
+          Springer, 1994,<br>
+          ISBN: 3540584102,<br>
+          LC: QA299.3.K76.
+        </li>
+        <li>
+          Dianne O'Leary,<br>
+          Scientific Computing with Case Studies,<br>
+          SIAM, 2008,<br>
+          ISBN13: 978-0-898716-66-5,<br>
+          LC: QA401.O44.
+        </li>
+        <li>
+          LE Scales,<br>
+          Introduction to Non-Linear Optimization,<br>
+          Springer, 1985,<br>
+          ISBN: 0-387-91252-5,<br>
+          LC: QA402.5.S33.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_min.f90">test_min.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "test_min.sh">test_min.sh</a>, 
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_min_prb.f90">test_min_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "test_min_prb.sh">test_min_prb.sh</a>, 
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "test_min_prb_output.txt">test_min_prb_output.txt</a>, 
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>P00_F</b> evaluates the function for any problem.
+        </li>
+        <li>
+          <b>P00_F1</b> evaluates the first derivative for any problem.
+        </li>
+        <li>
+          <b>P00_F1_DIF</b> approximates the first derivative via finite differences.
+        </li>
+        <li>
+          <b>P00_F2</b> evaluates the second derivative for any problem.
+        </li>
+        <li>
+          <b>P00_F2_DIF</b> approximates the second derivative via finite differences.
+        </li>
+        <li>
+          <b>P00_FMIN</b>
+          seeks a minimizer of a scalar function of a scalar variable.
+        </li>
+        <li>
+          <b>P00_INTERVAL</b> returns a bracketing interval for any problem.
+        </li>
+        <li>
+          <b>P00_PROB_NUM</b> returns the number of problems available.
+        </li>
+        <li>
+          <b>P00_SOL</b> returns the solution for any problem.
+        </li>
+        <li>
+          <b>P00_START</b> returns a starting point for optimization for any problem.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns a title for any problem.
+        </li>
+        <li>
+          <b>P01_F</b> evaluates the objective function for problem 1.
+        </li>
+        <li>
+          <b>P01_F1</b> evaluates the first derivative for problem 1.
+        </li>
+        <li>
+          <b>P01_F2</b> evaluates the second derivative for problem 1.
+        </li>
+        <li>
+          <b>P01_INTERVAL</b> returns a starting interval for optimization for problem 1.
+        </li>
+        <li>
+          <b>P01_SOL</b> returns the solution for problem 1.
+        </li>
+        <li>
+          <b>P01_START</b> returns a starting point for optimization for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns a title for problem 1.
+        </li>
+        <li>
+          <b>P02_F</b> evaluates the objective function for problem 2.
+        </li>
+        <li>
+          <b>P02_F1</b> evaluates the first derivative for problem 2.
+        </li>
+        <li>
+          <b>P02_F2</b> evaluates the second derivative for problem 2.
+        </li>
+        <li>
+          <b>P02_INTERVAL</b> returns a starting interval for optimization for problem 2.
+        </li>
+        <li>
+          <b>P02_SOL</b> returns the solution for problem 2.
+        </li>
+        <li>
+          <b>P02_START</b> returns a starting point for optimization for problem 2.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns a title for problem 2.
+        </li>
+        <li>
+          <b>P03_F</b> evaluates the objective function for problem 3.
+        </li>
+        <li>
+          <b>P03_F1</b> evaluates the first derivative for problem 3.
+        </li>
+        <li>
+          <b>P03_F2</b> evaluates the second derivative for problem 3.
+        </li>
+        <li>
+          <b>P03_INTERVAL</b> returns a starting interval for optimization for problem 3.
+        </li>
+        <li>
+          <b>P03_SOL</b> returns the solution for problem 3.
+        </li>
+        <li>
+          <b>P03_START</b> returns a starting point for optimization for problem 3.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns a title for problem 3.
+        </li>
+        <li>
+          <b>P04_F</b> evaluates the objective function for problem 4.
+        </li>
+        <li>
+          <b>P04_F1</b> evaluates the first derivative for problem 4.
+        </li>
+        <li>
+          <b>P04_F2</b> evaluates the second derivative for problem 4.
+        </li>
+        <li>
+          <b>P04_INTERVAL</b> returns a starting interval for optimization for problem 4.
+        </li>
+        <li>
+          <b>P04_SOL</b> returns the solution for problem 4.
+        </li>
+        <li>
+          <b>P04_START</b> returns a starting point for optimization for problem 4.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns a title for problem 4.
+        </li>
+        <li>
+          <b>P05_F</b> evaluates the objective function for problem 5.
+        </li>
+        <li>
+          <b>P05_F1</b> evaluates the first derivative for problem 5.
+        </li>
+        <li>
+          <b>P05_F2</b> evaluates the second derivative for problem 5.
+        </li>
+        <li>
+          <b>P05_INTERVAL</b> returns a starting interval for optimization for problem 5.
+        </li>
+        <li>
+          <b>P05_SOL</b> returns the solution for problem 5.
+        </li>
+        <li>
+          <b>P05_START</b> returns a starting point for optimization for problem 5.
+        </li>
+        <li>
+          <b>P05_TITLE</b> returns a title for problem 5.
+        </li>
+        <li>
+          <b>P06_F</b> evaluates the objective function for problem 6.
+        </li>
+        <li>
+          <b>P06_F1</b> evaluates the first derivative for problem 6.
+        </li>
+        <li>
+          <b>P06_F2</b> evaluates the second derivative for problem 6.
+        </li>
+        <li>
+          <b>P06_INTERVAL</b> returns a starting interval for optimization for problem 6.
+        </li>
+        <li>
+          <b>P06_SOL</b> returns the solution for problem 6.
+        </li>
+        <li>
+          <b>P06_START</b> returns a starting point for optimization for problem 6.
+        </li>
+        <li>
+          <b>P06_TITLE</b> returns a title for problem 6.
+        </li>
+        <li>
+          <b>P07_F</b> evaluates the objective function for problem 7.
+        </li>
+        <li>
+          <b>P07_F1</b> evaluates the first derivative for problem 7.
+        </li>
+        <li>
+          <b>P07_F2</b> evaluates the second derivative for problem 7.
+        </li>
+        <li>
+          <b>P07_INTERVAL</b> returns a starting interval for optimization for problem 7.
+        </li>
+        <li>
+          <b>P07_SOL</b> returns the solution for problem 7.
+        </li>
+        <li>
+          <b>P07_START</b> returns a starting point for optimization for problem 7.
+        </li>
+        <li>
+          <b>P07_TITLE</b> returns a title for problem 7.
+        </li>
+        <li>
+          <b>P08_F</b> evaluates the objective function for problem 8.
+        </li>
+        <li>
+          <b>P08_F1</b> evaluates the first derivative for problem 8.
+        </li>
+        <li>
+          <b>P08_F2</b> evaluates the second derivative for problem 8.
+        </li>
+        <li>
+          <b>P08_INTERVAL</b> returns a starting interval for optimization for problem 8.
+        </li>
+        <li>
+          <b>P08_SOL</b> returns the solution for problem 8.
+        </li>
+        <li>
+          <b>P08_START</b> returns a starting point for optimization for problem 8.
+        </li>
+        <li>
+          <b>P08_TITLE</b> returns a title for problem 8.
+        </li>
+        <li>
+          <b>P09_F</b> evaluates the objective function for problem 9.
+        </li>
+        <li>
+          <b>P09_F1</b> evaluates the first derivative for problem 9.
+        </li>
+        <li>
+          <b>P09_F2</b> evaluates the second derivative for problem 9.
+        </li>
+        <li>
+          <b>P09_INTERVAL</b> returns a starting interval for optimization for problem 9.
+        </li>
+        <li>
+          <b>P09_SOL</b> returns the solution for problem 9.
+        </li>
+        <li>
+          <b>P09_START</b> returns a starting point for optimization for problem 9.
+        </li>
+        <li>
+          <b>P09_TITLE</b> returns a title for problem 9.
+        </li>
+        <li>
+          <b>P10_F</b> evaluates the objective function for problem 10.
+        </li>
+        <li>
+          <b>P10_F1</b> evaluates the first derivative for problem 10.
+        </li>
+        <li>
+          <b>P10_F2</b> evaluates the second derivative for problem 10.
+        </li>
+        <li>
+          <b>P10_INTERVAL</b> returns a starting interval for optimization for problem 10.
+        </li>
+        <li>
+          <b>P10_SOL</b> returns the solution for problem 10.
+        </li>
+        <li>
+          <b>P10_START</b> returns a starting point for optimization for problem 10.
+        </li>
+        <li>
+          <b>P10_TITLE</b> returns a title for problem 10.
+        </li>
+        <li>
+          <b>P11_F</b> evaluates the objective function for problem 11.
+        </li>
+        <li>
+          <b>P11_F1</b> evaluates the first derivative for problem 11.
+        </li>
+        <li>
+          <b>P11_F2</b> evaluates the second derivative for problem 11.
+        </li>
+        <li>
+          <b>P11_INTERVAL</b> returns a starting interval for optimization for problem 11.
+        </li>
+        <li>
+          <b>P11_SOL</b> returns the solution for problem 11.
+        </li>
+        <li>
+          <b>P11_START</b> returns a starting point for optimization for problem 11.
+        </li>
+        <li>
+          <b>P11_TITLE</b> returns a title for problem 11.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 25 January 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

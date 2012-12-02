@@ -1,0 +1,469 @@
+<html>
+
+  <head>
+    <title>
+      TABLE_IO - Read or Write a TABLE file
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TABLE_IO <br> TABLE file<br>Read and Write Utilities
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TABLE_IO</b>
+      is a FORTRAN90 library which
+      can read or write a TABLE file.
+    </p>
+
+    <p>
+      A <a href = "../../data/table/table.html">
+      TABLE file</a> is a simple format for storing a double-indexed
+      array of data.  We regard this is a situation involving <b>N</b>
+      points in <b>M</b> dimensions, with <b>M</b> relatively small
+      (often just 2 or 3, but possibly 10 or 20) while <b>N</b> can
+      be "enormous" (10, 100, 1,000 or 10,000).
+    </p>
+
+    <p>
+      To keep things simple, then, the data is written to an ASCII
+      file, with optional comment lines (which must start with the
+      '#' character) and blank lines (which are ignored).  The point
+      data is stored by writing the coordinates of each point on
+      a separate line.  No information about <b>M</b> or <b>N</b> is
+      explicitly included in the file.
+      It is up to the I/O program to determine this.
+    </p>
+
+    <p>
+      <b>TABLE_IO</b> supplies routines by which a TABLE file can
+      easily be written or read.  A typical write operation for a
+      double precision real table simply calls routine <b>R8MAT_WRITE</b>.
+      A typical read operation will probably first want to call
+      <b>R8MAT_HEADER_READ</b> to determine the values of <b>M</b> and
+      <b>N</b>, and then allocate space for the table, and then call
+      <b>R8MAT_DATA_READ</b> to read the data.
+    </p>
+
+    <p>
+      <b>TABLE_IO</b> includes routines to read and write table
+      datasets whose entries are integers (I4MAT) or
+      double precision reals (R8MAT).
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TABLE_IO</b> is available in
+      <a href = "../../c_src/table_io/table_io.html">a C version</a> and
+      <a href = "../../cpp_src/table_io/table_io.html">a C++ version</a> and
+      <a href = "../../f77_src/table_io/table_io.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/table_io/table_io.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/table_io/table_io.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/table_barplot_ppma/table_barplot_ppma.html">
+      TABLE_BARPLOT_PPMA</a>,
+      a FORTRAN90 program which
+      reads a table file and creates a
+      PPMA bargraph of the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_border/table_border.html">
+      TABLE_BORDER</a>,
+      a FORTRAN90 program which
+      can be used to add a border
+      (of zero values) to a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns/table_columns.html">
+      TABLE_COLUMNS</a>,
+      a FORTRAN90 program which
+      can extract specific columns of data
+      from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns_permute/table_columns_permute.html">
+      TABLE_COLUMNS_PERMUTE</a>,
+      a FORTRAN90 program which
+      permutes the columns of a
+      table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      computes the Delaunay triangulation of a set
+      of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_histogram/table_histogram.html">
+      TABLE_HISTOGRAM</a>,
+      a FORTRAN90 program which
+      can make a histogram of a set of points
+      stored in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_latinize/table_latinize.html">
+      TABLE_LATINIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and creates a "latinized" version by adjusting the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_merge/table_merge.html">
+      TABLE_MERGE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points, and removes duplicates, and points that are close to each other.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_orthonormalize/table_orthonormalize.html">
+      TABLE_ORTHONORMALIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and orthonormalizes the columns.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_quality/table_quality.html">
+      TABLE_QUALITY</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and computes the quality of dispersion.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_record_match/table_record_match.html">
+      TABLE_RECORD_MATCH</a>,
+      a FORTRAN90 program which
+      finds close records in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_scale/table_scale.html">
+      TABLE_SCALE</a>,
+      a FORTRAN90 program which
+      multiplies the entries of a table file
+      by a scale vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_shift/table_shift.html">
+      TABLE_SHIFT</a>,
+      a FORTRAN90 program which
+      shifts the entries of a table file
+      by a shift vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_stats/table_stats.html">
+      TABLE_STATS</a>,
+      a FORTRAN90 program which
+      reads a table file and computes certain statistics.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_tet_mesh/table_tet_mesh.html">
+      TABLE_TET_MESH</a>,
+      a FORTRAN90 program which
+      reads a table file of 3D data, and computes a
+      tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_top/table_top.html">
+      TABLE_TOP</a>,
+      a FORTRAN90 program which
+      reads a table file of M-dimensional data and
+      makes a table of plots of all pairs of coordinates.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_unborder/table_unborder.html">
+      TABLE_UNBORDER</a>,
+      a FORTRAN90 program which
+      removes the border from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_uniform_noise/table_uniform_noise.html">
+      TABLE_UNIFORM_NOISE</a>,
+      a FORTRAN90 program which
+      adds a uniform noise term to the data
+      in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_voronoi/table_voronoi.html">
+      TABLE_VORONOI</a>,
+      a FORTRAN program which
+      can be used to compute information about
+      the Voronoi diagram of the points.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "table_io.f90">table_io.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "table_io.sh">table_io.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "table_io_prb.f90">table_io_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "table_io_prb.sh">table_io_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "table_io_prb_output.txt">table_io_prb_output.txt</a>,
+          the output file.
+        </li>
+        <li>
+          <a href = "r8mat_05_00020.txt">r8mat_05_00020.txt</a>,
+          an R8MAT file created by the
+          sample program, with N = 20 points in M = 5 dimensions.
+        </li>
+        <li>
+          <a href = "i4mat_05_00020.txt">i4mat_05_00020.txt</a>,
+          an I4MAT file created by the sample program, with
+          N = 20 points in M = 5 dimensions.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>I4_LOG_10</b> returns the integer part of the logarithm base 10 of ABS(X).
+        </li>
+        <li>
+          <b>I4MAT_BORDER_ADD</b> adds a "border" to an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_BORDER_CUT</b> cuts the "border" of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_DATA_READ</b> reads data from an I4MAT file.
+        </li>
+        <li>
+          <b>I4MAT_HEADER_READ</b> reads the header from an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_INDICATOR</b> sets up an "indicator" I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_PRINT_SOME</b> prints some of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_WRITE</b> writes an I4MAT file.
+        </li>
+        <li>
+          <b>LVEC_DATA_READ</b> reads data from an LVEC file.
+        </li>
+        <li>
+          <b>LVEC_HEADER_READ</b> reads the header from an LVEC file.
+        </li>
+        <li>
+          <b>LVEC_WRITE</b> writes an LVEC file.
+        </li>
+        <li>
+          <b>R8MAT_BORDER_ADD</b> adds a "border" to an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_BORDER_CUT</b> cuts the "border" of an R8MAT.
+        </li>
+        <li>
+          <b>R4MAT_DATA_READ</b> reads data from an R4MAT file.
+        </li>
+        <li>
+          <b>R4MAT_HEADER_READ</b> reads the header from an R4MAT file.
+        </li>
+        <li>
+          <b>R4MAT_INDICATOR</b> sets up an "indicator" R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_PRINT</b> prints an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_PRINT_SOME</b> prints some of an R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_TRANSPOSE_PRINT</b> prints an R4MAT, transposed.
+        </li>
+        <li>
+          <b>R4MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R4MAT transposed.
+        </li>
+        <li>
+          <b>R4MAT_UNIFORM_01</b> returns a unit pseudorandom R4MAT.
+        </li>
+        <li>
+          <b>R4MAT_WRITE</b> writes an R4MAT file.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_INDICATOR</b> sets up an "indicator" R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT transposed.
+        </li>
+        <li>
+          <b>R8MAT_UNIFORM_01</b> returns a unit pseudorandom R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8VEC_DATA_READ</b> reads data from an R8VEC file.
+        </li>
+        <li>
+          <b>R8VEC_HEADER_READ</b> reads the header from an R8VEC file.
+        </li>
+        <li>
+          <b>R8VEC_WRITE</b> writes an R8VEC file.
+        </li>
+        <li>
+          <b>R8VEC2_DATA_READ</b> reads data from an R8VEC2 file.
+        </li>
+        <li>
+          <b>R8VEC2_HEADER_READ</b> reads the header from an R8VEC2 file.
+        </li>
+        <li>
+          <b>R8VEC2_WRITE</b> writes an R8VEC2 file.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_L</b> reads a logical value from a string.
+        </li>
+        <li>
+          <b>S_TO_R4</b> reads an R4 value from a string.
+        </li>
+        <li>
+          <b>S_TO_R4VEC</b> reads an R4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 11 June 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

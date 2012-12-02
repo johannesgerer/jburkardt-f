@@ -1,0 +1,223 @@
+<html>
+
+  <head>
+    <title>
+      TILER_3D - 3D Transfinite Interpolation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TILER_3D <br> 3D Transfinite Interpolation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TILER_3D</b>
+      is a FORTRAN90 program which
+      uses transfinite interpolation to "tile" a 3D box that has already been
+      subdivided into sub-boxes.
+    </p>
+
+    <p>
+      A simple "tile pattern" of a tetrahedron
+      is used, and the resulting object is written out as a <b>TRI</b>
+      graphics file.
+    </p>
+
+    <p>
+      The <b>TRI</b> graphics file can be easily converted to other
+      3D formats, such as <b>IV</b> or <b>STLA</b>.  In particular,
+      if the <b>STLA</b> format is used, then the object can be
+      read into MATLAB and displayed, using the <b>STLA_DISPLAY</b>
+      program.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TILER_3D</b> is available in
+      <a href = "../../cpp_src/tiler_3d/tiler_3d.html">a C++ version</a> and
+      <a href = "../../f_src/tiler_3d/tiler_3d.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blend/blend.html">
+      BLEND</a>,
+      a FORTRAN90 library which
+      blends data, as demonstrated by <b>TILER_3D</b>.
+    </p>
+
+    <p>
+      <a href = "../../data/iv/iv.html">
+      IV</a>,
+      a data directory which
+      contains a description and examples of the IV (Inventor)
+      3D graphics format.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/ivcon/ivcon.html">
+      IVCON</a>,
+      a C++ program which
+      can convert the <b>TRI</b>
+      file output by <b>TILER_3D</b> into various other formats.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ivread/ivread.html">
+      IVREAD</a>,
+      a FORTRAN90 program which
+      can convert the <b>TRI</b>
+      file output by <b>TILER_3D</b> into various other formats.
+    </p>
+
+    <p>
+      <a href = "../../data/stla/stla.html">
+      STLA</a>,
+      a data directory which
+      contains a description and examples of the ASCII STL (stereolithography)
+      3D graphics format.
+    </p>
+
+    <p>
+      <a href = "../../m_src/stla_display/stla_display.html">
+      STLA_DISPLAY</a>,
+      a MATLAB program which
+      reads in an ASCII STL file and displays
+      the 3D graphics image it describes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tiler_2d/tiler_2d.html">
+      TILER_2D</a>,
+      a FORTRAN90 program which
+      is a 2D version of <b>TILER_3D</b>.
+    </p>
+
+    <p>
+      <a href = "../../data/tria/tria.html">
+      TRIA</a>,
+      a data directory which
+      contains a description and examples of the ASCII TRI 3D graphics format.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Gordon, Charles Hall,<br>
+          Construction of Curvilinear Coordinate Systems and Application to
+          Mesh Generation,<br>
+          International Journal of Numerical Methods in Engineering,<br>
+          Volume 7, pages 461-477, 1973.
+        </li>
+        <li>
+          Joe Thompson, Bharat Soni, Nigel Weatherill,<br>
+          Handbook of Grid Generation,<br>
+          CRC Press, 1999.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "tiler_3d.f90">tiler_3d.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "tiler_3d.sh">tiler_3d.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "tiler_3d.tri">tiler_3d.tri</a>, the output ASCII <b>TRI</b>
+          graphics file;
+        </li>
+        <li>
+          <a href = "tiler_3d.iv">tiler_3d.iv</a>, a copy of the graphics
+          file converted to <b>IV</b> format;
+        </li>
+        <li>
+          <a href = "tiler_3d.stla">tiler_3d.stla</a>, a copy of the graphics
+          file converted to <b>STLA</b> format;
+        </li>
+        <li>
+          <a href = "tiler_3d.png">tiler_3d.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of a snapshot
+          of the <b>STLA</b> file, as displayed by <b>STLA_DISPLAY</b>.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TILER_3D.
+        </li>
+        <li>
+          <b>BOUNDARY_3D</b> returns the (X,Y,Z) coordinates of a point (U,V,W).
+        </li>
+        <li>
+          <b>SUB_BOX_TILER_3D</b> "tiles" a 3D sub-box with a given pattern.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 05 January 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

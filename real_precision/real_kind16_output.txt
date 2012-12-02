@@ -1,0 +1,159 @@
+17 February 2011  10:06:13.351 AM
+ 
+REAL_KIND16
+  FORTRAN90 version.
+ 
+  Attempt to declare higher precision
+  real data using the NONSTANDARD statements:
+ 
+  REAL ( KIND = 4 ) for single precision,
+  REAL ( KIND = 8 ) for double precision,
+  REAL ( KIND = 16 ) for quadruple precision.
+ 
+TEST01
+  Use reals of the default type.
+ 
+  HUGE returns the largest value of the given type.
+  TINY returns the smallest value of the given type.
+  EPSILON returns the precision of a real type.
+ 
+    HUGE(R1) =      0.340282E+39
+    TINY(R1) =      0.117549E-37
+    EPSILON(R1) =   0.119209E-06
+ 
+  DIGITS counts the significant decimal digits.
+  RANGE provides the decimal exponent range.
+  PRECISION provides the decimal precision.
+ 
+    DIGITS(R1) =              24
+    RANGE(R1) =               37
+    PRECISION(R1) =            6
+ 
+  RADIX provides the base of the model.
+  MAXEXPONENT returns the maximum exponent of a variable.
+  MINEXPONENT returns the minimum exponent of a variable.
+  (These are exponents of the RADIX)
+ 
+    RADIX(R1) =                  2
+    MAXEXPONENT(R1) =          128
+    MINEXPONENT(R1) =         -125
+ 
+  KIND returns the "kind" of a variable.
+    KIND(R1) =            4
+ 
+TEST02
+  Declare "real ( kind = 4 ) r1".
+ 
+  HUGE returns the largest value of the given type.
+  TINY returns the smallest value of the given type.
+  EPSILON returns the precision of a real type.
+ 
+    HUGE(R1) =      0.340282E+39
+    TINY(R1) =      0.117549E-37
+    EPSILON(R1) =   0.119209E-06
+ 
+  DIGITS counts the significant decimal digits.
+  RANGE provides the decimal exponent range.
+  PRECISION provides the decimal precision.
+ 
+    DIGITS(R1) =              24
+    RANGE(R1) =               37
+    PRECISION(R1) =            6
+ 
+  RADIX provides the base of the model.
+  MAXEXPONENT returns the maximum exponent of a variable.
+  MINEXPONENT returns the minimum exponent of a variable.
+  (These are exponents of the RADIX)
+ 
+    RADIX(R1) =                  2
+    MAXEXPONENT(R1) =          128
+    MINEXPONENT(R1) =         -125
+ 
+  KIND returns the "kind" of a variable.
+    KIND(R1) =            4
+ 
+TEST03
+  Declare "real ( kind = 8 ) r1".
+ 
+  HUGE returns the largest value of the given type.
+  TINY returns the smallest value of the given type.
+  EPSILON returns the precision of a real type.
+ 
+    HUGE(R1) =      0.179769+309
+    TINY(R1) =      0.222507-307
+    EPSILON(R1) =   0.222045E-15
+ 
+  DIGITS counts the significant decimal digits.
+  RANGE provides the decimal exponent range.
+  PRECISION provides the decimal precision.
+ 
+    DIGITS(R1) =              53
+    RANGE(R1) =              307
+    PRECISION(R1) =           15
+ 
+  RADIX provides the base of the model.
+  MAXEXPONENT returns the maximum exponent of a variable.
+  MINEXPONENT returns the minimum exponent of a variable.
+  (These are exponents of the RADIX)
+ 
+    RADIX(R1) =                  2
+    MAXEXPONENT(R1) =         1024
+    MINEXPONENT(R1) =        -1021
+ 
+  KIND returns the "kind" of a variable.
+    KIND(R1) =            8
+ 
+TEST04
+  Declare "real ( kind = 16 ) r1".
+ 
+  HUGE returns the largest value of the given type.
+  TINY returns the smallest value of the given type.
+  EPSILON returns the precision of a real type.
+ 
+    HUGE(R1) =     0.118973+4933
+    TINY(R1) =     0.336210-4931
+    EPSILON(R1) =   0.192593E-33
+ 
+  DIGITS counts the significant decimal digits.
+  RANGE provides the decimal exponent range.
+  PRECISION provides the decimal precision.
+ 
+    DIGITS(R1) =             113
+    RANGE(R1) =             4931
+    PRECISION(R1) =           33
+ 
+  RADIX provides the base of the model.
+  MAXEXPONENT returns the maximum exponent of a variable.
+  MINEXPONENT returns the minimum exponent of a variable.
+  (These are exponents of the RADIX)
+ 
+    RADIX(R1) =                  2
+    MAXEXPONENT(R1) =        16384
+    MINEXPONENT(R1) =       -16381
+ 
+  KIND returns the "kind" of a variable.
+    KIND(R1) =           16
+ 
+TEST05
+  Use SELECTED_REAL_KIND
+ 
+  k1 = selected_real_kind ( 5, 10 )
+  real ( kind = k1 ) r1
+  KIND(R1) =            4
+ 
+  k2 = selected_real_kind ( 6, 70 )
+  real ( kind = k2 ) r2
+  KIND(R2) =            8
+ 
+  k3 = selected_real_kind ( P = 14 )
+  real ( kind = k3 ) r3
+  KIND(R3) =            8
+ 
+  k4 = selected_real_kind ( R = 4000 )
+  real ( kind = k4 ) r4
+  KIND(R4) =           10
+ 
+REAL_KIND16
+  Normal end of execution.
+ 
+17 February 2011  10:06:13.352 AM

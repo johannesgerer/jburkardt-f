@@ -1,0 +1,224 @@
+<html>
+
+  <head>
+    <title>
+      PARANOIA - Kahan's Floating Point Test Program
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PARANOIA <br> Kahan's Floating Point Test Program
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PARANOIA</b>
+      is a FORTRAN90 program which
+      checks properties of a computer's arithmetic,
+      by William Kahan.
+    </p>
+
+    <p>
+      <b>PARANOIA</b> is a FORTRAN90
+      version of the PARANOIA program,
+      originally written in BASIC (!), which
+      tests the properties of the floating point arithmetic used on
+      a computer.  It is a more ambitious test than that carried out by
+      MACHAR.
+    </p>
+
+    <p>
+      The original, true, correct version of PARANOIA
+      is available in the PARANOIA subdirectory of
+      <a href = "http://www.netlib.org/">the NETLIB web site</a>.
+      The version displayed here has been converted to FORTRAN90,
+      and other internal changes have been made to suit me.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>PARANOIA</b> is available in
+      <a href = "../../c_src/paranoia/paranoia.html">a C version</a> and
+      <a href = "../../f77_src/paranoia/paranoia.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/paranoia/paranoia.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/machar/machar.html">
+      MACHAR</a>,
+      a FORTRAN90 library which
+      computes the appropriate values of machine constants for a given machine.
+    </p>
+
+    <p>
+      <a href = "../../f_src/machine/machine.html">
+      MACHINE</a>,
+      a FORTRAN90 library which
+      store the appropriate values of machine constants for a given machine.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          Richard Karpinski,<br>
+          Paranoia: A floating-point benchmark,<br>
+          Byte Magazine,<br>
+          Volume 10, Number 2, February 1985, pages 223-235.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "paranoia.f90">paranoia.f90</a>, the FORTRAN 90
+          single precision source code;
+        </li>
+        <li>
+          <a href = "paranoia.sh">paranoia.sh</a>,
+          commands to compile and load the FORTRAN 90
+          single precision source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "paranoia_input.txt">paranoia_input.txt</a>,
+          a file that can be used as input to PARANOIA for a noninteractive run.
+        </li>
+        <li>
+          <a href = "paranoia_output_alpha.txt">paranoia_output_alpha.txt</a>, the output
+          of a run of PARANOIA on an ALPHA;
+        </li>
+        <li>
+          <a href = "paranoia_output_osx.txt">paranoia_output_osx.txt</a>, the output
+          of a run of PARANOIA on a Macintosh running OSX;
+        </li>
+        <li>
+          <a href = "paranoia_output_sgi.txt">paranoia_output_sgi.txt</a>, the output
+          of a run of PARANOIA on an SGI;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>PARANOIA</b> investigates floating point arithmetic.
+        </li>
+        <li>
+          <b>BADSQR</b> reports on errors involving square of the square root.
+        </li>
+        <li>
+          <b>CHECK_READ</b> reads information from a checkpoint file for restarting.
+        </li>
+        <li>
+          <b>CHECK_WRITE</b> writes information to a checkpoint file for restarting.
+        </li>
+        <li>
+          <b>CMPXY</b> compares X and Y=Z**Q for equality.
+        </li>
+        <li>
+          <b>COMMUTE</b> tests for commutative multiplication.
+        </li>
+        <li>
+          <b>EXTRA</b> tests for extra precision in subexpressions.
+        </li>
+        <li>
+          <b>GUARD</b> checks for guard digits and normalization in subtraction.
+        </li>
+        <li>
+          <b>INTRO</b> prints the introduction.
+        </li>
+        <li>
+          <b>NEWD</b> updates D and Z.
+        </li>
+        <li>
+          <b>OVERFLOW</b> tests overflow threshholds.
+        </li>
+        <li>
+          <b>PARTUF</b> tests for partial underflow.
+        </li>
+        <li>
+          <b>POWER</b> tests the calculation of Y**X.
+        </li>
+        <li>
+          <b>POWER_COMP</b> compares Z**I with Z*Z*...*Z.
+        </li>
+        <li>
+          <b>RADX</b> finds the radix and the precision.
+        </li>
+        <li>
+          <b>RANDOM</b> computes a "somewhat" randomized number.
+        </li>
+        <li>
+          <b>ROUND</b> tests rounding in multiplication, division, addition and subtraction.
+        </li>
+        <li>
+          <b>SMALL_INT</b> carries out tests on small integers.
+        </li>
+        <li>
+          <b>SQRERR</b> assesses error in SQRT ( X * X ) - X.
+        </li>
+        <li>
+          <b>SQRTDX</b> tests the SQRT function.
+        </li>
+        <li>
+          <b>SQUARE</b> tests the square root function.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UNDERFLOW</b> tests underflow threshholds.
+        </li>
+        <li>
+          <b>ZEROS</b> investigates division by zero.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 20 October 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

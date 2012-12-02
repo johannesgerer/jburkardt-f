@@ -1,0 +1,686 @@
+<html>
+
+  <head>
+    <title>
+      SPECIAL_FUNCTIONS - Evaluation of Special Functions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPECIAL_FUNCTIONS <br> Evaluation of Special Functions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPECIAL_FUNCTIONS</b>
+      is a FORTRAN90 library which
+      computes the value of various special functions,
+      by Shanjie Zhang, Jianming Jin.
+    </p>
+
+    <p>
+      Jianming Jin makes the text of the original FORTRAN77 source code available at
+      <a href = "http://in.ece.illinois.edu/routines/routines.html">
+                 http://in.ece.illinois.edu/routines/routines.html<a>.
+
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The FORTRAN77 source code of this library is copyrighted by 
+      Shanjie Zhang and Jianming Jin.  However, they give permission to 
+      incorporate routines from this library into a user program 
+      provided that the copyright is acknowledged.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SPECIAL_FUNCTIONS</b> is available in
+      <a href = "../../f77_src/special_functions/special_functions.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/special_functions/special_functions.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cordic/cordic.html">
+      CORDIC</a>,
+      a FORTRAN90 library which
+      uses the CORDIC method to compute certain elementary functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fn/fn.html">
+      FN</a>,
+      a FORTRAN90 library which
+      evaluates elementary and special functions,
+      by Wayne Fullerton.
+    </p>
+
+    <p>
+      <a href = "../../f_src/polpak/polpak.html">
+      POLPAK</a>,
+      a FORTRAN90 library which
+      evaluates certain mathematical functions, especially some
+      recursive polynomial families.
+    </p>
+
+    <p>
+      <a href = "../../f_src/slatec/slatec.html">
+      SLATEC</a>,
+      a FORTRAN90 library which
+      evaluates many special functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/specfun/specfun.html">
+      SPECFUN</a>,
+      a FORTRAN90 library which
+      computes special functions, including Bessel I, J, K and Y functions,
+      and the Dawson, E1, EI, Erf, Gamma, Psi/Digamma functions,
+      by William Cody and Laura Stoltz;
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_values/test_values.html">
+      TEST_VALUES</a>,
+      a FORTRAN90 library which
+      contains a few test values of many functions.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms644/toms644.html">
+      TOMS644</a>,
+      a FORTRAN77 library which
+      evaluates the Bessel I, J, K, Y functions, the Airy functions Ai and Bi,
+      and the Hankel function, for complex argument and real order.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Shanjie Zhang, Jianming Jin,<br>
+          Computation of Special Functions,<br>
+          Wiley, 1996,<br>
+          ISBN: 0-471-11963-6,<br>
+          LC: QA351.C45.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "special_functions.f90">special_functions.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "special_functions.sh">special_functions.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "special_functions_prb.f90">special_functions_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "special_functions_prb.sh">special_functions_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "special_functions_prb_output.txt">special_functions_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>AIRYA</b> computes Airy functions and their derivatives.
+        </li>
+        <li>
+          <b>AIRYB</b> computes Airy functions and their derivatives.
+        </li>
+        <li>
+          <b>AIRYZO</b> computes the first NT zeros of Ai(x) and Ai'(x).
+        </li>
+        <li>
+          <b>AJYIK</b> computes Bessel functions Jv(x), Yv(x), Iv(x), Kv(x).
+        </li>
+        <li>
+          <b>ASWFA:</b> prolate and oblate spheroidal angular functions of the first kind.
+        </li>
+        <li>
+          <b>ASWFB:</b> prolate and oblate spheroidal angular functions of the first kind.
+        </li>
+        <li>
+          <b>BERNOA</b> computes the Bernoulli number Bn.
+        </li>
+        <li>
+          <b>BERNOB</b> computes the Bernoulli number Bn.
+        </li>
+        <li>
+          <b>BETA</b> computes the Beta function B(p,q).
+        </li>
+        <li>
+          <b>BJNDD</b> computes Bessel functions Jn(x) and first and second derivatives.
+        </li>
+        <li>
+          <b>CBK</b> computes coefficients for oblate radial functions with small argument.
+        </li>
+        <li>
+          <b>CCHG</b> computes the confluent hypergeometric function.
+        </li>
+        <li>
+          <b>CERF</b> computes the error function and derivative for a complex argument.
+        </li>
+        <li>
+          <b>CERROR</b> computes the error function for a complex argument.
+        </li>
+        <li>
+          <b>CERZO</b> evaluates the complex zeros of the error function.
+        </li>
+        <li>
+          <b>CFC</b> computes the complex Fresnel integral C(z) and C'(z).
+        </li>
+        <li>
+          <b>CFS</b> computes the complex Fresnel integral S(z) and S'(z).
+        </li>
+        <li>
+          <b>CGAMA</b> computes the Gamma function for complex argument.
+        </li>
+        <li>
+          <b>CH12N</b> computes Hankel functions of first and second kinds, complex argument.
+        </li>
+        <li>
+          <b>CHGM</b> computes the confluent hypergeometric function M(a,b,x).
+        </li>
+        <li>
+          <b>CHGU</b> computes the confluent hypergeometric function U(a,b,x).
+        </li>
+        <li>
+          <b>CHGUBI:</b> confluent hypergeometric function with integer argument B.
+        </li>
+        <li>
+          <b>CHGUIT</b> computes the hypergeometric function using Gauss-Legendre integration.
+        </li>
+        <li>
+          <b>CHGUL:</b> confluent hypergeometric function U(a,b,x) for large argument X.
+        </li>
+        <li>
+          <b>CHGUS:</b> confluent hypergeometric function U(a,b,x) for small argument X.
+        </li>
+        <li>
+          <b>CIK01:</b> modified Bessel I0(z), I1(z), K0(z) and K1(z) for complex argument.
+        </li>
+        <li>
+          <b>CIKLV:</b> modified Bessel functions Iv(z), Kv(z), complex argument, large order.
+        </li>
+        <li>
+          <b>CIKNA:</b> modified Bessel functions In(z), Kn(z), derivatives, complex argument.
+        </li>
+        <li>
+          <b>CIKNB</b> computes complex modified Bessel functions In(z) and Kn(z).
+        </li>
+        <li>
+          <b>CIKVA:</b> modified Bessel functions Iv(z), Kv(z), arbitrary order, complex.
+        </li>
+        <li>
+          <b>CIKVB:</b> modified Bessel functions,Iv(z), Kv(z), arbitrary order, complex.
+        </li>
+        <li>
+          <b>CISIA</b> computes cosine Ci(x) and sine integrals Si(x).
+        </li>
+        <li>
+          <b>CISIB</b> computes cosine and sine integrals.
+        </li>
+        <li>
+          <b>CJK:</b> asymptotic expansion coefficients for Bessel functions of large order.
+        </li>
+        <li>
+          <b>CJY01:</b> complexBessel functions, derivatives, J0(z), J1(z), Y0(z), Y1(z).
+        </li>
+        <li>
+          <b>CJYLV:</b> Bessel functions Jv(z), Yv(z) of complex argument and large order v.
+        </li>
+        <li>
+          <b>CJYNA:</b> Bessel functions and derivatives, Jn(z) and Yn(z) of complex argument.
+        </li>
+        <li>
+          <b>CJYNB:</b> Bessel functions, derivatives, Jn(z) and Yn(z) of complex argument.
+        </li>
+        <li>
+          <b>CJYVA:</b> Bessel functions and derivatives, Jv(z) and Yv(z) of complex argument.
+        </li>
+        <li>
+          <b>CJYVB:</b> Bessel functions and derivatives, Jv(z) and Yv(z) of complex argument.
+        </li>
+        <li>
+          <b>CLPMN:</b> associated Legendre functions and derivatives for complex argument.
+        </li>
+        <li>
+          <b>CLPN</b> computes Legendre functions and derivatives for complex argument.
+        </li>
+        <li>
+          <b>CLQMN:</b> associated Legendre functions and derivatives for complex argument.
+        </li>
+        <li>
+          <b>CLQN:</b> Legendre function Qn(z) and derivative Wn'(z) for complex argument.
+        </li>
+        <li>
+          <b>COMELP</b> computes complete elliptic integrals K(k) and E(k).
+        </li>
+        <li>
+          <b>CPBDN:</b> parabolic cylinder function Dn(z) and Dn'(z) for complex argument.
+        </li>
+        <li>
+          <b>CPDLA</b> computes complex parabolic cylinder function Dn(z) for large argument.
+        </li>
+        <li>
+          <b>CPDSA</b> computes complex parabolic cylinder function Dn(z) for small argument.
+        </li>
+        <li>
+          <b>CPSI</b> computes the psi function for a complex argument.
+        </li>
+        <li>
+          <b>CSPHIK:</b> complex modified spherical Bessel functions and derivatives.
+        </li>
+        <li>
+          <b>CSPHJY:</b> spherical Bessel functions jn(z) and yn(z) for complex argument.
+        </li>
+        <li>
+          <b>CV0</b> computes the initial characteristic value of Mathieu functions.
+        </li>
+        <li>
+          <b>CVA1</b> computes a sequence of characteristic values of Mathieu functions.
+        </li>
+        <li>
+          <b>CVA2</b> computes a specific characteristic value of Mathieu functions.
+        </li>
+        <li>
+          <b>CVF</b> computes F for the characteristic equation of Mathieu functions.
+        </li>
+        <li>
+          <b>CVQL</b> computes the characteristic value of Mathieu functions for q <= 3*m.
+        </li>
+        <li>
+          <b>CVQM</b> computes the characteristic value of Mathieu functions for q <= m*m.
+        </li>
+        <li>
+          <b>CY01</b> computes complex Bessel functions Y0(z) and Y1(z) and derivatives.
+        </li>
+        <li>
+          <b>CYZO</b> computes zeros of complex Bessel functions Y0(z) and Y1(z) and Y1'(z).
+        </li>
+        <li>
+          <b>DVLA</b> computes parabolic cylinder functions Dv(x) for large argument.
+        </li>
+        <li>
+          <b>DVSA</b> computes parabolic cylinder functions Dv(x) for small argument.
+        </li>
+        <li>
+          <b>E1XA</b> computes the exponential integral E1(x).
+        </li>
+        <li>
+          <b>E1XB</b> computes the exponential integral E1(x).
+        </li>
+        <li>
+          <b>E1Z</b> computes the complex exponential integral E1(z).
+        </li>
+        <li>
+          <b>EIX</b> computes the exponential integral Ei(x).
+        </li>
+        <li>
+          <b>ELIT:</b> complete and incomplete elliptic integrals F(k,phi) and E(k,phi).
+        </li>
+        <li>
+          <b>ELIT3</b> computes the elliptic integral of the third kind.
+        </li>
+        <li>
+          <b>ENVJ</b> is a utility function used by MSTA1 and MSTA2.
+        </li>
+        <li>
+          <b>ENXA</b> computes the exponential integral En(x).
+        </li>
+        <li>
+          <b>ENXB</b> computes the exponential integral En(x).
+        </li>
+        <li>
+          <b>ERROR</b> evaluates the error function.
+        </li>
+        <li>
+          <b>EULERA</b> computes the Euler number En.
+        </li>
+        <li>
+          <b>EULERB</b> computes the Euler number En.
+        </li>
+        <li>
+          <b>FCOEF:</b> expansion coefficients for Mathieu and modified Mathieu functions.
+        </li>
+        <li>
+          <b>FCS</b> computes Fresnel integrals C(x) and S(x).
+        </li>
+        <li>
+          <b>FCSZO</b> computes complex zeros of Fresnel integrals C(x) or S(x).
+        </li>
+        <li>
+          <b>FFK</b> computes modified Fresnel integrals F+/-(x) and K+/-(x).
+        </li>
+        <li>
+          <b>GAIH</b> computes the GammaH function.
+        </li>
+        <li>
+          <b>GAM0</b> computes the Gamma function for the LAMV function.
+        </li>
+        <li>
+          <b>GAMMA</b> evaluates the Gamma function.
+        </li>
+        <li>
+          <b>GMN</b> computes quantities for oblate radial functions with small argument.
+        </li>
+        <li>
+          <b>HERZO</b> computes the zeros the Hermite polynomial Hn(x).
+        </li>
+        <li>
+          <b>HYGFX</b> evaluates the hypergeometric function F(A,B,C,X).
+        </li>
+        <li>
+          <b>HYGFZ</b> computes the hypergeometric function F(a,b,c,x) for complex argument.
+        </li>
+        <li>
+          <b>IK01A</b> compute Bessel function I0(x), I1(x), K0(x), and K1(x).
+        </li>
+        <li>
+          <b>IK01B:</b> Bessel functions I0(x), I1(x), K0(x), and K1(x) and derivatives.
+        </li>
+        <li>
+          <b>IKNA</b> compute Bessel function In(x) and Kn(x), and derivatives.
+        </li>
+        <li>
+          <b>IKNB</b> compute Bessel function In(x) and Kn(x).
+        </li>
+        <li>
+          <b>IKV</b> compute modified Bessel function Iv(x) and Kv(x) and their derivatives.
+        </li>
+        <li>
+          <b>INCOB</b> computes the incomplete beta function Ix(a,b).
+        </li>
+        <li>
+          <b>INCOG</b> computes the incomplete gamma function r(a,x), ,(a,x), P(a,x).
+        </li>
+        <li>
+          <b>ITAIRY</b> computes the integrals of Airy functions.
+        </li>
+        <li>
+          <b>ITIKA</b> computes the integral of the modified Bessel functions I0(t) and K0(t).
+        </li>
+        <li>
+          <b>ITIKB</b> computes the integral of the Bessel functions I0(t) and K0(t).
+        </li>
+        <li>
+          <b>ITJYA</b> computes integrals of Bessel functions J0(t) and Y0(t).
+        </li>
+        <li>
+          <b>ITJYB</b> computes integrals of Bessel functions J0(t) and Y0(t).
+        </li>
+        <li>
+          <b>ITSH0</b> integrates the Struve function H0(t) from 0 to x.
+        </li>
+        <li>
+          <b>ITSL0</b> integrates the Struve function L0(t) from 0 to x.
+        </li>
+        <li>
+          <b>ITTH0</b> integrates H0(t)/t from x to oo.
+        </li>
+        <li>
+          <b>ITTIKA</b> integrates (I0(t)-1)/t from 0 to x, K0(t)/t from x to infinity.
+        </li>
+        <li>
+          <b>ITTIKB</b> integrates (I0(t)-1)/t from 0 to x, K0(t)/t from x to infinity.
+        </li>
+        <li>
+          <b>ITTJYA</b> integrates (1-J0(t))/t from 0 to x, and Y0(t)/t from x to infinity.
+        </li>
+        <li>
+          <b>ITTJYB</b> integrates (1-J0(t))/t from 0 to x, and Y0(t)/t from x to infinity.
+        </li>
+        <li>
+          <b>JDZO</b> computes the zeros of Bessel functions Jn(x) and Jn'(x).
+        </li>
+        <li>
+          <b>JELP</b> computes Jacobian elliptic functions SN(u), CN(u), DN(u).
+        </li>
+        <li>
+          <b>JY01A</b> computes Bessel functions J0(x), J1(x), Y0(x), Y1(x) and derivatives.
+        </li>
+        <li>
+          <b>JY01B</b> computes Bessel functions J0(x), J1(x), Y0(x), Y1(x) and derivatives.
+        </li>
+        <li>
+          <b>JYNA</b> computes Bessel functions Jn(x) and Yn(x) and derivatives.
+        </li>
+        <li>
+          <b>JYNB</b> computes Bessel functions Jn(x) and Yn(x) and derivatives.
+        </li>
+        <li>
+          <b>JYNDD:</b> Bessel functions Jn(x) and Yn(x), first and second derivatives.
+        </li>
+        <li>
+          <b>JYV</b> computes Bessel functions Jv(x) and Yv(x) and their derivatives.
+        </li>
+        <li>
+          <b>JYZO</b> computes the zeros of Bessel functions Jn(x), Yn(x) and derivatives.
+        </li>
+        <li>
+          <b>KLVNA:</b> Kelvin functions ber(x), bei(x), ker(x), and kei(x), and derivatives.
+        </li>
+        <li>
+          <b>KLVNB:</b> Kelvin functions ber(x), bei(x), ker(x), and kei(x), and derivatives.
+        </li>
+        <li>
+          <b>KLVNZO</b> computes zeros of the Kelvin functions.
+        </li>
+        <li>
+          <b>KMN:</b> expansion coefficients of prolate or oblate spheroidal functions.
+        </li>
+        <li>
+          <b>LAGZO</b> computes zeros of the Laguerre polynomial, and integration weights.
+        </li>
+        <li>
+          <b>LAMN</b> computes lambda functions and derivatives.
+        </li>
+        <li>
+          <b>LAMV</b> computes lambda functions and derivatives of arbitrary order.
+        </li>
+        <li>
+          <b>LEGZO</b> computes the zeros of Legendre polynomials, and integration weights.
+        </li>
+        <li>
+          <b>LGAMA</b> computes the gamma function or its logarithm.
+        </li>
+        <li>
+          <b>LPMN</b> computes associated Legendre functions Pmn(X) and derivatives P'mn(x).
+        </li>
+        <li>
+          <b>LPMNS</b> computes associated Legendre functions Pmn(X) and derivatives P'mn(x).
+        </li>
+        <li>
+          <b>LPMV</b> computes associated Legendre functions Pmv(X) with arbitrary degree.
+        </li>
+        <li>
+          <b>LPN</b> computes Legendre polynomials Pn(x) and derivatives Pn'(x).
+        </li>
+        <li>
+          <b>LPNI</b> computes Legendre polynomials Pn(x), derivatives, and integrals.
+        </li>
+        <li>
+          <b>LQMN</b> computes associated Legendre functions Qmn(x) and derivatives.
+        </li>
+        <li>
+          <b>LQMNS</b> computes associated Legendre functions Qmn(x) and derivatives Qmn'(x).
+        </li>
+        <li>
+          <b>LQNA</b> computes Legendre function Qn(x) and derivatives Qn'(x).
+        </li>
+        <li>
+          <b>LQNB</b> computes Legendre function Qn(x) and derivatives Qn'(x).
+        </li>
+        <li>
+          <b>MSTA1</b> determines a backward recurrence starting point for Jn(x).
+        </li>
+        <li>
+          <b>MSTA2</b> determines a backward recurrence starting point for Jn(x).
+        </li>
+        <li>
+          <b>MTU0</b> computes Mathieu functions CEM(x,q) and SEM(x,q) and derivatives.
+        </li>
+        <li>
+          <b>MTU12</b> computes modified Mathieu functions of the first and second kind.
+        </li>
+        <li>
+          <b>OTHPL</b> computes orthogonal polynomials Tn(x), Un(x), Ln(x) or Hn(x).
+        </li>
+        <li>
+          <b>PBDV</b> computes parabolic cylinder functions Dv(x) and derivatives.
+        </li>
+        <li>
+          <b>PBVV</b> computes parabolic cylinder functions Vv(x) and their derivatives.
+        </li>
+        <li>
+          <b>PBWA</b> computes parabolic cylinder functions W(a,x) and derivatives.
+        </li>
+        <li>
+          <b>PSI</b> computes the PSI function.
+        </li>
+        <li>
+          <b>QSTAR</b> computes Q*mn(-ic) for oblate radial functions with a small argument.
+        </li>
+        <li>
+          <b>RCTJ</b> computes Riccati-Bessel function of the first kind, and derivatives.
+        </li>
+        <li>
+          <b>RCTY</b> computes Riccati-Bessel function of the second kind, and derivatives.
+        </li>
+        <li>
+          <b>REFINE</b> refines an estimate of the characteristic value of Mathieu functions.
+        </li>
+        <li>
+          <b>RMN1</b> computes prolate and oblate spheroidal functions of the first kind.
+        </li>
+        <li>
+          <b>RMN2L:</b> prolate and oblate spheroidal functions, second kind, large CX.
+        </li>
+        <li>
+          <b>RMN2SO:</b> oblate radial functions of the second kind with small argument.
+        </li>
+        <li>
+          <b>RMN2SP:</b> prolate, oblate spheroidal radial functions, kind 2, small argument.
+        </li>
+        <li>
+          <b>RSWFO</b> computes prolate spheroidal radial function of first and second kinds.
+        </li>
+        <li>
+          <b>RSWFP</b> computes prolate spheroidal radial function of first and second kinds.
+        </li>
+        <li>
+          <b>SCKA:</b> expansion coefficients for prolate and oblate spheroidal functions.
+        </li>
+        <li>
+          <b>SCKB:</b> expansion coefficients for prolate and oblate spheroidal functions.
+        </li>
+        <li>
+          <b>SDMN:</b> expansion coefficients for prolate and oblate spheroidal functions.
+        </li>
+        <li>
+          <b>SEGV</b> computes the characteristic values of spheroidal wave functions.
+        </li>
+        <li>
+          <b>SPHI</b> computes spherical Bessel functions in(x) and their derivatives in'(x).
+        </li>
+        <li>
+          <b>SPHJ</b> computes spherical Bessel functions jn(x) and their derivatives.
+        </li>
+        <li>
+          <b>SPHK</b> computes modified spherical Bessel functions kn(x) and derivatives.
+        </li>
+        <li>
+          <b>SPHY</b> computes spherical Bessel functions yn(x) and their derivatives.
+        </li>
+        <li>
+          <b>STVH0</b> computes the Struve function H0(x).
+        </li>
+        <li>
+          <b>STVH1</b> computes the Struve function H1(x).
+        </li>
+        <li>
+          <b>STVHV</b> computes the Struve function Hv(x) with arbitrary order v.
+        </li>
+        <li>
+          <b>STVL0</b> computes the modified Struve function L0(x).
+        </li>
+        <li>
+          <b>STVL1</b> computes the modified Struve function L1(x).
+        </li>
+        <li>
+          <b>STVLV</b> computes the modified Struve function Lv(x) with arbitary order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>VVLA</b> computes parabolic cylinder function Vv(x) for large arguments.
+        </li>
+        <li>
+          <b>VVSA</b> computes parabolic cylinder function V(nu,x) for small arguments.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 August 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

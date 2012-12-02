@@ -1,0 +1,411 @@
+ 1 December 2011   2:25:24.699 PM
+ 
+GEOMPACK_PRB
+  FORTRAN90 version
+  Test the GEOMPACK library.
+ 
+TEST005
+  DIAEDG determines whether two triangles
+  with a common edge need to "swap" diagonals.
+  If swapping is indicated, then ALPHA_MIN should decrease.
+ 
+  Swap   ALPHA_MIN   ALPHA_MIN
+         Unswapped   Swapped
+ 
+     T    0.163708    0.196797
+     T    0.144478    0.388063
+     T    0.018811    0.021574
+     F    0.445858    0.163747
+     F    0.197433    0.144315
+     T    0.081048    0.084470
+     T    0.183341    0.396497
+     T    0.116407    0.267163
+     F    0.367144    0.228072
+     T    0.001997    0.074678
+ 
+TEST01
+  POINTS_DELAUNAY_NAIVE_2D computes the Delaunay
+  triangulation of a set of points.
+ 
+  The points:
+ 
+  Row         1             2       
+  Col
+ 
+    1    7.00000       3.00000    
+    2    4.00000       7.00000    
+    3    5.00000       13.0000    
+    4    2.00000       7.00000    
+    5    6.00000       9.00000    
+    6    12.0000       10.0000    
+    7    3.00000       4.00000    
+    8    6.00000       6.00000    
+    9    3.00000       10.0000    
+   10    8.00000       7.00000    
+   11    5.00000       13.0000    
+   12    10.0000       6.00000    
+ 
+  Number of triangles is TRIANGLE_NUM =     15
+ 
+  The triangles:
+ 
+  Row       1      2      3
+  Col
+ 
+    1       1      7      8
+    2       1      8     10
+    3       1     10     12
+    4       2      4      9
+    5       2      5      8
+    6       2      7      4
+    7       2      8      7
+    8       2      9      5
+    9       3      5      9
+   10       3      6      5
+   11       5      6     10
+   12       5      9     11
+   13       5     10      8
+   14       5     11      6
+   15       6     12     10
+ 
+TEST02
+  R82VEC_PART_QUICK_A reorders a D2 vector
+    as part of a quick sort.
+  Using initial random number seed =    123456789
+ 
+  Before rearrangment:
+ 
+  Row         1             2       
+  Col
+ 
+    1    2.18418       9.56318    
+    2    8.29509       5.61695    
+    3    4.15307      0.661187    
+    4    2.57578       1.09957    
+    5   0.438290       6.33966    
+    6   0.617272       4.49539    
+    7    4.01306       7.54673    
+    8    7.97287      0.183837E-01
+    9    8.97504       3.50752    
+   10   0.945448      0.136169    
+   11    8.59097       8.40847    
+   12    1.23104      0.751236E-01
+ 
+  Rearranged array
+  Left index =       4
+  Key index =        5
+  Right index =      6
+ 
+  Left half:
+ 
+  Row         1             2       
+  Col
+ 
+    1    1.23104      0.751236E-01
+    2   0.945448      0.136169    
+    3   0.617272       4.49539    
+    4   0.438290       6.33966    
+ 
+  Key:
+ 
+  Row         1             2       
+  Col
+ 
+    1    2.18418       9.56318    
+ 
+  Right half:
+ 
+  Row         1             2       
+  Col
+ 
+    1    4.01306       7.54673    
+    2    7.97287      0.183837E-01
+    3    8.97504       3.50752    
+    4    2.57578       1.09957    
+    5    8.59097       8.40847    
+    6    4.15307      0.661187    
+    7    8.29509       5.61695    
+ 
+TEST03
+  R82VEC_SORT_QUICK_A sorts a D2 vector
+    using quick sort.
+  Using initial random number seed =    123456789
+ 
+  Before rearrangement:
+ 
+  Row         1             2       
+  Col
+ 
+    1    2.18418       9.56318    
+    2    8.29509       3.50752    
+    3   0.438290      0.661187    
+    4    1.23104       1.09957    
+    5   0.438290       6.33966    
+    6   0.617272       9.56318    
+    7    8.59097       8.40847    
+    8    7.97287      0.183837E-01
+    9    8.97504       3.50752    
+   10   0.945448      0.136169    
+   11    8.59097       8.40847    
+   12    1.23104      0.751236E-01
+ 
+  Sorted array:
+ 
+  Row         1             2       
+  Col
+ 
+    1   0.438290      0.661187    
+    2   0.438290       6.33966    
+    3   0.617272       9.56318    
+    4   0.945448      0.136169    
+    5    1.23104      0.751236E-01
+    6    1.23104       1.09957    
+    7    2.18418       9.56318    
+    8    7.97287      0.183837E-01
+    9    8.29509       3.50752    
+   10    8.59097       8.40847    
+   11    8.59097       8.40847    
+   12    8.97504       3.50752    
+ 
+TEST05
+  DTRIS2 computes the Delaunay triangulation of
+    a pointset in 2D.
+ 
+TRIANGULATION_ORDER3_PRINT
+  Information defining an order3 triangulation.
+ 
+  The number of nodes is        9
+ 
+  Node coordinates
+ 
+  Row         1             2       
+  Col
+ 
+    1    0.00000       0.00000    
+    2    0.00000       1.00000    
+    3   0.200000      0.500000    
+    4   0.300000      0.600000    
+    5   0.400000      0.500000    
+    6   0.600000      0.400000    
+    7   0.600000      0.500000    
+    8    1.00000       0.00000    
+    9    1.00000       1.00000    
+ 
+  The number of triangles is       12
+ 
+  Sets of three nodes are used as vertices of
+  the triangles.  For each triangle, the nodes
+  are listed in counterclockwise order.
+ 
+  Triangle nodes:
+ 
+  Row       1      2      3
+  Col
+ 
+    1       2      1      3
+    2       3      1      5
+    3       2      3      4
+    4       4      3      5
+    5       6      7      5
+    6       5      1      6
+    7       7      4      5
+    8       9      4      7
+    9       6      1      8
+   10       7      6      8
+   11       7      8      9
+   12       2      4      9
+ 
+  On each side of a given triangle, there is either
+  another triangle, or a piece of the convex hull.
+  For each triangle, we list the indices of the three
+  neighbors, or (if negative) the codes of the
+  segments of the convex hull.
+ 
+  Triangle neighbors
+ 
+  Row       1      2      3
+  Col
+ 
+    1     -28      2      3
+    2       1      6      4
+    3       1      4     12
+    4       3      2      7
+    5      10      7      6
+    6       2      9      5
+    7       8      4      5
+    8      12      7     11
+    9       6    -34     10
+   10       5      9     11
+   11      10    -38      8
+   12       3      8     -3
+ 
+  The number of boundary points is        4
+ 
+  The segments that make up the convex hull can be
+  determined from the negative entries of the triangle
+  neighbor list.
+ 
+     #   Tri  Side    N1    N2
+ 
+     1     9     2     1     8
+     2    11     2     8     9
+     3    12     3     9     2
+     4     1     1     2     1
+ 
+TEST06
+  For a triangle in 2D:
+  TRIANGLE_CIRCUMCENTER_2D computes the circumcenter.
+ 
+  Triangle vertices
+ 
+  Row         1             2       
+  Col
+ 
+    1    0.00000       0.00000    
+    2    1.00000       0.00000    
+    3    0.00000       1.00000    
+ 
+  Circumcenter :
+ 
+         1  0.50000000    
+         2 -0.50000000    
+ 
+  Triangle vertices
+ 
+  Row         1             2       
+  Col
+ 
+    1    0.00000       0.00000    
+    2    1.00000       0.00000    
+    3   0.500000      0.866025    
+ 
+  Circumcenter :
+ 
+         1  0.50000000    
+         2 -0.28867513    
+ 
+  Triangle vertices
+ 
+  Row         1             2       
+  Col
+ 
+    1    0.00000       0.00000    
+    2    1.00000       0.00000    
+    3   0.500000       10.0000    
+ 
+  Circumcenter :
+ 
+         1  0.50000000    
+         2  -4.9875000    
+ 
+  Triangle vertices
+ 
+  Row         1             2       
+  Col
+ 
+    1    0.00000       0.00000    
+    2    1.00000       0.00000    
+    3    10.0000       2.00000    
+ 
+  Circumcenter :
+ 
+         1  0.50000000    
+         2  -23.500000    
+ 
+TEST07
+  TRIANGULATION_ORDER3_PLOT can plot a triangulation.
+ 
+  TRIANGULATION_ORDER3_PLOT has created an
+  Encapsulated PostScript file (EPS) containing
+  an image of the triangulation.
+ 
+  This file is called "triangulation_plot.eps".
+ 
+TEST08
+  TRIANGULATION_ORDER3_PRINT prints out a triangulation.
+ 
+TRIANGULATION_ORDER3_PRINT
+  Information defining an order3 triangulation.
+ 
+  The number of nodes is        9
+ 
+  Node coordinates
+ 
+  Row         1             2       
+  Col
+ 
+    1    0.00000       0.00000    
+    2    0.00000       1.00000    
+    3   0.200000      0.500000    
+    4   0.300000      0.600000    
+    5   0.400000      0.500000    
+    6   0.600000      0.400000    
+    7   0.600000      0.500000    
+    8    1.00000       0.00000    
+    9    1.00000       1.00000    
+ 
+  The number of triangles is       12
+ 
+  Sets of three nodes are used as vertices of
+  the triangles.  For each triangle, the nodes
+  are listed in counterclockwise order.
+ 
+  Triangle nodes:
+ 
+  Row       1      2      3
+  Col
+ 
+    1       2      1      3
+    2       3      1      6
+    3       2      3      4
+    4       4      3      5
+    5       7      4      5
+    6       5      3      6
+    7       7      5      6
+    8       9      4      7
+    9       6      1      8
+   10       7      6      8
+   11       7      8      9
+   12       2      4      9
+ 
+  On each side of a given triangle, there is either
+  another triangle, or a piece of the convex hull.
+  For each triangle, we list the indices of the three
+  neighbors, or (if negative) the codes of the
+  segments of the convex hull.
+ 
+  Triangle neighbors
+ 
+  Row       1      2      3
+  Col
+ 
+    1     -28      2      3
+    2       1      9      6
+    3       1      4     12
+    4       3      6      5
+    5       8      4      7
+    6       4      2      7
+    7       5      6     10
+    8      12      5     11
+    9       2    -34     10
+   10       7      9     11
+   11      10    -38      8
+   12       3      8     -3
+ 
+  The number of boundary points is        4
+ 
+  The segments that make up the convex hull can be
+  determined from the negative entries of the triangle
+  neighbor list.
+ 
+     #   Tri  Side    N1    N2
+ 
+     1     9     2     1     8
+     2    11     2     8     9
+     3    12     3     9     2
+     4     1     1     2     1
+ 
+GEOMPACK_PRB
+  Normal end of execution.
+ 
+ 1 December 2011   2:25:24.702 PM

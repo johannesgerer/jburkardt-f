@@ -1,0 +1,324 @@
+<html>
+
+  <head>
+    <title>
+      GRID - Random Points on a Uniform Grid
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GRID <br> Random Points on a Uniform Grid
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GRID</b>
+      is a FORTRAN90 library which
+      randomly selects N points on a uniform
+      grid in the unit hypercube in M-dimensional space.
+    </p>
+
+    <p>
+      Note that, unless N is an Mth power of an integer, the program
+      must generate a regular grid with too many points, and then omit some.
+      Choosing which points to omit is done with a random number generator,
+      whose actions are controlled by SEED.
+    </p>
+
+    <p>
+      The actual placement of the grid within the unit hypercube
+      leaves some options for the use.  It is easiest to describe the
+      options in the 1 dimensional case, and in terms of where the
+      first and last grid point are.  Assuming we have N evenly spaced
+      points to place between 0 and 1, the centering options are
+      <ul>
+        <li>
+          CENTER = 1: first point is 0.0, last point is 1.0;
+        </li>
+        <li>
+          CENTER = 2: first point is 1/(N+1), last point is N/(N+1);
+        </li>
+        <li>
+          CENTER = 3: first point is 0, last point is (N-1)/N;
+        </li>
+        <li>
+          CENTER = 4: first point is 1/N, last point is 1;
+        </li>
+        <li>
+          CENTER = 5: first point is 1/(2*N), last point is (2*N-1)/(2*N);
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>GRID</b> is available in
+      <a href = "../../cpp_src/grid/grid.html">a C++ version</a> and
+      <a href = "../../f_src/grid/grid.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/grid/grid.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/clenshaw_curtis_rule/clenshaw_curtis_rule.html">
+      CLENSHAW_CURTIS_RULE</a>,
+      a FORTRAN90 library which
+      can set up a
+      Clenshaw Curtis quadrature grid in multiple dimensions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cvt/cvt.html">
+      CVT</a>,
+      a FORTRAN90 library which
+      computes elements of a
+      Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/faure/faure.html">
+      FAURE</a>,
+      a FORTRAN90 library which
+      computes elements of a
+      Faure quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grid_dataset/grid_dataset.html">
+      GRID_DATASET</a>,
+      a FORTRAN90 program which
+      allows the user to specify a grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/halton/halton.html">
+      HALTON</a>,
+      a FORTRAN90 library which
+      computes elements of
+      a Halton quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hammersley/hammersley.html">
+      HAMMERSLEY</a>,
+      a FORTRAN90 library which
+      computes elements of
+      a Hammersley quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid/hex_grid.html">
+      HEX_GRID</a>,
+      a FORTRAN90 library which
+      computes elements of
+      a hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid_angle/hex_grid_angle.html">
+      HEX_GRID_ANGLE</a>,
+      a FORTRAN90 library which
+      computes elements of an angled hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ihs/ihs.html">
+      IHS</a>,
+      a FORTRAN90 library which
+      computes elements of
+      an improved distributed Latin hypercube dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_center/latin_center.html">
+      LATIN_CENTER</a>,
+      a FORTRAN90 library which
+      computes elements of
+      a Latin Hypercube dataset, choosing center points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_edge/latin_edge.html">
+      LATIN_EDGE</a>,
+      a FORTRAN90 library which
+      computes elements of
+      a Latin Hypercube dataset, choosing edge points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_random/latin_random.html">
+      LATIN_RANDOM</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube dataset, choosing
+      points at random.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lattice_rule/lattice_rule.html">
+      LATTICE_RULE</a>,
+      a FORTRAN90 library which
+      approximates multidimensional integrals using lattice rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lcvt/lcvt.html">
+      LCVT</a>,
+      a FORTRAN90 library which
+      computes a latinized Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/niederreiter2/niederreiter2.html">
+      NIEDERREITER2</a>,
+      a FORTRAN90 library which
+      computes elements of a Niederreiter quasirandom sequence with base 2.
+    </p>
+
+    <p>
+      <a href = "../../f_src/normal/normal.html">
+      NORMAL</a>,
+      a FORTRAN90 library which
+      computes elements of a
+      sequence of pseudorandom normally distributed values.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sobol/sobol.html">
+      SOBOL</a>,
+      a FORTRAN90 library which
+      computes elements of a
+      Sobol quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangle_grid/triangle_grid.html">
+      TRIANGLE_GRID</a>,
+      a FORTRAN90 library which
+      computes a triangular grid of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      computes elements of a uniform pseudorandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/van_der_corput/van_der_corput.html">
+      VAN_DER_CORPUT</a>,
+      a FORTRAN90 library which
+      computes elements of a
+      van der Corput quasirandom sequence.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "grid.f90">grid.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "grid.sh">grid.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "grid_prb.f90">grid_prb.f90</a>, a sample problem.
+        </li>
+        <li>
+          <a href = "grid_prb.sh">grid_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "grid_prb_output.txt">grid_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>GET_SEED</b> returns a seed for the random number generator.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GRID_GENERATE</b> generates a grid dataset.
+        </li>
+        <li>
+          <b>GRID_SIDE</b> finds the smallest grid containing at least N points.
+        </li>
+        <li>
+          <b>I4_HUGE</b> returns a "huge" I4.
+        </li>
+        <li>
+          <b>KSUB_RANDOM2</b> selects a random subset of size K from a set of size N.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TUPLE_NEXT_FAST</b> computes the next element of a tuple space, "fast".
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 December 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

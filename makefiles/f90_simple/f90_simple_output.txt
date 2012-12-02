@@ -1,0 +1,23 @@
+ 
+F90_SIMPLE
+  A simple FORTRAN90 program to demonstrate
+  the use of makefiles.
+ 
+  Estimate the integral from 0 to 1000, of
+  F(T) = (4+T/365+1/2 sin(pi*T/91)) * (2+exp(-sin(2*pi*T)))
+  a function which models daily power consumption.
+ 
+  subroutine midpoint ( a, b, f, int_num, quad )
+  estimates the integral using the midpoint rule.
+ 
+  function f ( t )
+  evaluates the integrand.
+ 
+  Intervals   Estimate
+ 
+       100     16196.4    
+     10000     17633.4    
+   1000000     17632.5    
+ 
+F90_SIMPLE:
+  Normal end of execution.

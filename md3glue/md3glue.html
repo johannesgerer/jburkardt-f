@@ -1,0 +1,259 @@
+<html>
+
+  <head>
+    <title>
+      MD3GLUE - Molecular Dynamics Simulation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      MD3GLUE <br> Molecular Dynamics Simulation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>MD3GLUE</b>
+      is a FORTRAN90 program which
+      is the fourth of a series of programs that show
+      a typical molecular dynamics simulation.
+    </p>
+
+    <p>
+      <b>MD3GLUE</b> is a somewhat more sophisticated version of <b>MD3</b>.
+      In particular, the program a many-body "glue" potential instead
+      of the Lenndard-Jones potential.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>md3glue</b> < <i>md3glue.inp</i> > <i>md3glue.out</i>
+        </dt>
+        <dd>
+          reads the input file <i>md3glue.inp</i>, and writes the output
+          to <i>md3glue.out</i>.  Also expects to read a file with a
+          name like <i>sample0.txt</i> (specified in the input file)
+          with initial point locations, and will write an output
+          file with a name like <i>sample1.txt</i> containing the
+          updated point locations.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/crystal_coordinates/crystal_coordinates.html">
+      CRYSTAL_COORDINATES</a>,
+      a FORTRAN90 program which
+      can be used to generate suitable coordinates for a set
+      of molecules in a rectangular slab.  This data can be used
+      as the initial data by MD3GLUE.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md_openmp/md_openmp.html">
+      MD_OPENMP</a>,
+      a FORTRAN90 program which
+      carries out a molecular dynamics simulation using OpenMP.
+    <p>
+
+    <p>
+      <a href = "../../f_src/md1/md1.html">
+      MD1</a>,
+      a FORTRAN90 program which
+      is a simpler version of MD2.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md2/md2.html">
+      MD2</a>,
+      a FORTRAN90 program which
+      is a molecular dynamics simulation program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md3/md3.html">
+      MD3</a>,
+      a FORTRAN90 program which
+      is a molecular dynamics simulation program.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/mdbnch/mdbnch.html">
+      MDBNCH</a>,
+      a FORTRAN77 program which
+      is a benchmark molecular simulation calculation.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Matthew Allen, Dominic Tildesley,<br>
+          Computer Simulation of Liquids,<br>
+          Oxford University Press, 1987,<br>
+          ISBN: 0198556454,<br>
+          LC: QC145.2.
+        </li>
+        <li>
+          Furio Ercolessi,<br>
+          A Molecular Dynamics Primer.
+        </li>
+        <li>
+          David Fincham, BJ Ralston,<br>
+          Molecular Dynamics Simulation Using the Cray-1 Vector Processor,<br>
+          Computer Physics Communications,<br>
+          Volume 23, pages 127-134, 1981.
+        </li>
+        <li>
+          Dennis Rapaport,<br>
+          An Introduction to Interactive Molecular-Dynamics Simulation,<br>
+          Computers in Physics,<br>
+          Volume 11, Number 4, July/August 1997, pages 337-347.
+        </li>
+        <li>
+          Dennis Rapaport,<br>
+          The Art of Molecular Dynamics Simulation,<br>
+          Cambridge University Press, 2004,<br>
+          ISBN: 0521825687.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "md3glue.f90">md3glue.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "aluminum.f90">aluminum.f90</a>,
+          routines that define the many-body "glue" potential.
+        </li>
+        <li>
+          <a href = "md3glue.sh">md3glue.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "md3glue_input.txt">md3glue_input.txt</a>,
+          a short input file of user parameter values.
+        </li>
+        <li>
+          <a href = "md3glue_output.txt">md3glue_output.txt</a>,
+          printed output from a run of the program.
+        </li>
+        <li>
+          <a href = "md3glue_sample0.txt">md3glue_sample0.txt</a>,
+          a file containing the initial point positions.
+        </li>
+        <li>
+          <a href = "md3glue_sample1.txt">md3glue_sample1.txt</a>,
+          a file containing the updated point positions, velocities
+          and accelerations.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>PARTICLES</b> is a module for atom property data.
+        </li>
+        <li>
+          <b>SIMULATION_CONTROL</b> is a module for simulation control data.
+        </li>
+        <li>
+          <b>POTENTIAL</b> is a module with the parameters of the Lennard-Jones potential.
+        </li>
+        <li>
+          <b>STATISTICS</b> is a module with statistical quantities.
+        </li>
+        <li>
+          <b>MAIN</b> is the main program for the MD1 molecular dynamics program.
+        </li>
+        <li>
+          <b>INITIALIZE</b> controls the initialization procedure.
+        </li>
+        <li>
+          <b>READ_SAMPLE</b> reads the initial sample from file unit 1.
+        </li>
+        <li>
+          <b>READ_INPUT</b> reads the parameters controlling the simulation.
+        </li>
+        <li>
+          <b>INITIAL_PRINTOUT</b> prints information on the run parameters.
+        </li>
+        <li>
+          <b>EVOLVE_SAMPLE</b> controls the time evolution of the system.
+        </li>
+        <li>
+          <b>REFOLD_POSITIONS</b> folds exiting particles back into the box.
+        </li>
+        <li>
+          <b>COMPUTE_FORCES</b> computes the forces on atoms.
+        </li>
+        <li>
+          <b>COMPUTE_TEMPERATURE</b> updates the kinetic energy and computes temperature.
+        </li>
+        <li>
+          <b>TERMINATE</b> carries out the termination procedures.
+        </li>
+        <li>
+          <b>PRINT_STATISTICS</b> prints statistics from the calculation.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WRITE_SAMPLE</b> writes the final sample to file unit 2.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 October 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

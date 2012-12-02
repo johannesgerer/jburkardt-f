@@ -1,0 +1,706 @@
+<html>
+
+  <head>
+    <title>
+      DISLIN - A Scientific Plotting Package (FORTRAN90 examples)
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      DISLIN <br> A Scientific Plotting Package <br> (FORTRAN90 examples)
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>DISLIN</b>
+      is a directory of FORTRAN90 programs which
+      illustrate the use of the DISLIN scientific plotting package.
+    </p>
+
+    <p>
+      The graphics output from <b>DISLIN</b> can go to into a standard
+      graphics file, or an interactive X Window screen, or into a
+      generic DISLIN graphics metafile, for later processsing.  The
+      standard graphics file formats that DISLIN recognizes include:
+      <ul>
+        <li>
+          <a href = "../../data/cgmb/cgmb.html">CGM</a>
+          a Computer Graphics Metafile;
+        </li>
+        <li>
+          GKSL,
+          a GKSLIN metafile.
+        </li>
+        <li>
+          <a href = "../../data/ps/ps.html">PS</a>, 
+          a PostScript file;
+        </li>
+        <li>
+          <a href = "../../data/eps/eps.html">EPS</a>, 
+          an Encapsulated PostScript file;
+        </li>
+        <li>
+          <a href = "../../data/pdf/pdf.html">PDF</a>,
+          a PDF file;
+        </li>
+        <li>
+          HPGL,
+          a Hewlett-Packard Graphics Language file;
+        </li>
+        <li>
+          WMF,
+          a Microsoft Windows Metafile;
+        </li>
+        <li>
+          <a href = "../../data/svg/svg.html">SVG</a>,
+          a Scalable Vector Graphics file;
+        </li>
+        <li>
+          <a href = "../../data/gif/gif.html">GIF</a>,
+          a Graphics Interchange File;
+        </li>
+        <li>
+          <a href = "../../data/tif/tif.html">TIFF</a>,
+          a Tagged Image File Format file;
+        </li>
+        <li>
+          <a href = "../../data/png/png.html">PNG</a>,
+          a Portable Network Graphics file;
+        </li>
+        <li>
+          <a href = "../../data/ppmb/ppmb.html">PPM</a>,
+          a Portable Pixel Map file;
+        </li>
+        <li>
+          <a href = "../../data/bmp/bmp.html">BMP</a>,
+          a Microsoft Bit Map file;
+        </li>
+        <li>
+          an IMAGE file;
+        </li>
+        <li>
+          Tektronix, X Window, and VGA display format;
+        </li>
+        <li>
+          a DISLIN MET file, the DISLIN "metafile" format, 
+          which can be converted later to any of the other formats;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      When creating a graphics output file, please note that DISLIN
+      will not overwrite an existing graphics file.  Instead, it will
+      store the new information in a file with the right extension,
+      but a different "first name" than you specified.  For example,
+      if you run the first example, it will create the file
+      "dislin_ex01.png".  If you rerun the first example, the output
+      will go into a file which DISLIN arbitrarily names "dislin_1.png".
+      To override this behavior, you must call the <b>filmod</b> routine
+      passing in the string <b>"DELETE"</b> first.
+    </p>
+
+    <p>
+      To use DISLIN, you must access the correct include file, DISLIN
+      library file, and associated X libraries.  The shell scripts that
+      run the examples have been set up to take care of these steps
+      at compile and load time, but they are customized for my own system,
+      a Mac running OSX, and compiling with gcc.  If you plan to use DISLIN,
+      you will need to pay attention to the installation instructions so that
+      you set up your environment correctly!
+    </p>
+
+    <h3 align = "center">DISLIN Levels</h3>
+
+    <p>
+      <b>DISLIN</b> is a plotting library, designed so that you can
+      be generating data and creating plots at the same time.  This
+      necessarily means that you use the program by making many
+      subroutine calls, to define the plot type, the plot size,
+      the axis length, and so on.  The examples below are one way
+      to familiarize yourself with this procedure, and the manual
+      has extensive explanations of how to make the plot you want.
+    </p>
+
+    <p>
+      If might be helpful, though, to note one feature of <b>DISLIN</b>,
+      (which it shares with related plotting libraries such as
+      the old DISSPLA library).  The plotting library starts out
+      at "level 0".  Calling an initialization routine moves you to
+      "level 1", at which point graphs can be defined.  Defining a
+      graph moves you to level 2, at which point you can also define
+      features associated with the graph, such as axes.  When you
+      read the manual, you will see that some plotting routines are
+      only allowed to be called when the plotting library has reached
+      a specific level.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>DISLIN</b> examples are available in
+      <a href = "../../c_src/dislin/dislin.html">a C version</a> and
+      <a href = "../../cpp_src/dislin/dislin.html">a C++ version</a> and
+      <a href = "../../f77_src/dislin/dislin.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/dislin/dislin.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Programs and Data:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/graphics_examples/graphics_examples.html">
+      GRAPHICS_EXAMPLES</a>,
+      FORTRAN90 programs which
+      illustrate how various kinds of data can be displayed and analyzed graphically.
+    </p>
+
+    <p>
+      <a href = "../../data/met/met.html">
+      MET</a>,
+      a data directory which
+      contains examples of MET files,
+      a graphics file format used by the DISLIN plotting package
+      of Helmut Michels.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Helmut Michels,<br>
+          The Data Plotting Software DISLIN - version 10.4, <br>
+          Shaker Media GmbH, January 2010,<br>
+          ISBN13: 978-3-86858-517-9.
+        </li>
+        </li>
+          An online copy of the manual is available as:
+          <a href = "../../pdf/dislin.pdf">dislin.pdf</a>,<br>
+        </li>
+        <li>
+          <a href = "http://www.mps.mpg.de/dislin/">
+                     http://www.mps.mpg.de/dislin/ </a>
+          The DISLIN web page;
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>EX01</b> shows how to use the CURVE routine to plot sets of (X,Y) data:
+      <ul>
+        <li>
+          <a href = "dislin_ex01.f90">dislin_ex01.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex01.sh">dislin_ex01.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex01_output.txt">dislin_ex01_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex01.png">dislin_ex01.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX02</b> shows how to use the POLAR routine to plot (R,Theta) data:
+      <ul>
+        <li>
+          <a href = "dislin_ex02.f90">dislin_ex02.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex02.sh">dislin_ex02.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex02_output.txt">dislin_ex02_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex02.png">dislin_ex02.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX03</b> shows how the SYMBOL routine can be used to generate symbols:
+      <ul>
+        <li>
+          <a href = "dislin_ex03.f90">dislin_ex03.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex03.sh">dislin_ex03.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex03_output.txt">dislin_ex03_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex03.png">dislin_ex03.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX04</b> shows five ways of plotting the same X, Y data,
+      using different interpolation methods.
+      <ul>
+        <li>
+          <a href = "dislin_ex04.f90">dislin_ex04.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex04.sh">dislin_ex04.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex04_output.txt">dislin_ex04_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex04.png">dislin_ex04.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX05</b> shows three ways of plotting the same X, Y data,
+      using different bar graph formats.
+      <ul>
+        <li>
+          <a href = "dislin_ex05.f90">dislin_ex05.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex05.sh">dislin_ex05.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex05_output.txt">dislin_ex05_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex05.png">dislin_ex05.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX06</b> shows two ways of labeling data that is
+      displayed as a piechart.
+      <ul>
+        <li>
+          <a href = "dislin_ex06.f90">dislin_ex06.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex06.sh">dislin_ex06.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex06_output.txt">dislin_ex06_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex06.png">dislin_ex06.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX07</b> shows how to make pie charts and bar graphs that have
+      a 3D thickness to them.
+      <ul>
+        <li>
+          <a href = "dislin_ex07.f90">dislin_ex07.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex07.sh">dislin_ex07.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex07_output.txt">dislin_ex07_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex07.png">dislin_ex07.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX07B</b> shows how to make 3D bar graphs on a 3D range.
+      <ul>
+        <li>
+          <a href = "dislin_ex07b.f90">dislin_ex07b.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex07b.sh">dislin_ex07b.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex07b_output.txt">dislin_ex07b_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex07b.png">dislin_ex07b.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX08</b> demonstrates available shading patterns.
+      <ul>
+        <li>
+          <a href = "dislin_ex08.f90">dislin_ex08.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex08.sh">dislin_ex08.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex08_output.txt">dislin_ex08_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex08.png">dislin_ex08.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX09</b> demonstrates the use of color contour plots.
+      <ul>
+        <li>
+          <a href = "dislin_ex09.f90">dislin_ex09.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex09.sh">dislin_ex09.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex09_output.txt">dislin_ex09_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex09.png">dislin_ex09.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX10</b> demonstrates the use of 3D surface (wiremesh) plots.
+      <ul>
+        <li>
+          <a href = "dislin_ex10.f90">dislin_ex10.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex10.sh">dislin_ex10.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex10_output.txt">dislin_ex10_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex10.png">dislin_ex10.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX11</b> demonstrates the creation of a contour plot.
+      <ul>
+        <li>
+          <a href = "dislin_ex11.f90">dislin_ex11.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex11.sh">dislin_ex11.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex11_output.txt">dislin_ex11_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex11.png">dislin_ex11.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX12</b> demonstrates the creation of a shaded contour plot.
+      <ul>
+        <li>
+          <a href = "dislin_ex12.f90">dislin_ex12.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex12.sh">dislin_ex12.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex12_output.txt">dislin_ex12_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex12.png">dislin_ex12.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX13</b> demonstrates the creation of a map plot.
+      <ul>
+        <li>
+          <a href = "dislin_ex13.f90">dislin_ex13.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex13.sh">dislin_ex13.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex13_output.txt">dislin_ex13_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex13.png">dislin_ex13.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EX14</b> demonstrates the use of TeX instructions to define
+      mathematical formulas.
+      <ul>
+        <li>
+          <a href = "dislin_ex14.f90">dislin_ex14.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex14.sh">dislin_ex14.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "dislin_ex14_output.txt">dislin_ex14_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "dislin_ex14.png">dislin_ex14.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>LIFE_GRID</b> creates a simple grid for the game of Life.
+      <ul>
+        <li>
+          <a href = "life_grid.f90">life_grid.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "life_grid.sh">life_grid.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "life_grid_output.txt">life_grid_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "life_grid.png">life_grid.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>QUICKPLOT_BAR</b> calls QPLBAR to plot a bar chart or histogram.
+      <ul>
+        <li>
+          <a href = "quickplot_bar.f90">quickplot_bar.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "quickplot_bar.sh">quickplot_bar.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "quickplot_bar_output.txt">quickplot_bar_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "quickplot_bar.png">quickplot_bar.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>QUICKPLOT_COLOR</b> calls QPLCLR to make a color plot of a matrix of data.
+      <ul>
+        <li>
+          <a href = "quickplot_color.f90">quickplot_color.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "quickplot_color.sh">quickplot_color.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "quickplot_color_output.txt">quickplot_color_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "quickplot_color.png">quickplot_color.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>QUICKPLOT_CONTOUR</b> calls QPLCON to make a contour plot of data Z(X,Y)
+      stored as an array.
+      <ul>
+        <li>
+          <a href = "quickplot_contour.f90">quickplot_contour.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "quickplot_contour.sh">quickplot_contour.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "quickplot_contour_output.txt">quickplot_contour_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "quickplot_contour.png">quickplot_contour.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>QUICKPLOT_CURVE</b> calls QPLOT to plot a curve.
+      <ul>
+        <li>
+          <a href = "quickplot_curve.f90">quickplot_curve.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "quickplot_curve.sh">quickplot_curve.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "quickplot_curve_output.txt">quickplot_curve_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "quickplot_curve.png">quickplot_curve.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>QUICKPLOT_PIE</b> calls QPLPIE to plot a pie char.
+      <ul>
+        <li>
+          <a href = "quickplot_pie.f90">quickplot_pie.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "quickplot_pie.sh">quickplot_pie.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "quickplot_pie_output.txt">quickplot_pie_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "quickplot_pie.png">quickplot_pie.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>QUICKPLOT_SCATTER</b> calls QPLSCA to make a scatterplot.
+      <ul>
+        <li>
+          <a href = "quickplot_scatter.f90">quickplot_scatter.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "quickplot_scatter.sh">quickplot_scatter.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "quickplot_scatter_output.txt">quickplot_scatter_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "quickplot_scatter.png">quickplot_scatter.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>QUICKPLOT_SURFACE</b> calls QPLSUR to make a 3D surface plot of data Z(X,Y)
+      stored as an array.
+      <ul>
+        <li>
+          <a href = "quickplot_surface.f90">quickplot_surface.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "quickplot_surface.sh">quickplot_surface.sh</a>, commands to
+          compile, link and run the sample calling program;
+        </li>
+        <li>
+          <a href = "quickplot_surface_output.txt">quickplot_surface_output.txt</a>, 
+          the output file.
+        </li>
+        <li>
+          <a href = "quickplot_surface.png">quickplot_surface.png</a>,
+          the graphics file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 14 May 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

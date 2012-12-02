@@ -1,0 +1,321 @@
+<html>
+
+  <head>
+    <title>
+      NL2SOL - An Adaptive Nonlinear Least-Squares Algorithm
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      NL2SOL <br> An Adaptive Nonlinear Least-Squares Algorithm
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>NL2SOL</b>
+      is a FORTRAN90 library which
+      implements an adaptive nonlinear least-squares algorithm,
+      by John Dennis, David Gay, Roy Welsch.
+    </p>
+
+    <p>
+      <b>NL2SOL</b> assumes that there are <b>NVAR</b> variables <b>X</b>,
+      and <b>MEQN</b> nonlinear "residual functions" <b>F(X)</b>, and that
+      the task is to find a solution <b>X</b> which minimizes the Euclidean
+      norm of <b>||F(X)||</b>.
+    </p>
+
+    <p>
+      <b>NL2SOL</b> is ACM TOMS algorithm 573.
+      The original, true, correct version of ACM TOMS 573 is available
+      in the TOMS subdirectory of
+      <a href = "http://www.netlib.org/">the NETLIB web site</a>.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>NL2SOL</b> is available in
+      <a href = "../../f77_src/nl2sol/nl2sol.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/nl2sol/nl2sol.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bvls/bvls.html">
+      BVLS</a>,
+      a FORTRAN90 library which
+      applies least squares methods to solve a linear system for which
+      lower and upper constraints may have been placed on every variable.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      solves constrained least squares problems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/minpack/minpack.html">
+      MINPACK</a>,
+      a FORTRAN90 library which
+      carries out the least squares minimization of the residual
+      of a set of linear or nonlinear equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/praxis/praxis.html">
+      PRAXIS</a>,
+      a FORTRAN90 library which
+      minimizes a scalar
+      function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt/test_opt.html">
+      TEST_OPT</a>,
+      a FORTRAN90 library which 
+      defines test problems
+      requiring the minimization of a scalar function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms611/toms611.html">
+      TOMS611</a>,
+      a FORTRAN90 library which
+      can be used to seek the minimizer of a scalar functional
+      of multiple variables.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      John Dennis, David Gay, Roy Welsch
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          K M Brown,<br>
+          A Quadratically Convergent Newton-like Method Based upon
+          Gaussian Elimination,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 6, pages 560-569, 1969.
+        </li>
+        <li>
+          John Dennis, David Gay, Roy Welsch,<br>
+          Algorithm 573:<br>
+          An Adaptive Nonlinear Least-Squares Algorithm, <br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 7, Number 3, 1981, pages 367-383.
+        </li>
+        <li>
+          David Gay,<br>
+          Computing Optimal Locally Constrained Steps,<br>
+          SIAM Journal on Scientific and Statistical Computing, <br>
+          Volume 2, Number 2, pages 186-197, 1981.
+        </li>
+        <li>
+          Philip Gill, Walter Murray,<br>
+          Algorithms for the Solution of the
+          Non-linear Least-squares Problem, <br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 15, Number 5, pages 977-991, 1978.<br>
+        </li>
+        <li>
+          Charles Lawson, Richard Hanson, <br>
+          Solving Least Squares Problems, <br>
+          Prentice-Hall.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "nl2sol.f90">nl2sol.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "nl2sol.sh">nl2sol.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>NL2SOL_PRB1</b> is a simple test.
+      <ul>
+        <li>
+          <a href = "nl2sol_prb1.f90">nl2sol_prb1.f90</a>,
+          a sample problem.
+        </li>
+        <li>
+          <a href = "nl2sol_prb1.sh">nl2sol_prb1.sh</a>,
+          commands to compile and run the problem.
+        </li>
+        <li>
+          <a href = "nl2sol_prb1_output.txt">nl2sol_prb1_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>NL2SOL_PRB2</b> is an extensive set of tests.
+      <ul>
+        <li>
+          <a href = "nl2sol_prb2.f90">nl2sol_prb2.f90</a>,
+          a sample problem.
+        </li>
+        <li>
+          <a href = "nl2sol_prb2.sh">nl2sol_prb2.sh</a>,
+          commands to compile and run the problem.
+        </li>
+        <li>
+          <a href = "nl2sol_prb2_output.txt">nl2sol_prb2_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>NL2SOL</b> minimizes nonlinear sum of squares using analytic jacobian.
+        </li>
+        <li>
+          <b>NL2SNO</b> is like NL2SOL, but uses a finite difference jacobian.
+        </li>
+        <li>
+          <b>NL2ITR</b> carries out nl2sol (nonlinear least-squares) iterations.
+        </li>
+        <li>
+          <b>ASSESS</b> assesses a candidate step.
+        </li>
+        <li>
+          <b>COVCLC</b> computes the covariance matrix for NL2ITR.
+        </li>
+        <li>
+          <b>DFAULT</b> supplies default values to IV and V.
+        </li>
+        <li>
+          <b>DOTPRD</b> returns the inner product of the p-vectors x and y.
+        </li>
+        <li>
+          <b>DUPDAT</b> updates the scale vector D for NL2ITR.
+        </li>
+        <li>
+          <b>GQTSTP</b> computes the Goldfeld-Quandt-Trotter step by More-Hebden technique.
+        </li>
+        <li>
+          <b>ITSMRY</b> prints an iteration summary.
+        </li>
+        <li>
+          <b>LINVRT</b> computes the inverse of a lower triangular matrix.
+        </li>
+        <li>
+          <b>LITVMU</b> solves L' * X = Y, where L is a lower triangular matrix.
+        </li>
+        <li>
+          <b>LIVMUL</b> solves L * X = Y, where L is a lower triangular matrix.
+        </li>
+        <li>
+          <b>LMSTEP</b> computes the Levenberg-Marquardt step using More-Hebden technique.
+        </li>
+        <li>
+          <b>LSQRT</b> computes the Cholesky factor of a lower triangular matrix.
+        </li>
+        <li>
+          <b>LSVMIN</b> estimates the smallest singular value of a lower triangular matrix.
+        </li>
+        <li>
+          <b>LTSQAR</b> sets A to the lower triangle of L' * L.
+        </li>
+        <li>
+          <b>PARCHK</b> checks the NL2SOL parameters.
+        </li>
+        <li>
+          <b>QAPPLY</b> applies orthogonal transformation to the residual R.
+        </li>
+        <li>
+          <b>QRFACT</b> computes the QR decomposition of a matrix.
+        </li>
+        <li>
+          <b>RELDST</b> computes the  relative difference between two real values.
+        </li>
+        <li>
+          <b>RPTMUL</b> computes R * P' * X or P * R' * R * P' * X or P * R' * X.
+        </li>
+        <li>
+          <b>SLUPDT</b> updates a symmetric matrix A so that A * STEP = Y.
+        </li>
+        <li>
+          <b>SLVMUL</b> sets Y = S * X, where S is a P by P symmetric matrix.
+        </li>
+        <li>
+          <b>STOPX</b> is called to stop execution.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>VAXPY</b> sets W = A*X + Y where A is a scalar.
+        </li>
+        <li>
+          <b>VCOPY</b> copies a vector.
+        </li>
+        <li>
+          <b>VSCOPY</b> sets a vector to a scalar value.
+        </li>
+        <li>
+          <b>V2NORM</b> computes the L2 norm of a vector.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 February 2008.
+    </i>
+
+    <!-- John Burkardt -->
+
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

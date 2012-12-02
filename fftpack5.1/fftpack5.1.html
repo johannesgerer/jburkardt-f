@@ -1,0 +1,476 @@
+<html>
+
+  <head>
+    <title>
+      FFTPACK5.1 - Fast Fourier Transforms
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FFTPACK5.1 <br> Fast Fourier Transform
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FFTPACK5.1</b>
+      is a FORTRAN90 library which
+      computes the Fast Fourier Transform,
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      Special features include:
+      <ul>
+        <li>
+          real or complex data can be handled;
+        </li>
+        <li>
+          separate routines for forward analysis (data => Fourier coefficients)
+          and backward analysis (Fourier coefficients => data);
+        </li>
+        <li>
+          sine and cosine transform routines;
+        </li>
+        <li>
+          quarter wave sine and cosine transform routines;
+        </li>
+        <li>
+          the amount of data is NOT required to be a power of 2.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Routines in the library come in groups of three:
+      <ul>
+        <li>
+          an initialization routine;
+        </li>
+        <li>
+          the forward computational routine (data to FFT coefficients);
+        </li>
+        <li>
+          the backward computational routine (FFT coefficients to data).
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following table shows how the names of the routines in each group:
+      <table border = 1>
+        <tr><th>Initialization</th><th>Forward</th><th>Backward</th><th>Purpose</th></tr>
+        <tr><td>CFFT1I</td><td>CFFT1F</td><td>CFFT1B</td><td>FFT for complex 1D data</td></tr>
+        <tr><td>CFFT2I</td><td>CFFT2F</td><td>CFFT2B</td><td>FFT for complex 2D data</td></tr>
+        <tr><td>CFFTMI</td><td>CFFTMF</td><td>CFFTMB</td><td>FFT for complex multi-D data</td></tr>
+        <tr><td>COSQ1I</td><td>COSQ1F</td><td>COSQ1B</td><td>Even function 1D quarter-cosine FFT</td></tr>
+        <tr><td>COSQMI</td><td>COSQMF</td><td>COSQMB</td><td>Even function 1D quarter-cosine FFT</td></tr>
+        <tr><td>COST1I</td><td>COST1F</td><td>COST1B</td><td>Even function 1D cosine FFT</td></tr>
+        <tr><td>COSTMI</td><td>COSTMF</td><td>COSTMB</td><td>Even function 1D cosine FFT</td></tr>
+        <tr><td>RFFT1I</td><td>RFFT1F</td><td>RFFT1B</td><td>FFT for real 1D data</td></tr>
+        <tr><td>RFFT2I</td><td>RFFT2F</td><td>RFFT2B</td><td>FFT for real 2D data</td></tr>
+        <tr><td>RFFTMI</td><td>RFFTMF</td><td>RFFTMB</td><td>FFT for real multi-D data</td></tr>
+        <tr><td>SINQ1I</td><td>SINQ1F</td><td>SINQ1B</td><td>Even function 1D quarter-sine FFT</td></tr>
+        <tr><td>SINQMI</td><td>SINQMF</td><td>SINQMB</td><td>Even function 1D quarter-sine FFT</td></tr>
+        <tr><td>SINT1I</td><td>SINT1F</td><td>SINT1B</td><td>Even function 1D sine FFT</td></tr>
+        <tr><td>SINTMI</td><td>SINTMF</td><td>SINTMB</td><td>Even function 1D sine FFT</td></tr>
+      </table>
+    </p>
+
+    <h3 align = "center">
+      Bugfixes from FFTPACK 5.0 to FFTPACK 5.1
+    </h3>
+
+    <p>
+      The functionality of FFTPACK 5.1 is identical with the previous version 5.0.
+    </p>
+
+    <p>
+      The following bugfixes have been applied:
+      <ol>
+        <li>
+          Corrected index error for high-level routines [CR]FFT[12][BFI] requiring 
+          WSAVE array, and all dependent routines to which LWSAVE is passed. 
+          Namely, in LWSAV = L + LOG(REAL(INT(L))) + 4 definitions, the summand term 
+          LOG(REAL(INT(L))) has been corrected to LOG(REAL(INT(L)/LOG(2.)).
+        </li>
+        <li>
+          Corrected index error in routime C1FM1F at label 56, where array offset 
+          was declared 1 that should have been 2. This resulted in C1FFTF transforms 
+          of length N calculated incorrectly, where N is any prime .GT. 5, or N=7*M, 
+          M .GE. 6.
+        </li>
+        <li>
+          Corrected RFFT2x routines by rewriting them. The backward transform 
+          followed by forward now returns identity.  Input argument LENSAV must be
+          be at least 
+          L + 3*M + INT(LOG(REAL(L))/LOG(2.)) + 2*INT(LOG(REAL(M))/LOG(2.)) +12.
+          Previously, the required value was smaller.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      Licensed under the GNU General Public License (GPL).<br>
+      Copyright (C) 1995-2004, Scientific Computing Division,<br>
+      University Corporation for Atmospheric Research.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FFTPACK5.1</b> is available in
+      <a href = "../../f77_src/fftpack5.1/fftpack5.1.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fftpack5.1/fftpack5.1.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fftpack5/fftpack5.html">
+      FFTPACK5</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fftpack5.1d/fftpack5.1d.html">
+      FFTPACK5.1D</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform
+      using double precision arithmetic,
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fftw3/fftw3.html">
+      FFTW3</a>,
+      FORTRAN90 programs which
+      illustrate the use of the FFTW3 library for Fast Fourier Transforms,
+      by Matteo Frigo and Steven Johnson.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+      a C++ library which
+      embodies the "GNU Scientific Library", and includes FFT routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sftpack/sftpack.html">
+      SFTPACK</a>,
+      a FORTRAN90 library which
+      implements the "slow" Fourier transform, intended as a teaching
+      tool and comparison with the fast Fourier transform.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sine_transform/sine_transform.html">
+      SINE_TRANSFORM</a>,
+      a FORTRAN90 library which
+      demonstrates some simple properties of the discrete sine transform.
+    </p>
+
+    <p>
+      <a href = "../../f_src/walsh/walsh.html">
+      WALSH</a>,
+      a FORTRAN90 library which
+      implements versions of the Walsh and Haar transforms.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xerror/xerror.html">
+      XERROR</a>,
+      a FORTRAN90 library which
+      is used for error reporting.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      The original Fortran77 version of this code was written by Dick Valent and
+      Paul Swarztrauber, of the National Center for Atmospheric Research (NCAR).
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Briggs, Van Emden Henson,<br>
+          The DFT: An Owner's Manual for the Discrete Fourier Transform,<br>
+          SIAM, 1995,<br>
+          ISBN13: 978-0-898713-42-8,<br>
+          LC: QA403.5.B75.
+        </li>
+        <li>
+          Elbert Brigham,<br>
+          The Fast Fourier Transform and Its Applications,<br>
+          Prentice-Hall, 1988,<br>
+          ISBN: 0133075052,<br>
+          LC: QA403.B74.
+        </li>
+        <li>
+          Bill Buzbee,<br>
+          The SLATEC Common Math Library,<br>
+          in Sources and Development of Mathematical Software,<br>
+          edited by Wayne Cowell,<br>
+          Prentice-Hall, 1984,<br>
+          ISBN: 0-13-823501-5,<br>
+          LC: QA76.95.S68.
+        </li>
+        <li>
+          Eleanor Chu, Alan George,<br>
+          Inside the FFT Black Box,<br>
+          CRC Press,<br>
+          ISBN: 0849302706,<br>
+          LC: QA403.5C5.
+        </li>
+        <li>
+          David Kahaner, Cleve Moler, Steven Nash,<br>
+          Numerical Methods and Software,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0-13-627258-4,<br>
+          LC: TA345.K34.
+        </li>
+        <li>
+          Paul Swarztrauber,<br>
+          Symmetric FFT's,<br>
+          Mathematics of Computation,<br>
+          Volume 47, Number 175, July 1986, pages 323-346.
+        </li>
+        <li>
+          Paul Swarztrauber,<br>
+          Vectorizing the Fast Fourier Transforms,<br>
+          in Parallel Computations,<br>
+          edited by Garry Rodrigue,<br>
+          Academic Press, 1982,<br>
+          ISBN: 0125921012,<br>
+          LC: QA76.6.P348.
+        </li>
+        <li>
+          Paul Swarztrauber,<br>
+          Fast Fourier Transform Algorithms for Vector Computers,<br>
+          Parallel Computing,<br>
+          Volume 1, Number 1, August 1984, pages 45-63.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fftpack5.1.f90">fftpack5.1.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "fftpack5.1.sh">fftpack5.1.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fftpack5.1_prb.f90">fftpack5.1_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "fftpack5.1_prb.sh">fftpack5.1_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "fftpack5.1_prb_output.txt">fftpack5.1_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CFFT1B:</b> complex backward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>CFFT1F:</b> complex forward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>CFFT1I:</b> initialization for CFFT1B and CFFT1F.
+        </li>
+        <li>
+          <b>CFFT2B:</b> complex backward fast Fourier transform, 2D.
+        </li>
+        <li>
+          <b>CFFT2F:</b> complex forward fast Fourier transform, 2D.
+        </li>
+        <li>
+          <b>CFFT2I:</b> initialization for CFFT2B and CFFT2F.
+        </li>
+        <li>
+          <b>CFFTMB:</b> complex backward fast Fourier transform, 1D, multiple vectors.
+        </li>
+        <li>
+          <b>CFFTMF:</b> complex forward fast Fourier transform, 1D, multiple vectors.
+        </li>
+        <li>
+          <b>CFFTMI:</b> initialization for CFFTMB and CFFTMF.
+        </li>
+        <li>
+          <b>COSQ1B</b>: complex backward cosine quarter wave transform, 1D.
+        </li>
+        <li>
+          <b>COSQ1F</b>: complex forward cosine quarter wave transform, 1D.
+        </li>
+        <li>
+          <b>COSQ1I</b>: initialization for COSQ1B and COSQ1F.
+        </li>
+        <li>
+          <b>COSQMB</b>: complex backward cosine quarter wave transform, multiple vectors.
+        </li>
+        <li>
+          <b>COSQMF</b>: complex forward cosine quarter wave transform, multiple vectors.
+        </li>
+        <li>
+          <b>COSQMI</b>: initialization for COSQMB and COSQMF.
+        </li>
+        <li>
+          <b>COST1B</b>: complex backward cosine transform, 1D.
+        </li>
+        <li>
+          <b>COST1F</b>: complex forward cosine transform, 1D.
+        </li>
+        <li>
+          <b>COST1I</b>: initialization for COST1B and COST1F.
+        </li>
+        <li>
+          <b>COSTMB</b>: complex backward cosine transform, multiple vectors.
+        </li>
+        <li>
+          <b>COSTMF</b>: complex forward cosine transform, multiple vectors.
+        </li>
+        <li>
+          <b>COSTMI</b>: initialization for COSTMB and COSTMF.
+        </li>
+        <li>
+          <b>FACTOR</b> determines the factors of an integer.
+        </li>
+        <li>
+          <b>RFFT1B:</b> real backward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>RFFT1F:</b> real forward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>RFFT1I:</b> initialization for RFFT1B and RFFT1F.
+        </li>
+        <li>
+          <b>RFFT2B:</b> real backward fast Fourier transform, 2D.
+        </li>
+        <li>
+          <b>RFFT2F:</b> real forward fast Fourier transform, 2D.
+        </li>
+        <li>
+          <b>RFFT2I:</b> initialization for RFFT2B and RFFT2F.
+        </li>
+        <li>
+          <b>RFFTMB</b>: real backward fast Fourier transform, 1D, multiple vectors.
+        </li>
+        <li>
+          <b>RFFTMF</b>: real forward fast Fourier transform, 1D, multiple vectors.
+        </li>
+        <li>
+          <b>RFFTMI</b>: initialization for RFFTMB and RFFTMF.
+        </li>
+        <li>
+          <b>SINQ1B</b>: complex backward sine quarter wave transform, 1D.
+        </li>
+        <li>
+          <b>SINQ1F</b>: complex forward sine quarter wave transform, 1D.
+        </li>
+        <li>
+          <b>SINQ1I</b>: initialization for SINQ1B and SINQ1F.
+        </li>
+        <li>
+          <b>SINQMB</b>: complex backward sine quarter wave transform, multiple vectors.
+        </li>
+        <li>
+          <b>SINQMF</b>: complex forward sine quarter wave transform, multiple vectors.
+        </li>
+        <li>
+          <b>SINQMI</b>: initialization for SINQMB and SINQMF.
+        </li>
+        <li>
+          <b>SINT1B</b>: complex backward sine transform, 1D.
+        </li>
+        <li>
+          <b>SINT1F</b>: complex forward sine transform, 1D.
+        </li>
+        <li>
+          <b>SINT1I</b>: initialization for SINT1B and SINT1F.
+        </li>
+        <li>
+          <b>SINTMB</b>: complex backward sine transform, multiple vectors.
+        </li>
+        <li>
+          <b>SINTMF</b>: complex forward sine transform, multiple vectors.
+        </li>
+        <li>
+          <b>SINTMI</b>: initialization for SINTMB and SINTMF.
+        </li>
+        <li>
+          <b>TABLES</b> computes trigonometric tables needed by the FFT routines.
+        </li>
+        <li>
+          <b>XERCON</b> checks INC, JUMP, N and LOT for consistency.
+        </li>
+        <li>
+          <b>XERFFT</b> is an error handler for the FFTPACK routines.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 31 July 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,293 @@
+<html>
+
+  <head>
+    <title>
+      RANDOM_MPI - Random Numbers using MPI
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      RANDOM_MPI <br> Random Numbers using MPI
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>RANDOM_MPI</b>
+      is a FORTRAN90 program which
+      demonstrates one way to generate the same sequence of random numbers
+      for both sequential execution and parallel execution under MPI.
+    </p>
+
+    <p>
+      A simpler approach to random numbers would simply let each processor
+      choose a seed.  Or the master processor could choose distinct seeds.
+      However, this is not ideal since it will not match the sequential program
+      and it does not avoid the possibility that two of the random sequences
+      will quickly overlap because of a bad choice of seed.
+    </p>
+
+    <p>
+      Notice that if we have 10 processors available under MPI, we do not
+      want each processor to generate the same random number sequence.
+      Instead, we want each of the processors to generate a part of the
+      sequence, so that all the parts together make up the same set of values
+      that a sequential program would have computed.
+    </p>
+
+    <p>
+      We assume we are using a linear congruential
+      random number generator or "LCRG", which takes
+      an integer input and returns a new integer output:
+      <blockquote><b>
+          U = ( A * V + B ) mod C
+      </b></blockquote>
+      We assume that we want the MPI program to produce
+      the same sequence of random values as a sequential
+      program would - but we want each processor to compute
+      one part of that sequence.
+    </p>
+
+    <p>
+      We do this by computing a new LCRG which can compute
+      every P'th entry of the original one.
+    </p>
+
+    <p>
+      Our LCRG works with integers, but it is easy to
+      turn each integer into a real number between [0,1].
+    </p>
+
+    <p>
+      The particular scheme for computing the parameters of the new LCRG
+      is implemented in the <b>UNIFORM</b> library.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>RANDOM_MPI</b> is available in
+      <a href = "../../c_src/random_mpi/random_mpi.html">a C version</a> and
+      <a href = "../../cpp_src/random_mpi/random_mpi.html">a C++ version</a> and
+      <a href = "../../f77_src/random_mpi/random_mpi.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/random_mpi/random_mpi.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/communicator_mpi/communicator_mpi.html">
+      COMMUNICATOR_MPI</a>,
+      a FORTRAN90 program which
+      creates new communicators involving a subset of initial
+      set of MPI processes in the default communicator MPI_COMM_WORLD.
+    </p>
+
+    <p>
+      <a href = "../../f_src/heat_mpi/heat_mpi.html">
+      HEAT_MPI</a>,
+      a FORTRAN90 program which
+      solves the 1D Time Dependent Heat Equation using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hello_mpi/hello_mpi.html">
+      HELLO_MPI</a>,
+      a FORTRAN90 program which
+      prints out "Hello, world!" using the MPI parallel programming environment.
+    </p>
+
+    <p>
+      <a href = "../../examples/moab/moab.html">
+      MOAB</a>,
+      examples which
+      illustrate the use of the MOAB job scheduler for a computer cluster.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi/mpi.html">
+      MPI</a>
+      FORTRAN90 programs which
+      illustrate the use of MPI for doing parallel programming in a distributed memory
+      environment, using message passing.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mpi_stubs/mpi_stubs.html">
+      MPI_STUBS</a>,
+      a FORTRAN90 library which
+      contains "stub" MPI routines, allowing a user to compile, load, and possibly
+      run an MPI program on a serial machine.
+    </p>
+
+    <p>
+      <a href = "../../f_src/multitask_mpi/multitask_mpi.html">
+      MULTITASK_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates how to "multitask", that is, to execute several unrelated
+      and distinct tasks simultaneously, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_mpi/prime_mpi.html">
+      PRIME_MPI</a>,
+      a FORTRAN90 program which
+      counts the number of primes between 1 and N, using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_mpi/quad_mpi.html">
+      QUAD_MPI</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule, and carries out the
+      computation in parallel using MPI.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ring_mpi/ring_mpi.html">
+      RING_MPI</a>,
+      a FORTRAN90 program which
+      uses the MPI parallel programming environment, and measures the time
+      necessary to copy a set of data around a ring of processes.
+    </p>
+
+    <p>
+      <a href = "../../f_src/satisfy_mpi/satisfy_mpi.html">
+      SATISFY_MPI</a>,
+      a FORTRAN90 program which
+      demonstrates, for a particular circuit, an exhaustive search
+      for solutions of the circuit satisfiability problem, using MPI to
+      carry out the calculation in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/search_mpi/search_mpi.html">
+      SEARCH_MPI</a>,
+      a FORTRAN90 program which
+      searches integers between A and B for a value J such that F(J) = C,
+      using MPI for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      computes elements of a uniform pseudorandom sequence.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Peter Arbenz, Wesley Petersen,<br>
+          Introduction to Parallel Computing - A practical guide with examples in C,<br>
+          Oxford University Press,<br>
+          ISBN: 0-19-851576-6,<br>
+          LC: QA76.58.P47.
+        </li>
+        <li>
+          Stan Openshaw, Ian Turton,<br>
+          High Performance Computing and the Art of Parallel Programming:
+          an Introduction for Geographers, Social Scientists, and
+          Engineers,<br>
+          Routledge, 2000,<br>
+          ISBN: 0415156920.
+        </li>
+        <li>
+          Peter Pacheco,<br>
+          Parallel Programming with MPI,<br>
+          Morgan Kaufman, 1996,<br>
+          ISBN: 1558603395,<br>
+          LC: QA76.642.P3.
+        </li>
+        <li>
+          Michael Quinn,<br>
+          Parallel Programming in C with MPI and OpenMP,<br>
+          McGraw-Hill, 2004,<br>
+          ISBN13: 978-0071232654,<br>
+          LC: QA76.73.C15.Q55.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "random_mpi.f90">random_mpi.f90</a>, the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>RANDOM_FSU</b> compiles and runs the program on the FSU HPC cluster.
+      <ul>
+        <li>
+          <a href = "random_fsu.sh">random_fsu.sh</a>,
+          the MOAB script.
+        </li>
+        <li>
+          <a href = "random_fsu_output.txt">random_fsu_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>RANDOM_SYSX</b> compiles and runs the program on Virginia Techs's System X.
+      <ul>
+        <li>
+          <a href = "random_sysx.sh">random_sysx.sh</a>,
+          BASH commands to compile, link and load the source code on System X.
+        </li>
+        <li>
+          <a href = "random_sysx_output.txt">random_sysx_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 22 October 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

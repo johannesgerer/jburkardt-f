@@ -1,0 +1,384 @@
+<html>
+
+  <head>
+    <title>
+      PPPACK - DeBoor's Piecewise Polynomial Package
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PPPACK <br> DeBoor's Piecewise Polynomial Package
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PPPACK</b>
+      is a FORTRAN90 library which
+      evaluates piecewise polynomial functions, including cubic splines,
+      by Carl de Boor.
+    </p>
+
+    <h3 align = "center">
+      Piecewise Polynomial Functions:
+    </h3>
+
+    <p>
+      Typically, a set of data ( X(I), Y(I) ) for I=1, L+1 is available
+      which is to be interpolated.  A function F(X) is to be found which
+      passes through the given data.  F(X) is to be constructed from
+      some order of polynomials, often cubic, and is to be continuously
+      differentiable to all orders except at certain 'break' points,
+      most likely at the same X points given with the data.  Thus, to
+      determine the types of functions F we can construct, it is necessary
+      to specify the number of break points L+1, or intervals L, the
+      location of the breakpoints 'BREAK', the values that the function is
+      to assume at the breakpoints 'Y' or some other condition,
+      and the order 'K' of the polynomial pieces.  Sometimes auxilliary
+      information, such as the slope or second derivative of the
+      function at the left and right endpoints is part of the
+      prescription.
+    </p>
+
+    <p>
+      Given a set of interpolating conditions or other requirements,
+      the piecewise polynomial routines that follow will produce or
+      manipulate a representation of the function F which has the form:
+      <pre><b>
+        ( BREAK, PCOEF, K, L )
+      </b></pre>
+    </p>
+
+    <p>
+      These quantities represent the function F in the following way.
+      If a point X is between breakpoints BREAK(I) and BREAK(I+1),
+      then set
+      <pre><b>
+        H = X - BREAK(I),
+      </b></pre>
+      and we have
+      <pre><b>
+        F(X)= PCOEF(1,I)
+             + PCOEF(2,I) * H
+             + PCOEF(3,I) * H**2 / 2!
+             + PCOEF(4,I) * H**3 / 3!
+             ...
+             + PCOEF(K,I) * H**(K-1) /(K-1)!
+      </b></pre>
+    </p>
+
+    <p>
+      Note that the piecewise polynomial functions make F and
+      its derivatives continuous from the right.  Thus at
+      the break point I+1, we use the definition of F appropriate
+      for the interval ( BREAK(I+1), BREAK(I+2) ) and not
+      ( BREAK(I), BREAK(I+1) ).
+    </p>
+
+    <p>
+      Note also that the behavior of the function F for X values
+      below the first breakpoint BREAK(1) or above the last breakpoint
+      BREAK(L+1) is not specified.  In fact, generally, F is set to zero
+      below BREAK(1), and the definition of F on the last interval
+      ( BREAK(L), BREAK(L+1) ) is extended all the way to the right.
+    </p>
+
+    <p>
+      Whenever you have a piecewise polynomial representation of the
+      above form, you can evaluate the function F(X) by calling
+      the function PPVALU.  Moreover, other routines like BSPLPP
+      can convert a B-spline representation into a piecewise polynomial
+      representation.  Also, KNOTS can use the information
+      in the breakpoint sequence BREAK, with the continuity conditions
+      required, to construct an equivalent knot sequence for a B-spline.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>PPPACK</b> is available in
+      <a href = "../../f77_src/pppack/pppack.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/pppack/pppack.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bernstein/bernstein.html">
+      BERNSTEIN</a>,
+      a FORTRAN90 library which
+      evaluates the Bernstein polynomials, 
+      useful for uniform approximation of functions;
+    </p>
+
+    <p>
+      <a href = "../../f_src/divdif/divdif.html">
+      DIVDIF</a>,
+      a FORTRAN90 library which
+      computes interpolants by divided differences.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite/hermite.html">
+      HERMITE</a>,
+      a FORTRAN90 library which
+      computes the Hermite interpolant, a polynomial that matches function values
+      and derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/slatec/slatec.html">
+      SLATEC</a>,
+      a FORTRAN90 library which
+      includes PPPACK.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spline/spline.html">
+      SPLINE</a>,
+      a FORTRAN90 library which
+      includes many routines to construct
+      and evaluate spline interpolants and approximants.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_approx/test_approx.html">
+      TEST_APPROX</a>,
+      a FORTRAN90 library which
+      defines a number of test problems for approximation and interpolation.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Carl deBoor
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Samuel Conte, Carl deBoor,<br>
+          Elementary Numerical Analysis,<br>
+          Second Edition,<br>
+          McGraw Hill, 1972,<br>
+          ISBN: 07-012446-4,<br>
+          LC: QA297.C65.
+        </li>
+         <li>
+          Carl deBoor,<br>
+          A Practical Guide to Splines,<br>
+          Springer, 2001,<br>
+          ISBN: 0387953663,<br>
+          LC: QA1.A647.v27.
+        </li>
+        <li>
+          Roger Martin, James Wilkinson,<br>
+          Solution of Symmetric and Unsymmetric Band Equations and
+          the Calculation of Eigenvectors of Band Matrices,<br>
+          Numerische Mathematik,<br>
+          Volume 9, Number 4, December 1976, pages 279-301.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "pppack.f90">pppack.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "pppack.sh">pppack.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "pppack_prb.f90">pppack_prb.f90</a>,
+          a sample problem.
+        </li>
+        <li>
+          <a href = "pppack_prb.sh">pppack_prb.sh</a>,
+          commands to link and run the sample problem.
+        </li>
+        <li>
+          <a href = "pppack_prb_output.txt">pppack_prb_output.txt</a>,
+          the output from the sample problem.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BANFAC</b> factors a banded matrix without pivoting.
+        </li>
+        <li>
+          <b>BANSLV</b> solves a banded linear system A * X = B factored by BANFAC.
+        </li>
+        <li>
+          <b>BCHFAC</b> constructs a Cholesky factorization of a matrix.
+        </li>
+        <li>
+          <b>BCHSLV</b> solves a banded symmetric positive definite system.
+        </li>
+        <li>
+          <b>BSPLPP</b> converts from B-spline to piecewise polynomial form.
+        </li>
+        <li>
+          <b>BSPLVB</b> evaluates B-splines at a point X with a given knot sequence.
+        </li>
+        <li>
+          <b>BSPLVD</b> calculates the nonvanishing B-splines and derivatives at X.
+        </li>
+        <li>
+          <b>BSPP2D</b> converts from B-spline to piecewise polynomial representation.
+        </li>
+        <li>
+          <b>BVALUE</b> evaluates a derivative of a spline from its B-spline representation.
+        </li>
+        <li>
+          <b>CHOL1D</b> sets up and solves linear systems needed by SMOOTH.
+        </li>
+        <li>
+          <b>COLLOC</b> solves an ordinary differential equation by collocation.
+        </li>
+        <li>
+          <b>COLPNT</b> supplies collocation points.
+        </li>
+        <li>
+          <b>CUBSPL</b> defines an interpolatory cubic spline.
+        </li>
+        <li>
+          <b>CWIDTH</b> solves an almost block diagonal linear system.
+        </li>
+        <li>
+          <b>DIFEQU</b> returns information about a differential equation.
+        </li>
+        <li>
+          <b>DTBLOK</b> gets the determinant of an almost block diagonal matrix.
+        </li>
+        <li>
+          <b>EQBLOK</b> is to be called in COLLOC.
+        </li>
+        <li>
+          <b>EVNNOT</b> is a version of NEWNOT returning uniform knots.
+        </li>
+        <li>
+          <b>FACTRB</b> constructs a partial PLU factorization.
+        </li>
+        <li>
+          <b>FCBLOK</b> supervises the PLU factorization of an almost block diagonal matrix.
+        </li>
+        <li>
+          <b>INTERV</b> brackets a real value in an ascending vector of values.
+        </li>
+        <li>
+          <b>KNOTS</b> is to be called in COLLOC.
+        </li>
+        <li>
+          <b>L2APPR</b> constructs a weighted L2 spline approximation to given data.
+        </li>
+        <li>
+          <b>L2ERR</b> computes the errors of an L2 approximation.
+        </li>
+        <li>
+          <b>L2KNTS</b> converts breakpoints to knots.
+        </li>
+        <li>
+          <b>NEWNOT</b> returns LNEW+1 knots which are equidistributed on (A,B).
+        </li>
+        <li>
+          <b>PPVALU</b> evaluates a piecewise polynomial function or its derivative.
+        </li>
+        <li>
+          <b>PUTIT</b> puts together one block of the collocation equation system.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>ROUND</b> is called to add some noise to data.
+        </li>
+        <li>
+          <b>SBBLOK</b> solves a linear system that was factored by FCBLOK.
+        </li>
+        <li>
+          <b>SETUPQ</b> is to be called in SMOOTH.
+        </li>
+        <li>
+          <b>SHIFTB</b> shifts the rows in the current block.
+        </li>
+        <li>
+          <b>SLVBLK</b> solves the almost block diagonal linear system A * x = b.
+        </li>
+        <li>
+          <b>SMOOTH</b> constructs the cubic smoothing spline to given data.
+        </li>
+        <li>
+          <b>SPLI2D</b> produces a interpolatory tensor product spline.
+        </li>
+        <li>
+          <b>SPLINT</b> produces the B-spline coefficients BCOEF of an interpolating spline.
+        </li>
+        <li>
+          <b>SPLOPT</b> computes the knots for an optimal recovery scheme.
+        </li>
+        <li>
+          <b>SUBBAK</b> carries out back substitution for the current block.
+        </li>
+        <li>
+          <b>SUBFOR</b> carries out the forward pass of substitution for the current block.
+        </li>
+        <li>
+          <b>TAUTSP</b> constructs a cubic spline interpolant to given data.
+        </li>
+        <li>
+          <b>TITANIUM</b> represents a temperature dependent property of titanium.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 14 February 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

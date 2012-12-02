@@ -1,0 +1,409 @@
+<html>
+
+  <head>
+    <title>
+      CALENDAR_NYT - The New York Times "Calendar"
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CALENDAR_NYT <br> The New York Times "Calendar"
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CALENDAR_NYT</b>
+      is a FORTRAN90 library which
+      attempts to determine the date, given the volume and issue number of an
+      edition of the New York Times, or vice versa.
+    </p>
+
+    <p>
+      You might think that all that is required is to figure out the first date of
+      issue, and then count the number of days that have elapsed from then to the
+      date of interest, to get the issue number.  That's why I thought too, but it's
+      not that simple by any means!
+    </p>
+
+    <p>
+      The routines <b>YMD_TO_NYT</b> and <b>JED_TO_NYT</b> are fairly trustworthy.
+      The first routine immediately refers to the second, which has been
+      compared to a sample of issue numbers of all the front pages issued in a recent
+      commemorative book.  The actual details of how the issue number was occasionally
+      garbled, held back, or incremented involve about 30 corrections to the
+      simplistic idea of counting the number of days from the first issue.
+    </p>
+
+    <p>
+      The "inverse" routines <b>NYT_TO_JED</b> and <b>NYT_TO_YMD</b> work from
+      about 1905 onwards, after which there were only two disruptions to the simple
+      issue incrementing.  Before that time, the formula has not been "educated"
+      about the various irregularities in the issue numbering system.
+    </p>
+
+    <p>
+      The routine <b>JED_TO_NYT_ISSUE_IDEAL</b> assigns to each successive
+      issue of the New York Times a unique identifier, namely, its sequence number.
+      This is what the nominal issue number was supposed to do.  Using this function,
+      we can see that the actual number of issues of the New York Times printed
+      from the beginning up to 1 April 2008 was not 54,267, (the nominal issue number)
+      but instead 56,570!
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>CALENDAR_NYT</b> is available in
+      <a href = "../../f_src/calendar_nyt/calendar_nyt.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/calendar_nyt/calendar_nyt.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/calendar_rd/calendar_rd.html">
+      CALENDAR_RD</a>,
+      a C++ program which
+      computes the representation of a given date in a
+      number of calendrical systems,
+      by Edward Reingold and Nachum Dershowitz
+    </p>
+
+    <p>
+      <a href = "../../f_src/calendar_nyt/calendar_nyt.html">
+      CALPAK</a>,
+      a FORTRAN90 library which
+      converts between dates as computed on various calendars.
+    </p>
+
+    <p>
+      <a href = "../../datasets/dates/dates.html">
+      DATES</a>,
+      a dataset directory which
+      contains lists of dates in various calendar systems.
+    </p>
+
+    <p>
+      <a href = "../../f_src/doomsday/doomsday.html">
+      DOOMSDAY</a>,
+      a FORTRAN90 library which
+      is given the year, month and day of a date, and uses
+      John Conway's doomsday algorithm to determine the corresponding day of the week.
+    </p>
+
+    <p>
+      <a href = "../../f_src/weekday/weekday.html">
+      WEEKDAY</a>,
+      a FORTRAN90 library which
+      determines the day of the week for a given day.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Anonymous,<br>
+          A Correction; Welcome to 51,254,<br>
+          The New York Times,<br>
+          01 January 2000, Volume 149, Issue 51254.
+        </li>
+        <li>
+          James Barron,<br>
+          What's in a Number? 143 Years of News,<br>
+          The New York Times,<br>
+          14 March 1995, Volume 144, Issue 50000.
+        </li>
+        <li>
+          The New York Times,<br>
+          Page One, 1896-1996, A Special Commemorative Edition Celebrating the
+          100th Anniversary of the Purchase of the New York Times by Adolph S Ochs,<br>
+          Galahad Books, 1996,<br>
+          ISBN: 0-88365-961-1,<br>
+          LC: D411.P25.
+        </li>
+        <li>
+          The New York Times,<br>
+          The Complete First Pages, 1851-2008,<br>
+          Black Dog & Leventhal Publishers, 2008,<br>
+          ISBN13: 978-1-57912-749-7,<br>
+          LC: D351.N53.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "calendar_nyt.f90">calendar_nyt.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "calendar_nyt.sh">calendar_nyt.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "calendar_nyt_prb.f90">calendar_nyt_prb.f90</a>, the calling program;
+        </li>
+        <li>
+          <a href = "calendar_nyt_prb.sh">calendar_nyt_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "calendar_nyt_prb_output.txt">calendar_nyt_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>DAY_BORROW_COMMON</b> borrows days from months in a Common date.
+        </li>
+        <li>
+          <b>DAY_BORROW_GREGORIAN</b> borrows days from months in a Gregorian date.
+        </li>
+        <li>
+          <b>DAY_BORROW_JULIAN</b> borrows days from months in a Julian date.
+        </li>
+        <li>
+          <b>DAY_CARRY_COMMON</b> carries days to months in a Common date.
+        </li>
+        <li>
+          <b>DAY_CARRY_GREGORIAN</b> carries days to months in a Gregorian date.
+        </li>
+        <li>
+          <b>DAY_CARRY_JULIAN</b> carries days to months in a Julian date.
+        </li>
+        <li>
+          <b>DEFLATE_COMMON</b> "deflates" dates in the Common Calendar transition month.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>EPOCH_TO_JED_NYT</b> returns the epoch of the NYT calendar as a JED.
+        </li>
+        <li>
+          <b>FRAC_BORROW_COMMON</b> borrows fractions from days in a Common YMDF date.
+        </li>
+        <li>
+          <b>FRAC_BORROW_JULIAN</b> borrows fractions from days in a Julian YMDF date.
+        </li>
+        <li>
+          <b>FRAC_CARRY_COMMON</b> carries fractions to days in a Common YMDF date.
+        </li>
+        <li>
+          <b>FRAC_CARRY_JULIAN</b> carries fractions from days in a Julian YMDF date.
+        </li>
+        <li>
+          <b>FRAC_TO_S</b> writes a positive fraction into a left justified character string.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the positive remainder when I is divided by J.
+        </li>
+        <li>
+          <b>I4_TO_S_LEFT</b> converts an integer to a left-justified string.
+        </li>
+        <li>
+          <b>I4_TO_S_ZERO</b> converts an integer to a string, with zero padding.
+        </li>
+        <li>
+          <b>INFLATE_COMMON</b> "inflates" dates in the Common Calendar transition month.
+        </li>
+        <li>
+          <b>JED_TO_NYT</b> converts a JED to an NYT date.
+        </li>
+        <li>
+          <b>JED_TO_NYT_ISSUE_IDEAL</b> returns an ideal issue number for the New York Times.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_COMMON</b> converts a JED to a Common YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_GREGORIAN</b> converts a JED to a Gregorian YMDF date.
+        </li>
+        <li>
+          <b>JED_TO_YMDF_JULIAN</b> converts a JED to a Julian YMDF date.
+        </li>
+        <li>
+          <b>MONTH_BORROW_COMMON</b> borrows a year of months on the Common calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_GREGORIAN</b> borrows a year of months on the Gregorian calendar.
+        </li>
+        <li>
+          <b>MONTH_BORROW_JULIAN</b> borrows a year of months on the Julian calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_COMMON</b> carries a year of months on the Common calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_GREGORIAN</b> carries a year of months on the Gregorian calendar.
+        </li>
+        <li>
+          <b>MONTH_CARRY_JULIAN</b> carries a year of months on the Julian calendar.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_COMMON</b> returns the number of days in a Common month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_GREGORIAN</b> returns the number of days in a Gregorian month.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_JULIAN</b> returns the number of days in a Julian month.
+        </li>
+        <li>
+          <b>NOW_TO_JED</b> expresses the current date as JED.
+        </li>
+        <li>
+          <b>NYT_TO_JED</b> converts an NYT date to a JED.
+        </li>
+        <li>
+          <b>NYT_TO_YMD</b> converts an NYT date to a YMD date.
+        </li>
+        <li>
+          <b>R8_UNIFORM</b> returns a scaled pseudorandom R8.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRANSITION_TO_JED_COMMON</b> returns the Common calendar transition as a JED.
+        </li>
+        <li>
+          <b>Y_ASTRONOMICAL_TO_COMMON</b> converts an Astronomical year to a Common year.
+        </li>
+        <li>
+          <b>Y_CHECK_COMMON</b> checks a Common year.
+        </li>
+        <li>
+          <b>Y_CHECK_GREGORIAN</b> checks a Gregorian year.
+        </li>
+        <li>
+          <b>Y_CHECK_JULIAN</b> checks a Julian year.
+        </li>
+        <li>
+          <b>Y_COMMON_TO_ASTRONOMICAL</b> converts a Common year to an Astronomical year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_COMMON</b> returns TRUE if the Common year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_GREGORIAN</b> returns TRUE if the Gregorian year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_JULIAN</b> returns TRUE if the Julian year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_COMMON</b> returns the number of months in a Common year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_GREGORIAN</b> returns the number of months in a Gregorian year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_MONTHS_JULIAN</b> returns the number of months in a Julian year.
+        </li>
+        <li>
+          <b>YM_CHECK_COMMON</b> checks a Common YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_GREGORIAN</b> checks a Gregorian YM date.
+        </li>
+        <li>
+          <b>YM_CHECK_JULIAN</b> checks a Julian YM date.
+        </li>
+        <li>
+          <b>YMD_CHECK_COMMON</b> checks a Common YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_GREGORIAN</b> checks a Gregorian YMD date.
+        </li>
+        <li>
+          <b>YMD_CHECK_JULIAN</b> checks a Julian YMD date.
+        </li>
+        <li>
+          <b>YMD_TO_NYT</b> converts a YMD date to an NYT date.
+        </li>
+        <li>
+          <b>YMD_TO_S_NUMERIC</b> writes a YMD date into a string.
+        </li>
+        <li>
+          <b>YMDF_CHECK_COMMON</b> checks a Common YMDF date.
+        </li>
+        <li>
+          <b>YMDF_CHECK_JULIAN</b> checks a Julian YMDF date.
+        </li>
+        <li>
+          <b>YMDF_COMPARE</b> compares two YMDF dates.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_COMMON</b> converts a Common YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_GREGORIAN</b> converts a Gregorian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_JED_JULIAN</b> converts a Julian YMDF date to a JED.
+        </li>
+        <li>
+          <b>YMDF_TO_S_COMMON</b> writes a Common YMDF date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 09 February 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

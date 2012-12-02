@@ -1,0 +1,468 @@
+<html>
+
+  <head>
+    <title>
+      TEST_OPT_CON - Test Functions for Scalar Optimization, Constrained to a Hyper-Rectangle
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_OPT_CON <br> 
+      Test Functions for Scalar Optimization <br>
+      Constrained to a Hyper-Rectangle
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_OPT_CON</b>
+      is a FORTRAN90 library which
+      defines a set of constrained global optimization problems.
+    </p>
+
+    <p>
+      A typical constrained global optimization problem presents an M-dimensional
+      hyper-rectangle bounded by A(1:M) <= X(1:M) <= B(1:M), and a scalar-valued
+      function F(X).  The task is to find a point X within the hyper-rectangle
+      at which the function takes its minimum value.
+    </p>
+
+    <p>
+      This task is impossible, mathematically and in general.  However, the problems
+      that can be solved mathematically are often not the ones encountered in
+      real life.  Thus, it is useful to try to solve an impossible problem, since
+      an approximate answer to such a problem can be all we can hope for or need.
+    </p>
+
+    <p>
+      The functions defined include:
+      <ol>
+        <li>
+          NM1: Niederreiter-McCurley function #1, M = 4;
+        </li>
+        <li>
+          NM2: Niederreiter-McCurley function #2, M = 4;
+        </li>
+        <li>
+          NM3: Niederreiter-McCurley function #3, M = 4;
+        </li>
+        <li>
+          NM4: Niederreiter-McCurley function #4, M = 4;
+        </li>
+        <li>
+          NM5: Niederreiter-McCurley function #5, M = 4;
+        </li>
+        <li>
+          NM6: Niederreiter-McCurley function #6, M = 4;
+        </li>
+        <li>
+          NM6: Niederreiter-McCurley function #6, M = 4;
+        </li>
+        <li>
+          L02: Langerman function, M = 2;
+        </li>
+        <li>
+          L10: Langerman function, M = 10;
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      For each function, the library includes a routine to evaluate the function,
+      but also routines to return the limits of the hyper-rectangle, the
+      spatial dimension, the solution, if known, and a title for the problem.
+      These routines have a standard set of names based on the function index.
+      For instance, for function #3, we have the routines:
+      <ul>
+        <li>
+          <b>P03_AB</b> returns bounds for problem 3.
+        </li>
+        <li>
+          <b>P03_F</b> returns the objective function value for problem 3.
+        </li>
+        <li>
+          <b>P03_M</b> returns the spatial dimension for problem 3.
+        </li>
+        <li>
+          <b>P03_SOL</b> returns known solutions for problem 3.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns a title for problem 3.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Since the same interface is used for each function,
+      if you wish to work with problem 6 instead, you simply change
+      the "03" to "06" in your routine calls.
+    </p>
+
+    <p>
+      If you wish to call <i>all</i> of the functions, you can write a concise
+      program to do so by using the generic interface, in which the function
+      names use the prefix <b>P00_</b>, and require the specific problem index
+      to be supplied as an extra input argument:
+      <ul>
+        <li>
+          <b>P00_AB</b> returns bounds for a problem specified by index.
+        </li>
+        <li>
+          <b>P00_F</b> returns the objective function value for a problem specified by index.
+        </li>
+        <li>
+          <b>P00_M</b> returns the spatial dimension for a problem specified by index.
+        </li>
+        <li>
+          <b>P00_SOL</b> returns known solutions for a problem specified by index.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns a title for a problem specified by index.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_OPT_CON</b> is available in
+      <a href = "../../c_src/test_opt_con/test_opt_con.html">a C version</a> and
+      <a href = "../../cpp_src/test_opt_con/test_opt_con.html">a C++ version</a> and
+      <a href = "../../f77_src/test_opt_con/test_opt_con.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_opt_con/test_opt_con.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/test_opt_con/test_opt_con.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align="center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/asa047/asa047.html">
+      ASA047</a>,
+      a FORTRAN90 library which
+      minimizes a scalar function of several variables using the Nelder-Mead algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/brent/brent.html">
+      BRENT</a>,
+      a FORTRAN90 library which
+      contains Richard Brent's routines for finding the zero, local minimizer,
+      or global minimizer of a scalar function of a scalar argument, without
+      the use of derivative information.
+    </p>
+
+    <p>
+      <a href = "../../f_src/compass_search/compass_search.html">
+      COMPASS_SEARCH</a>,
+      a FORTRAN90 program which
+      minimizes a scalar function of several variables using the compass search algorithm.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dqed/dqed.html">
+      DQED</a>,
+      a FORTRAN90 library which
+      solves constrained least squares problems.
+    </p>
+
+    <p>
+      <a href = "../../m_src/entrust/entrust.html">
+      ENTRUST</a>,
+      a MATLAB program which
+      minimizes a scalar function of several variables using trust-region methods.
+    </p>
+
+    <p>
+      <a href = "../../m_src/fmincon/fmincon.html">
+      FMINCON</a>,
+      a MATLAB library which
+      demonstrates the use of the <b>fmincon()</b> function to seek the minimizer
+      of a function <b>f(x)</b> subject to a constraint.
+    </p>
+
+    <p>
+      <a href = "../../m_src/nelder_mead/nelder_mead.html">
+      NELDER_MEAD</a>,
+      a MATLAB program which
+      minimizes a scalar function of several variables using the Nelder-Mead algorithm,
+      by Jeff Borggaard.
+    </p>
+
+    <p>
+      <a href = "../../f_src/praxis/praxis.html">
+      PRAXIS</a>,
+      a FORTRAN90 library which
+      implements the principal axis method of Richard Brent for minimization of
+      a function without the use of derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_opt/test_opt.html">
+      TEST_OPT</a>,
+      a FORTRAN90 library which
+      defines test problems
+      requiring the minimization of a scalar function of several variables.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_optimization/test_optimization.html">
+      TEST_OPTIMIZATION</a>,
+      a FORTRAN90 library which
+      defines test problems for the minimization of a scalar function
+      of several variables, as described by Molga and Smutnicki.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms178/toms178.html">
+      TOMS178</a>,
+      a FORTRAN90 library which
+      optimizes a scalar functional of multiple variables using the Hooke-Jeeves method.
+    </p>
+
+    <p>
+      <a href = "../../f_src/toms611/toms611.html">
+      TOMS611</a>,
+      a FORTRAN90 library which
+      can be used to seek the minimizer of a scalar functional
+      of multiple variables.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Harald Niederreiter, Kevin McCurley,<br>
+          Optimization of functions by quasi-random search methods,<br>
+          Computing,<br>
+          Volume 22, Number 2, 1979, pages 119-123.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_opt_con.f90">test_opt_con.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "test_opt_con.sh">test_opt_con.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "test_opt_con_prb.f90">test_opt_con_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "test_opt_con_prb.sh">test_opt_con_prb.sh</a>,
+          BASH commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "test_opt_con_prb_output.txt">test_opt_con_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>P00_AB</b> returns bounds for a problem specified by index.
+        </li>
+        <li>
+          <b>P00_F</b> returns the objective function value for a problem specified by index.
+        </li>
+        <li>
+          <b>P00_M</b> returns the spatial dimension for a problem specified by index.
+        </li>
+        <li>
+          <b>P00_PROBLEM_NUM</b> returns the number of problems.
+        </li>
+        <li>
+          <b>P00_SOL</b> returns known solutions for a problem specified by index.
+        </li>
+        <li>
+          <b>P00_TITLE</b> returns a title for a problem specified by index.
+        </li>
+        <li>
+          <b>P01_AB</b> returns bounds for problem 1.
+        </li>
+        <li>
+          <b>P01_F</b> returns the objective function value for problem 1.
+        </li>
+        <li>
+          <b>P01_M</b> returns the spatial dimension for problem 1.
+        </li>
+        <li>
+          <b>P01_SOL</b> returns known solutions for problem 1.
+        </li>
+        <li>
+          <b>P01_TITLE</b> returns a title for problem 1.
+        </li>
+        <li>
+          <b>P02_AB</b> returns bounds for problem 2.
+        </li>
+        <li>
+          <b>P02_F</b> returns the objective function value for problem 2.
+        </li>
+        <li>
+          <b>P02_M</b> returns the spatial dimension for problem 2.
+        </li>
+        <li>
+          <b>P02_SOL</b> returns known solutions for problem 2.
+        </li>
+        <li>
+          <b>P02_TITLE</b> returns a title for problem 2.
+        </li>
+        <li>
+          <b>P03_AB</b> returns bounds for problem 3.
+        </li>
+        <li>
+          <b>P03_F</b> returns the objective function value for problem 3.
+        </li>
+        <li>
+          <b>P03_M</b> returns the spatial dimension for problem 3.
+        </li>
+        <li>
+          <b>P03_SOL</b> returns known solutions for problem 3.
+        </li>
+        <li>
+          <b>P03_TITLE</b> returns a title for problem 3.
+        </li>
+        <li>
+          <b>P04_AB</b> returns bounds for problem 4.
+        </li>
+        <li>
+          <b>P04_F</b> returns the objective function value for problem 4.
+        </li>
+        <li>
+          <b>P04_M</b> returns the spatial dimension for problem 4.
+        </li>
+        <li>
+          <b>P04_SOL</b> returns known solutions for problem 4.
+        </li>
+        <li>
+          <b>P04_TITLE</b> returns a title for problem 4.
+        </li>
+        <li>
+          <b>P05_AB</b> returns bounds for problem 5.
+        </li>
+        <li>
+          <b>P05_F</b> returns the objective function value for problem 5.
+        </li>
+        <li>
+          <b>P05_M</b> returns the spatial dimension for problem 5.
+        </li>
+        <li>
+          <b>P05_SOL</b> returns known solutions for problem 5.
+        </li>
+        <li>
+          <b>P05_TITLE</b> returns a title for problem 5.
+        </li>
+        <li>
+          <b>P06_AB</b> returns bounds for problem 6.
+        </li>
+        <li>
+          <b>P06_F</b> returns the objective function value for problem 6.
+        </li>
+        <li>
+          <b>P06_M</b> returns the spatial dimension for problem 6.
+        </li>
+        <li>
+          <b>P06_SOL</b> returns known solutions for problem 6.
+        </li>
+        <li>
+          <b>P06_TITLE</b> returns a title for problem 6.
+        </li>
+        <li>
+          <b>P07_AB</b> returns bounds for problem 7.
+        </li>
+        <li>
+          <b>P07_F</b> returns the objective function value for problem 5.
+        </li>
+        <li>
+          <b>P07_M</b> returns the spatial dimension for problem 7.
+        </li>
+        <li>
+          <b>P07_SOL</b> returns known solutions for problem 7.
+        </li>
+        <li>
+          <b>P07_TITLE</b> returns a title for problem 7.
+        </li>
+        <li>
+          <b>P08_AB</b> returns bounds for problem 8.
+        </li>
+        <li>
+          <b>P08_F</b> returns the objective function value for problem 8.
+        </li>
+        <li>
+          <b>P08_M</b> returns the spatial dimension for problem 8.
+        </li>
+        <li>
+          <b>P08_SOL</b> returns known solutions for problem 8.
+        </li>
+        <li>
+          <b>P08_TITLE</b> returns a title for problem 8.
+        </li>
+        <li>
+          <b>R8COL_UNIFORM</b> fills an R8COL with scaled pseudorandom numbers.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 17 February 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

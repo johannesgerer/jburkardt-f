@@ -1,0 +1,360 @@
+<html>
+
+  <head>
+    <title>
+      TEMPLATES - Iterative Solvers for Linear Systems
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEMPLATES <br> Iterative Solvers <br> for Linear Systems
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEMPLATES</b>
+      is a FORTRAN90 library which
+      outlines the
+      most common iterative methods of solving a linear system.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEMPLATES</b> is available in
+      <a href = "../../f77_src/templates/templates.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/templates/templates.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/templates/templates.html">a MATLAB version</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dlap/dlap.html">
+      DLAP</a>,
+      a FORTRAN90 library which
+      implements iterative methods for solving
+      linear systems.
+    </p>
+
+    <p>
+      <a href = "../../datasets/hbsmc/hbsmc.html">
+      HBSMC</a>,
+      a dataset directory which
+      contains large sparse matrices stored in the
+      Harwell-Boeing format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack/linpack.html">
+      LINPACK</a>,
+      a FORTRAN90 library which
+      carries out direct methods for solving linear systems.
+    </p>
+
+    <p>
+      <a href = "../../data/mm/mm.html">
+      MM</a>,
+      a data directory which
+      contains a description and
+      examples of the Matrix Market format for storing matrices.
+    </p>
+
+    <p>
+      <a href = "../../c_src/super_lu/super_lu.html">
+      SUPER_LU</a>,
+      a C program which
+      applies a fast direct solution method to
+      a sparse linear system.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_mat/test_mat.html">
+      TEST_MAT</a>,
+      a FORTRAN90 library
+      which defines test matrices.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Richard Barrett, Michael Berry, Tony Chan, James Demmel,
+          June Donato, Jack Dongarra, Victor Eijkhout, Roidan Pozo,
+          Charles Romine, Henk van der Vorst,<br>
+          Templates for the Solution of Linear Systems:<br>
+          Building Blocks for Iterative Methods,<br>
+          SIAM, 1994.
+        </li>
+        <li>
+          <a href = "http://www.netlib.org/templates/index.html">
+                     http://www.netlib.org/templates/index.html</a> <br>
+          the TEMPLATES web site;
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "templates.f90">templates.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "templates.sh">templates.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>JACOBI_GE_PRB</b> is a calling program that uses dense GE format
+      matrix storage, and the Jacobi iteration.  Files you may
+      copy include:
+      <ul>
+        <li>
+          <a href = "jacobi_ge_prb.f90">jacobi_ge_prb.f90</a>,
+          the sample calling program.
+        </li>
+        <li>
+          <a href = "jacobi_ge_prb.sh">jacobi_ge_prb.sh</a>,
+          commands to compile, link and run the calling program.
+        </li>
+        <li>
+          <a href = "jacobi_ge_prb_output.txt">jacobi_ge_prb_output.txt</a>,
+          the output.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SOR_GE_PRB</b> is a calling program that uses dense GE format
+      matrix storage, and the Jacobi iteration.  Files you may
+      copy include:
+      <ul>
+        <li>
+          <a href = "sor_ge_prb.f90">sor_ge_prb.f90</a>,
+          the sample calling program.
+        </li>
+        <li>
+          <a href = "sor_ge_prb.sh">sor_ge_prb.sh</a>,
+          commands to compile, link and run the calling program.
+        </li>
+        <li>
+          <a href = "sor_ge_prb_output.txt">sor_ge_prb_output.txt</a>,
+          the output.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>APPROXRES</b> approximates the residual using a Givens updating scheme.
+        </li>
+        <li>
+          <b>BICG</b> implements the BiConjugate Gradient method.
+        </li>
+        <li>
+          <b>BICG_REVCOM</b> is controlled by BICG using reverse communication.
+        </li>
+        <li>
+          <b>BICGSTAB</b> implements the BiConjugate Gradient Stabilized method.
+        </li>
+        <li>
+          <b>BICGSTAB_REVCOM</b> is controlled by BICGSTAB using reverse communication.
+        </li>
+        <li>
+          <b>CG</b> implements the Conjugate Gradient method.
+        </li>
+        <li>
+          <b>CG_REVCOM</b> is controlled by CG using reverse communication.
+        </li>
+        <li>
+          <b>CGS</b> implements the Conjugate Gradient Squared method.
+        </li>
+        <li>
+          <b>CGS_GE</b> implements the Conjugate Gradient Squared method for GE matrices.
+        </li>
+        <li>
+          <b>CGS_REVCOM</b> is controlled by CGS using reverse communication.
+        </li>
+        <li>
+          <b>CHEBY</b> implements the Chebyshev method.
+        </li>
+        <li>
+          <b>CHEBY_REVCOM</b> is controlled by CHEBY using reverse communication.
+        </li>
+        <li>
+          <b>DIF</b> returns the second difference matrix.
+        </li>
+        <li>
+          <b>ELEM_VEC</b> constructs the I-th elementary vector E, scaled by ALPHA.
+        </li>
+        <li>
+          <b>GETBREAK</b> is supposed to allow the user to set certain tolerances.
+        </li>
+        <li>
+          <b>GETEIG_GE</b> computes the eigenvalues of the iteration matrix for the GE format.
+        </li>
+        <li>
+          <b>GIVENS_APPLY</b> applies a sequence of Givens rotations to a column of H.
+        </li>
+        <li>
+          <b>GIVENS_SET</b> computes Givens rotation parameters.
+        </li>
+        <li>
+          <b>GMRES</b> implements the Generalized Minimal Residual method.
+        </li>
+        <li>
+          <b>GMRES_REVCOM</b> is controlled by GMRES using reverse communication.
+        </li>
+        <li>
+          <b>JACOBI_GE</b> implements the Jacobi method for a matrix in GE format.
+        </li>
+        <li>
+          <b>JACOBI_REVCOM</b> is controlled by JACOBI using reverse communication.
+        </li>
+        <li>
+          <b>JACOBI_SPLIT_GE</b> splits a GE matrix for the Jacobi algorithm.
+        </li>
+        <li>
+          <b>JACOBI_RECON_GE</b> reconstitutes a split GE matrix for the Jacobi algorithm.
+        </li>
+        <li>
+          <b>MATVEC_GE</b> computes Z := ALPHA * A * X + BETA * Y for a GE matrix.
+        </li>
+        <li>
+          <b>MATVEC_GB</b> computes Z := ALPHA * A * X + BETA * Y for a GB matrix.
+        </li>
+        <li>
+          <b>MVGE</b> is a version of the MATVEC routine which assumes that the
+        </li>
+        <li>
+          <b>ORTHOH</b> constructs the I-th column of the upper Hessenberg matrix H
+        </li>
+        <li>
+          <b>PSOLVE</b> calls the appropriate preconditioner solver.
+        </li>
+        <li>
+          <b>PSOLVE_JACOBI</b> ??
+        </li>
+        <li>
+          <b>PSOLVE_JACOBI_TRANS</b> solves the linear system Mx = b where matrix M is diagonal.
+        </li>
+        <li>
+          <b>PSOLVE_NONE</b> is for the unpreconditioned version, i.e. just does
+        </li>
+        <li>
+          <b>PSOLVE_NONE_TRANS</b> is for the unpreconditioned version, i.e. just does
+        </li>
+        <li>
+          <b>PSOLVE_Q</b> is a solver for QMR which requires left preconditioning
+        </li>
+        <li>
+          <b>PSOLVE_T</b> calls the appropriate solver.
+        </li>
+        <li>
+          <b>PSOLVE_T_Q</b> is a solver for QMR which requires right preconditioning.
+        </li>
+        <li>
+          <b>QMR</b> implements the Quasi-Minimal Residual method.
+        </li>
+        <li>
+          <b>QMR_REVCOM</b> is controlled by QMR using reverse communication.
+        </li>
+        <li>
+          <b>RESID_GE</b> computes the residual A*X-B when A is stored in GE format.
+        </li>
+        <li>
+          <b>ROTVEC</b> applies a Givens rotation to a vector (X,Y).
+        </li>
+        <li>
+          <b>R4VEC_PRINT_SOME</b> prints "some" of an R4VEC.
+        </li>
+        <li>
+          <b>SAMAX</b> returns the maximum absolute value of the entries in a vector.
+        </li>
+        <li>
+          <b>SGB_TO_SGE</b> converts a general band matrix to general matrix format.
+        </li>
+        <li>
+          <b>SGE_CHECK</b> checks the dimensions of a general matrix.
+        </li>
+        <li>
+          <b>SLT_SL</b> solves a lower triangular system.
+        </li>
+        <li>
+          <b>SNRM2</b> computes the Euclidean norm of a vector.
+        </li>
+        <li>
+          <b>SOR_GE</b> implements the Successive Over-Relaxation method for a GE matrix.
+        </li>
+        <li>
+          <b>SOR_REVCOM</b> is controlled by SOR using reverse communication.
+        </li>
+        <li>
+          <b>SOR_SPLIT_GE</b> splits a GE matrix for the SOR algorithm.
+        </li>
+        <li>
+          <b>SOR_RECON_GE</b> reconstructs the matrix A and right hand side B after splitting.
+        </li>
+        <li>
+          <b>STOPB</b> computes the stopping criterion on B.
+        </li>
+        <li>
+          <b>STOPX</b> computes the stopping criterion on X.
+        </li>
+        <li>
+          <b>SUT_MXV</b> computes A * x, where A is an upper triangular matrix.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UPDATE</b> ??
+        </li>
+        <li>
+          <b>VECGEN</b> generates a vector of all ones, zeros, or the row sum
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

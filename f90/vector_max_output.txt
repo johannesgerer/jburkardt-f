@@ -1,0 +1,63 @@
+ 2 February 2010   9:13:50.725 PM
+ 
+VECTOR_MAX
+  Investigate vectorized MAX operations.
+ 
+TEST01:
+  Does FORTRAN90's MAX function support vector operations?
+ 
+  If we want to compute a vector Z whose entries are the
+  maximums of the corresponding entries of X and Y, can
+  we invoke a vector form of the computation instead of
+  using a loop?  And can we replace one vector by a 
+  scalar constant?
+ 
+  1) We execute the old style code with a loop:
+ 
+         I      X(I)      Y(I)      Z(I)
+ 
+         1         2         0         2
+         2        10         4        10
+         3         9         4         9
+         4         6         8         8
+         5         4         8         8
+         6         0         0         0
+         7         2         9         9
+         8         1         3         3
+         9         0         1         1
+        10         6         0         6
+ 
+  2) Try Z(1:N) = max ( X(1:N), Y(1:N) )
+ 
+         I      X(I)      Y(I)      Z(I)
+ 
+         1         2         0         2
+         2        10         4        10
+         3         9         4         9
+         4         6         8         8
+         5         4         8         8
+         6         0         0         0
+         7         2         9         9
+         8         1         3         3
+         9         0         1         1
+        10         6         0         6
+ 
+  3) Try Z(1:N) = max ( 5, Y(1:N) )
+ 
+         I      X(I)      Y(I)      Z(I)
+ 
+         1         5         0         5
+         2         5         4         5
+         3         5         4         5
+         4         5         8         8
+         5         5         8         8
+         6         5         0         5
+         7         5         9         9
+         8         5         3         5
+         9         5         1         5
+        10         5         0         5
+ 
+VECTOR_MAX
+  Normal end of execution.
+ 
+ 2 February 2010   9:13:50.727 PM

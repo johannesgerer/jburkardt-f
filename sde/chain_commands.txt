@@ -1,0 +1,16 @@
+# chain_commands.txt
+# created by sde::chain_gnuplot.
+#
+# Usage:
+#  gnuplot < chain_commands.txt
+#
+set term png
+set output "chain.png"
+set xlabel "t"
+set ylabel "Sqrt(X(t)) vs V(X(t))"
+set title "V(X(t)) from X(t) and from Chain Rule"
+set grid
+set style data lines
+plot "chain_data.txt" using 1:2 title "Sqrt(X(t))", \
+     "chain_data.txt" using 1:3 title "V(X(t))"
+quit

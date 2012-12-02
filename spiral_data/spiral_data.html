@@ -1,0 +1,249 @@
+<html>
+
+  <head>
+    <title>
+      SPIRAL_DATA - Velocity Vector Field Satisfying Continuity Equation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SPIRAL_DATA <br> Velocity Vector Field Satisfying Continuity Equation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SPIRAL_DATA</b>
+      is a FORTRAN90 program which
+      samples a velocity vector field that satisfies the
+      continuity equation, and writes the nodes and velocities to files.
+    </p>
+
+    <p>
+      The continuous velocity field <b>(U,V)(X,Y)</b> that is discretely
+      sampled here satisfies the homogeneous continuity equation, that is,
+      it has zero divergence.  In other words:
+      <pre><b>
+        dU/dX + dV/dY = 0.
+      </b></pre>
+      This is by construction, since we have
+      <pre><b>
+        U(X,Y) =  10 * d/dY ( PHI(X) * PHI(Y) )
+        V(X,Y) = -10 * d/dX ( PHI(X) * PHI(Y) )
+      </b></pre>
+      which guarantees zero divergence.
+     </p>
+
+    <p>
+      The underlying function PHI is defined by
+      <pre><b>
+        PHI(Z) = ( 1 - cos ( C * pi * Z ) ) * ( 1 - Z )**2
+      </b></pre>
+      where C is a parameter.
+    </p>
+
+    <p>
+      The velocity data satisifes the (continuous) continuity equation;
+      this in <b>no way</b> implies that it satisfies the momentum equations
+      associated with Stokes or Navier-Stokes flow!  Moreover, a flow solution
+      for those equations would normally also require specifying a value
+      for the scalar pressure field <b>P(X,Y)</b>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bump/bump.html">
+      BUMP</a>,
+      a FORTRAN90 program which
+      uses the finite element method
+      to study the influence of an obstacle in channel flow.  The velocity
+      field can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../datasets/case1_flow/case1_flow.html">
+      CASE1_FLOW</a>,
+      a dataset directory which
+      contains a sequence of
+      velocity vector fields that can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../datasets/cavity_flow/cavity_flow.html">
+      CAVITY_FLOW</a>,
+      a dataset directory which
+      contains a sequence of
+      velocity vector fields that can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/channel/channel.html">
+      CHANNEL</a>,
+      a FORTRAN90 program which
+      uses the finite element method
+      to study flow in a channel.  The velocity field can be plotted by
+      <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../m_src/direction_arrows/direction_arrows.html">
+      DIRECTION_ARROWS</a>,
+      a MATLAB program which
+      can plot direction fields.
+    </p>
+
+    <p>
+      <a href = "../../datasets/inout_flow/inout_flow.html">
+      INOUT_FLOW</a>,
+      a dataset directory which
+      contains a sequence of
+      velocity vector fields that can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../datasets/inout_flow2/inout_flow2.html">
+      INOUT_FLOW2</a>,
+      a dataset directory which
+      contains a sequence of
+      velocity vector fields that can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mhd_flow/mhd_flow.html">
+      MHD_FLOW</a>,
+      a FORTRAN90 program which
+      computes velocity fields
+      which can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../datasets/tcell_flow/tcell_flow.html">
+      TCELL_FLOW</a>,
+      a dataset directory which
+      contains a sequence of
+      velocity vector fields that can be plotted by <b>VECTOR_PLOT</b>.
+    </p>
+
+    <p>
+      <a href = "../../m_src/vector_magnitude_grid/vector_magnitude_grid.html">
+      VECTOR_MAGNITUDE_GRID</a>,
+      a MATLAB program which
+      reads
+      node and vector data from a file, computes an interpolatory function,
+      evaluates on a uniform grid of points specified by the user,
+      and displays a contour plot of the vector magnitude.
+    </p>
+
+    <p>
+      <a href = "../../m_src/vector_stream_grid/vector_stream_grid.html">
+      VECTOR_STREAM_GRID</a>,
+      a MATLAB program which
+      reads
+      node and vector data from a file, computes an interpolatory function,
+      evaluates on a uniform grid of points specified by the user,
+      and displays a streamline plot of the vector field.
+    </p>
+
+    <p>
+      <a href = "../../m_src/velocity_arrows/velocity_arrows.html">
+      VELOCITY_ARROWS</a>,
+      a MATLAB program which
+      can plot velocity
+      fields.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "spiral_data.f90">spiral_data.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "spiral_data.sh">spiral_data.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      The following data was generated with N = 20 and C = 0.8.
+      The plots were made with VECTOR_PLOT.
+      <ul>
+        <li>
+          <a href = "spiral_xy.txt">spiral_xy.txt</a>,
+          the X, Y locations.
+        </li>
+        <li>
+          <a href = "spiral_uv.txt">spiral_uv.txt</a>,
+          the U, V velocity component values.
+        </li>
+        <li>
+          <a href = "spiral_dir.png">
+          spiral_dir.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a>
+          image of the velocity direction field.
+        </li>
+        <li>
+          <a href = "spiral_vec.png">
+          spiral_vec.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a>
+          image of the vector field.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for SPIRAL_DATA.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 24 March 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

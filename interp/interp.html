@@ -1,0 +1,257 @@
+<html>
+
+  <head>
+    <title>
+      INTERP - Interpolation Routines
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      INTERP <br> Interpolation Routines
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>INTERP</b>
+      is a FORTRAN90 program which
+      takes a set of data associated with successive values of
+      a parameter, and produces an interpolating function which can
+      be evaluated over a continuous range of the parameter.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>INTERP</b> is available in
+      <a href = "../../f_src/interp/interp.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/interp/interp.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/divdif/divdif.html">
+      DIVDIF</a>,
+      a FORTRAN90 library which
+      uses divided differences to interpolate data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hermite/hermite.html">
+      HERMITE</a>,
+      a FORTRAN90 library which
+      computes the Hermite interpolant, a polynomial that matches function values
+      and derivatives.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes a package for the computation of piecewise cubic Hermite splines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pppack/pppack.html">
+      PPPACK</a>,
+      a FORTRAN90 library which
+      implements Carl de Boor's piecewise polynomial functions,
+      including, in particular, cubic splines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/rbf_interp/rbf_interp.html">
+      RBF_INTERP</a>,
+      a FORTRAN90 library which
+      defines and evaluates radial basis interpolants to multidimensional data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/spline/spline.html">
+      SPLINE</a>,
+      a FORTRAN90 library which
+      computes functions that approximate or interpolate data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_approx/test_approx.html">
+      TEST_APPROX</a>,
+      a FORTRAN90 library which
+      defines a number of test problems for approximation and interpolation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_interp_1d/test_interp_1d.html">
+      TEST_INTERP_1D</a>,
+      a FORTRAN90 library which
+      defines test problems for interpolation of data y(x),
+      depending on a 1D argument.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Samuel Conte, Carl deBoor,<br>
+          Elementary Numerical Analysis,<br>
+          Second Edition,<br>
+          McGraw Hill, 1972,<br>
+          ISBN: 07-012446-4,<br>
+          LC: QA297.C65.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "interp.f90">interp.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "interp.sh">interp.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "interp_prb.f90">interp_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "interp_prb.sh">interp_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "interp_prb_output.txt">interp_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CC_ABSCISSAS</b> computes the Clenshaw Curtis abscissas.
+        </li>
+        <li>
+          <b>CC_ABSCISSAS_AB</b> computes the Clenshaw Curtis abscissas for the interval [A,B].
+        </li>
+        <li>
+          <b>F1_ABSCISSAS</b> computes Fejer type 1 abscissas.
+        </li>
+        <li>
+          <b>F1_ABSCISSAS_AB</b> computes Fejer type 1 abscissas for the interval [A,B].
+        </li>
+        <li>
+          <b>F2_ABSCISSAS</b> computes Fejer Type 2 abscissas.
+        </li>
+        <li>
+          <b>F2_ABSCISSAS_AB</b> computes Fejer Type 2 abscissas for the interval [A,B].
+        </li>
+        <li>
+          <b>INTERP_LAGRANGE:</b> Lagrange polynomial interpolation to a curve in M dimensions.
+        </li>
+        <li>
+          <b>INTERP_LINEAR:</b> piecewise linear interpolation to a curve in M dimensions.
+        </li>
+        <li>
+          <b>INTERP_NEAREST:</b> Nearest neighbor interpolation to a curve in M dimensions.
+        </li>
+        <li>
+          <b>LAGRANGE_VALUE</b> evaluates the Lagrange polynomials.
+        </li>
+        <li>
+          <b>NCC_ABSCISSAS</b> computes the Newton Cotes Closed abscissas.
+        </li>
+        <li>
+          <b>NCC_ABSCISSAS_AB</b> computes the Newton Cotes Closed abscissas for [A,B].
+        </li>
+        <li>
+          <b>NCO_ABSCISSAS</b> computes the Newton Cotes Open abscissas.
+        </li>
+        <li>
+          <b>NCO_ABSCISSAS_AB</b> computes the Newton Cotes Open abscissas for [A,B].
+        </li>
+        <li>
+          <b>PARAMETERIZE_ARC_LENGTH</b> parameterizes data by pseudo-arclength.
+        </li>
+        <li>
+          <b>PARAMETERIZE_INDEX</b> parameterizes data by its index.
+        </li>
+        <li>
+          <b>R8MAT_EXPAND_LINEAR2</b> expands an R8MAT by linear interpolation.
+        </li>
+        <li>
+          <b>R8VEC_ASCENDS_STRICTLY</b> determines if an R8VEC is strictly ascending.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET</b> searches a sorted R8VEC for successive brackets of a value.
+        </li>
+        <li>
+          <b>R8VEC_EXPAND_LINEAR</b> linearly interpolates new data into an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_EXPAND_LINEAR2</b> linearly interpolates new data into an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_SORTED_NEAREST</b> returns the nearest element in a sorted R8VEC.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 01 July 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

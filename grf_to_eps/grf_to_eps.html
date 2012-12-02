@@ -1,0 +1,379 @@
+<html>
+
+  <head>
+    <title>
+      GRF_TO_EPS - Convert a GRF file to EPS format
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      GRF_TO_EPS <br> Convert a GRF file to EPS format
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>GRF_TO_EPS</b>
+      is a FORTRAN90 program which
+      converts a GRF "graph" file (a format used
+      by the Combinatorica program) to a EPS image file.
+    </p>
+
+    <p>
+      In other words, it can draw a picture of an abstract graph.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>grf_to_eps</b> <i>file.grf</i> <i>file.eps</i>
+        </dt>
+        <dd>
+          reads the GRF file <i>file.grf</i> and makes an Encapsulated
+          PostScript image file in <i>file.eps</i>.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    </p>
+      <a href = "../../data/eps/eps.html">
+      EPS</a>,
+      a data format which
+      is used when an image is to be printed
+      on a PostScript printer, or displayed with programs such as
+      GhostView or GhostScript.
+    </p>
+
+    <p>
+      <a href = "../../examples/eps_to_jpg/eps_to_jpg.html">
+      EPS_TO_JPG</a>, 
+      a BASH script which
+      converts a collection of EPS files to JPEG format.
+    </p>
+
+    <p>
+      <a href = "../../examples/eps_to_png/eps_to_png.html">
+      EPS_TO_PNG</a>, 
+      a BASH script which 
+      converts a collection of EPS files to PNG format.
+    </p>
+
+    <p>
+      <a href = "../../datasets/graffiti/graffiti.html">
+      GRAFFITI</a>,
+      a dataset directory which
+      contains 195 abstract graphs, with adjacency and embedding information,
+      stored in the GRF format.
+    </p>
+
+    <p>
+      <a href = "../../data/graph_representation/graph_representation.html">
+      GRAPH_REPRESENTATION</a>,
+      a data directory which
+      contains examples of ways of representing abstract
+      mathematical graphs
+    </p>
+
+    <p>
+      <a href = "../../data/grf/grf.html">
+      GRF</a>,
+      a data directory which
+      contains a description of the GRF format and some examples.
+    </p>
+
+    <p>
+      <a href = "../../m_src/grf_display/grf_display.html">
+      GRF_DISPLAY</a>,
+      a MATLAB program which
+      reads a GRF file defining a mathematical graph and
+      displays it in the MATLAB graphics window.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/grf_display_opengl/grf_display_opengl.html">
+      GRF_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads a GRF file defining a mathematical graph and
+      displays it in an OpenGL graphics window.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grf_io/grf_io.html">
+      GRF_IO</a>,
+      a FORTRAN90 library which
+      reads and writes GRF files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grf_to_xyl/grf_to_xyl.html">
+      GRF_TO_XYL</a>,
+      a FORTRAN90 program which
+      converts information describing the adjacency and embedding of an
+      abstract graph from GRF to XYL format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ps_write/ps_write.html">
+      PS_WRITE</a>,
+      a FORTRAN90 library which
+      creates PostScript images.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Stephen Skiena,<br>
+          Implementing Discrete Mathematics:
+          Combinatorics and Graph Theory in Mathematica,<br>
+          Addison Wesley, 1990.
+        </li>
+        <li>
+          <a href = "http://www.combinatorica.com/">
+                     http://www.combinatorica.com/<a> <br>
+          the COMBINATORICA web page.
+        </li>
+        <li>
+          Peter Eades, Ian Fogg, David Kelly,<br>
+          SPREMB: A System for Developing Graph Algorithms,<br>
+          Congressus Numerantium,<br>
+          Volume 66, December 1988.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "grf_to_eps.f90">grf_to_eps.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "grf_to_eps.sh">grf_to_eps.sh</a>,
+          commands to compile, link and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>HEAWOOD</b> is the Heawood graph:
+      <ul>
+        <li>
+          <a href = "../../data/grf/heawood.grf">heawood.grf</a>,
+          the Heawood graph.
+        </li>
+        <li>
+          <a href = "../../data/png/heawood.png">heawood.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Heawood graph.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>KNIGHTSTOUR</b> is the knight's tour graph:
+      <ul>
+        <li>
+          <a href = "../../data/grf/knightstour.grf">knightstour.grf</a>,
+          the knight's tour graph.
+        </li>
+        <li>
+          <a href = "../../data/png/knightstour.png">knightstour.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the knight's tour graph.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>PETERSEN</b> is the Petersen graph:
+      <ul>
+        <li>
+          <a href = "../../data/grf/petersen.grf">petersen.grf</a>,
+          the Petersen graph.
+        </li>
+        <li>
+          <a href = "../../data/png/petersen.png">petersen.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Petersen graph.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>TUTTE</b> is the Tutte graph:
+      <ul>
+        <li>
+          <a href = "../../data/grf/tutte.grf">tutte.grf</a>, the Tutte graph.
+        </li>
+        <li>
+          <a href = "../../data/png/tutte.png">tutte.png</a>,
+          a <a href = "../../data/png/png.html">PNG</a> image of
+          the Tutte graph.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for GRF_TO_EPS.
+        </li>
+        <li>
+          <b>BOX_CLIP_LINE_2D</b> uses a box to clip a line segment in 2D.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>EPS_FILE_HEAD</b> writes header information to an encapsulated PostScript file.
+        </li>
+        <li>
+          <b>EPS_FILE_TAIL</b> writes trailer information to an encapsulated PostScript file.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GRAPH_ARC_TO_EPS</b> writes graph information to an Encapsulated PostScript file.
+        </li>
+        <li>
+          <b>GRF_READ</b> reads a GRF file containing a 2D representation of a graph.
+        </li>
+        <li>
+          <b>GRF_TO_EPS</b> creates an EPS image of the graph described by a GRF file.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>POINT_INSIDE_BOX_2D</b> determines if a point is inside a box in 2D.
+        </li>
+        <li>
+          <b>PS_COLOR_FILL_SET</b> sets the fill color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE</b> handles the line color.
+        </li>
+        <li>
+          <b>PS_COLOR_LINE_SET</b> sets the line color.
+        </li>
+        <li>
+          <b>PS_COMMENT</b> inserts a comment into the PostScript file.
+        </li>
+        <li>
+          <b>PS_DEFAULT</b> sets the internal settings to their default values
+        </li>
+        <li>
+          <b>PS_FILE_CLOSE</b> closes a PostScript file.
+        </li>
+        <li>
+          <b>PS_FILE_OPEN</b> opens a new version of a PostScript file with a given name.
+        </li>
+        <li>
+          <b>PS_LINE</b> draws a line segment from (X1,Y1) to (X2,Y2).
+        </li>
+        <li>
+          <b>PS_LINE_CLOSED</b> adds the graph of a closed line to a PostScript file.
+        </li>
+        <li>
+          <b>PS_LINE_WIDTH</b> sets the line width.
+        </li>
+        <li>
+          <b>PS_MARK_DISK</b> marks a point with a small filled disk.
+        </li>
+        <li>
+          <b>PS_PAGE_HEAD</b> writes header information on a new page.
+        </li>
+        <li>
+          <b>PS_PAGE_TAIL</b> writes tail information at the end of a page.
+        </li>
+        <li>
+          <b>PS_SETTING_INT</b> sets, gets, or prints integer internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>PS_SETTING_REAL</b> sets, gets, or prints real internal PS_WRITE parameters.
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two real values.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

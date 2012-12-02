@@ -1,0 +1,49 @@
+echo
+#  test8.in  16 August 1996
+#
+#  First test for new code, ARBY4.
+#
+region=cavity
+gridx=cos
+gridy=cos
+ijac=3
+iopt(1)=1
+iopt(2)=1
+iopt(3)=1
+iwrite=0
+maxopt=30
+maxsim=4
+nbcrb=1
+nparb=0
+nparf=1
+nsenfl=5
+nx=21
+ny=21
+partar(1)=-1.0
+partar(2)=100.0
+#
+#  Set up the problem logically and geometrically,
+#  and print out the problem data.
+#
+setlog
+setgeo
+prpar
+prdat
+#
+#  Solve for the full solution, save it as the target.
+#
+gfl=0
+iwrite=2
+picfl
+iwrite=0
+newtfl
+#
+#  Print out the solution along the top.
+#
+xmin=0.0
+xmax=1.0
+ymin=1.0
+ymax=1.0
+pruvpgfl
+#
+stop

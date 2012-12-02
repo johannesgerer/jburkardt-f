@@ -1,0 +1,358 @@
+ 1 November 2011  10:08:06.226 AM
+ 
+HERMITE_PRB
+  FORTRAN90 version
+  Test the HERMITE library.
+ 
+TEST01
+  HERMITE computes the Hermite interpolant to data.
+  Here, f(x) = 1 + 2x + 3x^2.
+ 
+HERMITE_DEMO
+  Compute coefficients CD of the Hermite polynomial
+  interpolant to given data (x,y,yp).
+ 
+  Data:
+              X           Y           Y'
+ 
+     1      0.0000      1.0000      2.0000
+     2      1.0000      6.0000      8.0000
+     3      2.0000     17.0000     14.0000
+ 
+  Difference table for interpolant:
+              XD          YD
+ 
+     1      0.0000      1.0000
+     2      0.0000      2.0000
+     3      1.0000      3.0000
+     4      1.0000      0.0000
+     5      2.0000      0.0000
+     6      2.0000      0.0000
+ 
+  Difference table for derivative:
+              XDP         YDP
+ 
+     1      0.0000      2.0000
+     2      0.0000      6.0000
+     3      0.0000      0.0000
+     4      0.0000      0.0000
+     5      0.0000      0.0000
+ 
+  Hermite interpolating polynomial:
+ 
+  p(x) =     3.00000     * x ^   2
+         +   2.00000     * x
+         +   1.00000    
+ 
+  Data Versus Interpolant:
+              X           Y           H           YP          HP
+ 
+     1      0.0000      1.0000      1.0000      2.0000      2.0000
+     2      1.0000      6.0000      6.0000      8.0000      8.0000
+     3      2.0000     17.0000     17.0000     14.0000     14.0000
+ 
+TEST02
+  HERMITE computes the Hermite interpolant to data.
+  Here, f(x) = 6 + 5x + 4x^2 + 3x^3 + 2x^4 + x^5.
+ 
+HERMITE_DEMO
+  Compute coefficients CD of the Hermite polynomial
+  interpolant to given data (x,y,yp).
+ 
+  Data:
+              X           Y           Y'
+ 
+     1      0.0000      6.0000      5.0000
+     2      1.0000     21.0000     35.0000
+     3      2.0000    120.0000    201.0000
+ 
+  Difference table for interpolant:
+              XD          YD
+ 
+     1      0.0000      6.0000
+     2      0.0000      5.0000
+     3      1.0000     10.0000
+     4      1.0000     10.0000
+     5      2.0000      6.0000
+     6      2.0000      1.0000
+ 
+  Difference table for derivative:
+              XDP         YDP
+ 
+     1      0.0000      5.0000
+     2      0.0000      8.0000
+     3      0.0000      9.0000
+     4      0.0000      8.0000
+     5      0.0000      5.0000
+ 
+  Hermite interpolating polynomial:
+ 
+  p(x) =     1.00000     * x ^   5
+         +   2.00000     * x ^   4
+         +   3.00000     * x ^   3
+         +   4.00000     * x ^   2
+         +   5.00000     * x
+         +   6.00000    
+ 
+  Data Versus Interpolant:
+              X           Y           H           YP          HP
+ 
+     1      0.0000      6.0000      6.0000      5.0000      5.0000
+     2      1.0000     21.0000     21.0000     35.0000     35.0000
+     3      2.0000    120.0000    120.0000    201.0000    201.0000
+ 
+TEST03
+  HERMITE computes the Hermite interpolant to data.
+  Here, f(x) is a fifth order polynomial with random
+  coefficients, and the abscissas are random.
+ 
+  Random abscissas
+ 
+         1:   0.21841830    
+         2:   0.95631758    
+         3:   0.82950923    
+ 
+  Random polynomial coefficients.
+ 
+         1:   0.56169544    
+         2:   0.41530708    
+         3:   0.66118735E-01
+         4:   0.25757779    
+         5:   0.10995679    
+         6:   0.43828998E-01
+ 
+HERMITE_DEMO
+  Compute coefficients CD of the Hermite polynomial
+  interpolant to given data (x,y,yp).
+ 
+  Data:
+              X           Y           Y'
+ 
+     1      0.2184      0.6585      0.4861
+     2      0.9563      1.3716      1.8164
+     3      0.8295      1.1680      1.4115
+ 
+  Difference table for interpolant:
+              XD          YD
+ 
+     1      0.2184      0.6585
+     2      0.2184      0.4861
+     3      0.9563      0.6509
+     4      0.9563      0.6791
+     5      0.8295      0.2493
+     6      0.8295      0.0438
+ 
+  Difference table for derivative:
+              XDP         YDP
+ 
+     1      0.0000      0.4153
+     2      0.0000      0.1322
+     3      0.0000      0.7727
+     4      0.0000      0.4398
+     5      0.0000      0.2191
+ 
+  Hermite interpolating polynomial:
+ 
+  p(x) =    0.438290E-01 * x ^   5
+         +  0.109957     * x ^   4
+         +  0.257578     * x ^   3
+         +  0.661187E-01 * x ^   2
+         +  0.415307     * x
+         +  0.561695    
+ 
+  Data Versus Interpolant:
+              X           Y           H           YP          HP
+ 
+     1      0.2184      0.6585      0.6585      0.4861      0.4861
+     2      0.9563      1.3716      1.3716      1.8164      1.8164
+     3      0.8295      1.1680      1.1680      1.4115      1.4115
+ 
+TEST04
+  HERMITE computes the Hermite interpolant to data.
+  Here, f(x) is the Runge function
+  and the data is evaluated at equally spaced points.
+  As N increases, the maximum error grows.
+ 
+     N     Max | F(X) - H(F(X)) |
+ 
+     3    0.530048    
+     5    0.223403    
+     7    0.390862    
+     9     1.13792    
+    11     3.83581    
+    13     13.9642    
+    15     53.4249    
+ 
+TEST05
+  HERMITE computes the Hermite interpolant to data.
+  Here, f(x) is the Runge function
+  and the data is evaluated at Chebyshev points.
+  As N increases, the maximum error goes down.
+ 
+     N     Max | F(X) - H(F(X)) |
+ 
+     3    0.530048    
+     5    0.325238    
+     7    0.180448    
+     9    0.950617E-01
+    11    0.480707E-01
+    13    0.237723E-01
+    15    0.114442E-01
+ 
+TEST06:
+  HERMITE_BASIS_0 and HERMITE_BASIS_1 evaluate the
+  Hermite global polynomial basis functions
+  of type 0: associated with function values, and
+  of type 1: associated with derivative values.
+ 
+  Interpolate y = x^3 + x^2 + x + 1.
+ 
+     XD         Y(XD)      Y'(XD)
+ 
+   0.000       1.000       1.000    
+   10.00       1111.       321.0    
+ 
+     XV         Y(XV)      H(XV)
+ 
+   0.000       1.000       1.000    
+   1.000       4.000       4.000    
+   2.000       15.00       15.00    
+   3.000       40.00       40.00    
+   4.000       85.00       85.00    
+   5.000       156.0       156.0    
+   6.000       259.0       259.0    
+   7.000       400.0       400.0    
+   8.000       585.0       585.0    
+   9.000       820.0       820.0    
+   10.00       1111.       1111.    
+ 
+TEST07:
+  HERMITE_INTERPOLANT_RULE
+  is given a set of N abscissas for a Hermite interpolant
+  and returns N pairs of quadrature weights
+  for function and derivative values at the abscissas.
+ 
+     I       X               W(F(X))        W(F'(X))
+ 
+     1     0.00000        -66.6667        -150.000    
+     2     5.00000         53.3333        -266.667    
+     3     10.0000         23.3333        -33.3333    
+ 
+  Use the quadrature rule over interval    0.00000     to    10.0000    
+ 
+  Estimate integral of 1 =    10.0000    
+  Estimate integral of X =    50.0000    
+  Estimate integral of X^2 =    333.333    
+  Estimate integral of SIN(X) =   -261.511    
+ 
+     I       X               W(F(X))        W(F'(X))
+ 
+     1     0.00000        -6.66667        -1.50000    
+     2    0.500000         5.33333        -2.66667    
+     3     1.00000         2.33333       -0.333333    
+ 
+  Use the quadrature rule over interval    0.00000     to    1.00000    
+ 
+  Estimate integral of 1 =    1.00000    
+  Estimate integral of X =   0.500000    
+  Estimate integral of X^2 =   0.333333    
+  Estimate integral of SIN(X) =   0.500048    
+ 
+     I       X               W(F(X))        W(F'(X))
+ 
+     1     0.00000       -0.260271E+11   -0.461959E+10
+     2     1.00000       -0.129730E+13   -0.374681E+12
+     3     2.00000       -0.143117E+14   -0.631919E+13
+     4     3.00000       -0.524034E+14   -0.382830E+14
+     5     4.00000       -0.611016E+14   -0.101787E+15
+     6     5.00000        0.153665E+14   -0.129255E+15
+     7     6.00000        0.673925E+14   -0.801827E+14
+     8     7.00000        0.382127E+14   -0.236405E+14
+     9     8.00000        0.764733E+13   -0.302886E+13
+    10     9.00000        0.513565E+12   -0.137316E+12
+    11     10.0000        0.752948E+10   -0.126888E+10
+ 
+  Use the quadrature rule over interval    0.00000     to    10.0000    
+ 
+  Estimate integral of 1 =    9.98964    
+  Estimate integral of X =    49.7728    
+  Estimate integral of X^2 =    332.017    
+  Estimate integral of SIN(X) =    1147.56    
+ 
+     I       X               W(F(X))        W(F'(X))
+ 
+     1     0.00000       -0.260271E+10   -0.461959E+08
+     2    0.100000       -0.129730E+12   -0.374681E+10
+     3    0.200000       -0.143117E+13   -0.631919E+11
+     4    0.300000       -0.524034E+13   -0.382830E+12
+     5    0.400000       -0.611016E+13   -0.101787E+13
+     6    0.500000        0.153665E+13   -0.129255E+13
+     7    0.600000        0.673925E+13   -0.801827E+12
+     8    0.700000        0.382127E+13   -0.236405E+12
+     9    0.800000        0.764733E+12   -0.302886E+11
+    10    0.900000        0.513565E+11   -0.137316E+10
+    11     1.00000        0.752948E+09   -0.126888E+08
+ 
+  Use the quadrature rule over interval    0.00000     to    1.00000    
+ 
+  Estimate integral of 1 =   0.999183    
+  Estimate integral of X =   0.501650    
+  Estimate integral of X^2 =   0.334020    
+  Estimate integral of SIN(X) =   0.459241    
+ 
+     I       X               W(F(X))        W(F'(X))
+ 
+     1     0.00000       -0.306432E+12   -0.233178E+10
+     2    0.244717E-01    0.196461E+12   -0.876510E+10
+     3    0.954915E-01    0.513319E+11   -0.740794E+10
+     4    0.206107        0.218086E+11   -0.589147E+10
+     5    0.345492        0.104125E+11   -0.463078E+10
+     6    0.500000        0.478847E+10   -0.371920E+10
+     7    0.654508        0.124726E+10   -0.309863E+10
+     8    0.793893       -0.227985E+10   -0.269011E+10
+     9    0.904508       -0.930372E+10   -0.243423E+10
+    10    0.975528       -0.438263E+11   -0.229381E+10
+    11     1.00000        0.757919E+11   -0.562265E+09
+ 
+  Use the quadrature rule over interval    0.00000     to    1.00000    
+ 
+  Estimate integral of 1 =   0.999954    
+  Estimate integral of X =   0.499973    
+  Estimate integral of X^2 =   0.333320    
+  Estimate integral of SIN(X) =   0.459680    
+ 
+TEST08
+  HERMITE_INTERPOLANT sets up the Hermite interpolant.
+  HERMITE_INTERPOLANT_VALUE evaluates it.
+  Consider data for y=sin(x) at x=0,1,2,3,4.
+ 
+  In the following table, there should be perfect
+  agreement between F and H, and F' and H'
+  at the data points X = 0, 1, 2, 3, and 4.
+ 
+  In between, H and H' approximate F and F'.
+ 
+     I       X(I)          F(X(I))         H(X(I))        F'(X(I))        H'(X(I))
+ 
+     1     0.00000         0.00000         0.00000         1.00000         1.00000    
+     2    0.250000        0.247404        0.247407        0.968912        0.968921    
+     3    0.500000        0.479426        0.479428        0.877583        0.877575    
+     4    0.750000        0.681639        0.681639        0.731689        0.731683    
+     5     1.00000        0.841471        0.841471        0.540302        0.540302    
+     6     1.25000        0.948985        0.948985        0.315322        0.315324    
+     7     1.50000        0.997495        0.997495        0.707372E-01    0.707368E-01
+     8     1.75000        0.983986        0.983986       -0.178246       -0.178247    
+     9     2.00000        0.909297        0.909297       -0.416147       -0.416147    
+    10     2.25000        0.778073        0.778073       -0.628174       -0.628172    
+    11     2.50000        0.598472        0.598473       -0.801144       -0.801143    
+    12     2.75000        0.381661        0.381661       -0.924302       -0.924304    
+    13     3.00000        0.141120        0.141120       -0.989992       -0.989992    
+    14     3.25000       -0.108195       -0.108194       -0.994130       -0.994124    
+    15     3.50000       -0.350783       -0.350781       -0.936457       -0.936451    
+    16     3.75000       -0.571561       -0.571559       -0.820559       -0.820567    
+    17     4.00000       -0.756802       -0.756802       -0.653644       -0.653644    
+ 
+HERMITE_PRB
+  Normal end of execution.
+ 
+ 1 November 2011  10:08:06.229 AM

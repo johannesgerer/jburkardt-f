@@ -1,0 +1,453 @@
+<html>
+
+  <head>
+    <title>
+      RCM - Reverse Cuthill McKee Ordering
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      RCM <br> Reverse Cuthill McKee Ordering
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>RCM</b>
+      is a FORTRAN90 library which
+      computes the reverse
+      Cuthill McKee ("RCM") ordering of the nodes of a graph.
+    </p>
+
+    <p>
+      The RCM ordering is frequently used when a matrix is to be
+      generated whose rows and columns are numbered according to
+      the numbering of the nodes.  By an appropriate renumbering
+      of the nodes, it is often possible to produce a matrix with a
+      much smaller bandwidth.
+    </p>
+
+    <p>
+      The bandwidth of a matrix is computed as the maximum bandwidth
+      of each row of the matrix.  The bandwidth of a row of the matrix
+      is essentially the number of matrix entries between the first
+      and last nonzero entries in the row, with the proviso that
+      the diagonal entry is always treated as though it were nonzero.
+    </p>
+
+    <p>
+      This library includes a few routines to handle the common case
+      where the connectivity can be described in terms of a triangulation
+      of the nodes, that is, a grouping of the nodes into sets of
+      3-node or 6-node triangles.  The natural description of a triangulation
+      is simply a listing of the nodes that make up each triangle.  The
+      library includes routines for determining the adjacency structure
+      associated with a triangulation, and the test problems include
+      examples of how the nodes in a triangulation can be relabeled
+      with the RCM permutation.
+    </p>
+
+    <p>
+      Here is a simple example of how reordering can reduce the
+      bandwidth.  In our first picture, we have nine nodes:
+      <pre>
+           5--7--6
+           |  | /
+        4--8--2
+        |  |  |
+        9--1--3
+      </pre>
+      The corresponding adjacency matrix is:
+      <pre>
+        * . 1 . . . . 1 1
+        . * 1 . . 1 1 1 .
+        1 1 * . . . . . .
+        . . . * . . . 1 1
+        . . . . * . 1 1 .
+        . 1 . . . * 1 . .
+        . 1 . . 1 1 * . .
+        1 1 . 1 1 . . * .
+        1 . . 1 . . . . *
+      </pre>
+      which has a disastrous bandwidth of 17 (lower and upper bandwidths
+      of 8, and 1 for the diagonal.)
+    <p>
+
+    <p>
+      If we keep the same connectivity graph, but relabel the nodes,
+      we could get a picture like this:
+      <pre>
+           7--8--9
+           |  | /
+        3--5--6
+        |  |  |
+        1--2--4
+      </pre>
+      whose adjacency matrix is:
+      <pre>
+        * 1 1 . . . . . .
+        1 * . 1 1 . . . .
+        1 . * . 1 . . . .
+        . 1 . * . 1 . . .
+        . 1 1 . * 1 1 . .
+        . . . 1 1 * . 1 1
+        . . . . 1 . * 1 .
+        . . . . . 1 1 * 1
+        . . . . . 1 . 1 *
+      </pre>
+      which has a bandwidth of 7 (lower and upper bandwidths
+      of 3, and 1 for the diagonal.)
+    <p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>RCM</b> is available in
+      <a href = "../../cpp_src/rcm/rcm.html">a C++ version</a> and
+      <a href = "../../f_src/rcm/rcm.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/rcm/rcm.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/mesh_bandwidth/mesh_bandwidth.html">
+      MESH_BANDWIDTH</a>,
+      a FORTRAN90 program which
+      returns the geometric bandwidth associated with a mesh of
+      elements of any order and in a space of arbitrary dimension.
+    </p>
+
+    <p>
+      <a href = "../../data/sparse_cc/sparse_cc.html">
+      SPARSE_CC</a>,
+      a data directory which
+      contains a description and examples of the CC format,
+      ("compressed column") for storing a sparse matrix,
+      including a way to write the matrix as a set of three files.
+    </p>
+
+    <p>
+      <a href = "../../data/sparse_cr/sparse_cr.html">
+      SPARSE_CR</a>,
+      a data directory which
+      contains a description and examples of the CR format,
+      ("compressed row") for storing a sparse matrix,
+      including a way to write the matrix as a set of three files.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sparsepak/sparsepak.html">
+      SPARSEPAK</a>,
+      a FORTRAN90 library which
+      solves sparse linear systems using the Reverse Cuthill-McKee
+      reordering scheme.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tet_mesh_rcm/tet_mesh_rcm.html">
+      TET_MESH_RCM</a>,
+      a FORTRAN90 program which
+      reads files
+      describing a tetrahedral mesh of nodes in 3D, and applies the RCM
+      algorithm to produce a renumbering of the tet mesh with a reduced
+      bandwidth.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order3/triangulation_order3.html">
+      TRIANGULATION ORDER3</a>,
+      a directory which
+      contains a description and
+      examples of order 3 triangulations.
+    </p>
+
+    <p>
+      <a href = "../../data/triangulation_order6/triangulation_order6.html">
+      TRIANGULATION ORDER6</a>,
+      a directory which
+      contains a description and
+      examples of order 6 triangulations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation_rcm/triangulation_rcm.html">
+      TRIANGULATION_RCM</a>,
+      a FORTRAN90 program which
+      reads files describing a triangulation of nodes in 2D, and applies the RCM algorithm
+      to produce a renumbering of the triangulation with a reduced
+      bandwidth.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          HL Crane, Norman Gibbs, William Poole, Paul Stockmeyer,<br>
+          Algorithm 508:
+          Matrix Bandwidth and Profile Reduction,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 2, Number 4, December 1976, pages 375-377.
+        </li>
+        <li>
+          Alan George, Joseph Liu,<br>
+          Computer Solution of Large Sparse Positive Definite Matrices,<br>
+          Prentice Hall, 1981,<br>
+          ISBN: 0131652745,<br>
+          LC: QA188.G46
+        </li>
+        <li>
+          Norman Gibbs,<br>
+          Algorithm 509:
+          A Hybrid Profile Reduction Algorithm,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 2, Number 4, December 1976, pages 378-387.
+        </li>
+        <li>
+          Norman Gibbs, William Poole, Paul Stockmeyer,<br>
+          An Algorithm for Reducing the Bandwidth
+          and Profile of a Sparse Matrix,<br>
+          SIAM Journal on Numerical Analysis,<br>
+          Volume 13, Number 2, April 1976, pages 236-250.
+        </li>
+        <li>
+          John Lewis,<br>
+          Algorithm 582:
+          The Gibbs-Poole-Stockmeyer and Gibbs-King Algorithms
+          for Reordering Sparse Matrices,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 8, Number 2, June 1982, pages 190-194.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "rcm.f90">rcm.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "rcm.sh">rcm.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "rcm_prb.f90">rcm_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "rcm_prb.sh">rcm_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "rcm_prb_output.txt">rcm_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ADJ_BANDWIDTH</b> computes the bandwidth of an adjacency matrix.
+        </li>
+        <li>
+          <b>ADJ_CONTAINS_IJ</b> determines if (I,J) is in an adjacency structure.
+        </li>
+        <li>
+          <b>ADJ_INSERT_IJ</b> inserts (I,J) into an adjacency structure.
+        </li>
+        <li>
+          <b>ADJ_PERM_BANDWIDTH</b> computes the bandwidth of a permuted adjacency matrix.
+        </li>
+        <li>
+          <b>ADJ_PERM_SHOW</b> displays a symbolic picture of a permuted adjacency matrix.
+        </li>
+        <li>
+          <b>ADJ_PRINT</b> prints adjacency information.
+        </li>
+        <li>
+          <b>ADJ_PRINT_SOME</b> prints some adjacency information.
+        </li>
+        <li>
+          <b>ADJ_SET</b> sets up the adjacency information.
+        </li>
+        <li>
+          <b>ADJ_SHOW</b> displays a symbolic picture of an adjacency matrix.
+        </li>
+        <li>
+          <b>DEGREE</b> computes the degrees of the nodes in the connected component.
+        </li>
+        <li>
+          <b>GENRCM</b> finds the reverse Cuthill-Mckee ordering for a general graph.
+        </li>
+        <li>
+          <b>GRAPH_01_ADJ</b> returns the adjacency vector for graph 1.
+        </li>
+        <li>
+          <b>GRAPH_01_ADJ_NUM</b> returns the number of adjacencies for graph 1.
+        </li>
+        <li>
+          <b>GRAPH_01_LABEL</b> returns the labels for graph 1.
+        </li>
+        <li>
+          <b>I4_SWAP</b> swaps two I4's.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4MAT_PRINT_SOME</b> prints some of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4ROW_COMPARE</b> compares two rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SORT_A</b> ascending sorts an I4ROW.
+        </li>
+        <li>
+          <b>I4ROW_SWAP</b> swaps two rows of an I4ROW.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D</b> reorders an I4VEC into an descending heap.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an I4VEC to the vector A(I)=I.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_REVERSE</b> reverses the elements of an I4VEC.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_A</b> ascending sorts an I4VEC using heap sort.
+        </li>
+        <li>
+          <b>LEVEL_SET</b> generates the connected level structure rooted at a given node.
+        </li>
+        <li>
+          <b>LEVEL_SET_PRINT</b> prints level set information.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PERM_INVERSE</b> produces the inverse of a given permutation.
+        </li>
+        <li>
+          <b>PERM_UNIFORM</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>R82VEC_PERMUTE</b> permutes an R82VEC in place.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>RCM</b> renumbers a connected component by the reverse Cuthill McKee algorithm.
+        </li>
+        <li>
+          <b>ROOT_FIND</b> finds a pseudo-peripheral node.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_ADJ_COUNT</b> counts adjacencies in a triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_ADJ_SET</b> sets adjacencies in a triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_EXAMPLE2</b> returns an example triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_EXAMPLE2_SIZE</b> returns the size of an example.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER3_NEIGHBOR_TRIANGLES</b> determines triangle neighbors.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER6_ADJ_COUNT</b> counts adjacencies in a triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER6_ADJ_SET</b> sets adjacencies in a triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER6_EXAMPLE2</b> returns an example triangulation.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER6_EXAMPLE2_SIZE</b> returns the size of an example.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER6_NEIGHBOR_TRIANGLES</b> determines triangle neighbors.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 January 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,325 @@
+April 17 2003   4:49:35.557 PM
+ 
+Is this...
+ 
+  0  the first time the program is being run
+     or
+  1  a restart run of the program after failure?
+ 
+     Please enter 0 or 1:
+ 
+PARANOIA
+  A "paranoid" program to diagnose floating arithmetic.
+ 
+  This version written in Fortran 90,
+  using single precision arithmetic.
+ 
+  Lest this program stop prematurely, i.e. before 
+  displaying "end of test", try to persuade the 
+  computer not to terminate execution whenever an error 
+  such as over/underflow or division by zero occurs, 
+  but rather to persevere with a surrogate value
+  after, perhaps, displaying some warning. 
+ 
+  If persuasion avails naught, don't despair, but run
+  this program anyway, to see how many milestones it
+  pases.  It should pick up just beyond the last error
+  and continue.  If not, it needs further debugging.
+ 
+  Users are invited to help debug and augment this
+  program so that it will cope with unanticipated 
+  and newly found compilers and arithmetic pathologies.
+ 
+  Please send suggestions and interesting results to:
+ 
+    Richard Karpinski
+    Computer Center U-76
+    University of California
+    San Francisco, CA 94143-0704
+    USA
+ 
+  Please include the following information:
+ 
+    Precision:   single;
+    Version: 31 july 1986;
+    Computer:
+    Compiler:
+    Optimization level:
+    Other relevant compiler options:
+ 
+  BASIC version (c) 1983 by Professor W M Kahan.
+  Translated to FORTRAN by T Quarles and G Taylor.
+  Modified to ANSI 66/ANSI 77 compatible subset by
+  Daniel Feenberg and David Gay.
+  You may redistribute this program freely if you
+  acknowledge the source.
+ 
+  This program should reveal these characteristics:
+ 
+  B = radix ( 1, 2, 4, 8, 10, 16, 100, 256, or ... ) .
+  P = precision, the number of significant B digits.
+  U2 = B/B^P = one ulp (unit in the last place) of
+    1.000xxx..
+  U1 = 1/B^P = one ulp of numbers a little less than 1.0.
+ 
+  G1, G2, G3 tell whether adequate guard digits 
+  are carried, with "1" meaning yes, and "0" no.
+ 
+    G1 for multiplication,
+    G2 for division,
+    G3 for subtraction.
+ 
+  R1, R2, R3, R4 tell whether arithmetic is rounded
+  or chopped;
+ 
+    0=chopped,
+    1=correctly rounded,
+   -1=some other rounding;
+ 
+    R1 for multiplication,
+    R2 for division,
+    R3 for addition and subtraction,
+    R4 for square roots.
+ 
+  S records whether a "sticky bit" is used in rounding.
+ 
+    0 = no; 1 = yes.
+ 
+  U0 = an underflow threshold.
+  E0 and Z0 tell whether underflow is abrupt, gradual 
+    or fuzzy
+  V = an overflow threshold, roughly.
+  V0  tells, roughly, whether infinity is represented.
+ 
+  Comparisons are checked for consistency with
+  subtraction, and for contamination by pseudo-zeros.
+  SQRT is tested.  So is Y^X for (mostly) integers X.
+  Extra-precise subexpressions are revealed but not 
+  yet tested.  Decimal-binary conversion is not yet 
+  tested for accuracy.
+ 
+  The program attempts to discriminate between:
+ 
+    FLAWS,           like the lack of a sticky bit,
+    SERIOUS DEFECTS, like the lack of a guard digit,
+    FAILURES,        like 2+2 = 5.
+ 
+  The diagnostic capabilities of this program go beyond
+  an earlier program called MACHAR, which can be found
+  at the end of the book:
+ 
+    W J Cody and W Waite,
+    Software Manual for the Elementary Functions,
+    1980.
+ 
+  Although both programs try to discover the radix (B),
+  precision (P) and range (over/underflow thresholds)
+  of the arithmetic, this program tries to cope with a
+  wider variety of pathologies and to say how well the
+  arithmetic is implemented.
+ 
+  The program is based upon a conventional radix
+  representation for floating-point numbers,
+  but also allows for logarithmic encoding (B = 1)
+  as used by certain early Wang machines.
+ 
+SMALL_INT
+  Small integer tests.
+ 
+  -1, 0, 1/2 , 1, 2, 3, 4, 5, 9, 27, 32 & 240 are OK.
+ 
+RADX:
+  Searching for radix and precision.
+  Radix =   2.
+  Closest relative separation found is   5.96046448E-08
+
+  Recalculating radix and precision...
+  ...confirms closest relative separation.
+ 
+  Radix confirmed.
+  The number of significant digits of radix   2. is  24.00
+ 
+EXTRA:
+  Test for extra precision in subexpressions.
+ 
+  Subexpressions do not appear to be calculated
+  with extra precision.
+ 
+GUARD
+  Check for normalized subtraction,
+  and guard digits.
+ 
+  Subtraction appears to be normalized properly.
+ 
+  Checking for guard digits in multiply, divide  and subtract.
+ 
+  These operations appear to have guard digits
+  as they should.
+ 
+ROUND:
+  Checking for rounding in multiply, divide, 
+  add and subtract:
+  Multiplication appears to be correctly rounded.
+  Division appears to be correctly rounded.
+  Add/subtract appears to be correctly rounded.
+  Checking for sticky bit:
+  Sticky bit appears to be used correctly.
+ 
+COMMUTE:
+  Does multiplication commute?
+ 
+  Test X*Y=Y*X for   20 random pairs.
+ 
+  No commutative failures found in multiplication.
+ 
+SQUARE:
+  Running tests of square root.
+ 
+  Testing if SQRT(X*X) = X for various integers X.
+ 
+  Found no discrepancies.
+ 
+  SQRT has passed a test for monotonicity.
+  Testing whether SQRT is rounded or chopped:
+  SQRT appears to be correctly rounded.
+ 
+POWER
+  Testing powers Z^I for small integers Z and I.
+  Start with 0.0**0
+April 17 2003   4:49:52.812 PM
+ 
+Is this...
+ 
+  0  the first time the program is being run
+     or
+  1  a restart run of the program after failure?
+ 
+     Please enter 0 or 1:
+ 
+  Restarting from milestone    90.
+ 
+POWER
+  Testing powers Z^I for small integers Z and I.
+  No discrepancies found.
+ 
+UNDERFLOW:
+  Seeking underflow threshold
+  and minimum positive number:
+  Smallest positive number found is   1.17549435E-38
+ 
+PARTUF:
+  Testing for partial underflow.
+ 
+  Comparison denies   minpos  = 0.
+  Hence, it should be safe to evaluate:
+  (  minpos  +  minpos  ) /  minpos 
+ 
+  The computed result is   0.2000000E+01
+ 
+  This is OK provided over/underflow 
+  has not just been signaled.
+ 
+Flaw:
+  x =  0.16163047E-37 is unequal to  z =  0.11754944E-37 ,
+ yet  x-z  yields   0.0000000E+00
+ 
+  Should this not signal underflow, this is 
+  a serious defect that causes confusion when
+  innocent statements like
+ 
+    if ( x == z ) then
+      ...
+    else
+      fp = ( f(x) - f(z) ) / ( x - z )
+ 
+  encounter division by zero, although
+ 
+    X / Z = 1 +   0.37500000E+00
+ 
+  The underflow threshhold is   0.11754944E-37
+  below which, calculation may suffer larger relative
+  error than merely roundoff.
+ since underflow occurs below the threshold  =
+          (  2.00000000E+00)^( -1.26000000E+02) ,
+ only underflow should afflict the expression
+          (  2.00000000E+00)^( -2.52000000E+02) ;
+  Actually calculating it yields:
+  0.00000000E+00
+ 
+  This computed value is OK.
+  Testing  x^((x+1)/(x-1)) vs. exp(2) =   0.73890557E+01  as  x -> 1.
+  Accuracy seems adequate.
+ 
+  Testing powers Z^Q at four nearly extreme values:
+  No discrepancies found.
+ 
+OVERFLOW
+  Searching for overflow threshold:
+April 17 2003   4:50:04.523 PM
+ 
+Is this...
+ 
+  0  the first time the program is being run
+     or
+  1  a restart run of the program after failure?
+ 
+     Please enter 0 or 1:
+ 
+  Restarting from milestone   161.
+ 
+  Can Z = -Y overflow?
+  Trying it on Y =  -8.50705917E+37
+ 
+  Seems OK.
+  Overflow threshold is  v =   1.70141173E+38
+  There is no saturation value
+  because the system traps on overflow.
+  No overflow should be signaled for  v*1 = 
+                                             1.70141173E+38
+                            nor for  v/1 = 
+                                             1.70141173E+38
+ 
+  Any overflow signal separating this * 
+  from one above is a defect.
+ 
+ZEROS:
+  Now determine the error messages and values
+  produced when dividing by zero.
+ 
+  About to compute 1/0:
+April 17 2003   4:50:10.628 PM
+ 
+Is this...
+ 
+  0  the first time the program is being run
+     or
+  1  a restart run of the program after failure?
+ 
+     Please enter 0 or 1:
+ 
+  Restarting from milestone   211.
+ 
+  About to compute 0/0:
+April 17 2003   4:50:15.943 PM
+ 
+Is this...
+ 
+  0  the first time the program is being run
+     or
+  1  a restart run of the program after failure?
+ 
+     Please enter 0 or 1:
+ 
+  Restarting from milestone   212.
+  The number of  failures =          0
+  The number of serious defects =    0
+  The number of defects =            0
+  The number of flaws =              1
+ 
+ 
+  The arithmetic seems satisfactory though flawed.
+ 
+PARANOIA:
+  Normal end of execution.
+ 
+April 17 2003   4:50:16.571 PM

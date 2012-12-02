@@ -1,0 +1,296 @@
+<html>
+
+  <head>
+    <title>
+      FILE_TRANSPOSE - "Transpose" a File
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FILE_TRANSPOSE <br> "Transpose" a File
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FILE_TRANSPOSE</b>
+      is a FORTRAN90 program which
+      creates a "transposed" copy of a file, in which, essentially, the I-th
+      word of the J-th line becomes the J-th word of the I-th line.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>file_transpose</b> <i>input</i> <i>output</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>input</i> is the name of the input file,
+        </li>
+        <li>
+          <i>output</i> is the name of the output file to be created.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      For example, if the input file is:
+      <pre>
+        Apple Ball    Carrot Doll
+         Egg    Fig  1.23456,  Haystack
+        Iodine 
+               Joystick Kahlua Lompoc     Millipede Negatory
+      </pre>
+      the transposed file will be:
+      <pre>
+        Apple Egg Iodine Joystick
+        Ball Fig Kahlua
+        Carrot 1.23456, Lompoc
+        Doll Haystack Millipede
+        Negatory
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this
+      web page are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/f_src/chrpak/chrpak.html">
+      CHRPAK</a>,
+      a FORTRAN90 library which
+      can work with characters and strings.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/cpp_src/cr2lf/cr2lf.html">
+      CR2LF</a>,
+      a C++ program which
+      reads a text file and replaces carriage returns by line feeds.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/cpp_src/crrm/crrm.html">
+      CRRM</a>,
+      a C++ program which
+      reads a text file and removes the carriage return character.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/cpp_src/deblank/deblank.html">
+      DEBLANK</a>,
+      a C++ program which
+      reads a text file and writes a copy which has no blank lines.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/cpp_src/decomment/decomment.html">
+      DECOMMENT</a>,
+      a C++ program which
+      makes a copy of a text file which contains no "comment" lines
+      (that begin with "#").
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/f_src/file_merge/file_merge.html">
+      FILE_MERGE</a>,
+      is a FORTRAN90 program which
+      merges two sorted files.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/f_src/file_row_reverse/file_row_reverse.html">
+      FILE_ROW_REVERSE</a>,
+      a FORTRAN90 program which
+      makes a copy of a file in which the lines appear in reverse order.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/f_src/filum/filum.html">
+      FILUM</a>,
+      a FORTRAN90 library which
+      can work with information in text files.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/f_src/reformat/reformat.html">
+      REFORMAT</a>,
+      a FORTRAN90 program which
+      makes a copy of a file with a given number of "words" per line.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/cpp_src/reword/reword.html">
+      REWORD</a>,
+      a C++ program which
+      reads a text file and writes a copy which has a fixed number
+      of "words" per line.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/f_src/table_columns/table_columns.html">
+      TABLE_COLUMNS</a>,
+      a FORTRAN90 program which
+      reads a  TABLE file of N points
+      in M dimensions and creates a new file by copying various
+      columns, with repetition and shuffling;
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/f_src/table_columns_permute/table_columns_permute.html">
+      TABLE_COLUMNS_PERMUTE</a>,
+      a FORTRAN90 program which
+      reads a TABLE file where each line has M values, and permutes the columns
+      according to the user's prescription;
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/cpp_src/uncontrol/uncontrol.html">
+      UNCONTROL</a>,
+      a C++ program which
+      makes a copy of a text file which contains no control characters.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/cpp_src/wrap/wrap.html">
+      WRAP</a>,
+      a C++ program which
+      makes a copy of a text file
+      in which no line is longer than a user-specified wrap length.
+    </p>
+
+    <p>
+      <a href = "http://people.sc.fsu.edu/~jburkardt/cpp_src/wrap2/wrap2.html">
+      WRAP2</a>,
+      a C++ program which
+      wraps long lines in a text file, but which
+      wraps some lines "early", so as to avoid breaking words.
+    </p>
+
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "file_transpose.f90">file_transpose.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "file_transpose.sh">file_transpose.sh</a>,
+          BASH commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>PIGS</b> is a simple demonstration of the program.
+      <ul>
+        <li>
+          <a href = "pigs.txt">pigs.txt</a>,
+          a simple file of 3 lines of 4 words, 4 words, and 3 words respectively.
+        </li>
+        <li>
+          <a href = "pigs_transposed.txt">pigs_transposed.txt</a>,
+          the transposed file, containing 4 lines of 3 words, 3 words, 3 words and 2 words
+          respectively.  Because the lines are almost all the same length, it's not hard
+          to read the story this way.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>STORY</b> suggests that the program is not so useful when working with
+      ragged text.
+      <ul>
+        <li>
+          <a href = "story.txt">story.txt</a>,
+          a file containing blank lines and lines of greatly varying numbers of words.
+        </li>
+        <li>
+          <a href = "story_transposed.txt">story_transposed.txt</a>,
+          the transposed file.  Because the input text was "ragged", it's not easy to
+          read the text now, nor would it be easy to reconstruct the original file!
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MATRIX</b> illustrates how a numeric table or matrix can be transposed.
+      In fact, this is the application for which the FILE_TRANSPOSE program was written.
+      <ul>
+        <li>
+          <a href = "matrix.txt">matrix.txt</a>,
+          a file containing 30 lines, each containing 10 numeric values.
+        </li>
+        <li>
+          <a href = "matrix_transposed.txt">matrix_transposed.txt</a>,
+          the transposed file, with 10 lines of 30 values.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for FILE_TRANSPOSE.
+        </li>
+        <li>
+          <b>FILE_TRANSPOSE</b> makes a copy of a file with the words tranposed.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_WORD_FIND</b> finds the word of a given index in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 January 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

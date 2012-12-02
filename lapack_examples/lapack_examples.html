@@ -1,0 +1,268 @@
+<html>
+
+  <head>
+    <title>
+      LAPACK_EXAMPLES - Example Programs for LAPACK
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      LAPACK_EXAMPLES <br> Example Programs for LAPACK
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>LAPACK_EXAMPLES</b> 
+      is a FORTRAN90 program which 
+      shows some examples of calling the LAPACK library, which
+      can solve linear systems and compute eigevalues.
+    </p>
+
+    <p>
+      Many vendors supply a compiled copy of LAPACK, optimized for
+      their hardware, and easily available as a library.
+      <ul>
+        <li>
+          On Apple systems running OSX, a compiled copy of LAPACK is available
+          by adding the clause "-framework vecLib" to your link/load statement:
+          <pre>
+            gfortran myprog.f90 -framework vecLib
+          </pre>
+         </li>
+      </ul>
+    </p>
+
+    <p> 
+      <b>LAPACK</b> includes routines to
+      <ul>
+        <li>
+          Solve a linear system;
+        </li>
+        <li>
+          Solve an under- or over-determined linear system;
+        </li>
+        <li>
+          Compute the determinant;
+        </li>
+        <li>
+          Compute the inverse matrix;
+        </li>
+        <li>
+          Compute the condition number;
+        </li>
+        <li>
+          Compute the singular value decomposition;
+        </li>
+        <li>
+          Compute the QR decomposition;
+        </li>
+        <li>
+          Compute the eigenvalues and eigenvectors of a matrix;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The source code and documentation for LAPACK is available
+      through <a href = "http://www.netlib.org/">the NETLIB web site</a>.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>LAPACK_EXAMPLES</b> is available in
+      <a href = "../../f77_src/lapack_examples/lapack_examples.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/lapack_examples/lapack_examples.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/blas1/blas1.html">
+      BLAS1</a>,
+      a FORTRAN90 library which
+      contains basic linear algebra routines for vector-vector operations,
+      combining the single and double precision, real and complex arithmetic
+      libraries.
+    </p>
+
+    <p>
+      <a href = "../../f_src/blas2/blas2.html">
+      BLAS2</a>,
+      a FORTRAN90 library which
+      contains basic linear algebra routines for matrix-vector operations,
+      using single or precision real or complex arithmetic;
+    </p>
+
+    <p>
+      <a href = "../../f_src/blas3/blas3.html">
+      BLAS3</a>,
+      a FORTRAN90 library which
+      contains basic linear algebra routines for matrix-matrix operations,
+      using single or precision real or complex arithmetic;
+    </p>
+
+    <p>
+      <a href = "../../f_src/eispack/eispack.html">
+      EISPACK</a>,
+      a FORTRAN90 library which
+      carries out eigenvalue computations;
+      superseded by LAPACK;
+    </p>
+
+    <p>
+      <a href = "../../f_src/lapack_examples_osx/lapack_examples_osx.html">
+      LAPACK_EXAMPLES_OSX</a>,
+      a FORTRAN90 program which
+      demonstrates the use of the LAPACK linear algebra library available
+      on Macintosh OSX systems, using the "-framework veclib" compiler option.
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack_d/linpack_d.html">
+      LINPACK_D</a>,
+      a FORTRAN90 library which
+      solves linear systems using double precision real arithmetic;
+    </p>
+
+    <p>
+      <a href = "../../f_src/linplus/linplus.html">
+      LINPLUS</a>,
+      a FORTRAN90 library which
+      carries out simple manipulations of matrices in a variety of formats.
+    </p>
+
+    <p>
+      <a href = "../../f_src/qr_solve/qr_solve.html">
+      QR_SOLVE</a>,
+      a FORTRAN90 library which
+      computes the least squares solution of a linear system A*x=b.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_eigen/test_eigen.html">
+      TEST_EIGEN</a>,
+      a FORTRAN90 library which
+      defines various eigenvalue test cases.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_mat/test_mat.html">
+      TEST_MAT</a>,
+      a FORTRAN90 library which 
+      defines test matrices, some of
+      which have known determinants, eigenvalues and eigenvectors,
+      inverses, and so on.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Edward Anderson, Zhaojun Bai, Christian Bischof, Susan Blackford, 
+          James Demmel, Jack Dongarra, Jeremy DuCroz, Anne Greenbaum, 
+          Sven Hammarling, Alan McKenney, Danny Sorensen,<br>
+          LAPACK User's Guide,<br>
+          Third Edition,<br>
+          SIAM, 1999,<br>
+          ISBN: 0898714478,<br>
+          LC: QA76.73.F25L36
+        </li>
+        <li>
+          Vincent Barker, Susan Blackford, Jack Dongarra, Jeremy Du Croz, 
+          Sven Hammarling, Minka Marinova, Jerzy Wasniewski, Plamen Yalamov,<br>
+          LAPACK95 User's Guide,<br>
+          SIAM, 2001,<br>
+          ISBN13: 978-0-898715-04-0,<br>
+          LC: QA76.73.F25.L36.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "lapack_prb.f90">lapack_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "lapack_prb.csh">lapack_prb.csh</a>, 
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "lapack_prb_output.txt">lapack_prb_output.txt</a>, output from the
+          calling program;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      On the Macintosh, an optimized version of LAPACK is available
+      as <b>vecLib</b>.
+      <ul>
+        <li>
+          <a href = "lapack_OSX_prb.csh">lapack_OSX_prb.csh</a>
+          is a shell script that compiles and runs the sample program
+          with <b>vecLib</b.
+        </li>
+        <li>
+          <a href = "lapack_OSX_prb_output.txt">lapack_OSX_prb_output.txt</a>
+          contains the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>LAPACK_TEST</b> is a test program that demonstrates the use of
+      the LAPACK_D drivers DSYEV and DSYEVD on a real symmetric matrix.  
+      Random problems of size 4, 16, 64, 256 and 1024 are generated and 
+      solved, and the setup and solution times are reported.  The TEST_EIGEN 
+      package is called to generate the random test matrices.
+      <ul>
+        <li>
+          <a href = "lapack_test.f90">lapack_test.f90</a>, a sample calling
+          program;
+        </li>
+        <li>
+          <a href = "lapack_test.csh">lapack_test.csh</a>, 
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "lapack_test_output.txt">lapack_test_output.txt</a>, 
+          output from the calling program;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 02 March 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

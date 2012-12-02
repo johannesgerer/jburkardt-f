@@ -1,0 +1,352 @@
+<html>
+
+  <head>
+    <title>
+      FEM2D_POISSON_RECTANGLE - Finite Element Solution of the 2D Poisson Equation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FEM2D_POISSON_RECTANGLE <br> Finite Element Solution of the 2D Poisson Equation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FEM2D_POISSON_RECTANGLE</b>
+      is a FORTRAN90 program which
+      solves the 2D Poisson equation using the finite element method,
+      over a rectangular domain with a uniform mesh of triangular elements.
+    </p>
+
+    <p>
+      The computational region is a rectangle, with homogenous Dirichlet
+      boundary conditions applied along the boundary.  The state variable
+      U(X,Y) is then constrained by:
+      <pre>
+        - ( Uxx + Uyy ) = F(x,y)  in the box
+                 U(x,y) = G(x,y)  on the box boundary
+      </pre>
+    </p>
+
+    <p>
+      The computational region is first covered with an NX by NY
+      rectangular array of points, creating (NX-1)*(NY-1) subrectangles.
+      Each subrectangle is divided into two triangles, creating a total
+      of 2*(NX-1)*(NY-1) geometric "elements".  Because quadratic basis
+      functions are to be used, each triangle will be associated not only
+      with the three corner nodes that defined it, but with three extra
+      midside nodes.  If we include these additional nodes, there are
+      now a total of (2*NX-1)*(2*NY-1) nodes in the region.
+    </p>
+
+    <p>
+      We now assume that the unknown function U(x,y) can be represented
+      as a linear combination of the basis functions associated with each
+      node.  The value of U at the boundary nodes is obvious, so we
+      concentrate on the NUNK interior nodes where U(x,y) is unknown.
+      For each node I, we determine a basis function PHI(I)(x,y), and
+      evaluate the following finite element integral:
+      <pre>
+        Integral ( Ux(x,y) * PHIx(I)(x,y) + Uy(x,y) * PHIy(I)(x,y) ) =
+        Integral ( F(x,y) * PHI(I)(x,y)
+      </pre>
+      The set of all such equations yields a linear system for the
+      coefficients of the representation of U.
+    </p>
+
+    <p>
+      The program allows the user to supply two routines:
+      <ul>
+        <li>
+          <b>FUNCTION RHS ( X, Y )</b> returns the right hand side F(x,y)
+          of the Poisson equation.
+        </li>
+        <li>
+          <b>SUBROUTINE EXACT ( X, Y, U, DUDX, DUDY )</b> returns
+          the exact solution of the Poisson equation (assuming this is
+          known.)  This routine is necessary so that the boundary conditions
+          may be set, and so that error analysis can be performed, reporting
+          the L2 and H1 seminorm errors
+          between the true and computed solutions.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      There are a few variables that are easy to manipulate.  In particular,
+      the user can change the variables NX and NY in the main program,
+      to change the number of nodes and elements.  The variables (XL,YB)
+      and (XR,YT) define the location of the lower left and upper right
+      corners of the rectangular region, and these can also be changed
+      in a single place in the main program.
+    </p>
+
+    <p>
+      The program writes out a file containing an Encapsulated
+      PostScript image of the nodes and elements, with numbers.
+      Unfortunately, for values of NX and NY over 10, the plot is
+      too cluttered to read.  For lower values, however, it is
+      a valuable map of what is going on in the geometry.
+    </p>
+
+    <p>
+      The program is also able to write out a file containing the
+      solution value at every node.  This file may be used to create
+      contour plots of the solution.
+    </p>
+
+    <p>
+      The original version of this code comes from Professor Janet Peterson.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FEM2D_POISSON_RECTANGLE</b> is available in
+      <a href = "../../cpp_src/fem2d_poisson_rectangle/fem2d_poisson_rectangle.html">a C++ version</a> and
+      <a href = "../../f77_src/fem2d_poisson_rectangle/fem2d_poisson_rectangle.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fem2d_poisson_rectangle/fem2d_poisson_rectangle.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/fem2d_poisson_rectangle/fem2d_poisson_rectangle.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/fem2d/fem2d.html">
+      FEM2D</a>,
+      a data directory which
+      contains examples of 2D FEM files,
+      text files that describe a 2D finite element geometry
+      and associated nodal values;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_heat_rectangle/fem2d_heat_rectangle.html">
+      FEM2D_HEAT_RECTANGLE</a>,
+      a FORTRAN90 program which
+      solves the 2D time dependent heat equation on the unit square.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_poisson/fem2d_poisson.html">
+      FEM2D_POISSON</a>,
+      a FORTRAN90 program which
+      solves the 2D Poisson equation on an arbitrary triangulated region,
+      using the finite element method,
+      and piecewise linear triangular elements.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem2d_poisson_rectangle_linear/fem2d_poisson_rectangle_linear.html">
+      FEM2D_POISSON_RECTANGLE_LINEAR</a>,
+      a FORTRAN90 program which
+      solves the 2D Poisson equation on a rectangle, using the finite element method,
+      and piecewise linear triangular elements.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Finite Element Methods,<br>
+          Academic Press, 1988,<br>
+          ISBN: 0126330107,<br>
+          LC: TA347.F5.S3313.
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200,<br>
+          LC: TA640.2.Z54
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fem2d_poisson_rectangle.f90">fem2d_poisson_rectangle.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "fem2d_poisson_rectangle.sh">fem2d_poisson_rectangle.sh</a>,
+          commands to compile and run the program;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "rectangle_output.txt">rectangle_output.txt</a>,
+          the printed output from a run;
+        </li>
+        <li>
+          <a href = "rectangle_nodes.png">rectangle_nodes.png</a>,
+          a PNG image of
+          the nodes, for NX = NY = 7  (the picture is
+          hard to read for larger values of NX and NY);
+        </li>
+        <li>
+          <a href = "rectangle_nodes.txt">rectangle_nodes.txt</a>,
+          a text file containing a list, for each node, of its X and Y
+          coordinates;
+        </li>
+        <li>
+          <a href = "rectangle_elements.png">rectangle_elements.png</a>,
+          a PNG image of
+          the elements, for NX = NY = 7  (the picture is
+          hard to read for larger values of NX and NY);
+        </li>
+        <li>
+          <a href = "rectangle_elements.txt">rectangle_elements.txt</a>,
+          a text file containing a list, for each element, of the six
+          nodes that compose it;
+        </li>
+        <li>
+          <a href = "rectangle_solution.txt">rectangle_solution.txt</a>,
+          a text file containing the solution U at each node (X,Y);
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main for FEM2D_POISSON_RECTANGLE.
+        </li>
+        <li>
+          <b>AREA_SET</b> sets the area of each element.
+        </li>
+        <li>
+          <b>ASSEMBLE</b> assembles the coefficient matrix A and right hand side F.
+        </li>
+        <li>
+          <b>BANDWIDTH</b> determines the bandwidth of the coefficient matrix.
+        </li>
+        <li>
+          <b>BOUNDARY</b> modifies the linear system for boundary conditions.
+        </li>
+        <li>
+          <b>COMPARE</b> compares the exact and computed solution at the nodes.
+        </li>
+        <li>
+          <b>DGB_FA</b> performs a LINPACK-style PLU factorization of an DGB matrix.
+        </li>
+        <li>
+          <b>DGB_PRINT_SOME</b> prints some of a DGB matrix.
+        </li>
+        <li>
+          <b>DGB_SL</b> solves a system factored by DGB_FA.
+        </li>
+        <li>
+          <b>ELEMENT_WRITE</b> writes the element information to a text file.
+        </li>
+        <li>
+          <b>ERRORS</b> calculates the error in the L2 norm and H1 seminorm.
+        </li>
+        <li>
+          <b>EXACT</b> calculates the exact solution and its first derivatives.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>GRID_T6</b> produces a grid of pairs of 6 node triangles.
+        </li>
+        <li>
+          <b>INDX_SET</b> assigns an unknown value index at each node.
+        </li>
+        <li>
+          <b>NODES_PLOT</b> plots a pointset.
+        </li>
+        <li>
+          <b>NODES_WRITE</b> writes the nodes to a file.
+        </li>
+        <li>
+          <b>QBF</b> evaluates the quadratic basis functions.
+        </li>
+        <li>
+          <b>QUAD_A</b> sets the quadrature rule for assembly.
+        </li>
+        <li>
+          <b>QUAD_E</b> sets up the quadrature rule for error integration.
+        </li>
+        <li>
+          <b>R8VEC_PRINT_SOME</b> prints "some" of an R8VEC.
+        </li>
+        <li>
+          <b>RHS</b> gives the right-hand side of the differential equation.
+        </li>
+        <li>
+          <b>SOLUTION_WRITE</b> writes the solution to a file.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRIANGULATION_ORDER6_PLOT</b> plots a 6-node triangulation of a pointset.
+        </li>
+        <li>
+          <b>XY_SET</b> sets the XY coordinates of the nodes.
+        </li>
+      </ul>
+    <p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 24 December 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

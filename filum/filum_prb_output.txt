@@ -1,0 +1,720 @@
+November 22 2011   8:18:51.082 AM
+ 
+FILUM_PRB:
+  FORTRAN90 version
+  Test the FILUM library.
+ 
+TEST01
+  FILE_APPEND makes a new version of a file
+  which is "appendable".
+ 
+    "filum_prb_append.txt".
+ 
+  Current contents of file:
+    "filum_prb_append.txt".
+ 
+  This is the file:
+
+  After the first pass, it has a total
+  of 4 lines of text.
+ 
+FILE_APPEND - Note:
+  The number of records in the file is        4
+ 
+  Contents of file after reopening in APPEND mode:
+ 
+  This is the file:
+
+  After the first pass, it has a total
+  of 4 lines of text.
+
+  This is new information that has been
+  written to the file during a separate pass.
+
+  The file should now contain a total of
+  11 lines of text.
+ 
+TEST02
+  FILE_CHAR_COUNT counts the characters in a file.
+ 
+  Examining file:
+    "filum_prb_test.txt".
+ 
+  Number of characters:      217
+ 
+TEST03
+  FILE_COLUMN_COUNT counts the columns in a file.
+ 
+  It is assumed that the file contains a number of lines,
+  with each line containing the same number of words.
+  The task is to determine the number of words in a line,
+  that is, the number of "columns" of text.
+ 
+  Examining the file: 
+    "filum_prb_4by5.txt".
+ 
+  Number of columns:        5
+ 
+TEST04
+  FILE_COLUMN_COUNT counts the columns in a file.
+  FILE_COLUMN_RANGE finds the range of the columns.
+ 
+ 
+  Examining the file: 
+    "filum_prb_columns.txt".
+ 
+  Contents of file:
+ 
+  1.0     2.0    3.0    4.0
+  5.0     5.0    5.0    5.0
+  6.0     7.0    6.0    7.0
+-37.0   +49.0 -303.17 483.99
+ 
+  Number of columns in file:        4
+ 
+   Col  Minimum  Maximum
+ 
+    1  -37.0000    6.0000
+    2    2.0000   49.0000
+    3 -303.1700    6.0000
+    4    4.0000  483.9900
+ 
+TEST05
+  FILE_COPY makes a copy of a file.
+ 
+  Finished copying.
+ 
+  Input file is  "filum_prb_copy.txt".
+  Output file is "filum_prb_test.txt".
+ 
+TEST06
+  FILE_EXIST reports whether a file "exists".
+ 
+  Exist?  File_name
+ 
+       T  filum_prb.f90
+       T  filum.f90
+       F  raisin.txt
+       F  make.money.fast
+ 
+TEST065
+  FILE_GET_NEXT_INTEGER gets the next integer
+  from a file.
+ 
+  Examining file:
+    "integers.txt".
+ 
+ 
+  Contents of file:
+ 
+INTEGERS.TXT contains text and integers scrambled together.
+First we are nice, and have 1, 23, 456 and -7890 but
+then we string12and13and14together.
+
+That was a blank line.  Note that commas are separators, too,
+and so 1,234,567 is not what you might think it is!
+And scientific notation is ignored.  Here is how 34.57E+98 is handled.
+
+ 
+  Successive Integers:
+ 
+         1
+        23
+       456
+     -7890
+        12
+        13
+        14
+         1
+       234
+       567
+        34
+        57
+        98
+ 
+  End of file!
+ 
+TEST07
+  FILE_GET_NEXT_WORD gets the next word
+  from a file.
+ 
+  Examining file:
+    "filum_prb_test.txt".
+ 
+ 
+  Line    Word  ---WORD---  ---TEXT--------------
+ 
+       1         1  [            1] filumprb_test.txt
+       1         2  1]           filumprb_test.txt
+       1         3  filumprb_t  
+       2         1  [            2]
+       2         2  2]          
+       3         1  [            3] ANNA
+       3         2  3]           ANNA
+       3         3  ANNA        
+       4         1  [            4] Anna
+       4         2  4]           Anna
+       4         3  Anna        
+       5         1  [            5] Anna
+       5         2  5]           Anna
+       5         3  Anna        
+       6         1  [            6] Belle
+       6         2  6]           Belle
+       6         3  Belle       
+       7         1  [            7] Bell
+       7         2  7]           Bell
+       7         3  Bell        
+       8         1  [            8] Belle
+       8         2  8]           Belle
+       8         3  Belle       
+       9         1  [            9] BELL
+       9         2  9]           BELL
+       9         3  BELL        
+      10         1  [10]         Charley Horse
+      10         2  Charley      Horse
+      10         3  Horse       
+      11         1  [11]          Charley Horse
+      11         2  Charley      Horse
+      11         3  Horse       
+      12         1  [12]         Charley  Horse
+      12         2  Charley       Horse
+      12         3  Horse       
+      13         1  [13]         Charley Horse
+      13         2  Charley      Horse
+      13         3  Horse       
+      14         1  [14]         Charley Horse
+      14         2  Charley      Horse
+      14         3  Horse       
+      15         1  [15]         CharleyHorse
+      15         2  CharleyHor  
+      16         1  [16]         charleyhorse
+      16         2  charleyhor  
+ 
+  End of file!
+ 
+TEST08
+  FILE_LINE_UNIFORM selects one line of a file,
+  uniformly at random, reading the file one time.
+ 
+ 
+  Examining the file: 
+    "filum_prb_test.txt".
+ 
+  Line    Text:
+ 
+        16  [16] charleyhorse
+         8  [ 8] Belle
+         5  [ 5] Anna
+        15  [15] CharleyHorse
+         8  [ 8] Belle
+ 
+  Total number of lines in file is       16
+ 
+TEST085
+  FILE_LINE_WIDTH counts the longest line in a file.
+ 
+  Examining file:
+    "filum_prb_test.txt".
+ 
+ 
+FILE_LINE_WIDTH - Fatal error!
+  Could not open the file:
+    "filum_prb_test.txt".
+  Longest line width:       -1
+ 
+TEST09
+  FILE_LINES_UNIFORM selects one line of a file,
+  uniformly at random, reading the file one time.
+ 
+ 
+  Examining the file: 
+    "filum_prb_test.txt".
+ 
+  Line  Text:
+ 
+ 
+        16  [16] charleyhorse
+        10  [10] Charley Horse
+        14  [14] Charley Horse
+ 
+         6  [ 6] Belle
+         8  [ 8] Belle
+        10  [10] Charley Horse
+ 
+        10  [10] Charley Horse
+         7  [ 7] Bell
+        14  [14] Charley Horse
+ 
+        15  [15] CharleyHorse
+        10  [10] Charley Horse
+        11  [11]  Charley Horse
+ 
+         5  [ 5] Anna
+        13  [13] Charley Horse
+         4  [ 4] Anna
+ 
+         4  [ 4] Anna
+         2  [ 2]
+        13  [13] Charley Horse
+ 
+        15  [15] CharleyHorse
+         2  [ 2]
+         9  [ 9] BELL
+ 
+        12  [12] Charley  Horse
+         8  [ 8] Belle
+        15  [15] CharleyHorse
+ 
+         8  [ 8] Belle
+         6  [ 6] Belle
+         4  [ 4] Anna
+ 
+         1  [ 1] filumprb_test.txt
+        12  [12] Charley  Horse
+         5  [ 5] Anna
+ 
+         5  [ 5] Anna
+        16  [16] charleyhorse
+        14  [14] Charley Horse
+ 
+         7  [ 7] Bell
+        13  [13] Charley Horse
+        14  [14] Charley Horse
+ 
+         8  [ 8] Belle
+         4  [ 4] Anna
+         9  [ 9] BELL
+ 
+        16  [16] charleyhorse
+         9  [ 9] BELL
+         3  [ 3] ANNA
+ 
+        15  [15] CharleyHorse
+         8  [ 8] Belle
+        10  [10] Charley Horse
+ 
+        15  [15] CharleyHorse
+         2  [ 2]
+         3  [ 3] ANNA
+ 
+         1  [ 1] filumprb_test.txt
+         6  [ 6] Belle
+        15  [15] CharleyHorse
+ 
+        12  [12] Charley  Horse
+         6  [ 6] Belle
+         3  [ 3] ANNA
+ 
+         7  [ 7] Bell
+         5  [ 5] Anna
+        12  [12] Charley  Horse
+ 
+        16  [16] charleyhorse
+        13  [13] Charley Horse
+        12  [12] Charley  Horse
+ 
+  Total number of lines in file is       16
+ 
+TEST10
+  FILE_NAME_APPEND appends a string to the part
+  of a file name that precedes the extension.
+ 
+  Old                  New
+  FILE_NAME   APPEND   FILE_NAME
+ 
+  bob.for     XYZ     bobXYZ.for
+  N.B.C.D     XYZ     N.B.CXYZ.D
+  Naomi.      XYZ      NaomiXYZ.
+  Arthur      XYZ      ArthurXYZ
+  .amos       XYZ       XYZ.amos
+ 
+TEST11
+  FILE_NAME_DEC decrements a string
+ 
+     Input             Output
+ 
+ 
+  file???.dat                               
+  (Empty output string.  Quit loop!)
+ 
+  file076.dat           file075.dat         
+  file075.dat           file074.dat         
+  file074.dat           file073.dat         
+  file073.dat           file072.dat         
+ 
+  3cat3.dat             3cat2.dat           
+  3cat2.dat             3cat1.dat           
+  3cat1.dat             3cat0.dat           
+  3cat0.dat             2cat9.dat           
+ 
+  fred03.txt            fred02.txt          
+  fred02.txt            fred01.txt          
+  fred01.txt            fred00.txt          
+  fred00.txt            fred99.txt          
+ 
+TEST12
+  FILE_NAME_EXT_GET finds a file extension.
+ 
+  FILE_NAME     Begin    End
+ 
+  bob.for     4  7
+  N.B.C.D     6  7
+  Naomi.      6  6
+  Arthur     -1 -1
+  .amos       1  5
+ 
+TEST13
+  FILE_NAME_EXT_SWAP changes a file extension.
+ 
+  Input                 Output
+  FILE_NAME     EXT     FILE_NAME
+ 
+  bob.for        obj    bob.obj     
+  bob.bob.bob    txt    bob.bob.txt 
+  bob.           yak    bob.yak     
+  bob            ps     bob.ps      
+  .oops          eek    .eek        
+ 
+TEST14
+  FILE_NAME_INC increments a string
+ 
+     Input             Output
+ 
+  file???.dat                               
+  (Empty output string.  Quit loop!)
+ 
+  file072.dat           file073.dat         
+  file073.dat           file074.dat         
+  file074.dat           file075.dat         
+  file075.dat           file076.dat         
+ 
+  2cat9.dat             3cat0.dat           
+  3cat0.dat             3cat1.dat           
+  3cat1.dat             3cat2.dat           
+  3cat2.dat             3cat3.dat           
+ 
+  fred98.txt            fred99.txt          
+  fred99.txt            fred00.txt          
+  fred00.txt            fred01.txt          
+  fred01.txt            fred02.txt          
+ 
+TEST145
+  FILE_NAME_INC increments a string.
+  This test checks that a file name is properly
+  incremented when carrying is required.
+ 
+     Input             Output
+ 
+  filename_0000         filename_0001       
+  filename_0001         filename_0002       
+  filename_0002         filename_0003       
+  filename_0003         filename_0004       
+  filename_0004         filename_0005       
+  filename_0005         filename_0006       
+  filename_0006         filename_0007       
+  filename_0007         filename_0008       
+  filename_0008         filename_0009       
+  filename_0009         filename_0010       
+ 
+  filename_0008         filename_0009       
+  filename_0009         filename_0010       
+  filename_0010         filename_0011       
+  filename_0011         filename_0012       
+  filename_0012         filename_0013       
+  filename_0013         filename_0014       
+  filename_0014         filename_0015       
+  filename_0015         filename_0016       
+  filename_0016         filename_0017       
+  filename_0017         filename_0018       
+ 
+  filename_0096         filename_0097       
+  filename_0097         filename_0098       
+  filename_0098         filename_0099       
+  filename_0099         filename_0100       
+  filename_0100         filename_0101       
+  filename_0101         filename_0102       
+  filename_0102         filename_0103       
+  filename_0103         filename_0104       
+  filename_0104         filename_0105       
+  filename_0105         filename_0106       
+ 
+  filename_0995         filename_0996       
+  filename_0996         filename_0997       
+  filename_0997         filename_0998       
+  filename_0998         filename_0999       
+  filename_0999         filename_1000       
+  filename_1000         filename_1001       
+  filename_1001         filename_1002       
+  filename_1002         filename_1003       
+  filename_1003         filename_1004       
+  filename_1004         filename_1005       
+ 
+  filename_9997         filename_9998       
+  filename_9998         filename_9999       
+  filename_9999         filename_0000       
+  filename_0000         filename_0001       
+  filename_0001         filename_0002       
+  filename_0002         filename_0003       
+  filename_0003         filename_0004       
+  filename_0004         filename_0005       
+  filename_0005         filename_0006       
+  filename_0006         filename_0007       
+ 
+TEST15
+  FILE_NAME_INC "increments" a string, such as
+  a file name.
+ 
+  In this example, the string is a file name
+  of the form
+ 
+     "file_00.txt".
+ 
+  We know we have a sequence of files named
+    file_001.txt, file_002.txt, ...
+  and we want to generate the name of the next
+  file and open it.  If it doesn't exist, exit.
+ 
+  Looking for file "file_01.txt".
+  Looking for file "file_02.txt".
+  Looking for file "file_03.txt".
+  Looking for file "file_04.txt".
+  Looking for file "file_05.txt".
+  Looking for file "file_06.txt".
+ 
+  File "file_06.txt" does not exist.
+  Exiting...
+ 
+TEST16
+  FILE_NAME_INC "increments" a string, such as
+  a file name.
+ 
+  In this example, the string is a file name
+  of the form
+ 
+     "file_s00_t000.txt
+ 
+  The user is going to carry out several simulations.
+  For each simulation, a number of time steps are done.
+  In the file name, the "s" file records the simulation,
+  and the "t" field records the time step.
+ 
+  So a typical file name is "file_s05_t017.txt".
+ 
+  Assuming we have 5 simulations, and 4 time steps,
+  the following double loop will generate all the
+  file names, from
+    "file_s01_t001.txt"
+  to
+    "file_s05_t004.txt".
+ 
+  Begin simulation        1
+ 
+  file_s01_t001.txt
+  file_s01_t002.txt
+  file_s01_t003.txt
+  file_s01_t004.txt
+ 
+  Begin simulation        2
+ 
+  file_s02_t001.txt
+  file_s02_t002.txt
+  file_s02_t003.txt
+  file_s02_t004.txt
+ 
+  Begin simulation        3
+ 
+  file_s03_t001.txt
+  file_s03_t002.txt
+  file_s03_t003.txt
+  file_s03_t004.txt
+ 
+  Begin simulation        4
+ 
+  file_s04_t001.txt
+  file_s04_t002.txt
+  file_s04_t003.txt
+  file_s04_t004.txt
+ 
+  Begin simulation        5
+ 
+  file_s05_t001.txt
+  file_s05_t002.txt
+  file_s05_t003.txt
+  file_s05_t004.txt
+ 
+TEST165
+  FILE_NAME_INC_NOWRAP increments a string
+  but does not allow "wrap around".
+ 
+     Input             Output
+ 
+  file???.dat                               
+  (File name not incrementable.  Quit loop!)
+ 
+  file072.dat           file073.dat         
+  file073.dat           file074.dat         
+  file074.dat           file075.dat         
+  file075.dat           file076.dat         
+ 
+  2cat9.dat             3cat0.dat           
+  3cat0.dat             3cat1.dat           
+  3cat1.dat             3cat2.dat           
+  3cat2.dat             3cat3.dat           
+ 
+  fred98.txt            fred99.txt          
+  fred99.txt                                
+  (File name not incrementable.  Quit loop!)
+ 
+TEST17
+  FILE_PARA_COUNT counts the paragraphs in a file.
+ 
+  Examining file:
+    "story.txt".
+ 
+  Number of paragraphs:        6
+ 
+TEST18
+  FILE_PAREN_CHECK checks a file for parenthesis errors.
+ 
+  Examining file:
+    "filum_prb_parens1.txt".
+ 
+ 
+FILE_PAREN_CHECK - Warning!
+  Parenthesis error in the file:
+    "filum_prb_parens1.txt".
+  Number of missing right parentheses:        2
+ 
+  Examining file:
+    "filum_prb_parens2.txt".
+ 
+ 
+FILE_PAREN_CHECK - Warning!
+  Parenthesis error in the file:
+    "filum_prb_parens2.txt".
+  An illegal right parenthesis occurs on line       5
+    premature one, which should show up now!),
+ 
+  Examining file:
+    "filum_prb_parens3.txt".
+ 
+ 
+FILE_PAREN_CHECK - Note:
+  Parenthesis checks passed for file:
+    "filum_prb_parens3.txt".
+ 
+TEST19
+  FILE_RENAME renames a file
+ 
+  Old file name: "bob.txt".
+  New file name: "fred.txt".
+ 
+  FILE_EXIST(bob.txt) = T
+  FILE_EXIST(fred.txt) = F
+ 
+  Now call FILE_RENAME:
+ 
+  FILE_EXIST(bob.txt) = F
+  FILE_EXIST(fred.txt) = T
+ 
+TEST20
+  FILE_REVERSE_COLUMNS makes a copy of a file with
+  each line reversed.
+ 
+  Finished reversal.
+ 
+  Input file is  "filum_prb_test.txt".
+  Output file is "filum_prb_reverse_columns.txt".
+ 
+TEST21
+  FILE_REVERSE_ROWS makes a copy of a file with the
+  lines in reverse order.
+ 
+  Finished reversal.
+ 
+  Input file is  "filum_prb_test.txt".
+  Output file is "filum_prb_reverse_rows.txt".
+ 
+TEST215
+  FILE_ROT13 makes a copy of a file with
+  each line encoded by ROT13.
+ 
+  Input file is   "story.txt".
+  ROT13 of "story.txt" is "story_rot13.txt".
+  ROT13 of "story_rot13.txt" is "story_rot26.txt".
+ 
+TEST22
+  FILE_ROW_COUNT counts the "rows" in a file.
+ 
+  Examining file:
+    "filum_prb_test.txt".
+ 
+  Number of lines:            16
+ 
+TEST225
+  FILE_SEQUENCE_SIZE "sizes" the files in a file sequence.
+ 
+  Examining files in sequence starting with:
+    "data_100.txt".
+ 
+  Number of files:             3
+  Number of data items:        8
+ 
+TEST23
+  FILE_TAG_CHECK checks a file for tag errors.
+ 
+  Examining file:
+    "filum_prb_parens1.txt".
+ 
+ 
+FILE_TAG_CHECK - Warning!
+  Tag error in the file:
+    "filum_prb_parens1.txt".
+  Number of missing right tags:        2
+ 
+  FILE_TAG_CHECK = F
+ 
+  Examining file:
+    "filum_prb_parens2.txt".
+ 
+ 
+FILE_TAG_CHECK - Warning!
+  Tag error in the file:
+    "filum_prb_parens2.txt".
+  An illegal right tag occurs on line       5
+    premature one, which should show up now!),
+ 
+  FILE_TAG_CHECK = F
+ 
+  Examining file:
+    "filum_prb_parens3.txt".
+ 
+ 
+FILE_TAG_CHECK - Note:
+  Tag checks passed for file:
+    "filum_prb_parens3.txt".
+ 
+  FILE_TAG_CHECK = T
+ 
+  Examining file:
+    "filum_prb_braces.txt".
+ 
+ 
+FILE_TAG_CHECK - Note:
+  Tag checks passed for file:
+    "filum_prb_braces.txt".
+ 
+  FILE_TAG_CHECK = T
+ 
+TEST24
+  FILE_WORD_COUNT counts the words in a file.
+ 
+  Examining file:
+    "filum_prb_test.txt".
+ 
+  Number of words:            45
+ 
+FILUM_PRB:
+  Normal end of execution.
+ 
+November 22 2011   8:18:51.101 AM

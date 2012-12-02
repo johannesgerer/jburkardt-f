@@ -1,0 +1,453 @@
+<html>
+
+  <head>
+    <title>
+      TABLE_UNBORDER - Remove boundary values from a table
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TABLE_UNBORDER <br> Remove boundary values from a table
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TABLE_UNBORDER</b>
+      is a FORTRAN90 program which
+      removes boundary values
+      from a table.
+    </p>
+
+    <p>
+      To understand what's going on, assume that we begin with
+      a set of (scalar) values on an M by N grid; we illustrate with
+      M = 5 and N = 7:
+      <pre>
+        11  12  13  14  15  16  17
+        21  22  23  24  25  26  27
+        31  32  33  34  35  36  37
+        41  42  43  44  45  46  47
+        51  52  53  54  55  56  57
+      </pre>
+    </p>
+
+    <p>
+      Suppose, for some reason, that we only want to consider the data
+      in the "interior" of the grid; that is, we want the M-2 by N-2
+      array created by removing the first and last rows and columns.  For
+      our example, this would be:
+      <pre>
+        22  23  24  25  26
+        32  33  34  35  36
+        42  43  44  45  46
+      </pre>
+    </p>
+
+    <p>
+      The <b>TABLE_UNBORDER</b> program is designed to do this, using
+      the command line.
+    </p>
+
+    <p>
+      Now we are probably going to be dealing with much larger sets of
+      data, stored in a file.  So we have to figure out the rules for
+      doing that.
+    </p>
+
+    <p>
+      <i>Input file format</i>: The initial data, which is "really" an
+      M by N array, is to be thought of as a vector of length M * N,
+      created by listing the first column, the second column, and so on
+      to the last column.  This data is stored in a file using the
+      <a href = "../../data/table/table.html">TABLE format</a>.  Our
+      example data would be:
+      <pre>
+        # Comments are OK in a file if preceded by the comment character!
+        #
+        11
+        21
+        31
+        41
+        51
+        12
+        22
+        ...
+        27
+        37
+        47
+        57
+      </pre>
+      We will presume this file is called <i>"u.txt"</i>.
+    </p>
+
+    <p>
+      <i>(Pie in the Sky):</i> In a future version of this program,
+      the data at each node will be allowed to be vector-valued.
+      That's one reason we are forcing the data currently to be listed
+      with just a single value per line in the file!
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <dl>
+        <dt>
+          <b>table_unborder</b> <i>u.txt</i> <i>v.txt</i> <i>5</i> <i>7</i>
+        </dt>
+        <dd>
+          reads the file <i>u.txt</i> containing a matrix of 5 rows and
+          7 columns, and removes the "border" values, writing the result to
+          <i>v.txt</i>.
+        </dd>
+        <dt>
+          <b>table_unborder</b>
+        </dt>
+        <dd>
+          will prompt interactively for the four missing arguments.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TABLE_UNBORDER</b> is available in
+      <a href = "../../cpp_src/table_unborder/table_unborder.html">a C++ version</a> and
+      <a href = "../../f_src/table_unborder/table_unborder.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/table_barplot_ppma/table_barplot_ppma.html">
+      TABLE_BARPLOT_PPMA</a>,
+      a FORTRAN90 program which
+      reads a table file and creates a
+      PPMA bargraph of the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_border/table_border.html">
+      TABLE_BORDER</a>,
+      a FORTRAN90 program which
+      can be used to add a border
+      (of zero values) to a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns/table_columns.html">
+      TABLE_COLUMNS</a>,
+      a FORTRAN90 program which
+      can extract specific columns of data
+      from a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_columns_permute/table_columns_permute.html">
+      TABLE_COLUMNS_PERMUTE</a>,
+      a FORTRAN90 program which
+      permutes the columns of a
+      table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_delaunay/table_delaunay.html">
+      TABLE_DELAUNAY</a>,
+      a FORTRAN90 program which
+      computes the Delaunay triangulation of a set
+      of points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_histogram/table_histogram.html">
+      TABLE_HISTOGRAM</a>,
+      a FORTRAN90 program which
+      can make a histogram of a set of points
+      stored in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_io/table_io.html">
+      TABLE_IO</a>,
+      a FORTRAN90 program which
+      supplies the routines used to read the TABLE file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_latinize/table_latinize.html">
+      TABLE_LATINIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and creates a "latinized" version by adjusting the data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_merge/table_merge.html">
+      TABLE_MERGE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points, and removes duplicates, and points that are close to each other.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_orthonormalize/table_orthonormalize.html">
+      TABLE_ORTHONORMALIZE</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and orthonormalizes the columns.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_quality/table_quality.html">
+      TABLE_QUALITY</a>,
+      a FORTRAN90 program which
+      reads a file of
+      points and computes the quality of dispersion.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_record_match/table_record_match.html">
+      TABLE_RECORD_MATCH</a>,
+      a FORTRAN90 program which
+      can be used to find close records in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_scale/table_scale.html">
+      TABLE_SCALE</a>,
+      a FORTRAN90 program which
+      can be used to multiply the entries of a table file
+      by a scale vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_shift/table_shift.html">
+      TABLE_SHIFT</a>,
+      a FORTRAN90 program which
+      can be used to shift the entries of a table file
+      by a shift vector.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_stats/table_stats.html">
+      TABLE_STATS</a>,
+      a FORTRAN90 program which
+      can read a table file and compute certain statistics.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_tet_mesh/table_tet_mesh.html">
+      TABLE_TET_MESH</a>,
+      a FORTRAN90 program which
+      can read a table file of 3D data, and compute a
+      tetrahedral mesh.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_top/table_top.html">
+      TABLE_TOP</a>,
+      a FORTRAN90 program which
+      can read a table file of M-dimensional data and
+      make a table of plots of all pairs of coordinates.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_uniform_noise/table_uniform_noise.html">
+      TABLE_UNIFORM_NOISE</a>,
+      a FORTRAN90 program which
+      can be used to add a uniform noise term to the data
+      in a table file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_voronoi/table_voronoi.html">
+      TABLE_VORONOI</a>,
+      a FORTRAN90 program which
+      can be used to compute information about
+      the Voronoi diagram of the points.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "table_unborder.f90">table_unborder.f90</a>,
+          the source code.
+        </li>
+        <li>
+          <a href = "table_unborder.sh">table_unborder.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      Our test files are the results of the command:
+      <blockquote>
+        table_unborder u_01.txt v_01.txt 7 5
+      </blockquote>
+      Note that the program will automatically repeat the command
+      on a numerical sequence of input files!
+      Test files you may copy include:
+      <ul>
+        <li>
+          <a href = "u_01.txt">u_01.txt</a>,
+          input file #1, 7 by 5.
+        </li>
+        <li>
+          <a href = "u_02.txt">u_02.txt</a>,
+          input file #2.
+        </li>
+        <li>
+          <a href = "u_03.txt">u_03.txt</a>,
+          input file #3.
+        </li>
+        <li>
+          <a href = "v_01.txt">v_01.txt</a>,
+          output file #1, 5 by 3.
+        </li>
+        <li>
+          <a href = "v_02.txt">v_02.txt</a>,
+          output file #2.
+        </li>
+        <li>
+          <a href = "v_03.txt">v_03.txt</a>,
+          output file #3.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for TABLE_UNBORDER.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns TRUE if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DTABLE_DATA_BORDER_CUT</b> cuts the "border" of double precision table data.
+        </li>
+        <li>
+          <b>DTABLE_DATA_READ</b> reads data from a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_DATA_WRITE</b> writes data to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_READ</b> reads the header from a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_HEADER_WRITE</b> writes the header to a double precision table file.
+        </li>
+        <li>
+          <b>DTABLE_PRINT</b> prints a double precision matrix.
+        </li>
+        <li>
+          <b>DTABLE_PRINT_SOME</b> prints some of a double precision matrix.
+        </li>
+        <li>
+          <b>DTABLE_WRITE</b> writes a double precision table file.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_EXIST</b> reports whether a file exists.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_INPUT</b> prints a prompt string and reads an integer from the user.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_INPUT</b> prints a prompt string and reads a string from the user.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

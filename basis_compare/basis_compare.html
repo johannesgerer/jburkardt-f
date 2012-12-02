@@ -1,0 +1,248 @@
+<html>
+
+  <head>
+    <title>
+      BASIS_COMPARE - Compare two basis sets.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BASIS_COMPARE <br> Compare two basis sets.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BASIS_COMPARE</b>
+      is a FORTRAN90 program which
+      compares the amount of overlap between two basis sets.
+    </p>
+
+    <p>
+      In an <b>M</b>-dimensional space, a set of <b>N</b> orthonormal vectors
+      <b>U</b> is provided, which span some subspace.  We let <b>Q</b> be the
+      <b>M</b> by <b>N</b> matrix whose columns are an orthogonal basis for
+      the span of the vectors <b>U(1:N)</b>.  (We'll assume for now that the
+      vectors <b>U</b> are linearly independent.  Otherwise,
+      <b>Q</b> could actually have fewer "interesting" columns than <b>U</b>.)
+    </p>
+
+    <p>
+      One or more <b>M</b>-vectors <b>V</b> are then considered.  For each
+      <b>V</b>, it is desired to know the proportion of the vector that lies
+      within and outside the subspace spanned by <b>U</b>.  <b>V</b> admits an
+      orthogonal decomposition of the form:
+      <pre><b>
+        V = V1 + V2
+      </b></pre>
+      where
+      <ul>
+        <li>
+          <b>V1</b> is a vector in the subspace spanned by <b>U</b>;
+        </li>
+        <li>
+          <b>V2</b> is a vector orthogonal to the subspace spanned by <b>U</b>;
+        </li>
+        <li>
+          sqrt ( ||<b>V1</b>||^2 + ||<b>V2</b>||^2 ) = ||<b>V</b>||
+          = Euclidean length of <b>V</b>.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The values
+      <ul>
+        <li>
+          <b>ALPHA</b> = ||<b>V1</b>|| / ||<b>V</b>||
+        </li>
+        <li>
+          <b>BETA</b>  = ||<b>V2</b>|| / ||<b>V</b>||
+        </li>
+      </ul>
+      must lie between 0 and 1; their squares must sum to 1, and indicate
+      the portion of <b>V</b> which lies within the <b>U</b> subspace, and
+      the portion which lies in the orthogonal complement.  Equivalently,
+      the angle <b>THETA</b> between <b>V</b> and the subspace is determined by
+      <pre><b>
+        TAN ( THETA ) = BETA / ALPHA.
+      </b></pre>
+    </p>
+
+    <p>
+      To compute <b>ALPHA</b>, we realize that <b>Q' * V</b> produces the
+      <b>N</b> by 1 vector of projection coefficients of <b>V</b> onto each
+      <b>U(I)</b>.  Therefore, <b>V1</b>, the orthogonal projection of <b>V</b>
+      into <b>U</b> is <b>Q * ( Q' * V )</b>:
+      <pre><b>
+        V1 =       Q * Q'   * V
+      </b></pre>
+      and the "remainder" is:
+      <pre><b>
+        V2 = ( I - Q * Q' ) * V
+      </b></pre>
+      from which we can determine <b>ALPHA</b> and <b>BETA</b>, and finally
+      <b>THETA</b>.
+    </p>
+
+    <p>
+      Such sets are computed, for example, by
+      <a href = "../cvt_basis_flow/cvt_basis_flow.html">CVT_BASIS_FLOW</a>,
+      <a href = "../pod_basis_flow/pod_basis_flow.html">POD_BASIS_FLOW</a>,
+      and
+      <a href = "../svd_basis/svd_basis.html">SVD_BASIS</a>,
+      However, somewhat inconveniently, these programs are working
+      with velocities, and store each vector in a pair of columns.
+      For now, we have set up the program to expect the input data
+      to have this format.  Moreover, rather than comparing the
+      two bases directly, we read in one basis to use as U, and
+      then each vector of the other basis is checked against U.
+      Also, U and V already consist of orthonormal columns, so
+      the QR factorization of U is simply
+      <pre><b>
+        U = Q * R = U * I.
+      </b></pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt_basis_flow/cvt_basis_flow.html">
+      CVT_BASIS_FLOW</a>,
+      a FORTRAN90 program which
+      extracts a basis from a set of velocity snapshots using CVT methods.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pod_basis_flow/pod_basis_flow.html">
+      POD_BASIS_FLOW</a>,
+      a FORTRAN90 program which
+      extracts a basis from a set of velocity snapshots using POD methods.
+    </p>
+
+    <p>
+      <a href = "../../f_src/svd_basis/svd_basis.html">
+      SVD_BASIS</a>,
+      a FORTRAN90 program which
+      extracts a basis from any set of vectors, using POD methods.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "basis_compare.f90">basis_compare.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "basis_compare.sh">basis_compare.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "basis_compare_input.txt">basis_compare_input.txt</a>,
+          sample input to the the program.
+        </li>
+        <li>
+          <a href = "basis_compare_output.txt">basis_compare_output.txt</a>,
+          output from the program in response to the sample input.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for BASIS_COMPARE.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>DATA_D2_READ</b> reads a data set of pairs of real numbers stored in a file.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_INPUT</b> prints a prompt string and reads a string from the user.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TIMESTRING</b> writes the current YMDHMS date into a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 26 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

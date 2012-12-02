@@ -1,0 +1,171 @@
+<html>
+
+  <head>
+    <title>
+      TOMS552 - Constrained Overdetermined Linear Systems in L1.
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TOMS552 <br> Constrained Overdetermined Linear Systems in L1.
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TOMS552</b>
+      is a FORTRAN90 library which
+      computes a solution of an overdetermined constrained
+      linear system, minimizing the error in the L1 norm.
+    </p>
+
+    <p>
+      <b>TOMS552</b> is an implementation of ACM TOMS algorithm 552.
+    </p>
+
+    <p>
+      The overdetermined linear system being solved is
+      <blockquote><b>
+        A * X = B.
+      </b></blockquote>
+      The equality constraints have the form:
+      <blockquote><b>
+        C * X = D
+      </b></blockquote>
+      and the inequality constraints have the form:
+      <blockquote><b>
+        E * X >= F.
+      </b></blockquote>
+      The program is required to seek a solution <b>X</b> which satisfies
+      the constraints, and which minimizes the L1 norm (sum of
+      absolute values of components) of <b>A*X-B</b>.
+    </p>
+
+    <p>
+      The original, true, correct version of ACM TOMS 552 is available
+      in the TOMS subdirectory of
+      <a href = "http://www.netlib.org/">the NETLIB web site</a>.
+    </p>
+
+    <h3 align = "center">
+     Languages:
+    </h3>
+
+    <p>
+      <b>TOMS552</b> is available in
+      <a href = "../../f77_src/toms552/toms552.html"> a FORTRAN77 version</a> and
+      <a href = "../../f_src/toms552/toms552.html">a FORTRAN90 version.</a>
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Ian Barrodale,<br>
+      Frank Roberts.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Ian Barrodale, Frank Roberts,<br>
+          Algorithm 552:
+          Solution of the Constrained L1 Approximation Problem,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 6, Number 2, March 1980, pages 231-235.
+        </li>
+        <li>
+          Helmuth Spaeth,<br>
+          Mathematical Algorithms for Linear Regression,<br>
+          Academic Press, 1991,<br>
+          ISBN: 0-12-656460-4,<br>
+          LC: QA278.2.S6313.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms552.f90">toms552.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "toms552.sh">toms552.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "toms552_prb.f90">toms552_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "toms552_prb.sh">toms552_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "toms552_prb_input.txt">toms552_prb_input.txt</a>,
+          an input file for use with the sample program.
+        </li>
+        <li>
+          <a href = "toms552_prb_output.txt">toms552_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CL1</b> solves a linear programming problem.
+        </li>
+        <li>
+          <b>COL</b> adds a multiple of vector V2 to vector V1.
+        </li>
+        <li>
+          <b>L1ORTH</b> carries out orthogonal regression for the L1 norm.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 December 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

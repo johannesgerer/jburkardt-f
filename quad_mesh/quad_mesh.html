@@ -1,0 +1,463 @@
+<html>
+
+  <head>
+    <title>
+      QUAD_MESH - Quadrilateral Meshes
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      QUAD_MESH <br> Quadrilateral Meshes
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>QUAD_MESH</b>
+      is a FORTRAN90 library which
+      carries out operations involving meshes of quadrilaterals.
+    </p>
+
+    <p>
+      The mesh is the collection of quadrilaterals.  Each quadrilateral
+      is termed an "element".  The points used to define the shape of the
+      quadrilateral (the corners, and sometimes a few more points) are called
+      the "nodes".
+    </p>
+
+    <p>
+      Routines are available to:
+      <ul>
+        <li>
+          evaluate "quality measures" for the mesh;
+        </li>
+        <li>
+          create a "node neighbor array" for each node;
+        </li>
+        <li>
+          create an "element neighbor array" for each element;
+        </li>
+        <li>
+          estimate the integral of a function over the region covered by the mesh;
+        </li>
+        <li>
+          plot the nodes and elements of a mesh;
+        </li>
+        <li>
+          determine the parts of the mesh that lie on the boundary;
+        </li>
+        <li>
+          sample points at random from the region covered by the mesh;
+        </li>
+        <li>
+          search a mesh to determine which element contains a point.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>QUAD_MESH</b> is available in
+      <a href = "../../cpp_src/quad_mesh/quad_mesh.html">a C++ version</a> and
+      <a href = "../../f_src/quad_mesh/quad_mesh.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/quad_mesh/quad_mesh.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/fem2d/fem2d.html">
+      FEM2D</a>,
+      a data directory which
+      contains a description and examples of files that describe a 2D finite element model.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fem_io/fem_io.html">
+      FEM_IO</a>,
+      a FORTRAN90 library which
+      reads or writes node, element and data files defining a finite element model.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mesh_bandwidth/mesh_bandwidth.html">
+      MESH_BANDWIDTH</a>,
+      a FORTRAN90 program which
+      returns the geometric bandwidth associated with a mesh of
+      elements of any order and in a space of arbitrary dimension.
+    </p>
+
+    <p>
+      <a href = "../../m_src/mesh_display/mesh_display.html">
+      MESH_DISPLAY</a>,
+      a MATLAB program which
+      reads data defining a polygonal mesh and displays it, with optional numbering.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/mesh_display_opengl/mesh_display_opengl.html">
+      MESH_DISPLAY_OPENGL</a>,
+      a C++ program which
+      reads files defining a polygonal mesh and displays an image using OpenGL.
+    </p>
+
+    <p>
+      <a href = "../../data/quad_mesh/quad_mesh.html">
+      QUAD_MESH</a>,
+      a data directory which
+      defines a format for storing meshes of quadrilaterals over a 2D region.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_mesh_rcm/quad_mesh_rcm.html">
+      QUAD_MESH_RCM</a>,
+      a FORTRAN90 program which
+      computes the reverse Cuthill-McKee (RCM) reordering for nodes in a mesh of 4-node
+      quadrilaterals.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangulation/triangulation.html">
+      TRIANGULATION</a>,
+      a FORTRAN90 library which
+      carries out operations involving meshes of triangular elements.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hans Rudolf Schwarz,<br>
+          Methode der Finiten Elemente,<br>
+          Teubner Studienbuecher, 1980,<br>
+          ISBN: 3-519-02349-0.
+        </li>
+        <li>
+          Gilbert Strang, George Fix,<br>
+          An Analysis of the Finite Element Method,<br>
+          Cambridge, 1973,<br>
+          ISBN: 096140888X,<br>
+          LC: TA335.S77.
+        </li>
+        <li>
+          Olgierd Zienkiewicz,<br>
+          The Finite Element Method,<br>
+          Sixth Edition,<br>
+          Butterworth-Heinemann, 2005,<br>
+          ISBN: 0750663200,<br>
+          TA640.2.Z54
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "quad_mesh.f90">quad_mesh.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "quad_mesh.sh">quad_mesh.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "quad_mesh_prb.f90">quad_mesh_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "quad_mesh_prb.sh">quad_mesh_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "quad_mesh_prb_output.txt">quad_mesh_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EXAMPLE1</b> is a mesh made up of squares of uniform size.  The squares
+      are arranged in a grid with a few irregularities, however.  In particular,
+      there is an interior hole.
+      <ul>
+        <li>
+          <a href = "q4_mesh_ex1_element_neighbors.txt">q4_mesh_ex1_element_neighbors.txt</a>,
+          element neighbors for example 1 Q4 mesh.
+        </li>
+        <li>
+          <a href = "q4_mesh_ex1_elements.txt">q4_mesh_ex1_elements.txt</a>,
+          elements for example 1 Q4 mesh.
+        </li>
+        <li>
+          <a href = "q4_mesh_ex1_xy.txt">q4_mesh_ex1_xy.txt</a>,
+          node coordinates for example 1 Q4 mesh.
+        </li>
+        <li>
+          <a href = "q4_mesh_ex1.png">q4_mesh_ex1.png</a>,
+          a PNG image of example 1 Q4 mesh.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EXAMPLE2</b> is a mesh made up of quadrilaterals that are "trying" to tile a
+      semicircle.  The row of elements that touches the origin is degenerate, and
+      are essentially triangles.  The elements vary in area.
+      <ul>
+        <li>
+          <a href = "q4_mesh_ex2_element_neighbors.txt">q4_mesh_ex2_element_neighbors.txt</a>,
+          element neighbors for example 2 Q4 mesh.
+        </li>
+        <li>
+          <a href = "q4_mesh_ex2_elements.txt">q4_mesh_ex2_elements.txt</a>,
+          elements for example 2 Q4 mesh.
+        </li>
+        <li>
+          <a href = "q4_mesh_ex2_xy.txt">q4_mesh_ex2_xy.txt</a>,
+          node coordinates for example 2 Q4 mesh.
+        </li>
+        <li>
+          <a href = "q4_mesh_ex2.png">q4_mesh_ex2.png</a>,
+          a PNG image of example 2 Q4 mesh.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SAMPLE_QUAD</b> demonstrates how a single quadrilateral can be randomly sampled.
+      <ul>
+        <li>
+          <a href = "sample_quad.txt">sample_quad.txt</a>,
+          node coordinates for random sample points in a quadrilateral.
+        </li>
+        <li>
+          <a href = "sample_quad.png">sample_quad.png</a>,
+          a PNG image of the random sample points in a quadrilateral.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ADJ_SET_Q4_MESH</b> sets adjacencies in a Q4 mesh.
+        </li>
+        <li>
+          <b>ADJ_SIZE_Q4_MESH</b> counts adjacencies in a Q4 mesh.
+        </li>
+        <li>
+          <b>AREA_Q4_MESH</b> computes areas of elements in a Q4 mesh.
+        </li>
+        <li>
+          <b>AREA_QUAD</b> returns the area of a quadrilateral.
+        </li>
+        <li>
+          <b>BANDWIDTH</b> determines the bandwidth associated with a finite element mesh.
+        </li>
+        <li>
+          <b>BOUNDARY_EDGE_COUNT_Q4_MESH</b> counts the boundary edges.
+        </li>
+        <li>
+          <b>BOUNDARY_EDGE_COUNT_EULER_Q4_MESH</b> counts boundary edges by Euler's formula.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>EXAMPLE1_Q4_MESH</b> sets up example #1 Q4 mesh.
+        </li>
+        <li>
+          <b>EXAMPLE1_Q4_MESH_SIZE</b> sets sizes for example #1 Q4 mesh.
+        </li>
+        <li>
+          <b>EXAMPLE2_Q4_MESH</b> sets up example #2 Q4 mesh.
+        </li>
+        <li>
+          <b>EXAMPLE2_Q4_MESH_SIZE</b> sets sizes for example #2 Q4 mesh.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of I4 division.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an I4 to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4COL_COMPARE</b> compares columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORT_A</b> ascending sorts an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SORTED_UNIQUE_COUNT</b> counts unique elements in an I4COL.
+        </li>
+        <li>
+          <b>I4COL_SWAP</b> swaps columns I and J of an I4COL.
+        </li>
+        <li>
+          <b>I4MAT_DATA_READ</b> reads data from an I4MAT file.
+        </li>
+        <li>
+          <b>I4MAT_HEADER_READ</b> reads the header from an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT</b> prints an I4MAT, transposed.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_WRITE</b> writes an I4MAT file.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an I4VEC.
+        </li>
+        <li>
+          <b>MESH_BASE_ONE</b> ensures that the element definition is one-based.
+        </li>
+        <li>
+          <b>NEIGHBOR_ELEMENTS_Q4_MESH</b> determines element neighbors in a Q4 mesh.
+        </li>
+        <li>
+          <b>NODE_ORDER_Q4_MESH</b> determines the order of nodes in a Q4 mesh.
+        </li>
+        <li>
+          <b>PLOT_Q4_MESH</b> plots a Q4 mesh.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT</b> prints an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8VEC_BRACKET</b> searches a sorted R8VEC for successive brackets of a value.
+        </li>
+        <li>
+          <b>R8VEC_PRINT</b> prints an R8VEC.
+        </li>
+        <li>
+          <b>R8VEC_UNIFORM_01</b> returns a unit pseudorandom R8VEC.
+        </li>
+        <li>
+          <b>REFERENCE_TO_PHYSICAL_Q4</b> maps Q4 reference points to physical points.
+        </li>
+        <li>
+          <b>S_BLANK_DELETE</b> removes blanks from a string, left justifying the remainder.
+        </li>
+        <li>
+          <b>S_TO_I4</b> reads an I4 from a string.
+        </li>
+        <li>
+          <b>S_TO_I4VEC</b> reads an I4VEC from a string.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>SAMPLE_Q4_MESH</b> returns random points in a Q4 mesh.
+        </li>
+        <li>
+          <b>SAMPLE_QUAD</b> returns random points in a quadrilateral.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRIANGLE_AREA</b> computes the area of a triangle.
+        </li>
+        <li>
+          <b>TRIANGLE_SAMPLE</b> returns random points in a triangle.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 29 September 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

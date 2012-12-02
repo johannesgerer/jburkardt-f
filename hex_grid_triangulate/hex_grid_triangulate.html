@@ -1,0 +1,281 @@
+<html>
+
+  <head>
+    <title>
+      HEX_GRID_TRIANGULATE - Select Hex Grid Points in a Region
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      HEX_GRID_TRIANGULATE <br> Select Hex Grid Points in a Region
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>HEX_GRID_TRIANGULATE</b>
+      is a FORTRAN90 program which
+      picks out those points
+      on a hex grid which lie inside a given triangulation region.
+    </p>
+
+    <p>
+      We assume we have the following information available:
+      <ul>
+        <li>
+          <b>nodes_per_layer</b>, the number of hex grid nodes to be placed on
+          the first horizontal layer of the grid;
+        </li>
+        <li>
+          <b>box[2,2]</b>, the coordinates of the lower left and upper
+          right corners of a box that bounds the region;
+        </li>
+        <li>
+          <b>inside[p]</b>, a function which returns TRUE if a point
+          <b>p</b> is inside the region;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Using this information, the program constructs a hexagonal grid
+      of points inside the box, discards all the grid points that don't
+      actually lie inside the region, and writes the remaining points
+      to a file.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/hex_grid/hex_grid.html">
+      HEX_GRID</a>,
+      a FORTRAN90 library which
+      is used to define the underlying hex grids.
+    </p>
+
+    <p>
+      <a href = "../../datasets/hex_grid/hex_grid.html">
+      HEX_GRID</a>,
+      a dataset directory which
+      contains more examples of
+      hexagonal grids.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid_angle/hex_grid_angle.html">
+      HEX_GRID_ANGLE</a>,
+      a FORTRAN90 library which
+      computes elements of an angled
+      hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_triangulation/test_triangulation.html">
+      TEST_TRIANGULATION</a>,
+      a FORTRAN90 library which
+      contains routines
+      which define the regions to be triangulated.
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangle_grid/triangle_grid.html">
+      TRIANGLE_GRID</a>,
+      a FORTRAN90 library which
+      computes a triangular grid of points.
+    </p>
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "hex_grid_triangulate.f90">hex_grid_triangulate.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "hex_grid_triangulate.sh">hex_grid_triangulate.sh</a>,
+          commands to compile, link and run the source code.
+        </li>
+        <li>
+          <a href = "hex_grid_triangulate_output.txt">hex_grid_triangulate_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      Sample hexagonal grid files you may copy include:
+      <ul>
+        <li>
+          <a href = "../../datasets/hex_grid/p_1_40_46_1377.txt">
+          p_1_40_46_1377.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_2_40_46_1156.txt">
+          p_2_40_46_1156.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_3_40_46_1596.txt">
+          p_3_40_46_1596.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_4_40_40_857.txt">
+          p_4_40_40_857.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_5_40_23_489.txt">
+          p_5_40_23_489.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_6_40_46_1212.txt">
+          p_6_40_46_1212.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_7_40_18_459.txt">
+          p_7_40_18_459.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_8_40_24_388.txt">
+          p_8_40_24_388.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_9_40_46_1725.txt">
+          p_9_40_46_1725.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_10_40_46_1817.txt">
+          p_10_40_46_1817.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_11_40_46_1369.txt">
+          p_11_40_46_1369.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_12_40_46_1633.txt">
+          p_12_40_46_1633.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_13_40_46_279.txt">
+          p_13_40_46_279.txt</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_14_40_56_769.txt">
+          p_14_40_56_769.txt</a>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      There are <a href = "../../data/png/png.html">PNG</a>
+      images of the data available:
+      <ul>
+        <li>
+          <a href = "../../datasets/hex_grid/p_1_40_46_1377.png">
+          p_1_40_46_1377.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_2_40_46_1156.png">
+          p_2_40_46_1156.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_3_40_46_1596.png">
+          p_3_40_46_1596.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_4_40_40_857.png">
+          p_4_40_40_857.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_5_40_23_489.png">
+          p_5_40_23_489.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_6_40_46_1212.png">
+          p_6_40_46_1212.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_7_40_18_459.png">
+          p_7_40_18_459.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_8_40_24_388.png">
+          p_8_40_24_388.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_9_40_46_1725.png">
+          p_9_40_46_1725.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_10_40_46_1817.png">
+          p_10_40_46_1817.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_11_40_46_1369.png">
+          p_11_40_46_1369.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_12_40_46_1633.png">
+          p_12_40_46_1633.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_13_40_46_279.png">
+          p_13_40_46_279.png</a>
+        </li>
+        <li>
+          <a href = "../../datasets/hex_grid/p_14_40_56_769.png">
+          p_14_40_56_769.png</a>
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for HEX_GRID_TRIANGULATE.
+        </li>
+        <li>
+          <b>TEST01</b> computes a hexagonal grid in an unknown triangulation region.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 August 2005.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

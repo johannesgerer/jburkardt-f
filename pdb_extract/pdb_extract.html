@@ -1,0 +1,169 @@
+<html>
+
+  <head>
+    <title>
+      PDB_EXTRACT - Extract data from PDB files
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      PDB_EXTRACT <br> Extract data from PDB files
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>PDB_EXTRACT</b>
+      is a FORTRAN90 program which
+      extracts certain columns from certain lines of a
+      Protein Data Bank file.
+    </p>
+
+    <p>
+      Right now, the controls for which lines are to be considered, and what
+      data is to be extracted, are hardwired into the code.  For instance, we
+      might want to consider every line in which the fourth word is "CA", and
+      for those lines, we would write out columns 9 and 10.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/pdb/pdb.html">
+      PDB</a>,
+      a data directory which
+      contains a description and examples of the PDB format.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pdb_read/pdb_read.html">
+      PDB_READ</a>,
+      a FORTRAN90 program which
+      can read a PDB file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pdb_to_xyz/pdb_to_xyz.html">
+      PDB_TO_XYZ</a>,
+      a FORTRAN90 program which
+      reads the coordinates of atoms in a PDB file
+      and writes them out as an XYZ file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xyz_to_pdb/xyz_to_pdb.html">
+      XYZ_TO_PDB</a>,
+      a FORTRAN90 program which
+      reads an XYZ file and
+      writes the data as coordinates of atoms in a PDB file.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          <a href = "http://www.rcsb.org/pdb/">
+                     http://www.rcsb.org/pdb/</a> <br>
+          The Protein Data Bank Home Page.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "pdb_extract.f90">pdb_extract.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "pdb_extract.sh">pdb_extract.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "input.txt">input.txt</a>, a sample input PDB file;
+        </li>
+        <li>
+          <a href = "output.txt">output.txt</a>, a sample output file;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for PDB_EXTRACT.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WORD_FIND</b> finds the word of a given index in a string.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 09 January 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
+

@@ -1,0 +1,273 @@
+<html>
+
+  <head>
+    <title>
+      FIXCON - Convert F77 to F90 Continuation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align="center">
+      FIXCON <br> Convert F77 to F90 Continuation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FIXCON</b>
+      is a FORTRAN90 program which
+      converts the line continuation scheme used in a FORTRAN77
+      file to that used in FORTRAN90 files.
+    </p>
+
+    <p>
+      In FORTRAN77, if a line
+      is not a comment line, then a nonblank character (actually, the character
+      can't be '0' either) in column six indicates that the current line is a
+      continuation of the previous one.  (Complications include what happens
+      when the previous line is a comment, and how you deal with the joy
+      of TAB characters).  For example, the following would be a legally
+      continued line in FORTRAN 77 (assuming that the dollar sign is
+      actually in column 6):
+      <pre>
+            x = 1 + 2 + 3 + 4
+           $  + 5 + 6
+      </pre>
+    </p>
+
+    <p>
+      In FORTRAN90, a line can extend to the next line by having an
+      ampersand as its last character.  Thus, the FORTRAN90 version
+      of the same line looks like this:
+      <pre>
+            x = 1 + 2 + 3 + 4 &
+              + 5 + 6
+      </pre>
+    </p>
+
+    <p>
+      <b>FIXCON</b> reads a file that uses the FORTRAN77 convention, and writes
+      a copy that uses the F90 convention.  If you've ever tried to do this
+      by hand on a substantial file, it might be worth your while to try
+      this program instead.
+    </p>
+
+    <p>
+      With nose firmly squeezed shut, the program has been modified to
+      try to deal with the evil of TAB characters.  The program's treatment
+      is simply to replace each TAB by six blanks.
+    </p>
+
+    <p>
+      Two other small fixes are applied.
+      <ul>
+        <li>
+          First, the code will only read the first 72 columns of input.
+          FORTRAN77 allows you to put any junk you want beyond column
+          72, but it will not be seen by the compiler).
+        </li>
+        <li>
+          Secondly, all lines that look like comment lines (beginning
+          with a <b>C</b> or <b>c</b> or <b>D</b> or <b>d</b> or <b>*</b>)
+          are modified to use the FORTRAN90 comment convention of
+          beginning with an exclamation mark.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+         <b>fixcon</b> <i>file.f file.f90</i>
+      </blockquote>
+      <dl>
+        <dt>
+          file.f
+        </dt>
+        <dd>
+          The input file, which uses the FORTRAN77 convention.
+        </dd>
+        <dt>
+          file.f90
+        </dt>
+        <dd>
+          The output file, which uses the FORTRAN90 convention.
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/catalog/catalog.html">
+      CATALOG</a>,
+      a C++ program which
+      reads a C, C++, FORTRAN77 or FORTRAN90 program and prints every line 
+      that begins with a special index tag.  If the program has been marked
+      up expecting this convention, it is a handy way of making a table
+      of contents of a program file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/extract/extract.html">
+      EXTRACT</a>,
+      a FORTRAN90 program which
+      extracts one routine from a FORTRAN77 or FORTRAN90 file;
+    </p>
+
+    <p>
+      <a href = "../../f_src/f77_cleanup/f77_cleanup.html">
+      F77_CLEANUP</a>,
+      a FORTRAN90 program which
+      makes a copy of a FORTRAN77 file in which some minor cleanups have
+      been made.
+    </p>
+
+    <p>
+      <a href = "../../c_src/f77split/f77split.html">
+      F77SPLIT</a>,
+      a C program which
+      splits a file containing
+      multiple FORTRAN77 routines into separate files;
+    </p>
+
+    <p>
+      <a href = "../../c_src/f90split/f90split.html">
+      F90SPLIT</a>,
+      a C program which
+      splits a file containing multiple FORTRAN90 routines into separate files;
+    </p>
+
+    <p>
+      <a href = "../../f_src/f90split/f90split.html">
+      F90SPLIT</a>,
+      a FORTRAN90 program which
+      reads a FORTRAN file and creates individual files for every
+      subroutine or function in the file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/include_files/include_files.html">
+      INCLUDE_FILES</a>,
+      a FORTRAN90 program which
+      reads a FORTRAN file with INCLUDE statements, and makes a copy in which the
+      indicated files have been included;
+    </p>
+
+    <p>
+      <a href = "../../f_src/module_mark/module_mark.html">
+      MODULE_MARK</a>,
+      a FORTRAN90 program which
+      replaces bare "END" statements by "END (module name)" statements
+      in a FORTRAN90 file.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/recomment/recomment.html">
+      RECOMMENT</a>,
+      a C++ program which
+      converts C style comments to C++ style.
+    </p>
+
+    <h3 align = "center">
+      Source code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fixcon.f90">fixcon.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "fixcon.sh">fixcon.sh</a>,
+          commands to compile and load the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "input.f">input.f</a>, a sample input file.
+        </li>
+        <li>
+          <a href = "output.f90">output.f90</a>, the resulting output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Another test works with TAB characters.  Files you may copy include:
+      <ul>
+        <li>
+          <a href = "tabs.f">tabs.f</a>, a sample input file with TAB's.
+        </li>
+        <li>
+          <a href = "notabs.f90">notabs.f90</a>, the resulting output file,
+          with no TAB's.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>FIXCON</b> gets information from a user about the FORTRAN77 file to convert.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_SWAP</b> replaces the current "extension" of a file name.
+        </li>
+        <li>
+          <b>FILE_NAME_EXT_GET</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>FIX_CONTINUATION</b> copies a FORTRAN77 file, using FORTRAN90 continuation.
+        </li>
+        <li>
+          <b>S_CAT</b> concatenates two strings to make a third string.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TAB_BLANKS</b> replaces TAB characters by 6 spaces.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 January 2003.
+    </i>
+
+  </body>
+
+</html>

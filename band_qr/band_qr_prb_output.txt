@@ -1,0 +1,165 @@
+ 4 April 2010   7:21:49.428 PM
+ 
+BAND_QR:
+  FORTRAN90 version
+ 
+TEST01
+  Call the standard LAPACK routine
+  DGEQRF to get the QR factorization of
+  a matrix A stored in GE format, but which
+  is actually banded.
+ 
+  Then solve the linear system A*X=B using an
+  explicit version of DGEQRS_TWO.
+  DGEQRS_TWO is a version of 
+  DGEQRS with no calls to subroutines.
+ 
+  Input matrix:
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1       2.           -1.            0.            0.            0.      
+    2      -1.            2.           -1.            0.            0.      
+    3       0.           -1.            2.           -1.            0.      
+    4       0.            0.           -1.            2.           -1.      
+    5       0.            0.            0.           -1.            2.      
+ 
+  DGEQRF called successfully.
+ 
+  Factored matrix:
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1   -2.23607       1.78885     -0.447214          0.            0.      
+    2  -0.236068      -1.67332       1.91237     -0.597614          0.      
+    3       0.       -0.331679      -1.46385       1.95180     -0.683130    
+    4       0.            0.       -0.394805      -1.35401       1.96946    
+    5       0.            0.            0.       -0.441135      0.809040    
+ 
+  Tau:
+ 
+         1     1.8944272    
+         2     1.8017837    
+         3     1.7302967    
+         4     1.6741999    
+         5     0.0000000    
+ 
+  DGEQRS_TWO called successfully.
+ 
+  Solution from DGEQRS_TWO:
+ 
+     1.00000    
+     2.00000    
+     3.00000    
+     4.00000    
+     5.00000    
+ 
+TEST02
+  Call the LAPACK-like routine
+  DGEBQR2 to get the QR factorization of
+  a matrix A stored in GE format, but which
+  is actually banded.
+ 
+  Then solve the linear system A*X=B using an
+  explicit version of DGEQRS_TWO.
+  DGEQRS_TWO is a version of 
+  DGEQRS with no calls to subroutines.
+ 
+  Input matrix:
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1       2.           -1.            0.            0.            0.      
+    2      -1.            2.           -1.            0.            0.      
+    3       0.           -1.            2.           -1.            0.      
+    4       0.            0.           -1.            2.           -1.      
+    5       0.            0.            0.           -1.            2.      
+ 
+  DGEBQR2 called successfully.
+ 
+  Factored matrix:
+ 
+  Col          1             2             3             4             5      
+  Row
+ 
+    1   -2.23607       1.78885     -0.447214          0.            0.      
+    2  -0.236068      -1.67332       1.91237     -0.597614          0.      
+    3       0.       -0.331679      -1.46385       1.95180     -0.683130    
+    4       0.            0.       -0.394805      -1.35401       1.96946    
+    5       0.            0.            0.       -0.441135      0.809040    
+ 
+  Tau:
+ 
+         1     1.8944272    
+         2     1.8017837    
+         3     1.7302967    
+         4     1.6741999    
+         5     0.0000000    
+ 
+  DGEQRS_TWO called successfully.
+ 
+  Solution from DGEQRS_TWO:
+ 
+     1.00000    
+     2.00000    
+     3.00000    
+     4.00000    
+     5.00000    
+ 
+TEST03
+  Call the LAPACK-like routine
+  DGBBQR2 to get the QR factorization of
+  a matrix A stored in GB format.
+ 
+  Call DGBBQRS to solve the linear system
+  A*X=B.
+ 
+  Input matrix:
+ 
+  Col:       1             2             3             4             5       
+  Row
+  ---
+    1    2.00000      -1.00000       0.00000                                
+    2   -1.00000       2.00000      -1.00000       0.00000                  
+    3                 -1.00000       2.00000      -1.00000       0.00000    
+    4                               -1.00000       2.00000      -1.00000    
+    5                                             -1.00000       2.00000    
+ 
+  DGBBQR2 called successfully.
+ 
+  Factored matrix:
+ 
+  Col:       1             2             3             4             5       
+  Row
+  ---
+    1   -2.23607       1.78885     -0.447214                                
+    2  -0.236068      -1.67332       1.91237     -0.597614                  
+    3                -0.331679      -1.46385       1.95180     -0.683130    
+    4                              -0.394805      -1.35401       1.96946    
+    5                                            -0.441135      0.809040    
+ 
+  Tau:
+ 
+         1     1.8944272    
+         2     1.8017837    
+         3     1.7302967    
+         4     1.6741999    
+         5     0.0000000    
+ 
+  DGBBQRS called successfully.
+ 
+  Solution from DGBBQRS:
+ 
+     1.00000    
+     2.00000    
+     3.00000    
+     4.00000    
+     5.00000    
+ 
+BAND_QR:
+  Normal end of execution.
+ 
+ 4 April 2010   7:21:49.550 PM

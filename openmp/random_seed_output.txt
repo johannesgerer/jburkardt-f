@@ -1,0 +1,105 @@
+ 3 September 2012   9:51:05.066 AM
+ 
+RANDOM_OPENMP
+  FORTRAN90/OpenMP version
+ 
+  Number of processors available =        8
+  Number of threads =                     8
+ 
+TEST01
+  Call a simple random number generator which
+  does not have any internal memory.
+ 
+  Do this calculation in sequential mode.
+ 
+  Call OMP_SET_NUM_THREADS, and request        1 threads.
+ 
+          SEED          SEED       R
+          IN            OUT
+ 
+          1325         11857    -1.27631    
+         11857         25285   -0.456726    
+         25285         44745    0.731018    
+         44745         39837    0.431458    
+         39837         37761    0.304749    
+         37761         38325    0.339172    
+         38325         31353   -0.863647E-01
+         31353          1805    -1.88983    
+          1805          4529    -1.72357    
+          4529         62885     1.83820    
+         62885         38697    0.361877    
+         38697         14205    -1.13300    
+         14205         22753   -0.611267    
+         22753         62101     1.79034    
+         62101         13529    -1.17426    
+         13529          7405    -1.54803    
+          7405          6417    -1.60834    
+          6417         64645     1.94562    
+         64645         33673    0.552368E-01
+         33673         42845    0.615051    
+ 
+TEST02
+  Call the same simple random number generator which
+  does not have any internal memory.
+ 
+  Do this calculation in parallel mode,
+ 
+  Call OMP_SET_NUM_THREADS, and request        8 threads.
+ 
+          SEED          SEED       R
+          IN            OUT
+ 
+          1325         11857    -1.27631    
+         11857         25285   -0.456726    
+         25285         44745    0.731018    
+         44745         39837    0.431458    
+         39837         37761    0.304749    
+         37761         38325    0.339172    
+         38325         31353   -0.863647E-01
+         31353          1805    -1.88983    
+          1805          4529    -1.72357    
+          4529         62885     1.83820    
+         62885         38697    0.361877    
+         38697         14205    -1.13300    
+         14205         22753   -0.611267    
+         22753         62101     1.79034    
+         62101         13529    -1.17426    
+         13529          7405    -1.54803    
+          7405          6417    -1.60834    
+          6417         64645     1.94562    
+         64645         33673    0.552368E-01
+         33673         42845    0.615051    
+ 
+TEST03
+  Repeat the previous test, but "carelessly".
+  The results depend, in part, on whether the 
+  threads intefere with each other or not.
+ 
+                                   R
+                           
+ 
+                                 1.94562    
+                                0.552368E-01
+                                0.615051    
+                                0.304749    
+                                -1.88983    
+                                -1.72357    
+                                0.431458    
+                                0.339172    
+                               -0.863647E-01
+                               -0.611267    
+                                 1.79034    
+                                -1.17426    
+                                -1.27631    
+                               -0.456726    
+                                0.731018    
+                                 1.83820    
+                                0.361877    
+                                -1.13300    
+                                -1.54803    
+                                -1.60834    
+ 
+RANDOM_OPENMP
+  Normal end of execution.
+ 
+ 3 September 2012   9:51:05.068 AM

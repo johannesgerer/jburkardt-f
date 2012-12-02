@@ -1,0 +1,127 @@
+28 October 2008   8:48:50.658 AM
+ 
+MM_IO_PRB:
+  FORTRAN90 version
+ 
+  Test the Matrix Market IO routines.
+ 
+TEST01:
+  MM_HEADER_READ reads the header line of
+    a Matrix Market file.
+  MM_SIZE_READ_FILE or MM_SIZE_READ_STRING
+    reads the size line of a Matrix Market file.
+ 
+  Reading "matrix_05_05_crg.txt".
+ 
+MM_HEADER_PRINT:
+  Header information from Matrix Market file "matrix_05_05_crg.txt".
+ 
+  Matrix Market ID = "%%MatrixMarket".
+    "%%MatrixMarket" is only allowed value.
+ 
+  Matrix Market TYPE = "matrix".
+    "matrix" is only allowed value.
+ 
+  Representation type REP = "coordinate".
+    "coordinate" for sparse matrices,
+    "array"      for dense matrices,
+    "elemental"  for unassembled finite element matrices.
+ 
+  Numeric FIELD = "real".
+    "integer" for integer values,
+    "real"    for real values,
+    "double"  for double precision real values,
+    "complex" for complex values,
+    "pattern" for nonzero pattern only.
+ 
+  Symmetry type SYMM = "general".
+    "general"         no symmetry,
+    "symmetric"       A(I,J) = A(J,I),
+                      input only lower triangle.
+    "skew-symmetric"  A(I,J) = - A(J,I),
+                      input only strict lower triangle.
+    "Hermitian"       A(I,J) = A*(J,I),
+                      input only lower triangle.
+ 
+Comment lines:
+ 
+%
+%  This file created by MM_FILE_WRITE of MM_IO.F90.
+%
+ 
+MM_SIZE_PRINT:
+  Size information from Matrix Market file "matrix_05_05_crg.txt".
+ 
+ 
+  Number of rows    NROW =        5
+  Number of columns NCOL =        5
+  Declared number of nonzeros NNZ =       10
+ 
+TEST02:
+  MM_FILE_READ reads a Matrix Market file.
+ 
+  Reading "matrix_05_05_crg.txt".
+ 
+MM_HEADER_PRINT:
+  Header information from Matrix Market file "matrix_05_05_crg.txt".
+ 
+  Matrix Market ID = "%%MatrixMarket".
+    "%%MatrixMarket" is only allowed value.
+ 
+  Matrix Market TYPE = "matrix".
+    "matrix" is only allowed value.
+ 
+  Representation type REP = "coordinate".
+    "coordinate" for sparse matrices,
+    "array"      for dense matrices,
+    "elemental"  for unassembled finite element matrices.
+ 
+  Numeric FIELD = "real".
+    "integer" for integer values,
+    "real"    for real values,
+    "double"  for double precision real values,
+    "complex" for complex values,
+    "pattern" for nonzero pattern only.
+ 
+  Symmetry type SYMM = "general".
+    "general"         no symmetry,
+    "symmetric"       A(I,J) = A(J,I),
+                      input only lower triangle.
+    "skew-symmetric"  A(I,J) = - A(J,I),
+                      input only strict lower triangle.
+    "Hermitian"       A(I,J) = A*(J,I),
+                      input only lower triangle.
+ 
+MM_SIZE_PRINT:
+  Size information from Matrix Market file "matrix_05_05_crg.txt".
+ 
+ 
+  Number of rows    NROW =        5
+  Number of columns NCOL =        5
+  Declared number of nonzeros NNZ =       10
+ 
+  Sparse array storage by coordinate.
+  Listing entries        1 through        5
+ 
+   1         1       1   11.0000    
+   2         1       5   15.0000    
+   3         2       3   23.0000    
+   4         2       4   24.0000    
+   5         3       2   32.0000    
+ 
+TEST03:
+  MM_FILE_WRITE writes the header and data of
+  a Matrix Market file.
+ 
+TEST04:
+  MM_FILE_WRITE writes the header and data of
+  a Matrix Market file.
+ 
+  In this example, we generate the Wathen matrix
+  of order 29 x 29, and store it (inefficiently)
+  as an array.
+ 
+MM_IO_PRB:
+  Normal end of execution.
+ 
+28 October 2008   8:48:50.676 AM

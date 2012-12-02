@@ -1,0 +1,337 @@
+<html>
+
+  <head>
+    <title>
+      EP_SERIAL - NAS Parallel Benchmark EP, Serial Version, FORTRAN77
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      EP_SERIAL <br> NAS Parallel Benchmark EP, Serial Version, FORTRAN77
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>EP_SERIAL</b>
+      is a FORTRAN90 program which
+      is a serial implementation of the NAS Parallel Benchmark
+      known as EP ("embarassingly parallel").
+    </p>
+
+    <p>
+      The NAS Parallel Benchmarks are "paper and pencil" specifications; that is, the
+      proposers have laid down what the programs must do algorithmically,
+      but only very general rules about computer language implementation
+      have been given.  Thus, a user or vendor has enormous freedom in
+      implementing the benchmark program in a way that is optimal for
+      a given architecture or parallel programming scheme.
+    </p>
+
+    <p>
+      As a starting point for implementors, the proposers have supplied
+      certain initial versions of the benchmark programs.
+    </p>
+
+    <p>
+      This directory contains material derived from one such initial
+      benchmark code.  Persons interested in the original source of the
+      benchmark codes should NOT work from this material, but should
+      go to the NAS Parallel Benchmark website directly!
+    </p>
+
+    <p>
+      The benchmark programs are available in SERIAL, MPI and OPEN_MP
+      versions, and in a sequence of "classes" of increasing size: S, W, A, B, C, D and E.
+    </p>
+
+    <p>
+      Statistics for classes S, A, and B, are available, as run on one processor
+      of a Cray Y-MP, using a FORTRAN77 version of the program.
+      <table border="1" align="center">
+        <tr><th>Class</th><th>Size</th><th>Memory (Mw)</th><th>Time (sec)</th><th>MFLOPS</th></tr>
+        <tr><td>S</td><td>2^24</td><td>0.1</td><td>11</td><td>120</td></tr>
+        <tr><td>A</td><td>2^28</td><td>1.0</td><td>151</td><td>147</td></tr>
+        <tr><td>B</td><td>2^30</td><td>18.0</td><td>512</td><td>197</td></tr>
+      </table>
+    </p>
+
+    <p>
+      Statistics for classes S, W, A, B, and C are available, as run on an Apple PowerPC G5,
+      using this SERIAL FORTRAN77 version of the program.
+      <table border="1" align="center">
+        <tr><th>Class</th><th>Size</th><th>Memory (Mw)</th><th>Time (sec)</th><th>MFLOPS</th></tr>
+        <tr><td>S</td><td>2^24</td><td>0.1</td><td>4.7</td><td>7</td></tr>
+        <tr><td>W</td><td>2^25</td><td>?</td><td>9.3</td><td>7</td></tr>
+        <tr><td>A</td><td>2^28</td><td>1.0</td><td>74</td><td>7</td></tr>
+        <tr><td>B</td><td>2^30</td><td>18.0</td><td>304</td><td>7</td></tr>
+        <tr><td>C</td><td>2^32</td><td>?</td><td>1199</td><td>7</td></tr>
+      </table>
+    </p>
+
+    <p>
+      This directory contains the serial version of the benchmark, along
+      with include files that allow it to run in some of the smaller sizes.
+    </p>
+
+    <p>
+      The web site for the NAS Parallel Benchmarks is
+      <a href = "http://www.nas.nasa.gov/Resources/Software/npb.html">
+                 http://www.nas.nasa.gov/Resources/Software/npb.html</a>.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>EP_SERIAL</b> is available in
+      <a href = "../../f77_src/ep_serial/ep_serial.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/ep_serial/ep_serial.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bt_serial/bt_serial.html">
+      BT_SERIAL</a>,
+      a FORTRAN90 program which
+      a serial version of the NAS Block Tridiagonal (BT) parallel benchmark program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/cg_serial/cg_serial.html">
+      CG_SERIAL</a>,
+      a FORTRAN90 program which
+      a serial version of the NAS Conjugate Gradient (CG) parallel benchmark.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fft_serial/fft_serial.html">
+      FFT_SERIAL</a>,
+      a FORTRAN90 program which
+      demonstrates the computation of a Fast Fourier Transform (FFT),
+      and is intended as a starting point for implementing a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../c_src/is_serial/is_serial.html">
+      IS_SERIAL</a>,
+      a C program which
+      is a serial version of the NAS Parallel Benchmark IS
+      (integer sort).
+    </p>
+
+    <p>
+      <a href = "../../f_src/linpack_bench/linpack_bench.html">
+      LINPACK_BENCH</a>,
+      a FORTRAN90 program which
+      measures the time taken by <b>LINPACK</b> to solve a particular linear system.
+    </p>
+
+    <p>
+      <a href = "../../f_src/matmul/matmul.html">
+      MATMUL</a>,
+      a FORTRAN90 program which
+      is an interactive matrix multiplication benchmark.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/mdbnch/mdbnch.html">
+      MDBNCH</a>,
+      a FORTRAN77 program which
+      is a benchmark molecular simulation calculation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxm_serial/mxm_serial.html">
+      MXM_SERIAL</a>,
+      a FORTRAN90 program which
+      sets up a matrix multiplication problem A=B*C,
+      intended as a starting point for implementing a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/poisson_serial/poisson_serial.html">
+      POISSON_SERIAL</a>,
+      a FORTRAN90 program which
+      computes an approximate solution to the Poisson equation in a rectangle,
+      and is intended as the starting point for the creation of a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_serial/prime_serial.html">
+      PRIME_SERIAL</a>,
+      a FORTRAN90 program which
+      counts the number of primes between 1 and N,
+      intended as a starting point for the creation of a parallel version.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_serial/quad_serial.html">
+      QUAD_SERIAL</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule,
+      and is intended as a starting point for parallelization exercises.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad2d_serial/quad2d_serial.html">
+      QUAD2D_SERIAL</a>,
+      a FORTRAN90 program which
+      approximates an integral over a 2D region using a product quadrature rule,
+      and is intended as a starting point for parallelization exercises.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          David Bailey, Eric Barszcz, John Barton, D Browning, Robert Carter,
+          Leonardo Dagum, Rod Fatoohi,
+          Samuel Fineberg, Paul Frederickson, Thomas Lasinski, Robert Schreiber, Horst Simon,
+          V Venkatakrishnan, Sisira Weeratunga,<br>
+          The NAS Parallel Benchmarks,<br>
+          RNR Technical Report RNR-94-007,
+          March 1994.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ep_serial.f90">ep_serial.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "wtime.c">wtime.c</a>, a small routine used for timing.
+        </li>
+        <li>
+          <a href = "wtime.h">wtime.h</a>, an include file for WTIME.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and tests:
+    </h3>
+
+    <p>
+      <b>EP_SERIAL_S</b> runs the benchmark in serial mode with problem size S.
+      <ul>
+        <li>
+          <a href = "npbparams_S.h">nbparams_S.h</a>,
+          the include file.
+        </li>
+        <li>
+          <a href = "ep_serial_S.sh">ep_serial_S.sh</a>,
+          a script which compiles the code.
+        </li>
+        <li>
+          <a href = "ep_serial_S_output.txt">ep_serial_S_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EP_SERIAL_W</b> runs the benchmark in serial mode with problem size W.
+      <ul>
+        <li>
+          <a href = "npbparams_W.h">nbparams_W.h</a>,
+          the include file.
+        </li>
+        <li>
+          <a href = "ep_serial_W.sh">ep_serial_W.sh</a>,
+          a script which compiles the code.
+        </li>
+        <li>
+          <a href = "ep_serial_W_output.txt">ep_serial_W_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EP_SERIAL_A</b> runs the benchmark in serial mode with problem size A.
+      <ul>
+        <li>
+          <a href = "npbparams_A.h">nbparams_A.h</a>,
+          the include file.
+        </li>
+        <li>
+          <a href = "ep_serial_A.sh">ep_serial_A.sh</a>,
+          a script which compiles the code.
+        </li>
+        <li>
+          <a href = "ep_serial_A_output.txt">ep_serial_A_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EP_SERIAL_B</b> runs the benchmark in serial mode with problem size B.
+      <ul>
+        <li>
+          <a href = "npbparams_B.h">nbparams_B.h</a>,
+          the include file.
+        </li>
+        <li>
+          <a href = "ep_serial_B.sh">ep_serial_B.sh</a>,
+          a script which compiles the code.
+        </li>
+        <li>
+          <a href = "ep_serial_B_output.txt">ep_serial_B_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>EP_SERIAL_C</b> runs the benchmark in serial mode with problem size C.
+      <ul>
+        <li>
+          <a href = "npbparams_C.h">nbparams_C.h</a>,
+          the include file.
+        </li>
+        <li>
+          <a href = "ep_serial_C.sh">ep_serial_C.sh</a>,
+          a script which compiles the code.
+        </li>
+        <li>
+          <a href = "ep_serial_C_output.txt">ep_serial_C_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 15 May 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

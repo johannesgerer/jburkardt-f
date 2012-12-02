@@ -1,0 +1,530 @@
+<html>
+
+  <head>
+    <title>
+      FELIPPA - Finite Element Quadrature Rules
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FELIPPA <br> Finite Element Quadrature Rules
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FELIPPA</b>
+      is a FORTRAN90 library which
+      generates the points and weights of a quadrature rule for a variety
+      of 1D, 2D and 3D regions of interest for computations
+      involving the finite element method (FEM).
+    </p>
+
+    <p>
+      Regions for which rules are available, with a count of Corners, Edges, and Faces, include:
+      <table border = 1>
+        <tr>
+          <th>Name</th><th>Acronym</th><th>C+E+F</th>
+        </tr>
+        <tr>
+          <td>Line segment</td><td><b>Line</b></td><td>2+1+0</td>
+        </tr>
+        <tr>
+          <td>Triangle</td><td><b>Trig</b></td><td>3+3+1</td>
+        </tr>
+        <tr>
+          <td>Quadrilateral</td><td><b>Quad</b></td><td>4+4+1</td>
+        </tr>
+        <tr>
+          <td>Tetrahedron</td><td><b>Tetr</b></td><td>4+6+4</td>
+        </tr>
+        <tr>
+          <td>Wedge</td><td><b>Wedg</b></td><td>6+9+5</td>
+        </tr>
+        <tr>
+          <td>Pyramid</td><td><b>Pyra</b></td><td>5+8+5</td>
+        </tr>
+        <tr>
+          <td>Hexahedron</td><td><b>Hexa</b></td><td>8+12+6</td>
+        </tr>
+      </table>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FELIPPA</b> is available in
+      <a href = "../../cpp_src/felippa/felippa.html">a C++ version</a> and
+      <a href = "../../f_src/felippa/felippa.html">a FORTRAN90 version</a> and
+      <a href = "../../math_src/felippa/felippa.html">a MATHEMATICA version</a> and
+      <a href = "../../m_src/felippa/felippa.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dunavant/dunavant.html">
+      DUNAVANT</a>,
+      a FORTRAN90 library which
+      defines Dunavant rules for quadrature on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fekete/fekete.html">
+      FEKETE</a>,
+      a FORTRAN90 library which
+      defines a Fekete rule for quadrature or interpolation over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/gm_rule/gm_rule.html">
+      GM_RULE</a>,
+      a FORTRAN90 library which
+      defines Grundmann-Moeller rules for quadrature over a triangle, tetrahedron,
+      or general M-dimensional simplex.
+    </p>
+
+    <p>
+      <a href = "../../f_src/keast/keast.html">
+      KEAST</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lyness_rule/lyness_rule.html">
+      LYNESS_RULE</a>,
+      a FORTRAN90 library which
+      returns Lyness-Jespersen quadrature rules for the triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ncc_tetrahedron/ncc_tetrahedron.html">
+      NCC_TETRAHEDRON</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes closed quadrature rules on a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ncc_triangle/ncc_triangle.html">
+      NCC_TRIANGLE</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes closed quadrature rules on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nco_tetrahedron/nco_tetrahedron.html">
+      NCO_TETRAHEDRON</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes open quadrature rules on a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nco_triangle/nco_triangle.html">
+      NCO_TRIANGLE</a>,
+      a FORTRAN90 library which
+      defines Newton-Cotes open quadrature rules on a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/product_rule/product_rule.html">
+      PRODUCT_RULE</a>,
+      a FORTRAN90 program which
+      can create a multidimensional quadrature rule as a product of
+      one dimensional rules.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pyramid_rule/pyramid_rule.html">
+      PYRAMID_RULE</a>,
+      a FORTRAN90 program which
+      computes a quadrature rule for a pyramid.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_pyramid/quadrature_rules_pyramid.html">
+      QUADRATURE_RULES_PYRAMID</a>,
+      a dataset directory which
+      contains quadrature rules for a pyramid with a square base.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_tet/quadrature_rules_tet.html">
+      QUADRATURE_RULES_TET</a>,
+      a dataset directory which
+      contains quadrature rules for tetrahedrons,
+      stored as a file of abscissas, a file of weights,
+      and a file of vertices.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_tri/quadrature_rules_tri.html">
+      QUADRATURE_RULES_TRI</a>,
+      a dataset directory which
+      contains quadrature rules for triangles,
+      stored as a file of abscissas, a file of weights,
+      and a file of vertices.
+    </p>
+
+    <p>
+      <a href = "../../datasets/quadrature_rules_wedge/quadrature_rules_wedge.html">
+      QUADRATURE_RULES_WEDGE</a>,
+      a dataset directory which
+      contains quadrature rules for a wedge (a triangle x a straight line).
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrule/quadrule.html">
+      QUADRULE</a>,
+      a FORTRAN90 library which
+      defines quadrature rules on a
+      variety of intervals with different weight functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for a variety of unusual areas, surfaces and volumes in 2D,
+      3D and N-dimensions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/tetrahedron_monte_carlo/tetrahedron_monte_carlo.html">
+      TETRAHEDRON_MONTE_CARLO</a>,
+      a FORTRAN90 program which
+      uses the Monte Carlo method to estimate integrals over a tetrahedron.
+    </p>
+
+    <p>
+      <a href = "../../datasets/tetrahedrons/tetrahedrons.html">
+      TETRAHEDRONS</a>,
+      a dataset directory which
+      contains examplesof tetrahedrons;
+    </p>
+
+    <p>
+      <a href = "../../f_src/triangle_monte_carlo/triangle_monte_carlo.html">
+      TRIANGLE_MONTE_CARLO</a>,
+      a FORTRAN90 program which
+      uses the Monte Carlo method to estimate integrals over a triangle.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wandzura/wandzura.html">
+      WANDZURA</a>,
+      a FORTRAN90 library which
+      defines Wandzura rules for quadrature  on a triangle.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Carlos Felippa,<br>
+          A compendium of FEM integration formulas for symbolic work,<br>
+          Engineering Computation,<br>
+          Volume 21, Number 8, 2004, pages 867-890.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "felippa.f90">felippa.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "felippa.sh">felippa.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "felippa_prb.f90">felippa_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "felippa_prb.sh">felippa_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "felippa_prb_output.txt">felippa_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>COMP_NEXT</b> computes the compositions of the integer N into K parts.
+        </li>
+        <li>
+          <b>HEXA_UNIT_MONOMIAL</b> integrates a monomial over the unit hexahedron.
+        </li>
+        <li>
+          <b>HEXA_UNIT_MONOMIAL_TEST</b> tests HEXA_UNIT_MONOMIAL.
+        </li>
+        <li>
+          <b>HEXA_UNIT_QUAD_TEST</b> tests the rules for the unit hexahedron.
+        </li>
+        <li>
+          <b>HEXA_UNIT_RULE</b> returns a quadrature rule for the unit hexahedron.
+        </li>
+        <li>
+          <b>HEXA_UNIT_VOLUME:</b> volume of a unit hexahedron.
+        </li>
+        <li>
+          <b>LINE_UNIT_MONOMIAL:</b> monomial integral in a unit line.
+        </li>
+        <li>
+          <b>LINE_UNIT_MONOMIAL_TEST</b> tests LINE_UNIT_MONOMIAL.
+        </li>
+        <li>
+          <b>LINE_UNIT_O01</b> returns a 1 point quadrature rule for the unit line.
+        </li>
+        <li>
+          <b>LINE_UNIT_O02</b> returns a 2 point quadrature rule for the unit line.
+        </li>
+        <li>
+          <b>LINE_UNIT_O03</b> returns a 3 point quadrature rule for the unit line.
+        </li>
+        <li>
+          <b>LINE_UNIT_O04</b> returns a 4 point quadrature rule for the unit line.
+        </li>
+        <li>
+          <b>LINE_UNIT_O05</b> returns a 5 point quadrature rule for the unit line.
+        </li>
+        <li>
+          <b>LINE_UNIT_QUAD_TEST</b> tests the rules for the unit line.
+        </li>
+        <li>
+          <b>LINE_UNIT_VOLUME:</b> volume of a unit line.
+        </li>
+        <li>
+          <b>MONOMIAL_VALUE</b> evaluates a monomial.
+        </li>
+        <li>
+          <b>PYRA_UNIT_MONOMIAL:</b> monomial integral in a unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_MONOMIAL_TEST</b> tests PYRA_UNIT_MONOMIAL.
+        </li>
+        <li>
+          <b>PYRA_UNIT_O01</b> returns a 1 point quadrature rule for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_O05</b> returns a 5 point quadrature rule for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_O06</b> returns a 6 point quadrature rule for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_O08</b> returns an 8 point quadrature rule for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_O08B</b> returns an 8 point quadrature rule for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_O09</b> returns a 9 point quadrature rule for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_O13</b> returns a 13 point quadrature rule for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_O18</b> returns an 18 point quadrature rule for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_O27</b> returns a 27 point quadrature rule for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_O48</b> returns a 48 point quadrature rule for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_QUAD_TEST</b> tests the rules for the unit pyramid.
+        </li>
+        <li>
+          <b>PYRA_UNIT_VOLUME:</b> volume of a unit pyramid with square base.
+        </li>
+        <li>
+          <b>QUAD_UNIT_MONOMIAL</b> integrates a monomial over the unit quadrilateral.
+        </li>
+        <li>
+          <b>QUAD_UNIT_MONOMIAL_TEST</b> tests QUAD_UNIT_MONOMIAL.
+        </li>
+        <li>
+          <b>QUAD_UNIT_QUAD_TEST</b> tests the rules for the unit quadrilateral.
+        </li>
+        <li>
+          <b>QUAD_UNIT_RULE</b> returns a quadrature rule for the unit quadrilateral.
+        </li>
+        <li>
+          <b>QUAD_UNIT_VOLUME:</b> volume of a unit quadrilateral.
+        </li>
+        <li>
+          <b>R8_CHOOSE</b> computes the binomial coefficient C(N,K) as an R8.
+        </li>
+        <li>
+          <b>R8_MOP</b> returns the I-th power of -1 as an R8.
+        </li>
+        <li>
+          <b>R8MAT_DET_4D</b> computes the determinant of a 4 by 4 matrix.
+        </li>
+        <li>
+          <b>R8MAT_WRITE</b> writes an R8MAT file.
+        </li>
+        <li>
+          <b>R8VEC_DIRECT_PRODUCT</b> creates a direct product of R8VEC's.
+        </li>
+        <li>
+          <b>R8VEC_DIRECT_PRODUCT2</b> creates a direct product of R8VEC's.
+        </li>
+        <li>
+          <b>SUBCOMP_NEXT</b> computes the next subcomposition of N into K parts.
+        </li>
+        <li>
+          <b>TETR_UNIT_MONOMIAL</b> integrates a monomial over the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_MONOMIAL_TEST</b> tests TETR_UNIT_MONOMIAL.
+        </li>
+        <li>
+          <b>TETR_UNIT_O01</b> returns a 1 point quadrature rule for the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_O04</b> returns a 4 point quadrature rule for the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_O08</b> returns an 8 point quadrature rule for the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_O08B</b> returns an 8 point quadrature rule for the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_O14</b> returns a 14 point quadrature rule for the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_O14B</b> returns a 14 point quadrature rule for the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_O15</b> returns a 15 point quadrature rule for the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_O15B</b> returns a 15 point quadrature rule for the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_O24</b> returns a 24 point quadrature rule for the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_QUAD_TEST</b> tests the rules for the unit tetrahedron.
+        </li>
+        <li>
+          <b>TETR_UNIT_VOLUME</b> returns the volume of the unit tetrahedron.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TRIG_UNIT_MONOMIAL</b> integrates a monomial over the unit triangle.
+        </li>
+        <li>
+          <b>TRIG_UNIT_MONOMIAL_TEST</b> tests TRIG_UNIT_MONOMIAL.
+        </li>
+        <li>
+          <b>TRIG_UNIT_O01</b> returns a 1 point quadrature rule for the unit triangle.
+        </li>
+        <li>
+          <b>TRIG_UNIT_O03</b> returns a 3 point quadrature rule for the unit triangle.
+        </li>
+        <li>
+          <b>TRIG_UNIT_O03B</b> returns a 3 point quadrature rule for the unit triangle.
+        </li>
+        <li>
+          <b>TRIG_UNIT_O06</b> returns a 6 point quadrature rule for the unit triangle.
+        </li>
+        <li>
+          <b>TRIG_UNIT_O06B</b> returns a 6 point quadrature rule for the unit triangle.
+        </li>
+        <li>
+          <b>TRIG_UNIT_O07</b> returns a 7 point quadrature rule for the unit triangle.
+        </li>
+        <li>
+          <b>TRIG_UNIT_O12</b> returns a 12 point quadrature rule for the unit triangle.
+        </li>
+        <li>
+          <b>TRIG_UNIT_QUAD_TEST</b> tests the rules for the unit triangle.
+        </li>
+        <li>
+          <b>TRIG_UNIT_VOLUME:</b> volume of a unit triangle.
+        </li>
+        <li>
+          <b>WEDG_UNIT_MONOMIAL:</b> monomial integral in a unit wedge.
+        </li>
+        <li>
+          <b>WEDG_UNIT_MONOMIAL_TEST</b> tests WEDG_UNIT_MONOMIAL.
+        </li>
+        <li>
+          <b>WEDG_UNIT_QUAD_TEST</b> tests the rules for the unit wedge.
+        </li>
+        <li>
+          <b>WEDG_UNIT_RULE</b> returns a quadrature rule for the unit wedge.
+        </li>
+        <li>
+          <b>WEDG_UNIT_VOLUME:</b> volume of a unit wedge.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 16 July 2009.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

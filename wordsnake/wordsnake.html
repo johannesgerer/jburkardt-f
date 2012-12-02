@@ -1,0 +1,234 @@
+<html>
+
+  <head>
+    <title>
+      WORDSNAKE - Seek High Scoring Wordsnakes
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      WORDSNAKE <br> Seek High Scoring Wordsnakes
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>WORDSNAKE</b>
+      is a FORTRAN90 program
+      which tries to find a good solution to the "Wordsnake Puzzle".
+    <p>
+
+    <p>
+      <b>WORDSNAKE</b> is given a list of words and tries to arrange them
+      in a list so that the end of one word has maximum overlap with the
+      beginning of the next word.  The entire list is called a "wordsnake",
+      and is scored by squaring the overlaps of each consecutive pair, and
+      adding.  We allow the wordsnake to "wraparound", so there's one extra
+      score for overlap from the last word to the first.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>wordsnake</b> <i>wordlist</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>wordlist</i> is a file containing a list of words,
+          one per line, to be made into a wordsnake.
+        </dd>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/anagram/anagram.html">
+      ANAGRAM</a>,
+      a C++ program which
+      determines anagrams of a string,
+      by James Cherry;
+    </p>
+
+    <p>
+      <a href = "../../f_src/puzzles/puzzles.html">
+      PUZZLES</a>,
+      FORTRAN90 programs which
+      were used to solve various puzzles.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subanagram/subanagram.html">
+      SUBANAGRAM</a>,
+      a FORTRAN90 program which
+      finds words which are anagrams formed from some of the letters
+      of a given master word.
+    </p>
+
+    <p>
+      <a href = "../../datasets/words/words.html">
+      WORDS</a>,
+      a dataset directory which
+      contains lists of words;
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Dennis Shasha,<br>
+          Wordsnakes,<br>
+          Dr Dobb's Journal,<br>
+          July 2000, pages 143-144.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "wordsnake.f90">wordsnake.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "wordsnake.sh">wordsnake.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "wordsnake_input.txt">wordsnake_input.txt</a>, a sample wordlist;
+        </li>
+        <li>
+          <a href = "wordsnake_output.txt">wordsnake_output.txt</a>, output from
+          the command "wordsnake wordsnake_input.txt &gt; wordsnake_output.txt";
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for WORDSNAKE.
+        </li>
+        <li>
+          <b>FILE_RECORD_COUNT</b> counts the number of records in a file.
+        </li>
+        <li>
+          <b>FILE_RECORD_READ</b> reads the records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4_MODP</b> returns the nonnegative remainder of integer division.
+        </li>
+        <li>
+          <b>I4_RANDOM</b> returns a random integer in a given range.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two integer values.
+        </li>
+        <li>
+          <b>I4_SWAP3</b> swaps three integer values.
+        </li>
+        <li>
+          <b>I4_UNSWAP3</b> unswaps three integer values.
+        </li>
+        <li>
+          <b>I4_WRAP</b> forces an integer to lie between given limits by wrapping.
+        </li>
+        <li>
+          <b>I4VEC_IDENTITY</b> sets an integer vector to the identity vector A(I)=I.
+        </li>
+        <li>
+          <b>LOWER</b> returns a lowercase version of a string.
+        </li>
+        <li>
+          <b>OVERLAP_TABLE</b> computes a table of the overlap between pairs of words.
+        </li>
+        <li>
+          <b>PERM_RANDOM</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>S_OVERLAP</b> determines the overlap between two strings.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>UPPER</b> returns an uppercase version of a string.
+        </li>
+        <li>
+          <b>WORDSNAKE</b> seeks a high scoring permutation of a set of words.
+        </li>
+        <li>
+          <b>WORDSNAKE_PRINT</b> prints a wordsnake.
+        </li>
+        <li>
+          <b>WORDSNAKE_SCORE</b> computes the score for a given wordsnake.
+        </li>
+        <li>
+          <b>WORDSNAKE_SEARCH_GREEDY</b> constructs a wordsnake using a greedy algorithm.
+        </li>
+        <li>
+          <b>WORDSNAKE_SEARCH_INSERT</b> tries to improve the score by inserting a word.
+        </li>
+        <li>
+          <b>WORDSNAKE_SEARCH_SWAP2</b> tries to improve the score by swapping 2 words.
+        </li>
+        <li>
+          <b>WORDSNAKE_SEARCH_SWAP3</b> tries to improve the score by swapping 3 words.
+        </li>
+        <li>
+          <b>WORDSNAKE_SEARCH_TRANSPOSE</b> tries to improve the score using transpositions.
+        </li>
+      </ul>
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 13 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,474 @@
+<html>
+
+  <head>
+    <title>
+      SANDIA_CUBATURE - Numerical Integration in M Dimensions
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      SANDIA_CUBATURE <br> Numerical Integration<br> in M Dimensions
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>SANDIA_CUBATURE</b>
+      is a FORTRAN90 library which
+      implements quadrature rules for certain multidimensional regions and weight functions.
+    </p>
+
+    <p>
+      We consider the following integration regions:
+      <ul>
+        <li>
+          <b>CN_GEG</b>, the N dimensional hypercube [-1,+1]^N, with the Gegenbauer
+          weight function:<br>
+          w(alpha;x) = product ( 1 <= i <= n ) ( 1 - x(i)^2 )^alpha;
+        </li>
+        <li>
+          <b>CN_JAC</b>, the N dimensional hypercube [-1,+1]^N, with the Beta or
+          Jacobi weight function:<br>
+          w(alpha,beta;x) = product ( 1 <= i <= n ) ( 1 - x(i) )^alpha * ( 1 + x(i) )^beta;
+        </li>
+        <li>
+          <b>CN_LEG</b>, the N dimensional hypercube [-1,+1]^N, with the Legendre
+          weight function:<br>
+          w(x) = 1;
+        </li>
+        <li>
+          <b>EN_HER</b>, the N-dimensional product space (-oo,+oo)^N,
+          with the Hermite weight function:<br>
+          w(x) = product ( 1 <= i <= n ) exp ( - x(i)^2 );
+        </li>
+        <li>
+          <b>EPN_GLG</b>, the positive product space [0,+oo)^N, with the generalized
+          Laguerre weight function:<br>
+          w(alpha;x) = product ( 1 <= i <= n ) x(i)^alpha exp ( - x(i) );
+        </li>
+        <li>
+          <b>EPN_LAG</b>, the positive product space [0,+oo)^N, with the exponential or
+          Laguerre weight function:<br>
+          w(x) = product ( 1 <= i <= n ) exp ( - x(i) );
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The available rules for region <b>EN_HER</b> all have odd precision, ranging
+      from 1 to 11.  Some of these rules are valid for any spatial dimension <b>N</b>.
+      However, many of these rules are restricted to a limited range, such as
+      <b>2 &lt;= N &lt; 6</b>.  Some of the rules have two forms; in that case,
+      the particular form is selectable by setting an input argument <b>OPTION</b>
+      to 1 or 2.  Finally, note that in multidimensional integration, the dependence
+      of the order <b>O</b> (number of abscissas) on the spatial dimension <b>N</b>
+      is critical.  Rules for which the order is a multiple of <b>2^N</b> are not
+      practical for large values of <b>N</b>.  The source code for each rule lists its
+      formula for the order as a function of <b>N</b>.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>SANDIA_CUBATURE</b> is available in
+      <a href = "../../cpp_src/sandia_cubature/sandia_cubature.html">a C++ version</a> and
+      <a href = "../../f_src/sandia_cubature/sandia_cubature.html">a FORTRAN90 version</a> and
+      <a href = "../../m_src/sandia_cubature/sandia_cubature.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/sandia_rules/sandia_rules.html">
+      SANDIA_RULES</a>,
+      a FORTRAN90 library which
+      produces 1D quadrature rules of
+      Chebyshev, Clenshaw Curtis, Fejer 2, Gegenbauer, generalized Hermite,
+      generalized Laguerre, Hermite, Jacobi, Laguerre, Legendre and Patterson types.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stroud/stroud.html">
+      STROUD</a>,
+      a FORTRAN90 library which
+      defines quadrature rules for a variety of multidimensional reqions.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Arthur Stroud,<br>
+          Approximate Calculation of Multiple Integrals,<br>
+          Prentice Hall, 1971,<br>
+          ISBN: 0130438936,<br>
+          LC: QA311.S85.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+        <li>
+          Dongbin Xiu,<br>
+          Numerical integration formulas of degree two,<br>
+          Applied Numerical Mathematics,<br>
+          Volume 58, 2008, pages 1515-1520.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sandia_cubature.f90">sandia_cubature.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "sandia_cubature.sh">sandia_cubature.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "sandia_cubature_prb.f90">sandia_cubature_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "sandia_cubature_prb.sh">sandia_cubature_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "sandia_cubature_prb_output.txt">sandia_cubature_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>C1_GEG_MONOMIAL_INTEGRAL:</b> integral of monomial with Gegenbauer weight on C1.
+        </li>
+        <li>
+          <b>C1_JAC_MONOMIAL_INTEGRAL:</b> integral of a monomial with Jacobi weight over C1.
+        </li>
+        <li>
+          <b>C1_LEG_MONOMIAL_INTEGRAL:</b> integral of monomial with Legendre weight on C1.
+        </li>
+        <li>
+          <b>CN_GEG_00_1</b> implements the midpoint rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_00_1_SIZE</b> sizes the midpoint rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_01_1</b> implements a precision 1 rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_01_1_SIZE</b> sizes a precision 1 rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_02_XIU</b> implements the Xiu precision 2 rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_02_XIU_SIZE</b> sizes the Xiu precision 2 rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_03_XIU</b> implements the Xiu precision 3 rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_03_XIU_SIZE</b> sizes the Xiu precision 3 rule for region CN_GEG.
+        </li>
+        <li>
+          <b>CN_GEG_MONOMIAL_INTEGRAL:</b> integral of monomial with Gegenbauer weight on CN.
+        </li>
+        <li>
+          <b>CN_JAC_00_1</b> implements the midpoint rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_00_1_SIZE</b> sizes the midpoint rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_01_1</b> implements a precision 1 rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_01_1_SIZE</b> sizes a precision 1 rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_02_XIU</b> implements the Xiu precision 2 rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_02_XIU_SIZE</b> sizes the Xiu precision 2 rule for region CN_JAC.
+        </li>
+        <li>
+          <b>CN_JAC_MONOMIAL_INTEGRAL:</b> integral of a monomial with Jacobi weight over CN.
+        </li>
+        <li>
+          <b>CN_LEG_01_1</b> implements the midpoint rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_01_1_SIZE</b> sizes the midpoint rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_02_XIU</b> implements the Xiu precision 2 rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_02_XIU_SIZE</b> sizes the Xiu precision 2 rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_03_1</b> implements the Stroud rule CN:3-1 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_03_1_SIZE</b> sizes the Stroud rule CN:3-1 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_03_XIU</b> implements the Xiu precision 3 rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_03_XIU_SIZE</b> sizes the Xiu precision 3 rule for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_05_1</b> implements the Stroud rule CN:5-1 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_05_1_SIZE</b> sizes the Stroud rule CN:5-1 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_05_2</b> implements the Stroud rule CN:5-2 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_05_2_SIZE</b> sizes the Stroud rule CN:5-2 for region CN_LEG.
+        </li>
+        <li>
+          <b>CN_LEG_MONOMIAL_INTEGRAL:</b> integral of monomial with Legendre weight on CN.
+        </li>
+        <li>
+          <b>EN_HER_01_1</b> implements the Stroud rule 1.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_01_1_SIZE</b> sizes the Stroud rule 1.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_02_XIU</b> implements the Xiu precision 2 rule for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_02_XIU_SIZE</b> sizes the Xiu precision 2 rule for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_03_1</b> implements the Stroud rule 3.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_03_1_SIZE</b> sizes the Stroud rule 3.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_03_2</b> implements the Stroud rule 3.2 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_03_2_SIZE</b> sizes the Stroud rule 3.2 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_03_XIU</b> implements the Xiu precision 3 rule for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_03_XIU_SIZE</b> sizes the Xiu precision 3 rule for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_1</b> implements the Stroud rule 5.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_1_SIZE</b> sizes the Stroud rule 5.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_2</b> implements the Stroud rule 5.2 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_2_SIZE</b> sizes the Stroud rule 5.2 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_3</b> implements the Stroud rule 5.3 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_3_SIZE</b> sizes the Stroud rule 5.3 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_4</b> implements the Stroud rule 5.4 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_4_SIZE</b> sizes the Stroud rule 5.4 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_5</b> implements the Stroud rule 5.5 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_5_SIZE</b> sizes the Stroud rule 5.5 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_6</b> implements the Stroud rule 5.6 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_05_6_SIZE</b> sizes the Stroud rule 5.6 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_07_1</b> implements the Stroud rule 7.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_07_1_SIZE</b> sizes the Stroud rule 7.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_07_2</b> implements the Stroud rule 7.2 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_07_2_SIZE</b> sizes the Stroud rule 7.2 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_07_3</b> implements the Stroud rule 7.3 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_07_3_SIZE</b> sizes the Stroud rule 7.3 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_09_1</b> implements the Stroud rule 9.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_09_1_SIZE</b> sizes the Stroud rule 9.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_11_1</b> implements the Stroud rule 11.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_11_1_SIZE</b> sizes the Stroud rule 11.1 for region EN_HER.
+        </li>
+        <li>
+          <b>EN_HER_MONOMIAL_INTEGRAL</b> evaluates monomial integrals in EN_HER.
+        </li>
+        <li>
+          <b>EP1_GLG_MONOMIAL_INTEGRAL:</b> integral of monomial with GLG weight on EP1.
+        </li>
+        <li>
+          <b>EP1_LAG_MONOMIAL_INTEGRAL:</b> integral of monomial with Laguerre weight on EP1.
+        </li>
+        <li>
+          <b>EPN_GLG_00_1</b> implements the "midpoint rule" for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_00_1_SIZE</b> sizes the midpoint rule for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_01_1</b> implements a precision 1 rule for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_01_1_SIZE</b> sizes a precision 1 rule for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_02_XIU</b> implements the Xiu precision 2 rule for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_02_XIU_SIZE</b> sizes the Xiu precision 2 rule for region EPN_GLG.
+        </li>
+        <li>
+          <b>EPN_GLG_MONOMIAL_INTEGRAL:</b> integral of monomial with GLG weight on EPN.
+        </li>
+        <li>
+          <b>EPN_LAG_00_1</b> implements the "midpoint rule" for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_00_1_SIZE</b> sizes the midpoint rule for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_01_1</b> implements a precision 1 rule for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_01_1_SIZE</b> sizes a precision 1 rule for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_02_XIU</b> implements the Xiu precision 2 rule for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_02_XIU_SIZE</b> sizes the Xiu precision 2 rule for region EPN_LAG.
+        </li>
+        <li>
+          <b>EPN_LAG_MONOMIAL_INTEGRAL:</b> integral of monomial with Laguerre weight on EPN.
+        </li>
+        <li>
+          <b>GW_02_XIU</b> implements the Golub-Welsch version of the Xiu rule.
+        </li>
+        <li>
+          <b>GW_02_XIU_SIZE</b> sizes the Golub Welsch version of the Xiu rule.
+        </li>
+        <li>
+          <b>MONOMIAL_VALUE</b> evaluates a monomial.
+        </li>
+        <li>
+          <b>R8_FACTORIAL</b> computes the factorial of N.
+        </li>
+        <li>
+          <b>R8_GAMMA</b> evaluates Gamma(X) for a real argument.
+        </li>
+        <li>
+          <b>R8_HYPER_2F1</b> evaluates the hypergeometric function F(A,B,C,X).
+        </li>
+        <li>
+          <b>R8_MOP</b> returns the I-th power of -1 as an R8 value.
+        </li>
+        <li>
+          <b>R8_PSI</b> evaluates the function Psi(X).
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 March 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

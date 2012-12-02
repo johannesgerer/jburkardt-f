@@ -1,0 +1,378 @@
+<html>
+
+  <head>
+    <title>
+      JBAR - Bar Graphs in PPMA format
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      JBAR <br> Bar Graphs in PPMA format
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>JBAR</b>
+      is a FORTRAN90 program which
+      reads in a data file and creates a
+      <a href = "../../data/ppma/ppma.html">PPMA graphics file</a>
+      containing a bar graph version of the data.
+    </p>
+
+    <p>
+      The data actually represents measurements, on various days of the year,
+      of the time required by individual "hops" in an Internet connection.
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>jbar</b> <i>file.dat</i> <i>title</i> <i>file.ppma</i>
+      </blockquote>
+      <dl>
+        <dt>
+          file.dat
+        </dt>
+        <dd>
+          the name of an input data file, formatted as described
+          in routine DATA_READ;  the extension "DAT" determines the
+          type of data:
+          <ul>
+            <li>
+              'current', weekly data from today back;
+            </li>
+            <li>
+              8 characters long, 'YYYMMDD', weekly data from YYYY/MM/DD back;
+            </li>
+            <li>
+              6 characters long, 'YYYYMM', monthly data;
+            </li>
+            <li>
+              4 characters long, 'YYYY', or other, yearly data is assumed.
+            </li>
+          </ul>
+        </dd>
+        <dt>
+          title
+        </dt>
+        <dd>
+          a brief title to display on the graph;
+        </dd>
+        <dt>
+          file.ppma
+        </dt>
+        <dd>
+          the name of the PPMA (ASCII portable pixel map) file
+          in which the created graph should be stored;  If this filename
+          is omitted, then it will normally be constructed by replacing
+          the extension of the input data file by ".ppma".
+        </dd>
+      </dl>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/calendar_nyt/calendar_nyt.html">
+      CALPAK</a>,
+      a FORTRAN90 library which
+      converts between dates as computed on various calendars.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_histogram/table_histogram.html">
+      TABLE_HISTOGRAM</a>,
+      a FORTRAN90 program which
+      can make a histogram of a set of points
+      stored in a table file.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "jbar.f90">jbar.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "jbar.sh">jbar.sh</a>,
+          compiles and loads the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "stats.1999">stats.1999</a>, data over a year;
+        </li>
+        <li>
+          <a href = "stats.1999.ppma">stats.1999.ppma</a>,
+          a PPMA plot of stats.1999;
+        </li>
+        <li>
+          <a href = "stats.1999.png">stats.1999.png</a>,
+          a PNG version of the plot;
+        </li>
+        <li>
+          <a href = "stats.199910">stats.199910</a>, data over a month;
+        </li>
+        <li>
+          <a href = "stats.199910.ppma">stats.199910.ppma</a>,
+          a PPMA plot of stats.199910;
+        </li>
+        <li>
+          <a href = "stats.199910.png">stats.199910.png</a>,
+          a PNG version of the plot;
+        </li>
+        <li>
+          <a href = "stats.19991031">stats.19991031</a>, data over a week;
+        </li>
+        <li>
+          <a href = "stats.19991031.ppma">stats.19991031.ppma</a>,
+          a PPMA plot of stats.19991031;
+        </li>
+        <li>
+          <a href = "stats.19991031.png">stats.19991031.png</a>,
+          a PNG version of the plot;
+        </li>
+        <li>
+          <a href = "stats.current">stats.current</a>, data for the current week;
+        </li>
+        <li>
+          <a href = "stats.current.ppma">stats.current.ppma</a>,
+          a PPMA plot of stats.current;
+        </li>
+        <li>
+          <a href = "stats.current.png">stats.current.png</a>,
+          a PNG version of the plot;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> reads in a data file and creates a bar graph in PPMA format.
+        </li>
+        <li>
+          <b>BITCHR75</b> returns a 7 by 5 bit pattern for a given character.
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CHRLAB</b> makes an index array for an array of (repeated) strings.
+        </li>
+        <li>
+          <b>COLOR_SET</b> sets RGB colors for each unique item in the bar graph.
+        </li>
+        <li>
+          <b>DATA_READ</b> reads in data for a bar plot.
+        </li>
+        <li>
+          <b>DATA_WRITE</b> prints out the data for a bar plot.
+        </li>
+        <li>
+          <b>DAY_BORROW_COMMON</b> borrows days from months in a common date.
+        </li>
+        <li>
+          <b>DAY_CARRY_COMMON</b> carries days to months in a common date.
+        </li>
+        <li>
+          <b>DBAR_TO_X</b> converts a date into an appropriate X coordinate.
+        </li>
+        <li>
+          <b>FILE_EXT</b> determines the "extension" of a file name.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>HOUR_BORROW</b> "borrows" a day of hours.
+        </li>
+        <li>
+          <b>HOUR_CARRY</b> is given a YMDH date, and carries hours to days.
+        </li>
+        <li>
+          <b>HEXCOL</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>I_MODP</b> returns the positive remainder when I is divided by J.
+        </li>
+        <li>
+          <b>I_RANDOM</b> returns a random integer in a given range.
+        </li>
+        <li>
+          <b>I_SWAP</b> swaps two integers.
+        </li>
+        <li>
+          <b>INIT</b> initializes the data.
+        </li>
+        <li>
+          <b>MINUTE_BORROW</b> "borrows" an hour of minutes.
+        </li>
+        <li>
+          <b>MINUTE_CARRY</b> is given a YMDHMS date, and carries minutes to hours.
+        </li>
+        <li>
+          <b>MONTH_BORROW</b> "borrows" a year of months while M is nonpositive.
+        </li>
+        <li>
+          <b>MONTH_CARRY</b> is given a YM date, and carries months to years.
+        </li>
+        <li>
+          <b>MONTH_LENGTH_COMMON</b> returns the number of days in a given common month.
+        </li>
+        <li>
+          <b>MONTH_NAME_TO_MONTH</b> returns the month number of a given month
+        </li>
+        <li>
+          <b>MONTH_PLOT</b> sets the RGB data for a bar graph of a month's data.
+        </li>
+        <li>
+          <b>MONTH_TO_MONTH_NAME</b> returns the name of a given month.
+        </li>
+        <li>
+          <b>PERM_RANDOM2</b> selects a random permutation of N elements.
+        </li>
+        <li>
+          <b>PPM_CHECK_DATA</b> checks pixel data.
+        </li>
+        <li>
+          <b>PPMA_WRITE</b> writes an ASCII portable pixel map file.
+        </li>
+        <li>
+          <b>R_TO_I</b> maps real X in [XMIN, XMAX] to integer IX in [IXMIN, IXMAX].
+        </li>
+        <li>
+          <b>S_CAP</b> replaces any lowercase letters by uppercase ones in a string.
+        </li>
+        <li>
+          <b>S_EQI</b> is a case insensitive comparison of two strings for equality.
+        </li>
+        <li>
+          <b>S_INDEX_LAST</b> finds the LAST occurrence of a given substring.
+        </li>
+        <li>
+          <b>S_TO_HMS</b> converts a string into a H:M:S date.
+        </li>
+        <li>
+          <b>S_TO_I</b> reads an integer value from a string.
+        </li>
+        <li>
+          <b>S_TO_R</b> reads a real number from a string.
+        </li>
+        <li>
+          <b>S_TO_YMD</b> converts a string into a YMD date.
+        </li>
+        <li>
+          <b>S_TO_YMDHMS</b> converts a string into a YMD H:M:S date.
+        </li>
+        <li>
+          <b>SECOND_BORROW</b> "borrows" a minute of seconds.
+        </li>
+        <li>
+          <b>SECOND_CARRY</b> is given a YMDHMS date, and carries seconds to minutes.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>WEEK_PLOT</b> sets the RGB data for a bar graph of a week's data.
+        </li>
+        <li>
+          <b>WORD_NEXT</b> finds the next (blank separated) word in a string.
+        </li>
+        <li>
+          <b>X_SORT</b> rearranges the data so that the X values are increasing.
+        </li>
+        <li>
+          <b>X_WRITE</b> prints out the X data for the plot.
+        </li>
+        <li>
+          <b>Y_SORT</b> sorts the Y data in each bar so that it is increasing.
+        </li>
+        <li>
+          <b>YEAR_CHECK</b> checks a year for reasonableness.
+        </li>
+        <li>
+          <b>YEAR_IS_LEAP_COMMON</b> returns TRUE if the given common year was a leap year.
+        </li>
+        <li>
+          <b>YEAR_LENGTH_COMMON</b> returns the number of days in a given common year.
+        </li>
+        <li>
+          <b>YEAR_PLOT</b> sets the RGB data for the bar graph of a year's data.
+        </li>
+        <li>
+          <b>YM_CHECK_COMMON</b> checks a YM date for reasonableness.
+        </li>
+        <li>
+          <b>YMD_CHECK_COMMON</b> checks a common YMD date for reasonableness.
+        </li>
+        <li>
+          <b>YMDHMS_CHECK</b> checks an YMDHMS date for reasonableness.
+        </li>
+        <li>
+          <b>YMDHMS_COMPARE</b> compares two YMDHMS dates.
+        </li>
+        <li>
+          <b>YMDHMS_DIF_DHMS</b> computes the DHMS difference between two YMDHMS dates.
+        </li>
+        <li>
+          <b>YMDHMS_SWAP</b> swaps the data defining two YMDHMS dates.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 08 December 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

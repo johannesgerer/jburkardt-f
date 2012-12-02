@@ -1,0 +1,259 @@
+<html>
+
+  <head>
+    <title>
+      CVT_FIXED - CVT with Some Generators Fixed
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CVT_FIXED <br> CVT with Some Generators Fixed
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CVT_FIXED</b>
+      is a FORTRAN90 library which
+      can be used to "update" a centroidal Voronoi tessellation (CVT).
+    </p>
+
+    <p>
+      <b>CVT_FIXED</b> attempts to compute a new CVT starting from
+      an existing one, updating some of the cell generators, but
+      leaving designated cell generators fixed.
+      The updated cell generators are replaced by the centroid of
+      their cells.
+    </p>
+
+    <p>
+      The user specifies which generators are to be fixed, and which
+      may be updated.  Watching an animation of the evolution of the
+      system, the cells corresponding to fixed generators comprise obstacles,
+      and the free cells behave like soap bubbles that flow around
+      the obstacles, trying to balance pressures (cell volume).
+    </p>
+
+    <p>
+      A second feature has been added, a maximum influence distance.
+      This is the variable "cutoff_dist".  When sampling the region,
+      if the nearest generator is further than this distance, we
+      don't assign the point at all.
+    </p>
+
+    <p>
+      The code includes the weight vector that was developed in the
+      <a href = "../cvt_size/cvt_size.html">CVT_SIZE</a> program.
+      Here, it is anticipated that the weight vector would be used
+      in situations where an initial set of generators has been
+      computed, and is to be augmented.  The initial set of generators
+      is held fixed, and the new points are to be allowed to arrange
+      themselves.  However, if we place the new points at random,
+      they will get trapped in local minima.  By using the weight
+      vector, we can start out with the initial generators having
+      very little influence, and then gradually ramp their weights
+      up to equality with the new points.
+    </p>
+
+    <p>
+      We were interested in watching the behavior of the Voronoi
+      cells over "time".  We set up a problem with 10 generators,
+      with weights 1, 2, 3, ..., 10.  We started with random initial
+      locations for the generators, and carried out 100 iterations
+      of the CVT code.  We saved a
+      <a href = "../../data/ppmb/ppmb.html">PPMB</a> file containing
+      an image of each step, used the
+      <a href = "http://www.ijg.org/">CJPEG</a>
+      program to convert these to
+      <a href = "../../data/jpg/jpg.html">JPEG files</a> with
+      consecutive file names, fed that into
+      <a href = "http://www.apple.com/quicktime/">QuickTime Pro</a>
+      to create an animation, and saved the result as an MPEG-4
+      file.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../data/ppmb/ppmb.html">
+      PPMB</a>,
+      a data format which
+      is used for the images of the CVT regions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/pbmlib/pbmlib.html">
+      PBMLIB</a>,
+      a FORTRAN90 library which
+      is used to create the graphics files.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Franz Aurenhammer,<br>
+          Voronoi diagrams -
+          a study of a fundamental geometric data structure,<br>
+          ACM Computing Surveys,<br>
+          Volume 23, Number 3, pages 345-405, September 1991,        </li>
+        <li>
+          John Burkardt, Max Gunzburger, Janet Peterson and Rebecca Brannon,<br>
+          User Manual and Supporting Information for Library of Codes
+          for Centroidal Voronoi Placement and Associated Zeroth,
+          First, and Second Moment Determination,<br>
+          Sandia National Laboratories Technical Report SAND2002-0099,<br>
+          February 2002.
+        </li>
+        <li>
+          Qiang Du, Vance Faber, and Max Gunzburger,<br>
+          Centroidal Voronoi Tessellations: Applications and Algorithms,<br>
+          SIAM Review, Volume 41, 1999, pages 637-676.
+        </li>
+        <li>
+          Lili Ju, Qiang Du, and Max Gunzburger,<br>
+          Probabilistic methods for centroidal Voronoi tessellations
+          and their parallel implementations,<br>
+          Parallel Computing,<br>
+          Volume 28, 2002, pages 1477-1500.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_fixed.f90">cvt_fixed.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "cvt_fixed.sh">cvt_fixed.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "cvt_fixed_prb.f90">cvt_fixed_prb.f90</a>, a sample problem.
+          To run the various cases below, you have to make changes to
+          the text of this file.
+        </li>
+        <li>
+          <a href = "cvt_fixed_prb.sh">cvt_fixed_prb.sh</a>,
+          commands to compile, link and run the sample problem.
+        </li>
+        <li>
+          <a href = "cvt_fixed_prb_output.txt">cvt_fixed_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>ANGLE_TO_RGB</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>CH_IS_DIGIT</b> returns .TRUE. if a character is a decimal digit.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>CVT_ITERATION</b> takes one step of the CVT iteration.
+        </li>
+        <li>
+          <b>DIGIT_INC</b> increments a decimal digit.
+        </li>
+        <li>
+          <b>DIGIT_TO_CH</b> returns the character representation of a decimal digit.
+        </li>
+        <li>
+          <b>FILE_NAME_INC</b> generates the next filename in a series.
+        </li>
+        <li>
+          <b>FIND_CLOSEST</b> finds the nearest R point to each S point.
+        </li>
+        <li>
+          <b>FIND_CLOSEST_SIZE</b> finds the Voronoi cell generator closest to a point X.
+        </li>
+        <li>
+          <b>GENERATOR_INIT</b> initializes the Voronoi cell generators.
+        </li>
+        <li>
+          <b>HEXCOL</b> returns a color on the perimeter of the color hexagon.
+        </li>
+        <li>
+          <b>I4_LOG_2</b> returns the integer part of the logarithm base 2 of |I|.
+        </li>
+        <li>
+          <b>I4_TO_ANGLE</b> maps integers to points on a circle.
+        </li>
+        <li>
+          <b>I4_TO_RGB</b> maps integers to RGB colors.
+        </li>
+        <li>
+          <b>R8VEC_DIST_L2</b> returns the L2 distance between a pair of vectors.
+        </li>
+        <li>
+          <b>RANDOM_INITIALIZE</b> initializes the FORTRAN 90 random number seed.
+        </li>
+        <li>
+          <b>REGION_PLOT_PPMB</b> makes a binary PPM plot of the CVT regions.
+        </li>
+        <li>
+          <b>REGION_SAMPLER</b> returns a sample point in the physical region.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 12 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

@@ -1,0 +1,886 @@
+<html>
+
+  <head>
+    <title>
+      FFTPACK5 - Fast Fourier Transforms
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FFTPACK5 <br> Fast Fourier Transform
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FFTPACK5</b>
+      is a FORTRAN90 library which
+      computes Fast Fourier Transforms,
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      <b>Note</b>: An apparent indexing problem in the 2D complex codes
+      CFFT2B/CFFT2F/CFFT2I and ZFFT2B/ZFFT2F/ZFFT2I was reported on
+      10 May 2010.  A partial fix was inserted, the authors have been
+      noted, and a proper fix has been promised...
+    </p>
+
+    <p>
+      Special features include:
+      <ul>
+        <li>
+          real or complex data can be handled;
+        </li>
+        <li>
+          separate routines for forward analysis (data => Fourier coefficients)
+          and backward analysis (Fourier coefficients => data);
+        </li>
+        <li>
+          sine and cosine transform routines;
+        </li>
+        <li>
+          quarter wave sine and cosine transform routines;
+        </li>
+        <li>
+          the amount of data is NOT required to be a power of 2.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Routines in the library come in groups of three:
+      <ul>
+        <li>
+          an initialization routine;
+        </li>
+        <li>
+          the forward computational routine (data to FFT coefficients);
+        </li>
+        <li>
+          the backward computational routine (FFT coefficients to data).
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The following table groups the routines:
+      <table border = 1>
+        <tr><th>Initialization</th><th>Forward</th><th>Backward</th><th>Purpose</th></tr>
+        <tr><td>CFFT1I</td><td>CFFT1F</td><td>CFFT1B</td><td>FFT for complex single precision 1D data</td></tr>
+        <tr><td>CFFT2I</td><td>CFFT2F</td><td>CFFT2B</td><td>FFT for complex single precision 2D data</td></tr>
+        <tr><td>CFFTMI</td><td>CFFTMF</td><td>CFFTMB</td><td>FFT for complex single precision multi-D data</td></tr>
+        <tr><td>COSQ1I</td><td>COSQ1F</td><td>COSQ1B</td><td>Even function 1D quarter-cosine FFT for real single precision data</td></tr>
+        <tr><td>DCOSQ1I</td><td>DCOSQ1F</td><td>DCOSQ1B</td><td>Even function 1D quarter-cosine FFT for real double precision data</td></tr>
+        <tr><td>COSQMI</td><td>COSQMF</td><td>COSQMB</td><td>Even function 1D quarter-cosine FFT for real single precision data</td></tr>
+        <tr><td>COST1I</td><td>COST1F</td><td>COST1B</td><td>Even function 1D cosine FFT for real single precision data</td></tr>
+        <tr><td>DCOST1I</td><td>DCOST1F</td><td>DCOST1B</td><td>Even function 1D cosine FFT for real double precision data</td></tr>
+        <tr><td>COSTMI</td><td>COSTMF</td><td>COSTMB</td><td>Even function 1D cosine FFT for real single precision data</td></tr>
+        <tr><td>RFFT1I</td><td>RFFT1F</td><td>RFFT1B</td><td>FFT for real single precision 1D data</td></tr>
+        <tr><td>DFFT1I</td><td>DFFT1F</td><td>DFFT1B</td><td>FFT for real double precision 1D data</td></tr>
+        <tr><td>RFFT2I</td><td>RFFT2F</td><td>RFFT2B</td><td>FFT for real single precision 2D data</td></tr>
+        <tr><td>RFFTMI</td><td>RFFTMF</td><td>RFFTMB</td><td>FFT for real single precision multi-D data</td></tr>
+        <tr><td>SINQ1I</td><td>SINQ1F</td><td>SINQ1B</td><td>Even function 1D quarter-sine FFT for real single precision data</td></tr>
+        <tr><td>SINQMI</td><td>SINQMF</td><td>SINQMB</td><td>Even function 1D quarter-sine FFT for real single precision data</td></tr>
+        <tr><td>SINT1I</td><td>SINT1F</td><td>SINT1B</td><td>Even function 1D sine FFT for real single precision data</td></tr>
+        <tr><td>DSINT1I</td><td>DSINT1F</td><td>DSINT1B</td><td>Even function 1D sine FFT for real double precision data</td></tr>
+        <tr><td>SINTMI</td><td>SINTMF</td><td>SINTMB</td><td>Even function 1D sine FFT for real single precision data</td></tr>
+        <tr><td>ZFFT1I</td><td>ZFFT1F</td><td>ZFFT1B</td><td>FFT for complex double precision 1D data</td></tr>
+        <tr><td>ZFFT2I</td><td>ZFFT2F</td><td>ZFFT2B</td><td>FFT for complex double precision 2D data</td></tr>
+        <tr><td>ZFFTMI</td><td>ZFFTMF</td><td>ZFFTMB</td><td>FFT for complex double precision multi-D data</td></tr>
+      </table>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      Licensed under the GNU General Public License (GPL).<br>
+      Copyright (C) 1995-2004, Scientific Computing Division,<br>
+      University Corporation for Atmospheric Research.
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>FFTPACK5</b> is available in
+      <a href = "../../f77_src/fftpack5/fftpack5.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/fftpack5/fftpack5.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/fftpack5.1/fftpack5.1.html">
+      FFTPACK5.1</a>,
+      a FORTRAN90 library which
+      implements the Fast Fourier Transform
+      by Paul Swarztrauber and Dick Valent;
+    </p>
+
+    <p>
+      <a href = "../../f_src/fftw3/fftw3.html">
+      FFTW3</a>,
+      FORTRAN90 programs which
+      illustrate the use of the FFTW3 library for Fast Fourier Transforms,
+      by Matteo Frigo and Steven Johnson.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+      a C++ library which
+      embodies the "GNU Scientific Library", and includes FFT routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/nms/nms.html">
+      NMS</a>,
+      a FORTRAN90 library which
+      includes a number of FFT routines.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sftpack/sftpack.html">
+      SFTPACK</a>,
+      a FORTRAN90 library which
+      implements the "slow" Fourier transform, intended as a teaching
+      tool and comparison with the fast Fourier transform.
+    </p>
+
+    <p>
+      <a href = "../../f_src/wavelet/wavelet.html">
+      WAVELET</a>,
+      a FORTRAN90 library which
+      does some simple wavelet calculations;
+    </p>
+
+    <p>
+      <a href = "../../f_src/xerror/xerror.html">
+      XERROR</a>,
+      a FORTRAN90 library which
+      is designed to report and handle errors detected during program execution.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      The original Fortran77 version of this code was written by Dick Valent and
+      Paul Swarztrauber, of the National Center for Atmospheric Research (NCAR).
+    </p>
+
+    <p>
+      Modifications and additions were made by John Burkardt to convert the program
+      to FORTRAN90 format, and to add real and complex double precision routines.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          William Briggs, Van Emden Henson,<br>
+          The DFT: An Owner's Manual for the Discrete Fourier Transform,<br>
+          SIAM, 1995,<br>
+          ISBN13: 978-0-898713-42-8,<br>
+          LC: QA403.5.B75.
+        </li>
+        <li>
+          Elbert Brigham,<br>
+          The Fast Fourier Transform and Its Applications,<br>
+          Prentice-Hall, 1988,<br>
+          ISBN: 0133075052,<br>
+          LC: QA403.B74.
+        </li>
+        <li>
+          Bill Buzbee,<br>
+          The SLATEC Common Math Library,<br>
+          in Sources and Development of Mathematical Software,<br>
+          edited by Wayne Cowell,<br>
+          Prentice-Hall, 1984,<br>
+          ISBN: 0-13-823501-5,<br>
+          LC: QA76.95.S68.
+        </li>
+        <li>
+          Eleanor Chu, Alan George,<br>
+          Inside the FFT Black Box,<br>
+          CRC Press,<br>
+          ISBN: 0849302706,<br>
+          LC: QA403.5C5.
+        </li>
+        <li>
+          David Kahaner, Cleve Moler, Steven Nash,<br>
+          Numerical Methods and Software,<br>
+          Prentice Hall, 1989,<br>
+          ISBN: 0-13-627258-4,<br>
+          LC: TA345.K34.
+        </li>
+        <li>
+          Paul Swarztrauber,<br>
+          Symmetric FFT's,<br>
+          Mathematics of Computation,<br>
+          Volume 47, Number 175, July 1986, pages 323-346.
+        </li>
+        <li>
+          Paul Swarztrauber,<br>
+          Vectorizing the Fast Fourier Transforms,<br>
+          in Parallel Computations,<br>
+          edited by Garry Rodrigue,<br>
+          Academic Press, 1982,<br>
+          ISBN: 0125921012,<br>
+          LC: QA76.6.P348.
+        </li>
+        <li>
+          Paul Swarztrauber,<br>
+          Fast Fourier Transform Algorithms for Vector Computers,<br>
+          Parallel Computing,<br>
+          Volume 1, Number 1, August 1984, pages 45-63.
+        </li>
+        <li>
+          <a href = "../../pdf/fftpack5.pdf">
+          FFTPACK 5.0 Reference manual</a>
+        </li>
+        <li>
+          <a href = "http://www.cisl.ucar.edu/css/software/fftpack5">
+                     http://www.cisl.ucar.edu/css/software/fftpack5</a>
+          the home page for the original FORTRAN77 version of FFTPACK5.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fftpack5.f90">fftpack5.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "fftpack5.sh">fftpack5.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "fftpack5_prb.f90">fftpack5_prb.f90</a>,
+          a sample calling program.
+        </li>
+        <li>
+          <a href = "fftpack5_prb.sh">fftpack5_prb.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "fftpack5_prb_output.txt">fftpack5_prb_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>COST_TEST</b> does a pair of cosine forward and backward transforms.
+      <ul>
+        <li>
+          <a href = "cost_test.f90">cost_test.f90</a>,
+          the sample calling program.
+        </li>
+        <li>
+          <a href = "cost_test.sh">cost_test.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "cost_test_output.txt">cost_test_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SINT_TEST</b> does a pair of sine forward and backward transforms.
+      <ul>
+        <li>
+          <a href = "sint_test.f90">sint_test.f90</a>,
+          the sample calling program.
+        </li>
+        <li>
+          <a href = "sint_test.sh">sint_test.sh</a>,
+          commands to compile and run the sample program.
+        </li>
+        <li>
+          <a href = "sint_test_output.txt">sint_test_output.txt</a>,
+          the output from a run of the sample program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>C1F2KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1F2KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1F3KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1F3KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1F4KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1F4KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1F5KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1F5KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1FGKB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1FGKF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1FM1B</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>C1FM1F</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CFFT1B:</b> complex single precision backward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>CFFT1F:</b> complex single precision forward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>CFFT1I:</b> initialization for CFFT1B and CFFT1F.
+        </li>
+        <li>
+          <b>CFFT2B:</b> complex single precision backward fast Fourier transform, 2D.
+        </li>
+        <li>
+          <b>CFFT2F:</b> complex single precision forward fast Fourier transform, 2D.
+        </li>
+        <li>
+          <b>CFFT2I:</b> initialization for CFFT2B and CFFT2F.
+        </li>
+        <li>
+          <b>CFFTMB:</b> complex single precision backward FFT, 1D, multiple vectors.
+        </li>
+        <li>
+          <b>CFFTMF:</b> complex single precision forward FFT, 1D, multiple vectors.
+        </li>
+        <li>
+          <b>CFFTMI:</b> initialization for CFFTMB and CFFTMF.
+        </li>
+        <li>
+          <b>CMF2KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMF2KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMF3KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMF3KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMF4KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMF4KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMF5KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMF5KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMFGKB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMFGKF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMFM1B</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>CMFM1F</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>COSQ1B:</b> real single precision backward cosine quarter wave transform, 1D.
+        </li>
+        <li>
+          <b>COSQ1F:</b> real single precision forward cosine quarter wave transform, 1D.
+        </li>
+        <li>
+          <b>COSQ1I:</b> initialization for COSQ1B and COSQ1F.
+        </li>
+        <li>
+          <b>COSQB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>COSQF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>COSQMB:</b> real single precision backward cosine quarter wave transform, multiple vectors.
+        </li>
+        <li>
+          <b>COSQMF:</b> real single precision forward cosine quarter wave transform, multiple vectors.
+        </li>
+        <li>
+          <b>COSQMI:</b> initialization for COSQMB and COSQMF.
+        </li>
+        <li>
+          <b>COST1B:</b> real single precision backward cosine transform, 1D.
+        </li>
+        <li>
+          <b>COST1F:</b> real single precision forward cosine transform, 1D.
+        </li>
+        <li>
+          <b>COST1I:</b> initialization for COST1B and COST1F.
+        </li>
+        <li>
+          <b>COSTB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>COSTF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>COSTMB:</b> real single precision backward cosine transform, multiple vectors.
+        </li>
+        <li>
+          <b>COSTMF:</b> real single precision forward cosine transform, multiple vectors.
+        </li>
+        <li>
+          <b>COSTMI:</b> initialization for COSTMB and COSTMF.
+        </li>
+        <li>
+          <b>D1F2KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>D1F2KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>D1F3KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>D1F3KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>D1F4KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>D1F4KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>D1F5KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>D1F5KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>D1FGKB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>D1FGKF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>DCOSQ1B:</b> real double precision backward cosine quarter wave transform, 1D.
+        </li>
+        <li>
+          <b>DCOSQ1F:</b> real double precision forward cosine quarter wave transform, 1D.
+        </li>
+        <li>
+          <b>DCOSQ1I:</b> initialization for DCOSQ1B and DCOSQ1F.
+        </li>
+        <li>
+          <b>DCOSQB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>DCOSQF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>DCOST1B:</b> real double precision backward cosine transform, 1D.
+        </li>
+        <li>
+          <b>DCOST1F:</b> real double precision forward cosine transform, 1D.
+        </li>
+        <li>
+          <b>DCOST1I:</b> initialization for DCOST1B and DCOST1F.
+        </li>
+        <li>
+          <b>DCOSTB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>DCOSTF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>DFFTB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>DFFT1B:</b> real double precision backward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>DFFT1F:</b> real double precision forward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>DFFTF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>DFFT1I:</b> initialization for DFFT1B and DFFT1F.
+        </li>
+        <li>
+          <b>DFFTI1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>DSINT1B:</b> real double precision backward sine transform, 1D.
+        </li>
+        <li>
+          <b>DSINT1F:</b> real double precision forward sine transform, 1D.
+        </li>
+        <li>
+          <b>DSINT1I:</b> initialization for DSINT1B and DSINT1F.
+        </li>
+        <li>
+          <b>DSINTB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>DSINTF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MCSQB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MCSQF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MCSTB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MCSTF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRADB2</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRADB3</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRADB4</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRADB5</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRADBG</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRADF2</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRADF3</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRADF4</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRADF5</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRADFG</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRFTB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRFTF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MRFTI1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MSNTB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>MSNTF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R1F2KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R1F2KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R1F3KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R1F3KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R1F4KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R1F4KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R1F5KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R1F5KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R1FGKB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R1FGKF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>R4_FACTOR</b> factors of an integer for real single precision computations.
+        </li>
+        <li>
+          <b>R4_MCFTI1</b> sets up factors and tables, real single precision arithmetic.
+        </li>
+        <li>
+          <b>R4_TABLES</b> computes trigonometric tables, real single precision arithmetic.
+        </li>
+        <li>
+          <b>R8_FACTOR</b> factors of an integer for real double precision computations.
+        </li>
+        <li>
+          <b>R8_MCFTI1</b> sets up factors and tables, real double precision arithmetic.
+        </li>
+        <li>
+          <b>R8_TABLES</b> computes trigonometric tables, real double precision arithmetic.
+        </li>
+        <li>
+          <b>RFFT1B:</b> real single precision backward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>RFFT1F:</b> real single precision forward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>RFFT1I:</b> initialization for RFFT1B and RFFT1F.
+        </li>
+        <li>
+          <b>RFFT2B:</b> real single precision backward fast Fourier transform, 2D.
+        </li>
+        <li>
+          <b>RFFT2I:</b> initialization for RFFT2B and RFFT2F.
+        </li>
+        <li>
+          <b>RFFTB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>RFFTF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>RFFTI1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>RFFTMB:</b> real single precision backward FFT, 1D, multiple vectors.
+        </li>
+        <li>
+          <b>RFFTMF:</b> real single precision forward FFT, 1D, multiple vectors.
+        </li>
+        <li>
+          <b>RFFTMI:</b> initialization for RFFTMB and RFFTMF.
+        </li>
+        <li>
+          <b>SINQ1B:</b> real single precision backward sine quarter wave transform, 1D.
+        </li>
+        <li>
+          <b>SINQ1F:</b> real single precision forward sine quarter wave transform, 1D.
+        </li>
+        <li>
+          <b>SINQ1I:</b> initialization for SINQ1B and SINQ1F.
+        </li>
+        <li>
+          <b>SINQMB:</b> real single precision backward sine quarter wave transform, multiple vectors.
+        </li>
+        <li>
+          <b>SINQMF:</b> real single precision forward sine quarter wave transform, multiple vectors.
+        </li>
+        <li>
+          <b>SINQMI:</b> initialization for SINQMB and SINQMF.
+        </li>
+        <li>
+          <b>SINT1B:</b> real single precision backward sine transform, 1D.
+        </li>
+        <li>
+          <b>SINT1F:</b> real single precision forward sine transform, 1D.
+        </li>
+        <li>
+          <b>SINT1I:</b> initialization for SINT1B and SINT1F.
+        </li>
+        <li>
+          <b>SINTB1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>SINTF1</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>SINTMB:</b> real single precision backward sine transform, multiple vectors.
+        </li>
+        <li>
+          <b>SINTMF:</b> real single precision forward sine transform, multiple vectors.
+        </li>
+        <li>
+          <b>SINTMI:</b> initialization for SINTMB and SINTMF.
+        </li>
+        <li>
+          <b>XERCON</b> checks INC, JUMP, N and LOT for consistency.
+        </li>
+        <li>
+          <b>XERFFT</b> is an error handler for the FFTPACK routines.
+        </li>
+        <li>
+          <b>Z1F2KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1F2KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1F3KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1F3KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1F4KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1F4KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1F5KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1F5KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1FGKB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1FGKF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1FM1B</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>Z1FM1F</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZFFT1B:</b> complex double precision backward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>ZFFT1F:</b> complex double precision forward fast Fourier transform, 1D.
+        </li>
+        <li>
+          <b>ZFFT1I:</b> initialization for ZFFT1B and ZFFT1F.
+        </li>
+        <li>
+          <b>ZFFT2B:</b> complex double precision backward fast Fourier transform, 2D.
+        </li>
+        <li>
+          <b>ZFFT2F:</b> complex double precision forward fast Fourier transform, 2D.
+        </li>
+        <li>
+          <b>ZFFT2I:</b> initialization for ZFFT2B and ZFFT2F.
+        </li>
+        <li>
+          <b>ZFFTMB:</b> complex double precision backward FFT, 1D, multiple vectors.
+        </li>
+        <li>
+          <b>ZFFTMF:</b> complex double precision forward FFT, 1D, multiple vectors.
+        </li>
+        <li>
+          <b>ZFFTMI:</b> initialization for ZFFTMB and ZFFTMF.
+        </li>
+        <li>
+          <b>ZMF2KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMF2KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMF3KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMF3KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMF4KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMF4KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMF5KB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMF5KF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMFGKB</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMFGKF</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMFM1B</b> is an FFTPACK5 auxiliary routine.
+        </li>
+        <li>
+          <b>ZMFM1F</b> is an FFTPACK5 auxiliary routine.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 10 May 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

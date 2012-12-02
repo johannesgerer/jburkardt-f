@@ -1,0 +1,368 @@
+<html>
+
+  <head>
+    <title>
+      STRIPACK_INTERACTIVE - Interactive Delaunay Diagrams on Unit Spheres
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      STRIPACK_INTERACTIVE <br> Interactive Delaunay Diagrams on Unit Spheres
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>STRIPACK_INTERACTIVE</b>
+      is a FORTRAN90 program which 
+      interactively determines the Delaunay diagram of a set of points
+      on a sphere.
+    </p>
+
+    <p>
+      The set of points is read from a file, and the Delaunay triangulation,
+      once computed, is written out to another file, described as a series
+      of triplets of point indexes.
+    </p>
+
+    <p>
+      According to Steven Fortune, it is possible to compute the Delaunay 
+      triangulation of points on the surface of a sphere by computing their 
+      convex hull, regarded as a 3D pointset.  If the sphere is the unit 
+      sphere at the origin, the facet normals are the Voronoi vertices.  
+    </p>
+
+    <h3 align = "center">
+      Usage:
+    </h3>
+
+    <p>
+      <blockquote>
+        <b>stripack_interactive</b> <i>node_filename</i>
+      </blockquote>
+      where
+      <ul>
+        <li>
+          <i>node_filename</i> is the name of a file containing the (X,Y,Z) coordinates of
+          points on the unit sphere.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/geometry/geometry.html">
+      GEOMETRY</a>,
+      a FORTRAN90 library which 
+      computes various geometric
+      quantities, including grids on spheres.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_cvt/sphere_cvt.html">
+      SPHERE_CVT</a>, 
+      a FORTRAN90 library which 
+      creates a mesh of well-separated points on a unit sphere using Centroidal Voronoi
+      Tessellations.
+    </p>
+
+    <p>
+      <a href = "../../m_src/sphere_cvt/sphere_cvt.html">
+      SPHERE_CVT</a>, 
+      a MATLAB library which 
+      creates a mesh of well-separated points on a unit sphere by applying the
+      Centroidal Voronoi Tessellation (CVT) iteration.
+    </p>
+
+    <p>
+      <a href = "../../m_src/sphere_delaunay/sphere_delaunay.html">
+      SPHERE_DELAUNAY</a>, 
+      a MATLAB program which
+      computes the Delaunay triangulation of points on a sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_design_rule/sphere_design_rule.html">
+      SPHERE_DESIGN_RULE</a>,
+      a FORTRAN90 library which 
+      returns point sets on the surface of the unit sphere, known as "designs",
+      which can be useful for estimating integrals on the surface, among other uses.
+    </p>
+
+    <p>
+      <a href = "../../datasets/sphere_grid/sphere_grid.html">
+      SPHERE_GRID</a>,
+      a dataset directory containing files which
+      describe sets of
+      points on the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_quad/sphere_quad.html">
+      SPHERE_QUAD</a>,
+      a FORTRAN90 library which
+      approximates an integral over the surface of the unit sphere
+      by applying a triangulation to the surface;
+    </p>
+
+    <p>
+      <a href = "../../f_src/sphere_voronoi/sphere_voronoi.html">
+      SPHERE_VORONOI</a>,
+      a FORTRAN90 program which 
+      computes and plots the Voronoi diagram of points on the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/sphere_voronoi_display_opengl/sphere_voronoi_display_opengl.html">
+      SPHERE_VORONOI_DISPLAY_OPENGL</a>,
+      a C++ program which
+      displays a sphere and randomly selected generator points, and then
+      gradually colors in points in the sphere that are closest to each generator.
+    </p>
+
+    <p>
+      <a href = "../../f_src/stripack/stripack.html">
+      STRIPACK</a>,
+      a FORTRAN90 library which
+      can compute the Delaunay triangulation or Voronoi diagram of a set of points
+      on the unit sphere.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms772/toms772.html">
+      TOMS772</a>,
+      a FORTRAN77 library which
+      is the original text of the STRIPACK program.
+    </p>
+
+    <p>
+      <a href = "../../f_src/xyz_io/xyz_io.html">
+      XYZ_IO</a>,
+      a FORTRAN90 library which
+      reads and writes XYZ files.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Thomas Ericson, Victor Zinoviev,<br>
+          Codes on Euclidean Spheres,<br>
+          Elsevier, 2001,<br>
+          ISBN: 0444503293,<br>
+          LC: QA166.7E75
+        </li>
+        <li>
+          Gerald Folland,<br>
+          How to Integrate a Polynomial Over a Sphere,<br>
+          American Mathematical Monthly,<br>
+          Volume 108, Number 5, May 2001, pages 446-448.
+        </li>
+        <li>
+          Jacob Goodman, Joseph ORourke, editors,<br>
+          Handbook of Discrete and Computational Geometry,<br>
+          Second Edition,<br>
+          CRC/Chapman and Hall, 2004,<br>
+          ISBN: 1-58488-301-4,<br>
+          LC: QA167.H36.
+        </li>
+        <li>
+          AD McLaren,<br>
+          Optimal Numerical Integration on a Sphere,<br>
+          Mathematics of Computation,<br>
+          Volume 17, Number 84, October 1963, pages 361-383.
+        </li> 
+        <li>
+          Robert Renka,<br>
+          Algorithm 772: <br>
+          STRIPACK:
+          Delaunay Triangulation and Voronoi Diagram on the Surface 
+          of a Sphere,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 23, Number 3, September 1997, pages 416-434.
+        </li>
+        <li>
+          Edward Saff, Arno Kuijlaars,<br>
+          Distributing Many Points on a Sphere,<br>
+          The Mathematical Intelligencer,<br>
+          Volume 19, Number 1, 1997, pages 5-11.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "stripack_interactive.f90">stripack_interactive.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "stripack_interactive.sh">stripack_interactive.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>SPHERE_GRID_ICOS1_F1</b> is a grid of 12 points based on an icosahedron.
+      <ul>
+        <li>
+          <a href = "sphere_grid_icos1_f1,xyz">
+          sphere_grid_icos1_f1.xyz</a>,
+          the point coordinates.
+        </li>
+        <li>
+          <a href = "sphere_grid_icos1_f1.xyzf">
+          sphere_grid_icos1_f1.xyzf</a>,
+          the triangles forming the Delaunay triangulation.
+        </li>
+        <li>
+          <a href = "sphere_grid_icos1_f1_output.txt">
+          sphere_grid_icos1_f1_output.txt</a>,
+          the output from the program.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SPHERE_GRID_ICOS1_F2</b> is a grid of 42 points based on an icosahedron.
+      <ul>
+        <li>
+          <a href = "sphere_grid_icos1_f2.xyz">
+          sphere_grid_icos1_f2.xyz</a>,
+          the point coordinates.
+        </li>
+        <li>
+          <a href = "sphere_grid_icos1_f2.xyzf">
+          sphere_grid_icos1_f2.xyzf</a>,
+          the triangles forming the Delaunay triangulation.
+        </li>
+        <li>
+          <a href = "sphere_grid_icos1_f2_output.txt">
+          sphere_grid_icos1_f2_output.txt</a>,
+          the output from the program.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>SPHERE_GRID_ICOS1_F3</b> is a grid of 92 points based on an icosahedron.
+      <ul>
+        <li>
+          <a href = "sphere_grid_icos1_f3.xyz">
+          sphere_grid_icos1_f3.xyz</a>,
+          the point coordinates.
+        </li>
+        <li>
+          <a href = "sphere_grid_icos1_f3.xyzf">
+          sphere_grid_icos1_f3.xyzf</a>,
+          the triangles forming the Delaunay triangulation.
+        </li>
+        <li>
+          <a href = "sphere_grid_icos1_f3_output.txt">
+          sphere_grid_icos1_f3_output.txt</a>,
+          the output from the program.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for STRIPACK_INTERACTIVE
+        </li>
+        <li>
+          <b>CH_CAP</b> capitalizes a single character.
+        </li>
+        <li>
+          <b>CH_EQI</b> is a case insensitive comparison of two characters for equality.
+        </li>
+        <li>
+          <b>CH_TO_DIGIT</b> returns the integer value of a base 10 digit.
+        </li>
+        <li>
+          <b>FILE_COLUMN_COUNT</b> counts the number of columns in the first line of a file.
+        </li>
+        <li>
+          <b>FILE_ROW_COUNT</b> counts the number of row records in a file.
+        </li>
+        <li>
+          <b>GET_UNIT</b> returns a free FORTRAN unit number.
+        </li>
+        <li>
+          <b>I4MAT_TRANSPOSE_PRINT_SOME</b> prints some of the transpose of an I4MAT.
+        </li>
+        <li>
+          <b>I4MAT_WRITE</b> writes an I4MAT file.
+        </li>
+        <li>
+          <b>R8MAT_DATA_READ</b> reads data from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_HEADER_READ</b> reads the header from an R8MAT file.
+        </li>
+        <li>
+          <b>R8MAT_TRANSPOSE_PRINT_SOME</b> prints some of an R8MAT, transposed.
+        </li>
+        <li>
+          <b>S_TO_R8</b> reads an R8 from a string.
+        </li>
+        <li>
+          <b>S_TO_R8VEC</b> reads an R8VEC from a string.
+        </li>
+        <li>
+          <b>S_WORD_COUNT</b> counts the number of "words" in a string.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 31 August 2010.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

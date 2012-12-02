@@ -1,0 +1,761 @@
+<html>
+
+  <head>
+    <title>
+      CODEPACK - Graph Codes
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CODEPACK <br> Graph Codes
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CODEPACK</b>
+      is a FORTRAN90 library which
+      computes and compares "codes" for graphs, directed graphs, multigraphs,
+      and other generalizations of an abstract graph.
+    </p>
+
+    <p>
+      The codes are a form of "signature".  Two graphs are
+      isomorphic (essentially the same object) if and only if their signatures
+      are equal.  The codes are numeric, and hence determining whether
+      two graphs are isomorphic is reduced to the problem of whether two
+      sequences of integers are identical.
+    </p>
+
+    <p>
+      It is important to understand that the kind of problem being
+      considered here is HARD and EXPENSIVE.  The time and space
+      requirements increase very rapidly as the number of nodes in
+      the graph increase.  Graphs with 10 nodes can be handled, but
+      graphs with 20 nodes may be difficult, and graphs with 40 or
+      50 nodes may be impossible to handle.  This is partly because
+      we are looking at permutations of the nodes, and this number grows
+      as the factorial function.
+    </p>
+
+    <p>
+      Although graph codes are expensive to compute, it is often not
+      difficult to detect that two graphs are not isomorphic.
+      A determination can be made very quickly if the number of nodes,
+      number of edges, or the degree sequence does not match.  These
+      techniques can often produce a "No" answer quickly.  But if two
+      graphs do happen to be isomorphic, then there is no rapid way
+      to determine this.  The only thing a graph code offers is a
+      systematic (but slow) way to go about this computation.
+    </p>
+
+    <p>
+      The kinds of graphs considered here include:
+      <ul>
+        <li>
+          <i>Graphs</i> in which any two nodes may or may not be connected.
+        </li>
+        <li>
+          <i>Digraphs</i> or "directed graphs", in which the edges between
+          two nodes have a direction.
+        </li>
+        <li>
+          <i>Color graphs</i> in which each node has a color.
+        </li>
+        <li>
+          <i>Multigraphs</i> in which the number of (undirected) edges between
+          two nodes may be more than 1; this may also be thought of as a
+          single edge with an integer weight.
+        </li>
+        <li>
+          <i>Weighted graphs</i> in which each (undirected) edge is assigned
+          a (real number) weight, or distance.
+        </li>
+      </ul>
+      Other kinds of graphs can have various combinations of these properties.
+      For instance, we are interested in <i>color dimultigraphs</I>.
+    </p>
+
+    <p>
+      Some of the routine names begin with a prefix that indicates the type
+      of object it is associated with:
+      <ul>
+        <li>
+          <b>G</b> is a graph;
+        </li>
+       <li>
+          <b>DG</b> is a directed graph (edges have a direction);
+        </li>
+        <li>
+          <b>CG</b> is a color graph (nodes have a color);
+        </li>
+        <li>
+          <b>MG</b> is a multigraph (edges have multiplicity);
+        </li>
+        <li>
+          <b>CDG</b> is a color directed graph (edges have direction,
+          nodes have a color);
+        </li>
+        <li>
+          <b>DMG</b> is a dimultigraph (edges have direction and multiplicity);
+        </li>
+        <li>
+          <b>CDMG</b> is a color dimultigraph (edges have direction and
+          multiplicity, nodes have color);
+        </li>
+        <li>
+          <b>WG</b> is a weighted graph;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cities/cities.html">
+      CITIES</a>,
+      a FORTRAN90 library which
+      handles various problems associated with a set of "cities" on a map.
+    </p>
+
+    <p>
+      <a href = "../../datasets/cities/cities.html">
+      CITIES</a>,
+      a dataset directory which
+      contains a number of city distance datasets.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grafpack/grafpack.html">
+      GRAFPACK</a>,
+      a FORTRAN90 library which
+      performs various calculations involving mathematical
+      graphs.  This library originally included the routines in
+      <b>CODEPACK</b>, but as that package grew too large, these
+      routines were extracted.
+    </p>
+
+    <p>
+      <a href = "../../data/graph_representation/graph_representation.html">
+      GRAPH_REPRESENTATION</a>,
+      a data directory which
+      contains examples of ways of representing abstract
+      mathematical graphs
+    </p>
+
+    <p>
+      <a href = "../../f_src/subset/subset.html">
+      SUBSET</a>,
+      a FORTRAN90 library which
+      handles combinatorial calculations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/table_graph_code/table_graph_code.html">
+      TABLE_GRAPH_CODE</a>,
+      a FORTRAN90 program which
+      reads a TABLE file describing a graph, and computes its graph code.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      A discussion of graph codes is available in
+      <a href = "http://www.sc.fsu.edu/~burkardt/html/graph_codes.html">
+                 http://www.sc.fsu.edu/~burkardt/html/graph_codes.html  </a>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "codepack.f90">codepack.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "codepack.sh">codepack.sh</a>,
+          commands to compile the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "codepack_prb.f90">codepack_prb.f90</a>, the calling
+          program;
+        </li>
+        <li>
+          <a href = "codepack_prb.sh">codepack_prb.sh</a>,
+          commands to compile, link and run the calling program;
+        </li>
+        <li>
+          <a href = "codepack_prb_output.txt">codepack_prb_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>CDG_CODE_BACK</b> computes a color digraph code via backtracking.
+        </li>
+        <li>
+          <b>CDG_CODE_BRUTE</b> computes the color digraph code via brute force.
+        </li>
+        <li>
+          <b>CDG_CODE_CAND</b> finds candidates for a maximal color digraph code ordering.
+        </li>
+        <li>
+          <b>CDG_CODE_COMPARE</b> compares two (partial) color graph codes.
+        </li>
+        <li>
+          <b>CDG_CODE_PRINT</b> prints a color digraph code.
+        </li>
+        <li>
+          <b>CDG_COLOR_COUNT</b> counts the number of colors in a color digraph.
+        </li>
+        <li>
+          <b>CDG_COLOR_SEQUENCE</b> computes the color sequence of a color digraph.
+        </li>
+        <li>
+          <b>CDG_COMPARE</b> determines if color digraphs G1 and G2 are isomorphic.
+        </li>
+        <li>
+          <b>CDG_DEGREE</b> computes the indegree and outdegree of each node.
+        </li>
+        <li>
+          <b>CDG_DEGREE_SEQ</b> computes the degree sequence of a color digraph.
+        </li>
+        <li>
+          <b>CDG_EDGE_COUNT</b> counts the number of edges in a color digraph.
+        </li>
+        <li>
+          <b>CDG_EXAMPLE_CUBE</b> sets up the cube color digraph.
+        </li>
+        <li>
+          <b>CDG_EXAMPLE_OCTO</b> sets up an 8 node example color digraph.
+        </li>
+        <li>
+          <b>CDG_ORDER_CODE</b> returns the color digraph code for a specific node ordering.
+        </li>
+        <li>
+          <b>CDG_PRINT</b> prints out the adjacency matrix of a color digraph.
+        </li>
+        <li>
+          <b>CDG_RANDOM</b> generates a random color graph.
+        </li>
+        <li>
+          <b>CDMG_ADJ_MAX_MAX</b> computes the adjacency maximum maximum of a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_ADJ_MAX_SEQ</b> computes the adjacency maximum sequence of a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_ADJ_SEQ_U</b> computes the unweighted adjacency sequence of a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_ADJ_SEQ_W</b> computes the weighted adjacency sequence of a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_CODE_BACK</b> computes a color dimultigraph code via backtracking.
+        </li>
+        <li>
+          <b>CDMG_CODE_BRUTE</b> computes a color dimultigraph code via brute force.
+        </li>
+        <li>
+          <b>CDMG_CODE_CAND</b> finds candidates for a maximal color dimultigraph code ordering.
+        </li>
+        <li>
+          <b>CDMG_CODE_COMPARE</b> compares two (partial) color dimultigraph codes.
+        </li>
+        <li>
+          <b>CDMG_CODE_PRINT</b> prints out a color dimultigraph code.
+        </li>
+        <li>
+          <b>CDMG_COLOR_COUNT</b> counts the number of colors in a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_COLOR_SEQUENCE</b> computes the color sequence of a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_COMPARE</b> determines if color dimultigraphs G1 and G2 are isomorphic.
+        </li>
+        <li>
+          <b>CDMG_DEGREE_SEQ_U:</b> unweighted directed degree sequence of color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_DEGREE_SEQ_W:</b> weighted directed degree sequence of a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_DEGREE_U</b> computes the unweighted degrees of a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_DEGREE_W</b> computes the weighted degrees of a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_EDGE_COUNT</b> counts the number of edges in a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_EXAMPLE_OCTO</b> sets up an 8 node example color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_ORDER_CODE</b> returns the color dimultigraph code for a specific node ordering.
+        </li>
+        <li>
+          <b>CDMG_PRINT</b> prints out an adjacency matrix for a color dimultigraph.
+        </li>
+        <li>
+          <b>CDMG_RANDOM</b> generates a random color dimultigraph.
+        </li>
+        <li>
+          <b>CG_CODE_BACK</b> computes a color graph code via backtracking.
+        </li>
+        <li>
+          <b>CG_CODE_BRUTE</b> computes the color graph code via brute force.
+        </li>
+        <li>
+          <b>CG_CODE_CAND</b> finds candidates for a maximal color graph code ordering.
+        </li>
+        <li>
+          <b>CG_CODE_COMPARE</b> compares two (partial) color graph codes.
+        </li>
+        <li>
+          <b>CG_CODE_PRINT</b> prints a color graph code.
+        </li>
+        <li>
+          <b>CG_COLOR_COUNT</b> counts the number of colors in a color graph.
+        </li>
+        <li>
+          <b>CG_COLOR_SEQUENCE</b> computes the color sequence of a color graph.
+        </li>
+        <li>
+          <b>CG_COMPARE</b> determines if color graphs G1 and G2 are isomorphic.
+        </li>
+        <li>
+          <b>CG_CONNECT_RANDOM</b> generates a random connected color graph.
+        </li>
+        <li>
+          <b>CG_DEGREE</b> computes the degree of each node.
+        </li>
+        <li>
+          <b>CG_DEGREE_SEQ</b> computes the degree sequence of a color graph.
+        </li>
+        <li>
+          <b>CG_EDGE_COUNT</b> counts the number of edges in a color graph.
+        </li>
+        <li>
+          <b>CG_EXAMPLE_BUSH</b> sets up the bush color graph.
+        </li>
+        <li>
+          <b>CG_EXAMPLE_CUBE</b> sets up the cube color graph.
+        </li>
+        <li>
+          <b>CG_EXAMPLE_OCTO</b> sets up an 8 node example color graph.
+        </li>
+        <li>
+          <b>CG_EXAMPLE_TWIG</b> sets up the twig color graph.
+        </li>
+        <li>
+          <b>CG_ORDER_CODE</b> returns the color graph code for a specific node ordering.
+        </li>
+        <li>
+          <b>CG_PRINT</b> prints out the adjacency matrix of a color graph.
+        </li>
+        <li>
+          <b>CG_RANDOM</b> generates a random color graph.
+        </li>
+        <li>
+          <b>DG_CODE_BACK</b> computes a digraph code via backtracking.
+        </li>
+        <li>
+          <b>DG_CODE_BRUTE</b> computes a digraph code via brute force.
+        </li>
+        <li>
+          <b>DG_CODE_CAND</b> finds candidates for a maximal digraph code ordering.
+        </li>
+        <li>
+          <b>DG_CODE_COMPARE</b> compares two partial digraph codes.
+        </li>
+        <li>
+          <b>DG_CODE_PRINT</b> prints out a digraph code.
+        </li>
+        <li>
+          <b>DG_COMPARE</b> determines if digraphs G1 and G2 are isomorphic.
+        </li>
+        <li>
+          <b>DG_DEGREE</b> computes the indegree and outdegree of each node.
+        </li>
+        <li>
+          <b>DG_DEGREE_MAX</b> computes the maximum degrees of a digraph.
+        </li>
+        <li>
+          <b>DG_DEGREE_SEQ</b> computes the directed degree sequence.
+        </li>
+        <li>
+          <b>DG_EDGE_COUNT</b> counts the number of edges in a digraph.
+        </li>
+        <li>
+          <b>DG_EXAMPLE_CYCLER</b> sets up the adjacency information for the cycler digraph.
+        </li>
+        <li>
+          <b>DG_EXAMPLE_OCTO</b> sets up an 8 node example digraph.
+        </li>
+        <li>
+          <b>DG_EXAMPLE_SIXTY</b> sets up the adjacency information for the sixty digraph.
+        </li>
+        <li>
+          <b>DG_ORDER_CODE</b> returns the digraph code for a specific node ordering.
+        </li>
+        <li>
+          <b>DG_RANDOM</b> generates a random digraph.
+        </li>
+        <li>
+          <b>DMG_ADJ_MAX_MAX</b> computes the adjacency maximum maximum of a dimultigraph.
+        </li>
+        <li>
+          <b>DMG_ADJ_MAX_SEQ</b> computes the adjacency maximum sequence of a dimultigraph.
+        </li>
+        <li>
+          <b>DMG_ADJ_SEQ_U</b> computes the unweighted adjacency sequence of a dimultigraph.
+        </li>
+        <li>
+          <b>DMG_ADJ_SEQ_W</b> computes the weighted adjacency sequence of a dimultigraph.
+        </li>
+        <li>
+          <b>DMG_CODE_BACK</b> computes a dimultigraph code via backtracking.
+        </li>
+        <li>
+          <b>DMG_CODE_BRUTE</b> computes a dimultigraph code via brute force.
+        </li>
+        <li>
+          <b>DMG_CODE_CAND</b> finds candidates for a maximal dimultigraph code ordering.
+        </li>
+        <li>
+          <b>DMG_CODE_COMPARE</b> compares two partial dimultigraph codes.
+        </li>
+        <li>
+          <b>DMG_CODE_PRINT</b> prints out a dimultigraph code.
+        </li>
+        <li>
+          <b>DMG_COMPARE</b> determines if dimultigraphs G1 and G2 are isomorphic.
+        </li>
+        <li>
+          <b>DMG_DEGREE_SEQ_U:</b> the unweighted directed degree sequence of a dimultigraph.
+        </li>
+        <li>
+          <b>DMG_DEGREE_SEQ_W:</b> weighted directed degree sequence of a dimultigraph.
+        </li>
+        <li>
+          <b>DMG_DEGREE_U</b> computes the unweighted degrees of a dimultigraph.
+        </li>
+        <li>
+          <b>DMG_DEGREE_W</b> computes the weighted degrees of a dimultigraph.
+        </li>
+        <li>
+          <b>DMG_EDGE_COUNT</b> counts the number of edges in a dimultigraph.
+        </li>
+        <li>
+          <b>DMG_EXAMPLE_OCTO</b> sets up an 8 node example dimultigraph.
+        </li>
+        <li>
+          <b>DMG_ORDER_CODE</b> returns the dimultigraph code for a specific node ordering.
+        </li>
+        <li>
+          <b>DMG_PRINT</b> prints out an adjacency matrix for a dimultigraph.
+        </li>
+        <li>
+          <b>DMG_RANDOM</b> generates a random dimultigraph on NNODE nodes with NEDGE edges.
+        </li>
+        <li>
+          <b>G_ARC_NODE_COUNT</b> counts the number of nodes in a graph.
+        </li>
+        <li>
+          <b>G_ARC_TO_G_ADJ</b> converts an arc list graph to an adjacency graph.
+        </li>
+        <li>
+          <b>G_CODE_BACK</b> computes a graph code via backtracking.
+        </li>
+        <li>
+          <b>G_CODE_BRUTE</b> computes a graph code via brute force.
+        </li>
+        <li>
+          <b>G_CODE_CAND</b> finds candidates for a maximal graph code ordering.
+        </li>
+        <li>
+          <b>G_CODE_COMPARE</b> compares two partial graph codes.
+        </li>
+        <li>
+          <b>G_CODE_PRINT</b> prints out a graph code.
+        </li>
+        <li>
+          <b>G_COMPARE</b> determines if graphs G1 and G2 are isomorphic.
+        </li>
+        <li>
+          <b>G_CONNECT_RANDOM</b> generates a random connected graph.
+        </li>
+        <li>
+          <b>G_DEGREE</b> computes the degree of each node in a graph.
+        </li>
+        <li>
+          <b>G_DEGREE_MAX</b> computes the maximum node degree of a graph.
+        </li>
+        <li>
+          <b>G_DEGREE_SEQ</b> computes the degree sequence of a graph.
+        </li>
+        <li>
+          <b>G_EDGE_COUNT</b> counts the number of edges in a graph.
+        </li>
+        <li>
+          <b>G_EXAMPLE_BUSH</b> sets up the adjacency information for the bush graph.
+        </li>
+        <li>
+          <b>G_EXAMPLE_CUBE</b> sets up the adjacency information for the cube graph.
+        </li>
+        <li>
+          <b>G_EXAMPLE_DODECAHEDRON</b> sets adjacency for the dodecahedron graph.
+        </li>
+        <li>
+          <b>G_EXAMPLE_OCTO</b> sets up an 8 node example graph.
+        </li>
+        <li>
+          <b>G_EXAMPLE_TWIG</b> sets up the adjacency information for the twig graph.
+        </li>
+        <li>
+          <b>G_ORDER_CODE</b> returns the graph code for a specific node ordering.
+        </li>
+        <li>
+          <b>G_PRINT</b> prints out an adjacency matrix.
+        </li>
+        <li>
+          <b>G_RANDOM</b> generates a random graph on NNODE nodes with NEDGE edges.
+        </li>
+        <li>
+          <b>I4_SWAP</b> switches two I4's.
+        </li>
+        <li>
+          <b>I4_UNIFORM</b> returns a scaled pseudorandom I4.
+        </li>
+        <li>
+          <b>I4MAT_PERM</b> permutes the rows and columns of a square integer matrix.
+        </li>
+        <li>
+          <b>I4MAT_PERM_RANDOM</b> selects a random permutation of an integer matrix.
+        </li>
+        <li>
+          <b>I4MAT_PRINT</b> prints an integer matrix.
+        </li>
+        <li>
+          <b>I4MAT_PRINT_SOME</b> prints some of an integer matrix.
+        </li>
+        <li>
+          <b>I4MAT_ROW_COMPARE</b> compares two arrays of row vectors.
+        </li>
+        <li>
+          <b>I4ROW_COMPARE</b> compares two rows of a integer array.
+        </li>
+        <li>
+          <b>I4ROW_SORT_D</b> descending sorts the rows of an integer array.
+        </li>
+        <li>
+          <b>I4ROW_SORT2_D</b> descending sorts the elements of each row of an integer array.
+        </li>
+        <li>
+          <b>I4ROW_SWAP</b> swaps two rows of an integer array.
+        </li>
+        <li>
+          <b>I4VEC_BACKTRACK</b> supervises a backtrack search for an integer vector.
+        </li>
+        <li>
+          <b>I4VEC_COMPARE</b> compares two integer vectors.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_A</b> reorders an array of integers into an ascending heap.
+        </li>
+        <li>
+          <b>I4VEC_HEAP_D</b> reorders an array of integers into an descending heap.
+        </li>
+        <li>
+          <b>I4VEC_INDICATOR</b> sets an integer vector to the indicator vector.
+        </li>
+        <li>
+          <b>I4VEC_NONZERO_COUNT</b> counts the nonzero entries in an integer vector
+        </li>
+        <li>
+          <b>I4VEC_ORDER_TYPE</b> determines if an integer array is (non)strictly ascending/descending.
+        </li>
+        <li>
+          <b>I4VEC_PERM_RANDOM</b> selects a random permutation of an integer vector.
+        </li>
+        <li>
+          <b>I4VEC_PRINT</b> prints an integer vector.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_A</b> ascending sorts an integer array using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SORT_HEAP_D</b> descending sorts an integer array using heap sort.
+        </li>
+        <li>
+          <b>I4VEC_SORTED_UNIQUE_COUNT</b> counts unique elements in a sorted integer array.
+        </li>
+        <li>
+          <b>I4VEC_UNIFORM</b> returns a vector of integer pseudorandom numbers.
+        </li>
+        <li>
+          <b>I4VEC2_COMP</b> compares pairs of integers stored in two vectors.
+        </li>
+        <li>
+          <b>I4VEC2_SORT_D</b> descending sorts a vector of pairs of integers.
+        </li>
+        <li>
+          <b>I4VEC2_UNIQ</b> keeps the unique elements in a array of pairs of integers.
+        </li>
+        <li>
+          <b>KSUB_RANDOM</b> selects a random subset of size K from a set of size N.
+        </li>
+        <li>
+          <b>MG_ADJ_MAX_MAX</b> computes the adjacency maximum maximum of a multigraph.
+        </li>
+        <li>
+          <b>MG_ADJ_MAX_SEQ</b> computes the adjacency maximum sequence of a multigraph.
+        </li>
+        <li>
+          <b>MG_ADJ_SEQ</b> computes the adjacency sequence of a multigraph.
+        </li>
+        <li>
+          <b>MG_CODE_BACK</b> computes a multigraph code via backtracking.
+        </li>
+        <li>
+          <b>MG_CODE_BRUTE</b> computes a multigraph code via brute force.
+        </li>
+        <li>
+          <b>MG_CODE_CAND</b> finds candidates for a maximal multigraph code ordering.
+        </li>
+        <li>
+          <b>MG_CODE_COMPARE</b> compares two partial multigraph codes.
+        </li>
+        <li>
+          <b>MG_CODE_PRINT</b> prints out a multigraph code.
+        </li>
+        <li>
+          <b>MG_COMPARE</b> determines if multigraphs G1 and G2 are isomorphic.
+        </li>
+        <li>
+          <b>MG_DEGREE</b> computes the degree of each node of a multigraph.
+        </li>
+        <li>
+          <b>MG_DEGREE_MAX</b> computes the maximum node degree of a multigraph.
+        </li>
+        <li>
+          <b>MG_DEGREE_SEQ</b> computes the degree sequence of a multigraph.
+        </li>
+        <li>
+          <b>MG_EDGE_COUNT</b> counts the number of edges in a multigraph.
+        </li>
+        <li>
+          <b>MG_EXAMPLE_OCTO</b> sets up an 8 node example multigraph.
+        </li>
+        <li>
+          <b>MG_ORDER_CODE</b> returns the multigraph code for a specific node ordering.
+        </li>
+        <li>
+          <b>MG_PRINT</b> prints out an adjacency matrix for a multigraph.
+        </li>
+        <li>
+          <b>MG_RANDOM</b> generates a random multigraph on NNODE nodes with NEDGE edges.
+        </li>
+        <li>
+          <b>NODE_ORDER_PRINT</b> prints out a node ordering.
+        </li>
+        <li>
+          <b>PERM_CHECK</b> checks that a vector represents a permutation.
+        </li>
+        <li>
+          <b>PERM_CYCLE</b> analyzes a permutation.
+        </li>
+        <li>
+          <b>PERM_FREE</b> reports the number of unused items in a partial permutation.
+        </li>
+        <li>
+          <b>PERM_NEXT</b> computes all of the permutations on N objects, one at a time.
+        </li>
+        <li>
+          <b>PERM_RANDOM</b> selects a random permutation of N objects.
+        </li>
+        <li>
+          <b>PRUEFER_TO_TREE_ARC</b> is given a Pruefer code, and computes the tree.
+        </li>
+        <li>
+          <b>R4_UNIFORM_01</b> returns a unit pseudorandom R4.
+        </li>
+        <li>
+          <b>R8MAT_PRINT</b> prints an R8MAT.
+        </li>
+        <li>
+          <b>R8MAT_PRINT_SOME</b> prints some of an R8MAT.
+        </li>
+        <li>
+          <b>R8_NORMAL_01</b> returns a unit pseudonormal R8.
+        </li>
+        <li>
+          <b>R8_UNIFORM_01</b> returns a unit pseudorandom R8.
+        </li>
+        <li>
+          <b>SORT_HEAP_EXTERNAL</b> externally sorts a list of items into ascending order.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+        <li>
+          <b>TREE_ARC_RANDOM</b> selects a random labeled tree and its Pruefer code.
+        </li>
+        <li>
+          <b>WG_RANDOM</b> generates a random weighted graph.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 27 November 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

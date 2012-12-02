@@ -1,0 +1,179 @@
+<html>
+
+  <head>
+    <title>
+      BAYES_DICE: Bayesian Dice Estimation
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BAYES_DICE <br> Bayesian Dice Estimation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BAYES_DICE</b>
+      is a FORTRAN90 program which
+      performs a simple demonstration of Bayesian Statistics.
+    </p>
+
+    <p>
+      Suppose we're watching a "system" and trying to analyze its
+      behavior.  Each time we observe the system, it rolls a die a
+      certain number of times, and reports the results.  We want to
+      estimate THETA(1) through THETA(6), the probabilities of each result.
+    </p>
+
+    <p>
+      We treat the values of THETA as random variables themselves,
+      controlled by a Dirichlet probability density function with
+      parameters ALPHA(1) through ALPHA(6).  We make an arbitrary
+      guess for initial ALPHA values.  We observe the system and
+      adjust the ALPHA's using Bayes's Law.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/bayes_beta/bayes_beta.html">
+      BAYES_BETA</a>,
+      a FORTRAN90 program which
+      uses Bayesian analysis to estimate the parameters in a beta distribution
+      based on a series of sample data.
+    </p>
+
+    <p>
+      <a href = "../../f_src/bayes_weight/bayes_weight.html">
+      BAYES_WEIGHT</a>,
+      a FORTRAN90 program which
+      uses Bayesian analysis to estimate the probabilities that one or
+      another of two weighted dice is chosen.
+    </p>
+
+    <p>
+      <a href = "../../f_src/dcdflib/dcdflib.html">
+      DCDFLIB</a>,
+      a FORTRAN90 library which
+      evaluates and inverts
+      a number of statistical distributions.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+      a C++ library which
+      includes many routines for evaluating
+      probability distributions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/normal/normal.html">
+      NORMAL</a>,
+      a FORTRAN90 library which
+      samples the normal distribution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prob/prob.html">
+      PROB</a>,
+      a FORTRAN90 library which
+      evaluates the PDF, CDF, mean and variance for a number of probability
+      density functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      samples the uniform distribution.
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bayes_dice.f90">bayes_dice.f90</a>, the source code;
+        </li>
+        <li>
+          <a href = "bayes_dice.sh">bayes_dice.sh</a>,
+          commands to compile and load the source code;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bayes_dice_output.txt">bayes_dice_output.txt</a>, a sample run;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>BAYES_DICE</b> does a simple demonstration of Bayesian statistics.
+        </li>
+        <li>
+          <b>TEST01</b> does a simple demonstration of Bayesian statistics.
+        </li>
+        <li>
+          <b>DIRICHLET_MEAN</b> returns the means of the Dirichlet PDF.
+        </li>
+        <li>
+          <b>DISCRETE_CDF_INV</b> inverts the Discrete CDF.
+        </li>
+        <li>
+          <b>DISCRETE_SAMPLE</b> samples the Discrete PDF.
+        </li>
+        <li>
+          <b>R8_RANDOM</b> returns a random R8 in a given range.
+        </li>
+        <li>
+          <b>TIMESTAMP</b> prints the current YMDHMS date as a time stamp.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 30 December 2007.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

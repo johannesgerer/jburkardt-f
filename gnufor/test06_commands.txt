@@ -1,0 +1,15 @@
+set title "GNUFOR plot"
+set xlabel "x"
+set ylabel "y"
+set parametric
+set nosurface
+set contour
+set cntrparam levels 10
+splot "test06_data.txt" using 1:2:3 with lines
+set table "table.txt"
+replot
+unset table
+set term x11
+plot "table.txt" with lines
+pause -1
+q

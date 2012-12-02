@@ -1,0 +1,54 @@
+echo
+#  test9.in  16 August 1996
+#
+#  Test the ability of the code to deal with a boundary condition
+#  specified by more than one parameter.
+#
+#  In this case, we will use ALPHA(1)=-1 and ALPHA(2)=+1.
+#  
+#  Questions:
+#    1: Can we just solve the full state equation?
+#
+region=cavity
+gridx=cos
+gridy=cos
+ijac=3
+iopt(1)=1
+iopt(2)=1
+iopt(3)=1
+iwrite=0
+maxopt=30
+maxsim=4
+nbcrb=2
+nparb=0
+nparf=2
+nsenfl=5
+nx=21
+ny=21
+partar(1)=-1.0
+partar(2)=+1.0
+partar(3)=200.0
+#
+#  Set up the problem logically and geometrically,
+#  and print out the problem data.
+#
+setlog
+setgeo
+prpar
+prdat
+#
+#  Solve for the full solution, save it as the target.
+#
+gfl=0
+picfl
+newtfl
+#
+#  Print out the solution along the top.
+#
+xmin=0.0
+xmax=1.0
+ymin=1.0
+ymax=1.0
+pruvpgfl
+#
+stop

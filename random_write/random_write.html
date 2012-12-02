@@ -1,0 +1,404 @@
+<html>
+
+  <head>
+    <title>
+      RANDOM_WRITE - Random Integer Data for DIEHARD
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      RANDOM_WRITE <br> Random Integer Data for DIEHARD
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>RANDOM_WRITE</b>
+      is a FORTRAN90 program which
+      makes a file of pseudorandom 32 bit integers for
+      input to the DIEHARD program.
+    </p>
+
+    <p>
+      Choices of generators include:
+      <ol>
+        <li>
+          A multiply-with-carry (MWC) generator
+          x(n) = a * x(n-1) + carry mod 2^32;
+        </li>
+        <li>
+          A multiply-with-carry (MWC) generator on pairs of 16 bits;
+        </li>
+        <li>
+          The "Mother of all random number generators";
+        </li>
+        <li>
+          The KISS generator;
+        </li>
+        <li>
+          The simple but very good generator COMBO;
+        </li>
+        <li>
+          The lagged Fibonacci-MWC combination ULTRA;
+        </li>
+        <li>
+          A combination multiply-with-carry/subtract-with-borrow
+          (SWB) generator, period ~ 10^364;
+        </li>
+        <li>
+          An extended congruential generator;
+        </li>
+        <li>
+          The Super-Duper generator;
+        </li>
+        <li>
+          A subtract-with-borrow generator;
+        </li>
+        <li>
+          Any specified congruential generator;
+        </li>
+        <li>
+          The 31-bit generator ran2 from Numerical Recipes;
+        </li>
+        <li>
+          Any specified shift-register generator, 31 or 32 bits;
+        </li>
+        <li>
+          The system generator in Sun Fortran f77;
+        </li>
+        <li>
+          Any lagged-Fibonacci generator, x(n) = x(n-r) op x(n-s);
+        </li>
+        <li>
+          An inverse congruential generator;
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/cvt/cvt.html">
+      CVT</a>,
+      a FORTRAN90 library which
+      computes elements of a Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/faure/faure.html">
+      FAURE</a>,
+      a FORTRAN90 library which
+      computes elements of a Faure quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/grid/grid.html">
+      GRID</a>,
+      a FORTRAN90 library which
+      computes elements of a grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/halton/halton.html">
+      HALTON</a>,
+      a FORTRAN90 library which
+      computes elements of a Halton quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hammersley/hammersley.html">
+      HAMMERSLEY</a>,
+      a FORTRAN90 library which
+      computes elements of a Hammersley quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid/hex_grid.html">
+      HEX_GRID</a>,
+      a FORTRAN90 library which
+      computes elements of a hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hex_grid_angle/hex_grid_angle.html">
+      HEX_GRID_ANGLE</a>,
+      a FORTRAN90 library which
+      computes elements of an angled hexagonal grid dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ieee_uniform/ieee_uniform.html">
+      IEEE_UNIFORM</a>,
+      a FORTRAN90 library which
+      tries to uniformly sample the discrete set of values that represent the
+      legal IEEE real numbers;
+    </p>
+
+    <p>
+      <a href = "../../f_src/ihs/ihs.html">
+      IHS</a>,
+      a FORTRAN90 library which
+      computes elements of an improved distributed Latin hypercube dataset.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_center/latin_center.html">
+      LATIN_CENTER</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube dataset, choosing center points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_edge/latin_edge.html">
+      LATIN_EDGE</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube dataset, choosing edge points.
+    </p>
+
+    <p>
+      <a href = "../../f_src/latin_random/latin_random.html">
+      LATIN_RANDOM</a>,
+      a FORTRAN90 library which
+      computes elements of a Latin Hypercube dataset, choosing points at random.
+    </p>
+
+    <p>
+      <a href = "../../f_src/lcvt/lcvt.html">
+      LCVT</a>,
+      a FORTRAN90 library which
+      computes a latinized Centroidal Voronoi Tessellation.
+    </p>
+
+    <p>
+      <a href = "../../f_src/niederreiter2/niederreiter2.html">
+      NIEDERREITER2</a>,
+      a FORTRAN90 library which
+      computes elements of a Niederreiter quasirandom sequence with base 2.
+    </p>
+
+    <p>
+      <a href = "../../f_src/normal/normal.html">
+      NORMAL</a>,
+      a FORTRAN90 library which
+      computes elements of a sequence of pseudorandom normally distributed values.
+    </p>
+
+    <p>
+      <a href = "../../f_src/sobol/sobol.html">
+      SOBOL</a>,
+      a FORTRAN90 library which
+      computes elements of a Sobol quasirandom sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/subpak/subpak.html">
+      SUBPAK</a>,
+      a FORTRAN90 library which
+      includes a routine <b>random_initialize</b>
+      that can be used to try to initialize the seed for the FORTRAN90
+      random number generator.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform/uniform.html">
+      UNIFORM</a>,
+      a FORTRAN90 library which
+      computes elements of a pseudorandom uniform sequence.
+    </p>
+
+    <p>
+      <a href = "../../f_src/uniform_dataset/uniform_dataset.html">
+      UNIFORM_DATASET</a>,
+      a FORTRAN90 program which
+      generates a dataset of uniform pseudorandom values and writes them to a file.
+    </p>
+
+    <p>
+      <a href = "../../f_src/van_der_corput/van_der_corput.html">
+      VAN_DER_CORPUT</a>,
+      a FORTRAN90 library which
+      computes elements of a van der Corput quasirandom sequence.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          George Marsaglia, A. Zaman,<br>
+          Monkey Tests for Random Number Generators,<br>
+          Computers and Mathematics with Applications,<br>
+          Volume 9, Number 9, 1995, pages 1-10.
+        </li>
+        <li>
+          George Marsaglia, A. Zaman,<br>
+          Some Very-Long-Period Portable Random Number Generators,<br>
+          Computers in Physics,<br>
+          Volume 8, 1995, pages 117-121.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "random_write.f90">random_write.f90</a>, the source code.
+        </li>
+        <li>
+          <a href = "random_write.sh">random_write.sh</a>,
+          commands to compile the source code.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      Generator 1 is a multiply-with-carry (MWC) generator
+      x(n) = a * x(n-1) + carry mod 2^32;
+      <ul>
+        <li>
+          <a href = "input01.txt">input01.txt</a>,
+          input to make an example of generator 1.
+        </li>
+        <li>
+          <a href = "output01.txt">output01.txt</a>,
+          the printed output.  This does not include the data file "mwc1.32"
+          that is also created.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Generator 2 is a multiply-with-carry (MWC) generator
+      on pairs of 16 bits;
+      <ul>
+        <li>
+          <a href = "input02.txt">input02.txt</a>,
+          input to make an example of generator 2.
+        </li>
+        <li>
+          <a href = "output02.txt">output02.txt</a>,
+          the printed output.  This does not include the data file "1616.32"
+          that is also created.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>MAIN</b> is the main program for RANDOM_WRITE.
+        </li>
+        <li>
+          <b>IRAN2</b> is a random number generator from Numerical Recipes.
+        </li>
+        <li>
+          <b>KS_TEST</b> applies the Kolmorogov-Smirnov test.
+        </li>
+        <li>
+          <b>MAKE_1616</b> generates data from two 16 bit multiply-with-carry generators.
+        </li>
+        <li>
+          <b>MAKE_CMBO</b> generates data from the COMBO generator.
+        </li>
+        <li>
+          <b>MAKE_CONG</b> generates data from a congruential generator.
+        </li>
+        <li>
+          <b>MAKE_FIBO</b> generates data from a lagged Fibonacci generator.
+        </li>
+        <li>
+          <b>MAKE_INVC</b> generates data from an inverse congruential generator.
+        </li>
+        <li>
+          <b>MAKE_KISS</b> generates data from the KISS generator.
+        </li>
+        <li>
+          <b>MAKE_LTRA</b> generates data from the ULTRA generator.
+        </li>
+        <li>
+          <b>MAKE_MTHR</b> generates data from the "mother of all generators" generator.
+        </li>
+        <li>
+          <b>MAKE_MWC1</b> generates data from a multiply-with-carry generator.
+        </li>
+        <li>
+          <b>MAKE_RAN2</b> generates data from a Numerical Recipes generator.
+        </li>
+        <li>
+          <b>MAKE_SBMC</b> generates data from a subtract/borrow/multiply/carry generator.
+        </li>
+        <li>
+          <b>MAKE_SHRG</b> generates data from a specified shift register generator.
+        </li>
+        <li>
+          <b>MAKE_SUNR</b> generates data from the Sun f77 generator.
+        </li>
+        <li>
+          <b>MAKE_SUPR</b> generates data from the superduper generator.
+        </li>
+        <li>
+          <b>MAKE_SWB</b> generates data from a subtract-with-borrow generator.
+        </li>
+        <li>
+          <b>MAKE_XCNG</b> generates data from an extended congruential generator.
+        </li>
+        <li>
+          <b>PLOT1</b> makes a printer plot of data.
+        </li>
+        <li>
+          <b>PROD</b> ???
+        </li>
+        <li>
+          <b>R8_SWAP</b> swaps two R8's.
+        </li>
+        <li>
+          <b>R8VEC_HEAP_D</b> reorders an R8VEC into an descending heap.
+        </li>
+        <li>
+          <b>R8VEC_SORT_HEAP_A</b> ascending sorts an R8VEC using heap sort.
+        </li>
+        <li>
+          <b>SP</b> is called by KS_TEST.
+        </li>
+        <li>
+          <b>SUMMER</b> computes X(1:4) + Y(1:4).
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 19 January 2011.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+  <!-- Initial HTML skeleton created by HTMLINDEX. -->
+
+</html>

@@ -1,0 +1,552 @@
+<html>
+
+  <head>
+    <title>
+      OPENMP - FORTRAN90 Examples of Parallel Programming with OpenMP
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      OPENMP <br> FORTRAN90 Examples of Parallel Programming with OpenMP
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>OPENMP</b> 
+      is a directory of FORTRAN90 examples which
+      illustrate the use of the OpenMP application program interface
+      for carrying out parallel computations in a shared memory environment.
+    </p>
+
+    <p>
+      The directives
+      allow the user to mark areas of the code, such as <b>do</b>,
+      <b>while</b> or <b>for</b> loops, which are suitable for parallel
+      processing.  The directives appear as a special kind of 
+      comment, so the program can be compiled and run in serial mode.  
+      However, the user can tell the compiler to "notice" the special
+      directives, in which case a version of the program will be created 
+      that runs in parallel.
+    </p>
+
+    <p>
+      Thus the same program can easily be run in serial or parallel mode 
+      on a given computer, or run on a computer that does not have 
+      <b>OpenMP</b> at all. 
+    </p>
+
+    <p>
+      <b>OpenMP</b> is suitable for a <i>shared memory</i> parallel system,
+      that is, a situation in which there is a single memory space, and
+      multiple processors.  If memory is shared, then typically the number
+      of processors will be small, and they will all be on the same
+      physical machine.  
+    </p>
+
+    <p>
+      By contrast, in a <i>distributed memory</i> system, items of data
+      are closely associated with a particular processor.  There may
+      be a very large number of processors, and they may be more loosely
+      coupled and even on different machines.  Such a system will need
+      to be handled with <a href = "../mpi/mpi.html">MPI</a> or some
+      other message passing interface.
+    </p>
+
+    <p>
+      <b>OpenMP</b> descended in part from the old Cray microtasking 
+      directives, so if you've lived long enough to remember those, you 
+      will recognize some features.
+    </p>
+
+    <h3 align = "center">
+      FORTRAN90 Issues
+    </h3>
+
+    <p>
+      OpenMP includes a number of functions whose type must be declared in
+      any program that uses them.  To avoid having to declare these functions,
+      you can use the command
+      <pre><b>
+        use omp_lib
+      </b></pre>
+      in any routine that invokes OpenMP functions.
+    </p>
+
+    <h3 align = "center">
+      "Pretend" Parallelism
+    </h3>
+
+    <p>
+      <b>OpenMP</b> allows you to "request" any number of threads of execution.
+      This is a request, and it's not always a wise request.  If your system has
+      four processors available, and they're not busy doing other things, or serving
+      other users, maybe 4 threads is what you want.  But you can't guarantee
+      you'll get the undivided use of those processors.  Moreover, if you run the
+      same program using 1 thread and 4 threads, you may find that using 4 threads
+      <i>slows you down</i>, either because you don't actually have 4 processors,
+      (so the system has the overhead of pretending to run in parallel), or because
+      the processors you have are also busy doing other things.
+    </p>
+
+    <p>
+      For this reason, it's wise to run the program at least once in single thread mode,
+      so you have a benchmark against which to measure the speedup you got (or didn't
+      get!) versus the speedup you hoped for.
+    </p>
+
+    <h3 align = "center">
+      Compiler Support
+    </h3>
+
+    <p>
+      The compiler you use must recognize the OpenMP directives in order to produce
+      code that will run in parallel.  Here are some of the compilers available that
+      support OpenMP:
+      <ul>
+        <li>
+          The GNU compilers <b>gcc/g++</b> (version 4.2 or later) 
+          and <b>gfortran</b> (version 2.0 or later).
+        </li>
+        <li>
+          The IBM compilers <b>xlc</b> and <b>xlf</b>.
+        </li>
+        <li>
+          The Intel compilers <b>icc</b>, <b>icpc</b> and <b>ifort</b>.
+        </li>
+        <li>
+          The Microsoft Visual C++ compiler.
+        </li>
+        <li>
+          The Portland Group C/C++ and Fortran compilers.
+        </li>
+        <li>
+          Sun Studio C/C++ and Fortran95 compilers.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>OPENMP</b> examples are available in
+      <a href = "../../c_src/openmp/openmp.html">a C version</a> and
+      <a href = "../../cpp_src/openmp/openmp.html">a C++ version</a> and
+      <a href = "../../f77_src/openmp/openmp.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/openmp/openmp.html">a FORTRAN90 version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/dijkstra_openmp/dijkstra_openmp.html">
+      DIJKSTRA_OPENMP</a>,
+      a FORTRAN90 program which
+      uses OpenMP to parallelize a simple example of Dijkstra's 
+      minimum distance algorithm for graphs.
+    </p>
+
+    <p>
+      <a href = "../../f_src/fft_openmp/fft_openmp.html">
+      FFT_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates the computation of a Fast Fourier Transform
+      in parallel, using OpenMP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/heated_plate_openmp/heated_plate_openmp.html">
+      HEATED_PLATE_OPENMP</a>,
+      a FORTRAN90 program which 
+      solves the steady (time independent) heat equation in a 2D
+      rectangular region, using OpenMP to run in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/hello_openmp/hello_openmp.html">
+      HELLO_OPENMP</a>,
+      a FORTRAN90 program which 
+      prints out "Hello, world!" using the OpenMP parallel programming environment. 
+    </p>
+
+    <p>
+      <a href = "../../f_src/mandelbrot_openmp/mandelbrot_openmp.html">
+      MANDELBROT_OPENMP</a>,
+      a FORTRAN90 program which
+      generates an ASCII Portable Pixel Map (PPM) image of the Mandelbrot fractal set,
+      using OpenMP for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/md_openmp/md_openmp.html">
+      MD_OPENMP</a>,
+      a FORTRAN90 program which
+      carries out a molecular dynamics simulation using OpenMP.
+    <p>
+
+    <p>
+      <a href = "../../f_src/mpi/mpi.html">
+      MPI</a>,
+      FORTRAN90 programs which
+      illustrate the use of parallel programming in a distributed memory
+      environment, using message passing.
+    </p>
+
+    <p>
+      <a href = "../../f_src/multitask_openmp/multitask_openmp.html">
+      MULTITASK_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates how to "multitask", that is, to execute several unrelated
+      and distinct tasks simultaneously, using OpenMP for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/mxv_openmp/mxv_openmp.html">
+      MXM_OPENMP</a>,
+      a FORTRAN90 program which
+      computes a dense matrix product C=A*B,
+      using OpenMP for parallel execution.
+    <p>
+
+    <p>
+      <a href = "../../f_src/mxv_openmp/mxv_openmp.html">
+      MXV_OPENMP</a>, 
+      a FORTRAN90 program which
+      compares the performance of plain vanilla Fortran and the FORTRAN90
+      intrinsic routine MATMUL, for the matrix multiplication problem
+      y=A*x, with and without parallelization by OpenMP.
+    <p>
+
+    <p>
+      <a href = "../../f_src/openmp_stubs/openmp_stubs.html">
+      OPENMP_STUBS</a>,
+      a FORTRAN90 library which
+      implements a "stub" version of OpenMP, so that an OpenMP program
+      can be compiled, linked and executed on a system that does not
+      have OpenMP installed.
+    </p>
+
+    <p>
+      <a href = "../../f_src/poisson_openmp/poisson_openmp.html">
+      POISSON_OPENMP</a>,
+      a FORTRAN90 program which
+      computes an approximate solution to the Poisson equation in a rectangle,
+      using the Jacobi iteration to solve the linear system, and OpenMP to
+      carry out the Jacobi iteration in parallel.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prime_openmp/prime_openmp.html">
+      PRIME_OPENMP</a>,
+      a FORTRAN90 program which 
+      counts the number of primes between 1 and N, using OpenMP for parallel execution.
+    </p>
+
+    <p>
+      <a href = "../../c_src/pthreads/pthreads.html">
+      PTHREADS</a>,
+      C programs which
+      illustrate the use of the POSIX thread library to carry out
+      parallel program execution.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quad_openmp/quad_openmp.html">
+      QUAD_OPENMP</a>,
+      a FORTRAN90 program which
+      approximates an integral using a quadrature rule, and carries out the
+      computation in parallel using OpenMP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/random_openmp/random_openmp.html">
+      RANDOM_OPENMP</a>,
+      a FORTRAN90 program which
+      illustrates how a parallel program using OpenMP can generate multiple
+      distinct streams of random numbers.
+    </p>
+
+    <p>
+      <a href = "../../f_src/satisfy_openmp/satisfy_openmp.html">
+      SATISFY_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates, for a particular circuit, an exhaustive search
+      for solutions of the circuit satisfiability problem,
+      using OpenMP for parallel execution.
+    <p>
+
+    <p>
+      <a href = "../../f_src/schedule_openmp/schedule_openmp.html">
+      SCHEDULE_OPENMP</a>,
+      a FORTRAN90 program which
+      demonstrates the default, static, and dynamic methods of "scheduling"
+      loop iterations in OpenMP to avoid work imbalance.
+    <p>
+
+    <p>
+      <a href = "../../f_src/sgefa_openmp/sgefa_openmp.html">
+      SGEFA_OPENMP</a>,
+      a FORTRAN90 program which 
+      reimplements the SGEFA/SGESL linear algebra routines from
+      LINPACK for use with OpenMP.
+    </p>
+
+    <p>
+      <a href = "../../f_src/ziggurat_openmp/ziggurat_openmp.html">
+      ZIGGURAT_OPENMP</a>, 
+      a FORTRAN90 program which
+      demonstrates how the ZIGGURAT library can be used to generate random numbers
+      in an OpenMP parallel program.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Peter Arbenz, Wesley Petersen,<br>
+          Introduction to Parallel Computing - A practical guide with examples in C,<br>
+          Oxford University Press,<br>
+          ISBN: 0-19-851576-6,<br>
+          LC: QA76.58.P47.
+        </li>
+        <li>
+          Rohit Chandra, Leonardo Dagum, Dave Kohr, Dror Maydan,
+          Jeff McDonald, Ramesh Menon,<br>
+          Parallel Programming in OpenMP,<br>
+          Morgan Kaufmann, 2001,<br>
+          ISBN: 1-55860-671-8,<br>
+          LC: QA76.642.P32.
+        </li>
+        <li>
+          Barbara Chapman, Gabriele Jost, Ruud vanderPas, David Kuck,<br>
+          Using OpenMP: Portable Shared Memory Parallel Processing,<br>
+          MIT Press, 2007,<br>
+          ISBN13: 978-0262533027,<br>
+          LC: QA76.642.C49.
+        </li>
+        <li>
+          <a href = "http://www.openmp.org/">The OpenMP web site</a>
+        </li>
+        <li>
+          OpenMP Architecture Review Board,<br>
+          OpenMP Application Program Interface,<br>
+          Version 3.0,<br>
+          May 2008.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <b>COMPUTE_PI</b> shows how information can be shared.
+      Several processors need to compute pieces of a sum that will
+      approximate pi.
+      <ul>
+        <li>
+          <a href = "compute_pi.f90">compute_pi.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "compute_pi_ithaca.sh">compute_pi_ithaca.sh</a>, 
+          BASH commands to compile, link, load and run the program
+          on Virginia Tech's Ithaca system.
+        </li>
+        <li>
+          <a href = "compute_pi_local.sh">compute_pi_local.sh</a>, 
+          BASH commands to compile, link, load and run the program
+          locally.
+        </li>
+        <li>
+          <a href = "compute_pi_local_output.txt">compute_pi_local_output.txt</a>, 
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>DOT_PRODUCT</b> compares the computation of a vector dot product
+      in sequential mode, and using OpenMP.  Typically, the overhead of using
+      parallel processing outweighs the advantage for small vector sizes N.
+      The code demonstrates this fact by using a number of values of N,
+      and by running both sequential and OpenMP versions of the calculation.
+      <ul>
+        <li>
+          <a href = "dot_product.f90">dot_product.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "dot_product_local.sh">dot_product_local.sh</a>, 
+          BASH commands to compile, link, load and run the program.
+        </li>
+        <li>
+          <a href = "dot_product_local_output.txt">dot_product_local_output.txt</a>, 
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>HELMHOLTZ</b> is a more extensive program that solves
+      the Helmholtz equation on a regular grid, using a Jacobi iterative 
+      linear equation solver with overrelaxation;
+      <ul>
+        <li>
+          <a href = "helmholtz.f90">helmholtz.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "helmholtz_local.sh">helmholtz_local.sh</a>, 
+          BASH commands to compile, link, load and run the program
+          using 4 threads.
+        </li>
+        <li>
+          <a href = "helmholtz_local_output.txt">helmholtz_local_output.txt</a>, 
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MAXIMUM</b> shows how FORTRAN programs are allowed to compute
+      the maximum entry of a vector as a reduction variable.
+      <ul>
+        <li>
+          <a href = "maximum.f90">maximum.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "maximum_local.sh">maximum_local.sh</a>, 
+          BASH commands to compile, link, load and run the program.
+        </li>
+        <li>
+          <a href = "maximum_local_output.txt">maximum_local_output.txt</a>, 
+          the output file;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MXM</b> is a simple exercise in timing the computation of a matrix-matrix product.
+      <ul>
+        <li>
+          <a href = "mxm.f90">mxm.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "mxm_local.sh">mxm_local.sh</a>, 
+          BASH commands to compile, link, load and run the program
+          using 1 and 4 threads.
+        </li>
+        <li>
+          <a href = "mxm_local_output.txt">mxm_local_output.txt</a>, 
+          the output file using 1 thread;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>MXM2</b> repeats the MXM example, but tries to measure the CPU time
+      taken by individual threads.  Unfortunately, the FORTRAN90 CPU_TIME function
+      is not required, by the language standard, to store and return separate
+      times for separate threads.  So, whether this example gives you a good timing
+      or not depends on what compiler you use and where.
+      <ul>
+        <li>
+          <a href = "mxm2.f90">mxm2.f90</a>,
+          the source code;
+        </li>
+        <li>
+          <a href = "mxm2_local.sh">mxm2_local.sh</a>, 
+          BASH commands to compile, link, load and run the program
+          using 1 or 2 threads.
+        </li>
+        <li>
+          <a href = "mxm2_local_output.txt">mxm2_local_output.txt</a>, 
+          the output file using 1 threads;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>RANDOM_NUMBER_CONTENTION</b> is a program which demontrates the possibility
+      that a program calling <b>random_number</b> can run MORE SLOWLY when parallel 
+      threads are added.  The performance degradation is presumed to be caused by
+      contention among the threads for access to the internal saved variables that
+      control the state of the random number generator.
+      <ul>
+        <li>
+          <a href = "random_number_contention.f90">random_number_contention.f90</a>, 
+          the source code.
+        </li>
+        <li>
+          <a href = "random_number_contention.sh">random_number_contention.sh</a>,
+          commands to compile, link and run the source code.
+        </li>
+        <li>
+          <a href = "random_number_contention_output.txt">
+          random_number_contention_output.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>RANDOM_SEED</b> is a program which explores the possibility of
+      recreating exactly a stream of random numbers that were computed sequentially
+      by carefully copying all the input seed values, and then regenerating
+      the sequence in parallel.
+      <ul>
+        <li>
+          <a href = "random_seed.f90">random_seed.f90</a>, 
+          the source code.
+        </li>
+        <li>
+          <a href = "random_seed.sh">random_seed.sh</a>,
+          commands to compile, link and run the source code.
+        </li>
+        <li>
+          <a href = "random_seed_output.txt">
+          random_seed.txt</a>,
+          the output file.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../f_src.html">
+      the FORTRAN90 source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 03 September 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>
